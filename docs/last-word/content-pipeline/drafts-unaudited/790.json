@@ -1,0 +1,1486 @@
+{
+ "set_id": "homeostasis-equilibrium",
+ "source_pair_id": 790,
+ "words": [
+  {
+   "word": "homeostasis",
+   "sense": "biological regulation",
+   "concise_meaning": "The active process by which living organisms maintain stable internal conditions through regulatory mechanisms such as feedback loops and physiological adjustments.",
+   "connotation": "dynamic, vital, essential for life, implies ongoing effort and biological specificity",
+   "register": "scientific/technical",
+   "grammar": "noun; uncountable; typically used with maintain, achieve, undergo, disrupt; often modified by body's, cellular, physiological",
+   "collocations": [
+    "maintain homeostasis",
+    "disrupt homeostasis",
+    "body's homeostasis",
+    "achieve homeostasis",
+    "undergo homeostasis"
+   ],
+   "misconceptions": [
+    "M1: thinking it applies to non-living systems",
+    "M2: treating it as a static state rather than an active process",
+    "M3: confusing any kind of balance in a living system with homeostasis"
+   ]
+  },
+  {
+   "word": "equilibrium",
+   "sense": "general balance",
+   "concise_meaning": "A state of balance between opposing forces, where net change is zero; can apply to physical, chemical, economic, or social systems.",
+   "connotation": "stable, balanced, can be passive or active; neutral in evaluation",
+   "register": "general academic",
+   "grammar": "noun; countable and uncountable; used with reach, achieve, in, toward; modified by chemical, market, thermal, static, dynamic",
+   "collocations": [
+    "reach equilibrium",
+    "chemical equilibrium",
+    "market equilibrium",
+    "in equilibrium",
+    "thermal equilibrium"
+   ],
+   "misconceptions": [
+    "M1: thinking it only applies to physical or non-living systems",
+    "M2: assuming equilibrium implies no activity or change",
+    "M3: failing to distinguish it from homeostasis in biological contexts"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "domain_scope",
+   "description": "homeostasis is restricted to living organisms and their internal regulation; equilibrium applies to any system with opposing forces, living or non-living"
+  },
+  {
+   "id": "process_vs_state",
+   "description": "homeostasis is an active, ongoing regulatory process involving feedback mechanisms; equilibrium is a state or condition of balanced forces"
+  },
+  {
+   "id": "mechanism_specificity",
+   "description": "homeostasis implies specific biological regulatory mechanisms such as feedback loops, hormone regulation, and physiological adjustments; equilibrium implies general force balance without specifying mechanism"
+  },
+  {
+   "id": "vital_necessity",
+   "description": "homeostasis is essential for life and implies dysfunction if absent; equilibrium is descriptive and can apply to stable configurations of any kind, living or non-living"
+  }
+ ],
+ "edge": {
+  "a": "homeostasis",
+  "b": "equilibrium",
+  "boundary_rule": "Use homeostasis when a living organism actively maintains stable internal conditions through biological regulation. Use equilibrium when any system reaches a state of balance between opposing forces, regardless of whether it is alive.",
+  "clues_a": [
+   "living organism or biological system",
+   "internal conditions being maintained",
+   "active regulation, feedback loops, physiological adjustment",
+   "temperature, blood sugar, pH, hydration being regulated",
+   "ongoing process, not static state"
+  ],
+  "clues_b": [
+   "opposing forces balancing each other",
+   "net change is zero, system is stable",
+   "state rather than process",
+   "any system: physical, chemical, economic, social",
+   "balance achieved without specifying mechanism"
+  ],
+  "irrelevant_clues": [
+   "stability or constancy alone",
+   "health or healthy conditions",
+   "natural or unnatural systems",
+   "the presence of change or lack thereof",
+   "the word system or balance in any context"
+  ],
+  "misconceptions": {
+   "M1": "Domain confusion: applying homeostasis to non-living systems (a chemical buffer is not homeostasis) or restricting equilibrium to non-living contexts (a population at a stable size can be in equilibrium)",
+   "M2": "Process/state confusion: treating homeostasis as a static state (it is an active process) or assuming equilibrium implies no activity (dynamic equilibrium involves ongoing opposing processes)",
+   "M3": "Boundary confusion: failing to recognize that a living system can be in equilibrium without homeostasis (a dead organism in a stable environment) and that homeostasis always involves a living system actively regulating internal conditions"
+  }
+ },
+ "anchors": {
+  "positive": {
+   "homeostasis": [
+    "The body maintains homeostasis by regulating temperature through sweating and shivering.",
+    "After eating, the pancreas releases insulin to maintain glucose homeostasis.",
+    "A plant achieves homeostasis by adjusting its stomata to control water loss.",
+    "The kidney plays a crucial role in maintaining fluid homeostasis.",
+    "During hibernation, the bear's body maintains homeostasis at a lower metabolic rate.",
+    "Cells rely on sodium-potassium pumps for ionic homeostasis across their membranes."
+   ],
+   "equilibrium": [
+    "The seesaw reached equilibrium when both children weighed the same.",
+    "The chemical reaction achieved equilibrium when the forward and reverse rates matched.",
+    "Supply and demand reached a market equilibrium at a price of fifty dollars.",
+    "The ball came to rest at equilibrium at the bottom of the hill.",
+    "The population size stabilized at an equilibrium determined by available resources.",
+    "The physicist calculated the equilibrium position of the pendulum."
+   ]
+  },
+  "counter": {
+   "homeostasis": [
+    "The chemical buffer maintained a stable pH through equilibrium of acid and conjugate base.",
+    "The market reached equilibrium when supply matched demand at a stable price.",
+    "The seesaw was in equilibrium with children of equal weight on both sides.",
+    "The dead organism's internal conditions remained stable in the sealed container.",
+    "The non-living system maintained a constant temperature without any regulation.",
+    "The abstract debate reached an equilibrium of opposing arguments."
+   ],
+   "equilibrium": [
+    "The body actively regulates its temperature through homeostasis, not just a static balance.",
+    "The pancreas maintains glucose homeostasis by releasing insulin and glucagon in response to blood sugar levels.",
+    "The living plant actively regulates its water balance through homeostasis, adjusting its stomata.",
+    "The kidney maintains fluid homeostasis through active tubular secretion and reabsorption.",
+    "The hibernating bear maintains homeostasis through specialized metabolic regulation.",
+    "Cells maintain ionic homeostasis through active transport across membranes."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "After a person drinks a large amount of water, their body produces dilute urine to eliminate the excess.",
+    "best_word": "homeostasis",
+    "note": "The body is actively regulating fluid balance through kidney function — this is homeostasis, not merely a state of equilibrium."
+   },
+   {
+    "text": "A population of rabbits and foxes oscillates around a stable average over many years.",
+    "best_word": "equilibrium",
+    "note": "This describes a population balance between predator and prey — it is an ecological equilibrium, not homeostasis, because it is not about internal regulation within a single organism."
+   },
+   {
+    "text": "A person's mood stabilizes after they start taking medication for a mood disorder.",
+    "best_word": "homeostasis",
+    "note": "The medication helps the body regulate its internal neurochemical environment — this is homeostasis at the physiological level, not a general state of equilibrium."
+   },
+   {
+    "text": "A chemical reaction in a beaker reaches a stable concentration of products and reactants.",
+    "best_word": "equilibrium",
+    "note": "This is a classic chemical equilibrium — no living system is involved, so equilibrium is the correct term."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "homeostasis-equilibrium_001",
+   "domain": "health",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "What the body does to maintain its temperature: ___",
+   "beats": [
+    {
+     "text": "A person walks outside on a cold winter day. Their body shivers and blood vessels constrict to conserve heat.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.9,
+      "equilibrium": 0.3
+     },
+     "decisive_clue": "The body is actively regulating internal temperature through shivering and vasoconstriction.",
+     "reason": "A living organism is maintaining stable internal conditions through physiological regulation — this is homeostasis.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    },
+    {
+     "text": "The person enters a warm building. Their body begins to sweat and blood vessels dilate to release heat.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.95,
+      "equilibrium": 0.35
+     },
+     "decisive_clue": "The body switches to cooling mechanisms — still active regulation of internal temperature.",
+     "reason": "The body continues to actively regulate its internal temperature, now using cooling mechanisms. This is still homeostasis.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    },
+    {
+     "text": "The person drinks a cold beverage. Their body increases metabolic rate slightly to compensate for the cold liquid.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.95,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "The body adjusts its metabolic rate — ongoing active regulation of internal conditions.",
+     "reason": "The body continues to actively maintain stable internal conditions despite the cold beverage. This remains homeostasis.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Each beat shows the body actively regulating temperature — that is homeostasis, not a static balance.",
+   "feedback_deep": "Throughout all three beats, the body is actively maintaining stable internal conditions through different physiological mechanisms: shivering, sweating, and metabolic adjustment. This is the definition of homeostasis — a living system regulating its internal environment. Equilibrium would describe a state where opposing forces balance, but here the emphasis is on the active regulatory process, not just the resulting balance.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the subject actively regulating something, or is it simply sitting at a balance point?"
+  },
+  {
+   "id": "homeostasis-equilibrium_002",
+   "domain": "playground",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What describes the seesaw when both children are balanced: ___",
+   "beats": [
+    {
+     "text": "Two children of equal weight sit on opposite sides of a seesaw. The board remains horizontal, neither end moving.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.2,
+      "equilibrium": 0.85
+     },
+     "decisive_clue": "Two opposing forces (the children's weights) balance each other with no net movement.",
+     "reason": "The seesaw is in a state of balance between opposing forces. This is equilibrium, not homeostasis, because there is no living system actively regulating anything.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "A third child climbs onto one side, but then slides off. The seesaw returns to horizontal.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.25,
+      "equilibrium": 0.9
+     },
+     "decisive_clue": "After the disturbance, the seesaw returns to its balanced state — still just forces balancing.",
+     "reason": "The seesaw experiences a temporary disturbance and returns to its balanced state. This is still equilibrium — a state of balance between opposing forces, with no active regulation involved.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "Wind pushes down slightly on one end, but the children adjust their positions to keep the board level.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.3,
+      "equilibrium": 0.85
+     },
+     "decisive_clue": "The children adjust their positions — this is a conscious physical movement, not biological regulation.",
+     "reason": "Even though the children adjust their positions, this is a conscious physical action, not a biological regulatory process. The seesaw remains in equilibrium — a state of balanced forces.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The seesaw is always in a state of balanced forces — that is equilibrium, not homeostasis.",
+   "feedback_deep": "Across all three beats, the seesaw is in a state where opposing forces balance each other. The children adjusting their positions is a conscious physical action, not a biological regulatory process. Homeostasis requires a living system actively regulating its internal conditions, which is not happening here. The seesaw is simply in equilibrium throughout.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is there a living system actively regulating its internal conditions, or is this just a balance of forces?"
+  },
+  {
+   "id": "homeostasis-equilibrium_003",
+   "domain": "medicine",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "What the body does after eating a large meal: ___",
+   "beats": [
+    {
+     "text": "After eating a large meal, the pancreas releases insulin to lower blood sugar levels.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.9,
+      "equilibrium": 0.3
+     },
+     "decisive_clue": "The pancreas is actively regulating blood sugar through hormone release.",
+     "reason": "A living organ is actively regulating an internal condition (blood glucose) through a hormonal mechanism. This is homeostasis.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    },
+    {
+     "text": "Hours later, blood sugar drops, and the pancreas releases glucagon to raise it.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.95,
+      "equilibrium": 0.35
+     },
+     "decisive_clue": "The pancreas reverses its action — a feedback loop maintaining glucose stability.",
+     "reason": "The pancreas is now releasing a different hormone to counteract the drop in blood sugar. This feedback loop is a classic example of homeostasis — active regulation of an internal condition.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    },
+    {
+     "text": "The body maintains blood glucose within a narrow range throughout the day.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.95,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "The ongoing maintenance of a narrow glucose range over time shows active regulation.",
+     "reason": "The body is maintaining blood glucose within a narrow, functional range over an extended period. This ongoing active regulation is homeostasis, not a static equilibrium.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The pancreas is actively regulating blood sugar through a feedback loop — that is homeostasis.",
+   "feedback_deep": "All three beats describe the body actively regulating blood glucose through hormonal feedback mechanisms. The pancreas releases insulin when glucose is high and glucagon when it is low. This is the definition of homeostasis: a living system maintaining stable internal conditions through active regulation. Equilibrium would describe a static balance, but here the emphasis is on the ongoing regulatory process.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the subject actively regulating an internal condition through biological mechanisms?"
+  },
+  {
+   "id": "homeostasis-equilibrium_004",
+   "domain": "physics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What describes a ball at the bottom of a hill: ___",
+   "beats": [
+    {
+     "text": "A ball rolls to the bottom of a curved hill and stops there. Gravity pulls it down, the ground pushes it up.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.2,
+      "equilibrium": 0.9
+     },
+     "decisive_clue": "Gravity and the normal force balance each other with no movement.",
+     "reason": "The ball is at a position where opposing forces balance. This is equilibrium — a state of balanced forces with no active regulation involved.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "A light breeze nudges the ball slightly uphill, but it rolls back to the bottom.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.25,
+      "equilibrium": 0.95
+     },
+     "decisive_clue": "The ball returns to its balanced position after a disturbance — still just physics.",
+     "reason": "The ball experiences a temporary disturbance and returns to its position of balanced forces. This is still equilibrium — no living system or active regulation is involved.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "The ball remains at the lowest point, with forces balanced and no acceleration.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.3,
+      "equilibrium": 0.95
+     },
+     "decisive_clue": "Net force is zero — the definition of mechanical equilibrium.",
+     "reason": "The ball is at a position where the net force is zero. This is a classic example of static equilibrium in physics.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The ball sits at a point where forces balance — that is equilibrium, not homeostasis.",
+   "feedback_deep": "All three beats describe a ball at the bottom of a hill where gravity and the normal force balance each other. The ball is not alive, and there is no active regulation of any internal condition. This is simply a physical state of balanced forces — equilibrium. Homeostasis would require a living system actively maintaining internal conditions, which is not present here.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is there a living system actively regulating its internal conditions, or is this just a balance of forces?"
+  },
+  {
+   "id": "homeostasis-equilibrium_005",
+   "domain": "botany",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "What a plant does to maintain water balance: ___",
+   "beats": [
+    {
+     "text": "A plant in dry soil closes its stomata to reduce water loss through its leaves.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.85,
+      "equilibrium": 0.3
+     },
+     "decisive_clue": "The plant is actively regulating water loss through its stomata.",
+     "reason": "A living plant is actively regulating its internal water balance by closing stomata. This is homeostasis — a living system maintaining stable internal conditions.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    },
+    {
+     "text": "After rain, the plant opens its stomata and increases transpiration.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.9,
+      "equilibrium": 0.35
+     },
+     "decisive_clue": "The plant reverses its strategy — still actively regulating water balance.",
+     "reason": "The plant is now adjusting its water regulation in the opposite direction, opening stomata when water is available. This ongoing active regulation of internal water balance is homeostasis.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    },
+    {
+     "text": "The plant maintains turgor pressure despite changing soil moisture.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.9,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "Turgor pressure is actively maintained — a key internal condition for plant function.",
+     "reason": "The plant is maintaining turgor pressure, a critical internal condition, despite changing external conditions. This ongoing active regulation is homeostasis.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The plant is actively regulating its internal water balance — that is homeostasis.",
+   "feedback_deep": "All three beats show a living plant actively regulating its internal water balance by adjusting its stomata in response to changing soil moisture. The plant maintains turgor pressure, a critical internal condition, through these active regulatory mechanisms. This is homeostasis — a living system maintaining stable internal conditions. Equilibrium would describe a static state of balance, but here the emphasis is on the active regulatory process.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the subject actively regulating an internal condition through biological mechanisms?"
+  },
+  {
+   "id": "homeostasis-equilibrium_006",
+   "domain": "economics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "What describes the market price of wheat after buyers and sellers adjust: ___",
+   "beats": [
+    {
+     "text": "After a poor harvest, wheat prices rise, attracting more sellers and reducing demand. The price stabilizes.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.25,
+      "equilibrium": 0.85
+     },
+     "decisive_clue": "Supply and demand forces balance each other at a stable price.",
+     "reason": "The market price has settled at a level where the forces of supply and demand balance. This is a market equilibrium — a state of balance between opposing economic forces.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    },
+    {
+     "text": "A new report predicts a bumper crop. Prices drop slightly, then stabilize again as buyers increase.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.3,
+      "equilibrium": 0.9
+     },
+     "decisive_clue": "The market adjusts and finds a new balance point — still equilibrium.",
+     "reason": "The market experiences a temporary disturbance and adjusts to a new equilibrium price. This is still a state of balance between opposing economic forces — equilibrium.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    },
+    {
+     "text": "The price settles at a level where quantity supplied equals quantity demanded.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.35,
+      "equilibrium": 0.95
+     },
+     "decisive_clue": "Quantity supplied equals quantity demanded — the definition of market equilibrium.",
+     "reason": "The market price is at a level where the quantity supplied equals the quantity demanded. This is the classic definition of market equilibrium — a state of balance between opposing forces.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The market price settles where supply equals demand — that is equilibrium, not homeostasis.",
+   "feedback_deep": "All three beats describe a market reaching a stable price where the forces of supply and demand balance each other. There is no living system actively regulating internal conditions here — this is purely an economic balance between opposing forces. The price adjusts and readjusts to find a point where quantity supplied equals quantity demanded, which is the definition of market equilibrium.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is there a living system actively regulating its internal conditions, or is this just a balance of forces?"
+  },
+  {
+   "id": "homeostasis-equilibrium_007",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "What the couple does to maintain their relationship: ___",
+   "beats": [
+    {
+     "text": "After years of marriage, the couple has settled into a stable pattern. They compromise on finances, divide chores, and coordinate schedules. Neither partner feels overwhelmed.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.35,
+      "equilibrium": 0.7
+     },
+     "decisive_clue": "The couple has reached a stable pattern of compromise and coordination — a state of balance.",
+     "reason": "The couple's relationship has settled into a stable pattern where compromises and coordination keep things balanced. This describes a state of balance between opposing needs and preferences — equilibrium.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "A therapist notes that their communication shows feedback loops: when one partner withdraws, the other pursues, creating a self-correcting cycle.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.5,
+      "equilibrium": 0.55
+     },
+     "decisive_clue": "The feedback loop keeps the relationship in a self-correcting cycle — still a balance, not yet shown as biological regulation.",
+     "reason": "The therapist observes a self-correcting cycle in the couple's communication. This could suggest active regulation, but the evidence has not yet revealed biological mechanisms. The relationship remains in a state of balance — equilibrium.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "The therapist observes that this involves biological stress responses and attachment behaviors — the couple's bodies are actively regulating their internal emotional and physiological states.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.85,
+      "equilibrium": 0.5
+     },
+     "decisive_clue": "The evidence reveals biological stress responses and physiological regulation — the couple's bodies are actively maintaining internal conditions.",
+     "reason": "The therapist has identified that the couple's relationship stability is underpinned by biological stress responses and attachment behaviors. Their bodies are actively regulating internal emotional and physiological states. This is homeostasis — a living system actively maintaining stable internal conditions through biological mechanisms.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The couple's bodies are actively regulating internal states through biological mechanisms — that is homeostasis, not just a relationship balance.",
+   "feedback_deep": "The first two beats describe a couple in a stable pattern of compromise — this could be equilibrium. But the third beat reveals that the stability is underpinned by biological stress responses and attachment behaviors. The couple's bodies are actively regulating their internal emotional and physiological states through biological mechanisms. This shifts the answer from equilibrium (a general state of balance) to homeostasis (a living system actively maintaining internal conditions through biological regulation).",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: does the evidence show biological regulation of internal conditions, or just a general state of balance?"
+  },
+  {
+   "id": "homeostasis-equilibrium_008",
+   "domain": "clinical medicine",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "What the body does during a fever: ___",
+   "beats": [
+    {
+     "text": "A person with a fever has a body temperature of 39 degrees Celsius. Their temperature remains at this elevated level without fluctuating.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.35,
+      "equilibrium": 0.75
+     },
+     "decisive_clue": "The temperature is stable at an elevated level — a state of balance, not yet shown as active regulation.",
+     "reason": "The person's temperature is stable at an elevated level. This describes a state where the body's heat production and heat loss are balanced at a new, higher set point. This is equilibrium — a state of balance.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M2"
+     }
+    },
+    {
+     "text": "The person's body is shivering to generate heat and their blood vessels are constricted to conserve it. The temperature stays elevated because the body is actively maintaining it at a new set point.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.55,
+      "equilibrium": 0.55
+     },
+     "decisive_clue": "The body is actively maintaining the elevated temperature — this could suggest homeostasis, but the context frames it as a new balance point.",
+     "reason": "The body is shivering and constricting blood vessels to maintain the elevated temperature. This could be seen as active regulation, but the context describes it as maintaining a new set point — a balance between heat production and heat loss at the elevated temperature. Both words fit similarly here.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 2,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M2"
+     }
+    },
+    {
+     "text": "The hypothalamus has reset the body's thermostat. This is a living system actively regulating its internal temperature through feedback loops — it is a process of internal stabilization.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.85,
+      "equilibrium": 0.5
+     },
+     "decisive_clue": "The hypothalamus is actively regulating temperature through feedback loops — this is biological regulation, not just a balance.",
+     "reason": "The hypothalamus has reset the body's thermostat and is actively regulating temperature through feedback loops. This is homeostasis — a living system actively maintaining stable internal conditions through biological regulation. The elevated temperature is not just a passive balance; it is the result of active regulatory processes.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The hypothalamus is actively regulating temperature through feedback loops — that is homeostasis, not just a fever equilibrium.",
+   "feedback_deep": "The first two beats describe a fever where the temperature is stable at an elevated level — this could be equilibrium. But the third beat reveals that the hypothalamus has reset the body's thermostat and is actively regulating temperature through feedback loops. This is homeostasis: a living system actively maintaining stable internal conditions through biological regulation. The fever is not just a passive balance of heat production and loss; it is the result of active regulatory processes.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the body actively regulating its internal conditions through biological mechanisms, or is it simply at a stable temperature?"
+  },
+  {
+   "id": "homeostasis-equilibrium_010",
+   "domain": "ecology",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "What describes a forest after a wildfire: ___",
+   "beats": [
+    {
+     "text": "A forest after a wildfire has many dead trees and charred soil. Over time, new plants begin to grow. The forest is in a state of recovery, with growth and death balancing out.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.4,
+      "equilibrium": 0.65
+     },
+     "decisive_clue": "Growth and death are balancing out — a state of balance in the ecosystem.",
+     "reason": "The forest is in a state where the forces of growth and death are balancing. This describes an ecological equilibrium — a state of balance between opposing forces in an ecosystem.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "Years pass. The forest reaches a stable composition of tree species. The rates of growth and death are roughly equal, and the forest appears unchanged year after year.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.5,
+      "equilibrium": 0.55
+     },
+     "decisive_clue": "The forest has reached a stable composition — still a balance, not yet shown as active regulation.",
+     "reason": "The forest has reached a stable composition where growth and death rates are equal. This could suggest active regulation, but the evidence has not yet revealed biological mechanisms. The forest remains in a state of balance — equilibrium.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "A biologist studying the forest notices that the trees are actively regulating their internal water and nutrient levels through root networks and mycorrhizal fungi. The forest is not just balanced — it is a living system maintaining internal conditions.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.85,
+      "equilibrium": 0.5
+     },
+     "decisive_clue": "Trees are actively regulating internal conditions through root networks — this is biological regulation, not just an ecological balance.",
+     "reason": "The biologist observes that trees are actively regulating their internal water and nutrient levels through root networks and mycorrhizal fungi. This is homeostasis — a living system actively maintaining stable internal conditions through biological mechanisms. The forest is not just in a state of balance; it is actively regulating.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Trees are actively regulating internal conditions through root networks — that is homeostasis, not just a forest equilibrium.",
+   "feedback_deep": "The first two beats describe a forest that has reached a stable composition — this could be ecological equilibrium. But the third beat reveals that the trees are actively regulating their internal water and nutrient levels through root networks and mycorrhizal fungi. This is homeostasis: living organisms actively maintaining stable internal conditions through biological mechanisms. The forest is not just balanced; it is actively regulating its internal environment.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: are the organisms actively regulating their internal conditions, or is the system simply in a state of balance?"
+  },
+  {
+   "id": "homeostasis-equilibrium_011",
+   "domain": "abstract argument",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "What describes the intellectual position of a philosopher after years of debate: ___",
+   "beats": [
+    {
+     "text": "A philosopher has spent years refining their theory of free will. Their position has settled into a stable form that resists counterarguments. They describe their intellectual framework as maintaining itself against challenges.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.55,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "The philosopher describes their framework as maintaining itself — an active process of resistance.",
+     "reason": "The philosopher's intellectual framework is described as actively maintaining itself against challenges. While this is metaphorical, the language of active maintenance suggests homeostasis — a system actively preserving its state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 2,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 3,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    },
+    {
+     "text": "A critic points out that the philosopher's position is not actively maintained through any internal mechanism — it is simply the point where the forces of argumentation have balanced out.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.4,
+      "equilibrium": 0.6
+     },
+     "decisive_clue": "The position is not actively maintained — it is just where opposing arguments balance.",
+     "reason": "The critic argues that the philosopher's position is not actively maintained through any internal mechanism. It is simply the point where opposing arguments have balanced out. This is equilibrium — a state of balance between opposing forces, with no active regulation involved.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 3,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    },
+    {
+     "text": "The philosopher agrees, acknowledging that their position is not a living, self-regulating system but rather a conceptual balance between competing ideas.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.35,
+      "equilibrium": 0.85
+     },
+     "decisive_clue": "The philosopher confirms it is a conceptual balance, not a self-regulating system — equilibrium.",
+     "reason": "The philosopher acknowledges that their position is not a living, self-regulating system but rather a conceptual balance between competing ideas. This is equilibrium — a state of balance between opposing forces in an abstract system, with no biological regulation involved.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 3,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The philosopher's position is a conceptual balance, not a self-regulating system — that is equilibrium, not homeostasis.",
+   "feedback_deep": "The philosopher initially described their position as actively maintaining itself (suggesting homeostasis), but the critic pointed out that there is no internal mechanism actively maintaining it — it is simply where opposing arguments have balanced out. The philosopher agreed, acknowledging it is a conceptual balance, not a self-regulating living system. This flips the answer from homeostasis to equilibrium because the evidence shows no active biological regulation — just a balance of opposing ideas.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is there a living system actively regulating, or is this just a balance of opposing forces in any domain?"
+  },
+  {
+   "id": "homeostasis-equilibrium_012",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "What a student's body does during exam week: ___",
+   "beats": [
+    {
+     "text": "A student during exam week sleeps less, eats irregularly, and feels stressed. Their body temperature, heart rate, and cortisol levels remain at consistently elevated levels throughout the week.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.4,
+      "equilibrium": 0.6
+     },
+     "decisive_clue": "The body's metrics are stable at elevated levels — a state of balance, not yet shown as active regulation.",
+     "reason": "The student's body metrics (temperature, heart rate, cortisol) are stable at elevated levels throughout the week. This describes a state where the body's internal conditions have settled at a new, elevated balance point — equilibrium.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M2"
+     }
+    },
+    {
+     "text": "The student's body is actively maintaining these elevated stress levels — the hypothalamus is regulating the stress response, the adrenal glands are producing cortisol, and the body is in a state of heightened alertness.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.55,
+      "equilibrium": 0.55
+     },
+     "decisive_clue": "The body is actively maintaining stress levels — this could suggest homeostasis, but the context frames it as a new balance point.",
+     "reason": "The body is actively maintaining elevated stress levels through the hypothalamus and adrenal glands. This could be seen as active regulation, but the context describes it as maintaining a new balance point. Both words fit similarly here.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M2"
+     }
+    },
+    {
+     "text": "A doctor explains that this is not simply a static stress state — it is the body actively regulating its internal conditions through feedback loops, maintaining a new functional level.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.85,
+      "equilibrium": 0.5
+     },
+     "decisive_clue": "The body is actively regulating internal conditions through feedback loops — this is homeostasis, not just a stress equilibrium.",
+     "reason": "The doctor explains that the body is actively regulating its internal conditions through feedback loops, maintaining a new functional level. This is homeostasis — a living system actively maintaining stable internal conditions through biological regulation. The elevated stress levels are not just a passive balance; they are the result of active regulatory processes.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The body is actively regulating internal conditions through feedback loops — that is homeostasis, not just a stress equilibrium.",
+   "feedback_deep": "The first two beats describe a student whose body metrics are stable at elevated levels during exam week — this could be equilibrium. But the third beat reveals that the body is actively regulating its internal conditions through feedback loops, maintaining a new functional level. This is homeostasis: a living system actively maintaining stable internal conditions through biological regulation. The elevated stress levels are the result of active regulatory processes, not just a passive balance.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the body actively regulating its internal conditions through biological mechanisms, or is it simply at a stable elevated state?"
+  },
+  {
+   "id": "homeostasis-equilibrium_013",
+   "domain": "biology",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 4,
+   "frame": "What a living thing does in a changing environment: ___",
+   "beats": [
+    {
+     "text": "A biologist observes a population of bacteria in a petri dish. The bacteria are consuming nutrients and producing waste. The population size remains relatively stable.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.5,
+      "equilibrium": 0.5
+     },
+     "decisive_clue": "The population is stable, but it is not yet clear whether this is due to active regulation or just a balance of growth and death.",
+     "reason": "The population size is stable, which could be due to active regulation (homeostasis) or a balance of growth and death (equilibrium). The evidence is not yet decisive — both words fit similarly.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 5,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    },
+    {
+     "text": "The biologist measures the internal pH of the bacteria and finds it remains constant despite the acidic waste products they produce.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.7,
+      "equilibrium": 0.45
+     },
+     "decisive_clue": "The bacteria maintain a constant internal pH despite producing acid — this is active internal regulation.",
+     "reason": "The bacteria are maintaining a constant internal pH despite producing acidic waste. This is evidence of active internal regulation — homeostasis. The population stability alone could be equilibrium, but the internal pH regulation points to homeostasis.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    },
+    {
+     "text": "The biologist notes that the bacteria have membrane pumps that actively regulate their internal pH, using energy to maintain stable internal conditions.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.9,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "The bacteria use energy-driven membrane pumps to actively regulate internal pH — this is homeostasis.",
+     "reason": "The bacteria have membrane pumps that actively regulate their internal pH, using energy to maintain stable internal conditions. This is homeostasis — a living system actively maintaining stable internal conditions through biological mechanisms.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The bacteria use energy-driven membrane pumps to actively regulate internal pH — that is homeostasis.",
+   "feedback_deep": "The first beat was ambiguous: the stable population could be equilibrium or homeostasis. But the second beat revealed that the bacteria maintain a constant internal pH despite producing acid, and the third beat confirmed that they use energy-driven membrane pumps to actively regulate their internal pH. This is homeostasis: a living system actively maintaining stable internal conditions through biological mechanisms. The population stability alone would be equilibrium, but the internal regulation points clearly to homeostasis.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the stability due to active internal regulation by the organism, or is it just a balance of external forces?"
+  },
+  {
+   "id": "homeostasis-equilibrium_014",
+   "domain": "mechanics",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "What describes two forces acting on an object: ___",
+   "beats": [
+    {
+     "text": "An object sits on a table. Gravity pulls it down, the table pushes it up. The object does not move.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.45,
+      "equilibrium": 0.55
+     },
+     "decisive_clue": "Two opposing forces act on the object, but it is not yet clear whether any active regulation is involved.",
+     "reason": "Gravity and the normal force are acting on the object, and it is not moving. This could be equilibrium (balanced forces) or, if the object were alive, potentially homeostasis. The evidence is close — both words fit similarly.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 5,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "The object is not alive. There is no biological regulation, no internal process maintaining stability.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.45,
+      "equilibrium": 0.75
+     },
+     "decisive_clue": "The object is not alive — this rules out homeostasis and confirms equilibrium.",
+     "reason": "The object is not alive, so there is no biological regulation or internal process maintaining stability. This rules out homeostasis and confirms that the balanced forces represent equilibrium.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 4,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    },
+    {
+     "text": "The forces are equal and opposite, resulting in zero net force. The object is in a state of balanced forces.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.4,
+      "equilibrium": 0.95
+     },
+     "decisive_clue": "The forces are equal and opposite with zero net force — the definition of mechanical equilibrium.",
+     "reason": "The forces are equal and opposite, resulting in zero net force. This is the definition of mechanical equilibrium — a state of balanced forces with no active regulation involved.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The object is not alive and the forces simply balance — that is equilibrium, not homeostasis.",
+   "feedback_deep": "The first beat was close: an object with balanced forces could be either equilibrium or, if alive, homeostasis. But the second beat revealed that the object is not alive, ruling out homeostasis. The third beat confirmed that the forces are equal and opposite with zero net force — the definition of mechanical equilibrium. This narrows from ambiguous to clearly equilibrium.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the object alive and actively regulating internal conditions, or are forces simply balancing?"
+  },
+  {
+   "id": "homeostasis-equilibrium_015",
+   "domain": "zoology",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 4,
+   "frame": "What a hibernating animal does to survive winter: ___",
+   "beats": [
+    {
+     "text": "A bear enters its den for the winter. Its body temperature drops slightly, its metabolism slows, and it does not eat or drink for months.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.5,
+      "equilibrium": 0.5
+     },
+     "decisive_clue": "The bear's body has changed its functioning — this could be active regulation or just a passive state.",
+     "reason": "The bear's body temperature drops and metabolism slows. This could be active regulation (homeostasis) or a passive state of balance (equilibrium). The evidence is close — both words fit similarly.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 5,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    },
+    {
+     "text": "Despite the drop in body temperature, the bear's internal pH, blood sugar, and other factors remain within narrow, functional ranges.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.7,
+      "equilibrium": 0.45
+     },
+     "decisive_clue": "Internal factors remain within narrow functional ranges despite external changes — this is active regulation.",
+     "reason": "Despite the drop in body temperature, the bear's internal pH, blood sugar, and other factors remain within narrow, functional ranges. This is evidence of active internal regulation — homeostasis. The bear is maintaining stable internal conditions despite the dramatic change in its state.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    },
+    {
+     "text": "The bear's body is actively regulating these internal conditions through specialized metabolic processes — it is a living system maintaining internal stability despite external challenges.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.9,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "The bear's body is actively regulating internal conditions through specialized metabolic processes — this is homeostasis.",
+     "reason": "The bear's body is actively regulating internal conditions through specialized metabolic processes. This is homeostasis — a living system actively maintaining stable internal conditions through biological mechanisms, despite the external challenge of winter.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The bear's body is actively regulating internal conditions through specialized metabolic processes — that is homeostasis.",
+   "feedback_deep": "The first beat was ambiguous: the bear's hibernation state could be a passive balance (equilibrium) or active regulation (homeostasis). But the second beat revealed that the bear's internal pH, blood sugar, and other factors remain within narrow, functional ranges despite the drop in body temperature. The third beat confirmed that the bear's body is actively regulating these internal conditions through specialized metabolic processes. This is homeostasis: a living system actively maintaining stable internal conditions.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the animal actively regulating its internal conditions, or is it simply in a stable state?"
+  },
+  {
+   "id": "homeostasis-equilibrium_018",
+   "domain": "public situations",
+   "transfer": true,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "What describes the crowd at a political rally: ___",
+   "beats": [
+    {
+     "text": "A large crowd gathers at a political rally. The crowd is energized, chanting and waving signs. The level of energy remains consistently high throughout the event.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.4,
+      "equilibrium": 0.65
+     },
+     "decisive_clue": "The crowd's energy is consistently high — a stable state of collective excitement.",
+     "reason": "The crowd's energy level remains consistently high throughout the rally. This describes a state where the collective excitement is stable and sustained — equilibrium, a state of balance between the energy input from the speaker and the energy output from the crowd.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 3,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    },
+    {
+     "text": "The speaker delivers a passionate speech. The crowd's energy surges, then settles back to a slightly higher baseline.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.5,
+      "equilibrium": 0.55
+     },
+     "decisive_clue": "The energy surges and settles — the crowd returns to a baseline, still a balance.",
+     "reason": "The crowd's energy surges in response to the speech and then settles back to a slightly higher baseline. This could suggest active regulation (homeostasis), but the evidence has not yet revealed biological mechanisms. The crowd remains in a state of collective balance — equilibrium.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 4,
+      "cultural_specificity": 3,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    },
+    {
+     "text": "A journalist reframes the situation: this is not a living system maintaining internal conditions — it is a collection of individuals in a state of emotional balance between excitement and fatigue.",
+     "best_word": "equilibrium",
+     "fit": {
+      "homeostasis": 0.35,
+      "equilibrium": 0.85
+     },
+     "decisive_clue": "The journalist reframes it as a collection of individuals in emotional balance — not a living system, so equilibrium.",
+     "reason": "The journalist reframes the situation, clarifying that this is not a living system maintaining internal conditions. It is a collection of individuals in a state of emotional balance between excitement and fatigue. This is equilibrium — a state of balance between opposing forces in a social system, with no biological regulation involved.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 3,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "homeostasis": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The crowd is a collection of individuals in emotional balance — that is equilibrium, not a living system maintaining conditions.",
+   "feedback_deep": "The first two beats described the crowd's energy as consistently high — this could be equilibrium or, metaphorically, homeostasis. But the third beat reframes the situation: the journalist clarifies that this is not a living system maintaining internal conditions. It is a collection of individuals in a state of emotional balance between excitement and fatigue. This is equilibrium — a state of balance between opposing forces in a social system. The reframe clarifies that no biological regulation is involved.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is there a living system actively regulating internal conditions, or is this just a balance of forces in a social context?"
+  },
+  {
+   "id": "homeostasis-equilibrium_019",
+   "domain": "physical therapy",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 4,
+   "frame": "What a patient's body does to restore movement after a stroke: ___",
+   "beats": [
+    {
+     "text": "A patient who had a stroke cannot coordinate their arm movements. When they try to lift their arm, it shakes uncontrollably. Their motor control is not functioning properly.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.5,
+      "equilibrium": 0.45
+     },
+     "decisive_clue": "The patient's motor control is not functioning properly — the body is failing to regulate movement.",
+     "reason": "The patient's motor control is not functioning properly — the nervous system is failing to regulate coordinated movement. This is a failure of homeostasis: the body is not maintaining stable motor control.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 2,
+      "implicitness": 4,
+      "ambiguity": 4,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    },
+    {
+     "text": "The patient works with a physical therapist. They practice specific movements daily. Gradually, the coordination improves.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.7,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "The patient is relearning coordination — the nervous system is beginning to regulate movement again.",
+     "reason": "The patient is practicing specific movements and gradually improving coordination. The nervous system is beginning to regulate movement again — this is the rehabilitation of homeostasis. The body is actively working to restore stable motor control.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 4,
+      "context_length": 3,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    },
+    {
+     "text": "The patient can now lift their arm steadily. Their nervous system is actively regulating muscle contractions to maintain stable movement.",
+     "best_word": "homeostasis",
+     "fit": {
+      "homeostasis": 0.9,
+      "equilibrium": 0.4
+     },
+     "decisive_clue": "The nervous system is actively regulating muscle contractions — homeostasis has been restored.",
+     "reason": "The patient can now lift their arm steadily. Their nervous system is actively regulating muscle contractions to maintain stable movement. This is homeostasis — a living system actively maintaining stable internal conditions (motor control) through biological regulation. The rehabilitation is complete.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 4,
+      "context_length": 4,
+      "implicitness": 4,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 4
+     },
+     "misconception_by_wrong_choice": {
+      "equilibrium": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The nervous system is actively regulating muscle contractions — homeostasis has been restored through rehabilitation.",
+   "feedback_deep": "The patient started with a failure of motor control — the nervous system was not regulating coordinated movement (homeostasis corrupted). Through physical therapy, the patient practiced specific movements and gradually improved. Now the nervous system is actively regulating muscle contractions to maintain stable movement. This is homeostasis restored: a living system actively maintaining stable internal conditions through biological regulation. The rehabilitation arc shows the restoration of active regulation.",
+   "contrast_rule": "Homeostasis is what a living body does to stay stable; equilibrium is the stable state itself, alive or not.",
+   "hint": "Ask: is the body actively regulating its internal conditions, or has it simply reached a stable state?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

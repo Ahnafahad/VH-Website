@@ -1,0 +1,1808 @@
+{
+  "set_id": "mortify-horrify",
+  "source_pair_id": 291,
+  "words": [
+    {
+      "word": "mortify",
+      "sense": "inflict severe humiliation, shame, or wounded pride",
+      "concise_meaning": "to cause someone intense embarrassment, shame, or humiliation that wounds their self-respect",
+      "connotation": "negative, awkward, acutely uncomfortable",
+      "register": "standard to formal",
+      "grammar": "transitive verb; typically 'mortify someone' or passive 'be mortified by/at something'",
+      "collocations": [
+        "mortify someone completely",
+        "deeply mortify",
+        "mortify one's pride",
+        "enough to mortify",
+        "mortify someone in public"
+      ],
+      "misconceptions": [
+        "Assuming mortify implies mortal dread or physical violence due to its Latin root, when modern English exclusively denotes crushing social embarrassment and loss of face."
+      ]
+    },
+    {
+      "word": "horrify",
+      "sense": "induce extreme shock, terror, disgust, or intense moral revulsion",
+      "concise_meaning": "to shock or disgust someone intensely through cruelty, danger, grotesque conditions, or moral outrage",
+      "connotation": "strongly negative, visceral, alarming",
+      "register": "standard",
+      "grammar": "transitive verb; typically 'horrify someone' or passive 'be horrified by/at something'",
+      "collocations": [
+        "horrify the public",
+        "genuinely horrify",
+        "horrify onlookers",
+        "threaten to horrify",
+        "horrify by its cruelty"
+      ],
+      "misconceptions": [
+        "Believing horrify only applies to fictional monsters or bloody violence, ignoring that severe moral disgust, gross negligence, and cruelty also horrify."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "primary_affect",
+      "description": "Acute social shame, embarrassment, and punctured vanity vs. visceral shock, disgust, dread, and moral revulsion."
+    },
+    {
+      "id": "nature_of_injury",
+      "description": "Wounded dignity, public awkwardness, and loss of face vs. violation of physical safety, bodily integrity, or fundamental ethical norms."
+    },
+    {
+      "id": "instinctive_reaction",
+      "description": "Wishing the earth would swallow one whole to escape notice vs. recoiling backwards in dread, outrage, or nausea."
+    }
+  ],
+  "edge": {
+    "a": "mortify",
+    "b": "horrify",
+    "boundary_rule": "Mortify inflicts agonizing embarrassment, social awkwardness, and wounded dignity where the subject feels exposed and ashamed; horrify inflicts profound moral outrage, visceral disgust, dread, or shock at cruelty and destruction.",
+    "clues_a": [
+      "exposure of awkward personal pretension or bluster",
+      "painful social faux pas or public blunder",
+      "humiliating wardrobe mishap before peers",
+      "unflattering secret revealed causing loss of face",
+      "cringeworthy parental or companion behaviour in polite company"
+    ],
+    "clues_b": [
+      "gruesome physical danger or bodily injury",
+      "sickening lack of hygiene or toxic contamination",
+      "callous cruelty toward vulnerable beings",
+      "grotesque moral corruption endangering lives",
+      "abject neglect leading to severe suffering or disaster"
+    ],
+    "irrelevant_clues": [
+      "the intensity of the victim's immediate gasp or silence",
+      "whether the event occurs in a formal boardroom or a private home",
+      "the seniority or wealth of the observer",
+      "whether the revelation comes in writing or spoken aloud"
+    ],
+    "misconceptions": {
+      "M1": "Assuming any intense emotional shock is horror, overlooking that blushing humiliation and wounded ego belong to mortification.",
+      "M2": "Believing mortify implies physical death or bodily torture, confusing its archaic Latin root with modern social shame.",
+      "M3": "Restricting horrify to supernatural terror or physical gore, missing that profound ethical depravity and sickening negligence also horrify."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "mortify": [
+        "The head chef realized in front of the food critics that he had served instant powdered gravy instead of his signature reduction.",
+        "Aisha discovered halfway through her university lecture that her microphone was live while she sang off-key in the restroom.",
+        "The politician was undone when his campaign aide accidentally projected his private search history across the auditorium screen.",
+        "Julian realized his proud boast about speaking fluent Mandarin was made directly to the ambassador from Beijing.",
+        "The debut novelist watched her father stand on a banquet chair to announce her embarrassing childhood bedwetting to the audience.",
+        "Marcus dropped his notes during the debate, and in scrambling to retrieve them, split his trousers from seam to seam before the judges."
+      ],
+      "horrify": [
+        "The sanitary inspectors uncovered hundreds of rotting rodent carcasses piled beneath the hospital kitchen floorboards.",
+        "Onlookers watched with sickening dread as the industrial wrecking ball broke loose and swung toward the crowded school playground.",
+        "The veterinarian wept when she uncovered evidence that the kennel operator had starved forty pedigree puppies in dark concrete cells.",
+        "Citizens reading the wartime investigative report learned that army commanders had intentionally contaminated the provincial reservoir.",
+        "The fire chief discovered that the landlord had padlocked every emergency exit to prevent tenants from sneaking in guests.",
+        "The deep-sea divers recoiled when their searchlight illuminated heaps of untreated toxic biohazard waste dumped across the coral reef."
+      ]
+    },
+    "counter": {
+      "mortify": [
+        "The structural engineer discovered that the subcontractor substituted brittle clay tiles for reinforced steel pillars throughout the dam.",
+        "Witnesses at the harbor watched the tanker dump gallons of boiling chemical sludge directly onto basking seal colonies.",
+        "The hospital board learned that the night orderly had been falsifying cardiac medication charts to sleep during his shift.",
+        "Paramedics arrived at the collapse site to find children trapped beneath crumbling concrete with no emergency water supplies.",
+        "The documentary revealed that the sweatshop manager had locked hundreds of workers inside the burning garment warehouse.",
+        "The environmentalist uncovered video evidence of poachers hacking the tusks from living elephants in the reserve."
+      ],
+      "horrify": [
+        "The valedictorian realized she had given her entire commencement address with green salad leaves wedged between her front teeth.",
+        "Liam accidentally sent an email mocking his manager's haircut directly to the manager and every department head.",
+        "The tennis player bowed grandly to the gallery before realizing he had completely miscounted the score and actually lost the match.",
+        "Sophie proudly announced her engagement to dinner guests before learning her partner had called off the relationship that morning.",
+        "The corporate treasurer mistakenly displayed his personal dating profile instead of the quarterly revenue slide to investors.",
+        "David arrived at the black-tie charity gala dressed head to toe as a pirate because he misread the invitation theme."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "A corporate executive accidentally projects confidential salary lists on the main wall during a company-wide celebration.",
+        "best_word": "mortify",
+        "note": "Although the blunder causes immense organizational panic, its core impact on the executive is acute personal humiliation and professional loss of face rather than moral terror or physical disgust."
+      },
+      {
+        "text": "An art restorer accidentally scrubs away the face of a priceless renaissance fresco while trying to remove a speck of dirt.",
+        "best_word": "horrify",
+        "note": "The irreversible destruction of an irreplaceable cultural treasure generates profound aesthetic shock and dismay that goes beyond mere social embarrassment."
+      },
+      {
+        "text": "A high-school teacher accidentally leaves an unflattering evaluation of the principal's daughter open on an unlocked classroom screen.",
+        "best_word": "mortify",
+        "note": "The situation creates excruciating awkwardness and fear of interpersonal reproach, centered on social shame rather than grotesque cruelty or peril."
+      },
+      {
+        "text": "A food critic bites into a gourmet pastry only to discover a severed rodent finger baked into the warm custard.",
+        "best_word": "horrify",
+        "note": "The encounter triggers immediate visceral nausea, physical revulsion, and health dread, far exceeding any ordinary dining embarrassment."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "mortify-horrify_001",
+      "domain": "culinary_arts",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What this banquet blunder will do to Chef Lin: ___",
+      "beats": [
+        {
+          "text": "At the prestigious culinary gala, Chef Lin steps onto the stage to receive the Golden Ladle award, unaware that the back of his embroidered chef jacket is tucked awkwardly into his bright yellow undergarments.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.94,
+            "horrify": 0.06
+          },
+          "decisive_clue": "awkward wardrobe malfunction before elite culinary peers",
+          "reason": "The blunder causes acute social embarrassment and loss of professional face without moral revulsion or physical harm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "As he reaches the microphone, the high-definition auditorium camera zooms in, projecting his exposed patterned waistline to hundreds of cheering culinary masters and television broadcast viewers.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.98,
+            "horrify": 0.04
+          },
+          "decisive_clue": "massive live broadcast amplification of the cringe-worthy wardrobe accident",
+          "reason": "The wider audience multiplies his humiliation and shame, cementing social mortification.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "His senior mentor gently whispers into his ear to adjust his jacket, while nearby banquet guests politely stifle their giggles behind linen napkins.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.96,
+            "horrify": 0.05
+          },
+          "decisive_clue": "polite stifled giggles confirming public social awkwardness",
+          "reason": "The polite mockery confirms social embarrassment rather than shock at any ethical or physical danger.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Public wardrobe mishaps causing stifled giggles and loss of face trigger intense embarrassment, puncturing personal dignity.",
+      "feedback_deep": "Chef Lin suffers an agonizing blow to his pride and professional poise before his peers. Because the blunder carries zero physical danger, malice, or moral disgust, it operates purely in the territory of social shame.",
+      "contrast_rule": "Social embarrassment and punctured vanity point here; danger, cruelty, and visceral disgust point to the other.",
+      "hint": "Consider whether the audience feels moral repulsion or is merely witnessing an awkward social gaffe."
+    },
+    {
+      "id": "mortify-horrify_002",
+      "domain": "civil_engineering",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "What the tunnel collapse report will do to the transit board: ___",
+      "beats": [
+        {
+          "text": "An independent structural safety audit reveals that the main commuter rail tunnel was constructed using hollow, unreinforced concrete panels that have already begun buckling beneath the riverbed.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.12,
+            "horrify": 0.92
+          },
+          "decisive_clue": "buckling underwater tunnel endangering thousands of commuter lives",
+          "reason": "The revelation of imminent catastrophic collapse and loss of life produces dread and profound alarm, not mere embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Subcontractor logs confirm that managers deliberately suppressed internal stress warnings for two years, pocketing millions in diverted reinforcement steel while trains ran daily.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.08,
+            "horrify": 0.96
+          },
+          "decisive_clue": "deliberate criminal suppression of fatal structural danger for profit",
+          "reason": "The callous disregard for human life and severe moral corruption deepens intense moral shock and outrage.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Transit engineers inspect the tunnel ceiling in person and discover river water already gushing through widespread structural fracture lines above the live electrical rails.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.05,
+            "horrify": 0.98
+          },
+          "decisive_clue": "imminent lethal breach of river water onto live commuter tracks",
+          "reason": "The acute peril of a catastrophic drowned transit tunnel evokes visceral dread and alarm.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The criminal suppression of fatal structural collapse and imminent flooding of commuter tracks sparks visceral dread and outrage.",
+      "feedback_deep": "The audit uncovers life-threatening negligence and criminal disregard for public safety. When facing fatal hazards and acute ethical depravity, the appropriate reaction is deep dread and shock, not blushing social awkwardness.",
+      "contrast_rule": "Lethal danger and depraved negligence point here; awkward social blunders point to the other.",
+      "hint": "Look at the stakes: does this cause social embarrassment or extreme dread for human survival?"
+    },
+    {
+      "id": "mortify-horrify_003",
+      "domain": "academic_publishing",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What this keynote presentation mishap will do to Dr. Chen: ___",
+      "beats": [
+        {
+          "text": "During his keynote address to the International Linguistics Congress, Dr. Chen opens his slideshow, only to discover that his first slide is a high-resolution selfie of himself wearing a novelty bath towel with a facial mud mask.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.93,
+            "horrify": 0.08
+          },
+          "decisive_clue": "unintentional projection of an intimate, silly bath photo before academic colleagues",
+          "reason": "The slip punctures his scholarly dignity with absurd personal awkwardness, causing acute embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Flustered, he frantically clicks the forward button, but the presentation software enters an automatic preview loop displaying his karaoke vacation video where he sings out of tune.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.97,
+            "horrify": 0.05
+          },
+          "decisive_clue": "compounding comical humiliation with loud screechy karaoke footage",
+          "reason": "The escalating silliness deepens his cringing shame before a solemn audience of scholars.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The session chair taps the microphone to ask if this represents a multimedia case study on nonverbal communication, as junior lecturers in the front row cover their grins.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.95,
+            "horrify": 0.06
+          },
+          "decisive_clue": "gentle academic mockery highlighting excruciating professional awkwardness",
+          "reason": "The chair's ironic inquiry emphasizes social embarrassment and wounded scholarly pride.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Unintentional exposure of comical vacation footage during a solemn keynote crushes professional pride and causes acute social embarrassment.",
+      "feedback_deep": "Dr. Chen's technological blunder exposes private absurdity to prestigious colleagues. The situation generates intense loss of face and blushing discomfort, with no moral offense or peril present.",
+      "contrast_rule": "Punctured professional dignity points here; ethical repulsion and physical danger point to the other.",
+      "hint": "Ask whether the blunder triggers laughter and embarrassment or deep moral disgust."
+    },
+    {
+      "id": "mortify-horrify_004",
+      "domain": "veterinary_medicine",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "What the kennel inspection will do to Dr. Al-Mansoor: ___",
+      "beats": [
+        {
+          "text": "Dr. Al-Mansoor enters an unlicensed commercial breeding warehouse and finds dozens of sick hounds packed into rusted wire cages encrusted with mold, feces, and sharp broken glass.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.07,
+            "horrify": 0.94
+          },
+          "decisive_clue": "sickening squalor and cruelty inflicted on captive animals",
+          "reason": "The revolting physical conditions and abuse of helpless animals cause visceral revulsion and moral outrage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Inspecting the nursery pen, he discovers that the proprietor withheld drinking water for three days to save cleanup costs, leaving fragile newborns dehydrated and gasping on cold concrete.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.04,
+            "horrify": 0.97
+          },
+          "decisive_clue": "deliberate deprivation of water causing active torment to newborns",
+          "reason": "Callous and deliberate cruelty that endangers life produces intense shock and moral repulsion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "The breeder casually shrugs off the suffering, explaining that dead animals are simply discarded in the backyard trash incinerator behind the shed.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.03,
+            "horrify": 0.98
+          },
+          "decisive_clue": "callous indifference to animal death and disposal like trash",
+          "reason": "The utter absence of conscience and moral depravity completes a picture of intense disgust.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Vile squalor and ruthless cruelty inflicted on vulnerable animals elicit profound moral revulsion and visceral shock.",
+      "feedback_deep": "The inspection exposes sickening conditions and callous cruelty. Because this is a severe violation of basic decency and animal welfare, it provokes deep moral revulsion rather than social embarrassment.",
+      "contrast_rule": "Cruelty, abuse, and visceral squalor point here; social faux pas and wounded vanity point to the other.",
+      "hint": "Focus on whether the scene triggers ethical repulsion and distress or personal social embarrassment."
+    },
+    {
+      "id": "mortify-horrify_005",
+      "domain": "museum_curation",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "What the curator's discovery in the archives will do to Director Silva: ___",
+      "beats": [
+        {
+          "text": "Director Silva opens a sealed wooden crate in the museum's deep storage vault and finds that historic ceremonial silver relics have been smashed apart with a sledgehammer to extract raw bullion.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.11,
+            "horrify": 0.91
+          },
+          "decisive_clue": "wanton violent destruction and desecration of irreplaceable cultural treasures",
+          "reason": "The violent vandalism and loss of precious heritage produces profound dismay and cultural shock.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "Beside the broken metal, he finds human ancestral remains from an ancient burial exhibit tossed carelessly into black garbage bags contaminated with chemical solvents.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.05,
+            "horrify": 0.97
+          },
+          "decisive_clue": "grotesque desecration of human ancestral remains dumped in solvent-soaked garbage bags",
+          "reason": "Desecrating human remains with trash and corrosive chemicals triggers intense moral repulsion and revulsion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "Security logs reveal that a rogue night guard operated an illegal smelting furnace inside the historical conservation room itself.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.04,
+            "horrify": 0.98
+          },
+          "decisive_clue": "unconscionable criminal smelting of priceless antiquities inside a conservation lab",
+          "reason": "The gross breach of trust and destruction of sacred historical legacy causes overwhelming moral outrage.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The wanton destruction of antiquities and grotesque desecration of human remains provoke profound moral revulsion and outrage.",
+      "feedback_deep": "Director Silva encounters shocking vandalism and desecration of sacred ancestral artifacts. This profound violation of cultural heritage and human dignity triggers intense moral shock, far removed from mere awkwardness.",
+      "contrast_rule": "Desecration, violence, and moral outrage point here; social awkwardness and embarrassment point to the other.",
+      "hint": "Notice whether the discovery reveals a breach of social manners or a sickening violation of human dignity."
+    },
+    {
+      "id": "mortify-horrify_006",
+      "domain": "theatrical_performance",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What this opening night disaster will do to Julian: ___",
+      "beats": [
+        {
+          "text": "In the climactic soliloquy of the grand tragedy, Julian delivers his dramatic vow of vengeance, but his vocal register breaks into a shrill, squeaking yodel that echoes across the silent auditorium.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.92,
+            "horrify": 0.09
+          },
+          "decisive_clue": "uncontrolled voice cracking during a dramatic stage soliloquy",
+          "reason": "The comical voice break shatters his dramatic poise and causes severe artistic embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Attempting to recover his dignity with a sweeping bow, his heavy ornamental velvet cape snags on a stage prop, yanking off his elaborate curly wig to reveal a pink mesh hairnet.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.97,
+            "horrify": 0.04
+          },
+          "decisive_clue": "farcical wig removal exposing a hairnet during a serious performance",
+          "reason": "The escalating stage comedy punctures all remaining dignity, leaving him exposed to overwhelming embarrassment.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The front rows of theater critics exchange amused glances and begin writing rapid notes as muffled chuckles ripple through the stalls.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.96,
+            "horrify": 0.05
+          },
+          "decisive_clue": "critics taking amused notes while the audience chuckles at the blunder",
+          "reason": "The public amusement of critics seals his humiliation and professional loss of face.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A comical voice break and accidental wig loss before theater critics inflict crushing stage humiliation and wounded artistic vanity.",
+      "feedback_deep": "Julian suffers a humiliating cascade of stage blunders that turns high tragedy into farce. Because the mishap involves only punctured vanity and social awkwardness, it represents classic social shame and loss of face.",
+      "contrast_rule": "Punctured vanity and comical public blunders point here; cruelty, danger, and moral violations point to the other.",
+      "hint": "Determine whether the incident evokes public laughter and shame or fear and disgust."
+    },
+    {
+      "id": "mortify-horrify_007",
+      "domain": "environmental_science",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the river contamination alert will do to Dr. Aris: ___",
+      "beats": [
+        {
+          "text": "Dr. Aris detects deadly arsenic concentrations exceeding safety thresholds by a factor of ten thousand in the municipal drinking river, directly downstream from an industrial battery plant.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.08,
+            "horrify": 0.93
+          },
+          "decisive_clue": "lethal poison levels threatening thousands of municipal drinking water users",
+          "reason": "The lethal threat to public health and potential mass poisoning elicits intense alarm and moral revulsion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "Emergency teams mobilize hazmat barriers along the riverbank, fearing widespread neurological poisoning and immediate town evacuations.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.06,
+            "horrify": 0.96
+          },
+          "decisive_clue": "emergency hazmat mobilization against imminent mass poisoning",
+          "reason": "The acute peril of a catastrophic environmental disaster keeps the reaction grounded in dread.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "Laboratory supervisors re-calibrate the testing equipment and find the river water is completely pure; Dr. Aris had simply dipped his probe into his own spilled beaker of laboratory calibration dye before the television press conference.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.94,
+            "horrify": 0.07
+          },
+          "decisive_clue": "false emergency caused by researcher clumsiness with a beaker of dye exposed before TV cameras",
+          "reason": "The threat of toxic disaster evaporates; Dr. Aris is left with crushing professional shame and public embarrassment.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "When a deadly toxic crisis turns out to be an amateur beaker spill exposed on live TV, terror flips to acute embarrassment.",
+      "feedback_deep": "The initial threat of mass arsenic poisoning created genuine alarm and dread. But once the hazard vanishes and reveals a clumsy personal blunder before national cameras, the situation flips to agonizing professional humiliation.",
+      "contrast_rule": "Silly amateur blunders exposed on television point here; genuine public health catastrophes point to the other.",
+      "hint": "Look at what remains when the phantom toxic threat disappears: genuine danger or personal loss of face?"
+    },
+    {
+      "id": "mortify-horrify_008",
+      "domain": "corporate_audit",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What this corporate audit revelation will do to Elena: ___",
+      "beats": [
+        {
+          "text": "Elena discovers that she miscalculated the regional travel budget by thirty dollars on the final presentation slide, prompting a sarcastic remark from her department manager.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.91,
+            "horrify": 0.1
+          },
+          "decisive_clue": "minor calculation error drawing a sarcastic management scolding",
+          "reason": "A petty math error in front of supervisors creates acute social embarrassment and loss of face.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Digging deeper into the accounting discrepancy, she finds that the missing travel funds were altered to conceal offshore wire transfers paying for illicit surveillance on whistleblower employees.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.22,
+            "horrify": 0.84
+          },
+          "decisive_clue": "diversion of company funds to illegally stalk and intimidate whistleblowers",
+          "reason": "The issue shifts from a petty bookkeeping mistake to sinister corporate intimidation and criminal surveillance.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Encrypted logs confirm that the surveillance firm hired armed operatives who physically assaulted a former auditor's family to suppress evidence of toxic waste dumping.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.04,
+            "horrify": 0.97
+          },
+          "decisive_clue": "hired violence and physical assaults against an auditor's family",
+          "reason": "Brutal physical violence, intimidation, and suppression of environmental poison provoke deep moral dread.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A petty budgeting slip transforms into hired violent assaults against whistleblowers, flipping social awkwardness into moral shock.",
+      "feedback_deep": "What began as an embarrassing arithmetic error before a manager turns out to be a cover for violent criminal intimidation. The shift from bruised ego to violent peril flips the judgment decisively.",
+      "contrast_rule": "Violent intimidation and criminal assaults point here; spreadsheet mistakes and reprimands point to the other.",
+      "hint": "Notice how the nature of the revelation shifts from an embarrassing mistake to violent criminal thuggery."
+    },
+    {
+      "id": "mortify-horrify_009",
+      "domain": "fashion_design",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the runway reveal will do to designer Matteo: ___",
+      "beats": [
+        {
+          "text": "Backstage reports at Fashion Week suggest that a rival saboteur threw corrosive industrial acid over the flagship gown, threatening to burn the lead model's skin on the catwalk.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.06,
+            "horrify": 0.95
+          },
+          "decisive_clue": "threat of caustic acid burns inflicting physical injury on a runway model",
+          "reason": "The prospect of chemical burns and brutal physical violence creates visceral dread and moral revulsion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "Security rushes to the runway only to discover there was no acid; rather, the dress zipper simply jammed, leaving the model stuck midway through a bright pink cartoon penguin suit.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.92,
+            "horrify": 0.09
+          },
+          "decisive_clue": "jammed zipper revealing a silly cartoon penguin costume instead of chemical danger",
+          "reason": "Physical danger is completely disproven, replaced by farcical wardrobe absurdity and acute loss of face.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The high-fashion audience erupts into uproarious laughter as the model waddles off the stage while international photographers capture every comical flap of the wings.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.97,
+            "horrify": 0.04
+          },
+          "decisive_clue": "fashion elite laughing at ridiculous cartoon costume on the haute couture catwalk",
+          "reason": "The widespread laughter of industry luminaries seals the crushing artistic embarrassment and wounded pride.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A rumor of corrosive acid disproven by a comical penguin costume flips bodily terror into ridiculous runway embarrassment.",
+      "feedback_deep": "The rumor of chemical violence initially triggered dread and repulsion. When the threat dissolved into an absurd wardrobe blunder that provoked international laughter, the impact became pure social humiliation and wounded pride.",
+      "contrast_rule": "Farcical wardrobe mishaps causing public laughter point here; physical chemical violence points to the other.",
+      "hint": "Check whether the model faces chemical injury or just public laughter at an absurd outfit."
+    },
+    {
+      "id": "mortify-horrify_010",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the repository leak will do to Lead Engineer Dev: ___",
+      "beats": [
+        {
+          "text": "Dev accidentally publishes his personal coding scratchpad online, exposing childish code comments where he complained about his colleague's bad breath and boring weekend stories.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.93,
+            "horrify": 0.08
+          },
+          "decisive_clue": "accidental public leak of petty personal complaints about a coworker",
+          "reason": "Exposing rude, immature personal remarks about colleagues causes intense social shame and interpersonal awkwardness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "A security analyst reviewing the leaked files notices that Dev's test scripts also contain hardcoded bypass keys granting unmonitored backdoor access to the hospital's pediatric life-support systems.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.2,
+            "horrify": 0.86
+          },
+          "decisive_clue": "unprotected backdoor access endangering critical pediatric life-support machinery",
+          "reason": "The discovery shifts from petty social rudeness to catastrophic peril threatening sick children's lives.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Log analysis reveals that a foreign cyber-extortion cartel has already used those bypass keys to remotely tamper with oxygen regulators in the intensive care ward.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.03,
+            "horrify": 0.98
+          },
+          "decisive_clue": "extortionists actively tampering with children's intensive care oxygen regulators",
+          "reason": "Active malice endangering helpless patients creates overwhelming moral revulsion and terror.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Awkward office gossip in code comments yields to active cyber-tampering with intensive care oxygen, flipping embarrassment to dread.",
+      "feedback_deep": "Dev begins with petty interpersonal embarrassment over leaked gossip. But when the leak exposes a catastrophic flaw that cyber-extortionists exploit to tamper with pediatric life-support, the situation becomes a life-threatening catastrophe of acute dread.",
+      "contrast_rule": "Compromising life-support systems and patient safety points here; leaked office gossip points to the other.",
+      "hint": "Watch how the consequences escalate from bruised office relationships to lethal patient peril."
+    },
+    {
+      "id": "mortify-horrify_011",
+      "domain": "diplomatic_protocol",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the state banquet incident will do to Ambassador Zhao: ___",
+      "beats": [
+        {
+          "text": "During a tense summit, diplomatic bodyguards draw sidearms when a sudden crash echoes across the banquet hall, suspecting a coordinated assassination attempt against visiting heads of state.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.07,
+            "horrify": 0.94
+          },
+          "decisive_clue": "apparent armed assassination attempt threatening visiting heads of state",
+          "reason": "The sudden terror of lethal political violence and assassination creates profound shock and panic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "Security lights reveal no gunmen; Ambassador Zhao had simply tripped over his own sword scabbard and somersaulted headfirst into a towering four-tier raspberry jelly dessert.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.94,
+            "horrify": 0.07
+          },
+          "decisive_clue": "dignitary clumsily somersaulting into a massive dessert jelly",
+          "reason": "The terrifying illusion of an assassination collapses into an excruciatingly undignified physical pratfall.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Zhao emerges coated in red gelatin as dignitaries lower their napkins to conceal their laughter, while national news cameras broadcast his sticky silhouette worldwide.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.97,
+            "horrify": 0.04
+          },
+          "decisive_clue": "global television broadcast of ambassador covered in red jelly while peers laugh",
+          "reason": "The comical spectacle and global loss of diplomatic face constitute peak social humiliation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A suspected assassination scare collapses into an ambassador tumbling into raspberry jelly on global television, flipping terror into humiliation.",
+      "feedback_deep": "Initial fears of an armed assassination attempt triggered profound panic and dread. Once revealed as an absurd physical blunder resulting in sticky red dessert on world news, the emotion becomes pure blushing humiliation and ridiculous loss of face.",
+      "contrast_rule": "Tumbling headfirst into dessert before world leaders points here; lethal political assassination scares point to the other.",
+      "hint": "Ask whether the ambassador faces deadly sniper fire or the global embarrassment of a clumsy pratfall."
+    },
+    {
+      "id": "mortify-horrify_012",
+      "domain": "architecture",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the school inspection findings will do to Architect Bauer: ___",
+      "beats": [
+        {
+          "text": "Architect Bauer is informed that the primary school gymnasium was painted in a garish clash of neon orange and purple, making him look foolish at the school board's public design unveiling.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.92,
+            "horrify": 0.1
+          },
+          "decisive_clue": "embarrassing paint color clash puncturing professional aesthetic vanity",
+          "reason": "An unsightly aesthetic mistake before clients wounds artistic pride and causes social embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Further chemical testing reveals that the contractor used surplus industrial lead paint containing toxic pigment concentrations fifty times above legal ceilings for spaces used by toddlers.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.19,
+            "horrify": 0.85
+          },
+          "decisive_clue": "toxic lead concentrations fifty times legal limits in toddler classrooms",
+          "reason": "The concern shifts from unsightly color choices to severe chemical poisoning endangering developing children.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "The contractor admits that the paint flaked onto the cafeteria lunch counters for six months while administrators ignored reports of students suffering acute neurological tremors.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.04,
+            "horrify": 0.97
+          },
+          "decisive_clue": "prolonged lead ingestion causing active neurological tremors in schoolchildren",
+          "reason": "Active neurological poisoning of children covered up for months evokes intense moral revulsion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A silly paint color clash yields to severe industrial lead poisoning causing neurological tremors in children, flipping embarrassment to shock.",
+      "feedback_deep": "Bauer's initial discomfort was wounded aesthetic vanity over ugly colors. When the paint is revealed to be toxic lead actively poisoning children and covered up by administrators, the situation becomes deeply alarming and morally repulsive.",
+      "contrast_rule": "Toxic chemical poisoning of children points here; ugly color palettes point to the other.",
+      "hint": "Notice when the issue moves past visual aesthetics into severe, life-altering toxic harm to children."
+    },
+    {
+      "id": "mortify-horrify_013",
+      "domain": "culinary_arts",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "What this restaurant review will do to Sommelier Nadia: ___",
+      "beats": [
+        {
+          "text": "A scathing food blog post notes that Sommelier Nadia served a twenty-dollar supermarket vintage while billing the table for a prestigious Grand Cru.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.84,
+            "horrify": 0.32
+          },
+          "decisive_clue": "allegation of serving cheap supermarket vintage under a prestigious label",
+          "reason": "The allegation threatens professional integrity and causes deep professional shame.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The critic clarifies that Nadia did not commit fraud; she merely confused the cellar bins because she forgot her reading spectacles, apologizing profusely as her face flushed crimson.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.96,
+            "horrify": 0.06
+          },
+          "decisive_clue": "blushing blunder caused by forgotten glasses, removing suspicion of criminal fraud",
+          "reason": "Eliminating intentional fraud leaves pure, blushing clumsiness and professional humiliation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The city dining magazine republishes her blushing apology as their 'Gaffe of the Month', complete with a caricature of her squinting at a wine bottle.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.98,
+            "horrify": 0.03
+          },
+          "decisive_clue": "satirical caricature celebrating her clumsy mistake in a public dining column",
+          "reason": "The public caricature cements the incident as an agonizing, comical embarrassment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A cellar mix-up from forgotten glasses highlighted as 'Gaffe of the Month' narrows the focus entirely to social embarrassment.",
+      "feedback_deep": "The initial report hinted at fraudulent theft, which might have carried ethical outrage. Clarifying that it was an innocent, squinting blunder that ended up in a humor column narrows the semantic fit decisively to acute social embarrassment.",
+      "contrast_rule": "Innocent professional blunders and satirical caricatures point here; malicious fraud and cruelty point to the other.",
+      "hint": "Observe how clarifying the motive as an innocent eyesight blunder strips away any moral outrage."
+    },
+    {
+      "id": "mortify-horrify_014",
+      "domain": "civil_engineering",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "What the dam foundation report will do to the safety board: ___",
+      "beats": [
+        {
+          "text": "An acoustic survey of the mountain reservoir dam indicates that internal seepage has eroded thirty percent of the subterranean bedrock beneath the concrete wall.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.18,
+            "horrify": 0.85
+          },
+          "decisive_clue": "massive internal bedrock erosion under a high-altitude reservoir dam",
+          "reason": "The scale of potential catastrophic dam failure threatens surrounding valleys, provoking intense alarm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Core drill samples reveal that the subterranean void is expanding hourly, and a wall of two billion gallons of water is held back by only a crumbling wedge of porous mud.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.08,
+            "horrify": 0.94
+          },
+          "decisive_clue": "two billion gallons of water held back by crumbling mud above sleeping towns",
+          "reason": "The imminent likelihood of a sudden catastrophic flood drowning entire towns sharpens the profound dread.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Hydraulic models indicate that if the mud collapses tonight, forty thousand sleeping residents in the downstream valley will have less than four minutes of warning before drowning.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.03,
+            "horrify": 0.98
+          },
+          "decisive_clue": "unavoidable mass drowning of forty thousand sleeping residents within minutes",
+          "reason": "The inescapable vision of forty thousand people drowning in their sleep represents absolute terror and catastrophic loss.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The imminent collapse of a reservoir dam threatening forty thousand sleeping residents with sudden drowning evokes sheer terror and dread.",
+      "feedback_deep": "The evolving geological data removes all ambiguity: this is an imminent catastrophe capable of wiping out forty thousand lives in minutes. The sheer scale of life-threatening destruction belongs strictly to acute dread and catastrophe.",
+      "contrast_rule": "Catastrophic loss of thousands of human lives points here; personal professional missteps point to the other.",
+      "hint": "Consider the scale of human tragedy: does this describe social discomfort or unimaginable catastrophe?"
+    },
+    {
+      "id": "mortify-horrify_015",
+      "domain": "academic_publishing",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "What the book review correction will do to Professor Vance: ___",
+      "beats": [
+        {
+          "text": "A prominent literary review points out that Professor Vance's new definitive biography of a Victorian statesman contains a glaring, unverified factual error in its opening chapter.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.83,
+            "horrify": 0.31
+          },
+          "decisive_clue": "glaring unverified factual mistake in a scholar's flagship biography",
+          "reason": "A prominent scholarly error wounds academic vanity and damages professional authority.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The error is not an ethical plagiarism charge, but an absurd slip where he cited a fictional satirical blog as a genuine nineteenth-century parliamentary diary.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.95,
+            "horrify": 0.07
+          },
+          "decisive_clue": "citing a parody blog as a nineteenth-century diary, highlighting embarrassing gullibility",
+          "reason": "Exposing ridiculous scholarly gullibility rather than intellectual dishonesty sharpens personal embarrassment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Graduate students circulate internet memes quoting his solemn analysis of what was actually a modern internet joke about talking horses.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.98,
+            "horrify": 0.04
+          },
+          "decisive_clue": "viral memes by students mocking his earnest analysis of a joke about talking horses",
+          "reason": "Viral mockery of his pretense by his own students cements complete social humiliation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Mistaking an internet joke for historical fact and becoming the subject of viral student memes inflicts agonizing academic embarrassment.",
+      "feedback_deep": "Ruling out scholarly fraud and establishing that Professor Vance fell for a comical parody about talking horses narrows the situation to crushing loss of face. He suffers wounded intellectual vanity and student mockery.",
+      "contrast_rule": "Ridiculous gullibility and viral parody memes point here; malice and moral corruption point to the other.",
+      "hint": "Notice how confirming that the error was foolish gullibility rather than fraud makes it an issue of shame."
+    },
+    {
+      "id": "mortify-horrify_016",
+      "domain": "journalism",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "What the orphanage inspection footage will do to the broadcast audience: ___",
+      "beats": [
+        {
+          "text": "Investigative documentary footage shows toddlers in a private shelter bound to metal radiator pipes with electrical wire and left in darkness without food or warm clothing.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.05,
+            "horrify": 0.96
+          },
+          "decisive_clue": "helpless toddlers bound to radiator pipes with wire in freezing darkness",
+          "reason": "Barbaric physical abuse and starvation of helpless infants evoke overwhelming moral revulsion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "When confronted by the camera crew, the shelter's public relations officer stammers nervously, accidentally spilling his iced coffee down the front of his expensive trousers.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.12,
+            "horrify": 0.91
+          },
+          "decisive_clue": "spilled coffee distraction does not diminish the grotesque systemic child abuse",
+          "reason": "While the spokesman suffers a brief awkward slip, the overarching reality remains barbaric child abuse.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "The documentary proceeds to reveal underground freezer rooms where medical waste and the untreated remains of deceased children were concealed from sanitary inspectors.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.02,
+            "horrify": 0.99
+          },
+          "decisive_clue": "concealed freezer rooms containing deceased children and biohazard waste",
+          "reason": "The grotesque desecration and monstrous child neglect produce absolute ethical revulsion and dread.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A spokesman's clumsy spilled coffee cannot distract from the barbaric child abuse and concealed infant remains, which elicit profound shock.",
+      "feedback_deep": "The spokesman's clumsy coffee spill on camera adds a fleeting touch of personal embarrassment, but the core reality being judged is the grotesque abuse and death of children. The audience experiences sickening moral outrage.",
+      "contrast_rule": "Systemic brutality and human atrocities point here; superficial coffee stains on a spokesman point to the other.",
+      "hint": "Do not let a minor coffee spill on an administrator distract from the monstrous abuse of children."
+    },
+    {
+      "id": "mortify-horrify_017",
+      "domain": "household",
+      "transfer": true,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "What this dinner party blunder will do to Tariq: ___",
+      "beats": [
+        {
+          "text": "While hosting his fiancee's aristocratic family for the first time, Tariq boasts loudly about his refined culinary palate, right before his sister reveals that he ate dog biscuits as an adult.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.93,
+            "horrify": 0.09
+          },
+          "decisive_clue": "exposure of eating dog biscuits immediately after boasting of refined taste",
+          "reason": "The sudden puncture of his snobbish pretension causes intense social embarrassment and loss of face.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "His prospective father-in-law suddenly drops his fork, clutches his chest with an agonized groan, and gasps for breath, prompting screams from the table.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.65,
+            "horrify": 0.38
+          },
+          "decisive_clue": "apparent medical emergency creates momentary distraction without proving real bodily trauma",
+          "reason": "The sudden drama seems alarming, but the core situation at the table centers on Tariq's exposed ridiculousness.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 3,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The father-in-law bursts into hearty laughter, revealing he was only faking a seizure to mock Tariq's ridiculous boast, while the entire room chuckles at Tariq's scarlet face.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.97,
+            "horrify": 0.04
+          },
+          "decisive_clue": "mock seizure turning into shared laughter at Tariq's blushing face",
+          "reason": "The prank dispels any genuine peril, confirming Tariq's total, cringing social mortification.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A feigned heart attack played as a practical joke leaves Tariq facing pure social embarrassment over his exposed dining pretensions.",
+      "feedback_deep": "The momentary panic of a medical emergency seems like it might introduce real physical danger, but it turns out to be a theatrical prank designed to tease Tariq. He is left with agonizing blushing shame.",
+      "contrast_rule": "Social pretension exposed through teasing pranks points here; genuine medical catastrophe points to the other.",
+      "hint": "Look past the father-in-law's theatrical joke to the true underlying social embarrassment."
+    },
+    {
+      "id": "mortify-horrify_018",
+      "domain": "relationships",
+      "transfer": true,
+      "chain_type": "reframe",
+      "difficulty": 3,
+      "frame": "What this diary confession will do to Priya: ___",
+      "beats": [
+        {
+          "text": "Priya discovers a locked journal labeled 'Secret Crimes' in her partner's study, containing handwritten entries detailing how he stalked her across three countries before they ever met.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.11,
+            "horrify": 0.91
+          },
+          "decisive_clue": "chilling account of international stalking and covert surveillance",
+          "reason": "The chilling revelation of predatory stalking and psychological violation causes profound dread and alarm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M1"
+          }
+        },
+        {
+          "text": "Reading the subsequent page, she realizes it is not a real confession at all, but the draft of an absurd romantic comedy screenplay he was writing about his own clumsy shyness.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.88,
+            "horrify": 0.15
+          },
+          "decisive_clue": "discovery that the journal is a harmless romantic comedy screenplay about his own shyness",
+          "reason": "Reframing the text from genuine predator stalking to silly fiction dispels all physical danger.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "She looks up to find her partner standing in the doorway holding a cake, watching as she realizes she broke his desk lock and wept over a fictional movie character.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.96,
+            "horrify": 0.05
+          },
+          "decisive_clue": "caught red-handed breaking a drawer lock over an imaginary movie script",
+          "reason": "Her extreme overreaction and illicit snooping leave her feeling intensely foolish and ashamed.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Reframing a predatory stalking confession as a harmless romantic screenplay turns dark terror into cringing personal shame for snooping.",
+      "feedback_deep": "Priya initially fears she is living with a dangerous predator, triggering deep alarm and dread. Once reframed as an innocent screenplay draft, her destructive snooping and wild overreaction leave her acutely humiliated.",
+      "contrast_rule": "Being caught snooping over harmless fiction points here; predatory stalking and psychological violations point to the other.",
+      "hint": "Notice how reframing the diary as creative fiction removes the sinister threat and exposes foolish snooping."
+    },
+    {
+      "id": "mortify-horrify_019",
+      "domain": "sport",
+      "transfer": true,
+      "chain_type": "corrupt",
+      "difficulty": 3,
+      "frame": "What the team doctor's locker room secret will do to the sports league: ___",
+      "beats": [
+        {
+          "text": "The veteran team physician is seen on camera clumsily dropping his clipboard and mixing up the energy drink flavors for the substitute players during the championship final.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.91,
+            "horrify": 0.09
+          },
+          "decisive_clue": "clumsy sideline blunder mixing up player drink flavors on national television",
+          "reason": "A petty sideline fumble captured on television causes minor professional awkwardness and embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Whistleblower records reveal that the beverage mix-up concealed a deliberate scheme where the doctor laced adolescent athletes' drinks with unregulated, heart-damaging cardiac stimulants.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.16,
+            "horrify": 0.88
+          },
+          "decisive_clue": "systemic poisoning of young athletes with dangerous heart-damaging stimulants",
+          "reason": "Corrupting the innocent sideline mishap into deliberate chemical poisoning of teenagers evokes deep revulsion.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Cardiology reports confirm that three teenage players suffered permanent heart failure and brain damage while coaches received monetary bonuses for record sprint times.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.02,
+            "horrify": 0.99
+          },
+          "decisive_clue": "permanent heart failure and brain damage inflicted on teenagers for coaching bonuses",
+          "reason": "Permanent bodily destruction and predatory greed targeting youth represent monstrous depravity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A clumsy sideline beverage blunder corrupted by deliberate, heart-damaging doping of teenagers turns minor embarrassment into profound moral disgust.",
+      "feedback_deep": "What appeared to be an innocent, bumbling drink mix-up is corrupted into a predatory medical conspiracy that inflicts permanent organ damage on adolescents. The situation transitions entirely into sickening moral outrage.",
+      "contrast_rule": "Corrupt medical abuse that permanently cripples youth points here; bumbling sideline fumbles point to the other.",
+      "hint": "Follow the revelation as an innocent bumbling mistake is corrupted into deliberate, criminal child endangerment."
+    },
+    {
+      "id": "mortify-horrify_020",
+      "domain": "travel",
+      "transfer": true,
+      "chain_type": "precision",
+      "difficulty": 3,
+      "frame": "What the luxury eco-resort tour will do to the vacationers: ___",
+      "beats": [
+        {
+          "text": "Arriving guests at an exclusive island retreat discover that the staff accidentally lost their luggage containing evening formalwear, forcing them to attend welcome drinks in wrinkled transit attire.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.88,
+            "horrify": 0.15
+          },
+          "decisive_clue": "forced to attend an upscale welcome party in unwashed transit clothes",
+          "reason": "Minor wardrobe awkwardness and lack of social polish cause acute personal embarrassment among wealthy guests.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Guided on a nature trail behind the bungalows, the tourists stumble into a hidden canyon where resort security forces chained indigenous villagers into open cages beside leaking chemical dump barrels.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.03,
+            "horrify": 0.98
+          },
+          "decisive_clue": "human beings chained in open cages next to toxic chemical barrels",
+          "reason": "Encountering enslaved indigenous people tortured beside toxic chemical drums triggers extreme moral repulsion and dread.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Armed guards emerge from the jungle and threaten the travelers with assault rifles, warning that anyone who takes a photograph will be executed and buried in the toxic pit.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.01,
+            "horrify": 0.99
+          },
+          "decisive_clue": "armed threat of summary execution and burial in toxic sludge pits",
+          "reason": "Acute peril to human life and lawless barbarism represent absolute, undeniable horror.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Lost luggage and wrinkled attire cause petty embarrassment, but stumbling upon chained human captives and armed death threats creates sheer dread.",
+      "feedback_deep": "The guests begin with superficial vanity concerns over wrinkled travel clothes. But encountering human enslavement in toxic waste followed by imminent death threats from armed mercenaries moves the scenario into unambiguous terror and moral revulsion.",
+      "contrast_rule": "Armed death threats and human enslavement point here; wrinkled clothes at an upscale party point to the other.",
+      "hint": "Distinguish between superficial social inconvenience and direct encounters with human atrocities and death threats."
+    }
+  ]
+}

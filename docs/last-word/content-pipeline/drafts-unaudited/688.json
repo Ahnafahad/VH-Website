@@ -1,0 +1,1282 @@
+{
+ "set_id": "derogatory-defamatory",
+ "source_pair_id": 688,
+ "words": [
+  {
+   "word": "derogatory",
+   "sense": "disrespectful or belittling tone",
+   "concise_meaning": "showing a critical or disrespectful attitude",
+   "connotation": "negative",
+   "register": "neutral/formal",
+   "grammar": "adjective",
+   "collocations": [
+    "derogatory remark",
+    "derogatory comment",
+    "derogatory term",
+    "derogatory language"
+   ],
+   "misconceptions": [
+    "confusing it with defamation or slander"
+   ]
+  },
+  {
+   "word": "defamatory",
+   "sense": "reputation-damaging false statement",
+   "concise_meaning": "tending to harm someone's reputation by making a false statement",
+   "connotation": "negative",
+   "register": "formal/legal",
+   "grammar": "adjective",
+   "collocations": [
+    "defamatory statement",
+    "defamatory claim",
+    "defamatory article",
+    "defamatory allegation"
+   ],
+   "misconceptions": [
+    "thinking any insult is defamatory"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "intent_vs_consequence",
+   "description": "Whether the focus is on the disrespectful attitude of the speaker (derogatory) or the harmful, false impact on a reputation (defamatory)."
+  },
+  {
+   "id": "truth_value",
+   "description": "Whether the claim must be false to qualify (defamatory) versus being an expression of opinion (derogatory)."
+  }
+ ],
+ "edge": {
+  "a": "derogatory",
+  "b": "defamatory",
+  "boundary_rule": "Derogatory describes an insulting tone or attitude; defamatory describes a false, reputation-damaging factual claim.",
+  "clues_a": [
+   "insulting",
+   "disrespectful",
+   "belittling",
+   "low opinion",
+   "subjective"
+  ],
+  "clues_b": [
+   "damaging reputation",
+   "falsehood",
+   "lie",
+   "libelous",
+   "factual claim"
+  ],
+  "irrelevant_clues": [
+   "the speaker is angry",
+   "the person being spoken about is upset",
+   "the statement is offensive"
+  ],
+  "misconceptions": {
+   "M1": "Assuming any offensive insult is defamatory.",
+   "M2": "Thinking 'derogatory' implies a lie.",
+   "M3": "Ignoring the requirement of a false, reputation-damaging assertion for 'defamatory'."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "derogatory": [
+    "His derogatory comments about my cooking were entirely unnecessary.",
+    "The professor used derogatory language when describing the student's efforts.",
+    "She made a derogatory gesture that offended everyone at the table.",
+    "I find his attitude toward the staff to be extremely derogatory.",
+    "The manager’s derogatory tone made the meeting very uncomfortable.",
+    "They published a derogatory review of the new restaurant."
+   ],
+   "defamatory": [
+    "The newspaper was sued for publishing a defamatory article about the politician.",
+    "He knew the claims were false, yet he proceeded to make defamatory statements.",
+    "The company filed a lawsuit against the blogger for defamatory posts.",
+    "Her defamatory allegations cost him his job at the firm.",
+    "The email contained defamatory remarks that damaged her professional standing.",
+    "Spreading such defamatory lies is both unethical and illegal."
+   ]
+  },
+  "counter": {
+   "derogatory": [
+    "The article was clearly defamatory because it falsely claimed he had committed fraud.",
+    "She was sued for her defamatory claim that he was a thief.",
+    "His defamatory statements led to a significant loss of business for the store.",
+    "It was more than just a rude comment; it was a defamatory lie.",
+    "The accusation was a defamatory attempt to ruin her character.",
+    "His lawyers advised him that the post was defamatory."
+   ],
+   "defamatory": [
+    "His derogatory comment about her dress was just rude, not a lie.",
+    "Calling someone 'lazy' is derogatory, but not necessarily defamatory.",
+    "The reviewer gave a derogatory opinion about the film's acting.",
+    "She made a derogatory remark about his haircut, which was annoying but not damaging.",
+    "It was just a derogatory insult without any false factual claim.",
+    "The manager's derogatory attitude is not the same as defamation."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The customer was angry and made a ___ claim that the chef was intentionally poisoning the food.",
+    "best_word": "defamatory",
+    "note": "This is a false factual claim intended to damage the restaurant's reputation, making it defamatory."
+   },
+   {
+    "text": "He whispered a ___ comment about her being incompetent, which hurt her feelings.",
+    "best_word": "derogatory",
+    "note": "This is an expression of opinion/attitude, insulting rather than a false factual claim."
+   },
+   {
+    "text": "The flyer made ___ remarks about his professional ethics without evidence.",
+    "best_word": "defamatory",
+    "note": "This is a damaging factual allegation presented as fact but unsupported/false, leaning towards defamation."
+   },
+   {
+    "text": "The comedian's act was highly ___ toward the royal family, causing quite a stir.",
+    "best_word": "derogatory",
+    "note": "This is disrespectful and belittling, fitting derogatory, rather than a false claim."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "derogatory-defamatory_001",
+   "domain": "workplace",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The manager's remark about Sarah's performance is ___",
+   "beats": [
+    {
+     "text": "The manager told Sarah her work was trash and she was a waste of space.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.3
+     },
+     "decisive_clue": "The remark expresses a low opinion without asserting a specific falsehood.",
+     "reason": "It's insulting and disrespectful but doesn't damage a reputation via a false factual claim.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "He added that her poor attitude was well-known among her previous employers, which was also just his rude, unsupported opinion.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.4
+     },
+     "decisive_clue": "He is continuing to express a subjective, insulting opinion rather than stating a false fact.",
+     "reason": "Still no factual falsehood alleged, just continued disrespect.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The remark expresses a subjective, insulting opinion rather than making a false factual statement.",
+   "feedback_deep": "The term derogatory focuses on the disrespect and insult in the tone and content of the remark. Defamatory requires a false assertion that specifically damages a person's reputation in a way that can be proven false. Here, the manager's comments, while rude, do not meet the criteria for a false factual claim.",
+   "contrast_rule": "If the insult is just a rude opinion, it's derogatory; if it's a false fact that hurts reputation, it's defamatory.",
+   "hint": "Focus on whether the speaker is just being rude or if they are asserting a false, damaging fact."
+  },
+  {
+   "id": "derogatory-defamatory_002",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The student's essay feedback from the professor is ___",
+   "beats": [
+    {
+     "text": "The professor wrote in the margin that the essay was an embarrassment and completely pointless.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The professor is expressing a very low, belittling opinion of the work.",
+     "reason": "The professor is being insulting without making a false factual claim that damages the student's reputation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "When asked to elaborate, the professor just sighed and called the student a 'complete waste of time,' maintaining the same harsh attitude.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.3
+     },
+     "decisive_clue": "The professor continues to be personally insulting without making any false, reputation-damaging claims.",
+     "reason": "It's still just a display of a low, disrespectful opinion.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The professor's comments are personally insulting, not false factual assertions.",
+   "feedback_deep": "Derogatory behavior, like calling someone a 'waste of time' in a professional setting, is belittling. Defamatory requires a false claim. The professor is being disrespectful, but not making a false factual assertion that causes harm to reputation.",
+   "contrast_rule": "Insulting someone to their face is derogatory; lying about them to others to damage their reputation is defamatory.",
+   "hint": "Is the professor making a factual lie, or just being incredibly rude?"
+  },
+  {
+   "id": "derogatory-defamatory_003",
+   "domain": "political",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The rival candidate's statement is ___",
+   "beats": [
+    {
+     "text": "The rival candidate said that their opponent's policies were ridiculous and foolish.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The candidate is expressing a low, critical opinion of the policies.",
+     "reason": "It's an insulting opinion, but not a false factual claim.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "Then they specifically claimed their opponent had been bribed by foreign agents, which was completely false.",
+     "best_word": "defamatory",
+     "fit": {
+      "derogatory": 0.3,
+      "defamatory": 0.95
+     },
+     "decisive_clue": "The candidate is now making a specific, false factual claim that damages the opponent's reputation.",
+     "reason": "Now it's a lie intended to harm, fitting defamatory.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "derogatory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The statement changed from insulting an opinion to making a false, harmful factual claim.",
+   "feedback_deep": "Initially, the rival is just expressing a low opinion, which is derogatory. When they introduce a specific, false claim ('bribed by foreign agents') to damage reputation, it becomes defamatory.",
+   "contrast_rule": "Derogatory is a rude opinion; defamatory is a false, reputation-killing lie.",
+   "hint": "What changed? Does the statement now include a specific, false factual allegation?"
+  },
+  {
+   "id": "derogatory-defamatory_004",
+   "domain": "retail",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The online review left by the customer is ___",
+   "beats": [
+    {
+     "text": "The review stated that the shop's staff were lazy, unhelpful, and completely incompetent.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.85,
+      "defamatory": 0.3
+     },
+     "decisive_clue": "The review expresses a subjective, low opinion of the staff.",
+     "reason": "It's insulting but reflects personal opinion rather than a falsifiable fact.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "The review also claimed the owner was stealing money from customer accounts, which was demonstrably false and ruined the shop's reputation.",
+     "best_word": "defamatory",
+     "fit": {
+      "derogatory": 0.4,
+      "defamatory": 0.95
+     },
+     "decisive_clue": "The review now includes a false, damaging factual allegation.",
+     "reason": "A proven false accusation of crime is defamatory.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "derogatory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The review evolved from an insulting opinion to a specific, false, reputation-damaging accusation.",
+   "feedback_deep": "The review began with subjective, insulting opinions (derogatory). By introducing a specific, false, damaging accusation ('stealing money'), it crosses the threshold into defamatory.",
+   "contrast_rule": "Opinions can be derogatory; false facts that hurt reputation are defamatory.",
+   "hint": "Look for a specific, false accusation that causes measurable harm to a reputation."
+  },
+  {
+   "id": "derogatory-defamatory_005",
+   "domain": "medical",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The doctor's tone when talking about the patient's lifestyle is ___",
+   "beats": [
+    {
+     "text": "The doctor spoke down to the patient, using a tone that was quite dismissive.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.1
+     },
+     "decisive_clue": "The tone is dismissive and insulting.",
+     "reason": "It's an unpleasant attitude, fitting derogatory.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "The patient felt the doctor was belittling them, and it was clear the doctor had a very low opinion of them.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.1
+     },
+     "decisive_clue": "It continues to be an issue of the doctor's attitude and belittling behavior.",
+     "reason": "No false claims are being made; the doctor's attitude is simply insulting.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The behavior is insulting and belittling, which is derogatory, but does not involve false, damaging factual claims.",
+   "feedback_deep": "The doctor's attitude is insulting, fitting the definition of derogatory. Since no false, reputation-damaging factual claims are made, it cannot be defamatory.",
+   "contrast_rule": "Derogatory is an attitude; defamatory is a false, reputation-killing lie.",
+   "hint": "Is there any false factual lie here?"
+  },
+  {
+   "id": "derogatory-defamatory_006",
+   "domain": "hospitality",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The guest's attitude toward the staff is ___",
+   "beats": [
+    {
+     "text": "The guest was constantly making rude, insulting comments about the hotel staff.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The comments are rude and insulting.",
+     "reason": "This is a display of a low, disrespectful opinion.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "They were quite loud about it, trying to make everyone else in the lobby dislike the staff as much as they did.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.3
+     },
+     "decisive_clue": "The guest is being rude and insulting, not stating a false, damaging fact.",
+     "reason": "Even though they want others to dislike the staff, they are not making a false factual claim.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The guest is being rude and insulting, but not making a false factual claim.",
+   "feedback_deep": "The guest is expressing a low, disrespectful opinion, which is derogatory. Wanting others to dislike the staff is not the same as asserting a false, reputation-damaging fact, so it remains derogatory.",
+   "contrast_rule": "If it's a rude opinion, it's derogatory; if it's a lie to damage a reputation, it's defamatory.",
+   "hint": "Does the guest state a specific, false fact?"
+  },
+  {
+   "id": "derogatory-defamatory_007",
+   "domain": "military",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "The commanding officer's speech is ___",
+   "beats": [
+    {
+     "text": "The officer spoke dismissively of the new recruits, suggesting they were useless and unready.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The officer is expressing a low, critical opinion.",
+     "reason": "It's an insulting assessment of their readiness.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "However, he did so to motivate them, believing this harsh, belittling tone would push them to improve.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.85,
+      "defamatory": 0.1
+     },
+     "decisive_clue": "The tone remains belittling, regardless of the officer's intent.",
+     "reason": "The intent (motivation) doesn't change the fact that the comments are insulting/belittling.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The intent to motivate does not change the insulting nature of the comments.",
+   "feedback_deep": "The officer is using a belittling, insulting tone, fitting derogatory. Even if the intent is to motivate, the behavior remains insulting. Since no false, reputation-damaging factual claim is made, it cannot be defamatory.",
+   "contrast_rule": "Derogatory is an insulting tone; defamatory is a false, damaging fact.",
+   "hint": "Does the intent change the nature of the insults?"
+  },
+  {
+   "id": "derogatory-defamatory_008",
+   "domain": "art",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The critic's review of the artist's work is ___",
+   "beats": [
+    {
+     "text": "The critic wrote that the artist's latest work was lazy and showed zero talent.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The review expresses a low, critical opinion.",
+     "reason": "It's a harsh, insulting critique.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "Despite knowing the artist spent years on it, the critic maintained that it was a waste of space and essentially trash.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The review remains harshly critical and insulting.",
+     "reason": "Still just a strongly expressed, low opinion.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The critic is expressing a harsh, low opinion, not stating a false, damaging factual lie.",
+   "feedback_deep": "The critic is being insulting and dismissive, which is derogatory. This is a matter of opinion, not a false factual claim that damages the artist's reputation in a legal sense.",
+   "contrast_rule": "Insulting opinions are derogatory; false facts meant to ruin a reputation are defamatory.",
+   "hint": "Is the critic expressing a harsh opinion or stating a provable falsehood?"
+  },
+  {
+   "id": "derogatory-defamatory_009",
+   "domain": "journalism",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The journalist's report about the celebrity is ___",
+   "beats": [
+    {
+     "text": "The journalist wrote a piece saying the celebrity was boring, talentless, and annoying.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The piece expresses a low, critical opinion.",
+     "reason": "It's a harsh opinion piece.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "The report also falsely claimed the celebrity was addicted to illicit drugs, knowing full well it was a lie.",
+     "best_word": "defamatory",
+     "fit": {
+      "derogatory": 0.3,
+      "defamatory": 0.95
+     },
+     "decisive_clue": "The report now includes a specific, false factual claim.",
+     "reason": "A proven false accusation intended to harm reputation is defamatory.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "derogatory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The report evolved from a harsh, insulting opinion to a false, reputation-damaging lie.",
+   "feedback_deep": "The piece began with harsh, insulting opinions (derogatory). By introducing a specific, false factual claim ('addicted to drugs') meant to harm the celebrity's reputation, it becomes defamatory.",
+   "contrast_rule": "Derogatory is a harsh opinion; defamatory is a false, harmful lie.",
+   "hint": "What changed? Is there a false, damaging fact now?"
+  },
+  {
+   "id": "derogatory-defamatory_011",
+   "domain": "construction",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The foreman's attitude toward the apprentice is ___",
+   "beats": [
+    {
+     "text": "The foreman made constant disparaging jokes about the apprentice's skill level.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The jokes express a low, critical opinion.",
+     "reason": "The foreman is being insulting and belittling.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "Even when the apprentice improved, the foreman kept making the same rude, belittling jokes.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The jokes continue to express an insulting opinion.",
+     "reason": "Still just rude, insulting behavior.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The foreman is expressing a persistent, insulting opinion, fitting derogatory.",
+   "feedback_deep": "The foreman's belittling jokes are insulting, which is derogatory. Because this behavior, while rude, does not involve false, reputation-damaging factual claims, it's not defamatory.",
+   "contrast_rule": "Rude, belittling jokes are derogatory; false, harmful lies are defamatory.",
+   "hint": "Is there a false fact being presented, or just rude, insulting jokes?"
+  },
+  {
+   "id": "derogatory-defamatory_012",
+   "domain": "finance",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The financial advisor's public post about the company is ___",
+   "beats": [
+    {
+     "text": "The advisor posted that the company was poorly managed, foolish, and had a terrible strategy.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.85,
+      "defamatory": 0.3
+     },
+     "decisive_clue": "The post expresses a low, critical opinion of the company's management.",
+     "reason": "It's an insulting opinion of their strategy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "They also claimed the CEO had been embezzlement funds, which was a flat-out, damaging lie.",
+     "best_word": "defamatory",
+     "fit": {
+      "derogatory": 0.3,
+      "defamatory": 0.95
+     },
+     "decisive_clue": "The advisor now includes a specific, false factual claim.",
+     "reason": "A false accusation of a crime meant to harm the CEO's reputation is defamatory.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "derogatory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The post evolved from an insulting opinion to a false, reputation-damaging factual accusation.",
+   "feedback_deep": "The advisor's initial criticism was a subjective, insulting opinion (derogatory). By introducing a specific, false factual accusation ('embezzling funds') to harm the CEO's reputation, it crosses into defamatory.",
+   "contrast_rule": "A rude opinion is derogatory; a false, harmful factual lie is defamatory.",
+   "hint": "What changed? Does the statement now include a provably false fact?"
+  },
+  {
+   "id": "derogatory-defamatory_013",
+   "domain": "cooking",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The food critic's remarks are ___",
+   "beats": [
+    {
+     "text": "The critic said the chef was untalented and the food was disgusting.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.1
+     },
+     "decisive_clue": "The critic is expressing a low, critical opinion.",
+     "reason": "An insulting, but opinion-based, assessment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "He kept making rude, belittling jokes about the chef's culinary education, making them feel worthless.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The critic continues to be personally insulting.",
+     "reason": "Still just rude behavior and insulting opinions.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The critic's remarks and jokes are personally insulting and belittling, fitting derogatory.",
+   "feedback_deep": "The critic's insults are disrespectful and belittling, which is derogatory. There is no false factual claim designed to damage the chef's reputation in a legal sense, so it cannot be defamatory.",
+   "contrast_rule": "Rude, insulting opinions are derogatory; false, reputation-harming lies are defamatory.",
+   "hint": "Is the critic making a false factual lie, or just insulting the chef?"
+  },
+  {
+   "id": "derogatory-defamatory_014",
+   "domain": "transport",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The passenger's comment about the taxi driver is ___",
+   "beats": [
+    {
+     "text": "The passenger rudely shouted that the driver was a slow, terrible, and useless driver.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The comment expresses a low, critical opinion.",
+     "reason": "It's an insulting, opinion-based outburst.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "The passenger then reported to the taxi company that the driver had been drunk, which they knew was a lie.",
+     "best_word": "defamatory",
+     "fit": {
+      "derogatory": 0.3,
+      "defamatory": 0.95
+     },
+     "decisive_clue": "The passenger now makes a specific, false factual claim.",
+     "reason": "A proven false accusation intended to harm the driver's reputation is defamatory.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "derogatory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The comment evolved from an insulting opinion to a false, reputation-damaging factual lie.",
+   "feedback_deep": "The passenger's initial comments were subjective, insulting opinions (derogatory). By reporting a false factual claim ('been drunk') to harm the driver's job, it becomes defamatory.",
+   "contrast_rule": "Rude, insulting opinion is derogatory; a false, harmful factual lie is defamatory.",
+   "hint": "What changed? Does the statement now include a provably false fact?"
+  },
+  {
+   "id": "derogatory-defamatory_015",
+   "domain": "environment",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The environmental activist's post about the corporation is ___",
+   "beats": [
+    {
+     "text": "The activist called the corporation's leaders greedy, heartless, and shameful.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The post expresses a low, critical opinion.",
+     "reason": "It's an insulting, opinion-based critique.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "The activist added that their policies were a 'disgrace' and showed total disregard for the planet.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The post continues to express a strongly critical, insulting opinion.",
+     "reason": "Still just an expression of a low, critical opinion, not a false factual lie.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The activist is expressing a harsh, critical opinion, fitting derogatory, but not a false factual lie.",
+   "feedback_deep": "The activist's criticism is insulting and belittling, which is derogatory. Because the criticism is based on opinion rather than false, damaging factual claims, it cannot be defamatory.",
+   "contrast_rule": "Harsh, insulting opinions are derogatory; false, harmful lies are defamatory.",
+   "hint": "Are there any false factual claims being made, or just harsh opinions?"
+  },
+  {
+   "id": "derogatory-defamatory_016",
+   "domain": "music",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The music review is ___",
+   "beats": [
+    {
+     "text": "The review stated that the singer had no musical ability and the new song was a pathetic failure.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The review expresses a low, critical opinion.",
+     "reason": "An insulting, opinion-based critique of talent.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "It went on to call the entire album a sad joke, maintaining the insulting and belittling tone.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The review remains harshly critical and insulting.",
+     "reason": "Still just a strongly expressed, low opinion.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The review is harshly critical and insulting, which is derogatory.",
+   "feedback_deep": "The music review is insulting and dismissive, fitting derogatory. As it's an expression of opinion rather than a false, damaging factual lie, it's not defamatory.",
+   "contrast_rule": "Rude, insulting opinions are derogatory; false, harmful lies are defamatory.",
+   "hint": "Is the critic making a false factual lie or just insulting the artist?"
+  },
+  {
+   "id": "derogatory-defamatory_017",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "Maya's attitude toward her partner is ___",
+   "beats": [
+    {
+     "text": "Maya constantly made rude, mocking comments about her partner's habits.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The comments are mocking and insulting.",
+     "reason": "It's a display of a low, critical opinion.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "She then told all their friends that he had been secretly abusive, which was a complete and damaging lie.",
+     "best_word": "defamatory",
+     "fit": {
+      "derogatory": 0.3,
+      "defamatory": 0.95
+     },
+     "decisive_clue": "Maya now makes a specific, false factual claim.",
+     "reason": "A proven false accusation meant to damage his reputation is defamatory.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "derogatory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Maya's attitude changed from mocking insults to a false, reputation-damaging factual lie.",
+   "feedback_deep": "Initially, Maya's comments were mocking and insulting (derogatory). By introducing a false factual claim ('secretly abusive') to harm his reputation among friends, it becomes defamatory.",
+   "contrast_rule": "Mocking opinions are derogatory; false, harmful factual lies are defamatory.",
+   "hint": "Does Maya now make a provable lie to hurt his reputation?"
+  },
+  {
+   "id": "derogatory-defamatory_018",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The fan's comment about the athlete is ___",
+   "beats": [
+    {
+     "text": "The fan shouted that the athlete was slow, untalented, and should quit.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The fan expresses a low, critical opinion.",
+     "reason": "An insulting, opinion-based critique.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "The fan also posted that the athlete had taken performance-enhancing drugs, which was a false, damaging lie.",
+     "best_word": "defamatory",
+     "fit": {
+      "derogatory": 0.3,
+      "defamatory": 0.95
+     },
+     "decisive_clue": "The fan now makes a specific, false factual claim.",
+     "reason": "A proven false accusation meant to harm reputation is defamatory.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "derogatory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The fan's comment evolved from insulting opinions to a false, reputation-damaging factual lie.",
+   "feedback_deep": "The fan began by shouting insulting opinions (derogatory). By introducing a specific, false factual claim ('performance-enhancing drugs') meant to harm the athlete's reputation, it becomes defamatory.",
+   "contrast_rule": "An insulting opinion is derogatory; a false, harmful factual lie is defamatory.",
+   "hint": "What changed? Is there a false, provable fact?"
+  },
+  {
+   "id": "derogatory-defamatory_019",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "rehabilitate",
+   "difficulty": 4,
+   "frame": "The airline's response to the passenger is ___",
+   "beats": [
+    {
+     "text": "The airline initially responded in a belittling way, implying the passenger was stupid for missing the flight.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.1
+     },
+     "decisive_clue": "The response expresses a low, critical opinion.",
+     "reason": "An insulting, belittling tone.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "After realizing their own mistake, they sincerely apologized and acknowledged they had been wrong, abandoning the insulting tone.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.1,
+      "defamatory": 0.1
+     },
+     "decisive_clue": "The insulting tone is gone.",
+     "reason": "The behavior is no longer insulting or belittling, fitting neither word.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The airline stopped using the insulting tone that made their response derogatory.",
+   "feedback_deep": "Initially, the airline was dismissive and belittling, which is derogatory. Once they apologized and acted professionally, they no longer fit either category as they stopped insulting the passenger.",
+   "contrast_rule": "Insulting behavior is derogatory; false facts meant to hurt are defamatory.",
+   "hint": "Does the insulting behavior persist?"
+  },
+  {
+   "id": "derogatory-defamatory_020",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The roommate's comment about the chores is ___",
+   "beats": [
+    {
+     "text": "The roommate made mocking, insulting comments about how poorly the chores were done.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.9,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The comments express a low, critical opinion.",
+     "reason": "It's an insulting, opinion-based critique.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    },
+    {
+     "text": "Even after the chores were finished perfectly, the roommate continued with the same rude, belittling jokes.",
+     "best_word": "derogatory",
+     "fit": {
+      "derogatory": 0.95,
+      "defamatory": 0.2
+     },
+     "decisive_clue": "The roommate remains harshly critical and insulting.",
+     "reason": "Still just a strongly expressed, low opinion.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "defamatory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The roommate is expressing a persistent, insulting opinion, fitting derogatory.",
+   "feedback_deep": "The roommate's mocking, belittling jokes are insulting, which is derogatory. Since they are not stating a false, damaging factual lie, it's not defamatory.",
+   "contrast_rule": "Rude, insulting opinions are derogatory; false, harmful lies are defamatory.",
+   "hint": "Is there a false fact being presented, or just rude, insulting jokes?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

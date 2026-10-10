@@ -1,0 +1,1341 @@
+{
+ "set_id": "extraneous-extrinsic",
+ "source_pair_id": 429,
+ "words": [
+  {
+   "word": "extraneous",
+   "sense": "not belonging to or proper to a thing; external; non-essential",
+   "concise_meaning": "Irrelevant or unnecessary; cluttering.",
+   "connotation": "Negative; implies removal is an improvement.",
+   "register": "Formal/Academic.",
+   "grammar": "Adjective; usually modifies nouns like 'details', 'information', 'noise'.",
+   "collocations": [
+    "extraneous details",
+    "extraneous information",
+    "remove extraneous",
+    "extraneous noise"
+   ],
+   "misconceptions": [
+    "Thinking it just means 'outside'."
+   ]
+  },
+  {
+   "word": "extrinsic",
+   "sense": "not contained in or forming an essential part of something; acting from outside",
+   "concise_meaning": "Coming from an external source, often contrasting with internal.",
+   "connotation": "Neutral; structural or analytical.",
+   "register": "Academic/Scientific.",
+   "grammar": "Adjective; often paired with 'motivation', 'factors', 'value'.",
+   "collocations": [
+    "extrinsic motivation",
+    "extrinsic factors",
+    "extrinsic value",
+    "extrinsic to"
+   ],
+   "misconceptions": [
+    "Thinking it means 'unnecessary'."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "necessity",
+   "description": "Whether the element is superfluous (extraneous) versus a necessary part of the whole's external structure (extrinsic)."
+  },
+  {
+   "id": "function_vs_origin",
+   "description": "extraneous focuses on lack of utility; extrinsic focuses on external origin."
+  }
+ ],
+ "edge": {
+  "a": "extraneous",
+  "b": "extrinsic",
+  "boundary_rule": "If it's just 'added junk' that could be removed without consequence, use 'extraneous'. If it's a 'necessary external component or influence', use 'extrinsic'.",
+  "clues_a": [
+   "unnecessary",
+   "distracting",
+   "clutter",
+   "irrelevant",
+   "superfluous"
+  ],
+  "clues_b": [
+   "external factor",
+   "originating from outside",
+   "necessary influence",
+   "structural component"
+  ],
+  "irrelevant_clues": [
+   "outside of something",
+   "not internal",
+   "has a location"
+  ],
+  "misconceptions": {
+   "M1": "Confusing 'from outside' with 'bad/unnecessary'.",
+   "M2": "Thinking 'extrinsic' means something extra that should be thrown away.",
+   "M3": "Ignoring the requirement of an element to the system."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "extraneous": [
+    "The professor asked us to cut all extraneous details from the report.",
+    "The article was filled with extraneous anecdotes that added nothing.",
+    "To focus on the experiment, they removed all extraneous noise.",
+    "His speech was too long because of all the extraneous commentary.",
+    "The editor removed the extraneous chapters that stalled the plot.",
+    "Delete any extraneous variables that don't affect the final result."
+   ],
+   "extrinsic": [
+    "Her dedication was driven by extrinsic motivation, like bonuses.",
+    "Extrinsic factors like the economy influenced the company's growth.",
+    "The extrinsic value of the house is higher than its intrinsic charm.",
+    "The pressure to succeed was an extrinsic force she had to manage.",
+    "The design's beauty is extrinsic to its actual function.",
+    "Unlike internal drive, extrinsic rewards are only temporary."
+   ]
+  },
+  "counter": {
+   "extraneous": [
+    "The company's success was largely extraneous to its core strategy.",
+    "He found it hard to ignore the extraneous rewards of his job.",
+    "The building's height is extraneous to its structural stability.",
+    "She focused on the extraneous factors of her health, like diet.",
+    "The team ignored the extraneous input from the CEO.",
+    "We need to consider the extrinsic benefits, not just internal ones."
+   ],
+   "extrinsic": [
+    "Please remove these extrinsic paragraphs from your essay.",
+    "The story was ruined by too many extrinsic, unnecessary details.",
+    "She spent hours deleting extrinsic data from the spreadsheet.",
+    "The speaker's extrinsic comments made everyone feel bored.",
+    "There is too much extrinsic jargon in this technical manual.",
+    "The teacher asked him to stop making extrinsic interruptions."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The project's success depended on [word] factors like team bonuses.",
+    "best_word": "extrinsic",
+    "note": "Bonuses are a necessary external motivation, not just unnecessary junk."
+   },
+   {
+    "text": "I tried to ignore the [word] advice that had nothing to do with my goal.",
+    "best_word": "extraneous",
+    "note": "It is unnecessary and distracting."
+   },
+   {
+    "text": "The [word] parts of the machine, like the outer cover, are just for protection.",
+    "best_word": "extrinsic",
+    "note": "They are external, but functional, not 'junk'."
+   },
+   {
+    "text": "She cleaned her desk by removing all [word] papers.",
+    "best_word": "extraneous",
+    "note": "They are just clutter."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "extraneous-extrinsic_001",
+   "domain": "Education",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the student added to the essay: ___",
+   "beats": [
+    {
+     "text": "The student included a long paragraph about the history of pencils.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.9,
+      "extrinsic": 0.1
+     },
+     "decisive_clue": "long paragraph about history of pencils",
+     "reason": "It's unnecessary information for the essay.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "The essay is about modern architecture, and that history paragraph makes the word count way too high.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.95,
+      "extrinsic": 0.05
+     },
+     "decisive_clue": "makes the word count too high",
+     "reason": "It clutter the essay and serves no purpose.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The paragraph is unnecessary clutter, making it extraneous.",
+   "feedback_deep": "The information about pencil history is completely irrelevant to an essay on modern architecture, and it actually hurts the essay by bloating the word count. Therefore, it is extraneous.",
+   "contrast_rule": "Unnecessary junk is extraneous; necessary external factors are extrinsic.",
+   "hint": "Does it help the essay or just take up space?"
+  },
+  {
+   "id": "extraneous-extrinsic_002",
+   "domain": "Workplace",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The reason for Elena's motivation: ___",
+   "beats": [
+    {
+     "text": "Elena works hard to get her end-of-year bonus.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.9
+     },
+     "decisive_clue": "end-of-year bonus",
+     "reason": "It is an external factor acting as motivation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M2"
+     }
+    },
+    {
+     "text": "She doesn't really care about the project itself, she just wants that cash.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.95
+     },
+     "decisive_clue": "just wants that cash",
+     "reason": "It reinforces the external nature of the motivation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The bonus is an external factor, so the motivation is extrinsic.",
+   "feedback_deep": "The bonus is an external incentive, not something arising from Elena's internal passion for the project. Thus, it is extrinsic motivation.",
+   "contrast_rule": "Motivation from external rewards is extrinsic.",
+   "hint": "Is the drive coming from inside or outside?"
+  },
+  {
+   "id": "extraneous-extrinsic_003",
+   "domain": "Relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The influence of Sarah's parents on her marriage: ___",
+   "beats": [
+    {
+     "text": "Sarah's parents pay for her and her husband's apartment.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "pay for her apartment",
+     "reason": "It is an external factor supporting their life.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    },
+    {
+     "text": "While nice, it creates a dynamic where the couple feels obligated to listen to their advice.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.85
+     },
+     "decisive_clue": "creates a dynamic",
+     "reason": "The financial support is an external, structural factor in the marriage.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "This support is a necessary external factor, hence extrinsic.",
+   "feedback_deep": "The financial support is an external, structural component impacting the relationship, not useless junk, making it extrinsic, not extraneous.",
+   "contrast_rule": "Essential external influences are extrinsic.",
+   "hint": "Is the support a necessary part of their life structure?"
+  },
+  {
+   "id": "extraneous-extrinsic_004",
+   "domain": "Art/Design",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The decoration on the frame: ___",
+   "beats": [
+    {
+     "text": "The artist added glitter to the frame.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.7,
+      "extrinsic": 0.3
+     },
+     "decisive_clue": "glitter",
+     "reason": "It adds nothing and distracts.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "It completely hides the original wood texture, which was the point of the piece.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.9,
+      "extrinsic": 0.1
+     },
+     "decisive_clue": "hides the original wood texture",
+     "reason": "It is clearly unnecessary and negative.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The glitter distracts and adds nothing, so it is extraneous.",
+   "feedback_deep": "The glitter is unnecessary and actually detracts from the art piece's intended effect, so it is extraneous clutter.",
+   "contrast_rule": "Useless additions are extraneous.",
+   "hint": "Does it add value or just clutter?"
+  },
+  {
+   "id": "extraneous-extrinsic_005",
+   "domain": "Finance/Economics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The impact of inflation on the business: ___",
+   "beats": [
+    {
+     "text": "Inflation raised the cost of raw materials for the company.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.9
+     },
+     "decisive_clue": "inflation",
+     "reason": "It's an external factor.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M2"
+     }
+    },
+    {
+     "text": "Even though they managed their internal costs well, they couldn't control this external price hike.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.95
+     },
+     "decisive_clue": "couldn't control this external price hike",
+     "reason": "It is structural, not useless.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Inflation is an external, necessary factor for the business to manage.",
+   "feedback_deep": "Inflation is an external economic force, not unnecessary noise, so it is an extrinsic factor.",
+   "contrast_rule": "Factors arising from outside are extrinsic.",
+   "hint": "Is inflation something that can be ignored or something that must be accounted for?"
+  },
+  {
+   "id": "extraneous-extrinsic_006",
+   "domain": "Public speaking",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The effect of the slides on the talk: ___",
+   "beats": [
+    {
+     "text": "The speaker used animations on every slide.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.8,
+      "extrinsic": 0.2
+     },
+     "decisive_clue": "animations on every slide",
+     "reason": "They are distracting.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M3"
+     }
+    },
+    {
+     "text": "The audience spent more time trying to figure out the animations than listening to the speaker.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.95,
+      "extrinsic": 0.05
+     },
+     "decisive_clue": "distraction from listening",
+     "reason": "They are detrimental, thus extraneous.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The animations are clutter that distract from the main message.",
+   "feedback_deep": "The animations serve no constructive purpose and distract the audience, making them extraneous clutter.",
+   "contrast_rule": "Distracting additions are extraneous.",
+   "hint": "Does the audience need the animations to understand the message?"
+  },
+  {
+   "id": "extraneous-extrinsic_007",
+   "domain": "Sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The reason the team lost: ___",
+   "beats": [
+    {
+     "text": "The coach spent all week talking about the fans' reactions.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.7,
+      "extrinsic": 0.3
+     },
+     "decisive_clue": "talking about fans' reactions",
+     "reason": "Focusing on that didn't help the game plan.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "Actually, the noise levels in the stadium were a key environmental factor in their communication breakdown.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "noise levels... key environmental factor",
+     "reason": "It's an external, structural factor in the game.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Initially it was a distraction, but it turned out to be a key structural factor.",
+   "feedback_deep": "At first, the focus on fans seemed like unnecessary talk (extraneous). Later, it became clear the stadium noise itself was a major external factor influencing the game (extrinsic).",
+   "contrast_rule": "Distractions are extraneous; essential external conditions are extrinsic.",
+   "hint": "Does it just distract, or is it a structural condition?"
+  },
+  {
+   "id": "extraneous-extrinsic_008",
+   "domain": "Travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The packing choices: ___",
+   "beats": [
+    {
+     "text": "He packed a bulky tuxedo for his backpacking trip.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.9,
+      "extrinsic": 0.1
+     },
+     "decisive_clue": "bulky tuxedo for backpacking",
+     "reason": "It's unnecessary clutter.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "He had to pack it because the local law required formal attire for certain temple visits.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "local law required formal attire",
+     "reason": "It's an external requirement, not just junk.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It's a requirement of the environment, not just junk.",
+   "feedback_deep": "The tuxedo initially seemed like junk (extraneous), but because the law required it, it became a necessary external factor (extrinsic).",
+   "contrast_rule": "External necessities are extrinsic.",
+   "hint": "Why does he have to pack it?"
+  },
+  {
+   "id": "extraneous-extrinsic_009",
+   "domain": "Household",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The items left on the counter: ___",
+   "beats": [
+    {
+     "text": "Sarah keeps an old, broken toy on the kitchen counter.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.9,
+      "extrinsic": 0.1
+     },
+     "decisive_clue": "old, broken toy",
+     "reason": "It is unnecessary junk.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "She actually needs it there because its sensor activates the automatic cabinet light.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.9
+     },
+     "decisive_clue": "sensor activates the light",
+     "reason": "It's an external, structural component.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It serves a technical function, so it's a necessary external component.",
+   "feedback_deep": "The toy looked like junk (extraneous), but it serves a technical purpose to activate a light (extrinsic structural component).",
+   "contrast_rule": "Useless junk is extraneous; functional external components are extrinsic.",
+   "hint": "Does the toy actually *do* anything?"
+  },
+  {
+   "id": "extraneous-extrinsic_010",
+   "domain": "Workplace",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The consultant's approach: ___",
+   "beats": [
+    {
+     "text": "The consultant added five new, complex software tools to the team's process.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.8,
+      "extrinsic": 0.2
+     },
+     "decisive_clue": "added five new, complex tools",
+     "reason": "It's unnecessary complication.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M3"
+     }
+    },
+    {
+     "text": "Actually, the new compliance laws make these tools essential for reporting.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "compliance laws make them essential",
+     "reason": "External laws require it.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The software is a necessary external requirement.",
+   "feedback_deep": "The tools seemed like unnecessary complication (extraneous) until it was revealed they are required by law (extrinsic factor).",
+   "contrast_rule": "Mandated external requirements are extrinsic.",
+   "hint": "Why are the tools being added?"
+  },
+  {
+   "id": "extraneous-extrinsic_011",
+   "domain": "Education",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The feedback the teacher gave: ___",
+   "beats": [
+    {
+     "text": "The teacher told the student to ignore the grammar exercises.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.8,
+      "extrinsic": 0.2
+     },
+     "decisive_clue": "ignore grammar exercises",
+     "reason": "It's unnecessary.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M2"
+     }
+    },
+    {
+     "text": "The student needs to master writing flow, which is a different skill, not dependent on the grammar rules.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "different skill, not dependent on grammar",
+     "reason": "It's an external skill.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Grammar is an external skill, separate from writing flow.",
+   "feedback_deep": "Grammar is an external set of rules (extrinsic to writing flow). The teacher meant they are separate skills, not 'junk'.",
+   "contrast_rule": "Separate external factors are extrinsic.",
+   "hint": "Are the exercises junk or just a different, external skill?"
+  },
+  {
+   "id": "extraneous-extrinsic_012",
+   "domain": "Art/Design",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The background color of the painting: ___",
+   "beats": [
+    {
+     "text": "The artist chose a bright pink background for a funeral portrait.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.9,
+      "extrinsic": 0.1
+     },
+     "decisive_clue": "bright pink for a funeral portrait",
+     "reason": "It doesn't fit the context.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "The portrait was commissioned by the deceased to highlight his vibrant life.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "commissioned by the deceased to highlight his life",
+     "reason": "The commission is an external requirement.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The background was a necessary request, not just a mistake.",
+   "feedback_deep": "Initially it seemed like an unnecessary mistake (extraneous). But the commission requirement (an external factor) made it necessary (extrinsic).",
+   "contrast_rule": "Necessary external requirements are extrinsic.",
+   "hint": "Why did the artist choose that color?"
+  },
+  {
+   "id": "extraneous-extrinsic_013",
+   "domain": "Finance/Economics",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 4,
+   "frame": "The reason for the company's low stock price: ___",
+   "beats": [
+    {
+     "text": "The company's stock fell, even though its internal profits are record-breaking.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.9
+     },
+     "decisive_clue": "stock fell, internal profits record-breaking",
+     "reason": "External forces are at play.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    },
+    {
+     "text": "The entire sector is down due to a new trade policy.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.05,
+      "extrinsic": 0.95
+     },
+     "decisive_clue": "entire sector is down due to trade policy",
+     "reason": "A broader external structural factor.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It narrows down the external factor to a specific policy.",
+   "feedback_deep": "It was already clearly an extrinsic factor, but the new info clarifies that it's specifically trade policy. Still extrinsic, just more precise.",
+   "contrast_rule": "External influences are extrinsic.",
+   "hint": "Is it about internal or external issues?"
+  },
+  {
+   "id": "extraneous-extrinsic_014",
+   "domain": "Education",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The reason the test was difficult: ___",
+   "beats": [
+    {
+     "text": "The test featured questions that were completely off-topic.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.9,
+      "extrinsic": 0.1
+     },
+     "decisive_clue": "off-topic questions",
+     "reason": "They are unnecessary.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "They were about pop culture rather than the math we studied.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.95,
+      "extrinsic": 0.05
+     },
+     "decisive_clue": "about pop culture rather than math",
+     "reason": "They clearly don't belong in a math test.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are just clutter.",
+   "feedback_deep": "The questions were already extraneous, and knowing they are about pop culture just confirms they are even more irrelevant.",
+   "contrast_rule": "Irrelevant questions are extraneous.",
+   "hint": "Why are these questions irrelevant?"
+  },
+  {
+   "id": "extraneous-extrinsic_015",
+   "domain": "Workplace",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The reason for the manager's unhappiness: ___",
+   "beats": [
+    {
+     "text": "The manager is frustrated with the team's progress.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.9
+     },
+     "decisive_clue": "manager is frustrated",
+     "reason": "It's an external pressure.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    },
+    {
+     "text": "It's because the client keeps changing the requirements.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.05,
+      "extrinsic": 0.95
+     },
+     "decisive_clue": "client keeps changing requirements",
+     "reason": "Client needs are an external structural factor.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Client demands are a necessary external factor.",
+   "feedback_deep": "Client requirements are an external structural element for the team's work, not junk, making them extrinsic.",
+   "contrast_rule": "Client requirements are an extrinsic factor.",
+   "hint": "Is the issue the team itself or an external force?"
+  },
+  {
+   "id": "extraneous-extrinsic_016",
+   "domain": "Art/Design",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The sculptor's decision to add clay: ___",
+   "beats": [
+    {
+     "text": "The sculptor added more clay to the torso.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "added more clay",
+     "reason": "It's structural.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M2"
+     }
+    },
+    {
+     "text": "It makes it easier to support the arm's weight.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.9
+     },
+     "decisive_clue": "support the arm's weight",
+     "reason": "Still structural and necessary.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M2"
+     }
+    }
+   ],
+   "feedback_short": "It's still structural, so extrinsic remains correct.",
+   "feedback_deep": "The added clay was and is a necessary structural element, so extrinsic remains correct throughout.",
+   "contrast_rule": "Necessary structural additions are extrinsic.",
+   "hint": "Does it add structural integrity?"
+  },
+  {
+   "id": "extraneous-extrinsic_017",
+   "domain": "Public speaking",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The reason for the audience's boredom: ___",
+   "beats": [
+    {
+     "text": "The speaker kept reading from a dense, tiny-font script.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.9,
+      "extrinsic": 0.1
+     },
+     "decisive_clue": "dense, tiny-font script",
+     "reason": "It's just clutter.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "He didn't need the script at all, as he was an expert on the topic.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.95,
+      "extrinsic": 0.05
+     },
+     "decisive_clue": "didn't need the script at all",
+     "reason": "Completely unnecessary clutter.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The script was unnecessary clutter, so extraneous remains correct.",
+   "feedback_deep": "The script was just unnecessary clutter from the start, and knowing it wasn't needed confirms it was extraneous.",
+   "contrast_rule": "Useless items are extraneous.",
+   "hint": "Does he need the script to speak?"
+  },
+  {
+   "id": "extraneous-extrinsic_018",
+   "domain": "Education",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "The reason the student is reading extra books: ___",
+   "beats": [
+    {
+     "text": "The student reads books not on the syllabus.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.7,
+      "extrinsic": 0.3
+     },
+     "decisive_clue": "not on the syllabus",
+     "reason": "Seems unnecessary for the course.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M1"
+     }
+    },
+    {
+     "text": "Wait, those books are essential for a special scholarship requirement.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "essential for a special scholarship requirement",
+     "reason": "Now it's an external structural requirement.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's a necessary external factor.",
+   "feedback_deep": "They first seemed like unnecessary reading (extraneous). But the scholarship requirement is a necessary external factor (extrinsic), reframing the action.",
+   "contrast_rule": "External necessities are extrinsic.",
+   "hint": "Why are they reading the books?"
+  },
+  {
+   "id": "extraneous-extrinsic_019",
+   "domain": "Workplace",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "The reason for adding the security check: ___",
+   "beats": [
+    {
+     "text": "The office added a new digital check-in system.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.2,
+      "extrinsic": 0.8
+     },
+     "decisive_clue": "digital check-in system",
+     "reason": "It's a structural change.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M3"
+     }
+    },
+    {
+     "text": "The IT guy just installed it to show off his own coding project.",
+     "best_word": "extraneous",
+     "fit": {
+      "extraneous": 0.8,
+      "extrinsic": 0.2
+     },
+     "decisive_clue": "show off his own coding project",
+     "reason": "It's just for his ego, not for security.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extrinsic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "It was structural, then revealed to be just unnecessary noise.",
+   "feedback_deep": "The system seemed like a legitimate structural change (extrinsic). But learning it was just for the IT guy's ego makes it unnecessary, extraneous noise.",
+   "contrast_rule": "Unnecessary additions are extraneous.",
+   "hint": "What is the true reason for the addition?"
+  },
+  {
+   "id": "extraneous-extrinsic_020",
+   "domain": "Education",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The reason for the professor's strict grading of the formatting: ___",
+   "beats": [
+    {
+     "text": "The professor takes off points if the margin is off by a millimeter.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.3,
+      "extrinsic": 0.7
+     },
+     "decisive_clue": "takes off points",
+     "reason": "An external rule.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    },
+    {
+     "text": "He argues that attention to strict, formal structural constraints is necessary for academic precision.",
+     "best_word": "extrinsic",
+     "fit": {
+      "extraneous": 0.1,
+      "extrinsic": 0.9
+     },
+     "decisive_clue": "formal structural constraints",
+     "reason": "Confirms the structural, external nature of the rule.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extraneous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Formatting rules are a structural, external constraint.",
+   "feedback_deep": "Formatting rules are a necessary external structural constraint, hence extrinsic, not useless clutter.",
+   "contrast_rule": "Necessary external constraints are extrinsic.",
+   "hint": "Is formatting junk or a structural constraint?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

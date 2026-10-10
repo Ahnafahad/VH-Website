@@ -1,0 +1,1808 @@
+{
+  "set_id": "alleviate-eliminate",
+  "source_pair_id": 143,
+  "words": [
+    {
+      "word": "alleviate",
+      "sense": "to make physical or emotional suffering, hardship, or a systemic burden lighter or more bearable without removing it completely",
+      "concise_meaning": "lessen the severity, intensity, or burden of a problem without completely removing it",
+      "connotation": "positive, ameliorative",
+      "register": "formal to standard",
+      "grammar": "transitive verb; takes a problem, symptom, hardship, or pressure as direct object ('alleviate symptoms', 'alleviate poverty')",
+      "collocations": [
+        "alleviate suffering",
+        "alleviate symptoms",
+        "alleviate poverty",
+        "alleviate congestion",
+        "alleviate pressure"
+      ],
+      "misconceptions": [
+        "Assuming that alleviate means completely curing or eradicating an affliction, rather than merely reducing its severity or making it tolerable."
+      ]
+    },
+    {
+      "word": "eliminate",
+      "sense": "to completely remove, destroy, get rid of, or eradicate a problem, hazard, error, or competitor",
+      "concise_meaning": "completely remove or eradicate something undesirable so that nothing of it remains",
+      "connotation": "decisive, absolute, thorough",
+      "register": "formal to standard",
+      "grammar": "transitive verb; takes a risk, threat, defect, disease, or competitor as direct object ('eliminate risks', 'eliminate waste', 'eliminate disease')",
+      "collocations": [
+        "eliminate waste",
+        "eliminate errors",
+        "eliminate the risk of",
+        "eliminate a disease",
+        "eliminate bottlenecks"
+      ],
+      "misconceptions": [
+        "Assuming that eliminate can describe partial relief or moderation, ignoring that eliminate strictly requires total eradication or reduction to zero."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "degree_of_reduction",
+      "description": "Partial lessening of severity, pain, or difficulty (alleviate) vs. absolute removal or reduction to zero (eliminate)."
+    },
+    {
+      "id": "permanence_and_finality",
+      "description": "Temporary or incomplete easing where the underlying cause or condition persists vs. definitive and total eradication where the problem ceases to exist entirely."
+    },
+    {
+      "id": "nature_of_solution",
+      "description": "Mitigating symptoms, managing hardship, and making conditions bearable vs. root-cause eradication, complete removal, and absolute prevention."
+    }
+  ],
+  "edge": {
+    "a": "alleviate",
+    "b": "eliminate",
+    "boundary_rule": "Alleviate means to lessen the severity, pain, or burden of a problem while leaving part of it intact; eliminate means to remove, eradicate, or reduce something to zero entirely.",
+    "clues_a": [
+      "symptoms become milder, manageable, or duller but do not vanish",
+      "traffic slows down less or moves faster, though queues still form",
+      "debt payments are lowered or subsidies ease monthly bills, yet a balance remains",
+      "workload is redistributed to make hours reasonable, but core duties continue",
+      "emergency food parcels provide temporary relief while structural poverty persists"
+    ],
+    "clues_b": [
+      "root cause is fully identified and removed with zero recurrence",
+      "test scores or audits show exactly zero errors or zero contaminants remaining",
+      "a pathogen is completely cleared from the bloodstream with no detectable trace",
+      "an entire fee, penalty, or tax category is permanently repealed and erased",
+      "a hazard or structural flaw is completely disassembled and permanently cleared"
+    ],
+    "irrelevant_clues": [
+      "how much money, time, or scientific effort was spent on the initiative",
+      "whether the recipient feels immense gratitude or relief",
+      "whether the intervention uses modern technology or traditional methods",
+      "the formal title or status of the person implementing the measure"
+    ],
+    "misconceptions": {
+      "M1": "Assuming that significant relief or noticeable improvement means the issue was eradicated, forgetting that alleviation leaves the root condition or remaining symptoms intact.",
+      "M2": "Believing eliminate can be used loosely for merely reducing or curbing a problem, ignoring that eliminate strictly demands total eradication or reduction to zero.",
+      "M3": "Assuming eliminate only applies to physical objects or violent removal, failing to recognize it applies to abstract obstacles, waste, errors, and diseases."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "alleviate": [
+        "The warm compress reduced the throbbing in his shoulder, allowing him to sleep even though the joint remained stiff.",
+        "Opening the emergency bypass lane eased highway congestion during rush hour, cutting commuter delays from two hours down to forty minutes.",
+        "The food bank provided weekly groceries to low-income families, easing their monthly financial strain while they searched for stable employment.",
+        "Adding a second teaching assistant made grading manageable for the professor, though she still had seventy term papers to mark every weekend.",
+        "The government subsidy lowered heating bills during the coldest winter weeks, helping residents cope with the deep freeze.",
+        "The quiet study room reduced the constant sensory overload for the student, though some background hum from the hallway still filtered inside."
+      ],
+      "eliminate": [
+        "Through universal vaccination and strict surveillance, public health authorities wiped out smallpox worldwide until zero new cases existed.",
+        "By switching to an automated scanner, the warehouse removed data entry mistakes entirely, recording zero discrepancies over six consecutive months.",
+        "The school board repealed the annual registration fee completely, making access completely free for every enrolled child.",
+        "Engineers installed a double-seal gasket that stopped the oil leak entirely, leaving the engine housing completely dry.",
+        "The bank erased the disputed overdraft charge from the customer's account statement after security confirmed the transaction was unauthorized.",
+        "The exterminator sealed every entry crevice and treated the foundation, ensuring that not a single termite remained inside the wooden beams."
+      ]
+    },
+    "counter": {
+      "alleviate": [
+        "The medical team wiped out the viral infection completely, leaving no trace of the pathogen in the patient's blood.",
+        "The factory redesigned the assembly jig to wipe out all manufacturing flaws, reaching a record of zero defective units.",
+        "The municipality repealed the parking surcharge altogether, reducing the cost to zero dollars.",
+        "The technician purged the corrupted hard drive partition, ensuring that no malicious scripts survived on the system.",
+        "The referee threw out the fraudulent score entirely, resetting the athlete's record to zero infractions.",
+        "The surgeon excised the benign cyst in its entirety, leaving no diseased tissue behind."
+      ],
+      "eliminate": [
+        "The ice pack dulled the headache enough for the student to finish her homework, though a dull ache persisted behind her eyes.",
+        "The new bus route reduced daily rush-hour traffic slightly, though cars still crawled along the bridge during peak hours.",
+        "The financial counselor restructured the debt to lower monthly interest charges, but the principal loan of forty thousand dollars remained unpaid.",
+        "A short afternoon nap dulled his mental fatigue, though he still felt somewhat sluggish during his evening lecture.",
+        "The fan circulated cool air into the crowded kitchen, making the heat bearable even as the room stayed uncomfortably warm.",
+        "The teacher granted a two-day extension on the essay, giving the class breathing room while the full assignment remained due on Wednesday."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "The pharmacist prescribed a stronger topical ointment that dropped the patient's pain rating from an eight down to a two, allowing her to walk with crutches.",
+        "best_word": "alleviate",
+        "note": "Although an eighty percent reduction in pain is substantial, the symptom has been made milder and tolerable rather than completely eradicated."
+      },
+      {
+        "text": "The IT department introduced a two-factor authentication key that stopped credential-stuffing breaches on user accounts, achieving a six-month streak with zero unauthorized logins.",
+        "best_word": "eliminate",
+        "note": "Because unauthorized logins were reduced to zero and the vulnerability was fully shut down rather than merely dialed down, the total removal word is appropriate."
+      },
+      {
+        "text": "The municipal flood barrier kept the river water out of ground-floor living rooms, though residents still had to pump six inches of seepage out of their basements.",
+        "best_word": "alleviate",
+        "note": "The barrier mitigated the catastrophe and made damage manageable, but water still entered the property, so the problem was lessened rather than fully removed."
+      },
+      {
+        "text": "The airline updated its booking database so that overbooking on regional flights was barred by system code, resulting in zero bumped passengers across the entire holiday schedule.",
+        "best_word": "eliminate",
+        "note": "The software rule completely prevented the practice and reduced occurrences to absolute zero, fitting total removal."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "alleviate-eliminate_001",
+      "domain": "urban_transportation",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The effect of the municipal bypass on downtown congestion is to: ___",
+      "beats": [
+        {
+          "text": "Opening the northern bypass diverted freight trucks away from the city center, shortening average rush-hour commute times from sixty minutes down to forty.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.92,
+            "eliminate": 0.12
+          },
+          "decisive_clue": "rush-hour commute times shortened from sixty down to forty minutes",
+          "reason": "A forty-minute commute means traffic congestion still exists, though its severity is reduced.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "During the morning peak, cars still back up along Main Street for three blocks, though the stop-and-go gridlock now clears half an hour earlier than before.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.94,
+            "eliminate": 0.08
+          },
+          "decisive_clue": "traffic still backs up for three blocks despite clearing earlier",
+          "reason": "Queues still form, proving congestion persists at a reduced intensity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Traffic engineers report that delivery vans and local shoppers continue to fill curb lanes, keeping vehicular movement sluggish throughout midday.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.95,
+            "eliminate": 0.05
+          },
+          "decisive_clue": "curb lanes remain full and vehicular movement stays sluggish",
+          "reason": "Traffic delays are moderated, but downtown vehicle buildup remains an active reality.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Shortening commute times while three blocks of vehicles still back up proves the congestion was made milder, not removed.",
+      "feedback_deep": "The bypass eases the daily bottleneck and clears delays sooner, but traffic still clusters along Main Street. Because the problem continues to exist at a diminished intensity rather than disappearing completely, the term for partial easing applies.",
+      "contrast_rule": "Lessen the burden while part remains points here; wipe out every trace points to the other.",
+      "hint": "Look at whether traffic delays were merely shortened or vanished entirely."
+    },
+    {
+      "id": "alleviate-eliminate_002",
+      "domain": "industrial_manufacturing",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the quality control overhaul did to welding defects was to: ___",
+      "beats": [
+        {
+          "text": "Factory director Kenji Sato replaced manual blowtorches with robotic laser welders, aiming to eradicate seam porosity from the steel bicycle frames.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.18,
+            "eliminate": 0.88
+          },
+          "decisive_clue": "robotic laser welders introduced to eradicate seam porosity",
+          "reason": "The automated process targets complete eradication of seam defects.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Ultrasonic scans on the first batch of five thousand welded joints detected zero structural voids or micro-cracks across every single unit.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.1,
+            "eliminate": 0.95
+          },
+          "decisive_clue": "zero structural voids or micro-cracks across five thousand units",
+          "reason": "Zero detected voids confirms complete absence of flaws.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "After three months of continuous manufacturing, independent auditors confirmed not a single defective weld had occurred on the production line.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.06,
+            "eliminate": 0.98
+          },
+          "decisive_clue": "not a single defective weld across three months of continuous production",
+          "reason": "Zero defects across three months proves total removal.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Detecting zero defects across thousands of joints and recording no flaws over three months shows total eradication.",
+      "feedback_deep": "Kenji's robotic upgrade did not just decrease the rate of faulty seams; it brought the flaw count down to absolute zero. When an unwanted flaw is removed entirely so none remains, total eradication is the precise choice.",
+      "contrast_rule": "Dropping the defect count to absolute zero requires total eradication, not partial mitigation.",
+      "hint": "Notice the exact tally of welding flaws detected across months of inspection."
+    },
+    {
+      "id": "alleviate-eliminate_003",
+      "domain": "public_health",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The effect of the cooling center on heat stress among seniors was to: ___",
+      "beats": [
+        {
+          "text": "During an intense summer heatwave, the community clinic opened an air-conditioned lounge that offered chilled water and fans to elderly residents without home cooling.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.9,
+            "eliminate": 0.14
+          },
+          "decisive_clue": "air-conditioned lounge providing cool air and chilled water during a heatwave",
+          "reason": "A cooling center provides temporary respite without altering the dangerous weather outside.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Paramedics noted that seniors resting in the lounge saw their heart rates steady and dizziness subside, making the sweltering afternoon far more bearable.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.93,
+            "eliminate": 0.1
+          },
+          "decisive_clue": "making the sweltering afternoon far more bearable",
+          "reason": "Symptoms subside and become bearable, which is mitigation of physical distress.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Nevertheless, whenever seniors stepped back outside into the ninety-eight-degree humidity to walk home, thermal discomfort and mild fatigue returned immediately.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.96,
+            "eliminate": 0.06
+          },
+          "decisive_clue": "discomfort and fatigue returned upon stepping back outside",
+          "reason": "Discomfort returns outside, showing heat stress was only softened temporarily.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Making heat stress bearable indoors while discomfort returns upon stepping outside proves the distress was merely mitigated, not eradicated.",
+      "feedback_deep": "The cooling center provides vital physical respite and softens the physiological strain of extreme temperatures. However, it cannot stop the blistering heatwave itself, and symptoms return once patrons depart, demonstrating partial and temporary relief.",
+      "contrast_rule": "Softening distress while the underlying hazard endures is mitigation, not complete removal.",
+      "hint": "Consider whether the heatwave and bodily vulnerability were extinguished or made tolerable."
+    },
+    {
+      "id": "alleviate-eliminate_004",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the patched firmware update did to the memory leak was to: ___",
+      "beats": [
+        {
+          "text": "Software architect Devendra Nair traced the server crash to an unclosed database cursor that retained gigabytes of unreferenced heap space.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.19,
+            "eliminate": 0.86
+          },
+          "decisive_clue": "tracing the crash to an unclosed database cursor",
+          "reason": "Identifying the exact bug allows a permanent architectural fix.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "He rewrote the connection pool using an automatic disposal block that releases memory allocations the instant an inquiry finishes.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.11,
+            "eliminate": 0.94
+          },
+          "decisive_clue": "automatic disposal releasing allocations the instant an inquiry finishes",
+          "reason": "Automatic disposal closes the leak vector at the code level.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Under a 72-hour stress test simulating ten million concurrent requests, heap consumption remained flat with zero uncollected bytes.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.05,
+            "eliminate": 0.98
+          },
+          "decisive_clue": "heap consumption remained flat with zero uncollected bytes under stress test",
+          "reason": "Zero uncollected bytes proves complete eradication of the memory leak.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Releasing all unreferenced allocations to leave zero uncollected bytes under extreme stress confirms the memory leak was purged entirely.",
+      "feedback_deep": "Devendra did not merely reduce the rate of memory consumption or schedule periodic restarts to cope with slowdowns. He closed the leaky code structure at the root, bringing residual uncollected memory to zero.",
+      "contrast_rule": "Complete erasure of an underlying defect points here; merely slowing the loss points to the other.",
+      "hint": "Check whether the memory leak was slowed down or brought to zero bytes."
+    },
+    {
+      "id": "alleviate-eliminate_005",
+      "domain": "higher_education",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The effect of the emergency grant on Sofia's tuition shortfall was to: ___",
+      "beats": [
+        {
+          "text": "When university bursar fees spiked unexpectedly, third-year biology student Sofia received a five-hundred-dollar bursary from the alumni hardship fund.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.91,
+            "eliminate": 0.13
+          },
+          "decisive_clue": "five-hundred-dollar hardship bursary against unexpected tuition spike",
+          "reason": "A modest grant offers assistance against a large tuition bill.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "The funds covered her laboratory supply deposit and prevented administrative holds, reducing her immediate semester deficit from three thousand dollars to twenty-five hundred.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.94,
+            "eliminate": 0.09
+          },
+          "decisive_clue": "reducing immediate semester deficit from three thousand down to twenty-five hundred",
+          "reason": "The deficit shrank, but twenty-five hundred dollars remains unpaid.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Sofia still had to pick up evening shifts at the campus library to pay off the remaining balance before final examinations.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.96,
+            "eliminate": 0.06
+          },
+          "decisive_clue": "remaining balance still required evening work shifts to pay off",
+          "reason": "Having to work evening shifts to clear the remaining balance proves the shortfall was only lessened.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Reducing Sofia's balance from three thousand to twenty-five hundred lessened her financial burden without clearing the debt entirely.",
+      "feedback_deep": "The grant softens Sofia's financial emergency and keeps her enrolled, but twenty-five hundred dollars remains owed. Because her monetary shortage was made lighter rather than wiped out, partial easing is the correct concept.",
+      "contrast_rule": "Partial lessening of a financial burden points here; clearing a balance to zero points to the other.",
+      "hint": "Observe how much of Sofia's unpaid balance remains after the grant is applied."
+    },
+    {
+      "id": "alleviate-eliminate_006",
+      "domain": "aviation_safety",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "What the redesigned intake valve did to fuel vapor leakage was to: ___",
+      "beats": [
+        {
+          "text": "Aeronautical engineer Hannah Schmidt discovered that thermal expansion in commercial jet engines warped the fuel intake valve during supersonic climbs.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.2,
+            "eliminate": 0.85
+          },
+          "decisive_clue": "discovering thermal expansion warps fuel intake valve",
+          "reason": "Identifying thermal distortion enables a total mechanical redesign.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Her redesign replaced the composite washer with a ceramic interlocking seal engineered to withstand temperatures exceeding twelve hundred degrees.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.12,
+            "eliminate": 0.93
+          },
+          "decisive_clue": "ceramic interlocking seal engineered to withstand twelve hundred degrees",
+          "reason": "The ceramic material completely withstands the heat that caused the warping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Spectrometer testing inside the test chamber detected no escaping hydrocarbon molecules, recording exactly zero parts per billion across forty flight simulations.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.05,
+            "eliminate": 0.98
+          },
+          "decisive_clue": "no escaping hydrocarbon molecules and exactly zero parts per billion detected",
+          "reason": "Zero parts per billion across forty tests proves the leak was eradicated.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Recording exactly zero parts per billion across forty simulations proves the fuel vapor leakage was eradicated completely.",
+      "feedback_deep": "Hannah's ceramic seal does not merely restrict the vapor loss to a safer, lower threshold. It blocks the escape route completely, resulting in zero detected molecules and total removal of the hazard.",
+      "contrast_rule": "Zero detected escaping particles demands total eradication, not mere reduction.",
+      "hint": "Focus on whether the escaping fuel vapor was reduced to a safer amount or to absolute zero."
+    },
+    {
+      "id": "alleviate-eliminate_007",
+      "domain": "environmental_management",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The effect of the river restoration plan on heavy metal runoff was to: ___",
+      "beats": [
+        {
+          "text": "The regional watershed trust planted reed beds along the riverbank, which filtered suspended sediment and lowered lead concentrations by thirty-five percent.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.93,
+            "eliminate": 0.11
+          },
+          "decisive_clue": "reed beds lowered lead concentrations by thirty-five percent",
+          "reason": "A thirty-five percent decrease mitigates the pollution while sixty-five percent still flows.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Three months later, the government sealed the abandoned upstream smelter shaft with reinforced concrete and diverted groundwater into a closed treatment tank, stopping all toxic discharge.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.12,
+            "eliminate": 0.94
+          },
+          "decisive_clue": "sealing the smelter shaft with concrete and stopping all toxic discharge",
+          "reason": "Stopping all toxic discharge at the source turns partial filtration into total removal.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Subsequent water purity assays taken along the entire twelve-mile waterway showed lead and cadmium counts dropped to zero across all seasonal monitoring stations.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.06,
+            "eliminate": 0.98
+          },
+          "decisive_clue": "counts dropped to zero across all seasonal monitoring stations",
+          "reason": "Zero counts at every station confirm total eradication.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Sealing the smelter shaft and driving metal counts to absolute zero flipped the outcome from partial filtering to total eradication.",
+      "feedback_deep": "The initial reed beds merely mitigated the toxic flow by trimming thirty-five percent of the pollution. Once the abandoned smelter was completely capped and runoff plunged to zero, the action achieved total removal rather than moderation.",
+      "contrast_rule": "Partial percentage reduction points here; wiping out the source to zero points to the other.",
+      "hint": "Track how the intervention moved from thirty-five percent filtration to capping the source to zero."
+    },
+    {
+      "id": "alleviate-eliminate_008",
+      "domain": "workplace_management",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the automated sorting system did to warehouse order delays was to: ___",
+      "beats": [
+        {
+          "text": "The logistics company installed computerized conveyor belts, intending to eradicate packing bottlenecks and reach zero backlogged parcels by the end of the quarter.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.16,
+            "eliminate": 0.89
+          },
+          "decisive_clue": "aiming to eradicate packing bottlenecks and reach zero backlogged parcels",
+          "reason": "Targeting zero backlogged parcels frames the initial action around complete eradication.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "While the high-speed belts sorted standard boxes in seconds, oversized crates still required manual inspection, leaving a steady queue of fifty delayed shipments each evening.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.93,
+            "eliminate": 0.12
+          },
+          "decisive_clue": "oversized crates still required manual inspection leaving a steady queue of fifty delayed shipments",
+          "reason": "A residual queue of fifty delayed shipments flips the status to partial easing.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Operations manager Tariq noted that overall shipment turnaround was much faster than last year, though parcel dispatchers still faced backlogs during high-volume holiday sales.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.95,
+            "eliminate": 0.08
+          },
+          "decisive_clue": "faster turnaround but backlogs still occur during peak volumes",
+          "reason": "Ongoing backlogs during peak periods confirm the delay problem was mitigated, not eradicated.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Leaving a steady queue of fifty delayed shipments daily reveals the automated system merely mitigated delays instead of eradicating them.",
+      "feedback_deep": "Although the conveyor upgrade aimed for zero backlogs, manual handling of oversized parcels created an ongoing queue of fifty delayed items. Because the delay problem persists at a reduced volume rather than disappearing, the milder term fits.",
+      "contrast_rule": "Leaving a residual queue means easing the burden, whereas wiping out delays entirely is eradication.",
+      "hint": "Notice whether delayed parcels were reduced to zero or remained at fifty per evening."
+    },
+    {
+      "id": "alleviate-eliminate_009",
+      "domain": "clinical_medicine",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The effect of Dr. Aris's therapeutic regimen on the patient's chronic migraines was to: ___",
+      "beats": [
+        {
+          "text": "Neurologist Dr. Aris prescribed a preventative calcium channel blocker that reduced Maya's weekly migraine episodes from four down to one mild headache.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.92,
+            "eliminate": 0.14
+          },
+          "decisive_clue": "episodes reduced from four down to one mild headache weekly",
+          "reason": "A weekly mild headache persists, so the medication made the condition milder and more manageable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "After genetic profiling identified a specific biochemical receptor defect, Dr. Aris administered a targeted monoclonal antibody therapy that halted the neurovascular cascade entirely.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.14,
+            "eliminate": 0.92
+          },
+          "decisive_clue": "monoclonal antibody therapy halting the neurovascular cascade entirely",
+          "reason": "Halting the neurovascular cascade stops the physiological cause, flipping the verdict to eradication.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Over the next eighteen months, Maya logged zero headache symptoms, discontinued all painkillers, and experienced no sensitivity to light or sound.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.07,
+            "eliminate": 0.97
+          },
+          "decisive_clue": "zero headache symptoms and zero painkillers required over eighteen months",
+          "reason": "Zero symptoms over eighteen months confirms the condition was eradicated.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Halting the biological cascade and recording zero symptoms across eighteen months transformed partial relief into complete eradication.",
+      "feedback_deep": "The initial prescription only moderated Maya's headaches, leaving one episode a week. The subsequent monoclonal antibody wiped out the underlying physiological trigger, achieving a complete absence of symptoms.",
+      "contrast_rule": "Dropping symptoms to absolute zero shifts the judgment from partial mitigation to total eradication.",
+      "hint": "Look at how the patient's condition moved from one headache per week to zero over eighteen months."
+    },
+    {
+      "id": "alleviate-eliminate_010",
+      "domain": "agriculture",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the drip irrigation network did to crop moisture loss was to: ___",
+      "beats": [
+        {
+          "text": "Agronomist Fatimah designed a pressurized sub-surface piping layout intended to prevent water evaporation completely by depositing moisture directly beneath plant roots.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.18,
+            "eliminate": 0.88
+          },
+          "decisive_clue": "pressurized sub-surface piping intended to prevent water evaporation completely",
+          "reason": "Sub-surface pipes are designed to extinguish evaporation completely.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Soil sensors revealed that intense afternoon sun still baked the upper loam layer, evaporating roughly twenty percent of the delivered moisture through capillary rise.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.93,
+            "eliminate": 0.13
+          },
+          "decisive_clue": "capillary rise still evaporates twenty percent of delivered moisture",
+          "reason": "Evaporating twenty percent of the water flips the judgment: moisture loss is reduced, not wiped out.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Although citrus yields doubled because trees suffered far less dehydration stress, the orchard still required weekly supplementary watering to survive summer heat.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.95,
+            "eliminate": 0.08
+          },
+          "decisive_clue": "supplementary watering still required and dehydration stress only lessened",
+          "reason": "Ongoing supplementary watering confirms the system only mitigated moisture loss.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Because capillary rise still evaporates twenty percent of the water, the sub-surface system merely mitigated moisture loss.",
+      "feedback_deep": "Fatimah aimed to stop evaporation entirely, but soil physics allowed twenty percent of the moisture to escape into the atmosphere. Because moisture loss continues at a reduced rate rather than reaching zero, partial easing is the correct description.",
+      "contrast_rule": "Leaving twenty percent residual loss means easing the problem; stopping every drop is eradication.",
+      "hint": "Check whether water evaporation was stopped completely or only cut by eighty percent."
+    },
+    {
+      "id": "alleviate-eliminate_011",
+      "domain": "cybersecurity",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The effect of the multi-factor security protocol on phishing breaches was to: ___",
+      "beats": [
+        {
+          "text": "To protect employee credentials, the university mandated sms verification codes, which reduced successful phishing intrusions from thirty per month down to five.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.92,
+            "eliminate": 0.13
+          },
+          "decisive_clue": "intrusions reduced from thirty down to five per month",
+          "reason": "Five intrusions per month means the risk is lessened, not eradicated.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "The chief security officer replaced sms codes with hardware cryptographic security keys that reject unauthorized domain prompts at the browser handshake layer.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.13,
+            "eliminate": 0.93
+          },
+          "decisive_clue": "hardware security keys rejecting unauthorized domain prompts at the handshake layer",
+          "reason": "Hardware cryptographic keys make unauthorized credential interception impossible, flipping the effect.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Over the following academic year, penetration testing and real-world network logs documented zero account takeovers resulting from deceptive web links.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.06,
+            "eliminate": 0.97
+          },
+          "decisive_clue": "zero account takeovers documented over the entire academic year",
+          "reason": "Zero takeovers confirms complete eradication.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Switching to hardware keys that drove account takeovers to zero flipped the security impact to total eradication.",
+      "feedback_deep": "SMS codes only lessened the intrusion rate by filtering careless attempts while leaving five breaches monthly. Upgrading to cryptographic hardware tokens made deceptive authentication technically impossible, reducing successful breaches to zero.",
+      "contrast_rule": "Cutting intrusions to zero achieves total eradication, whereas cutting them from thirty to five is mitigation.",
+      "hint": "Look at whether phishing breaches remained at five per month or dropped to zero."
+    },
+    {
+      "id": "alleviate-eliminate_012",
+      "domain": "municipal_governance",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the subsidized transit pass did to low-income transport barriers was to: ___",
+      "beats": [
+        {
+          "text": "The city council voted to make all municipal bus and light rail travel entirely free for residents below the poverty line, declaring transit fare hurdles wiped out.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.17,
+            "eliminate": 0.88
+          },
+          "decisive_clue": "making bus and rail travel entirely free to wipe out fare hurdles",
+          "reason": "The free pass specifically removes fare costs down to zero.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "A transit riders union survey revealed that while fares were gone, outer suburban neighborhoods still lacked weekend bus routes, forcing low-income shift workers to walk three miles to reach transit stops.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.92,
+            "eliminate": 0.12
+          },
+          "decisive_clue": "outer neighborhoods still lack weekend routes forcing workers to walk three miles",
+          "reason": "Missing routes and long walks mean overall transportation barriers still persist, flipping the answer.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Social researchers concluded that the free pass made commuting less expensive, but structural transit deserts continued to limit access to distant healthcare and employment centers.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.95,
+            "eliminate": 0.08
+          },
+          "decisive_clue": "transit deserts continue to limit access despite cheaper commuting",
+          "reason": "Transit deserts continue to limit access, confirming the policy eased financial stress but only mitigated transit barriers.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Because outer neighborhoods still face three-mile transit deserts, the free pass merely mitigated transport barriers.",
+      "feedback_deep": "A zero-dollar fare removed the ticket cost, but transportation barriers encompass physical access, scheduling, and geography. Because workers in suburban deserts still struggle with missing routes and long walks, the barrier was only made less severe.",
+      "contrast_rule": "Removing one component while overall hardship persists is mitigation, not total eradication.",
+      "hint": "Observe whether all transportation obstacles vanished or if missing routes still stranded riders."
+    },
+    {
+      "id": "alleviate-eliminate_013",
+      "domain": "interpersonal_relationships",
+      "transfer": true,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "The effect of Priya's open conversation with her roommate on household tension was to: ___",
+      "beats": [
+        {
+          "text": "After weeks of passive-aggressive silence, Priya sat down with her roommate Jin to discuss chore distribution and late-night kitchen noise.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.85,
+            "eliminate": 0.25
+          },
+          "decisive_clue": "sitting down to talk after weeks of passive-aggressive silence",
+          "reason": "Starting a conversation aims to make interpersonal tension manageable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "They agreed on a shared refrigerator shelf and a quiet hour policy, which made daily interactions cordial and broke the awkward hostility in the hallway.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.92,
+            "eliminate": 0.15
+          },
+          "decisive_clue": "shared shelf and quiet hours made interactions cordial and broke hostility",
+          "reason": "Cordial interactions narrow the assessment: friction is softened, but roommates still have habits to adjust to.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "A week later, Jin still felt mildly annoyed when Priya left clean dishes on the drying rack overnight, though neither felt angry enough to argue.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.96,
+            "eliminate": 0.06
+          },
+          "decisive_clue": "mild annoyance over drying dishes remains though neither argues",
+          "reason": "Residual annoyance proves emotional friction was moderated and made bearable rather than extinguished.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Lingering mild annoyance over kitchen habits demonstrates that household tension was made manageable rather than extinguished.",
+      "feedback_deep": "Priya and Jin successfully resolved their overt hostility and established polite coexistence. However, low-grade irritation over daily habits still lingers, proving that domestic friction was eased rather than completely expunged.",
+      "contrast_rule": "Turning hostility into manageable, mild annoyance is mitigation, not complete eradication.",
+      "hint": "Notice whether all emotional irritation was extinguished or just lowered to a tolerable level."
+    },
+    {
+      "id": "alleviate-eliminate_014",
+      "domain": "competitive_sports",
+      "transfer": true,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "What the gymnastics coach's footwear modification did to landing ankle pain was to: ___",
+      "beats": [
+        {
+          "text": "Gymnastics coach Marcus replaced his vaulter's standard slippers with custom carbon-plate inserts designed to block calcaneal impact shocks on dismounts.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.28,
+            "eliminate": 0.82
+          },
+          "decisive_clue": "custom inserts designed to block calcaneal impact shocks on dismounts",
+          "reason": "The equipment is engineered to block the physical impact shock causing the pain.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Force plate sensors during vault training recorded that the new soles absorbed ninety-nine point nine percent of heel deceleration shock, dispersing all sharp peak forces.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.15,
+            "eliminate": 0.92
+          },
+          "decisive_clue": "absorbing ninety-nine point nine percent of shock and dispersing all sharp peak forces",
+          "reason": "Absorbing virtually 100% of peak forces narrows the outcome toward total eradication of the pain trigger.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "After fifty full-speed competition vaults, the athlete reported zero soreness or joint irritation in her ankles, confirming total freedom from pain.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.06,
+            "eliminate": 0.97
+          },
+          "decisive_clue": "athlete reported zero soreness or joint irritation across fifty vaults",
+          "reason": "Reporting zero soreness confirms pain was completely removed.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Dispersing shock forces and recording zero soreness across fifty competitive vaults proves the landing pain was eradicated.",
+      "feedback_deep": "Marcus's custom inserts did not simply make dismounts slightly more comfortable to endure. By absorbing peak forces and leaving the gymnast with zero pain or soreness across dozens of repetitions, the ailment was removed entirely.",
+      "contrast_rule": "Reaching zero pain across repeated athletic impacts requires total removal, not mere reduction.",
+      "hint": "Look at the gymnast's soreness report after completing fifty full-speed vaults."
+    },
+    {
+      "id": "alleviate-eliminate_015",
+      "domain": "international_travel",
+      "transfer": true,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "The effect of the visa pre-clearance kiosk on airport customs delays was to: ___",
+      "beats": [
+        {
+          "text": "To handle holiday passenger surges, the international terminal introduced automated biometric kiosks where travelers scan passports before reaching the inspection desks.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.86,
+            "eliminate": 0.22
+          },
+          "decisive_clue": "automated biometric kiosks introduced to handle holiday passenger surges",
+          "reason": "The kiosks are deployed as a crowd-management measure to ease bottlenecks.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Wait times in the main immigration hall dropped from seventy-five minutes to twenty-five minutes, easing passenger frustration considerably.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.93,
+            "eliminate": 0.12
+          },
+          "decisive_clue": "wait times dropped from seventy-five down to twenty-five minutes",
+          "reason": "A twenty-five minute wait narrows the evaluation: queues still exist, so delays were lessened, not wiped out.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Even with the digital scans completed, passengers still stood in line for a physical agent to stamp entry declarations and verify luggage baggage tags.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.97,
+            "eliminate": 0.05
+          },
+          "decisive_clue": "passengers still stood in line for agent inspection and baggage verification",
+          "reason": "Standing in line for physical checks confirms delays were moderated rather than eradicated.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Dropping wait times from seventy-five to twenty-five minutes while passengers still queue proves customs delays were mitigated.",
+      "feedback_deep": "The digital kiosks make airport transit far faster and cut waiting times by two thirds. However, travelers still queue for twenty-five minutes to clear physical inspections, meaning the delay was made lighter rather than reduced to zero.",
+      "contrast_rule": "Cutting wait times while lines still form is mitigation, not total eradication.",
+      "hint": "Check whether travelers walked straight through or still queued for twenty-five minutes."
+    },
+    {
+      "id": "alleviate-eliminate_016",
+      "domain": "household_maintenance",
+      "transfer": true,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "What the plumber's copper pipe replacement did to the basement pipe shudder was to: ___",
+      "beats": [
+        {
+          "text": "Licensed plumber Nora replaced the loose galvanized pipes behind the laundry wall with rigid copper piping secured by anchor brackets to stop hydraulic water hammer.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.18,
+            "eliminate": 0.88
+          },
+          "decisive_clue": "replacing loose pipes with rigid copper secured by anchor brackets to stop water hammer",
+          "reason": "Anchoring rigid copper piping is intended to stop hydraulic water hammer entirely.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "When the washing machine valve snapped shut during the spin cycle, the sudden pressure surge rattled nearby aluminum coat hangers hanging from the ceiling beam.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.22,
+            "eliminate": 0.84
+          },
+          "decisive_clue": "pressure surge rattled nearby coat hangers from the ceiling beam",
+          "reason": "Ceiling hangers rattling is an unrelated superficial distraction; the plumbing pipes themselves stayed rigid.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "A digital acoustic sensor clamped directly onto the new copper line recorded zero pipe movement and complete acoustic silence inside the plumbing chase.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.06,
+            "eliminate": 0.98
+          },
+          "decisive_clue": "digital sensor clamped to copper line recorded zero pipe movement and silence",
+          "reason": "Zero movement in the copper pipes proves the shudder was eradicated.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Acoustic sensors recording zero movement in the copper lines prove the pipe shudder was eradicated, despite ceiling hanger rattles.",
+      "feedback_deep": "The noise from loose ceiling hangers was a distracting false lead. Clamped sensors on the copper pipe confirmed zero physical shudder or vibration during shutoff, demonstrating total removal of the plumbing defect.",
+      "contrast_rule": "Total absence of movement in the target pipes confirms eradication despite superficial external rattles.",
+      "hint": "Look at the sensor readings on the copper pipe itself rather than the rattling coat hangers."
+    },
+    {
+      "id": "alleviate-eliminate_017",
+      "domain": "urban_transportation",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "The effect of the staggered delivery schedule on dock overcrowding was to: ___",
+      "beats": [
+        {
+          "text": "The harbor master instituted staggered two-hour appointment slots for freight trucks, lowering morning dock congestion from fifty waiting trailers down to twenty.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.92,
+            "eliminate": 0.12
+          },
+          "decisive_clue": "lowering morning congestion from fifty waiting trailers down to twenty",
+          "reason": "Twenty trailers still waiting means dock overcrowding was eased, not removed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "On Tuesday at noon, the intake bay was briefly spotless with zero trucks at the security gate for fifteen minutes between scheduled delivery windows.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.82,
+            "eliminate": 0.28
+          },
+          "decisive_clue": "intake bay briefly empty for fifteen minutes between scheduled delivery windows",
+          "reason": "A fifteen-minute lull between scheduled windows is a temporary pause, not the end of overcrowding.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "By one o'clock, the next freight wave arrived, filling twelve holding bays and keeping dockworkers busy managing steady queues throughout the afternoon.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.95,
+            "eliminate": 0.07
+          },
+          "decisive_clue": "next wave fills twelve holding bays with steady queues all afternoon",
+          "reason": "Steady queues of twelve trucks resume, confirming overcrowding was moderated rather than ended.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A fifteen-minute lull between delivery windows was fleeting; twelve waiting trailers confirmed the schedule merely mitigated dock congestion.",
+      "feedback_deep": "The empty gate at noon appeared to show total removal, but it was only an interval between scheduled shifts. With twenty trailers waiting earlier and twelve filling bays later, the overcrowding was moderated rather than ended.",
+      "contrast_rule": "Temporary lulls between shifts do not equal eradication when queues quickly resume.",
+      "hint": "Distinguish between a temporary gap between delivery shifts and the continuous reality of waiting trucks."
+    },
+    {
+      "id": "alleviate-eliminate_018",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "reframe",
+      "difficulty": 4,
+      "frame": "What the compiler rewrite did to runtime null-pointer crashes was to: ___",
+      "beats": [
+        {
+          "text": "Lead engineer Lin Tao introduced automatic wrapper functions that caught unexpected null pointers, cutting app crash logs from hundreds per day to a handful.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.91,
+            "eliminate": 0.14
+          },
+          "decisive_clue": "wrapper functions caught null pointers cutting crashes from hundreds to a handful",
+          "reason": "Cutting crashes to a handful reduces frequency, but crashes still occur.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "Realizing runtime catching still allowed edge-case failures, Lin rebuilt the core type system with non-nullable types, making unchecked null assignment a compilation error.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.14,
+            "eliminate": 0.93
+          },
+          "decisive_clue": "non-nullable types making unchecked null assignment a compilation error",
+          "reason": "Enforcing non-nullable types reframes the bug from a runtime problem into a compiler-blocked impossibility.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Across one hundred million user sessions since deployment, telemetry reported zero runtime null-pointer exceptions in production.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.05,
+            "eliminate": 0.98
+          },
+          "decisive_clue": "zero runtime null-pointer exceptions across one hundred million user sessions",
+          "reason": "Zero runtime exceptions across one hundred million sessions confirms total eradication.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Enforcing strict non-nullable types so zero null crashes occurred in one hundred million sessions achieved complete eradication.",
+      "feedback_deep": "Catching exceptions at runtime merely softened the crash frequency. By reframing the problem at the type-checker level so nulls cannot compile, Lin prevented the defect entirely, reaching zero crashes in production.",
+      "contrast_rule": "Making an error mathematically impossible at build time eradicates it, rather than just softening crash rates.",
+      "hint": "Notice how moving the check from runtime error handlers to the compiler type checker affected the outcome."
+    },
+    {
+      "id": "alleviate-eliminate_019",
+      "domain": "clinical_medicine",
+      "transfer": false,
+      "chain_type": "rehabilitate",
+      "difficulty": 4,
+      "frame": "The effect of the saline nebulizer on Lucas's respiratory wheezing was to: ___",
+      "beats": [
+        {
+          "text": "When eight-year-old Lucas struggled with bronchitis, the pediatrician administered a warm saline nebulizer to loosen airway secretions.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.89,
+            "eliminate": 0.16
+          },
+          "decisive_clue": "saline nebulizer to loosen airway secretions in bronchitis",
+          "reason": "A saline nebulizer loosens mucus and softens respiratory distress.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "His parents initially felt disappointed that Lucas was not instantly cured, but his chest tightness loosened, his oxygen saturation rose to ninety-seven, and he slept comfortably through the night.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.94,
+            "eliminate": 0.09
+          },
+          "decisive_clue": "parents disappointed by lack of instant cure but chest tightness loosened and sleep improved",
+          "reason": "Rehabilitating the treatment's true clinical value: it eased acute distress even without an instant cure.",
+          "shift_type": "rehabilitate",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "The next morning Lucas still had a congested rattle in his chest when coughing, though his breathing was no longer labored.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.97,
+            "eliminate": 0.04
+          },
+          "decisive_clue": "congested rattle still present when coughing though breathing is no longer labored",
+          "reason": "The congested rattle persists, confirming that symptoms were softened rather than wiped out.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Loosening chest tightness and raising oxygen while a congested cough persisted shows the nebulizer mitigated respiratory distress.",
+      "feedback_deep": "Lucas's parents hoped for an instant cure, but the treatment's true medical achievement was easing airway distress and restoring safe oxygen levels. Because residual chest congestion remained, the intervention provided vital mitigation rather than total eradication.",
+      "contrast_rule": "Making breathing comfortable while underlying congestion persists is mitigation, not complete eradication.",
+      "hint": "Look at whether Lucas was instantly cured or his breathing was made safe and manageable."
+    },
+    {
+      "id": "alleviate-eliminate_020",
+      "domain": "workplace_management",
+      "transfer": false,
+      "chain_type": "precision",
+      "difficulty": 4,
+      "frame": "What the ergonomic workstation assessment did to repetitive strain wrist injuries was to: ___",
+      "beats": [
+        {
+          "text": "To address wrist soreness among data entry clerks, the company provided padded wrist rests, which made eight-hour typing shifts less agonizing for the staff.",
+          "best_word": "alleviate",
+          "fit": {
+            "alleviate": 0.92,
+            "eliminate": 0.13
+          },
+          "decisive_clue": "padded wrist rests making typing shifts less agonizing",
+          "reason": "Wrist rests soften strain and pain, but clerks still type in awkward wrist angles.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eliminate": "M1"
+          }
+        },
+        {
+          "text": "An occupational kinesiologist demonstrated that wrist rests merely mask symptoms; she replaced all keyboard entry with speech-to-text dictation headsets, stopping repetitive manual wrist motions altogether.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.12,
+            "eliminate": 0.94
+          },
+          "decisive_clue": "replacing all keyboard entry with speech-to-text dictation and stopping repetitive wrist motions altogether",
+          "reason": "Removing manual typing altogether removes the physical repetitive strain at the source.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        },
+        {
+          "text": "Twelve months later, company medical records documented zero new or recurring repetitive strain wrist diagnoses across the entire fifty-person department.",
+          "best_word": "eliminate",
+          "fit": {
+            "alleviate": 0.05,
+            "eliminate": 0.98
+          },
+          "decisive_clue": "zero new or recurring wrist strain diagnoses across twelve months",
+          "reason": "Zero diagnoses over a year confirms the injury mechanism was completely eradicated.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Replacing keyboard typing with dictation headsets to achieve zero wrist strain diagnoses across a year achieved total eradication.",
+      "feedback_deep": "Padded rests merely reduced typing discomfort, leaving the repetitive stress mechanism active. Transitioning to dictation removed manual typing entirely, stopping wrist motion and driving injury claims to zero.",
+      "contrast_rule": "Halting the injury-causing action entirely to reach zero cases achieves eradication, not mere mitigation.",
+      "hint": "Focus on whether the physical wrist motion was made more comfortable or stopped completely."
+    }
+  ]
+}

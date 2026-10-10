@@ -1,0 +1,1344 @@
+{
+ "set_id": "pedestrian-pedantic",
+ "source_pair_id": 432,
+ "words": [
+  {
+   "word": "pedestrian",
+   "sense": "lacking inspiration or flair",
+   "concise_meaning": "dull, unimaginative, and uninspired",
+   "connotation": "negative, implying mediocrity and a lack of vision",
+   "register": "neutral, formal",
+   "grammar": "adjective",
+   "collocations": [
+    "pedestrian style",
+    "pedestrian approach",
+    "pedestrian prose",
+    "pedestrian analysis",
+    "pedestrian design"
+   ],
+   "misconceptions": [
+    "confusing dullness with simplicity",
+    "thinking it always refers to walkers"
+   ]
+  },
+  {
+   "word": "pedantic",
+   "sense": "excessively focused on minor details",
+   "concise_meaning": "overly concerned with trivial rules, formalities, or academic minutiae",
+   "connotation": "negative, implying narrow-mindedness and irritation",
+   "register": "neutral, formal",
+   "grammar": "adjective",
+   "collocations": [
+    "pedantic correction",
+    "pedantic rule",
+    "pedantic focus",
+    "pedantic tone",
+    "pedantic obsession"
+   ],
+   "misconceptions": [
+    "thinking it means thoroughness",
+    "assuming it implies intelligence"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "creativity_level",
+   "description": "ranges from innovative and visionary to unoriginal and uninspired"
+  },
+  {
+   "id": "focus_on_detail",
+   "description": "ranges from holistic and broad to fixated on minor rules and technicalities"
+  }
+ ],
+ "edge": {
+  "a": "pedestrian",
+  "b": "pedantic",
+  "boundary_rule": "pedestrian describes a lack of imagination; pedantic describes a misplaced obsession with technical or trivial detail.",
+  "clues_a": [
+   "mentions of blandness",
+   "lack of originality",
+   "predictability",
+   "absence of flair"
+  ],
+  "clues_b": [
+   "excessive focus on rules",
+   "nitpicking",
+   "academic obsession",
+   "correcting minor errors"
+  ],
+  "irrelevant_clues": [
+   "slow speed",
+   "professional occupation",
+   "formal language usage"
+  ],
+  "misconceptions": {
+   "M1": "ignoring the 'over-emphasis' aspect of pedantic",
+   "M2": "interpreting 'dull' as 'too detailed'",
+   "M3": "assuming academic language is always pedantic"
+  }
+ },
+ "anchors": {
+  "positive": {
+   "pedestrian": [
+    "the plot was entirely predictable and failed to offer any new insights.",
+    "his writing style was functional but completely lacked the spark of originality.",
+    "the new building design was a safe, uninspired box that added no character to the street.",
+    "her lecture was a monotonous repetition of basic facts without any deeper analysis.",
+    "their marketing plan was so generic it could have belonged to any company.",
+    "the movie's conclusion was so unimaginative that the audience walked out."
+   ],
+   "pedantic": [
+    "she stopped the discussion to argue about the misuse of a single comma.",
+    "the reviewer fixated on a typo instead of addressing the main argument of the thesis.",
+    "his constant correction of technical definitions hindered the progress of the meeting.",
+    "the contract was filled with unnecessary clauses regarding font sizes and document margins.",
+    "she wouldn't accept the conclusion because the bibliography style didn't match the guide.",
+    "he insisted on using the obscure Latin terminology despite it confusing the audience."
+   ]
+  },
+  "counter": {
+   "pedestrian": [
+    "he insisted that the data was invalid because it lacked a proper citation index.",
+    "she corrected the spelling of every name in the draft instead of reading the content.",
+    "the legal argument was entirely focused on the placement of a semicolon.",
+    "he refused to listen to the explanation until the technical terms were used precisely.",
+    "the review was rejected because the formatting of the footer was slightly off.",
+    "her obsession with rule consistency over actual meaning was frustrating."
+   ],
+   "pedantic": [
+    "the presentation provided nothing new, just rehashing the same boring ideas as everyone else.",
+    "it was a truly forgettable experience that failed to engage anyone's interest.",
+    "the proposal was so standard and safe that it lacked any clear vision.",
+    "the author's voice was completely absent, producing a dry and flat narrative.",
+    "everything about the project was routine and failed to show any creative thought.",
+    "the outcome was entirely expected and offered no excitement."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "the professor focused entirely on the adherence to the citation format while ignoring the actual content of the paper.",
+    "best_word": "pedantic",
+    "note": "the fixating on the format specifically points to a focus on trivial rules."
+   },
+   {
+    "text": "the candidate's essay failed to demonstrate any originality or creative approach to the complex topic.",
+    "best_word": "pedestrian",
+    "note": "the failure to be original is a hallmark of being unimaginative."
+   },
+   {
+    "text": "the editor made no changes to the structure, but spent hours ensuring every footnote adhered strictly to the manual.",
+    "best_word": "pedantic",
+    "note": "fixating on footnotes is a clear case of prioritizing minor detail."
+   },
+   {
+    "text": "the novel used the same tropes, themes, and structures found in dozens of other books from this decade.",
+    "best_word": "pedestrian",
+    "note": "the lack of invention makes the work unimaginative and flat."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "pedestrian-pedantic_001",
+   "domain": "architecture",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "the architect's design for the new museum is ___",
+   "beats": [
+    {
+     "text": "the architect's design for the new museum features nothing beyond basic, standard shapes.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "nothing beyond basic shapes",
+     "reason": "it indicates a lack of imagination.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the architect's design for the new museum features nothing beyond basic, standard shapes; it completely lacks any attempt to incorporate a unique aesthetic vision.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "lacks aesthetic vision",
+     "reason": "confirms the dullness and lack of creativity.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "lack of vision is pedestrian.",
+   "feedback_deep": "the design is dull because it avoids creativity, fitting the definition of pedestrian.",
+   "contrast_rule": "pedestrian is about lacking soul, pedantic is about obsessing over technicalities.",
+   "hint": "look for evidence of imagination versus evidence of rules."
+  },
+  {
+   "id": "pedestrian-pedantic_002",
+   "domain": "editing",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "the editor's feedback on the novel's draft is ___",
+   "beats": [
+    {
+     "text": "the editor's feedback on the novel's draft consists purely of clichés that appear in every other book.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "consists purely of clichés",
+     "reason": "dull and unoriginal.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the editor's feedback on the novel's draft consists purely of clichés that appear in every other book, and now they demand that every single punctuation mark matches the outdated 1950s style guide perfectly.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.3,
+      "pedantic": 0.7
+     },
+     "decisive_clue": "demand punctuation matches outdated style guide",
+     "reason": "the focus shifts from the dullness to the obsession with minor, outdated rules.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "the shift to rules makes it pedantic.",
+   "feedback_deep": "while the initial feedback was boring (pedestrian), the obsession with punctuation rules makes the reviewer pedantic.",
+   "contrast_rule": "focus on clichés = pedestrian; focus on punctuation rules = pedantic.",
+   "hint": "does the feedback remain about the content quality, or does it shift to rules?"
+  },
+  {
+   "id": "pedestrian-pedantic_003",
+   "domain": "cooking",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "the chef's approach to the signature dish is ___",
+   "beats": [
+    {
+     "text": "the chef's approach to the signature dish relies entirely on flavor combinations that have been standard for decades.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "flavor combinations standard for decades",
+     "reason": "unimaginative and unoriginal.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the chef's approach to the signature dish relies entirely on flavor combinations that have been standard for decades, offering no innovation or personal flair.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "offering no innovation",
+     "reason": "confirms the lack of vision.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "lack of flair is pedestrian.",
+   "feedback_deep": "the chef's reliance on old, standard combinations without any new spin is pedestrian.",
+   "contrast_rule": "lacking inspiration is pedestrian; fixating on triviality is pedantic.",
+   "hint": "is the chef obsessed with rules, or simply uninspired?"
+  },
+  {
+   "id": "pedestrian-pedantic_004",
+   "domain": "academics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "the professor's comments on the essay are ___",
+   "beats": [
+    {
+     "text": "the professor's comments on the essay are largely generic and don't push the student to develop deeper insights.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "largely generic",
+     "reason": "uninspired feedback.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the professor's comments on the essay are largely generic and don't push the student to develop deeper insights, but they spent forty minutes discussing the slight margin deviation from the department handbook.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.2,
+      "pedantic": 0.8
+     },
+     "decisive_clue": "spent forty minutes on margin deviation",
+     "reason": "the focus shifts to an obsession with minor rules.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "obsessing over margins is pedantic.",
+   "feedback_deep": "while the general comments were boring, the obsession with margins is excessively detailed and rule-focused, thus pedantic.",
+   "contrast_rule": "blandness is pedestrian; nitpicking technicalities is pedantic.",
+   "hint": "does the professor care more about the content or the rule-following?"
+  },
+  {
+   "id": "pedestrian-pedantic_005",
+   "domain": "sports",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "the athlete's performance in the training session was ___",
+   "beats": [
+    {
+     "text": "the athlete's performance in the training session was routine and completely lacked any creative spark.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "routine and lacked creative spark",
+     "reason": "dull, uninspired performance.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the athlete's performance in the training session was routine and completely lacked any creative spark, following exactly what they have done for three years.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "following exactly what they have done for three years",
+     "reason": "confirms the dullness and predictability.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "predictability is pedestrian.",
+   "feedback_deep": "a routine, predictable performance without innovation fits the description of pedestrian perfectly.",
+   "contrast_rule": "doing the same thing without innovation is pedestrian; nitpicking rules is pedantic.",
+   "hint": "is the athlete breaking any rules, or just being boring?"
+  },
+  {
+   "id": "pedestrian-pedantic_006",
+   "domain": "accounting",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "the accountant's analysis of the tax return is ___",
+   "beats": [
+    {
+     "text": "the accountant's analysis of the tax return is limited to the simplest deductions available.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "limited to simplest deductions",
+     "reason": "lacks insight/ambition.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the accountant's analysis of the tax return is limited to the simplest deductions available, but they spent two hours debating the font used on the cover sheet.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.2,
+      "pedantic": 0.8
+     },
+     "decisive_clue": "spent two hours debating font",
+     "reason": "fixation on irrelevant minor details.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "debating font is pedantic.",
+   "feedback_deep": "the accountant spent time on irrelevant minor details (font) rather than the main task, making them pedantic.",
+   "contrast_rule": "doing too little is pedestrian; obsessing over tiny things is pedantic.",
+   "hint": "what are they spending their time on now?"
+  },
+  {
+   "id": "pedestrian-pedantic_007",
+   "domain": "music",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "the musician's performance style is ___",
+   "beats": [
+    {
+     "text": "the musician's performance style is purely mechanical, lacking any emotional interpretation.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "purely mechanical, lacking emotion",
+     "reason": "dull, uninspired.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the musician's performance style is purely mechanical, lacking any emotional interpretation, feeling like a pre-recorded sequence.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "feeling like a pre-recorded sequence",
+     "reason": "emphasizes the lack of artistic vision.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "mechanical performance is pedestrian.",
+   "feedback_deep": "a mechanical performance lacking emotion is flat and uninspired, which is pedestrian.",
+   "contrast_rule": "lacking inspiration is pedestrian; obsessed with minor details is pedantic.",
+   "hint": "is the musician making errors, or just lacking spark?"
+  },
+  {
+   "id": "pedestrian-pedantic_008",
+   "domain": "coaching",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "the coach's pre-game strategy talk is ___",
+   "beats": [
+    {
+     "text": "the coach's pre-game strategy talk is standard and offers nothing to motivate the players.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "standard and offers nothing to motivate",
+     "reason": "lacks originality/vision.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the coach's pre-game strategy talk is standard and offers nothing to motivate the players, as they spend the whole time explaining the exact technical definition of 'tackle' instead of the play.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.3,
+      "pedantic": 0.7
+     },
+     "decisive_clue": "explaining technical definition instead of the play",
+     "reason": "focus on minor academic detail over the actual task.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "nitpicking definitions is pedantic.",
+   "feedback_deep": "the coach's focus on defining terms instead of explaining the strategy is excessively academic and minor, thus pedantic.",
+   "contrast_rule": "uninspiring talk is pedestrian; focusing on technical terms is pedantic.",
+   "hint": "does the coach focus on the overall plan or on minor definitions?"
+  },
+  {
+   "id": "pedestrian-pedantic_009",
+   "domain": "studying",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 2,
+   "frame": "the student's note-taking method is ___",
+   "beats": [
+    {
+     "text": "the student's note-taking method is very basic, using only the main points without any synthesis.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "very basic, no synthesis",
+     "reason": "unimaginative approach.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the student's note-taking method is very basic, using only the main points without any synthesis, focusing on recording the lecture almost word-for-word.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "recording word-for-word",
+     "reason": "this just confirms they are not thinking creatively; it's still pedestrian, not pedantic (since they aren't nitpicking rules).",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "it's uninspired, not rule-focused.",
+   "feedback_deep": "the approach is dull and uninspired because it lacks synthesis, not because it is focused on trivial details. It remains pedestrian.",
+   "contrast_rule": "dullness is pedestrian; nitpicking rules is pedantic.",
+   "hint": "are they trying to follow a specific rule, or are they just being lazy/uncreative?"
+  },
+  {
+   "id": "pedestrian-pedantic_010",
+   "domain": "design",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "the interior decorator's furniture selection is ___",
+   "beats": [
+    {
+     "text": "the interior decorator's furniture selection is entirely predictable and lacks any real style.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "entirely predictable, lacks style",
+     "reason": "dull and unoriginal.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the interior decorator's furniture selection is entirely predictable and lacks any real style, mirroring the most common catalogues without any variation.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "mirroring common catalogues",
+     "reason": "confirms the lack of creative imagination.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "lack of style is pedestrian.",
+   "feedback_deep": "the choice is uninspired and boring, lacking the vision to do anything beyond standard catalogue items.",
+   "contrast_rule": "dullness is pedestrian; nitpicking is pedantic.",
+   "hint": "is it rule-focused or just plain boring?"
+  },
+  {
+   "id": "pedestrian-pedantic_011",
+   "domain": "translation",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "the translator's approach to the passage is ___",
+   "beats": [
+    {
+     "text": "the translator's approach to the passage is completely literal, failing to capture the tone.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "completely literal",
+     "reason": "lacks creative interpretation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the translator's approach to the passage is completely literal, failing to capture the tone, and they refused to finish until debating the exact definition of a conjunction.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.3,
+      "pedantic": 0.7
+     },
+     "decisive_clue": "debating exact definition of a conjunction",
+     "reason": "focus on trivial grammatical rules.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "obsessing over conjunctions is pedantic.",
+   "feedback_deep": "while the initial literal approach was unimaginative (pedestrian), the obsession with minor grammatical definitions is pedantic.",
+   "contrast_rule": "literal/unimaginative is pedestrian; rule-obsessed is pedantic.",
+   "hint": "does the debate about the conjunction help the tone?"
+  },
+  {
+   "id": "pedestrian-pedantic_012",
+   "domain": "management",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "the manager's presentation of the team goals was ___",
+   "beats": [
+    {
+     "text": "the manager's presentation of the team goals was very plain and failed to inspire anyone.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "very plain, failed to inspire",
+     "reason": "lacks creative flair.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the manager's presentation of the team goals was very plain and failed to inspire anyone, using the same tired slides as last year.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "using same tired slides",
+     "reason": "confirms the dullness and unoriginality.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "unoriginality is pedestrian.",
+   "feedback_deep": "the manager is uninspired, providing a plain presentation without any effort at creative communication.",
+   "contrast_rule": "plain/boring is pedestrian; nitpicking rules is pedantic.",
+   "hint": "is the manager focused on details, or just doing the bare minimum?"
+  },
+  {
+   "id": "pedestrian-pedantic_013",
+   "domain": "history",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "the historian's analysis of the event is ___",
+   "beats": [
+    {
+     "text": "the historian's analysis of the event is surprisingly surface-level, lacking any interesting interpretation.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "surface-level, no interpretation",
+     "reason": "unimaginative analysis.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the historian's analysis of the event is surprisingly surface-level, lacking any interesting interpretation, because they are only interested in the correct chronological order of minor administrative appointments.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.3,
+      "pedantic": 0.7
+     },
+     "decisive_clue": "interested in minor administrative appointments",
+     "reason": "reframe: the lack of vision is actually a fixation on minor, trivial detail.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "obsessing over administrative details is pedantic.",
+   "feedback_deep": "what seemed just boring (pedestrian) is actually a fixation on trivial details, which is pedantic.",
+   "contrast_rule": "dullness is pedestrian; fixation on trivial details is pedantic.",
+   "hint": "why is the analysis surface-level?"
+  },
+  {
+   "id": "pedestrian-pedantic_014",
+   "domain": "science",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "the scientist's methodology is ___",
+   "beats": [
+    {
+     "text": "the scientist's methodology is technically sound but lacks any novel approach.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "lacks novel approach",
+     "reason": "dull, uninspired.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the scientist's methodology is technically sound but lacks any novel approach, and they insisted on using a specific, obscure formula just to comply with the ancient guidelines of a defunct institute.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.2,
+      "pedantic": 0.8
+     },
+     "decisive_clue": "insisted on formula to comply with defunct guidelines",
+     "reason": "obsession with minor, irrelevant rules.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "compliance with minor rules is pedantic.",
+   "feedback_deep": "the focus on minor, obsolete rules instead of the scientific merit makes this methodology pedantic.",
+   "contrast_rule": "lacking novelty is pedestrian; obsessive rule-following is pedantic.",
+   "hint": "what is the scientist complying with, and why?"
+  },
+  {
+   "id": "pedestrian-pedantic_015",
+   "domain": "web-design",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 2,
+   "frame": "the web designer's menu layout is ___",
+   "beats": [
+    {
+     "text": "the web designer's menu layout is entirely standard, failing to address the needs of modern browsers.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "entirely standard",
+     "reason": "unimaginative design.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the web designer's menu layout is entirely standard, failing to address the needs of modern browsers, offering nothing more than what was common ten years ago.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "offering nothing more than common design from ten years ago",
+     "reason": "confirms the dullness and lack of creativity.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "lack of originality is pedestrian.",
+   "feedback_deep": "the design is boring and unoriginal, lacking any creative update to meet current standards.",
+   "contrast_rule": "standard/boring is pedestrian; nitpicking rules is pedantic.",
+   "hint": "is it rule-focused or just outdated and dull?"
+  },
+  {
+   "id": "pedestrian-pedantic_016",
+   "domain": "speech",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "the public speaker's approach is ___",
+   "beats": [
+    {
+     "text": "the public speaker's approach is incredibly bland, simply restating the most common opinions on the topic.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "incredibly bland",
+     "reason": "lacks vision/novelty.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the public speaker's approach is incredibly bland, simply restating the most common opinions on the topic, with zero new insights.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "zero new insights",
+     "reason": "confirms the lack of imagination.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "blandness is pedestrian.",
+   "feedback_deep": "the talk is unoriginal and uninspiring, which is a classic pedestrian situation.",
+   "contrast_rule": "blandness is pedestrian; obsessive detail is pedantic.",
+   "hint": "are there any exciting new ideas?"
+  },
+  {
+   "id": "pedestrian-pedantic_017",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "my partner's conflict resolution method is ___",
+   "beats": [
+    {
+     "text": "my partner's conflict resolution method is very standard, relying on 'let's just forget it' without talking.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "very standard, no talking",
+     "reason": "unimaginative.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "my partner's conflict resolution method is very standard, relying on 'let's just forget it' without talking, failing to improve our connection.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "failing to improve our connection",
+     "reason": "confirms the dullness and ineffectiveness.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "lack of creative solutions is pedestrian.",
+   "feedback_deep": "the partner relies on the same uninspired, standard avoidance, which is pedestrian in this relationship.",
+   "contrast_rule": "avoiding the problem without imagination is pedestrian; obsession over trivialities is pedantic.",
+   "hint": "are they trying to follow a rule or just being uninspired?"
+  },
+  {
+   "id": "pedestrian-pedantic_018",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "the tour guide's explanation of history is ___",
+   "beats": [
+    {
+     "text": "the tour guide's explanation of history is very dry and doesn't capture the drama of the events.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.7,
+      "pedantic": 0.3
+     },
+     "decisive_clue": "dry, doesn't capture drama",
+     "reason": "dull, unimaginative.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the tour guide's explanation of history is very dry and doesn't capture the drama of the events, but they stopped the tour for ten minutes to argue over the exact definition of a 'medieval structure'.",
+     "best_word": "pedantic",
+     "fit": {
+      "pedestrian": 0.3,
+      "pedantic": 0.7
+     },
+     "decisive_clue": "arguing over exact definition of structure",
+     "reason": "obsessive focus on minor technical detail.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedestrian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "nitpicking definitions is pedantic.",
+   "feedback_deep": "the guide's focus on defining a word instead of explaining the actual history is excessively pedantic.",
+   "contrast_rule": "dullness is pedestrian; nitpicking technicalities is pedantic.",
+   "hint": "are they talking about history, or arguing over a definition?"
+  },
+  {
+   "id": "pedestrian-pedantic_019",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "the process of household budget planning is ___",
+   "beats": [
+    {
+     "text": "the process of household budget planning is incredibly mundane, simply looking at last month's numbers again.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "mundane, looking at same numbers",
+     "reason": "lack of new approach.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the process of household budget planning is incredibly mundane, simply looking at last month's numbers again, without trying to save or optimize.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "without trying to optimize",
+     "reason": "confirms the dullness and lack of creativity.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "lack of optimization is pedestrian.",
+   "feedback_deep": "the process is uninspired and boring because it doesn't try anything new, which is pedestrian.",
+   "contrast_rule": "lack of imagination is pedestrian; obsession with rules is pedantic.",
+   "hint": "are they worried about following a rule, or just doing the same old boring task?"
+  },
+  {
+   "id": "pedestrian-pedantic_020",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "the sports commentator's analysis is ___",
+   "beats": [
+    {
+     "text": "the sports commentator's analysis is completely dull, reciting the same statistics as everyone else.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.8,
+      "pedantic": 0.2
+     },
+     "decisive_clue": "completely dull, reciting same stats",
+     "reason": "unoriginal.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    },
+    {
+     "text": "the sports commentator's analysis is completely dull, reciting the same statistics as everyone else, adding no new insight or excitement to the match.",
+     "best_word": "pedestrian",
+     "fit": {
+      "pedestrian": 0.9,
+      "pedantic": 0.1
+     },
+     "decisive_clue": "adding no new insight",
+     "reason": "confirms the unimaginative nature of the talk.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pedantic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "lack of new insight is pedestrian.",
+   "feedback_deep": "the commentator's work is uninspired and boring because it simply repeats standard information without any creative spark.",
+   "contrast_rule": "boring/uninspired is pedestrian; rule-obsessed is pedantic.",
+   "hint": "is the commentary interesting, or just repeating what everyone else already knows?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

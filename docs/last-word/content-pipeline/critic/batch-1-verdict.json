@@ -1,0 +1,32 @@
+[
+  {
+    "chain_id": "scrupulous-meticulous_003",
+    "verdict": "REVISE",
+    "issue": "Beat 1 says she 'notices' symptoms (meticulous observation), but is scored 0.93 for scrupulous. Needs to say she 'reports' or 'flags' them."
+  },
+  {
+    "chain_id": "coup-revolution_015",
+    "verdict": "PASS",
+    "issue": ""
+  },
+  {
+    "chain_id": "coup-revolution_010",
+    "verdict": "PASS",
+    "issue": ""
+  },
+  {
+    "chain_id": "scrupulous-meticulous_008",
+    "verdict": "REJECT",
+    "issue": "Flip is caused by switching to a completely different action (from handling suppliers in beat 1 to measuring sugar in beat 2)."
+  },
+  {
+    "chain_id": "agnostic-atheist_014",
+    "verdict": "REVISE",
+    "issue": "Beat 1 only shows lack of practice, making agnostic and atheist equally plausible. Atheist score of 0.76 pretends otherwise."
+  },
+  {
+    "chain_id": "coup-revolution_004",
+    "verdict": "PASS",
+    "issue": ""
+  }
+]

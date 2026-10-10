@@ -1,0 +1,1808 @@
+{
+  "set_id": "querulous-quarrelsome",
+  "source_pair_id": 183,
+  "words": [
+    {
+      "word": "querulous",
+      "sense": "habitually complaining, fretful, or finding fault in a petulant, whiny manner",
+      "concise_meaning": "habitually whining, grumbling, and voicing petty grievances in an irritable, dissatisfied tone",
+      "connotation": "negative (implies childish, annoying, or self-pitying dissatisfaction over trifles)",
+      "register": "formal to literary, but standard in evaluative contexts",
+      "grammar": "adjective; used predicatively ('he was querulous about the delays') or attributively ('a querulous voice', 'querulous tone')",
+      "collocations": [
+        "querulous tone",
+        "querulous voice",
+        "querulous complaint",
+        "querulous demand",
+        "growing increasingly querulous"
+      ],
+      "misconceptions": [
+        "Assuming that any irritable or confrontational person is querulous, overlooking that querulous specifically denotes petulant, whiny grievance-airing rather than an appetite for aggressive verbal fights."
+      ]
+    },
+    {
+      "word": "quarrelsome",
+      "sense": "given to picking fights, initiating disputes, or arguing aggressively with others",
+      "concise_meaning": "eager to argue, dispute claims, pick verbal fights, and provoke hostility",
+      "connotation": "negative (implies combative, antagonistic, or belligerent hostility)",
+      "register": "standard",
+      "grammar": "adjective; used predicatively ('he became quarrelsome after work') or attributively ('a quarrelsome colleague', 'quarrelsome disposition')",
+      "collocations": [
+        "quarrelsome nature",
+        "quarrelsome disposition",
+        "become quarrelsome",
+        "quarrelsome neighbor",
+        "belligerent and quarrelsome"
+      ],
+      "misconceptions": [
+        "Assuming quarrelsome requires physical violence or brawling, when it fundamentally describes a verbal eagerness to contradict, argue, and pick disputes."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "communicative_posture",
+      "description": "Venting petulant grievances, dissatisfaction, and whiny complaints outward vs. actively attacking, challenging, and picking verbal fights with others."
+    },
+    {
+      "id": "interactional_objective",
+      "description": "Seeking relief, sympathy, or airing irritation over personal discomforts vs. seeking confrontation, dispute, and victory in an argument."
+    },
+    {
+      "id": "target_of_hostility",
+      "description": "Directed at impersonal inconveniences, petty discomforts, or perceived neglect vs. directly aimed at an interlocutor to instigate a clash."
+    }
+  ],
+  "edge": {
+    "a": "querulous",
+    "b": "quarrelsome",
+    "boundary_rule": "Querulous captures petulant, whiny fault-finding and grumbling over petty annoyances; quarrelsome captures combative eagerness to pick verbal fights and argue with people.",
+    "clues_a": [
+      "sighing, groaning, and muttering about slight temperature changes, drafty rooms, or slow service",
+      "repetitive whiny complaints about petty administrative paperwork or slight scheduling delays",
+      "adopting an aggrieved, fretful vocal pitch while listing minor personal discomforts",
+      "passively finding fault with every proposed accommodation without proposing solutions",
+      "lamenting that nobody attends to their trivial preferences or minor aches"
+    ],
+    "clues_b": [
+      "loudly contradicting colleagues to provoke a public debate",
+      "turning routine factual statements into aggressive challenges and verbal standoffs",
+      "mocking someone's stance to bait them into an angry argument",
+      "refusing to let minor disagreements drop, escalating them into heated confrontations",
+      "aggressively demanding that peers defend harmless casual remarks"
+    ],
+    "irrelevant_clues": [
+      "whether the speaker speaks in a high-pitched or deep voice",
+      "whether the speaker is exhausted, hungry, or physically stressed",
+      "whether the setting is an office, a kitchen, a hospital, or a sports field",
+      "the total duration of the conversation or meeting"
+    ],
+    "misconceptions": {
+      "M1": "Confusing whiny, petulant complaining with eager combativeness, failing to see that querulous vents grievances rather than seeking a verbal fight.",
+      "M2": "Assuming quarrelsome implies physical brawling, missing that it describes verbal belligerence, argumentative provocation, and dispute-seeking.",
+      "M3": "Equating querulous with rigorous intellectual debate, overlooking that it signifies fretful, irritable grumbling over minor discomforts."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "querulous": [
+        "Throughout the three-hour bus journey, the traveler muttered in a high, fretful tone about the stiff seat springs, the lukewarm air conditioning, and the faint rattling of the window frame.",
+        "Whenever assigned a routine desk shift, Martin let out long, petulant sighs, repeatedly grumbling to the office manager that the fluorescent lighting gave him a mild squint.",
+        "The elderly guest sent the soup back three times, peevishly lamenting that the bowl was tepid, the spoon was too light, and the pepper smelled stale.",
+        "Instead of joining the group discussion, Sandra sat in the corner airing shrill grievances about how chilly the seminar room felt and how nobody had offered her bottled water.",
+        "The passenger delivered a steady stream of whiny laments to the flight attendant about the scratchy blanket and the slight incline of the armrest.",
+        "Tired of the rainy afternoon, the child adopted a fretful whine, endlessly grumbling that his toys were boring and his socks were slightly damp."
+      ],
+      "quarrelsome": [
+        "The moment anyone expressed an opinion on the project timeline, Victor bristled, slammed his notebook down, and aggressively demanded they prove him wrong.",
+        "Even during a casual lunch break, Diana seized on minor comments from her peers, escalating harmless jokes into bitter shouting matches.",
+        "Known throughout the department for his combative streak, the supervisor challenged every procedural suggestion as a personal insult and badgered staff until they backed down.",
+        "As soon as the referee blew the whistle, the defender charged forward, jabbing a finger into the opponent's chest and daring him to trade insults.",
+        "At every tenant association meeting, Frank interrupted the chairperson, ridiculed the neighbors' proposals, and deliberately picked heated disputes over routine agenda items.",
+        "Rather than discussing the budget calmly, the treasurer turned hostile, shouting down each board member and baiting the committee into an ugly confrontation."
+      ]
+    },
+    "counter": {
+      "querulous": [
+        "When the referee called a foul, the coach charged onto the court, shouting profanities and daring the official to eject him.",
+        "The suspect stood up, kicked the table across the interrogation room, and screamed threats at the detective to provoke a fistfight.",
+        "During the debate, the senator attacked her opponent's personal character with aggressive taunts and deliberately incited an angry altercation.",
+        "The striker stormed into the opposing team's dugout, seized their captain by the jersey, and demanded an immediate fight.",
+        "Instead of speaking, the grieving patient sat completely motionless, absorbing the doctor's diagnosis with serene and quiet acceptance.",
+        "The auditor delivered a brisk, objective breakdown of the financial deficit without any sign of personal irritation or emotional grievance."
+      ],
+      "quarrelsome": [
+        "The passenger slumped into his airplane seat, peevishly moaning under his breath that the cabin smelled like stale coffee and the footrest was stiff.",
+        "All morning, the intern whimpered about how heavy the binder felt and how the printer was uncomfortably loud, though he never challenged anyone to an argument.",
+        "Wrapped in a wool blanket, the sick child kept up a steady, fretful grumble about the bitter medicine and the scratchy sheet.",
+        "The hotel guest leaned against the reception desk, delivering a whiny, self-pitying lament about the lukewarm tap water in room four.",
+        "The diplomat listened patiently to both hostile factions and offered a compromise that defused their tension without taking offense.",
+        "Even when falsely accused of making an error, the nurse smiled gently, retrieved the correct file, and calmly clarified the record."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "When the meeting ran ten minutes over schedule, Donald slumped in his chair and muttered a string of peevish complaints about his aching back and cold tea.",
+        "best_word": "querulous",
+        "note": "Donald is airing self-centered, whiny personal grievances about physical comfort rather than instigating a verbal clash or picking a fight with the host."
+      },
+      {
+        "text": "When the meeting ran ten minutes over schedule, Donald stood up, glared at the chair, and loudly dared anyone at the table to justify wasting his time.",
+        "best_word": "quarrelsome",
+        "note": "Donald directly challenges the host, adopts an aggressive posture, and actively seeks a verbal dispute rather than passively lamenting his discomfort."
+      },
+      {
+        "text": "During the long road trip, the passenger in the back seat let out fretful sighs and whined persistently about the air vents blowing on her neck.",
+        "best_word": "querulous",
+        "note": "The irritation centers on passive bodily discomfort and petty fault-finding without any effort to start an argument or provoke the driver."
+      },
+      {
+        "text": "During the long road trip, the passenger in the back seat snapped at the driver's choice of route, mocked his navigation skills, and badgered him to pull over and defend himself.",
+        "best_word": "quarrelsome",
+        "note": "The passenger is actively picking a fight, attacking the driver's competence, and seeking an interpersonal confrontation."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "querulous-quarrelsome_001",
+      "domain": "academic_research",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Tariq's attitude during the department lab renovation is: ___",
+      "beats": [
+        {
+          "text": "While workers replace the fume hoods, doctoral researcher Tariq sits in the corridor, repeatedly moaning in a thin, irritated voice that the dust tickles his throat and the drilling makes his tea cup shake.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.94,
+            "quarrelsome": 0.12
+          },
+          "decisive_clue": "thin, irritated moaning about dust and vibrating tea cups",
+          "reason": "Tariq is venting petty personal discomforts in a fretful, whiny tone rather than challenging anyone.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "When the facilities director walks past with architectural blueprints, Tariq trails after him, delivering a continuous, petulant list of minor grievances about the drafty hallway and the flicker in the overhead lamp.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.96,
+            "quarrelsome": 0.15
+          },
+          "decisive_clue": "trailing the director with a petulant list of minor grievances",
+          "reason": "Even when addressing an authority figure, he merely whines about trivial physical inconveniences without picking a fight.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "Offered a quiet cubicle on the floor above, Tariq slumps into the desk chair and continues muttering discontentedly that the chair wheels stick and the window view is dreary.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.97,
+            "quarrelsome": 0.1
+          },
+          "decisive_clue": "muttering discontentedly about sticky wheels and a dreary view",
+          "reason": "Offered a constructive solution, he immediately finds fresh trivial flaws to grumble about in the same fretful manner.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Tariq's persistent, whiny grumbling over dust, lighting, and sticky chair wheels reflects fretful complaining rather than fighting.",
+      "feedback_deep": "Tariq expresses chronic dissatisfaction over minor bodily discomforts and inconveniences. Because he airs whiny grievances rather than aggressively picking fights or challenging others, querulous is the precise choice.",
+      "contrast_rule": "Querulous whines and finds petty fault; quarrelsome actively attacks and picks verbal fights.",
+      "hint": "Notice whether Tariq is picking an aggressive argument or airing petty personal annoyances."
+    },
+    {
+      "id": "querulous-quarrelsome_002",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Sonya's conduct during the code architecture review is: ___",
+      "beats": [
+        {
+          "text": "The moment a junior engineer presents a proposal for caching data, Sonya interrupts sharply, deriding the design and loudly demanding that he defend his competence before the entire team.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.15,
+            "quarrelsome": 0.93
+          },
+          "decisive_clue": "sharply interrupting and demanding he defend his competence",
+          "reason": "Sonya directly provokes a hostile confrontation and challenges her colleague aggressively.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When the team lead attempts to steer the agenda back to the slides, Sonya bristles, turns on him, and challenges his authority to silence her dissent.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.12,
+            "quarrelsome": 0.96
+          },
+          "decisive_clue": "bristling and challenging the lead's authority to silence her",
+          "reason": "Rather than backing down, she attacks a second colleague, eager to escalate into another heated dispute.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "As the meeting concludes, she corners the senior architect in the hallway, pressing a bitter dispute over a minor variable name and baiting him into a shouting match.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.1,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "pressing a bitter dispute and baiting a shouting match",
+          "reason": "She relentlessly seeks conflict, turning trivial technical choices into aggressive personal clashes.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Sonya's habit of interrupting, challenging authority, and baiting colleagues into shouting matches demonstrates an aggressive appetite for disputes.",
+      "feedback_deep": "Sonya is combative and antagonistic, seeking verbal clashes and provoking opponents at every turn. Because she actively instigates fights rather than whining about personal discomforts, quarrelsome fits.",
+      "contrast_rule": "Quarrelsome provokes heated verbal battles; querulous vents petulant grievances.",
+      "hint": "Look at whether Sonya is provoking interpersonal conflict or whining about personal discomfort."
+    },
+    {
+      "id": "querulous-quarrelsome_003",
+      "domain": "culinary_arts",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Kenji's reaction during the evening banquet service is: ___",
+      "beats": [
+        {
+          "text": "Standing beside the plating station, line cook Kenji emits a continuous string of fretful sighs, muttering peevishly that the parsley stems are too damp and his apron ties feel scratchy.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.95,
+            "quarrelsome": 0.11
+          },
+          "decisive_clue": "fretful sighs and peevish muttering over damp parsley and scratchy ties",
+          "reason": "Kenji is complaining about petty, personal discomforts in a whiny, discontented manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "When the head chef hands him a new bowl of garnishes, Kenji whines that the porcelain rim is uncomfortably cold and laments that nobody ever considers his delicate fingers.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.96,
+            "quarrelsome": 0.1
+          },
+          "decisive_clue": "whining about a cold porcelain rim and lamenting delicate fingers",
+          "reason": "His fault-finding remains self-pitying and petulant, lacking any aggressive combativeness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "Throughout the rush, he keeps up a low, irritable grumble about the squeaky ventilation fan, asking why he must always endure the noisier corner of the kitchen.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.97,
+            "quarrelsome": 0.09
+          },
+          "decisive_clue": "irritable grumble about a fan and self-pitying questions",
+          "reason": "He persistently voices trivial grievances without confronting or picking a fight with any coworker.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Kenji's peevish lamentations about cold bowls, scratchy aprons, and squeaky fans highlight fretful fault-finding rather than combativeness.",
+      "feedback_deep": "Kenji is fixated on minor bodily annoyances, venting his irritation in a whiny, self-pitying tone. Because he does not instigate arguments or attack coworkers, querulous is the exact descriptor.",
+      "contrast_rule": "Petulant fault-finding over petty inconveniences indicates querulous, not quarrelsome.",
+      "hint": "Focus on whether the speaker is nursing personal grievances or attacking other people."
+    },
+    {
+      "id": "querulous-quarrelsome_004",
+      "domain": "journalism",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Beatrice's disposition in the newsroom editorial meeting is: ___",
+      "beats": [
+        {
+          "text": "As the editor outlines the morning lineup, Beatrice scoffs openly, contradicts the headline choices, and loudly demands that her colleagues defend their editorial integrity.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.16,
+            "quarrelsome": 0.92
+          },
+          "decisive_clue": "scoffing openly, contradicting headline choices, and demanding defenses",
+          "reason": "Beatrice is deliberately provoking a hostile dispute and challenging her colleagues to a fight.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When a reporter offers a polite compromise on the lead article, Beatrice cuts him off with an aggressive sneer, escalating the discussion into an acrimonious personal feud.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.12,
+            "quarrelsome": 0.96
+          },
+          "decisive_clue": "cutting him off with a sneer and escalating into a personal feud",
+          "reason": "She refuses de-escalation, actively seeking conflict and attacking anyone who speaks.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "Even after the assignment sheet is approved, Beatrice stands in the doorway, baiting the copy editor with hostile insults until security asks her to lower her voice.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.09,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "baiting the copy editor with hostile insults",
+          "reason": "She persists in initiating verbal hostility and seeking confrontation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Beatrice's aggressive interruptions, personal attacks, and deliberate provocation of shouting matches mark an eagerness to fight.",
+      "feedback_deep": "Beatrice is belligerent, seeking to contradict peers and turn routine editorial decisions into fierce verbal confrontations. Because she picks fights rather than airing whiny grievances, quarrelsome is correct.",
+      "contrast_rule": "Aggressive verbal hostility belongs to quarrelsome; fretful complaining belongs to querulous.",
+      "hint": "Notice whether Beatrice is trying to provoke an argument or merely venting dissatisfaction."
+    },
+    {
+      "id": "querulous-quarrelsome_005",
+      "domain": "hospital_clinic",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Lin's demeanor while waiting in the outpatient clinic is: ___",
+      "beats": [
+        {
+          "text": "Sitting on the vinyl bench, Lin lets out an exaggerated groan every few minutes, whining in a high, petulant pitch that the air conditioning is too drafty and the clock ticks too loudly.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.95,
+            "quarrelsome": 0.11
+          },
+          "decisive_clue": "high, petulant whining about drafts and loud clock ticks",
+          "reason": "Lin is giving voice to petty personal discomforts in an irritable, whiny tone.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "When a triage nurse brings her a cup of water, Lin peevishly pushes it away, muttering that the paper cup is flimsy and nobody ever shows proper concern for her thirst.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.96,
+            "quarrelsome": 0.12
+          },
+          "decisive_clue": "peevishly muttering that the cup is flimsy and nobody cares",
+          "reason": "Her reaction is fretful and self-pitying over a minor detail, not combative or argumentative.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "Called into the exam room, Lin immediately begins a breathless, whiny lamentation about the stiffness of the paper sheet on the examination table.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.98,
+            "quarrelsome": 0.08
+          },
+          "decisive_clue": "whiny lamentation about the stiffness of the table sheet",
+          "reason": "She continues her habit of finding fault with trivial environmental factors in a whining voice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Lin's petulant complaints about ticking clocks, flimsy cups, and stiff exam paper demonstrate whiny fault-finding.",
+      "feedback_deep": "Lin is characterized by chronic, fretful dissatisfaction with minor physical conditions. Because she airs irritable, self-pitying grievances rather than picking fights with the clinical staff, querulous is appropriate.",
+      "contrast_rule": "Querulous expresses irritable, whiny dissatisfaction; quarrelsome seeks combative arguments.",
+      "hint": "Consider whether Lin is picking a fight or expressing petty, fretful complaints."
+    },
+    {
+      "id": "querulous-quarrelsome_006",
+      "domain": "urban_planning",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Darren's approach during the neighborhood council meeting is: ___",
+      "beats": [
+        {
+          "text": "Before the committee even introduces the proposed bike lane, Darren leaps to his feet, brandishing a fist and daring anyone in the room to contradict his objections.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.13,
+            "quarrelsome": 0.94
+          },
+          "decisive_clue": "leaping up, brandishing a fist, and daring anyone to contradict him",
+          "reason": "Darren aggressively provokes confrontation and seeks a verbal battle.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When a resident attempts to explain the traffic flow data, Darren shouts over her, mocking her expertise and inciting the back row into an angry verbal clash.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.11,
+            "quarrelsome": 0.97
+          },
+          "decisive_clue": "shouting over her, mocking her expertise, and inciting a verbal clash",
+          "reason": "He deliberately turns a policy discussion into a hostile, confrontational altercation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "As the moderator moves to adjourn, Darren bangs on the podium, hurling personal accusations at the board and demanding an immediate argument.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.08,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "hurling personal accusations and demanding an immediate argument",
+          "reason": "He refuses peaceful conclusion, actively picking fights until the very end.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Darren's hostile shouting, personal insults, and eagerness to incite angry clashes reveal a belligerent, fight-picking nature.",
+      "feedback_deep": "Darren thrives on interpersonal conflict, using aggression and mockery to bait council members into shouting matches. Because he instigates fights rather than grumbling about personal comfort, quarrelsome is correct.",
+      "contrast_rule": "Picking fights and baiting conflict defines quarrelsome; whiny grumbling defines querulous.",
+      "hint": "Look at whether Darren is initiating verbal warfare or expressing whiny discomfort."
+    },
+    {
+      "id": "querulous-quarrelsome_007",
+      "domain": "academic_research",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Amara's behavior while writing the collaborative biology paper is: ___",
+      "beats": [
+        {
+          "text": "When her co-author suggests reorganizing the methods section, Amara bristles aggressively, shouting that his edits insult her intelligence and daring him to remove a single sentence.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.18,
+            "quarrelsome": 0.92
+          },
+          "decisive_clue": "bristling aggressively, shouting insults, and daring him to remove a sentence",
+          "reason": "Her initial reaction is overtly combative and eager to fight over the draft.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "Once the co-author steps back, Amara's aggressive fury evaporates, and for the next three hours she slumps over her keyboard, delivering a high-pitched, whiny stream of laments about how dry her pen is, how dim the study lamp feels, and how nobody appreciates her fatigue.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.94,
+            "quarrelsome": 0.14
+          },
+          "decisive_clue": "high-pitched, whiny stream of laments about dry pens, dim lamps, and unappreciated fatigue",
+          "reason": "Her posture completely flips from combative confrontation to petulant, self-pitying complaining over petty trifles.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "Even when offered fresh pens and hot tea, she peevishly pushes them aside, groaning that the tea is too fragrant and the corridor carpet smells faintly of wet dog.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.96,
+            "quarrelsome": 0.1
+          },
+          "decisive_clue": "peevishly groaning about fragrant tea and wet dog smells",
+          "reason": "She remains locked in fretful, trivial fault-finding rather than resuming any verbal combat.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Amara's shift from angry shouting to whiny, petulant lamentation over dim lamps and tea aroma signals querulous behavior.",
+      "feedback_deep": "Amara begins with combative aggression, but her behavior flips into chronic, self-pitying fault-finding over minor physical annoyances. Because her ongoing conduct is whiny grievance-airing rather than fight-picking, querulous is best.",
+      "contrast_rule": "Combative confrontation flips to querulous when the focus becomes whiny personal grievances.",
+      "hint": "Notice how Amara's behavior shifts from aggressive dispute to fretful, petty complaining."
+    },
+    {
+      "id": "querulous-quarrelsome_008",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Carlos's demeanor toward his project teammates is: ___",
+      "beats": [
+        {
+          "text": "Throughout the morning stand-up, Carlos leans against the whiteboard, sighing in a fretful, irritated tone that the office espresso is watery and the stand-up lasts four minutes too long.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.93,
+            "quarrelsome": 0.15
+          },
+          "decisive_clue": "fretful, irritated sighs over watery espresso and slightly long meetings",
+          "reason": "Carlos is passively venting petty annoyances and personal dissatisfaction in a whiny manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "However, when the designer calmly presents an alternate user flow, Carlos suddenly drops his whiny grumbling, slams his tablet onto the desk, steps into her personal space, and aggressively demands she explain who gave her permission to touch his mockups.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.16,
+            "quarrelsome": 0.94
+          },
+          "decisive_clue": "slamming the tablet, invading personal space, and aggressively demanding an explanation",
+          "reason": "His demeanor flips from passive fault-finding to direct, combative hostility and instigating a fight.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When another colleague tries to calm him down, Carlos turns his fury on him as well, baiting him with stinging personal barbs and daring him to take the dispute outside.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.11,
+            "quarrelsome": 0.97
+          },
+          "decisive_clue": "baiting with personal barbs and daring him to take the dispute outside",
+          "reason": "He continues to aggressively escalate conflict and provoke verbal altercations.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Carlos's abrupt escalation from whiny grumbling to table-slamming aggression and personal confrontation flips the dynamic to combativeness.",
+      "feedback_deep": "Carlos begins by venting whiny grievances about office coffee, but then shifts to aggressive intimidation and eager conflict. Because he is now picking fights and provoking shouting matches, quarrelsome fits.",
+      "contrast_rule": "When whiny grumbling turns into active provocation and hostility, quarrelsome takes over.",
+      "hint": "Watch for the moment Carlos abandons passive grumbling and actively picks a fight."
+    },
+    {
+      "id": "querulous-quarrelsome_009",
+      "domain": "culinary_arts",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Nadia's conduct during the menu tasting session is: ___",
+      "beats": [
+        {
+          "text": "As the sous-chef slices the roasted duck, Nadia bristles, snatches the carving knife from his hand, and fiercely berates him in front of the kitchen staff, demanding he justify his butchery skills.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.17,
+            "quarrelsome": 0.92
+          },
+          "decisive_clue": "snatching the knife, berating him publicly, and demanding he justify his skills",
+          "reason": "Nadia is confrontational, hostile, and eager to pick a fight with her coworker.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "After the sous-chef departs, Nadia abandons her aggressive posture entirely, spending the remaining hour slumping in a booth, letting out thin, whiny sighs about the slight draft near her knees and the faint smudge on her water tumbler.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.95,
+            "quarrelsome": 0.14
+          },
+          "decisive_clue": "thin, whiny sighs about knee drafts and glass smudges",
+          "reason": "Her demeanor flips to fretful, irritable complaining about trivial physical discomforts.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "When the host brings a clean tumbler, she pushes it away with an annoyed grimace, peevishly muttering that the ice cubes are melting too fast and ruining her mood.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.97,
+            "quarrelsome": 0.09
+          },
+          "decisive_clue": "peevishly muttering about fast-melting ice ruining her mood",
+          "reason": "She persists in petulant, self-pitying fault-finding over minor details without seeking any further fight.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Nadia's shift from public confrontation to whiny sighs and petty complaints about drafts and ice cubes flips her to querulous.",
+      "feedback_deep": "Nadia begins with aggressive combativeness, but quickly settles into persistent, petty fault-finding over trivial bodily discomforts. Because she is whining rather than picking fights, querulous is the proper term.",
+      "contrast_rule": "Petulant complaining over minor discomforts indicates querulous, even after initial hostility.",
+      "hint": "Look at how Nadia's focus turns from attacking the cook to whining about petty discomforts."
+    },
+    {
+      "id": "querulous-quarrelsome_010",
+      "domain": "journalism",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Henrik's style during the press conference is: ___",
+      "beats": [
+        {
+          "text": "Seated in the press gallery, Henrik lets out fretful whimpers, grumbling to his neighbor in an aggrieved, whiny tone that his microphone cord is stiff and the auditorium smells like lemon polish.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.94,
+            "quarrelsome": 0.13
+          },
+          "decisive_clue": "fretful whimpers and whiny grumbling over stiff cords and lemon polish",
+          "reason": "Henrik is airing trivial personal discomforts in a petulant, dissatisfied manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "However, as soon as the spokesperson takes the stage, Henrik leaps from his seat, cuts off the opening statement with an aggressive shout, and furiously challenges the speaker to trade insults with him.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.15,
+            "quarrelsome": 0.95
+          },
+          "decisive_clue": "cutting off the speaker with an aggressive shout and challenging him to trade insults",
+          "reason": "His posture flips decisively to hostile provocation and initiating a public dispute.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "Ignoring the microphone rules, he turns on fellow reporters who ask him to sit down, mocking their courage and daring anyone in the room to force him into silence.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.1,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "mocking fellow reporters and daring anyone to force him into silence",
+          "reason": "He continues to instigate verbal warfare and attack anyone attempting to restore order.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Henrik's leap into hostile shouting, mocking colleagues, and baiting the speaker flips his demeanor into aggressive combativeness.",
+      "feedback_deep": "Henrik starts with whiny grumbles about lemon polish and audio cables, but violently flips into picking fights with the speaker and fellow journalists. Because he is aggressively confrontational, quarrelsome applies.",
+      "contrast_rule": "Aggressively baiting conflict and picking verbal fights turns the assessment to quarrelsome.",
+      "hint": "Notice the sudden transition from fretful muttering to active, belligerent confrontation."
+    },
+    {
+      "id": "querulous-quarrelsome_011",
+      "domain": "hospital_clinic",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Mei's behavior during the hospital wing inspection is: ___",
+      "beats": [
+        {
+          "text": "Upon entering the pharmacy annex, hospital auditor Mei confronts the head pharmacist, loudly accusing him of incompetence and challenging him to defend his staff's logging habits.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.19,
+            "quarrelsome": 0.91
+          },
+          "decisive_clue": "loudly accusing him of incompetence and challenging him to defend habits",
+          "reason": "Mei is combative, picking an aggressive fight and seeking an altercation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "Once the pharmacist hands over the complete digital logs, Mei drops the confrontation, slumping into a desk chair to deliver a whiny, self-pitying lament about how cold the air vent is and how her shoes pinch her heels.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.94,
+            "quarrelsome": 0.15
+          },
+          "decisive_clue": "whiny, self-pitying lament about cold air vents and pinching shoes",
+          "reason": "Her demeanor flips to fretful, petulant complaining about minor bodily discomforts.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "She spends the remainder of the inspection trailing the nurse supervisor, peevishly muttering that the clipboards are too heavy and the fluorescent tubes hum at an annoying frequency.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.96,
+            "quarrelsome": 0.11
+          },
+          "decisive_clue": "peevishly muttering about heavy clipboards and humming tubes",
+          "reason": "She remains entirely occupied with trivial, whiny fault-finding rather than picking any further fights.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Mei's transition from challenging the pharmacist to whimpering about pinching shoes and humming lights flips her to querulous.",
+      "feedback_deep": "After an initial combative outburst, Mei's conduct settles into chronic, whiny grievance-airing about physical discomforts. Because she is petulantly fault-finding rather than picking fights, querulous is the right word.",
+      "contrast_rule": "Whiny lamentations over minor annoyances mark querulous, replacing earlier combativeness.",
+      "hint": "Look at how Mei's hostility dissolves into whiny complaints about physical discomfort."
+    },
+    {
+      "id": "querulous-quarrelsome_012",
+      "domain": "urban_planning",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Dev's posture during the zoning board hearing is: ___",
+      "beats": [
+        {
+          "text": "While waiting for the hearing to begin, Dev sits in the third row, muttering in a high, fretful tone that the auditorium smells stale and the wooden seat hurts his lower back.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.93,
+            "quarrelsome": 0.14
+          },
+          "decisive_clue": "high, fretful muttering about stale air and wooden seat discomfort",
+          "reason": "Dev is expressing petty, personal dissatisfaction in a whiny manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "When the board chair opens the floor, Dev surges to the front microphone, slams his fist on the podium, insults the city engineer, and aggressively dares the commissioners to vote against his petition.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.14,
+            "quarrelsome": 0.95
+          },
+          "decisive_clue": "slamming fist, insulting the engineer, and daring commissioners to vote against him",
+          "reason": "His behavior flips from passive, whiny complaining to aggressive, in-your-face combativeness.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "As neighbors try to voice their opinions, Dev turns on them with hostile sneers, interrupting their testimony and trying to provoke a shouting match in the aisle.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.09,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "interrupting testimony and trying to provoke a shouting match",
+          "reason": "He actively seeks interpersonal conflict and escalates verbal hostility with anyone nearby.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Dev's shift from whining about wooden seats to insulting the engineer and inciting aisle shouting matches signals quarrelsome behavior.",
+      "feedback_deep": "Dev begins by whining about uncomfortable chairs, but shifts completely into aggressive belligerence, attacking officials and baiting neighbors into arguments. Because he is picking fights, quarrelsome is precise.",
+      "contrast_rule": "Active provocation and instigating verbal fights flips the description to quarrelsome.",
+      "hint": "Notice when Dev moves from whining about his chair to attacking everyone in the room."
+    },
+    {
+      "id": "querulous-quarrelsome_013",
+      "domain": "theater_production",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Fiona's demeanor during the backstage dress rehearsal is: ___",
+      "beats": [
+        {
+          "text": "While the stagehands adjust the spotlights, lead actress Fiona paces the wings, visibly agitated and muttering continuous complaints under her breath.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.81,
+            "quarrelsome": 0.45
+          },
+          "decisive_clue": "visibly agitated and muttering continuous complaints",
+          "reason": "Her agitation could suggest either an impending fight or whiny dissatisfaction, though complaining leans querulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "As the wardrobe assistant approaches, Fiona lets out a high, petulant whine, lamenting that her satin collar feels three millimeters too stiff and the dressing room water is insufficiently chilled.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.94,
+            "quarrelsome": 0.18
+          },
+          "decisive_clue": "high, petulant whine about a stiff collar and insufficiently chilled water",
+          "reason": "The specific nature of her complaints narrows the behavior strictly to whiny, self-absorbed fault-finding over petty comforts.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "Instead of engaging with the director or arguing over blocking, she continues her fretful grumble, whimpering that the draft from the emergency exit will ruin her delicate vocal chords.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.98,
+            "quarrelsome": 0.08
+          },
+          "decisive_clue": "avoiding arguments over blocking to whimper about drafts",
+          "reason": "Explicitly avoiding conflict while obsessing over trivial physical discomforts firmly establishes querulous.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Fiona's petulant whimpering about stiff collars and drafty exits narrows her behavior to whiny fault-finding rather than combat.",
+      "feedback_deep": "While Fiona begins in general agitation, her complaints narrow into self-pitying, whiny dissatisfaction over trivial physical conditions. Because she avoids arguments and merely vents petty grievances, querulous is definitively correct.",
+      "contrast_rule": "Whiny preoccupation with trivial physical discomforts narrows the choice to querulous.",
+      "hint": "Look at what Fiona's agitation is directed toward: petty personal discomforts or fighting people."
+    },
+    {
+      "id": "querulous-quarrelsome_014",
+      "domain": "retail_management",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Russell's attitude toward his fellow floor managers is: ___",
+      "beats": [
+        {
+          "text": "During the weekly store shift meeting, assistant manager Russell creates immediate tension by frowning heavily and disputing every announcement made by the team.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.44,
+            "quarrelsome": 0.83
+          },
+          "decisive_clue": "creating tension and disputing every announcement",
+          "reason": "Russell's opposition creates friction, leaning toward an argumentative stance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When a colleague proposes a modest tweak to the checkout schedule, Russell aggressively leans across the counter, mocks his planning abilities, and dares him to enforce the change.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.16,
+            "quarrelsome": 0.95
+          },
+          "decisive_clue": "mocking planning abilities and daring him to enforce the change",
+          "reason": "The behavior narrows directly into combative provocation and actively picking a fight.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "Rather than voicing any personal dissatisfaction or discomfort, he spends the rest of the shift seeking out disagreements with the inventory crew, eager to escalate harmless questions into angry confrontations.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.07,
+            "quarrelsome": 0.99
+          },
+          "decisive_clue": "seeking out disagreements to escalate questions into angry confrontations",
+          "reason": "His complete lack of personal whining combined with active dispute-seeking solidifies quarrelsome.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Russell's aggressive mockery and deliberate escalation of routine questions into confrontations narrows his attitude to quarrelsome.",
+      "feedback_deep": "Russell is not venting whiny complaints about physical discomfort; he is actively picking fights and challenging his coworkers' competence. Because his primary drive is combative dispute, quarrelsome fits.",
+      "contrast_rule": "Actively seeking interpersonal confrontation narrows the judgment decisively to quarrelsome.",
+      "hint": "Notice how Russell deliberately picks fights rather than complaining about personal discomfort."
+    },
+    {
+      "id": "querulous-quarrelsome_015",
+      "domain": "theater_production",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Anya's conduct during script read-throughs is: ___",
+      "beats": [
+        {
+          "text": "During the first table read of the new play, Anya constantly interrupts the session, creating a tense and uncomfortable atmosphere in the rehearsal room.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.46,
+            "quarrelsome": 0.82
+          },
+          "decisive_clue": "constantly interrupting and creating tension",
+          "reason": "Her disruptive behavior introduces friction, hinting at an argumentative disposition.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "She singles out the playwright's phrasing, aggressively interrogating him on every dialogue choice and demanding that he defend his artistic credentials on the spot.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.18,
+            "quarrelsome": 0.94
+          },
+          "decisive_clue": "aggressively interrogating him and demanding he defend artistic credentials",
+          "reason": "Her conduct narrows to combative confrontation, actively baiting the writer into a fight.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When fellow cast members urge her to move past the first scene, she turns on them with sharp retorts, baiting each actor into a heated verbal dispute over minor stage directions.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.09,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "baiting each actor into a heated verbal dispute",
+          "reason": "She demonstrates a persistent appetite for interpersonal clashes and verbal combat.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Anya's aggressive cross-examination of the writer and baiting of fellow actors into disputes clearly narrows to quarrelsome.",
+      "feedback_deep": "Anya's behavior is combative and antagonistic. She does not whine about personal discomforts or air petulant grievances; she aggressively picks fights with everyone in the room. Thus, quarrelsome is exact.",
+      "contrast_rule": "Baiting colleagues into verbal clashes narrows the description to quarrelsome.",
+      "hint": "Look at whether Anya is picking fights with people or grumbling about her own comfort."
+    },
+    {
+      "id": "querulous-quarrelsome_016",
+      "domain": "retail_management",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "Marcus's manner while reorganizing the store inventory is: ___",
+      "beats": [
+        {
+          "text": "Assigned to restock the top shelves, stockroom clerk Marcus emits a steady stream of petulant grumbles, whining that the stepladder wobbles slightly and the overhead bulb is irritatingly bright.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.94,
+            "quarrelsome": 0.13
+          },
+          "decisive_clue": "petulant grumbles and whining about wobbly ladders and bright bulbs",
+          "reason": "Marcus is airing petty grievances about his equipment and environment in a whiny tone.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "When the warehouse supervisor steps into the aisle, Marcus suddenly raises his voice to a loud, sharp bark, waving a clipboard and shouting that the delivery pallets are stacked haphazardly.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.88,
+            "quarrelsome": 0.35
+          },
+          "decisive_clue": "loud shouting about haphazard pallets, still venting fault-finding grievances",
+          "reason": "Although he raises his volume sharply (a false shift toward combativeness), he is still merely voicing petty fault-finding and airing grievances rather than picking an aggressive fight.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "As soon as the supervisor offers to help him restack, Marcus shrinks back, sighing peevishly that his back already aches and that nobody ever gives him the lighter boxes anyway.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.96,
+            "quarrelsome": 0.1
+          },
+          "decisive_clue": "shrinking back and sighing peevishly about backaches and unfair boxes",
+          "reason": "He immediately retreats to self-pitying, whiny complaining over bodily discomfort, proving he never intended to fight.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Marcus's sudden shout about messy pallets is just louder fault-finding, quickly returning to self-pitying, whiny grumbling.",
+      "feedback_deep": "Though Marcus briefly raises his voice, he is not picking a fight or seeking interpersonal combat. The outburst is merely an amplified grievance about messy pallets, followed by petulant whining about backaches. Querulous remains the true fit.",
+      "contrast_rule": "Loud voice alone does not make someone quarrelsome if the core act is petulant fault-finding.",
+      "hint": "Do not be distracted by the sudden increase in volume; check whether Marcus actually wants to fight."
+    },
+    {
+      "id": "querulous-quarrelsome_017",
+      "domain": "sport",
+      "transfer": true,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "Mateo's conduct during basketball practice drills is: ___",
+      "beats": [
+        {
+          "text": "During a full-court scrimmage, Mateo aggressively shoves his defender after a clean block, stepping into his face and daring him to try that move again.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.12,
+            "quarrelsome": 0.94
+          },
+          "decisive_clue": "stepping into the defender's face and daring him to try that move again",
+          "reason": "Mateo is combative, eager to pick a fight and provoke a confrontation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When the assistant coach blows the whistle and calls a foul, Mateo drops his head, lets out an exaggerated groan, and mutters about how the gym floor is slippery and his shoes lack grip.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.38,
+            "quarrelsome": 0.86
+          },
+          "decisive_clue": "brief muttering about slippery floors after an aggressive foul",
+          "reason": "Although he briefly grumbles about slippery shoes (a false shift mimicking querulous whining), it is just an excuse to avoid a penalty, and his hostility remains simmering.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "The second the drill resumes, he charges right back at the opposing forward, hurling personal insults, disputing every possession, and baiting the bench into an angry brawl.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.08,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "hurling personal insults, disputing possessions, and baiting a brawl",
+          "reason": "His fundamental, persistent drive is picking aggressive fights with everyone on the court.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Mateo's brief mutter about slippery shoes was a momentary excuse; his immediate return to baiting fights confirms quarrelsome conduct.",
+      "feedback_deep": "A brief complaint about shoes does not make Mateo querulous. His dominant conduct is combative provocation, trading insults, and aggressively instigating fights with teammates. Quarrelsome is the unmistakable fit.",
+      "contrast_rule": "A momentary excuse does not disguise a fundamentally combative, fight-picking nature.",
+      "hint": "Look past Mateo's fleeting excuse about the gym floor to see his ongoing appetite for conflict."
+    },
+    {
+      "id": "querulous-quarrelsome_018",
+      "domain": "household",
+      "transfer": true,
+      "chain_type": "reframe",
+      "difficulty": 4,
+      "frame": "Salma's behavior during weekend family chores is: ___",
+      "beats": [
+        {
+          "text": "When asked to sweep the porch, Salma kicks the broom aside, shouts that her weekend is being stolen, and aggressively challenges her brother to a bitter shouting match over who does more chores.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.21,
+            "quarrelsome": 0.91
+          },
+          "decisive_clue": "challenging her brother to a bitter shouting match over chores",
+          "reason": "Salma initially appears combative and eager to fight with her sibling.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "However, observers realize the shouting is only a momentary front; for the rest of the morning, she slumps on the porch steps, delivering a non-stop, high-pitched stream of whiny laments about the humidity, her tired wrists, and the squeak of the screen door.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.95,
+            "quarrelsome": 0.16
+          },
+          "decisive_clue": "high-pitched stream of whiny laments about humidity, tired wrists, and squeaky doors",
+          "reason": "The context reframes her true disposition: she has no genuine appetite for combat, but is fundamentally an irritable, whiny complainer over petty discomforts.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "Even when her brother finishes sweeping for her, she continues her fretful grumble, peevishly complaining that the broom bristles were left dusty and the lemonade tastes slightly sour.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.98,
+            "quarrelsome": 0.08
+          },
+          "decisive_clue": "fretful grumble about dusty bristles and slightly sour lemonade",
+          "reason": "Free from chores, she maintains her petulant, self-pitying fault-finding over minor details.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Reframing Salma's initial outburst reveals her true pattern: non-stop, whiny complaining over minor physical discomforts and sour drinks.",
+      "feedback_deep": "Although Salma initially sparks a brief argument, her enduring pattern is reframed as chronic, petulant whining. Because she is preoccupied with airing petty grievances about humidity and sour lemonade rather than fighting, querulous fits.",
+      "contrast_rule": "When aggressive posturing dissolves into chronic, whiny fault-finding, querulous is the true fit.",
+      "hint": "Look at what Salma does once the chore dispute ends: does she pick another fight or whine?"
+    },
+    {
+      "id": "querulous-quarrelsome_019",
+      "domain": "travel",
+      "transfer": true,
+      "chain_type": "corrupt",
+      "difficulty": 4,
+      "frame": "Kieran's behavior during the cross-country train excursion is: ___",
+      "beats": [
+        {
+          "text": "Sitting by the observation window, Kieran keeps up an irritable, whiny monologue, lamenting in a petulant voice that the scenic coach is two degrees too warm and the headrest cushion lacks firmness.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.95,
+            "quarrelsome": 0.12
+          },
+          "decisive_clue": "irritable, whiny monologue lamenting warm temperatures and soft cushions",
+          "reason": "Kieran is venting petty personal discomforts in a fretful, complaining manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "As the afternoon progresses, his petty irritation corrupts into overt hostility; he stands in the narrow aisle, deliberately blocking passengers, insulting a conductor's uniform, and aggressively daring the carriage to challenge him.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.17,
+            "quarrelsome": 0.94
+          },
+          "decisive_clue": "blocking passengers, insulting the conductor, and aggressively daring people to challenge him",
+          "reason": "His whiny dissatisfaction degenerates into active, belligerent provocation and picking fights.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "When a passenger politely requests to pass, Kieran bristles with rage, slamming his fist against the compartment door and trying to provoke a physical altercation before being restrained.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.08,
+            "quarrelsome": 0.98
+          },
+          "decisive_clue": "slamming fist and trying to provoke an altercation",
+          "reason": "His conduct has fully settled into dangerous interpersonal combativeness and confrontation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Kieran's corruption from whiny complaints about headrests into blocking aisles, insulting conductors, and provoking altercations marks quarrelsome conduct.",
+      "feedback_deep": "Kieran starts as an irritable complainer, but his behavior corrupts into active belligerence. Because he seeks out interpersonal clashes and aggressively challenges strangers to altercations, quarrelsome is the proper word.",
+      "contrast_rule": "When petulant whining corrupts into active fight-picking and hostility, quarrelsome takes over.",
+      "hint": "Notice how Kieran's mild dissatisfaction degenerates into aggressive, hostile confrontation."
+    },
+    {
+      "id": "querulous-quarrelsome_020",
+      "domain": "short_dialogue",
+      "transfer": true,
+      "chain_type": "precision",
+      "difficulty": 4,
+      "frame": "Leila's responses during the community forum debate are: ___",
+      "beats": [
+        {
+          "text": "\"I object to that proposal!\" Leila calls out sharply from the audience, interrupting the speaker and causing the room to turn in anticipation of a fierce confrontation.",
+          "best_word": "quarrelsome",
+          "fit": {
+            "querulous": 0.38,
+            "quarrelsome": 0.85
+          },
+          "decisive_clue": "interrupting sharply and creating anticipation of a fierce confrontation",
+          "reason": "Her sharp public interruption appears combative and argumentative at first glance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "querulous": "M2"
+          }
+        },
+        {
+          "text": "\"The microphone stand is squeaking, and the speaker's jacket is a garish shade of orange that gives me an instant headache,\" she whines in a high-pitched, self-pitying voice.",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.96,
+            "quarrelsome": 0.15
+          },
+          "decisive_clue": "high-pitched, self-pitying whining about squeaky stands and bright jackets",
+          "reason": "A more precise look at her actual words reveals she is not disputing policy or picking a fight; she is merely airing absurdly petty personal grievances in a whiny tone.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        },
+        {
+          "text": "When the moderator asks if she has any objection to the municipal ordinance, she groans peevishly, \"No, but nobody brought cushions for these hard plastic chairs!\"",
+          "best_word": "querulous",
+          "fit": {
+            "querulous": 0.98,
+            "quarrelsome": 0.08
+          },
+          "decisive_clue": "peevish groans about lacking cushions for hard plastic chairs",
+          "reason": "She has zero interest in debate or conflict; she is entirely consumed by fretful, petty fault-finding.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "quarrelsome": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Precise examination reveals Leila is not arguing policy; her sharp interruption merely voiced whiny grievances about squeaky microphones and hard chairs.",
+      "feedback_deep": "Although Leila's interruption initially seemed like an aggressive challenge, precision shows she has no desire to debate or pick a fight. Her complaints are entirely petulant, whiny grievances about trivial physical discomforts. Querulous is the exact fit.",
+      "contrast_rule": "Fretful, whiny fault-finding over petty discomforts is querulous, even when voiced abruptly.",
+      "hint": "Look closely at the content of Leila's objection: is it a debate point or a whiny personal grievance?"
+    }
+  ]
+}

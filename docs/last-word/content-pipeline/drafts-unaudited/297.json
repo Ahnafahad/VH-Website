@@ -1,0 +1,1286 @@
+{
+ "set_id": "iconoclast-maverick",
+ "source_pair_id": 297,
+ "words": [
+  {
+   "word": "iconoclast",
+   "sense": "the reformer",
+   "concise_meaning": "someone who actively challenges or attacks established institutions, beliefs, or traditions.",
+   "connotation": "provocative, deliberate, ideological, often public.",
+   "register": "formal, academic, intellectual.",
+   "grammar": "noun, countable.",
+   "collocations": [
+    "cultural iconoclast",
+    "relentless iconoclast",
+    "dismantle tradition",
+    "iconoclast artist",
+    "challenge authority"
+   ],
+   "misconceptions": [
+    "assumes it just means a rule-breaker, ignoring the attack on tradition/ideology"
+   ]
+  },
+  {
+   "word": "maverick",
+   "sense": "the individualist",
+   "concise_meaning": "someone who acts independently and resists conformist pressures from a group.",
+   "connotation": "non-conformist, adventurous, pragmatic, self-directed.",
+   "register": "neutral, journalistic, common.",
+   "grammar": "noun, countable.",
+   "collocations": [
+    "maverick politician",
+    "maverick scientist",
+    "maverick entrepreneur",
+    "go it alone",
+    "buck the system"
+   ],
+   "misconceptions": [
+    "assumes it means someone who destroys things, ignoring the focus on independence"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "target_of_action",
+   "description": "Whether the action focuses on dismantling a collective system or just asserting personal autonomy."
+  },
+  {
+   "id": "motive",
+   "description": "Whether the actor aims to destroy or reform an institution, or simply prefers to be left alone."
+  },
+  {
+   "id": "visibility",
+   "description": "Whether the action is a public performance of defiance or a quiet choice to do things differently."
+  }
+ ],
+ "edge": {
+  "a": "iconoclast",
+  "b": "maverick",
+  "boundary_rule": "The iconoclast attacks the establishment to change it; the maverick avoids the establishment to preserve their own path.",
+  "clues_a": [
+   "public attack",
+   "intent to reform or dismantle",
+   "targeting an institution",
+   "ideological motivation"
+  ],
+  "clues_b": [
+   "personal refusal to conform",
+   "no effort to change others",
+   "pragmatic or adventurous motive",
+   "acting without regard to group norms"
+  ],
+  "irrelevant_clues": [
+   "breaking rules (both do it)",
+   "being disliked by the group (both can be)",
+   "being creative (both can be)"
+  ],
+  "misconceptions": {
+   "M1": "Confusing attacking a tradition with merely ignoring it.",
+   "M2": "Thinking any rule-breaker is an attacker of the system.",
+   "M3": "Labeling an institution-destroyer as just an 'independent thinker'."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "iconoclast": [
+    "The museum curator became an iconoclast, publicly burning paintings that were considered untouchable masterpieces.",
+    "As a self-described iconoclast, she spent her life writing books that systematically dismantled the city's ancient religious dogmas.",
+    "The senator was seen as an iconoclast because he campaigned on a platform to entirely dissolve the department he was running for.",
+    "Known as an iconoclast, the architect tore down historical buildings just to prove that old urban planning was obsolete.",
+    "The professor was an iconoclast, dedicating every lecture to exposing why the university's core curriculum was based on falsehoods.",
+    "The tech founder acted as an iconoclast, aggressively campaigning to bankrupt the very industry he had started in."
+   ],
+   "maverick": [
+    "The surgeon was a maverick who preferred to use techniques he developed himself, despite the hospital board's strict guidelines.",
+    "A true maverick, he ignored the group’s travel plan and spent his vacation exploring the city alone.",
+    "The analyst was a maverick who ignored all standard risk models and made decisions based on her own intuition.",
+    "She was a maverick entrepreneur who preferred working from a remote cabin rather than following the standard office culture.",
+    "As a maverick artist, he ignored all current trends and developed a style that no one else was using.",
+    "The young player was a maverick who chose to use unconventional strategies in every tournament, frustrating his coach."
+   ]
+  },
+  "counter": {
+   "iconoclast": [
+    "She ignored the group’s decision and did the task her own way. (This is a maverick.)",
+    "He didn't care about the laws, he just liked to live quietly by himself. (This is a maverick.)",
+    "The student decided to design his own study plan instead of using the school's. (This is a maverick.)",
+    "The scientist made independent decisions about her career. (This is a maverick.)",
+    "He preferred to work alone rather than as part of the team. (This is a maverick.)",
+    "The writer kept his controversial ideas to himself. (This is a maverick.)"
+   ],
+   "maverick": [
+    "She publicly called for the total dismantling of the national banking system. (This is an iconoclast.)",
+    "He spent years writing essays to tear down every established belief in philosophy. (This is an iconoclast.)",
+    "The mayor aimed to force the closing of all city libraries to erase their influence. (This is an iconoclast.)",
+    "She actively campaigned to destroy the foundation of the very institution she belonged to. (This is an iconoclast.)",
+    "The filmmaker made movies specifically to insult the country’s core cultural values. (This is an iconoclast.)",
+    "He campaigned to abolish the school board and rewrite every history book. (This is an iconoclast.)"
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The scientist publicly campaigned to end all government funding for the field she was currently working in.",
+    "best_word": "iconoclast",
+    "note": "The active, public campaign against her own institution's funding makes her a reformer/destroyer, not just independent."
+   },
+   {
+    "text": "The manager ignored the company's dress code policy because he felt it did not apply to him.",
+    "best_word": "maverick",
+    "note": "He is just doing his own thing, not trying to force the company to change its policy."
+   },
+   {
+    "text": "The journalist published a series of articles aimed at discrediting the entire political system.",
+    "best_word": "iconoclast",
+    "note": "The intent is to destroy the system, not just to act differently from other journalists."
+   },
+   {
+    "text": "The athlete refused to follow the team's training schedule, opting for her own unconventional routine.",
+    "best_word": "maverick",
+    "note": "She is asserting personal autonomy, not trying to dismantle the training program for everyone."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "iconoclast-maverick_001",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The Senator's political style is ___.",
+   "beats": [
+    {
+     "text": "The Senator gave a fiery speech demanding the immediate dissolution of the entire Senate chamber.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.3
+     },
+     "decisive_clue": "demanding the immediate dissolution",
+     "reason": "They are attacking an institution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "She followed up by drafting a bill to abolish the very committee she chaired.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.2
+     },
+     "decisive_clue": "abolish the very committee",
+     "reason": "The attack on the institution continues.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "She is actively dismantling institutions, which is a hallmark of an iconoclast.",
+   "feedback_deep": "An iconoclast is defined by their desire to reform or destroy established systems or institutions. The senator's actions—calling for the dissolution of the senate and abolishing her own committee—show she is targeting the system itself, not just acting independently.",
+   "contrast_rule": "Iconoclasts destroy the system; mavericks just step out of it.",
+   "hint": "Is she trying to change the group or just be herself?"
+  },
+  {
+   "id": "iconoclast-maverick_002",
+   "domain": "technology",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The programmer's approach to open-source software is ___.",
+   "beats": [
+    {
+     "text": "The programmer publicly released code designed to bypass every established security protocol in the industry.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.4
+     },
+     "decisive_clue": "publicly released code... to bypass every established security protocol",
+     "reason": "Actively dismantling industry standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "She declared in her manifesto that these protocols are fundamentally corrupt and must be dismantled.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.2
+     },
+     "decisive_clue": "declared... must be dismantled",
+     "reason": "Ideological attack on industry standard.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "She is systematically working to dismantle the industry standard.",
+   "feedback_deep": "By releasing code to bypass protocols and calling them 'fundamentally corrupt', the programmer is not just acting alone; she is campaigning against the established order, fitting the definition of an iconoclast.",
+   "contrast_rule": "An iconoclast has a target: the established system.",
+   "hint": "Does her action target the industry standard itself?"
+  },
+  {
+   "id": "iconoclast-maverick_003",
+   "domain": "science",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The researcher's theory is ___.",
+   "beats": [
+    {
+     "text": "The researcher published a paper proving that the core foundations of modern physics were entirely false.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.3
+     },
+     "decisive_clue": "proving... core foundations... were entirely false",
+     "reason": "Direct attack on scientific establishment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "She spends her lectures arguing that every major scientist of the last century was deluded.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.2
+     },
+     "decisive_clue": "arguing that every major scientist... was deluded",
+     "reason": "Ideological challenge to authority.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "She is attacking the foundations of her own field.",
+   "feedback_deep": "The researcher is targeting the core beliefs of her discipline. Calling past scientists 'deluded' and trying to prove established physics 'false' goes beyond independent research; it is an active attack on the existing academic establishment.",
+   "contrast_rule": "Iconoclasts actively try to overturn shared knowledge.",
+   "hint": "Is she creating new work or destroying old work?"
+  },
+  {
+   "id": "iconoclast-maverick_004",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The student's behavior in class is ___.",
+   "beats": [
+    {
+     "text": "The student constantly ignores the teacher's instructions to participate in group activities, preferring to work at his own pace.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.3,
+      "maverick": 0.9
+     },
+     "decisive_clue": "ignores the teacher's instructions... preferring to work at his own pace",
+     "reason": "Asserting personal autonomy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "He makes it clear he has no problem with the class; he just learns better when he doesn't have to follow the group's agenda.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.95
+     },
+     "decisive_clue": "no problem with the class; he just learns better",
+     "reason": "Focus on personal needs, not anti-institution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is just choosing his own path, not attacking the school.",
+   "feedback_deep": "The student is not trying to dismantle the class or change the teacher's rules. He is simply asserting his personal preference for learning style, which makes him a maverick.",
+   "contrast_rule": "Mavericks just walk their own way.",
+   "hint": "Does he dislike the group or just want to act differently?"
+  },
+  {
+   "id": "iconoclast-maverick_005",
+   "domain": "art",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The artist's work is ___.",
+   "beats": [
+    {
+     "text": "The artist paints only in a style he invented, ignoring the classical methods taught in his academy.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.3,
+      "maverick": 0.9
+     },
+     "decisive_clue": "ignoring the classical methods",
+     "reason": "Choosing his own path.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "He says he holds no grudge against classical art; he just finds his own methods more personally fulfilling.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.1,
+      "maverick": 0.95
+     },
+     "decisive_clue": "no grudge against classical art",
+     "reason": "Not anti-establishment.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is doing his own thing without intending to challenge art history.",
+   "feedback_deep": "The artist is not attacking classical painting, he is simply not participating in it. Because he lacks the motive to destroy or change the existing tradition, he is a maverick.",
+   "contrast_rule": "Independence is not the same as rebellion.",
+   "hint": "Does he hate the tradition or just like his own way?"
+  },
+  {
+   "id": "iconoclast-maverick_006",
+   "domain": "history",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The author's perspective on the country's founding is ___.",
+   "beats": [
+    {
+     "text": "The author wrote a biography where he intentionally skipped all the conventional founding stories in favor of his own, obscure anecdotes.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.4,
+      "maverick": 0.9
+     },
+     "decisive_clue": "skipped all the conventional... in favor of his own",
+     "reason": "Choosing his own focus.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "He admits his approach is unconventional but insists he just wants to tell a story that hasn't been told.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.95
+     },
+     "decisive_clue": "just wants to tell a story",
+     "reason": "Not attacking the conventional stories.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is just telling a different story, not attacking the existing ones.",
+   "feedback_deep": "The author isn't trying to tear down the traditional history; he is just interested in a different narrative. His choice is about his own creative interest, not about destroying the established historical canon.",
+   "contrast_rule": "Choosing a path is not attacking a path.",
+   "hint": "Is he trying to erase old stories?"
+  },
+  {
+   "id": "iconoclast-maverick_007",
+   "domain": "business",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The CEO's decision to ban all meetings is ___.",
+   "beats": [
+    {
+     "text": "The CEO issued an order banning all meetings, declaring that the standard corporate structure was designed to stifle progress.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.4
+     },
+     "decisive_clue": "standard corporate structure was designed to stifle progress",
+     "reason": "Attacking institution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "She clarified that she just really hates the sound of other people's voices in the morning, and this policy is strictly for her personal comfort.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.9
+     },
+     "decisive_clue": "strictly for her personal comfort",
+     "reason": "The motive isn't ideological.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Her motive shifted from systemic change to personal preference.",
+   "feedback_deep": "Initially, the ban sounded like an attack on corporate structure (iconoclast). When it was revealed that her motivation was purely personal (to avoid hearing people in the morning), it becomes the act of a maverick, who just wants to do things their own way.",
+   "contrast_rule": "Iconoclasts reform the system; mavericks indulge their personality.",
+   "hint": "Check the motive: is it about the system or herself?"
+  },
+  {
+   "id": "iconoclast-maverick_008",
+   "domain": "environment",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The activist's approach to the park conservation plan is ___.",
+   "beats": [
+    {
+     "text": "The activist spent months alone in the woods, consistently refusing to work with the established conservation groups.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.3,
+      "maverick": 0.9
+     },
+     "decisive_clue": "refusing to work with the established conservation groups",
+     "reason": "Choosing independent action.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "He later published a manifesto detailing how all these conservation groups are part of a scam that needs to be completely abolished.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.2
+     },
+     "decisive_clue": "groups are part of a scam that needs to be completely abolished",
+     "reason": "Attacking the institution.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "He shifted from just working alone to calling for the group's destruction.",
+   "feedback_deep": "Refusing to work with others (beat 1) is individualist (maverick). Publishing a manifesto calling for the group's destruction (beat 2) shifts him into attacking the established institution (iconoclast).",
+   "contrast_rule": "Mavericks exclude others; iconoclasts target others.",
+   "hint": "Does he just want to work alone, or does he want the group gone?"
+  },
+  {
+   "id": "iconoclast-maverick_009",
+   "domain": "media",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The blogger's column is ___.",
+   "beats": [
+    {
+     "text": "The blogger wrote an article demanding the permanent shutdown of all major news networks, labeling them as obsolete propaganda machines.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.2
+     },
+     "decisive_clue": "demanding the permanent shutdown... labeling them as obsolete propaganda machines",
+     "reason": "Attacking institution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "But his assistant leaked that he actually just writes these extreme articles to get clicks and is secretly a massive fan of those networks.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.9
+     },
+     "decisive_clue": "writes these extreme articles to get clicks... secretly a massive fan",
+     "reason": "Not an ideological attack; just acting for himself (getting clicks).",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M3"
+     }
+    }
+   ],
+   "feedback_short": "His motivation is personal profit, not institutional change.",
+   "feedback_deep": "Though his writing sounds like an ideological attack (iconoclast), the revelation that it's just a cynical act for clicks (maverick) reframes his behavior. He isn't trying to change the system, he's exploiting it.",
+   "contrast_rule": "Iconoclasts act out of conviction; mavericks act out of self-interest.",
+   "hint": "Check the motive: is it genuine or for show?"
+  },
+  {
+   "id": "iconoclast-maverick_010",
+   "domain": "literature",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The poet's style is ___.",
+   "beats": [
+    {
+     "text": "The poet decided to publish her work only in a self-made language, completely ignoring the conventions of the established literary world.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.3,
+      "maverick": 0.9
+     },
+     "decisive_clue": "completely ignoring the conventions",
+     "reason": "Independent act.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "She stated that the established literary world is a cancerous blight on humanity that must be purged by her new language.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.2
+     },
+     "decisive_clue": "must be purged",
+     "reason": "Attacking institution.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "She moved from simple independence to actively attacking literary culture.",
+   "feedback_deep": "Ignoring conventions (beat 1) is just a personal style choice (maverick). Declaring that the existing literary culture is 'cancerous' and must be 'purged' (beat 2) changes her into a fierce attacker of that institution (iconoclast).",
+   "contrast_rule": "Mavericks exist outside; iconoclasts fight inside.",
+   "hint": "Does she want to avoid or destroy the literary establishment?"
+  },
+  {
+   "id": "iconoclast-maverick_011",
+   "domain": "finance",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The trader's attitude toward stock market regulations is ___.",
+   "beats": [
+    {
+     "text": "The trader actively lobbies to abolish all SEC regulations, arguing they stifle the market.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.4
+     },
+     "decisive_clue": "abolish all SEC regulations",
+     "reason": "Attacking institution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "He admits he doesn't really care about the market; he just needs the regulations gone so he can run his personal trading schemes without getting caught.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.9
+     },
+     "decisive_clue": "run his personal trading schemes without getting caught",
+     "reason": "Not an ideological attack, just personal interest.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M3"
+     }
+    }
+   ],
+   "feedback_short": "His goal is personal gain, not systemic reform.",
+   "feedback_deep": "The trader initially appears to be an ideological fighter against regulation (iconoclast). However, realizing his only goal is personal gain (trading schemes), his action is just a self-interested, independent (maverick) move.",
+   "contrast_rule": "An iconoclast seeks reform; a maverick seeks self-advantage.",
+   "hint": "Check the motive again."
+  },
+  {
+   "id": "iconoclast-maverick_012",
+   "domain": "healthcare",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The hospital director's policy is ___.",
+   "beats": [
+    {
+     "text": "The director ignores all the hospital's established patient treatment protocols, choosing instead to follow his own intuitive method.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.3,
+      "maverick": 0.9
+     },
+     "decisive_clue": "choosing instead to follow his own intuitive method",
+     "reason": "Independent action.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "He finally states his plan: to permanently replace all medical staff with his personally chosen team of non-experts.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.2
+     },
+     "decisive_clue": "permanently replace all medical staff",
+     "reason": "Attacking institution.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "He moved from acting independently to planning the institution's overhaul.",
+   "feedback_deep": "Simply following his own method (beat 1) is maverick behavior. Declaring that he will permanently overhaul the medical staff (beat 2) is a direct, systematic attack on the institution (iconoclast).",
+   "contrast_rule": "Mavericks change their behavior; iconoclasts change the institution.",
+   "hint": "Does he want to be a lone actor or a leader of structural change?"
+  },
+  {
+   "id": "iconoclast-maverick_013",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "Her approach to wedding traditions is ___.",
+   "beats": [
+    {
+     "text": "She openly declared that all wedding traditions are empty, performative rituals designed to trap women.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.4
+     },
+     "decisive_clue": "declared that all wedding traditions are empty, performative rituals",
+     "reason": "Ideological attack on tradition.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "She is not merely opting out of these rituals; she is actively trying to discourage others from participating in them.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.2
+     },
+     "decisive_clue": "actively trying to discourage others",
+     "reason": "Narrowing to a reformer.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "She is explicitly trying to change societal behavior.",
+   "feedback_deep": "She is not just ignoring tradition; she's calling it oppressive and attempting to change societal behavior, which is the definition of an iconoclast.",
+   "contrast_rule": "Iconoclasts are vocal; mavericks are quiet.",
+   "hint": "Is she just ignoring them or trying to change the group?"
+  },
+  {
+   "id": "iconoclast-maverick_014",
+   "domain": "philosophy",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The philosopher's lectures are ___.",
+   "beats": [
+    {
+     "text": "The philosopher consistently challenges every established tenet in our shared ethical system during her lectures.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.3
+     },
+     "decisive_clue": "challenges every established tenet... shared ethical system",
+     "reason": "Direct attack on dogma.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "She explicitly frames these lectures as a systematic mission to tear down these beliefs to replace them with something entirely new.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.95,
+      "maverick": 0.1
+     },
+     "decisive_clue": "systematic mission to tear down these beliefs",
+     "reason": "Narrowing to an ideological reformer.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "She is specifically trying to replace one system with another.",
+   "feedback_deep": "The philosopher’s explicit goal to replace an existing system with something entirely new and to 'tear down' old beliefs defines her as an iconoclast.",
+   "contrast_rule": "An iconoclast is a builder of new systems upon the ruins of the old.",
+   "hint": "What is the end goal?"
+  },
+  {
+   "id": "iconoclast-maverick_015",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "His way of exploring new cities is ___.",
+   "beats": [
+    {
+     "text": "He never follows the popular tour guides, preferring to wander into random neighborhoods alone.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.9
+     },
+     "decisive_clue": "never follows the popular tour guides... wandering... alone",
+     "reason": "Independent act.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "He purposefully avoids all 'famous' landmarks because he wants to prove that they are overrated and meaningless.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.3,
+      "maverick": 0.95
+     },
+     "decisive_clue": "wants to prove that they are overrated",
+     "reason": "Personal philosophy, still not an attack on the tourism institution itself.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is just choosing to avoid landmarks for himself.",
+   "feedback_deep": "Even if he has opinions on landmarks, his action is to avoid them for his own experience, not to systematically dismantle the tourism industry. This remains maverick territory.",
+   "contrast_rule": "Mavericks prefer alternatives; iconoclasts hate the mainstream.",
+   "hint": "Is he attacking the tourism industry or just avoiding its sites?"
+  },
+  {
+   "id": "iconoclast-maverick_016",
+   "domain": "law",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The lawyer's defense strategy is ___.",
+   "beats": [
+    {
+     "text": "The lawyer argues that the current legal precedent is completely outdated and should not be followed.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.3
+     },
+     "decisive_clue": "legal precedent is completely outdated",
+     "reason": "Attacking institution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    },
+    {
+     "text": "He then reveals his reasoning: he just wants to try out a totally untested argument because he thinks it will be fun.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.8,
+      "maverick": 0.6
+     },
+     "decisive_clue": "he just wants to try out a totally untested argument",
+     "reason": "He still fits iconoclast for the systemic attack.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "He is still attacking established precedent.",
+   "feedback_deep": "Even if his motive is just 'fun', he is still actively attacking and trying to disregard the established legal system (precedent). This systemic challenge keeps him an iconoclast, regardless of his trivial motive.",
+   "contrast_rule": "If you attack the system, you are an iconoclast, no matter why.",
+   "hint": "Does his action change its impact on the legal system?"
+  },
+  {
+   "id": "iconoclast-maverick_018",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "Their approach to household chore scheduling is ___.",
+   "beats": [
+    {
+     "text": "They refuse to use the shared chore calendar that everyone in the house has agreed to.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.9
+     },
+     "decisive_clue": "refuse to use the shared chore calendar",
+     "reason": "Independent act.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "They state they are ignoring it specifically to show the others how useless and oppressive scheduling chores really is.",
+     "best_word": "iconoclast",
+     "fit": {
+      "iconoclast": 0.9,
+      "maverick": 0.3
+     },
+     "decisive_clue": "to show... how useless and oppressive scheduling chores really is",
+     "reason": "Now they are attacking the institution of scheduling.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "maverick": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Their motive has changed from simple refusal to attacking the system.",
+   "feedback_deep": "At first, ignoring the chore calendar looks like simple refusal (maverick). By explicitly stating that their goal is to demonstrate the oppression of chore scheduling, they are now targeting the household institution itself (iconoclast).",
+   "contrast_rule": "An action is redefined by its intent.",
+   "hint": "What is the purpose of their refusal?"
+  },
+  {
+   "id": "iconoclast-maverick_019",
+   "domain": "fashion",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The designer's new runway collection is ___.",
+   "beats": [
+    {
+     "text": "The designer sends models down the runway in clothes made of garbage, ignoring all established standards of fashion design.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.3,
+      "maverick": 0.9
+     },
+     "decisive_clue": "ignoring all established standards",
+     "reason": "Independent style.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "He admits he doesn't actually want to change fashion, he just really needs the publicity to make money.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.2,
+      "maverick": 0.95
+     },
+     "decisive_clue": "doesn't actually want to change fashion... publicity to make money",
+     "reason": "Self-interest (maverick).",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Publicity stunts don't make him a reformer.",
+   "feedback_deep": "The designer’s unconventional work is just for personal gain (publicity/money). He isn't interested in dismantling the fashion establishment, so he's a maverick.",
+   "contrast_rule": "Iconoclasts challenge foundations; mavericks challenge expectations.",
+   "hint": "Check the designer's goal."
+  },
+  {
+   "id": "iconoclast-maverick_020",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 4,
+   "frame": "The tennis player's method is ___.",
+   "beats": [
+    {
+     "text": "The tennis player serves the ball in a completely new, unorthodox way, ignoring the coaching staff.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.1,
+      "maverick": 0.9
+     },
+     "decisive_clue": "ignoring the coaching staff",
+     "reason": "Independent act.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    },
+    {
+     "text": "She insists her new serve is just her personal style, and she has no desire to see the sport’s rules or coaching standards changed.",
+     "best_word": "maverick",
+     "fit": {
+      "iconoclast": 0.05,
+      "maverick": 0.95
+     },
+     "decisive_clue": "no desire to see the sport’s rules or coaching standards changed",
+     "reason": "Definitely maverick.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "iconoclast": "M1"
+     }
+    }
+   ],
+   "feedback_short": "She is just doing it her way, without interest in broader reform.",
+   "feedback_deep": "The player is simply exercising her independence by choosing a different style, which fits the definition of a maverick perfectly. She has no intent to dismantle the sport's rules or standards.",
+   "contrast_rule": "If you aren't fighting the system, you aren't an iconoclast.",
+   "hint": "Does she want to change tennis for everyone or just herself?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

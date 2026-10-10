@@ -1,0 +1,1808 @@
+{
+  "set_id": "machination-conspiracy",
+  "source_pair_id": 59,
+  "words": [
+    {
+      "word": "machination",
+      "sense": "an intricate, crafty scheme devised to achieve a selfish or dishonest goal, typically through behind-the-scenes manipulation of people or events",
+      "concise_meaning": "a cunning and complex scheme designed to manipulate people or events behind the scenes for self-serving or deceptive ends",
+      "connotation": "distinctly negative and sinister; evokes cunning calculation, underhanded string-pulling, backroom maneuvering, and deceit",
+      "register": "formal, literary, journalistic, political",
+      "grammar": "countable noun, frequently used in the plural ('machinations'); functions as subject, direct object, or object of preposition",
+      "collocations": [
+        "political machinations",
+        "behind-the-scenes machinations",
+        "devious machinations",
+        "elaborate machinations",
+        "internal machinations"
+      ],
+      "misconceptions": [
+        "Assuming that a machination requires an organized group or secret pact, overlooking that a solitary schemer can craft and execute intricate machinations alone by manipulating others as unwitting tools."
+      ]
+    },
+    {
+      "word": "conspiracy",
+      "sense": "a secret agreement between two or more people to commit an unlawful, harmful, or treacherous act",
+      "concise_meaning": "a covert agreement or alliance formed by multiple individuals to carry out an illegal, unethical, or harmful act",
+      "connotation": "strongly negative, illicit, and criminal; evokes collusion, treacherous pacts, cabals, and clandestine coordination against an established authority or victim",
+      "register": "legal, formal, political, journalistic, conversational",
+      "grammar": "countable or uncountable noun; often followed by 'to' + infinitive ('a conspiracy to commit fraud') or preceded by adjectives ('criminal conspiracy')",
+      "collocations": [
+        "criminal conspiracy",
+        "conspiracy to commit fraud",
+        "secret conspiracy",
+        "conspiracy of silence",
+        "uncover a conspiracy"
+      ],
+      "misconceptions": [
+        "Assuming that any complicated, deceptive scheme is a conspiracy, missing that a conspiracy fundamentally requires a shared, secret agreement between multiple collaborators."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "collaboration_vs_crafty_orchestration",
+      "description": "A mutual secret agreement or pact between two or more accomplices (conspiracy) vs. an intricate, devious mechanism of manipulation and maneuvering, often executed by an individual puppet-master (machination)."
+    },
+    {
+      "id": "social_structure",
+      "description": "A collective confederacy of partners who knowingly agree to work together toward a wrongful goal (conspiracy) vs. a cunning trap or web of deceit where outsiders are manipulated as unwitting pawns (machination)."
+    },
+    {
+      "id": "operational_focus",
+      "description": "The illicit meeting of minds and shared commitment between co-conspirators (conspiracy) vs. the elaborate behind-the-scenes string-pulling and tactical maneuvering of circumstances (machination)."
+    }
+  ],
+  "edge": {
+    "a": "machination",
+    "b": "conspiracy",
+    "boundary_rule": "A conspiracy requires a secret agreement among two or more people to commit wrongdoing; a machination is a crafty, intricate scheme to manipulate people or events behind the scenes.",
+    "clues_a": [
+      "a solitary individual acting alone to pull strings and manipulate circumstances",
+      "intricate, multi-step engineering of situations to trap or mislead rivals",
+      "manipulating colleagues or bystanders as unwitting pawns who have agreed to nothing",
+      "crafty behind-the-scenes maneuvering of institutional procedures for personal advantage",
+      "elaborate webs of deceptive maneuvers without any mutual pact among perpetrators"
+    ],
+    "clues_b": [
+      "two or more individuals entering into a secret agreement or pact to do wrong",
+      "mutual collusion where partners knowingly bind themselves to an illicit goal",
+      "a clandestine confederacy of accomplices coordinating their unlawful actions",
+      "a shared meeting of minds committing collaborators to joint deception",
+      "partners agreeing to divide tasks or spoils under a covert alliance"
+    ],
+    "irrelevant_clues": [
+      "whether the setting is corporate, political, academic, or familial",
+      "whether the actors communicate using encrypted messages, handwritten notes, or private calls",
+      "whether the plot succeeds in its objective or is foiled by investigators",
+      "the severity or financial magnitude of the intended harm"
+    ],
+    "misconceptions": {
+      "M1": "Confusing an intricate, solitary scheme of manipulation with a conspiracy, overlooking that a conspiracy requires a mutual agreement between two or more collaborators.",
+      "M2": "Assuming that a machination requires an organized cabal, missing that a single schemer can craft and execute an intricate machination by manipulating unwitting pawns.",
+      "M3": "Assuming that a conspiracy requires elaborate, multi-stage maneuvering, forgetting that a simple, direct secret pact between two accomplices to commit an illicit act is already a conspiracy."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "machination": [
+        "The deputy director spent months privately shifting committee assignments, falsifying routine audit memos, and misleading junior staff so that the department chair would look incompetent and get replaced.",
+        "Operating entirely in secret from his personal laptop, Julian rerouted internal emails, planted fabricated budget discrepancies, and framed his supervisor to secure the regional promotion.",
+        "The ambitious lobbyist quietly orchestrated a series of deceptive calendar mix-ups and anonymous press tips to turn rival factions against one another while keeping his own hands invisible.",
+        "Working without confidants, the gallery assistant swapped provenance tags, leaked subtle doubts about an authentic canvas, and maneuvered the wealthy collector into selling it for a fraction of its true value.",
+        "The chief advisor drafted competing versions of the royal decree, fed conflicting rumors to rival ministers, and manipulated courtroom protocol to ensure his patron gained control of the treasury.",
+        "By systematically altering warehouse dispatch records and engineering false inventory alerts, the logistics supervisor maneuvered his rival into taking the blame for unexplained cargo losses."
+      ],
+      "conspiracy": [
+        "Three senior procurement officers met after hours in a private hotel suite to sign an illicit pact to rig the municipal construction bids and split the kickbacks equally.",
+        "The bank branch manager and two tellers entered into a covert agreement to falsify vault logs each Friday and secretly funnel customer deposits into a shared offshore account.",
+        "Four rival shipping executives held clandestine dinners to fix maritime freight prices across the continent, binding each company to an illegal tariff schedule.",
+        "The head coach and two referee officials formed a secret alliance before the tournament, pledging to influence foul calls in exchange for cash payments.",
+        "Two junior partners drafted an unrecorded contract in private, agreeing to misappropriate client retainers and flee the jurisdiction before the annual audit.",
+        "A faction of five councilors secretly pledged their votes to block the zoning amendment, agreeing to accept private developer contributions in return."
+      ]
+    },
+    "counter": {
+      "machination": [
+        "Three city inspectors reached a covert agreement over lunch to demand identical bribes from restaurant owners and pool their extorted funds.",
+        "Two laboratory technicians entered into a secret pact to swap sample vials so both could collect bonuses from the rival pharmaceutical firm.",
+        "The store manager and the security guard formed a joint pact to leave the loading dock unlocked every Tuesday to steal electronics.",
+        "Four hospital board members secretly agreed among themselves to vote against the union contract in exchange for discounted development shares.",
+        "Two warehouse clerks signed a private handwritten pledge to alter inventory records together and split the diverted merchandise.",
+        "Three defense contractors coordinated in secret to submit artificially inflated estimates, agreeing ahead of time which firm would win each contract."
+      ],
+      "conspiracy": [
+        "Acting entirely alone, the senior researcher quietly fabricated spectrometer logs, forged peer endorsements, and manipulated lab schedules to dislodge her rival from the tenure track.",
+        "Working in isolation, the theater producer subtly seeded conflicting rumors among the lead actors, forged backstage notes, and manipulated rehearsals so the playwright would resign.",
+        "The financial analyst secretly altered spreadsheet formulas, triggered false automated margin warnings, and tricked the trading desk into liquidating his rival's holdings.",
+        "Without speaking to a soul, the archivist forged an ancient ownership deed, hid authentic catalog cards, and guided the board toward selling the estate collection to his shell company.",
+        "The ambitious junior diplomat subtly altered translations of ambassadorial dispatches, staged accidental diplomatic snubs, and manipulated state protocol to trigger his superior's recall.",
+        "Working alone late at night, the software engineer altered server permission rules, fabricated security logs, and framed the department head for a data leak to claim his post."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "The chief of staff privately forged letters from rival ministers, altered the king's daily audience ledger, and subtly stoked mutual paranoia at court so that the prime minister would be dismissed in disgrace.",
+        "best_word": "machination",
+        "note": "The action centers on the intricate, manipulative maneuvering of events and court protocol by a single schemer pulling strings behind the scenes, with no mutual pact among accomplices."
+      },
+      {
+        "text": "The chief of staff, the treasury auditor, and the captain of the royal guard met behind locked doors to forge a binding agreement to depose the chancellor and divide his estates.",
+        "best_word": "conspiracy",
+        "note": "The defining element is the secret agreement and joint commitment among three collaborators to carry out a wrongful act together."
+      },
+      {
+        "text": "An executive manipulated accounting deadlines, leaked distorted sales projections to board members, and engineered artificial inventory shortages to force the founder out of the firm.",
+        "best_word": "machination",
+        "note": "The focus is on the intricate, deceptive maneuvering of company processes and people by an individual rather than an illicit mutual pact."
+      },
+      {
+        "text": "Two rival publishers met secretly at an out-of-town cafe to fix advance royalties and agree not to bid against each other for high-profile manuscripts.",
+        "best_word": "conspiracy",
+        "note": "The act consists of a secret agreement between multiple parties to engage in unlawful collusion, rather than an elaborate puppet-master scheme."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "machination-conspiracy_001",
+      "domain": "corporate_finance",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What Arthur engineered to displace the chief risk officer was a ___.",
+      "beats": [
+        {
+          "text": "Arthur, an ambitious portfolio director, secretly alters the automated data feeds on his colleague's terminal, causing the risk officer's quarterly portfolio report to show catastrophic false losses.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.92,
+            "conspiracy": 0.08
+          },
+          "decisive_clue": "solitary altering of automated data feeds to cause false losses",
+          "reason": "Arthur acts as an individual cunning schemer manipulating systems and colleague data behind the scenes without any collaborator pact.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Arthur then discreetly tips off an external financial journalist about the fabricated errors while anonymously coaching a junior analyst to confirm the discrepancy.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.94,
+            "conspiracy": 0.06
+          },
+          "decisive_clue": "anonymously coaching a junior analyst while leaking tips to the press",
+          "reason": "He continues manipulating third parties as unwitting pawns in his multi-step maneuver rather than entering a mutual agreement with them.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M2"
+          }
+        },
+        {
+          "text": "When the board convenes an emergency review, Arthur presents a pre-packaged rescue model he had authored weeks earlier, ensuring he inherits the ousted officer's division.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.96,
+            "conspiracy": 0.04
+          },
+          "decisive_clue": "pre-packaged rescue model authored weeks earlier to claim the division",
+          "reason": "The entire sequence was an intricate, selfish mechanism calculated by a single puppet-master to orchestrate his rival's downfall.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Arthur's solitary, calculated maneuvering of data and people behind the scenes makes his scheme an unmistakable machination.",
+      "feedback_deep": "A machination is an intricate, crafty scheme devised to manipulate events and individuals for personal gain. Because Arthur orchestrated every step alone—using innocent analysts and journalists as unwitting levers without forming a mutual pact with anyone—his action is a machination rather than a conspiracy.",
+      "contrast_rule": "A machination is a crafty manipulation orchestrated behind the scenes; a conspiracy requires a mutual secret agreement among accomplices.",
+      "hint": "Look at whether Arthur formed an agreement with partners or pulled strings entirely on his own."
+    },
+    {
+      "id": "machination-conspiracy_002",
+      "domain": "academic_research",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the three laboratory heads orchestrated against the dean was a ___.",
+      "beats": [
+        {
+          "text": "Three senior lab heads convene in a private off-campus diner and sign a secret memorandum pledging to submit identical negative reviews of the dean's research proposal.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.08,
+            "conspiracy": 0.92
+          },
+          "decisive_clue": "signing a secret memorandum pledging joint negative reviews",
+          "reason": "Multiple parties entering into a secret agreement to commit an unfair or harmful act constitutes a conspiracy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "The three colleagues secretly agree to coordinate their speaking times at the faculty senate meeting, ensuring their unified opposition appears spontaneous to outside observers.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.07,
+            "conspiracy": 0.93
+          },
+          "decisive_clue": "secretly agreeing to coordinate speaking times to simulate spontaneous opposition",
+          "reason": "The action remains rooted in their covert mutual pact and collective collusion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "During the faculty vote, each of the three partners casts the promised opposing ballot, fulfilling their covert mutual compact to block the grant.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.05,
+            "conspiracy": 0.95
+          },
+          "decisive_clue": "fulfilling their covert mutual compact to block the grant",
+          "reason": "The defining reality is the shared, binding agreement among multiple accomplices to carry out wrongful obstruction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The secret memorandum and binding pact among three lab heads establishes that their plot was a conspiracy.",
+      "feedback_deep": "A conspiracy is fundamentally a secret agreement among two or more persons to commit a wrongful or harmful act. Here, the three laboratory heads bound themselves through a mutual compact to coordinate their opposition, making their collaborative wrongdoing a conspiracy.",
+      "contrast_rule": "A conspiracy is defined by a secret multi-party agreement; a machination focuses on intricate manipulative maneuvering.",
+      "hint": "Focus on the mutual agreement signed between the multiple participants."
+    },
+    {
+      "id": "machination-conspiracy_003",
+      "domain": "civic_politics",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What Councilman Vance engineered against the mayoral candidate was a ___.",
+      "beats": [
+        {
+          "text": "Councilman Vance covertly swaps the printed debate schedule in the greenroom, misleading the rival candidate's driver about the broadcast location.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.91,
+            "conspiracy": 0.09
+          },
+          "decisive_clue": "covertly swapping the debate schedule to mislead the driver",
+          "reason": "Vance acts as a solitary trickster manipulating documents and schedules to sabotage a rival.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Vance also pays a courier with untraceable cash to misdeliver the rival's podium briefing notes to a recycling depot across the river.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.93,
+            "conspiracy": 0.07
+          },
+          "decisive_clue": "paying an unwitting courier to misdeliver podium notes",
+          "reason": "The courier is merely an unwitting errand runner; Vance remains a lone operator pulling strings through crafty deception.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "With the rival stranded without speaking notes, Vance steps onstage as the default speaker, having choreographed the entire sequence for his personal advancement.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.95,
+            "conspiracy": 0.05
+          },
+          "decisive_clue": "choreographing the entire sequence for personal advancement",
+          "reason": "The intricate behind-the-scenes orchestration by an ambitious individual exemplifies a machination.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Vance's intricate, solitary string-pulling and behind-the-scenes deception to sabotage his rival make his scheme a machination.",
+      "feedback_deep": "A machination involves crafting an elaborate, deceitful mechanism to manipulate people or events behind the scenes. Vance acted alone, treating couriers and drivers as disposable pawns rather than entering into an agreed criminal pact with partners, which excludes conspiracy.",
+      "contrast_rule": "A machination is an intricate puppet-master scheme; a conspiracy is a collaborative secret pact.",
+      "hint": "Consider whether Vance formed a shared pact with collaborators or manipulated pawns on his own."
+    },
+    {
+      "id": "machination-conspiracy_004",
+      "domain": "publishing_industry",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the editors formed against the independent literary imprint was a ___.",
+      "beats": [
+        {
+          "text": "Four senior acquisition editors from rival publishing houses create a password-protected messaging channel to secretly agree on maximum royalty bids for debut manuscripts.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.10,
+            "conspiracy": 0.90
+          },
+          "decisive_clue": "creating a protected channel to secretly agree on maximum royalty bids",
+          "reason": "A secret pact between multiple independent actors to fix market prices is an illicit conspiracy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "When an acclaimed regional manuscript goes to auction, the four editors consult their private group chat and submit identical, artificially suppressed offers.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.08,
+            "conspiracy": 0.92
+          },
+          "decisive_clue": "submitting identical, artificially suppressed offers per their private chat",
+          "reason": "The editors are executing their agreed-upon collective plot in concert.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "The author accepts the low bid, unaware that the competing houses had bound themselves to a secret collective pact to eliminate price competition.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.06,
+            "conspiracy": 0.94
+          },
+          "decisive_clue": "binding themselves to a secret collective pact to eliminate competition",
+          "reason": "The defining attribute is the secret multi-party agreement to commit unfair collusion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The secret collective pact among four editors to suppress bidding prices makes their collusion a conspiracy.",
+      "feedback_deep": "A conspiracy is a covert agreement between two or more parties to engage in an unlawful or wrongful act. The editors joined hands in a shared compact to rig manuscript bidding, which fits conspiracy directly.",
+      "contrast_rule": "A conspiracy requires a secret pact among accomplices; a machination focuses on intricate behind-the-scenes maneuvering.",
+      "hint": "Notice the mutual agreement shared between the four competing editors."
+    },
+    {
+      "id": "machination-conspiracy_005",
+      "domain": "hospital_administration",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What Dr. Mercer orchestrated to discredit the surgical chief was a ___.",
+      "beats": [
+        {
+          "text": "Dr. Mercer, eager to head the surgery department, covertly recalibrates the operating theater supply monitor to report frequent phantom sterilizer failures under the incumbent chief.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.92,
+            "conspiracy": 0.08
+          },
+          "decisive_clue": "covertly recalibrating the supply monitor to report phantom sterilizer failures",
+          "reason": "Mercer is acting alone, cunningly tampering with equipment to engineer a false impression of negligence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Mercer then arranges maintenance tickets so that third-party technicians arrive precisely during the chief's scheduled procedures, creating embarrassing public delays.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.93,
+            "conspiracy": 0.07
+          },
+          "decisive_clue": "arranging maintenance tickets to create public delays during procedures",
+          "reason": "He continues his multi-stage manipulative maneuvering of innocent staff and hospital schedules.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M2"
+          }
+        },
+        {
+          "text": "At the governance review, Mercer presents the accumulated delay logs as evidence of the chief's administrative failure, hiding his own role as the solitary architect of the chaos.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.95,
+            "conspiracy": 0.05
+          },
+          "decisive_clue": "solitary architect of the chaos presenting accumulated delay logs",
+          "reason": "The elaborate, behind-the-scenes string-pulling by a lone schemer is the textbook definition of a machination.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Dr. Mercer's intricate, solitary string-pulling and manipulation of hospital logs to sabotage the chief constitutes a machination.",
+      "feedback_deep": "A machination is a crafty, complex scheme carried out behind the scenes for selfish purposes. Dr. Mercer engineered every logistical failure alone, using innocent technicians as instruments without any secret pact or co-conspirators.",
+      "contrast_rule": "A machination is a solitary crafty scheme; a conspiracy is a joint secret agreement among wrongdoers.",
+      "hint": "Examine whether Mercer was executing an intricate solo scheme or colluding with others."
+    },
+    {
+      "id": "machination-conspiracy_006",
+      "domain": "amateur_athletics",
+      "transfer": true,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the three rowing clubs formed before the regatta was a ___.",
+      "beats": [
+        {
+          "text": "Captains from three rival boat clubs meet in an unlit boathouse to draw lots and covertly agree that their crews will intentionally yield water to the host team in qualifying heats.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.09,
+            "conspiracy": 0.91
+          },
+          "decisive_clue": "drawing lots and covertly agreeing to yield water in qualifying heats",
+          "reason": "Multiple club leaders forming a secret illicit pact to manipulate race outcomes constitutes a conspiracy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "During the preliminary races, the two designated crews deliberately slow their stroke rate at the thousand-meter mark, honoring the secret alliance they forged the previous night.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.07,
+            "conspiracy": 0.93
+          },
+          "decisive_clue": "honoring the secret alliance forged the previous night",
+          "reason": "The crews act strictly in execution of their shared, clandestine agreement.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "The regatta committee launches a probe after finding text transcripts confirming the captains had pledged mutual cooperation to rig the final bracket.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.05,
+            "conspiracy": 0.95
+          },
+          "decisive_clue": "transcripts confirming the captains had pledged mutual cooperation to rig the bracket",
+          "reason": "A formal mutual agreement to commit sporting fraud is an undeniable conspiracy.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The secret pact between rival captains to fix the regatta heats proves their arrangement was a conspiracy.",
+      "feedback_deep": "A conspiracy is a clandestine agreement among multiple parties to perform an unlawful or dishonest act. Because the team captains bound themselves to a mutual alliance to fix the regatta outcomes, their coordinated plot was a conspiracy.",
+      "contrast_rule": "A conspiracy is an agreement among collaborators; a machination is a crafty behind-the-scenes scheme.",
+      "hint": "Focus on the mutual agreement signed between the captains rather than individual cunning."
+    },
+    {
+      "id": "machination-conspiracy_007",
+      "domain": "fine_arts",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What took place to devalue the master's portrait before the auction was a ___.",
+      "beats": [
+        {
+          "text": "Curator Felix quietly switches the humidity settings inside the exhibition hall and leaks subtle, anonymous doubts about the portrait's varnish to prospective buyers, hoping to scare off bids and buy it cheap himself.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.92,
+            "conspiracy": 0.08
+          },
+          "decisive_clue": "quietly switching humidity settings and leaking anonymous doubts to buy it cheap himself",
+          "reason": "Felix appears to be a solitary schemer manipulating physical conditions and buyer perception through devious tactics.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "However, police discover encrypted messages revealing Felix had entered into a binding secret pact with two antique dealers to depress the price and split the resale profit three ways.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.12,
+            "conspiracy": 0.88
+          },
+          "decisive_clue": "binding secret pact with two antique dealers to depress the price and split profits",
+          "reason": "The revelation of a mutual secret agreement among three collaborators transforms the nature of the plot into a conspiracy.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        },
+        {
+          "text": "Bank transfers confirm the antique dealers had already paid Felix an initial cash retainer to cement their tripartite alliance before the auction opened.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.06,
+            "conspiracy": 0.94
+          },
+          "decisive_clue": "cash retainer cementing their tripartite alliance",
+          "reason": "The plot was an organized, multi-party illicit compact.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The revelation of a binding secret pact between Felix and two dealers flips the plot to a conspiracy.",
+      "feedback_deep": "While Felix's early tampering looked like an individual machination, the discovery of a binding, secret multi-party pact with two dealers to fix prices makes the plot fundamentally a conspiracy. A conspiracy is defined by a mutual agreement to commit wrongdoing.",
+      "contrast_rule": "A machination is an individual's crafty scheme; a conspiracy is a mutual secret pact among accomplices.",
+      "hint": "Notice what the encrypted messages reveal about agreements with partners."
+    },
+    {
+      "id": "machination-conspiracy_008",
+      "domain": "culinary_industry",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What was carried out against Chef Renaud's flagship bistro was a ___.",
+      "beats": [
+        {
+          "text": "When health inspectors arrive simultaneously at three of Chef Renaud's bistros following coordinated phone complaints, the kitchen staff suspects a secret alliance of rival restaurateurs banded together to ruin the brand.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.22,
+            "conspiracy": 0.78
+          },
+          "decisive_clue": "suspected secret alliance of rival restaurateurs banded together",
+          "reason": "The initial evidence points toward a collusive multi-party pact among rivals to carry out coordinated attacks.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M1"
+          }
+        },
+        {
+          "text": "Investigators uncover that no rival owners were involved; rather, Renaud's disgruntled former sous-chef single-handedly spoofed different phone numbers, forged supplier emails, and timed the complaints using automated software.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.93,
+            "conspiracy": 0.07
+          },
+          "decisive_clue": "single-handedly spoofing phone numbers and forging supplier emails using automated software",
+          "reason": "The plot was not a collaborative pact between rivals, but the cunning, solitary maneuvering of an individual pulling strings.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "The sous-chef had planned each step across three months from a public library terminal, deliberately creating the false illusion of a coordinated group attack.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.96,
+            "conspiracy": 0.04
+          },
+          "decisive_clue": "deliberately creating the false illusion of a coordinated group attack",
+          "reason": "An intricate, deceitful mechanism orchestrated by a lone actor behind the scenes is a machination.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The revelation that a lone sous-chef orchestrated the entire deceitful operation flips the answer to a machination.",
+      "feedback_deep": "Although the multiple inspections initially looked like a multi-party conspiracy, the evidence showed no agreement existed among rivals. Instead, a single vengeful sous-chef engineered an elaborate, multi-step scheme alone, which defines a machination.",
+      "contrast_rule": "A conspiracy requires an agreement between multiple persons; a machination is a crafty scheme that can be run alone.",
+      "hint": "Check whether multiple people actually agreed to act together or if one person engineered the illusion."
+    },
+    {
+      "id": "machination-conspiracy_009",
+      "domain": "environmental_nonprofit",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What was arranged to suppress the wetland pollution findings was a ___.",
+      "beats": [
+        {
+          "text": "Director Sandra alters data columns in the wetland soil report, reassigns the lead chemist to an archival basement, and shreds field sampling notes to bury toxic runoff findings.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.91,
+            "conspiracy": 0.09
+          },
+          "decisive_clue": "altering data columns, reassigning the chemist, and shredding sampling notes",
+          "reason": "Sandra appears to be an individual administrator using deceitful internal maneuvering to cover up findings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "A leaked recording shows Sandra was acting under a secret agreement signed with chemical plant executives, who pledged monthly retainers in return for burying the report.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.11,
+            "conspiracy": 0.89
+          },
+          "decisive_clue": "secret agreement signed with chemical executives pledging retainers for burying the report",
+          "reason": "The revelation of a signed secret pact between Sandra and outside executives establishes an illicit conspiracy.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        },
+        {
+          "text": "Prosecutors subsequently file formal joint indictments against Sandra and the plant executives for entering into a covert criminal compact to deceive the public.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.05,
+            "conspiracy": 0.95
+          },
+          "decisive_clue": "entering into a covert criminal compact to deceive the public",
+          "reason": "The cooperative illicit alliance among multiple perpetrators constitutes a conspiracy.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The signed secret agreement between Sandra and chemical plant executives flips the operation to a conspiracy.",
+      "feedback_deep": "What initially appeared as Sandra's internal administrative manipulation was actually the execution of a secret, collusive agreement between Sandra and corporate executives. A secret pact between two or more parties to commit wrongdoing is a conspiracy.",
+      "contrast_rule": "A conspiracy is defined by a secret multi-party pact; a machination focuses on intricate behind-the-scenes maneuvering.",
+      "hint": "Look at the signed secret agreement revealed between Sandra and the external executives."
+    },
+    {
+      "id": "machination-conspiracy_010",
+      "domain": "software_startup",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What drove the sudden removal of the chief technology officer was a ___.",
+      "beats": [
+        {
+          "text": "The board receives synchronized resignation threats from the frontend lead, backend architect, and devops director, leading observers to conclude a secret cabal of engineers had agreed to oust the chief technology officer.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.20,
+            "conspiracy": 0.80
+          },
+          "decisive_clue": "synchronized resignation threats suggesting an agreed secret cabal of engineers",
+          "reason": "The coordinated threats suggest a mutual secret agreement among the senior engineers to force out their superior.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M1"
+          }
+        },
+        {
+          "text": "System audits reveal that the three engineers never spoke to each other; instead, the chief product officer had fabricated the emails, manipulated the HR ticket queue, and forged their electronic signatures.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.94,
+            "conspiracy": 0.06
+          },
+          "decisive_clue": "chief product officer fabricating emails, manipulating tickets, and forging signatures alone",
+          "reason": "The plot collapses from an assumed group agreement into a single schemer's elaborate behind-the-scenes manipulation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "The product officer had engineered this multi-layered technical deception over six weeks to eliminate the chief technology officer and take sole charge of the engineering budget.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.96,
+            "conspiracy": 0.04
+          },
+          "decisive_clue": "multi-layered technical deception engineered alone over six weeks",
+          "reason": "A complex, deceitful mechanism orchestrated by an individual to manipulate people and events is a machination.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The revelation that a solitary executive forged the emails and engineered the trap flips the answer to a machination.",
+      "feedback_deep": "The engineers never agreed to collaborate, which eliminates conspiracy. Instead, a single executive deployed a complex web of forged emails and manipulated systems behind the scenes for self-serving advancement, which exemplifies a machination.",
+      "contrast_rule": "A machination is an individual's crafty scheme; a conspiracy requires an actual agreement among partners.",
+      "hint": "Consider whether the engineers genuinely agreed to act together or were framed by one individual."
+    },
+    {
+      "id": "machination-conspiracy_011",
+      "domain": "architecture_firm",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What was devised to secure the civic waterfront contract was a ___.",
+      "beats": [
+        {
+          "text": "Partner Liam subtly adjusts the digital scale drawings in the firm's submission, inserts misattributed engineering stamps, and anonymously misinforms the planning desk about a rival firm's safety clearance.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.91,
+            "conspiracy": 0.09
+          },
+          "decisive_clue": "adjusting digital scale drawings, inserting false stamps, and anonymously misinforming planners",
+          "reason": "Liam appears to be a solitary schemer using technical deceit and sly maneuvering to gain an advantage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "However, police intercept bank transfers showing Liam had entered into a covert compact with two city planning commissioners, who had agreed to disqualify rival bids in return for luxury penthouse units.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.12,
+            "conspiracy": 0.88
+          },
+          "decisive_clue": "covert compact with two planning commissioners agreeing to disqualify rivals for kickbacks",
+          "reason": "The revelation of a corrupt secret pact between Liam and the public officials transforms the enterprise into a conspiracy.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        },
+        {
+          "text": "The municipal integrity board issues joint arrest warrants against Liam and both commissioners for orchestrating a secret unlawful confederacy to fix the bidding process.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.06,
+            "conspiracy": 0.94
+          },
+          "decisive_clue": "orchestrating a secret unlawful confederacy to fix the bidding",
+          "reason": "A secret multi-party agreement to commit a crime or fraud is fundamentally a conspiracy.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The secret compact between Liam and two planning commissioners to trade contracts for kickbacks makes the scheme a conspiracy.",
+      "feedback_deep": "Although Liam's drawing tampering looked like an individual machination, the core reality was a secret, collusive pact between Liam and city officials to unlawfully manipulate the tender. That mutual criminal agreement defines a conspiracy.",
+      "contrast_rule": "A conspiracy is a secret pact between accomplices; a machination is a crafty behind-the-scenes scheme.",
+      "hint": "Focus on the corrupt secret agreement between Liam and the city commissioners."
+    },
+    {
+      "id": "machination-conspiracy_012",
+      "domain": "theater_production",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What caused the lead actress to abandon the stage opening was a ___.",
+      "beats": [
+        {
+          "text": "After the lead actress receives identical anonymous warnings and finds her dressing room locked on three straight nights, the theater cast suspects a cabal of jealous understudies formed an alliance to drive her out.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.22,
+            "conspiracy": 0.78
+          },
+          "decisive_clue": "suspected alliance of jealous understudies forming a cabal",
+          "reason": "The cast assumes a collaborative, secret pact among multiple rivals seeking to oust the lead actress.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M1"
+          }
+        },
+        {
+          "text": "Security footage discloses that the understudies knew nothing; the stage manager had acted alone, duplicating keys, typing anonymous notes on vintage typewriters, and manipulating lighting schedules to induce panic.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.94,
+            "conspiracy": 0.06
+          },
+          "decisive_clue": "stage manager acting alone duplicating keys, typing notes, and manipulating lighting schedules",
+          "reason": "The plot is revealed as the solitary, crafty maneuvering of an individual pulling strings behind the scenes.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "The stage manager had crafted this multi-stage psychological sabotage to install his own private client in the starring role before opening night.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.96,
+            "conspiracy": 0.04
+          },
+          "decisive_clue": "crafted multi-stage psychological sabotage to install a private client",
+          "reason": "An intricate, devious mechanism orchestrated behind the scenes by a single schemer is a machination.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The discovery that the stage manager acted alone through intricate backstage manipulation flips the answer to a machination.",
+      "feedback_deep": "There was no secret alliance among the understudies, which rules out conspiracy. Instead, a single stage manager deployed an intricate sequence of deceptive maneuvers behind the scenes to replace the actress, making it a machination.",
+      "contrast_rule": "A machination is an individual's intricate scheme; a conspiracy is a mutual secret pact among accomplices.",
+      "hint": "Notice whether the understudies actually formed a pact or if one person staged the incident."
+    },
+    {
+      "id": "machination-conspiracy_013",
+      "domain": "historical_preservation",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 2,
+      "frame": "What the property developer orchestrated to remove the landmark status was a ___.",
+      "beats": [
+        {
+          "text": "The developer quietly commissions a skewed structural report and circulates misdated inspection photographs to make the historic brick theater appear dangerously unstable.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.82,
+            "conspiracy": 0.18
+          },
+          "decisive_clue": "commissioning a skewed report and circulating misdated photographs",
+          "reason": "The developer is engaging in deceitful, behind-the-scenes maneuvers to manipulate perceptions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "The developer also hires an independent subcontractor to intentionally strip roof shingles during heavy rain, ensuring water damage accelerates before the preservation board meets.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.89,
+            "conspiracy": 0.11
+          },
+          "decisive_clue": "hiring an independent subcontractor to strip shingles and accelerate damage",
+          "reason": "The developer continues executing a calculated, multi-step scheme, using an unwitting subcontractor as a physical tool.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "City investigators confirm the developer acted entirely without political collaborators, relying solely on his private, deceptive choreography of inspectors and workers to secure demolition approval.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.95,
+            "conspiracy": 0.05
+          },
+          "decisive_clue": "acting entirely without collaborators, relying solely on private deceptive choreography",
+          "reason": "The absence of any partner or pact narrows the characterization decisively to a solitary machination.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The developer's solitary, calculated choreography of false inspections and manufactured roof damage narrows the act decisively to a machination.",
+      "feedback_deep": "A machination is a crafty, intricate scheme devised to manipulate events behind the scenes. Because the developer acted without collaborators, orchestrating a multi-stage plan using laborers as tools rather than entering into an agreed pact, the action is a machination.",
+      "contrast_rule": "A machination is an intricate puppet-master scheme; a conspiracy is a mutual secret pact among accomplices.",
+      "hint": "Pay attention to whether the developer acted with partners or choreographed the scheme alone."
+    },
+    {
+      "id": "machination-conspiracy_014",
+      "domain": "logistics_shipping",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 2,
+      "frame": "What the three freight carriers formed to divide the cargo routes was a ___.",
+      "beats": [
+        {
+          "text": "Executives from three major shipping firms meet behind closed doors at a maritime convention, verbally agreeing to avoid undercutting each other on coastal freight routes.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.18,
+            "conspiracy": 0.82
+          },
+          "decisive_clue": "meeting behind closed doors and verbally agreeing to avoid undercutting prices",
+          "reason": "A secret mutual agreement to fix prices across competitors represents an illicit conspiracy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "The executives follow up by drafting an encrypted spreadsheet that formally assigns specific deep-water ports to each company while barring outside competitors from bidding.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.11,
+            "conspiracy": 0.89
+          },
+          "decisive_clue": "drafting an encrypted spreadsheet formally assigning ports to each company",
+          "reason": "The coordination deepens the mutual pact, formalizing their collusive alliance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "Antitrust regulators seize the signed non-disclosure declarations, establishing that all three corporations entered into an unlawful mutual compact to monopolize sea freight.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.05,
+            "conspiracy": 0.95
+          },
+          "decisive_clue": "signed declarations establishing an unlawful mutual compact to monopolize freight",
+          "reason": "The signed mutual agreement between competing entities solidifies the definition of a conspiracy.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The signed mutual compact among competing shipping executives to divide cargo routes narrows the arrangement to a conspiracy.",
+      "feedback_deep": "A conspiracy is a secret agreement between multiple entities to execute an unlawful or anti-competitive act. The shipping firms formed a binding, collusive pact to fix freight territories, satisfying the core definition of a conspiracy.",
+      "contrast_rule": "A conspiracy is defined by a secret multi-party agreement; a machination focuses on intricate behind-the-scenes manipulation.",
+      "hint": "Look at the mutual pact signed between the competing corporate executives."
+    },
+    {
+      "id": "machination-conspiracy_015",
+      "domain": "music_conservatory",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 2,
+      "frame": "What Nadia engineered to replace the concertmaster was a ___.",
+      "beats": [
+        {
+          "text": "Nadia, a second-chair violinist, secretly loosens the pegs on the concertmaster's primary instrument before the international broadcast rehearsal, causing noticeable pitch failures.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.84,
+            "conspiracy": 0.16
+          },
+          "decisive_clue": "secretly loosening pegs on the rival's instrument before a broadcast",
+          "reason": "Nadia acts as an individual saboteur employing underhanded tactics to undermine her competitor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Nadia also swaps the conductor's tempo markings in the concertmaster's orchestral binder while replacing the spare strings in his case with brittle, defective nylon.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.91,
+            "conspiracy": 0.09
+          },
+          "decisive_clue": "swapping tempo markings and replacing spare strings with defective nylon",
+          "reason": "Her actions reveal an intricate, multi-layered scheme designed to systematically ensure her rival's failure.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "When the humiliated concertmaster steps down, Nadia steps into the solo chair, having orchestrated every failure from the shadows without a single confidant or collaborator.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.96,
+            "conspiracy": 0.04
+          },
+          "decisive_clue": "orchestrating every failure from the shadows without a single collaborator",
+          "reason": "Her solitary, cunning manipulation of circumstances to claim the position narrows the definition unmistakably to a machination.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Nadia's solitary, multi-step sabotage and covert manipulation of her rival's instruments narrows the action to a machination.",
+      "feedback_deep": "A machination is an intricate, deceitful scheme devised to manipulate events behind the scenes. Nadia planned and executed every detail alone, without collaborators or an agreed pact, which firmly establishes the act as a machination.",
+      "contrast_rule": "A machination is an individual's crafty scheme; a conspiracy requires an agreement between multiple people.",
+      "hint": "Notice whether Nadia formed a pact with anyone or operated as a solitary saboteur."
+    },
+    {
+      "id": "machination-conspiracy_016",
+      "domain": "urban_planning",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "What Director Thorne engineered to reroute the highway was a ___.",
+      "beats": [
+        {
+          "text": "Director Thorne surreptitiously alters topographic survey coordinates in the municipal mapping database to make the public park route appear prone to sinkholes, forcing planners toward private land he owns.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.92,
+            "conspiracy": 0.08
+          },
+          "decisive_clue": "surreptitiously altering survey coordinates to divert the highway toward his own land",
+          "reason": "Thorne is manipulating public technical data behind the scenes for personal enrichment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Rumors sweep City Hall that a secret ring of local landowners had met in private and agreed to pay Thorne a cut of the inflated land sales.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.81,
+            "conspiracy": 0.19
+          },
+          "decisive_clue": "unsubstantiated rumors of a secret ring of landowners",
+          "reason": "Unverified gossip suggests a collaborative pact, but the actual evidence remains Thorne's solitary database manipulation.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Audit investigators confirm the landowners had zero knowledge of Thorne's plot; Thorne had independently manipulated the maps and planted the rumors himself to distract from his own electronic trail.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.96,
+            "conspiracy": 0.04
+          },
+          "decisive_clue": "confirming landowners had zero knowledge and Thorne manipulated maps independently",
+          "reason": "The distraction evaporates, confirming Thorne's solitary, intricate scheme of manipulation was a machination.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Thorne's solitary falsification of municipal mapping data to enrich himself proves his scheme was a machination.",
+      "feedback_deep": "Although rumors suggested a collusive ring of landowners, investigators confirmed no agreement existed. Thorne conceived and executed the entire deception alone, manipulating digital databases and fabricating rumors to conceal his tracks, which defines a machination.",
+      "contrast_rule": "A machination is an intricate solo scheme; a conspiracy requires an actual agreement among partners.",
+      "hint": "Distinguish between unsubstantiated rumors of a pact and the documented actions of the lone official."
+    },
+    {
+      "id": "machination-conspiracy_017",
+      "domain": "journalism",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "What the three newspaper editors formed to suppress the scandal was a ___.",
+      "beats": [
+        {
+          "text": "Three rival newspaper editors meet in a parked sedan to sign a mutual pact pledging that none of their publications will print allegations regarding the governor's offshore accounts.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.08,
+            "conspiracy": 0.92
+          },
+          "decisive_clue": "signing a mutual pact pledging none of their publications will print the allegations",
+          "reason": "A secret multi-party agreement to suppress vital news constitutes an illicit conspiracy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        },
+        {
+          "text": "One of the editors subsequently devises a sophisticated series of decoy headlines and shifts investigative reporters to obscure foreign beats to make the suppression look like an editorial priority shift.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.24,
+            "conspiracy": 0.76
+          },
+          "decisive_clue": "devising decoy headlines in execution of the agreed suppression pact",
+          "reason": "Although one editor deploys clever tactical maneuvers, the underlying foundation remains their mutual secret pact to suppress the story.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        },
+        {
+          "text": "A whistleblower leaks the signed agreement from the sedan meeting, confirming that all editorial diversions were merely steps taken to execute their shared, binding pact of silence.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.05,
+            "conspiracy": 0.95
+          },
+          "decisive_clue": "signed agreement confirming diversions were steps to execute their shared binding pact",
+          "reason": "The mutual secret agreement between multiple editors remains the decisive defining element of their plot.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The signed mutual pact among the three editors to suppress the scandal anchors their plot firmly as a conspiracy.",
+      "feedback_deep": "Even though one editor introduced clever diversions and decoy headlines, those maneuvers were merely the mechanism for executing the signed agreement among the three editors. The governing core of their collective wrongdoing remains a conspiracy.",
+      "contrast_rule": "A conspiracy is defined by a secret multi-party pact; clever tactical steps to execute it do not change its nature.",
+      "hint": "Notice that the individual diversions were carried out solely to fulfill the shared signed agreement."
+    },
+    {
+      "id": "machination-conspiracy_018",
+      "domain": "family_inheritance",
+      "transfer": true,
+      "chain_type": "reframe",
+      "difficulty": 3,
+      "frame": "What unfolded regarding the allocation of Grandmother Clara's estate was a ___.",
+      "beats": [
+        {
+          "text": "When Grandmother Clara suddenly amends her will to disinherit her grandchildren in favor of a secluded charitable trust, the siblings assume an illicit cabal of distant cousins formed a secret pact to seize the family estate.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.22,
+            "conspiracy": 0.78
+          },
+          "decisive_clue": "assuming an illicit cabal of distant cousins formed a secret pact",
+          "reason": "The initial framework assumes a collusive group agreement among cousins to steal the inheritance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M1"
+          }
+        },
+        {
+          "text": "Estate probate lawyers discover that the cousins knew nothing of the trust; rather, Clara's solitary financial conservator had privately drafted the amendment, forged medical competency letters, and manipulated Clara's isolated routine to name his own entity as trustee.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.93,
+            "conspiracy": 0.07
+          },
+          "decisive_clue": "conservator privately drafting amendments, forging letters, and manipulating routines alone",
+          "reason": "The situation is reframed: there was never a group pact, but a single operator's crafty, devious manipulation of an elder.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "The conservator had orchestrated the entire legal trap over two years through meticulous behind-the-scenes maneuvering, without consulting or partnering with anyone.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.96,
+            "conspiracy": 0.04
+          },
+          "decisive_clue": "orchestrating the entire legal trap alone through behind-the-scenes maneuvering",
+          "reason": "A solitary, intricate mechanism of deceit designed to manipulate events and people for personal enrichment is a machination.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Reframing the plot as a conservator's solitary, intricate manipulation of legal documents establishes that it was a machination.",
+      "feedback_deep": "The siblings initially suspected a group conspiracy among relatives, but evidence reframed the reality: there was no mutual agreement. A single conservator cunningly manipulated legal paperwork and elder isolation behind the scenes, making the scheme a machination.",
+      "contrast_rule": "A machination is an individual's crafty scheme; a conspiracy requires an actual agreement among partners.",
+      "hint": "Look at whether a group pact existed or whether a single individual engineered the trap."
+    },
+    {
+      "id": "machination-conspiracy_019",
+      "domain": "expedition_travel",
+      "transfer": true,
+      "chain_type": "corrupt",
+      "difficulty": 3,
+      "frame": "What took place to strand the rival mountaineering team at base camp was a ___.",
+      "beats": [
+        {
+          "text": "Expedition leader Bruno secretly siphons kerosene from the rival team's fuel canisters and alters the glacier route markers to steer them toward an impassable crevasse field.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.92,
+            "conspiracy": 0.08
+          },
+          "decisive_clue": "secretly siphoning kerosene and altering glacier route markers",
+          "reason": "Bruno appears to be a solitary schemer using underhanded physical sabotage to obstruct competitors.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Radio intercepts corrupt this solitary picture, revealing that Bruno had entered into a secret alliance with the local porter guild master and the regional transport officer, who agreed to delay rescue flights in return for cash.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.12,
+            "conspiracy": 0.88
+          },
+          "decisive_clue": "secret alliance with the porter guild master and transport officer to delay rescue flights",
+          "reason": "The revelation of a clandestine mutual agreement between Bruno and local officials transforms the solitary sabotage into a multi-party conspiracy.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        },
+        {
+          "text": "A handwritten compact recovered from the base lodge proves all three parties had sworn mutual secrecy and agreed to share the sponsor's summit prize.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.05,
+            "conspiracy": 0.95
+          },
+          "decisive_clue": "handwritten compact proving all three parties had sworn mutual secrecy to share the prize",
+          "reason": "A formal secret agreement among multiple accomplices to commit wrongful acts is the essence of a conspiracy.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The discovery of a secret pact between Bruno and local officials corrupts the solo narrative, proving a conspiracy.",
+      "feedback_deep": "While Bruno's trail tampering initially seemed like a solo machination, evidence revealed a binding secret agreement among Bruno, the guild master, and the transport officer. A collaborative pact among multiple parties to commit wrongdoing is a conspiracy.",
+      "contrast_rule": "A conspiracy is a secret pact among accomplices; a machination is a crafty behind-the-scenes scheme.",
+      "hint": "Consider the secret agreement uncovered between Bruno and the regional officials."
+    },
+    {
+      "id": "machination-conspiracy_020",
+      "domain": "neighborhood_council",
+      "transfer": true,
+      "chain_type": "precision",
+      "difficulty": 3,
+      "frame": "What was organized to block the community park renovation was a ___.",
+      "beats": [
+        {
+          "text": "A resident secretly files false noise complaints, spreads alarmist flyers under doormats, and manipulates attendance sign-in sheets at the community center to create the appearance of widespread neighborhood outrage against the park plan.",
+          "best_word": "machination",
+          "fit": {
+            "machination": 0.88,
+            "conspiracy": 0.12
+          },
+          "decisive_clue": "spreading alarmist flyers and manipulating sign-in sheets to fabricate outrage",
+          "reason": "The initial focus is on an elaborate, behind-the-scenes manipulation of neighborhood perception by an active resident.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "conspiracy": "M1"
+          }
+        },
+        {
+          "text": "Town records precisely reveal that four commercial landlords held a closed midnight meeting where they signed a mutual pledge to finance the smear effort, hire the flyer distributor, and coordinate their council testimony.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.10,
+            "conspiracy": 0.90
+          },
+          "decisive_clue": "four landlords signing a mutual pledge to finance the effort and coordinate testimony",
+          "reason": "Precise evidence demonstrates that the front-line agitation was merely the product of a secret mutual agreement signed by four collaborating landlords.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        },
+        {
+          "text": "The municipal ethics commission formally sanctions the four landlords for orchestrating an unlawful covert coalition to suppress public infrastructure for private commercial gain.",
+          "best_word": "conspiracy",
+          "fit": {
+            "machination": 0.05,
+            "conspiracy": 0.95
+          },
+          "decisive_clue": "formal sanctions for orchestrating an unlawful covert coalition",
+          "reason": "The defining legal and semantic reality of the operation is the collaborative illicit compact among the four landlords.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "machination": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The signed mutual pledge among four landlords to fund and coordinate the opposition precisely defines it as a conspiracy.",
+      "feedback_deep": "While the flyers and forged sign-in sheets appeared to be a deceptive local machination, precise records showed it was executed pursuant to a secret agreement signed by four landlords. That multi-party illicit pact constitutes a conspiracy.",
+      "contrast_rule": "A conspiracy is defined by a secret multi-party agreement; a machination focuses on crafty behind-the-scenes manipulation.",
+      "hint": "Look at the signed mutual pledge among the four commercial property owners."
+    }
+  ]
+}

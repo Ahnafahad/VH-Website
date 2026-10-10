@@ -1,0 +1,686 @@
+[
+  {
+    "chain_id": "agnostic-atheist_001",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_002",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_003",
+    "verdict": "REVISE",
+    "issue": "Topic shifted to afterlife/soul rather than existence of God.",
+    "revised_chain": {
+      "id": "agnostic-atheist_003",
+      "domain": "hospital_ethics",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "Regarding the existence of a supernatural creator, Dr. Aris Thorne is an ___.",
+      "beats": [
+        {
+          "text": "Dr. Aris Thorne serves on a hospital palliative review board reviewing terminal patient care protocols. When asked by a resident whether a divine architect receives the departed, he replies that human medicine has no empirical means of observing what lies beyond the physical universe.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.91,
+            "atheist": 0.19
+          },
+          "decisive_clue": "recognizing human inability to observe or verify a divine architect",
+          "reason": "Dr. Thorne treats metaphysical afterlife claims as inherently unknown to science.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        },
+        {
+          "text": "A secular bioethicist argues that since neurological activity ceases at flatline, the board should officially conclude that life is solely mechanical and dismiss all divine possibilities. Dr. Thorne cautions that science can map biological function but cannot logically disprove a metaphysical creator beyond sensory reach.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.94,
+            "atheist": 0.14
+          },
+          "decisive_clue": "arguing that absence of biological trace does not logically disprove a metaphysical creator",
+          "reason": "He actively refrains from adopting an affirmative materialist denial.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        },
+        {
+          "text": "When a hospital chaplain offers a bedside prayer to God for a comatose patient, Dr. Thorne stands respectfully aside, recognizing that while comfort matters, no physician can claim definitive factual knowledge about a supreme being.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.9,
+            "atheist": 0.2
+          },
+          "decisive_clue": "adhering to epistemic humility regarding a supreme being while remaining respectful",
+          "reason": "He continues to withhold judgment on whether spiritual reality exists.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Dr. Thorne insists that science cannot prove or disprove a creator, refusing both religious belief and materialist denial.",
+      "feedback_deep": "Dr. Thorne focuses on epistemic limitations: the inability of medicine to detect a supreme being does not constitute logical disproof. By refusing to conclude definitively that no creator exists, he maintains an open, neutral stance grounded in intellectual restraint.",
+      "contrast_rule": "Saying 'we cannot know' marks the neutral stance; saying 'it does not exist' marks disbelief.",
+      "hint": "Observe whether Dr. Thorne declares a creator nonexistent or fundamentally outside empirical measurement."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_004",
+    "verdict": "REVISE",
+    "issue": "Frame uses contextual timing ('When requested...') instead of a general state.",
+    "revised_chain": {
+      "id": "agnostic-atheist_004",
+      "domain": "courtroom",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "In his personal convictions about a supreme creator, Tariq is an ___.",
+      "beats": [
+        {
+          "text": "Tariq steps into the witness box to testify in a commercial fraud trial. When the court clerk presents a holy scripture and asks him to swear to God that his testimony is true, Tariq declines the book, stating that he holds no belief in any divine power and requests a secular affirmation instead.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.21,
+            "atheist": 0.93
+          },
+          "decisive_clue": "stating an active lack of belief in any divine power when swearing",
+          "reason": "Tariq explicitly affirms that he does not believe in God.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        },
+        {
+          "text": "During cross-examination, the opposing counsel attempts to challenge his moral reliability by asking whether fear of divine punishment governs his conscience. Tariq answers calmly that human ethics arise from empathy and social contract, firmly reiterating that he does not recognize any supernatural creator.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.15,
+            "atheist": 0.95
+          },
+          "decisive_clue": "grounding morality entirely in human contracts while denying supernatural creators",
+          "reason": "He reaffirms his positive conviction that morality does not depend on nonexistent gods.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        },
+        {
+          "text": "The judge confirms that his secular solemn promise carries full legal weight, and Tariq delivers his factual evidence without appealing to any sacred providence.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.18,
+            "atheist": 0.92
+          },
+          "decisive_clue": "proceeding solely under secular principles with explicit rejection of divinity",
+          "reason": "His courtroom stance remains firmly anchored in the non-existence of deities.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Tariq explicitly rejects belief in divine powers, choosing a secular affirmation over swearing to an entity he does not believe in.",
+      "feedback_deep": "Tariq's objection to swearing on scripture is rooted in his explicit non-belief in any deity. He does not claim that God is an unresolvable mystery; rather, he directly disavows belief in God and grounds his ethical obligation in human responsibility.",
+      "contrast_rule": "One who rejects belief avoids divine oaths on principle; one who withholds judgment questions knowability.",
+      "hint": "Focus on whether Tariq merely doubts human knowledge or directly states that he holds no belief in God."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_005",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_006",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_007",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_008",
+    "verdict": "REVISE",
+    "issue": "Beat 2 is a clarification (fake flip) rather than a genuine shift.",
+    "revised_chain": {
+      "id": "agnostic-atheist_008",
+      "domain": "campus_debate",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 4,
+      "frame": "Regarding his belief in divine beings, Kenji is an ___.",
+      "beats": [
+        {
+          "text": "At a university roundtable on science and religion, Kenji explains that he does not take sides on whether a cosmic mind created the universe, noting that neither physics nor theology has provided definitive answers. He states that he simply does not know.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.94,
+            "atheist": 0.17
+          },
+          "decisive_clue": "stating that he does not take sides because neither physics nor theology can provide answers",
+          "reason": "Kenji initially suspends judgment due to lack of conclusive knowledge.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        },
+        {
+          "text": "A philosophy professor challenges him, arguing that suspending judgment treats unfounded myths with undue respect. Persuaded that a total lack of evidence warrants active disbelief rather than neutrality, Kenji abandons his middle ground and declares that he now entirely rejects the existence of any deities.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.23,
+            "atheist": 0.93
+          },
+          "decisive_clue": "abandoning his middle ground to actively reject the existence of any deities",
+          "reason": "He is persuaded to drop his neutral stance and adopt active disbelief.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Kenji moves from a neutral stance of ignorance to actively rejecting the existence of deities.",
+      "feedback_deep": "Kenji initially expresses neutral uncertainty about whether cosmic questions can be answered. However, when challenged on the logic of his neutrality, he adopts a stance of active disbelief, concluding that a lack of evidence justifies rejecting deities altogether.",
+      "contrast_rule": "Claiming ignorance withholds judgment; admitting an absence of belief defines non-belief.",
+      "hint": "Notice the difference between not claiming definitive proof and actually possessing no belief in gods."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_009",
+    "verdict": "REVISE",
+    "issue": "Beat 3 phrasing ('clarifies his settled outlook') suggests simultaneous contradictory states.",
+    "revised_chain": {
+      "id": "agnostic-atheist_009",
+      "domain": "journalism",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 4,
+      "frame": "In his personal conviction concerning the divine, Farhan is an ___.",
+      "beats": [
+        {
+          "text": "Farhan authors an essay in a national daily arguing that all concept of divine providence is an archaic illusion, stating unequivocally that humanity exists in an unguided, godless universe.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.15,
+            "atheist": 0.95
+          },
+          "decisive_clue": "declaring divine providence an illusion and describing the universe as godless",
+          "reason": "Farhan asserts an affirmative non-theistic worldview.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        },
+        {
+          "text": "After reading critique letters from theoretical physicists highlighting quantum indeterminacy and multiple dimensions, Farhan writes a follow-up column admitting that humans know so little about fundamental reality that ruling out a transcendent entity is logically premature.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.91,
+            "atheist": 0.25
+          },
+          "decisive_clue": "admitting that human ignorance makes ruling out a transcendent entity logically premature",
+          "reason": "He steps back from denial to suspend judgment based on human ignorance.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        },
+        {
+          "text": "Months later, in a podcast retrospective, Farhan states that he has reconsidered his philosophical doubt. Concluding that quantum mystery does not justify theological speculation, he fully returns to his original conviction and actively rejects belief in any supernatural deities.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.18,
+            "atheist": 0.94
+          },
+          "decisive_clue": "returning to his original conviction and actively rejecting belief in supernatural deities",
+          "reason": "He actively rejects theological speculation, returning to definitive non-belief.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Farhan initially denies gods, briefly suspends judgment over physical mysteries, but ultimately returns to active disbelief.",
+      "feedback_deep": "Farhan journeys through a classic intellectual cycle: starting with dogmatic denial, softening into epistemic doubt when confronted with cosmological limits, and finally returning to a clear rejection of belief in deities as his personal conviction.",
+      "contrast_rule": "Epistemic doubt pauses judgment; personal rejection of deities confirms disbelief.",
+      "hint": "Track how Farhan moves from denial, to acknowledging ignorance, and back to a personal stance of disbelief."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_010",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_011",
+    "verdict": "REVISE",
+    "issue": "Frame uses contextual timing ('When discussing...') instead of a general state.",
+    "revised_chain": {
+      "id": "agnostic-atheist_011",
+      "domain": "relationships",
+      "transfer": true,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "In her fundamental worldview regarding the divine, Amina is an ___.",
+      "beats": [
+        {
+          "text": "Before planning their wedding ceremony, Amina tells her fiancé that she wants a purely civil marriage without blessings, explaining that she does not believe in God and views all religious claims as baseless fiction.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.14,
+            "atheist": 0.95
+          },
+          "decisive_clue": "stating she does not believe in God and calling religious claims baseless fiction",
+          "reason": "Amina articulates a definite rejection of belief in deities.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        },
+        {
+          "text": "Her fiancé, who studies philosophy, asks if she claims to possess proof that no higher consciousness exists in the cosmos. Amina pauses and admits that nobody can prove a negative; she clarifies that she does not know whether a higher power exists, only that evidence is entirely unavailable, leading her to suspend all judgment.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.93,
+            "atheist": 0.22
+          },
+          "decisive_clue": "admitting nobody can prove a negative and suspending all judgment on a higher power",
+          "reason": "Conceding the impossibility of proof flips her stance from denial to suspended judgment.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Amina moves from rejecting belief in God to recognizing that the question is fundamentally unprovable and suspending judgment.",
+      "feedback_deep": "Amina starts with an assertive declaration of disbelief when planning a civil ceremony. However, when probed on whether she claims absolute proof, she recognizes the impossibility of proving that no higher consciousness exists, shifting her stance to epistemic doubt and neutrality.",
+      "contrast_rule": "Claiming gods do not exist is disbelief; admitting we cannot prove their absence is neutrality.",
+      "hint": "Look at how Amina's response changes when asked whether she can actually prove non-existence."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_012",
+    "verdict": "REVISE",
+    "issue": "Fake flip: Beat 2 reveals Beat 1 was just PR, meaning his true state never changed.",
+    "revised_chain": {
+      "id": "agnostic-atheist_012",
+      "domain": "sport",
+      "transfer": true,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Regarding his belief in divine influence or gods, Liam is an ___.",
+      "beats": [
+        {
+          "text": "Following a championship win, Liam tells a reporter that mortals cannot know whether cosmic forces exist or intervene in human games, genuinely choosing neither to credit nor deny heaven.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.92,
+            "atheist": 0.18
+          },
+          "decisive_clue": "stating mortals cannot know whether cosmic forces exist, choosing neither to credit nor deny",
+          "reason": "Liam refuses to take a side, treating cosmic influence as unknowable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        },
+        {
+          "text": "Years later, after reflecting on the sheer physical mechanics of his career, Liam abandons his previous neutrality. He now credits grueling drills alone and explicitly rejects belief in any gods or divine overseers.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.13,
+            "atheist": 0.95
+          },
+          "decisive_clue": "abandoning neutrality to explicitly reject belief in any gods or divine overseers",
+          "reason": "He abandons epistemic neutrality and adopts active disbelief in gods.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Liam shifts from viewing cosmic forces as unknowable to an explicit declaration that he rejects belief in any deities.",
+      "feedback_deep": "Liam initially expresses neutral uncertainty about whether cosmic forces intervene in human affairs. However, after deep reflection on his career, he abandons this neutrality and actively disbelieves in gods, attributing reality strictly to human effort.",
+      "contrast_rule": "Diplomatic uncertainty points to neutrality; outright rejection of divine creators points to disbelief.",
+      "hint": "Compare Liam's initial diplomatic evasion with his explicit rejection of deities in the biography."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_013",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_014",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_015",
+    "verdict": "REVISE",
+    "issue": "Frame uses contextual timing ('When visiting...') instead of a general state.",
+    "revised_chain": {
+      "id": "agnostic-atheist_015",
+      "domain": "travel",
+      "transfer": true,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Regarding her belief in supernatural entities or spirits, Sunita is an ___.",
+      "beats": [
+        {
+          "text": "Sunita hikes to an ancient cliffside monastery where monks chant ancient mantras. Asked by her guide if she feels the presence of divine guardians, Sunita replies that she cannot tell whether spirits inhabit the peaks.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.79,
+            "atheist": 0.35
+          },
+          "decisive_clue": "admitting she cannot tell whether divine spirits inhabit the peaks",
+          "reason": "Sunita expresses initial uncertainty about supernatural presence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        },
+        {
+          "text": "Her guide asks if that means she plans to embrace the mountain faith once she learns the teachings. Sunita explains that no amount of theological lore could ever turn spiritual intuition into empirical certainty, meaning she will never endorse or deny divine presence.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.94,
+            "atheist": 0.16
+          },
+          "decisive_clue": "explaining spiritual claims can never become empirical certainty, refusing endorsement or denial",
+          "reason": "She narrows her view into a firm epistemological boundary.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        },
+        {
+          "text": "In her travel journal, Sunita writes that true intellectual peace comes from accepting that the ultimate nature of the universe is permanently shrouded in mystery, requiring one to suspend belief and disbelief alike.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.96,
+            "atheist": 0.12
+          },
+          "decisive_clue": "formulating a mature commitment to suspend both belief and disbelief alike",
+          "reason": "Her final journal entry solidifies her stance as deep epistemic suspension.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Sunita moves from traveler's wonder to a definitive realization that divine truth is permanently unknowable, suspending judgment.",
+      "feedback_deep": "Sunita's experience narrows from simple atmospheric uncertainty into a mature philosophical realization: spiritual claims cannot be empirically verified. By committing to suspend both belief and disbelief, she firmly establishes her neutral stance.",
+      "contrast_rule": "Accepting that cosmic reality is permanently mysterious defines the unknowable stance.",
+      "hint": "Look at whether Sunita denies the presence of spirits or concludes that their reality cannot be known."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_016",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_017",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_018",
+    "verdict": "REVISE",
+    "issue": "Frame uses unusual phrasing ('In his ethical stance toward the existence...').",
+    "revised_chain": {
+      "id": "agnostic-atheist_018",
+      "domain": "hospital_ethics",
+      "transfer": false,
+      "chain_type": "reframe",
+      "difficulty": 4,
+      "frame": "Regarding the existence of a higher power, Julian is an ___.",
+      "beats": [
+        {
+          "text": "Julian directs a hospice program and often tells junior staff that religious promises of divine restoration are false comfort, stating that he does not believe in any gods and lives with clear rejection of the divine.",
+          "best_word": "atheist",
+          "fit": {
+            "agnostic": 0.16,
+            "atheist": 0.94
+          },
+          "decisive_clue": "stating he does not believe in gods and lives with clear rejection of the divine",
+          "reason": "Julian initially articulates explicit disbelief in deities.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "agnostic": "M2"
+          }
+        },
+        {
+          "text": "During an ethics retreat on grief, a palliative psychologist reframes the issue not around dogma, but around human existential boundaries: can any mortal truly know what transcends life? Julian listens closely and reconsiders, admitting that dogmatic denial of the divine is just as ungrounded as blind faith, choosing instead to suspend judgment.",
+          "best_word": "agnostic",
+          "fit": {
+            "agnostic": 0.92,
+            "atheist": 0.24
+          },
+          "decisive_clue": "reframing the question around human limits and choosing to suspend judgment",
+          "reason": "Reframing the problem as human limitations shifts his stance to suspension of judgment.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheist": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Julian reframes his outlook from active denial of gods to an humble suspension of judgment regarding mortal limits.",
+      "feedback_deep": "Julian initially takes an adversarial stance against religious comfort, actively denying gods. When the conversation reframes the problem around human existential limits, he realizes that definitive denial claims more certainty than humans possess, moving to a neutral stance.",
+      "contrast_rule": "Reframing certainty around human limitations transforms denial into suspended judgment.",
+      "hint": "Watch how reframing the debate around mortal limits alters Julian's willingness to deny gods."
+    }
+  },
+  {
+    "chain_id": "agnostic-atheist_019",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "agnostic-atheist_020",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  }
+]

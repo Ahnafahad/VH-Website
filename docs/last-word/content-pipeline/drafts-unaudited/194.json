@@ -1,0 +1,1285 @@
+{
+ "set_id": "petulant-peevish",
+ "source_pair_id": 194,
+ "words": [
+  {
+   "word": "petulant",
+   "sense": "childishly sulky",
+   "concise_meaning": "bad-tempered, childish, sulky, especially over trivialities",
+   "connotation": "negative (immature)",
+   "register": "standard",
+   "grammar": "adjective",
+   "collocations": [
+    "a petulant child",
+    "a petulant outburst",
+    "behave in a petulant manner"
+   ],
+   "misconceptions": [
+    "Thinking it means merely 'irritated'."
+   ]
+  },
+  {
+   "word": "peevish",
+   "sense": "habitually irritable",
+   "concise_meaning": "easily annoyed, complaining, fretful, habitual irritability",
+   "connotation": "negative (cranky)",
+   "register": "standard",
+   "grammar": "adjective",
+   "collocations": [
+    "a peevish old man",
+    "a peevish tone",
+    "become peevish"
+   ],
+   "misconceptions": [
+    "Thinking it means 'childish'."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "maturity_of_reaction",
+   "description": "Whether the reaction is childishly dramatic (petulant) or an expression of habitual crankiness (peevish)."
+  },
+  {
+   "id": "habitual_vs_transient",
+   "description": "Whether the state is a momentary tantrum (petulant) or a consistent, cranky disposition (peevish)."
+  },
+  {
+   "id": "trigger_source",
+   "description": "Whether the annoyance is triggered by a trivial loss of control/desire (petulant) or general, persistent unhappiness (peevish)."
+  }
+ ],
+ "edge": {
+  "a": "petulant",
+  "b": "peevish",
+  "boundary_rule": "Use 'petulant' for childish, dramatic outbursts over unmet trivial desires; use 'peevish' for chronic, low-level irritability and complaint.",
+  "clues_a": [
+   "sulking",
+   "pouting",
+   "childish outburst",
+   "trivial desire",
+   "tantrum"
+  ],
+  "clues_b": [
+   "chronic",
+   "habitually",
+   "fretful",
+   "low-level annoyance",
+   "complaining"
+  ],
+  "irrelevant_clues": [
+   "being angry",
+   "expressing annoyance",
+   "the subject's age",
+   "the subject's profession"
+  ],
+  "misconceptions": {
+   "M1": "Confusing 'sulky/childish' with 'chronically cranky'.",
+   "M2": "Assuming any annoyance is 'petulant'.",
+   "M3": "Assuming 'peevish' implies dramatic outbursts."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "petulant": [
+    "The toddler was petulant when his mother took away his favourite toy.",
+    "After losing the game, the boy made a petulant face and refused to play.",
+    "Her petulant tone when asked to do simple chores was very childish.",
+    "He gave a petulant shrug and turned his back on everyone.",
+    "The actor had a petulant outburst because his dressing room was too small.",
+    "Stop being so petulant; you cannot have dessert before finishing your vegetables."
+   ],
+   "peevish": [
+    "The peevish old man complained about the noise every single day.",
+    "She grew peevish whenever the conversation turned to her ex-husband.",
+    "The tired nurse was peevish after working a double shift.",
+    "His peevish tone during meetings made him difficult to work with.",
+    "The customer was peevish, finding faults in every item the clerk showed him.",
+    "It was a long journey, and the peevish travellers complained about the delays."
+   ]
+  },
+  "counter": {
+   "petulant": [
+    "The peevish teacher was known for her daily complaining about students.",
+    "He was so tired and peevish after work that he couldn't even speak.",
+    "The chronic pain made the patient feel peevish and irritable.",
+    "Despite her age, she was not petulant, just habitually cranky.",
+    "The customer's peevish demands for service were constant, not just tantrums.",
+    "A truly peevish person doesn't sulk, they just grumble."
+   ],
+   "peevish": [
+    "The child's petulant tantrum at the supermarket was loud and dramatic.",
+    "She pouted like a petulant child because she didn't get her own way.",
+    "His petulant reaction to the minor change was clearly childish.",
+    "Don't be so petulant; it's just a small mistake.",
+    "The star's petulant refusal to perform was a classic tantrum.",
+    "They were behaving in a petulant manner, more like children than adults."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The patient was ___ at the nursing staff for not bringing her tea quickly enough.",
+    "best_word": "peevish",
+    "note": "While she could be reacting like a child (petulant), the context of a patient frequently complaining suggests a 'peevish' state of habitual irritability."
+   },
+   {
+    "text": "His response to the constructive feedback was ___ and dismissive.",
+    "best_word": "petulant",
+    "note": "Dismissive and childishly refusing to accept the feedback is classic 'petulant'."
+   },
+   {
+    "text": "Every morning, he was ___ about the weather or the traffic.",
+    "best_word": "peevish",
+    "note": "'Every morning' indicates a habitual, chronic state, making 'peevish' the best fit."
+   },
+   {
+    "text": "When the game ended, she made a ___ face and walked away without shaking hands.",
+    "best_word": "petulant",
+    "note": "Walking away without shaking hands after a loss is a childish outburst, making 'petulant' the best fit."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "petulant-peevish_001",
+   "domain": "software project",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The lead developer's reaction when the client changed requirements: ___",
+   "beats": [
+    {
+     "text": "The developer threw his pen down and crossed his arms because the new deadline was not what he had hoped for.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.85,
+      "peevish": 0.45
+     },
+     "decisive_clue": "threw his pen down",
+     "reason": "Throwing a pen is a childish, dramatic display.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    },
+    {
+     "text": "He muttered to himself for a moment, then sulked in silence, refusing to look at the screen for ten minutes.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.35
+     },
+     "decisive_clue": "sulked in silence",
+     "reason": "Sulking is specifically associated with a childish, immature response.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Throwing the pen and sulking in silence are classic childish displays of bad temper, fitting this word perfectly.",
+   "feedback_deep": "While he is certainly annoyed, the primary feature of his reaction—throwing a pen and pouting in silence—points to a childish display of temper over a trivial annoyance, rather than a habitual state of irritability.",
+   "contrast_rule": "Choose this word when the subject is acting like a spoiled child, not just a cranky adult.",
+   "hint": "Look for signs of childish dramatic behaviour, such as sulking or throwing items."
+  },
+  {
+   "id": "petulant-peevish_002",
+   "domain": "household chores",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The husband's reaction to doing the dishes again: ___",
+   "beats": [
+    {
+     "text": "He groaned loudly when he saw the sink full of dishes again, complaining that it wasn't his turn.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.4,
+      "peevish": 0.8
+     },
+     "decisive_clue": "complaining",
+     "reason": "Complaining is a sign of irritability.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "He grumbled while washing them, criticizing the quality of the detergent and the water pressure, just like he did every night.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.9
+     },
+     "decisive_clue": "every night",
+     "reason": "The 'every night' aspect confirms a habitual state.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His constant complaining 'every night' confirms this is a habitual state of irritability, not a sudden childish tantrum.",
+   "feedback_deep": "His consistent grumbling, criticizing even minor details like detergent quality daily, defines a state of chronic crankiness and habitual complaining. He is irritable, but not in the dramatic, immature way of a child's tantrum.",
+   "contrast_rule": "Use this when the behavior is chronic, low-level, and complaining.",
+   "hint": "Does this behaviour happen once, or is it a recurring complaint?"
+  },
+  {
+   "id": "petulant-peevish_003",
+   "domain": "restaurant service",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The waiter's attitude after a long shift: ___",
+   "beats": [
+    {
+     "text": "The waiter sighed loudly and rolled his eyes at the customer who asked for extra ice, making it clear he was annoyed.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.5,
+      "peevish": 0.75
+     },
+     "decisive_clue": "annoyed",
+     "reason": "A general air of annoyance.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "Throughout the rest of the meal, he continued to offer snide remarks and seemed easily irritated by every minor request.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.4,
+      "peevish": 0.9
+     },
+     "decisive_clue": "easily irritated by every minor request",
+     "reason": "Easily irritated is the hallmark of this word.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Being 'easily irritated by every minor request' is a clear sign of habitual crankiness, not childishness.",
+   "feedback_deep": "The waiter's persistent snide remarks and his general irritation at minor requests demonstrate a chronic, cranky state of mind built up over a long shift, fitting the description of being habitually irritable.",
+   "contrast_rule": "Use this for chronic crankiness, not immature tantrums.",
+   "hint": "Is he being childishly dramatic, or just chronically cranky?"
+  },
+  {
+   "id": "petulant-peevish_004",
+   "domain": "exam prep",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The student's attitude toward the practice test: ___",
+   "beats": [
+    {
+     "text": "The student crossed her arms and glared at the practice test because it included algebra, which she disliked.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.9,
+      "peevish": 0.3
+     },
+     "decisive_clue": "glared",
+     "reason": "A dramatic, childish reaction to a small dislike.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    },
+    {
+     "text": "She pouted, pushed the paper away, and refused to work on that section at all, despite it being mandatory.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.2
+     },
+     "decisive_clue": "pouted",
+     "reason": "Pouting is a quintessentially childish, petulant gesture.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Glaring and pouting over a practice test section are clearly childish, immature actions.",
+   "feedback_deep": "The student's refusal to work, combined with pouting like a child because she disliked the material, clearly demonstrates a childish, sulky reaction to a trivial disappointment, fitting the definition of being petulant.",
+   "contrast_rule": "Look for the childish, dramatic expression of temper.",
+   "hint": "Does the behaviour remind you of a child?"
+  },
+  {
+   "id": "petulant-peevish_005",
+   "domain": "bus travel",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The commuter's attitude in the crowded bus: ___",
+   "beats": [
+    {
+     "text": "The commuter loudly complained about the bus being crowded for the third time that week.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.8
+     },
+     "decisive_clue": "complained about... for the third time",
+     "reason": "Recurring complaint.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "He grumbled incessantly about the temperature, the other passengers, and the driver, making everyone around him uncomfortable.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.2,
+      "peevish": 0.95
+     },
+     "decisive_clue": "grumbled incessantly",
+     "reason": "Habitual grumbling.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Constant, incessant grumbling about various minor issues is the hallmark of habitual irritability.",
+   "feedback_deep": "His behaviour of grumbling about everything—from temperature to fellow passengers—demonstrates a chronic, complaining nature. It's not a single tantrum, but a persistent state of being easily annoyed.",
+   "contrast_rule": "When it's a chronic, complaining grumble, it's this word.",
+   "hint": "Is he being childish, or just constantly unhappy/complaining?"
+  },
+  {
+   "id": "petulant-peevish_006",
+   "domain": "choir practice",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The soprano's attitude during the rehearsal: ___",
+   "beats": [
+    {
+     "text": "The soprano made a loud huffing sound when the conductor asked her to sing her part more quietly.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.85,
+      "peevish": 0.4
+     },
+     "decisive_clue": "loud huffing sound",
+     "reason": "A childish, sulky reaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    },
+    {
+     "text": "She then sat down in a huff, refusing to sing the rest of the song, even though she knew the melody.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.2
+     },
+     "decisive_clue": "sat down in a huff",
+     "reason": "The dramatic refusal to participate is childish.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Her huffing and dramatic refusal to sing are quintessential examples of a childish, sulky tantrum.",
+   "feedback_deep": "The soprano's reaction of huffing and refusing to participate in the choir is dramatic and childish, clearly fitting the description of a sulky tantrum over a minor request.",
+   "contrast_rule": "Sulking and dramatic refusals are childish.",
+   "hint": "Is this a cranky person, or someone sulking like a child?"
+  },
+  {
+   "id": "petulant-peevish_007",
+   "domain": "plumbing repairs",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The homeowner's reaction to the plumber's delay: ___",
+   "beats": [
+    {
+     "text": "The homeowner sighed and started complaining about how often the pipes leaked and how expensive the repairs were.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.4,
+      "peevish": 0.8
+     },
+     "decisive_clue": "complaining about how often the pipes leaked",
+     "reason": "A general complaint about a chronic issue.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "When the plumber said he needed another hour, the homeowner threw his hands in the air, shouted at the plumber, and kicked the wall.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.9,
+      "peevish": 0.3
+     },
+     "decisive_clue": "kicked the wall",
+     "reason": "Physical tantrum.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The homeowner's initial grumbling was peevish, but his explosive tantrum (kicking the wall) is decidedly childish and petulant.",
+   "feedback_deep": "While the initial grumbling about costs was peevish, the action of kicking the wall because of a short delay is a dramatic, immature tantrum, which fits the definition of petulant.",
+   "contrast_rule": "The tantrum marks the shift from cranky to childish.",
+   "hint": "Did the behaviour change from complaining to a tantrum?"
+  },
+  {
+   "id": "petulant-peevish_008",
+   "domain": "landscape design",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The designer's reaction to the client's feedback: ___",
+   "beats": [
+    {
+     "text": "The designer rolled his eyes, stating that clients always ask for changes that don't make sense with the layout.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.5,
+      "peevish": 0.75
+     },
+     "decisive_clue": "clients always ask",
+     "reason": "General complaint about clients.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "When the client specifically asked to keep the roses, the designer stomped his foot and insisted he wouldn't finish the project.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.3
+     },
+     "decisive_clue": "stomped his foot",
+     "reason": "Stomping is definitively childish.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Stomping his foot is an immature display of temper, clearly moving the situation from cranky to childishly petulant.",
+   "feedback_deep": "His initial annoyance was just grumbling, but the childish action of stomping his foot in response to a simple request indicates a sudden shift into an immature, petulant temper tantrum.",
+   "contrast_rule": "The childish action flips it to this word.",
+   "hint": "Look for the childish physical action."
+  },
+  {
+   "id": "petulant-peevish_009",
+   "domain": "pottery studio",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The student's attitude toward the pottery wheel: ___",
+   "beats": [
+    {
+     "text": "The student muttered constantly, complaining that the wheel wasn't spinning fast enough and the clay was too wet.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.4,
+      "peevish": 0.8
+     },
+     "decisive_clue": "muttered constantly",
+     "reason": "Chronic, low-level complaining.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "When the pot collapsed again, he shrieked in frustration, threw the clay at the wall, and left the room.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.9,
+      "peevish": 0.3
+     },
+     "decisive_clue": "threw the clay",
+     "reason": "A physical, childish tantrum.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His persistent grumbling was peevish, but the sudden explosive tantrum (throwing clay) is undeniably petulant.",
+   "feedback_deep": "While he was initially cranky and complaining, throwing the clay in an outburst is an immature and dramatic tantrum, making the final behaviour distinctly petulant.",
+   "contrast_rule": "The transition from complaining to a childish tantrum is the key.",
+   "hint": "Did the behavior go from complaining to a physical tantrum?"
+  },
+  {
+   "id": "petulant-peevish_010",
+   "domain": "network maintenance",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The IT administrator's attitude to the connectivity issues: ___",
+   "beats": [
+    {
+     "text": "The IT admin grumbled about the outdated hardware and the lack of funding for upgrades.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.85
+     },
+     "decisive_clue": "grumbled about",
+     "reason": "Habitual complaining.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "When the connection dropped yet again, he snatched his keyboard from the desk, slammed it down, and shouted that he wouldn't fix anything else.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.2
+     },
+     "decisive_clue": "slammed it down",
+     "reason": "Immature, physical outburst.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Slamming the keyboard and shouting a refusal to work is a childish tantrum, flipping the word from peevish to petulant.",
+   "feedback_deep": "His initial behaviour was just persistent complaining about infrastructure (peevish). But when he slammed his keyboard in a fit of rage, it became a dramatic, childish tantrum, best described as petulant.",
+   "contrast_rule": "Slamming objects marks the petulant tantrum.",
+   "hint": "Is he just grumbling, or having an explosive tantrum?"
+  },
+  {
+   "id": "petulant-peevish_011",
+   "domain": "sales floor",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The manager's reaction to slow sales: ___",
+   "beats": [
+    {
+     "text": "The manager was frequently irritable, complaining that the staff weren't trying hard enough.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.4,
+      "peevish": 0.8
+     },
+     "decisive_clue": "frequently irritable",
+     "reason": "Describes a habitual state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "When a customer asked for a simple refund, the manager sulked, refused to look at the customer, and turned his back on them entirely.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.9,
+      "peevish": 0.3
+     },
+     "decisive_clue": "sulked, refused to look",
+     "reason": "Childish, sulky refusal.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Sulking and turning his back on a customer is a childish display of temper, fitting 'petulant' far better than 'peevish'.",
+   "feedback_deep": "Initially, the manager was just chronically cranky and complaining (peevish). However, by sulking and refusing to look at a customer, he acted with a childish, dramatic immaturity that is unmistakably petulant.",
+   "contrast_rule": "Sulking flips it to the immature term.",
+   "hint": "Does he just complain, or does he sulk like a child?"
+  },
+  {
+   "id": "petulant-peevish_012",
+   "domain": "morning commute",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The driver's attitude during the morning traffic: ___",
+   "beats": [
+    {
+     "text": "The driver muttered and grumbled about the slow pace of traffic, constantly checking his watch.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.4,
+      "peevish": 0.8
+     },
+     "decisive_clue": "grumbled about",
+     "reason": "Chronic complaining.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "When a car cut him off, he shrieked, grabbed the steering wheel with both hands, and started shaking it like a toddler.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.2
+     },
+     "decisive_clue": "shaking it like a toddler",
+     "reason": "Definitively childish behaviour.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Shaking the steering wheel 'like a toddler' is clearly a childish display of temper, making 'petulant' the correct choice.",
+   "feedback_deep": "The driver's initial grumbling about traffic was peevish. But his sudden, dramatic reaction to being cut off—shaking the steering wheel in a toddler-like manner—was childish and petulant.",
+   "contrast_rule": "Toddler-like behaviour is childish.",
+   "hint": "Look for the childish, toddler-like behaviour."
+  },
+  {
+   "id": "petulant-peevish_013",
+   "domain": "radiology unit",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The radiologist's attitude to the new scanner: ___",
+   "beats": [
+    {
+     "text": "The radiologist was easily annoyed and constantly complained about the scanner's slow interface.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.5,
+      "peevish": 0.85
+     },
+     "decisive_clue": "constantly complained",
+     "reason": "Habitual complaint.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "He kept complaining about it every single day, as if the scanner were intentionally trying to ruin his schedule.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.95
+     },
+     "decisive_clue": "every single day",
+     "reason": "Reinforces habitual nature.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The fact that he complains 'every single day' narrows this down to a state of chronic, habitual crankiness.",
+   "feedback_deep": "His daily complaints, which focus on his frustration with the scanner, demonstrate a habitual, complaining nature rather than a one-off childish tantrum, fitting the definition of peevish.",
+   "contrast_rule": "Chronic complaining = this word.",
+   "hint": "Is this a temporary sulk, or a regular habit?"
+  },
+  {
+   "id": "petulant-peevish_014",
+   "domain": "archive research",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The researcher's attitude to the library rules: ___",
+   "beats": [
+    {
+     "text": "The researcher was frequently irritable about the strict rules and the need to wear gloves.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.4,
+      "peevish": 0.8
+     },
+     "decisive_clue": "frequently irritable",
+     "reason": "Habitual irritability.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "He often complained about the dim lighting and the dust, as if the entire archive were a personal insult to his work.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.9
+     },
+     "decisive_clue": "often complained",
+     "reason": "Confirms chronic irritability.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His frequent and continued complaining confirms that his attitude is one of chronic, peevish irritability.",
+   "feedback_deep": "The constant complaining about rules, lighting, and dust—all presented as a general source of ongoing frustration—defines a chronically irritable, peevish disposition.",
+   "contrast_rule": "Chronic complaining is the hallmark here.",
+   "hint": "Does the behaviour occur only once, or is it a recurring complaint?"
+  },
+  {
+   "id": "petulant-peevish_016",
+   "domain": "café operations",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The barista's attitude to the busy morning: ___",
+   "beats": [
+    {
+     "text": "The barista complained about the line and the lack of help, his voice tight and irritable.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.5,
+      "peevish": 0.8
+     },
+     "decisive_clue": "complained about",
+     "reason": "Habitual irritability.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "He continued to grumble at every customer, showing he was just generally cranky, not sulking like a child.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.95
+     },
+     "decisive_clue": "grumble at every customer",
+     "reason": "Confirms crankiness, not childishness.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Even when he acts out, his behaviour remains consistently cranky and complaining, confirming he is peevish, not petulant.",
+   "feedback_deep": "His complaints and grumbling at customers represent a persistent state of irritability, not a childish tantrum. The 'shift' toward him looking sulky is deceptive; he's just cranky.",
+   "contrast_rule": "Chronic crankiness is peevish, regardless of the mood.",
+   "hint": "Is he just generally cranky?"
+  },
+  {
+   "id": "petulant-peevish_017",
+   "domain": "food bank",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The organizer's attitude to the donation sorting: ___",
+   "beats": [
+    {
+     "text": "The organizer huffed loudly because the boxes hadn't been sorted alphabetically.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.85,
+      "peevish": 0.4
+     },
+     "decisive_clue": "huffed loudly",
+     "reason": "A childish, sulky reaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    },
+    {
+     "text": "He then pouted and made a show of re-sorting everything himself, ignoring the volunteers.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.3
+     },
+     "decisive_clue": "pouted and made a show",
+     "reason": "The dramatic, sulky nature is clearly petulant.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Pouting and making a dramatic show of re-doing the work are classically childish, petulant behaviours.",
+   "feedback_deep": "The organizer's behaviour—huffing, pouting, and dramatically re-doing the work alone—is a childish, sulky tantrum over how the sorting was done, clearly petulant.",
+   "contrast_rule": "Dramatic sulking is petulant.",
+   "hint": "Is he sulking like a child?"
+  },
+  {
+   "id": "petulant-peevish_018",
+   "domain": "nature preserve",
+   "transfer": true,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The ranger's reaction to the litter: ___",
+   "beats": [
+    {
+     "text": "The ranger grumbled to himself about the constant littering.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.8
+     },
+     "decisive_clue": "grumbled to himself",
+     "reason": "Chronic complaining.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    },
+    {
+     "text": "When he saw a new soda can, he threw his hat on the ground and refused to pick it up, just sat down on a log and sulked.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.9,
+      "peevish": 0.2
+     },
+     "decisive_clue": "threw his hat, sulked",
+     "reason": "Childish, sulky behavior.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "While he started out just complaining (peevish), throwing his hat and sulking like a child is clearly petulant.",
+   "feedback_deep": "The ranger's initial behaviour of grumbling about litter was just peevish complaining. The sudden shift to throwing his hat and sulking on a log is a dramatic, childish tantrum—petulant.",
+   "contrast_rule": "The tantrum flips it to the immature term.",
+   "hint": "Does he start complaining, but then move to a tantrum?"
+  },
+  {
+   "id": "petulant-peevish_019",
+   "domain": "medieval history seminar",
+   "transfer": true,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "The professor's attitude toward the students' questions: ___",
+   "beats": [
+    {
+     "text": "The professor snapped at a student who asked a basic question, acting as if they were wasting his time.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.8,
+      "peevish": 0.4
+     },
+     "decisive_clue": "snapped at",
+     "reason": "A sudden, childish outburst.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    },
+    {
+     "text": "He then realized he was overtired and apologized, explaining that he'd been having a very difficult morning and was just feeling grumpy and easily annoyed.",
+     "best_word": "peevish",
+     "fit": {
+      "petulant": 0.3,
+      "peevish": 0.9
+     },
+     "decisive_clue": "feeling grumpy and easily annoyed",
+     "reason": "Confirms the state is one of chronic crankiness, not childishness.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "petulant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His explanation that he was just 'grumpy and easily annoyed' redefines his behaviour as peevish crankiness, not childish petulance.",
+   "feedback_deep": "While his initial snap felt petulant and dramatic, his own explanation—that he was just feeling generally grumpy and easily annoyed—places his behaviour in the realm of peevishness, not childishness.",
+   "contrast_rule": "The explanation flips it to the cranky term.",
+   "hint": "Did he explain that he was just generally cranky?"
+  },
+  {
+   "id": "petulant-peevish_020",
+   "domain": "quantum physics lab",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The lead researcher's attitude to the new equipment: ___",
+   "beats": [
+    {
+     "text": "The lead researcher pouted and sulked for hours when the equipment failed, as if the machine were a person.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.2
+     },
+     "decisive_clue": "pouted and sulked",
+     "reason": "Classic petulant behaviour.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    },
+    {
+     "text": "She wouldn't talk to anyone and sat in the corner of the lab with her back turned until the repair was finished.",
+     "best_word": "petulant",
+     "fit": {
+      "petulant": 0.95,
+      "peevish": 0.1
+     },
+     "decisive_clue": "wouldn't talk... with her back turned",
+     "reason": "Childish, sulky behavior.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "peevish": "M1"
+     }
+    }
+   ],
+   "feedback_short": "This is definitively petulant behaviour: sulking, pouting, and refusing to communicate like a child.",
+   "feedback_deep": "The lead researcher's behaviour—pouting, sulking, and refusing to speak to anyone—is a perfect example of a childish, immature reaction that is specifically petulant.",
+   "contrast_rule": "The sulking and silent treatment are childishly petulant.",
+   "hint": "Does she behave like a sulking child?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

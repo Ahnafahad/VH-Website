@@ -1,0 +1,1342 @@
+{
+ "set_id": "erratic-eccentric",
+ "source_pair_id": 772,
+ "words": [
+  {
+   "word": "erratic",
+   "sense": "lacking consistency, pattern, or reliability",
+   "concise_meaning": "unpredictable and changing suddenly",
+   "connotation": "negative, implies unreliability or lack of control",
+   "register": "neutral/general",
+   "grammar": "adjective",
+   "collocations": [
+    "erratic behavior",
+    "erratic performance",
+    "erratic schedule",
+    "erratic driving",
+    "erratic weather"
+   ],
+   "misconceptions": [
+    "confusing it with simply strange or weird"
+   ]
+  },
+  {
+   "word": "eccentric",
+   "sense": "deviating from conventional or established patterns",
+   "concise_meaning": "unconventional, quirky, or odd",
+   "connotation": "neutral to slightly positive, implies individuality",
+   "register": "neutral/general",
+   "grammar": "adjective",
+   "collocations": [
+    "eccentric character",
+    "eccentric fashion",
+    "eccentric habit",
+    "eccentric genius",
+    "eccentric uncle"
+   ],
+   "misconceptions": [
+    "thinking it means crazy or unpredictable"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "predictability",
+   "description": "Erratic behavior lacks a pattern; eccentric behavior follows a consistent, albeit unconventional, pattern."
+  },
+  {
+   "id": "social_conformity",
+   "description": "Erratic is about stability; eccentric is about adherence to social norms."
+  }
+ ],
+ "edge": {
+  "a": "erratic",
+  "b": "eccentric",
+  "boundary_rule": "If the behavior follows a strange pattern, use eccentric. If the behavior lacks a discernible pattern, use erratic.",
+  "clues_a": [
+   "unpredictable",
+   "all over the place",
+   "changing without reason",
+   "unreliable"
+  ],
+  "clues_b": [
+   "habitually odd",
+   "distinctive style",
+   "always does that",
+   "nonconformist"
+  ],
+  "irrelevant_clues": [
+   "how much others like the person",
+   "whether the action is illegal",
+   "whether the person is intelligent"
+  ],
+  "misconceptions": {
+   "M1": "assuming weird must be unpredictable",
+   "M2": "assuming unpredictable must be weird",
+   "M3": "confusing style with performance"
+  }
+ },
+ "anchors": {
+  "positive": {
+   "erratic": [
+    "The startup's revenue was erratic throughout the year.",
+    "His attendance has been erratic lately, causing him to miss classes.",
+    "Driving in such erratic conditions is dangerous.",
+    "The team's performance has been too erratic to win the championship.",
+    "Her mood swings were so erratic that no one knew how to approach her.",
+    "The signal from the router is erratic, dropping frequently."
+   ],
+   "eccentric": [
+    "He is known for his eccentric taste in vintage furniture.",
+    "The professor's eccentric teaching style made his lectures popular.",
+    "She has an eccentric habit of collecting only blue stones.",
+    "His eccentric fashion sense sets him apart from his peers.",
+    "The inventor lived in an eccentric house he built himself.",
+    "Despite her eccentric ways, she is a brilliant engineer."
+   ]
+  },
+  "counter": {
+   "erratic": [
+    "She wears a hat every single day; she is quite erratic.",
+    "The artist's style is erratic; he always paints circles.",
+    "He eats the same lunch every day; he is quite erratic.",
+    "The movie was erratic, following a very logical, structured plot.",
+    "His habits are erratic because he keeps the same routine daily.",
+    "The clock is erratic, ticking perfectly every second."
+   ],
+   "eccentric": [
+    "He stops and starts abruptly; his driving is very eccentric.",
+    "The stock market is eccentric today, plunging and soaring wildly.",
+    "Her attendance is eccentric; she never knows if she will show up.",
+    "The weather is eccentric, changing from sun to rain every hour.",
+    "His moods are eccentric, shifting violently without warning.",
+    "The connection is eccentric, cutting out randomly."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The musician's performance style is so _____ that audiences never know what to expect next.",
+    "best_word": "erratic",
+    "note": "Could be eccentric if it meant they always perform weirdly, but 'never know what to expect' highlights unpredictability."
+   },
+   {
+    "text": "Mr. Lee is quite _____; he always wears a tuxedo to the beach.",
+    "best_word": "eccentric",
+    "note": "It is consistent, just odd."
+   },
+   {
+    "text": "The project's progress is _____; some weeks we finish nothing, others we finish a lot.",
+    "best_word": "erratic",
+    "note": "This lack of stable pattern is the definition of erratic."
+   },
+   {
+    "text": "Sara's handwriting is _____; it is backwards and uses unusual symbols, but it is always the same style.",
+    "best_word": "eccentric",
+    "note": "It's consistently odd, not randomly changing."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "erratic-eccentric_001",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The way Marcus participates in class is ___.",
+   "beats": [
+    {
+     "text": "Marcus frequently interrupts the professor to ask unrelated questions.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.3,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "habitual behavior",
+     "reason": "It's consistently weird, not unpredictable.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Marcus continues to wear a costume every day and brings a stuffed animal, behaving in this unusual way consistently.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.95
+     },
+     "decisive_clue": "consistency",
+     "reason": "The behavior remains consistently odd.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The behavior is consistently strange, fitting the definition of eccentric perfectly.",
+   "feedback_deep": "Even though Marcus's behavior is unusual, it is consistent. Eccentric refers to unconventional behavior, whereas erratic implies a lack of pattern.",
+   "contrast_rule": "Consistent weirdness is eccentric, chaotic randomness is erratic.",
+   "hint": "Is his behavior changing all the time, or is it just consistently strange?"
+  },
+  {
+   "id": "erratic-eccentric_002",
+   "domain": "transport",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The way Sam drives is ___.",
+   "beats": [
+    {
+     "text": "Sam suddenly accelerates, then brakes, then swerves without any apparent traffic conditions.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.9,
+      "eccentric": 0.2
+     },
+     "decisive_clue": "sudden changes",
+     "reason": "This is unpredictable and dangerous.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Sam keeps changing lanes randomly, making it impossible for other drivers to anticipate his next move.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.95,
+      "eccentric": 0.1
+     },
+     "decisive_clue": "impossible to anticipate",
+     "reason": "This confirms the unpredictable nature.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Sam's driving lacks any pattern, making it erratic.",
+   "feedback_deep": "Driving that suddenly speeds up, slows down, and changes lanes unpredictably is the definition of erratic. Eccentric would imply a consistent, albeit odd, driving habit.",
+   "contrast_rule": "Unpredictable actions make behavior erratic.",
+   "hint": "Can you predict what Sam will do next?"
+  },
+  {
+   "id": "erratic-eccentric_003",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The way Mia communicates is ___.",
+   "beats": [
+    {
+     "text": "Mia uses archaic language, speaks in rhymes, and always talks about the 18th century.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "archaic language/rhymes/specific topic",
+     "reason": "It's a consistent, odd pattern.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Mia now sometimes whispers, sometimes shouts, and sometimes just stops in the middle of a sentence, with no apparent logic.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.9,
+      "eccentric": 0.2
+     },
+     "decisive_clue": "no apparent logic/sudden shifts",
+     "reason": "The behavior has become unpredictable.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Mia's speech patterns changed from consistently odd to completely unpredictable.",
+   "feedback_deep": "Initially, Mia's speech was quirky but predictable. When it became chaotic and illogical, it shifted to erratic.",
+   "contrast_rule": "Consistent quirkiness flips to erratic when chaos enters.",
+   "hint": "Did the behavior become random?"
+  },
+  {
+   "id": "erratic-eccentric_004",
+   "domain": "work",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The way the project manager leads is ___.",
+   "beats": [
+    {
+     "text": "The manager insists on conducting all meetings while standing on a desk.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "insists/always",
+     "reason": "It's consistently odd behavior.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "The manager never changes this weird habit, though he is very reliable and predictable otherwise.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.95
+     },
+     "decisive_clue": "never changes/reliable/predictable",
+     "reason": "The oddness is consistent.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The behavior is strange but very predictable.",
+   "feedback_deep": "Eccentricity does not imply unpredictability. Reliable, stable, but unconventional behavior is eccentric.",
+   "contrast_rule": "Reliability makes it eccentric, not erratic.",
+   "hint": "Is the behavior stable?"
+  },
+  {
+   "id": "erratic-eccentric_005",
+   "domain": "sports",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The way the tennis player serves is ___.",
+   "beats": [
+    {
+     "text": "Before every serve, the player spins the ball three times and whispers to it.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "every serve",
+     "reason": "It is a consistent, strange routine.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Sometimes he spins it, sometimes he throws it on the ground, sometimes he just walks away, with no pattern at all.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.9,
+      "eccentric": 0.2
+     },
+     "decisive_clue": "no pattern at all",
+     "reason": "The behavior has become unpredictable.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The routine changed from a consistent habit to a random set of actions.",
+   "feedback_deep": "Consistency in weirdness is eccentric; chaos or randomness is erratic.",
+   "contrast_rule": "If you can't find a pattern, it's erratic.",
+   "hint": "Is there a consistent pattern?"
+  },
+  {
+   "id": "erratic-eccentric_006",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The way my roommate decorates the kitchen is ___.",
+   "beats": [
+    {
+     "text": "She paints the walls purple and hangs old bicycle wheels from the ceiling.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.3,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "unconventional decoration",
+     "reason": "It is an unconventional but fixed design.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "While it remains very strange, it is clearly a deliberate, planned, and unchanging design choice.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "unchanging/planned",
+     "reason": "It highlights the consistency of the design.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The design is strange, but clearly intentional and stable.",
+   "feedback_deep": "Eccentricity describes a deviation from the norm, but it can be very stable. Erratic requires unpredictability, which this design lacks.",
+   "contrast_rule": "Stability confirms eccentric.",
+   "hint": "Is the design stable?"
+  },
+  {
+   "id": "erratic-eccentric_007",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The way Kenji tells stories is ___.",
+   "beats": [
+    {
+     "text": "Kenji always acts out every character's voice in a very dramatic, exaggerated way.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "always/every time",
+     "reason": "A consistent, odd habit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Even after years, he never fails to use these same exaggerated, odd voices.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.05,
+      "eccentric": 0.95
+     },
+     "decisive_clue": "never fails/same",
+     "reason": "Consistency is key.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His habits are very stable, just unusual.",
+   "feedback_deep": "Eccentric implies a consistent, albeit odd, way of doing things. Erratic would mean he changes his style constantly.",
+   "contrast_rule": "Consistency = eccentric.",
+   "hint": "Are the stories told in the same weird way?"
+  },
+  {
+   "id": "erratic-eccentric_008",
+   "domain": "public",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The way the street performer sings is ___.",
+   "beats": [
+    {
+     "text": "He only sings songs backwards, which is certainly different and unexpected.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.4,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "always/different",
+     "reason": "A consistent, weird pattern.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Today, he is screaming, whispering, and jumping around, with no relation to the songs he sings.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.9,
+      "eccentric": 0.2
+     },
+     "decisive_clue": "screaming/whispering/jumping/no relation",
+     "reason": "The performance is now chaotic.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The performance shifted from a consistent gimmick to chaotic, unpredictable behavior.",
+   "feedback_deep": "The first behavior was an odd gimmick (eccentric). The second behavior lacks any discernible pattern, making it erratic.",
+   "contrast_rule": "Pattern gone = erratic.",
+   "hint": "Is there a pattern anymore?"
+  },
+  {
+   "id": "erratic-eccentric_009",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The way the researcher organizes her data is ___.",
+   "beats": [
+    {
+     "text": "She color-codes everything based on the temperature outside when she collected the data.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "consistent system",
+     "reason": "It's a strange but orderly system.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Her colleagues are baffled, but they admit her weird filing system is perfectly logical once explained.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "logical",
+     "reason": "It confirms the system is stable.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The system is logical, just very unusual.",
+   "feedback_deep": "Consistency and logic, even when unconventional, point to eccentric, not erratic.",
+   "contrast_rule": "Weird + Logical = Eccentric.",
+   "hint": "Is the system logical?"
+  },
+  {
+   "id": "erratic-eccentric_010",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The way the tour guide navigates is ___.",
+   "beats": [
+    {
+     "text": "He refuses to use maps and instead chooses his route based on the color of the flowers he sees.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.3,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "flowers",
+     "reason": "It is a consistent, strange rule.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Sometimes he stops, sometimes he runs, sometimes he goes back, completely ignoring the flowers or any logic.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.9,
+      "eccentric": 0.2
+     },
+     "decisive_clue": "ignoring/stops/runs/no logic",
+     "reason": "The behavior is unpredictable.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The guide went from using a strange rule to acting randomly.",
+   "feedback_deep": "The first method was weird but consistent (eccentric). The second method was completely random (erratic).",
+   "contrast_rule": "Rules = eccentric, Random = erratic.",
+   "hint": "Is there a rule anymore?"
+  },
+  {
+   "id": "erratic-eccentric_011",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The way my cousin dresses is ___.",
+   "beats": [
+    {
+     "text": "He insists on wearing three watches on one arm and a hat indoors at all times.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "three watches/hat indoors",
+     "reason": "A consistent, odd style.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "It is his signature look; everyone knows him by those watches and that hat.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.95
+     },
+     "decisive_clue": "signature look",
+     "reason": "It highlights consistency.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His fashion style is consistent, though very unusual.",
+   "feedback_deep": "Eccentricity implies a stable, unique way of being. erratic would imply he changes his style suddenly and unpredictably.",
+   "contrast_rule": "Unique + Stable = Eccentric.",
+   "hint": "Is the look stable?"
+  },
+  {
+   "id": "erratic-eccentric_012",
+   "domain": "work",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The way the accountant does his job is ___.",
+   "beats": [
+    {
+     "text": "He uses a typewriter and ledger books from 1950, refusing to use a computer.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "typewriter/books/refusing computer",
+     "reason": "It's a consistent, odd habit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Now he suddenly starts destroying files, then rebuilding them, with no pattern to his work at all.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.9,
+      "eccentric": 0.2
+     },
+     "decisive_clue": "no pattern",
+     "reason": "The behavior has become chaotic.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The work behavior flipped from a consistent, weird preference to unpredictable, chaotic actions.",
+   "feedback_deep": "Initially, the accountant had a consistent (eccentric) method. Then, he acted unpredictably (erratic).",
+   "contrast_rule": "Consistent = eccentric, Chaotic = erratic.",
+   "hint": "Is the work style consistent?"
+  },
+  {
+   "id": "erratic-eccentric_013",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The way my neighbor talks is ___.",
+   "beats": [
+    {
+     "text": "She greets everyone by saying 'The stars are aligned!' instead of 'Hello'.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "always says",
+     "reason": "It's a consistent, odd pattern.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "It is undeniably strange, but she is completely predictable, as she has done this for ten years.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "predictable/ten years",
+     "reason": "It confirms the behavior's consistency.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Strange, but extremely stable and predictable.",
+   "feedback_deep": "Eccentric behavior can be extremely predictable. The predictability is the key factor ruling out erratic.",
+   "contrast_rule": "Stable weirdness = eccentric.",
+   "hint": "Is it predictable?"
+  },
+  {
+   "id": "erratic-eccentric_014",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The way the student writes essays is ___.",
+   "beats": [
+    {
+     "text": "He insists on starting every essay with a quote from a cookbook.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.3,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "insists on/every",
+     "reason": "It is a consistent habit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "While unusual, the structure of his essays is always solid, logical, and highly predictable.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "solid/logical/predictable",
+     "reason": "It emphasizes consistency.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Strange hook, but a stable and solid essay structure.",
+   "feedback_deep": "Eccentricity is about oddity, not chaos. A consistent structure rules out erratic.",
+   "contrast_rule": "Stable weirdness is eccentric.",
+   "hint": "Is the structure predictable?"
+  },
+  {
+   "id": "erratic-eccentric_015",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The way the explorer acts is ___.",
+   "beats": [
+    {
+     "text": "He always wears his sunglasses at night and carries a compass even in cities.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "always/signature gear",
+     "reason": "A consistent, odd habit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Some might think this makes him unreliable, but his habits are actually incredibly fixed and predictable.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "actually fixed/predictable",
+     "reason": "It clarifies the consistency.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His habits appear unpredictable to some, but they are actually very stable.",
+   "feedback_deep": "Even if something looks chaotic, if it's actually a fixed routine, it's eccentric, not erratic.",
+   "contrast_rule": "False alarm: Stable = eccentric.",
+   "hint": "Are his habits actually fixed?"
+  },
+  {
+   "id": "erratic-eccentric_016",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The way my roommate prepares dinner is ___.",
+   "beats": [
+    {
+     "text": "She refuses to use cutlery and eats everything with her hands while standing up.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "refuses/always",
+     "reason": "It is a consistent, strange rule.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "It might look like a chaotic or random habit, but she has done this every single night for years without exception.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.95
+     },
+     "decisive_clue": "every single night/without exception",
+     "reason": "It confirms consistency.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It looks strange and potentially chaotic, but it is a consistent daily habit.",
+   "feedback_deep": "Even if a behavior seems unhinged, its consistency makes it eccentric rather than erratic.",
+   "contrast_rule": "Consistency = eccentric.",
+   "hint": "Is there a consistent habit?"
+  },
+  {
+   "id": "erratic-eccentric_017",
+   "domain": "work",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The way the consultant acts is ___.",
+   "beats": [
+    {
+     "text": "He arrives at different times each day, sometimes in a suit, sometimes in casual clothes.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.8,
+      "eccentric": 0.3
+     },
+     "decisive_clue": "different/no pattern",
+     "reason": "The behavior seems unpredictable.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Actually, he follows a complex but deliberate schedule based on the client's needs, which he always adheres to perfectly.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "complex/deliberate/always adheres",
+     "reason": "The pattern is explained, so it's not erratic.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "What appeared random is actually a well-planned, deliberate system.",
+   "feedback_deep": "When we learn there is a deliberate, consistent plan, the behavior is revealed to be eccentric, not erratic.",
+   "contrast_rule": "Plan found = eccentric.",
+   "hint": "Is there actually a plan?"
+  },
+  {
+   "id": "erratic-eccentric_018",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The way my friend acts is ___.",
+   "beats": [
+    {
+     "text": "She always drinks her coffee with salt, claiming it improves the taste.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "always",
+     "reason": "A consistent, odd habit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "Lately, she drinks it with salt, then sugar, then pepper, then nothing, constantly changing what she does for no reason.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.9,
+      "eccentric": 0.2
+     },
+     "decisive_clue": "constantly changing/no reason",
+     "reason": "The consistency is gone.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The behavior went from a weird, stable habit to completely random changes.",
+   "feedback_deep": "Stability (eccentric) was corrupted by chaotic change (erratic).",
+   "contrast_rule": "Stability lost = erratic.",
+   "hint": "Is it still consistent?"
+  },
+  {
+   "id": "erratic-eccentric_019",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "The way my brother manages his time is ___.",
+   "beats": [
+    {
+     "text": "He spends hours cleaning at midnight, then sleeps all day, then works all night.",
+     "best_word": "erratic",
+     "fit": {
+      "erratic": 0.8,
+      "eccentric": 0.3
+     },
+     "decisive_clue": "no pattern",
+     "reason": "It seems unpredictable.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Actually, he follows a strict, well-documented cycle that repeats perfectly every 48 hours.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.2,
+      "eccentric": 0.8
+     },
+     "decisive_clue": "strict cycle/repeats",
+     "reason": "The pattern is revealed, so it's consistent.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "What seemed chaotic is actually a rigid, repeating cycle.",
+   "feedback_deep": "Erratic behavior is unpredictable. Once a strict, consistent cycle is revealed, the behavior is better described as eccentric.",
+   "contrast_rule": "Repeating cycle = eccentric.",
+   "hint": "Is there a cycle?"
+  },
+  {
+   "id": "erratic-eccentric_020",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The way the lecturer speaks is ___.",
+   "beats": [
+    {
+     "text": "She uses a very formal, archaic accent that most people find strange.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.1,
+      "eccentric": 0.9
+     },
+     "decisive_clue": "archaic/always",
+     "reason": "It is a consistent, odd habit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    },
+    {
+     "text": "She is deeply intellectual, and this way of speaking is just a quirky part of her personality, consistent for her whole life.",
+     "best_word": "eccentric",
+     "fit": {
+      "erratic": 0.05,
+      "eccentric": 0.95
+     },
+     "decisive_clue": "quirky/consistent",
+     "reason": "It's just a personality quirk.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "erratic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The speech pattern is a stable, quirky personality trait, not unpredictable behavior.",
+   "feedback_deep": "Erratic would imply instability. Eccentric accurately captures the consistent but odd nature of her speech.",
+   "contrast_rule": "Stable = eccentric.",
+   "hint": "Is it just a stable quirk?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

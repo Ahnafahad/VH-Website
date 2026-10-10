@@ -1,0 +1,1279 @@
+{
+ "set_id": "profane-secular",
+ "source_pair_id": 394,
+ "words": [
+  {
+   "word": "profane",
+   "sense": "disrespectful to sacred things",
+   "concise_meaning": "showing contempt for what is holy or sacred.",
+   "connotation": "negative, accusatory, intense.",
+   "register": "formal to elevated.",
+   "grammar": "adjective.",
+   "collocations": [
+    "profane language",
+    "profane act",
+    "profane remark",
+    "utterly profane"
+   ],
+   "misconceptions": [
+    "thinking it only means not religious",
+    "confusing it with being just plain rude"
+   ]
+  },
+  {
+   "word": "secular",
+   "sense": "not religious",
+   "concise_meaning": "having no connection to religion; worldly or civil.",
+   "connotation": "neutral, descriptive.",
+   "register": "neutral to formal.",
+   "grammar": "adjective.",
+   "collocations": [
+    "secular society",
+    "secular education",
+    "secular law",
+    "secular state"
+   ],
+   "misconceptions": [
+    "thinking it means anti-religious",
+    "thinking it means immoral"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "intent_towards_sacred",
+   "description": "ranges from neutral indifference (secular) to active defiance/contempt (profane)."
+  },
+  {
+   "id": "domain_nature",
+   "description": "ranges from purely civil/worldly (secular) to explicitly violating the religious boundary (profane)."
+  }
+ ],
+ "edge": {
+  "a": "profane",
+  "b": "secular",
+  "boundary_rule": "use profane when the actor actively violates or mocks a sacred boundary; use secular when they merely operate outside a religious framework.",
+  "clues_a": [
+   "mockery of rituals",
+   "desecration of objects",
+   "defiant tone"
+  ],
+  "clues_b": [
+   "civil administration",
+   "non-religious curriculum",
+   "neutral public policy"
+  ],
+  "irrelevant_clues": [
+   "just being non-religious",
+   "using a neutral space"
+  ],
+  "misconceptions": {
+   "M1": "assuming non-religious equals profane",
+   "M2": "assuming profane only means bad language",
+   "M3": "assuming secular is an insult"
+  }
+ },
+ "anchors": {
+  "positive": {
+   "profane": [
+    "The spray-painting of the altar was a truly profane act.",
+    "His speech was filled with profane remarks about the church service.",
+    "They treated the holy relics in a deliberately profane manner.",
+    "The protesters performed a profane dance outside the temple.",
+    "It was seen as a profane misuse of the consecrated space.",
+    "The critic made several profane jokes during the religious play."
+   ],
+   "secular": [
+    "The school offers a secular curriculum for all students.",
+    "They chose a secular venue for their wedding ceremony.",
+    "The government is committed to a strictly secular policy.",
+    "He works for a secular non-profit organization.",
+    "Many modern nations have a secular legal system.",
+    "She prefers to read books on secular philosophy."
+   ]
+  },
+  "counter": {
+   "profane": [
+    "The school offers a profane curriculum for all students. (Incorrect)",
+    "They chose a profane venue for their wedding. (Incorrect)",
+    "The government is committed to a profane policy. (Incorrect)",
+    "He works for a profane non-profit. (Incorrect)",
+    "Many nations have a profane legal system. (Incorrect)",
+    "She prefers to read books on profane philosophy. (Incorrect)"
+   ],
+   "secular": [
+    "The spray-painting of the altar was a truly secular act. (Incorrect)",
+    "His speech was filled with secular remarks about the service. (Incorrect)",
+    "They treated the relics in a deliberately secular manner. (Incorrect)",
+    "The protesters performed a secular dance outside the temple. (Incorrect)",
+    "It was seen as a secular misuse of the space. (Incorrect)",
+    "The critic made several secular jokes during the play. (Incorrect)"
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The public library is an explicitly ___ space, where religion is neither taught nor expected.",
+    "best_word": "secular",
+    "note": "It is not inherently anti-religious, just non-religious."
+   },
+   {
+    "text": "The comedian's act, which mocked the fundamental tenets of the faith, was considered highly ___.",
+    "best_word": "profane",
+    "note": "The active mockery makes it more than just non-religious."
+   },
+   {
+    "text": "A ___ state ensures all religions are treated equally by not adopting any as its official doctrine.",
+    "best_word": "secular",
+    "note": "This is a standard description of a neutral government."
+   },
+   {
+    "text": "By wearing shoes in the inner sanctum, the tourist committed a ___ breach of etiquette.",
+    "best_word": "profane",
+    "note": "It violates the sanctity of the holy area, even if unintentionally."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "profane-secular_002",
+   "domain": "government",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The official policy of the town council regarding the new public square: ___",
+   "beats": [
+    {
+     "text": "The council decided to remove all religious symbols from the square.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "remove symbols for neutrality",
+     "reason": "It's about creating a neutral space.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "The square is now used only for city meetings.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "used only for city meetings",
+     "reason": "This reinforces the non-religious nature.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays secular because the policy is consistently non-religious and neutral, never disrespectful.",
+   "feedback_deep": "Removing religious symbols to create neutrality is a secular action. Using the space for civil meetings reinforces that neutrality without mocking anyone.",
+   "contrast_rule": "Secular space creation is not profane.",
+   "hint": "Is there any sign of mockery?"
+  },
+  {
+   "id": "profane-secular_003",
+   "domain": "music",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The performer's song choice for the memorial concert: ___",
+   "beats": [
+    {
+     "text": "The singer performed a song about lost love, not a hymn.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "non-religious song",
+     "reason": "A song about love is simply not religious.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "The singer mocked the mourners and sang vulgar lyrics.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.9,
+      "secular": 0.1
+     },
+     "decisive_clue": "vulgar lyrics and mockery",
+     "reason": "This shows direct disrespect.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It flips because singing vulgar lyrics and mocking mourners is actively disrespectful, not just non-religious.",
+   "feedback_deep": "A secular choice is a non-religious alternative. A profane choice is a deliberate attempt to violate the sanctity or respectfulness of the event.",
+   "contrast_rule": "Disrespectful action is profane; non-religious action is secular.",
+   "hint": "Does the action violate the sanctity?"
+  },
+  {
+   "id": "profane-secular_004",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The university professor's approach to the topic of creation myths in his class: ___",
+   "beats": [
+    {
+     "text": "The professor treated them as literary artifacts, not literal truth.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "literary analysis",
+     "reason": "Academic analysis is a non-religious approach.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "He analyzed them without any theological bias.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "no theological bias",
+     "reason": "This confirms a neutral, academic approach.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It narrows towards secular as the description of neutral, academic analysis confirms the lack of bias, not disrespect.",
+   "feedback_deep": "The professor's approach is secular, as he treats the material with objective academic distance, which is not disrespectful.",
+   "contrast_rule": "Academic neutrality is secular.",
+   "hint": "Is there any attempt to undermine or mock?"
+  },
+  {
+   "id": "profane-secular_005",
+   "domain": "art",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The artist's painting of the religious icon: ___",
+   "beats": [
+    {
+     "text": "The artist painted the figure with modern, everyday clothing.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.2,
+      "secular": 0.8
+     },
+     "decisive_clue": "everyday clothing",
+     "reason": "Reinterpreting icons in a worldly context is secular.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "The artist clearly intended it to be a worldly representation.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "intended worldly representation",
+     "reason": "This confirms the focus is on the human/worldly aspect.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays secular as the focus is on a worldly reinterpretation, which is non-religious but not disrespectful.",
+   "feedback_deep": "The artist is making a secular statement about the figure's humanity, which doesn't involve mockery or intent to violate sanctity.",
+   "contrast_rule": "Worldly focus is secular.",
+   "hint": "Does it seek to humiliate or just recontextualize?"
+  },
+  {
+   "id": "profane-secular_006",
+   "domain": "language",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 2,
+   "frame": "The speaker's use of religious terminology during the debate: ___",
+   "beats": [
+    {
+     "text": "The speaker used the terms in a purely legal context.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "legal context",
+     "reason": "Using terms for legal purposes is secular.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "The speaker twisted the terms to mock the religion.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.9,
+      "secular": 0.1
+     },
+     "decisive_clue": "twisted to mock",
+     "reason": "This turns a neutral usage into a disrespectful one.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It flips because twisting the terms to mock the religion is disrespectful, unlike using them for legal purposes.",
+   "feedback_deep": "Using terminology in a non-religious, legal context is secular. Actively manipulating that terminology to mock the religion itself is profane.",
+   "contrast_rule": "Legal terminology usage is secular; mocking terminology usage is profane.",
+   "hint": "What is the goal of the language?"
+  },
+  {
+   "id": "profane-secular_007",
+   "domain": "history",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The historian's analysis of the era's economic reforms: ___",
+   "beats": [
+    {
+     "text": "The reforms were entirely focused on trade and taxes.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "focused on trade and taxes",
+     "reason": "Economic reforms are worldly affairs.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "The reforms excluded any influence from the Church.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "excluded church influence",
+     "reason": "This confirms they were purely civil.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays secular because the focus is on economic reforms that are non-religious, not disrespectful.",
+   "feedback_deep": "Economic reforms focused on trade and taxes are secular, as they exist in the worldly/civil realm. The exclusion of religious influence just confirms this characterization.",
+   "contrast_rule": "Civil economic policy is secular.",
+   "hint": "Is there any sign of malice towards the Church?"
+  },
+  {
+   "id": "profane-secular_008",
+   "domain": "science",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The scientist's explanation of human biology: ___",
+   "beats": [
+    {
+     "text": "The explanation focuses on genetic and evolutionary processes.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "genetic and evolutionary focus",
+     "reason": "Scientific explanation is a non-religious framework.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "The scientist added that these processes prove there is no purpose to life, clearly mocking religious views.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.8,
+      "secular": 0.2
+     },
+     "decisive_clue": "mocking religious views",
+     "reason": "The added mockery makes it profane.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It flips because adding mockery of religious views transforms a neutral scientific explanation into a profane act.",
+   "feedback_deep": "A purely scientific explanation is secular. When the scientist explicitly uses that explanation to mock religious views, they cross the line into the profane.",
+   "contrast_rule": "Objective science is secular; mocking beliefs is profane.",
+   "hint": "Does the explanation contain mockery?"
+  },
+  {
+   "id": "profane-secular_009",
+   "domain": "media",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The nature of the new magazine about everyday life: ___",
+   "beats": [
+    {
+     "text": "It covers cooking, fashion, and gardening.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "everyday topics",
+     "reason": "These topics are worldly and non-religious.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "It completely ignores any religious commentary, focusing entirely on worldly interests.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "ignores religious commentary",
+     "reason": "This is a standard feature of non-religious media.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays secular because focusing on worldly interests without commenting on religion is non-religious, not disrespectful.",
+   "feedback_deep": "The magazine's focus on everyday life and its lack of religious commentary are entirely secular, which just means worldly and non-religious.",
+   "contrast_rule": "Worldly focus is secular.",
+   "hint": "Does it try to insult or simply ignore?"
+  },
+  {
+   "id": "profane-secular_010",
+   "domain": "business",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The manager's approach to the company's holiday celebration: ___",
+   "beats": [
+    {
+     "text": "He decided it would be a generic winter party.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "generic party",
+     "reason": "Avoiding religion is standard for inclusive secular events.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "He deliberately used a holy symbol as a coaster to insult believers.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.95,
+      "secular": 0.05
+     },
+     "decisive_clue": "used holy symbol as coaster to insult",
+     "reason": "This is active desecration.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It flips because using a holy symbol as a coaster to insult is actively disrespectful, unlike hosting a generic party.",
+   "feedback_deep": "A generic party is secular. Using a holy object as a coaster with the intent to insult believers is a clear act of desecration, which is profane.",
+   "contrast_rule": "Inclusivity is secular; desecration is profane.",
+   "hint": "What does the symbol usage show?"
+  },
+  {
+   "id": "profane-secular_011",
+   "domain": "public_space",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The town's new policy on using the park for local events: ___",
+   "beats": [
+    {
+     "text": "The policy requires all events to be non-religious in nature.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "non-religious policy",
+     "reason": "This is a civil, neutral restriction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "The park remains a neutral ground for any civil activity.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "neutral ground",
+     "reason": "Neutrality in a public space is secular.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays secular because the policy is consistently non-religious and aims for neutrality, not disrespect.",
+   "feedback_deep": "A policy restricting events to non-religious activities is a standard secular, civil measure aimed at maintaining neutral ground in public space.",
+   "contrast_rule": "Civil neutrality is secular.",
+   "hint": "Is the policy neutral?"
+  },
+  {
+   "id": "profane-secular_012",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "Maya's attitude towards her partner's family traditions: ___",
+   "beats": [
+    {
+     "text": "She respectfully declines to participate, as she is not a believer.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "respectfully declines",
+     "reason": "Non-participation due to different beliefs is secular.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "She told the family that their traditions were utterly stupid and a waste of time.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.85,
+      "secular": 0.15
+     },
+     "decisive_clue": "called traditions stupid and a waste of time",
+     "reason": "Mockery shows disrespect.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It flips because mocking the family's traditions is actively disrespectful, whereas respectfully declining to participate is simply a personal choice.",
+   "feedback_deep": "Declining participation for personal reasons is secular. Calling traditions stupid is active disrespect, making it profane.",
+   "contrast_rule": "Respectful difference is secular; mocking difference is profane.",
+   "hint": "How does she express her disagreement?"
+  },
+  {
+   "id": "profane-secular_013",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The nature of the local football club's foundation: ___",
+   "beats": [
+    {
+     "text": "The club was founded as a purely community-driven social activity.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "community-driven social activity",
+     "reason": "A sports club is inherently secular.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "They operate entirely without any religious affiliation or goals.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "no religious affiliation",
+     "reason": "Non-religious is secular.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays secular because a community-driven club with no religious affiliation is simply non-religious, not disrespectful.",
+   "feedback_deep": "A sports club is a classic example of a secular organization—it's worldly, community-focused, and non-religious.",
+   "contrast_rule": "Worldly community organizations are secular.",
+   "hint": "Is religion involved?"
+  },
+  {
+   "id": "profane-secular_014",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The tourist's behavior while visiting the temple: ___",
+   "beats": [
+    {
+     "text": "The tourist spoke loudly and touched the sacred statues.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.8,
+      "secular": 0.2
+     },
+     "decisive_clue": "spoke loudly and touched sacred statues",
+     "reason": "This is disrespectful to a sacred space.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M1"
+     }
+    },
+    {
+     "text": "They clearly had no idea they were violating any rules.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.75,
+      "secular": 0.25
+     },
+     "decisive_clue": "unintentional violation",
+     "reason": "It's still profane, just not malicious.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays profane, even if unintentional, because they still violated the sacred boundary.",
+   "feedback_deep": "Even if the tourist is unaware of the rules, their actions (touching statues in a sacred space) are still objectively profane because they violate the sanctity.",
+   "contrast_rule": "Violating sanctity is profane, intentional or not.",
+   "hint": "Does it matter if they knew the rules?"
+  },
+  {
+   "id": "profane-secular_015",
+   "domain": "household",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The family's practice of using a special, old box for storing board games: ___",
+   "beats": [
+    {
+     "text": "They bought it at a yard sale, totally unaware of its past.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "unaware of past",
+     "reason": "It's just an ordinary item.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "They were later told it was once used for religious relics, and they chose to continue using it for games anyway, mocking the idea of its history.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.9,
+      "secular": 0.1
+     },
+     "decisive_clue": "mocking the history",
+     "reason": "This makes the choice disrespectful.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It reframes to profane when they explicitly mock the relic's history, changing their action from indifferent to disrespectful.",
+   "feedback_deep": "The initial use was secular (indifferent). Once they learn the history and mock it, the action becomes profane.",
+   "contrast_rule": "Mockery changes indifference to profanity.",
+   "hint": "Does their attitude change after learning the history?"
+  },
+  {
+   "id": "profane-secular_016",
+   "domain": "legal",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The judge's ruling on the oath-taking ceremony: ___",
+   "beats": [
+    {
+     "text": "The judge allowed for non-religious affirmations as an alternative.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "alternative affirmation",
+     "reason": "Allowing non-religious options is secular.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "He emphasized that the legal system must be independent of all religious oaths.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "independent of religious oaths",
+     "reason": "This is a key component of secularism.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It narrows towards secular as the emphasis on legal independence from religious oaths confirms a principled approach, not disrespect.",
+   "feedback_deep": "Creating a legal path for secular (non-religious) affirmation is a principled secular measure, not an act of disrespect (profane).",
+   "contrast_rule": "Civil legal independence is secular.",
+   "hint": "Is there any attempt to undermine religion?"
+  },
+  {
+   "id": "profane-secular_017",
+   "domain": "literature",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The novelist's depiction of the priesthood in his latest book: ___",
+   "beats": [
+    {
+     "text": "He writes them as ordinary, flawed people in a modern, worldly setting.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.2,
+      "secular": 0.8
+     },
+     "decisive_clue": "flawed people in worldly setting",
+     "reason": "Humanizing is worldly/secular.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "He uses them to justify immoral actions, explicitly mocking the religious ideals they once stood for.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.85,
+      "secular": 0.15
+     },
+     "decisive_clue": "mocking religious ideals",
+     "reason": "This is direct disrespect.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It corrupts to profane when the depiction moves from humanizing flaws to explicitly mocking the religious ideals themselves.",
+   "feedback_deep": "Humanizing is a secular, worldly approach. Using the characters to justify immorality while mocking the religious ideals they represent is profane.",
+   "contrast_rule": "Humanizing is secular; mocking ideals is profane.",
+   "hint": "Does he just show their flaws or mock their ideals?"
+  },
+  {
+   "id": "profane-secular_018",
+   "domain": "fashion",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The clothing line's design philosophy: ___",
+   "beats": [
+    {
+     "text": "The clothes are designed for comfort and everyday practicality.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "comfort and practicality",
+     "reason": "Practical, everyday fashion is worldly/secular.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "It features modern, non-traditional styles for everyday wear.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.05,
+      "secular": 0.95
+     },
+     "decisive_clue": "non-traditional styles",
+     "reason": "Non-traditional and worldly is secular.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It stays secular because modern, everyday fashion is worldly and non-religious, not disrespectful.",
+   "feedback_deep": "Fashion designed for comfort and everyday use is worldly, making the design philosophy secular. It does not touch upon or mock religion.",
+   "contrast_rule": "Practical, worldly fashion is secular.",
+   "hint": "Is there any religious reference?"
+  },
+  {
+   "id": "profane-secular_019",
+   "domain": "culinary",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The chef's interpretation of a traditional religious meal: ___",
+   "beats": [
+    {
+     "text": "He adapted it for a modern diet, removing certain ingredients.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "adapted for modern diet",
+     "reason": "This is a practical, worldly adaptation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "He added meat to the dish and served it while mocking the religious observers.",
+     "best_word": "profane",
+     "fit": {
+      "profane": 0.9,
+      "secular": 0.1
+     },
+     "decisive_clue": "mocking religious observers",
+     "reason": "This turns a practical adaptation into mockery.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "secular": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It flips because mocking the religious observers makes a dietary adaptation profane, whereas adapting for a modern diet is just secular.",
+   "feedback_deep": "Adapting a recipe for a diet is a secular (worldly/practical) act. Mocking religious observers while doing so makes the act profane.",
+   "contrast_rule": "Practical adaptation is secular; mockery is profane.",
+   "hint": "Why did he add the forbidden ingredient?"
+  },
+  {
+   "id": "profane-secular_020",
+   "domain": "environmental",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The reason the organization gave for focusing on climate change instead of theology: ___",
+   "beats": [
+    {
+     "text": "They stated they want to focus on worldly, empirical solutions.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "empirical solutions",
+     "reason": "Empirical is a non-religious framework.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    },
+    {
+     "text": "They argued that empirical evidence is all that matters.",
+     "best_word": "secular",
+     "fit": {
+      "profane": 0.1,
+      "secular": 0.9
+     },
+     "decisive_clue": "empirical evidence is all that matters",
+     "reason": "This is a classic secular stance.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "profane": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It uses secular because the focus is on empirical, worldly evidence, which is non-religious but not disrespectful.",
+   "feedback_deep": "Focusing on worldly, empirical solutions is a secular (non-religious) stance. It does not imply malice or disrespect toward religion.",
+   "contrast_rule": "Empirical focus is secular.",
+   "hint": "Does it reject or simply not prioritize?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

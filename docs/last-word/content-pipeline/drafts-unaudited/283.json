@@ -1,0 +1,1331 @@
+{
+ "set_id": "abash-abase",
+ "source_pair_id": 283,
+ "words": [
+  {
+   "word": "abash",
+   "sense": "To cause a person to feel sudden embarrassment or awkwardness.",
+   "concise_meaning": "To make someone feel self-conscious or ashamed in front of others.",
+   "connotation": "Negative (emotional discomfort).",
+   "register": "Formal/Literary.",
+   "grammar": "Used as a verb, often passive (be abashed).",
+   "collocations": [
+    "utterly abashed",
+    "did not appear abashed",
+    "the criticism abashed him",
+    "looked abashed"
+   ],
+   "misconceptions": [
+    "Confusing it with 'to lower in rank' (abase)."
+   ]
+  },
+  {
+   "word": "abase",
+   "sense": "To lower in status, dignity, or prestige.",
+   "concise_meaning": "To demean or belittle someone's character or position.",
+   "connotation": "Negative (moral/structural degradation).",
+   "register": "Formal.",
+   "grammar": "Transitive verb, often reflexive (abase oneself).",
+   "collocations": [
+    "abase oneself",
+    "refused to abase",
+    "intentionally abased",
+    "to abase another"
+   ],
+   "misconceptions": [
+    "Thinking it just means 'to make feel ashamed' (abash)."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "emotional_impact_vs_structural_change",
+   "description": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase)."
+  },
+  {
+   "id": "intent_and_nature",
+   "description": "Whether the action targets feelings through social exposure (abash) or targets the subject's standing through active degradation (abase)."
+  }
+ ],
+ "edge": {
+  "a": "abash",
+  "b": "abase",
+  "boundary_rule": "Use abash for feelings of shame and self-consciousness caused by social exposure; use abase for active, often intentional efforts to strip someone of their dignity, standing, or rank.",
+  "clues_a": [
+   "public reaction, laughing, awkward silence, blushing, stumbling, feeling 'small' in front of others"
+  ],
+  "clues_b": [
+   "forced submission, removing rank, treating as inferior, demanding servility, actively demeaning character"
+  ],
+  "irrelevant_clues": [
+   "whether the action was intentional (both can be); whether it was public (both often are)."
+  ],
+  "misconceptions": {
+   "M1": "Assuming any act that makes someone feel bad is abase.",
+   "M2": "Assuming social embarrassment is a form of status reduction.",
+   "M3": "Ignoring the power dynamic (abase requires one, abash is often peer-based)."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "abash": [
+    "The singer was abashed when she forgot her lyrics in front of the packed stadium.",
+    "His awkward attempt at a joke only served to abash him further.",
+    "She didn't let the mistake abash her; she just kept playing.",
+    "The unexpected praise seemed to abash the humble winner.",
+    "The crowd's laughter began to abash the nervous speaker.",
+    "He looked at the floor, clearly abashed by his error."
+   ],
+   "abase": [
+    "The tyrant forced the prisoners to abase themselves by crawling to his throne.",
+    "He refused to abase his principles for the sake of promotion.",
+    "Such treatment was clearly designed to abase her in front of her staff.",
+    "He felt he had to abase himself to beg for their forgiveness.",
+    "The system was set up to abase anyone who dared to challenge the leaders.",
+    "She knew his goal was to abase her reputation permanently."
+   ]
+  },
+  "counter": {
+   "abash": [
+    "The tyrant forced the prisoners to abash themselves (wrong verb).",
+    "He refused to abash his principles (wrong verb).",
+    "Such treatment was designed to abash her reputation permanently (wrong meaning).",
+    "The system was set up to abash those who challenged him (too weak).",
+    "She knew his goal was to abash her standing (incorrect usage).",
+    "He had to abash himself to ask for money (incorrect usage)."
+   ],
+   "abase": [
+    "The singer was abased when she forgot her lyrics (too strong/wrong).",
+    "The criticism abased him, making him blush (emotional, not status).",
+    "She was abased by her own awkward comment (emotional, not status).",
+    "The unexpected praise abased the winner (wrong meaning).",
+    "He was abased by the laughter of his friends (embarrassed, not degraded).",
+    "He felt abased, hiding his face in his hands (emotional, not structural)."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The manager forced her to clean the toilet to show her she was nobody.",
+    "best_word": "abase",
+    "note": "This is a deliberate attempt to strip her of dignity/status (abase), not just embarrass her (abash)."
+   },
+   {
+    "text": "The critic's scathing review of her work made her feel stupid in front of the whole department.",
+    "best_word": "abash",
+    "note": "The feeling is social embarrassment and shame (abash), rather than stripping her of her professional status/dignity (abase)."
+   },
+   {
+    "text": "He asked her to kneel before him before he would listen to her request.",
+    "best_word": "abase",
+    "note": "The act of kneeling is a clear demand for servility and degradation (abase)."
+   },
+   {
+    "text": "She tripped while entering the ballroom, and everyone stared.",
+    "best_word": "abash",
+    "note": "This is a social accident causing embarrassment (abash), not a planned status reduction."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "abash-abase_001",
+   "domain": "classroom",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the professor did to the student's mistake: ___",
+   "beats": [
+    {
+     "text": "The professor pointed out the error in front of the entire class, making the student blush intensely.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.9,
+      "abase": 0.1
+     },
+     "decisive_clue": "making the student blush intensely",
+     "reason": "This is social embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The professor didn't stop there; they ridiculed the student's intelligence for minutes, causing the whole room to mock him.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.3
+     },
+     "decisive_clue": "causing the whole room to mock him",
+     "reason": "Still primarily about social embarrassment, although approaching humiliation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The professor's actions make the student feel social embarrassment (abash), not structural degradation.",
+   "feedback_deep": "The key is the student's reaction—blushing and social exposure—rather than an act intended to change his status, role, or dignity within the hierarchy.",
+   "contrast_rule": "Embarrassment = abash; degradation = abase.",
+   "hint": "Focus on the student's reaction."
+  },
+  {
+   "id": "abash-abase_002",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The leader's attitude toward the rival is ___",
+   "beats": [
+    {
+     "text": "The leader demanded the rival bow when entering the room.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.2,
+      "abase": 0.8
+     },
+     "decisive_clue": "demanded the rival bow",
+     "reason": "This is forced submission.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    },
+    {
+     "text": "The leader then forced the rival to sign a public statement admitting their inferiority to everyone.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "forced... admitting their inferiority",
+     "reason": "This is explicit status reduction.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Forcing someone to admit inferiority is to abase them.",
+   "feedback_deep": "The leader's actions aim to remove the rival's status and dignity, demanding performative submission. This goes beyond making them feel embarrassed.",
+   "contrast_rule": "Submission to authority = abase.",
+   "hint": "Does it affect status?"
+  },
+  {
+   "id": "abash-abase_003",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the boss does to the junior staff: ___",
+   "beats": [
+    {
+     "text": "The boss laughs when a new employee struggles with the basic software.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "laughs when a new employee struggles",
+     "reason": "This is embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The boss continues to point out the employee's awkwardness to everyone, making the employee look foolish.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.9,
+      "abase": 0.1
+     },
+     "decisive_clue": "making the employee look foolish",
+     "reason": "Focus on reputation/feeling.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Causing embarrassment is to abash.",
+   "feedback_deep": "The behavior here is intended to make the employee look awkward and foolish, not to change their actual job status or dignity.",
+   "contrast_rule": "Look foolish = abash.",
+   "hint": "Is it about their job level or their feelings?"
+  },
+  {
+   "id": "abash-abase_004",
+   "domain": "history",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The conqueror's treatment of the defeated king is ___",
+   "beats": [
+    {
+     "text": "The conqueror stripped the king of his royal clothes.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "stripped the king of his royal clothes",
+     "reason": "This is removing symbols of status.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    },
+    {
+     "text": "The conqueror made him scrub the castle floor before all his former subjects.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.2,
+      "abase": 0.8
+     },
+     "decisive_clue": "made him scrub the castle floor",
+     "reason": "This is forcing a lower-status task.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Forcing a king to do menial labor is to abase him.",
+   "feedback_deep": "The conqueror is systematically destroying the king's dignity and social standing (abase) by forcing him to perform tasks beneath his status.",
+   "contrast_rule": "Destroying status = abase.",
+   "hint": "Does it degrade their position?"
+  },
+  {
+   "id": "abash-abase_005",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "Maya's behavior toward the group is ___",
+   "beats": [
+    {
+     "text": "Maya intentionally brings up embarrassing childhood stories about her friend.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "brings up embarrassing... stories",
+     "reason": "This is social embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "She enjoys the way her friend gets quiet and looks at the ground, clearly shamed by the attention.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.9,
+      "abase": 0.1
+     },
+     "decisive_clue": "clearly shamed by the attention",
+     "reason": "Still social, not hierarchical.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Causing social shame is to abash.",
+   "feedback_deep": "Maya is making her friend feel ashamed, but she is not changing her friend's structural or social standing. It is about emotional discomfort (abash).",
+   "contrast_rule": "Emotional discomfort = abash.",
+   "hint": "Is it a change of status?"
+  },
+  {
+   "id": "abash-abase_006",
+   "domain": "workplace",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The manager's treatment of the intern is ___",
+   "beats": [
+    {
+     "text": "The manager consistently calls the intern 'useless' in project meetings.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.3,
+      "abase": 0.7
+     },
+     "decisive_clue": "calls the intern 'useless'",
+     "reason": "This is demeaning.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M2"
+     }
+    },
+    {
+     "text": "The manager then assigns the intern tasks usually reserved for the office building maintenance staff, despite the intern's degree.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "assigns... tasks... maintenance staff",
+     "reason": "This is reducing status.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Assigning menial tasks to degrade someone is to abase them.",
+   "feedback_deep": "The manager is actively trying to lower the intern's professional standing and dignity, not just embarrass them (abase).",
+   "contrast_rule": "Lowering professional status = abase.",
+   "hint": "Does it demean their job role?"
+  },
+  {
+   "id": "abash-abase_007",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How the partner is acting: ___",
+   "beats": [
+    {
+     "text": "The partner mocks the other's awkward dancing at a formal party, making them blush.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "mocks... dancing... making them blush",
+     "reason": "This is social embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "But the partner doesn't stop. They go on to tell everyone that the other is 'clearly incapable' and 'should not be allowed in public', systematically trying to make them feel inferior.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.2,
+      "abase": 0.8
+     },
+     "decisive_clue": "systematically trying to make them feel inferior",
+     "reason": "This is demeaning.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Moving from embarrassment to active demeaning behavior is a shift to abase.",
+   "feedback_deep": "The first beat causes simple social shame (abash). The second move attempts to strip the partner's status and inherent dignity (abase).",
+   "contrast_rule": "Embarrassment -> Degradation = Flip.",
+   "hint": "Does the intention move from shaming to demeaning?"
+  },
+  {
+   "id": "abash-abase_008",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The coach's treatment of the athlete is ___",
+   "beats": [
+    {
+     "text": "The coach shouts about the athlete's mistake during the game, making the athlete look incompetent.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.7,
+      "abase": 0.3
+     },
+     "decisive_clue": "shouts... look incompetent",
+     "reason": "This is public embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The coach then demands the athlete, who is a starter, sit with the children's team for the rest of the season to 'know their place'.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "demands... sit with children's team... know their place",
+     "reason": "This is reducing status.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Forcing an athlete to a lesser team to show them their place is to abase them.",
+   "feedback_deep": "The coach goes from mere shouting (embarrassment, abash) to intentionally removing the athlete's professional status and dignity (abase).",
+   "contrast_rule": "Public shame -> Forced demotion = Flip.",
+   "hint": "Does the action alter their standing?"
+  },
+  {
+   "id": "abash-abase_009",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The immigration official's attitude toward the traveler is ___",
+   "beats": [
+    {
+     "text": "The official takes the traveler's documents, laughs at the photo, and holds them up for others to see.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "laughs... holds them up for others",
+     "reason": "This is public embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The official then tells the traveler to wait for hours in a separate, dirty room while they process other people first, to teach them 'how to respect authority'.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.2,
+      "abase": 0.8
+     },
+     "decisive_clue": "wait for hours... dirty room... teach respect authority",
+     "reason": "This is dehumanizing.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Intentional dehumanization as punishment is to abase.",
+   "feedback_deep": "The official moves from an act of social mockery (embarrassment, abash) to an active, punitive reduction of the traveler's dignity (abase).",
+   "contrast_rule": "Public mockery -> Punitive dehumanization = Flip.",
+   "hint": "Does the official's act go beyond simple shaming?"
+  },
+  {
+   "id": "abash-abase_010",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The older sister's behavior toward the younger is ___",
+   "beats": [
+    {
+     "text": "The older sister teases the younger about her outfit in front of their friends, causing the younger to look down, embarrassed.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "teases... embarrassed",
+     "reason": "This is social embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The older sister then demands the younger must perform all her chores for the rest of the week, insisting she is 'only fit for cleaning'.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "demands... chores... only fit for cleaning",
+     "reason": "This is reducing status.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Demanding servile chores to show someone is inferior is to abase.",
+   "feedback_deep": "The shift is from teasing (embarrassment, abash) to the forced implementation of an inferior social role within the house (abase).",
+   "contrast_rule": "Teasing -> Forced servility = Flip.",
+   "hint": "Does it force an inferior role?"
+  },
+  {
+   "id": "abash-abase_011",
+   "domain": "professional",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The board's action toward the CEO is ___",
+   "beats": [
+    {
+     "text": "The board publicly questions the CEO's minor scheduling error, making the CEO appear disorganized.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.7,
+      "abase": 0.3
+     },
+     "decisive_clue": "publicly questions... scheduling error",
+     "reason": "This is embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "They then demand the CEO sit on a stool during the meeting while they take the main table, to show the CEO who is in charge.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "demand the CEO sit on a stool",
+     "reason": "This is demeaning.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Forcing a CEO to sit on a stool is to abase them.",
+   "feedback_deep": "They move from public questioning (embarrassment, abash) to a clear, performative reduction in dignity and status (abase).",
+   "contrast_rule": "Questioning -> Forced demotion = Flip.",
+   "hint": "Does the act force an inferior posture?"
+  },
+  {
+   "id": "abash-abase_012",
+   "domain": "theatre",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The director's treatment of the lead actor is ___",
+   "beats": [
+    {
+     "text": "The director demands the actor repeat the lines slowly, emphasizing how 'amateurish' the performance was.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "repeat... amateurish",
+     "reason": "This is social embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The director then tells the actor they are now just a prop assistant and forbids them from ever speaking on set again.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "tells the actor... prop assistant",
+     "reason": "This is demoting status.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Demoting an actor is to abase them.",
+   "feedback_deep": "The shift is from critiquing a performance (embarrassment, abash) to a structural demotion that destroys the person's professional dignity (abase).",
+   "contrast_rule": "Performance critique -> Demotion = Flip.",
+   "hint": "Does the director remove their role?"
+  },
+  {
+   "id": "abash-abase_013",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "What the critic did was ___",
+   "beats": [
+    {
+     "text": "The critic publicly stated that the author's new novel was derivative, leaving the author visibly uncomfortable.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.7,
+      "abase": 0.3
+     },
+     "decisive_clue": "visibly uncomfortable",
+     "reason": "This is about the author's reaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The author, though uncomfortable, was not structurally hurt; the book remained a bestseller.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.9,
+      "abase": 0.1
+     },
+     "decisive_clue": "not structurally hurt; bestseller",
+     "reason": "This confirms it was only about the author's feelings.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Causing uncomfortability without hurting the author's position is to abash.",
+   "feedback_deep": "The author felt embarrassed, but their status as a successful author remained untouched. This is the narrow boundary of abash.",
+   "contrast_rule": "Temporary discomfort = abash.",
+   "hint": "Was the success affected?"
+  },
+  {
+   "id": "abash-abase_014",
+   "domain": "work",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The CEO's action toward the assistant is ___",
+   "beats": [
+    {
+     "text": "The CEO made the assistant stand in the hallway during the board meeting.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.2,
+      "abase": 0.8
+     },
+     "decisive_clue": "made the assistant stand in the hallway",
+     "reason": "This is forcing inferior treatment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    },
+    {
+     "text": "The assistant was already at a lower rank, but this act of standing in the hall clearly served to highlight their low status.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "highlight their low status",
+     "reason": "Focus on the status reduction.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Actions highlighting low status to demean are to abase.",
+   "feedback_deep": "Even if the assistant is already lower-ranked, the intentional act of forced standing in the hall is meant to actively demean them (abase).",
+   "contrast_rule": "Forced status reminder = abase.",
+   "hint": "Does it focus on the status?"
+  },
+  {
+   "id": "abash-abase_015",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "What the joke did to the guest: ___",
+   "beats": [
+    {
+     "text": "The host made a mean-spirited joke about the guest's profession, making the guest feel foolish.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "feel foolish",
+     "reason": "This is embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The guest remained a respected doctor; they just felt embarrassed for the moment.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.9,
+      "abase": 0.1
+     },
+     "decisive_clue": "remained a respected doctor",
+     "reason": "This is embarrassment.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Causing temporary feelings of foolishness is to abash.",
+   "feedback_deep": "The joke was rude, but it was just a moment of social awkwardness. It did not degrade the doctor's actual profession or dignity.",
+   "contrast_rule": "Momentary foolishness = abash.",
+   "hint": "Did it hurt the doctor's status?"
+  },
+  {
+   "id": "abash-abase_016",
+   "domain": "school",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 2,
+   "frame": "What the teacher is doing is ___",
+   "beats": [
+    {
+     "text": "The teacher makes the student stand at the front of the class for the whole period.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.3,
+      "abase": 0.7
+     },
+     "decisive_clue": "stand at the front... whole period",
+     "reason": "This is a form of punishment/humiliation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    },
+    {
+     "text": "The student, however, doesn't mind; they are actually using the time to get a better view of the blackboard to learn more.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "doesn't mind... learn more",
+     "reason": "The intent of the teacher was still demeaning, even if the student is not bothered.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Intent matters; the teacher is trying to degrade the student regardless of the student's reaction.",
+   "feedback_deep": "The teacher's intent is to punish and degrade (abase), regardless of the student's surprising positive reaction. The student's lack of feeling embarrassed does not make the act 'abash'.",
+   "contrast_rule": "Intent to degrade = abase.",
+   "hint": "What is the teacher's goal?"
+  },
+  {
+   "id": "abash-abase_017",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 2,
+   "frame": "The manager's behavior is ___",
+   "beats": [
+    {
+     "text": "The manager asks the employee to file some papers.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.1
+     },
+     "decisive_clue": "none",
+     "reason": "Neither fits well; this is a normal task.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M1"
+     }
+    },
+    {
+     "text": "The employee feels embarrassed for no reason, thinking the task is below them, even though it's part of their job description.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.6,
+      "abase": 0.1
+     },
+     "decisive_clue": "feels embarrassed for no reason",
+     "reason": "The feeling is real even if the situation isn't.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Feeling embarrassed for no reason can still be described as feeling abashed.",
+   "feedback_deep": "The situation itself is not demeaning or designed to embarrass, but the employee *feels* the emotion of embarrassment (abash).",
+   "contrast_rule": "Emotional response = abash.",
+   "hint": "Does it matter if the embarrassment is unjustified?"
+  },
+  {
+   "id": "abash-abase_018",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The leader's attitude toward the public is ___",
+   "beats": [
+    {
+     "text": "The leader shows up at the disaster site to help the victims, showing true humility and empathy.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.1
+     },
+     "decisive_clue": "true humility and empathy",
+     "reason": "Neither fits; this is positive behavior.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M3"
+     }
+    },
+    {
+     "text": "But the media finds out the leader did it only because they wanted to force the victims to thank them for 'saving' them.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.1,
+      "abase": 0.9
+     },
+     "decisive_clue": "force the victims to thank them",
+     "reason": "This is manipulating them for ego.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Manipulating victims into performing gratitude is an attempt to abase them.",
+   "feedback_deep": "The reframe shows the initial 'humility' was a cover for a manipulative act intended to degrade the victims by making them perform servitude for the leader (abase).",
+   "contrast_rule": "Manipulative servitude = abase.",
+   "hint": "What is the leader's actual motive?"
+  },
+  {
+   "id": "abash-abase_019",
+   "domain": "workplace",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The supervisor's treatment of the intern is ___",
+   "beats": [
+    {
+     "text": "The supervisor calls the intern out for wearing jeans to a formal meeting.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.8,
+      "abase": 0.2
+     },
+     "decisive_clue": "calls out for wearing jeans",
+     "reason": "This is public embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The supervisor actually knows the intern couldn't afford a suit, but chooses to do this to make sure the intern never feels comfortable asking for a raise.",
+     "best_word": "abase",
+     "fit": {
+      "abash": 0.2,
+      "abase": 0.8
+     },
+     "decisive_clue": "never feels comfortable asking for a raise",
+     "reason": "This is controlling/demeaning.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abash": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Using social shame to control someone's career is to abase them.",
+   "feedback_deep": "The supervisor's act *looked* like simple embarrassment (abash), but the underlying intent is to systematically degrade the intern's position to ensure they remain financially and professionally subservient (abase).",
+   "contrast_rule": "Systemic degradation = abase.",
+   "hint": "What is the real goal?"
+  },
+  {
+   "id": "abash-abase_020",
+   "domain": "performance",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "What the critic did to the artist: ___",
+   "beats": [
+    {
+     "text": "The critic wrote that the artist's work showed a lack of basic technical skill.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.6,
+      "abase": 0.4
+     },
+     "decisive_clue": "lack of basic technical skill",
+     "reason": "This is a critique, causing embarrassment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M1"
+     }
+    },
+    {
+     "text": "The artist felt embarrassed, as the critic intended, but the artist continued their career successfully; it wasn't meant to diminish their professional dignity forever.",
+     "best_word": "abash",
+     "fit": {
+      "abash": 0.9,
+      "abase": 0.1
+     },
+     "decisive_clue": "felt embarrassed... wasn't meant to diminish",
+     "reason": "Focus on the temporary nature and feeling.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abase": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Critiquing skill and causing temporary embarrassment is to abash.",
+   "feedback_deep": "This is a fine line. The critic caused the artist to feel embarrassed, but the action wasn't aimed at stripping the artist of their status or permanent dignity—a key distinction for abase.",
+   "contrast_rule": "Embarrassment = abash.",
+   "hint": "Does it impact the dignity permanently?"
+  }
+ ]
+}

@@ -1,0 +1,1282 @@
+{
+ "set_id": "stoic-stolid",
+ "source_pair_id": 202,
+ "words": [
+  {
+   "word": "stoic",
+   "sense": "A person who endures hardship or pain without complaining or showing emotion.",
+   "concise_meaning": "Showing fortitude in the face of adversity.",
+   "connotation": "Admirable, strong, disciplined, moral.",
+   "register": "Formal, literary.",
+   "grammar": "Adjective.",
+   "collocations": [
+    "stoic acceptance",
+    "stoic demeanor",
+    "remain stoic"
+   ],
+   "misconceptions": [
+    "Thinking it means merely being quiet or bored."
+   ]
+  },
+  {
+   "word": "stolid",
+   "sense": "Having or revealing little emotion or sensibility; impassive.",
+   "concise_meaning": "Naturally dull, unemotional, or unresponsive.",
+   "connotation": "Negative (dull, insensitive, inert).",
+   "register": "Formal.",
+   "grammar": "Adjective.",
+   "collocations": [
+    "stolid expression",
+    "stolid indifference",
+    "a stolid worker"
+   ],
+   "misconceptions": [
+    "Thinking it means brave or self-controlled."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "reaction_to_hardship",
+   "description": "Whether the lack of emotion is a deliberate choice to endure (stoic) or a natural inability to feel (stolid)."
+  },
+  {
+   "id": "active_vs_passive",
+   "description": "Stoicism requires active willpower, whereas stolidity is a passive state of existence."
+  }
+ ],
+ "edge": {
+  "a": "stoic",
+  "b": "stolid",
+  "boundary_rule": "Use stoic for intentional restraint during pain; use stolid for natural, inert lack of emotional reaction.",
+  "clues_a": [
+   "adversity",
+   "pain",
+   "hardship",
+   "deliberate control",
+   "courage",
+   "moral"
+  ],
+  "clues_b": [
+   "boredom",
+   "dullness",
+   "insensitivity",
+   "lack of spark",
+   "monotony",
+   "inert"
+  ],
+  "irrelevant_clues": [
+   "being quiet",
+   "not talking",
+   "being calm"
+  ],
+  "misconceptions": {
+   "M1": "Assuming any lack of emotion is stoic.",
+   "M2": "Assuming any quiet person is stolid.",
+   "M3": "Confusing brave endurance with natural insensitivity."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "stoic": [
+    "She remained stoic even when the news of her layoff arrived.",
+    "The soldier's stoic acceptance of his injuries was remarkable.",
+    "He adopted a stoic approach to the endless delays in his project.",
+    "Her stoic silence allowed her to process the grief without breaking down.",
+    "Despite the stinging criticism, he maintained a stoic front.",
+    "The team needed a stoic leader to get through the difficult season."
+   ],
+   "stolid": [
+    "He sat there with a stolid expression, entirely unmoved by the dramatic speech.",
+    "The stolid bureaucracy took no notice of the public's pleas.",
+    "Her stolid nature made her appear indifferent to the excitement around her.",
+    "The security guard remained stolid while the crowd cheered.",
+    "It was difficult to engage him, for he remained stolid even in lively conversation.",
+    "The report was written in a stolid, unimaginative style."
+   ]
+  },
+  "counter": {
+   "stoic": [
+    "The cat looked at the bird with a stoic stare.",
+    "His stoic refusal to help his friend seemed cruel.",
+    "The room was filled with a stoic silence as everyone fell asleep.",
+    "She didn't know what to do, so she just sat there, stoic.",
+    "The instructions were so stoic that I couldn't understand them.",
+    "His stoic lack of interest in the party made him unpopular."
+   ],
+   "stolid": [
+    "He went back to work with a stolid resolve, despite his severe pain.",
+    "Her stolid efforts to save the project proved she was a hero.",
+    "He showed a stolid courage in the face of the enemy.",
+    "The stolid father comforted his crying child with great patience.",
+    "Her stolid sacrifice for the good of the community was remembered for years.",
+    "He looked at the disaster with a stolid, iron will."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The guard stood by the door, completely unreactive to the chaos.",
+    "best_word": "stolid",
+    "note": "If no hardship is present, 'stolid' fits better than the active restraint of 'stoic'."
+   },
+   {
+    "text": "He ignored the insults and kept focusing on his task.",
+    "best_word": "stoic",
+    "note": "This is an active choice to endure, not a lack of emotion."
+   },
+   {
+    "text": "She took the news of the debt without a single tear.",
+    "best_word": "stoic",
+    "note": "This is an active endurance of hardship."
+   },
+   {
+    "text": "His face was an unreadable mask throughout the meeting.",
+    "best_word": "stolid",
+    "note": "Without context of hardship, 'stolid' is the default descriptive term."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "stoic-stolid_002",
+   "domain": "History",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The governor's response to the protestors: ___",
+   "beats": [
+    {
+     "text": "The protestors shouted insults at the governor's carriage. He did not look up from his book.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.2,
+      "stolid": 0.8
+     },
+     "decisive_clue": "ignoring without evidence of struggle",
+     "reason": "Without evidence that he is choosing to suppress his feelings, this is just indifference.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "When a stone flew past his head, he simply turned the page, his expression unchanged.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.4,
+      "stolid": 0.6
+     },
+     "decisive_clue": "lack of reaction to extreme stimuli",
+     "reason": "The total lack of response to a threat is more characteristic of a natural inability to be stirred.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Ignoring threats completely is stolid, not stoic endurance.",
+   "feedback_deep": "Even when faced with extreme danger, the governor's total indifference suggests an inability to feel, rather than a conscious effort to bear the pressure.",
+   "contrast_rule": "Stoic implies effort; stolid implies a lack of natural sensitivity.",
+   "hint": "Is this willpower or just absence of feeling?"
+  },
+  {
+   "id": "stoic-stolid_003",
+   "domain": "Education",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The student's performance after the failed test: ___",
+   "beats": [
+    {
+     "text": "After seeing her failing grade, Maria just closed her folder and sat silently.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "silence without context",
+     "reason": "Without knowing her reaction to the silence, 'stolid' is a safe, neutral description of impassivity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "When the teacher asked, she merely shrugged, unbothered by the result.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.1,
+      "stolid": 0.9
+     },
+     "decisive_clue": "unbothered",
+     "reason": "Her lack of interest confirms she wasn't enduring a struggle, just uninterested.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Lack of concern is stolid, not stoic.",
+   "feedback_deep": "Maria's silence and subsequent shrug reveal she was simply unbothered, not that she was actively suppressing disappointment or enduring hardship.",
+   "contrast_rule": "Stoic = suppressed pain; stolid = no feeling.",
+   "hint": "Does the subject care?"
+  },
+  {
+   "id": "stoic-stolid_004",
+   "domain": "Social",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "Liam's attitude towards his long commute: ___",
+   "beats": [
+    {
+     "text": "Liam spends two hours on the bus each morning without complaining.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.6,
+      "stolid": 0.4
+     },
+     "decisive_clue": "enduring without complaining",
+     "reason": "Enduring hardship without complaining is the core definition of stoic.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    },
+    {
+     "text": "He uses the time to read, focusing despite the noise and discomfort.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.9,
+      "stolid": 0.1
+     },
+     "decisive_clue": "focusing despite discomfort",
+     "reason": "His focus despite the hardship reinforces that his silence is a form of endurance.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Deliberately focusing despite discomfort is stoic.",
+   "feedback_deep": "Liam's commute is an objective hardship, and his choice to use that time productively, rather than complain, is a perfect example of stoicism.",
+   "contrast_rule": "Stoic requires a challenge to be endured.",
+   "hint": "Is he actively dealing with a challenge?"
+  },
+  {
+   "id": "stoic-stolid_005",
+   "domain": "Relationship",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What Sarah did to her friend who betrayed her: ___",
+   "beats": [
+    {
+     "text": "When Jane confessed, Sarah just stared at the floor, not saying a word.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "silence without reaction",
+     "reason": "At this point, we don't see Sarah's feelings, just an impassive action.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "She walked out slowly, her face entirely impassive, showing absolutely nothing.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.2,
+      "stolid": 0.8
+     },
+     "decisive_clue": "impassive face",
+     "reason": "The absolute absence of expression suggests a natural inability to be emotionally moved by the betrayal.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Total lack of expression in a personal crisis is stolid.",
+   "feedback_deep": "Sarah's total impassivity suggests a lack of emotional response rather than the suppression of a deeply painful, but active, feeling.",
+   "contrast_rule": "Stoic feels the pain but suppresses it; stolid doesn't feel the pain.",
+   "hint": "Is the impassivity from strength or a lack of reaction?"
+  },
+  {
+   "id": "stoic-stolid_006",
+   "domain": "Politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The minister's reaction to the economic scandal: ___",
+   "beats": [
+    {
+     "text": "The minister watched the investigative reports with his usual flat expression.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.2,
+      "stolid": 0.8
+     },
+     "decisive_clue": "usual flat expression",
+     "reason": "'Usual' implies this is his normal temperament, not a reaction to pain.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "Even when journalists questioned his integrity, he remained completely indifferent.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.1,
+      "stolid": 0.9
+     },
+     "decisive_clue": "remained completely indifferent",
+     "reason": "Indifference to questioning integrity confirms the lack of sensitivity/feeling.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Indifference to questioning is stolid.",
+   "feedback_deep": "The minister's habitual, flat expression and subsequent indifference to serious accusations suggest a lack of natural sensitivity, not active control.",
+   "contrast_rule": "Stolid = natural lack of reaction.",
+   "hint": "Is this a habit or a choice?"
+  },
+  {
+   "id": "stoic-stolid_007",
+   "domain": "Science",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The researcher's reaction to the failed experiment: ___",
+   "beats": [
+    {
+     "text": "The experiment failed, destroying months of work. The researcher sat down and stared blankly.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "stared blankly",
+     "reason": "Without more, this could be a lack of reaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "Then, without a sound, he began to meticulously clean the equipment for the next attempt.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.8,
+      "stolid": 0.2
+     },
+     "decisive_clue": "began to meticulously clean",
+     "reason": "He is turning his grief/frustration into action.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Active endurance is stoic.",
+   "feedback_deep": "While he was initially blank, the researcher's active commitment to immediately re-starting the work demonstrates the deliberate, disciplined endurance of stoicism.",
+   "contrast_rule": "Stoic is a form of willpower.",
+   "hint": "What does he do after the initial moment?"
+  },
+  {
+   "id": "stoic-stolid_008",
+   "domain": "Arts",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The painter's response to the harsh review: ___",
+   "beats": [
+    {
+     "text": "The review destroyed his reputation. He finished his tea and set the cup down.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.4,
+      "stolid": 0.6
+     },
+     "decisive_clue": "set the cup down",
+     "reason": "Without context of his feelings, it's just a passive action.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "He picked up his brush and continued painting, fully absorbing the pain but not stopping.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.8,
+      "stolid": 0.2
+     },
+     "decisive_clue": "absorbing the pain but not stopping",
+     "reason": "He is actively enduring the pain and continuing his work.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Choosing to continue despite pain is stoic.",
+   "feedback_deep": "The painter's choice to work through the painful criticism, absorbing the emotion rather than reacting to it, highlights his stoic fortitude.",
+   "contrast_rule": "Stoic = enduring through conscious control.",
+   "hint": "What action does he choose next?"
+  },
+  {
+   "id": "stoic-stolid_009",
+   "domain": "Community",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The volunteer's response to the disaster area: ___",
+   "beats": [
+    {
+     "text": "The volunteer walked past the destroyed homes, looking entirely unaffected.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.2,
+      "stolid": 0.8
+     },
+     "decisive_clue": "looking entirely unaffected",
+     "reason": "Looks like an inability to feel.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "Though tears filled her eyes, she kept moving, prioritizing the survivors.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.9,
+      "stolid": 0.1
+     },
+     "decisive_clue": "tears filled her eyes",
+     "reason": "She feels the pain but suppresses it, choosing action.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Feeling pain but acting anyway is stoic.",
+   "feedback_deep": "Her internal struggle (tears) shows she *does* feel, making her controlled, action-oriented behavior a sign of stoic endurance, not a lack of sensitivity.",
+   "contrast_rule": "Stoic implies feeling, stolid implies none.",
+   "hint": "Does she actually feel something?"
+  },
+  {
+   "id": "stoic-stolid_010",
+   "domain": "Sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The athlete's reaction to the championship loss: ___",
+   "beats": [
+    {
+     "text": "After the final whistle, he sat on the bench with a blank stare, ignoring the crowd.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.4,
+      "stolid": 0.6
+     },
+     "decisive_clue": "blank stare",
+     "reason": "Without more, this looks like a lack of reaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "He then stood, thanked the coaches, and quietly congratulated the winners.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.7,
+      "stolid": 0.3
+     },
+     "decisive_clue": "thanked the coaches",
+     "reason": "This is active endurance of the loss through social grace.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Grace under pressure is stoic.",
+   "feedback_deep": "His ability to engage constructively after a devastating defeat shows active, disciplined endurance of the loss, not merely emotional paralysis.",
+   "contrast_rule": "Stoic = willpower in hard times; stolid = no reaction.",
+   "hint": "Is his subsequent action constructive?"
+  },
+  {
+   "id": "stoic-stolid_011",
+   "domain": "Health",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The patient's behavior during the painful check-up: ___",
+   "beats": [
+    {
+     "text": "The nurse poked the wound; the patient simply sat there, not moving a muscle.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.5,
+      "stolid": 0.5
+     },
+     "decisive_clue": "not moving a muscle",
+     "reason": "Ambiguous: could be brave or insensitive.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "His knuckles were white as he gripped the table, but he remained perfectly still.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.9,
+      "stolid": 0.1
+     },
+     "decisive_clue": "knuckles were white",
+     "reason": "He is clearly in pain and exerting effort to control his reaction.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Controlling severe pain is stoic.",
+   "feedback_deep": "The white knuckles reveal intense, hidden pain, making his disciplined stillness a form of stoic endurance, not stolid insensitivity.",
+   "contrast_rule": "Look for internal vs. external signs of emotion.",
+   "hint": "Are there signs of internal struggle?"
+  },
+  {
+   "id": "stoic-stolid_012",
+   "domain": "Finance",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The investor's reaction to the sudden market dive: ___",
+   "beats": [
+    {
+     "text": "The investor saw his portfolio plummet. He just stared at the screen.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "stared at the screen",
+     "reason": "Too passive.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "He took a deep breath, adjusted his long-term strategy, and bought more stock.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.8,
+      "stolid": 0.2
+     },
+     "decisive_clue": "adjusted strategy",
+     "reason": "Active, disciplined response.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Active adjustment despite pressure is stoic.",
+   "feedback_deep": "Instead of reacting emotionally to the loss, he actively, consciously manages the crisis by sticking to his strategy, which is the essence of stoicism.",
+   "contrast_rule": "Stoic requires a choice to act.",
+   "hint": "Does he just watch or does he act?"
+  },
+  {
+   "id": "stoic-stolid_013",
+   "domain": "Media",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The interview style of the seasoned reporter: ___",
+   "beats": [
+    {
+     "text": "The reporter listens to the interviewee's confession without reacting.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.4,
+      "stolid": 0.6
+     },
+     "decisive_clue": "without reacting",
+     "reason": "Ambiguous.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "His impassivity is a professional technique to get the guest to talk more.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "professional technique",
+     "reason": "It's a lack of reaction, even if intentional, it's about being an inert 'mirror'.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Intentionally inert for professional reasons is still stolid.",
+   "feedback_deep": "Even when used deliberately as a tool, the *effect* of being unreactive and impassive is to create a stolid atmosphere, which is different from enduring a personal hardship.",
+   "contrast_rule": "Stoic = enduring hardship; stolid = impassive state.",
+   "hint": "Is the impassivity enduring something or just creating a blank space?"
+  },
+  {
+   "id": "stoic-stolid_014",
+   "domain": "Environment",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The old building's appearance after the storm: ___",
+   "beats": [
+    {
+     "text": "The old building stood firm while the storm raged around it.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.6,
+      "stolid": 0.4
+     },
+     "decisive_clue": "stood firm",
+     "reason": "Metaphorical endurance of hardship.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    },
+    {
+     "text": "It remained unbothered, as if it didn't even notice the wind.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "as if it didn't even notice",
+     "reason": "This frames it as insensitive, not enduring.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Insensitivity is stolid; endurance is stoic.",
+   "feedback_deep": "While it stood firm (stoic), the suggestion that it didn't even *notice* (stolid) reframes the building's nature from one of endurance to one of total insensitivity.",
+   "contrast_rule": "Stoic endures; stolid doesn't notice.",
+   "hint": "Is the subject 'enduring' or 'not noticing'?"
+  },
+  {
+   "id": "stoic-stolid_015",
+   "domain": "Travel",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The traveler's response to the missed train in a foreign city: ___",
+   "beats": [
+    {
+     "text": "The train was missed. He stood on the platform, his expression entirely neutral.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.4,
+      "stolid": 0.6
+     },
+     "decisive_clue": "entirely neutral",
+     "reason": "Could be either.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "He had practiced this kind of situation before, knowing panic wouldn't help.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.8,
+      "stolid": 0.2
+     },
+     "decisive_clue": "practiced this kind of situation",
+     "reason": "This is a deliberate choice of emotional control.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Practiced control is stoic.",
+   "feedback_deep": "The realization that his impassivity is a *practiced technique* to maintain control in a stressful situation solidifies his behavior as stoic endurance.",
+   "contrast_rule": "Stoic is a disciplined response.",
+   "hint": "Is his reaction automatic or practiced?"
+  },
+  {
+   "id": "stoic-stolid_016",
+   "domain": "Academic Debate",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 2,
+   "frame": "The professor's attitude toward the challenging student: ___",
+   "beats": [
+    {
+     "text": "During the debate, the professor listened to the student's erratic arguments with a neutral face.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.4,
+      "stolid": 0.6
+     },
+     "decisive_clue": "neutral face",
+     "reason": "Seems like a lack of reaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "He kept that same face even after the student insulted his work directly.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "same face",
+     "reason": "No change, just reinforces the stolid nature.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "No reaction to insult is stolid.",
+   "feedback_deep": "The professor's total lack of reaction to an insult reinforces that he is simply not being moved, which is stolid, not a sign of stoic effort.",
+   "contrast_rule": "Stoic = feeling but not showing; stolid = not feeling.",
+   "hint": "Did he feel the insult?"
+  },
+  {
+   "id": "stoic-stolid_017",
+   "domain": "Technology",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 2,
+   "frame": "The computer's response to the operator's panicked commands: ___",
+   "beats": [
+    {
+     "text": "The computer ignored the frantic keyboard inputs, just displaying a steady green light.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.1,
+      "stolid": 0.9
+     },
+     "decisive_clue": "computer",
+     "reason": "Computers cannot be stoic, as it requires willpower.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "It remained unbothered, processing the commands at the exact same speed as before.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0,
+      "stolid": 1
+     },
+     "decisive_clue": "remained unbothered",
+     "reason": "Still a machine, just reinforcing its stolid, inert nature.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Machines are stolid, never stoic.",
+   "feedback_deep": "A computer cannot *choose* to be stoic. Its inability to react to panic is a literal, mechanical manifestation of being stolid.",
+   "contrast_rule": "Only living beings can be stoic.",
+   "hint": "Can a machine have willpower?"
+  },
+  {
+   "id": "stoic-stolid_018",
+   "domain": "Ethics",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The witness's attitude while describing the tragedy: ___",
+   "beats": [
+    {
+     "text": "The witness described the entire tragedy in a quiet, matter-of-fact tone.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.7,
+      "stolid": 0.3
+     },
+     "decisive_clue": "quiet, matter-of-fact",
+     "reason": "Often this is interpreted as stoic control.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    },
+    {
+     "text": "He didn't describe it this way because he was brave, but because he was simply entirely unmoved by what happened.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.1,
+      "stolid": 0.9
+     },
+     "decisive_clue": "entirely unmoved",
+     "reason": "The witness's own admission reframes it as lack of feeling.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Being unmoved is stolid.",
+   "feedback_deep": "What initially seemed like stoic control (quiet description) is reframed as an actual *inability* to be moved (unmoved), which is the definition of stolid.",
+   "contrast_rule": "Stoic requires pain; stolid shows absence of feeling.",
+   "hint": "Does he feel anything about what happened?"
+  },
+  {
+   "id": "stoic-stolid_019",
+   "domain": "Community",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "What the quiet neighbor's silence actually means: ___",
+   "beats": [
+    {
+     "text": "The neighbor is always silent and never says hello in the hallway.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.2,
+      "stolid": 0.8
+     },
+     "decisive_clue": "always silent",
+     "reason": "Seems like a lack of sensitivity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "Actually, he is coping with a deep personal tragedy and uses the silence to keep his dignity intact.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.9,
+      "stolid": 0.1
+     },
+     "decisive_clue": "coping with a deep personal tragedy",
+     "reason": "The silence is a choice to endure.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Silence as a coping mechanism is stoic.",
+   "feedback_deep": "The neighbor's silence was initially seen as just impassivity (stolid), but understanding it as a deliberate coping mechanism for tragedy (stoic) rehabilitates the judgment.",
+   "contrast_rule": "Stoic = pain being endured.",
+   "hint": "Why is he silent?"
+  },
+  {
+   "id": "stoic-stolid_020",
+   "domain": "Household",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The cook's reaction to the salt spill: ___",
+   "beats": [
+    {
+     "text": "The cook spilled the entire bag of salt, but just looked at the mess without changing his expression.",
+     "best_word": "stolid",
+     "fit": {
+      "stoic": 0.3,
+      "stolid": 0.7
+     },
+     "decisive_clue": "without changing expression",
+     "reason": "Seems impassive.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stoic": "M1"
+     }
+    },
+    {
+     "text": "He took a deep breath, knowing he had to start the entire meal over immediately, and began.",
+     "best_word": "stoic",
+     "fit": {
+      "stoic": 0.8,
+      "stolid": 0.2
+     },
+     "decisive_clue": "knowing he had to start over",
+     "reason": "Active, disciplined endurance of a problem.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "stolid": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Active problem-solving under pressure is stoic.",
+   "feedback_deep": "His initial reaction looked stolid, but his conscious, active effort to fix the mistake and start over precisely defines stoic fortitude.",
+   "contrast_rule": "Stoic = effort to overcome; stolid = lack of reaction.",
+   "hint": "Is this just impassivity or a moment of endurance?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

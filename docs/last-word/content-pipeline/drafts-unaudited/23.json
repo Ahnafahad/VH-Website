@@ -1,0 +1,1808 @@
+{
+ "set_id": "coup-revolution",
+ "source_pair_id": 23,
+ "words": [
+  {
+   "word": "coup",
+   "sense": "sudden seizure of state or institutional power by an elite or military faction",
+   "concise_meaning": "a sudden, decisive seizure of government or institutional authority by a small, often armed or insider group",
+   "connotation": "abrupt, secretive, conspiratorial, anti-democratic",
+   "register": "formal to political",
+   "grammar": "countable noun; frequently takes verbs like 'stage', 'mount', 'lead', 'foil', 'thwart', 'survive'",
+   "collocations": [
+    "military coup",
+    "bloodless coup",
+    "stage a coup",
+    "attempted coup",
+    "palace coup"
+   ],
+   "misconceptions": [
+    "Assuming any political overthrow is a revolution, overlooking that a coup is carried out from the top down by a small insider clique without mass popular mobilization."
+   ]
+  },
+  {
+   "word": "revolution",
+   "sense": "sweeping transformation of a political or social system driven by mass popular upheaval",
+   "concise_meaning": "a fundamental and broad transformation of political, economic, or social structures, typically driven by widespread citizen mobilization",
+   "connotation": "systemic, transformative, historic, widespread",
+   "register": "standard to formal",
+   "grammar": "countable or uncountable noun; commonly paired with 'spark', 'ignite', 'lead', 'cultural', 'social', 'political'",
+   "collocations": [
+    "spark a revolution",
+    "popular revolution",
+    "social revolution",
+    "peaceful revolution",
+    "sweeping revolution"
+   ],
+   "misconceptions": [
+    "Believing revolution simply means any sudden change of government leaders, missing that true revolution requires broad popular participation and deep systemic restructuring."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "actor_scale_and_origin",
+   "description": "Small insider elite, military cadre, or executive faction operating from the top down vs. broad popular mobilization spanning diverse social classes from the bottom up."
+  },
+  {
+   "id": "scope_of_systemic_change",
+   "description": "Replacing individual leaders while leaving legal and administrative machinery intact vs. fundamentally dismantling and remaking the political, social, or constitutional framework."
+  },
+  {
+   "id": "public_participation_dynamic",
+   "description": "Swift tactical takeover executed under curfew while ordinary citizens are told to stay indoors vs. mass demonstrations, general strikes, and collective public involvement."
+  }
+ ],
+ "edge": {
+  "a": "coup",
+  "b": "revolution",
+  "boundary_rule": "A coup is a swift seizure of institutional control by a small insider or military faction that replaces leadership at the top; a revolution is a broad popular uprising that fundamentally transforms political and social structures.",
+  "clues_a": [
+   "seizure executed by a small cadre of generals, cabinet ministers, or internal plotters",
+   "swift capture of administrative buildings, transmission towers, and airports during the night",
+   "imposition of strict curfews instructing the civilian population to remain indoors",
+   "ouster of top leaders while keeping existing bureaucratic and legal frameworks intact",
+   "insider palace or boardroom conspiracy operating without public participation"
+  ],
+  "clues_b": [
+   "millions of citizens filling public squares across multiple cities and provinces",
+   "broad coalition of labor unions, student groups, rural collectives, and civic associations",
+   "wholesale abolition of monarchical, dictatorial, or constitutional frameworks",
+   "nationwide general strikes paralyzing economic life to force fundamental reform",
+   "bottom-up participatory restructuring of political, social, and economic life"
+  ],
+  "irrelevant_clues": [
+   "whether firearms or military vehicles are visible in the streets",
+   "the amount of international news coverage or diplomatic statements",
+   "whether the deposed head of state escapes into exile or is placed under house arrest",
+   "the geographical size or economic wealth of the nation"
+  ],
+  "misconceptions": {
+   "M1": "Assuming any rapid overthrow of state authority is a revolution, ignoring that an action executed solely by an armed clique or elite cadre is a coup.",
+   "M2": "Believing a coup must be violent and bloody, overlooking that many coups are quiet, bloodless tactical seizures of executive offices.",
+   "M3": "Equating revolution with any regime change, failing to recognize that revolution requires mass citizen mobilization and fundamental structural transformation."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "coup": [
+    "At three in the morning, four tank commanders surrounded the presidential residence, arrested the prime minister in his sleep, and broadcast martial orders over state radio.",
+    "The senior officers of the royal guard disarmed the palace sentries, locked the cabinet ministers in the banquet hall, and proclaimed the general as interim ruler.",
+    "A faction of five naval captains seized the maritime communication station, grounded civilian airliners, and announced that the civilian parliament was dissolved.",
+    "In an overnight operation with zero civilian involvement, the armored division barricaded the supreme court and installed their chief of staff in the executive office.",
+    "Two disgruntled colonels led a motorized convoy into the state capital, placed the governor under house arrest, and ordered all civil servants to take orders exclusively from the military council.",
+    "The head of the national gendarmerie intercepted the president's motorcade, detained his bodyguards, and seized the executive seal before dawn."
+   ],
+   "revolution": [
+    "Millions of citizens across thirty provinces poured into the streets for three weeks, defying police water cannons until the autocratic dynasty collapsed and a democratic constitution was drafted.",
+    "General strikes organized by coordinated networks of dockworkers, teachers, and peasant unions paralyzed the country, ultimately abolishing the feudal land system.",
+    "Neighborhood assemblies across the nation mobilized millions of families, dismantling the old colonial administration and instituting self-governing municipal communes.",
+    "Spurred by soaring grain prices, millions of factory workers and rural laborers converged on the capital, forcing the abdication of the monarch and drafting a republic charter.",
+    "Mass civil disobedience spanning student unions, industrial leagues, and civic federations brought the dictatorship to an end, paving the way for complete structural democratization.",
+    "From industrial seaports to rural farming cooperatives, the entire populace united in open defiance, tearing down the authoritarian regime and replacing its legal codes."
+   ]
+  },
+  "counter": {
+   "coup": [
+    "Tens of thousands of striking miners and their families marched through mountain valleys to the capital, inspiring millions nationwide to demand a constituent assembly.",
+    "A grassroots coalition of university students and industrial labor federations mobilized a nationwide general strike that brought down the century-old monarchy.",
+    "Across the archipelago, millions of villagers and city dwellers formed local self-governing councils, throwing off royal decrees and establishing a new republic.",
+    "Civic associations, market vendors, and dockyard workers united in sustained nationwide rallies, permanently ending military governance and establishing popular rule.",
+    "Over three months of continuous public defiance, millions of ordinary people filled the central boulevard every afternoon, demanding systemic constitutional reform.",
+    "The entire working populace of the province abandoned their posts, uniting with agrarian leagues to abolish landlord privileges and create cooperative ownership."
+   ],
+   "revolution": [
+    "Three disgruntled brigadiers seized the national telecom exchange at midnight and forced the prime minister to sign a transfer of executive powers.",
+    "The presidential guard surrounded the legislative palace before dawn, arrested thirty lawmakers, and handed absolute administrative authority to the defense minister.",
+    "A small conspiracy of fighter pilots and intelligence officers took control of the airbase, grounded international flights, and declared a military junta.",
+    "Without the knowledge of the civilian populace, five army colonels disarmed the interior ministry police and appointed an interim governing council.",
+    "The chief of staff used two motorized regiments to cordon off the supreme court and dismiss the elected premier while citizens slept.",
+    "An elite military unit detained the regional governor during a private banquet, seizing the provincial broadcasting tower without firing a shot."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "Following weeks of spontaneous civilian protests against fuel rations, the army chief suddenly orders his troops to storm the presidential palace, removes the president, and imposes an indefinite military junta.",
+    "best_word": "coup",
+    "note": "Although popular protests created political instability, the decisive mechanism of power transfer was an armed, top-down seizure by the military command rather than a bottom-up transformation led by the masses."
+   },
+   {
+    "text": "Mutinous soldiers join forces with millions of striking workers and students in the capital square, establishing a collective transitional council to abolish the empire and draft a new democratic constitution.",
+    "best_word": "revolution",
+    "note": "Even though soldiers took part, the movement involved widespread popular mobilization and achieved fundamental systemic transformation of the state."
+   },
+   {
+    "text": "A small group of dissident army captains seizes the state broadcasting office and announces that all power belongs to the working class, but ordinary citizens remain indoors under curfew and no social institutions change.",
+    "best_word": "coup",
+    "note": "Despite the ideological rhetoric appealing to the working class, the actual event is an elite military seizure that bypassed mass public participation and left the state structure unchanged."
+   },
+   {
+    "text": "A coordinated nationwide shutdown led by civilian unions, university faculties, and neighborhood associations peacefully compels the entire ruling cabinet to resign and abolishes the autocratic constitution.",
+    "best_word": "revolution",
+    "note": "The change was driven entirely by broad, cross-class civilian mobilization that fundamentally transformed the constitutional structure, making it a revolution despite the absence of armed combat."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "coup-revolution_001",
+   "domain": "dockworkers_federation",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The overnight seizure of the maritime authority by three senior port captains was a: ___",
+   "beats": [
+    {
+     "text": "At midnight, three senior captains of the port police locked the civilian harbor commissioner in his quarters and ordered armed patrol boats to blockade the administrative pier.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.94,
+      "revolution": 0.06
+     },
+     "decisive_clue": "swift armed takeover by three senior port captains locking out the civilian commissioner",
+     "reason": "The action is an armed, top-down seizure by three insider officers without popular involvement.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Before dawn, the captains distributed written notices instructing all civilian crane operators and customs clerks to remain at home until a military port council is seated.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.97,
+      "revolution": 0.03
+     },
+     "decisive_clue": "curfew orders commanding civilian dock personnel to stay home while captains install a council",
+     "reason": "The captains explicitly exclude the civilian workforce, cementing an insider command takeover.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "By sunrise, the port captains had confirmed that all existing tariff schedules and maritime statutes would remain unaltered under their emergency stewardship.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "leaving existing tariffs and administrative statutes completely intact",
+     "reason": "Leaving institutional rules untouched proves this is merely a personnel swap at the executive level.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "A swift takeover by a small captain cadre leaving institutional rules untouched is a classic coup.",
+   "feedback_deep": "The captains use armed force from within the port apparatus to depose their civilian superior. Because ordinary dockworkers are excluded and administrative structures remain identical, the event is an internal power seizure rather than a systemic transformation.",
+   "contrast_rule": "Small insider seizures replacing top personnel are coups; broad popular uprisings transforming entire systems are revolutions.",
+   "hint": "Look at who conducted the seizure and whether ordinary workers participated or institutional rules changed."
+  },
+  {
+   "id": "coup-revolution_002",
+   "domain": "broadcasting_network",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The sudden takeover of the national broadcasting headquarters by the deputy directors was a: ___",
+   "beats": [
+    {
+     "text": "During the midnight technical maintenance window, two deputy managing directors used private security guards to confiscate the transmission keys from the chief executive.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.93,
+      "revolution": 0.07
+     },
+     "decisive_clue": "deputy directors using private security to seize transmission keys from the chief executive",
+     "reason": "The ouster is carried out by executive insiders using security staff to seize physical control.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The deputy directors immediately cut external studio feeds and broadcast an automated looped message assuring viewers that regular commercial programming would resume under new management.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.96,
+      "revolution": 0.04
+     },
+     "decisive_clue": "automated broadcast promising the resumption of standard commercial programming under new leaders",
+     "reason": "The plotters promise continuity of existing media programming under their personal control.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Network journalists and technical crews arrived in the morning to find the corporate hierarchy unchanged except for the two plotters occupying the penthouse boardroom.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "unchanged corporate hierarchy with plotters simply occupying the executive boardroom",
+     "reason": "The entire organizational hierarchy persists unaffected, confirming an executive palace replacement.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "An internal boardroom takeover replacing the top executive without public mobilization defines a coup.",
+   "feedback_deep": "The deputy directors execute an insider seizure of studio transmission facilities. No public uprising or systemic reform took place; the existing media corporation continues operating under new executive faces.",
+   "contrast_rule": "Top-down elite takeovers are coups; mass-led systemic restructuring is a revolution.",
+   "hint": "Notice whether the broadcast network underwent widespread popular transformation or merely an executive swap."
+  },
+  {
+   "id": "coup-revolution_003",
+   "domain": "capital_garrison",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The midnight march of the armored regiment on the central ministry was a: ___",
+   "beats": [
+    {
+     "text": "At two in the morning, Colonel Vance led thirty tanks through the quiet avenues of the capital, surrounding the defense ministry and cutting landline cables.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.95,
+      "revolution": 0.05
+     },
+     "decisive_clue": "tank regiment surrounding the defense ministry and cutting communications in the middle of the night",
+     "reason": "A swift armed operation executed by an army officer targeting executive offices is characteristic of a coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The colonel entered the sleeping minister's residence, demanded his resignation at sidearm point, and declared himself commander-in-chief on state television.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.97,
+      "revolution": 0.03
+     },
+     "decisive_clue": "forcing the minister's resignation at weapon point to declare himself commander",
+     "reason": "Direct coercion to displace the minister and seize executive office by armed force constitutes a coup.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Street loudspeakers broadcast instructions warning civilians to stay inside their homes and leave all public spaces clear for military patrols.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "warning ordinary civilians to remain indoors under curfew",
+     "reason": "Civilians are explicitly ordered into isolation, preventing any public participation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "A sudden military seizure forcing a minister's ouster while confining citizens indoors is an unmistakable coup.",
+   "feedback_deep": "Colonel Vance deploys regular troops to capture strategic headquarters and displace a cabinet member. The operation excludes the public entirely, relying on strict curfews to keep citizens off the streets.",
+   "contrast_rule": "Armed factions seizing palaces under curfew mount coups; mass populations taking over streets create revolutions.",
+   "hint": "Observe whether the military action engaged the public or explicitly commanded them to stay home."
+  },
+  {
+   "id": "coup-revolution_004",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The complete restructuring of the national football federation was a: ___",
+   "beats": [
+    {
+     "text": "Hundreds of thousands of grassroots supporters, youth coaches, amateur players, and regional club delegates staged coordinated protests across sixty stadiums, demanding an end to decades of aristocratic governance.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.06,
+      "revolution": 0.94
+     },
+     "decisive_clue": "hundreds of thousands of grassroots supporters and amateur delegates staging coordinated protests",
+     "reason": "The movement is driven by widespread popular participation across thousands of community sports participants.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "The nationwide coalition ratified an entirely new democratic charter, replacing the lifetime board of governors with elected community councils and redistributing broadcast revenue to local pitches.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.04,
+      "revolution": 0.96
+     },
+     "decisive_clue": "ratifying a new democratic charter and replacing lifetime governors with community councils",
+     "reason": "Dismantling autocratic governing boards and instituting community democracy transforms the governing system.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "From remote mountain villages to coastal districts, local sports clubs voted en masse to implement the community constitution, permanently ending oligarchic control over the game.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.02,
+      "revolution": 0.98
+     },
+     "decisive_clue": "widespread nationwide popular implementation of an entirely new community constitution",
+     "reason": "Mass bottom-up implementation permanently remakes the entire sport's political and financial structure.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "A bottom-up transformation led by thousands of grassroots supporters replacing governing structures is a revolution.",
+   "feedback_deep": "The restructuring of the football league is propelled by massive popular participation across the country. It dismantles old aristocratic privileges and creates an entirely new democratic governance model.",
+   "contrast_rule": "Broad democratic overhauls are revolutions; small executive conspiracies are coups.",
+   "hint": "Focus on the scale of participant involvement and whether the structural charter was rewritten."
+  },
+  {
+   "id": "coup-revolution_005",
+   "domain": "agrarian_reform",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The sweeping upheaval across the agricultural heartland was a: ___",
+   "beats": [
+    {
+     "text": "Over two million tenant farmers and rural laborers walked off ancestral estates, establishing village committees to abolish centuries of feudal landlord ownership.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.05,
+      "revolution": 0.95
+     },
+     "decisive_clue": "two million tenant farmers establishing village committees to abolish feudal landlord ownership",
+     "reason": "Millions of rural workers organizing from below to abolish an entrenched feudal structure constitutes a revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "The rural committees allied with urban transport unions, forming provincial councils that redistributed arable land to farming families and annulled all peasant debt.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.03,
+      "revolution": 0.97
+     },
+     "decisive_clue": "cross-sector alliance redistributing land and abolishing all peasant debt",
+     "reason": "Alliances across rural and urban working classes reshaping property and debt laws represent deep systemic transformation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "Within six months, the old feudal legal code was formally burned in town squares, replaced by a cooperatively governed agrarian commonwealth.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.02,
+      "revolution": 0.98
+     },
+     "decisive_clue": "burning the feudal legal code and creating a cooperatively governed agrarian commonwealth",
+     "reason": "The total destruction of the old legal foundation and establishment of a new social order cements the revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Mass mobilization across millions of rural workers abolishing feudalism and establishing cooperative governance constitutes a revolution.",
+   "feedback_deep": "The agricultural transformation involves millions of working people acting collectively to overturn centuries-old socio-economic hierarchies. It completely replaces the legal and property system.",
+   "contrast_rule": "Mass collective transformation of society is a revolution; narrow palace takeovers are coups.",
+   "hint": "Look at how many people took part and whether fundamental social property relations changed."
+  },
+  {
+   "id": "coup-revolution_006",
+   "domain": "industrial_manufacturing",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The total transformation of the textile basin's industrial hierarchy was a: ___",
+   "beats": [
+    {
+     "text": "Hundreds of thousands of mill hands across fifty industrial towns initiated a general walkout, occupying assembly floors and creating worker assemblies to manage production directly.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.07,
+      "revolution": 0.93
+     },
+     "decisive_clue": "hundreds of thousands of mill hands occupying floors to manage production directly",
+     "reason": "Mass direct action by hundreds of thousands of factory workers to restructure production is a revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "The assemblies dismantled the mill owners' private supervisory boards, establishing elected workplace delegations that eliminated child labor and set communal wage caps.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.04,
+      "revolution": 0.96
+     },
+     "decisive_clue": "dismantling supervisory boards to institute elected delegations and eliminate child labor",
+     "reason": "Overturning the private management structure to institute workplace democracy represents structural overhaul.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "A joint congress of industrial workers and local civic associations drafted a founding constitution for the manufacturing district, abolishing corporate monopoly charters.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.03,
+      "revolution": 0.97
+     },
+     "decisive_clue": "joint congress drafting a founding constitution to abolish corporate monopoly charters",
+     "reason": "Drafting an entirely new civic-industrial constitution confirms the thoroughness of the systemic transformation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "A mass industrial uprising creating worker democracy and rewriting the economic constitution is a revolution.",
+   "feedback_deep": "The event spans an entire manufacturing basin where vast masses of workers dismantle corporate hierarchies and institute participatory democracy. This deep systemic overhaul fits the definition of a revolution.",
+   "contrast_rule": "Systemic grassroots transformation is a revolution; insider factional replacement is a coup.",
+   "hint": "Observe whether the movement arose from widespread working-class mobilization or high-level managers."
+  },
+  {
+   "id": "coup-revolution_007",
+   "domain": "island_governance",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The dramatic overthrow of the archipelago's colonial governor was a: ___",
+   "beats": [
+    {
+     "text": "At midnight, four senior naval officers escorted Governor Morales into detention at the naval harbor and installed their commodore in the administrative palace.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.94,
+      "revolution": 0.06
+     },
+     "decisive_clue": "four senior naval officers detaining the governor and installing their commodore",
+     "reason": "A small group of naval officers executing an armed palace detention of the governor is a classic coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "When news broke, over three hundred thousand islanders across all eight atolls surrounded the naval palace, disarmed the sentries, and declared the colonial charter permanently abolished.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.08,
+      "revolution": 0.92
+     },
+     "decisive_clue": "three hundred thousand islanders surrounding the palace and abolishing the colonial charter",
+     "reason": "Hundreds of thousands of citizens rising up to abolish the colonial charter completely flips the event into a revolution.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "Island elders, student syndicates, and harbor workers established a constituent assembly that wrote the archipelago's first independent democratic constitution.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.03,
+      "revolution": 0.97
+     },
+     "decisive_clue": "popular constituent assembly drafting the archipelago's first independent constitution",
+     "reason": "Broad participatory assembly writing an independent constitution confirms a lasting popular revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The naval plot was rapidly engulfed by hundreds of thousands of islanders dismantling the colonial system, creating a revolution.",
+   "feedback_deep": "What began as a narrow military conspiracy by four officers was completely overtaken by a nationwide popular uprising. The mass mobilization of the islanders dissolved colonial institutions and founded a new democratic state.",
+   "contrast_rule": "When mass popular uprisings sweep away elite conspiracies and transform systems, the event becomes a revolution.",
+   "hint": "Watch how the scale of participation explodes and whether the entire colonial system is dismantled."
+  },
+  {
+   "id": "coup-revolution_008",
+   "domain": "student_union",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The overnight removal of the student union president was a: ___",
+   "beats": [
+    {
+     "text": "At three in the morning, three executive council members changed the office locks, seized the treasury books, and proclaimed themselves the new union leadership.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.93,
+      "revolution": 0.07
+     },
+     "decisive_clue": "three council members changing locks and seizing the treasury to install themselves",
+     "reason": "An unauthorized lock-out by three council members to grab executive power is an internal coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "By midday, ten thousand students from all faculties converged on the central quadrangle, rejecting the plotters, abolishing the executive council, and creating a direct assembly.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.07,
+      "revolution": 0.93
+     },
+     "decisive_clue": "ten thousand students abolishing the executive council to institute a direct assembly",
+     "reason": "Ten thousand students mobilizing to abolish the executive council fundamentally transforms the campus governance model.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "The campus-wide assembly replaced the sixty-year-old union charter with a participatory manifesto that eliminated presidential authority entirely.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.03,
+      "revolution": 0.97
+     },
+     "decisive_clue": "replacing the union charter with a participatory manifesto eliminating presidential authority",
+     "reason": "Abolishing presidential authority and adopting a direct participatory manifesto marks a complete revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "A petty executive lock-out was superseded by ten thousand students abolishing the council and restructuring campus democracy.",
+   "feedback_deep": "The initial move was a minor insider coup by three officers. But the situation fundamentally transformed when the student body organized en masse to discard the traditional union constitution and build an egalitarian system.",
+   "contrast_rule": "Small insider seizures flip into revolutions when the broad community mobilizes to overhaul the constitution.",
+   "hint": "Check whether power remained with the three conspirators or shifted to the broader campus assembly."
+  },
+  {
+   "id": "coup-revolution_009",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The sudden upheaval in the governance of the extended family estate was a: ___",
+   "beats": [
+    {
+     "text": "While the family patriarch was hospitalized, the two eldest brothers confiscated the estate deed box, locked out the accountant, and announced their joint rule over all family assets.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.94,
+      "revolution": 0.06
+     },
+     "decisive_clue": "two eldest brothers seizing the deed box and locking out the accountant during patriarch's illness",
+     "reason": "An illicit seizure of estate assets by two senior heirs to install themselves as sole managers is a domestic coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "In response, forty family members across three generations assembled, voted unanimously to strip the brothers of authority, and abolished the centuries-old patriarchal inheritance system.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.06,
+      "revolution": 0.94
+     },
+     "decisive_clue": "forty family members across generations abolishing the patriarchal inheritance system",
+     "reason": "The entire multigenerational household organizing to abolish traditional patriarchal inheritance flips the event into a revolution.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "The entire extended family established an egalitarian trust where women and younger cousins hold equal voting power and revenue rights.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.02,
+      "revolution": 0.98
+     },
+     "decisive_clue": "establishing an egalitarian trust with equal voting rights across all members",
+     "reason": "Establishing equal voting and revenue rights for all members solidifies the systemic democratic transformation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The brothers' predatory estate grab was overridden by the entire extended family abolishing patriarchal hierarchy altogether.",
+   "feedback_deep": "The brothers staged an insider coup within the domestic estate. However, the collective uprising of forty family members fundamentally dismantled the patriarchal succession model, transforming the estate into an egalitarian democracy.",
+   "contrast_rule": "An elite inheritance grab is a coup; a collective restructuring of the entire household order is a revolution.",
+   "hint": "Look at how the entire family mobilized to dissolve the historical governance structure."
+  },
+  {
+   "id": "coup-revolution_010",
+   "domain": "provincial_politics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The dramatic toppling of the provincial governorship in the capital was a: ___",
+   "beats": [
+    {
+     "text": "Hundreds of thousands of chanting citizens filled the provincial plaza for weeks, demanding total systemic democratization and the elimination of elite privileges.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.07,
+      "revolution": 0.93
+     },
+     "decisive_clue": "hundreds of thousands filling the plaza demanding systemic democratization",
+     "reason": "Mass public mobilization demanding fundamental systemic democratization embodies a revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "While crowds celebrated in the plaza, four high-ranking generals secretly bypassed the civilian leaders, arrested the governor in his office, and swore in a military junta.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.92,
+      "revolution": 0.08
+     },
+     "decisive_clue": "four generals secretly arresting the governor and swearing in a military junta",
+     "reason": "The actual mechanism of removing the governor was an insider military capture by four generals, flipping the classification to a coup.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The generals declared martial law, ordered troops to clear the plaza with tear gas, and announced that all previous provincial laws remained in force under military command.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.97,
+      "revolution": 0.03
+     },
+     "decisive_clue": "dispersing the demonstrators and maintaining existing laws under a military junta",
+     "reason": "Suppression of the public and total preservation of existing statutes confirm an armed top-down coup.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Four generals hijacked the public unrest to execute a top-down military takeover, culminating in a coup.",
+   "feedback_deep": "Although public protests created pressure, the actual overthrow was seized by four generals behind closed doors. They suppressed the public, preserved the legal apparatus, and simply installed military rulers.",
+   "contrast_rule": "When an armed clique captures state power and suppresses the public, the event is a coup.",
+   "hint": "Notice who actually took control of executive power and how the public demonstrators were treated."
+  },
+  {
+   "id": "coup-revolution_011",
+   "domain": "medical_council",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The overhaul of the national medical licensing council was a: ___",
+   "beats": [
+    {
+     "text": "Tens of thousands of healthcare workers and trainee nurses staged nationwide rallies, demanding an end to private medical monopolies and universal public care.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.08,
+      "revolution": 0.92
+     },
+     "decisive_clue": "tens of thousands of healthcare workers demanding universal public healthcare reform",
+     "reason": "A nationwide mobilization of healthcare professionals seeking structural healthcare transformation reflects a revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "Exploiting the distraction of the rallies, three hospital board chairmen convened a clandestine dawn meeting, dismissed the elected registrar, and named themselves lifetime directors.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.94,
+      "revolution": 0.06
+     },
+     "decisive_clue": "three chairmen holding a clandestine meeting to dismiss the registrar and install themselves",
+     "reason": "Three hospital executives conducting a secret dawn meeting to seize the council flips the reality to an insider coup.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The three chairmen locked out the licensing staff and issued a communiqué freezing all council reforms and reaffirming the existing commercial fee structure.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.97,
+      "revolution": 0.03
+     },
+     "decisive_clue": "freezing council reforms and locking out licensing staff to preserve commercial fees",
+     "reason": "Blocking reform and preserving commercial fee structures proves this was an elite executive seizure.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Three hospital chairmen exploited public protests to execute an insider power grab, producing a coup.",
+   "feedback_deep": "The initial healthcare rallies pointed toward a systemic public movement. However, the concrete change of authority was engineered entirely by three elite executives who captured the council and blocked reform.",
+   "contrast_rule": "Elite cliques seizing administrative control to block reform stage a coup.",
+   "hint": "Distinguish between the public's protest aspirations and the three chairmen's actual insider takeover."
+  },
+  {
+   "id": "coup-revolution_012",
+   "domain": "city_transport_authority",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The sudden seizure of the metropolitan transit authority was a: ___",
+   "beats": [
+    {
+     "text": "Commuters in their tens of thousands boycotted turnstiles across eighty subway stations, uniting with bus drivers to demand free public transit and democratic community oversight.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.07,
+      "revolution": 0.93
+     },
+     "decisive_clue": "tens of thousands of commuters and bus drivers boycotting turnstiles for democratic transit",
+     "reason": "Tens of thousands of transit users and drivers uniting to remake the public transit model points to a revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "Under cover of the chaotic boycott, the transit police superintendent and two department heads barricaded the central control center and arrested the elected transit commissioner.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.93,
+      "revolution": 0.07
+     },
+     "decisive_clue": "police superintendent and department heads barricading control center to arrest the commissioner",
+     "reason": "The armed capture of the control center and arrest of the elected commissioner by security heads flips the event to a coup.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The superintendent declared transit martial rule, deployed armed guards at every gate, and reinstated the private concessionaire contracts without altering the service charter.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "deploying armed guards to reinstate private contracts and keep the existing charter",
+     "reason": "Maintaining existing concessionaire contracts by armed decree confirms an authoritarian internal takeover.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "A police superintendent exploited popular unrest to arrest the commissioner and seize control in an armed coup.",
+   "feedback_deep": "While the commuter boycott showed the beginnings of a popular movement, the actual transition of authority was an armed top-down seizure by three transit security chiefs who entrenched the old contracts.",
+   "contrast_rule": "An armed insider seizure arresting executive leadership is a coup, not a revolution.",
+   "hint": "Look at how the police superintendent used the unrest to stage an internal armed capture."
+  },
+  {
+   "id": "coup-revolution_013",
+   "domain": "municipal_water_board",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The abrupt change of command at the municipal water utility was a: ___",
+   "beats": [
+    {
+     "text": "Following months of sporadic consumer complaints regarding utility bills, a sudden change of command occurred overnight at the downtown pumping authority.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.52,
+      "revolution": 0.48
+     },
+     "decisive_clue": "overnight change of command at the pumping authority following consumer complaints",
+     "reason": "Both words are plausible initially, as public dissatisfaction could have fueled a broader uprising or an insider move.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Leaked security logs reveal that four senior maintenance supervisors forcibly changed the administrative door codes at midnight to lock out the managing director and appoint their own ally.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.96,
+      "revolution": 0.04
+     },
+     "decisive_clue": "four maintenance supervisors changing door codes to lock out the director and install an ally",
+     "reason": "Four internal supervisors locking out the director to install an ally decisively narrows the event to a coup.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The new supervisors confirmed that all existing residential water tariffs, labor contracts, and operating bylaws would remain unchanged.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "retaining all existing tariffs, labor contracts, and operating bylaws",
+     "reason": "Preserving all policies and contracts intact confirms that no structural change occurred.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Four supervisors seizing administrative codes to install an ally without changing operational bylaws narrows decisively to a coup.",
+   "feedback_deep": "The initial ambiguity dissolves as soon as logs expose a small cabal of four supervisors locking out their superior. The complete preservation of institutional rules confirms an internal executive takeover.",
+   "contrast_rule": "Insider lock-outs preserving institutional rules are coups; broad popular systemic overhauls are revolutions.",
+   "hint": "Examine who replaced the director and whether the utility's basic operating policies changed."
+  },
+  {
+   "id": "coup-revolution_014",
+   "domain": "short_dialogue",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The historic transformation of the coastal republic described by the historians was a: ___",
+   "beats": [
+    {
+     "text": "'The government fell within forty-eight hours,' says Tariq. 'Offices changed hands rapidly, but eyewitness accounts disagree on what truly drove the collapse.'",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.47,
+      "revolution": 0.53
+     },
+     "decisive_clue": "government falling within forty-eight hours with conflicting accounts of the driver",
+     "reason": "A rapid 48-hour fall of government could be driven by either an elite strike or an explosive mass movement.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    },
+    {
+     "text": "'Look at the provincial data,' replies Elena. 'Over four million citizens held continuous general strikes, and town hall delegates abolished the hereditary monarchy to establish a citizens' assembly.'",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.04,
+      "revolution": 0.96
+     },
+     "decisive_clue": "four million citizens holding general strikes and town delegates abolishing hereditary monarchy",
+     "reason": "Four million striking citizens abolishing hereditary monarchy decisively narrows the interpretation to a revolution.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "'That settles it,' Tariq concedes. 'The hereditary constitution was erased from below, replacing every institution of state power with popular democracy.'",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.02,
+      "revolution": 0.98
+     },
+     "decisive_clue": "erasing the hereditary constitution from below to replace state institutions with popular democracy",
+     "reason": "Replacing all monarchical state institutions with popular democracy confirms a thorough historical revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Evidence of four million striking citizens abolishing hereditary monarchy narrows the debate decisively to a revolution.",
+   "feedback_deep": "While the initial 48-hour timeline could suggest either word, the provincial data confirms mass mobilization of four million people who dismantled the monarchy and founded a new constitution from below.",
+   "contrast_rule": "Bottom-up mobilization that dismantles an entire constitution is a revolution.",
+   "hint": "Look at Elena's provincial evidence concerning public participation and constitutional changes."
+  },
+  {
+   "id": "coup-revolution_015",
+   "domain": "academic_senate",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The dramatic restructuring of the university's governance system was a: ___",
+   "beats": [
+    {
+     "text": "The chancellor suddenly vacated her office during a week of heated campus arguments, prompting speculation over whether a faction had seized power or a deeper change had begun.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.46,
+      "revolution": 0.54
+     },
+     "decisive_clue": "chancellor vacating office during heated arguments amid conflicting interpretations",
+     "reason": "The chancellor's sudden departure in the midst of campus tension leaves the scope of change initially ambiguous.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    },
+    {
+     "text": "Reports revealed that thirty thousand students, junior lecturers, and campus service staff voted concurrently across all campuses to abolish the private board of trustees.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.05,
+      "revolution": 0.95
+     },
+     "decisive_clue": "thirty thousand students, lecturers, and staff voting to abolish the board of trustees",
+     "reason": "Concurrent voting by thirty thousand members to abolish the board of trustees decisively narrows the event to a revolution.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "The campus delegates replaced the private endowment model with an open cooperative assembly granting every worker and student equal governance votes.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.02,
+      "revolution": 0.98
+     },
+     "decisive_clue": "replacing private endowment with a cooperative assembly granting equal governance votes",
+     "reason": "Replacing private corporate endowment with egalitarian cooperative governance confirms the revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Mass campus-wide voting by thirty thousand people to eliminate trustees and build cooperative governance is a revolution.",
+   "feedback_deep": "The initial uncertainty over the chancellor's departure narrows into a clear revolution as thirty thousand students and staff organize. They abolish the governing board and establish a cooperative system.",
+   "contrast_rule": "Participatory mass abolition of institutional hierarchies marks a revolution.",
+   "hint": "Notice the sheer scale of voters and the total overhaul of the university's governing charter."
+  },
+  {
+   "id": "coup-revolution_016",
+   "domain": "telecommunications_ministry",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The dawn raid on the central communications exchange was a: ___",
+   "beats": [
+    {
+     "text": "At daybreak, Colonel Kabbah led thirty armed soldiers into the telecom ministry, severing external fiber trunklines and taking the minister hostage.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.95,
+      "revolution": 0.05
+     },
+     "decisive_clue": "armed colonel leading soldiers to sever fiber lines and take the minister hostage",
+     "reason": "An armed military unit capturing communications infrastructure and taking a minister hostage is a coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Thousands of curious city residents gathered along the avenue cheering the interruption of official censorship broadcasts and filming the armed soldiers with phones.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.91,
+      "revolution": 0.09
+     },
+     "decisive_clue": "curious onlookers filming the soldiers without directing or driving the seizure",
+     "reason": "Curious onlookers observing and recording the soldiers do not transform a military seizure into a revolution.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The colonel ordered warning shots fired over the crowd to disperse them, enacted an immediate curfew, and appointed an army officer to manage the telecom network.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.97,
+      "revolution": 0.03
+     },
+     "decisive_clue": "dispersing the crowd with warning shots and imposing curfew to install an army officer",
+     "reason": "Forcibly dispersing the crowd and imposing martial curfew confirms the top-down coup.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The presence of cheering onlookers did not alter the reality of an armed colonel seizing the ministry in a coup.",
+   "feedback_deep": "The crowd of curious spectators might look like popular participation, but they were mere bystanders with no leadership or organizational role. The colonel forcibly dispersed them to cement his military takeover.",
+   "contrast_rule": "Curious spectator crowds do not turn an armed military takeover into a revolution.",
+   "hint": "Observe whether the cheering crowd organized the seizure or was dispersed by the colonel's orders."
+  },
+  {
+   "id": "coup-revolution_017",
+   "domain": "renewable_energy_sector",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The nationwide overhaul of the national energy grid was a: ___",
+   "beats": [
+    {
+     "text": "Millions of citizens across thirty industrial districts disconnected their homes from the monopolistic state grid, building autonomous community micro-grids and nullifying utility laws.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.04,
+      "revolution": 0.96
+     },
+     "decisive_clue": "millions of citizens disconnecting from state grid to build community micro-grids",
+     "reason": "Millions of people transforming power infrastructure and voiding utility monopolies is a revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "In a desperate bid to preserve influence, three senior directors of the state grid corporation locked themselves in the boardroom and voted to fire the chief executive.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.08,
+      "revolution": 0.92
+     },
+     "decisive_clue": "boardroom executive firing fails to alter the nationwide citizen-led grid transformation",
+     "reason": "A minor internal firing by corporate directors inside their boardroom does not alter the ongoing nationwide popular transformation.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    },
+    {
+     "text": "The community energy cooperatives ignored the corporate firing, establishing municipal power assemblies that permanently placed all energy distribution under direct public ownership.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.02,
+      "revolution": 0.98
+     },
+     "decisive_clue": "community assemblies establishing direct public ownership across the power sector",
+     "reason": "Community assemblies permanently asserting public ownership confirms the triumph of the popular revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    }
+   ],
+   "feedback_short": "A frantic boardroom ouster by three utility directors cannot reduce a nationwide grassroots energy transformation to a coup.",
+   "feedback_deep": "The target of evaluation is the nationwide transformation of the electrical grid. While three directors tried an insider maneuver in their boardroom, the sweeping popular movement creating public micro-grids remains a revolution.",
+   "contrast_rule": "An elite boardroom squabble inside a dying monopoly does not negate a mass popular revolution.",
+   "hint": "Keep your eyes on the millions building community micro-grids rather than the panicking corporate directors."
+  },
+  {
+   "id": "coup-revolution_018",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The dramatic shift in the shared leadership of the seven housemates was a: ___",
+   "beats": [
+    {
+     "text": "While five roommates were away on holiday, two housemates replaced the front door padlock, assigned all preferred bedrooms to themselves, and issued mandatory household chore quotas.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.94,
+      "revolution": 0.06
+     },
+     "decisive_clue": "two housemates replacing padlocks and dictating chores while others were away",
+     "reason": "Two housemates taking physical control of the apartment to dictate rules is an insider coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "When the other five returned, all seven sat together for a week of intense collective dialogue, deciding mutually to abolish private master suites and enact equal consensus rules for all decisions.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.06,
+      "revolution": 0.94
+     },
+     "decisive_clue": "all seven housemates enacting equal consensus rules and abolishing private privileges",
+     "reason": "The entire group adopting mutual consensus rules and abolishing privilege reframes the event into an egalitarian revolution.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "The shared house established an open communal ledger where rent was split proportionally to income and no individual member held governing seniority.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.03,
+      "revolution": 0.97
+     },
+     "decisive_clue": "open communal ledger splitting rent by income and eliminating governing seniority",
+     "reason": "Proportional income splitting and elimination of seniority establish a permanent structural revolution in the home.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M1"
+     }
+    }
+   ],
+   "feedback_short": "A petty lockout by two roommates was reframed into a consensus revolution establishing equal communal power.",
+   "feedback_deep": "The scenario starts as an arrogant insider power grab by two roommates. But the collective response reframes the household dynamic entirely, dismantling personal privilege in favor of egalitarian participatory consensus.",
+   "contrast_rule": "Moving from an exclusive power grab to an inclusive structural democracy reframes a coup into a revolution.",
+   "hint": "Notice how the confrontation transformed from a selfish grab into a collective restructuring."
+  },
+  {
+   "id": "coup-revolution_019",
+   "domain": "postal_service_federation",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "The sudden restructuring of the postal service headquarters was a: ___",
+   "beats": [
+    {
+     "text": "Thousands of mail carriers marched outside headquarters brandishing placards for democratic workplace sovereignty and demanding a worker-run postal assembly.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.08,
+      "revolution": 0.92
+     },
+     "decisive_clue": "thousands of mail carriers marching for democratic workplace sovereignty",
+     "reason": "A public demonstration by thousands of workers demanding democratic workplace sovereignty looks like a revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M3"
+     }
+    },
+    {
+     "text": "An investigative audit revealed the march was entirely staged by two deputy postmasters who hired paid agitators to create a smokescreen while they seized the executive suite.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.95,
+      "revolution": 0.05
+     },
+     "decisive_clue": "audit revealing march was a paid smokescreen for two deputy postmasters seizing the executive suite",
+     "reason": "The revelation that the march was a staged front for two deputies seizing the executive suite corrupts the narrative into a coup.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Once safely inside the executive office, the two deputies dismissed the postmaster general, retained the hierarchical chain of command, and banned all worker assemblies.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "dismissing the postmaster general, banning assemblies, and maintaining the hierarchy",
+     "reason": "Banning assemblies and reinforcing bureaucratic hierarchy confirms an authoritarian executive coup.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The apparent grassroots march was unmasked as an orchestrated distraction for two deputies staging an executive coup.",
+   "feedback_deep": "The seemingly broad worker demonstration was corrupted when evidence proved it was an artificial front. The real action was a top-down insider conspiracy by two deputies to capture executive authority and outlaw employee organizing.",
+   "contrast_rule": "A staged popular spectacle masking an elite power grab is a coup, not a revolution.",
+   "hint": "Look at who funded the demonstration and who actually seized executive control behind the scenes."
+  },
+  {
+   "id": "coup-revolution_020",
+   "domain": "theatre_conservatory",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 4,
+   "frame": "The unannounced removal of the conservatory's artistic director was a: ___",
+   "beats": [
+    {
+     "text": "Amidst ongoing student and staff debates over classic stage traditions, the artistic director arrived at the conservatory to find herself locked out of her own office.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.72,
+      "revolution": 0.28
+     },
+     "decisive_clue": "artistic director locked out of her office amidst campus debate over performance traditions",
+     "reason": "An office lockout in the midst of philosophical debate leans toward a coup, but the exact mechanism is not yet fully disclosed.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Precise administrative records showed that three senior acting professors met secretly at midnight, seized the conservatory keys, and declared themselves a governing triumvirate.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.96,
+      "revolution": 0.04
+     },
+     "decisive_clue": "three senior professors meeting secretly to seize keys and name themselves a triumvirate",
+     "reason": "Precise evidence of a secret midnight meeting by three professors to seize executive keys confirms a coup.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The triumvirate announced that the conservatory's curriculum, tuition scale, and performance calendar would remain exactly as established under the ousted director.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "preserving curriculum, tuition scale, and performance calendar exactly as before",
+     "reason": "Total preservation of curriculum and institutional calendar confirms that no systemic change occurred.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Precise evidence of three professors seizing keys at midnight to install themselves without curricular changes confirms a coup.",
+   "feedback_deep": "The initial lockout seemed linked to broad artistic debates, but precise evidence reveals an insider palace conspiracy. Three senior faculty members seized executive control while leaving conservatory operations identical.",
+   "contrast_rule": "An insider clique replacing leadership while maintaining curriculum and rules carries out a coup.",
+   "hint": "Check the secret midnight meeting of the three professors and the lack of curricular change."
+  }
+ ]
+}

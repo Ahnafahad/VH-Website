@@ -1,0 +1,1343 @@
+{
+ "set_id": "redundant-repetitive",
+ "source_pair_id": 335,
+ "words": [
+  {
+   "word": "redundant",
+   "sense": "unnecessary surplus",
+   "concise_meaning": "Exceeding what is necessary, useless, adding no new value.",
+   "connotation": "negative",
+   "register": "formal",
+   "grammar": "adjective",
+   "collocations": [
+    "redundant information",
+    "redundant components",
+    "make someone redundant",
+    "redundant data"
+   ],
+   "misconceptions": [
+    "confusing it with simple recurrence"
+   ]
+  },
+  {
+   "word": "repetitive",
+   "sense": "occurring many times",
+   "concise_meaning": "Characterized by or marked by frequent recurrence.",
+   "connotation": "neutral to negative",
+   "register": "standard",
+   "grammar": "adjective",
+   "collocations": [
+    "repetitive tasks",
+    "repetitive strain",
+    "repetitive pattern",
+    "repetitive music"
+   ],
+   "misconceptions": [
+    "assuming it always means useless"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "added_value",
+   "description": "Does the recurrence add new information or function? (high for repetitive, low for redundant)"
+  },
+  {
+   "id": "necessity",
+   "description": "Is the recurrence required for purpose? (high for repetitive, low for redundant)"
+  },
+  {
+   "id": "evaluative_tone",
+   "description": "How critical is the speaker? (critical for redundant, descriptive for repetitive)"
+  }
+ ],
+ "edge": {
+  "a": "redundant",
+  "b": "repetitive",
+  "boundary_rule": "Use redundant when the recurrence is useless and removable; use repetitive when the recurrence is a frequent pattern or necessary cycle.",
+  "clues_a": [
+   "could be deleted without loss",
+   "excessive",
+   "already stated",
+   "waste"
+  ],
+  "clues_b": [
+   "frequent occurrence",
+   "habitual",
+   "rhythmic",
+   "ongoing cycle"
+  ],
+  "irrelevant_clues": [
+   "how long it lasts",
+   "whether the speaker is bored"
+  ],
+  "misconceptions": {
+   "M1": "thinking all repeated info is useless",
+   "M2": "thinking all frequent recurrence is a waste",
+   "M3": "ignoring the possibility of intent"
+  }
+ },
+ "anchors": {
+  "positive": {
+   "redundant": [
+    "The extra paragraph in the final chapter was redundant and merely restated the introduction.",
+    "To say 'a round circle' is clearly redundant.",
+    "The project manager deleted the redundant step that only duplicated existing work.",
+    "His explanation was redundant because the group already understood the core concept.",
+    "The company laid off workers whose positions became redundant.",
+    "The backup server kept only redundant files that took up massive storage space."
+   ],
+   "repetitive": [
+    "The factory worker found his daily tasks of bolting pieces together rather repetitive.",
+    "The song has a very repetitive rhythm that helps listeners memorize the lyrics.",
+    "She performed the same repetitive motion to polish the metal to a shine.",
+    "Learning a language requires repetitive practice to retain new vocabulary.",
+    "The constant, repetitive beeping of the microwave signaled the food was done.",
+    "He suffers from repetitive strain in his wrists due to his office work."
+   ]
+  },
+  "counter": {
+   "redundant": [
+    "The drill was so repetitive that the athletes eventually perfected their form.",
+    "His speech was repetitive, but each time he added a new detail about the cause.",
+    "She enjoyed the repetitive nature of swimming laps early in the morning.",
+    "The beat is repetitive, driving the energy of the dance floor.",
+    "Daily practice is repetitive, yet it yields significant skill gains.",
+    "The ticking clock is repetitive but essential for keeping time."
+   ],
+   "repetitive": [
+    "The manager removed the repetitive clause because it served absolutely no purpose.",
+    "His explanation just added repetitive facts that we already knew.",
+    "Writing that same line five times is completely repetitive and wastes space.",
+    "The second summary is repetitive; it needs to be deleted to save space.",
+    "The extra instruction is repetitive and confuses the user instead of helping.",
+    "He included a repetitive analysis that did not improve the final report."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The report includes another section that says exactly what the first one said. It is ___.",
+    "best_word": "redundant",
+    "note": "While it repeats, its defining feature is its uselessness."
+   },
+   {
+    "text": "The assembly line job involves doing the same action four hundred times a day. It is ___.",
+    "best_word": "repetitive",
+    "note": "The frequency is the focus, regardless of value."
+   },
+   {
+    "text": "The chorus of the poem appears ten times, creating a slow, hypnotic effect. It is ___.",
+    "best_word": "repetitive",
+    "note": "The effect is intentional and stylistic."
+   },
+   {
+    "text": "We already agreed on this point, so saying it again in the contract is ___.",
+    "best_word": "redundant",
+    "note": "Once agreed, it's unnecessary to re-state."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "redundant-repetitive_001",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The student's essay structure is ___.",
+   "beats": [
+    {
+     "text": "The intro describes the theory once, but then the conclusion restates it using the exact same sentences. It is ___.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.9,
+      "repetitive": 0.4
+     },
+     "decisive_clue": "restates exactly",
+     "reason": "The repetition adds zero value.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M1"
+     }
+    },
+    {
+     "text": "Even after being told to change it, the student just keeps the exact same paragraph twice in the final version too. It is ___.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.95,
+      "repetitive": 0.3
+     },
+     "decisive_clue": "keeps same twice",
+     "reason": "Still useless.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Repeating info already stated without adding value makes it redundant.",
+   "feedback_deep": "The content in the conclusion perfectly matches the introduction, making the second instance unnecessary. Because it provides no new perspective or function, it is redundant, not just repetitive.",
+   "contrast_rule": "Redundant means 'useless repetition', while repetitive means 'frequent recurrence'.",
+   "hint": "Ask if the repeated part can be deleted without losing meaning."
+  },
+  {
+   "id": "redundant-repetitive_002",
+   "domain": "training",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The exercise routine is ___.",
+   "beats": [
+    {
+     "text": "The trainer asks the athletes to do the same jump 50 times in a row, which tests their endurance.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.2,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "tests endurance",
+     "reason": "It's a necessary process.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M2"
+     }
+    },
+    {
+     "text": "Now, the trainer adds a second exercise that does exactly the same thing, which the athletes already proved they mastered.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.9,
+      "repetitive": 0.3
+     },
+     "decisive_clue": "already proved mastered",
+     "reason": "It adds nothing.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Initial exercise was for endurance (repetitive), but the second was identical and unnecessary (redundant).",
+   "feedback_deep": "The first phase was for training, making the frequency valuable. The second phase added no new training value, making it redundant.",
+   "contrast_rule": "If it adds value through recurrence, it is repetitive. If it is just useless addition, it is redundant.",
+   "hint": "Does the second part help the training goal?"
+  },
+  {
+   "id": "redundant-repetitive_003",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "His excuse for being late is ___.",
+   "beats": [
+    {
+     "text": "He tells me he missed the bus, but he says this sentence five times in just two minutes.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.3,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "says five times",
+     "reason": "It highlights the insistence.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "He just keeps saying it over and over, though I clearly heard it the first time and need no further confirmation.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.4,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "keeps saying it",
+     "reason": "Focus is on the cycle.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His insistence on saying it frequently makes his behavior repetitive.",
+   "feedback_deep": "Even if the excuse is unconvincing, the act of repeating the phrase is a frequent cycle, making it repetitive rather than merely surplus information.",
+   "contrast_rule": "Frequent recurrence is repetitive, even when annoying.",
+   "hint": "Is the issue the uselessness of the information or the frequency of the action?"
+  },
+  {
+   "id": "redundant-repetitive_004",
+   "domain": "manufacturing",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The machine's action is ___.",
+   "beats": [
+    {
+     "text": "It sands the same spot for hours, ensuring the wood is completely smooth.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "ensuring wood is smooth",
+     "reason": "It's functional.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M2"
+     }
+    },
+    {
+     "text": "The operator realizes the spot was smooth after five minutes, yet the machine continues for hours, wasting energy.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.95,
+      "repetitive": 0.4
+     },
+     "decisive_clue": "wasting energy",
+     "reason": "Now it's useless.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Once the work was done, the continued sanding became redundant.",
+   "feedback_deep": "The first phase of sanding was necessary for smoothness. Once smooth, continuing added no value, making the ongoing action redundant.",
+   "contrast_rule": "When the purpose is achieved, further recurrence becomes redundant.",
+   "hint": "Does it need to keep doing this?"
+  },
+  {
+   "id": "redundant-repetitive_005",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The player's passing drill is ___.",
+   "beats": [
+    {
+     "text": "The coach has them pass the ball to each other for an hour to build muscle memory.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "build muscle memory",
+     "reason": "Functional frequency.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    },
+    {
+     "text": "The coach observes that even after an hour, the drill is essential because it is the only way to keep the rhythm.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.95
+     },
+     "decisive_clue": "essential to keep rhythm",
+     "reason": "Still functional.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It remains repetitive because the frequency serves an essential purpose.",
+   "feedback_deep": "Although the action recurs frequently, it is necessary to maintain the team's rhythm, making it repetitive rather than useless.",
+   "contrast_rule": "Functional frequency is repetitive, not redundant.",
+   "hint": "Does the repetition serve a purpose?"
+  },
+  {
+   "id": "redundant-repetitive_006",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The guide's story about the city is ___.",
+   "beats": [
+    {
+     "text": "He tells us the exact same story three times during the tour.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.4,
+      "repetitive": 0.8
+     },
+     "decisive_clue": "same story three times",
+     "reason": "Focus on the frequency.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "He just keeps cycling through it, ignoring the fact that we've already understood it perfectly.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.5,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "keeps cycling through",
+     "reason": "It's an ongoing habit.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The act of telling the same story frequently makes it repetitive.",
+   "feedback_deep": "The guide's habit of cycling through the same narrative is a frequent pattern of behavior, qualifying as repetitive regardless of the listener's understanding.",
+   "contrast_rule": "Frequent patterns are repetitive, not necessarily redundant.",
+   "hint": "Is the issue that the information is useless, or that the action keeps occurring?"
+  },
+  {
+   "id": "redundant-repetitive_007",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The kitchen timer's alert is ___.",
+   "beats": [
+    {
+     "text": "It keeps ringing every thirty seconds to ensure I do not forget the cookies.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.95
+     },
+     "decisive_clue": "ensure I do not forget",
+     "reason": "Useful frequency.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    },
+    {
+     "text": "Now, the timer keeps ringing even though I have already taken the cookies out and switched it off.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.95,
+      "repetitive": 0.3
+     },
+     "decisive_clue": "already taken out",
+     "reason": "Now it's useless.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It was helpful (repetitive) but became useless when the task was done (redundant).",
+   "feedback_deep": "The ring served a clear purpose initially, making its recurrence functional. Once the cookies were removed, the ring served no function, becoming redundant.",
+   "contrast_rule": "Recurrence becomes redundant when the purpose is gone.",
+   "hint": "Did the timer stop serving a purpose?"
+  },
+  {
+   "id": "redundant-repetitive_008",
+   "domain": "business",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The report's summary is ___.",
+   "beats": [
+    {
+     "text": "It restates the key figures ten times throughout the document to ensure the executives remember them.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.4,
+      "repetitive": 0.8
+     },
+     "decisive_clue": "ensure executives remember",
+     "reason": "It has an intended effect.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "Actually, the executives have already memorized these figures, so including them ten times adds absolutely nothing new.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.95,
+      "repetitive": 0.3
+     },
+     "decisive_clue": "adds nothing new",
+     "reason": "It's now useless.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Since the info is useless, it is redundant.",
+   "feedback_deep": "Initially, the recurrence aimed to reinforce memory. Once it became clear that reinforcement was unnecessary, the recurrence became useless, or redundant.",
+   "contrast_rule": "Useless repetition is redundant.",
+   "hint": "Does it still serve a purpose?"
+  },
+  {
+   "id": "redundant-repetitive_009",
+   "domain": "tech",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The software's error message is ___.",
+   "beats": [
+    {
+     "text": "It pops up every second, informing the user of the same system failure.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.5,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "every second",
+     "reason": "Frequency is clear.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "It keeps cycling through the same notification, ignoring the user's attempt to close it.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.4,
+      "repetitive": 0.95
+     },
+     "decisive_clue": "keeps cycling",
+     "reason": "The focus is on the persistent pattern.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The frequent popping up makes it repetitive.",
+   "feedback_deep": "Even if the message is unhelpful, the mechanism of continuously cycling through it is inherently repetitive, defined by its frequency.",
+   "contrast_rule": "Frequent recurrence is repetitive.",
+   "hint": "Is the primary issue the cycle or the lack of utility?"
+  },
+  {
+   "id": "redundant-repetitive_010",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The professor's lecture example is ___.",
+   "beats": [
+    {
+     "text": "He uses the same scenario three times to help everyone grasp the complex idea.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.2,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "help everyone grasp",
+     "reason": "Functional frequency.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "Actually, all the students understood it after the first time, so the last two examples don't add anything.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.95,
+      "repetitive": 0.3
+     },
+     "decisive_clue": "don't add anything",
+     "reason": "Useless addition.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Since the examples added nothing, they became redundant.",
+   "feedback_deep": "The repetition served a function initially, but once the class understood, the subsequent examples offered zero new value, making them redundant.",
+   "contrast_rule": "Repetition that adds no new value is redundant.",
+   "hint": "Does the recurrence serve a purpose?"
+  },
+  {
+   "id": "redundant-repetitive_011",
+   "domain": "writing",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The writer's style is ___.",
+   "beats": [
+    {
+     "text": "He often uses short, sharp sentences to build tension in the thriller.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "build tension",
+     "reason": "Functional rhythm.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    },
+    {
+     "text": "Readers find the consistent rhythm creates a specific, intense atmosphere throughout the book.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.95
+     },
+     "decisive_clue": "creates specific atmosphere",
+     "reason": "Stylistic choice.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Stylistic recurrence is repetitive, not redundant.",
+   "feedback_deep": "The writer uses the same structure purposefully to achieve a specific effect, making the pattern repetitive, not useless.",
+   "contrast_rule": "Purposeful repetition is repetitive, not redundant.",
+   "hint": "Is the repetition serving a stylistic function?"
+  },
+  {
+   "id": "redundant-repetitive_012",
+   "domain": "legal",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The contract's clause is ___.",
+   "beats": [
+    {
+     "text": "It repeats the definition of the product four times to ensure there's no misunderstanding.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.2,
+      "repetitive": 0.8
+     },
+     "decisive_clue": "ensure no misunderstanding",
+     "reason": "Functional caution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "However, the law explicitly states the definition only needs to be provided once, making the extra three times legally meaningless.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.95,
+      "repetitive": 0.3
+     },
+     "decisive_clue": "legally meaningless",
+     "reason": "It adds nothing.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Since it adds no legal value, it is redundant.",
+   "feedback_deep": "The first repetition was cautious. When it was determined that further iterations offered zero legal value, they became redundant.",
+   "contrast_rule": "Legal meaninglessness makes repetition redundant.",
+   "hint": "Does it add any value now?"
+  },
+  {
+   "id": "redundant-repetitive_013",
+   "domain": "music",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The track's chorus is ___.",
+   "beats": [
+    {
+     "text": "It is played over and over again for the entire three-minute duration.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.2,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "three-minute duration",
+     "reason": "It's the structure.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "The DJ argues that this cyclical structure is what makes the song a dance hit.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.95
+     },
+     "decisive_clue": "makes the song a dance hit",
+     "reason": "Stylistic success.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Stylistic success makes the music repetitive, not redundant.",
+   "feedback_deep": "The song's structure is consciously cyclical, making it repetitive by design to appeal to the dance floor.",
+   "contrast_rule": "Stylistic recurrence is repetitive.",
+   "hint": "Is the repetition intentional?"
+  },
+  {
+   "id": "redundant-repetitive_014",
+   "domain": "coding",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The code function is ___.",
+   "beats": [
+    {
+     "text": "It checks the user's input three times in the same loop.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.9,
+      "repetitive": 0.4
+     },
+     "decisive_clue": "three times in same loop",
+     "reason": "Clearly useless.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M1"
+     }
+    },
+    {
+     "text": "The developer confirms that all three checks are identical and one would suffice.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.95,
+      "repetitive": 0.2
+     },
+     "decisive_clue": "one would suffice",
+     "reason": "Confirmed useless.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It's redundant because it wastes processing time without adding value.",
+   "feedback_deep": "Since all three checks are identical and one covers the need, the other two are completely useless and add no value, making them redundant.",
+   "contrast_rule": "Checks that add no new value are redundant.",
+   "hint": "Does it need to be checked three times?"
+  },
+  {
+   "id": "redundant-repetitive_015",
+   "domain": "interviewing",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The interviewee's answers are ___.",
+   "beats": [
+    {
+     "text": "They emphasize the same professional experience multiple times to show its importance.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.2,
+      "repetitive": 0.8
+     },
+     "decisive_clue": "show its importance",
+     "reason": "Functional emphasis.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "They keep bringing it up even when asked about unrelated hobbies, which makes them seem like they have nothing else to talk about.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.9,
+      "repetitive": 0.4
+     },
+     "decisive_clue": "nothing else to talk about",
+     "reason": "Now it's useless.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Using the same story for unrelated questions makes it redundant.",
+   "feedback_deep": "While reinforcing experience is fine, inserting that experience into unrelated topics is useless and adds no relevant information, making it redundant.",
+   "contrast_rule": "Useless info is redundant.",
+   "hint": "Does the repeated info make sense in the new context?"
+  },
+  {
+   "id": "redundant-repetitive_016",
+   "domain": "management",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The feedback meeting is ___.",
+   "beats": [
+    {
+     "text": "The manager discusses the same employee issue every Monday.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.4,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "every Monday",
+     "reason": "It's a frequent pattern.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "The manager admits that nothing changes and they just have this conversation without any result.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.9,
+      "repetitive": 0.5
+     },
+     "decisive_clue": "without any result",
+     "reason": "Now focus is on uselessness.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The uselessness of the discussion makes it redundant.",
+   "feedback_deep": "While the Monday habit is repetitive, the manager's acknowledgment that the meetings have zero results highlights their uselessness, making them redundant.",
+   "contrast_rule": "A useless, results-free process is redundant.",
+   "hint": "Is the issue the frequency or the lack of result?"
+  },
+  {
+   "id": "redundant-repetitive_017",
+   "domain": "science",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The data collection process is ___.",
+   "beats": [
+    {
+     "text": "The sensors record the same temperature every minute for a whole day to ensure accuracy.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "ensure accuracy",
+     "reason": "It's necessary.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    },
+    {
+     "text": "Researchers note that because the temperature is perfectly stable, the frequent checks are essential to document that stability.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.1,
+      "repetitive": 0.95
+     },
+     "decisive_clue": "essential to document stability",
+     "reason": "Still functional.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The frequent collection serves a purpose, making it repetitive.",
+   "feedback_deep": "Even though the temperature doesn't change, collecting it frequently is necessary to scientifically prove that stability, making the process repetitive but not redundant.",
+   "contrast_rule": "Functional recurrence is repetitive.",
+   "hint": "Does the recurrence serve a scientific purpose?"
+  },
+  {
+   "id": "redundant-repetitive_018",
+   "domain": "marketing",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "The advertising campaign's slogan is ___.",
+   "beats": [
+    {
+     "text": "It repeats the brand name four times in one sentence, which seems to serve no purpose.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.9,
+      "repetitive": 0.4
+     },
+     "decisive_clue": "serve no purpose",
+     "reason": "Clearly useless.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M1"
+     }
+    },
+    {
+     "text": "However, focus groups reveal that this exact cadence makes the brand instantly recognizable, creating massive sales growth.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.3,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "makes the brand recognizable",
+     "reason": "Now functional.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The slogan's effectiveness makes it repetitive, not redundant.",
+   "feedback_deep": "Initially, the slogan appeared useless. Once it became clear the branding strategy was highly effective, the recurrence became a functional, repetitive tool for success.",
+   "contrast_rule": "Recurrence that drives results is repetitive.",
+   "hint": "Is the branding strategy effective?"
+  },
+  {
+   "id": "redundant-repetitive_019",
+   "domain": "design",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The website's header is ___.",
+   "beats": [
+    {
+     "text": "It includes the company's full contact information on every single page.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.3,
+      "repetitive": 0.8
+     },
+     "decisive_clue": "every single page",
+     "reason": "It's a frequent pattern.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M1"
+     }
+    },
+    {
+     "text": "The designer notes that while it appears often, having this crucial info accessible everywhere is a core requirement.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.2,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "accessible everywhere is a requirement",
+     "reason": "It has a function.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Providing accessibility makes it repetitive, not redundant.",
+   "feedback_deep": "The design consistently shows the contact information, which serves the necessary purpose of providing accessibility, making the frequent recurrence repetitive.",
+   "contrast_rule": "Functional frequency is repetitive.",
+   "hint": "Is the frequent display helpful?"
+  },
+  {
+   "id": "redundant-repetitive_020",
+   "domain": "editing",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The editor's changes to the chapter are ___.",
+   "beats": [
+    {
+     "text": "She deletes the final three sentences because they repeat points made just lines before.",
+     "best_word": "redundant",
+     "fit": {
+      "redundant": 0.9,
+      "repetitive": 0.4
+     },
+     "decisive_clue": "repeat points made lines before",
+     "reason": "It's clearly useless.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "repetitive": "M1"
+     }
+    },
+    {
+     "text": "However, the author explains that this specific pattern is intended to mirror a character's obsession.",
+     "best_word": "repetitive",
+     "fit": {
+      "redundant": 0.3,
+      "repetitive": 0.9
+     },
+     "decisive_clue": "mirror a character's obsession",
+     "reason": "It's functional/stylistic.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "redundant": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Stylistic intent makes the recurrence repetitive, not redundant.",
+   "feedback_deep": "Initially, the repetition seemed to be an error of unnecessary restatement. Understanding the stylistic purpose of mirroring an obsession transforms it into a functional, repetitive device.",
+   "contrast_rule": "Purposeful recurrence is repetitive.",
+   "hint": "Is the repetition intended to show a character trait?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

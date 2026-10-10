@@ -1,0 +1,368 @@
+[
+  {
+    "chain_id": "mortify-horrify_001",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_002",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_003",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_004",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_005",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_006",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_007",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_008",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_009",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_010",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_011",
+    "verdict": "REVISE",
+    "issue": "Actor cannot be horrified by a sniper when he knows he merely tripped.",
+    "revised_chain": {
+      "id": "mortify-horrify_011",
+      "domain": "diplomatic_protocol",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the state banquet incident will do to Ambassador Zhao: ___",
+      "beats": [
+        {
+          "text": "During a tense international summit, Ambassador Zhao watches in panic as a masked server suddenly lunges toward the head of state with what appears to be a drawn, gleaming dagger.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.08,
+            "horrify": 0.93
+          },
+          "decisive_clue": "apparent assassination attempt with a drawn dagger targeting the head of state",
+          "reason": "An apparent assassination attempt targeting a world leader at a summit provokes immediate terror and alarm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "The 'dagger' is revealed to be a silver presentation spatula, and Zhao realizes he has just heroically tackled the head pastry chef into a towering four-tier raspberry dessert.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.94,
+            "horrify": 0.07
+          },
+          "decisive_clue": "tackling an innocent pastry chef into a dessert over a harmless spatula",
+          "reason": "The crisis flips from a terrifying assassination attempt into a farcical, wildly overreactive physical blunder in front of world leaders.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Zhao emerges coated in sticky red gelatin as visiting foreign ministers politely conceal their laughter, while news cameras broadcast his dripping silhouette worldwide.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.97,
+            "horrify": 0.04
+          },
+          "decisive_clue": "global television broadcast of the ambassador drenched in dessert after a ridiculous overreaction",
+          "reason": "Worldwide broadcast of a ridiculous diplomatic blunder causing polite mockery cements excruciating mortification.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A suspected dagger assassination collapses into an ambassador tackling a pastry chef into a raspberry dessert, flipping terror into humiliation.",
+      "feedback_deep": "The incident begins with the terror of an armed assassination attempt at a delicate peace summit. Once it is revealed that Ambassador Zhao wildly overreacted to a pastry spatula and ruined the dessert display, sheer dread flips into crushing diplomatic embarrassment.",
+      "contrast_rule": "Tackling innocent chefs into desserts before world leaders points here; lethal political assassination attempts point to the other.",
+      "hint": "Look at what actually caused the ambassador to crash behind the banquet table."
+    }
+  },
+  {
+    "chain_id": "mortify-horrify_012",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_013",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_014",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_015",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_016",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_017",
+    "verdict": "REVISE",
+    "issue": "A fake heart attack would genuinely terrify Tariq in B2, making it a fake false_shift.",
+    "revised_chain": {
+      "id": "mortify-horrify_017",
+      "domain": "household",
+      "transfer": true,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "What this dinner party blunder will do to Tariq: ___",
+      "beats": [
+        {
+          "text": "While hosting his fiancee's aristocratic family for the first time, Tariq boasts loudly about his refined culinary palate, right before his sister reveals that he ate dog biscuits as an adult.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.93,
+            "horrify": 0.09
+          },
+          "decisive_clue": "exposure of eating dog biscuits immediately after boasting of refined taste",
+          "reason": "The sudden puncture of his snobbish pretension causes intense social embarrassment and loss of face.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "His prospective father-in-law suddenly drops his fork and begins barking loudly like a hound, violently shaking his napkin like a chew toy and prompting shocked gasps from the table.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.85,
+            "horrify": 0.15
+          },
+          "decisive_clue": "bizarre public mockery mirroring a dog, increasing social embarrassment",
+          "reason": "The father-in-law's sudden bizarre behavior is a mocking reaction to the dog biscuit revelation, deepening Tariq's agonizing humiliation.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 3,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "The father-in-law bursts into hearty laughter, revealing he was only teasing Tariq for his ridiculous boast, while the entire room chuckles at Tariq's scarlet face.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.97,
+            "horrify": 0.04
+          },
+          "decisive_clue": "hearty laughter revealing the barking was a practical joke at Tariq's expense",
+          "reason": "The prank confirms the entire episode is merely a humiliating social roast, sealing Tariq's mortification.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A sudden bout of mock-barking at a formal dinner is a practical joke that leaves Tariq facing pure social embarrassment over his exposed pretensions.",
+      "feedback_deep": "The father-in-law's sudden violent barking seems chaotic and alarming, but it is actually a theatrical prank designed to tease Tariq about eating dog biscuits. Tariq is left with agonizing blushing shame, not moral terror.",
+      "contrast_rule": "Social pretension exposed through teasing pranks points here; genuine moral catastrophe or danger points to the other.",
+      "hint": "Look past the father-in-law's theatrical joke to the true underlying social embarrassment."
+    }
+  },
+  {
+    "chain_id": "mortify-horrify_018",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "mortify-horrify_019",
+    "verdict": "REVISE",
+    "issue": "The sports league cannot be mortified by a dropped clipboard in beat 1.",
+    "revised_chain": {
+      "id": "mortify-horrify_019",
+      "domain": "sport",
+      "transfer": true,
+      "chain_type": "corrupt",
+      "difficulty": 3,
+      "frame": "What the team doctor's sideline fumble will do to Athletic Director Hayes: ___",
+      "beats": [
+        {
+          "text": "Athletic Director Hayes cringes as the veteran team physician is seen on camera clumsily dropping his clipboard and mixing up the energy drink flavors for the substitute players on national television.",
+          "best_word": "mortify",
+          "fit": {
+            "mortify": 0.91,
+            "horrify": 0.09
+          },
+          "decisive_clue": "clumsy sideline blunder broadcasting unprofessionalism on national television",
+          "reason": "The physician's petty fumble reflects poorly on the athletic program, causing the director acute professional embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "horrify": "M1"
+          }
+        },
+        {
+          "text": "Whistleblower records presented to Hayes reveal that the beverage mix-up concealed a deliberate scheme where the doctor laced adolescent athletes' drinks with unregulated, heart-damaging cardiac stimulants.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.16,
+            "horrify": 0.88
+          },
+          "decisive_clue": "systemic poisoning of young athletes with dangerous heart-damaging stimulants",
+          "reason": "Corrupting the innocent sideline mishap into deliberate chemical poisoning of teenagers evokes deep revulsion and dread.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        },
+        {
+          "text": "Cardiology reports confirm that three teenage players suffered permanent heart failure while the doctor collected kickbacks from illegal gambling syndicates.",
+          "best_word": "horrify",
+          "fit": {
+            "mortify": 0.02,
+            "horrify": 0.99
+          },
+          "decisive_clue": "permanent heart failure inflicted on teenagers for gambling kickbacks",
+          "reason": "Permanent bodily destruction and predatory greed targeting youth represent monstrous depravity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mortify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A clumsy sideline beverage blunder corrupted by deliberate, heart-damaging doping of teenagers turns minor embarrassment into profound moral disgust.",
+      "feedback_deep": "What appeared to be an innocent, bumbling drink mix-up is corrupted into a predatory medical conspiracy that inflicts permanent organ damage on adolescents. Athletic Director Hayes's reaction transitions entirely from administrative embarrassment into sickening moral outrage.",
+      "contrast_rule": "Corrupt medical abuse that permanently cripples youth points here; bumbling sideline fumbles point to the other.",
+      "hint": "Follow the revelation as an innocent bumbling mistake is corrupted into deliberate, criminal child endangerment."
+    }
+  },
+  {
+    "chain_id": "mortify-horrify_020",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  }
+]

@@ -1,0 +1,1281 @@
+{
+ "set_id": "fallacy-falsehood",
+ "source_pair_id": 780,
+ "words": [
+  {
+   "word": "fallacy",
+   "sense": "A structural error in reasoning.",
+   "concise_meaning": "A flawed argument that seems logical but isn't.",
+   "connotation": "Intellectual, analytical, critical.",
+   "register": "Formal, academic.",
+   "grammar": "Used in the context of arguments, logic, reasoning.",
+   "collocations": [
+    "commit a fallacy",
+    "logical fallacy",
+    "avoid a fallacy",
+    "fallacy of composition"
+   ],
+   "misconceptions": [
+    "Thinking it just means 'a mistake'."
+   ]
+  },
+  {
+   "word": "falsehood",
+   "sense": "A statement that is not true.",
+   "concise_meaning": "A statement that is contrary to fact.",
+   "connotation": "Moral, dishonest, factual.",
+   "register": "Formal.",
+   "grammar": "Used in the context of truth, lying, statements.",
+   "collocations": [
+    "utter a falsehood",
+    "spread a falsehood",
+    "proven falsehood",
+    "deliberate falsehood"
+   ],
+   "misconceptions": [
+    "Thinking it's always a deliberate lie."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "reasoning_process_vs_factual_content",
+   "description": "Distinguishes between a flaw in the logical chain (process) and a flaw in the truth of a claim (content)."
+  },
+  {
+   "id": "structural_vs_absolute",
+   "description": "Fallacy addresses the internal structure of an argument; falsehood addresses the binary truth value of a claim."
+  }
+ ],
+ "edge": {
+  "a": "fallacy",
+  "b": "falsehood",
+  "boundary_rule": "Use fallacy when the error is how they argue; use falsehood when the error is what they say.",
+  "clues_a": [
+   "incoherent reasoning",
+   "logical jump",
+   "misuse of premise",
+   "faulty connection"
+  ],
+  "clues_b": [
+   "incorrect statistic",
+   "wrong date",
+   "invented quote",
+   "factually inaccurate"
+  ],
+  "irrelevant_clues": [
+   "seriousness of the error",
+   "speaker's tone",
+   "speaker's motivation",
+   "importance of the topic"
+  ],
+  "misconceptions": {
+   "M1": "Assuming any error in an argument is a fallacy.",
+   "M2": "Assuming any untrue statement is necessarily a deliberate falsehood.",
+   "M3": "Using 'fallacy' when the argument structure is fine, just the facts are wrong."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "fallacy": [
+    "The assumption that high sales automatically mean high profits is a classic fallacy.",
+    "His entire argument relied on a fallacy about historical trends that didn't apply here.",
+    "Detecting a fallacy in the premise of an argument is a core skill in debate.",
+    "Relying on anecdotes rather than data to support a conclusion is a common fallacy.",
+    "The structure of their logic was a textbook fallacy of composition.",
+    "You cannot build a sound policy on a core reasoning fallacy."
+   ],
+   "falsehood": [
+    "The report contained a blatant falsehood regarding the company's annual revenue.",
+    "He admitted that his previous statement was a falsehood designed to protect his team.",
+    "It was discovered that the document was filled with a series of deliberate falsehoods.",
+    "The politician was accused of spreading a falsehood about their opponent's record.",
+    "They took great care to remove every single falsehood from the final publication.",
+    "The claim that the event was cancelled turned out to be a total falsehood."
+   ]
+  },
+  "counter": {
+   "fallacy": [
+    "He stated that he was in London yesterday, which was a fallacy.",
+    "The claim that they won the match is a fallacy.",
+    "Her claim about the price of gold is a fallacy.",
+    "The assertion that the sky is green is a fallacy.",
+    "That date on the form is a fallacy.",
+    "The accusation that he missed the deadline is a fallacy."
+   ],
+   "falsehood": [
+    "His conclusion follows from an invalid premise, which is a falsehood.",
+    "The logic of the experiment suffered from a falsehood of generalization.",
+    "They used a falsehood of circular reasoning to justify the decision.",
+    "The idea that correlation implies causation is a common falsehood in data analysis.",
+    "Her structural argument was built on a falsehood of deductive reasoning.",
+    "The way he connected those two points is a major falsehood in his logic."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The claim that the earth is flat is not just an error, it is a ________.",
+    "best_word": "falsehood",
+    "note": "While one could argue the reasoning is flawed, the primary issue is the factual untruth."
+   },
+   {
+    "text": "To claim that because one person succeeded, everyone will, is a ________.",
+    "best_word": "fallacy",
+    "note": "This is a structural error (hasty generalization) regardless of the truth of the one success."
+   },
+   {
+    "text": "She insisted that she had never been to Paris, despite the clear proof of a ________.",
+    "best_word": "falsehood",
+    "note": "This is a statement about a fact."
+   },
+   {
+    "text": "The entire legal argument collapsed because it was built on a ________ of logic.",
+    "best_word": "fallacy",
+    "note": "It is about the logic/structure."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "fallacy-falsehood_001",
+   "domain": "abstract argument",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How the student categorized the theory: ___",
+   "beats": [
+    {
+     "text": "The student claimed that since most experts disagree, the theory must be wrong. This is a clear ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.95,
+      "falsehood": 0.05
+     },
+     "decisive_clue": "incoherent reasoning",
+     "reason": "The student makes a flawed logical connection between expert disagreement and the truth of a theory.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "They added that even though new evidence supports the theory, the expert disagreement is still the only thing that matters, making it an even deeper ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.98,
+      "falsehood": 0.02
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The structure of the reasoning remains flawed, reinforcing the initial analysis.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The student's error is in their logic (argument structure), not the facts.",
+   "feedback_deep": "The student is incorrectly using the popularity of an opinion to determine truth (appeal to authority/consensus). This is an error of reasoning structure, making it a fallacy. Adding more context reinforces that the *process* of their thinking is flawed, keeping the classification the same.",
+   "contrast_rule": "Fallacy = bad logic; Falsehood = bad facts.",
+   "hint": "Focus on the logical link, not the truth of the claim."
+  },
+  {
+   "id": "fallacy-falsehood_002",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the partner said about the time: ___",
+   "beats": [
+    {
+     "text": "He said he was at work until 9 PM, but he was actually at a cafe. That statement is a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.05,
+      "falsehood": 0.95
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The statement directly contradicts a known fact.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "When pressed, he claimed that because he is always working hard, he can't possibly be lying, which is just another ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The core issue remains the factual untruth about his location.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is simply stating things that are not true (facts).",
+   "feedback_deep": "The partner is providing untrue information about his location. Whether or not he uses faulty logic to defend himself, the primary category of his claim is a falsehood because it is a direct contradiction of factual reality.",
+   "contrast_rule": "A lie about a fact is a falsehood.",
+   "hint": "Look for a statement of fact."
+  },
+  {
+   "id": "fallacy-falsehood_003",
+   "domain": "public situations",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the representative did to the data: ___",
+   "beats": [
+    {
+     "text": "The spokesperson reported the company had 1,000 customers, but they actually had 100. This is a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "wrong number/fact",
+     "reason": "The spokesperson is stating an incorrect fact.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M3"
+     }
+    },
+    {
+     "text": "They then used that number to conclude that since growth is fast, the company is bankrupt, which is a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.85,
+      "falsehood": 0.15
+     },
+     "decisive_clue": "logical jump",
+     "reason": "The error is now in the *reasoning* used to connect the number to the conclusion.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "First, it was a wrong fact (falsehood); now it is a flaw in reasoning (fallacy).",
+   "feedback_deep": "The chain flips because the error type shifts. Initially, the representative presents an incorrect fact, which is a falsehood. When they then construct an argument that draws a logically invalid conclusion from data, that structural error is a fallacy.",
+   "contrast_rule": "Factual error = falsehood; Reasoning error = fallacy.",
+   "hint": "Analyze the error: is it a wrong fact or a bad logical step?"
+  },
+  {
+   "id": "fallacy-falsehood_004",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "How the commentator described the team's performance: ___",
+   "beats": [
+    {
+     "text": "The commentator claimed the team lost because they wore the wrong socks, which is a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.7,
+      "falsehood": 0.3
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "Connecting socks to performance is a structural error in logic.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "Specifically, he assumed that because they lost after wearing blue socks, the blue socks caused the loss, a clear ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.95,
+      "falsehood": 0.05
+     },
+     "decisive_clue": "causal error in logic",
+     "reason": "The error is narrowed down to the 'correlation implies causation' type of reasoning flaw.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The commentator is using bad logic (correlation isn't causation).",
+   "feedback_deep": "The error is always in the reasoning process (causality). The second beat just provides more detail about *which* specific type of logical flaw is being committed.",
+   "contrast_rule": "A structural reasoning error is a fallacy.",
+   "hint": "Is the commentator arguing or stating facts?"
+  },
+  {
+   "id": "fallacy-falsehood_005",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "What the guide said about the landmark: ___",
+   "beats": [
+    {
+     "text": "The guide claimed the tower was built by aliens, which is a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.2,
+      "falsehood": 0.8
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The guide is stating something that is not true as fact.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "When asked for proof, he just said 'everyone knows it's true', which is a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.4,
+      "falsehood": 0.6
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The core claim is still a factual untruth; the justification is weak, but the statement remains a falsehood.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's still about the fact of who built it, not the logic.",
+   "feedback_deep": "The statement remains fundamentally a falsehood because it is an untrue claim. The guide's weak justification doesn't transform the claim into a structural error of logic, though it might be *based* on bad logic.",
+   "contrast_rule": "If the claim itself is untrue, it's a falsehood.",
+   "hint": "Focus on the content of the claim."
+  },
+  {
+   "id": "fallacy-falsehood_006",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "What the child told their parent: ___",
+   "beats": [
+    {
+     "text": "The child claimed they finished all their chores, which is a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The child is stating something not true.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "When the parent pointed out the dust, the child argued that because they cleaned the kitchen, the dust doesn't count, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.8,
+      "falsehood": 0.2
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The child is now using a flawed argument to justify their initial claim.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The child has moved from a plain lie to a flawed argument.",
+   "feedback_deep": "The child starts by stating a falsehood (the chores are not done). Then, to defend this, they construct a logically unsound argument (a fallacy). The shift happens when they change from stating a lie to using bad logic to justify it.",
+   "contrast_rule": "A lie is a falsehood; a bad justification is a fallacy.",
+   "hint": "Analyze the child's *argument* in the second beat."
+  },
+  {
+   "id": "fallacy-falsehood_007",
+   "domain": "abstract argument",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 4,
+   "frame": "How the essay evaluates the evidence: ___",
+   "beats": [
+    {
+     "text": "The essay suggests that because the sample size is small, the results must be meaningless, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.9,
+      "falsehood": 0.1
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The essay is making a logical jump between sample size and validity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "The writer notes that while the conclusion is hasty, the data itself is valid, avoiding a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.95,
+      "falsehood": 0.05
+     },
+     "decisive_clue": "avoiding the logical flaw",
+     "reason": "The essay is correcting the reasoning flaw.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "It's about the logic, and they are discussing how to avoid the flaw.",
+   "feedback_deep": "The writer is discussing the structure of their argument and how to make it sound. They are correcting the reasoning flaw (a fallacy), not the factual accuracy of the data (which they confirm is valid).",
+   "contrast_rule": "Bad argument structure = fallacy.",
+   "hint": "Is the writer correcting a fact or a reasoning step?"
+  },
+  {
+   "id": "fallacy-falsehood_008",
+   "domain": "sport",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 2,
+   "frame": "What the coach said to the team: ___",
+   "beats": [
+    {
+     "text": "The coach claimed that since they lost one game, they are the worst team ever, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.9,
+      "falsehood": 0.1
+     },
+     "decisive_clue": "hasty generalization",
+     "reason": "The coach is making a massive logical jump.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "It's a textbook hasty generalization, the most common type of ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.99,
+      "falsehood": 0.01
+     },
+     "decisive_clue": "structural error in logic",
+     "reason": "The definition is narrowed down to the specific logical error.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "It's a structural logic error (fallacy).",
+   "feedback_deep": "The coach is making a leap from one game to the quality of the whole team. This is a structural reasoning error. The second beat simply adds precision to the type of fallacy being committed.",
+   "contrast_rule": "Reasoning error = fallacy.",
+   "hint": "Analyze the argument's structure."
+  },
+  {
+   "id": "fallacy-falsehood_009",
+   "domain": "relationships",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "How the friend defended their claim: ___",
+   "beats": [
+    {
+     "text": "They argued that since no one complained, the party was perfect, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.85,
+      "falsehood": 0.15
+     },
+     "decisive_clue": "appeal to ignorance",
+     "reason": "The friend is using a flawed logic (no evidence of failure = success).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "They insisted this reasoning was sound even when shown evidence that people had actually left early, just a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.9,
+      "falsehood": 0.1
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The core error is still the faulty reasoning structure.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The friend is using bad logic, regardless of the facts.",
+   "feedback_deep": "The friend's core error is in how they interpret the evidence. Whether or not they were factually incorrect, the *way* they used the absence of complaints as proof of perfection is a reasoning error (a fallacy).",
+   "contrast_rule": "Bad reasoning = fallacy.",
+   "hint": "Focus on the logical connection."
+  },
+  {
+   "id": "fallacy-falsehood_010",
+   "domain": "travel",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "What the map said about the route: ___",
+   "beats": [
+    {
+     "text": "The map claimed the shortest route was through the restricted area, which is a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The map statement is not factually true.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "It turns out the map also had the wrong distances listed, making it a collection of ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.05,
+      "falsehood": 0.95
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The entire map is unreliable due to factual errors.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The map is simply factually wrong.",
+   "feedback_deep": "The map provides incorrect information about routes and distances. These are factual inaccuracies, not reasoning errors, so they are falsehoods.",
+   "contrast_rule": "If the content is factually wrong, it's a falsehood.",
+   "hint": "Is it a flawed argument or just wrong data?"
+  },
+  {
+   "id": "fallacy-falsehood_011",
+   "domain": "household",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "What the manual said about the appliance: ___",
+   "beats": [
+    {
+     "text": "The manual argues that if the light is on, the oven is working, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.8,
+      "falsehood": 0.2
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The manual assumes correlation (light) implies function (oven working), a logical leap.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "Actually, the oven has no heating element at all, which makes the claim a complete ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.2,
+      "falsehood": 0.8
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "Now the claim that the oven works is factually untrue, making it a falsehood.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The error changed from logic to fact.",
+   "feedback_deep": "The first beat focuses on the faulty reasoning (light = working). The second beat reveals a factual truth (no heating element), making the claim that the oven 'works' a direct falsehood.",
+   "contrast_rule": "Reasoning = fallacy; Factual claim = falsehood.",
+   "hint": "Look for the shift from reasoning to facts."
+  },
+  {
+   "id": "fallacy-falsehood_012",
+   "domain": "public situations",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How the editorial evaluated the proposal: ___",
+   "beats": [
+    {
+     "text": "The editorial claims the proposal is flawed because the author was once late for a meeting, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.9,
+      "falsehood": 0.1
+     },
+     "decisive_clue": "ad hominem/irrelevant connection",
+     "reason": "The argument is structurally flawed (attacking the person, not the idea).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "They continue to attack the author's character instead of the plan itself, committing yet another ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.95,
+      "falsehood": 0.05
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The entire argument structure is built on these types of fallacies.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The argument structure is fundamentally flawed.",
+   "feedback_deep": "The editorial is attacking the person, not the plan. This is a structural reasoning error (ad hominem fallacy). It doesn't matter if the author was late; that fact doesn't prove the proposal is flawed.",
+   "contrast_rule": "Bad reasoning = fallacy.",
+   "hint": "Analyze the connection between being late and the proposal's value."
+  },
+  {
+   "id": "fallacy-falsehood_013",
+   "domain": "abstract argument",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How the debater presented the evidence: ___",
+   "beats": [
+    {
+     "text": "The debater claimed the data shows a 100% success rate, when it only shows 50%, a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The debater is stating an incorrect fact.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "They then used that 50% figure to argue that, therefore, success is guaranteed, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.85,
+      "falsehood": 0.15
+     },
+     "decisive_clue": "logical jump",
+     "reason": "The debater is using the (incorrect) data to build a flawed logical conclusion.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "It flips from stating a wrong fact to using bad logic.",
+   "feedback_deep": "The debater starts with a falsehood (incorrect data). In the second beat, they use that data to create a logically invalid argument (a fallacy).",
+   "contrast_rule": "Wrong fact = falsehood; Bad reasoning = fallacy.",
+   "hint": "Analyze the error: fact or logic?"
+  },
+  {
+   "id": "fallacy-falsehood_014",
+   "domain": "relationships",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How the neighbor described the event: ___",
+   "beats": [
+    {
+     "text": "The neighbor claimed that a car drove by at 100 mph, which is a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The claim is factually untrue.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "They continued to insist it was 100 mph even after video proof showed it was 30 mph, just another ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.05,
+      "falsehood": 0.95
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The claim remains factually incorrect.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's just a wrong fact.",
+   "feedback_deep": "The neighbor is misstating a fact. The persistence in the mistake doesn't change the nature of the claim; it's still a factual untruth, a falsehood.",
+   "contrast_rule": "If the fact is wrong, it's a falsehood.",
+   "hint": "Is the neighbor arguing or just describing an event?"
+  },
+  {
+   "id": "fallacy-falsehood_015",
+   "domain": "sport",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the analyst said about the player's potential: ___",
+   "beats": [
+    {
+     "text": "The analyst argued that because the player is tall, they must be a good rebounder, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.8,
+      "falsehood": 0.2
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The analyst assumes height (premise) must mean good rebounding (conclusion), which is a logical jump.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "Later, the analyst also claimed the player had won three MVP awards, when they had actually won zero, a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "Now the analyst is stating something that is factually untrue.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It flips from an argument flaw (logic) to an incorrect fact (factual error).",
+   "feedback_deep": "The analyst starts by making a logical leap based on height (a fallacy). In the second beat, they make a claim that is clearly factually untrue (the MVP count), which is a falsehood.",
+   "contrast_rule": "Reasoning = fallacy; Fact = falsehood.",
+   "hint": "Analyze the error."
+  },
+  {
+   "id": "fallacy-falsehood_016",
+   "domain": "travel",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the travel brochure said about the hotel: ___",
+   "beats": [
+    {
+     "text": "The brochure claimed the hotel is right on the beach, but it's five miles away, a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The claim about the location is factually false.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "It also said the pool is olympic-sized when it's the size of a bathtub, just another ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.05,
+      "falsehood": 0.95
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "Both claims are simply incorrect facts.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The brochure is just full of incorrect facts.",
+   "feedback_deep": "The travel brochure is stating facts that are clearly untrue (location and pool size). These are falsehoods.",
+   "contrast_rule": "Factual error = falsehood.",
+   "hint": "Is it a flawed argument or wrong facts?"
+  },
+  {
+   "id": "fallacy-falsehood_017",
+   "domain": "household",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "How the contractor justified the delay: ___",
+   "beats": [
+    {
+     "text": "The contractor argued that if they start the job now, it will rain tomorrow, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.8,
+      "falsehood": 0.2
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The contractor connects starting the job to rain, which is a logical leap (superstition-like).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "Then he claimed the materials had already been delivered when the truck never even arrived, a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "This is a direct factual untruth.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It flips from bad reasoning to a wrong fact.",
+   "feedback_deep": "The contractor starts with an unsound argument (a fallacy). Then, they move to a simple lie about whether the materials were delivered, which is a falsehood.",
+   "contrast_rule": "Logic = fallacy; Facts = falsehood.",
+   "hint": "Analyze the error."
+  },
+  {
+   "id": "fallacy-falsehood_019",
+   "domain": "relationships",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "How the friend summarized their argument: ___",
+   "beats": [
+    {
+     "text": "They argued that since I haven't seen them for a week, they must be mad at me, a ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.85,
+      "falsehood": 0.15
+     },
+     "decisive_clue": "flawed logical connection",
+     "reason": "The friend makes an unwarranted logical jump (no contact = anger).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    },
+    {
+     "text": "They refuse to see that there could be other reasons for the silence, sticking to their flawed ___.",
+     "best_word": "fallacy",
+     "fit": {
+      "fallacy": 0.9,
+      "falsehood": 0.1
+     },
+     "decisive_clue": "structural error in reasoning",
+     "reason": "The core error is still the reasoning structure.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "falsehood": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The friend is using bad logic to draw a conclusion.",
+   "feedback_deep": "The friend is making a leap in logic based on an observation. This structural reasoning error is a fallacy.",
+   "contrast_rule": "Reasoning error = fallacy.",
+   "hint": "Analyze the connection between silence and anger."
+  },
+  {
+   "id": "fallacy-falsehood_020",
+   "domain": "public situations",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the reporter said about the event: ___",
+   "beats": [
+    {
+     "text": "The reporter claimed the event was attended by 5,000 people, when only 500 were there, a ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.1,
+      "falsehood": 0.9
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The number stated is factually untrue.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    },
+    {
+     "text": "It turns out the reporter just made up the number out of thin air, another clear ___.",
+     "best_word": "falsehood",
+     "fit": {
+      "fallacy": 0.05,
+      "falsehood": 0.95
+     },
+     "decisive_clue": "factually inaccurate",
+     "reason": "The made-up number is still a factual untruth.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "fallacy": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's just a wrong fact.",
+   "feedback_deep": "The reporter is stating a number that is not true. This is a factual error, a falsehood.",
+   "contrast_rule": "Factual error = falsehood.",
+   "hint": "Look for the factual claim."
+  }
+ ],
+ "drafted_by": "hermes"
+}

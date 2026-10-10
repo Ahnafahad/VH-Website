@@ -1,0 +1,391 @@
+[
+  {
+    "chain_id": "inherent-innate_001",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_002",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_003",
+    "verdict": "REJECT",
+    "issue": "Fake flip between abstract communication system property and biological neural capacity.",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_004",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_005",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_006",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_007",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_008",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_009",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_010",
+    "verdict": "REVISE",
+    "issue": "Subject mismatch: 'cognitive distortion' implies biology, but B3 evaluates silicon microchips.",
+    "revised_chain": {
+      "id": "inherent-innate_010",
+      "domain": "decision_science",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 4,
+      "frame": "The systematic error in estimating exponential growth is ___.",
+      "beats": [
+        {
+          "text": "Behavioral economist Dr. Yilmaz tracks how ordinary citizens underestimate compound interest and viral spread. Yilmaz initially attributes this systematic error to an inborn evolutionary trait, arguing that human ancestral brains were genetically equipped at birth only for tracking immediate linear motion on the savanna.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.34,
+            "innate": 0.87
+          },
+          "decisive_clue": "systematic error attributed to an inborn evolutionary trait of human ancestral brains",
+          "reason": "Framing the bias as an inborn evolutionary endowment present from birth makes innate the fitting choice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "However, mathematical epistemologists demonstrate that any bounded decision engine performing Bayesian updates on noisy temporal signals systematically flattens exponential curves; the error is an inescapable structural artifact of discrete sampling rather than evolved primate biology.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.93,
+            "innate": 0.17
+          },
+          "decisive_clue": "inescapable structural artifact of discrete temporal sampling across bounded decision engines",
+          "reason": "Proving the bias is an unavoidable mathematical consequence of discrete sampling shifts the description to inherent.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Silicon microchips running non-biological predictive filters reproduce the exact same estimation error whenever feedback loops compound faster than polling intervals.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.97,
+            "innate": 0.06
+          },
+          "decisive_clue": "synthetic silicon filters produce identical error under compounding feedback loops",
+          "reason": "Occurrence in purely synthetic hardware confirms the flaw is permanently woven into the mathematics of the process.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Decisive clue: mathematical demonstration that discrete sampling inevitably distorts compound curves flips the choice to inherent.",
+      "feedback_deep": "While initially blamed on an innate evolutionary bias hardwired into ancestral human brains, mathematical analysis revealed that any discrete sampling system inevitably flattens exponential curves. Because the distortion emerges inescapably from the structural mathematics of finite polling rather than organic birth, inherent is the precise term.",
+      "contrast_rule": "Biases hardwired by biological evolution are innate; distortions unavoidable in mathematical sampling are inherent.",
+      "hint": "Notice whether the error is unique to evolved biology or universal to all discrete sampling systems."
+    }
+  },
+  {
+    "chain_id": "inherent-innate_011",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_012",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_013",
+    "verdict": "REJECT",
+    "issue": "Uses inherent for a physiological reaction in a living infant's ear, breaking boundary rule.",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_014",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_015",
+    "verdict": "REVISE",
+    "issue": "Subject mismatch: frame is human aversion, B2 makes optical blindness inherent.",
+    "revised_chain": {
+      "id": "inherent-innate_015",
+      "domain": "evolutionary_anthropology",
+      "transfer": false,
+      "chain_type": "reframe",
+      "difficulty": 4,
+      "frame": "The inability to navigate in complete darkness is ___.",
+      "beats": [
+        {
+          "text": "Anthropologist Dr. Lindqvist studies nocturnal behavior across traditional hunter-gatherer communities. Lindqvist initially catalogs the human inability to navigate in complete darkness as an inborn biological limitation, assuming early humans lacked the night-vision genetics of nocturnal predators.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.36,
+            "innate": 0.88
+          },
+          "decisive_clue": "cataloged as an inborn biological limitation and lack of night-vision genetics",
+          "reason": "Attributing the limitation to a biological genetic trait makes it innate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Yet perceptual physicists reframe the issue: human eyes rely entirely on reflected photons to resolve spatial depth. In zero illumination, spatial orientation is physically impossible; the limitation is an inseparable condition of an optical visual system operating devoid of light.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.93,
+            "innate": 0.16
+          },
+          "decisive_clue": "limitation is an inseparable condition of an optical visual system operating devoid of light",
+          "reason": "Reframing the limitation as an inescapable structural reality of optical physics shifts the word to inherent.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Any robotic autonomous explorer equipped with standard lens cameras suffers the identical navigational limitation in lightless caverns, demonstrating that the limitation belongs to the physical nature of optical vision.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.97,
+            "innate": 0.06
+          },
+          "decisive_clue": "robotic camera explorers suffer identical navigational failure in lightless caverns",
+          "reason": "Persistence in mechanical cameras confirms the vulnerability is permanently built into optical sensing itself.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Decisive clue: reframing the navigational limitation as an inescapable condition of optical physics switches the best word to inherent.",
+      "feedback_deep": "While initially viewed as an inborn biological limitation of human evolution, optical physics shows that any lens-based vision system fundamentally cannot resolve depth without photons. Because the limitation is built into the physical architecture of optics rather than being a specific biological birth trait, inherent is the precise term.",
+      "contrast_rule": "Limitations that apply equally to lenses, sensors, and eyes are inherent to optical physics.",
+      "hint": "Notice how physics reframes the limitation from emotional instinct to optical mechanics."
+    }
+  },
+  {
+    "chain_id": "inherent-innate_016",
+    "verdict": "REJECT",
+    "issue": "B1 argues flight direction is governed by external wind, which means it cannot be inherent.",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_017",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_018",
+    "verdict": "REVISE",
+    "issue": "Subject mismatch: frame is physiological vulnerability, B3/B4 evaluate mechanical engine failure.",
+    "revised_chain": {
+      "id": "inherent-innate_018",
+      "domain": "travel",
+      "transfer": true,
+      "chain_type": "flip",
+      "difficulty": 4,
+      "frame": "The failure to sustain standard energy output at high mountain elevations is ___.",
+      "beats": [
+        {
+          "text": "High-altitude expedition leader Mateo briefs trekkers heading toward the Annapurna Circuit. Mateo initially explains that energy failure originates in human red blood cell chemistry, pointing out that human hemoglobin has an inborn molecular oxygen-binding threshold present from birth in all individuals born at sea level.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.35,
+            "innate": 0.88
+          },
+          "decisive_clue": "energy failure originates in human red blood cell chemistry due to an inborn molecular oxygen-binding threshold",
+          "reason": "Attributing the energy drop to an inborn biological ceiling of human hemoglobin makes it innate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Several endurance marathon runners in the party assume their rigorous cardiovascular training will immunize them against exhaustion, but baseline blood gas analysis confirms their red blood cells share the identical inborn biological oxygen ceiling.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.28,
+            "innate": 0.91
+          },
+          "decisive_clue": "elite runners share identical inborn biological oxygen ceiling unaffected by training",
+          "reason": "Insensitivity of the physiological limit to training reinforces that it is an inborn biological baseline.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "However, expedition meteorologists emphasize that atmospheric pressure decreases exponentially with elevation; above five thousand meters, air molecules are simply too sparse to supply standard metabolic or chemical respiration, making hypoxia an inescapable physical condition of entering thin alpine atmospheres regardless of physiology.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.93,
+            "innate": 0.16
+          },
+          "decisive_clue": "hypoxia is an inescapable physical condition of entering thin alpine atmospheres regardless of physiology",
+          "reason": "Shifting the cause to the inescapable structural properties of the high-altitude atmosphere makes it inherent.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Internal combustion generators and emergency kerosene stoves carried by the crew experience the identical power drop at high pass elevations, proving the oxygen deficit is built permanently into the mountain environment itself.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.97,
+            "innate": 0.06
+          },
+          "decisive_clue": "mechanical stoves and generators suffer identical power loss from environmental oxygen deficit",
+          "reason": "Identical performance failures in inanimate machines confirm the limitation is an inherent environmental reality.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Decisive clue: exponential atmospheric pressure drop makes the energy deficit an inescapable structural condition of high elevations, flipping the answer to inherent.",
+      "feedback_deep": "Initially, the climbers' energy loss is attributed to an innate biological limit of human hemoglobin. However, when meteorologists demonstrate that the thin atmosphere causes identical power failures in non-biological engines, the deficit is reframed as a structural necessity of the alpine environment. Because it is permanently built into the atmospheric physics, inherent is the correct descriptor.",
+      "contrast_rule": "Environmental physical realities that starve both lungs and engines are inherent, not innate.",
+      "hint": "Watch whether the limitation belongs to human blood chemistry or atmospheric barometric physics."
+    }
+  },
+  {
+    "chain_id": "inherent-innate_019",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "inherent-innate_020",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  }
+]

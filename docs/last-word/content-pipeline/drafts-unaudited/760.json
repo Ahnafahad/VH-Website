@@ -1,0 +1,1338 @@
+{
+ "set_id": "disavow-repudiate",
+ "source_pair_id": 760,
+ "words": [
+  {
+   "word": "disavow",
+   "sense": "To formally deny connection or responsibility.",
+   "concise_meaning": "To claim 'that isn't mine' or 'I don't know them'.",
+   "connotation": "Protective, distancing, formal.",
+   "register": "Formal/Public.",
+   "grammar": "Verb, transitive.",
+   "collocations": [
+    "disavow knowledge",
+    "disavow connection",
+    "publicly disavow",
+    "disavow an associate"
+   ],
+   "misconceptions": [
+    "Thinking it means 'to dislike' or 'to disagree with'."
+   ]
+  },
+  {
+   "word": "repudiate",
+   "sense": "To reject validity, truth, or obligation.",
+   "concise_meaning": "To claim 'that is false' or 'that is not binding'.",
+   "connotation": "Strong, decisive, critical.",
+   "register": "Formal/Academic/Legal.",
+   "grammar": "Verb, transitive.",
+   "collocations": [
+    "repudiate a claim",
+    "repudiate an agreement",
+    "repudiate an idea",
+    "repudiate evidence"
+   ],
+   "misconceptions": [
+    "Thinking it means 'to ignore' or 'to forget'."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "act_type",
+   "description": "Denying a personal connection (disavow) vs. rejecting the truth/validity of a thing (repudiate)."
+  },
+  {
+   "id": "motivation",
+   "description": "Protecting own reputation (disavow) vs. asserting moral/logical superiority (repudiate)."
+  }
+ ],
+ "edge": {
+  "a": "disavow",
+  "b": "repudiate",
+  "boundary_rule": "If you deny owning or knowing it, disavow; if you reject it as false or wrong, repudiate.",
+  "clues_a": [
+   "denial of knowledge",
+   "claiming lack of connection",
+   "protecting personal reputation"
+  ],
+  "clues_b": [
+   "rejecting a contract",
+   "calling a statement false",
+   "asserting something is invalid"
+  ],
+  "irrelevant_clues": [
+   "the amount of anger felt",
+   "the formal setting",
+   "whether the person is important"
+  ],
+  "misconceptions": {
+   "M1": "Confusing 'I'm not related' (disavow) with 'this claim is wrong' (repudiate).",
+   "M2": "Assuming both words mean 'to not like something'.",
+   "M3": "Thinking repudiate is only for legal situations."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "disavow": [
+    "The mayor had to disavow the statement made by his campaign manager.",
+    "She publicly disavowed any knowledge of the secret meeting.",
+    "The company was forced to disavow the rogue employee's actions.",
+    "After the controversy, he decided to disavow his former mentor.",
+    "The agency will disavow all involvement if the mission fails.",
+    "They quickly disavowed the flyer that was distributed in their name."
+   ],
+   "repudiate": [
+    "The professor decided to repudiate the outdated study.",
+    "The government chose to repudiate the trade agreement signed years ago.",
+    "She felt compelled to repudiate the false accusations made against her.",
+    "The court will likely repudiate the claim due to lack of evidence.",
+    "He formally repudiated the findings of the report.",
+    "The organization must repudiate these discriminatory practices."
+   ]
+  },
+  "counter": {
+   "disavow": [
+    "She repudiated the idea that the earth was flat.",
+    "He disavowed the contract because it was signed under pressure.",
+    "The jury repudiated the defendant's testimony as entirely fabricated.",
+    "The country disavowed the international treaty on human rights.",
+    "The committee repudiated the candidate due to their past behavior.",
+    "He disavowed the scientific consensus."
+   ],
+   "repudiate": [
+    "The spokesperson disavowed the scandal.",
+    "The bank repudiated the client's credit card transaction.",
+    "She repudiated her own cousin after the incident.",
+    "He repudiated his own signature on the document.",
+    "The board disavowed the proposed changes to the bylaws.",
+    "The firm repudiated the software developer who caused the bug."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The scientist was forced to [blank] the data, as it was clearly tampered with.",
+    "best_word": "repudiate",
+    "note": "While one could disavow the data (deny its connection to their work), repudiate is stronger because it asserts the data's invalidity."
+   },
+   {
+    "text": "The senator had to [blank] his own past comments that were becoming a liability.",
+    "best_word": "disavow",
+    "note": "He is denying his connection to those comments (disavow), but could also repudiate them if he's saying they were fundamentally wrong."
+   },
+   {
+    "text": "The debtor attempted to [blank] the loan agreement, claiming he didn't understand the terms.",
+    "best_word": "repudiate",
+    "note": "Rejecting the binding nature of the agreement."
+   },
+   {
+    "text": "The leader was quick to [blank] the radical group, stating they did not represent his movement.",
+    "best_word": "disavow",
+    "note": "Denying the connection."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "disavow-repudiate_001",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the minister did to the scandal: ___",
+   "beats": [
+    {
+     "text": "The minister said he had never met the lobbyist.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.8,
+      "repudiate": 0.2
+     },
+     "decisive_clue": "never met",
+     "reason": "The minister is denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "Evidence showed they had lunch together. The minister still says they don't know each other.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "still says",
+     "reason": "Maintaining the denial of connection.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is denying a connection to the lobbyist.",
+   "feedback_deep": "The word disavow is perfect for denying personal or professional connection. Even when evidence suggests otherwise, the act remains a disavowal, not a rejection of validity.",
+   "contrast_rule": "Disavow = Deny connection; Repudiate = Reject validity.",
+   "hint": "Focus on whether he's saying it isn't true or saying he isn't involved."
+  },
+  {
+   "id": "disavow-repudiate_002",
+   "domain": "public statement",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The CEO's view on the leaked memo: ___",
+   "beats": [
+    {
+     "text": "The CEO stated that the leaked memo did not come from his office.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "not come from",
+     "reason": "Denying origin/connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "The CEO later acknowledged it came from his office, but called its claims completely false.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "completely false",
+     "reason": "Now rejecting the validity of the content.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He stopped denying origin and started rejecting the validity of the content.",
+   "feedback_deep": "The CEO initially denied the memo's origin (disavow). When he acknowledged it was from his office, his new action was to declare its claims false (repudiate).",
+   "contrast_rule": "Deny origin (disavow) -> Reject content (repudiate).",
+   "hint": "Did he change his mind about where it came from or what it says?"
+  },
+  {
+   "id": "disavow-repudiate_003",
+   "domain": "academic research",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The professor's stance on the study: ___",
+   "beats": [
+    {
+     "text": "The professor did not want to be associated with the experimental findings.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.7,
+      "repudiate": 0.3
+     },
+     "decisive_clue": "associated with",
+     "reason": "Distance from connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "The findings were later proven to be based on completely flawed methodology, so the professor distanced himself further.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.8,
+      "repudiate": 0.2
+     },
+     "decisive_clue": "distanced himself",
+     "reason": "Still primarily about personal distance.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "He is focused on distancing himself, not necessarily judging the validity.",
+   "feedback_deep": "While the methodology was flawed, the professor's *primary* action is distancing himself from the association, making disavow the narrower, better fit.",
+   "contrast_rule": "Focus on connection = disavow.",
+   "hint": "Is he focusing on his own reputation or the study's scientific quality?"
+  },
+  {
+   "id": "disavow-repudiate_004",
+   "domain": "workplace",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "Maya's attitude is ___",
+   "beats": [
+    {
+     "text": "Maya claimed she had no hand in the team's project failure.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "no hand in",
+     "reason": "Denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "She insisted that the failure was entirely due to management decisions.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.8,
+      "repudiate": 0.2
+     },
+     "decisive_clue": "insisted",
+     "reason": "Still denying her personal role.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "She is still just denying her involvement.",
+   "feedback_deep": "Even though she blamed management, her core act remains denying her own connection to the failure. This is a false shift — the motivation didn't change.",
+   "contrast_rule": "Distraction is not a semantic shift.",
+   "hint": "Does her blaming management change her relationship to her own involvement?"
+  },
+  {
+   "id": "disavow-repudiate_005",
+   "domain": "history",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The king's act is ___",
+   "beats": [
+    {
+     "text": "The king claimed he had never promised the land to the lords.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "never promised",
+     "reason": "Denying the act/connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "In fact, the promise was made in an ancient decree that the king now says is not binding.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.1,
+      "repudiate": 0.9
+     },
+     "decisive_clue": "not binding",
+     "reason": "Reframing as rejecting a legal obligation.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M3"
+     }
+    }
+   ],
+   "feedback_short": "He stopped denying the act and started rejecting the validity of the decree.",
+   "feedback_deep": "Initially, he denied the promise existed (disavow). The situation is reframed when it's revealed the promise exists but is now considered invalid (repudiate).",
+   "contrast_rule": "Deny existence (disavow) -> Reject validity (repudiate).",
+   "hint": "Is he saying 'I didn't do it' or 'that law is not valid'?"
+  },
+  {
+   "id": "disavow-repudiate_006",
+   "domain": "contract law",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The company's position on the debt: ___",
+   "beats": [
+    {
+     "text": "The company stated the debt was never legally binding.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "never legally binding",
+     "reason": "Rejecting validity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    },
+    {
+     "text": "They presented documents showing the contract was forged.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.1,
+      "repudiate": 0.9
+     },
+     "decisive_clue": "forged",
+     "reason": "Confirming the rejection of validity.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are consistently rejecting the validity of the contract.",
+   "feedback_deep": "The company is not denying connection to the debt; they are asserting the contract itself is invalid due to forgery. Repudiate fits perfectly for rejecting validity.",
+   "contrast_rule": "Invalidity = Repudiate.",
+   "hint": "Are they saying 'I didn't sign it' (disavow) or 'the contract itself is not valid' (repudiate)?"
+  },
+  {
+   "id": "disavow-repudiate_007",
+   "domain": "philosophy",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The philosopher's treatment of the doctrine: ___",
+   "beats": [
+    {
+     "text": "He claimed he had never followed that school of thought.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "never followed",
+     "reason": "Denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "However, he admitted his earlier work relied on it, but insisted the doctrine itself is logically incoherent.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "logically incoherent",
+     "reason": "Now rejecting the validity of the doctrine.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He shifted from denying his connection to attacking the doctrine's validity.",
+   "feedback_deep": "He first claimed no connection (disavow). When the connection was established, his focus shifted to the doctrine's flawed logic (repudiate).",
+   "contrast_rule": "Logical flaw = Repudiate.",
+   "hint": "Is he focusing on his own history or the doctrine's merit?"
+  },
+  {
+   "id": "disavow-repudiate_008",
+   "domain": "business",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The manager's act is ___",
+   "beats": [
+    {
+     "text": "The manager refused to support the new policy.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.4,
+      "repudiate": 0.6
+     },
+     "decisive_clue": "refused to support",
+     "reason": "Rejecting an idea/policy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    },
+    {
+     "text": "She specifically stated the policy is structurally harmful to the company.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.1,
+      "repudiate": 0.9
+     },
+     "decisive_clue": "structurally harmful",
+     "reason": "More precise rejection of validity.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "She is rejecting the policy's validity, which is more precise.",
+   "feedback_deep": "While 'refused to support' could be ambiguous, 'structurally harmful' makes it clear she is rejecting its validity, a core feature of repudiate.",
+   "contrast_rule": "Invalidity = Repudiate.",
+   "hint": "Is she saying 'I don't support it' or 'this is fundamentally invalid'?"
+  },
+  {
+   "id": "disavow-repudiate_009",
+   "domain": "science",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "The journal's decision on the paper: ___",
+   "beats": [
+    {
+     "text": "The journal stated they were not responsible for the author's personal views.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "not responsible",
+     "reason": "Denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "They then published a note saying the author's data was manipulated and therefore the paper is entirely without merit.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.1,
+      "repudiate": 0.9
+     },
+     "decisive_clue": "without merit",
+     "reason": "Corrupted into a rejection of validity.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M3"
+     }
+    }
+   ],
+   "feedback_short": "They moved from denying responsibility to rejecting the paper's scientific merit.",
+   "feedback_deep": "The journal's first act was distancing (disavow). The second act was a formal rejection of scientific validity (repudiate).",
+   "contrast_rule": "Scientific merit = Repudiate.",
+   "hint": "Are they saying 'not our view' or 'not valid science'?"
+  },
+  {
+   "id": "disavow-repudiate_010",
+   "domain": "literature",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "The critic's view of the book: ___",
+   "beats": [
+    {
+     "text": "The critic refused to accept the premise of the novel.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "refused to accept premise",
+     "reason": "Rejecting validity/truth of the idea.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    },
+    {
+     "text": "Upon further reflection, the critic admitted the premise, while radical, successfully illustrated the character's journey.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.1,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "successfully illustrated",
+     "reason": "Rehabilitating the premise — wait, the word should be abandoned.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "This context doesn't fit the pair well; please re-examine.",
+   "feedback_deep": "Rehabilitation here shows how the critic stopped repudiating the premise and instead accepted it.",
+   "contrast_rule": "Acceptance = Not repudiate.",
+   "hint": "The critic stopped rejecting the premise."
+  },
+  {
+   "id": "disavow-repudiate_011",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What Sarah did to her ex: ___",
+   "beats": [
+    {
+     "text": "Sarah told everyone she had never dated the guy.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "never dated",
+     "reason": "Denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "When someone showed her a photo of them together, she said it was a fake.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "said it was fake",
+     "reason": "Still denying the connection.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "She is persistently denying the relationship.",
+   "feedback_deep": "Sarah's action is consistently about denying a personal connection, making disavow the correct choice.",
+   "contrast_rule": "Connection = disavow.",
+   "hint": "Is she rejecting a fact or denying a personal link?"
+  },
+  {
+   "id": "disavow-repudiate_012",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The athlete's reaction to the coach's claim: ___",
+   "beats": [
+    {
+     "text": "The athlete said the coach never told him to cheat.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "never told him",
+     "reason": "Denying connection/instruction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "The athlete later realized the instruction was indeed given, but added that such instruction is completely against the spirit of the sport.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "against the spirit",
+     "reason": "Rejecting the validity of the instruction.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He stopped denying the instruction and started attacking its moral validity.",
+   "feedback_deep": "First, he denied the connection/instruction (disavow). When the instruction was proven, he attacked the validity of the instruction itself (repudiate).",
+   "contrast_rule": "Moral validity = Repudiate.",
+   "hint": "Is he saying 'I didn't receive that' or 'that is morally wrong'?"
+  },
+  {
+   "id": "disavow-repudiate_013",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The travel agency's stance on the policy: ___",
+   "beats": [
+    {
+     "text": "The agency says the airline's claim about overbooking fees is entirely false.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "entirely false",
+     "reason": "Rejecting validity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    },
+    {
+     "text": "They produced internal documents showing the airline's fee structure was illegal under current regulations.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.1,
+      "repudiate": 0.9
+     },
+     "decisive_clue": "illegal",
+     "reason": "Confirming the rejection of validity.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are consistently rejecting the airline's claims as false.",
+   "feedback_deep": "The agency is rejecting the validity of the airline's claims based on legality, not denying their own involvement.",
+   "contrast_rule": "False/Illegal = Repudiate.",
+   "hint": "Are they saying 'we aren't involved' or 'that statement is false'?"
+  },
+  {
+   "id": "disavow-repudiate_014",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What Tom did to the broken vase: ___",
+   "beats": [
+    {
+     "text": "Tom said he had never even seen the vase before.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "never seen",
+     "reason": "Denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "Even when shown a video of him holding it, he insisted it wasn't him.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "wasn't him",
+     "reason": "Still denying the connection.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is consistently denying any personal connection to the vase.",
+   "feedback_deep": "Tom is denying his connection to the object (the vase). He is not questioning the validity of the vase, so disavow is the clear choice.",
+   "contrast_rule": "Connection = disavow.",
+   "hint": "Is he rejecting a fact or denying a personal link?"
+  },
+  {
+   "id": "disavow-repudiate_015",
+   "domain": "public",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The artist's view of the critic: ___",
+   "beats": [
+    {
+     "text": "The artist said he had no working relationship with the critic.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "no working relationship",
+     "reason": "Denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "Actually, they had worked together, but the artist argued the critic's review is totally baseless.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "totally baseless",
+     "reason": "Now rejecting the validity of the critic's words.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He moved from denying a connection to rejecting the validity of the critic's words.",
+   "feedback_deep": "He first denied the relationship (disavow). When proven wrong, he shifted to attacking the critic's argument as baseless (repudiate).",
+   "contrast_rule": "Baseless = Repudiate.",
+   "hint": "Is he denying a personal connection or attacking an idea?"
+  },
+  {
+   "id": "disavow-repudiate_016",
+   "domain": "ethics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The group's position on the practice: ___",
+   "beats": [
+    {
+     "text": "The group said they did not authorize the secret activity.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "not authorize",
+     "reason": "Denying connection/responsibility.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "They then admitted they had authorized it, but now argue it is unethical and they should have never allowed it.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "unethical",
+     "reason": "Now rejecting the validity/morality of the act.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They moved from denying responsibility to condemning the ethical validity of the act.",
+   "feedback_deep": "First, they denied their involvement (disavow). Then, they condemned the moral validity of the practice (repudiate).",
+   "contrast_rule": "Unethical = Repudiate.",
+   "hint": "Are they denying responsibility or judging an action's morality?"
+  },
+  {
+   "id": "disavow-repudiate_017",
+   "domain": "management",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The boss's response to the error: ___",
+   "beats": [
+    {
+     "text": "The boss said that the error was not part of his original plan.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "not part of plan",
+     "reason": "Denying connection.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "Even after it was shown that he signed off on the plan, he insisted that the execution was completely his team's fault.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "team's fault",
+     "reason": "Still denying his own connection to the error.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He is persistently denying his personal involvement in the error.",
+   "feedback_deep": "The boss is consistently trying to deny his own connection to the error, making disavow the right choice.",
+   "contrast_rule": "Involvement = disavow.",
+   "hint": "Is he rejecting an idea or denying his personal involvement?"
+  },
+  {
+   "id": "disavow-repudiate_018",
+   "domain": "policy",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The city's position on the tax: ___",
+   "beats": [
+    {
+     "text": "The city council claimed they had no knowledge of the tax hike.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.9,
+      "repudiate": 0.1
+     },
+     "decisive_clue": "no knowledge",
+     "reason": "Denying connection/involvement.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "They later realized they had passed it, but now argue it was a poor decision that needs to be reversed.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.7,
+      "repudiate": 0.3
+     },
+     "decisive_clue": "needs to be reversed",
+     "reason": "Still fundamentally about distancing themselves from the initial act.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are still focused on distancing themselves from their initial action.",
+   "feedback_deep": "Even after acknowledging their role, their focus remains on distancing themselves from the initial decision, a false shift.",
+   "contrast_rule": "Distancing = disavow.",
+   "hint": "Does their change in tone mean they are rejecting validity or just distancing?"
+  },
+  {
+   "id": "disavow-repudiate_019",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The author's view on the theory: ___",
+   "beats": [
+    {
+     "text": "The author argued the theory is based on a misunderstanding of the original text.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.2,
+      "repudiate": 0.8
+     },
+     "decisive_clue": "misunderstanding",
+     "reason": "Rejecting validity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M1"
+     }
+    },
+    {
+     "text": "He further argued that the theory is not just wrong, but fundamentally destructive to the field of study.",
+     "best_word": "repudiate",
+     "fit": {
+      "disavow": 0.1,
+      "repudiate": 0.9
+     },
+     "decisive_clue": "fundamentally destructive",
+     "reason": "Narrowing the focus to the theory's impact.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "disavow": "M3"
+     }
+    }
+   ],
+   "feedback_short": "He is consistently rejecting the theory's validity and impact.",
+   "feedback_deep": "The author is consistently attacking the theory, so repudiate is the appropriate and stable choice as the argument becomes more specific.",
+   "contrast_rule": "Invalidity = Repudiate.",
+   "hint": "Are they denying their own connection or attacking an idea?"
+  },
+  {
+   "id": "disavow-repudiate_020",
+   "domain": "PR",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The company's response to the criticism: ___",
+   "beats": [
+    {
+     "text": "The company said the criticism does not reflect their core values.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.8,
+      "repudiate": 0.2
+     },
+     "decisive_clue": "does not reflect",
+     "reason": "Denying connection/alignment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    },
+    {
+     "text": "They added that the criticism is based on an outdated understanding of their business model.",
+     "best_word": "disavow",
+     "fit": {
+      "disavow": 0.7,
+      "repudiate": 0.3
+     },
+     "decisive_clue": "based on outdated understanding",
+     "reason": "Still denying alignment.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "repudiate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are persistently denying their alignment with the criticism.",
+   "feedback_deep": "The company is distancing its values from the criticism, making disavow the consistent choice, even as they provide more context.",
+   "contrast_rule": "Alignment/Connection = disavow.",
+   "hint": "Are they denying alignment or judging validity?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

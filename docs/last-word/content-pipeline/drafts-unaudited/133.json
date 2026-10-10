@@ -1,0 +1,1808 @@
+{
+  "set_id": "scrupulous-meticulous",
+  "source_pair_id": 133,
+  "words": [
+    {
+      "word": "scrupulous",
+      "sense": "governed by moral integrity, conscientious honesty, and strict ethical standards",
+      "concise_meaning": "extremely careful to act honestly, fairly, and morally right in all dealings",
+      "connotation": "positive, honorable, principled",
+      "register": "formal to standard",
+      "grammar": "adjective; typically 'be scrupulous in/about doing something' or used attributively ('scrupulous honesty', 'scrupulous fairness')",
+      "collocations": [
+        "scrupulous honesty",
+        "scrupulous fairness",
+        "scrupulous regard for",
+        "scrupulous in adhering to",
+        "scrupulous attention to ethics"
+      ],
+      "misconceptions": [
+        "Assuming that extreme attention to detail is automatically scrupulous, ignoring that scrupulousness is fundamentally rooted in conscience, fairness, and ethical duty."
+      ]
+    },
+    {
+      "word": "meticulous",
+      "sense": "marked by extreme care and precision in considering or treating minute details",
+      "concise_meaning": "showing great attention to every small detail, accuracy, and physical or procedural order without moral implication",
+      "connotation": "neutral to positive (often admiring of skill or order, but applicable to amoral or criminal precision)",
+      "register": "standard",
+      "grammar": "adjective; typically 'be meticulous in/about something' or modifying nouns like 'planning', 'records', 'craftsmanship', 'research'",
+      "collocations": [
+        "meticulous attention to detail",
+        "meticulous planning",
+        "meticulous records",
+        "meticulous craftsmanship",
+        "meticulous research"
+      ],
+      "misconceptions": [
+        "Assuming that being meticulous guarantees trustworthiness or moral goodness, when one can be meticulous while executing an amoral, ruthless, or fraudulent scheme."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "moral_ethical_orientation",
+      "description": "Governed by moral conscience, honesty, fairness, and avoiding ethical wrongdoing vs. governed purely by technical precision, organization, and completeness without ethical concern."
+    },
+    {
+      "id": "nature_of_concern",
+      "description": "Concerned with equity, conflicts of interest, honoring duties, and preventing harm vs. concerned with minute physical specifics, formatting, micro-measurements, and procedural exactness."
+    },
+    {
+      "id": "compatibility_with_amorality",
+      "description": "Incompatible with deceit, theft, or exploitation (one cannot be a scrupulous embezzler) vs. fully compatible with deceit, crime, or vanity (a criminal can be meticulous in planning a heist)."
+    }
+  ],
+  "edge": {
+    "a": "scrupulous",
+    "b": "meticulous",
+    "boundary_rule": "Scrupulous requires moral conscientiousness, ethical duty, and honest concern for fairness; meticulous requires painstaking precision, minute attention to detail, and orderliness without any moral dimension.",
+    "clues_a": [
+      "voluntarily returning accidental overpayments or unearned windfalls",
+      "refusing to exploit an opponent or vendor mistake for financial gain",
+      "disclosing personal conflicts of interest and recusing oneself",
+      "attributing rightful credit to junior collaborators against institutional pressure",
+      "resisting corporate or authority pressure to conceal safety hazards or deceive the public"
+    ],
+    "clues_b": [
+      "measuring micro-tolerances with calipers, micrometers, or laser gauges",
+      "aligning margins, tabs, and font formatting to exact style codes",
+      "scheduling activities into rigid, multi-minute intervals",
+      "dusting, polishing, or reassembling microscopic components with fine tweezers",
+      "executing detailed procedural steps or concealing rule violations through technical precision"
+    ],
+    "irrelevant_clues": [
+      "the total time or physical energy invested in the task",
+      "whether the actor uses magnifying glasses, spreadsheets, or specialized tools",
+      "whether the setting is an academic lab, boardroom, kitchen, or legal office",
+      "whether the actor feels anxious, exhausted, or composed"
+    ],
+    "misconceptions": {
+      "M1": "Assuming any exacting attention to detail or systematic thoroughness is scrupulous, overlooking that scrupulous demands an ethical conscience or duty to fairness.",
+      "M2": "Believing meticulous implies moral uprightness or personal integrity, failing to recognize that meticulous execution can serve selfish, amoral, or criminal purposes.",
+      "M3": "Restricting scrupulous to religious piety or formal oaths, missing that everyday honesty like returning change or giving credit to a collaborator is scrupulous."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "scrupulous": [
+        "Even though the financial audit was finalized, the accountant notified the client of a minor rounding error in their favor and refunded the extra twelve dollars.",
+        "The committee chair recused herself from the grant deliberations the moment she realized an applicant had once contributed to her campaign.",
+        "Before submitting the joint paper, the senior researcher insisted on listing the undergraduate intern as co-author for discovering the key anomaly.",
+        "The cashier chased the customer across the parking lot in the rain to hand back the hundred-dollar banknote left behind at the checkout counter.",
+        "During the intense contract renegotiation, the union representative refused to exploit an accidental typing error that would have unfairly penalized the management.",
+        "The journalist declined the all-expenses-paid resort holiday from the automaker whose new electric vehicle she was assigned to review."
+      ],
+      "meticulous": [
+        "The watchmaker used fine tweezers and a magnifying visor to position each miniature brass cogwheel into the clockwork movement.",
+        "The calligrapher spent three hours measuring margins with a steel ruler to ensure every letter sat exactly two millimeters from the border.",
+        "The taxidermist dusted each individual feather of the preserved eagle with a soft camel-hair brush before sealing the display case.",
+        "The archivist numbered and cross-referenced all four thousand botanical pressings according to genus, species, and collection date.",
+        "The baker weighed every single macaron shell on a digital scale to guarantee an identical weight of twelve grams per piece.",
+        "The master burglar spent weeks charting the exact twenty-three-second sweep intervals of the security cameras to time his entry through the skylight."
+      ]
+    },
+    "counter": {
+      "scrupulous": [
+        "The burglar timed the bank vault's electronic lock sequence down to the millisecond to disable the alarm without being detected.",
+        "The graphic designer aligned the text boxes along a strict eight-pixel grid so that every heading had uniform margins.",
+        "The laboratory assistant calibrated the micropipette five times each morning to ensure every droplet measured exactly ten microliters.",
+        "The forger spent weeks replicating the delicate flourishes of the signature on the fraudulent deed under an ultraviolet lamp.",
+        "The tailor counted each individual silk stitch on the lapel to ensure identical thread tension across both sides of the suit.",
+        "The chess grandmaster mapped out forty-two potential counter-moves in his notebook before committing his opening pawn advance."
+      ],
+      "meticulous": [
+        "When the bank accidentally deposited an extra five thousand dollars into his savings account, he reported the error within the hour.",
+        "The juror refused to read sensational headlines because she had sworn to base her verdict solely on courtroom testimony.",
+        "The referee immediately overturned his own penalty decision after realizing his view of the tackle had been obstructed.",
+        "The politician declined a massive campaign contribution when she realized the donor expected favorable environmental zoning.",
+        "The whistleblower risked her career by notifying federal regulators about hidden defects in the aircraft safety valve.",
+        "The shopkeeper refused to sell damaged goods at full price, pointing out the hidden flaws directly to prospective buyers."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "The researcher recorded every outlier in the clinical trial data, ensuring that no uncomfortable results were quietly dropped.",
+        "best_word": "scrupulous",
+        "note": "While recording data involves technical precision, the refusal to suppress inconvenient results that challenge the hypothesis makes moral honesty and scientific integrity the governing trait."
+      },
+      {
+        "text": "The jeweler examined each diamond facet under a ten-power loupe, noting microscopic inclusions in the grading certificate.",
+        "best_word": "meticulous",
+        "note": "Although accurate grading protects buyers, the primary activity is the physical, magnified inspection and measurement of microscopic stone characteristics."
+      },
+      {
+        "text": "The executor of the estate traced every distant beneficiary across three continents to distribute the inheritance exactly as written.",
+        "best_word": "scrupulous",
+        "note": "Fulfilling the deceased person's trust and honoring legal and moral obligations to rightful heirs elevates this beyond routine administrative paperwork."
+      },
+      {
+        "text": "The proofreader reviewed the five-hundred-page manual three times to eliminate every misplaced comma and broken hyphen.",
+        "best_word": "meticulous",
+        "note": "The task focuses exclusively on typographic, grammatical, and formatting perfection rather than ethical judgment or fairness."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "scrupulous-meticulous_001",
+      "domain": "legal_practice",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Elena's conduct in handling the disputed escrow funds is: ___",
+      "beats": [
+        {
+          "text": "Attorney Elena Ramos discovers that opposing counsel made an administrative error, wiring an extra forty thousand dollars into her client's settlement escrow account.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.94,
+            "meticulous": 0.16
+          },
+          "decisive_clue": "unprompted discovery of accidental excess funds in escrow",
+          "reason": "Faced with an unearned windfall, the situation immediately tests her honesty and ethical duty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Her client urges her to keep quiet until the appeal deadline passes, but Elena immediately drafts an official notice to return the surplus to the opposing firm.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.97,
+            "meticulous": 0.09
+          },
+          "decisive_clue": "immediate voluntary return of overpayment against client pressure",
+          "reason": "Her refusal to exploit an opponent's blunder demonstrates unwavering moral integrity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Even after her client threatens a malpractice complaint over the surrendered money, Elena files the refund receipt with the court registry and waives her own commission.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.98,
+            "meticulous": 0.06
+          },
+          "decisive_clue": "filing official refund records despite client threats and financial loss",
+          "reason": "Accepting personal risk to maintain ethical justice is the hallmark of moral conscience.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Voluntarily returning an accidental forty-thousand-dollar surplus against client pressure proves uncompromising moral integrity.",
+      "feedback_deep": "Elena is guided by strict professional ethics and honesty. Because her decision hinges on fairness and refusing unearned money rather than minute physical ordering, the moral term applies.",
+      "contrast_rule": "Moral honesty and fairness point here; minute technical or physical precision points to the other.",
+      "hint": "Consider whether Elena is motivated by ethical conscience or merely cataloging paperwork."
+    },
+    {
+      "id": "scrupulous-meticulous_002",
+      "domain": "fine_arts_restoration",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Mateo's technique in repairing the fifteenth-century fresco is: ___",
+      "beats": [
+        {
+          "text": "Art conservator Mateo Alvarez uses a single-bristle sable brush to fill hairline fissures in a Renaissance pigment layer without touching the original tempera.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.14,
+            "meticulous": 0.95
+          },
+          "decisive_clue": "single-bristle brushwork filling microscopic paint fissures",
+          "reason": "The work demands extreme physical delicacy and microscopic precision without any ethical dilemma.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "Under thirty-power magnification, he blends mineral pigments with egg emulsion, testing individual micro-droplets against daylight until the aged hue matches perfectly.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.08,
+            "meticulous": 0.97
+          },
+          "decisive_clue": "magnified pigment testing of individual micro-droplets",
+          "reason": "Exacting color-matching and microscopic calibration emphasize painstaking attention to detail.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "He logs the grid coordinates, humidity percentages, and binder ratios for every square millimeter into an archival restoration ledger.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.06,
+            "meticulous": 0.98
+          },
+          "decisive_clue": "square-millimeter documentation of restoration variables",
+          "reason": "Systematic, fine-grained documentation exemplifies exhaustive procedural thoroughness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Single-bristle brushwork and square-millimeter pigment documentation demonstrate painstaking, microscopic attention to physical detail.",
+      "feedback_deep": "Mateo's task is an exercise in craftsmanship and surgical precision. His labor involves zero moral choices or temptations of dishonesty, making the procedural descriptor exact.",
+      "contrast_rule": "Painstaking physical precision belongs here; moral integrity and ethical conscience belong to the other.",
+      "hint": "Look at whether the conservator is facing an ethical dilemma or executing fine physical craft."
+    },
+    {
+      "id": "scrupulous-meticulous_003",
+      "domain": "pharmaceutical_research",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "Dr. Farah's handling of the clinical trial data is: ___",
+      "beats": [
+        {
+          "text": "Principal investigator Dr. Nadia Farah notices that two patients in her team's lucrative migraine drug trial experienced mild heart palpitations.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.93,
+            "meticulous": 0.22
+          },
+          "decisive_clue": "flagging subtle adverse cardiac symptoms in drug trial",
+          "reason": "Highlighting unexpected adverse symptoms tests her medical conscience and commitment to patient safety.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "The pharmaceutical sponsor urges her to reclassify the palpitations as unrelated anxiety so the drug can secure fast-track regulatory clearance.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.96,
+            "meticulous": 0.11
+          },
+          "decisive_clue": "refusal to falsify cardiac symptoms under corporate pressure",
+          "reason": "Rejecting corporate pressure to sanitize medical hazards demonstrates unyielding ethical honesty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Nadia submits the full unredacted safety logs to the federal health board, halting participant enrollment until an independent cardiac panel completes a review.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.98,
+            "meticulous": 0.05
+          },
+          "decisive_clue": "submitting unredacted adverse logs to protect patient safety",
+          "reason": "Prioritizing patient safety and scientific truth over financial gain is fundamentally moral.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Refusing corporate demands to conceal cardiac side effects shows unwavering ethical commitment to patient safety.",
+      "feedback_deep": "Nadia resists lucrative corporate pressure to bury dangerous data. Her actions protect human lives and uphold scientific honesty, placing her squarely in the moral domain.",
+      "contrast_rule": "Standing up for ethical truth and human safety points here; organizing technical specifics points to the other.",
+      "hint": "Focus on the researcher's resistance to corruption rather than data logging."
+    },
+    {
+      "id": "scrupulous-meticulous_004",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Kenji's code refactoring process is: ___",
+      "beats": [
+        {
+          "text": "Systems engineer Kenji Sato reviews a twenty-thousand-line database engine, standardizing every variable name against the company's seventy-page architectural style guide.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.12,
+            "meticulous": 0.93
+          },
+          "decisive_clue": "standardizing thousands of variables against a strict style guide",
+          "reason": "The effort focuses on exhaustive formatting consistency and technical adherence to rules.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "He writes eighty unit tests for a single memory-buffer function, altering input byte sizes by single increments to catch off-by-one errors.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.08,
+            "meticulous": 0.96
+          },
+          "decisive_clue": "testing memory buffers in single-byte increments",
+          "reason": "Methodical, incremental unit testing demonstrates rigorous attention to tiny technical details.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "Before opening his pull request, he profiles memory cache hit rates under four different operating system kernels to ensure zero clock-cycle waste.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.06,
+            "meticulous": 0.97
+          },
+          "decisive_clue": "profiling clock cycles across multiple operating kernels",
+          "reason": "Optimizing clock cycles across kernels reflects technical perfectionism without ethical stakes.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Testing single-byte buffer increments and optimizing clock cycles across kernels reflect exhaustive technical precision.",
+      "feedback_deep": "Kenji is engaged in programming perfectionism. His work involves no ethical tests, honesty questions, or conflicts of interest, fitting the non-moral precision term.",
+      "contrast_rule": "Minute technical and procedural accuracy points here; ethical conscience points to the other.",
+      "hint": "Notice whether Kenji is solving a moral challenge or pursuing extreme engineering precision."
+    },
+    {
+      "id": "scrupulous-meticulous_005",
+      "domain": "journalism",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "Amina's standard of reporting on the political scandal is: ___",
+      "beats": [
+        {
+          "text": "Investigative journalist Amina Bello receives an anonymous recording that appears to show the city mayor accepting an illicit cash payment from a real estate developer.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.92,
+            "meticulous": 0.2
+          },
+          "decisive_clue": "handling an explosive anonymous political recording responsibly",
+          "reason": "Handling unverified political leaks responsibly tests a journalist's fairness and integrity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Rather than rushing the scoop before the election, she submits the file to forensic audio engineers and sends the mayor an itemized list of questions with a fair deadline.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.96,
+            "meticulous": 0.14
+          },
+          "decisive_clue": "delaying a sensational scoop to verify authenticity and seek response",
+          "reason": "Holding back a sensational story to ensure truth and allow a right of reply is an ethical duty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "When technicians discover that thirty seconds of audio were spliced to invert the mayor's actual refusal, Amina publishes an exposé debunking the smear, ignoring partisan backlash.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.98,
+            "meticulous": 0.06
+          },
+          "decisive_clue": "debunking a false smear despite partisan criticism",
+          "reason": "Vindicating an opponent and exposing fraud at personal professional cost demonstrates profound moral honesty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Holding back an explosive scoop to expose an audio fabrication demonstrates uncompromising journalistic integrity.",
+      "feedback_deep": "Amina prioritizes truth and fairness over sensational traffic and partisan acclaim. Her conduct represents journalistic ethics in action, requiring the moral word.",
+      "contrast_rule": "Fairness, truthfulness, and ethical duty point here; technical exactness points to the other.",
+      "hint": "Consider whether Amina is safeguarding ethical fairness or merely checking grammar."
+    },
+    {
+      "id": "scrupulous-meticulous_006",
+      "domain": "archaeology",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "Sora's documentation of the excavation trench is: ___",
+      "beats": [
+        {
+          "text": "Field archaeologist Sora Vance sifts desert soil through a two-millimeter wire sieve, retrieving obsidian flakes no larger than sesame seeds.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.15,
+            "meticulous": 0.94
+          },
+          "decisive_clue": "sieving desert soil for millimeter-sized obsidian flakes",
+          "reason": "Patiently recovering tiny mineral shards represents extreme physical and procedural care.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "She measures the three-dimensional depth and strike angle of every single flake with a laser theodolite before placing it into a numbered specimen vial.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.08,
+            "meticulous": 0.97
+          },
+          "decisive_clue": "laser-measuring the precise coordinates of every tiny flake",
+          "reason": "Recording spatial coordinates for hundreds of tiny items exemplifies exhaustive detail work.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "In the field laboratory, she sketches scale diagrams of each micro-flute under a binocular microscope, noting wear facets to the tenth of a millimeter.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.05,
+            "meticulous": 0.98
+          },
+          "decisive_clue": "microscopic sketching of wear facets to tenth-millimeter accuracy",
+          "reason": "Sub-millimeter scale illustration and cataloging represent pure scientific exactness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Laser-measuring coordinates and sketching microscopic wear facets to tenths of a millimeter demonstrate painstaking precision.",
+      "feedback_deep": "Sora's archaeological documentation is thorough and exact. Because her actions involve technical measurement and micro-recording without ethical stakes, this descriptor is correct.",
+      "contrast_rule": "Minute spatial measurement and physical cataloging fit here; moral conscience fits the other.",
+      "hint": "Look at whether Sora is making moral evaluations or recording physical measurements."
+    },
+    {
+      "id": "scrupulous-meticulous_007",
+      "domain": "academic_publishing",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Professor Nair's conduct as a journal reviewer is: ___",
+      "beats": [
+        {
+          "text": "Professor Priya Nair reviews a submitted journal paper, verifying every mathematical derivation and checking eighty-four citations against original archive volumes for transcription errors.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.22,
+            "meticulous": 0.94
+          },
+          "decisive_clue": "exhaustive verification of equations and eighty-four citations",
+          "reason": "Methodically verifying dozens of citations and equations is an act of detailed academic rigor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "She spots an obscure mathematical error that would justify rejecting the paper, but realizes that killing the publication would leave her own laboratory as the sole applicant for a million-dollar grant.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.91,
+            "meticulous": 0.24
+          },
+          "decisive_clue": "resisting the temptation to kill a competitor paper for grant money",
+          "reason": "The situation shifts from citation checking to an acute ethical test regarding conflict of interest.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Rather than exploiting her reviewer anonymity to sink the rival, Priya writes a detailed mathematical solution helping the author fix the proof, and asks the editor to reassign the paper to eliminate bias.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.97,
+            "meticulous": 0.12
+          },
+          "decisive_clue": "helping the competitor fix the proof and requesting recusal",
+          "reason": "Actively assisting a competitor and disclosing a conflict of interest embodies moral uprightness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Helping a competitor fix an error and requesting recusal to avoid bias flips the focus to moral integrity.",
+      "feedback_deep": "Priya begins with painstaking proofreading, but the scenario transforms when she confronts a lucrative conflict of interest. Her decision to recuse herself and assist her rival makes the moral term decisive.",
+      "contrast_rule": "Recusing oneself and acting with fairness points here; checking citations points to the other.",
+      "hint": "Watch how Priya responds when personal financial gain tempts her to sabotage a rival."
+    },
+    {
+      "id": "scrupulous-meticulous_008",
+      "domain": "culinary_arts",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Julian's performance in the pastry kitchen is: ___",
+      "beats": [
+        {
+          "text": "Head baker Julian discovers that a supplier delivered cheaper artificial vanilla extract labeled as pure Madagascar bean paste, and he promptly cancels the invoice and returns the crate, refusing to mislead his customers.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.93,
+            "meticulous": 0.18
+          },
+          "decisive_clue": "rejecting mislabeled ingredients to prevent misleading customers",
+          "reason": "Refusing to use deceptively labeled ingredients protects customers and upholds commercial honesty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Turning to his confectionery bench, he uses a micro-caliper to verify that each spun-sugar sphere measures exactly thirty-eight millimeters across, trimming stray filaments with surgical scissors.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.21,
+            "meticulous": 0.94
+          },
+          "decisive_clue": "measuring sugar spheres with calipers and trimming micro-filaments",
+          "reason": "The context shifts from ethical purchasing to minute geometric calibration and physical trimming.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "He weighs cocoa butter portions on an analytical balance down to the milligram, ensuring that all one hundred chocolate shells have identical wall thicknesses of 1.2 millimeters.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.08,
+            "meticulous": 0.98
+          },
+          "decisive_clue": "milligram weighing and caliper checks of chocolate shell thickness",
+          "reason": "Exacting weight and thickness control reinforces purely mechanical and artistic perfection.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Using calipers and analytical balances to calibrate pastry dimensions down to millimeters flips the focus to physical precision.",
+      "feedback_deep": "Julian starts by rejecting counterfeit vanilla out of consumer honesty, but the scene flips as his work centers on calipers, analytical balances, and micro-trimming. That painstaking physical accuracy requires the craft term.",
+      "contrast_rule": "Minute physical dimensions and tool calibration point here; commercial honesty points to the other.",
+      "hint": "Notice the change when the baker moves from supplier ethics to micro-measuring sugar domes."
+    },
+    {
+      "id": "scrupulous-meticulous_009",
+      "domain": "fine_arts_restoration",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Leila's handling of the antique porcelain vase is: ___",
+      "beats": [
+        {
+          "text": "Conservator Leila Kassam aligns broken porcelain fragments under a stereomicroscope, using dental picks and reversible resin to rejoin fractured glaze lines without overlapping seams.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.16,
+            "meticulous": 0.94
+          },
+          "decisive_clue": "microscopic alignment of fractured porcelain seams",
+          "reason": "Rejoining fragile porcelain with dental tools requires surgical physical precision.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "Inside the hollow pedestal of the vase, she dislodges a cloth pouch containing three uncut diamonds that were concealed during wartime and omitted from the client's auction inventory.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.92,
+            "meticulous": 0.22
+          },
+          "decisive_clue": "discovering valuable concealed diamonds absent from client inventory",
+          "reason": "The discovery of unrecorded treasure transforms technical conservation into an integrity test.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "When her apprentice suggests keeping one stone since the corporate owner will never know, Leila immediately seals the pouch in the museum safe, calls the provenance registrar, and reprimands the apprentice.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.98,
+            "meticulous": 0.06
+          },
+          "decisive_clue": "sealing found diamonds in safe and contacting provenance authorities",
+          "reason": "Refusing to pocket untraceable valuables and reporting them immediately demonstrates moral uprightness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Reporting and securing unrecorded diamonds found hidden inside a vase flips the trait to strict moral honesty.",
+      "feedback_deep": "Leila begins with delicate micro-repair, but uncovering concealed diamonds turns the situation into a test of character. Her refusal to steal and her immediate formal reporting make the moral descriptor correct.",
+      "contrast_rule": "Refusing to steal found treasure points here; microscopic seam alignment points to the other.",
+      "hint": "Watch what happens when hidden wealth is discovered inside the restored object."
+    },
+    {
+      "id": "scrupulous-meticulous_010",
+      "domain": "legal_practice",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Marcus's execution of the corporate merger filing is: ___",
+      "beats": [
+        {
+          "text": "Paralegal Marcus discovers that his supervising attorney inadvertently billed fifty research hours to a struggling charity client instead of a commercial bank, and Marcus insists on issuing an immediate corrected invoice.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.93,
+            "meticulous": 0.19
+          },
+          "decisive_clue": "insisting on correcting an overbilled invoice for a charity",
+          "reason": "Protecting a nonprofit client from unjust billing reflects ethical duty and honesty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Switching to the final appellate court submission, Marcus scans the four-hundred-page brief to verify that every citation, statutory hyperlink, and table of authorities adheres to the court's strict twenty-point formatting manual.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.22,
+            "meticulous": 0.93
+          },
+          "decisive_clue": "verifying four hundred pages of legal citations against formatting code",
+          "reason": "Exhaustive verification of typography, margins, and citations shifts the task to technical compliance.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "He adjusts heading indentations to exactly one-quarter inch throughout the document and rechecks every exhibit tab to ensure uniform alignment along the binder margin.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.08,
+            "meticulous": 0.97
+          },
+          "decisive_clue": "aligning binder tabs and quarter-inch indentations uniformly",
+          "reason": "Perfecting margins, tabs, and layout is an exercise in minute procedural and visual detail.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Aligning binder tabs and formatting four hundred pages to court margin specifications flips the focus to technical detail.",
+      "feedback_deep": "Marcus demonstrates billing honesty in beat one, but the task immediately transitions to verifying legal formatting, margins, and tab alignment. The exhaustive technical execution calls for the precision term.",
+      "contrast_rule": "Minute formatting and margin alignment point here; ethical billing corrections point to the other.",
+      "hint": "Look at whether Marcus is rectifying a billing injustice or aligning document formatting."
+    },
+    {
+      "id": "scrupulous-meticulous_011",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Devon's review of the enterprise payroll codebase is: ___",
+      "beats": [
+        {
+          "text": "Software architect Devon Vance audits the payroll calculation module, tracing execution paths across three hundred test accounts to check floating-point rounding precision down to eighth-decimal places.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.2,
+            "meticulous": 0.94
+          },
+          "decisive_clue": "tracing floating-point rounding math across hundreds of test accounts",
+          "reason": "Validating eighth-decimal floating-point arithmetic is a task of technical computing rigor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "He uncovers an undocumented conditional branch that quietly trims fractional cents from warehouse shift workers while routing the surplus into an executive bonus reserve.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.92,
+            "meticulous": 0.24
+          },
+          "decisive_clue": "discovering an intentional algorithm siphoning worker wages to executives",
+          "reason": "Uncovering systematic corporate wage theft reframes the task from math testing to moral exposure.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Despite warnings from the chief technology officer that exposing the code will jeopardize his own promotion, Devon files a formal whistleblower complaint with state labor regulators.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.98,
+            "meticulous": 0.05
+          },
+          "decisive_clue": "filing a formal whistleblower complaint risking personal promotion",
+          "reason": "Risking one's career to defend vulnerable workers from wage theft is an act of profound moral courage.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Blowing the whistle on code that siphons warehouse wages into executive bonuses flips the focus to moral courage.",
+      "feedback_deep": "Devon starts by checking decimal precision in code, but discovering an intentional wage-theft algorithm forces an ethical decision. Risking his career to report corporate exploitation establishes his deep moral conscience.",
+      "contrast_rule": "Defending workers against wage theft points here; testing decimal rounding points to the other.",
+      "hint": "Notice the shift when Devon discovers systemic corporate theft in the code."
+    },
+    {
+      "id": "scrupulous-meticulous_012",
+      "domain": "pharmaceutical_research",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Carlos's routine in the sterile injectable packaging suite is: ___",
+      "beats": [
+        {
+          "text": "Quality inspector Carlos Mendoza discovers that a freezer containing thirty thousand dollars worth of pediatric vaccines rose two degrees above safe limits for fifteen minutes, and he immediately condemns the entire batch.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.94,
+            "meticulous": 0.17
+          },
+          "decisive_clue": "condemning expensive vaccines over a slight temperature breach",
+          "reason": "Refusing to risk children's health by destroying valuable inventory embodies uncompromising medical ethics.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Assigned to prepare the replacement glass ampoules, Carlos inspects each container under polarized light, measuring vial neck apertures with an optical micrometer to reject any deviation over fifteen microns.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.22,
+            "meticulous": 0.93
+          },
+          "decisive_clue": "measuring ampoule neck diameters with a micron-level optical gauge",
+          "reason": "Inspecting glass neck diameters down to fifteen microns shifts focus to physical micro-measurement.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "He monitors the automated labeling machine, verifying that every serial sticker is centered within 0.5 millimeters of the vial shoulder and that bar-code contrast meets optical density thresholds.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.07,
+            "meticulous": 0.97
+          },
+          "decisive_clue": "centering vial labels to half-millimeter tolerances and testing barcode contrast",
+          "reason": "Enforcing sub-millimeter label placement and optical density standards demonstrates exhaustive physical precision.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Measuring vial apertures to fifteen microns and aligning labels to half-millimeter tolerances flips the focus to physical precision.",
+      "feedback_deep": "Carlos displays ethical integrity by discarding spoiled vaccines, but the scene flips to micrometer inspections and label alignment. That exacting mechanical tolerance belongs to the non-moral precision word.",
+      "contrast_rule": "Micron-level physical tolerances point here; ethical product condemnation points to the other.",
+      "hint": "Follow Carlos as he transitions from rejecting spoiled medicine to inspecting glass vial dimensions."
+    },
+    {
+      "id": "scrupulous-meticulous_013",
+      "domain": "culinary_arts",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Chef Sunita's financial accounting with suppliers is: ___",
+      "beats": [
+        {
+          "text": "Bistro owner Sunita Sharma reviews her monthly seafood billing ledger, examining invoices line by line to compare landed weight slips against billed amounts.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.74,
+            "meticulous": 0.65
+          },
+          "decisive_clue": "comparing delivery slips against wholesale billing records",
+          "reason": "Reviewing supplier invoices could be careful bookkeeping, but her underlying motive is fair dealing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "She identifies an error where a coastal fisherman undercharged her restaurant by six hundred dollars because of an unadjusted seasonal price drop.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.89,
+            "meticulous": 0.28
+          },
+          "decisive_clue": "identifying an undercharge that unfairly shortchanged a fisherman",
+          "reason": "Focusing on rectifying an undercharge narrows the behavior toward commercial honesty and fairness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Sunita immediately wires the missing six hundred dollars to the fisherman, writing a note to ensure the independent crew is compensated in full.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.97,
+            "meticulous": 0.08
+          },
+          "decisive_clue": "voluntarily paying the undercharged amount to ensure fair compensation",
+          "reason": "Refusing to exploit a vendor's mistake and paying unbilled money confirms uncompromising moral conscience.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Voluntarily paying an unbilled six-hundred-dollar deficit to protect a fisherman's livelihood narrows the trait to moral honesty.",
+      "feedback_deep": "What begins as routine ledger auditing narrows decisively into an ethical obligation. Sunita's refusal to profit from an independent supplier's billing oversight firmly establishes her moral uprightness.",
+      "contrast_rule": "Refusing to exploit an undercharge points here; mechanical bookkeeping points to the other.",
+      "hint": "Look at what Sunita chooses to do once she discovers an error in her favor."
+    },
+    {
+      "id": "scrupulous-meticulous_014",
+      "domain": "archaeology",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Gabriel's conservation of the ancient water clock is: ___",
+      "beats": [
+        {
+          "text": "Museum conservator Gabriel Silva begins cleaning a corroded Hellenistic bronze siphon, brushing away soil deposits to assess the structural integrity of the metal.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.56,
+            "meticulous": 0.76
+          },
+          "decisive_clue": "carefully brushing sediment from delicate ancient bronze",
+          "reason": "Cleaning ancient bronze requires steady technique and attention, setting a baseline of careful labor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "Using an ultrasonic micro-chisel under eight-power magnification, he removes mineral encrustations from the siphon valve one grain at a time without grazing the bronze patina.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.2,
+            "meticulous": 0.92
+          },
+          "decisive_clue": "grain-by-grain ultrasonic removal of mineral deposits under magnification",
+          "reason": "Grain-by-grain mechanical chisel work narrows the focus directly to microscopic physical precision.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "He documents the valve's inner diameter using laser profilometry, repeating forty cross-sectional scans to establish a digital clearance map accurate to five microns.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.05,
+            "meticulous": 0.98
+          },
+          "decisive_clue": "forty laser profilometry scans mapping clearance to five microns",
+          "reason": "Repeating laser scans to map tolerances down to five microns locks in pure technical perfectionism.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Grain-by-grain ultrasonic chiseling and laser scanning accurate to five microns narrow the focus to physical precision.",
+      "feedback_deep": "Gabriel's initial cleaning narrows into surgical physical conservation. His use of micro-chisels and micron-scale laser scans involves no ethical questions, confirming the non-moral technical descriptor.",
+      "contrast_rule": "Micron-scale laser profiling points here; ethical integrity points to the other.",
+      "hint": "Observe how Gabriel's tools and measurements become progressively finer and more mechanical."
+    },
+    {
+      "id": "scrupulous-meticulous_015",
+      "domain": "academic_publishing",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Dr. Weber's attribution of authorship for the patent is: ___",
+      "beats": [
+        {
+          "text": "Department chair Dr. Lukas Weber inspects the laboratory notebooks of five graduate researchers to draft the contributor list for a breakthrough biofuel patent.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.75,
+            "meticulous": 0.62
+          },
+          "decisive_clue": "auditing contributor logs to establish patent authorship",
+          "reason": "Reviewing lab logs to assign patent credit could be administrative diligence, but it touches fairness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "He discovers that a visiting apprentice from Kenya conceived the fundamental chemical catalyst in a preliminary sketch, though she left before final synthesis.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.9,
+            "meticulous": 0.22
+          },
+          "decisive_clue": "identifying an absent foreign student as the core intellectual originator",
+          "reason": "Recognizing an apprentice's intellectual contribution narrows the situation toward academic fairness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Overriding university administrators who want to omit the departed student to retain all patent royalties locally, Lukas names her lead co-inventor with an equal revenue share.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.98,
+            "meticulous": 0.05
+          },
+          "decisive_clue": "naming the student lead inventor against administrative royalty pressure",
+          "reason": "Defending an absent student's rightful credit against institutional greed is an act of strict ethical justice.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ensuring an absent apprentice receives lead patent credit and royalties despite university resistance narrows the trait to moral fairness.",
+      "feedback_deep": "Lukas moves from examining lab notes to defending an absent student's intellectual rights. By standing up to university administrators to ensure fair financial and academic credit, his action is governed by moral conscience.",
+      "contrast_rule": "Defending equitable credit against institutional greed points here; record organization points to the other.",
+      "hint": "Watch how Lukas handles the question of who truly deserves credit and revenue."
+    },
+    {
+      "id": "scrupulous-meticulous_016",
+      "domain": "journalism",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "Hanna's layout and proofreading of the daily newspaper is: ___",
+      "beats": [
+        {
+          "text": "Production editor Hanna Kowalska inspects page proofs of the morning daily with a pica ruler, ensuring column widths measure exactly fourteen picas and headline margins align across five spreads.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.14,
+            "meticulous": 0.93
+          },
+          "decisive_clue": "measuring fourteen-pica column widths and aligning five spreads",
+          "reason": "Measuring column widths and margins with a pica ruler exemplifies exhaustive visual alignment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "While proofreading a political report, she notices a potentially biased sentence attacking a senator's character and pauses to wonder if the wording violates fair-reporting standards.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.35,
+            "meticulous": 0.83
+          },
+          "decisive_clue": "momentary hesitation over whether article wording meets fair-reporting standards",
+          "reason": "Her ethical reflection is a temporary distraction; her actual duty remains verifying typography and house style rules.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "She passes the legal question to the city desk and focuses on resetting three dropped capital letters, adjusting character tracking by one percent so the ink density appears seamless.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.09,
+            "meticulous": 0.96
+          },
+          "decisive_clue": "resetting dropped capitals and adjusting tracking by one percent",
+          "reason": "Resetting dropped capitals and tracking typography confirms her enduring focus on visual and mechanical precision.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A passing thought about fair reporting cannot obscure that pica measurements and one-percent tracking adjustments define her work.",
+      "feedback_deep": "Hanna briefly considers editorial bias, creating a plausible false shift toward ethics. However, her responsibility and actions center on pica rulers, dropped capitals, and font tracking, keeping the precision descriptor accurate.",
+      "contrast_rule": "Exhaustive layout and typographical adjustments point here; moral governance points to the other.",
+      "hint": "Notice which task Hanna actually carries out after her brief editorial hesitation."
+    },
+    {
+      "id": "scrupulous-meticulous_017",
+      "domain": "household",
+      "transfer": true,
+      "chain_type": "false_shift",
+      "difficulty": 3,
+      "frame": "Uncle Kwesi's administration of the family reunion fund is: ___",
+      "beats": [
+        {
+          "text": "Uncle Kwesi collects cash dues from forty family members for an upcoming anniversary banquet, writing out numbered, carbon-copy receipts for every banknote and placing them into a designated trust box.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.92,
+            "meticulous": 0.22
+          },
+          "decisive_clue": "carbon-copy receipts safeguarding relatives' shared cash trust",
+          "reason": "Safeguarding family funds with duplicate receipts reflects honesty and protective ethical custody.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Before heading to the market, he flattens each bill with a warm iron, organizing the bank notes into neat stacks sorted by denomination and serial number sequence.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.82,
+            "meticulous": 0.44
+          },
+          "decisive_clue": "ironing bills and sorting serial numbers neatly",
+          "reason": "Ironing notes and sorting serial numbers looks like obsessive tidiness, but the underlying trait is ethical stewardship.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "After purchasing groceries, Kwesi calculates a remaining surplus of forty-three dollars and sends an itemized audit sheet with individual cash envelopes containing exact two-dollar refunds to every contributor.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.97,
+            "meticulous": 0.12
+          },
+          "decisive_clue": "itemized audit and returning exact two-dollar surpluses to every relative",
+          "reason": "Refusing to pocket even petty surplus funds and returning exact change reinforces uncompromising honesty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ironing banknotes is a tidy distraction, but returning exact surplus cash with an itemized family audit confirms moral honesty.",
+      "feedback_deep": "Kwesi's ironed bills and neat stacks look like obsessive orderliness, tempting a shift toward precision. But returning every cent of surplus cash with complete transparency confirms his core trait is ethical honesty.",
+      "contrast_rule": "Transparent stewardship and returning surplus money point here; neat physical sorting points to the other.",
+      "hint": "Look past the ironed banknotes to Kwesi's ultimate handling of the remaining family cash."
+    },
+    {
+      "id": "scrupulous-meticulous_018",
+      "domain": "relationships",
+      "transfer": true,
+      "chain_type": "reframe",
+      "difficulty": 3,
+      "frame": "Chloe's planning of the weekend holiday with Sam is: ___",
+      "beats": [
+        {
+          "text": "Before their weekend trip, Chloe promises Sam that everything will be completely fair, ensuring that expenses, driving shifts, and restaurant choices are balanced equally so neither feels exploited.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.91,
+            "meticulous": 0.2
+          },
+          "decisive_clue": "promising absolute equality and fair sharing of trip burdens",
+          "reason": "Framing vacation planning around equality and avoiding exploitation highlights fairness and mutual respect.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "When Sam opens her travel binder, he finds a laminated schedule dividing their weekend into seven-minute slots, complete with color-coded walking routes, designated photo stops, and pre-calculated transit intervals.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.2,
+            "meticulous": 0.93
+          },
+          "decisive_clue": "laminated travel binder scheduling seven-minute time slots",
+          "reason": "Reframing: the trip is not governed by ethical equity, but by rigid, micro-detailed chronological planning.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "She sets recurring vibration alerts on her wristwatch to regulate how long they can look at each painting in the gallery, adjusting their walking stride to stay on schedule.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.06,
+            "meticulous": 0.97
+          },
+          "decisive_clue": "timed wristwatch alarms regulating gallery viewing to the minute",
+          "reason": "Using alarms to regulate walking speed and gallery minutes confirms obsessive, non-moral micro-organization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Reframing fair vacation sharing into seven-minute laminated schedules and timed wristwatch alerts reveals hyper-detailed micro-organization.",
+      "feedback_deep": "Chloe initially sounds concerned with relationship fairness and equal burdens. However, revealing her laminated itinerary and timed gallery alerts reframes the situation into obsessive procedural scheduling, demanding the precision word.",
+      "contrast_rule": "Minute scheduling and rigid time slots point here; ethical fairness and equality point to the other.",
+      "hint": "Notice how Chloe's claim of relationship fairness turns out to be an obsessive micro-schedule."
+    },
+    {
+      "id": "scrupulous-meticulous_019",
+      "domain": "sport",
+      "transfer": true,
+      "chain_type": "corrupt",
+      "difficulty": 3,
+      "frame": "Coach Mei-Ling's preparation of the archery tournament bows is: ___",
+      "beats": [
+        {
+          "text": "National archery coach Mei-Ling Zhao inspects her squad's competition equipment, reminding her athletes that honoring tournament guidelines and sportsmanship is paramount.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.92,
+            "meticulous": 0.18
+          },
+          "decisive_clue": "preaching strict adherence to tournament rules and sportsmanship",
+          "reason": "Emphasizing sportsmanship and official guidelines presents an initial appearance of ethical respect.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "In her private workshop, she uses a micrometer to shave carbon bow stabilizers by fractions of a millimeter, exploiting an uncalibrated gap in the federation's scale tolerance to gain illegal speed.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.12,
+            "meticulous": 0.94
+          },
+          "decisive_clue": "shaving bow stabilizers with micrometers to evade inspection sensors",
+          "reason": "Corrupted: the facade of sportsmanship collapses into calculating, micro-engineered cheating; cannot be scrupulous.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "She calibrates arrow fletching angles down to tenths of a degree with laser levels, noting subtle adjustments in a coded notebook so inspectors cannot detect the modifications.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.05,
+            "meticulous": 0.97
+          },
+          "decisive_clue": "calibrating fletching angles to tenths of a degree to conceal illegal changes",
+          "reason": "Painstaking, amoral execution of an illegal modification highlights precision decoupled from moral integrity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Using micrometers and laser levels to execute undetectable illegal bow modifications corrupts sportsmanship into amoral technical precision.",
+      "feedback_deep": "Mei-Ling begins with lofty rhetoric about sportsmanship. But when she uses micrometers and laser levels to conceal illegal bow modifications, her ethical claim is corrupted. Because an act of cheating cannot be honest, the non-moral precision word fits.",
+      "contrast_rule": "Painstaking technical craft serving an illicit scheme points here; genuine moral integrity points to the other.",
+      "hint": "Consider whether Mei-Ling's micro-adjustments represent honest sportsmanship or meticulous cheating."
+    },
+    {
+      "id": "scrupulous-meticulous_020",
+      "domain": "travel",
+      "transfer": true,
+      "chain_type": "precision",
+      "difficulty": 3,
+      "frame": "Tariq's conduct while leading the Himalayan sanctuary trek is: ___",
+      "beats": [
+        {
+          "text": "Mountain guide Tariq Al-Mansoor organizes gear for a high-altitude expedition, weighing every supply sack with a digital suspension scale to balance pack loads across the pack mules.",
+          "best_word": "meticulous",
+          "fit": {
+            "scrupulous": 0.22,
+            "meticulous": 0.93
+          },
+          "decisive_clue": "balancing supply sack weights on digital scales for expedition mules",
+          "reason": "Weighing expedition bags and balancing pack loads is a methodical operational task.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "scrupulous": "M2"
+          }
+        },
+        {
+          "text": "While crossing an alpine pass, he catches a wealthy trekker prying a sacred inscribed prayer tablet from an ancient monastery wall to keep as an illicit souvenir.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.94,
+            "meticulous": 0.18
+          },
+          "decisive_clue": "confronting a wealthy client who stole a sacred cultural artifact",
+          "reason": "The situation sharpens from pack logistics into a moral crisis involving cultural desecration and theft.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "text": "Tariq confiscates the tablet, hikes four hours back in a snowstorm to return it to the monastery monks, and permanently expels the paying client from the trek.",
+          "best_word": "scrupulous",
+          "fit": {
+            "scrupulous": 0.98,
+            "meticulous": 0.06
+          },
+          "decisive_clue": "hiking back through a snowstorm to return stolen relics and expelling the client",
+          "reason": "Enduring severe hardship to return stolen cultural heritage and forfeiting fees reflects deep moral honor.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Hiking through a snowstorm to return a stolen monastery relic and expelling a paying client demonstrates uncompromising moral conscience.",
+      "feedback_deep": "Tariq begins with thorough gear weighing, but the scenario sharpens into an ethical confrontation. Hiking through a storm to restore a stolen sacred artifact at personal financial cost places his conduct firmly in the realm of moral uprightness.",
+      "contrast_rule": "Enduring hardship to restore stolen cultural heritage points here; weighing expedition packs points to the other.",
+      "hint": "Watch how Tariq responds when a client violates the ethics of the sacred sanctuary."
+    }
+  ]
+}

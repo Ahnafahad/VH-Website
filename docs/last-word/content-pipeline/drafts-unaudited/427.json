@@ -1,0 +1,1345 @@
+{
+ "set_id": "colloquial-slang",
+ "source_pair_id": 427,
+ "words": [
+  {
+   "word": "colloquial",
+   "sense": "Standard informal usage",
+   "concise_meaning": "Characteristic of everyday, relaxed, but standard spoken English.",
+   "connotation": "Friendly, approachable, natural, not offensive.",
+   "register": "Informal but socially acceptable in common settings.",
+   "grammar": "Often uses contractions or flexible phrasings.",
+   "collocations": [
+    "colloquial language",
+    "colloquial expression",
+    "colloquial speech",
+    "use a colloquial tone"
+   ],
+   "misconceptions": [
+    "mistaken for slang because it is informal"
+   ]
+  },
+  {
+   "word": "slang",
+   "sense": "Non-standard, restricted usage",
+   "concise_meaning": "Highly informal, often ephemeral vocabulary of a specific group.",
+   "connotation": "Edgy, intimate, potentially exclusionary, often cool.",
+   "register": "Very informal, restricted to specific contexts or groups.",
+   "grammar": "Creative, deviates from established grammar, often coined.",
+   "collocations": [
+    "use slang",
+    "teen slang",
+    "internet slang",
+    "pick up new slang"
+   ],
+   "misconceptions": [
+    "mistaken for colloquial because it is spoken"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "standardization",
+   "description": "How universally accepted the term is (accepted by broad society vs. restricted to a subculture)."
+  },
+  {
+   "id": "permanence",
+   "description": "Likelihood of lasting in the language (well-established vs. quickly changing)."
+  },
+  {
+   "id": "exclusivity",
+   "description": "Whether the term includes broad speakers or functions as a marker for a specific group identity."
+  }
+ ],
+ "edge": {
+  "a": "colloquial",
+  "b": "slang",
+  "boundary_rule": "Use colloquial for casual, standard, everyday speech; use slang for non-standard, restricted, group-specific, or ephemeral terms.",
+  "clues_a": [
+   "standard conversational",
+   "everyday vocabulary",
+   "understood by most speakers",
+   "socially neutral informal"
+  ],
+  "clues_b": [
+   "highly restricted usage",
+   "ephemeral",
+   "subcultural jargon",
+   "non-standard"
+  ],
+  "irrelevant_clues": [
+   "just being spoken",
+   "being relaxed",
+   "using contractions",
+   "being funny"
+  ],
+  "misconceptions": {
+   "M1": "Assuming anything spoken is slang.",
+   "M2": "Assuming anything informal is slang.",
+   "M3": "Assuming slang is just a synonym for bad grammar."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "colloquial": [
+    "She told me, 'I'm kinda tired,' as she sat down.",
+    "It's a colloquial way of saying hello.",
+    "They just had a chat about the weekend.",
+    "He's a nice guy, very easy to talk to.",
+    "Give me a sec; I'll be right back.",
+    "We're gonna head out soon."
+   ],
+   "slang": [
+    "The gamers called the new player a noob.",
+    "She's totally ghosting him, which is so mean.",
+    "That outfit is lit, everyone was talking about it.",
+    "I'm feeling kind of sus about this whole situation.",
+    "Don't be salty just because you lost.",
+    "That's just internet slang that will fade away."
+   ]
+  },
+  "counter": {
+   "colloquial": [
+    "The skaters called the trick a 'kickflip' (slang is better here).",
+    "They used a lot of weird internet slang in their presentation.",
+    "He kept calling everyone 'fam' in a weird way.",
+    "That new term is total subculture slang.",
+    "She was trying to use cool slang and looked silly.",
+    "They made up their own secret code."
+   ],
+   "slang": [
+    "It was a relaxed, standard way of speaking to a friend.",
+    "The professor used a conversational tone for the lecture.",
+    "He was just being a bit informal, not using any jargon.",
+    "Their everyday speech was perfectly standard.",
+    "They were chatting in a natural, friendly manner.",
+    "It was just a casual remark, not jargon."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The phrase 'what's up' is now common in standard speech.",
+    "best_word": "colloquial",
+    "note": "While once potentially restricted, it has become standard informal."
+   },
+   {
+    "text": "The word 'cap' to mean lie is definitely not standard.",
+    "best_word": "slang",
+    "note": "It is highly ephemeral and specific to a demographic."
+   },
+   {
+    "text": "He said 'I'm gonna be late' to his boss.",
+    "best_word": "colloquial",
+    "note": "Contractions like 'gonna' are standard informal."
+   },
+   {
+    "text": "The teenagers said the plan was 'mid' and left.",
+    "best_word": "slang",
+    "note": "This is a restricted, subcultural use."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "colloquial-slang_001",
+   "domain": "short dialogue",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How Marcus describes his meeting with his brother: ___",
+   "beats": [
+    {
+     "text": "Marcus told me, 'Yeah, we just hung out and watched TV.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "It's standard conversational English, not niche.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Marcus added, 'I mean, it wasn't super formal, just comfy.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.2
+     },
+     "decisive_clue": "comfy",
+     "reason": "Still perfectly standard, just casual.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    }
+   ],
+   "feedback_short": "It's standard conversational language. 'Hung out' and 'comfy' are common, standard, informal, not restricted to any group.",
+   "feedback_deep": "Even though it's informal, it's widely used and perfectly understood across all standard English speakers. Slang is restricted, niche, or subcultural, which this is not.",
+   "contrast_rule": "Colloquial is for everyone's casual conversation; slang is for specific groups.",
+   "hint": "Is this word used by everyone in casual settings?"
+  },
+  {
+   "id": "colloquial-slang_002",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Sanaa talks about her boyfriend: ___",
+   "beats": [
+    {
+     "text": "Sanaa said, 'We're doing okay, just taking it easy.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Common, relaxed, standard phrase.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Sanaa whispered, 'Honestly, he's just kinda sus lately.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.3,
+      "slang": 0.9
+     },
+     "decisive_clue": "sus",
+     "reason": "This is a restricted, subcultural term.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The word 'sus' is restricted to subcultural use.",
+   "feedback_deep": "The first beat was standard informal. The second beat introduced 'sus', which is highly informal, non-standard, and restricted to specific age groups/internet communities.",
+   "contrast_rule": "If it's in the dictionary as 'informal', it's colloquial. If it's a specific, temporary subcultural term, it's slang.",
+   "hint": "Is 'sus' standard vocabulary?"
+  },
+  {
+   "id": "colloquial-slang_003",
+   "domain": "public situations",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "What the tour guide told the group: ___",
+   "beats": [
+    {
+     "text": "The guide said, 'Don't worry, it's gonna be a fun day.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Casual, standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "The guide added, 'Just don't go wandering off, okay?'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "still colloquial",
+     "reason": "Still standard, just friendly.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is casual standard English.",
+   "feedback_deep": "Nothing here is restricted to a niche group. It's just a friendly, relaxed, conversational way of giving instructions to tourists.",
+   "contrast_rule": "Relaxed does not equal slang.",
+   "hint": "Would a broad audience understand this?"
+  },
+  {
+   "id": "colloquial-slang_004",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How Yuki talks about his chores: ___",
+   "beats": [
+    {
+     "text": "Yuki said, 'Yeah, I'll do it in a sec, promise.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Yuki sighed, 'I just really don't wanna do it right now.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "wanna",
+     "reason": "Contractions are colloquial, not slang.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Contractions are standard in speech.",
+   "feedback_deep": "Words like 'wanna' are common, standard English in spoken form. They aren't restricted to any group.",
+   "contrast_rule": "Spoken informal is not always slang.",
+   "hint": "Are contractions slang?"
+  },
+  {
+   "id": "colloquial-slang_005",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Leo describes his friend's performance: ___",
+   "beats": [
+    {
+     "text": "Leo said, 'He played okay, just had a tough time.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Leo grinned, 'But honestly, he was totally throwing the game.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.2,
+      "slang": 0.95
+     },
+     "decisive_clue": "throwing the game",
+     "reason": "This is specific gaming jargon.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Throwing' is specific gaming jargon.",
+   "feedback_deep": "The first beat was standard conversational English. The second used 'throwing the game,' which is specific, restricted terminology used in gaming culture.",
+   "contrast_rule": "Standard casual English vs. subcultural jargon.",
+   "hint": "Is 'throwing' used in general conversation outside of gaming?"
+  },
+  {
+   "id": "colloquial-slang_006",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "How Aisha talks about her hotel: ___",
+   "beats": [
+    {
+     "text": "Aisha said, 'It's a bit pricey, but the view is great.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard casual.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Aisha laughed, 'Yeah, really not a bargain, but definitely nice.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "bargain",
+     "reason": "Standard.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is standard conversational English.",
+   "feedback_deep": "Even if casual, it's widely understood and not niche. It's standard vocabulary used in everyday life.",
+   "contrast_rule": "Common, widely used language is colloquial.",
+   "hint": "Is this phrase widely understood?"
+  },
+  {
+   "id": "colloquial-slang_007",
+   "domain": "short dialogue",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Mateo describes his boss's mood: ___",
+   "beats": [
+    {
+     "text": "Mateo said, 'He seems kind of upset today.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Mateo whispered, 'Yeah, totally salty about the meeting.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.2,
+      "slang": 0.95
+     },
+     "decisive_clue": "salty",
+     "reason": "Niche/restricted term.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Salty' is a restricted, subcultural term.",
+   "feedback_deep": "The first beat was standard conversational English. The second introduced 'salty,' which is non-standard, restricted to internet and peer culture, and not universally accepted.",
+   "contrast_rule": "Restricted subcultural terms = slang.",
+   "hint": "Is 'salty' standard English?"
+  },
+  {
+   "id": "colloquial-slang_008",
+   "domain": "abstract argument",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "How Elena describes the new policy: ___",
+   "beats": [
+    {
+     "text": "Elena said, 'It's pretty confusing for most people.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Elena continued, 'Yeah, I just don't get the point of it.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "still colloquial",
+     "reason": "Standard casual.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is standard, casual conversational language.",
+   "feedback_deep": "The entire exchange is standard. It uses common phrasings and contractions, not niche or restricted vocabulary.",
+   "contrast_rule": "Standard informal = colloquial.",
+   "hint": "Would a news presenter use this in an informal segment?"
+  },
+  {
+   "id": "colloquial-slang_009",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Kenji describes his friend's excuse: ___",
+   "beats": [
+    {
+     "text": "Kenji said, 'I think he just made a lame excuse.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Kenji shook his head, 'Totally cap, if you ask me.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.2,
+      "slang": 0.95
+     },
+     "decisive_clue": "cap",
+     "reason": "Niche/subcultural term.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Cap' is a non-standard, restricted term.",
+   "feedback_deep": "The first beat was standard. 'Cap' is a very specific, internet-slang term for lying, not standard English.",
+   "contrast_rule": "Standard casual vs. subcultural restricted jargon.",
+   "hint": "Is 'cap' widely understood by all age groups?"
+  },
+  {
+   "id": "colloquial-slang_010",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Sarah describes her friend's style: ___",
+   "beats": [
+    {
+     "text": "Sarah said, 'She really has a unique way of doing things.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Sarah smirked, 'Yeah, her style is totally cracked.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.2,
+      "slang": 0.95
+     },
+     "decisive_clue": "cracked",
+     "reason": "Gaming/subcultural jargon.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Cracked' is restricted to gaming culture.",
+   "feedback_deep": "The first beat is standard. 'Cracked' is specific subcultural jargon (meaning exceptionally good at a game/skill), not standard English.",
+   "contrast_rule": "Standard English vs. restricted jargon.",
+   "hint": "Is 'cracked' used for skill in general English?"
+  },
+  {
+   "id": "colloquial-slang_011",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Tariq describes his busy weekend: ___",
+   "beats": [
+    {
+     "text": "Tariq said, 'It's really been a crazy couple of days.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Tariq added, 'I'm just totally zapped, honestly.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.5,
+      "slang": 0.8
+     },
+     "decisive_clue": "zapped",
+     "reason": "Informal term but leaning into slang for tired.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Zapped' is a bit informal, bordering on slang.",
+   "feedback_deep": "The first beat was standard. 'Zapped' is highly informal and specific, often bordering on slang for being tired, though less restricted than others.",
+   "contrast_rule": "If it's more specific than standard informal terms, it often leans toward slang.",
+   "hint": "Is 'zapped' common standard English?"
+  },
+  {
+   "id": "colloquial-slang_012",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Priya describes her new apartment: ___",
+   "beats": [
+    {
+     "text": "Priya said, 'It's small, but I think it's pretty cozy.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Priya grinned, 'Yeah, just a bit of a vibey spot.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.2,
+      "slang": 0.95
+     },
+     "decisive_clue": "vibey",
+     "reason": "Non-standard, restricted.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Vibey' is non-standard, restricted jargon.",
+   "feedback_deep": "First beat standard casual. 'Vibey' is an informal, non-standard, and restricted term used to describe a place or atmosphere.",
+   "contrast_rule": "Restricted terms for atmosphere = slang.",
+   "hint": "Would a broad demographic use 'vibey'?"
+  },
+  {
+   "id": "colloquial-slang_013",
+   "domain": "short dialogue",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "How Jin describes his friend's jokes: ___",
+   "beats": [
+    {
+     "text": "Jin said, 'They're just kind of silly sometimes.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Jin chuckled, 'Yeah, they make me laugh, though.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard",
+     "reason": "Still standard.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is standard casual English.",
+   "feedback_deep": "The entire exchange uses everyday, standard language. No restricted or niche vocabulary is used.",
+   "contrast_rule": "Standard casual = colloquial.",
+   "hint": "Is this phrase widely understood?"
+  },
+  {
+   "id": "colloquial-slang_014",
+   "domain": "abstract argument",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "How Omar describes his opinion on the movie: ___",
+   "beats": [
+    {
+     "text": "Omar said, 'It wasn't really my favorite thing.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    },
+    {
+     "text": "Omar added, 'Actually, I think it was a bit boring.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard",
+     "reason": "Still standard.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is standard, conversational English.",
+   "feedback_deep": "There is nothing non-standard or restricted here. It's just casual conversation using standard English.",
+   "contrast_rule": "Standard informal = colloquial.",
+   "hint": "Is there anything niche or non-standard here?"
+  },
+  {
+   "id": "colloquial-slang_015",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How Chloe talks about her friends: ___",
+   "beats": [
+    {
+     "text": "Chloe said, 'We just like to hang out and chat.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Chloe grinned, 'Yeah, they're basically my best buds.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "buds",
+     "reason": "Very common informal.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is common, standard informal.",
+   "feedback_deep": "Both 'hang out' and 'buds' are widely used in standard conversational English. They aren't restricted to a niche group.",
+   "contrast_rule": "Standard casual = colloquial.",
+   "hint": "Is 'buds' restricted jargon?"
+  },
+  {
+   "id": "colloquial-slang_016",
+   "domain": "short dialogue",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "How Hina describes her day: ___",
+   "beats": [
+    {
+     "text": "Hina said, 'Oh, it was a totally packed day.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Hina added, 'I felt so run-down by the end of it.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "run-down",
+     "reason": "Standard informal.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M2"
+     }
+    }
+   ],
+   "feedback_short": "This is standard, conversational English.",
+   "feedback_deep": "The word 'run-down' is common, standard English. It is not slang.",
+   "contrast_rule": "Relaxed informal = colloquial.",
+   "hint": "Is 'run-down' restricted jargon?"
+  },
+  {
+   "id": "colloquial-slang_017",
+   "domain": "public situations",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "How Liam describes his friend's joke: ___",
+   "beats": [
+    {
+     "text": "Liam said, 'It was just a bit of a weird joke.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Liam shrugged, 'Yeah, definitely not my type of humor.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard",
+     "reason": "Standard.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is standard, casual conversational language.",
+   "feedback_deep": "Nothing here is restricted to a niche group. It's just casual conversation using standard English.",
+   "contrast_rule": "Standard casual = colloquial.",
+   "hint": "Would a wide audience understand this?"
+  },
+  {
+   "id": "colloquial-slang_018",
+   "domain": "relationships",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "How Bella talks about her new colleague: ___",
+   "beats": [
+    {
+     "text": "Bella said, 'He seems pretty easy to work with.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Bella whispered, 'Actually, he's kind of a total noob.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.1,
+      "slang": 0.95
+     },
+     "decisive_clue": "noob",
+     "reason": "Restricted jargon.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Noob' is restricted, subcultural jargon.",
+   "feedback_deep": "First beat standard. 'Noob' is very specific gaming jargon for a beginner, definitely not standard English.",
+   "contrast_rule": "Restricted jargon = slang.",
+   "hint": "Is 'noob' standard?"
+  },
+  {
+   "id": "colloquial-slang_019",
+   "domain": "travel",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "How Hans describes his friend's outfit: ___",
+   "beats": [
+    {
+     "text": "Hans said, 'It's a really bold choice for today.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "Hans grinned, 'Yeah, but it's totally lit, honestly.'",
+     "best_word": "slang",
+     "fit": {
+      "colloquial": 0.2,
+      "slang": 0.95
+     },
+     "decisive_clue": "lit",
+     "reason": "Niche/restricted term.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "colloquial": "M1"
+     }
+    }
+   ],
+   "feedback_short": "'Lit' is a restricted, subcultural term.",
+   "feedback_deep": "First beat standard conversational. 'Lit' is highly informal, subcultural slang for cool/great, not standard English.",
+   "contrast_rule": "Subcultural terms = slang.",
+   "hint": "Is 'lit' standard?"
+  },
+  {
+   "id": "colloquial-slang_020",
+   "domain": "public situations",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "What the speaker said about the new trend: ___",
+   "beats": [
+    {
+     "text": "The speaker said, 'It's a weird way to do it.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.9,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard informal",
+     "reason": "Standard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M1"
+     }
+    },
+    {
+     "text": "The speaker clarified, 'It just feels like unnecessary jargon.'",
+     "best_word": "colloquial",
+     "fit": {
+      "colloquial": 0.95,
+      "slang": 0.1
+     },
+     "decisive_clue": "standard",
+     "reason": "Standard.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "slang": "M3"
+     }
+    }
+   ],
+   "feedback_short": "This is standard, conversational English.",
+   "feedback_deep": "The speaker is using standard English to describe something else as jargon. There is nothing non-standard or restricted in the speaker's own phrasing.",
+   "contrast_rule": "Standard informal = colloquial.",
+   "hint": "Is the speaker using non-standard words?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

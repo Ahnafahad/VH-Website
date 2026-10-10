@@ -1,0 +1,1455 @@
+{
+ "set_id": "exonerate-extenuate",
+ "source_pair_id": 66,
+ "words": [
+  {
+   "word": "exonerate",
+   "sense": "To officially prove someone is not responsible for an alleged action.",
+   "concise_meaning": "To declare not guilty or not responsible.",
+   "connotation": "Positive, definitive, vindicating.",
+   "register": "Formal, legal, procedural.",
+   "grammar": "Verb, usually passive in common usage (was exonerated).",
+   "collocations": [
+    "fully exonerated",
+    "evidence exonerates",
+    "exonerate the suspect",
+    "exonerate completely"
+   ],
+   "misconceptions": [
+    "Used to mean 'to explain why something happened'."
+   ]
+  },
+  {
+   "word": "extenuate",
+   "sense": "To reduce the perceived seriousness of a guilty act without removing the guilt.",
+   "concise_meaning": "To lessen the severity or make less blameworthy.",
+   "connotation": "Cautious, explanatory, mitigating.",
+   "register": "Formal, academic, legalistic.",
+   "grammar": "Verb, usually found in the phrase 'extenuating circumstances'.",
+   "collocations": [
+    "extenuating circumstances",
+    "attempt to extenuate",
+    "factors that extenuate",
+    "none to extenuate"
+   ],
+   "misconceptions": [
+    "Used to mean 'to make an excuse for someone's character'."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "guilt_status",
+   "description": "Whether the person is removed of all blame (exonerate) vs. partially justified but still guilty (extenuate)."
+  },
+  {
+   "id": "response_to_fault",
+   "description": "Vindication (exonerate) vs. Mitigation (extenuate)."
+  }
+ ],
+ "edge": {
+  "a": "exonerate",
+  "b": "extenuate",
+  "boundary_rule": "Use exonerate if the person is proven to have done nothing wrong; use extenuate if they committed a fault but have a reason that makes it less serious.",
+  "clues_a": [
+   "No evidence found",
+   "Proof of innocence",
+   "Total removal of blame",
+   "Official acquittal"
+  ],
+  "clues_b": [
+   "Evidence exists",
+   "Mitigating factors present",
+   "Admission of action",
+   "Lessening the weight of guilt"
+  ],
+  "irrelevant_clues": [
+   "The speaker's anger",
+   "The person's reputation",
+   "The duration of the event"
+  ],
+  "misconceptions": {
+   "M1": "Assuming exonerate means to just explain an action.",
+   "M2": "Assuming extenuate means the person is innocent.",
+   "M3": "Confusing mitigation with full acquittal."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "exonerate": [
+    "The new forensic evidence served to exonerate the accused man immediately.",
+    "The investigation was designed to exonerate anyone who had been wrongly accused.",
+    "After years in prison, the final appeal finally managed to exonerate her.",
+    "The manager was exonerated of any wrongdoing following the internal audit.",
+    "The documents provided were sufficient to exonerate him from the charge.",
+    "They hoped the witness testimony would exonerate the primary suspect."
+   ],
+   "extenuate": [
+    "Nothing can extenuate the cruelty of his actions, regardless of his background.",
+    "While his poverty might extenuate the theft, it cannot fully justify it.",
+    "The lawyer argued that the defendant's youth helped extenuate the gravity of the offense.",
+    "He searched for some fact to extenuate his mistake in front of the board.",
+    "The circumstances were meant to extenuate the impact of his late report.",
+    "She knew that trying to extenuate her error would only make her seem dishonest."
+   ]
+  },
+  "counter": {
+   "exonerate": [
+    "His difficult childhood helped extenuate his behavior, not exonerate it.",
+    "The evidence did not exonerate him, but it did suggest a lighter sentence.",
+    "She attempted to exonerate her mistake by blaming the server, which didn't work.",
+    "The judge refused to exonerate the defendant despite the mitigating factors.",
+    "The report failed to exonerate the firm from all responsibility.",
+    "Even with an apology, they couldn't exonerate his blatant disregard for safety."
+   ],
+   "extenuate": [
+    "The security footage was enough to extenuate the suspect and close the case.",
+    "When the true culprit confessed, they had to extenuate the man who was held.",
+    "The evidence served to extenuate him from all charges.",
+    "The internal investigation was meant to extenuate her of any blame.",
+    "The goal was not just to extenuate the employee, but to fire the guilty party.",
+    "The witness provided proof that served to extenuate the prisoner entirely."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The director claimed that his lack of sleep was a factor that would ___ the severity of the mistake.",
+    "best_word": "extenuate",
+    "note": "The mistake happened (it's not denied), but the factor is meant to reduce the weight of it."
+   },
+   {
+    "text": "The DNA results arrived, and they were the final piece of evidence to ___ him.",
+    "best_word": "exonerate",
+    "note": "DNA results in a criminal case are typically used to prove innocence."
+   },
+   {
+    "text": "The jury felt that his apology did little to ___ his choice to break the rules.",
+    "best_word": "extenuate",
+    "note": "The breaking of the rules is admitted, the apology is just a (failed) mitigation attempt."
+   },
+   {
+    "text": "The oversight board chose to ___ her after finding that all procedures were followed correctly.",
+    "best_word": "exonerate",
+    "note": "Procedures being followed means no wrongdoing, hence full clearing of blame."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "exonerate-extenuate_001",
+   "domain": "academic",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How the board viewed Prof. Aris's missing research data: ___",
+   "beats": [
+    {
+     "text": "The faculty board accused Professor Aris of intentionally deleting his own research data.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.3,
+      "extenuate": 0.2
+     },
+     "decisive_clue": "accused of intentionally deleting",
+     "reason": "The initial accusation sets the need for being cleared of blame.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    },
+    {
+     "text": "IT logs showed a server failure occurred, not a deletion. The board stated the evidence would now ___ him.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "server failure, not a deletion",
+     "reason": "The proof of innocence makes him fully cleared of blame.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The IT logs proved he did not delete the data, meaning he is innocent of the charge.",
+   "feedback_deep": "The IT logs replaced the allegation of intentional deletion with proof of a server failure. This proves Professor Aris's innocence, fulfilling the requirement for full acquittal, not just mitigation.",
+   "contrast_rule": "Exonerate is for innocence; extenuate is for guilty but less bad.",
+   "hint": "Look at whether the person is innocent or just less guilty."
+  },
+  {
+   "id": "exonerate-extenuate_002",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How the team treats Maria's budget error: ___",
+   "beats": [
+    {
+     "text": "Maria was blamed for a massive budget miscalculation that halted the project.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.4,
+      "extenuate": 0.3
+     },
+     "decisive_clue": "blamed for miscalculation",
+     "reason": "The team needs evidence to clear her name.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    },
+    {
+     "text": "She showed that the software used was faulty, causing the error. This information would ___ her.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.9,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "faulty software",
+     "reason": "If the software caused it, she isn't responsible.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    },
+    {
+     "text": "Wait, she knew the software was faulty but ignored warnings and used it anyway. She now hopes this fact will ___ the severity of the mistake.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.85
+     },
+     "decisive_clue": "ignored warnings",
+     "reason": "She *did* make the mistake; now she's just trying to soften the blame.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Knowing the software was faulty and ignoring warnings means she committed a fault; she is no longer innocent.",
+   "feedback_deep": "Initially, the error seemed to be the software's fault, which would clear Maria. However, when it was revealed she knew about the risk and used it anyway, the fault is now hers. The focus shifts to making the error seem less bad.",
+   "contrast_rule": "Faulty software means innocence; using it knowing it's faulty means guilt.",
+   "hint": "Did she make the mistake or did the software?"
+  },
+  {
+   "id": "exonerate-extenuate_003",
+   "domain": "sports",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The coach's defense of Jamil's foul in the game: ___",
+   "beats": [
+    {
+     "text": "Jamil committed a foul that ended the game. The coach insisted this action would not ___ his team's performance.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.6
+     },
+     "decisive_clue": "not [word] performance",
+     "reason": "This is a weak usage of extenuate (lessening the severity of the foul's impact).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 3,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "The referee's bad call actually led to the foul. The coach now says this helps ___ Jamil of responsibility.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.85,
+      "extenuate": 0.2
+     },
+     "decisive_clue": "led to the foul",
+     "reason": "If the referee's action caused the foul, Jamil is not to blame.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The referee's bad call removes Jamil's responsibility entirely.",
+   "feedback_deep": "The initial situation was about lessening the impact of a foul. When the referee's action is introduced as the *cause*, Jamil's fault is negated, which is the definition of exoneration.",
+   "contrast_rule": "If the fault was caused by someone else, you are exonerated.",
+   "hint": "Is the foul still a foul Jamil caused?"
+  },
+  {
+   "id": "exonerate-extenuate_004",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "Lila's reason for the broken vase: ___",
+   "beats": [
+    {
+     "text": "Lila admitted to breaking the vase but argued that the shelf was slippery.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.9
+     },
+     "decisive_clue": "admitted to breaking",
+     "reason": "She admits the action; she is just explaining the circumstances.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M2"
+     }
+    },
+    {
+     "text": "She added that she was cleaning at the time and the surface was unstable. She uses these factors to ___ her mistake.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.95
+     },
+     "decisive_clue": "uses these factors",
+     "reason": "These are classic mitigating circumstances.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Lila admitted breaking the vase, so she is looking to make her mistake seem less serious, not to clear her name.",
+   "feedback_deep": "Lila admits to the fault. She is not claiming innocence. Therefore, she is searching for factors that make the mistake seem like a less egregious act, fitting the definition of extenuating.",
+   "contrast_rule": "Admitting the action means extenuating, not exonerating.",
+   "hint": "Does she deny breaking it?"
+  },
+  {
+   "id": "exonerate-extenuate_005",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The airline's response to the passenger's luggage being lost: ___",
+   "beats": [
+    {
+     "text": "The passenger was furious about their lost luggage, and the airline initially refused to ___ the staff member responsible.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.5,
+      "extenuate": 0.2
+     },
+     "decisive_clue": "refused to [word] the staff",
+     "reason": "They haven't admitted the staff is innocent yet.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    },
+    {
+     "text": "However, they found the bag had actually been tagged for the wrong destination. They decided to ___ the staff member completely.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "tagged wrong by system",
+     "reason": "If the system tagged it, the staff member is not at fault.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    },
+    {
+     "text": "Wait, the staff member *had* noticed the wrong tag but ignored it, hoping it would be caught later. The airline now says they have no evidence to ___ the severity of the worker's decision.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.9
+     },
+     "decisive_clue": "ignored the tag",
+     "reason": "The staff member made a choice; now they are guilty.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Ignoring the wrong tag means the staff member is at fault, so you can only mitigate, not clear them.",
+   "feedback_deep": "When it seemed the system was at fault, exoneration was appropriate. But once the worker's negligent choice was revealed, the fault was theirs. Now, they are looking for factors to soften the blame, fitting extenuation.",
+   "contrast_rule": "Faulty systems exonerate; conscious negligence requires extenuation.",
+   "hint": "Was the worker's choice negligent?"
+  },
+  {
+   "id": "exonerate-extenuate_006",
+   "domain": "public_situation",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The witness's testimony about the bystander's role in the commotion: ___",
+   "beats": [
+    {
+     "text": "The witness stated the bystander pushed people during the panic.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.5
+     },
+     "decisive_clue": "pushed people",
+     "reason": "The bystander did something.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "But the witness added that the bystander only did it because they were being trampled from behind. This might ___ their actions.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.2,
+      "extenuate": 0.85
+     },
+     "decisive_clue": "trampled from behind",
+     "reason": "This is a mitigating circumstance, not an exonerating one.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Being trampled explains the pushing, but the pushing still happened, so it's a mitigation factor.",
+   "feedback_deep": "The pushing occurred. The fact that the person was being trampled explains *why*, but the action still occurred. This makes it a mitigating factor, fitting extenuation.",
+   "contrast_rule": "Explaining the motive doesn't mean innocence.",
+   "hint": "Did the person deny pushing?"
+  },
+  {
+   "id": "exonerate-extenuate_007",
+   "domain": "legal",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "How the court views the suspect's involvement in the bank error: ___",
+   "beats": [
+    {
+     "text": "The suspect was accused of transferring bank funds to a personal account.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.3,
+      "extenuate": 0.2
+     },
+     "decisive_clue": "accused of transferring",
+     "reason": "Need to prove innocence.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    },
+    {
+     "text": "It turns out the suspect was actually working on a authorized transaction. The bank wants to ___ them publicly.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "authorized transaction",
+     "reason": "Proof of authorization makes them not guilty.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    },
+    {
+     "text": "Wait, the transaction *was* unauthorized, but they did it to save the account from a bigger fraud attempt. Their lawyers argue this will ___ the situation.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.85
+     },
+     "decisive_clue": "unauthorized, but [good motive]",
+     "reason": "They admit it was unauthorized, so they are guilty of breaking policy, but they have a reason.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They admit the transaction was unauthorized, breaking the rules, so they aren't innocent, just justified.",
+   "feedback_deep": "The switch from an 'authorized transaction' to an 'unauthorized transaction done for a good motive' changes the suspect's status from innocent to guilty-with-a-justification. The latter requires extenuation, not exoneration.",
+   "contrast_rule": "Authorized = exonerated; unauthorized = extenuated.",
+   "hint": "Was the transaction authorized?"
+  },
+  {
+   "id": "exonerate-extenuate_008",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "How Sam defends the secret they told: ___",
+   "beats": [
+    {
+     "text": "Sam told their friend's secret to others, and now their friend is devastated.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.5
+     },
+     "decisive_clue": "told the secret",
+     "reason": "Sam did the act.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "Sam told their friend that they thought it was public information. They hope this will ___ their mistake.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.95
+     },
+     "decisive_clue": "thought it was public",
+     "reason": "A misunderstanding of the context is a mitigating factor, not a total defense.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Sam admit to telling the secret; their reasoning is just a mitigation attempt.",
+   "feedback_deep": "Sam committed the act. Their belief that it was public information is an *explanation* for why they made the mistake, not proof that they didn't do it. This fits mitigation.",
+   "contrast_rule": "You cannot be exonerated if you admit to the action.",
+   "hint": "Does Sam deny telling the secret?"
+  },
+  {
+   "id": "exonerate-extenuate_009",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The manager's view of the missed project deadline: ___",
+   "beats": [
+    {
+     "text": "The project was late, and the team was worried the manager would blame them.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.2,
+      "extenuate": 0.4
+     },
+     "decisive_clue": "late project",
+     "reason": "The project *was* late.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "The manager knew the deadline was unrealistic from the start. They said they would not hold it against the team. This was meant to ___ the team for their performance.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.8
+     },
+     "decisive_clue": "unrealistic deadline",
+     "reason": "The manager is lessening the blame on the team for the missed deadline.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The manager is reducing the blame on the team, but they aren't 'clearing' them of the fact that the project was late.",
+   "feedback_deep": "Even if the manager doesn't blame them, the project was still late. The manager is mitigating the team's fault by citing the unrealistic deadline. A false shift occurs if the player thinks 'not blaming' equals 'exonerating'.",
+   "contrast_rule": "Removing blame for a fault is still mitigation, not innocence.",
+   "hint": "Was the project on time?"
+  },
+  {
+   "id": "exonerate-extenuate_010",
+   "domain": "abstract_argument",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The author's argument regarding the character's choice: ___",
+   "beats": [
+    {
+     "text": "The character in the novel committed a crime for a supposedly noble reason.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.7
+     },
+     "decisive_clue": "committed a crime",
+     "reason": "Noble reason is for mitigation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "The author suggests that the system forced the character to act. This is used to ___ the character's guilt.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.95
+     },
+     "decisive_clue": "forced to act",
+     "reason": "This is a form of mitigation; it doesn't mean the crime didn't happen.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Being forced is a mitigating factor, but the character still committed the act.",
+   "feedback_deep": "The forced situation serves as a mitigating factor, making the crime less serious, but it is not an exoneration because the character *did* commit the crime.",
+   "contrast_rule": "If the action happened, you can only extenuate, not exonerate.",
+   "hint": "Is the crime still a crime?"
+  },
+  {
+   "id": "exonerate-extenuate_011",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "How the company views the worker's missed shift: ___",
+   "beats": [
+    {
+     "text": "The worker missed their shift and was given a written warning.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.6
+     },
+     "decisive_clue": "missed shift",
+     "reason": "The shift was missed.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "Then they found out the worker was in the hospital with a car accident. They retracted the warning to ___ the employee's situation.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.8
+     },
+     "decisive_clue": "retracted the warning",
+     "reason": "They still missed the shift, but they had a very good reason, making them less to blame.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The shift was still missed, but the medical emergency serves as a factor to lessen the blame.",
+   "feedback_deep": "The shift was missed (the fault). The accident provides a reason that makes the fault less serious, fitting extenuation. Exoneration would mean they didn't miss the shift at all.",
+   "contrast_rule": "Reason for a fault is extenuation.",
+   "hint": "Was the shift missed?"
+  },
+  {
+   "id": "exonerate-extenuate_012",
+   "domain": "public_situation",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The public's view of the leader's statement: ___",
+   "beats": [
+    {
+     "text": "The leader was blamed for making a divisive comment during the crisis.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.5
+     },
+     "decisive_clue": "divisive comment",
+     "reason": "The comment was made.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "Their aides argued the comment was taken out of context. They hoped to ___ the situation.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.95
+     },
+     "decisive_clue": "out of context",
+     "reason": "This is a mitigating factor.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M3"
+     }
+    },
+    {
+     "text": "Then video footage proved the leader never said the comment at all; it was a fabrication by a political rival. This proof will ___ the leader.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "never said it",
+     "reason": "If they never said it, they are not to blame.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Proving the comment was never made removes all blame, while explaining context only mitigates it.",
+   "feedback_deep": "Initial efforts focused on mitigating the impact of the comment (extenuate). Once it was proven the leader *never said it*, the entire fault was removed, requiring exoneration.",
+   "contrast_rule": "Proving innocence is exoneration; explaining behavior is extenuation.",
+   "hint": "Was the comment actually said?"
+  },
+  {
+   "id": "exonerate-extenuate_013",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The investigation of the warehouse fire: ___",
+   "beats": [
+    {
+     "text": "The warehouse fire was suspected to be the result of a worker's carelessness.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.3,
+      "extenuate": 0.2
+     },
+     "decisive_clue": "suspected carelessness",
+     "reason": "Need to prove innocence.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    },
+    {
+     "text": "The fire investigators found the fire started due to an electrical short in the building's wiring. This finding will ___ the worker.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "electrical short",
+     "reason": "An electrical fault removes the worker's responsibility for the fire.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The electrical fault proves the worker did not cause the fire, clearing them of blame.",
+   "feedback_deep": "The worker was blamed initially. The electrical short is proof that the worker was not responsible for starting the fire. This is a clear exoneration.",
+   "contrast_rule": "External causes for a disaster exonerate the suspect.",
+   "hint": "Did the worker start the fire?"
+  },
+  {
+   "id": "exonerate-extenuate_014",
+   "domain": "relationships",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The reason for not attending the birthday party: ___",
+   "beats": [
+    {
+     "text": "I didn't show up for my friend's birthday party, and I was feeling guilty.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.4
+     },
+     "decisive_clue": "didn't show up",
+     "reason": "The action was missed.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "I told them I had a sudden family emergency. I hope this will ___ my absence.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.95
+     },
+     "decisive_clue": "family emergency",
+     "reason": "The absence still occurred, but the reason makes it less blameworthy.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The absence was still missed, but the emergency lessens the blame.",
+   "feedback_deep": "The action (missing the party) occurred. The family emergency is an explanation that mitigates the blame. The absence was still a choice (or an unavoidable event), but it was not non-existent.",
+   "contrast_rule": "Reasons for an action mitigate it; innocence removes the action.",
+   "hint": "Did you go to the party?"
+  },
+  {
+   "id": "exonerate-extenuate_015",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The team's response to the client's complaint: ___",
+   "beats": [
+    {
+     "text": "The team was blamed for a client's project failing.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.3,
+      "extenuate": 0.2
+     },
+     "decisive_clue": "blamed for project failing",
+     "reason": "Need to prove innocence.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    },
+    {
+     "text": "They showed that the client changed the project requirements last minute. This information should ___ the team.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "requirements changed by client",
+     "reason": "If the client caused the failure, the team is not at fault.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    },
+    {
+     "text": "Actually, the team didn't update the client on the risks of the new requirements. They are now trying to ___ their lack of communication.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.85
+     },
+     "decisive_clue": "didn't update on risks",
+     "reason": "They were at fault for failing to communicate the risk.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Failing to communicate the risks is a fault, so they can only mitigate the blame, not clear it.",
+   "feedback_deep": "The team was initially cleared (exonerated) when it seemed the client caused the failure. When it turned out the team failed to communicate risks, they were at fault, meaning they need to mitigate (extenuate) their guilt.",
+   "contrast_rule": "Innocence = exonerate; negligent communication = extenuate.",
+   "hint": "Was the failure the client's fault?"
+  },
+  {
+   "id": "exonerate-extenuate_016",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The reason the flight was canceled: ___",
+   "beats": [
+    {
+     "text": "The passengers were angry about the flight cancellation.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.3
+     },
+     "decisive_clue": "flight cancellation",
+     "reason": "The cancellation happened.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "The airline stated the cancellation was caused by extreme weather conditions. This might ___ their decision to ground the plane.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.9
+     },
+     "decisive_clue": "extreme weather",
+     "reason": "The cancellation was necessary, making the decision less blameworthy.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The flight was still canceled, but the weather explains why, reducing the blame.",
+   "feedback_deep": "The cancellation happened. The weather is a mitigating factor that explains the decision, making the cancellation (a negative event) seem less like a bad choice by the airline.",
+   "contrast_rule": "Mitigating factors explain actions; they don't remove them.",
+   "hint": "Was the flight canceled?"
+  },
+  {
+   "id": "exonerate-extenuate_017",
+   "domain": "public_situation",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "The public's view of the official who leaked documents: ___",
+   "beats": [
+    {
+     "text": "The official was accused of leaking confidential documents.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.3,
+      "extenuate": 0.2
+     },
+     "decisive_clue": "accused of leaking",
+     "reason": "Need to prove innocence.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    },
+    {
+     "text": "Then they found out the official was actually trying to expose corruption within the agency. They now argue this should ___ the official.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.85
+     },
+     "decisive_clue": "trying to expose corruption",
+     "reason": "They admit they leaked the docs, but they are trying to justify the leak as noble.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They admit to leaking, so they aren't innocent, just justified by a noble reason.",
+   "feedback_deep": "Initially, the accusation was just of leaking, which the official could potentially be cleared of. Once they admitted to the leak, they were guilty, and the argument shifted to justifying the leak, which is mitigation.",
+   "contrast_rule": "Admitting to a fault means you are now only looking for mitigation.",
+   "hint": "Did the official deny leaking?"
+  },
+  {
+   "id": "exonerate-extenuate_018",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 4,
+   "frame": "The CEO's stance on the company's PR disaster: ___",
+   "beats": [
+    {
+     "text": "The company's CEO faced criticism after a PR disaster.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.4
+     },
+     "decisive_clue": "PR disaster",
+     "reason": "The event happened.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "The CEO said they were not involved in the campaign, and they had no idea it was happening. They hope this will ___ them.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "not involved, no idea",
+     "reason": "If they didn't know and weren't involved, they are innocent of the disaster.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Claiming they had no involvement means they are innocent, not just mitigated.",
+   "feedback_deep": "The CEO was initially blamed by association. Claiming they were not involved and had no idea about the disaster is an assertion of innocence, requiring exoneration, not mitigation.",
+   "contrast_rule": "Innocence = exonerate; action + reason = extenuate.",
+   "hint": "Was the CEO involved?"
+  },
+  {
+   "id": "exonerate-extenuate_019",
+   "domain": "abstract_argument",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "How the jury perceives the defendant's plea: ___",
+   "beats": [
+    {
+     "text": "The defendant pled guilty to the charge of fraud.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.6
+     },
+     "decisive_clue": "pled guilty",
+     "reason": "Guilt is admitted.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "The defense then presented evidence of the defendant's severe financial hardship as a reason to ___ their sentence.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.95
+     },
+     "decisive_clue": "hardship",
+     "reason": "Mitigating factor.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Admitting guilt means they are seeking mitigation, not innocence.",
+   "feedback_deep": "The defendant pled guilty. Therefore, they are asking the court to look at mitigating circumstances to lessen the sentence, not to prove their innocence (exonerate).",
+   "contrast_rule": "Admitting guilt excludes exoneration.",
+   "hint": "Is the defendant guilty?"
+  },
+  {
+   "id": "exonerate-extenuate_020",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "How the company handles the employee who accidentally deleted files: ___",
+   "beats": [
+    {
+     "text": "The employee deleted the wrong project files and faced termination.",
+     "best_word": "extenuate",
+     "fit": {
+      "exonerate": 0.1,
+      "extenuate": 0.5
+     },
+     "decisive_clue": "deleted files",
+     "reason": "The act was committed.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "exonerate": "M1"
+     }
+    },
+    {
+     "text": "They found out the software had a bug that made the delete button too sensitive, leading to the mistake. They decided to ___ the employee of any blame.",
+     "best_word": "exonerate",
+     "fit": {
+      "exonerate": 0.95,
+      "extenuate": 0.1
+     },
+     "decisive_clue": "software bug",
+     "reason": "A software bug causing accidental deletion clears the user of fault.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "extenuate": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The software bug proves the employee didn't make a conscious mistake, so they are not to blame.",
+   "feedback_deep": "The initial fault seemed to be the employee's, fitting mitigation (extenuate). When the software bug was revealed as the true cause of the deletion, the employee was no longer to blame, requiring exoneration.",
+   "contrast_rule": "Technical failure exonerates; human error requires mitigation.",
+   "hint": "Was the software faulty?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

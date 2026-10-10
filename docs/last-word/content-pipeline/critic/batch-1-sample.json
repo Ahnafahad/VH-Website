@@ -1,0 +1,542 @@
+[
+ {
+  "words": [
+   "scrupulous",
+   "meticulous"
+  ],
+  "boundary_rule": "Scrupulous requires moral conscientiousness, ethical duty, and honest concern for fairness; meticulous requires painstaking precision, minute attention to detail, and orderliness without any moral dimension.",
+  "chain": {
+   "id": "scrupulous-meticulous_003",
+   "domain": "pharmaceutical_research",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Dr. Farah's handling of the clinical trial data is: ___",
+   "beats": [
+    {
+     "text": "Principal investigator Dr. Nadia Farah notices that two patients in her team's lucrative migraine drug trial experienced mild heart palpitations.",
+     "best_word": "scrupulous",
+     "fit": {
+      "scrupulous": 0.93,
+      "meticulous": 0.22
+     },
+     "decisive_clue": "flagging subtle adverse cardiac symptoms in drug trial",
+     "reason": "Highlighting unexpected adverse symptoms tests her medical conscience and commitment to patient safety.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "meticulous": "M1"
+     }
+    },
+    {
+     "text": "The pharmaceutical sponsor urges her to reclassify the palpitations as unrelated anxiety so the drug can secure fast-track regulatory clearance.",
+     "best_word": "scrupulous",
+     "fit": {
+      "scrupulous": 0.96,
+      "meticulous": 0.11
+     },
+     "decisive_clue": "refusal to falsify cardiac symptoms under corporate pressure",
+     "reason": "Rejecting corporate pressure to sanitize medical hazards demonstrates unyielding ethical honesty.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "meticulous": "M1"
+     }
+    },
+    {
+     "text": "Nadia submits the full unredacted safety logs to the federal health board, halting participant enrollment until an independent cardiac panel completes a review.",
+     "best_word": "scrupulous",
+     "fit": {
+      "scrupulous": 0.98,
+      "meticulous": 0.05
+     },
+     "decisive_clue": "submitting unredacted adverse logs to protect patient safety",
+     "reason": "Prioritizing patient safety and scientific truth over financial gain is fundamentally moral.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "meticulous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Refusing corporate demands to conceal cardiac side effects shows unwavering ethical commitment to patient safety.",
+   "feedback_deep": "Nadia resists lucrative corporate pressure to bury dangerous data. Her actions protect human lives and uphold scientific honesty, placing her squarely in the moral domain.",
+   "contrast_rule": "Standing up for ethical truth and human safety points here; organizing technical specifics points to the other.",
+   "hint": "Focus on the researcher's resistance to corruption rather than data logging."
+  }
+ },
+ {
+  "words": [
+   "coup",
+   "revolution"
+  ],
+  "boundary_rule": "A coup is a sudden, top-down seizure of executive power by a small faction or military group without mass participation; a revolution is a fundamental upheaval driven by broad popular mobilization that transforms the political and social system.",
+  "chain": {
+   "id": "coup-revolution_015",
+   "domain": "forestry_region",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "The overthrow of the timber baron dynasty was a ___.",
+   "beats": [
+    {
+     "text": "The overthrow of the timber baron dynasty began when an armed squad of twenty forest rangers surrounded the baron's mountain estate at dusk, taking the family into custody and declaring the regional council vacant.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.89,
+      "revolution": 0.11
+     },
+     "decisive_clue": "twenty forest rangers taking the baron into custody and declaring council vacant",
+     "reason": "An armed squad detaining an executive family at their mansion looks like an isolated coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "Archival records subsequently reframed the raid, revealing that the rangers acted as the designated vanguard for an underground coalition of four hundred thousand loggers, mill hands, and river boatmen.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.18,
+      "revolution": 0.82
+     },
+     "decisive_clue": "rangers acted as designated vanguard for four hundred thousand organized workers",
+     "reason": "Reframing the rangers' raid as the coordinated action of a massive worker coalition shifts the meaning to a revolution.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M2"
+     }
+    },
+    {
+     "text": "Across the territory, popular worker federations abolished private forest concessions, instituted democratic communal forestry councils, and rewrote the territorial charter.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.04,
+      "revolution": 0.96
+     },
+     "decisive_clue": "popular federations abolishing private concessions and rewriting the territorial charter",
+     "reason": "Mass structural overhaul of economic property and political authority proves it was a revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The raid was the vanguard of a 400,000-strong worker movement that dismantled private monopolies, reframing it as a revolution.",
+   "feedback_deep": "Although the opening raid was carried out by twenty rangers, deeper context reframes the event: they were acting under the direction of an organized coalition of four hundred thousand workers. Because mass grassroots mobilization eradicated private fiefdoms and established communal governance, the event was a revolution.",
+   "contrast_rule": "When a small armed action is merely the spearhead of a mass societal reorganization, it is a revolution.",
+   "hint": "Look beyond the initial tactical squad to see the scale of the broader movement behind it."
+  }
+ },
+ {
+  "words": [
+   "coup",
+   "revolution"
+  ],
+  "boundary_rule": "A coup is a sudden, top-down seizure of executive power by a small faction or military group without mass participation; a revolution is a fundamental upheaval driven by broad popular mobilization that transforms the political and social system.",
+  "chain": {
+   "id": "coup-revolution_010",
+   "domain": "island_republic",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The midnight seizure of power on the island was a ___.",
+   "beats": [
+    {
+     "text": "A faction of six senior naval officers surrounds the prime minister's residence on the island at midnight, arresting the head of state and placing cabinet ministers in confinement.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.95,
+      "revolution": 0.05
+     },
+     "decisive_clue": "faction of six naval officers arresting the head of state and ministers at midnight",
+     "reason": "A small officer clique seizing executive ministers at night is an unambiguous coup.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "At daybreak, angry shopkeepers and fishermen gather at dockside markets to vent furious grievances over currency inflation and fish export taxes.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.91,
+      "revolution": 0.09
+     },
+     "decisive_clue": "economic anger in markets does not change that the seizure was carried out by six naval officers",
+     "reason": "Public economic complaints do not alter the fact that power was seized by a small naval cabal.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "The naval faction promptly imposes a 24-hour curfew, bans all public meetings, and orders municipal magistrates to enforce existing island statutes without alteration.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.98,
+      "revolution": 0.02
+     },
+     "decisive_clue": "naval faction imposing curfew and ordering magistrates to enforce existing statutes",
+     "reason": "Suppression of the public and continuation of existing laws prove the event remains a coup.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The presence of public economic discontent does not turn an armed insider seizure of power into a revolution; it is a coup.",
+   "feedback_deep": "The six naval officers executed a targeted top-down takeover to install themselves as leaders while suppressing public gatherings and preserving the existing legal framework. The presence of angry fishermen on the streets was a coincidental background condition, not the driving force of the power transfer.",
+   "contrast_rule": "A coup is carried out by an elite faction; popular discontent in the background does not change that.",
+   "hint": "Notice who actually organized the takeover and whether existing laws were transformed."
+  }
+ },
+ {
+  "words": [
+   "scrupulous",
+   "meticulous"
+  ],
+  "boundary_rule": "Scrupulous requires moral conscientiousness, ethical duty, and honest concern for fairness; meticulous requires painstaking precision, minute attention to detail, and orderliness without any moral dimension.",
+  "chain": {
+   "id": "scrupulous-meticulous_008",
+   "domain": "culinary_arts",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "Julian's performance in the pastry kitchen is: ___",
+   "beats": [
+    {
+     "text": "Head baker Julian discovers that a supplier delivered cheaper artificial vanilla extract labeled as pure Madagascar bean paste, and he promptly cancels the invoice and returns the crate, refusing to mislead his customers.",
+     "best_word": "scrupulous",
+     "fit": {
+      "scrupulous": 0.93,
+      "meticulous": 0.18
+     },
+     "decisive_clue": "rejecting mislabeled ingredients to prevent misleading customers",
+     "reason": "Refusing to use deceptively labeled ingredients protects customers and upholds commercial honesty.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "meticulous": "M1"
+     }
+    },
+    {
+     "text": "Turning to his confectionery bench, he uses a micro-caliper to verify that each spun-sugar sphere measures exactly thirty-eight millimeters across, trimming stray filaments with surgical scissors.",
+     "best_word": "meticulous",
+     "fit": {
+      "scrupulous": 0.21,
+      "meticulous": 0.94
+     },
+     "decisive_clue": "measuring sugar spheres with calipers and trimming micro-filaments",
+     "reason": "The context shifts from ethical purchasing to minute geometric calibration and physical trimming.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "scrupulous": "M2"
+     }
+    },
+    {
+     "text": "He weighs cocoa butter portions on an analytical balance down to the milligram, ensuring that all one hundred chocolate shells have identical wall thicknesses of 1.2 millimeters.",
+     "best_word": "meticulous",
+     "fit": {
+      "scrupulous": 0.08,
+      "meticulous": 0.98
+     },
+     "decisive_clue": "milligram weighing and caliper checks of chocolate shell thickness",
+     "reason": "Exacting weight and thickness control reinforces purely mechanical and artistic perfection.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "scrupulous": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Using calipers and analytical balances to calibrate pastry dimensions down to millimeters flips the focus to physical precision.",
+   "feedback_deep": "Julian starts by rejecting counterfeit vanilla out of consumer honesty, but the scene flips as his work centers on calipers, analytical balances, and micro-trimming. That painstaking physical accuracy requires the craft term.",
+   "contrast_rule": "Minute physical dimensions and tool calibration point here; commercial honesty points to the other.",
+   "hint": "Notice the change when the baker moves from supplier ethics to micro-measuring sugar domes."
+  }
+ },
+ {
+  "words": [
+   "agnostic",
+   "atheist"
+  ],
+  "boundary_rule": "An agnostic suspends judgment on whether a god exists because it is unknown or unknowable, whereas an atheist rejects belief in gods altogether.",
+  "chain": {
+   "id": "agnostic-atheist_014",
+   "domain": "tech_culture",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "Regarding the existence of divine entities, Kavita is an ___.",
+   "beats": [
+    {
+     "text": "Kavita mentions during a lunch conversation that she has never found any reason to practice religion or follow ancient rituals.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.45,
+      "atheist": 0.76
+     },
+     "decisive_clue": "stating she has never found reason to practice religion or rituals",
+     "reason": "A lack of religious participation leans toward non-belief, though still broad.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "A colleague asks whether she considers herself undecided about higher powers. Kavita clarifies that she is not undecided at all: she has examined the arguments for deities and reached a definite conclusion that no such entities exist.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.18,
+      "atheist": 0.93
+     },
+     "decisive_clue": "clarifying that she is not undecided and concluding no deities exist",
+     "reason": "She narrows her position from casual non-observance to a definitive rejection of deities.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "Kavita adds that she bases her worldview exclusively on observable material evidence and logic, explicitly rejecting belief in all supernatural creators.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.12,
+      "atheist": 0.96
+     },
+     "decisive_clue": "explicitly rejecting belief in all supernatural creators based on material evidence",
+     "reason": "Her stance is solidly confirmed as principled non-belief in gods.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Kavita clarifies that she is not merely non-practicing or undecided, but actively concludes that deities do not exist.",
+   "feedback_deep": "Kavita's stance moves from general secular apathy to an articulate, deliberate rejection of gods. She specifically rejects the label of being undecided, making it clear that she has reached a firm conclusion of non-belief.",
+   "contrast_rule": "Arriving at a firm negative conclusion marks disbelief, not indecision.",
+   "hint": "Observe how Kavita rejects being described as undecided and affirms that no deities exist."
+  }
+ },
+ {
+  "words": [
+   "coup",
+   "revolution"
+  ],
+  "boundary_rule": "A coup is a sudden, top-down seizure of executive power by a small faction or military group without mass participation; a revolution is a fundamental upheaval driven by broad popular mobilization that transforms the political and social system.",
+  "chain": {
+   "id": "coup-revolution_004",
+   "domain": "parliamentary_quarter",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The political upheaval that ousted the council of ministers was a ___.",
+   "beats": [
+    {
+     "text": "The political upheaval that ousted the council of ministers was celebrated by international correspondents as a popular uprising, citing millions of demonstrators who filled the capital's boulevards for weeks demanding the dissolution of the corrupt regime.",
+     "best_word": "revolution",
+     "fit": {
+      "coup": 0.22,
+      "revolution": 0.78
+     },
+     "decisive_clue": "millions of demonstrators filling boulevards demanding dissolution of the corrupt regime",
+     "reason": "Widespread street demonstrations demanding systemic transformation initially appear as an unfolding revolution.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "coup": "M2"
+     }
+    },
+    {
+     "text": "However, declassified ministry logs reveal the actual ouster was executed behind closed doors: three armored division generals and two banking moguls arrested the ministers in secret, locked the parliament, and kept the existing constitutional apparatus completely intact under their junta.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.89,
+      "revolution": 0.11
+     },
+     "decisive_clue": "generals and banking moguls arresting ministers in secret and keeping constitutional apparatus intact",
+     "reason": "The actual mechanism of power transfer was an elite insider takeover by generals and financiers, flipping it to a coup.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    },
+    {
+     "text": "State media confirms that all preexisting decrees, corporate concessions, and judicial hierarchies remain unchanged under the newly installed general, who promptly ordered troops to clear the streets.",
+     "best_word": "coup",
+     "fit": {
+      "coup": 0.96,
+      "revolution": 0.04
+     },
+     "decisive_clue": "preexisting decrees and hierarchies remain unchanged under newly installed general",
+     "reason": "The preservation of the institutional status quo by a military clique confirms the turnover was a coup, not a revolution.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "revolution": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The actual transfer of authority was executed by an elite military clique preserving existing institutions, which constitutes a coup.",
+   "feedback_deep": "Although massive crowds gathered in protest, they did not take power or transform the political system. Instead, a cabal of generals and financiers executed a targeted, top-down seizure that preserved the existing constitutional and economic structure, making the event a coup.",
+   "contrast_rule": "Protests do not make a turnover a revolution if an elite clique seizes power and preserves the system.",
+   "hint": "Examine who actually seized authority behind closed doors and what happened to the established institutions."
+  }
+ }
+]

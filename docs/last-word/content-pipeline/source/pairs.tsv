@@ -1,0 +1,889 @@
+id	word	contrast	type	pos	gloss
+1	Autocratic	authoritarian	overlapping	adjective	demanding strict obedience while limiting personal freedom
+2	Coerce	compel	overlapping	verb	force action without necessarily using threats or intimidation
+3	Hegemony	imperialism	overlapping	noun	policy of extending a nation's rule beyond its borders
+4	Imperial	imperious	paronym	adjective	arrogantly commanding and expecting immediate obedience
+5	Martial	marital	paronym	adjective	relating to marriage or married partners
+6	Pacify	appease	overlapping	verb	calm someone by satisfying demands or making concessions
+7	Prevail	persevere	overlapping	verb	continue despite difficulty without necessarily achieving victory
+8	Proscribe	prescribe	paronym	verb	officially recommend or direct a treatment or course
+9	Subjugate	subordinate	overlapping	verb	place in a lower rank without necessarily using force
+10	Usurp	oust	overlapping	verb	remove someone from office without necessarily taking their position
+11	Aristocratic	autocratic	paronym	adjective	exercising power without sharing control or accepting opposition
+12	Bourgeois	bourgeoisie	paronym	adjective	the middle class considered collectively as a social group
+13	Denizen	citizen	paronym	noun	legally recognized member of a particular state
+14	Genteel	gentle	paronym	adjective	mild, kind, or soft rather than socially refined
+15	Hierarchy	patriarchy	paronym	noun	social system dominated chiefly by men and fathers
+16	Indigenous	indigent	paronym	adjective	extremely poor and lacking basic necessities
+17	Plebeian	proletarian	overlapping	adjective	belonging specifically to the wage-earning working class
+18	Proletariat	plebeians	overlapping	noun	ordinary lower-status people regardless of their economic role
+19	Stratum	strata	misuse	noun	plural form referring to multiple layers or levels
+20	Abdicate	resign	overlapping	verb	leave an ordinary office or position voluntarily
+21	Ascendancy	ascent	paronym	noun	an upward climb or movement toward a higher position
+22	Consecrate	concentrate	paronym	verb	focus attention or gather something into one place
+23	Coup	revolution	overlapping	noun	broad popular upheaval that transforms a political system
+24	Culminate	terminate	overlapping	verb	bring something to an end without implying a climax
+25	Inaugurate	initiate	overlapping	verb	begin a process without any formal installation ceremony
+26	Legacy	heritage	overlapping	noun	shared traditions and culture inherited across generations
+27	Marshal	martial	paronym	verb	relating to war, armed forces, or combat
+28	Preeminent	eminent	paronym	adjective	highly distinguished without necessarily surpassing everyone else
+29	Preempt	prevent	overlapping	verb	stop something by any means, not necessarily by acting first
+30	Promulgate	propagate	paronym	verb	spread ideas, beliefs, organisms, or information widely
+31	Anarchy	chaos	overlapping	noun	complete disorder that need not involve absent government
+32	Chasm	schism	paronym	noun	formal split between groups over beliefs or loyalties
+33	Faction	fraction	paronym	noun	a numerical part or portion of a whole
+34	Foment	ferment	paronym	verb	undergo chemical change or develop in restless agitation
+35	Insurgent	terrorist	overlapping	noun	uses violence chiefly to intimidate civilians or populations
+36	Martyr	victim	overlapping	noun	suffers harm without necessarily serving a cause
+37	Polarize	politicize	paronym	verb	turn an issue into a matter of politics
+38	Protagonist	hero	overlapping	noun	an admirable figure who need not be central
+39	Recalcitrant	reluctant	paronym	adjective	hesitant or unwilling without being defiantly resistant
+40	Sedition	treason	overlapping	noun	betrayal of one's country, especially by aiding enemies
+41	Subversive	seditious	overlapping	adjective	specifically encouraging rebellion against state authority
+42	Capitalism	consumerism	overlapping	noun	culture emphasizing the continual acquisition of goods
+43	Doctrinaire	doctrinal	paronym	adjective	relating to doctrine without implying rigid adherence
+44	Dogmatic	dogged	paronym	adjective	showing persistent determination despite difficulty
+45	Egalitarian	equitable	overlapping	adjective	fair in context, without requiring identical treatment
+46	Espouse	expose	paronym	verb	reveal something hidden or leave it unprotected
+47	Ideology	philosophy	overlapping	noun	broader framework for understanding knowledge, life, or conduct
+48	Manifesto	platform	overlapping	noun	set of policies a political group supports
+49	Polemic	diatribe	overlapping	noun	bitter verbal attack driven more by anger than argument
+50	Proponent	opponent	paronym	noun	person who argues or competes against something
+51	Tenet	tenant	paronym	noun	person who rents and occupies property
+52	Agenda	itinerary	overlapping	noun	planned route and schedule for a journey
+53	Artifice	artifact	paronym	noun	object made or modified by human activity
+54	Clique	click	paronym	noun	make a short sharp sound or select onscreen
+55	Collusion	collision	paronym	noun	forceful impact between moving objects or opposing interests
+56	Complicity	conspiracy	overlapping	noun	secret agreement to commit an unlawful or harmful act
+57	Furtive	secretive	overlapping	adjective	habitually unwilling to reveal information or intentions
+58	Insidious	invidious	paronym	adjective	unfairly discriminatory or likely to provoke resentment
+59	Machination	conspiracy	overlapping	noun	secret agreement among people to commit wrongdoing
+60	Proprietary	propriety	paronym	adjective	socially acceptable standards of conduct or manners
+61	Surreptitious	superstitious	paronym	adjective	believing events are influenced by supernatural signs
+62	Acrimonious	acerbic	overlapping	adjective	sharp and cutting in tone or expression
+63	Blatant	brazen	overlapping	adjective	shamelessly bold despite expected disapproval
+64	Castigate	castrate	paronym	verb	remove or disable the reproductive organs
+65	Culpable	capable	paronym	adjective	having the ability or qualities needed for something
+66	Exonerate	extenuate	paronym	verb	make wrongdoing seem less serious without clearing blame
+67	Flagrant	fragrant	paronym	adjective	having a pleasant or noticeable smell
+68	Ignominy	infamy	overlapping	noun	lasting public reputation for evil or wrongdoing
+69	Infamous	famous	misuse	adjective	widely known without necessarily having a bad reputation
+70	Notorious	notable	paronym	adjective	worthy of attention without implying a bad reputation
+71	Stigmatize	stereotype	overlapping	verb	assign a generalized trait to an entire group
+72	Adherent	inherent	paronym	noun	existing as a natural or essential part
+73	Cajole	coerce	overlapping	verb	compel through force, threats, or intimidation
+74	Deference	difference	paronym	noun	a point or way in which things differ
+75	Nominal	notional	paronym	adjective	existing chiefly as an idea, estimate, or theory
+76	Obsequious	officious	paronym	adjective	annoyingly eager to interfere or assert authority
+77	Officious	obsequious	paronym	adjective	excessively submissive and flattering toward someone powerful
+78	Reprove	disprove	paronym	verb	show that a claim or belief is false
+79	Appropriate	expropriate	overlapping	verb	officially dispossess an owner, usually for public use
+80	Autonomous	anonymous	paronym	adjective	having an identity that is unknown or undisclosed
+81	Bureaucracy	democracy	paronym	noun	government in which power belongs to the people
+82	Curtail	entail	paronym	verb	involve something as a necessary consequence or requirement
+83	Magnate	magnet	paronym	noun	an object or attraction that draws things toward it
+84	Nepotism	cronyism	overlapping	noun	unfairly favoring friends and political associates
+85	Paternal	parental	overlapping	adjective	relating to either parent or to parenthood generally
+86	Patriarch	patriarchal	paronym	noun	organized around male authority or dominance
+87	Peremptory	preemptive	paronym	adjective	intended to prevent something by acting first
+88	Perquisite	prerequisite	paronym	noun	something required before another thing can happen
+89	Prerogative	perquisite	paronym	noun	an extra benefit received with a job
+90	Surrogate	delegate	overlapping	noun	a representative authorized to act for a group
+91	Affluent	effluent	paronym	adjective	liquid waste discharged from a factory or sewer
+92	Amenity	amnesty	paronym	noun	an official pardon granted to a group
+93	Culinary	cuisine	overlapping	adjective	a particular culture or style of cooking
+94	Decadent	decedent	paronym	adjective	a deceased person, especially in legal contexts
+95	Flaunt	flout	paronym	verb	openly disregard a rule, law, or convention
+96	Grandiose	grand	overlapping	adjective	impressive in scale or appearance without implied absurdity
+97	Munificent	magnificent	paronym	adjective	exceptionally impressive, beautiful, or excellent
+98	Opulent	affluent	overlapping	adjective	financially wealthy, without necessarily displaying luxury
+99	Ostentatious	pretentious	overlapping	adjective	trying to seem more important or cultured than warranted
+100	Solvent	liquid	overlapping	adjective	holding enough readily available cash for immediate payments
+101	Abject	dejected	paronym	adjective	feeling dispirited or depressed after disappointment
+102	Avarice	envy	overlapping	noun	resentful desire for what another person possesses
+103	Covet	envy	overlapping	verb	resent someone for possessing a desired advantage
+104	Dearth	death	paronym	noun	the end of a person or organism's life
+105	Glut	gluttony	paronym	noun	habitual overconsumption, especially of food or drink
+106	Insatiable	unsatisfied	overlapping	adjective	not fulfilled yet, though satisfaction remains possible
+107	Mercenary	mercantile	paronym	adjective	relating to trade, merchants, or commercial business
+108	Paucity	poverty	overlapping	noun	state of being poor, not any general shortage
+109	Rapacious	ravenous	paronym	adjective	extremely hungry, not greedily acquisitive
+110	Squander	splurge	overlapping	verb	spend extravagantly for pleasure, not necessarily waste everything
+111	Abysmal	abyssal	paronym	adjective	relating to ocean depths or something immeasurably deep
+112	Destitute	desolate	paronym	adjective	empty, abandoned, or bleak rather than extremely poor
+113	Indigent	indigenous	paronym	adjective	native to a particular region or environment
+114	Mendicant	mendacious	paronym	noun	dishonest or habitually given to lying
+115	Paltry	poultry	paronym	adjective	domesticated birds raised for meat or eggs
+116	Sordid	squalid	overlapping	adjective	physically filthy and neglected, without necessarily implying immorality
+117	Stagnation	recession	overlapping	noun	period of economic decline, not merely stalled growth
+118	Arbitrary	random	overlapping	adjective	determined by chance rather than someone's unsupported choice
+119	Circumspect	circumscribed	paronym	adjective	restricted within fixed limits or boundaries
+120	Criterion	criteria	misuse	noun	plural form referring to multiple standards for judgment
+121	Discern	discriminate	overlapping	verb	tell two or more things apart by comparison
+122	Discriminate	discern	overlapping	verb	perceive something unclear rather than compare alternatives
+123	Equitable	equal	overlapping	adjective	the same in amount or treatment, whether fair or not
+124	Exacting	exact	paronym	adjective	completely accurate or precise rather than highly demanding
+125	Cogent	coherent	overlapping	adjective	logically connected and understandable, but not necessarily persuasive
+126	Fastidious	meticulous	overlapping	adjective	extremely attentive to detail without implying fussiness
+127	Judicious	judicial	paronym	adjective	relating to courts, judges, or legal decisions
+128	Lucid	vivid	overlapping	adjective	producing strong, detailed impressions rather than clear reasoning
+129	Painstaking	painful	misuse	adjective	causing physical or emotional pain rather than requiring care
+130	Qualify	quantify	paronym	verb	express or measure something as a numerical amount
+131	Rigorous	vigorous	paronym	adjective	energetic and forceful rather than strictly thorough
+132	Sagacious	salacious	paronym	adjective	showing an improper interest in sexual matters
+133	Scrupulous	meticulous	overlapping	adjective	exact about details without implying moral integrity
+134	Debauchery	decadence	overlapping	noun	luxurious self-indulgence associated with moral or cultural decline
+135	Depravity	deprivation	paronym	noun	lack of necessities, not extreme moral corruption
+136	Dissipate	disseminate	paronym	verb	spread information widely rather than waste resources gradually
+137	Illicit	elicit	paronym	adjective	draw out a response, answer, or reaction
+138	Malfeasance	malpractice	overlapping	noun	improper professional conduct, especially through negligence
+139	Nefarious	notorious	overlapping	adjective	widely known for something bad, not inherently wicked
+140	Perfidy	perjury	paronym	noun	lying under oath rather than betraying someone's trust
+141	Profligate	prolific	paronym	adjective	producing many works, results, or offspring
+142	Absolve	acquit	overlapping	verb	declare someone not guilty of a criminal charge
+143	Alleviate	eliminate	misuse	verb	remove something entirely rather than merely lessen it
+144	Clemency	amnesty	overlapping	noun	officially pardon a group for specified offences
+145	Condone	condemn	paronym	verb	express strong disapproval of wrongdoing
+146	Contrite	trite	paronym	adjective	overused and therefore lacking freshness or impact
+147	Indulgent	lenient	overlapping	adjective	less severe in punishment without implying overindulgence
+148	Reparation	restitution	overlapping	noun	restore or repay what was wrongfully taken
+149	Respite	reprieve	overlapping	noun	delay or cancel a punishment, especially execution
+150	Transgress	trespass	overlapping	verb	enter another person's property without permission
+151	Unconscionable	unconscious	paronym	adjective	not awake or aware of one's surroundings
+152	Admonish	reprimand	overlapping	verb	formally express disapproval after misconduct
+153	Censure	censor	paronym	noun	suppress material judged objectionable
+154	Chastise	chasten	paronym	verb	make someone humbler through correction or suffering
+155	Flout	flaunt	paronym	verb	display something conspicuously to attract attention
+156	Injunction	indictment	overlapping	noun	formal accusation that someone committed a crime
+157	Rebuke	rebut	paronym	noun	argue that a claim or accusation is false
+158	Reproach	reprove	overlapping	noun	directly scold someone for improper conduct
+159	Stricture	structure	paronym	noun	the arrangement or framework of connected parts
+160	Benign	benevolent	overlapping	adjective	actively kind and motivated to help others
+161	Civil	civic	paronym	adjective	relating to a city or its citizens
+162	Decorous	decorative	paronym	adjective	intended to make something look more attractive
+163	Impeccable	immaculate	overlapping	adjective	perfectly clean, neat, or free from blemishes
+164	Innocuous	innocent	overlapping	adjective	not guilty or lacking harmful intent
+165	Magnanimous	magnificent	paronym	adjective	exceptionally splendid, impressive, or beautiful
+166	Pristine	immaculate	overlapping	adjective	spotlessly clean without necessarily being untouched
+167	Salutary	salubrious	paronym	adjective	health-giving or pleasantly wholesome
+168	Sublime	subliminal	paronym	adjective	presented below the level of conscious awareness
+169	Adamant	obstinate	overlapping	adjective	stubbornly resistant despite reason or persuasion
+170	Incorrigible	incorruptible	paronym	adjective	unable to be bribed or morally compromised
+171	Intransigent	intransitive	paronym	adjective	describing a verb that takes no direct object
+172	Inveterate	invertebrate	paronym	adjective	an animal that lacks a backbone
+173	Relentless	restless	paronym	adjective	unable to relax, remain still, or feel settled
+174	Resolute	resilient	overlapping	adjective	able to recover quickly after difficulty or damage
+175	Robust	resilient	overlapping	adjective	able to recover after strain rather than resist it
+176	Staunch	stanch	paronym	adjective	stop the flow of something, especially blood
+177	Tenacious	tenuous	paronym	adjective	weak, slight, or lacking convincing substance
+178	Audacity	courage	overlapping	noun	readiness to face danger despite fear
+179	Disdain	disgust	overlapping	noun	strong revulsion rather than a sense of superiority
+180	Egocentric	egotistical	overlapping	adjective	convinced of one's importance and inclined to boast
+181	Narcissism	vanity	overlapping	noun	excessive pride, especially in appearance or achievements
+182	Prepossess	predispose	paronym	verb	make someone inclined or susceptible beforehand
+183	Querulous	quarrelsome	overlapping	adjective	inclined to argue or pick fights rather than complain
+184	Sardonic	sarcastic	overlapping	adjective	using cutting irony without necessarily expressing cynical scorn
+185	Supercilious	condescending	overlapping	adjective	patronizing others as less knowledgeable or capable
+186	Temerity	timidity	paronym	noun	lack of courage or confidence when facing risk
+187	Alacrity	agility	paronym	noun	ability to move quickly and nimbly
+188	Ardent	arduous	paronym	adjective	requiring great effort because something is difficult
+189	Capricious	mercurial	overlapping	adjective	changing rapidly, especially in mood or behavior
+190	Frenetic	frantic	overlapping	adjective	panicked and urgently rushed rather than merely high-speed
+191	Impetuous	imperious	paronym	adjective	arrogantly commanding and expecting immediate obedience
+192	Irascible	irritable	overlapping	adjective	easily annoyed without necessarily flaring into anger
+193	Mercurial	capricious	overlapping	adjective	changing on a whim without a clear reason
+194	Petulant	peevish	overlapping	adjective	habitually irritable and complaining rather than childishly sulky
+195	Aloof	shy	overlapping	adjective	socially hesitant from nervousness or low confidence
+196	Antipathy	apathy	paronym	noun	absence of interest or feeling, not active dislike
+197	Diffident	indifferent	paronym	adjective	unconcerned or uninterested rather than lacking confidence
+198	Equanimity	unanimity	paronym	noun	complete agreement among everyone in a group
+199	Indifferent	disinterested	misuse	adjective	impartial because no personal stake influences judgment
+200	Reclusive	exclusive	paronym	adjective	restricted to a select group rather than solitary
+201	Reticent	reluctant	misuse	adjective	unwilling to act, not specifically unwilling to speak
+202	Stoic	stolid	overlapping	adjective	naturally unemotional and not easily stirred
+203	Tacit	taciturn	paronym	adjective	habitually speaking very little by nature
+204	Taciturn	tacit	paronym	adjective	implied or understood without being spoken
+205	Affable	amiable	overlapping	adjective	generally good-natured and pleasant beyond conversational approachability
+206	Amiable	amicable	paronym	adjective	friendly and peaceful, usually describing relations or settlements
+207	Assiduous	arduous	paronym	adjective	difficult and exhausting rather than persistently diligent
+208	Avuncular	paternal	overlapping	adjective	fatherly, especially protective, guiding, or authoritative
+209	Charisma	charm	overlapping	noun	a pleasing quality that delights rather than inspires followers
+210	Congenial	congenital	paronym	adjective	present from birth, especially as an inherited condition
+211	Convivial	congenial	overlapping	adjective	pleasant and compatible without implying lively sociability
+212	Emulate	imitate	overlapping	verb	copy another's behavior without necessarily trying to equal them
+213	Fraternal	paternal	paronym	adjective	relating to fathers rather than brothers
+214	Gregarious	gracious	paronym	adjective	courteous, kind, and pleasantly considerate toward others
+215	Urbane	urban	paronym	adjective	relating to cities or life in a city
+216	Affinity	affiliation	overlapping	noun	a formal association with a group or organization
+217	Assimilate	integrate	overlapping	verb	join a society while retaining a distinct cultural identity
+218	Cosmopolitan	metropolitan	overlapping	adjective	relating to a large city or its surrounding area
+219	Emigrate	immigrate	paronym	verb	enter a foreign country in order to settle there
+220	Expatriate	emigrant	overlapping	noun	person viewed as leaving their country to settle elsewhere
+221	Extrovert	socialite	overlapping	noun	person prominent in fashionable society, regardless of temperament
+222	Immigrate	emigrate	paronym	verb	leave one's home country in order to settle abroad
+223	Acumen	aptitude	overlapping	noun	natural capacity to learn or perform a particular skill
+224	Acute	astute	paronym	adjective	practically shrewd, especially in using situations advantageously
+225	Adroit	adept	overlapping	adjective	highly skilled in a particular activity or field
+226	Aptitude	attitude	paronym	noun	a settled outlook or manner toward someone or something
+227	Astute	acute	paronym	adjective	sharply perceptive without necessarily implying practical advantage
+228	Dexterous	ambidextrous	overlapping	adjective	equally capable with both the right and left hands
+229	Erudite	articulate	overlapping	adjective	able to express ideas clearly and effectively
+230	Incisive	decisive	paronym	adjective	able to make choices quickly and firmly
+231	Proficient	efficient	overlapping	adjective	working well with minimal waste of time or resources
+232	Callow	callous	paronym	adjective	emotionally insensitive and unconcerned about others' suffering
+233	Cursory	perfunctory	overlapping	adjective	done as a formality with little care or interest
+234	Dilettante	amateur	overlapping	noun	nonprofessional participant who may still be serious or skilled
+235	Facile	simplistic	overlapping	adjective	making something misleadingly simple by ignoring complexity
+236	Gauche	gaudy	paronym	adjective	excessively bright, showy, or ornamented in appearance
+237	Grandiloquent	eloquent	overlapping	adjective	fluent and persuasive without necessarily being pompous
+238	Gratuitous	grateful	paronym	adjective	feeling or showing thanks for a benefit received
+239	Inept	inapt	paronym	adjective	unsuitable or inappropriate rather than lacking skill
+240	Pedantic	pedagogical	paronym	adjective	relating to teaching methods or educational practice
+241	Perfunctory	cursory	overlapping	adjective	hasty and insufficiently detailed, especially an examination
+242	Superficial	superfluous	paronym	adjective	unnecessary because more than what is needed
+243	Anguish	anxiety	overlapping	noun	unease or worry, often about future uncertainty
+244	Apprehensive	comprehensive	paronym	adjective	covering all or nearly all relevant elements
+245	Bereaved	bereft	overlapping	adjective	deprived of something valued, not necessarily through death
+246	Beset	besieged	overlapping	verb	surrounded by attack or overwhelmed by persistent demands
+247	Daunt	deter	overlapping	verb	discourage someone enough to prevent a particular action
+248	Despondent	depressed	overlapping	adjective	experiencing low mood, sometimes as a clinical condition
+249	Lament	repent	overlapping	verb	feel sincere remorse for one's own wrongdoing
+250	Lugubrious	luxurious	paronym	adjective	extremely comfortable, elegant, or expensive
+251	Morose	morbid	paronym	adjective	unhealthily focused on death or disturbing subjects
+252	Plaintive	plaintiff	paronym	adjective	person who brings a civil case to court
+253	Auspicious	suspicious	paronym	adjective	inclined to distrust or suggestive of wrongdoing
+254	Blithe	blasé	overlapping	adjective	unimpressed or unconcerned through overfamiliarity
+255	Exult	exalt	paronym	verb	praise highly or raise in status
+256	Felicity	facility	paronym	noun	ability or place designed for a particular purpose
+257	Levity	frivolity	overlapping	noun	trivial behavior showing an inappropriate lack of seriousness
+258	Propitious	prosperous	paronym	adjective	financially successful or flourishing rather than merely favorable
+259	Serendipity	coincidence	overlapping	noun	unexpected concurrence that need not produce anything beneficial
+260	Abhor	abjure	paronym	verb	formally renounce a belief, claim, or practice
+261	Acrid	acidic	paronym	adjective	containing acid or having a distinctly sour quality
+262	Animosity	anonymity	paronym	noun	state of having an unknown or concealed identity
+263	Beleaguer	belabour	paronym	verb	criticize repeatedly or explain something to excess
+264	Insolent	indolent	paronym	adjective	habitually lazy and unwilling to make an effort
+265	Rancour	rancid	paronym	noun	spoiled and unpleasant in smell or taste
+266	Reprisal	reprieve	paronym	noun	temporary cancellation or postponement of punishment
+267	Strife	strive	paronym	noun	make a determined effort to achieve something
+268	Apathy	antipathy	paronym	noun	strong instinctive dislike toward someone or something
+269	Complacent	compliant	paronym	adjective	willing to obey rules, demands, or authority
+270	Enervate	energize	misuse	verb	give greater energy, strength, or enthusiasm
+271	Indolent	insolent	paronym	adjective	boldly rude or disrespectful toward someone
+272	Languish	languid	overlapping	verb	lacking energy or moving in a relaxed slow manner
+273	Lethargy	apathy	overlapping	noun	lack of interest or feeling rather than energy
+274	Conventional	traditional	overlapping	adjective	handed down through long-established customs or beliefs
+275	Desultory	cursory	overlapping	adjective	hasty and superficial rather than aimlessly disconnected
+276	Dormant	latent	overlapping	adjective	present but hidden or not yet developed
+277	Malaise	ennui	overlapping	noun	weariness and dissatisfaction caused specifically by boredom
+278	Oblivion	oblivious	paronym	noun	unaware of what is happening nearby
+279	Sloth	lethargy	overlapping	noun	low energy rather than unwillingness to make effort
+280	Soporific	somnolent	overlapping	adjective	feeling drowsy rather than causing drowsiness
+281	Static	stationary	overlapping	adjective	not moving from a physical position
+282	Torpor	stupor	overlapping	noun	near-unconscious state of severely impaired awareness
+283	Abash	abase	paronym	verb	degrade or lower someone in status or dignity
+284	Belittle	berate	overlapping	verb	scold someone harshly for a fault
+285	Bemused	amused	misuse	adjective	entertained or made to laugh, not confused
+286	Catharsis	closure	overlapping	noun	sense of resolution after a painful experience
+287	Chagrin	shame	overlapping	noun	painful self-condemnation over wrongdoing or personal failure
+288	Deride	decry	paronym	verb	publicly condemn as wrong rather than mock contemptuously
+289	Disparage	disparate	paronym	verb	fundamentally different from one another
+290	Maudlin	melancholy	overlapping	adjective	deep, lingering sadness without excessive sentimentality
+291	Mortify	horrify	misuse	verb	shock or disgust intensely rather than embarrass
+292	Nostalgia	reminiscence	overlapping	noun	act or memory of recalling the past
+293	Pensive	apprehensive	paronym	adjective	anxious about what may happen next
+294	Poignant	pungent	paronym	adjective	having a sharply strong smell or taste
+295	Eccentric	eclectic	paronym	adjective	drawing ideas or styles from varied sources
+296	Foible	idiosyncrasy	overlapping	noun	distinctive personal trait that need not be a weakness
+297	Iconoclast	maverick	overlapping	noun	independent-minded person who resists group conventions
+298	Idiosyncrasy	foible	overlapping	noun	minor personal weakness, not merely a distinctive trait
+299	Itinerant	nomadic	overlapping	adjective	living by continual movement rather than occupational travel
+300	Maverick	iconoclast	overlapping	noun	person who actively attacks established beliefs or traditions
+301	Peripatetic	itinerant	overlapping	adjective	traveling place to place, often for practical work
+302	Predilection	predisposition	paronym	noun	inherent tendency or susceptibility, not a conscious liking
+303	Quixotic	idealistic	overlapping	adjective	guided by ideals without necessarily being impractical
+304	Rogue	rouge	paronym	noun	red cosmetic powder used on the cheeks
+305	Singular	single	overlapping	adjective	consisting of only one person or thing
+306	Amoral	immoral	paronym	adjective	knowingly violating accepted standards of right and wrong
+307	Amoralism	relativism	overlapping	noun	view that moral truth varies by culture or perspective
+308	Amorous	amorphous	paronym	adjective	lacking a definite shape, structure, or form
+309	Cynic	skeptic	overlapping	noun	person who questions claims without assuming selfish motives
+310	Existential	essential	paronym	adjective	absolutely necessary rather than concerning life's meaning
+311	Fatalist	determinist	overlapping	noun	person who believes events follow prior causes
+312	Hedonism	epicureanism	overlapping	noun	philosophy favoring moderate pleasure, friendship, and tranquility
+313	Infatuated	devoted	overlapping	adjective	deeply loyal and committed beyond intense attraction
+314	Misanthropic	misogynistic	paronym	adjective	prejudiced against women rather than humanity in general
+315	Nihilism	cynicism	overlapping	noun	distrust of people's motives without denying all meaning
+316	Penchant	propensity	overlapping	noun	natural tendency to act, not necessarily a liking
+317	Propensity	predilection	overlapping	noun	strong personal liking rather than an innate tendency
+318	Antithesis	antipathy	paronym	noun	strong dislike or hostility rather than direct opposition
+319	Corollary	correlation	paronym	noun	statistical or conceptual association, not a logical consequence
+320	Corroborate	collaborate	paronym	verb	work jointly with others on a shared task
+321	Deduce	induce	paronym	verb	infer a general rule from particular observations
+322	Empirical	experiential	overlapping	adjective	derived from personal experience rather than systematic observation
+323	Extrapolate	interpolate	paronym	verb	estimate within known data points, not beyond them
+324	Hypothetical	theoretical	overlapping	adjective	based on abstract principles rather than practical experience
+325	Infer	imply	misuse	verb	suggest something indirectly rather than draw the conclusion
+326	Postulate	hypothesize	overlapping	verb	propose a testable explanation for observed evidence
+327	Premise	hypothesis	overlapping	noun	a tentative explanation intended to be tested
+328	Synthesis	synopsis	paronym	noun	a brief summary of the main points
+329	Ambivalent	indifferent	misuse	adjective	having no strong interest or feeling either way
+330	Fatuous	facetious	paronym	adjective	joking inappropriately about something serious
+331	Inane	insane	paronym	adjective	mentally disordered or wildly irrational
+332	Incongruous	inconspicuous	paronym	adjective	not easily noticed or attracting attention
+333	Nebulous	ambiguous	overlapping	adjective	open to more than one possible interpretation
+334	Obtuse	abstruse	paronym	adjective	difficult to understand because complex or specialized
+335	Redundant	repetitive	overlapping	adjective	repeating frequently, though not necessarily adding nothing
+336	Tautological	circular	overlapping	adjective	using the conclusion to support its own premise
+337	Aphorism	maxim	overlapping	noun	a brief rule or recommendation for conduct
+338	Axiom	theorem	overlapping	noun	a proposition demonstrated through logical proof
+339	Dictum	edict	paronym	noun	an official command issued by an authority
+340	Exemplify	exemplary	paronym	verb	outstanding enough to deserve admiration or imitation
+341	Maxim	maximum	paronym	noun	the greatest amount or degree possible
+342	Mentor	tutor	overlapping	noun	someone who teaches a particular subject or skill
+343	Novel	new	overlapping	adjective	recently made or discovered, without necessarily being original
+344	Paradigm	paragon	paronym	noun	a person or thing representing perfect excellence
+345	Precept	concept	paronym	noun	an abstract idea rather than a guiding rule
+346	Salient	sentient	paronym	adjective	capable of feeling or perceiving sensations
+347	Touchstone	milestone	overlapping	noun	an important stage marking progress or development
+348	Abstruse	obtuse	paronym	adjective	annoyingly slow or unwilling to understand
+349	Arcane	archaic	paronym	adjective	old-fashioned or no longer in common use
+350	Cryptic	arcane	overlapping	adjective	known only by a small group of specialists
+351	Enigma	conundrum	overlapping	noun	a difficult problem or question needing a solution
+352	Esoteric	exotic	paronym	adjective	strikingly unusual or originating in a foreign place
+353	Impervious	imperious	paronym	adjective	arrogantly commanding and expecting immediate obedience
+354	Latent	dormant	overlapping	adjective	temporarily inactive but capable of becoming active
+355	Obscure	obsolete	overlapping	adjective	no longer used because something newer replaced it
+356	Opaque	translucent	overlapping	adjective	allowing some light through without clear visibility
+357	Chronicle	chronology	paronym	noun	the sequence or arrangement of events by time
+358	Cognitive	cognizant	paronym	adjective	aware of a particular fact or situation
+359	Cognizant	cognitive	paronym	adjective	relating broadly to thinking, memory, and understanding
+360	Compendium	encyclopedia	overlapping	noun	a reference work containing detailed entries on many topics
+361	Comprehensive	comprehensible	paronym	adjective	clear enough to be understood
+362	Exhaustive	exhausting	paronym	adjective	causing extreme physical or mental tiredness
+363	Matriculate	graduate	misuse	verb	complete a course of study and receive a qualification
+364	Qualitative	quantitative	paronym	adjective	based on numerical measurements and quantities
+365	Sensory	sensual	paronym	adjective	associated with physical gratification, especially sexual pleasure
+366	Sentient	sapient	paronym	adjective	capable of advanced intelligence and reasoning
+367	Inherent	innate	overlapping	adjective	present from birth rather than acquired through experience
+368	Innate	inherent	overlapping	adjective	inseparable from something's nature, regardless of birth
+369	Intrinsic	instrumental	overlapping	adjective	valuable as a means to achieving another end
+370	Introspective	introverted	paronym	adjective	inclined toward quieter settings and limited social stimulation
+371	Mundane	menial	overlapping	adjective	requiring little skill and carrying low status
+372	Palpable	palatable	paronym	adjective	pleasant to taste or acceptable to consider
+373	Patent	potent	paronym	adjective	having great power, influence, or effectiveness
+374	Peruse	skim	misuse	verb	read quickly to grasp only the main points
+375	Ruminate	reminisce	overlapping	verb	recall and talk about past experiences, often fondly
+376	Scrutinize	criticize	overlapping	verb	express disapproval by identifying faults or weaknesses
+377	Tangible	palpable	overlapping	adjective	strongly perceptible even without being physically touchable
+378	Absolute	definitive	overlapping	adjective	authoritative or final enough to settle a question
+379	Abstract	abstruse	paronym	adjective	difficult to understand because of its complexity
+380	Amorphous	ambiguous	overlapping	adjective	open to more than one possible interpretation
+381	Anachronism	archaism	overlapping	noun	an old-fashioned form surviving from an earlier period
+382	Catholic	eclectic	overlapping	adjective	selecting elements from many varied sources or styles
+383	Chimera	mirage	overlapping	noun	a deceptive appearance or hope that seems real
+384	Definitive	definite	paronym	adjective	certain, clearly fixed, or precisely identified
+385	Dialectical	didactic	paronym	adjective	intended to teach, sometimes in an overly moralizing way
+386	Immutable	immovable	paronym	adjective	unable to be physically moved or emotionally persuaded
+387	Juxtapose	compare	overlapping	verb	examine things to identify their similarities and differences
+388	Paradox	contradiction	overlapping	noun	an incompatibility in which both claims cannot be true
+389	Blasphemy	heresy	overlapping	noun	a belief that contradicts an established religious doctrine
+390	Conjure	conjecture	paronym	verb	form a conclusion from incomplete evidence
+391	Heresy	apostasy	overlapping	noun	the abandonment of a religion or previously held belief
+392	Incantation	invocation	overlapping	noun	an appeal calling upon a deity or spirit
+393	Irrevocable	irreparable	paronym	adjective	too badly damaged to be repaired or corrected
+394	Profane	secular	overlapping	adjective	nonreligious without necessarily showing disrespect toward sacred things
+395	Profess	confess	paronym	verb	admit something private, shameful, or previously concealed
+396	Proselytize	convert	overlapping	verb	cause someone actually to adopt a different belief
+397	Sacrilege	blasphemy	overlapping	noun	offensive speech or expression directed at sacred things
+398	Sacrosanct	sanctimonious	paronym	adjective	making a hypocritical show of moral superiority
+399	Theology	theocracy	paronym	noun	government by religious authorities or divine law
+400	Agnostic	atheist	overlapping	noun	person who rejects belief in any gods
+401	Atheist	agnostic	overlapping	noun	person who considers divine existence unknown or unknowable
+402	Construe	misconstrue	paronym	verb	interpret something incorrectly or in a distorted way
+403	Insular	isolated	overlapping	adjective	separated from others without necessarily being narrow-minded
+404	Provincial	provisional	paronym	adjective	temporary and subject to later confirmation or revision
+405	Secular	atheistic	overlapping	adjective	rejecting belief in the existence of any gods
+406	Cadence	tempo	overlapping	noun	speed at which a piece of music is performed
+407	Garrulous	loquacious	overlapping	adjective	very talkative without necessarily being tedious or trivial
+408	Histrionic	historic	paronym	adjective	important or influential in the course of history
+409	Hyperbole	metaphor	overlapping	noun	comparison that describes one thing as another
+410	Loquacious	garrulous	overlapping	adjective	tediously talkative especially about unimportant matters
+411	Mellifluous	melodious	overlapping	adjective	pleasantly musical because of an appealing tune
+412	Brevity	terseness	overlapping	noun	extreme verbal shortness that may sound abrupt
+413	Broach	brooch	paronym	verb	decorative piece of jewellery fastened to clothing
+414	Coherent	cohesive	overlapping	adjective	forming a unified whole whose parts hold together
+415	Compelling	compulsory	paronym	adjective	required by a rule or authority
+416	Concise	terse	overlapping	adjective	so brief that it may sound abrupt or unfriendly
+417	Consonant	constant	paronym	adjective	remaining unchanged or occurring continuously over time
+418	Elicit	illicit	paronym	verb	forbidden by law rules or accepted standards
+419	Laconic	terse	overlapping	adjective	brief in a way that seems abrupt or unfriendly
+420	Rhetoric	oratory	overlapping	noun	art or style of formal public speaking
+421	Succinct	terse	overlapping	adjective	brief in a way that may sound unfriendly
+422	Terse	concise	overlapping	adjective	brief and clear without implying an unfriendly tone
+423	Allusion	illusion	paronym	noun	false appearance or mistaken impression of reality
+424	Analogy	metaphor	overlapping	noun	implicit comparison describing one thing as another
+425	Anecdote	antidote	paronym	noun	remedy that counteracts poison or another harmful condition
+426	Banal	mundane	overlapping	adjective	ordinary or everyday without necessarily being overused
+427	Colloquial	slang	overlapping	adjective	highly informal vocabulary often associated with particular groups
+428	Digress	regress	paronym	verb	return to an earlier or less developed state
+429	Extraneous	extrinsic	paronym	adjective	originating outside something rather than forming its essential nature
+430	Figurative	fictional	overlapping	adjective	invented rather than describing real people or events
+431	Nuance	nuisance	paronym	noun	person or thing causing annoyance or inconvenience
+432	Pedestrian	pedantic	paronym	adjective	excessively concerned with minor rules or academic details
+433	Subtle	implicit	overlapping	adjective	suggested or understood without being directly stated
+434	Tangential	incidental	overlapping	adjective	secondary to the main purpose but still relevant
+435	Cliché	stereotype	overlapping	noun	oversimplified fixed belief about a group or type
+436	Didactic	pedantic	overlapping	adjective	overly concerned with minor details or formal rules
+437	Edify	educate	overlapping	verb	develop knowledge or skills through systematic teaching
+438	Exhort	extort	paronym	verb	obtain something through threats, pressure, or force
+439	Homily	hominy	paronym	noun	dried corn kernels prepared and eaten as food
+440	Insipid	insidious	paronym	adjective	gradually harmful while remaining difficult to notice
+441	Platitude	cliché	overlapping	noun	any expression or idea made stale through overuse
+442	Reiterate	iterate	overlapping	verb	repeat a process to produce successive improvements
+443	Saccharine	saccharin	paronym	adjective	an artificial sweetener used instead of sugar
+444	Superfluous	superficial	paronym	adjective	concerned only with the surface, not deeper substance
+445	Belabor	elaborate	paronym	verb	explain something by adding useful detail
+446	Demagogue	pedagogue	paronym	noun	a teacher, especially one strict about instruction
+447	Deprecate	depreciate	paronym	verb	lose value or reduce an asset's recorded value
+448	Impugn	impute	paronym	verb	attribute an action, quality, or responsibility to someone
+449	Incense	incite	paronym	verb	stir people to act, often violently or unlawfully
+450	Instigate	investigate	paronym	verb	systematically examine facts to discover what happened
+451	Refute	rebut	misuse	verb	answer a claim with an opposing argument
+452	Remonstrate	demonstrate	paronym	verb	show something clearly through evidence or practical display
+453	Repudiate	refute	overlapping	verb	prove a claim wrong using evidence or reasoning
+454	Amenable	amicable	paronym	adjective	friendly and peaceful despite possible disagreement
+455	Appease	please	paronym	verb	give someone enjoyment, satisfaction, or approval
+456	Assuage	appease	overlapping	verb	calm an angry person through concessions or compliance
+457	Mediate	arbitrate	overlapping	verb	hear opposing sides and impose a binding decision
+458	Mitigate	militate	paronym	verb	exert a strong influence, usually against an outcome
+459	Mollify	modify	paronym	verb	change something partly without transforming it completely
+460	Placate	placid	paronym	verb	calm and peaceful by nature or appearance
+461	Acquiesce	assent	overlapping	verb	express explicit agreement or approval
+462	Amnesty	clemency	overlapping	noun	mercy that reduces punishment, often for one person
+463	Capitulate	recapitulate	paronym	verb	summarize the main points of something already discussed
+464	Concord	consensus	overlapping	noun	general acceptance of a decision or shared opinion
+465	Consensus	consent	overlapping	noun	permission or agreement given by an individual
+466	Covenant	contract	overlapping	noun	legally enforceable agreement defining reciprocal obligations
+467	Discreet	discrete	paronym	adjective	separate and individually distinct rather than continuous
+468	Inexorable	inevitable	overlapping	adjective	certain to happen, whether forceful or not
+469	Intractable	intransigent	overlapping	adjective	unwilling to change one's views or compromise
+470	Prudent	prudish	paronym	adjective	excessively concerned with sexual propriety or modesty
+471	Relinquish	renounce	overlapping	verb	formally reject a belief, claim, or association
+472	Succumb	surrender	overlapping	verb	consciously stop resisting an opponent or authority
+473	Aesthetic	ascetic	paronym	adjective	practicing strict self-denial and avoiding physical pleasures
+474	Ambience	milieu	overlapping	noun	the social or cultural surroundings of someone
+475	Archaic	obsolete	overlapping	adjective	no longer used because something newer replaced it
+476	Epigram	epigraph	paronym	noun	a quotation placed at the beginning of a work
+477	Genre	style	overlapping	noun	a characteristic manner of expression, not a category
+478	Milieu	ambience	overlapping	noun	the sensory mood or atmosphere of a place
+479	Redolent	fragrant	overlapping	adjective	having a distinctly pleasant or sweet smell
+480	Accolade	acclaim	overlapping	noun	enthusiastic public praise rather than a particular honor
+481	Adulation	admiration	overlapping	noun	warm approval that need not be excessive or uncritical
+482	Appreciate	depreciate	paronym	verb	lose value or reduce something's stated value
+483	Approbation	probation	paronym	noun	a trial period or conditional release under supervision
+484	Eminent	imminent	paronym	adjective	expected to happen very soon
+485	Exalt	exult	paronym	verb	show or feel triumphant joy
+486	Extol	exalt	paronym	verb	raise someone in rank, dignity, or status
+487	Laud	applaud	paronym	verb	show approval, especially by clapping
+488	Revere	reverie	paronym	verb	a dreamy state of absorbed thought
+489	Steadfast	stubborn	overlapping	adjective	unreasonably unwilling to change one's position
+490	Tout	taunt	paronym	verb	mock or provoke someone with insulting remarks
+491	Agrarian	rural	overlapping	adjective	related broadly to the countryside, not specifically farming
+492	Apotheosis	epitome	overlapping	noun	the most representative embodiment of a quality
+493	Bucolic	idyllic	overlapping	adjective	peaceful and nearly perfect, whether rural or not
+494	Domestic	domesticated	paronym	adjective	tamed or adapted for human use
+495	Fauna	flora	paronym	noun	the plant life of a region or period
+496	Fecund	prolific	overlapping	adjective	actually producing many works, results, or offspring
+497	Husbandry	husband	paronym	noun	a man married to another person
+498	Idyllic	idealistic	paronym	adjective	guided by ideals more than practical realities
+499	Rustic	rural	overlapping	adjective	located in or generally related to the countryside
+500	Ameliorate	alleviate	overlapping	verb	reduce suffering or severity without fixing the cause
+501	Apartheid	segregation	overlapping	noun	separation of groups without necessarily constituting a political system
+502	Bane	ban	paronym	noun	an official prohibition against something
+503	Blight	plight	paronym	noun	a difficult or unfortunate situation
+504	Efface	deface	paronym	verb	spoil a surface's appearance without erasing it
+505	Enfranchise	emancipate	overlapping	verb	free someone from legal, social, or political control
+506	Noxious	obnoxious	paronym	adjective	extremely unpleasant or offensive rather than physically harmful
+507	Pernicious	noxious	overlapping	adjective	directly harmful or poisonous, often through physical exposure
+508	Relegate	delegate	paronym	verb	assign authority or a task to another person
+509	Segregate	discriminate	overlapping	verb	treat people differently without necessarily keeping them physically apart
+510	Sinister	malevolent	overlapping	adjective	actively wishing or intending harm rather than merely seeming threatening
+511	Subordinate	subservient	overlapping	adjective	excessively submissive or eager to obey
+512	Augment	supplement	overlapping	verb	add something extra to improve or complete what exists
+513	Burgeon	flourish	overlapping	verb	thrive successfully without necessarily expanding rapidly
+514	Coalesce	convalesce	paronym	verb	gradually recover health or strength after illness
+515	Complement	compliment	paronym	noun; verb	an expression of praise or admiration
+516	Confluence	influence	paronym	noun	power to affect someone's actions, opinions, or development
+517	Copious	capacious	paronym	adjective	spacious enough to hold a great deal
+518	Integrate	incorporate	overlapping	verb	include something as a part of a larger whole
+519	Kinetic	potential	overlapping	adjective	stored by position or condition rather than current motion
+520	Replenish	replace	overlapping	verb	substitute one item for another rather than refill a supply
+521	Replete	complete	paronym	adjective	having every required part rather than being abundantly filled
+522	Comprise	compose	misuse	verb	form or make up a larger whole
+523	Endemic	epidemic	overlapping	adjective	spreading unusually widely or rapidly within a population
+524	Enormity	enormousness	misuse	noun	great physical size without implying seriousness or wickedness
+525	Incessant	insistent	paronym	adjective	persistently demanding attention or refusing to accept opposition
+526	Inundate	undulate	paronym	verb	move with a smooth rising and falling motion
+527	Monolithic	homogeneous	overlapping	adjective	uniform in composition without necessarily forming one massive unit
+528	Perennial	perpetual	overlapping	adjective	continuing indefinitely without interruption or recurrence
+529	Permeate	penetrate	overlapping	verb	enter through a surface without necessarily spreading throughout
+530	Pervade	prevail	paronym	verb	prove stronger or remain dominant despite opposition
+531	Prodigious	prestigious	paronym	adjective	highly respected or admired because of status or achievement
+532	Proliferate	propagate	overlapping	verb	cause an idea or organism to spread or reproduce
+533	Prolific	proficient	paronym	adjective	skilled and competent without necessarily producing a large quantity
+534	Reciprocal	inverse	overlapping	adjective	opposite in order, direction, or mathematical relationship
+535	Surfeit	surplus	overlapping	noun; verb	an extra amount beyond requirements, often still useful
+536	Ubiquitous	universal	overlapping	adjective	applying to every member or case, not every place
+537	Antecedent	precedent	paronym	noun	an earlier case used as an example or rule
+538	Catalyst	cause	overlapping	noun	the underlying reason something happens, not merely its trigger
+539	Concurrent	consecutive	paronym	adjective	following one after another rather than overlapping in time
+540	Conducive	conductive	paronym	adjective	able to transmit heat, electricity, or another form of energy
+541	Contingent	contiguous	paronym	adjective	touching along a boundary or directly adjoining
+542	Fortuitous	fortunate	misuse	adjective	favoured by luck, whether planned or accidental
+543	Harbinger	omen	overlapping	noun	an event believed to predict a good or bad outcome
+544	Imminent	eminent	paronym	adjective	famous and highly respected in a field
+545	Precursor	predecessor	overlapping	noun	the previous holder of a position or role
+546	Beget	beset	paronym	verb	trouble or surround persistently with difficulties
+547	Engender	endanger	paronym	verb	put someone or something at risk of harm
+548	Precipitate	precipitous	paronym	verb; adjective; noun	dangerously steep or extremely sudden
+549	Profuse	prolific	overlapping	adjective	producing many works, results, or offspring
+550	Ramification	repercussion	overlapping	noun	an indirect consequence that is usually unwelcome
+551	Repercussion	ramification	overlapping	noun	a branching consequence that adds complexity
+552	Spawn	spurn	paronym	verb	reject with contempt or disdain
+553	Dissolution	dilution	paronym	noun	weakening a substance by adding another material
+554	Ephemeral	ethereal	paronym	adjective	delicately light or seemingly otherworldly
+555	Hiatus	sabbatical	overlapping	noun	a planned extended leave from regular work
+556	Malleable	mutable	overlapping	adjective	capable of changing in form or character generally
+557	Pivotal	vital	overlapping	adjective	absolutely necessary for existence or success
+558	Precipitous	precipitate	paronym	adjective	done rashly or causing an event prematurely
+559	Sporadic	intermittent	overlapping	adjective	stopping and restarting at intervals, possibly regularly
+560	Transient	transitional	paronym	adjective	relating to passage between two stages
+561	Adverse	averse	paronym	adjective	strongly unwilling or opposed to something
+562	Arduous	onerous	overlapping	adjective	imposing an unfairly heavy burden or obligation
+563	Attrition	atrophy	overlapping	noun	wasting away through disuse, disease, or neglect
+564	Debilitate	deteriorate	overlapping	verb	become progressively worse in quality or condition
+565	Deleterious	delirious	paronym	adjective	acutely confused, often because of illness or fever
+566	Encroach	infringe	overlapping	verb	violate a law, right, or agreed restriction
+567	Exigency	emergency	overlapping	noun	a sudden dangerous situation requiring immediate action
+568	Extricate	extract	overlapping	verb	remove or obtain something from a source
+569	Fetter	fester	paronym	noun	grow increasingly infected, bitter, or troublesome
+570	Onerous	arduous	overlapping	adjective	requiring sustained effort or endurance to complete
+571	Stringent	strident	paronym	adjective	loud, forceful, and harsh in expression
+572	Effusion	infusion	paronym	noun	the introduction or steeping of one substance in another
+573	Ethereal	ephemeral	paronym	adjective	lasting for only a very short time
+574	Evanescent	effervescent	paronym	adjective	bubbly, lively, or enthusiastically animated
+575	Incandescent	iridescent	overlapping	adjective	showing shifting colors as the viewing angle changes
+576	Ineffable	infallible	paronym	adjective	incapable of making mistakes or being wrong
+577	Luminous	luminescent	paronym	adjective	producing light through luminescence, usually without significant heat
+578	Profound	profuse	paronym	adjective	produced or given in very large amounts
+579	Substantive	substantial	paronym	adjective	large in amount, extent, or importance
+580	Tenable	tenuous	paronym	adjective	weak, slight, or supported by little evidence
+581	Chronic	acute	overlapping	adjective	sudden in onset and usually short-lived
+582	Congenital	hereditary	misuse	adjective	genetically passed from parents to their offspring
+583	Decimate	annihilate	overlapping	verb	destroy completely, leaving nothing or no survivors
+584	Desiccate	dissect	paronym	verb	cut apart for detailed examination
+585	Distend	extend	paronym	verb	make something longer or increase its reach
+586	Malignant	malign	paronym	adjective	speak maliciously and falsely about someone
+587	Malinger	linger	paronym	verb	remain somewhere longer than expected
+588	Moribund	morbid	paronym	adjective	showing an unhealthy interest in death or disease
+589	Palliate	placate	paronym	verb	calm someone who is angry or hostile
+590	Pathology	etiology	overlapping	noun	the cause or origin of a disease
+591	Aggregate	aggravate	paronym	noun	make an unpleasant condition or situation worse
+592	Awry	wary	paronym	adjective	cautious because of possible danger
+593	Circumvent	circumnavigate	paronym	verb	travel completely around a place or object
+594	Expedient	expeditious	paronym	adjective	done quickly and efficiently
+595	Expedite	facilitate	overlapping	verb	make a process easier to accomplish
+596	Founder	flounder	paronym	verb	struggle clumsily without making effective progress
+597	Pragmatic	idealistic	overlapping	adjective	guided more by ideals than by practical constraints
+598	Recant	renounce	overlapping	verb	formally give up a right, claim, or allegiance
+599	Renounce	recant	overlapping	verb	withdraw a previously stated belief or assertion
+600	Utilitarian	pragmatic	overlapping	adjective	focused on workable results in a particular situation
+601	Renaissance	reconnaissance	paronym	noun	military observation undertaken to gather information
+602	Aberration	anomaly	overlapping	noun	an irregularity that need not indicate something went wrong
+603	Anomaly	aberration	overlapping	noun	an unwelcome deviation suggesting the normal pattern was disrupted
+604	Archetype	stereotype	overlapping	noun	an oversimplified fixed belief about a group
+605	Disparate	desperate	paronym	adjective	feeling extreme urgency or having little hope
+606	Eclectic	eccentric	paronym	adjective	unconventional or noticeably strange in behaviour
+607	Epitome	epithet	paronym	noun	a descriptive name or phrase applied to someone
+608	Gravity	inertia	overlapping	noun	resistance to any change in an object's motion
+609	Prodigy	protégé	overlapping	noun	a person guided and supported by an influential mentor
+610	Circumscribe	circumspect	paronym	verb	careful to consider risks before acting
+611	Commensurate	consummate	paronym	adjective	supremely skilled or complete in every respect
+612	Contiguous	continuous	paronym	adjective	uninterrupted across time, space, or sequence
+613	Delineate	demarcate	overlapping	verb	mark the exact boundary between areas
+614	Discrete	discreet	paronym	adjective	careful not to attract attention or reveal secrets
+615	Periphery	perimeter	overlapping	noun	the boundary line or measured distance around an area
+616	Preclude	exclude	paronym	verb	leave someone or something out of a group
+617	Proximity	propensity	paronym	noun	a natural tendency or inclination toward something
+618	Sequester	quarantine	overlapping	verb	isolate to prevent the spread of disease
+619	Tantamount	paramount	paronym	adjective	more important than anything else
+620	Uniform	unanimous	overlapping	adjective	agreed upon by every member of a group
+621	Abridge	abbreviate	overlapping	verb	shorten a word or phrase into a reduced form
+622	Alloy	allay	paronym	noun	reduce a fear, suspicion, or painful feeling
+623	Infinitesimal	infinite	paronym	adjective	limitless in extent, quantity, or duration
+624	Integral	integer	paronym	adjective	a whole number without a fractional part
+625	Requisite	prerequisite	overlapping	adjective	a condition that must be satisfied beforehand
+626	Abortive	aborted	overlapping	adjective	deliberately stopped or ended before completion
+627	Accost	assault	misuse	verb	physically attack or threaten someone with violence
+628	Contentious	conscientious	paronym	adjective	careful, responsible, and guided by a sense of duty
+629	Egregious	gregarious	paronym	adjective	sociable and fond of being with other people
+630	Exacerbate	exasperate	paronym	verb	irritate someone until they lose patience
+631	Exasperate	exacerbate	paronym	verb	make an existing problem or condition worse
+632	Hapless	helpless	paronym	adjective	unable to act or defend oneself without assistance
+633	Ponderous	pensive	misuse	adjective	deeply absorbed in serious or reflective thought
+634	Protract	retract	paronym	verb	draw something back or formally withdraw a statement
+635	Stymie	stifle	overlapping	verb	suppress an activity, feeling, or expression as it develops
+636	Altruism	philanthropy	overlapping	noun	organized giving of resources for the public good
+637	Benefactor	beneficiary	paronym	noun	a person who receives money, help, or an advantage
+638	Benevolent	benign	overlapping	adjective	gentle or harmless rather than actively generous
+639	Bequest	inheritance	overlapping	noun	property received by an heir, with or without a will
+640	Largess	largeness	paronym	noun	the quality of being great in physical size
+641	Philanthropy	altruism	overlapping	noun	selfless concern expressed without expectation of personal reward
+642	Prodigal	prodigious	paronym	adjective	remarkably great in size, extent, or ability
+643	Provident	providential	paronym	adjective	occurring opportunely as if through divine intervention
+644	Solicitous	solicit	paronym	adjective	ask for or try to obtain something
+645	Abnegate	negate	paronym	verb	cancel out or deny the truth of something
+646	Abstinent	abstemious	overlapping	adjective	moderate and restrained, especially in eating or drinking
+647	Ascetic	aesthetic	paronym	adjective	concerned with beauty or artistic taste
+648	Austere	severe	overlapping	adjective	harsh or intense rather than simply plain
+649	Celibacy	chastity	overlapping	noun	sexual restraint or purity without necessarily remaining unmarried
+650	Forbear	forebear	paronym	verb	an ancestor or person from an earlier generation
+651	Forego	forbear	overlapping	verb	restrain oneself from acting, especially under provocation
+652	Forsake	forgo	overlapping	verb	choose to go without a particular option or pleasure
+653	Frugal	parsimonious	overlapping	adjective	so unwilling to spend that it becomes unreasonable
+654	Parsimonious	frugal	overlapping	adjective	careful with resources without being unreasonably stingy
+655	Sobriety	abstinence	overlapping	noun	deliberate avoidance of alcohol or another activity entirely
+656	Temperate	abstinent	overlapping	adjective	avoiding an activity or substance altogether
+657	Adulterate	adulate	paronym	verb	praise someone excessively or servilely
+658	Artful	artistic	paronym	adjective	showing creative skill or sensitivity in the arts
+659	Delude	elude	paronym	verb	escape from capture, understanding, or achievement
+660	Duplicity	duplication	paronym	noun	the act of making or copying something twice
+661	Fabrication	falsification	overlapping	noun	alteration of real information to make it misleading
+662	Finesse	finagle	overlapping	noun	obtain something through clever, often dishonest maneuvering
+663	Specious	spurious	overlapping	adjective	not genuine or valid, without necessarily seeming plausible
+664	Ambiguous	vague	overlapping	adjective	lacking enough detail or precision to be clear
+665	Circuitous	circular	paronym	adjective	returning to its starting point or reasoning in a loop
+666	Circumlocution	circumvention	paronym	noun	getting around a rule, restriction, or obstacle
+667	Elliptical	cryptic	overlapping	adjective	mysteriously obscure rather than compressed through omitted words
+668	Equivocal	ambiguous	overlapping	adjective	open to multiple interpretations without necessarily being evasive
+669	Euphemism	understatement	overlapping	noun	presentation of something as less serious than it is
+670	Insinuate	imply	overlapping	verb	suggest indirectly without necessarily conveying something unpleasant
+671	Mendacious	mendicant	paronym	adjective	a person who lives by begging
+672	Obfuscate	obscure	overlapping	verb	make unclear or hidden, not necessarily deliberately
+673	Oblique	obtuse	paronym	adjective	greater than 90 degrees or slow to understand
+674	Ostensible	ostentatious	paronym	adjective	showy and designed to attract attention or admiration
+675	Avow	vow	paronym	verb	make a solemn promise or pledge
+676	Candor	bluntness	overlapping	noun	directness so sharp that it may seem insensitive
+677	Credulous	credible	paronym	adjective	believable or worthy of trust
+678	Disinterested	uninterested	misuse	adjective	having no interest, curiosity, or enthusiasm
+679	Explicit	specific	overlapping	adjective	precise and particular but not necessarily directly stated
+680	Fidelity	fealty	paronym	noun	formal loyalty owed to a ruler or superior
+681	Impartial	disinterested	overlapping	adjective	unbiased because one has no personal stake
+682	Ingenuous	ingenious	paronym	adjective	clever, inventive, or skillfully designed
+683	Unwitting	unwilling	paronym	adjective	not prepared or consenting to do something
+684	Affectation	affection	paronym	noun	a feeling of fondness or emotional attachment
+685	Belie	betray	overlapping	verb	unintentionally reveal something meant to remain hidden
+686	Contrived	convoluted	paronym	adjective	excessively complicated and difficult to follow
+687	Countenance	demeanor	overlapping	noun	a person's overall outward manner and behavior
+688	Derogatory	defamatory	overlapping	adjective	damaging someone's reputation, especially through false statements
+689	Pious	sanctimonious	overlapping	adjective	making an insincere show of moral superiority
+690	Sanctimonious	pious	overlapping	adjective	sincerely devout in religious belief and practice
+691	Unctuous	obsequious	overlapping	adjective	excessively submissive and eager to obey
+692	Allege	assert	overlapping	verb	state something confidently without implying it remains unproven
+693	Apocryphal	anecdotal	overlapping	adjective	based on personal reports rather than systematic evidence
+694	Conjecture	inference	overlapping	noun	a conclusion drawn logically from available evidence
+695	Dubious	ambiguous	overlapping	adjective	open to more than one interpretation
+696	Provisional	tentative	overlapping	adjective	uncertain or hesitant rather than formally temporary
+697	Purported	putative	overlapping	adjective	generally assumed rather than explicitly claimed to be so
+698	Purportedly	reportedly	overlapping	adverb	according to reports, without necessarily signaling skepticism
+699	Putative	purported	overlapping	adjective	explicitly claimed to be so, often with skepticism
+700	Spurious	specious	paronym	adjective	superficially plausible but actually misleading or unsound
+701	Tentative	tenuous	paronym	adjective	weak or poorly supported rather than merely unconfirmed
+702	Tenuous	tentative	paronym	adjective	uncertain or hesitant rather than weakly supported
+703	Acerbic	acetic	paronym	adjective	relating to vinegar or its characteristic acid
+704	Burlesque	parody	overlapping	noun	comic imitation of a particular work or style
+705	Caricature	cartoon	overlapping	noun	any simplified drawing, without necessarily exaggerating personal features
+706	Caustic	sarcastic	overlapping	adjective	using mocking irony without necessarily being severely harsh
+707	Facetious	fatuous	paronym	adjective	foolish and pointless rather than playfully inappropriate
+708	Farcical	facetious	paronym	adjective	treating a serious matter with inappropriate humor
+709	Invective	incentive	paronym	noun	something that motivates or encourages action
+710	Ironic	coincidental	misuse	adjective	happening together by chance without a meaningful reversal
+711	Lampoon	parody	overlapping	verb	comically imitates a recognizable work or style
+712	Parody	satire	overlapping	noun	uses humor to criticize without necessarily imitating a source
+713	Arbiter	arbitrary	paronym	noun	based on personal whim rather than a reasoned standard
+714	Defame	disparage	overlapping	verb	speak slightingly without necessarily making false claims
+715	Indignant	indigent	paronym	adjective	poor and lacking basic material necessities
+716	Libel	slander	overlapping	noun	spoken defamation rather than written or published defamation
+717	Litigate	mitigate	paronym	verb	make something harmful or severe less serious
+718	Perjury	hearsay	overlapping	noun	an out-of-court statement repeated as evidence
+719	Precedent	precedence	paronym	noun	priority or superior rank in order
+720	Rebut	refute	overlapping	verb	prove a claim false, not merely answer it
+721	Recrimination	incrimination	paronym	noun	evidence or accusation that implicates someone in wrongdoing
+722	Slander	libel	overlapping	noun	defamation published in writing or another lasting form
+723	Stipulate	speculate	paronym	verb	form theories without enough evidence for certainty
+724	abase	abash	paronym	verb	make someone feel embarrassed or self-conscious
+725	abstemious	abstinent	overlapping	adjective	refraining entirely rather than consuming in moderation
+726	accrete	accrue	paronym	verb	accumulate or become due over time
+727	anachronistic	archaic	overlapping	adjective	old-fashioned or no longer in general use
+728	antiseptic	antibiotic	overlapping	adjective	able to kill or inhibit bacteria, often medicinally
+729	apathetic	lethargic	overlapping	adjective	lacking energy rather than interest or concern
+730	arid	acrid	paronym	adjective	unpleasantly sharp or bitter in smell or taste
+731	aural	oral	paronym	adjective	relating to the mouth or spoken communication
+732	autonomy	sovereignty	overlapping	noun	supreme governing authority, especially over a state
+733	averse	adverse	paronym	adjective	harmful or unfavorable rather than personally unwilling
+734	beneficent	benevolent	overlapping	adjective	kindly and well-meaning, without necessarily taking helpful action
+735	beneficial	beneficent	paronym	adjective	actively doing good, typically through generous action
+736	bereave	grieve	paronym	verb	feel deep sorrow rather than cause a loss
+737	bolster	bluster	paronym	verb	speak loudly and aggressively with little real effect
+738	bombastic	boisterous	overlapping	adjective	noisy and energetic in behavior rather than pompous
+739	brook	broach	paronym	verb	introduce a sensitive subject for discussion
+740	callous	callus	paronym	adjective	a hardened patch of skin caused by friction
+741	candid	blunt	overlapping	adjective	direct in a way that may seem tactless
+742	cantankerous	contentious	overlapping	adjective	inclined to provoke arguments or public controversy
+743	cathartic	therapeutic	overlapping	adjective	promoting healing without necessarily releasing suppressed emotions
+744	chronology	chronicle	paronym	noun	a narrative record of events rather than their ordering
+745	clandestine	confidential	overlapping	adjective	intended for limited disclosure, not secretly conducted
+746	concur	conquer	paronym	verb	defeat or take control of by force
+747	conspicuous	conscientious	paronym	adjective	careful and diligent from a desire to act properly
+748	conundrum	dilemma	overlapping	noun	a difficult choice between competing alternatives
+749	correlate	cause	misuse	verb	directly produce an effect rather than merely vary alongside it
+750	credible	creditable	paronym	adjective	deserving praise or recognition rather than belief
+751	curative	palliative	overlapping	adjective	relieving symptoms without removing the underlying cause
+752	debunk	refute	overlapping	verb	prove a specific claim or argument to be false
+753	defunct	dormant	overlapping	adjective	temporarily inactive but still capable of revival
+754	demure	demur	paronym	adjective	raise an objection or express reluctance
+755	denounce	renounce	paronym	verb	formally give up a claim, belief, or association
+756	diffidence	deference	paronym	noun	respectful submission to another's judgment or authority
+757	diligent	vigilant	overlapping	adjective	staying alert to possible danger or trouble
+758	dirge	elegy	overlapping	noun	a reflective poem mourning someone who has died
+759	disaffected	disgruntled	overlapping	adjective	dissatisfied and annoyed, without necessarily withdrawing loyalty
+760	disavow	repudiate	overlapping	verb	reject something as invalid or refuse to accept it
+761	discomfit	discomfort	misuse	verb	cause physical or emotional unease rather than embarrassment
+762	discourse	dialogue	overlapping	noun	a two-way exchange of ideas between participants
+763	dissonant	dissident	paronym	adjective	opposing an established government, policy, or doctrine
+764	divergent	diverse	overlapping	adjective	showing variety without implying movement away from one point
+765	economical	economic	paronym	adjective	relating to the economy, finance, or commerce
+766	effluvium	effluent	paronym	noun	liquid waste discharged into water or the environment
+767	effrontery	affront	paronym	noun	an action or remark that causes deliberate offense
+768	effusive	exuberant	overlapping	adjective	full of lively energy and enthusiastic excitement
+769	embellish	fabricate	overlapping	verb	invent something false rather than merely adding details
+770	empathetic	sympathetic	overlapping	adjective	showing concern or pity without sharing another's perspective
+771	eradicate	mitigate	overlapping	verb	reduce harm or severity without eliminating the problem
+772	erratic	eccentric	overlapping	adjective	unconventional or odd but not necessarily unpredictable
+773	erudition	education	paronym	noun	the process or system through which people learn
+774	exigent	exacting	paronym	adjective	demanding great effort, care, or precision
+775	exorbitance	extravagance	overlapping	noun	excessive spending or elaborate and wasteful display
+776	exorbitant	extravagant	overlapping	adjective	costing or using more than necessary, often for luxury
+777	exposition	exhibition	paronym	noun	a public display of art, goods, or skills
+778	exuberant	exorbitant	paronym	adjective	unreasonably high in price, amount, or degree
+779	fabricate	falsify	overlapping	verb	alter genuine information or evidence to make it false
+780	fallacy	falsehood	overlapping	noun	an untrue statement, often made deliberately
+781	feasible	possible	overlapping	adjective	capable of happening whether or not practical
+782	felicitous	fortunate	overlapping	adjective	favored by good luck rather than especially well chosen
+783	flippant	facetious	overlapping	adjective	joking about something serious, not always disrespectfully
+784	foster	foist	paronym	verb	force an unwanted thing or idea on someone
+785	fulsome	effusive	overlapping	adjective	expressing praise freely without implying offensive insincerity
+786	gaffe	gaff	paronym	noun	a hooked pole used for landing large fish
+787	garner	garnish	paronym	verb	decorate food or add an ornamental accompaniment
+788	genial	congenial	overlapping	adjective	pleasant because compatible or well suited
+789	goad	coax	overlapping	verb	persuade gently through patience or friendly encouragement
+790	homeostasis	equilibrium	overlapping	noun	a general state of balance between opposing forces
+791	hone	home	misuse	verb	move or focus toward a precise target
+792	impede	inhibit	overlapping	verb	restrain an action, process, or natural tendency
+793	impetus	incentive	overlapping	noun	a promised benefit that motivates a choice
+794	implicit	inherent	overlapping	adjective	existing as an essential and permanent characteristic
+795	improvident	imprudent	overlapping	adjective	generally unwise or lacking sound judgment
+796	impudent	imprudent	paronym	adjective	unwise because consequences have not been considered
+797	inchoate	incoherent	paronym	adjective	lacking logical connection or understandable structure
+798	incoherent	inchoate	paronym	adjective	only beginning to develop and not fully formed
+799	incontrovertible	controversial	paronym	adjective	likely to provoke disagreement or public dispute
+800	incursion	excursion	paronym	noun	a short trip taken for pleasure or education
+801	indict	convict	misuse	verb	formally find someone guilty of a crime
+802	inscrutable	unscrupulous	paronym	adjective	lacking moral principles or concern for fairness
+803	insolvent	bankrupt	overlapping	adjective	legally placed under a formal debt-resolution process
+804	invocation	evocation	paronym	noun	the act of bringing memories or feelings to mind
+805	jaded	cynical	overlapping	adjective	distrustful of people's motives or professed sincerity
+806	jocular	jovial	overlapping	adjective	cheerful and sociable without necessarily making jokes
+807	kinship	affinity	overlapping	noun	a natural liking or attraction based on compatibility
+808	laudatory	laudable	paronym	adjective	deserving praise rather than actually expressing it
+809	lavish	luxurious	overlapping	adjective	providing expensive comfort rather than exceptional abundance
+810	lax	lenient	overlapping	adjective	deliberately merciful or tolerant when enforcing standards
+811	levee	levy	paronym	noun	impose or collect a tax, charge, or contribution
+812	litigious	litigant	paronym	adjective	a person or organization involved in a lawsuit
+813	mar	scar	overlapping	verb	leave a lasting physical or emotional mark
+814	meticulous	scrupulous	overlapping	adjective	careful to act honestly and follow moral principles
+815	modicum	minimum	paronym	noun	the smallest amount possible, permitted, or required
+816	motility	mobility	paronym	noun	general ability to move or be moved freely
+817	multifarious	numerous	overlapping	adjective	great in number without necessarily being varied
+818	multiplicity	duplicity	paronym	noun	deliberate deceit through double-dealing or contradictory behavior
+819	obstinate	persistent	overlapping	adjective	continuing firmly despite obstacles, without implying unreasonable stubbornness
+820	ornate	ostentatious	overlapping	adjective	designed to attract notice or display wealth and status
+821	oscillate	fluctuate	overlapping	verb	vary irregularly rather than swing repeatedly between two points
+822	palliative	placebo	overlapping	adjective	an inactive treatment whose benefit comes chiefly from expectation
+823	panegyric	eulogy	overlapping	noun	a speech of praise, especially for someone who has died
+824	parallel	analogy	overlapping	noun	a comparison used to explain one thing through another
+825	parity	equity	overlapping	noun	fairness that may require unequal treatment or resources
+826	pedagogue	pedant	paronym	noun	someone excessively concerned with minor rules or details
+827	perspicacious	perspicuous	paronym	adjective	clearly expressed and therefore easy to understand
+828	philanthropic	humanitarian	overlapping	adjective	concerned with relieving suffering and protecting human welfare
+829	piquant	pungent	overlapping	adjective	sharply strong in smell or taste, sometimes unpleasant
+830	placid	complacent	paronym	adjective	self-satisfied and unaware of possible danger or failure
+831	plumb	plum	paronym	verb	a sweet stone fruit or a deep purple color
+832	potentate	potentiate	paronym	noun	to increase the strength or effect of something
+833	precocious	premature	overlapping	adjective	occurring too early, often before adequate development
+834	prescience	omniscience	paronym	noun	knowledge of everything, not merely what lies ahead
+835	probity	propriety	paronym	noun	conformity to accepted standards of correct or decent behavior
+836	propinquity	proclivity	paronym	noun	a natural tendency or inclination toward something
+837	prospectus	prospect	paronym	noun	a possibility or anticipated chance of future success
+838	pundit	pedant	paronym	noun	someone excessively concerned with minor rules or details
+839	pungent	piquant	overlapping	adjective	pleasantly sharp or spicy rather than overpowering
+840	quell	quench	paronym	verb	to satisfy thirst or extinguish heat or flame
+841	quiescent	acquiescent	paronym	adjective	willing to accept something without protest
+842	rampart	parapet	overlapping	noun	a low protective wall along a roof or bridge
+843	rancorous	raucous	paronym	adjective	loud, harsh, and disorderly in sound or behavior
+844	raze	raise	paronym	verb	to lift something or cause it to increase
+845	reciprocate	retaliate	overlapping	verb	to answer an injury with deliberate harm or revenge
+846	rectitude	certitude	paronym	noun	complete conviction that something is true
+847	redouble	double	misuse	verb	to make exactly twice as large or intense
+848	remiss	amiss	paronym	adjective	wrong, faulty, or out of proper order
+849	reprobate	probate	paronym	noun	the legal process of validating and administering a will
+850	ribald	risqué	overlapping	adjective	suggestive or mildly indecent rather than crudely vulgar
+851	salubrious	salutary	paronym	adjective	beneficial or corrective, especially as a lesson or warning
+852	satiric	sarcastic	overlapping	adjective	using biting mockery, often against a particular person
+853	saturnine	sullen	overlapping	adjective	resentfully gloomy and unwilling to speak
+854	scintillating	titillating	paronym	adjective	provocatively exciting or mildly sexually stimulating
+855	spendthrift	thrifty	misuse	noun	careful and economical with money or resources
+856	squalid	sordid	overlapping	adjective	morally degraded, shameful, or unpleasantly sleazy
+857	staid	stayed	paronym	adjective	remained in a place or continued unchanged
+858	sterile	sanitary	overlapping	adjective	clean enough to protect health and prevent disease
+859	strident	stringent	paronym	adjective	strict, exacting, and strongly enforced
+860	substantiate	substantial	paronym	verb	considerable in size, importance, or solidity
+861	subterfuge	pretext	overlapping	noun	a stated reason concealing the real motive
+862	sullen	saturnine	overlapping	adjective	habitually gloomy and somber by temperament
+863	supplant	supplement	paronym	verb	add to something to improve or complete it
+864	synergy	symbiosis	overlapping	noun	a close relationship between unlike organisms or groups
+865	taut	taught	paronym	adjective	gave instruction or caused someone to learn
+866	temperament	temperance	paronym	noun	moderation and self-restraint, especially regarding alcohol
+867	temporal	temporary	paronym	adjective	lasting for only a limited period
+868	tenacity	temerity	paronym	noun	reckless boldness that disregards possible consequences
+869	therapeutic	palliative	overlapping	adjective	relieving symptoms without curing the underlying condition
+870	timbre	timber	paronym	noun	wood prepared for building or carpentry
+871	tractable	docile	overlapping	adjective	submissively quiet and readily obedient
+872	transitory	transitional	paronym	adjective	relating to passage from one state to another
+873	truculent	turbulent	paronym	adjective	disorderly, unstable, or violently agitated
+874	vacillate	oscillate	overlapping	verb	move repeatedly between positions, directions, or values
+875	vacuous	vacant	overlapping	adjective	empty, unoccupied, or showing no immediate awareness
+876	vapid	vacuous	overlapping	adjective	empty of intelligence, meaning, or real substance
+877	veracity	voracity	paronym	noun	extreme eagerness or an immense appetite
+878	verdant	vernal	paronym	adjective	relating specifically to the season of spring
+879	vex	perplex	overlapping	verb	confuse completely without necessarily causing annoyance
+880	vicarious	precarious	paronym	adjective	dangerously unstable, uncertain, or insecure
+881	vigilant	vigilante	paronym	adjective	someone who enforces justice without legal authority
+882	vignette	anecdote	overlapping	noun	a short account of an actual incident
+883	vindicate	vindictive	paronym	verb	driven by a spiteful desire for revenge
+884	vindictive	vindicate	paronym	adjective	clear from blame or prove to be right
+885	viscous	vicious	paronym	adjective	deliberately cruel, violent, or dangerously aggressive
+886	visionary	idealist	overlapping	noun	person guided by ideals despite practical constraints
+887	vituperative	vociferous	paronym	adjective	loud and forceful, but not necessarily insulting
+888	whimsical	capricious	overlapping	adjective	changing unpredictably through impulse rather than playfulness

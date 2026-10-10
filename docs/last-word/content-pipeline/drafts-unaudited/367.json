@@ -1,0 +1,1808 @@
+{
+  "set_id": "inherent-innate",
+  "source_pair_id": 367,
+  "words": [
+    {
+      "word": "inherent",
+      "sense": "existing as a permanent, inseparable, structural feature of a thing, system, or activity",
+      "concise_meaning": "existing as an essential, permanent, and inseparable part of something's nature, structure, or design",
+      "connotation": "neutral to analytical, objective",
+      "register": "formal, academic, legal, technical",
+      "grammar": "adjective; typically followed by 'in' (e.g., 'inherent in the design') or used attributively ('inherent risk')",
+      "collocations": [
+        "inherent risk",
+        "inherent flaw",
+        "inherent limitation",
+        "inherent danger",
+        "inherent contradiction"
+      ],
+      "misconceptions": [
+        "Assuming that because an individual person possesses a permanent or deep ability, that ability can be called inherent rather than innate, overlooking that inborn traits of living beings are properly innate."
+      ]
+    },
+    {
+      "word": "innate",
+      "sense": "present from birth rather than acquired through learning, culture, or experience",
+      "concise_meaning": "present in an organism from birth as an inborn biological or genetic endowment rather than acquired through training or experience",
+      "connotation": "neutral to positive, biological, psychological",
+      "register": "formal, scientific, developmental, psychological",
+      "grammar": "adjective; typically used attributively ('innate ability') or predicatively ('the drive is innate')",
+      "collocations": [
+        "innate ability",
+        "innate talent",
+        "innate drive",
+        "innate immunity",
+        "innate curiosity"
+      ],
+      "misconceptions": [
+        "Believing that any deeply ingrained habit, early-childhood skill, or system property is innate, missing that innate strictly requires an origin present from birth in a living organism."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "substrate",
+      "description": "Non-living structures, systems, processes, institutions, and concepts (inherent) vs. living organisms, biological beings, and psychological faculties (innate)."
+    },
+    {
+      "id": "origin_vs_inseparability",
+      "description": "Permanent and inseparable structural constitution of an entity (inherent) vs. biological or genetic presence from birth prior to learning or experience (innate)."
+    },
+    {
+      "id": "contrastive_alternative",
+      "description": "Contrasted with external add-ons, accidental features, or removable components (inherent) vs. contrasted with acquired, taught, conditioned, or environmentally learned behaviors (innate)."
+    }
+  ],
+  "edge": {
+    "a": "inherent",
+    "b": "innate",
+    "boundary_rule": "Innate describes inborn biological faculties or instincts present in living beings from birth; inherent describes inseparable, permanent qualities built into the structure, design, or essence of a thing or system.",
+    "clues_a": [
+      "inseparable from the structural, logical, or physical architecture of a system",
+      "feature of an inanimate object, algorithm, contract, or activity",
+      "cannot be extracted without destroying or fundamentally altering the entity",
+      "built into the operational rules, physical laws, or constitutional definition",
+      "unavoidable risk or trade-off tied to the mechanics of an enterprise"
+    ],
+    "clues_b": [
+      "manifested in newborn infants or animals prior to exposure or instruction",
+      "biological, genetic, or evolutionary endowment of a living organism",
+      "unlearned instinctual reflex triggered spontaneously",
+      "hardwired neurological or sensory faculty present from birth",
+      "contrasted specifically with acquired training, habit, or cultural conditioning"
+    ],
+    "irrelevant_clues": [
+      "whether the trait is desirable (a talent) or undesirable (a risk or flaw)",
+      "the intensity, speed, or permanence of the behavior or phenomenon",
+      "how early in life an individual was exposed to tools or education",
+      "the level of difficulty or danger involved in the task"
+    ],
+    "misconceptions": {
+      "M1": "Assuming that a human trait or ability is inherent simply because it feels deep and permanent, overlooking that inborn faculties of living beings are innate.",
+      "M2": "Assuming that a built-in flaw or structural property of a non-living machine, policy, or system can be called innate, forgetting that innate requires a biological birth.",
+      "M3": "Confusing early-childhood training or environmental conditioning with innate faculties, which must be unlearned and present from birth."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "inherent": [
+        "Market volatility is an unavoidable risk built into venture capital investment that no contract can eliminate.",
+        "The physical friction between moving metal parts is a permanent challenge in turbine engineering.",
+        "A democratic constitution carries the structural danger that a populist majority may vote away minority protections.",
+        "The fragility of the crystal glass is an inescapable property of its molecular composition.",
+        "The delay in satellite communications is an unavoidable consequence of the vast distance signals must travel across space.",
+        "Every legal trial contains a structural tension between swift resolution and thorough examination of evidence."
+      ],
+      "innate": [
+        "Human infants demonstrate an unlearned preference for human faces within hours of delivery.",
+        "Sea turtle hatchlings possess an unlearned drive to scramble toward the moonlit ocean without parental guidance.",
+        "The girl's inborn pitch recognition allowed her to identify musical notes accurately before her first music lesson.",
+        "Newborn marsupials rely on biological motor reflexes to crawl toward their mother's pouch.",
+        "The immune system relies partly on biological defenses like phagocytes that attack pathogens without prior exposure.",
+        "Certain migratory birds show an unlearned sensitivity to Earth's magnetic field even when raised in windowless chambers."
+      ]
+    },
+    "counter": {
+      "inherent": [
+        "The toddler's sucking reflex appears immediately after delivery without any prior practice.",
+        "A newborn foal stands on its legs within sixty minutes of birth guided entirely by biological programming.",
+        "Young chicks crouch instinctively beneath overhead hawk silhouettes without prior exposure to predators.",
+        "Human infants demonstrate basic arithmetic expectations regarding hidden objects before learning language.",
+        "Puppies exhibit social play bowing behaviors spontaneously without requiring behavioral conditioning from older dogs.",
+        "Kittens flex their claws and stalk moving strings without needing to watch their mother hunt."
+      ],
+      "innate": [
+        "The high combustible nature of dry timber is an unavoidable hazard of building with raw wood.",
+        "The encryption protocol has an inescapable latency drawback caused by its three-layer verification process.",
+        "Deep-water cave exploration carries unavoidable dangers that safety checklists can mitigate but never fully eliminate.",
+        "The structural fatigue in the bridge supports was an unavoidable consequence of using unreinforced iron trusses.",
+        "A major financial exchange faces unavoidable systemic risks whenever trading volumes exceed server processing limits.",
+        "The ethical dilemma between confidentiality and public safety is an inseparable challenge of psychological counseling."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "Philosophers debate whether the human impulse toward altruism is an unlearned evolutionary adaptation or an accidental cultural invention.",
+        "best_word": "innate",
+        "note": "Because the dilemma focuses on biological evolutionary endowment present from birth versus cultural learning, innate is the precise term."
+      },
+      {
+        "text": "The tendency of centralized bureaucracies to produce excessive paperwork is a structural consequence of multi-tiered oversight.",
+        "best_word": "inherent",
+        "note": "The characteristic belongs to an organizational system and administrative architecture rather than a biological organism."
+      },
+      {
+        "text": "Researchers examine whether a child's spatial reasoning prowess stems from biological endowment or early childhood puzzle play.",
+        "best_word": "innate",
+        "note": "Contrasting biological endowment with acquired practice in an individual organism makes innate the correct choice."
+      },
+      {
+        "text": "The ethical dilemma between patient privacy and public health warnings cannot be separated from medical practice.",
+        "best_word": "inherent",
+        "note": "The conflict is built permanently into the professional obligations and logic of medical care itself."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "inherent-innate_001",
+      "domain": "software_architecture",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "The vulnerability in the decentralized ledger is ___.",
+      "beats": [
+        {
+          "text": "Senior cryptographer Dev inspects a peer-to-peer ledger network. The protocol relies on asynchronous message passing across thousands of independent nodes, creating a mathematical vulnerability where conflicting transaction histories can temporarily coexist.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.94,
+            "innate": 0.08
+          },
+          "decisive_clue": "mathematical vulnerability tied to the protocol's asynchronous architecture",
+          "reason": "The flaw exists as an inseparable structural feature of the ledger's decentralized network design, not a biological trait.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Developers propose patching the codebase with predictive caching algorithms, but Dev demonstrates that under heavy network partitioning, key collisions remain unavoidable as long as the system remains decentralized.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.97,
+            "innate": 0.05
+          },
+          "decisive_clue": "flaw persists across all software patches because it is built into decentralization",
+          "reason": "The weakness cannot be extracted from the system without dismantling the decentralized nature of the network itself.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "A junior engineer asks whether human user error or hardware wear could be blamed, but mathematical proofs confirm the constraint is woven into the protocol's consensus theorem.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.96,
+            "innate": 0.06
+          },
+          "decisive_clue": "constraint proven by mathematical theorem of the system",
+          "reason": "The limitation is an intrinsic mathematical property of the protocol architecture.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The ledger's weakness is an inseparable structural feature of its decentralized network architecture, not an organism's biological trait.",
+      "feedback_deep": "The protocol vulnerability stems from the mathematical structure of distributed consensus itself. Because this flaw is inseparable from how the system is designed and cannot be eliminated without abandoning decentralization, it is inherent. Innate applies only to biological traits present from birth in living organisms.",
+      "contrast_rule": "Inherent belongs to structural features of systems and objects; innate belongs to biological traits present from birth.",
+      "hint": "Notice whether this flaw belongs to an engineered computational system or an organism's biology."
+    },
+    {
+      "id": "inherent-innate_002",
+      "domain": "marine_ecology",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The salmon's orientation toward its river of origin is ___.",
+      "beats": [
+        {
+          "text": "Marine biologist Dr. Al-Mansoor studies coho salmon fingerlings hatched in a closed laboratory tank. Without ever seeing an adult fish or feeling an open current, the young fry turn their snouts toward the magnetic coordinates of their ancestral spawning creek.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.28,
+            "innate": 0.92
+          },
+          "decisive_clue": "fry orient toward ancestral coordinates without adult contact or experience",
+          "reason": "The migratory orientation is an inborn biological navigational capacity present from hatching.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Technicians alter the water temperature and mineral salinity to simulate distant ocean conditions, yet the juvenile fish sustain their directional alignment across every tank test.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.22,
+            "innate": 0.95
+          },
+          "decisive_clue": "biological orientation persists despite artificial environmental manipulation",
+          "reason": "The behavior is hardwired into the organism's neurological development rather than driven by external water properties.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Genetic analysis identifies a cluster of receptor genes active in the fry's olfactory bulbs from embryonic development, operating before any feeding occurs.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.18,
+            "innate": 0.97
+          },
+          "decisive_clue": "gene cluster active in embryonic development before feeding",
+          "reason": "The trait is a biological endowment present from birth in a living organism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The salmon's orientation is an unlearned biological endowment present from hatching, not a property of external water mechanics.",
+      "feedback_deep": "The navigational ability is present in the fish from hatching, encoded in embryonic genetics without any maternal instruction or learned experience. Because this trait belongs to a living organism from birth, innate is the precise term. Inherent would mischaracterize a biological instinct as an inanimate structural property.",
+      "contrast_rule": "Innate describes inborn biological faculties of organisms; inherent describes permanent structural properties of things or systems.",
+      "hint": "Consider whether the navigation originates in an animal's biological endowment from birth or an external mechanical structure."
+    },
+    {
+      "id": "inherent-innate_003",
+      "domain": "linguistics",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The infant's ability to distinguish subtle phonetic contrasts is ___.",
+      "beats": [
+        {
+          "text": "Professor Chen assesses speech perception in three-month-old infants. The acoustic lab team suggests that the auditory apparatus functions like a mechanical frequency analyzer, where octave separation and sound wave filtering are structural necessities of how physical sound waves hit the eardrum.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.86,
+            "innate": 0.32
+          },
+          "decisive_clue": "auditory apparatus described as mechanical analyzer bound by physical sound wave laws",
+          "reason": "The phenomenon is initially presented as an inseparable physical and mechanical property of auditory physics.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "However, experimental data reveals that newborn babies under forty-eight hours old successfully differentiate phonemes from foreign languages they never heard in the womb, a neural discrimination capacity that diminishes as they age.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.24,
+            "innate": 0.93
+          },
+          "decisive_clue": "newborns differentiate unlearned foreign phonemes within forty-eight hours of birth",
+          "reason": "The discriminatory capacity is revealed to be an unlearned biological endowment present from birth.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Neuroimaging confirms dedicated cortical speech circuits fire automatically in newborns before any exposure to conversational babble or parental imitation.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.16,
+            "innate": 0.96
+          },
+          "decisive_clue": "dedicated cortical speech circuits firing in newborns prior to conversational exposure",
+          "reason": "The capability is an inborn neural faculty of the infant organism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The phonetic discrimination flips from physical auditory mechanics to an unlearned biological faculty present from birth in newborns.",
+      "feedback_deep": "While acoustic wave mechanics initially framed auditory filtering as a structural physical property, newborn data revealed specialized neural speech discrimination present within hours of delivery. Because this faculty is an unlearned biological endowment of living human infants from birth, the best word flips decisively to innate.",
+      "contrast_rule": "Inborn biological endowments of living beings are innate; structural properties of physical mechanisms are inherent.",
+      "hint": "Look at whether new evidence frames the ability as acoustic physics or an unlearned infant biological trait."
+    },
+    {
+      "id": "inherent-innate_004",
+      "domain": "aviation_safety",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The risk of spatial disorientation during instrument flight is ___.",
+      "beats": [
+        {
+          "text": "Flight instructor Captain Rossi explains cockpit vertigo to trainee pilots. Rossi initially attributes the disorientation to human biological vestibular systems, which evolved for ground locomotion and possess biological limits when sensing centrifugal motion.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.35,
+            "innate": 0.88
+          },
+          "decisive_clue": "disorientation attributed to biological vestibular limits present from birth",
+          "reason": "The hazard is first framed as an organismic biological vulnerability present in human physiology.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "However, accident investigators demonstrate that even unmanned drone autopilots and mechanical gyro platforms suffer false attitude readings when banking blindly inside dense cumulus cloud banks; the physical absence of an external optical horizon renders orientation failure unavoidable.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.94,
+            "innate": 0.12
+          },
+          "decisive_clue": "mechanical gyros and autopilots experience identical disorientation without optical horizon",
+          "reason": "The danger is proven to be an inseparable physical condition of instrument flight itself, not a human biological flaw.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Aerospace safety manuals conclude that operating high-speed craft in zero-visibility conditions carries this navigational hazard as a permanent structural reality of flight dynamics.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.97,
+            "innate": 0.08
+          },
+          "decisive_clue": "hazard recognized as a permanent structural reality of blind flight dynamics",
+          "reason": "The condition is inseparable from the nature and physics of the activity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The flight risk flips from human sensory biology to an inescapable physical reality of blind aeronautical navigation.",
+      "feedback_deep": "The hazard was first explained by human vestibular biology, but investigators showed that even robotic gyros suffer false readings when deprived of a visual horizon. The vulnerability belongs inescapably to the physical mechanics of blind flying itself, flipping the correct description from innate to inherent.",
+      "contrast_rule": "Inescapable conditions built into activities or machines are inherent; biological sensory traits of organisms are innate.",
+      "hint": "Watch whether the hazard is confined to human biology or bound to the physics of flight navigation."
+    },
+    {
+      "id": "inherent-innate_005",
+      "domain": "music_cognition",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "The toddler's sense of absolute pitch is ___.",
+      "beats": [
+        {
+          "text": "Three-year-old Soraya hums exact acoustic pitches matching church bells and automobile horns without pausing to search for the notes. Her parents wonder if this acute musical ear is a permanent natural gift or a product of hearing classical recordings in her nursery.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.42,
+            "innate": 0.74
+          },
+          "decisive_clue": "natural musical ear appearing spontaneously in a toddler",
+          "reason": "Soraya's pitch talent appears as an individual natural endowment, though early environmental influence is still unclarified.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "A pediatric audiology study reveals that Soraya has never received vocal or instrumental coaching, yet her brainstem responses register discrete pitch frequencies with genetic precision unmatched by trained adult musicians.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.28,
+            "innate": 0.91
+          },
+          "decisive_clue": "brainstem response reflects genetic precision without any instrumental coaching",
+          "reason": "The evidence narrows the origin to an unlearned, biological sensory endowment present from birth.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Family medical history shows her identical twin sister, raised in an environment without musical instruments, displays the identical pitch discrimination from infancy.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.14,
+            "innate": 0.98
+          },
+          "decisive_clue": "twin raised without instruments shows identical pitch discrimination from infancy",
+          "reason": "Twin concordance confirms the capability is a genetic biological trait present from birth.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Soraya's pitch accuracy narrows to an unlearned, genetic biological endowment present from birth in an infant.",
+      "feedback_deep": "The initial observation showed exceptional pitch accuracy that could loosely have been called natural. Subsequent audiological testing and twin concordance proved the ability is an unlearned genetic endowment present from infancy without training. This narrows the meaning decisively to innate, whereas inherent would incorrectly treat a biological human talent as an inanimate structural property.",
+      "contrast_rule": "Biological talents present from birth in living beings are innate; structural features of objects or systems are inherent.",
+      "hint": "Focus on the evidence proving the musical skill is a genetic endowment present from infancy."
+    },
+    {
+      "id": "inherent-innate_006",
+      "domain": "civil_engineering",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The structural weakness of unreinforced concrete arches is ___.",
+      "beats": [
+        {
+          "text": "Structural engineer Kwame evaluates an antique concrete aqueduct. He notes that while the material withstands massive compressive downward loads, its brittle crystalline matrix cracks under low tensile pulling forces.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.93,
+            "innate": 0.09
+          },
+          "decisive_clue": "brittle crystalline matrix cracks under tensile force while resisting compression",
+          "reason": "Tensile weakness is an inseparable physical and material property of concrete's molecular structure.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Contractors suggest that careful chemical cleaning of the surface might eliminate tension cracks, but Kwame explains that the low tensile strength is built into the molecular bonding of calcium silicate hydrate itself.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.97,
+            "innate": 0.05
+          },
+          "decisive_clue": "low tensile strength built into molecular bonding of the material itself",
+          "reason": "The weakness cannot be removed without changing the substance into a completely different material.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Even when mixed under pristine laboratory conditions, concrete exhibits this exact tensile threshold as an unalterable constitutional reality.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.98,
+            "innate": 0.04
+          },
+          "decisive_clue": "unalterable constitutional reality of concrete across all laboratory conditions",
+          "reason": "The limitation is an intrinsic, inseparable constitutional characteristic of the building material.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Concrete's tensile weakness is an inseparable molecular property of the building material, not an organism's inborn trait.",
+      "feedback_deep": "The inability to withstand tensile pull is permanently embedded in the molecular chemistry of concrete. Because non-living structural materials have essential physical properties rather than biological origins, inherent is the only correct choice. Innate applies exclusively to living organisms and their birth endowments.",
+      "contrast_rule": "Inherent applies to physical and structural properties of materials; innate applies to biological endowments of organisms.",
+      "hint": "Ask whether the weakness belongs to an inanimate material's molecular structure or a living creature's birth."
+    },
+    {
+      "id": "inherent-innate_007",
+      "domain": "finance",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 4,
+      "frame": "The market volatility of unsecured digital assets is ___.",
+      "beats": [
+        {
+          "text": "Financial regulator Elena reviews algorithmic cryptocurrency trading data. Without sovereign backing, asset collateral, or cash flows, the digital token experiences wild thirty percent daily price swings driven purely by speculative momentum.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.92,
+            "innate": 0.1
+          },
+          "decisive_clue": "price swings driven by absence of sovereign backing or asset collateral",
+          "reason": "The volatility is an inseparable structural characteristic of an uncollateralized digital instrument.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Behavioral economists argue that the wild price fluctuations reflect human traders' raw psychological greed and fear, which are inborn emotional responses hardwired into human survival instincts since the Stone Age.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.89,
+            "innate": 0.26
+          },
+          "decisive_clue": "traders have biological instincts, but the asset's structural volatility remains an economic property",
+          "reason": "While human emotions are biologically driven, the subject in the frame is the asset's market volatility, which remains a structural economic property.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M1"
+          }
+        },
+        {
+          "text": "Elena clarifies that regardless of trader psychology, an asset lacking foundational valuation anchors will mathematically fluctuate whenever order volume shifts; instability is woven into the financial vehicle's blueprint.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.96,
+            "innate": 0.08
+          },
+          "decisive_clue": "instability woven into the financial vehicle's economic blueprint regardless of psychology",
+          "reason": "The volatility remains an inseparable structural feature of the uncollateralized financial instrument.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Trading instincts are biological, but the asset's market volatility remains an inseparable structural feature of its uncollateralized design.",
+      "feedback_deep": "The mention of hardwired human greed is a distractor. The subject of the frame is the financial asset's market volatility, not human emotion. Because the asset's instability is an inseparable property of its financial architecture lacking collateral backing, the word remains inherent.",
+      "contrast_rule": "Keep your eye on the frame's subject: financial instruments have inherent properties, even when traded by humans with innate emotions.",
+      "hint": "Do not let human trader psychology distract you from the actual target: the asset's structural design."
+    },
+    {
+      "id": "inherent-innate_008",
+      "domain": "animal_behavior",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The squirrel's nut-burying sequence is ___.",
+      "beats": [
+        {
+          "text": "Zoologist Priya watches suburban grey squirrels burying acorns. Urban park rangers argue that this caching behavior is an inseparable behavioral reaction to autumn environmental pressures, where food scarcity and temperature drops mechanically force rodents into storage activity.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.84,
+            "innate": 0.36
+          },
+          "decisive_clue": "caching viewed as an inseparable mechanical reaction to seasonal temperature drops",
+          "reason": "The behavior is initially explained as an inseparable structural response to seasonal ecosystem physics.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M1"
+          }
+        },
+        {
+          "text": "Priya tests a squirrel raised in an incubator on wire mesh with unlimited food; the young squirrel still digs imaginary holes in the bare floor, deposits nuts, and tamps them down with its paws despite never seeing soil or experiencing hunger.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.16,
+            "innate": 0.96
+          },
+          "decisive_clue": "incubator-raised squirrel executes complete caching motor pattern on bare wire without training",
+          "reason": "The motor sequence is proven to be an unlearned biological instinct present from birth.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The caching behavior flips from an environmental reaction to an unlearned biological motor sequence present from birth.",
+      "feedback_deep": "The behavior was initially interpreted as an inseparable response to seasonal conditions. However, testing an isolated, hand-reared squirrel demonstrated that the full caching sequence executes spontaneously without learning, environmental cues, or prior exposure. This biological instinct present from birth flips the answer to innate.",
+      "contrast_rule": "Unlearned motor programs present in organisms from birth are innate; structural environmental reactions are inherent.",
+      "hint": "Look at whether the squirrel learned the routine from its environment or performed it without training."
+    },
+    {
+      "id": "inherent-innate_009",
+      "domain": "neuroscience",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The infant's reflex to grasp a finger placed in its palm is ___.",
+      "beats": [
+        {
+          "text": "Pediatric neurologist Dr. Tanaka touches the palm of a thirty-minute-old infant. The newborn's fingers instantly curl with sufficient force to support its body weight, an unlearned motor response appearing minutes after delivery.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.22,
+            "innate": 0.94
+          },
+          "decisive_clue": "unlearned motor response appearing thirty minutes after delivery",
+          "reason": "The palmar grasp is an inborn biological reflex present from birth in human infants.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Medical students examine whether maternal coaching or delivery room tactile stimulation provoked the movement, but spinal reflex testing shows the neural arc operates through subcortical pathways before conscious cerebral processing develops.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.18,
+            "innate": 0.96
+          },
+          "decisive_clue": "spinal reflex operating through subcortical pathways prior to conscious cerebral processing",
+          "reason": "The reflex is hardwired into the newborn organism's biological nervous system.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Comparative primate studies confirm this identical unlearned grip is present across all newborn apes from the moment of birth as an evolutionary survival adaptation.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.15,
+            "innate": 0.97
+          },
+          "decisive_clue": "evolutionary grip present across all newborn apes from the moment of birth",
+          "reason": "The trait is an inborn biological endowment of living primates.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The newborn's grasping reflex is an unlearned biological survival trait present from birth, not an inanimate system property.",
+      "feedback_deep": "The palmar reflex is an evolutionary, biological neural response hardwired into newborns prior to any learning or cognitive awareness. Because this trait belongs to an organism from the moment of birth, innate is the exact term. Inherent would be inappropriate for a living infant's biological reflex.",
+      "contrast_rule": "Inborn biological reflexes present in infants from birth are innate; structural features of systems are inherent.",
+      "hint": "Identify whether the grip is an unlearned biological reflex present from birth or a mechanical system trait."
+    },
+    {
+      "id": "inherent-innate_010",
+      "domain": "cryptography",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The latency penalty in the zero-knowledge verification protocol is ___.",
+      "beats": [
+        {
+          "text": "Security architect Liam benchmarks a novel authentication protocol. Liam initially suspects the delay stems from the human operator's biological reaction time, noting that human perceptual cognition has biological delay thresholds present from birth that limit click speed.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.36,
+            "innate": 0.85
+          },
+          "decisive_clue": "latency attributed to biological reaction thresholds present from birth in human operators",
+          "reason": "The delay is initially framed as a consequence of the human operator's inborn biological physiology.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "However, automated stress tests running on headless cloud servers with zero human involvement reveal the exact same four-hundred-millisecond delay; the pause is required by recursive polynomial curve calculations inside the mathematical proof itself.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.95,
+            "innate": 0.1
+          },
+          "decisive_clue": "delay occurs on headless servers due to recursive polynomial math inside the proof",
+          "reason": "The latency is proven to be an inseparable computational property of the cryptographic algorithm.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "No matter how high the server clock speed scales, the mathematical proof cannot verify authenticity without completing these discrete polynomial transformations.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.98,
+            "innate": 0.05
+          },
+          "decisive_clue": "mathematical transformations cannot be bypassed regardless of computing power",
+          "reason": "The delay is an intrinsic, inseparable mathematical property of the protocol architecture.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The delay flips from human operator biological reaction limits to an inseparable mathematical property of the cryptographic algorithm.",
+      "feedback_deep": "The latency was first attributed to human biological reaction thresholds, which would have made it innate. However, headless server testing showed the delay is dictated by recursive polynomial calculations inseparable from the cryptographic proof itself. Because the limitation belongs structurally to an algorithm rather than an organism, it flips to inherent.",
+      "contrast_rule": "Structural mathematical properties of algorithms are inherent; biological capacities of living beings are innate.",
+      "hint": "Notice whether the latency is caused by human biology or the mathematical structure of the algorithm."
+    },
+    {
+      "id": "inherent-innate_011",
+      "domain": "renewable_energy",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "The intermittent output of open-sea tidal turbines is ___.",
+      "beats": [
+        {
+          "text": "Grid manager Fatima reviews energy delivery from coastal tidal turbines. The power output fluctuates cyclically, leading technicians to wonder if this variation is a permanent design reality or merely an engineering challenge that better rotor sensors could smooth out.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.78,
+            "innate": 0.3
+          },
+          "decisive_clue": "fluctuations questioned as permanent design reality vs solvable engineering challenge",
+          "reason": "The fluctuation leans toward an inseparable mechanical and environmental property, though not yet fully narrowed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Oceanographic models establish that tidal currents are governed by lunar gravitational pull, creating unavoidable periods of slack water four times daily where water velocity drops to absolute zero.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.94,
+            "innate": 0.09
+          },
+          "decisive_clue": "lunar gravitational physics dictates four daily periods of zero water velocity",
+          "reason": "The intermittency is tied directly to inescapable celestial and hydrodynamic physics.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Fatima notes that because no rotor redesign can alter the orbit of the moon, power dips are built into the very physics of ocean energy harvesting.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.98,
+            "innate": 0.04
+          },
+          "decisive_clue": "power dips built into the physics of ocean energy harvesting",
+          "reason": "The limitation is permanently inseparable from the nature of the power generation process.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Tidal power fluctuations narrow to an inseparable physical property of lunar gravitational mechanics, not a biological phenomenon.",
+      "feedback_deep": "The intermittency narrows from a potential engineering flaw to an inseparable physical reality of celestial mechanics and lunar gravity. Because this limitation is permanently built into the physical dynamics of ocean currents and tidal technology, inherent is the only accurate term. Non-living systems cannot possess innate qualities.",
+      "contrast_rule": "Inseparable properties built into physical systems and activities are inherent; biological traits of living creatures are innate.",
+      "hint": "Focus on the evidence linking the power fluctuation directly to the inescapable physics of lunar gravity."
+    },
+    {
+      "id": "inherent-innate_012",
+      "domain": "urban_planning",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The traffic congestion along the single bridge corridor is ___.",
+      "beats": [
+        {
+          "text": "City planner Zainab analyzes evening gridlock on the river crossing. Because the historic suspension bridge provides the sole vehicular roadway between two dense commercial sectors, any lane blockage or surge in commuter volume causes instant bottlenecks.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.92,
+            "innate": 0.1
+          },
+          "decisive_clue": "bottlenecks caused by single bridge being the sole vehicular roadway between two sectors",
+          "reason": "The congestion risk is an inseparable structural byproduct of the city's geographical and infrastructural layout.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Traffic engineers install synchronized smart signals, but computer simulations show that funneling fifty thousand vehicles through a two-lane physical bottleneck makes slowdowns unavoidable under basic geometric constraints.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.96,
+            "innate": 0.06
+          },
+          "decisive_clue": "slowdowns unavoidable under geometric constraints of funneling traffic through two lanes",
+          "reason": "The vulnerability is built into the geometric architecture of the transportation system itself.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The bridge congestion is an inseparable structural limitation of the city's physical infrastructure, not an organism's inborn trait.",
+      "feedback_deep": "Funneling large traffic volumes across a single geographic choke point makes congestion an inescapable consequence of spatial geometry. Because this bottleneck is permanently built into the physical architecture of the city's road network, it is inherent. Innate is strictly reserved for biological endowments present from birth in living organisms.",
+      "contrast_rule": "Structural bottlenecks built into physical systems are inherent; biological endowments of organisms are innate.",
+      "hint": "Ask whether this traffic bottleneck arises from physical spatial geometry or biological nature."
+    },
+    {
+      "id": "inherent-innate_013",
+      "domain": "child_development",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The toddler's spontaneous comfort response toward a crying peer is ___.",
+      "beats": [
+        {
+          "text": "Daycare director Maya observes eighteen-month-old Leo patting the back of a crying classmate. Maya initially assumes this soothing gesture is an inseparable structural feature of the daycare's cooperative play routine, where social harmony is molded through group norms.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.82,
+            "innate": 0.38
+          },
+          "decisive_clue": "soothing gesture assumed to be an inseparable feature of daycare social routines",
+          "reason": "The empathetic response is initially seen as an inseparable feature of the institutional environment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M3"
+          }
+        },
+        {
+          "text": "However, child psychologists review home video logs showing Leo offering his pacifier to weeping siblings when he was only nine months old, long before attending daycare or understanding spoken parental commands.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.22,
+            "innate": 0.94
+          },
+          "decisive_clue": "offered pacifier to weeping siblings at nine months old before schooling or language",
+          "reason": "The comfort response is revealed to be an unlearned pro-social biological instinct present from infancy.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Cross-cultural developmental trials confirm infants across diverse cultures spontaneously share soothing items with distressed peers prior to any cultural or moral training.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.12,
+            "innate": 0.97
+          },
+          "decisive_clue": "infants across diverse cultures exhibit comfort responses prior to moral training",
+          "reason": "The capacity is an inborn biological and evolutionary endowment of human infants.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The toddler's empathy flips from an institutional routine to an unlearned biological impulse present from early infancy.",
+      "feedback_deep": "The comforting behavior was first thought to be a structural byproduct of classroom socialization. However, records proved the toddler comforted crying peers at nine months old before language or schooling began, and cross-cultural studies confirmed this across infants. Because this empathetic impulse is an inborn biological endowment of living humans, it flips to innate.",
+      "contrast_rule": "Unlearned social impulses present in infants from birth are innate; structural social rules are inherent.",
+      "hint": "Look for proof that the child exhibited this comforting behavior before receiving any social training."
+    },
+    {
+      "id": "inherent-innate_014",
+      "domain": "veterinary_science",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 4,
+      "frame": "The border collie's drive to gather wandering sheep is ___.",
+      "beats": [
+        {
+          "text": "Veterinarian Dr. Aris inspects a three-month-old border collie puppy. Without ever seeing sheep or receiving instruction, the puppy crouches low, fixes an intense gaze on a flock of wandering ducks, and circles them into a tight cluster.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.25,
+            "innate": 0.93
+          },
+          "decisive_clue": "three-month-old puppy gathers wandering animals without ever seeing sheep or receiving training",
+          "reason": "The herding drive is an unlearned biological instinct present in the breed from birth.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "A livestock handler argues that herding is an inseparable structural requirement of pastoral farming systems, pointing out that agricultural fence layouts and pasture economics dictate that livestock must be gathered.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.32,
+            "innate": 0.88
+          },
+          "decisive_clue": "pastoral systems need herding, but the dog's personal drive remains a biological instinct",
+          "reason": "While livestock economics has structural requirements, the subject in the frame is the dog's behavioral drive, which is an inborn biological impulse.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Dr. Aris confirms that even when kept as an apartment pet with zero exposure to farms, the collie stalks and circles children's toys with identical genetic motor patterns.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.16,
+            "innate": 0.96
+          },
+          "decisive_clue": "apartment-kept collie circles toys with identical genetic motor patterns",
+          "reason": "The trait remains an inborn biological instinct of the living canine.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Farm economics require herding, but the dog's gathering drive is an unlearned biological instinct present from birth.",
+      "feedback_deep": "The handler's argument about agricultural systems is a distractor. The subject of the frame is the border collie's psychological drive, not farm management. Because the desire to stalk and circle animals is an unlearned genetic instinct present in the canine from birth, innate remains the correct word.",
+      "contrast_rule": "Keep your focus on the frame's subject: agricultural systems have inherent needs, but the dog's instinct is innate.",
+      "hint": "Do not confuse the economic structure of farming with the dog's inborn biological impulse."
+    },
+    {
+      "id": "inherent-innate_015",
+      "domain": "pharmaceuticals",
+      "transfer": false,
+      "chain_type": "reframe",
+      "difficulty": 4,
+      "frame": "The toxic breakdown threshold of the synthetic painkiller is ___.",
+      "beats": [
+        {
+          "text": "Biochemist Dr. Osei examines adverse reactions to a synthetic painkiller. Early clinical reports suggest patient toxicity stems from an inborn metabolic deficit present from birth in certain patients whose liver enzymes fail to clear the drug.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.38,
+            "innate": 0.84
+          },
+          "decisive_clue": "toxicity attributed to patient metabolic deficit present from birth",
+          "reason": "The toxic reaction is initially reframed as a consequence of patient biological genetics.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "However, mass spectrometry reveals that in pure sterile water at body temperature, the painkiller molecule spontaneously decomposes into toxic quinone metabolites after six hours; the molecular bond geometry itself breaks down under physiological heat.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.94,
+            "innate": 0.12
+          },
+          "decisive_clue": "painkiller decomposes in sterile water due to molecular bond geometry under physiological heat",
+          "reason": "The chemical instability is reframed as an inseparable structural property of the synthetic drug molecule itself.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "Pharmaceutical regulators conclude that no reformulation or patient genetic screening can prevent decomposition, as the chemical instability is woven into the compound's active molecular core.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.98,
+            "innate": 0.05
+          },
+          "decisive_clue": "instability woven into the compound's active molecular core",
+          "reason": "The threshold is an intrinsic chemical property of the drug's molecular structure.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The toxicity reframes from patient liver genetics to an inseparable molecular breakdown property of the synthetic compound itself.",
+      "feedback_deep": "The adverse reaction was initially viewed through the lens of patients' inborn enzyme genetics. However, chemical testing demonstrated that the synthetic molecule spontaneously decomposes into toxic compounds in sterile water, proving the instability is built into the molecular bond structure itself. Reframing the issue to the compound's physical chemistry flips the term to inherent.",
+      "contrast_rule": "Molecular chemical instability built into a compound is inherent; genetic metabolic traits of patients are innate.",
+      "hint": "Notice how the perspective shifts from patient genetics to the molecular bond geometry of the drug."
+    },
+    {
+      "id": "inherent-innate_016",
+      "domain": "wildlife_biology",
+      "transfer": false,
+      "chain_type": "rehabilitate",
+      "difficulty": 4,
+      "frame": "The orphaned falcon's aerial hunting dive is ___.",
+      "beats": [
+        {
+          "text": "Ranger Tariq rehabilitates an orphaned peregrine falcon chick rescued before opening its eyes. Handlers assume that aerial diving is an inseparable structural feature of avian flight physics, where steep descents simply exploit gravitational acceleration.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.81,
+            "innate": 0.4
+          },
+          "decisive_clue": "diving viewed as an inseparable aerodynamic exploit of gravitational acceleration",
+          "reason": "The flight maneuver is initially seen as an aerodynamic exploitation of physical gravity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M1"
+          }
+        },
+        {
+          "text": "Critics claim the orphan will crash without parental coaching, asserting that precise stoop mechanics must be acquired through weeks of trial, error, and adult modeling.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.62,
+            "innate": 0.55
+          },
+          "decisive_clue": "critics claim hunting must be acquired through parental coaching",
+          "reason": "The hunting skill's biological status is put in doubt, temporarily confusing whether it is an acquired skill or physical reflex.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M3"
+          }
+        },
+        {
+          "text": "Upon fledging in a remote valley with zero adult birds nearby, the young falcon spots a decoy pigeon, tucks its wings into a teardrop contour, and executes a two-hundred-mile-per-hour dive with flawless precision.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.2,
+            "innate": 0.94
+          },
+          "decisive_clue": "fledgling executes flawless two-hundred-mile dive with zero adult birds nearby",
+          "reason": "The complex predatory dive is rehabilitated as an unlearned biological endowment present from birth.",
+          "shift_type": "rehabilitate",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Neurological recordings reveal specialized motor coordinate maps hardwired into the raptor's cerebellar pathways prior to its first flight.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.12,
+            "innate": 0.97
+          },
+          "decisive_clue": "specialized motor coordinate maps hardwired into cerebellar pathways prior to flight",
+          "reason": "The skill is confirmed as an inborn biological neurological endowment of the bird.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The falcon's dive is rehabilitated as an unlearned biological program present from birth, not an acquired trick or mere physics.",
+      "feedback_deep": "The hunting stoop was initially treated as simple aerodynamic physics, and skeptics argued it required parental training. However, when the isolated fledgling executed a flawless high-speed dive without adult modeling, the behavior was rehabilitated as an unlearned biological endowment hardwired into the bird from birth. This shifts the answer decisively to innate.",
+      "contrast_rule": "Complex instincts hardwired into animals from birth are innate; simple physical properties of flight are inherent.",
+      "hint": "Watch how evidence rehabilitates the hunting dive as an unlearned biological instinct rather than learned training."
+    },
+    {
+      "id": "inherent-innate_017",
+      "domain": "sport",
+      "transfer": true,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "Tariq's natural kinetic balance when knocked off balance is ___.",
+      "beats": [
+        {
+          "text": "Youth gymnastics coach Ananya observes twelve-year-old Tariq on the balance beam. When bumped unexpectedly during a dismount drill, Tariq's ankles and hips execute micro-corrections so rapid that he lands upright without stumbling, a physical equilibrium he showed on his very first day in the gym.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.32,
+            "innate": 0.91
+          },
+          "decisive_clue": "micro-corrections and physical equilibrium shown on his very first day in the gym",
+          "reason": "Tariq's balance reflects an unlearned biological neuromuscular endowment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Ananya checks whether Tariq practiced martial arts or skateboarding as a child, but his parents confirm he played no sports and spent his early childhood building miniature clay models.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.2,
+            "innate": 0.95
+          },
+          "decisive_clue": "played no sports and never practiced balance-intensive physical activities",
+          "reason": "The capability is ruled out as an acquired athletic adaptation, confirming an inborn biological gift.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Sports science reflex testing records sensory transmission speeds along his vestibular nerve that rank in the ninety-ninth percentile of biological natural endowment.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.14,
+            "innate": 0.97
+          },
+          "decisive_clue": "vestibular nerve transmission speed ranks in ninety-ninth percentile of biological endowment",
+          "reason": "The equilibrium is an unlearned physiological endowment present from birth in the athlete.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Tariq's exceptional kinetic balance is an unlearned biological endowment present from birth, not an acquired athletic habit.",
+      "feedback_deep": "Tariq's lightning-fast postural correction was present on his first day of gymnastics, without prior sports experience or balance drills. Vestibular testing confirmed that his nervous system possesses an exceptional biological transmission speed present from birth. Because this reflects an individual living human's physiological endowment, innate is the proper term.",
+      "contrast_rule": "Biological physical gifts present in individuals from birth are innate; structural features of objects or systems are inherent.",
+      "hint": "Notice that Tariq possessed this exceptional sensory balance prior to any athletic coaching or practice."
+    },
+    {
+      "id": "inherent-innate_018",
+      "domain": "travel",
+      "transfer": true,
+      "chain_type": "flip",
+      "difficulty": 4,
+      "frame": "The logistical hazard of high-altitude Himalayan trekking is ___.",
+      "beats": [
+        {
+          "text": "Expedition leader Mateo prepares trekkers for the Annapurna Circuit. Mateo warns the group that altitude sickness stems from human cardiopulmonary fragility, noting that human hemoglobin has a biological oxygen-binding ceiling present from birth.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.38,
+            "innate": 0.84
+          },
+          "decisive_clue": "hazard attributed to biological oxygen-binding ceiling present from birth in human lungs",
+          "reason": "The danger is first framed as an organismic biological vulnerability present in human physiology.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Trekkers purchase supplemental bottled oxygen canisters and acclimatization medications, hoping to eliminate the physical danger from their journey.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.45,
+            "innate": 0.76
+          },
+          "decisive_clue": "trekkers attempt to bypass danger with medical gear while focus remains on physiology",
+          "reason": "The focus temporarily lingers on medical mitigation of physiological vulnerability.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "However, Mateo points out that sudden blizzards, unstable scree slopes, and extreme geographical isolation threaten expeditions regardless of oxygen saturation; deep gorges cannot be widened and sub-zero squalls cannot be halted.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.93,
+            "innate": 0.15
+          },
+          "decisive_clue": "blizzards, scree slopes, and deep gorges threaten expeditions regardless of oxygen gear",
+          "reason": "The hazard is proven to be an inseparable physical and geographical reality of the mountain environment itself.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        },
+        {
+          "text": "International mountaineering standards classify remote alpine expeditions as carrying this physical risk as an inseparable condition of crossing extreme terrain.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.97,
+            "innate": 0.08
+          },
+          "decisive_clue": "physical risk classified as an inseparable condition of crossing extreme alpine terrain",
+          "reason": "The danger is an intrinsic, inseparable structural reality of the activity and terrain.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The expedition hazard flips from human lung limitations to an inseparable physical reality of extreme mountain geography.",
+      "feedback_deep": "The hazard was first explained by human respiratory biology, but mountain geography revealed that blizzards, rockfalls, and isolation threaten travelers regardless of oxygen gear. Because the danger is permanently fused to the physical environment and nature of alpine trekking itself, the correct descriptor flips from innate to inherent.",
+      "contrast_rule": "Inseparable risks built into physical environments and activities are inherent; biological limits of organisms are innate.",
+      "hint": "Watch whether the danger stems purely from human physiology or the inescapable physical geography of the mountains."
+    },
+    {
+      "id": "inherent-innate_019",
+      "domain": "household",
+      "transfer": true,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "The family cat's instinct to bury its waste is ___.",
+      "beats": [
+        {
+          "text": "Homeowner Ingrid adopts a six-week-old rescue kitten. Placed inside a plastic litter box for the very first time, the kitten steps into the sand, voids, and uses its front paws to scrape gravel over the spot.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.35,
+            "innate": 0.82
+          },
+          "decisive_clue": "six-week-old kitten buries waste on its very first encounter with litter box",
+          "reason": "The behavior appears as an unlearned biological instinct, though household influence is still open to question.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Ingrid wonders whether the animal picked up the habit by smelling older household cats through the shelter partition or responding to the texture of the clay pellets.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.38,
+            "innate": 0.78
+          },
+          "decisive_clue": "owner considers whether scent imitation or clay texture prompted the habit",
+          "reason": "The origin remains centered on feline behavior, though external household factors are considered.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M3"
+          }
+        },
+        {
+          "text": "A shelter veterinarian explains that the kitten was bottle-fed in complete isolation from birth after its mother died during labor, with zero exposure to adult felines or litter substrates.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.2,
+            "innate": 0.94
+          },
+          "decisive_clue": "kitten bottle-fed in total isolation from birth with zero feline exposure",
+          "reason": "Isolation from birth proves the behavior is an unlearned biological motor program.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        },
+        {
+          "text": "Genetic mapping in domestic cats identifies an evolutionary predatory-concealment gene complex that triggers the scraping reflex without any learning.",
+          "best_word": "innate",
+          "fit": {
+            "inherent": 0.1,
+            "innate": 0.98
+          },
+          "decisive_clue": "evolutionary predatory-concealment gene complex triggers scraping reflex without learning",
+          "reason": "The instinct is conclusively an inborn biological endowment of the animal.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "inherent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The kitten's waste-burying instinct narrows to an unlearned, genetic biological motor program present from birth.",
+      "feedback_deep": "The waste-covering routine was initially observed in a domestic setting where imitation was possible. However, medical history established that the kitten was bottle-fed in isolation from birth without adult contact, and feline genetics confirmed an evolutionary motor trigger. This narrows the explanation conclusively to innate, as inherent cannot apply to an animal's biological instinct.",
+      "contrast_rule": "Unlearned animal instincts present from birth are innate; structural features of objects or systems are inherent.",
+      "hint": "Look for the evidence confirming the kitten executed this behavior despite complete isolation from birth."
+    },
+    {
+      "id": "inherent-innate_020",
+      "domain": "relationships",
+      "transfer": true,
+      "chain_type": "precision",
+      "difficulty": 4,
+      "frame": "The communication friction between two fiercely private partners is ___.",
+      "beats": [
+        {
+          "text": "Couples therapist Hasan counsels Liam and Chloe. Both partners guard their personal histories closely and rarely express emotional distress aloud, leading to recurring misunderstandings whenever difficult decisions arise.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.88,
+            "innate": 0.35
+          },
+          "decisive_clue": "misunderstandings recur whenever difficult decisions arise between fiercely private partners",
+          "reason": "Friction is an inseparable structural byproduct of pairing two deeply reserved communicators.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M1"
+          }
+        },
+        {
+          "text": "Hasan notes that in precise linguistic usage, while their reserved temperaments may reflect individual personal psychology, the friction itself is an inseparable structural dynamic generated by the interaction of two closed communicative systems.",
+          "best_word": "inherent",
+          "fit": {
+            "inherent": 0.96,
+            "innate": 0.12
+          },
+          "decisive_clue": "friction is an inseparable structural dynamic generated by interaction of two closed systems",
+          "reason": "Precise usage distinguishes the systemic relationship friction (inherent) from personal biological traits.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "innate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The communication friction is an inseparable structural dynamic of the partnership's design, not an individual's biological trait.",
+      "feedback_deep": "While individuals might loosely speak of reserved tendencies, the target here is the friction produced between two people. Because this interpersonal tension is an inseparable structural dynamic generated by combining two closed communication styles, precise academic English demands inherent. Innate applies strictly to biological endowments present from birth in an individual organism.",
+      "contrast_rule": "Structural dynamics produced by relationships and systems are inherent; biological endowments of individuals are innate.",
+      "hint": "Distinguish between an individual's personal psychology and the structural friction generated between two partners."
+    }
+  ]
+}

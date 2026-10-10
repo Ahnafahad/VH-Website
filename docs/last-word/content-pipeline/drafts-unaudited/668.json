@@ -1,0 +1,1280 @@
+{
+ "set_id": "equivocal-ambiguous",
+ "source_pair_id": 668,
+ "words": [
+  {
+   "word": "equivocal",
+   "sense": "deliberately unclear to avoid committing",
+   "concise_meaning": "intentionally vague or evasive, often to mislead or avoid commitment",
+   "connotation": "negative, implies deception, caution, or strategic avoidance",
+   "register": "formal, sophisticated",
+   "grammar": "adjective, frequently paired with 'to' + verb or 'about'",
+   "collocations": [
+    "equivocal response",
+    "equivocal answer",
+    "equivocal position",
+    "remain equivocal"
+   ],
+   "misconceptions": [
+    "confusing it with simply not knowing (misunderstanding intentionality)"
+   ]
+  },
+  {
+   "word": "ambiguous",
+   "sense": "open to multiple interpretations",
+   "concise_meaning": "unclear because it can be interpreted in more than one way",
+   "connotation": "neutral, implies lack of clarity, imprecision, or depth",
+   "register": "neutral to formal",
+   "grammar": "adjective",
+   "collocations": [
+    "ambiguous meaning",
+    "ambiguous phrasing",
+    "ambiguous results",
+    "highly ambiguous"
+   ],
+   "misconceptions": [
+    "assuming ambiguity always involves a malicious motive"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "intent",
+   "description": "Whether the lack of clarity is intentional (equivocal) or inherent/accidental (ambiguous)."
+  },
+  {
+   "id": "evasiveness",
+   "description": "Whether the speaker is dodging a commitment (equivocal) or simply not conveying a clear meaning (ambiguous)."
+  }
+ ],
+ "edge": {
+  "a": "equivocal",
+  "b": "ambiguous",
+  "boundary_rule": "Use equivocal if the vagueness serves to dodge a commitment or deceive; use ambiguous if it arises from language structure or confusion without intent to dodge.",
+  "clues_a": [
+   "deliberate silence",
+   "dodging a direct question",
+   "strategic hesitation",
+   "trying not to take a side"
+  ],
+  "clues_b": [
+   "multiple potential meanings",
+   "lack of clarity in phrasing",
+   "confusing evidence",
+   "lack of context"
+  ],
+  "irrelevant_clues": [
+   "the person seems nervous",
+   "the audience is confused",
+   "it's a long sentence"
+  ],
+  "misconceptions": {
+   "M1": "Assuming any confusing statement is automatically equivocal.",
+   "M2": "Assuming any deliberate attempt at complexity is inherently equivocal.",
+   "M3": "Thinking that because a statement is confusing, the person must be trying to hide something."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "equivocal": [
+    "The CEO gave an equivocal response regarding the upcoming merger, clearly trying to avoid panic.",
+    "His equivocal answer about his future plans left everyone wondering if he had already accepted another job.",
+    "When pressed on the issue, the politician became increasingly equivocal, offering no firm stance.",
+    "She provided an equivocal account of the incident, likely to protect her friend's reputation.",
+    "The diplomat's equivocal statement was carefully designed to keep both nations at the table.",
+    "They maintained an equivocal position on the merger, refusing to commit to either option."
+   ],
+   "ambiguous": [
+    "The memo was so ambiguous that employees didn't know whether the meeting was mandatory or optional.",
+    "The poem's ending is intentionally ambiguous, allowing readers to decide what happened.",
+    "Due to the ambiguous wording of the contract, both parties interpreted the clauses differently.",
+    "The survey results were ambiguous, making it difficult to draw a clear conclusion.",
+    "His instructions were so ambiguous that I ended up doing the complete opposite of what he wanted.",
+    "The signal from the probe was too ambiguous to determine the cause of the failure."
+   ]
+  },
+  "counter": {
+   "equivocal": [
+    "The instructions were equivocal, leaving everyone confused.",
+    "The painting was equivocal in its meaning.",
+    "The results were equivocal, which nobody expected.",
+    "The text was equivocal, and I couldn't understand it.",
+    "The weather forecast was equivocal.",
+    "The error message was equivocal."
+   ],
+   "ambiguous": [
+    "He gave an ambiguous answer, clearly trying to dodge the question.",
+    "The negotiator's ambiguous stance was meant to hide his true intentions.",
+    "She was deliberately ambiguous about her plans.",
+    "The witness was being ambiguous to protect herself.",
+    "The politician's ambiguous comment was a classic move to avoid commitment.",
+    "He remained ambiguous during the interrogation."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The feedback I got on my essay was ____, making it impossible to improve.",
+    "best_word": "ambiguous",
+    "note": "Could be equivocal if the teacher intentionally wanted to avoid giving clear, actionable criticism."
+   },
+   {
+    "text": "His explanation for being late was ____.",
+    "best_word": "equivocal",
+    "note": "Almost always implies he's trying to hide the truth."
+   },
+   {
+    "text": "The term 'freedom' in this context is ____.",
+    "best_word": "ambiguous",
+    "note": "Usually refers to the linguistic issue, not a deliberate evasion."
+   },
+   {
+    "text": "The data from the trial are ____.",
+    "best_word": "ambiguous",
+    "note": "Usually refers to the inherent quality of the findings, not a deception."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "equivocal-ambiguous_001",
+   "domain": "Technology/Software",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The developer's explanation of the bug is ___.",
+   "beats": [
+    {
+     "text": "The developer claims the system error could be caused by many different factors, not specifying which one.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.4,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "specifying which one",
+     "reason": "This is a lack of precision without evidence of evasiveness.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "The developer adds that they don't want to rule anything out because 'it depends on the perspective'.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.6,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "don't want to rule anything out",
+     "reason": "Still sounds like technical uncertainty rather than evasion.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M3"
+     }
+    }
+   ],
+   "feedback_short": "It's still unclear, but no intent to dodge is clear.",
+   "feedback_deep": "The developer is being vague, but they are framing it as technical complexity, not a strategic effort to avoid giving an answer.",
+   "contrast_rule": "Ambiguous = unclear; Equivocal = unclear to avoid commitment.",
+   "hint": "Is the speaker trying to not answer, or are they just failing to be clear?"
+  },
+  {
+   "id": "equivocal-ambiguous_003",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "Sarah's response to her partner's question is ___.",
+   "beats": [
+    {
+     "text": "When asked if she was happy with the relationship, Sarah said, 'It's complicated, I guess.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.4,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "complicated",
+     "reason": "Sounds like she genuinely doesn't know.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M3"
+     }
+    },
+    {
+     "text": "When asked if she wants to break up, she smiles, shrugs, and says, 'Who knows what the future holds?'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.3
+     },
+     "decisive_clue": "smiles, shrugs, and avoids answering",
+     "reason": "This behavior indicates she is actively avoiding answering.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "She is now clearly avoiding the question.",
+   "feedback_deep": "The first response was genuinely unclear. The second response is designed to avoid a commitment by using dismissive body language and a platitude.",
+   "contrast_rule": "Avoidance is the hallmark of equivocal.",
+   "hint": "Check if she is trying to explain the situation or just duck the question."
+  },
+  {
+   "id": "equivocal-ambiguous_004",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The coach's statement about the player's future is ___.",
+   "beats": [
+    {
+     "text": "The coach says, 'We'll see about the starting lineup.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.5,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "We'll see",
+     "reason": "Could be uncertainty, or intentional avoidance.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "The coach adds, 'I'm not saying he's in or out, I'm just focusing on today.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.4
+     },
+     "decisive_clue": "not saying he's in or out",
+     "reason": "He is clearly dodging a direct answer.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His deliberate refusal to commit makes it equivocal.",
+   "feedback_deep": "By saying he isn't saying he is 'in or out', he explicitly acknowledges his refusal to provide a clear position.",
+   "contrast_rule": "If it's meant to dodge, it's equivocal.",
+   "hint": "The coach is now intentionally not committing."
+  },
+  {
+   "id": "equivocal-ambiguous_005",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The travel agent's answer about the hotel is ___.",
+   "beats": [
+    {
+     "text": "The agent says the hotel is 'near the city center'.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.4,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "near",
+     "reason": "Lack of precision about what 'near' means.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "The agent confirms, 'It's actually a 30-minute bus ride away, but some people consider that near.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.3,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "confirming the distance",
+     "reason": "They were just being imprecise before, not deceptive.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Still ambiguous; they weren't trying to hide the fact.",
+   "feedback_deep": "The agent was imprecise, but they are now providing clear evidence that it was just a subjective definition, not a plan to mislead.",
+   "contrast_rule": "Ambiguity often comes from subjective definitions.",
+   "hint": "Check if the agent is still being evasive."
+  },
+  {
+   "id": "equivocal-ambiguous_006",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The instructions for building the bookshelf are ___.",
+   "beats": [
+    {
+     "text": "The manual says 'attach the supports to the base', but it doesn't say which side.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.2,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "doesn't say which side",
+     "reason": "This is a classic example of poor instructions.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "The pictures also show the supports in different positions on different pages.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.1,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "different positions",
+     "reason": "Still poor instructions, not a secret trick.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's just poorly written, not deliberately trying to mislead.",
+   "feedback_deep": "The instructions are unclear, but there is no reason to believe they were written to dodge a commitment or deceive; they are just badly edited.",
+   "contrast_rule": "Equivocal needs intent to evade.",
+   "hint": "Is there a malicious motive here?"
+  },
+  {
+   "id": "equivocal-ambiguous_007",
+   "domain": "Arts/Music",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The artist's comment about the meaning of their new painting is ___.",
+   "beats": [
+    {
+     "text": "The artist says, 'I wanted it to reflect the duality of modern life.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.3,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "reflect the duality",
+     "reason": "The artist is talking about the work's inherent themes.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M3"
+     }
+    },
+    {
+     "text": "When asked if they support the political movement that adopted the painting, they say, 'Art belongs to everyone and can be used in many ways.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.3
+     },
+     "decisive_clue": "Art belongs to everyone",
+     "reason": "This is a classic evasive answer to avoid taking a stand.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The artist is now avoiding a political commitment.",
+   "feedback_deep": "The first comment described the work's nature. The second response is a deflection, using a broad, non-committal statement to avoid taking a political stance.",
+   "contrast_rule": "Deflecting a question makes it equivocal.",
+   "hint": "Check if they are dodging a political question."
+  },
+  {
+   "id": "equivocal-ambiguous_008",
+   "domain": "Business/Office",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The CEO's email to the company about potential layoffs is ___.",
+   "beats": [
+    {
+     "text": "The email says, 'We are evaluating our staffing needs to ensure future growth.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.3
+     },
+     "decisive_clue": "evaluating... staffing needs",
+     "reason": "This is a classic evasive term to hide the possibility of layoffs.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "The email continues, 'Some roles may change, while others will stay the same, depending on our strategic path.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.3
+     },
+     "decisive_clue": "depending on our strategic path",
+     "reason": "They are still avoiding saying whether or not layoffs are coming.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's clearly written to avoid saying 'yes, layoffs are coming'.",
+   "feedback_deep": "The message is carefully crafted to sound like a normal business evaluation while specifically avoiding a clear statement about job security.",
+   "contrast_rule": "Evasive language is equivocal.",
+   "hint": "Is the CEO trying to be clear?"
+  },
+  {
+   "id": "equivocal-ambiguous_009",
+   "domain": "Education/School",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The teacher's answer about the grading policy is ___.",
+   "beats": [
+    {
+     "text": "The teacher says, 'We will consider many factors when determining final grades.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.5,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "many factors",
+     "reason": "It's not very clear, but could just be a lack of a set policy yet.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "When asked if extra credit is included, they say, 'It depends on how you look at the syllabus.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.3
+     },
+     "decisive_clue": "depends on how you look at",
+     "reason": "This indicates they are intentionally avoiding a firm yes or no.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Avoiding a 'yes' or 'no' is classic equivocation.",
+   "feedback_deep": "The teacher was just vague at first. Now, they are actively dodging a simple question by making the answer seem subjective, which is a common way to equivocate.",
+   "contrast_rule": "Dodging makes it equivocal.",
+   "hint": "Is the teacher trying to give an answer?"
+  },
+  {
+   "id": "equivocal-ambiguous_010",
+   "domain": "Environment/Nature",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "The scientific report on the pollution level is ___.",
+   "beats": [
+    {
+     "text": "The report states that the pollution levels 'may be a cause for concern in some areas'.",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.8,
+      "ambiguous": 0.4
+     },
+     "decisive_clue": "may be",
+     "reason": "It sounds like they are trying not to implicate any specific company.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M3"
+     }
+    },
+    {
+     "text": "The data shows that the sensors themselves were faulty, meaning the pollution was never actually higher than normal.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.2,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "faulty sensors",
+     "reason": "The report was not evasive; it was simply reflecting bad data.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It wasn't evasive; it was just bad data.",
+   "feedback_deep": "The report was vague, but we now see it was due to flawed sensors, not an intent to hide something. Therefore, it was ambiguous, not equivocal.",
+   "contrast_rule": "Faulty data causes ambiguity; faulty intent causes equivocation.",
+   "hint": "Was the vagueness deliberate?"
+  },
+  {
+   "id": "equivocal-ambiguous_011",
+   "domain": "History/Literature",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The historian's take on the character's motivation is ___.",
+   "beats": [
+    {
+     "text": "The historian says, 'It's hard to know exactly why the character did it, as the sources are contradictory.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.3,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "sources are contradictory",
+     "reason": "The difficulty is in the evidence itself.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "When a student points out the historian's favorite source *does* clearly state the motivation, the historian smiles and says, 'History is a matter of perspective.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.2
+     },
+     "decisive_clue": "smiles and says 'matter of perspective'",
+     "reason": "Now they are just dodging a fact they don't want to admit.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are now just avoiding admitting they were wrong.",
+   "feedback_deep": "At first, the historian was objectively assessing the evidence. When challenged, they used a philosophical cliché to avoid admitting they were wrong about the sources.",
+   "contrast_rule": "Dodging facts is equivocal.",
+   "hint": "Check the historian's reaction to the evidence."
+  },
+  {
+   "id": "equivocal-ambiguous_012",
+   "domain": "Business/Office",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The manager's answer about the promotion timeline is ___.",
+   "beats": [
+    {
+     "text": "The manager says, 'We're looking into it, but it might take a while.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.8,
+      "ambiguous": 0.4
+     },
+     "decisive_clue": "looking into it",
+     "reason": "This is a standard way to dodge a real answer.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "When asked if 'a while' means weeks or months, the manager replies, 'We prefer to focus on the process rather than the outcome.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.2
+     },
+     "decisive_clue": "focus on process rather than outcome",
+     "reason": "Still avoiding the question.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Still evasive and dodging the direct question.",
+   "feedback_deep": "Both responses are designed to sidestep the actual question. The manager is actively keeping the timeline unclear to avoid commitment.",
+   "contrast_rule": "Equivocation avoids commitment.",
+   "hint": "Is the manager trying to answer?"
+  },
+  {
+   "id": "equivocal-ambiguous_013",
+   "domain": "Arts/Music",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The critic's review of the new film is ___.",
+   "beats": [
+    {
+     "text": "The critic writes, 'The movie has moments of brilliance, but other parts are less impressive.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.3,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "moments... less impressive",
+     "reason": "This is a fair (if imprecise) assessment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M3"
+     }
+    },
+    {
+     "text": "The review ends with, 'Whether it's a masterpiece or a failure depends entirely on what you value in cinema.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.2,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "depends entirely on what you value",
+     "reason": "This is a subjective judgment, not a dodge.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's just a subjective, and thus ambiguous, judgment.",
+   "feedback_deep": "The critic is not trying to deceive or dodge; they are pointing out that the movie is polarizing, which makes their review ambiguous, not equivocal.",
+   "contrast_rule": "Subjectivity can create ambiguity.",
+   "hint": "Is the reviewer dodging?"
+  },
+  {
+   "id": "equivocal-ambiguous_014",
+   "domain": "Technology/Software",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The company's policy on user privacy is ___.",
+   "beats": [
+    {
+     "text": "The policy states, 'We treat user data with the utmost care, ensuring all safety protocols are followed.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.5,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "utmost care",
+     "reason": "It's a vague corporate statement.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "When asked if they share this data with third parties, they reply, 'Our relationships are defined by our commitment to our users.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.2
+     },
+     "decisive_clue": "relationships are defined by commitment",
+     "reason": "This is a direct evasion of the question.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are now clearly dodging the question.",
+   "feedback_deep": "The first statement was a vague, standard corporate phrase. The second is an explicit evasion of a clear question about data sharing.",
+   "contrast_rule": "Dodging is equivocal.",
+   "hint": "Check the company's reply."
+  },
+  {
+   "id": "equivocal-ambiguous_015",
+   "domain": "Education/School",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The school's new rule about dress code is ___.",
+   "beats": [
+    {
+     "text": "The rule says students must dress 'appropriately' for school.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.2,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "appropriately",
+     "reason": "It's unclear because it's subjective.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "It comes out that they only use this rule to unfairly punish students they dislike.",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.2
+     },
+     "decisive_clue": "unfairly punish students",
+     "reason": "The ambiguity is now being used as a tool for discrimination.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The ambiguity is being used for a manipulative, equivocal purpose.",
+   "feedback_deep": "At first, the term 'appropriately' was just vague. Now that we see it's used to unfairly target students, the rule is equivocal—it's being used to mask discriminatory behavior.",
+   "contrast_rule": "If it's used to mask, it's equivocal.",
+   "hint": "What is the true purpose of the rule?"
+  },
+  {
+   "id": "equivocal-ambiguous_016",
+   "domain": "Environment/Nature",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The report on local water quality is ___.",
+   "beats": [
+    {
+     "text": "The report shows some high readings but others are very low, with no clear trend.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.3,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "high... low... no clear trend",
+     "reason": "The evidence is genuinely unclear.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "Because the readings are contradictory and hard to define, they cannot be called one thing or another.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.1,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "contradictory and hard to define",
+     "reason": "This is the essence of ambiguity.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The contradiction makes the results fundamentally ambiguous.",
+   "feedback_deep": "The results are inherently contradictory, making it impossible to draw a single conclusion. This is the definition of ambiguous, not equivocal.",
+   "contrast_rule": "Ambiguity = multiple interpretations; Equivocation = evasion.",
+   "hint": "Is there intent to mislead?"
+  },
+  {
+   "id": "equivocal-ambiguous_017",
+   "domain": "History/Literature",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The author's note about the protagonist's end is ___.",
+   "beats": [
+    {
+     "text": "The note says, 'Whether he lived or died is not explicitly stated in the text.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.2,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "not explicitly stated",
+     "reason": "The text is open to interpretation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "When the author is later interviewed, they say, 'I know the answer, but I want to keep you all guessing.'",
+     "best_word": "equivocal",
+     "fit": {
+      "equivocal": 0.9,
+      "ambiguous": 0.3
+     },
+     "decisive_clue": "keep you all guessing",
+     "reason": "They now have an intent to maintain the lack of clarity.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "They are intentionally maintaining the ambiguity.",
+   "feedback_deep": "The ambiguity in the text was a feature. But when the author says they know the answer but refuse to share it to keep people guessing, their position is equivocal.",
+   "contrast_rule": "Intentional ambiguity is equivocal.",
+   "hint": "Is the author dodging?"
+  },
+  {
+   "id": "equivocal-ambiguous_018",
+   "domain": "Arts/Music",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The music producer's comment on the new album's sound is ___.",
+   "beats": [
+    {
+     "text": "The producer says, 'It's a mix of electronic and classical, which some might find unusual.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.3,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "mix... unusual",
+     "reason": "The sound is complex, not evasive.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M3"
+     }
+    },
+    {
+     "text": "The producer admits, 'I didn't really have a clear vision for it, and it just kind of came together that way.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.2,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "didn't have a clear vision",
+     "reason": "They were honest about not having a plan.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Still ambiguous, as they weren't trying to mislead.",
+   "feedback_deep": "The producer was not trying to dodge; they were simply not clear because they didn't have a plan. This is ambiguity due to a lack of intent/vision.",
+   "contrast_rule": "Lack of vision = ambiguous.",
+   "hint": "Is there a deceptive motive?"
+  },
+  {
+   "id": "equivocal-ambiguous_019",
+   "domain": "Technology/Software",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The terms of service for the new app are ___.",
+   "beats": [
+    {
+     "text": "The terms state that users 'may' be subjected to advertisements.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.5,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "may",
+     "reason": "It's unclear if it will happen.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "The company also adds that this 'depends' on the user's region and device settings.",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.4,
+      "ambiguous": 0.8
+     },
+     "decisive_clue": "depends on",
+     "reason": "Still just imprecise phrasing about a complex topic.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's just imprecise legal language.",
+   "feedback_deep": "The language is unclear, but there's no evidence of a strategic intent to avoid a commitment. It's typical, if poor, legal phrasing.",
+   "contrast_rule": "Poor phrasing creates ambiguity.",
+   "hint": "Is the company dodging?"
+  },
+  {
+   "id": "equivocal-ambiguous_020",
+   "domain": "Education/School",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The professor's explanation of the final project requirements is ___.",
+   "beats": [
+    {
+     "text": "The professor says, 'The topic should be related to the course material, but you have flexibility.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.2,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "flexibility",
+     "reason": "The professor is trying to encourage creativity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    },
+    {
+     "text": "When students ask for examples of good topics, the professor says, 'I want you to discover that for yourselves.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "equivocal": 0.1,
+      "ambiguous": 0.9
+     },
+     "decisive_clue": "discover that for yourselves",
+     "reason": "Still not evasive, just pedagogical.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "equivocal": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It's not trying to deceive; it's a pedagogical choice.",
+   "feedback_deep": "The professor's refusal to give examples is a choice to make students think for themselves, not a way to hide anything. It's ambiguous, not equivocal.",
+   "contrast_rule": "Pedagogy is not evasion.",
+   "hint": "Is the professor hiding something?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

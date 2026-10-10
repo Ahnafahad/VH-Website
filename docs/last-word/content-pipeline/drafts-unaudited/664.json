@@ -1,0 +1,1339 @@
+{
+ "set_id": "ambiguous-vague",
+ "source_pair_id": 664,
+ "words": [
+  {
+   "word": "ambiguous",
+   "sense": "Having two or more possible interpretations, leading to genuine uncertainty about the intended meaning.",
+   "concise_meaning": "having more than one possible meaning",
+   "connotation": "neutral to negative; implies potential for error or debate",
+   "register": "formal",
+   "grammar": "adjective",
+   "collocations": [
+    "ambiguous statement",
+    "ambiguous term",
+    "remain ambiguous",
+    "highly ambiguous"
+   ],
+   "misconceptions": [
+    "thinking it just means 'unclear'"
+   ]
+  },
+  {
+   "word": "vague",
+   "sense": "Lacking detail, clarity, or specific information; fuzzy or ill-defined.",
+   "concise_meaning": "not clearly expressed or defined",
+   "connotation": "often negative; implies a lack of effort or precision",
+   "register": "neutral",
+   "grammar": "adjective",
+   "collocations": [
+    "vague idea",
+    "vague answer",
+    "vague memory",
+    "become vague"
+   ],
+   "misconceptions": [
+    "thinking it means 'contradictory'"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "interpretative_possibilities",
+   "description": "ambiguous has multiple distinct interpretations; vague has few or no clear interpretations."
+  },
+  {
+   "id": "informational_density",
+   "description": "vague lacks sufficient information; ambiguous has enough information, but it is conflicting or open-ended."
+  }
+ ],
+ "edge": {
+  "a": "ambiguous",
+  "b": "vague",
+  "boundary_rule": "Use ambiguous if multiple distinct meanings exist; use vague if the information is simply insufficient or indistinct.",
+  "clues_a": [
+   "two potential meanings",
+   "could mean X or Y",
+   "conflicting interpretations"
+  ],
+  "clues_b": [
+   "lacks detail",
+   "not enough information",
+   "fuzzy",
+   "general statement"
+  ],
+  "irrelevant_clues": [
+   "the speaker's tone",
+   "the complexity of the subject",
+   "how much the listener likes the statement"
+  ],
+  "misconceptions": {
+   "M1": "Confusing 'unclear' (vague) with 'potentially multiple meanings' (ambiguous).",
+   "M2": "Assuming vague implies that there's a hidden meaning.",
+   "M3": "Using ambiguous for anything the speaker doesn't understand."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "ambiguous": [
+    "The contract clause was ambiguous, leaving both parties confused about their legal obligations.",
+    "His reaction was ambiguous; was he smiling at the joke or laughing at my suggestion?",
+    "The sign in the park was ambiguous, leading people to wonder if walking was prohibited or just biking.",
+    "Because the candidate’s statement on tax policy was ambiguous, voters were unsure if she supported an increase or a cut.",
+    "The instructions for the project were ambiguous, with some teams interpreting them as a design task and others as a research one.",
+    "The ending of the novel is famously ambiguous, leaving readers to debate the protagonist's ultimate fate."
+   ],
+   "vague": [
+    "The candidate gave a vague answer when asked about his specific plans, frustrating the interviewer.",
+    "I have a vague recollection of meeting her once, but I couldn't say where or when.",
+    "The proposal was too vague, failing to outline any concrete steps or budget estimates.",
+    "She was vague about her reasons for resigning, simply saying she needed a change.",
+    "When asked for directions, he gave a vague description that didn't help me find the place at all.",
+    "His explanation of the scientific concept remained vague despite my repeated requests for clarity."
+   ]
+  },
+  "counter": {
+   "ambiguous": [
+    "The plan was too ambiguous; it didn't give us any clear steps (should be vague).",
+    "She was ambiguous about why she was late (should be vague).",
+    "My memory of the event is ambiguous (should be vague).",
+    "The description was ambiguous (should be vague).",
+    "He has a very ambiguous idea of what he wants to do (should be vague).",
+    "That was a very ambiguous answer; it had no substance (should be vague)."
+   ],
+   "vague": [
+    "The sentence 'The bank was closed' is vague if we don't know if it's the river bank or financial bank (should be ambiguous).",
+    "His grin was vague; it could be kindness or malice (should be ambiguous).",
+    "The rule against 'inappropriate attire' is vague (actually, this could be both, but here it's ambiguous if we don't know what it forbids vs allows).",
+    "That headline is vague; it can be read in two completely different ways (should be ambiguous).",
+    "Their intentions were vague; they might be helping, or they might be stealing (should be ambiguous).",
+    "The poem's meaning is vague (should be ambiguous)."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The manager's goals for the team were ________.",
+    "best_word": "vague",
+    "note": "If the goals are missing details, it's vague. If the goals could mean two conflicting outcomes, it's ambiguous."
+   },
+   {
+    "text": "The feedback I received was ________.",
+    "best_word": "vague",
+    "note": "Most feedback is 'vague' because it lacks detail. It is 'ambiguous' only if it could mean 'keep doing this' or 'stop doing this'."
+   },
+   {
+    "text": "The company's mission statement is ________.",
+    "best_word": "vague",
+    "note": "Mission statements are often 'vague' (general). 'Ambiguous' would mean it implies two different, mutually exclusive company directions."
+   },
+   {
+    "text": "The witness's account of the accident was ________.",
+    "best_word": "vague",
+    "note": "Usually 'vague' because they didn't see enough. 'Ambiguous' if the witness said something that could describe two different cars."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "ambiguous-vague_001",
+   "domain": "abstract argument",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the professor said about the essay topic: ___",
+   "beats": [
+    {
+     "text": "The professor told us, 'Focus on the theme of power.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.8
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "It's not that 'power' means two things, it's that it's too broad.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "She added, 'You decide what aspect to cover, but don't ask me for more guidance.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Still just lacks detail/guidance.",
+     "reason": "Adding that she won't explain doesn't make 'power' mean two things; it just confirms the lack of instruction.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The instructions lack sufficient detail for a specific task, not potential for conflicting interpretations.",
+   "feedback_deep": "Even with added context, the professor's instruction to 'Focus on the theme of power' remains fundamentally lacking in detail, not open to two distinct, competing meanings.",
+   "contrast_rule": "If you don't know what to do because you weren't told enough, it's vague.",
+   "hint": "Is there a conflict of meaning, or just a lack of information?"
+  },
+  {
+   "id": "ambiguous-vague_002",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "How Ahmed felt about the sign he found: ___",
+   "beats": [
+    {
+     "text": "Ahmed found a note on his desk that said 'We need to talk.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.9,
+      "vague": 0.3
+     },
+     "decisive_clue": "Could mean X or Y.",
+     "reason": "It could mean he's getting fired, or they want to plan a party.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    },
+    {
+     "text": "The person who left the note refused to clarify if it was about the project deadline or his recent promotion.",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.95,
+      "vague": 0.2
+     },
+     "decisive_clue": "Still two interpretations.",
+     "reason": "The fact that it *could* be one of two distinct things is now highlighted.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The statement can mean two distinct, plausible things.",
+   "feedback_deep": "The note could mean something negative (firing/trouble) or something positive (promotion/planning). This duality makes it ambiguous.",
+   "contrast_rule": "If it could mean two very different things, it's ambiguous.",
+   "hint": "Does it point towards two different possibilities?"
+  },
+  {
+   "id": "ambiguous-vague_003",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The status of the chore list: ___",
+   "beats": [
+    {
+     "text": "The roommate's list says 'Clean the things in the kitchen'.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.4,
+      "vague": 0.8
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Which things? All of them? Just the dirty ones?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "It turns out the list was placed right next to the recycling bin AND the dirty dishes, so it could mean clean the dishes OR take out the recycling.",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.8,
+      "vague": 0.4
+     },
+     "decisive_clue": "Could mean two distinct things.",
+     "reason": "The placement forces an interpretation: either dishes or recycling.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The context added two distinct potential meanings, changing it from a lack of detail to a choice between two actions.",
+   "feedback_deep": "Initially, the instruction lacked detail (vague). Once the context linked it to two specific items (recycling or dishes), the meaning became a choice between two alternatives (ambiguous).",
+   "contrast_rule": "Lack of detail is vague; a choice of two interpretations is ambiguous.",
+   "hint": "Did the new information make it just less clear, or did it introduce two competing meanings?"
+  },
+  {
+   "id": "ambiguous-vague_004",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "What the commentator said about the player's performance: ___",
+   "beats": [
+    {
+     "text": "The commentator shouted, 'He's going to make a big play!'",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.7,
+      "vague": 0.6
+     },
+     "decisive_clue": "Could mean two things.",
+     "reason": "Is he going to score, or is he going to commit a foul that ruins the game?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    },
+    {
+     "text": "He then stayed silent for the rest of the game, refusing to say anything else about whether the play was positive or negative.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail/clarity.",
+     "reason": "By refusing to comment, he just left it as a general statement, not an interpretation.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "When the ambiguity was stripped of context, it became a vague, general statement.",
+   "feedback_deep": "The initial excitement allowed for two interpretations (positive/negative play). The lack of further comment left only a general, unhelpful sentiment, which is vague.",
+   "contrast_rule": "If context restricts a statement to two interpretations, it's ambiguous. If context is removed leaving only a general sentiment, it's vague.",
+   "hint": "Does the comment have two possible meanings, or is it just empty of detail?"
+  },
+  {
+   "id": "ambiguous-vague_005",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The information the ticket agent gave: ___",
+   "beats": [
+    {
+     "text": "The agent said, 'You have a problem with your booking.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "What kind of problem? Cancellation? Name? Date?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "He only said, 'It might mean you can't fly, or it might mean you have to pay more.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.9,
+      "vague": 0.3
+     },
+     "decisive_clue": "Two potential interpretations.",
+     "reason": "The 'problem' has been defined as two specific potential outcomes.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The added detail narrowed the problem to two conflicting possibilities, turning it from vague to ambiguous.",
+   "feedback_deep": "Initially, the information was clearly vague due to a lack of detail. By adding two specific, conflicting scenarios, the problem became ambiguous.",
+   "contrast_rule": "If you don't know the specifics, it's vague. If you know the specifics but it could mean either X or Y, it's ambiguous.",
+   "hint": "Does the new information clarify the problem, or does it split it into two possibilities?"
+  },
+  {
+   "id": "ambiguous-vague_006",
+   "domain": "short dialogue",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "How Maya described the meeting outcome: ___",
+   "beats": [
+    {
+     "text": "Maya said, 'The boss was not happy with the proposal.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Doesn't say why or how unhappy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "She added, 'He looked at it for a second, then frowned.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.8
+     },
+     "decisive_clue": "Still lacks sufficient detail to interpret.",
+     "reason": "Adding a detail about a frown doesn't tell us if he disliked the content, the format, or just had a headache.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "This is a false shift; the additional information didn't provide enough detail to resolve the vagueness.",
+   "feedback_deep": "The detail about the frown is just another piece of vague information, not a new interpretation of the boss's reaction. It remains vague.",
+   "contrast_rule": "A detail isn't an interpretation; it's still vague if the overall meaning is unclear.",
+   "hint": "Did the new detail resolve the mystery or just add a new, equally unclear point?"
+  },
+  {
+   "id": "ambiguous-vague_007",
+   "domain": "public situations",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The sign's warning to pedestrians: ___",
+   "beats": [
+    {
+     "text": "The sign says, 'Caution: Slippery.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.1,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail/precision.",
+     "reason": "How slippery? Where? All over or just by the entrance?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "It fails to indicate if it's wet from rain, oil, or ice.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.1,
+      "vague": 0.95
+     },
+     "decisive_clue": "Still lacks specific information.",
+     "reason": "The lack of detail is simply reinforced.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The sign lacks necessary details; it doesn't offer multiple interpretations.",
+   "feedback_deep": "The sign is clearly vague because it tells you something is 'slippery' without explaining where, why, or how slippery it is.",
+   "contrast_rule": "If it doesn't give you enough information to know what to do, it's vague.",
+   "hint": "Does it give multiple meanings, or just fail to be specific?"
+  },
+  {
+   "id": "ambiguous-vague_008",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "What the partner said about their future: ___",
+   "beats": [
+    {
+     "text": "He said, 'I want us to be closer.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.4,
+      "vague": 0.8
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Closer how? Living together? Emotional intimacy? Less travel time?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "Given their recent arguments, it's either a heartfelt plea for intimacy or a demand to move in together.",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.9,
+      "vague": 0.3
+     },
+     "decisive_clue": "Now has two distinct, conflicting interpretations.",
+     "reason": "The context transformed a general, vague sentiment into two clear but very different potential meanings.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Context reframed a vague statement as a choice between two specific, distinct possibilities.",
+   "feedback_deep": "The initial statement was vague (lacking detail). The added context highlighted that it now carries two distinct interpretations (intimacy vs. moving in), making it ambiguous.",
+   "contrast_rule": "If context forces a choice between two meanings, it's ambiguous.",
+   "hint": "Did the context change the meaning or simply define the possibilities?"
+  },
+  {
+   "id": "ambiguous-vague_009",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The coach's instruction about the player's position: ___",
+   "beats": [
+    {
+     "text": "The coach said, 'Move to the middle.'",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.7,
+      "vague": 0.6
+     },
+     "decisive_clue": "Two potential interpretations.",
+     "reason": "Middle of the field, or middle of the defensive line?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    },
+    {
+     "text": "After he moved to the defensive line, the coach yelled, 'No, I meant the middle of the field!'",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.95,
+      "vague": 0.1
+     },
+     "decisive_clue": "The coach's correction confirms it was a choice between two interpretations.",
+     "reason": "The fact that he *meant* one of two potential spots reinforces that the original statement was ambiguous.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The coach's correction clarifies that the instruction was an ambiguous choice between two alternatives.",
+   "feedback_deep": "The instruction could be interpreted in two ways (the field or the defensive line), and the coach's correction definitively confirms the potential for this misunderstanding, validating that it was ambiguous.",
+   "contrast_rule": "If you have to choose between two interpretations, it's ambiguous.",
+   "hint": "Does it mean one of two places?"
+  },
+  {
+   "id": "ambiguous-vague_010",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The label on the storage box is ___",
+   "beats": [
+    {
+     "text": "The box is labeled 'Misc'.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "It tells you absolutely nothing about the contents.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "Nobody knows what's inside because the label is just completely uninformative.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.95
+     },
+     "decisive_clue": "Still just lacks detail.",
+     "reason": "It's the definition of a lack of clear information.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The label is vague as it contains no useful detail.",
+   "feedback_deep": "A 'Misc' label is the perfect example of being vague—it provides no concrete information about what you are looking for.",
+   "contrast_rule": "If it gives no information, it's vague.",
+   "hint": "Does 'Misc' tell you anything?"
+  },
+  {
+   "id": "ambiguous-vague_011",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How the map describes the trail: ___",
+   "beats": [
+    {
+     "text": "The map simply labels the route as 'Difficult'.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.8
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Why? Steep? Long? Dangerous?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "The guide notes that 'Difficult' on this specific trail could mean it's physically exhausting OR it could mean it's prone to rockfalls.",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.9,
+      "vague": 0.3
+     },
+     "decisive_clue": "Two potential interpretations.",
+     "reason": "Now the label clearly has two conflicting meanings.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The added context showed the term 'Difficult' could mean two different things, turning it into an ambiguous term.",
+   "feedback_deep": "The initial label was vague (lacking detail). Once the context defined 'Difficult' as two distinct possibilities, it became ambiguous.",
+   "contrast_rule": "Vague is just unclear; ambiguous is open to two specific, different meanings.",
+   "hint": "Does it now have a dual meaning?"
+  },
+  {
+   "id": "ambiguous-vague_012",
+   "domain": "public situations",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "What the politician said about the new law: ___",
+   "beats": [
+    {
+     "text": "The politician said, 'This law will improve our lives.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Improve in what way? Financial? Health? Education?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "He refused to list any of the actual benefits or explain the mechanism, leaving his audience with just that general statement.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.95
+     },
+     "decisive_clue": "Still just lacks detail.",
+     "reason": "It's empty of content, thus vague.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The politician's statement is vague because it is a general, empty claim without any details.",
+   "feedback_deep": "A general, unsupported claim about 'improving our lives' is a classic example of being vague—it says nothing concrete.",
+   "contrast_rule": "If it says nothing specific, it's vague.",
+   "hint": "Does the statement give you any concrete idea of the 'how' or 'what'?"
+  },
+  {
+   "id": "ambiguous-vague_013",
+   "domain": "abstract argument",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 4,
+   "frame": "What the critic meant by 'the artist's style': ___",
+   "beats": [
+    {
+     "text": "The critic wrote, 'The artist's style is quite bold.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.8
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Bold how? Colors? Themes? Brushstrokes?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "The critic later clarified that in this context, 'bold' could mean either innovative OR overly aggressive.",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.9,
+      "vague": 0.2
+     },
+     "decisive_clue": "Two potential interpretations.",
+     "reason": "Now it's a conflict between two interpretations.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The added context showed the term 'bold' carries two distinct potential meanings, making it ambiguous.",
+   "feedback_deep": "The initial description was vague (lacking detail). The critic's clarification defined 'bold' as a conflict between two possibilities (innovative vs. aggressive), making it ambiguous.",
+   "contrast_rule": "Vague is general; ambiguous is a choice between two specific, different meanings.",
+   "hint": "Does 'bold' mean one of two opposing things?"
+  },
+  {
+   "id": "ambiguous-vague_014",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "What the parent said to their child: ___",
+   "beats": [
+    {
+     "text": "The parent said, 'You need to be more careful.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Careful with what? School? Friends? Sports?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "The parent kept repeating it without explaining what specific action the child should change.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.95
+     },
+     "decisive_clue": "Still just lacks detail.",
+     "reason": "Repeating a general command doesn't provide the missing detail.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "This is a false shift; the repetition did nothing to resolve the lack of detail.",
+   "feedback_deep": "The parent's comment remains vague because it never specifies what 'careful' means in this context. It's just a general, unhelpful statement.",
+   "contrast_rule": "If you don't know what it means because not enough was said, it's vague.",
+   "hint": "Did the repetition add anything?"
+  },
+  {
+   "id": "ambiguous-vague_015",
+   "domain": "short dialogue",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The meaning of the phrase 'He didn't make it' is ___",
+   "beats": [
+    {
+     "text": "A says: 'He didn't make it.' B says: 'What does that mean?'",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.9,
+      "vague": 0.3
+     },
+     "decisive_clue": "Could mean X or Y.",
+     "reason": "Could mean died, or didn't arrive in time.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    },
+    {
+     "text": "A then just shrugs and walks away, leaving B with no idea what he was talking about.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Now it just lacks detail.",
+     "reason": "The potential interpretations have vanished, leaving only a complete lack of information.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "When context was removed, the ambiguity became a vague, empty statement.",
+   "feedback_deep": "Initially, the phrase had two possible meanings. Once the context was removed, it became impossible to infer any meaning at all, making it vague.",
+   "contrast_rule": "Ambiguous = two meanings. Vague = not enough information to know what's going on.",
+   "hint": "Does it have two meanings, or just zero information?"
+  },
+  {
+   "id": "ambiguous-vague_016",
+   "domain": "abstract argument",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The article's argument is ___",
+   "beats": [
+    {
+     "text": "The article argues that 'change is necessary'.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "What change? To what? Why?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "It fails to explain what specifically needs to be altered, leaving the reader with just the core, unhelpful idea.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.95
+     },
+     "decisive_clue": "Still just lacks detail.",
+     "reason": "It's the definition of vague.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The article is vague because it provides no concrete examples or steps.",
+   "feedback_deep": "An empty statement like 'change is necessary' without further explanation is quintessentially vague.",
+   "contrast_rule": "If it lacks the information needed to understand, it's vague.",
+   "hint": "Does the article tell you *what* should change?"
+  },
+  {
+   "id": "ambiguous-vague_017",
+   "domain": "sport",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The team's plan is ___",
+   "beats": [
+    {
+     "text": "The coach said, 'We need to play better.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Better in what aspect? Defense? Speed?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "He didn't identify any areas for improvement, he just gave that general, unhelpful comment.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.95
+     },
+     "decisive_clue": "Still just lacks detail.",
+     "reason": "A general comment without identification of areas is vague.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The coach's comment is vague as it lacks any specific direction or area of focus.",
+   "feedback_deep": "Telling a team they need to 'play better' without stating *what* to improve is vague.",
+   "contrast_rule": "If it's too general to be useful, it's vague.",
+   "hint": "Does 'play better' identify what needs work?"
+  },
+  {
+   "id": "ambiguous-vague_018",
+   "domain": "public situations",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "What the report on the new project's success is ___",
+   "beats": [
+    {
+     "text": "The report concludes that the project was 'a success'.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.8
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "What defines success here? Revenue? User count?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "It turns out the report was written by two different teams who meant 'success' in completely different ways, but the final version merged their views without clarifying.",
+     "best_word": "ambiguous",
+     "fit": {
+      "ambiguous": 0.9,
+      "vague": 0.3
+     },
+     "decisive_clue": "Now it's a conflict between two interpretations.",
+     "reason": "The word 'success' now represents two conflicting, intended definitions from the two teams.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "vague": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Context revealed that 'success' now has two distinct, conflicting interpretations, making it ambiguous.",
+   "feedback_deep": "The initial statement was vague because it lacked a definition for 'success'. Once it was discovered that two different teams intended two different meanings for 'success', the report became ambiguous.",
+   "contrast_rule": "If you have to choose between two different intended meanings, it's ambiguous.",
+   "hint": "Does 'success' mean two different things to the two teams?"
+  },
+  {
+   "id": "ambiguous-vague_019",
+   "domain": "relationships",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "What the letter said about their friendship: ___",
+   "beats": [
+    {
+     "text": "The letter said, 'I'm thinking about everything.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.9
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Everything? Our past? Our future? The fight?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "It was completely unhelpful and didn't mention any of the actual issues, just that general statement.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.2,
+      "vague": 0.95
+     },
+     "decisive_clue": "Still just lacks detail.",
+     "reason": "The lack of specific content makes it vague.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The letter's statement is vague because it is general and lacks any specific reference to the issues.",
+   "feedback_deep": "Saying 'I'm thinking about everything' without listing those things is a classic, vague, unhelpful statement.",
+   "contrast_rule": "If the statement is too general, it's vague.",
+   "hint": "Does 'everything' give you a clear idea of what they are thinking about?"
+  },
+  {
+   "id": "ambiguous-vague_020",
+   "domain": "travel",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The airline's policy is ___",
+   "beats": [
+    {
+     "text": "The policy says, 'Passengers must be dressed appropriately.'",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.8
+     },
+     "decisive_clue": "Lacks detail.",
+     "reason": "Appropriately how? Jeans? Formal? No shorts?",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    },
+    {
+     "text": "The airline won't explain what constitutes 'appropriately', leaving it entirely up to each flight attendant to decide.",
+     "best_word": "vague",
+     "fit": {
+      "ambiguous": 0.3,
+      "vague": 0.9
+     },
+     "decisive_clue": "Still just lacks detail/definition.",
+     "reason": "It's just not defined, hence vague.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "ambiguous": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The policy is vague as it lacks a clear definition of 'appropriately'.",
+   "feedback_deep": "Without a specific definition of what 'appropriate' dress means, the policy is fundamentally vague.",
+   "contrast_rule": "If a rule doesn't tell you what's expected, it's vague.",
+   "hint": "Does the policy define what 'appropriate' means?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

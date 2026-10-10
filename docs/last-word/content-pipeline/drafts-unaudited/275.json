@@ -1,0 +1,1340 @@
+{
+ "set_id": "desultory-cursory",
+ "source_pair_id": 275,
+ "words": [
+  {
+   "word": "desultory",
+   "sense": "Lacking a clear plan or consistent purpose",
+   "concise_meaning": "jumping aimlessly from one thing to another",
+   "connotation": "negative (implies lack of commitment or structure)",
+   "register": "formal",
+   "grammar": "adjective",
+   "collocations": [
+    "desultory conversation",
+    "desultory effort",
+    "desultory reading",
+    "desultory attempt"
+   ],
+   "misconceptions": [
+    "confusing it with being just fast"
+   ]
+  },
+  {
+   "word": "cursory",
+   "sense": "Done quickly and without attention to detail",
+   "concise_meaning": "hasty and superficial",
+   "connotation": "negative (implies neglect or lack of thoroughness)",
+   "register": "formal",
+   "grammar": "adjective",
+   "collocations": [
+    "cursory glance",
+    "cursory review",
+    "cursory inspection",
+    "cursory examination"
+   ],
+   "misconceptions": [
+    "confusing it with being aimless"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "intent_structure",
+   "description": "The presence of a structured, focused goal vs. erratic, aimless movement."
+  },
+  {
+   "id": "thoroughness_depth",
+   "description": "The level of attention given to details vs. hasty, superficial treatment."
+  }
+ ],
+ "edge": {
+  "a": "desultory",
+  "b": "cursory",
+  "boundary_rule": "Use desultory for erratic, aimless behavior; use cursory for hasty, superficial behavior.",
+  "clues_a": [
+   "jumping between topics",
+   "lacking a clear goal",
+   "random, disconnected efforts",
+   "half-hearted switching"
+  ],
+  "clues_b": [
+   "too fast to be thorough",
+   "scanned, not read",
+   "ignored fine details",
+   "brief, passing attention"
+  ],
+  "irrelevant_clues": [
+   "being bored (applies to both)",
+   "being unsuccessful (applies to both)",
+   "being slow (doesn't help distinguish)"
+  ],
+  "misconceptions": {
+   "M1": "Assuming any lack of success is desultory.",
+   "M2": "Assuming any quick look is desultory.",
+   "M3": "Assuming being aimless means being fast (confusing it with cursory)."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "desultory": [
+    "His desultory approach meant he never completed the task.",
+    "The committee had a desultory discussion, shifting from agenda to agenda without resolution.",
+    "She made desultory attempts to clean her room, starting with books then switching to clothes.",
+    "The team's desultory efforts left the project in chaos.",
+    "A desultory search for a partner left him lonely.",
+    "Their desultory play style failed to build momentum."
+   ],
+   "cursory": [
+    "A cursory review of the documents revealed several errors.",
+    "He gave the painting a cursory glance and walked away.",
+    "The doctor's cursory exam failed to find the underlying issue.",
+    "A cursory inspection of the vehicle showed no visible damage.",
+    "The manager did a cursory check of the inventory list.",
+    "She took a cursory look at the map before driving off."
+   ]
+  },
+  "counter": {
+   "desultory": [
+    "The review was too fast and missed errors.",
+    "He glanced at the paper and ignored the instructions.",
+    "She scanned the files to find the specific date.",
+    "The inspection was superficial and lacked depth.",
+    "He rushed through the contract without reading it.",
+    "The assessment was too hasty to be accurate."
+   ],
+   "cursory": [
+    "The group jumped from topic to topic without purpose.",
+    "His study habits are erratic and lack a clear plan.",
+    "The athlete's training was disjointed and lacked focus.",
+    "The artist's work feels scattered and lacks a unified vision.",
+    "She spends her time flitting from one project to another.",
+    "The presentation was poorly structured and wandered."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The student's check of the notes was so fast they missed the key facts.",
+    "best_word": "cursory",
+    "note": "Focus on the speed/lack of depth."
+   },
+   {
+    "text": "The student's note-taking shifted from topic to topic with no logical order.",
+    "best_word": "desultory",
+    "note": "Focus on the lack of structure/aimlessness."
+   },
+   {
+    "text": "The investigation was performed in a rush and lacked proper depth.",
+    "best_word": "cursory",
+    "note": "The speed is the key failure."
+   },
+   {
+    "text": "The research effort was inconsistent and erratic in its execution.",
+    "best_word": "desultory",
+    "note": "The erratic nature suggests no plan."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "desultory-cursory_001",
+   "domain": "Academic",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The student's research process was ___",
+   "beats": [
+    {
+     "text": "The student spent their time clicking on random links about the history of Rome without reading anything.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.2
+     },
+     "decisive_clue": "random links",
+     "reason": "The aimlessness is the main issue.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M3"
+     }
+    },
+    {
+     "text": "Even after two hours, the student had not taken a single note, continuing to hop between unrelated Wikipedia pages.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.95,
+      "cursory": 0.1
+     },
+     "decisive_clue": "hop between unrelated pages",
+     "reason": "The erratic behavior confirms the lack of purpose.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of a plan, making it desultory rather than just hasty.",
+   "feedback_deep": "The student's behavior is erratic and lacks a clear, focused goal, which defines 'desultory'. Cursory refers to being fast and superficial, which might be a symptom of being aimless, but the lack of structure is the primary characteristic here.",
+   "contrast_rule": "Aimless = desultory; Hasty = cursory.",
+   "hint": "Focus on the lack of a plan."
+  },
+  {
+   "id": "desultory-cursory_002",
+   "domain": "Business",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The manager's review of the project was ___",
+   "beats": [
+    {
+     "text": "The manager opened the project folder and skipped between files without checking any detail.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.8,
+      "cursory": 0.3
+     },
+     "decisive_clue": "skipped between files",
+     "reason": "The erratic switching suggests aimlessness.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "It was clear the manager was only concerned with finishing before their lunch break, ignoring everything of substance.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "concerned with finishing before lunch",
+     "reason": "The urgency/haste changes the focus from aimless to superficial.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the haste to finish, making it cursory.",
+   "feedback_deep": "Initially, the manager's action looked aimless, fitting 'desultory'. However, the new information shows they were actually rushing to finish, making the action superficial and 'cursory'.",
+   "contrast_rule": "Haste shifts focus from aimlessness to superficiality.",
+   "hint": "Why are they looking at the project?"
+  },
+  {
+   "id": "desultory-cursory_003",
+   "domain": "Journalism",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The journalist's research was ___",
+   "beats": [
+    {
+     "text": "The journalist skimmed the report in seconds, ignoring the appendices.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "skimmed in seconds",
+     "reason": "The speed shows a lack of depth.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M3"
+     }
+    },
+    {
+     "text": "Without checking the facts, they submitted the article for publication immediately.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.95
+     },
+     "decisive_clue": "submitted without checking facts",
+     "reason": "This reinforces the haste and lack of depth.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of thoroughness, meaning it was just a superficial scan.",
+   "feedback_deep": "The journalist is in a rush and fails to engage with the material properly. This superficial haste is the definition of 'cursory'.",
+   "contrast_rule": "Superficiality = cursory.",
+   "hint": "Check the thoroughness of the work."
+  },
+  {
+   "id": "desultory-cursory_004",
+   "domain": "Art",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The painter's work on the canvas was ___",
+   "beats": [
+    {
+     "text": "The painter moved between different corners of the canvas, applying paint here and there without finishing any section.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.8,
+      "cursory": 0.2
+     },
+     "decisive_clue": "moved between different corners",
+     "reason": "The lack of order suggests aimlessness.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M1"
+     }
+    },
+    {
+     "text": "This lack of a plan meant the composition lacked cohesion.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.1
+     },
+     "decisive_clue": "lack of a plan",
+     "reason": "This confirms the aimless nature.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of a clear plan, confirming the aimlessness.",
+   "feedback_deep": "The painter is jumping around without finishing, creating an aimless effect. 'Desultory' accurately captures this lack of purposeful direction and structure.",
+   "contrast_rule": "Cohesion requires a plan.",
+   "hint": "Is there a plan?"
+  },
+  {
+   "id": "desultory-cursory_005",
+   "domain": "Music",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The musician's practice was ___",
+   "beats": [
+    {
+     "text": "The musician played a few bars of a scale, then switched to a song, then back to the scale.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.8,
+      "cursory": 0.2
+     },
+     "decisive_clue": "switched from scale to song",
+     "reason": "The switching is erratic.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "They were not really focusing on any technique, just playing whatever came to mind.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.2
+     },
+     "decisive_clue": "whatever came to mind",
+     "reason": "The aimlessness is reaffirmed, not flipped.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the playing of whatever came to mind, maintaining aimlessness.",
+   "feedback_deep": "The musician is jumping between things without a plan. This is classic aimless behavior, which is 'desultory'. The new information supports this, making it a false shift (no change).",
+   "contrast_rule": "False shifts keep the same classification.",
+   "hint": "Did the goal change?"
+  },
+  {
+   "id": "desultory-cursory_006",
+   "domain": "Gardening",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "The gardener's planning was ___",
+   "beats": [
+    {
+     "text": "The gardener started digging a hole, then stopped to pull weeds, then left to get water without finishing anything.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.8,
+      "cursory": 0.2
+     },
+     "decisive_clue": "stopped and left without finishing",
+     "reason": "The erratic behavior suggests aimlessness.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "It became obvious this was because they had completely forgotten their initial plan for the day.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.95,
+      "cursory": 0.1
+     },
+     "decisive_clue": "forgotten their initial plan",
+     "reason": "The aimlessness is explained as a lack of plan.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of a plan, reframing the erratic behavior.",
+   "feedback_deep": "The gardener is acting without purpose because they forgot the plan. This lack of direction makes their actions aimless, which is the definition of 'desultory'.",
+   "contrast_rule": "No plan = desultory.",
+   "hint": "Why are they jumping from task to task?"
+  },
+  {
+   "id": "desultory-cursory_007",
+   "domain": "Law",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The lawyer's review of the case law was ___",
+   "beats": [
+    {
+     "text": "The lawyer looked at the precedents for only a few minutes before drawing conclusions.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.8
+     },
+     "decisive_clue": "only a few minutes",
+     "reason": "The speed suggests haste.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M2"
+     }
+    },
+    {
+     "text": "They failed to notice the crucial distinction in the Supreme Court ruling.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.95
+     },
+     "decisive_clue": "failed to notice crucial distinction",
+     "reason": "The lack of depth (missing crucial details) makes it cursory.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of depth (missing crucial details), making it cursory.",
+   "feedback_deep": "The lawyer is in a rush and fails to engage properly, leading to a superficial, 'cursory' review.",
+   "contrast_rule": "Superficiality = cursory.",
+   "hint": "Did they look closely?"
+  },
+  {
+   "id": "desultory-cursory_008",
+   "domain": "Medicine",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The doctor's exam was ___",
+   "beats": [
+    {
+     "text": "The doctor barely looked at the patient's records and then quickly left the room.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "barely looked",
+     "reason": "Lack of attention suggests superficiality.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M2"
+     }
+    },
+    {
+     "text": "The patient was frustrated because the doctor hadn't even checked their blood pressure.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.95
+     },
+     "decisive_clue": "hadn't even checked",
+     "reason": "This reinforces the lack of thoroughness.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of thoroughness, making it cursory.",
+   "feedback_deep": "The doctor is rushing and not being thorough, fitting 'cursory'.",
+   "contrast_rule": "Hastiness = cursory.",
+   "hint": "Check the thoroughness."
+  },
+  {
+   "id": "desultory-cursory_009",
+   "domain": "Construction",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The architect's design process was ___",
+   "beats": [
+    {
+     "text": "The architect was sketching things on various napkins, jumping from kitchen layouts to bedroom designs without focus.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.2
+     },
+     "decisive_clue": "jumping from layout to layout",
+     "reason": "The aimlessness is the key.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "They only spent five minutes on each sketch, so none of the designs actually met building codes.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "only spent five minutes",
+     "reason": "The haste and superficiality take over.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the haste (five minutes), making it cursory.",
+   "feedback_deep": "Initially, the architect's work was aimless ('desultory'), but the focus on the speed and lack of quality ('five minutes') reframes it as 'cursory'.",
+   "contrast_rule": "Haste reframes aimlessness.",
+   "hint": "Focus on the time spent."
+  },
+  {
+   "id": "desultory-cursory_010",
+   "domain": "Tech",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The developer's coding approach was ___",
+   "beats": [
+    {
+     "text": "The developer worked on the authentication module, then switched to the UI, then to the database without a plan.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.8,
+      "cursory": 0.2
+     },
+     "decisive_clue": "switched without a plan",
+     "reason": "The erratic nature suggests aimlessness.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "The project was behind schedule because nothing had been completed.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.1
+     },
+     "decisive_clue": "nothing completed",
+     "reason": "This confirms the erratic, aimless nature.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of a plan, making it desultory.",
+   "feedback_deep": "The developer is working in an aimless, erratic fashion, which is the definition of 'desultory'.",
+   "contrast_rule": "Lack of plan = desultory.",
+   "hint": "Look at the planning."
+  },
+  {
+   "id": "desultory-cursory_011",
+   "domain": "Archival",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The archivist's search was ___",
+   "beats": [
+    {
+     "text": "The archivist looked at the old files in a rush, just flipping through pages.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "in a rush",
+     "reason": "The speed is the key.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M3"
+     }
+    },
+    {
+     "text": "This quick scan was far too shallow to be effective for historical study.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.95
+     },
+     "decisive_clue": "quick scan",
+     "reason": "Confirms the superficiality.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the quick scan, making it cursory.",
+   "feedback_deep": "The archivist is rushing and being superficial, fitting 'cursory'.",
+   "contrast_rule": "Quick scan = cursory.",
+   "hint": "Check the speed."
+  },
+  {
+   "id": "desultory-cursory_012",
+   "domain": "Creative writing",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The author's writing style in the draft was ___",
+   "beats": [
+    {
+     "text": "The author would write a scene, then delete it, then write a poem, then go back to the scene.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.85,
+      "cursory": 0.1
+     },
+     "decisive_clue": "write, delete, switch",
+     "reason": "The aimless jumping is the key.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "Because they were only putting a few words down before moving on, the narrative was entirely lacking in depth.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.9
+     },
+     "decisive_clue": "putting a few words down",
+     "reason": "The superficial haste is now the dominant feature.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of depth caused by the rush, making it cursory.",
+   "feedback_deep": "The jumping was aimless ('desultory'), but the fact that they barely wrote anything ('few words') emphasizes the superficial, 'cursory' nature.",
+   "contrast_rule": "Haste reframes aimlessness.",
+   "hint": "Focus on the quality/depth."
+  },
+  {
+   "id": "desultory-cursory_013",
+   "domain": "Political science",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 4,
+   "frame": "The committee's review of the policy was ___",
+   "beats": [
+    {
+     "text": "The committee spent very little time on each clause, effectively ignoring the details.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "very little time",
+     "reason": "The haste is clear.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M2"
+     }
+    },
+    {
+     "text": "They actually had a deliberate, albeit fast, strategy to only target specific controversial sections.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.5
+     },
+     "decisive_clue": "deliberate strategy",
+     "reason": "This rehabilitates it from being merely 'hasty', though still quick (cursory is still better than desultory).",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the deliberate strategy, rehabilitating the perception of the review.",
+   "feedback_deep": "While it was quick ('cursory'), the strategy makes it more calculated than just a mindless, 'desultory' or purely 'hasty' action, yet 'cursory' remains the best fit for the speed and superficial focus.",
+   "contrast_rule": "Strategy can rehabilitate a cursory approach.",
+   "hint": "Was it truly aimless?"
+  },
+  {
+   "id": "desultory-cursory_014",
+   "domain": "Scientific experiment",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The scientist's observation of the results was ___",
+   "beats": [
+    {
+     "text": "The scientist glanced at the sensor readings once before turning their back.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.9
+     },
+     "decisive_clue": "glanced once",
+     "reason": "The speed and lack of engagement is clear.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M2"
+     }
+    },
+    {
+     "text": "They didn't record any of the data, as if the whole experiment was a waste of time.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.95
+     },
+     "decisive_clue": "didn't record data",
+     "reason": "Reinforces the superficial, hasty nature (not aiming to do a good job).",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of engagement and speed, maintaining the cursory description.",
+   "feedback_deep": "The scientist is rushing and not doing the work ('cursory'). The new info confirms the superficiality, but does not shift the word choice.",
+   "contrast_rule": "Speed and superficiality define cursory.",
+   "hint": "Is the work thorough?"
+  },
+  {
+   "id": "desultory-cursory_015",
+   "domain": "Philosophy",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The philosopher's study of the text was ___",
+   "beats": [
+    {
+     "text": "The philosopher read the introduction, then skipped to the conclusion, then back to the middle without reading the rest.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.8,
+      "cursory": 0.2
+     },
+     "decisive_clue": "skipped around without reading rest",
+     "reason": "The erratic jumping is aimless.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "Their final essay showed no deep understanding, as they hadn't followed any logical line of thought.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.1
+     },
+     "decisive_clue": "no logical line of thought",
+     "reason": "Confirms the aimlessness.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of logical thought, confirming aimlessness (desultory).",
+   "feedback_deep": "The philosopher is behaving without purpose, jumping around erratically, which fits 'desultory'.",
+   "contrast_rule": "Aimless = desultory.",
+   "hint": "Is it logical?"
+  },
+  {
+   "id": "desultory-cursory_016",
+   "domain": "Financial analysis",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The analyst's examination of the data was ___",
+   "beats": [
+    {
+     "text": "The analyst was looking at stock trends, then commodities, then crypto, with no clear objective.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.1
+     },
+     "decisive_clue": "no clear objective",
+     "reason": "The aimlessness is the issue.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "Because they were only spending seconds on each chart, they failed to identify the market crash indicator.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "spending seconds",
+     "reason": "Haste is the primary cause of the failure.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the haste, making it cursory.",
+   "feedback_deep": "The initial behavior looked aimless ('desultory'), but the focus on speed ('spending seconds') makes 'cursory' the best description of their superficial work.",
+   "contrast_rule": "Haste reframes aimlessness.",
+   "hint": "Focus on the time."
+  },
+  {
+   "id": "desultory-cursory_017",
+   "domain": "Sport",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The coach's interaction with the players during training was ___",
+   "beats": [
+    {
+     "text": "The coach walked from the defenders to the midfielders, then over to the goalkeeper, stopping to say one or two meaningless words to each.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.8,
+      "cursory": 0.2
+     },
+     "decisive_clue": "meaningless words to each",
+     "reason": "The aimlessness of the interactions is the main point.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "The coach just seemed to be killing time until the session ended.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.1
+     },
+     "decisive_clue": "killing time",
+     "reason": "The lack of purpose is reconfirmed.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of purpose (killing time), making it desultory.",
+   "feedback_deep": "The coach is acting in an aimless, unstructured way. This lack of direction fits 'desultory'.",
+   "contrast_rule": "No purpose = desultory.",
+   "hint": "Does the coach have a plan?"
+  },
+  {
+   "id": "desultory-cursory_018",
+   "domain": "Travel",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The tourist's map-reading was ___",
+   "beats": [
+    {
+     "text": "The tourist glanced at the map for a second and then put it away without actually checking the route.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "glanced for a second",
+     "reason": "Haste is the key.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M2"
+     }
+    },
+    {
+     "text": "Because of this quick look, they ended up walking in the completely wrong direction.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.95
+     },
+     "decisive_clue": "quick look",
+     "reason": "Reinforces superficiality.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the quick look, making it cursory.",
+   "feedback_deep": "The tourist is rushing and superficial ('cursory'), causing them to fail to understand the route.",
+   "contrast_rule": "Superficiality = cursory.",
+   "hint": "Check the thoroughness."
+  },
+  {
+   "id": "desultory-cursory_019",
+   "domain": "Household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The father's check of the sink leak was ___",
+   "beats": [
+    {
+     "text": "The father just looked at the pipe for a split second and said it seemed fine.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.2,
+      "cursory": 0.9
+     },
+     "decisive_clue": "looked for split second",
+     "reason": "Haste is obvious.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M3"
+     }
+    },
+    {
+     "text": "He ignored the obvious damp spot on the floor, failing to investigate the source of the problem.",
+     "best_word": "cursory",
+     "fit": {
+      "desultory": 0.1,
+      "cursory": 0.95
+     },
+     "decisive_clue": "failed to investigate",
+     "reason": "Confirms the superficiality.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "desultory": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of thoroughness (ignoring the spot), making it cursory.",
+   "feedback_deep": "The father is rushing and not being thorough, fitting 'cursory'.",
+   "contrast_rule": "Speed = cursory.",
+   "hint": "Was it thorough?"
+  },
+  {
+   "id": "desultory-cursory_020",
+   "domain": "Public",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The speaker's argument at the town hall was ___",
+   "beats": [
+    {
+     "text": "The speaker jumped from talking about traffic to schools to park maintenance without finishing any point.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.9,
+      "cursory": 0.1
+     },
+     "decisive_clue": "jumped without finishing",
+     "reason": "Aimlessness is key.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M2"
+     }
+    },
+    {
+     "text": "The audience was confused because there was no connecting thread to their speech.",
+     "best_word": "desultory",
+     "fit": {
+      "desultory": 0.95,
+      "cursory": 0.1
+     },
+     "decisive_clue": "no connecting thread",
+     "reason": "Reinforces aimlessness.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "cursory": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The decisive clue is the lack of connecting thread, making it desultory.",
+   "feedback_deep": "The speaker is jumping around without any plan or structure, which is 'desultory'.",
+   "contrast_rule": "Erratic = desultory.",
+   "hint": "Check the structure."
+  }
+ ],
+ "drafted_by": "hermes"
+}

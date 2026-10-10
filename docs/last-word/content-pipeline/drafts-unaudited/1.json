@@ -1,0 +1,1808 @@
+{
+  "set_id": "autocratic-authoritarian",
+  "source_pair_id": 1,
+  "words": [
+    {
+      "word": "autocratic",
+      "sense": "exercising absolute, solitary control and making decisions without consulting others or tolerating input",
+      "concise_meaning": "ruling or managing by personal fiat, with complete concentration of power in one person and zero consultation",
+      "connotation": "negative; evokes arrogance, imperiousness, dismissal of colleagues, and refusal to share executive power",
+      "register": "formal, political, managerial, journalistic",
+      "grammar": "adjective; commonly modifies nouns like 'rule', 'leader', 'management style', 'regime', 'manner', or used in predicate position ('was autocratic in her decisions')",
+      "collocations": [
+        "autocratic rule",
+        "autocratic leadership",
+        "autocratic management style",
+        "autocratic regime",
+        "autocratic manner"
+      ],
+      "misconceptions": [
+        "Assuming autocratic means merely harsh or disciplinary toward subordinates, missing that its defining feature is the concentration of unshared decision-making in a solitary individual who refuses consultation."
+      ]
+    },
+    {
+      "word": "authoritarian",
+      "sense": "demanding strict obedience to power and rules while severely limiting personal freedom and suppressing dissent",
+      "concise_meaning": "enforcing rigid compliance, subordination, and conformity while restricting individual liberties and penalizing dissent",
+      "connotation": "strongly negative; evokes oppressive social control, state coercion, regimentation, and extinction of civil liberties",
+      "register": "formal, political, sociological, journalistic",
+      "grammar": "adjective; frequently modifies nouns like 'regime', 'measures', 'government', 'tendencies', 'system', 'parenting', or used predicatively ('became increasingly authoritarian')",
+      "collocations": [
+        "authoritarian regime",
+        "authoritarian measures",
+        "authoritarian government",
+        "authoritarian tendencies",
+        "authoritarian control"
+      ],
+      "misconceptions": [
+        "Assuming that any leader who decides things alone without a vote is authoritarian, overlooking that authoritarianism specifically requires demanding strict obedience and actively suppressing personal freedom and dissent."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "decision_concentration_vs_enforcement_scope",
+      "description": "Solitary concentration of decision-making in a single person who refuses consultation (autocratic) vs. widespread enforcement of strict obedience, conformity, and behavioral submission across a group or society (authoritarian)."
+    },
+    {
+      "id": "input_rejection_vs_liberty_curtailment",
+      "description": "Rejection of advice, deliberation, debate, and shared governance at the top (autocratic) vs. active suppression of personal freedoms, independent choices, speech, and dissent among subjects or subordinates (authoritarian)."
+    },
+    {
+      "id": "governance_structure",
+      "description": "Inherent to an individual who monopolizes the wheel of command alone (autocratic) vs. applicable to collective bodies, collegiate committees, military juntas, or systemic bureaucracies that enforce rigid obedience (authoritarian)."
+    }
+  ],
+  "edge": {
+    "a": "autocratic",
+    "b": "authoritarian",
+    "boundary_rule": "Autocratic describes a solitary leader monopolizing decision-making without consultation; authoritarian describes an order or ruler demanding strict obedience and suppressing personal freedom.",
+    "clues_a": [
+      "unilateral decision-making by a single person without consulting colleagues, boards, or committees",
+      "dismissing advisors and rejecting all outside input or debate",
+      "monopolizing executive choices and refusing to share organizational power",
+      "overruling established consensus by personal decree",
+      "acting as the sole source of direction while ignoring institutional processes"
+    ],
+    "clues_b": [
+      "demanding unquestioning obedience and total compliance from subordinates or citizens",
+      "severely curtailing personal freedoms, private choices, or independent expression",
+      "imposing strict behavioral regimentation and punitive sanctions for nonconformity",
+      "suppressing dissent, protest, or any voiced disagreement with the established order",
+      "collegiate or institutional enforcement of rigid control over daily conduct"
+    ],
+    "irrelevant_clues": [
+      "whether the leader is polite or rude in personal demeanor",
+      "whether the organization is private, public, commercial, or non-profit",
+      "how quickly decisions are implemented or announced",
+      "whether the outcome of the policy turns out to be financially profitable or harmful"
+    ],
+    "misconceptions": {
+      "M1": "Confusing autocratic (monopolizing decision-making alone without consultation) with authoritarian (enforcing strict obedience and suppressing personal freedoms), treating them as interchangeable synonyms.",
+      "M2": "Assuming any harsh enforcement of rules or suppression of dissent must be autocratic, overlooking that authoritarian control can be exercised by committees, boards, or institutional systems rather than a single person.",
+      "M3": "Assuming that a leader who makes unilateral choices without consulting staff is authoritarian, even when they do not restrict subordinates' personal freedoms or demand submissive obedience."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "autocratic": [
+        "The founding partner dismissed the advisory council and unilaterally restructured the company's entire investment portfolio without consulting a single colleague.",
+        "Ignoring the unanimous vote of the faculty committee, the university provost issued a personal decree that changed the department curriculum overnight.",
+        "The tech executive refused to share executive choices with the board of directors, deciding company acquisitions entirely on his own personal impulse.",
+        "Operating without a cabinet or legislative review, the solitary monarch governed entirely through private decrees that no advisor was permitted to question.",
+        "The hospital director unilaterally canceled the expansion plan without calling a meeting or reviewing the financial assessments prepared by her medical staff.",
+        "Believing that consensus weakened momentum, the project manager made every design choice in isolation and refused to take feedback from his engineering team."
+      ],
+      "authoritarian": [
+        "The governing council banned all public gatherings, placed city neighborhoods under mandatory curfews, and jailed citizens who voiced opposition to state policy.",
+        "Under the new factory regime, supervisors installed biometric tracking in restrooms, prohibited private conversations during shifts, and penalized any minor deviation from the dress code.",
+        "The ruling junta dissolved independent trade unions, enforced strict media censorship, and required all citizens to register their travel outside home districts.",
+        "The boarding academy mandated that pupils surrender their personal phones, march in silence between classes, and face expulsion for questioning school regulations.",
+        "The military command committee outlawed protest assemblies, censored student publications, and required complete, unquestioning compliance with all wartime edicts.",
+        "The residential compound administration dictated strict limits on visitors, inspected residents' personal mail, and levied heavy fines for expressing dissent at communal meetings."
+      ]
+    },
+    "counter": {
+      "autocratic": [
+        "The three-member governing board voted collectively to impose mandatory curfews and fine residents who spoke against town rules.",
+        "The departmental committee gathered feedback from every junior lecturer before drafting the new syllabus through a shared consensus vote.",
+        "A five-officer tribunal collectively enforced rigid uniform requirements and disciplined workers for showing independent initiative.",
+        "The cooperative bakery made operational choices only after every employee reviewed the financial ledgers and cast an equal ballot.",
+        "The municipal administration deployed ward committees to monitor public speech and ensure total citizen compliance with civic directives.",
+        "The research council distributed executive duties evenly among six senior fellows, requiring a majority vote for all major grants."
+      ],
+      "authoritarian": [
+        "The studio head decided the movie's ending entirely by himself without consulting the screenwriters, but let the cast and crew set their own schedules and speak freely.",
+        "The startup founder picked the company name and logo without taking any input from her partners, yet she gave all engineers complete flexibility in their working hours and personal methods.",
+        "The laboratory director chose which grant to submit without speaking to his co-investigators, though he allowed them total intellectual freedom to pursue their own side experiments.",
+        "The department head privately redrafted the semester budget without asking his colleagues, while encouraging faculty to openly critique his economic forecasts.",
+        "The creative lead selected the album cover artwork in private without asking the musicians, but imposed zero restrictions on how they composed or performed their songs.",
+        "The boutique owner picked all seasonal inventory on personal whim without surveying her staff, while granting sales clerks full autonomy to arrange store displays as they saw fit."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "The university dean unilaterally dismissed the elected faculty senate, declaring that she alone would set academic standards and manage the college budget.",
+        "best_word": "autocratic",
+        "note": "The decisive factor is the dean's solitary concentration of decision-making and total elimination of consultative governance, rather than an attempt to police faculty private lives or demand ideological obedience."
+      },
+      {
+        "text": "The city council required every business employee to submit weekly personal movement logs and prohibited public criticism of municipal ordinances under threat of arrest.",
+        "best_word": "authoritarian",
+        "note": "The policy is enacted by a multi-member council rather than a solitary ruler, and its defining mechanism is the suppression of personal freedom and enforcement of strict civic obedience."
+      },
+      {
+        "text": "The managing partner selected all incoming clients in secret without holding partnership votes, though he placed no restrictions on how attorneys structured their work hours.",
+        "best_word": "autocratic",
+        "note": "The partner monopolizes executive choices without consultation while leaving personal autonomy untouched, making the behavior autocratic rather than authoritarian."
+      },
+      {
+        "text": "The school board instituted mandatory uniform inspections at the entrance, silenced student debates on administrative policies, and expelled any pupil who distributed unapproved flyers.",
+        "best_word": "authoritarian",
+        "note": "The action is collegiate and focuses specifically on enforcing absolute conformity, squashing dissent, and restricting personal expression across the student body."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "autocratic-authoritarian_001",
+      "domain": "corporate_governance",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The executive director's governance of the corporation was ___.",
+      "beats": [
+        {
+          "text": "Elena single-handedly dissolves the five-person executive advisory panel, stating that she will determine all commercial investments without scheduling meetings or seeking staff input.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.93,
+            "authoritarian": 0.07
+          },
+          "decisive_clue": "single-handedly dissolving the panel and determining investments without seeking staff input",
+          "reason": "Monopolizing corporate decisions and refusing consultation or shared power exemplifies autocratic leadership.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "When the chief financial officer presents a risk report questioning the expansion, Elena files it unread and declares that her personal strategic vision will guide the company alone.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.95,
+            "authoritarian": 0.05
+          },
+          "decisive_clue": "filing the financial risk report unread and relying solely on her personal strategic vision",
+          "reason": "Rejecting colleague counsel and relying exclusively on solitary personal decree confirms an autocratic approach.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "Elena does not regulate employees' personal lifestyles or require ideological pledges, but she adamantly bars any manager from participating in high-level company decisions.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.96,
+            "authoritarian": 0.04
+          },
+          "decisive_clue": "barring managers from participating in decisions while placing no restrictions on personal lifestyles",
+          "reason": "The defining factor is absolute concentration of decision-making power in one person, not suppression of personal freedoms.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Elena's refusal to consult colleagues and total monopoly on decision-making makes her governance autocratic.",
+      "feedback_deep": "Autocratic describes a leader who concentrates all decision-making in themselves and rejects input, counsel, or shared control. Elena does not restrict employees' personal liberties or demand submissive obedience in their private conduct, which would be authoritarian; she simply runs the firm alone by personal decree.",
+      "contrast_rule": "Autocratic means deciding alone without consultation; authoritarian means enforcing obedience and restricting personal liberty.",
+      "hint": "Consider whether Elena is monopolizing high-level decisions or policing personal employee freedoms."
+    },
+    {
+      "id": "autocratic-authoritarian_002",
+      "domain": "municipal_administration",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The city council's enforcement of public order was ___.",
+      "beats": [
+        {
+          "text": "The seven-member municipal council decrees an eight o'clock evening curfew, mandating that all residents remain indoors and threatening jail time for anyone walking city streets.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.06,
+            "authoritarian": 0.94
+          },
+          "decisive_clue": "seven-member council decreeing a mandatory curfew and threatening jail time for walking streets",
+          "reason": "A collective council severely restricting personal freedom and demanding strict civic obedience is authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "The council establishes inspection checkpoints across public squares and bans unsanctioned public gatherings of more than three persons to prevent public debate.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.05,
+            "authoritarian": 0.95
+          },
+          "decisive_clue": "inspection checkpoints and banning public gatherings to prevent debate",
+          "reason": "Curtailing freedom of assembly and imposing strict behavioral surveillance reinforces authoritarian governance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "Municipal officers arrest local bloggers who critique the new bylaws, citing a zero-tolerance policy against questioning civic regulations.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.04,
+            "authoritarian": 0.96
+          },
+          "decisive_clue": "arresting bloggers for questioning regulations under a zero-tolerance policy",
+          "reason": "Punishing dissent and demanding absolute obedience to official rules represents textbook authoritarian control.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A collective council enforcing strict curfews, suppressing public gatherings, and punishing dissent is authoritarian.",
+      "feedback_deep": "Authoritarian rule relies on demanding rigid obedience and curtailing individual freedoms and dissent. Because this policy is drafted and executed by an elected municipal body rather than a solitary ruler, it cannot be autocratic, which specifically denotes solitary, unshared rule.",
+      "contrast_rule": "Authoritarian systems enforce rigid obedience across society; autocratic systems concentrate all command in a single person.",
+      "hint": "Notice that power is held by a multi-member council that suppresses public freedoms."
+    },
+    {
+      "id": "autocratic-authoritarian_003",
+      "domain": "university_faculty",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "Professor Thorne's direction of the academic department was ___.",
+      "beats": [
+        {
+          "text": "Professor Thorne discards the curriculum draft prepared by the faculty committee, announcing that he will personally assign every course reading without a departmental vote.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.92,
+            "authoritarian": 0.08
+          },
+          "decisive_clue": "discarding the faculty committee draft to assign readings without a departmental vote",
+          "reason": "Discarding committee work to decide academic policy alone without consultation is autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "During the monthly meeting, he cuts off senior colleagues mid-sentence whenever they propose alternatives, declaring that departmental strategy is not open for discussion.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.94,
+            "authoritarian": 0.06
+          },
+          "decisive_clue": "cutting off colleagues mid-sentence and declaring strategy is not open for discussion",
+          "reason": "Refusing to hear peer input and monopolizing departmental direction illustrates autocratic behavior.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "He gives lecturers total freedom in their personal research and grading philosophies, insisting only that all administrative choices remain exclusively his own.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.97,
+            "authoritarian": 0.03
+          },
+          "decisive_clue": "giving lecturers total grading freedom while insisting administrative choices remain exclusively his own",
+          "reason": "Preserving staff intellectual freedom while reserving all administrative decisions for himself confirms he is autocratic, not authoritarian.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Thorne's refusal to consult colleagues while leaving their academic freedom intact makes his direction autocratic.",
+      "feedback_deep": "Autocratic leaders insist on holding the steering wheel alone, rejecting counsel and shared governance. Thorne monopolizes administrative choices without seeking to control the personal opinions, grading habits, or intellectual freedom of his lecturers, which means the term authoritarian does not apply.",
+      "contrast_rule": "Autocratic leaders hoard decision-making alone; authoritarian leaders demand total behavioral submission.",
+      "hint": "Look at whether Thorne controls administrative decisions alone or restricts lecturers' personal freedoms."
+    },
+    {
+      "id": "autocratic-authoritarian_004",
+      "domain": "hospital_management",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "The hospital oversight board's regulation of nursing staff was ___.",
+      "beats": [
+        {
+          "text": "The seven-member hospital board installs surveillance cameras in employee break rooms, requiring nurses to log every minute of non-clinical time under penalty of wage deduction.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.06,
+            "authoritarian": 0.94
+          },
+          "decisive_clue": "board installing break room cameras and logging non-clinical time under penalty of wage deduction",
+          "reason": "A governing board enforcing intense surveillance and penalizing personal time demonstrates authoritarian control.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "The board issues a formal directive banning nurses from discussing work conditions online and orders immediate disciplinary suspension for any worker who signs a protest petition.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.05,
+            "authoritarian": 0.95
+          },
+          "decisive_clue": "banning discussion of work conditions and suspending workers who sign protest petitions",
+          "reason": "Silencing speech and punishing collective grievance suppression is typical of authoritarian governance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "Ward managers are instructed to conduct random locker searches and ensure strict compliance with a revised speech code that prohibits questioning hospital protocols.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.04,
+            "authoritarian": 0.96
+          },
+          "decisive_clue": "random locker searches and prohibiting questioning of hospital protocols",
+          "reason": "Invasive personal inspections and mandatory compliance with speech restrictions solidify an authoritarian regime.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A collective hospital board imposing invasive surveillance, speech bans, and mandatory compliance is authoritarian.",
+      "feedback_deep": "Authoritarian oversight is marked by strict behavioral discipline, invasive supervision, and the crushing of personal freedom and dissent. Because this regime is established by a multi-member governing board rather than an individual ruler, it is clearly authoritarian rather than autocratic.",
+      "contrast_rule": "Authoritarian policies enforce total behavioral compliance; autocratic policies center on solitary rule.",
+      "hint": "Focus on the collegiate board enforcing rigid obedience and silencing personal speech."
+    },
+    {
+      "id": "autocratic-authoritarian_005",
+      "domain": "tech_venture",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "Kiran's management of the software startup was ___.",
+      "beats": [
+        {
+          "text": "Kiran rewrites the company product roadmap overnight without consulting his co-founder or notifying the engineering leads.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.93,
+            "authoritarian": 0.07
+          },
+          "decisive_clue": "rewriting the product roadmap overnight without consulting co-founder or engineering leads",
+          "reason": "Unilateral restructuring of product goals without consulting partners or team leads is autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "When senior programmers request a sprint planning session to discuss technical feasibility, Kiran denies the meeting and insists that his schedule is non-negotiable.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.94,
+            "authoritarian": 0.06
+          },
+          "decisive_clue": "denying sprint planning sessions and declaring his schedule non-negotiable",
+          "reason": "Refusing peer consultation and imposing solitary timelines exemplifies autocratic management.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "Kiran never monitors employees' work hours, allows unlimited remote days, and encourages casual banter, yet he rejects every technical recommendation that does not originate from himself.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.96,
+            "authoritarian": 0.04
+          },
+          "decisive_clue": "allowing unlimited remote days while rejecting any technical suggestion not originating from himself",
+          "reason": "He grants broad personal flexibility while fiercely guarding his monopoly on executive decisions, which is autocratic.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Kiran's solitary decision-making paired with complete workplace flexibility makes his management style autocratic.",
+      "feedback_deep": "Autocratic management centers on holding a personal monopoly over strategic choices and refusing to deliberate with peers. Because Kiran allows generous personal freedom regarding work hours and location, his style lacks the oppressive behavioral control that defines authoritarianism.",
+      "contrast_rule": "Autocratic leaders hoard decision power alone; authoritarian leaders police personal conduct and enforce obedience.",
+      "hint": "Look at whether Kiran is dictating corporate direction alone or policing personal employee freedoms."
+    },
+    {
+      "id": "autocratic-authoritarian_006",
+      "domain": "travel",
+      "transfer": true,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "The expedition leader's oversight of the hiking party was ___.",
+      "beats": [
+        {
+          "text": "Tariq confiscates all personal smartphones at base camp, enforcing mandatory five-minute bathroom intervals and silence inside sleeping tents after dusk.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.15,
+            "authoritarian": 0.85
+          },
+          "decisive_clue": "confiscating smartphones, enforcing bathroom intervals, and mandating tent silence",
+          "reason": "Strictly policing personal conduct, personal devices, and enforcing regimented obedience is authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "When two experienced hikers quietly suggest taking an alternate scenic pass, Tariq issues them written reprimands and threatens to abandon them if they question his schedule.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.12,
+            "authoritarian": 0.88
+          },
+          "decisive_clue": "reprimanding hikers and threatening abandonment for questioning his schedule",
+          "reason": "Penalizing mild dissent and demanding unconditional submission to expedition rules is authoritarian.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        },
+        {
+          "text": "Tariq requires each trekker to recite the daily route rules aloud each morning, expelling a hiker from the communal mess tent for wearing an unapproved jacket.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.08,
+            "authoritarian": 0.92
+          },
+          "decisive_clue": "requiring verbal recitation of rules and expelling a trekker for unapproved clothing",
+          "reason": "Enforcing ritualized obedience and rigid dress codes over private choices defines authoritarian control.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Tariq's invasive regulation of private conduct, speech, and clothing makes his expedition oversight authoritarian.",
+      "feedback_deep": "Authoritarian oversight focuses on demanding absolute obedience, suppressing individual dissent, and policing personal habits like clothing, phone usage, and quiet hours. Tariq does not merely make solitary trekking choices; he enforces an oppressive regime of personal compliance.",
+      "contrast_rule": "Authoritarian leaders demand total obedience and regulate personal conduct; autocratic leaders simply rule alone.",
+      "hint": "Notice Tariq's severe restriction of hikers' personal habits and punishment of any dissent."
+    },
+    {
+      "id": "autocratic-authoritarian_007",
+      "domain": "publishing_house",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The chief editor's control over the publishing staff was ___.",
+      "beats": [
+        {
+          "text": "David cancels the autumn fiction list on a personal whim, rejecting the acquisitions board's unanimous proposal without offering an explanation.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.92,
+            "authoritarian": 0.08
+          },
+          "decisive_clue": "canceling the book list on personal whim and rejecting the acquisitions board proposal",
+          "reason": "A solitary leader overriding established committee processes by personal fiat is autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "He then installs keystroke monitors on all staff computers, requiring editors to log bathroom breaks and docking pay for unsanctioned conversations.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.22,
+            "authoritarian": 0.78
+          },
+          "decisive_clue": "installing keystroke monitors, logging bathroom breaks, and docking pay for unsanctioned talk",
+          "reason": "The shift from solitary executive decision-making to intrusive personal surveillance and rigid obedience flips the description to authoritarian.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "He issues a blanket prohibition against employees expressing personal opinions regarding company literature on social media, threatening instant dismissal for noncompliance.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.08,
+            "authoritarian": 0.92
+          },
+          "decisive_clue": "prohibiting personal opinions on social media and threatening instant dismissal for noncompliance",
+          "reason": "Extinguishing personal freedom of expression and demanding strict submission solidifies the authoritarian nature of his control.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "David's shift from solitary decision-making to intrusive surveillance and speech bans made his control authoritarian.",
+      "feedback_deep": "While David began by acting autocratically—making publishing decisions alone without consulting the board—his subsequent imposition of keystroke tracking, bathroom monitoring, and speech prohibitions shifted his behavior into authoritarianism, which is defined by restricting personal liberty and enforcing strict obedience.",
+      "contrast_rule": "Autocratic describes monopolizing decisions; authoritarian describes suppressing personal liberty and demanding obedience.",
+      "hint": "Watch how David moves from ignoring board input to policing staff personal habits and speech."
+    },
+    {
+      "id": "autocratic-authoritarian_008",
+      "domain": "scientific_institute",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Dr. Aris's supervision of the research laboratory was ___.",
+      "beats": [
+        {
+          "text": "Dr. Aris issues a strict code of conduct demanding total obedience to laboratory directives, penalizing researchers who deviate from standardized bench protocols.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.18,
+            "authoritarian": 0.82
+          },
+          "decisive_clue": "demanding total obedience to directives and penalizing deviation from standardized protocols",
+          "reason": "Demanding strict obedience and penalizing deviations from rigid rules is authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "However, investigators find that the protocols do not police personal conduct or speech, but merely reflect his unilateral decision to abolish the lab's peer steering committee so he alone can select all research projects.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.86,
+            "authoritarian": 0.14
+          },
+          "decisive_clue": "abolishing the peer committee so he alone can select all research projects without policing personal conduct",
+          "reason": "The core reality is the solitary seizure of decision-making power and rejection of shared governance, flipping the assessment to autocratic.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        },
+        {
+          "text": "Dr. Aris leaves scientists completely free to manage their schedules, express opinions, and work remotely, while reiterating that no colleague will ever share executive power or vote on grant submissions.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.95,
+            "authoritarian": 0.05
+          },
+          "decisive_clue": "granting schedule and speech freedom while reiterating no colleague will ever share executive power",
+          "reason": "Preserving personal liberties while fiercely monopolizing strategic choices confirms his supervision is autocratic.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Abolishing shared committees to monopolize project selection alone while preserving staff freedoms reveals Aris is autocratic.",
+      "feedback_deep": "Although Aris initially appeared authoritarian due to strict lab rules, the true issue was his refusal to share institutional governance. Because he grants researchers freedom of expression and schedule flexibility while denying them any consultative role in executive choices, his leadership is autocratic.",
+      "contrast_rule": "Autocratic leaders hoard executive power alone; authoritarian leaders suppress personal freedoms and demand obedience.",
+      "hint": "Look at whether Aris wants to suppress personal liberties or simply refuse shared governance."
+    },
+    {
+      "id": "autocratic-authoritarian_009",
+      "domain": "museum_curation",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Director Zhao's administration of the gallery staff was ___.",
+      "beats": [
+        {
+          "text": "Director Zhao replaces the gallery's planned retrospective with his own preferred artist without notifying the curatorial team or reviewing their budget.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.92,
+            "authoritarian": 0.08
+          },
+          "decisive_clue": "replacing the exhibition with his preferred artist without notifying the curatorial team",
+          "reason": "Making solitary curatorial decisions without consulting colleagues or reviewing team budgets is autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "He subsequently orders security guards to monitor curators' workstations, forbidding employees from speaking to visitors without reading approved administrative scripts.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.2,
+            "authoritarian": 0.8
+          },
+          "decisive_clue": "forbidding staff from speaking to visitors without reading approved administrative scripts",
+          "reason": "Enforcing surveillance and mandating scripted speech suppresses personal freedom, flipping the situation to authoritarian.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "When an assistant curator questions the scripted dialogue rule in a private memo, Zhao suspends her without pay and orders a mandatory loyalty pledge from all remaining staff.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.07,
+            "authoritarian": 0.93
+          },
+          "decisive_clue": "suspending a curator for questioning rules and mandating loyalty pledges",
+          "reason": "Punishing internal dissent and demanding forced pledges of obedience confirms authoritarian governance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Zhao's shift to speech control, workstation surveillance, and mandatory loyalty pledges made his administration authoritarian.",
+      "feedback_deep": "Zhao initially exhibited autocratic tendencies by changing the exhibition lineup alone without consulting colleagues. However, when he introduced constant surveillance, restricted staff speech to approved scripts, and penalized dissent, the administration became distinctly authoritarian.",
+      "contrast_rule": "Autocratic leaders decide alone; authoritarian leaders suppress speech and force compliance.",
+      "hint": "Notice how the focus moves from unshared exhibition choices to speech restrictions and surveillance."
+    },
+    {
+      "id": "autocratic-authoritarian_010",
+      "domain": "architectural_studio",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Soraya's leadership of the design studio was ___.",
+      "beats": [
+        {
+          "text": "Soraya mandates that all architects adhere to rigid drawing protocols, threatening termination for anyone who strays from the office manual.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.16,
+            "authoritarian": 0.84
+          },
+          "decisive_clue": "mandating adherence to rigid drawing protocols and threatening termination for noncompliance",
+          "reason": "Imposing strict obedience and threatening termination for procedural noncompliance is authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "Closer inspection shows the studio manual does not regulate staff conduct or working hours, but was created solely because Soraya refuses to let partners vote on structural blueprints.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.87,
+            "authoritarian": 0.13
+          },
+          "decisive_clue": "manual does not regulate staff conduct but exists because she refuses to let partners vote on blueprints",
+          "reason": "The root motive is solitary monopolization of design decisions rather than behavioral suppression, flipping it to autocratic.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        },
+        {
+          "text": "Soraya welcomes vibrant debates about urban culture and permits flexible working arrangements, yet she signs off on multi-million dollar contracts entirely by herself.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.95,
+            "authoritarian": 0.05
+          },
+          "decisive_clue": "welcoming open debate and flexible hours while signing multi-million contracts entirely alone",
+          "reason": "She encourages free expression and autonomy while hoarding final executive power, making her leadership autocratic.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Soraya's openness to debate coupled with her unshared control over final contracts reveals an autocratic leadership.",
+      "feedback_deep": "An authoritarian leader suppresses personal freedoms and demands rigid conformity. Soraya does neither; she encourages lively discussion and offers flexible schedules, but hoards executive power and blueprint approval entirely in her own hands, which defines autocratic leadership.",
+      "contrast_rule": "Autocratic leaders hoard ultimate decision power; authoritarian leaders suppress independent thought and behavior.",
+      "hint": "Look at whether Soraya suppresses debate or simply signs contracts without consulting partners."
+    },
+    {
+      "id": "autocratic-authoritarian_011",
+      "domain": "theater_company",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The artistic director's management of the acting troupe was ___.",
+      "beats": [
+        {
+          "text": "Marcus casts the entire theatrical season on his own, declining to consult the dramaturge or convene the selection committee.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.91,
+            "authoritarian": 0.09
+          },
+          "decisive_clue": "casting the entire season on his own and declining to consult the dramaturge or committee",
+          "reason": "Making solitary artistic and administrative selections without consulting colleagues is autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "He then requires actors to submit their personal evening schedules for review, barring them from taking outside auditions or socializing with rival companies.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.21,
+            "authoritarian": 0.79
+          },
+          "decisive_clue": "reviewing personal evening schedules and barring outside auditions or socialization",
+          "reason": "Regulating private time, outside associations, and personal movement flips the condition to authoritarian.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "Marcus hires backstage informants to report any whispered criticisms of his rehearsals, fining performers who fail to applaud his opening remarks.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.06,
+            "authoritarian": 0.94
+          },
+          "decisive_clue": "hiring informants to catch criticisms and fining performers who fail to applaud",
+          "reason": "Mandatory displays of deference and surveillance to squash dissent are hallmarks of authoritarian control.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Marcus's monitoring of personal social lives, hiring informants, and penalizing dissent turned his management authoritarian.",
+      "feedback_deep": "Marcus began with autocratic casting choices by ignoring his committee. However, when he began policing private schedules, restricting associations, planting informants, and mandating applause, his control crossed directly into authoritarianism.",
+      "contrast_rule": "Autocratic leaders make decisions alone; authoritarian leaders police private conduct and demand obedience.",
+      "hint": "Observe the shift from solitary play selection to intrusive surveillance of actors' private lives."
+    },
+    {
+      "id": "autocratic-authoritarian_012",
+      "domain": "logistics_network",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Nasser's operation of the regional warehouse was ___.",
+      "beats": [
+        {
+          "text": "Nasser enforces a strict policy requiring total obedience to operational quotas, warning dispatchers that noncompliance will lead to immediate reassignment.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.17,
+            "authoritarian": 0.83
+          },
+          "decisive_clue": "requiring total obedience to quotas and threatening reassignment for noncompliance",
+          "reason": "Strict enforcement of operational quotas and demanding total obedience is authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "An internal review clarifies that workers have full personal liberty on shift breaks and speak openly, but Nasser personally overrode the logistics committee to set route contracts alone.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.85,
+            "authoritarian": 0.15
+          },
+          "decisive_clue": "workers have full liberty and speak openly while Nasser overrode the committee to set contracts alone",
+          "reason": "The core trait is Nasser's solitary override of the committee to monopolize contracts, flipping the characterization to autocratic.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        },
+        {
+          "text": "Nasser explicitly refuses to hold board consultations or review competitive carrier bids, declaring that regional freight strategy will be dictated by him and him alone.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.96,
+            "authoritarian": 0.04
+          },
+          "decisive_clue": "refusing board consultations and declaring freight strategy will be dictated by him alone",
+          "reason": "Monopolizing strategic direction while preserving worker liberties confirms autocratic governance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Overriding committees to monopolize freight contracts alone while respecting worker freedoms makes Nasser's operation autocratic.",
+      "feedback_deep": "While strict work quotas can appear authoritarian, Nasser does not restrict personal freedoms, police private lives, or suppress speech. His defining behavior is unilaterally overriding the committee to make all commercial and logistical decisions alone, which is autocratic.",
+      "contrast_rule": "Autocratic leaders monopolize decisions; authoritarian leaders suppress freedoms and enforce submission.",
+      "hint": "Look at whether Nasser controls personal liberties or hoards corporate contract choices alone."
+    },
+    {
+      "id": "autocratic-authoritarian_013",
+      "domain": "charity_trust",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "The managing trustee's stewardship of the foundation was ___.",
+      "beats": [
+        {
+          "text": "Amina takes complete control over the foundation's charitable endowment, refusing to entertain outside proposals or discuss grant allocations.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.76,
+            "authoritarian": 0.24
+          },
+          "decisive_clue": "taking complete control over endowment and refusing outside proposals",
+          "reason": "Taking total command of allocations suggests solitary decision-making, though heavy-handed control is also visible.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "She completely disbands the community review board, arguing that committee deliberations only delay funding and that she alone knows where capital is needed.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.89,
+            "authoritarian": 0.11
+          },
+          "decisive_clue": "disbanding the review board because she alone knows where capital is needed",
+          "reason": "Disbanding a consultative board to govern exclusively by personal choice narrows the meaning to autocratic.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "Amina provides generous salaries, imposes zero speech restrictions on her staff, and welcomes informal workplace chats, but refuses to let anyone else sign a funding check.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.97,
+            "authoritarian": 0.03
+          },
+          "decisive_clue": "providing generous salaries with zero speech restrictions while keeping exclusive check-signing power",
+          "reason": "Leaving personal liberties completely untouched while guarding solitary financial control confirms autocratic stewardship.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Amina's elimination of consultative boards to control funding alone, while respecting staff freedom, is autocratic.",
+      "feedback_deep": "Amina hoards institutional decision-making by dissolving the community board and reserving check-signing power for herself. Because she does not impose behavioral rules, ideological conformity, or speech restrictions on her staff, her leadership narrows decisively to autocratic rather than authoritarian.",
+      "contrast_rule": "Autocratic leaders refuse to share decisions; authoritarian leaders enforce behavioral submission.",
+      "hint": "Notice how Amina disbands the advisory board but imposes no restrictions on staff freedom."
+    },
+    {
+      "id": "autocratic-authoritarian_014",
+      "domain": "urban_planning",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "The planning commission's regulation of district residents was ___.",
+      "beats": [
+        {
+          "text": "The district planning commission issues an unyielding decree governing the daily appearance, noise levels, and maintenance schedules of all local homes.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.28,
+            "authoritarian": 0.72
+          },
+          "decisive_clue": "unyielding decree governing daily appearance, noise levels, and maintenance schedules",
+          "reason": "Regulating minute aspects of domestic life indicates severe behavioral control, tilting toward authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "Commission inspectors are given power to enter private yards without notice, fining residents whose window curtains violate the mandated neutral color palette.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.12,
+            "authoritarian": 0.88
+          },
+          "decisive_clue": "inspecting private yards without notice and fining residents for non-approved curtain colors",
+          "reason": "Invading private property to enforce strict conformity and punish aesthetic deviance narrows decisively to authoritarian.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "Residents who circulate petitions against the commission's bylaws are served with formal cease-and-desist orders and barred from attending civic forums.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.04,
+            "authoritarian": 0.96
+          },
+          "decisive_clue": "serving cease-and-desist orders on petition circulators and barring them from civic forums",
+          "reason": "Silencing public dissent and extinguishing political participation cements the authoritarian nature of the commission.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The commission's intrusive home inspections, forced conformity, and silencing of petition organizers is authoritarian.",
+      "feedback_deep": "The planning commission is a multi-member regulatory agency that micro-manages private living conditions, conducts warrantless inspections, and quashes public protest. These features represent classic authoritarian control, whereas autocratic would imply a solitary individual making decisions alone.",
+      "contrast_rule": "Authoritarian bodies suppress freedom and enforce conformity; autocratic leaders rule as solitary decision-makers.",
+      "hint": "Look at the commission's intrusive policing of private lifestyles and silencing of public petitions."
+    },
+    {
+      "id": "autocratic-authoritarian_015",
+      "domain": "software_guild",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "Mateo's steering of the developer collective was ___.",
+      "beats": [
+        {
+          "text": "Mateo rejects five pull requests submitted by senior developers, refusing to explain his technical reasoning or accept code reviews.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.74,
+            "authoritarian": 0.26
+          },
+          "decisive_clue": "rejecting pull requests without explaining technical reasoning or accepting code reviews",
+          "reason": "Refusing peer review and rejecting code without explanation leans autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "He changes the project repository settings so that all future code merges require his sole personal cryptographic key, locking out his co-maintainers.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.91,
+            "authoritarian": 0.09
+          },
+          "decisive_clue": "requiring his sole personal cryptographic key for merges and locking out co-maintainers",
+          "reason": "Restricting repository merge rights entirely to himself without consulting co-maintainers narrows firmly to autocratic.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "Developers are free to criticize Mateo on public discussion boards and maintain whatever work schedules they wish, but they cannot merge a single line of software.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.97,
+            "authoritarian": 0.03
+          },
+          "decisive_clue": "allowing open public criticism and flexible schedules while denying merge access",
+          "reason": "Allowing open criticism while retaining solitary control over code merges is unequivocally autocratic.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Mateo's solitary control over software merges alongside complete freedom of criticism makes his steering autocratic.",
+      "feedback_deep": "Mateo is not interested in policing developers' speech or forcing them to follow rigid personal regimens; in fact, he encourages open discussion. However, he refuses to share technical governance, concentrating ultimate merge power exclusively in his own hands, which defines autocratic leadership.",
+      "contrast_rule": "Autocratic leaders hoard executive keys alone; authoritarian leaders police speech and behavior.",
+      "hint": "Consider whether Mateo is suppressing speech or simply monopolizing code merge power."
+    },
+    {
+      "id": "autocratic-authoritarian_016",
+      "domain": "orchestra_ensemble",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 4,
+      "frame": "The principal conductor's leadership of the orchestra was ___.",
+      "beats": [
+        {
+          "text": "Maestro Gabriel cancels the orchestra's commissioned symphony without consulting the artistic committee, choosing a piece by his favorite classical composer instead.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.92,
+            "authoritarian": 0.08
+          },
+          "decisive_clue": "canceling the commissioned symphony without consulting the artistic committee",
+          "reason": "Unilaterally dictating the concert program without committee consultation is autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "During rehearsals, he demands that string musicians play with identical bow strokes and fines players who arrive thirty seconds late to their chairs.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.68,
+            "authoritarian": 0.32
+          },
+          "decisive_clue": "demanding identical bow strokes and fining players for arriving thirty seconds late",
+          "reason": "While strict musical discipline appears authoritarian, in an orchestral context it is technical precision driven by the conductor's solitary artistic vision.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "Gabriel never interferes with musicians' union representation, private teaching, or personal lives, but continues to overrule the board on every artistic and commercial contract.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.94,
+            "authoritarian": 0.06
+          },
+          "decisive_clue": "never interfering with union rights or personal lives while overruling the board on all contracts",
+          "reason": "The defining reality remains his solitary monopoly over institutional decisions, confirming autocratic leadership.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Gabriel's solitary control over repertoire and contracts, despite strict rehearsal standards, is fundamentally autocratic.",
+      "feedback_deep": "The strict rehearsal standards Gabriel enforces are ordinary technical discipline for a symphony orchestra, not an authoritarian suppression of personal liberty. Because he respects musicians' union representation and private lives while overruling the board to maintain sole control over artistic decisions, he remains autocratic.",
+      "contrast_rule": "Autocratic leaders rule alone; authoritarian systems crush civil and personal liberties.",
+      "hint": "Look past normal orchestral rehearsal discipline to who holds solitary control over contracts."
+    },
+    {
+      "id": "autocratic-authoritarian_017",
+      "domain": "shipping_fleet",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 4,
+      "frame": "The maritime company's discipline across the shipping fleet was ___.",
+      "beats": [
+        {
+          "text": "The shipping conglomerate's board imposes continuous audio recording in crew quarters, forbidding sailors from discussing company policies or playing music after dark.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.08,
+            "authoritarian": 0.92
+          },
+          "decisive_clue": "audio recording in crew quarters and forbidding discussion of company policies",
+          "reason": "A corporate board enforcing intrusive surveillance and speech bans across ships is authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "A single senior inspector is sent to inspect vessels, personally issuing fines and dismissing captains on the spot without holding hearings.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.34,
+            "authoritarian": 0.66
+          },
+          "decisive_clue": "a single inspector issuing fines and dismissing captains without hearings",
+          "reason": "The inspector is an agent executing the company's punitive regulatory system, not a solitary sovereign; the discipline remains authoritarian.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "The company codifies these measures across its entire maritime fleet, requiring all seafarers to sign pledges of unconditional obedience to corporate directives.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.05,
+            "authoritarian": 0.95
+          },
+          "decisive_clue": "requiring seafarers to sign pledges of unconditional obedience across the fleet",
+          "reason": "Institutionalizing mandatory obedience and suppressing personal liberty across an entire fleet cements its authoritarian status.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The fleet-wide suppression of speech, invasive cabin surveillance, and mandatory obedience pledges are authoritarian.",
+      "feedback_deep": "Although the presence of an individual inspector might look like autocratic personal rule at first glance, the inspector merely enforces the corporation's institutional apparatus. The defining trait is the systematic destruction of personal liberty, mandatory obedience pledges, and pervasive surveillance, which is authoritarian.",
+      "contrast_rule": "Authoritarian regimes enforce obedience across a system; autocratic rulers act as solitary decision-makers.",
+      "hint": "Distinguish between an individual field inspector and the company's systematic enforcement of obedience."
+    },
+    {
+      "id": "autocratic-authoritarian_018",
+      "domain": "household",
+      "transfer": true,
+      "chain_type": "reframe",
+      "difficulty": 3,
+      "frame": "Farhan's handling of the shared household finances was ___.",
+      "beats": [
+        {
+          "text": "Farhan demands that all household receipts be placed in a metal lockbox every evening, rejecting any expense not logged in the family ledger.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.32,
+            "authoritarian": 0.68
+          },
+          "decisive_clue": "demanding all receipts be placed in a lockbox and rejecting unlogged expenses",
+          "reason": "Strict enforcement of financial compliance and logging appears authoritarian.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        },
+        {
+          "text": "However, Farhan places no restrictions on what family members buy, eat, or wear, instead refusing to let anyone else see the bank account or have a say in savings goals.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.88,
+            "authoritarian": 0.12
+          },
+          "decisive_clue": "placing no restrictions on purchases while refusing to let anyone else see the bank account or set savings goals",
+          "reason": "Reframing the situation reveals that he does not control personal behavior; he monopolizes financial decisions alone, making his handling autocratic.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M3"
+          }
+        },
+        {
+          "text": "Farhan unilaterally transfers the entire emergency fund into a speculative bond without consulting his spouse or considering family suggestions.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.96,
+            "authoritarian": 0.04
+          },
+          "decisive_clue": "unilaterally transferring the emergency fund without consulting his spouse",
+          "reason": "Monopolizing financial control and executing unilateral transfers without consultation confirms autocratic behavior.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Farhan's solitary control of bank accounts and unilateral transfers without consulting his spouse is autocratic.",
+      "feedback_deep": "The strict receipt logging initially seemed authoritarian, but the broader reality reframes his behavior. Farhan does not micro-manage his family's personal habits or freedom of choice; rather, he hoards financial power exclusively for himself, refusing to share account access or consult his spouse.",
+      "contrast_rule": "Autocratic means deciding alone without consultation; authoritarian means micro-managing behavior and enforcing obedience.",
+      "hint": "Observe how Farhan leaves family personal choices alone while keeping solitary control over the bank accounts."
+    },
+    {
+      "id": "autocratic-authoritarian_019",
+      "domain": "sport",
+      "transfer": true,
+      "chain_type": "corrupt",
+      "difficulty": 3,
+      "frame": "The head coach's discipline of the varsity athletics squad was ___.",
+      "beats": [
+        {
+          "text": "Coach Viktor designs every conditioning routine in secret, refusing to let assistant trainers adjust sprint times or suggest tactical drills.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.9,
+            "authoritarian": 0.1
+          },
+          "decisive_clue": "designing conditioning routines in secret and refusing assistant trainers' tactical suggestions",
+          "reason": "A solitary coach who refuses to share tactical planning with his coaching staff is autocratic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "As tournament pressure mounts, Viktor's program corrupts into policing players' personal diets, mandating curfews, and inspecting dorm rooms for contraband snacks.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.25,
+            "authoritarian": 0.75
+          },
+          "decisive_clue": "policing personal diets, mandating curfews, and inspecting dorm rooms",
+          "reason": "Expanding control to invade personal privacy, restrict diet, and enforce curfews corrupts the discipline into an authoritarian regime.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "He orders players to cut off contact with former teammates and expels an athlete from the squad simply for asking why a team meeting was called.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.06,
+            "authoritarian": 0.94
+          },
+          "decisive_clue": "ordering cut-off of personal contacts and expelling an athlete for asking why a meeting was called",
+          "reason": "Cutting off personal relationships and punishing basic inquiry with expulsion epitomizes authoritarian suppression.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Viktor's invasion of private dorm rooms, diet policing, and punishing questions turned his coaching authoritarian.",
+      "feedback_deep": "Viktor began as an autocratic coach who hoarded tactical drill design to himself. But as his control corrupted, he began invading athletes' private lives, enforcing curfews, restricting personal associations, and penalizing innocent questions, transforming his discipline into an authoritarian regime.",
+      "contrast_rule": "Autocratic leaders hoard decision-making; authoritarian leaders police personal lives and punish questions.",
+      "hint": "Notice how Viktor's control shifts from hoarding drill planning to invading private lives and crushing questions."
+    },
+    {
+      "id": "autocratic-authoritarian_020",
+      "domain": "relationships",
+      "transfer": true,
+      "chain_type": "precision",
+      "difficulty": 4,
+      "frame": "Julian's conduct toward his domestic partner was ___.",
+      "beats": [
+        {
+          "text": "Julian insists on picking the holiday destination each summer without asking his partner what she prefers.",
+          "best_word": "autocratic",
+          "fit": {
+            "autocratic": 0.82,
+            "authoritarian": 0.18
+          },
+          "decisive_clue": "picking the holiday destination without asking his partner what she prefers",
+          "reason": "Making holiday plans unilaterally without consulting one's partner reflects autocratic decision-making.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "authoritarian": "M1"
+          }
+        },
+        {
+          "text": "He begins demanding that she account for every dollar spent on groceries, monitoring her phone messages to ensure she does not criticize him to friends.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.22,
+            "authoritarian": 0.78
+          },
+          "decisive_clue": "demanding accounting for every dollar and monitoring phone messages to stop criticism",
+          "reason": "Surveillance of private messages, financial micromanagement, and suppression of criticism shift the conduct to authoritarian.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M2"
+          }
+        },
+        {
+          "text": "Julian dictates what clothes she may wear in public and demands immediate, cheerful obedience whenever he establishes a new household rule.",
+          "best_word": "authoritarian",
+          "fit": {
+            "autocratic": 0.05,
+            "authoritarian": 0.95
+          },
+          "decisive_clue": "dictating clothing choices in public and demanding immediate, cheerful obedience to rules",
+          "reason": "Strictly limiting personal autonomy in clothing and demanding emotional submission to rules is precisely authoritarian.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "autocratic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Julian's phone surveillance, clothing restrictions, and demands for unquestioning obedience make his conduct authoritarian.",
+      "feedback_deep": "While Julian initially made one-sided vacation plans without consultation (an autocratic habit), his behavior escalated to monitoring text messages, regulating personal clothing, and demanding submissive obedience. In interpersonal relationships, controlling a partner's personal autonomy and speech is precisely authoritarian.",
+      "contrast_rule": "Authoritarian behavior enforces personal submission and restricts freedom; autocratic behavior makes decisions alone.",
+      "hint": "Focus on Julian's control over his partner's personal clothing, private messages, and obedience."
+    }
+  ]
+}

@@ -1,0 +1,1339 @@
+{
+ "set_id": "utilitarian-pragmatic",
+ "source_pair_id": 600,
+ "words": [
+  {
+   "word": "utilitarian",
+   "sense": "focus on functional utility and objective benefit for many",
+   "concise_meaning": "designed to be useful rather than decorative; aiming for the greatest benefit for the greatest number",
+   "connotation": "neutral to positive; can imply coldness or lack of aesthetics",
+   "register": "formal",
+   "grammar": "adjective",
+   "collocations": [
+    "utilitarian design",
+    "utilitarian approach",
+    "utilitarian principle"
+   ],
+   "misconceptions": [
+    "thinking it means 'using' something"
+   ]
+  },
+  {
+   "word": "pragmatic",
+   "sense": "focus on what actually works in a specific situation",
+   "concise_meaning": "dealing with things sensibly and realistically in a way that is based on practical rather than theoretical considerations",
+   "connotation": "positive; implies sensible problem-solving",
+   "register": "standard to professional",
+   "grammar": "adjective",
+   "collocations": [
+    "pragmatic solution",
+    "pragmatic approach",
+    "pragmatic decision"
+   ],
+   "misconceptions": [
+    "thinking it implies a lack of ethics"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "scope_of_application",
+   "description": "utilitarian applies to systemic, general efficiency; pragmatic applies to specific, immediate situational resolution."
+  },
+  {
+   "id": "motive_driver",
+   "description": "utilitarian is driven by the goal of maximum utility for the collective; pragmatic is driven by the goal of finding a workable solution."
+  },
+  {
+   "id": "rejection_of_theory",
+   "description": "pragmatic explicitly rejects dogmatic or overly theoretical approaches; utilitarian may be rooted in the theory of utilitarianism."
+  }
+ ],
+ "edge": {
+  "a": "utilitarian",
+  "b": "pragmatic",
+  "boundary_rule": "utilitarian focuses on the functional benefit for a large group; pragmatic focuses on the workable solution for a specific problem.",
+  "clues_a": [
+   "benefit for many",
+   "functional design",
+   "systemic efficiency"
+  ],
+  "clues_b": [
+   "workable result",
+   "immediate situational adjustment",
+   "ignoring dogma"
+  ],
+  "irrelevant_clues": [
+   "cost-effectiveness",
+   "speed of implementation"
+  ],
+  "misconceptions": {
+   "M1": "assuming utilitarian means merely 'useful'",
+   "M2": "assuming pragmatic means 'without morals'",
+   "M3": "mixing functional design (utilitarian) with situational problem-solving (pragmatic)"
+  }
+ },
+ "anchors": {
+  "positive": {
+   "utilitarian": [
+    "The architecture of the school is purely utilitarian, prioritizing classrooms over style.",
+    "They adopted a utilitarian strategy to maximize food distribution for the famine relief.",
+    "Her kitchen tools are utilitarian, built for longevity rather than looks.",
+    "The committee proposed a utilitarian solution to bridge the divide, focusing on the greatest good.",
+    "Public transport should aim for utilitarian efficiency to serve the widest population.",
+    "His approach to the project was utilitarian, stripping away everything that didn't serve a clear function."
+   ],
+   "pragmatic": [
+    "The manager took a pragmatic approach to the deadline, simplifying the project scope.",
+    "She made a pragmatic decision to switch vendors when the original failed to deliver on time.",
+    "While idealists debated, the pragmatic leader focused on getting the immediate problem solved.",
+    "His solution was pragmatic, acknowledging the constraints and working within them.",
+    "It was a pragmatic choice to accept the compromise rather than lose everything.",
+    "The team needed a pragmatic strategy to address the sudden shift in customer demand."
+   ]
+  },
+  "counter": {
+   "utilitarian": [
+    "The manager's decision was purely [pragmatic] to ensure the project finished on time.",
+    "The design for the boutique hotel must be [pragmatic] yet stunning.",
+    "She is [pragmatic] about her career choices, picking paths that offer immediate growth.",
+    "His [pragmatic] response to the crisis saved the company from bankruptcy.",
+    "The negotiation required [pragmatic] adjustments to satisfy all stakeholders.",
+    "We need to be [pragmatic] about what is achievable this quarter."
+   ],
+   "pragmatic": [
+    "The stadium's design is [utilitarian], focused on maximum seating capacity.",
+    "The charity’s [utilitarian] goal is to reduce poverty by investing in infrastructure.",
+    "We need a [utilitarian] policy that helps the most citizens.",
+    "Her [utilitarian] focus on productivity left little room for creative freedom.",
+    "The new software update is [utilitarian], removing icons to improve load times.",
+    "The [utilitarian] nature of the hospital makes it efficient but depressing."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The government chose a ______ method to ensure public resources reached the most people.",
+    "best_word": "utilitarian",
+    "note": "Focus is on systemic efficiency and the collective good."
+   },
+   {
+    "text": "Faced with shrinking funds, the director adopted a ______ strategy to save the firm.",
+    "best_word": "pragmatic",
+    "note": "Focus is on reacting to specific situational constraints."
+   },
+   {
+    "text": "To keep production steady despite shortages, they made a ______ shift in their sourcing process.",
+    "best_word": "pragmatic",
+    "note": "Situational problem-solving."
+   },
+   {
+    "text": "The public park was designed with a ______ intent to maximize usage by all citizens.",
+    "best_word": "utilitarian",
+    "note": "Focus is on utility for the many."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "utilitarian-pragmatic_001",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The office layout redesign is ___.",
+   "beats": [
+    {
+     "text": "The new office layout prioritizes maximum desk space for as many employees as possible over aesthetics.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "greatest benefit for many",
+     "reason": "It's about systemic design for the collective, not a specific situational fix.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "The company continues to remove all decorative elements and common areas to increase seating capacity further.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.95,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "removing decoration for function",
+     "reason": "The focus remains firmly on function over form for the collective benefit.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Focus on the systematic removal of aesthetics to increase capacity for everyone.",
+   "feedback_deep": "The layout is designed purely to maximize function for the whole group, ignoring aesthetics. This systemic prioritization of function over beauty is a hallmark of a utilitarian design.",
+   "contrast_rule": "Utilitarian focuses on systematic functional benefit for the group.",
+   "hint": "Does it solve a situational problem or implement a philosophy of function?"
+  },
+  {
+   "id": "utilitarian-pragmatic_002",
+   "domain": "tech",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The software engineer's approach to the code is ___.",
+   "beats": [
+    {
+     "text": "The software engineer rewrote the code to minimize file size, even if it makes the source harder to read for humans.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.5
+     },
+     "decisive_clue": "functional efficiency over readability",
+     "reason": "Prioritizing function over form/aesthetics (readability).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "The engineer argues that all code should be stripped down this way to maximize system performance.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.2
+     },
+     "decisive_clue": "general principle of efficiency",
+     "reason": "It's a systemic principle of function over form.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Prioritizing function systematically over human readability.",
+   "feedback_deep": "The approach prioritizes system performance as the only metric, sacrificing all readability. It is a systematic, no-frills functional decision.",
+   "contrast_rule": "Utilitarian design often sacrifices aesthetics for pure function.",
+   "hint": "Is it a one-time fix or a design philosophy?"
+  },
+  {
+   "id": "utilitarian-pragmatic_003",
+   "domain": "urban planning",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The urban developer's plan is ___.",
+   "beats": [
+    {
+     "text": "The developer designs a new suburban complex with basic apartments that prioritize cost-efficiency above all else.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.7,
+      "pragmatic": 0.6
+     },
+     "decisive_clue": "prioritizing cost-efficiency",
+     "reason": "Focus on utility and cost efficiency rather than situational problem solving.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    },
+    {
+     "text": "The developer maintains that every detail of the apartment complex must contribute to cost-efficiency and utility.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "systematic prioritization of utility",
+     "reason": "It's about applying a functional principle systematically.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Systematic, no-frills design focus.",
+   "feedback_deep": "The planning systematically ignores aesthetics in favor of utility and cost-efficiency. This is a clear utilitarian approach, not a reactive solution to a specific problem.",
+   "contrast_rule": "Utilitarian design is systematic and no-frills.",
+   "hint": "Does it prioritize general function or specific situational success?"
+  },
+  {
+   "id": "utilitarian-pragmatic_004",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Javier's way of maintaining his long-distance relationship is ___.",
+   "beats": [
+    {
+     "text": "Javier insists on only communicating through short, scheduled emails to ensure his work-life balance is not interrupted.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.5
+     },
+     "decisive_clue": "systematic restriction for general benefit",
+     "reason": "It is a systemic rule imposed for the benefit of his schedule.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "He argues that emotional calls are inefficient, so sticking to the strict email schedule is the best way to handle the relationship.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.2
+     },
+     "decisive_clue": "efficiency over emotion",
+     "reason": "Prioritizing efficiency systematically over emotional connection.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Systematic efficiency over emotional nuance.",
+   "feedback_deep": "Javier applies a systematic, functional rule to his relationship to prioritize efficiency, explicitly discarding emotional nuance as useless. This is a utilitarian approach.",
+   "contrast_rule": "Utilitarian prioritizes functional efficiency, even in personal domains.",
+   "hint": "Look for the prioritization of efficiency over nuance."
+  },
+  {
+   "id": "utilitarian-pragmatic_005",
+   "domain": "manufacturing",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The factory manager's strategy is ___.",
+   "beats": [
+    {
+     "text": "The factory manager buys standard, durable parts that will last the longest, ignoring the fact that they look mismatched.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "durable utility over appearance",
+     "reason": "Function is prioritized over aesthetics.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "The manager refuses to buy higher-end, stylish components because they don't add functional value.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.95,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "functional value only",
+     "reason": "Systematic avoidance of non-functional items.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Prioritizing only functional value.",
+   "feedback_deep": "The manager is systematically focused on functional utility and durability, explicitly excluding anything purely aesthetic. This is a utilitarian design principle.",
+   "contrast_rule": "Utilitarian excludes non-functional elements.",
+   "hint": "What is the manager ignoring?"
+  },
+  {
+   "id": "utilitarian-pragmatic_006",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The curriculum designer's focus is ___.",
+   "beats": [
+    {
+     "text": "The curriculum designer insists on teaching only job-related skills, removing all literature and arts courses.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "functional job skills only",
+     "reason": "Systematic removal of non-functional subjects.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    },
+    {
+     "text": "She believes education must have a clear, functional purpose, otherwise, it is a waste of resources.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.95,
+      "pragmatic": 0.2
+     },
+     "decisive_clue": "education must have functional purpose",
+     "reason": "Systematic application of utility as a measure.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Focus on job utility over broad education.",
+   "feedback_deep": "The designer is systematically focused on functional skills that lead to economic utility, explicitly dismissing non-functional subjects. This is utilitarian.",
+   "contrast_rule": "Utilitarian requires clear functional utility.",
+   "hint": "What is the designer's standard for education?"
+  },
+  {
+   "id": "utilitarian-pragmatic_007",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The mayor's decision is ___.",
+   "beats": [
+    {
+     "text": "The mayor designed the new city housing project with extreme density, aiming to house the most people for the least cost.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "housing the most people at least cost",
+     "reason": "Maximizing utility for the greatest number.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "When residents refused to move into the tiny units, the mayor quickly repurposed some units into community centers, despite the loss in total housing capacity.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "repurposing due to resident refusal",
+     "reason": "The mayor adjusted to a specific situational failure (refusal) to make the project work.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Adjusting from theory to situational reality.",
+   "feedback_deep": "The mayor moved from an initial utilitarian design (maximizing density) to a pragmatic solution when it failed, adjusting based on situational reality.",
+   "contrast_rule": "Pragmatic reacts to specific, failed situations.",
+   "hint": "Did the mayor stick to the initial philosophy or change to make it work?"
+  },
+  {
+   "id": "utilitarian-pragmatic_008",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The coach's strategy is ___.",
+   "beats": [
+    {
+     "text": "The basketball coach demands all players run the same drills, focusing on pure physical endurance and maximizing total team conditioning.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "total team conditioning",
+     "reason": "Systematic approach for total team benefit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "Noticing the starters were exhausted, the coach stopped the drills and allowed individual recovery programs, even though it goes against the team-wide conditioning goal.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "allowing individual recovery",
+     "reason": "Adjusting the strategy to fit the specific needs of the players in that situation.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "From systemic rule to individual situational adjustment.",
+   "feedback_deep": "The coach initially applies a utilitarian rule for team-wide conditioning, but shifts to a pragmatic decision when the starters' needs become a situational obstacle.",
+   "contrast_rule": "Pragmatic adjusts to situational needs.",
+   "hint": "What changed in the coach's approach?"
+  },
+  {
+   "id": "utilitarian-pragmatic_009",
+   "domain": "healthcare",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The hospital administration's policy is ___.",
+   "beats": [
+    {
+     "text": "The hospital mandates that all staff follow a strict, standardized patient intake protocol to maximize the speed of processing each case.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "standardized intake protocol",
+     "reason": "Systematic approach to maximize speed for all cases.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "In the emergency room, the administration now allows nurses to override the standard protocol when they see a patient clearly in critical condition.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "allowing override",
+     "reason": "Adjusting the systematic rule for a specific situational outcome.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Adjusting strict rules for situational necessities.",
+   "feedback_deep": "The administration moves from a utilitarian standardized mandate to a pragmatic override policy when they realize the mandate fails in critical situations.",
+   "contrast_rule": "Pragmatic overrides failing systematic rules.",
+   "hint": "Does the system allow exceptions?"
+  },
+  {
+   "id": "utilitarian-pragmatic_010",
+   "domain": "tech",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The team's development process is ___.",
+   "beats": [
+    {
+     "text": "The team adopts a strict 'no-feature-request' rule for the first six months to ensure the core functionality is perfectly robust for all users.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "strict no-feature rule",
+     "reason": "A systemic rule for a general functional goal.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "When early testers report a major usability gap, the team decides to add the requested feature, temporarily pausing the core development.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "adding feature due to usability gap",
+     "reason": "Adjusting for a situational problem.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Pausing the systemic rule to address a specific usability issue.",
+   "feedback_deep": "The team initially applies a utilitarian rule, but they are pragmatic enough to break that rule when they face a critical usability problem that requires an immediate solution.",
+   "contrast_rule": "Pragmatic decisions ignore dogmatic rules.",
+   "hint": "What forced the team to break their rule?"
+  },
+  {
+   "id": "utilitarian-pragmatic_011",
+   "domain": "business",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The company's supply strategy is ___.",
+   "beats": [
+    {
+     "text": "The company contracts only with the single cheapest supplier globally to minimize costs for every product sold.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "cheapest global supplier",
+     "reason": "Systematic cost reduction for the benefit of all products.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "When a major port closure halts global shipments, the company quickly signs local suppliers at higher prices to keep production running.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "local supplier at higher price",
+     "reason": "Situational adjustment to keep production going.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Prioritizing immediate production over long-term cost systemic goals.",
+   "feedback_deep": "The company moves from a utilitarian cost-minimization rule to a pragmatic situational response to overcome a supply chain disruption, sacrificing cost for usability.",
+   "contrast_rule": "Pragmatic shifts focus to situational workability.",
+   "hint": "What event changed the strategy?"
+  },
+  {
+   "id": "utilitarian-pragmatic_012",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "Sarah's packing style is ___.",
+   "beats": [
+    {
+     "text": "Sarah packs only multi-purpose clothes in neutral colors to maximize packing efficiency and versatility for any trip.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "packing efficiency",
+     "reason": "Systematic approach for functional utility.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "When she realizes she's going to a formal wedding during the trip, she packs a specialized dress, breaking her usual minimalist packing rule.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "packing specialized dress",
+     "reason": "Adjusting for the specific situational requirement.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Adjusting the systematic packing rule for a specific need.",
+   "feedback_deep": "Sarah is usually utilitarian with her packing, but she takes a pragmatic approach here by adding a non-versatile item to fit the situational requirement of the wedding.",
+   "contrast_rule": "Pragmatic adjusts the rule to solve a problem.",
+   "hint": "Why did she change what she packed?"
+  },
+  {
+   "id": "utilitarian-pragmatic_013",
+   "domain": "finance",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The financial advisor's plan is ___.",
+   "beats": [
+    {
+     "text": "The advisor creates a investment plan aimed at minimizing fees for the client's long-term wealth accumulation.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "minimizing fees for long-term",
+     "reason": "Systematic functional benefit.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "He explains this is the most functional method because minimizing costs is the only controllable factor for all investors.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "functional method for all",
+     "reason": "It's the application of a universal functional principle.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Applying a systemic functional rule universally.",
+   "feedback_deep": "The advisor is focusing on a universal functional rule (minimize costs) for all investors, fitting the utilitarian focus on efficiency and benefit for many.",
+   "contrast_rule": "Utilitarian focuses on systemic benefit.",
+   "hint": "Is it tailored to one person or applied to all?"
+  },
+  {
+   "id": "utilitarian-pragmatic_014",
+   "domain": "art",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The artist's design is ___.",
+   "beats": [
+    {
+     "text": "The artist creates a series of chairs meant to be as comfortable as possible, disregarding their visual impact entirely.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "comfortable over visual impact",
+     "reason": "Systematic prioritization of one functional utility (comfort).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "He asserts that furniture's only reason for existence is to provide physical support for the human body.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.95,
+      "pragmatic": 0.2
+     },
+     "decisive_clue": "only reason is support",
+     "reason": "Defining the item by its systemic functional purpose.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Narrowing focus to systemic function only.",
+   "feedback_deep": "The artist is systematically narrowing the purpose of the chairs to one function, physical support, reinforcing the utilitarian focus on function over aesthetics.",
+   "contrast_rule": "Utilitarian defines things by function.",
+   "hint": "Does the artist consider aesthetics at all?"
+  },
+  {
+   "id": "utilitarian-pragmatic_015",
+   "domain": "transport",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The train system's design is ___.",
+   "beats": [
+    {
+     "text": "The train system is designed to provide high-frequency, basic transit across the city, aiming for maximum capacity.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "maximum capacity basic transit",
+     "reason": "Systemic function over comfort/style.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "It purposefully avoids any luxury features like wide seats or quiet cars to maintain the lowest possible fare for all users.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "avoiding luxury for lowest fare",
+     "reason": "Systematic sacrifice of aesthetics/luxury for maximum group utility (cost).",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Systematically sacrificing luxury for collective cost efficiency.",
+   "feedback_deep": "The transport system is designed to be functional for the greatest number, systematically removing anything non-functional like luxury features to lower costs for all.",
+   "contrast_rule": "Utilitarian prioritizes functional affordability for the many.",
+   "hint": "Why are there no luxury features?"
+  },
+  {
+   "id": "utilitarian-pragmatic_016",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "Dad's method of cooking is ___.",
+   "beats": [
+    {
+     "text": "Dad cooks large batches of basic stews on Sundays to ensure everyone has a meal prepared for every day of the work week.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "basic stews for entire week",
+     "reason": "Function and preparation for many over variety.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "Even when he has time for more complex recipes, he sticks to the stews because it makes the whole household run smoothly.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "making household run smoothly",
+     "reason": "It's about the systemic functional benefit.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Consistency is utilitarian, not a situational fix.",
+   "feedback_deep": "The cooking method is systematic and aimed at the collective functionality of the household. Changing the recipe for a single day wouldn't fit this systemic rule.",
+   "contrast_rule": "Utilitarian cooking focuses on systemic efficiency.",
+   "hint": "Does he adapt for variety?"
+  },
+  {
+   "id": "utilitarian-pragmatic_017",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The teacher's grading system is ___.",
+   "beats": [
+    {
+     "text": "The teacher grades only on attendance and submitted homework, not on quality, to make grading fast and predictable for everyone.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "grading on attendance only",
+     "reason": "Systematic function over precision.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "She continues to grade this way, insisting that it is the most efficient way to manage a large group of students.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "most efficient for large group",
+     "reason": "Systematic utility for the group.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Efficient, systemic grading rule.",
+   "feedback_deep": "The teacher's approach is systematic, prioritizing speed and predictability for the whole group over quality of grading.",
+   "contrast_rule": "Utilitarian prioritizes efficiency for the collective.",
+   "hint": "Is this a solution to a specific problem or a rule for all?"
+  },
+  {
+   "id": "utilitarian-pragmatic_018",
+   "domain": "public situation",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "The city's waste management initiative is ___.",
+   "beats": [
+    {
+     "text": "The city installed identical, basic trash bins on every street corner to maximize coverage throughout the city.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.8,
+      "pragmatic": 0.4
+     },
+     "decisive_clue": "maximize coverage throughout",
+     "reason": "Systemic function.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "Residents note the bins are frequently overflowing, so the city now changes the collection schedule to pick up from bins in busy areas twice a day instead of once.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "changing schedule based on usage",
+     "reason": "Situational adjustment to solve a usage problem.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "From design philosophy to situational management.",
+   "feedback_deep": "The initial bin placement is a utilitarian systemic design, but the scheduling adjustment is pragmatic, as it responds to specific usage data to ensure the system works.",
+   "contrast_rule": "Pragmatic reacts to specific issues in the situation.",
+   "hint": "Did the design change or the operational schedule?"
+  },
+  {
+   "id": "utilitarian-pragmatic_019",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 4,
+   "frame": "The tutor's test-prep advice is ___.",
+   "beats": [
+    {
+     "text": "The tutor tells the student to skip all complex problems on the practice test, focusing only on the questions they are guaranteed to answer correctly.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.7,
+      "pragmatic": 0.6
+     },
+     "decisive_clue": "focusing only on guaranteed points",
+     "reason": "Efficiency and maximizing the guaranteed score.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M1"
+     }
+    },
+    {
+     "text": "When the student explains they want to get into a top-tier school that requires answering difficult questions, the tutor agrees they should start focusing on those complex problems.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "agreeing to focus on complex",
+     "reason": "Adjusting the strategy to fit the specific goal of top-tier admission.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Adjusting the strategy to reach the specific goal.",
+   "feedback_deep": "The tutor shifts from a generalized utilitarian tactic of maximizing safe points to a pragmatic, tailored approach that actually addresses the student's ambitious situational needs.",
+   "contrast_rule": "Pragmatic adapts to situational objectives.",
+   "hint": "What changed the tutor's advice?"
+  },
+  {
+   "id": "utilitarian-pragmatic_020",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 4,
+   "frame": "The way she organized her kitchen storage is ___.",
+   "beats": [
+    {
+     "text": "She stores all utensils by function—knives together, spoons together—rather than by aesthetic appearance.",
+     "best_word": "utilitarian",
+     "fit": {
+      "utilitarian": 0.9,
+      "pragmatic": 0.3
+     },
+     "decisive_clue": "storing by function only",
+     "reason": "Focus on the utility of function over look.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "pragmatic": "M3"
+     }
+    },
+    {
+     "text": "When she buys a new set of knives that won't fit in the drawer, she installs a magnetic wall strip for them, even though it breaks her 'store in drawers' rule.",
+     "best_word": "pragmatic",
+     "fit": {
+      "utilitarian": 0.3,
+      "pragmatic": 0.9
+     },
+     "decisive_clue": "installing magnetic strip",
+     "reason": "The solution (wall strip) is a specific workability fix.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "utilitarian": "M1"
+     }
+    }
+   ],
+   "feedback_short": "From functional philosophy to situational adaptation.",
+   "feedback_deep": "The first step describes the utilitarian principle (functional categorization), while the second step shows a pragmatic adaptation to a problem the principle couldn't solve.",
+   "contrast_rule": "Pragmatic adjusts the method to fit the reality.",
+   "hint": "Why did she break the storage rule?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

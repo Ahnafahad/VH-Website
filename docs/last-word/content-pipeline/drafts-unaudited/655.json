@@ -1,0 +1,1221 @@
+{
+ "set_id": "sobriety-abstinence",
+ "source_pair_id": 655,
+ "words": [
+  {
+   "word": "sobriety",
+   "sense": "The quality or state of being free from the influence of alcohol or drugs.",
+   "concise_meaning": "Being clear-headed and fully in control of mental faculties.",
+   "connotation": "Positive, implies recovery, clarity, stability, responsibility.",
+   "register": "Neutral/Formal.",
+   "grammar": "Noun.",
+   "collocations": [
+    "maintain sobriety",
+    "long-term sobriety",
+    "question his sobriety",
+    "commit to sobriety"
+   ],
+   "misconceptions": [
+    "Thinking it only applies to people in rehab programs."
+   ]
+  },
+  {
+   "word": "abstinence",
+   "sense": "The practice of refraining from doing something, such as drinking alcohol or engaging in other activities.",
+   "concise_meaning": "A deliberate, active policy or choice of complete avoidance.",
+   "connotation": "Neutral, implies discipline, adherence to a rule or principle.",
+   "register": "Formal.",
+   "grammar": "Noun.",
+   "collocations": [
+    "total abstinence",
+    "practice abstinence",
+    "pledge of abstinence",
+    "promote abstinence"
+   ],
+   "misconceptions": [
+    "Thinking it implies the person was previously addicted."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "state_vs_policy",
+   "description": "Whether the word describes an internal state of being (sobriety) or an external rule/policy of action (abstinence)."
+  },
+  {
+   "id": "implication_of_recovery",
+   "description": "Whether the word strongly implies recovery from a prior problem (sobriety) or is neutral to prior history (abstinence)."
+  }
+ ],
+ "edge": {
+  "a": "sobriety",
+  "b": "abstinence",
+  "boundary_rule": "Use sobriety for a state of being clear-headed; use abstinence for a deliberate policy of avoidance.",
+  "clues_a": [
+   "clear-headedness",
+   "being in control",
+   "recovery",
+   "lucidity",
+   "stable mental state"
+  ],
+  "clues_b": [
+   "deliberate choice",
+   "policy or rule",
+   "avoidance strategy",
+   "principle-based refusal"
+  ],
+  "irrelevant_clues": [
+   "whether they used to drink",
+   "how long they have been avoiding substances",
+   "the specific reason for avoiding"
+  ],
+  "misconceptions": {
+   "M1": "Assuming sobriety only applies after addiction recovery.",
+   "M2": "Assuming abstinence requires prior addiction.",
+   "M3": "Using them as synonyms for just 'not drinking'."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "sobriety": [
+    "He maintained his sobriety throughout the difficult project.",
+    "The officer questioned her sobriety after the car swerved.",
+    "They celebrated his three years of sobriety.",
+    "His sobriety allowed him to make a sound decision.",
+    "Maintaining sobriety helped him regain his focus.",
+    "The doctor was impressed by her commitment to sobriety."
+   ],
+   "abstinence": [
+    "The organization promotes total abstinence from all alcohol.",
+    "She decided on a policy of abstinence for health reasons.",
+    "Their religious beliefs require complete abstinence.",
+    "The program focuses on abstinence to ensure safety.",
+    "He took a pledge of abstinence at the ceremony.",
+    "Strict abstinence is the rule in this facility."
+   ]
+  },
+  "counter": {
+   "sobriety": [
+    "He practiced total sobriety from all alcohol as a rule.",
+    "She made a pledge of sobriety, which is hard to keep.",
+    "The religious policy requires sobriety of all members.",
+    "He decided that sobriety was the best strategy for him.",
+    "Their commitment to sobriety is a central part of their credo.",
+    "Strict sobriety is required by the school's policy."
+   ],
+   "abstinence": [
+    "The police officer tested her abstinence after the crash.",
+    "He has maintained his abstinence for five years now.",
+    "She was proud of her abstinence and clarity of mind.",
+    "His abstinence made him the only one able to drive.",
+    "The test confirmed his abstinence at the time of the event.",
+    "She struggled for years to achieve her abstinence."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "He chose total avoidance of alcohol to stay sharp for his work.",
+    "best_word": "abstinence",
+    "note": "While sobriety is the result, his active 'choice' of 'avoidance' points to abstinence."
+   },
+   {
+    "text": "The monk focused on his internal clarity and freedom from substances.",
+    "best_word": "sobriety",
+    "note": "Focuses on the state of 'clarity', not the policy."
+   },
+   {
+    "text": "The company policy mandates that all staff do not consume alcohol.",
+    "best_word": "abstinence",
+    "note": "A company policy is a clear rule/policy."
+   },
+   {
+    "text": "After the incident, she remained completely clear-headed and responsible.",
+    "best_word": "sobriety",
+    "note": "Focuses on the state of being clear-headed."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "sobriety-abstinence_001",
+   "domain": "parties",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What Kenji's lifestyle at the event is: ___.",
+   "beats": [
+    {
+     "text": "Kenji declined the wine offered at the dinner.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.8,
+      "abstinence": 0.6
+     },
+     "decisive_clue": "Clear-headedness",
+     "reason": "His act of declining wine shows he is in a state of being unaffected.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M2"
+     }
+    },
+    {
+     "text": "Kenji explains he needs to stay alert to drive his friends home later.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.3
+     },
+     "decisive_clue": "Being in control",
+     "reason": "His need to be alert reinforces the state of being controlled.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Kenji needs to be alert, reinforcing the state of being in control of his faculties.",
+   "feedback_deep": "Kenji's decision is about his mental state (sobriety) for driving, not a policy of complete avoidance.",
+   "contrast_rule": "Sobriety describes the state; abstinence describes the policy.",
+   "hint": "Focus on whether he has a rule or a momentary state."
+  },
+  {
+   "id": "sobriety-abstinence_002",
+   "domain": "medical",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the approach to the patient is: ___.",
+   "beats": [
+    {
+     "text": "Dr. Aris advised his patient to maintain their current clear-headed state after the drug taper.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Clear-headed state",
+     "reason": "The doctor is focusing on the patient's current state of mental clarity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    },
+    {
+     "text": "Dr. Aris then set a firm, written rule that the patient must avoid all substances permanently for safety.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.3,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Firm, written rule",
+     "reason": "The doctor shifts to prescribing a strict, long-term policy of avoidance.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The doctor shifted from focusing on the patient's state to prescribing a strict, permanent rule.",
+   "feedback_deep": "Initial advice targeted the patient's state of clarity (sobriety), while the second beat establishes a strict policy (abstinence).",
+   "contrast_rule": "State vs. Rule.",
+   "hint": "Is the doctor talking about the patient's head, or the doctor's rule?"
+  },
+  {
+   "id": "sobriety-abstinence_003",
+   "domain": "religious",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the community rule is: ___.",
+   "beats": [
+    {
+     "text": "The community demands that its members pledge never to touch alcohol.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.4,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Pledge",
+     "reason": "The demand for a pledge indicates a policy requirement.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M2"
+     }
+    },
+    {
+     "text": "This rule applies to all members, regardless of their past or future drinking habits.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.2,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Rule applies to all",
+     "reason": "The rule is about the policy itself, not a person's state of clarity.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M2"
+     }
+    }
+   ],
+   "feedback_short": "This is a fixed rule governing all members' behavior, not a description of their mental state.",
+   "feedback_deep": "A mandatory pledge of avoidance is a policy (abstinence), not a state of being (sobriety).",
+   "contrast_rule": "Policy vs. State.",
+   "hint": "Is this an optional goal or a mandatory rule?"
+  },
+  {
+   "id": "sobriety-abstinence_004",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "What Maya's attitude is: ___.",
+   "beats": [
+    {
+     "text": "Maya said she doesn't like being around people who are drunk.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.7,
+      "abstinence": 0.5
+     },
+     "decisive_clue": "Doesn't like being around drunk people",
+     "reason": "She prefers to be clear-headed and sober, not just a policy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M3"
+     }
+    },
+    {
+     "text": "She clarified that she prefers the clear-headedness of not drinking at all.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.4
+     },
+     "decisive_clue": "Clear-headedness",
+     "reason": "She explicitly names the state of being clear-headed as her preference.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Her focus on the clarity of mind reinforces her preference for a state of being.",
+   "feedback_deep": "Maya's attitude describes her mental preference (sobriety) rather than adhering to a strict policy (abstinence).",
+   "contrast_rule": "Mental preference vs. Policy.",
+   "hint": "Is she describing a state of being or an adherence to a rule?"
+  },
+  {
+   "id": "sobriety-abstinence_005",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "What the school's expectation is: ___.",
+   "beats": [
+    {
+     "text": "The school requires all students to be clear-headed during exam time.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Clear-headed",
+     "reason": "Focus is on students' ability to function.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M2"
+     }
+    },
+    {
+     "text": "Students are reminded to refrain from any substances throughout the exam month.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.8,
+      "abstinence": 0.7
+     },
+     "decisive_clue": "Clear-headed (implied)",
+     "reason": "This is a distractor; they still want them to *be* clear-headed (sobriety), even though the *method* (refraining) suggests abstinence.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The school's goal remains the students' mental state, not just a policy for the sake of it.",
+   "feedback_deep": "Even when a rule (abstinence) is applied, the school's primary concern is the students' functional state (sobriety).",
+   "contrast_rule": "Primary goal vs. Distractor method.",
+   "hint": "Don't be fooled by the method; look at the goal."
+  },
+  {
+   "id": "sobriety-abstinence_006",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "What the candidate's campaign goal is: ___.",
+   "beats": [
+    {
+     "text": "The candidate wants to foster a clear-headed approach to solving the city's problems.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.1
+     },
+     "decisive_clue": "Clear-headed approach",
+     "reason": "The focus is on the quality of judgment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    },
+    {
+     "text": "To achieve this, the candidate proposes a strict zero-tolerance law for substance use in all city government offices.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.4,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Zero-tolerance law",
+     "reason": "The candidate now frames the *method* as a strict policy.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The candidate shifts focus from a desired quality of judgment to proposing a formal policy.",
+   "feedback_deep": "The goal is clarity (sobriety), but the method proposed is a mandatory policy (abstinence).",
+   "contrast_rule": "Method vs. State.",
+   "hint": "Does the candidate describe the end goal or the new law?"
+  },
+  {
+   "id": "sobriety-abstinence_007",
+   "domain": "media",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the article focuses on: ___.",
+   "beats": [
+    {
+     "text": "The article discusses the importance of staying clear-headed to make better long-term decisions.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Staying clear-headed",
+     "reason": "Focus on the quality of the state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    },
+    {
+     "text": "It highlights how avoiding substances completely is essential for that state of mind.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.8,
+      "abstinence": 0.4
+     },
+     "decisive_clue": "State of mind",
+     "reason": "Again, the focus remains on the state of mind, not a policy.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The article consistently focuses on the desired mental state, regardless of the method mentioned.",
+   "feedback_deep": "The focus is on the state of mental clarity (sobriety), making it the consistent answer.",
+   "contrast_rule": "Consistent focus on state.",
+   "hint": "Is the article promoting a rule or a state of mind?"
+  },
+  {
+   "id": "sobriety-abstinence_008",
+   "domain": "art",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the artist's focus is: ___.",
+   "beats": [
+    {
+     "text": "The artist paints subjects in a state of pure mental lucidity.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.1
+     },
+     "decisive_clue": "Mental lucidity",
+     "reason": "Focus on state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M3"
+     }
+    },
+    {
+     "text": "The series is titled 'The Policy of Refusal', exploring the choice to ignore all intoxicants.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.2,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Policy of Refusal",
+     "reason": "The title shifts to an explicit policy.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifts from the mental state to the explicit policy of refusing all substances.",
+   "feedback_deep": "The first beat focuses on the artist's portrayal of mental lucidity (sobriety), the second on an explicit policy (abstinence).",
+   "contrast_rule": "State vs. Policy.",
+   "hint": "Does the artist's title change the focus from state to policy?"
+  },
+  {
+   "id": "sobriety-abstinence_009",
+   "domain": "environment",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "What the researcher's goal is: ___.",
+   "beats": [
+    {
+     "text": "The researcher studies how to keep clear-headed in extreme environments.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Keep clear-headed",
+     "reason": "Goal is mental state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    },
+    {
+     "text": "Specifically, he looks at how the complete removal of all distracting factors leads to better focus.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.8,
+      "abstinence": 0.5
+     },
+     "decisive_clue": "Clear-headed (implied)",
+     "reason": "The goal remains the state of clarity, the removal of distractions is just the means.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The goal is clarity, not the specific policy of avoiding things.",
+   "feedback_deep": "The focus remains on the researcher's goal (sobriety), not the strategy (abstinence).",
+   "contrast_rule": "Goal vs. Strategy.",
+   "hint": "Does the researcher care more about the method or the clarity?"
+  },
+  {
+   "id": "sobriety-abstinence_011",
+   "domain": "dialogue",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What Leo's stance is: ___.",
+   "beats": [
+    {
+     "text": "Leo said: 'I just need to stay completely clear-headed for this interview.'",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.1
+     },
+     "decisive_clue": "Stay completely clear-headed",
+     "reason": "Focus on state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    },
+    {
+     "text": "He added: 'I haven't had a drink in years because I value that feeling of control.'",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Feeling of control",
+     "reason": "He emphasizes the state, not the avoidance.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Leo explicitly links his avoidance to the feeling of control he values.",
+   "feedback_deep": "Leo values the state of control (sobriety), making it the focus.",
+   "contrast_rule": "Consistent focus on state.",
+   "hint": "Does Leo value the avoidance itself or the feeling of control?"
+  },
+  {
+   "id": "sobriety-abstinence_012",
+   "domain": "gaming",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the gamer's requirement is: ___.",
+   "beats": [
+    {
+     "text": "To win, the gamer must stay fully alert and focused on the screen.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.1
+     },
+     "decisive_clue": "Fully alert",
+     "reason": "Focus on state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    },
+    {
+     "text": "The tournament rules mandate complete removal of all outside substances from the gaming stations.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.2,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Tournament rules mandate",
+     "reason": "The tournament now shifts to a policy-based rule.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifted from the gamer's required mental state to a formal tournament policy.",
+   "feedback_deep": "The gamer's state (sobriety) is key in the first beat; the second introduces a mandatory policy (abstinence).",
+   "contrast_rule": "State vs. Policy.",
+   "hint": "Does the requirement come from the gamer's needs or the tournament's rules?"
+  },
+  {
+   "id": "sobriety-abstinence_013",
+   "domain": "household",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the household rule is: ___.",
+   "beats": [
+    {
+     "text": "We decided as a family that no alcohol should be kept in the house.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.3,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Decided as a family",
+     "reason": "It's a policy/rule.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M2"
+     }
+    },
+    {
+     "text": "This rule helps us all avoid temptation and focus on our shared goals.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.2,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "This rule helps us",
+     "reason": "It's a policy rule.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M2"
+     }
+    }
+   ],
+   "feedback_short": "A deliberate family rule to avoid something is a policy, not a state of being.",
+   "feedback_deep": "The family has set a formal policy (abstinence) of avoidance.",
+   "contrast_rule": "Policy.",
+   "hint": "Is this an optional state or a set policy?"
+  },
+  {
+   "id": "sobriety-abstinence_014",
+   "domain": "public",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "What the public announcement is: ___.",
+   "beats": [
+    {
+     "text": "The city announced a new campaign to promote safety on public roads.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.5,
+      "abstinence": 0.7
+     },
+     "decisive_clue": "Campaign to promote",
+     "reason": "A campaign implies a policy/strategy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M3"
+     }
+    },
+    {
+     "text": "The campaign explicitly urges all drivers to commit to a total refusal of substances before driving.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.3,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Total refusal",
+     "reason": "Refusal is the action of avoidance, making it an abstinence policy.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M3"
+     }
+    }
+   ],
+   "feedback_short": "A public campaign promoting total refusal of substances is a policy of abstinence.",
+   "feedback_deep": "The campaign is a strategy of avoidance (abstinence), not a state of being (sobriety).",
+   "contrast_rule": "Policy vs. State.",
+   "hint": "Does the campaign urge a state of mind or a formal refusal?"
+  },
+  {
+   "id": "sobriety-abstinence_016",
+   "domain": "rehabilitate",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 4,
+   "frame": "What the person's life choice is: ___.",
+   "beats": [
+    {
+     "text": "People wrongly assumed he was forced into a strict policy of avoidance.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.3,
+      "abstinence": 0.7
+     },
+     "decisive_clue": "Policy of avoidance",
+     "reason": "Assumed policy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M2"
+     }
+    },
+    {
+     "text": "But he revealed it was just his natural, clear-headed way of living that he genuinely loved.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Clear-headed way of living",
+     "reason": "The focus is his preferred state, not the avoidance policy people assumed.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The revelation shows he prefers the mental state of clarity, not just adherence to a rule.",
+   "feedback_deep": "The initial assumption of a forced policy (abstinence) is corrected by his preference for clarity (sobriety).",
+   "contrast_rule": "Assumed Policy vs. Genuine State.",
+   "hint": "Does he love the rule or the mental state?"
+  },
+  {
+   "id": "sobriety-abstinence_017",
+   "domain": "sports",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the athlete's strategy is: ___.",
+   "beats": [
+    {
+     "text": "The athlete pledged a total refusal of substances to maintain peak performance.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.4,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Pledged a total refusal",
+     "reason": "It's a policy/rule.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M2"
+     }
+    },
+    {
+     "text": "This commitment to avoidance has been his strategy throughout his career.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.2,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Commitment to avoidance",
+     "reason": "It remains a policy/strategy.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The athlete's consistent strategy is one of complete avoidance, which is a policy of abstinence.",
+   "feedback_deep": "The commitment to avoidance is a policy (abstinence), not a state of being (sobriety).",
+   "contrast_rule": "Policy vs. State.",
+   "hint": "Is it a policy or a mental state?"
+  },
+  {
+   "id": "sobriety-abstinence_018",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the hotel policy is: ___.",
+   "beats": [
+    {
+     "text": "The hotel promotes a state of calm and clarity for all guests in their spa.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.8,
+      "abstinence": 0.3
+     },
+     "decisive_clue": "State of calm and clarity",
+     "reason": "Focus on state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M1"
+     }
+    },
+    {
+     "text": "To ensure this, they enforce a strict rule that no alcohol is served in the entire resort.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.2,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Strict rule",
+     "reason": "They now explicitly define the resort's policy.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifted from the guest's mental state to the resort's formal policy.",
+   "feedback_deep": "First beat focuses on the state of clarity (sobriety), the second on a strict resort policy (abstinence).",
+   "contrast_rule": "State vs. Policy.",
+   "hint": "Is the resort talking about a guest's state of mind or its resort rule?"
+  },
+  {
+   "id": "sobriety-abstinence_019",
+   "domain": "fashion",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the trend is: ___.",
+   "beats": [
+    {
+     "text": "The new trend celebrates a look that conveys clean, refined simplicity.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.9,
+      "abstinence": 0.1
+     },
+     "decisive_clue": "Clean, refined simplicity",
+     "reason": "Focus on aesthetic state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M2"
+     }
+    },
+    {
+     "text": "It rejects cluttered or excessive patterns for this focused aesthetic.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.8,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Focused aesthetic",
+     "reason": "It describes the aesthetic state.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The focus remains on the aesthetic state of clarity and simplicity.",
+   "feedback_deep": "The aesthetic is one of clarity and focus (sobriety), not a policy of refusal (abstinence).",
+   "contrast_rule": "Aesthetic state.",
+   "hint": "Does this describe a policy or an aesthetic state?"
+  },
+  {
+   "id": "sobriety-abstinence_020",
+   "domain": "technology",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the software's design goal is: ___.",
+   "beats": [
+    {
+     "text": "The software is designed to keep the user's interface clean and uncluttered.",
+     "best_word": "sobriety",
+     "fit": {
+      "sobriety": 0.8,
+      "abstinence": 0.2
+     },
+     "decisive_clue": "Clean and uncluttered",
+     "reason": "Focus on interface state.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abstinence": "M3"
+     }
+    },
+    {
+     "text": "To achieve this, the developer mandated that no third-party plugins can ever be installed.",
+     "best_word": "abstinence",
+     "fit": {
+      "sobriety": 0.2,
+      "abstinence": 0.9
+     },
+     "decisive_clue": "Mandated that no third-party plugins",
+     "reason": "The developer shifts to an explicit policy.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "sobriety": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifted from the interface's state to a mandatory developer policy.",
+   "feedback_deep": "First beat focuses on the state of the interface (sobriety), the second on a mandatory development policy (abstinence).",
+   "contrast_rule": "State vs. Policy.",
+   "hint": "Is the design goal talking about the interface's state or a mandated rule?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

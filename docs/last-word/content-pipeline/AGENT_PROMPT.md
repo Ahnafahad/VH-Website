@@ -1,0 +1,20 @@
+# Prompt for the next agent (no content generation)
+
+Copy everything below the line.
+
+---
+
+Take over **Last Word** in `Ahnafahad/VH-Website` on branch `claude/relaxed-goodall-ioky1j`. Preserve the handwritten-essay and print-desk work already on the branch. Read, in order: `docs/last-word-complete-game-design.md` (all of it; MVP §48, acceptance §§50-51, key rules §53), `docs/last-word/handover/README.md`, `docs/last-word/content-pipeline/README.md`, `docs/last-word/HANDOFF.md`, `docs/agent-stack/README.md`. Check the branch head and run the verification commands in the handover README before editing; its results are dated, not guaranteed.
+
+**You cannot generate or edit linguistic content.** You must not write, rewrite, "fix" or invent chains, beats, definitions, fit scores, feedback or hints, call any LLM to do so, or run `run-gen.mjs`, `hermes-draft.mjs` or `loop.sh`. Content generation and the Gemini audit are done elsewhere by the owner. Everything else is yours, and all of it is blocking the game:
+
+1. **Content adapter.** Write a deterministic converter and tests from the pipeline format (`docs/last-word/content-pipeline/sets-audited/*.json`) to the strict runtime schema in `src/features/last-word/content/schema.ts`. Where a runtime field has no pipeline source, derive it by a documented mechanical rule or report it as a gap for the owner; never invent wording. Write converted sets under `content/last-word/sets/` only if they validate; otherwise list exactly which fields block each set.
+2. **Validation tooling.** Add `last-word:validate-content` (schema check, duplicate ids, `best_word` equals top `fit`, flip/stay/false-shift consistency, answer balance, target-word leakage, near-duplicate chains, count limits) and `content/last-word/README.md` with an example and editorial checklist. Port `problems()` from `scripts/run-gen.mjs` into a standalone, unit-tested module; keep its behaviour and add cases. Report violations; do not auto-fix wording.
+3. **Promotion workflow.** Code-level gating so only audited, human-approved sets reach players; unaudited drafts (`drafts-unaudited/`) must be impossible to load in production. Document the review status flow.
+4. **Learning core.** Audit `src/features/last-word/core/` against §§8, 13-14, 21, 32-38, 43, 48, 50-53; add thorough unit tests (stay / flip / false-shift, best / acceptable / incorrect, diagnostic skip, hints, mastery and edge scores, review scheduling, confidence). Fix logic bugs; game outcomes must never depend on animation timing.
+5. **Game MVP.** Launch/set flow, adaptive session, recap, basic mastery map, XState + Zustand wiring, persistence (`/api/last-word/progress`: auth, idempotency, validation), then the premium but accessible shallow-3D presentation (R3F / Drei / React Spring / Use Gesture / Motion / Howler per `docs/agent-stack/`). Full / Standard / Lite and reduced-motion / keyboard paths must give identical learning outcomes. Test with the fixtures and the converted audited sets.
+6. **Tests.** Meaningful Vitest and Playwright coverage, including touch/drag, disabled-WebGL fallback and mobile viewports.
+7. **Database (read-only).** Review `drizzle/0005_last_word.sql` against the merged schema; test on a disposable DB only. Never run `drizzle-kit push`, apply the migration to production, publish draft words, or touch `vocab_word_contrasts`. If credentials are unavailable, say so.
+8. **Docs.** Update the handover with decisions, exact verification output and limits. Add `docs/last-word/DECISIONS.md` and a final report. Do not call the checkpoint complete until §§50-51 are verified.
+
+Rules: small reviewable commits on this branch; fetch and merge first, never force-push; no secrets, caches or build artifacts in Git; run `npm ci`, `npm run typecheck`, `npm test`, `npm run lint`, `npm run test:stack`, `npm run build`. Push, then report the commit URL, what passed, what content work the owner still has to do (generation and audit of the remaining ~496 flippable pairs, human approval), and any blocked item.

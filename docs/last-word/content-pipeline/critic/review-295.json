@@ -1,0 +1,368 @@
+[
+  {
+    "chain_id": "eccentric-eclectic_001",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_002",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_003",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_004",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_005",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_006",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_007",
+    "verdict": "REVISE",
+    "issue": "Beat 1 describes an eclectic mix (battlements, dome, glass), violating rule 1.",
+    "revised_chain": {
+      "id": "eccentric-eclectic_007",
+      "domain": "architecture",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "The architectural style of the new university library is: ___",
+      "beats": [
+        {
+          "text": "The new university library features an aggressively chaotic exterior of jagged, asymmetrical walls and irregularly curved roofs that defy all conventional structural norms.",
+          "best_word": "eccentric",
+          "fit": {
+            "eccentric": 0.88,
+            "eclectic": 0.12
+          },
+          "decisive_clue": "chaotic, rule-breaking structural design departing from conventional norms",
+          "reason": "The jarring, rule-defying silhouette appears to be a bizarre, idiosyncratic personal design choice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eclectic": "M1"
+          }
+        },
+        {
+          "text": "The blueprint reveals that this complex silhouette deliberately integrates and reproduces three distinct historical masterworks: Ottoman domes, Bauhaus glass facades, and medieval English ramparts.",
+          "best_word": "eclectic",
+          "fit": {
+            "eccentric": 0.18,
+            "eclectic": 0.82
+          },
+          "decisive_clue": "deliberate integration of Ottoman, Bauhaus, and medieval English architectural traditions",
+          "reason": "The structure is not a random personal oddity, but a multi-sourced synthesis of established global styles.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eccentric": "M1"
+          }
+        },
+        {
+          "text": "The campus handbook confirms that the architect sought to create a structural dialogue between distinct historical traditions across three continents.",
+          "best_word": "eclectic",
+          "fit": {
+            "eccentric": 0.1,
+            "eclectic": 0.9
+          },
+          "decisive_clue": "curated cross-continental dialogue among historical design traditions",
+          "reason": "The deliberate integration of varied historical schools firmly establishes its multi-sourced nature.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eccentric": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Revealing the deliberate integration of Ottoman, Bauhaus, and medieval traditions flips the building's style to eclectic.",
+      "feedback_deep": "What initially looks like an eccentric, chaotic design becomes eclectic once understood as a deliberate synthesis of diverse external traditions. The Ottoman, Bauhaus, and English elements represent curated sources rather than personal whim.",
+      "contrast_rule": "Eccentric is odd departure from convention; eclectic is synthesis from diverse traditions.",
+      "hint": "Watch how learning the origins of the architectural components reframes the building's design."
+    }
+  },
+  {
+    "chain_id": "eccentric-eclectic_008",
+    "verdict": "REJECT",
+    "issue": "Fake flip: moving from visual approach on screen to crew wardrobe on set.",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_009",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_010",
+    "verdict": "REVISE",
+    "issue": "Physically implausible to perfectly merge art styles by painting blindfolded.",
+    "revised_chain": {
+      "id": "eccentric-eclectic_010",
+      "domain": "visual_art",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "Marco's approach to sculptural design is: ___",
+      "beats": [
+        {
+          "text": "Marco's new sculpture garden combines ancient Roman marble columns, intricate Chinese jade carvings, and welded American industrial steel.",
+          "best_word": "eclectic",
+          "fit": {
+            "eccentric": 0.15,
+            "eclectic": 0.85
+          },
+          "decisive_clue": "combining Roman, Chinese, and American industrial artistic elements",
+          "reason": "The garden deliberately combines aesthetic elements from widely disparate artistic traditions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eccentric": "M1"
+          }
+        },
+        {
+          "text": "He admits he has no interest in these cultures; he only gathered the items to perfectly map the constellation Orion because he believes he was born there.",
+          "best_word": "eccentric",
+          "fit": {
+            "eccentric": 0.81,
+            "eclectic": 0.19
+          },
+          "decisive_clue": "arranging items solely to map a constellation based on a bizarre personal belief",
+          "reason": "His decisions are governed by idiosyncratic personal nonconformity rather than curated multi-cultural synthesis.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eclectic": "M1"
+          }
+        },
+        {
+          "text": "He refuses to let visitors view the garden unless they hop on one foot and hum at a specific frequency to avoid disturbing the stones' energy.",
+          "best_word": "eccentric",
+          "fit": {
+            "eccentric": 0.93,
+            "eclectic": 0.07
+          },
+          "decisive_clue": "forcing visitors to hop and hum due to superstitious beliefs",
+          "reason": "His behavior reflects bizarre private superstitions rather than diverse cross-cultural curation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eclectic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Arranging the objects to map a constellation based on a bizarre belief flips Marco's approach to eccentric.",
+      "feedback_deep": "While the statues appear to be an eclectic curation of global traditions, learning that Marco selected them solely for a bizarre personal ritual regarding his cosmic origins reveals his true approach is eccentric.",
+      "contrast_rule": "Eclectic draws from varied traditions; eccentric reflects bizarre personal rituals.",
+      "hint": "Pay attention to the peculiar physical rituals behind his painting method."
+    }
+  },
+  {
+    "chain_id": "eccentric-eclectic_011",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_012",
+    "verdict": "REJECT",
+    "issue": "Absurd logic: packing a knife and bento box does not help one sleep inside a zipper.",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_013",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_014",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_015",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_016",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_017",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_018",
+    "verdict": "REVISE",
+    "issue": "Absurd physical constraint: postcards and salt cannot match the shape of an earlobe.",
+    "revised_chain": {
+      "id": "eccentric-eclectic_018",
+      "domain": "relationships",
+      "transfer": true,
+      "chain_type": "reframe",
+      "difficulty": 3,
+      "frame": "Dev's gift-giving approach to his friends is: ___",
+      "beats": [
+        {
+          "text": "For his friends' birthdays, Dev presents carefully selected music boxes: one playing French cabaret, another Nigerian highlife, and a third playing classical Indian ragas.",
+          "best_word": "eclectic",
+          "fit": {
+            "eccentric": 0.15,
+            "eclectic": 0.85
+          },
+          "decisive_clue": "curating musical gifts from French, Nigerian, and Indian traditions",
+          "reason": "The gifts appear to be a deliberate, diverse curation of global musical cultures.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eccentric": "M1"
+          }
+        },
+        {
+          "text": "He admits he ignores the music completely, buying them solely because he compulsively dismantles them to count their internal gears as a daily ritual.",
+          "best_word": "eccentric",
+          "fit": {
+            "eccentric": 0.86,
+            "eclectic": 0.14
+          },
+          "decisive_clue": "dismantling the gifts for a bizarre daily counting ritual",
+          "reason": "His selection is driven not by cross-cultural appreciation, but by a peculiar personal obsession with counting gears.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eclectic": "M1"
+          }
+        },
+        {
+          "text": "He then requires his friends to accept the dismantled gears in an airtight jar while whistling a single continuous note to ward off bad luck.",
+          "best_word": "eccentric",
+          "fit": {
+            "eccentric": 0.96,
+            "eclectic": 0.04
+          },
+          "decisive_clue": "forcing friends to accept gears in jars while whistling to ward off bad luck",
+          "reason": "The elaborate superstitious delivery confirms his approach is deeply idiosyncratic and nonconformist.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eclectic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Buying the boxes solely to dismantle them for a counting ritual reframes Dev's approach as eccentric.",
+      "feedback_deep": "While the musical origins initially suggested an eclectic appreciation of global cultures, learning that Dev only cares about feeding his bizarre gear-counting obsession reframes his gift-giving as purely eccentric.",
+      "contrast_rule": "Eclectic reflects broad multi-source curation; eccentric reflects peculiar personal fixations.",
+      "hint": "Look at the strange private obsession that actually dictates which gifts he selects."
+    }
+  },
+  {
+    "chain_id": "eccentric-eclectic_019",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  },
+  {
+    "chain_id": "eccentric-eclectic_020",
+    "verdict": "PASS",
+    "issue": "",
+    "revised_chain": null
+  }
+]

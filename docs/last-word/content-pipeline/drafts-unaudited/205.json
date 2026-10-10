@@ -1,0 +1,1275 @@
+{
+ "set_id": "affable-amiable",
+ "source_pair_id": 205,
+ "words": [
+  {
+   "word": "affable",
+   "sense": "Interactional ease",
+   "concise_meaning": "Easy to talk to; pleasant and approachable in conversation.",
+   "connotation": "Positive, highlights social accessibility.",
+   "register": "Formal/Neutral",
+   "grammar": "Adjective",
+   "collocations": [
+    "affable manner",
+    "remain affable",
+    "always affable"
+   ],
+   "misconceptions": [
+    "Assumed to mean 'kind-hearted' in all situations."
+   ]
+  },
+  {
+   "word": "amiable",
+   "sense": "Dispositional warmth",
+   "concise_meaning": "Generally good-natured and pleasant; intrinsically kind-hearted.",
+   "connotation": "Positive, highlights inherent temperament.",
+   "register": "Formal/Neutral",
+   "grammar": "Adjective",
+   "collocations": [
+    "amiable disposition",
+    "truly amiable",
+    "amiable personality"
+   ],
+   "misconceptions": [
+    "Assumed to mean 'easily spoken to' in a professional setting."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "interactional_ease_vs_dispositional_warmth",
+   "description": "Does the word describe the ease of conversation (affable) or the inherent personality (amiable)?"
+  },
+  {
+   "id": "contextual_performance_vs_inherent_nature",
+   "description": "Is the person acting in a way that makes others comfortable (affable) or is the person inherently kind (amiable)?"
+  }
+ ],
+ "edge": {
+  "a": "affable",
+  "b": "amiable",
+  "boundary_rule": "Use affable for how someone facilitates conversation; use amiable for their overall pleasant personality.",
+  "clues_a": [
+   "talks easily",
+   "approachable",
+   "welcoming manner"
+  ],
+  "clues_b": [
+   "kind soul",
+   "good-natured",
+   "gentle disposition"
+  ],
+  "irrelevant_clues": [
+   "smiles often",
+   "speaks quietly"
+  ],
+  "misconceptions": {
+   "M1": "Confusing conversational skill for inherent kindness.",
+   "M2": "Confusing innate warmth for a specific social technique.",
+   "M3": "Ignoring the specific focus of the situation."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "affable": [
+    "The new manager was so affable that everyone felt comfortable approaching him with their concerns.",
+    "Even when busy, Sarah remained affable with all the customers at the counter.",
+    "His affable manner made the awkward meeting much easier to navigate.",
+    "I was surprised by how affable the famous director was during our brief chat.",
+    "An affable host ensures all guests feel included in the conversation.",
+    "They bonded quickly, thanks to his affable style of communicating."
+   ],
+   "amiable": [
+    "The grandmother was an amiable woman who always had a kind word for everyone.",
+    "Despite his high position, he possessed an amiable disposition that earned him loyalty.",
+    "She has an truly amiable personality that makes people feel at home around her.",
+    "He is an amiable soul, incapable of holding a grudge against anyone.",
+    "Their dog was surprisingly amiable, even with strangers.",
+    "It is rare to find someone with such an amiable and gentle nature."
+   ]
+  },
+  "counter": {
+   "affable": [
+    "She is inherently an amiable person, but she struggles to start conversations with strangers.",
+    "The professor is truly amiable, but his lectures are often intimidating.",
+    "While he is an amiable person at home, he is quite reserved in meetings.",
+    "Their cat is very amiable when it wants food.",
+    "The scientist is amiable but dislikes public speaking.",
+    "Her amiable heart is well-known, even if she is shy."
+   ],
+   "amiable": [
+    "The waiter was very affable, chatting with every table he visited.",
+    "He maintained an affable tone while rejecting my request.",
+    "The guide was affable and answered all our questions eagerly.",
+    "Even in the interview, she remained affable despite the tough questions.",
+    "He was affable, but I couldn't tell if he was genuinely kind.",
+    "She gave an affable smile to everyone walking by."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The candidate's approach was ___ during the entire debate.",
+    "best_word": "affable",
+    "note": "Focus is on the interactional style in a specific, social-like setting."
+   },
+   {
+    "text": "Her ___ character made her well-liked by all the staff.",
+    "best_word": "amiable",
+    "note": "Focus is on her character trait, not how she talks."
+   },
+   {
+    "text": "He managed to remain ___ while explaining the bad news.",
+    "best_word": "affable",
+    "note": "Focus is on his conversational technique to soften the blow."
+   },
+   {
+    "text": "The children loved their ___ tutor.",
+    "best_word": "amiable",
+    "note": "The feeling of the children comes from the tutor's inherent good nature."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "affable-amiable_001",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "How the boyfriend acted with my parents: ___",
+   "beats": [
+    {
+     "text": "He shook my father's hand and chatted easily about their hobbies.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.9,
+      "amiable": 0.5
+     },
+     "decisive_clue": "chatted easily",
+     "reason": "Describes conversational ease.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "He kept making jokes and ensured my mother was included in the talk.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.95,
+      "amiable": 0.4
+     },
+     "decisive_clue": "included in the talk",
+     "reason": "Continues conversational theme.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He focuses on conversational ease and approachability.",
+   "feedback_deep": "The focus is consistently on his ability to talk to and make the parents feel comfortable, which is the definition of affable.",
+   "contrast_rule": "Affable focuses on how they speak; amiable focuses on who they are.",
+   "hint": "Look at how he handles the conversation."
+  },
+  {
+   "id": "affable-amiable_002",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The teacher's nature is ___",
+   "beats": [
+    {
+     "text": "She always smiles and tries to understand students' personal struggles.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.4,
+      "amiable": 0.9
+     },
+     "decisive_clue": "understands personal struggles",
+     "reason": "Deep empathy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "She cares deeply about our well-being and is fundamentally gentle.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.3,
+      "amiable": 0.95
+     },
+     "decisive_clue": "fundamentally gentle",
+     "reason": "Innate character.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The focus is on her fundamental, gentle character.",
+   "feedback_deep": "Her goodness is an internal quality, not just a conversational tool. Amiable better captures this intrinsic nature.",
+   "contrast_rule": "Amiable = innate nature; Affable = interactional skill.",
+   "hint": "Is this about conversation or character?"
+  },
+  {
+   "id": "affable-amiable_003",
+   "domain": "business",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The CEO's manner is ___",
+   "beats": [
+    {
+     "text": "He listens intently to everyone's ideas in meetings.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.4
+     },
+     "decisive_clue": "listens intently",
+     "reason": "Interactional focus.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "He encourages all employees to stop by his office and talk anytime.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.9,
+      "amiable": 0.3
+     },
+     "decisive_clue": "talk anytime",
+     "reason": "Approachability.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He focuses on his openness to conversation.",
+   "feedback_deep": "His behavior is about creating an environment where people feel comfortable speaking to him.",
+   "contrast_rule": "Affable = open to talk; Amiable = good-natured.",
+   "hint": "Look at the focus on talking."
+  },
+  {
+   "id": "affable-amiable_004",
+   "domain": "community",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The elderly neighbor is ___",
+   "beats": [
+    {
+     "text": "She brings cookies to new neighbors just to welcome them.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.3,
+      "amiable": 0.9
+     },
+     "decisive_clue": "welcoming gesture",
+     "reason": "Good nature.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "Her natural kindness is what makes everyone adore her.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.2,
+      "amiable": 0.95
+     },
+     "decisive_clue": "natural kindness",
+     "reason": "Inherent trait.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Her actions stem from her natural kindness.",
+   "feedback_deep": "The key here is her 'natural kindness', which is a deep-seated personality trait.",
+   "contrast_rule": "Amiable = kindness; Affable = social ease.",
+   "hint": "What is the source of her behavior?"
+  },
+  {
+   "id": "affable-amiable_005",
+   "domain": "office",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The manager's communication is ___",
+   "beats": [
+    {
+     "text": "He always speaks clearly and kindly to team members.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.4
+     },
+     "decisive_clue": "speaks kindly",
+     "reason": "Interaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "He makes even the newest intern feel like they can chat with him freely.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.9,
+      "amiable": 0.3
+     },
+     "decisive_clue": "chat freely",
+     "reason": "Approachability.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "He focuses on his approachability.",
+   "feedback_deep": "The focus is on how he facilitates talk, not necessarily his inner nature.",
+   "contrast_rule": "Affable = easy to speak to; Amiable = pleasant nature.",
+   "hint": "Think about the act of chatting."
+  },
+  {
+   "id": "affable-amiable_006",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The team captain's response to defeat is ___",
+   "beats": [
+    {
+     "text": "He calmly talks to each player and boosts their confidence.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.4,
+      "amiable": 0.8
+     },
+     "decisive_clue": "boosts confidence",
+     "reason": "Good nature.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "His innate decency helps the team move on quickly.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.3,
+      "amiable": 0.9
+     },
+     "decisive_clue": "innate decency",
+     "reason": "Deep quality.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "His kindness stems from his innate decency.",
+   "feedback_deep": "His ability to help the team stems from his deep good-nature (amiability) rather than a mere conversational technique (affability).",
+   "contrast_rule": "Amiable = inherent trait; Affable = interactional style.",
+   "hint": "What is the source of his calming effect?"
+  },
+  {
+   "id": "affable-amiable_008",
+   "domain": "counseling",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The counselor's demeanor is ___",
+   "beats": [
+    {
+     "text": "She has a genuinely warm heart and truly cares for her clients.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.4,
+      "amiable": 0.9
+     },
+     "decisive_clue": "genuinely warm heart",
+     "reason": "Inherent trait.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "In group sessions, she perfectly facilitates dialogue so that even the shyest people feel safe to speak freely.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.6
+     },
+     "decisive_clue": "facilitates dialogue",
+     "reason": "Interactional ease.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifts from her heart to her conversational facilitation.",
+   "feedback_deep": "The flip happens because the context moves from her inherent goodness to her specific ability to manage and ease group communication.",
+   "contrast_rule": "Amiable = inherent nature; Affable = facilitation skill.",
+   "hint": "What is the specific action she is performing now?"
+  },
+  {
+   "id": "affable-amiable_009",
+   "domain": "mentoring",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The mentor's style is ___",
+   "beats": [
+    {
+     "text": "She makes every newcomer feel immediately at ease with her friendly chatter.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.9,
+      "amiable": 0.4
+     },
+     "decisive_clue": "friendly chatter",
+     "reason": "Interaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "Actually, it's not just a style; she truly loves people and dedicates her free time to their growth.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.4,
+      "amiable": 0.95
+     },
+     "decisive_clue": "truly loves people",
+     "reason": "Inherent nature.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifts from her chatter to her inherent love for people.",
+   "feedback_deep": "While she is affable, the context reveals that her behavior is rooted in her deeply amiable (kind-hearted) personality.",
+   "contrast_rule": "Amiable = inherent warmth; Affable = conversational surface.",
+   "hint": "Is it just about talk, or her underlying drive?"
+  },
+  {
+   "id": "affable-amiable_010",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The candidate's public image is ___",
+   "beats": [
+    {
+     "text": "They are known for their gentle and compassionate nature towards everyone.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.3,
+      "amiable": 0.9
+     },
+     "decisive_clue": "compassionate nature",
+     "reason": "Good nature.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "But when the cameras are on, they change; they become incredibly skilled at talking to voters, making them seem like a lifelong friend.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.5
+     },
+     "decisive_clue": "skilled at talking",
+     "reason": "Performance.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifts from their nature to their performance.",
+   "feedback_deep": "The context contrasts their inherent nature (amiable) with their specific conversational performance (affability) for cameras.",
+   "contrast_rule": "Amiable = natural self; Affable = conversational persona.",
+   "hint": "What is the context now?"
+  },
+  {
+   "id": "affable-amiable_011",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The tour guide's behavior is ___",
+   "beats": [
+    {
+     "text": "She easily talks with all the tourists, answering every question with a pleasant tone.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.9,
+      "amiable": 0.4
+     },
+     "decisive_clue": "talks easily",
+     "reason": "Interaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "But it is more than just skills; she genuinely cares about making our experience memorable because she is a deeply kind-hearted person.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.4,
+      "amiable": 0.95
+     },
+     "decisive_clue": "genuinely cares / kind-hearted",
+     "reason": "Inherent trait.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifts from conversational skills to her kind nature.",
+   "feedback_deep": "While her talking skills make her affable, the context underscores that her actions are driven by her innate kind-heartedness (amiability).",
+   "contrast_rule": "Amiable = source trait; Affable = outward performance.",
+   "hint": "Does her behavior come from skills or nature?"
+  },
+  {
+   "id": "affable-amiable_012",
+   "domain": "parenting",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The father's attitude towards the kids is ___",
+   "beats": [
+    {
+     "text": "He has a soft, good-natured way of handling their tantrums.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.3,
+      "amiable": 0.9
+     },
+     "decisive_clue": "good-natured way",
+     "reason": "Inherent trait.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "He always talks to them, using simple words to explain everything until they are calm and smiling again.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.6
+     },
+     "decisive_clue": "talks to them",
+     "reason": "Conversational method.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The focus shifts from his nature to his conversational method.",
+   "feedback_deep": "The context shifts from his inherent good nature (amiability) to his specific technique of talking with them (affability).",
+   "contrast_rule": "Amiable = good nature; Affable = talking method.",
+   "hint": "What is the father actually doing?"
+  },
+  {
+   "id": "affable-amiable_013",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The club member's way of greeting new people is ___",
+   "beats": [
+    {
+     "text": "They always welcome new members with open arms.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.7,
+      "amiable": 0.7
+     },
+     "decisive_clue": "welcome new members",
+     "reason": "Interactional focus.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "They immediately start a conversation and make everyone feel comfortable.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.95,
+      "amiable": 0.3
+     },
+     "decisive_clue": "start a conversation",
+     "reason": "Conversational skill.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The focus narrows on their ability to facilitate conversation.",
+   "feedback_deep": "The initial ambiguity is cleared as the context explicitly focuses on their conversational facilitation skills.",
+   "contrast_rule": "Affable focuses on the facilitation of talk.",
+   "hint": "Look at the specific action now."
+  },
+  {
+   "id": "affable-amiable_014",
+   "domain": "medical",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The nurse's general personality is ___",
+   "beats": [
+    {
+     "text": "They always seem to have a positive outlook on life.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.4,
+      "amiable": 0.8
+     },
+     "decisive_clue": "positive outlook",
+     "reason": "Disposition.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "They are fundamentally good-natured and genuinely kind to everyone.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.2,
+      "amiable": 0.95
+     },
+     "decisive_clue": "fundamentally good-natured",
+     "reason": "Inherent trait.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The focus narrows on their fundamental, good-natured personality.",
+   "feedback_deep": "The context explicitly narrows the focus to their inherent personality, solidifying amiable as the better choice.",
+   "contrast_rule": "Amiable = fundamental disposition.",
+   "hint": "What is the focus of the description?"
+  },
+  {
+   "id": "affable-amiable_015",
+   "domain": "legal",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The judge's court demeanor is ___",
+   "beats": [
+    {
+     "text": "They speak politely, even to the most difficult defendants.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.4
+     },
+     "decisive_clue": "speak politely",
+     "reason": "Interactional method.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "They ensure everyone is able to talk freely and feels heard.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.9,
+      "amiable": 0.3
+     },
+     "decisive_clue": "ensure everyone can talk",
+     "reason": "Facilitation.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The focus narrows on their ability to facilitate open talk.",
+   "feedback_deep": "The context narrows the focus to their role in facilitating communication, emphasizing their affability.",
+   "contrast_rule": "Affable = conversational facilitation.",
+   "hint": "What is the judge enabling?"
+  },
+  {
+   "id": "affable-amiable_016",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 2,
+   "frame": "The roommate's way of solving household conflicts is ___",
+   "beats": [
+    {
+     "text": "They calmly talk through disagreements.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.4
+     },
+     "decisive_clue": "talk through disagreements",
+     "reason": "Interactional ease.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "They also always clean up after themselves, which is nice.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.75,
+      "amiable": 0.45
+     },
+     "decisive_clue": "none, just extra info",
+     "reason": "Extra info is irrelevant.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The cleaning info is extra; the focus remains on their communication.",
+   "feedback_deep": "The initial focus on communication (affability) is not altered by the extra info about cleaning; the best word remains the same.",
+   "contrast_rule": "Affable focuses on communication, regardless of other good traits.",
+   "hint": "Is the new info relevant to communication?"
+  },
+  {
+   "id": "affable-amiable_017",
+   "domain": "library",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 2,
+   "frame": "The librarian is ___",
+   "beats": [
+    {
+     "text": "They chat with every student about their interests.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.4
+     },
+     "decisive_clue": "chat with every student",
+     "reason": "Interaction.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "They also have a very extensive knowledge of classic literature.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.75,
+      "amiable": 0.3
+     },
+     "decisive_clue": "none, extra info",
+     "reason": "Knowledge is irrelevant.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Knowledge of literature is irrelevant; the focus remains on chatting.",
+   "feedback_deep": "The extra information about their knowledge does not change the core observation of their conversational style.",
+   "contrast_rule": "Affable focuses on the act of chatting.",
+   "hint": "Does knowledge change how they chat?"
+  },
+  {
+   "id": "affable-amiable_018",
+   "domain": "cooking",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The chef's relationship with the kitchen staff is ___",
+   "beats": [
+    {
+     "text": "They explain tasks clearly and kindly.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.4
+     },
+     "decisive_clue": "explain clearly",
+     "reason": "Interactional ease.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "Actually, it is not just kindness; it is their profound respect for their team's well-being that defines their leadership.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.3,
+      "amiable": 0.9
+     },
+     "decisive_clue": "respect for team's well-being",
+     "reason": "Inherent nature.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The focus reframes from clear communication to their inherent respect for others.",
+   "feedback_deep": "The context reframes the chef's actions from simple clear communication to a deep-seated respect for their team, favoring amiable.",
+   "contrast_rule": "Amiable = respect for well-being; Affable = clear communication.",
+   "hint": "What is the *real* reason behind their actions?"
+  },
+  {
+   "id": "affable-amiable_019",
+   "domain": "music",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The band leader's attitude is ___",
+   "beats": [
+    {
+     "text": "They are genuinely good-natured and supportive of all members.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.4,
+      "amiable": 0.9
+     },
+     "decisive_clue": "good-natured and supportive",
+     "reason": "Inherent trait.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M1"
+     }
+    },
+    {
+     "text": "Wait, I just noticed that they only do this when the cameras are on for the documentary; in practice, they are quite harsh and selfish.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.5,
+      "amiable": 0.1
+     },
+     "decisive_clue": "only when cameras are on",
+     "reason": "Performance.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M3"
+     }
+    }
+   ],
+   "feedback_short": "The observation is corrupted; they are only *performing* good nature.",
+   "feedback_deep": "The initial observation of amiability is corrupted as we learn it is just a camera-focused performance, making affable the only remaining descriptor for that specific interaction.",
+   "contrast_rule": "Affable = performative; Amiable = genuine.",
+   "hint": "Is their behavior genuine?"
+  },
+  {
+   "id": "affable-amiable_020",
+   "domain": "public",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 2,
+   "frame": "The public speaker's rapport with the audience is ___",
+   "beats": [
+    {
+     "text": "They smile and speak directly to people, making everyone feel special.",
+     "best_word": "affable",
+     "fit": {
+      "affable": 0.8,
+      "amiable": 0.4
+     },
+     "decisive_clue": "speak directly to people",
+     "reason": "Interactional ease.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "amiable": "M1"
+     }
+    },
+    {
+     "text": "They are not just good at talking; their genuine warmth really shines through and connects us all.",
+     "best_word": "amiable",
+     "fit": {
+      "affable": 0.5,
+      "amiable": 0.9
+     },
+     "decisive_clue": "genuine warmth",
+     "reason": "Inherent nature.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "affable": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The speaker's warmth is inherent, not just a speaking technique.",
+   "feedback_deep": "The precision here is to distinguish between their conversational skill (affability) and their genuine warmth (amiability).",
+   "contrast_rule": "Amiable = warmth; Affable = conversational ease.",
+   "hint": "Is it just about talking well?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

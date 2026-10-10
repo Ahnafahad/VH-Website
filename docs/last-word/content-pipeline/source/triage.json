@@ -1,0 +1,4442 @@
+[
+  {
+    "id": 1,
+    "flippable": true,
+    "reason": "Both describe oppressive governance; autocratic centers rule in one individual."
+  },
+  {
+    "id": 2,
+    "flippable": true,
+    "reason": "Both force action; coerce requires threats, compel can be circumstance."
+  },
+  {
+    "id": 3,
+    "flippable": true,
+    "reason": "Both describe domination; imperialism involves direct conquest or territorial control."
+  },
+  {
+    "id": 4,
+    "flippable": true,
+    "reason": "Both describe commanding demeanor; imperious adds arrogant, overbearing condescension."
+  },
+  {
+    "id": 5,
+    "flippable": false,
+    "reason": "Unrelated meanings; martial relates to war while marital relates to marriage."
+  },
+  {
+    "id": 6,
+    "flippable": true,
+    "reason": "Both calm opposition; appease implies making concessions, pacify implies restoring calm."
+  },
+  {
+    "id": 7,
+    "flippable": true,
+    "reason": "Both describe enduring difficulty; prevail specifies achieving final victory."
+  },
+  {
+    "id": 8,
+    "flippable": false,
+    "reason": "Unrelated opposites; proscribe means to ban, prescribe means to recommend."
+  },
+  {
+    "id": 9,
+    "flippable": true,
+    "reason": "Both place someone lower; subjugate requires forceful conquest or oppression."
+  },
+  {
+    "id": 10,
+    "flippable": true,
+    "reason": "Both remove authority; usurp requires seizing the position for oneself."
+  },
+  {
+    "id": 11,
+    "flippable": false,
+    "reason": "Unrelated meanings; aristocratic denotes nobility, autocratic denotes absolute rule."
+  },
+  {
+    "id": 12,
+    "flippable": false,
+    "reason": "Different grammatical forms; bourgeois is an adjective, bourgeoisie a collective noun."
+  },
+  {
+    "id": 13,
+    "flippable": true,
+    "reason": "Both describe inhabitants; citizen requires formal legal political membership."
+  },
+  {
+    "id": 14,
+    "flippable": true,
+    "reason": "Both describe mild manners; genteel implies refined social decorum."
+  },
+  {
+    "id": 15,
+    "flippable": false,
+    "reason": "Different concepts; hierarchy is general ranking, patriarchy is male rule."
+  },
+  {
+    "id": 16,
+    "flippable": false,
+    "reason": "Unrelated paronyms; indigenous means native, indigent means extremely poor."
+  },
+  {
+    "id": 17,
+    "flippable": true,
+    "reason": "Both describe lower classes; proletarian specifically denotes wage-earning laborers."
+  },
+  {
+    "id": 18,
+    "flippable": true,
+    "reason": "Both name common classes; proletariat specifically denotes industrial wage workers."
+  },
+  {
+    "id": 19,
+    "flippable": false,
+    "reason": "Differs only in grammatical number; stratum is singular, strata plural."
+  },
+  {
+    "id": 20,
+    "flippable": true,
+    "reason": "Both mean relinquishing office; abdicate applies specifically to sovereign power."
+  },
+  {
+    "id": 21,
+    "flippable": false,
+    "reason": "Different concepts; ascent is a climb, ascendancy is dominant control."
+  },
+  {
+    "id": 22,
+    "flippable": false,
+    "reason": "Unrelated paronyms; consecrate means make sacred, concentrate means focus attention."
+  },
+  {
+    "id": 23,
+    "flippable": true,
+    "reason": "Both describe political overthrows; revolutions involve broad popular transformation."
+  },
+  {
+    "id": 24,
+    "flippable": true,
+    "reason": "Both describe ending; culminate implies reaching a crowning climax."
+  },
+  {
+    "id": 25,
+    "flippable": true,
+    "reason": "Both mean beginning an endeavor; inaugurate requires a formal ceremony."
+  },
+  {
+    "id": 26,
+    "flippable": true,
+    "reason": "Both describe past inheritances; heritage emphasizes shared cultural traditions."
+  },
+  {
+    "id": 27,
+    "flippable": false,
+    "reason": "Unrelated homophones; marshal means assemble, martial relates to warfare."
+  },
+  {
+    "id": 28,
+    "flippable": true,
+    "reason": "Both describe distinguished figures; preeminent specifies surpassing all others."
+  },
+  {
+    "id": 29,
+    "flippable": true,
+    "reason": "Both stop an outcome; preempt specifically stops it by acting first."
+  },
+  {
+    "id": 30,
+    "flippable": true,
+    "reason": "Both mean spreading ideas; promulgate implies formal, authoritative public proclamation."
+  },
+  {
+    "id": 31,
+    "flippable": true,
+    "reason": "Both describe disorder; anarchy specifically stems from absent government authority."
+  },
+  {
+    "id": 32,
+    "flippable": true,
+    "reason": "Both describe deep divisions; schism specifically denotes a formal split."
+  },
+  {
+    "id": 33,
+    "flippable": false,
+    "reason": "Unrelated paronyms; faction is a political group, fraction a portion."
+  },
+  {
+    "id": 34,
+    "flippable": true,
+    "reason": "Both describe brewing agitation; foment implies active, deliberate outside instigation."
+  },
+  {
+    "id": 35,
+    "flippable": true,
+    "reason": "Both describe armed fighters; terrorists specifically target civilians with violence."
+  },
+  {
+    "id": 36,
+    "flippable": true,
+    "reason": "Both describe suffering harm; martyrs knowingly suffer for a cause."
+  },
+  {
+    "id": 37,
+    "flippable": true,
+    "reason": "Both describe contentious division; politicize specifically injects partisan politics."
+  },
+  {
+    "id": 38,
+    "flippable": true,
+    "reason": "Both describe central narrative figures; hero requires admirable moral virtue."
+  },
+  {
+    "id": 39,
+    "flippable": true,
+    "reason": "Both describe unwillingness; recalcitrant implies obstinate, defiant resistance to authority."
+  },
+  {
+    "id": 40,
+    "flippable": true,
+    "reason": "Both involve anti-state actions; treason requires direct betrayal aiding enemies."
+  },
+  {
+    "id": 41,
+    "flippable": true,
+    "reason": "Both threaten authority; seditious specifically incites active public rebellion."
+  },
+  {
+    "id": 42,
+    "flippable": true,
+    "reason": "Both critique modern commerce; consumerism targets buying culture, capitalism economic structure."
+  },
+  {
+    "id": 43,
+    "flippable": true,
+    "reason": "Both relate to doctrine; doctrinaire implies rigid, impractical adherence."
+  },
+  {
+    "id": 44,
+    "flippable": false,
+    "reason": "Unrelated traits; dogmatic means rigidly opinionated, dogged means stubbornly determined."
+  },
+  {
+    "id": 45,
+    "flippable": true,
+    "reason": "Both describe fairness; egalitarian demands strict equality, equitable allows fairness."
+  },
+  {
+    "id": 46,
+    "flippable": false,
+    "reason": "Unrelated meanings; espouse means support a cause, expose means reveal."
+  },
+  {
+    "id": 47,
+    "flippable": true,
+    "reason": "Both describe belief systems; ideology implies a rigid political framework."
+  },
+  {
+    "id": 48,
+    "flippable": true,
+    "reason": "Both declare political policies; manifesto is ideological, platform is pragmatic."
+  },
+  {
+    "id": 49,
+    "flippable": true,
+    "reason": "Both are verbal attacks; polemic is reasoned, diatribe an angry rant."
+  },
+  {
+    "id": 50,
+    "flippable": false,
+    "reason": "Direct antonyms; proponent supports a position while opponent opposes it."
+  },
+  {
+    "id": 51,
+    "flippable": false,
+    "reason": "Unrelated paronyms; tenet is a core belief, tenant a renter."
+  },
+  {
+    "id": 52,
+    "flippable": true,
+    "reason": "Both describe scheduled plans; itinerary details travel routes, agenda lists business."
+  },
+  {
+    "id": 53,
+    "flippable": false,
+    "reason": "Unrelated paronyms; artifice is cunning deception, artifact a human-made object."
+  },
+  {
+    "id": 54,
+    "flippable": false,
+    "reason": "Unrelated homophones; clique is an exclusive group, click a sound."
+  },
+  {
+    "id": 55,
+    "flippable": false,
+    "reason": "Unrelated paronyms; collusion is secret conspiracy, collision a physical crash."
+  },
+  {
+    "id": 56,
+    "flippable": true,
+    "reason": "Both involve criminal involvement; conspiracy requires an active secret agreement."
+  },
+  {
+    "id": 57,
+    "flippable": true,
+    "reason": "Both involve concealment; furtive implies sneaky, guilty physical behavior."
+  },
+  {
+    "id": 58,
+    "flippable": true,
+    "reason": "Both describe harmful actions; insidious is stealthily destructive, invidious provokes resentment."
+  },
+  {
+    "id": 59,
+    "flippable": true,
+    "reason": "Both denote deceitful plotting; machination emphasizes intricate, crafty scheming."
+  },
+  {
+    "id": 60,
+    "flippable": false,
+    "reason": "Unrelated meanings; proprietary relates to ownership, propriety to proper decorum."
+  },
+  {
+    "id": 61,
+    "flippable": false,
+    "reason": "Unrelated paronyms; surreptitious means secretive, superstitious relates to supernatural beliefs."
+  },
+  {
+    "id": 62,
+    "flippable": true,
+    "reason": "Both describe sharp speech; acerbic implies cutting wit, acrimonious bitter anger."
+  },
+  {
+    "id": 63,
+    "flippable": true,
+    "reason": "Both describe shameless acts; blatant emphasizes conspicuousness, brazen audacious defiance."
+  },
+  {
+    "id": 64,
+    "flippable": false,
+    "reason": "Unrelated paronyms; castigate means severely reprimand, castrate means surgically desex."
+  },
+  {
+    "id": 65,
+    "flippable": false,
+    "reason": "Unrelated paronyms; culpable means deserving blame, capable means possessing ability."
+  },
+  {
+    "id": 66,
+    "flippable": true,
+    "reason": "Both address culpability; exonerate completely clears blame, extenuate lessens severity."
+  },
+  {
+    "id": 67,
+    "flippable": false,
+    "reason": "Unrelated paronyms; flagrant means glaringly offensive, fragrant means pleasantly scented."
+  },
+  {
+    "id": 68,
+    "flippable": true,
+    "reason": "Both describe public disgrace; infamy emphasizes lasting historical notoriety."
+  },
+  {
+    "id": 69,
+    "flippable": true,
+    "reason": "Both mean widely known; famous has positive connotation, infamous notorious."
+  },
+  {
+    "id": 70,
+    "flippable": true,
+    "reason": "Both describe well-known figures; notorious implies widespread notoriety for bad deeds."
+  },
+  {
+    "id": 71,
+    "flippable": true,
+    "reason": "Both generalize groups; stigmatize specifically attaches social disgrace and shame."
+  },
+  {
+    "id": 72,
+    "flippable": false,
+    "reason": "Unrelated meanings; adherent is a follower, inherent describes an intrinsic quality."
+  },
+  {
+    "id": 73,
+    "flippable": true,
+    "reason": "Both mean persuading someone; cajole uses flattery, coerce uses threats."
+  },
+  {
+    "id": 74,
+    "flippable": false,
+    "reason": "Unrelated paronyms; deference means respectful submission, difference means distinction."
+  },
+  {
+    "id": 75,
+    "flippable": true,
+    "reason": "Both describe theoretical existence; nominal exists in name only, notional conceptually."
+  },
+  {
+    "id": 76,
+    "flippable": false,
+    "reason": "Describes opposite dynamics: fawning subservience versus petty, intrusive authority."
+  },
+  {
+    "id": 77,
+    "flippable": false,
+    "reason": "Contrasts domineering meddlesomeness with servile, fawning deference."
+  },
+  {
+    "id": 78,
+    "flippable": false,
+    "reason": "Reprove reprimands a person, while disprove refutes a claim."
+  },
+  {
+    "id": 79,
+    "flippable": true,
+    "reason": "Both describe property seizure, differing in legal legitimacy and motive."
+  },
+  {
+    "id": 80,
+    "flippable": false,
+    "reason": "Autonomous means self-governing, whereas anonymous means unnamed or unidentified."
+  },
+  {
+    "id": 81,
+    "flippable": false,
+    "reason": "Bureaucracy describes administrative hierarchy, whereas democracy describes rule by citizens."
+  },
+  {
+    "id": 82,
+    "flippable": false,
+    "reason": "Curtail means restricting, while entail means requiring or involving inevitably."
+  },
+  {
+    "id": 83,
+    "flippable": false,
+    "reason": "Magnate is a wealthy tycoon, while magnet is an attracting object."
+  },
+  {
+    "id": 84,
+    "flippable": true,
+    "reason": "Both describe corrupt favoritism, differing by family versus social ties."
+  },
+  {
+    "id": 85,
+    "flippable": true,
+    "reason": "Both describe protective care, differing in specific fatherly versus general parenting."
+  },
+  {
+    "id": 86,
+    "flippable": false,
+    "reason": "Different parts of speech: patriarch is a noun, patriarchal an adjective."
+  },
+  {
+    "id": 87,
+    "flippable": false,
+    "reason": "Peremptory describes an imperious manner; preemptive describes timing to forestall threats."
+  },
+  {
+    "id": 88,
+    "flippable": false,
+    "reason": "A prerequisite is a required condition; a perquisite is an extra benefit."
+  },
+  {
+    "id": 89,
+    "flippable": true,
+    "reason": "Both describe elite privileges, differing between official rights and material benefits."
+  },
+  {
+    "id": 90,
+    "flippable": true,
+    "reason": "Both represent another party, differing in personal substitution versus official delegation."
+  },
+  {
+    "id": 91,
+    "flippable": false,
+    "reason": "Affluent means wealthy, while effluent means discharged liquid waste."
+  },
+  {
+    "id": 92,
+    "flippable": false,
+    "reason": "Amenity is a convenient feature, whereas amnesty is an official pardon."
+  },
+  {
+    "id": 93,
+    "flippable": false,
+    "reason": "Different parts of speech: culinary is an adjective, cuisine a noun."
+  },
+  {
+    "id": 94,
+    "flippable": false,
+    "reason": "Decadent means morally self-indulgent, while decedent denotes a deceased person."
+  },
+  {
+    "id": 95,
+    "flippable": false,
+    "reason": "Sound-alikes: flaunt means showing off assets; flout means defying rules."
+  },
+  {
+    "id": 96,
+    "flippable": true,
+    "reason": "Both describe immense scale, differing in majestic elegance versus pompous absurdity."
+  },
+  {
+    "id": 97,
+    "flippable": false,
+    "reason": "Munificent describes generous giving, while magnificent describes general splendor and scale."
+  },
+  {
+    "id": 98,
+    "flippable": true,
+    "reason": "Both describe wealth, differing in sheer prosperity versus lavish luxury."
+  },
+  {
+    "id": 99,
+    "flippable": true,
+    "reason": "Both describe showy behavior, differing in flashy display versus phony sophistication."
+  },
+  {
+    "id": 100,
+    "flippable": true,
+    "reason": "Both describe financial health, differing in overall balance versus available cash."
+  },
+  {
+    "id": 101,
+    "flippable": false,
+    "reason": "Dejected describes downcast sadness, while abject describes utter wretchedness or degradation."
+  },
+  {
+    "id": 102,
+    "flippable": true,
+    "reason": "Both describe illicit desire, differing in pure greed versus resentful comparison."
+  },
+  {
+    "id": 103,
+    "flippable": true,
+    "reason": "Both involve wanting another's advantage, differing in desire versus personal resentment."
+  },
+  {
+    "id": 104,
+    "flippable": false,
+    "reason": "Dearth means scarcity, while death means the termination of life."
+  },
+  {
+    "id": 105,
+    "flippable": false,
+    "reason": "Glut is an oversupply of goods, while gluttony is personal overconsumption."
+  },
+  {
+    "id": 106,
+    "flippable": true,
+    "reason": "Both describe unfulfilled desire, differing in whether satisfaction is permanently impossible."
+  },
+  {
+    "id": 107,
+    "flippable": false,
+    "reason": "Mercantile relates to commercial trade, while mercenary denotes ruthless financial greed."
+  },
+  {
+    "id": 108,
+    "flippable": true,
+    "reason": "Both describe severe deficiency, differing in quantity shortage versus deep deprivation."
+  },
+  {
+    "id": 109,
+    "flippable": false,
+    "reason": "Ravenous describes biological hunger, whereas rapacious describes predatory, plundering greed."
+  },
+  {
+    "id": 110,
+    "flippable": true,
+    "reason": "Both describe lavish spending, differing in pleasurable indulgence versus reckless waste."
+  },
+  {
+    "id": 111,
+    "flippable": false,
+    "reason": "Abysmal means extraordinarily bad; abyssal relates to ocean depths."
+  },
+  {
+    "id": 112,
+    "flippable": false,
+    "reason": "Destitute means completely impoverished; desolate describes bleak emptiness or sorrow."
+  },
+  {
+    "id": 113,
+    "flippable": false,
+    "reason": "Indigent means impoverished, whereas indigenous means native to a region."
+  },
+  {
+    "id": 114,
+    "flippable": false,
+    "reason": "Mendicant denotes a beggar, whereas mendacious means dishonest or deceitful."
+  },
+  {
+    "id": 115,
+    "flippable": false,
+    "reason": "Paltry means petty or meager, while poultry refers to domesticated birds."
+  },
+  {
+    "id": 116,
+    "flippable": true,
+    "reason": "Both describe degraded conditions, differing in physical filth versus moral sleaziness."
+  },
+  {
+    "id": 117,
+    "flippable": true,
+    "reason": "Both describe economic trouble, differing in flat growth versus active contraction."
+  },
+  {
+    "id": 118,
+    "flippable": true,
+    "reason": "Both lack systematic rules, differing in human caprice versus chance distribution."
+  },
+  {
+    "id": 119,
+    "flippable": false,
+    "reason": "Circumspect means cautious; circumscribed means externally restricted or bounded."
+  },
+  {
+    "id": 120,
+    "flippable": false,
+    "reason": "Merely singular and plural grammatical forms of the same word."
+  },
+  {
+    "id": 121,
+    "flippable": true,
+    "reason": "Both describe perceptive separation, differing in detecting clarity versus comparative differentiation."
+  },
+  {
+    "id": 122,
+    "flippable": true,
+    "reason": "Both describe perceptive evaluation, differing in comparative differentiation versus detecting subtle details."
+  },
+  {
+    "id": 123,
+    "flippable": true,
+    "reason": "Both describe fair distribution, differing in identical amounts versus customized fairness."
+  },
+  {
+    "id": 124,
+    "flippable": false,
+    "reason": "Exact means completely precise, while exacting means highly demanding or rigorous."
+  },
+  {
+    "id": 125,
+    "flippable": true,
+    "reason": "Both describe logical arguments, differing in mere clarity versus compelling persuasiveness."
+  },
+  {
+    "id": 126,
+    "flippable": true,
+    "reason": "Both describe extreme attention to detail, differing in diligence versus fussiness."
+  },
+  {
+    "id": 127,
+    "flippable": false,
+    "reason": "Judicious means wise and sensible; judicial relates to courts and judges."
+  },
+  {
+    "id": 128,
+    "flippable": true,
+    "reason": "Both describe mental clarity, differing in logical transparency versus sensory intensity."
+  },
+  {
+    "id": 129,
+    "flippable": false,
+    "reason": "Painstaking means extremely careful, whereas painful means causing distress or hurt."
+  },
+  {
+    "id": 130,
+    "flippable": false,
+    "reason": "Qualify limits or conditions a claim, whereas quantify measures numerical value."
+  },
+  {
+    "id": 131,
+    "flippable": false,
+    "reason": "Rigorous means strictly thorough, while vigorous means energetic and forceful."
+  },
+  {
+    "id": 132,
+    "flippable": false,
+    "reason": "Sagacious means wise and insightful, whereas salacious means lustful or lewd."
+  },
+  {
+    "id": 133,
+    "flippable": true,
+    "reason": "Both describe extreme thoroughness, differing in procedural precision versus moral integrity."
+  },
+  {
+    "id": 134,
+    "flippable": true,
+    "reason": "Both describe self-indulgent excess, differing in physical indulgence versus cultural decline."
+  },
+  {
+    "id": 135,
+    "flippable": false,
+    "reason": "Depravity means moral wickedness, whereas deprivation means lack of basic necessities."
+  },
+  {
+    "id": 136,
+    "flippable": false,
+    "reason": "Dissipate means to scatter or waste; disseminate means to broadcast information."
+  },
+  {
+    "id": 137,
+    "flippable": false,
+    "reason": "Different parts of speech: illicit is an adjective, elicit a verb."
+  },
+  {
+    "id": 138,
+    "flippable": true,
+    "reason": "Both describe professional wrongdoing, differing in negligent failure versus intentional misconduct."
+  },
+  {
+    "id": 139,
+    "flippable": true,
+    "reason": "Both describe bad actors, differing in inherent wickedness versus public infamy."
+  },
+  {
+    "id": 140,
+    "flippable": false,
+    "reason": "Perjury is legally lying under oath; perfidy is treachery and betrayal."
+  },
+  {
+    "id": 141,
+    "flippable": false,
+    "reason": "Profligate means recklessly wasteful, while prolific means highly productive or fruitful."
+  },
+  {
+    "id": 142,
+    "flippable": true,
+    "reason": "Both describe clearing from guilt, differing in legal verdict versus moral pardon."
+  },
+  {
+    "id": 143,
+    "flippable": true,
+    "reason": "Both address a problem, differing in degree between lessening and completely eradicating."
+  },
+  {
+    "id": 144,
+    "flippable": true,
+    "reason": "Both describe official mercy, differing in discretionary leniency versus blanket group pardon."
+  },
+  {
+    "id": 145,
+    "flippable": false,
+    "reason": "Direct antonyms: condone means tolerating wrongdoing, while condemn means denouncing it."
+  },
+  {
+    "id": 146,
+    "flippable": false,
+    "reason": "Contrite means deeply remorseful, whereas trite means overused or clich\u00e9."
+  },
+  {
+    "id": 147,
+    "flippable": true,
+    "reason": "Both describe gentle discipline, differing in reasonable leniency versus spoiling overindulgence."
+  },
+  {
+    "id": 148,
+    "flippable": true,
+    "reason": "Both describe making amends, differing in specific return versus broad compensatory damages."
+  },
+  {
+    "id": 149,
+    "flippable": true,
+    "reason": "Both describe temporary relief, differing in informal pause versus formal suspension of doom."
+  },
+  {
+    "id": 150,
+    "flippable": true,
+    "reason": "Both describe crossing boundaries, differing in physical property versus moral or legal rules."
+  },
+  {
+    "id": 151,
+    "flippable": false,
+    "reason": "Sound-alikes: shockingly immoral behavior versus lack of physical consciousness."
+  },
+  {
+    "id": 152,
+    "flippable": true,
+    "reason": "Differ in severity and formality when correcting someone's misconduct."
+  },
+  {
+    "id": 153,
+    "flippable": false,
+    "reason": "Sound-alikes: formal moral condemnation versus suppressing objectionable content."
+  },
+  {
+    "id": 154,
+    "flippable": true,
+    "reason": "Differ in outward punitive rebuke versus inward humbling through suffering."
+  },
+  {
+    "id": 155,
+    "flippable": false,
+    "reason": "Sound-alikes describing distinct acts: defying rules versus showing off possessions."
+  },
+  {
+    "id": 156,
+    "flippable": false,
+    "reason": "Distinct legal instruments: preventative court order versus formal criminal charge."
+  },
+  {
+    "id": 157,
+    "flippable": false,
+    "reason": "Sound-alikes: moral scolding of behavior versus rational refutation of claims."
+  },
+  {
+    "id": 158,
+    "flippable": true,
+    "reason": "Differ in personal hurt or disappointment versus authoritative correction of wrongdoing."
+  },
+  {
+    "id": 159,
+    "flippable": false,
+    "reason": "Sound-alikes: restriction or criticism versus framework of connected parts."
+  },
+  {
+    "id": 160,
+    "flippable": true,
+    "reason": "Differ in passive mild harmlessness versus active, philanthropic kindness."
+  },
+  {
+    "id": 161,
+    "flippable": false,
+    "reason": "Paronyms distinguishing polite or secular status from municipal civic duties."
+  },
+  {
+    "id": 162,
+    "flippable": false,
+    "reason": "Sound-alikes: social propriety of conduct versus ornamental visual appearance."
+  },
+  {
+    "id": 163,
+    "flippable": true,
+    "reason": "Differ in faultless execution standards versus spotless cleanliness and purity."
+  },
+  {
+    "id": 164,
+    "flippable": true,
+    "reason": "Differ in absence of harmful effect versus moral innocence and blamelessness."
+  },
+  {
+    "id": 165,
+    "flippable": false,
+    "reason": "Sound-alikes: noble generosity of spirit versus grand physical splendor."
+  },
+  {
+    "id": 166,
+    "flippable": true,
+    "reason": "Differ in untouched original state versus meticulously cleaned condition."
+  },
+  {
+    "id": 167,
+    "flippable": false,
+    "reason": "Sound-alikes: beneficial corrective lesson versus health-giving physical climate."
+  },
+  {
+    "id": 168,
+    "flippable": false,
+    "reason": "Sound-alikes: awe-inspiring grandeur versus perception below conscious awareness."
+  },
+  {
+    "id": 169,
+    "flippable": true,
+    "reason": "Differ in principled unyielding firmness versus unreasonable, pig-headed stubbornness."
+  },
+  {
+    "id": 170,
+    "flippable": false,
+    "reason": "Sound-alikes: unreformably bad behavior versus imperviousness to moral corruption."
+  },
+  {
+    "id": 171,
+    "flippable": false,
+    "reason": "Sound-alikes: stubborn personal inflexibility versus a grammatical verb property."
+  },
+  {
+    "id": 172,
+    "flippable": false,
+    "reason": "Sound-alikes: deeply established habit versus animal lacking a backbone."
+  },
+  {
+    "id": 173,
+    "flippable": false,
+    "reason": "Sound-alikes: unyielding constant persistence versus inability to relax or settle."
+  },
+  {
+    "id": 174,
+    "flippable": true,
+    "reason": "Differ in unwavering purposeful determination versus capacity to recover from adversity."
+  },
+  {
+    "id": 175,
+    "flippable": true,
+    "reason": "Differ in withstanding strain through strength versus dynamically recovering from disruption."
+  },
+  {
+    "id": 176,
+    "flippable": false,
+    "reason": "Sound-alikes and distinct parts of speech: steadfast loyalty versus stopping flow."
+  },
+  {
+    "id": 177,
+    "flippable": false,
+    "reason": "Sound-alikes: persistent clinging grip versus flimsy, weak, insubstantial connection."
+  },
+  {
+    "id": 178,
+    "flippable": true,
+    "reason": "Differ in brazen, rule-defying risk-taking versus noble bravery facing danger."
+  },
+  {
+    "id": 179,
+    "flippable": true,
+    "reason": "Differ in haughty contemptuous superiority versus visceral revulsion or moral outrage."
+  },
+  {
+    "id": 180,
+    "flippable": true,
+    "reason": "Differ in self-centered obliviousness to others versus boastful vanity and pride."
+  },
+  {
+    "id": 181,
+    "flippable": true,
+    "reason": "Differ in pathological grandiosity and entitlement versus superficial pride in appearance."
+  },
+  {
+    "id": 182,
+    "flippable": false,
+    "reason": "Sound-alikes: charming someone favorably versus making someone susceptible beforehand."
+  },
+  {
+    "id": 183,
+    "flippable": true,
+    "reason": "Differ in whining fretful complaints versus aggressive, confrontational argumentativeness."
+  },
+  {
+    "id": 184,
+    "flippable": true,
+    "reason": "Differ in grim, cynical mockery versus sharp, cutting personal irony."
+  },
+  {
+    "id": 185,
+    "flippable": true,
+    "reason": "Differ in aloof, disdainful haughtiness versus patronizing, talking-down superiority."
+  },
+  {
+    "id": 186,
+    "flippable": false,
+    "reason": "Antonyms and sound-alikes: reckless audacity versus fearful, hesitant shyness."
+  },
+  {
+    "id": 187,
+    "flippable": false,
+    "reason": "Sound-alikes: cheerful readiness and speed versus physical or mental nimbleness."
+  },
+  {
+    "id": 188,
+    "flippable": false,
+    "reason": "Sound-alikes: passionate emotional devotion versus strenuous, exhausting difficulty of tasks."
+  },
+  {
+    "id": 189,
+    "flippable": true,
+    "reason": "Differ in arbitrary whim-driven unpredictability versus rapid, volatile mood shifts."
+  },
+  {
+    "id": 190,
+    "flippable": true,
+    "reason": "Differ in hyperactive chaotic pace versus panic-driven, desperate rush."
+  },
+  {
+    "id": 191,
+    "flippable": false,
+    "reason": "Sound-alikes: rash hasty impulsiveness versus arrogant domineering command."
+  },
+  {
+    "id": 192,
+    "flippable": true,
+    "reason": "Differ in degree: explosive quick-tempered fury versus easily annoyed touchiness."
+  },
+  {
+    "id": 193,
+    "flippable": true,
+    "reason": "Differ in volatile mood shifts versus arbitrary, whim-driven unpredictability."
+  },
+  {
+    "id": 194,
+    "flippable": true,
+    "reason": "Differ in childish sulky pouting versus chronic, fretful irritability over trivialities."
+  },
+  {
+    "id": 195,
+    "flippable": true,
+    "reason": "Differ in deliberate emotional detachment versus anxious, timid social hesitation."
+  },
+  {
+    "id": 196,
+    "flippable": false,
+    "reason": "Sound-alikes: active hostility and dislike versus absence of feeling or interest."
+  },
+  {
+    "id": 197,
+    "flippable": false,
+    "reason": "Sound-alikes: shy lack of self-confidence versus unconcerned apathetic detachment."
+  },
+  {
+    "id": 198,
+    "flippable": false,
+    "reason": "Sound-alikes: mental composure under pressure versus complete group agreement."
+  },
+  {
+    "id": 199,
+    "flippable": true,
+    "reason": "Differ in uncaring, apathetic indifference versus impartial, unbiased objectivity."
+  },
+  {
+    "id": 200,
+    "flippable": false,
+    "reason": "Sound-alikes: solitary social withdrawal versus restricted access for select groups."
+  },
+  {
+    "id": 201,
+    "flippable": true,
+    "reason": "Differ in tight-lipped unwillingness to speak versus general reluctance to act."
+  },
+  {
+    "id": 202,
+    "flippable": true,
+    "reason": "Differ in disciplined fortitude under pain versus dull, impassive lack of feeling."
+  },
+  {
+    "id": 203,
+    "flippable": false,
+    "reason": "Describe different entities: unspoken agreements versus uncommunicative quiet persons."
+  },
+  {
+    "id": 204,
+    "flippable": false,
+    "reason": "Describe different entities: uncommunicative quiet persons versus unspoken implied agreements."
+  },
+  {
+    "id": 205,
+    "flippable": true,
+    "reason": "Differ in conversational approachability versus general good-natured, sweet-tempered disposition."
+  },
+  {
+    "id": 206,
+    "flippable": false,
+    "reason": "Describe different entities: sweet-tempered persons versus peaceable settlements or relations."
+  },
+  {
+    "id": 207,
+    "flippable": false,
+    "reason": "Describe different entities: diligent hardworking person versus difficult, exhausting task."
+  },
+  {
+    "id": 208,
+    "flippable": true,
+    "reason": "Differ in genial, indulgent uncle-like warmth versus authoritative, protective fatherliness."
+  },
+  {
+    "id": 209,
+    "flippable": true,
+    "reason": "Differ in delightful personal appeal versus magnetic, devotion-inspiring leadership aura."
+  },
+  {
+    "id": 210,
+    "flippable": false,
+    "reason": "Sound-alikes: pleasant, compatible disposition versus condition present from birth."
+  },
+  {
+    "id": 211,
+    "flippable": true,
+    "reason": "Differ in festive, lively sociability versus quiet, harmonious compatibility."
+  },
+  {
+    "id": 212,
+    "flippable": true,
+    "reason": "Differ in striving to equal greatness versus copying superficial traits."
+  },
+  {
+    "id": 213,
+    "flippable": false,
+    "reason": "Distinct kinship categories: brotherly peer relations versus fatherly parental authority."
+  },
+  {
+    "id": 214,
+    "flippable": false,
+    "reason": "Sound-alikes: outgoing love of company versus polite, courteous elegance."
+  },
+  {
+    "id": 215,
+    "flippable": false,
+    "reason": "Sound-alikes: sophisticated suave manners versus physical municipal city life."
+  },
+  {
+    "id": 216,
+    "flippable": true,
+    "reason": "Differ in natural sympathy and liking versus formal organizational membership."
+  },
+  {
+    "id": 217,
+    "flippable": true,
+    "reason": "Differ in complete cultural absorption versus full participation while retaining identity."
+  },
+  {
+    "id": 218,
+    "flippable": true,
+    "reason": "Differ in worldly multicultural sophistication versus big-city urban character."
+  },
+  {
+    "id": 219,
+    "flippable": false,
+    "reason": "Directional opposites: leaving one's country versus entering another to settle."
+  },
+  {
+    "id": 220,
+    "flippable": true,
+    "reason": "Differ in temporary/elite residence abroad versus permanent resettlement in another country."
+  },
+  {
+    "id": 221,
+    "flippable": true,
+    "reason": "Differ in natural outgoing psychological temperament versus prominent high-society status."
+  },
+  {
+    "id": 222,
+    "flippable": false,
+    "reason": "Directional opposites: entering a foreign country versus leaving one's own."
+  },
+  {
+    "id": 223,
+    "flippable": true,
+    "reason": "Differ in sharp practical judgment versus innate capacity to learn."
+  },
+  {
+    "id": 224,
+    "flippable": true,
+    "reason": "Differ in keen, sharp perception versus shrewd, practically advantageous insight."
+  },
+  {
+    "id": 225,
+    "flippable": true,
+    "reason": "Differ in nimble resourcefulness under pressure versus thorough proficient mastery."
+  },
+  {
+    "id": 226,
+    "flippable": false,
+    "reason": "Aptitude is inherent ability, while attitude is a mental disposition."
+  },
+  {
+    "id": 227,
+    "flippable": true,
+    "reason": "Both describe mental sharpness; astute adds practical shrewdness and advantage."
+  },
+  {
+    "id": 228,
+    "flippable": true,
+    "reason": "Dexterous describes manual skill; ambidextrous specifies equal ability in both hands."
+  },
+  {
+    "id": 229,
+    "flippable": true,
+    "reason": "Both describe impressive speakers; erudite requires scholarship, articulate requires clear expression."
+  },
+  {
+    "id": 230,
+    "flippable": true,
+    "reason": "Both describe forceful executive action; incisive penetrates issues, decisive settles them."
+  },
+  {
+    "id": 231,
+    "flippable": true,
+    "reason": "Proficient highlights acquired competence; efficient emphasizes minimizing wasted time and effort."
+  },
+  {
+    "id": 232,
+    "flippable": true,
+    "reason": "Both describe insensitive behavior; callow stems from immaturity, callous from cruelty."
+  },
+  {
+    "id": 233,
+    "flippable": true,
+    "reason": "Cursory emphasizes haste; perfunctory emphasizes indifferent compliance with duty."
+  },
+  {
+    "id": 234,
+    "flippable": true,
+    "reason": "Amateur denotes unpaid dedication; dilettante implies superficial, unfocused dabbling."
+  },
+  {
+    "id": 235,
+    "flippable": true,
+    "reason": "Facile implies glib superficial ease; simplistic implies crude oversimplification of complexity."
+  },
+  {
+    "id": 236,
+    "flippable": false,
+    "reason": "Gauche describes social awkwardness; gaudy describes excessively flashy visual appearance."
+  },
+  {
+    "id": 237,
+    "flippable": true,
+    "reason": "Eloquent means persuasively fluent; grandiloquent means pompously and pretentiously ornate."
+  },
+  {
+    "id": 238,
+    "flippable": false,
+    "reason": "Gratuitous means unwarranted or unprovoked; grateful means feeling thankful."
+  },
+  {
+    "id": 239,
+    "flippable": true,
+    "reason": "Inept means unskilled or clumsy; inapt means unsuitable for the situation."
+  },
+  {
+    "id": 240,
+    "flippable": false,
+    "reason": "Pedantic describes petty rule-obsession; pedagogical relates to methods of teaching."
+  },
+  {
+    "id": 241,
+    "flippable": true,
+    "reason": "Perfunctory implies indifferent routine compliance; cursory implies a hurried, rushed examination."
+  },
+  {
+    "id": 242,
+    "flippable": false,
+    "reason": "Superficial describes lack of depth; superfluous describes unnecessary excess."
+  },
+  {
+    "id": 243,
+    "flippable": true,
+    "reason": "Anxiety concerns future uncertainty; anguish reflects acute suffering over present loss."
+  },
+  {
+    "id": 244,
+    "flippable": false,
+    "reason": "Apprehensive means anxious; comprehensive means thoroughly covering all aspects."
+  },
+  {
+    "id": 245,
+    "flippable": true,
+    "reason": "Bereaved specifies loss through death; bereft applies to any profound deprivation."
+  },
+  {
+    "id": 246,
+    "flippable": true,
+    "reason": "Beset implies persistent harassment; besieged implies an active, coordinated external encirclement."
+  },
+  {
+    "id": 247,
+    "flippable": true,
+    "reason": "Daunt intimidates the spirit; deter successfully stops an action from occurring."
+  },
+  {
+    "id": 248,
+    "flippable": true,
+    "reason": "Despondent denotes situational loss of hope; depressed denotes deeper, chronic melancholy."
+  },
+  {
+    "id": 249,
+    "flippable": true,
+    "reason": "Lament expresses grief over misfortune; repent acknowledges personal moral guilt."
+  },
+  {
+    "id": 250,
+    "flippable": false,
+    "reason": "Lugubrious means mournfully gloomy; luxurious means comfortably elegant and opulent."
+  },
+  {
+    "id": 251,
+    "flippable": false,
+    "reason": "Morose describes sullen gloom; morbid describes an unhealthy fixation on death."
+  },
+  {
+    "id": 252,
+    "flippable": false,
+    "reason": "Plaintive is an adjective; plaintiff is a noun; different parts of speech."
+  },
+  {
+    "id": 253,
+    "flippable": false,
+    "reason": "Auspicious means promising success; suspicious means arousing or feeling distrust."
+  },
+  {
+    "id": 254,
+    "flippable": true,
+    "reason": "Blithe reflects cheerful unconcern; blas\u00e9 reflects jaded indifference from overexposure."
+  },
+  {
+    "id": 255,
+    "flippable": false,
+    "reason": "Exult means to rejoice triumphantly; exalt means to praise or elevate."
+  },
+  {
+    "id": 256,
+    "flippable": false,
+    "reason": "Felicity means happiness or eloquence; facility means an installation or aptitude."
+  },
+  {
+    "id": 257,
+    "flippable": true,
+    "reason": "Levity lightens tension with humor; frivolity is useless, inappropriate silliness."
+  },
+  {
+    "id": 258,
+    "flippable": false,
+    "reason": "Propitious describes favorable conditions; prosperous describes achieved wealth and flourishing."
+  },
+  {
+    "id": 259,
+    "flippable": true,
+    "reason": "Coincidence is neutral chance occurrence; serendipity produces unexpected fortunate discoveries."
+  },
+  {
+    "id": 260,
+    "flippable": false,
+    "reason": "Abhor describes deep emotional hatred; abjure describes formally renouncing a belief."
+  },
+  {
+    "id": 261,
+    "flippable": false,
+    "reason": "Acrid describes irritating, choking pungency; acidic describes sourness or chemical acidity."
+  },
+  {
+    "id": 262,
+    "flippable": false,
+    "reason": "Animosity means active hostility; anonymity means being nameless or unidentifiable."
+  },
+  {
+    "id": 263,
+    "flippable": false,
+    "reason": "Beleaguer means to beset with troubles; belabour means to over-explain excessively."
+  },
+  {
+    "id": 264,
+    "flippable": true,
+    "reason": "Indolent stems from chronic laziness; insolent stems from deliberate disrespect toward authority."
+  },
+  {
+    "id": 265,
+    "flippable": false,
+    "reason": "Rancour is a noun; rancid is an adjective; different parts of speech."
+  },
+  {
+    "id": 266,
+    "flippable": false,
+    "reason": "Reprisal is retaliatory punishment; reprieve is temporary postponement of punishment."
+  },
+  {
+    "id": 267,
+    "flippable": false,
+    "reason": "Strife is a noun; strive is a verb; different parts of speech."
+  },
+  {
+    "id": 268,
+    "flippable": true,
+    "reason": "Apathy is total emotional indifference; antipathy is active hostility and dislike."
+  },
+  {
+    "id": 269,
+    "flippable": true,
+    "reason": "Compliant means obedient to authority; complacent means smugly self-satisfied and unconcerned."
+  },
+  {
+    "id": 270,
+    "flippable": false,
+    "reason": "Enervate means to drain energy; energize means to give energy; direct antonyms."
+  },
+  {
+    "id": 271,
+    "flippable": true,
+    "reason": "Indolent reflects chronic laziness; insolent reflects defiant, active disrespect toward authority."
+  },
+  {
+    "id": 272,
+    "flippable": false,
+    "reason": "Languish is a verb; languid is an adjective; different parts of speech."
+  },
+  {
+    "id": 273,
+    "flippable": true,
+    "reason": "Lethargy is physical or mental exhaustion; apathy is emotional and motivational indifference."
+  },
+  {
+    "id": 274,
+    "flippable": true,
+    "reason": "Traditional implies historical cultural heritage; conventional implies adherence to standard contemporary norms."
+  },
+  {
+    "id": 275,
+    "flippable": true,
+    "reason": "Cursory implies hurried superficiality; desultory implies unfocused, aimless, and half-hearted execution."
+  },
+  {
+    "id": 276,
+    "flippable": true,
+    "reason": "Dormant implies suspended active state; latent implies present but unexpressed potential."
+  },
+  {
+    "id": 277,
+    "flippable": true,
+    "reason": "Malaise is vague, undefined unease; ennui is listless dissatisfaction caused by boredom."
+  },
+  {
+    "id": 278,
+    "flippable": false,
+    "reason": "Oblivion is a noun; oblivious is an adjective; different parts of speech."
+  },
+  {
+    "id": 279,
+    "flippable": true,
+    "reason": "Sloth is willful laziness; lethargy is involuntary physical or mental exhaustion."
+  },
+  {
+    "id": 280,
+    "flippable": true,
+    "reason": "Soporific describes inducing sleep; somnolent describes feeling drowsy or sleepy."
+  },
+  {
+    "id": 281,
+    "flippable": true,
+    "reason": "Stationary means physically unmoving; static means unchanging or undeveloped over time."
+  },
+  {
+    "id": 282,
+    "flippable": true,
+    "reason": "Torpor is sluggish metabolic inactivity; stupor is dazed, near-unconscious sensory impairment."
+  },
+  {
+    "id": 283,
+    "flippable": true,
+    "reason": "Abash causes momentary embarrassment; abase actively degrades someone's status or dignity."
+  },
+  {
+    "id": 284,
+    "flippable": true,
+    "reason": "Berate is angry, loud scolding; belittle diminishes someone's worth and importance."
+  },
+  {
+    "id": 285,
+    "flippable": true,
+    "reason": "Amused means entertained by humor; bemused means thoroughly bewildered or puzzled."
+  },
+  {
+    "id": 286,
+    "flippable": true,
+    "reason": "Catharsis is a dramatic emotional release; closure is final psychological resolution."
+  },
+  {
+    "id": 287,
+    "flippable": true,
+    "reason": "Chagrin is mortification over foolishness; shame is deep moral self-condemnation."
+  },
+  {
+    "id": 288,
+    "flippable": true,
+    "reason": "Deride uses contemptuous mockery; decry publicly condemns something as morally wrong."
+  },
+  {
+    "id": 289,
+    "flippable": false,
+    "reason": "Disparage is a verb; disparate is an adjective; different parts of speech."
+  },
+  {
+    "id": 290,
+    "flippable": true,
+    "reason": "Maudlin is tearfully over-sentimental; melancholy is deep, dignified, reflective sadness."
+  },
+  {
+    "id": 291,
+    "flippable": true,
+    "reason": "Mortify causes extreme humiliation; horrify causes intense shock, revulsion, or fear."
+  },
+  {
+    "id": 292,
+    "flippable": true,
+    "reason": "Reminiscence is recalling past events; nostalgia carries wistful, sentimental longing."
+  },
+  {
+    "id": 293,
+    "flippable": true,
+    "reason": "Pensive implies quiet, reflective contemplation; apprehensive implies anxious anticipation of trouble."
+  },
+  {
+    "id": 294,
+    "flippable": false,
+    "reason": "Poignant describes sharp emotional sorrow; pungent describes sharp physical smell or taste."
+  },
+  {
+    "id": 295,
+    "flippable": true,
+    "reason": "Eclectic denotes diverse curated sources; eccentric denotes unconventional, odd personal behavior."
+  },
+  {
+    "id": 296,
+    "flippable": true,
+    "reason": "Foible is a minor character weakness; idiosyncrasy is a neutral distinctive quirk."
+  },
+  {
+    "id": 297,
+    "flippable": true,
+    "reason": "Maverick pursues independent nonconformity; iconoclast actively attacks and destroys established beliefs."
+  },
+  {
+    "id": 298,
+    "flippable": true,
+    "reason": "Idiosyncrasy is a neutral quirk; foible is a minor character weakness."
+  },
+  {
+    "id": 299,
+    "flippable": true,
+    "reason": "Itinerant travels for seasonal work; nomadic follows a traditional wanderer lifestyle."
+  },
+  {
+    "id": 300,
+    "flippable": true,
+    "reason": "Maverick acts independently of convention; iconoclast aggressively attacks established dogmas."
+  },
+  {
+    "id": 301,
+    "flippable": true,
+    "reason": "Travel flips between informal wandering and structured circuit-based labor."
+  },
+  {
+    "id": 302,
+    "flippable": true,
+    "reason": "An inclination flips between cultivated personal taste and innate susceptibility."
+  },
+  {
+    "id": 303,
+    "flippable": true,
+    "reason": "A noble vision flips between principled ambition and foolish impracticality."
+  },
+  {
+    "id": 304,
+    "flippable": false,
+    "reason": "Unrelated meanings; one is a scoundrel, the other cosmetic makeup."
+  },
+  {
+    "id": 305,
+    "flippable": false,
+    "reason": "Unrelated concepts; one is numerical count, the other extraordinary uniqueness."
+  },
+  {
+    "id": 306,
+    "flippable": true,
+    "reason": "Action flips based on moral awareness versus knowingly violating standards."
+  },
+  {
+    "id": 307,
+    "flippable": true,
+    "reason": "Ethical philosophy flips between contextual morality and total rejection of morals."
+  },
+  {
+    "id": 308,
+    "flippable": false,
+    "reason": "Unrelated concepts; one concerns romantic love, the other lacks shape."
+  },
+  {
+    "id": 309,
+    "flippable": true,
+    "reason": "Doubt flips between questioning evidentiary proof and assuming corrupt motives."
+  },
+  {
+    "id": 310,
+    "flippable": false,
+    "reason": "Sound-alikes; one relates to survival, the other to necessity."
+  },
+  {
+    "id": 311,
+    "flippable": true,
+    "reason": "Inevitability flips between passive resignation to fate and causal determinism."
+  },
+  {
+    "id": 312,
+    "flippable": true,
+    "reason": "Pleasure-seeking flips between unrestrained indulgence and refined, moderate tranquility."
+  },
+  {
+    "id": 313,
+    "flippable": true,
+    "reason": "Attachment flips between blind shallow obsession and steadfast, loyal devotion."
+  },
+  {
+    "id": 314,
+    "flippable": true,
+    "reason": "Hostility flips depending on whether it targets everyone or women."
+  },
+  {
+    "id": 315,
+    "flippable": true,
+    "reason": "Disillusionment flips between denying all meaning and distrusting human motives."
+  },
+  {
+    "id": 316,
+    "flippable": true,
+    "reason": "An inclination flips between personal fondness and innate behavioral drive."
+  },
+  {
+    "id": 317,
+    "flippable": true,
+    "reason": "A tendency flips between an innate behavioral drive and chosen preference."
+  },
+  {
+    "id": 318,
+    "flippable": false,
+    "reason": "Unrelated concepts; one is direct opposition, the other emotional hostility."
+  },
+  {
+    "id": 319,
+    "flippable": false,
+    "reason": "Sound-alikes; one is a logical consequence, the other statistical association."
+  },
+  {
+    "id": 320,
+    "flippable": false,
+    "reason": "Unrelated actions; one confirms evidence, the other involves working jointly."
+  },
+  {
+    "id": 321,
+    "flippable": true,
+    "reason": "Reasoning flips based on general-to-specific versus specific-to-general direction."
+  },
+  {
+    "id": 322,
+    "flippable": true,
+    "reason": "Knowledge flips between systematic scientific data and subjective lived experience."
+  },
+  {
+    "id": 323,
+    "flippable": true,
+    "reason": "Estimation flips depending on whether the target lies within or beyond data."
+  },
+  {
+    "id": 324,
+    "flippable": true,
+    "reason": "An abstract scenario flips between an ad-hoc supposition and formal theory."
+  },
+  {
+    "id": 325,
+    "flippable": false,
+    "reason": "Opposite communication roles; the speaker implies while the listener infers."
+  },
+  {
+    "id": 326,
+    "flippable": true,
+    "reason": "A proposition flips between an untestable starting axiom and testable hypothesis."
+  },
+  {
+    "id": 327,
+    "flippable": true,
+    "reason": "A starting proposition flips between an accepted assumption and testable hypothesis."
+  },
+  {
+    "id": 328,
+    "flippable": false,
+    "reason": "Unrelated tasks; one combines disparate ideas, the other summarizes points."
+  },
+  {
+    "id": 329,
+    "flippable": true,
+    "reason": "An attitude flips between conflicting strong emotions and complete apathy."
+  },
+  {
+    "id": 330,
+    "flippable": true,
+    "reason": "An inappropriate remark flips between genuine foolishness and deliberate joking."
+  },
+  {
+    "id": 331,
+    "flippable": false,
+    "reason": "Sound-alikes describing different traits: empty silliness versus serious mental derangement."
+  },
+  {
+    "id": 332,
+    "flippable": false,
+    "reason": "Sound-alikes with opposite visibility: standing out as mismatched versus blending in."
+  },
+  {
+    "id": 333,
+    "flippable": true,
+    "reason": "Unclear language flips between formless vagueness and multiple distinct interpretations."
+  },
+  {
+    "id": 334,
+    "flippable": false,
+    "reason": "Apply to different targets: minds are obtuse, concepts are abstruse."
+  },
+  {
+    "id": 335,
+    "flippable": true,
+    "reason": "Recurring elements flip between frequent repetition and being completely superfluous."
+  },
+  {
+    "id": 336,
+    "flippable": true,
+    "reason": "Flawed logic flips between redundant definitional repetition and circular reasoning."
+  },
+  {
+    "id": 337,
+    "flippable": true,
+    "reason": "A pithy saying flips between a general observation and prescriptive rule."
+  },
+  {
+    "id": 338,
+    "flippable": true,
+    "reason": "A proposition flips between an assumed axiom and a proven theorem."
+  },
+  {
+    "id": 339,
+    "flippable": true,
+    "reason": "An authoritative statement flips between an opinion and a binding decree."
+  },
+  {
+    "id": 340,
+    "flippable": false,
+    "reason": "Different parts of speech; exemplify is a verb, exemplary an adjective."
+  },
+  {
+    "id": 341,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated concepts: a conduct rule versus upper limit."
+  },
+  {
+    "id": 342,
+    "flippable": true,
+    "reason": "A teacher flips between subject-specific instruction and broad personal guidance."
+  },
+  {
+    "id": 343,
+    "flippable": true,
+    "reason": "A recent creation flips between being merely recent and strikingly original."
+  },
+  {
+    "id": 344,
+    "flippable": false,
+    "reason": "Sound-alikes; a paradigm is a framework, a paragon an ideal."
+  },
+  {
+    "id": 345,
+    "flippable": false,
+    "reason": "Sound-alikes; a precept is a rule, a concept an idea."
+  },
+  {
+    "id": 346,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated qualities: prominent versus capable of feeling."
+  },
+  {
+    "id": 347,
+    "flippable": true,
+    "reason": "A landmark flips between marking developmental progress and setting quality standards."
+  },
+  {
+    "id": 348,
+    "flippable": false,
+    "reason": "Apply to different targets: concepts are abstruse, people are obtuse."
+  },
+  {
+    "id": 349,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated traits: secret knowledge versus historically outdated."
+  },
+  {
+    "id": 350,
+    "flippable": true,
+    "reason": "Obscurity flips between intentionally coded riddles and specialized esoteric knowledge."
+  },
+  {
+    "id": 351,
+    "flippable": true,
+    "reason": "A puzzle flips between an unfathomable mystery and a solvable dilemma."
+  },
+  {
+    "id": 352,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated traits: specialized knowledge versus foreign origin."
+  },
+  {
+    "id": 353,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated qualities: unaffected versus domineering and arrogant."
+  },
+  {
+    "id": 354,
+    "flippable": true,
+    "reason": "Inactive states flip between unexpressed hidden potential and suspended activity."
+  },
+  {
+    "id": 355,
+    "flippable": true,
+    "reason": "Rare artifacts flip between being completely superseded and merely little-known."
+  },
+  {
+    "id": 356,
+    "flippable": true,
+    "reason": "Visibility flips between completely blocking light or data and partial transmission."
+  },
+  {
+    "id": 357,
+    "flippable": false,
+    "reason": "Sound-alikes; a chronicle is a narrative history, a chronology a timeline."
+  },
+  {
+    "id": 358,
+    "flippable": false,
+    "reason": "Sound-alikes; cognitive relates to mental faculties, cognizant to factual awareness."
+  },
+  {
+    "id": 359,
+    "flippable": false,
+    "reason": "Sound-alikes; cognizant describes awareness, while cognitive describes mental processing."
+  },
+  {
+    "id": 360,
+    "flippable": true,
+    "reason": "A reference work flips between a concise compilation and exhaustive coverage."
+  },
+  {
+    "id": 361,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated attributes: all-inclusive coverage versus intelligibility."
+  },
+  {
+    "id": 362,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated attributes: thoroughness of scope versus physical tiredness."
+  },
+  {
+    "id": 363,
+    "flippable": false,
+    "reason": "Opposite educational milestones; matriculating is entering college, graduating is finishing."
+  },
+  {
+    "id": 364,
+    "flippable": true,
+    "reason": "Evaluation flips between numerical measurements and descriptive qualitative attributes."
+  },
+  {
+    "id": 365,
+    "flippable": true,
+    "reason": "Physical experiences flip between neutral sensory perception and luxurious bodily pleasure."
+  },
+  {
+    "id": 366,
+    "flippable": true,
+    "reason": "Consciousness flips between basic capacity to feel and higher rational intelligence."
+  },
+  {
+    "id": 367,
+    "flippable": true,
+    "reason": "An essential trait flips between inborn from birth and structurally inseparable."
+  },
+  {
+    "id": 368,
+    "flippable": true,
+    "reason": "A core trait flips between being biologically inborn and intrinsically inseparable."
+  },
+  {
+    "id": 369,
+    "flippable": true,
+    "reason": "Value flips between being worthwhile for itself and serving another end."
+  },
+  {
+    "id": 370,
+    "flippable": true,
+    "reason": "Solitude flips between seeking low stimulation and actively analyzing one's thoughts."
+  },
+  {
+    "id": 371,
+    "flippable": true,
+    "reason": "Unexciting work flips between ordinary everyday routine and low-status servile labor."
+  },
+  {
+    "id": 372,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated qualities: tangible or obvious versus acceptable to taste."
+  },
+  {
+    "id": 373,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated attributes: obviousness versus strength and power."
+  },
+  {
+    "id": 374,
+    "flippable": true,
+    "reason": "Reading behavior flips based on whether it is thorough or superficial."
+  },
+  {
+    "id": 375,
+    "flippable": true,
+    "reason": "Reflection flips between fond nostalgic recall and repetitive troubled brooding."
+  },
+  {
+    "id": 376,
+    "flippable": true,
+    "reason": "Both evaluate work, differing between careful examination and expressing disapproval."
+  },
+  {
+    "id": 377,
+    "flippable": true,
+    "reason": "Both describe perceptibility, differing between physically touchable and intensely felt."
+  },
+  {
+    "id": 378,
+    "flippable": true,
+    "reason": "Both describe finality, differing between unconditional totality and authoritative settlement."
+  },
+  {
+    "id": 379,
+    "flippable": true,
+    "reason": "Both describe complex ideas, differing between conceptual theory and impenetrable obscurity."
+  },
+  {
+    "id": 380,
+    "flippable": true,
+    "reason": "Both describe vagueness, differing between formless structure and multiple conflicting interpretations."
+  },
+  {
+    "id": 381,
+    "flippable": true,
+    "reason": "Both involve historical elements, differing between surviving relics and chronological misplacements."
+  },
+  {
+    "id": 382,
+    "flippable": true,
+    "reason": "Both describe broad tastes, differing between universal inclusion and selective borrowing."
+  },
+  {
+    "id": 383,
+    "flippable": true,
+    "reason": "Both describe illusions, differing between vanishing appearances and impossible fantasies."
+  },
+  {
+    "id": 384,
+    "flippable": true,
+    "reason": "Both describe certainty, differing between unambiguous precision and conclusive authority."
+  },
+  {
+    "id": 385,
+    "flippable": true,
+    "reason": "Both describe instruction, differing between exploratory dialogue and authoritative moralizing."
+  },
+  {
+    "id": 386,
+    "flippable": true,
+    "reason": "Both describe fixity, differing between unalterable nature and stubborn resistance."
+  },
+  {
+    "id": 387,
+    "flippable": true,
+    "reason": "Both analyze relationships, differing between side-by-side contrast and comparative evaluation."
+  },
+  {
+    "id": 388,
+    "flippable": true,
+    "reason": "Both describe logical conflicts, differing between sheer contradiction and paradoxical truth."
+  },
+  {
+    "id": 389,
+    "flippable": true,
+    "reason": "Both describe religious offenses, differing between unorthodox doctrine and contemptuous insult."
+  },
+  {
+    "id": 390,
+    "flippable": false,
+    "reason": "Unrelated meanings; conjure is magical summoning while conjecture is guessing."
+  },
+  {
+    "id": 391,
+    "flippable": true,
+    "reason": "Both describe religious dissent, differing between unorthodox beliefs and total renunciation."
+  },
+  {
+    "id": 392,
+    "flippable": true,
+    "reason": "Both describe supernatural appeals, differing between humble prayer and magical chant."
+  },
+  {
+    "id": 393,
+    "flippable": false,
+    "reason": "Irrevocable applies to unalterable decisions; irreparable applies to unfixable damage."
+  },
+  {
+    "id": 394,
+    "flippable": true,
+    "reason": "Both describe nonreligious matters, differing between worldly neutrality and disrespectful profanity."
+  },
+  {
+    "id": 395,
+    "flippable": true,
+    "reason": "Both describe declarations, differing between proud assertion and shameful admission."
+  },
+  {
+    "id": 396,
+    "flippable": true,
+    "reason": "Both involve changing beliefs, differing between preaching persuasion and successful conversion."
+  },
+  {
+    "id": 397,
+    "flippable": true,
+    "reason": "Both describe religious desecration, differing between verbal insult and physical violation."
+  },
+  {
+    "id": 398,
+    "flippable": false,
+    "reason": "Sacrosanct describes inviolable principles; sanctimonious describes hypocritically pious people."
+  },
+  {
+    "id": 399,
+    "flippable": false,
+    "reason": "Theology is studying religion; theocracy is government by religious rulers."
+  },
+  {
+    "id": 400,
+    "flippable": true,
+    "reason": "Both describe nonbelievers, differing between claiming knowledge is impossible and denying."
+  },
+  {
+    "id": 401,
+    "flippable": true,
+    "reason": "Both describe positions on deity, differing between actively disbelieving and unknowable."
+  },
+  {
+    "id": 402,
+    "flippable": true,
+    "reason": "Both describe interpreting meaning, differing between neutral understanding and mistaken distortion."
+  },
+  {
+    "id": 403,
+    "flippable": true,
+    "reason": "Both describe separation, differing between physical remoteness and narrow-minded detachment."
+  },
+  {
+    "id": 404,
+    "flippable": false,
+    "reason": "Provincial means narrow-minded; provisional means temporary subject to revision."
+  },
+  {
+    "id": 405,
+    "flippable": true,
+    "reason": "Both describe nonreligious positions, differing between institutional neutrality and active atheism."
+  },
+  {
+    "id": 406,
+    "flippable": true,
+    "reason": "Both describe auditory rhythm, differing between speech pace and melodic cadence."
+  },
+  {
+    "id": 407,
+    "flippable": true,
+    "reason": "Both describe talkative people, differing between chatty fluency and tedious rambling."
+  },
+  {
+    "id": 408,
+    "flippable": false,
+    "reason": "Histrionic means overly theatrical; historic means momentous in history."
+  },
+  {
+    "id": 409,
+    "flippable": true,
+    "reason": "Both describe figurative devices, differing between symbolic comparison and extreme exaggeration."
+  },
+  {
+    "id": 410,
+    "flippable": true,
+    "reason": "Both describe talkativeness, differing between lively chatter and tedious rambling."
+  },
+  {
+    "id": 411,
+    "flippable": true,
+    "reason": "Both describe pleasing sounds, differing between tuneful melody and sweet richness."
+  },
+  {
+    "id": 412,
+    "flippable": true,
+    "reason": "Both describe verbal economy, differing between concise efficiency and curt abruptness."
+  },
+  {
+    "id": 413,
+    "flippable": false,
+    "reason": "Different parts of speech; broach is raising topics, brooch is jewelry."
+  },
+  {
+    "id": 414,
+    "flippable": true,
+    "reason": "Both describe unity, differing between logical clarity and structural cohesion."
+  },
+  {
+    "id": 415,
+    "flippable": false,
+    "reason": "Compelling means powerfully persuasive; compulsory means legally required."
+  },
+  {
+    "id": 416,
+    "flippable": true,
+    "reason": "Both describe brevity, differing between clear efficiency and curt abruptness."
+  },
+  {
+    "id": 417,
+    "flippable": false,
+    "reason": "Consonant means in harmony; constant means continuous and unchanging."
+  },
+  {
+    "id": 418,
+    "flippable": false,
+    "reason": "Different parts of speech; elicit is drawing out, illicit means illegal."
+  },
+  {
+    "id": 419,
+    "flippable": true,
+    "reason": "Both describe extreme brevity, differing between cool conciseness and curt abruptness."
+  },
+  {
+    "id": 420,
+    "flippable": true,
+    "reason": "Both describe public speaking, differing between delivery performance and persuasive technique."
+  },
+  {
+    "id": 421,
+    "flippable": true,
+    "reason": "Both describe brevity, differing between informative conciseness and dismissive curtness."
+  },
+  {
+    "id": 422,
+    "flippable": true,
+    "reason": "Both describe short expression, differing between curt sharpness and clear brevity."
+  },
+  {
+    "id": 423,
+    "flippable": false,
+    "reason": "Allusion is an indirect reference; illusion is a false perception."
+  },
+  {
+    "id": 424,
+    "flippable": true,
+    "reason": "Both compare concepts, differing between direct identification and structural mapping."
+  },
+  {
+    "id": 425,
+    "flippable": false,
+    "reason": "Anecdote is a short story; antidote counteracts poison."
+  },
+  {
+    "id": 426,
+    "flippable": true,
+    "reason": "Both describe unexciting things, differing between practical routine and trite predictability."
+  },
+  {
+    "id": 427,
+    "flippable": true,
+    "reason": "Both describe informal speech, differing between common idiom and subcultural slang."
+  },
+  {
+    "id": 428,
+    "flippable": false,
+    "reason": "Digress means straying from topic; regress means reverting backwards."
+  },
+  {
+    "id": 429,
+    "flippable": true,
+    "reason": "Both describe outside factors, differing between nonessential origin and irrelevant interference."
+  },
+  {
+    "id": 430,
+    "flippable": true,
+    "reason": "Both depart from factual truth, differing between symbolic meaning and fiction."
+  },
+  {
+    "id": 431,
+    "flippable": false,
+    "reason": "Nuance means a subtle distinction; nuisance means an annoying inconvenience."
+  },
+  {
+    "id": 432,
+    "flippable": true,
+    "reason": "Both describe flawed intellectual work, differing between dullness and fussy nitpicking."
+  },
+  {
+    "id": 433,
+    "flippable": true,
+    "reason": "Both describe indirect communication, differing between delicate nuance and unspoken meaning."
+  },
+  {
+    "id": 434,
+    "flippable": true,
+    "reason": "Both describe noncentral elements, differing between secondary byproducts and divergent tangents."
+  },
+  {
+    "id": 435,
+    "flippable": true,
+    "reason": "Both describe overused tropes, differing between stale expressions and group stereotypes."
+  },
+  {
+    "id": 436,
+    "flippable": true,
+    "reason": "Both describe over-instructive styles, differing between moralizing preaching and nitpicking precision."
+  },
+  {
+    "id": 437,
+    "flippable": true,
+    "reason": "Both describe instruction, differing between practical teaching and moral character elevation."
+  },
+  {
+    "id": 438,
+    "flippable": false,
+    "reason": "Exhort means urgently encouraging; extort means obtaining by threats."
+  },
+  {
+    "id": 439,
+    "flippable": false,
+    "reason": "Homily is a moral sermon; hominy is prepared corn."
+  },
+  {
+    "id": 440,
+    "flippable": false,
+    "reason": "Insipid means dull and bland; insidious means stealthily harmful."
+  },
+  {
+    "id": 441,
+    "flippable": true,
+    "reason": "Both describe stale language, differing between common idioms and hollow platitudes."
+  },
+  {
+    "id": 442,
+    "flippable": true,
+    "reason": "Both involve repetition, differing between restating for emphasis and cyclic refinement."
+  },
+  {
+    "id": 443,
+    "flippable": false,
+    "reason": "Different parts of speech; saccharine is sentimental, saccharin is artificial sweetener."
+  },
+  {
+    "id": 444,
+    "flippable": true,
+    "reason": "Both describe deficient work, differing between shallow surface and redundant excess."
+  },
+  {
+    "id": 445,
+    "flippable": true,
+    "reason": "Both describe detailed explanation, differing between adding depth and tedious repetition."
+  },
+  {
+    "id": 446,
+    "flippable": false,
+    "reason": "Demagogue is a populist rabble-rouser; pedagogue is a schoolteacher."
+  },
+  {
+    "id": 447,
+    "flippable": false,
+    "reason": "Deprecate means expressing disapproval; depreciate means losing financial value."
+  },
+  {
+    "id": 448,
+    "flippable": false,
+    "reason": "Impugn means attacking integrity; impute means attributing responsibility or fault."
+  },
+  {
+    "id": 449,
+    "flippable": true,
+    "reason": "Both involve stirring people, differing between provoking inner anger and action."
+  },
+  {
+    "id": 450,
+    "flippable": false,
+    "reason": "Instigate means provoking conflict; investigate means examining facts systematically."
+  },
+  {
+    "id": 451,
+    "flippable": true,
+    "reason": "Context decides whether opposing arguments disprove a claim or merely counter it."
+  },
+  {
+    "id": 452,
+    "flippable": false,
+    "reason": "Protesting an authority differs fundamentally from demonstrating proof or evidence."
+  },
+  {
+    "id": 453,
+    "flippable": true,
+    "reason": "Context shifts between merely rejecting an accusation and conclusively disproving it."
+  },
+  {
+    "id": 454,
+    "flippable": false,
+    "reason": "Amenable describes willingness to comply, while amicable describes peaceful mutual relations."
+  },
+  {
+    "id": 455,
+    "flippable": false,
+    "reason": "Appeasing requires concessions to hostility, whereas pleasing merely generates satisfaction."
+  },
+  {
+    "id": 456,
+    "flippable": true,
+    "reason": "Context shifts between relieving internal distress and granting concessions to quell anger."
+  },
+  {
+    "id": 457,
+    "flippable": true,
+    "reason": "Context determines whether the mediator facilitates agreement or imposes a binding decision."
+  },
+  {
+    "id": 458,
+    "flippable": false,
+    "reason": "Mitigate means lessening severity, while militate means exerting force against an outcome."
+  },
+  {
+    "id": 459,
+    "flippable": false,
+    "reason": "Mollify soothes anger, whereas modify means making partial alterations."
+  },
+  {
+    "id": 460,
+    "flippable": false,
+    "reason": "Placate is a transitive verb, whereas placid is a descriptive adjective."
+  },
+  {
+    "id": 461,
+    "flippable": true,
+    "reason": "Context hinges on whether agreement is reluctant tacit submission or active approval."
+  },
+  {
+    "id": 462,
+    "flippable": true,
+    "reason": "Context shifts between a blanket group pardon and individualized judicial mercy."
+  },
+  {
+    "id": 463,
+    "flippable": false,
+    "reason": "Capitulate means surrendering to opposition, while recapitulate means summarizing main points."
+  },
+  {
+    "id": 464,
+    "flippable": true,
+    "reason": "Context shifts between overall peaceful harmony and collective agreement on a decision."
+  },
+  {
+    "id": 465,
+    "flippable": true,
+    "reason": "Context hinges on whether approval is group-wide agreement or individual authorization."
+  },
+  {
+    "id": 466,
+    "flippable": true,
+    "reason": "Context distinguishes a purely legal, transactional agreement from a solemn moral pledge."
+  },
+  {
+    "id": 467,
+    "flippable": false,
+    "reason": "Discreet means tactful and secretive, while discrete means separate and distinct."
+  },
+  {
+    "id": 468,
+    "flippable": true,
+    "reason": "Context shifts between unavoidable natural certainty and aggressive, unyielding relentless force."
+  },
+  {
+    "id": 469,
+    "flippable": true,
+    "reason": "Context distinguishes general unmanageability from stubborn refusal to compromise on principle."
+  },
+  {
+    "id": 470,
+    "flippable": true,
+    "reason": "Context decides whether restraint reflects wise risk management or excessive moral squeamishness."
+  },
+  {
+    "id": 471,
+    "flippable": true,
+    "reason": "Context determines whether giving up something is reluctant surrender or formal repudiation."
+  },
+  {
+    "id": 472,
+    "flippable": true,
+    "reason": "Context shifts between collapsing under pressure and formally yielding to an adversary."
+  },
+  {
+    "id": 473,
+    "flippable": false,
+    "reason": "Aesthetic concerns beauty and taste, while ascetic involves strict self-denial."
+  },
+  {
+    "id": 474,
+    "flippable": true,
+    "reason": "Context distinguishes immediate sensory atmosphere from broader social and cultural surroundings."
+  },
+  {
+    "id": 475,
+    "flippable": true,
+    "reason": "Context shifts between quaintly old-fashioned style and total replacement by newer alternatives."
+  },
+  {
+    "id": 476,
+    "flippable": false,
+    "reason": "Epigram is a witty aphorism, whereas epigraph is an introductory quotation."
+  },
+  {
+    "id": 477,
+    "flippable": true,
+    "reason": "Context differentiates conventional categorical classification from an artist personal manner of expression."
+  },
+  {
+    "id": 478,
+    "flippable": true,
+    "reason": "Context shifts between broader social environment and the immediate sensory mood."
+  },
+  {
+    "id": 479,
+    "flippable": true,
+    "reason": "Context shifts between simply smelling pleasant and being richly evocative of memories."
+  },
+  {
+    "id": 480,
+    "flippable": true,
+    "reason": "Context shifts between widespread enthusiastic public praise and a specific formal award."
+  },
+  {
+    "id": 481,
+    "flippable": true,
+    "reason": "Context decides whether praise is respectful and earned or uncritical and excessive."
+  },
+  {
+    "id": 482,
+    "flippable": false,
+    "reason": "Appreciating involves recognizing value or gratitude, while depreciating means losing value."
+  },
+  {
+    "id": 483,
+    "flippable": false,
+    "reason": "Approbation is formal approval, whereas probation is a supervised trial period."
+  },
+  {
+    "id": 484,
+    "flippable": false,
+    "reason": "Eminent describes high professional stature, while imminent means impending very soon."
+  },
+  {
+    "id": 485,
+    "flippable": false,
+    "reason": "Exalt means praising or elevating someone, while exult means rejoicing triumphantly."
+  },
+  {
+    "id": 486,
+    "flippable": true,
+    "reason": "Context shifts between enthusiastic vocal praise and elevating status or dignity."
+  },
+  {
+    "id": 487,
+    "flippable": false,
+    "reason": "Applaud primarily involves physical clapping, whereas laud is formal verbal praise."
+  },
+  {
+    "id": 488,
+    "flippable": false,
+    "reason": "Revere is an active verb, whereas reverie is a state noun."
+  },
+  {
+    "id": 489,
+    "flippable": true,
+    "reason": "Context decides whether unwavering resolve is admirable loyalty or unreasonable obstinacy."
+  },
+  {
+    "id": 490,
+    "flippable": false,
+    "reason": "Tout means promoting or praising, while taunt means mocking or provoking."
+  },
+  {
+    "id": 491,
+    "flippable": true,
+    "reason": "Context shifts between general countryside geography and agricultural, farming-based systems."
+  },
+  {
+    "id": 492,
+    "flippable": true,
+    "reason": "Context shifts between being the quintessential representative example and the supreme peak."
+  },
+  {
+    "id": 493,
+    "flippable": true,
+    "reason": "Context shifts between specifically pastoral countryside charm and universally perfect peaceful bliss."
+  },
+  {
+    "id": 494,
+    "flippable": false,
+    "reason": "Domestic relates to household affairs, while domesticated specifically describes tamed species."
+  },
+  {
+    "id": 495,
+    "flippable": false,
+    "reason": "Fauna refers strictly to animals, while flora refers to plant life."
+  },
+  {
+    "id": 496,
+    "flippable": true,
+    "reason": "Context distinguishes rich inventive fertility of mind from sheer volume of output."
+  },
+  {
+    "id": 497,
+    "flippable": false,
+    "reason": "Husbandry is resource management, while husband refers to a married spouse."
+  },
+  {
+    "id": 498,
+    "flippable": false,
+    "reason": "Idyllic describes a peaceful setting, while idealistic describes visionary principles."
+  },
+  {
+    "id": 499,
+    "flippable": true,
+    "reason": "Context shifts between simple geographical countryside location and rough-hewn, charming simplicity."
+  },
+  {
+    "id": 500,
+    "flippable": true,
+    "reason": "Context shifts between temporarily easing suffering and structurally improving a bad situation."
+  },
+  {
+    "id": 501,
+    "flippable": true,
+    "reason": "Context shifts between general social separation and a state-enforced systemic political regime."
+  },
+  {
+    "id": 502,
+    "flippable": false,
+    "reason": "Bane is a source of ruin, whereas ban is an official prohibition."
+  },
+  {
+    "id": 503,
+    "flippable": false,
+    "reason": "Blight is a destructive ruin, while plight is an unfortunate predicament."
+  },
+  {
+    "id": 504,
+    "flippable": false,
+    "reason": "Deface is physical surface vandalism, while efface means total erasure or obliteration."
+  },
+  {
+    "id": 505,
+    "flippable": true,
+    "reason": "Context shifts between liberation from physical bondage and granting civic voting rights."
+  },
+  {
+    "id": 506,
+    "flippable": false,
+    "reason": "Noxious refers to physical toxicity, while obnoxious describes offensive social behavior."
+  },
+  {
+    "id": 507,
+    "flippable": true,
+    "reason": "Context shifts between immediate physical toxicity and insidious, gradual long-term destruction."
+  },
+  {
+    "id": 508,
+    "flippable": false,
+    "reason": "Relegate means demoting to lower status, while delegate means entrusting authority."
+  },
+  {
+    "id": 509,
+    "flippable": true,
+    "reason": "Context shifts between physical spatial separation and unequal differential treatment."
+  },
+  {
+    "id": 510,
+    "flippable": true,
+    "reason": "Context shifts between ominous threatening appearance and active, deliberate malicious intent."
+  },
+  {
+    "id": 511,
+    "flippable": true,
+    "reason": "Context decides whether a position is official lower rank or servile obedience."
+  },
+  {
+    "id": 512,
+    "flippable": true,
+    "reason": "Context distinguishes adding to fill gaps from enlarging overall size."
+  },
+  {
+    "id": 513,
+    "flippable": true,
+    "reason": "Context shifts between rapid exponential expansion and healthy, thriving overall prosperity."
+  },
+  {
+    "id": 514,
+    "flippable": false,
+    "reason": "Coalesce means merging together, while convalesce means recovering from an illness."
+  },
+  {
+    "id": 515,
+    "flippable": false,
+    "reason": "Complement means making something complete, while compliment means expressing polite praise."
+  },
+  {
+    "id": 516,
+    "flippable": false,
+    "reason": "Confluence is a physical or abstract junction, while influence is persuasive power."
+  },
+  {
+    "id": 517,
+    "flippable": false,
+    "reason": "Copious describes abundant quantity, while capacious describes spacious physical volume."
+  },
+  {
+    "id": 518,
+    "flippable": true,
+    "reason": "Context shifts between absorbing into an existing structure and unifying parts completely."
+  },
+  {
+    "id": 519,
+    "flippable": true,
+    "reason": "Context shifts between energy in active motion and latent stored capacity."
+  },
+  {
+    "id": 520,
+    "flippable": true,
+    "reason": "Context decides whether goods are refilling depleted stock or substituting different items."
+  },
+  {
+    "id": 521,
+    "flippable": true,
+    "reason": "Context shifts between having required parts and being abundantly filled to capacity."
+  },
+  {
+    "id": 522,
+    "flippable": false,
+    "reason": "Comprise and compose differ by syntactic direction rather than evolving contextual meaning."
+  },
+  {
+    "id": 523,
+    "flippable": true,
+    "reason": "Context shifts between a constant baseline presence and a sudden widespread outbreak."
+  },
+  {
+    "id": 524,
+    "flippable": true,
+    "reason": "Context distinguishes sheer physical magnitude from dreadful moral wickedness or tragic horror."
+  },
+  {
+    "id": 525,
+    "flippable": true,
+    "reason": "Context shifts between unceasing mechanical continuation and urgent, demanding persistence."
+  },
+  {
+    "id": 526,
+    "flippable": false,
+    "reason": "Unrelated meanings: flooding or overwhelming versus wave-like motion."
+  },
+  {
+    "id": 527,
+    "flippable": true,
+    "reason": "Both describe uniform groups, distinguishing internal rigidity from identical composition."
+  },
+  {
+    "id": 528,
+    "flippable": true,
+    "reason": "Both describe enduring phenomena, distinguishing cyclical recurrence from unbroken continuity."
+  },
+  {
+    "id": 529,
+    "flippable": true,
+    "reason": "Both describe entering matter, distinguishing surface entry from total dispersion."
+  },
+  {
+    "id": 530,
+    "flippable": false,
+    "reason": "Paronyms distinguishing spreading throughout from triumphing over opposition."
+  },
+  {
+    "id": 531,
+    "flippable": false,
+    "reason": "Paronyms distinguishing immense scale from high social prestige."
+  },
+  {
+    "id": 532,
+    "flippable": true,
+    "reason": "Both describe rapid multiplication, distinguishing spontaneous increase from intentional dissemination."
+  },
+  {
+    "id": 533,
+    "flippable": false,
+    "reason": "Paronyms measuring output volume versus level of skill."
+  },
+  {
+    "id": 534,
+    "flippable": false,
+    "reason": "Unrelated relational concepts: mutual exchange versus opposing mathematical correlation."
+  },
+  {
+    "id": 535,
+    "flippable": true,
+    "reason": "Both describe excess, distinguishing useful reserves from sickening overabundance."
+  },
+  {
+    "id": 536,
+    "flippable": true,
+    "reason": "Both describe widespread presence, distinguishing spatial ubiquity from universal applicability."
+  },
+  {
+    "id": 537,
+    "flippable": true,
+    "reason": "Both describe prior events, distinguishing mere temporal precedence from authoritative guidance."
+  },
+  {
+    "id": 538,
+    "flippable": true,
+    "reason": "Both initiate outcomes, distinguishing an accelerating trigger from the primary origin."
+  },
+  {
+    "id": 539,
+    "flippable": false,
+    "reason": "Mutually exclusive temporal sequences: occurring simultaneously versus occurring in sequence."
+  },
+  {
+    "id": 540,
+    "flippable": false,
+    "reason": "Phonetic paronyms: favorable toward an outcome versus physically transmitting energy."
+  },
+  {
+    "id": 541,
+    "flippable": false,
+    "reason": "Phonetic paronyms: dependent on conditions versus physically adjoining boundaries."
+  },
+  {
+    "id": 542,
+    "flippable": true,
+    "reason": "Both describe chance occurrences, distinguishing accidental happenstance from fortunate luck."
+  },
+  {
+    "id": 543,
+    "flippable": true,
+    "reason": "Both herald future events, distinguishing arrival signals from prophetic portents."
+  },
+  {
+    "id": 544,
+    "flippable": false,
+    "reason": "Phonetic paronyms: occurring very soon versus distinguished in reputation."
+  },
+  {
+    "id": 545,
+    "flippable": true,
+    "reason": "Both precede another, distinguishing evolutionary forerunner status from formal succession."
+  },
+  {
+    "id": 546,
+    "flippable": false,
+    "reason": "Phonetic paronyms: bringing into existence versus persistently harassing."
+  },
+  {
+    "id": 547,
+    "flippable": false,
+    "reason": "Phonetic paronyms: producing or generating versus exposing to danger."
+  },
+  {
+    "id": 548,
+    "flippable": false,
+    "reason": "Paronyms distinguishing hasty human action from sheer physical steepness."
+  },
+  {
+    "id": 549,
+    "flippable": true,
+    "reason": "Both describe copious generation, distinguishing lavish outpouring from fruitful productivity."
+  },
+  {
+    "id": 550,
+    "flippable": true,
+    "reason": "Both describe consequences, distinguishing branching complexity from unwelcome backlash."
+  },
+  {
+    "id": 551,
+    "flippable": true,
+    "reason": "Both describe consequences, distinguishing unwelcome backlash from branching complexity."
+  },
+  {
+    "id": 552,
+    "flippable": false,
+    "reason": "Phonetic paronyms: producing offspring versus rejecting with contempt."
+  },
+  {
+    "id": 553,
+    "flippable": false,
+    "reason": "Distinct processes: complete organizational dissolution versus reducing liquid concentration."
+  },
+  {
+    "id": 554,
+    "flippable": false,
+    "reason": "Paronyms describing fleeting temporal duration versus delicate, otherworldly beauty."
+  },
+  {
+    "id": 555,
+    "flippable": true,
+    "reason": "Both describe leaves of absence, distinguishing general pauses from institutional study."
+  },
+  {
+    "id": 556,
+    "flippable": true,
+    "reason": "Both describe adaptability, distinguishing external moldability from inherent variability."
+  },
+  {
+    "id": 557,
+    "flippable": true,
+    "reason": "Both denote supreme importance, distinguishing a turning point from absolute necessity."
+  },
+  {
+    "id": 558,
+    "flippable": false,
+    "reason": "Paronyms distinguishing physical steepness from rash, hasty action."
+  },
+  {
+    "id": 559,
+    "flippable": true,
+    "reason": "Both describe non-continuous patterns, distinguishing random scattering from periodic pauses."
+  },
+  {
+    "id": 560,
+    "flippable": true,
+    "reason": "Both describe impermanence, distinguishing brief duration from bridging between stages."
+  },
+  {
+    "id": 561,
+    "flippable": false,
+    "reason": "Paronyms describing unfavorable circumstances versus a person reluctant to act."
+  },
+  {
+    "id": 562,
+    "flippable": true,
+    "reason": "Both describe difficult tasks, distinguishing grueling effort from oppressive burden."
+  },
+  {
+    "id": 563,
+    "flippable": true,
+    "reason": "Both describe gradual decline, distinguishing external wearing down from internal decay."
+  },
+  {
+    "id": 564,
+    "flippable": false,
+    "reason": "Incompatible transitivity: debilitate actively weakens an object, while deteriorate intransitively worsens."
+  },
+  {
+    "id": 565,
+    "flippable": false,
+    "reason": "Phonetic paronyms: causing harmful damage versus acute mental confusion."
+  },
+  {
+    "id": 566,
+    "flippable": true,
+    "reason": "Both describe boundary violations, distinguishing creeping physical intrusion from legal breach."
+  },
+  {
+    "id": 567,
+    "flippable": true,
+    "reason": "Both describe urgent needs, distinguishing acute sudden danger from pressing necessity."
+  },
+  {
+    "id": 568,
+    "flippable": true,
+    "reason": "Both describe freeing something, distinguishing disentanglement from difficulty versus physical removal."
+  },
+  {
+    "id": 569,
+    "flippable": false,
+    "reason": "Phonetic paronyms: physically shackling versus decaying or becoming septic."
+  },
+  {
+    "id": 570,
+    "flippable": true,
+    "reason": "Both describe difficult tasks, distinguishing oppressive burden from grueling physical exertion."
+  },
+  {
+    "id": 571,
+    "flippable": false,
+    "reason": "Paronyms distinguishing rigorous regulatory standards from harsh, clamorous tone."
+  },
+  {
+    "id": 572,
+    "flippable": false,
+    "reason": "Opposite directional processes: outward emotional outpouring versus inward liquid introduction."
+  },
+  {
+    "id": 573,
+    "flippable": false,
+    "reason": "Paronyms describing delicate, otherworldly lightness versus fleeting temporal duration."
+  },
+  {
+    "id": 574,
+    "flippable": false,
+    "reason": "Phonetic paronyms: quickly fading away versus bubbly and vivacious."
+  },
+  {
+    "id": 575,
+    "flippable": false,
+    "reason": "Distinct optical properties: glowing from heat versus angle-dependent shifting colors."
+  },
+  {
+    "id": 576,
+    "flippable": false,
+    "reason": "Phonetic paronyms: beyond verbal expression versus incapable of making errors."
+  },
+  {
+    "id": 577,
+    "flippable": false,
+    "reason": "Paronyms distinguishing general visible brightness from non-thermal light emission."
+  },
+  {
+    "id": 578,
+    "flippable": false,
+    "reason": "Phonetic paronyms: profound intellectual depth versus lavish quantitative outpouring."
+  },
+  {
+    "id": 579,
+    "flippable": true,
+    "reason": "Both describe significance, distinguishing essential core substance from large magnitude."
+  },
+  {
+    "id": 580,
+    "flippable": true,
+    "reason": "Both describe position strength, distinguishing defensibility from fragile flimsiness."
+  },
+  {
+    "id": 581,
+    "flippable": true,
+    "reason": "Both describe medical conditions, distinguishing long-standing persistence from acute severity."
+  },
+  {
+    "id": 582,
+    "flippable": true,
+    "reason": "Both describe innate conditions, distinguishing presence at birth from genetic inheritance."
+  },
+  {
+    "id": 583,
+    "flippable": true,
+    "reason": "Both describe massive destruction, distinguishing heavy reduction from total annihilation."
+  },
+  {
+    "id": 584,
+    "flippable": false,
+    "reason": "Phonetic paronyms: removing moisture completely versus cutting apart for examination."
+  },
+  {
+    "id": 585,
+    "flippable": false,
+    "reason": "Paronyms distinguishing outward swelling from pressure from linear physical lengthening."
+  },
+  {
+    "id": 586,
+    "flippable": false,
+    "reason": "Different grammatical functions and meanings: cancerous adjective versus slanderous verb."
+  },
+  {
+    "id": 587,
+    "flippable": false,
+    "reason": "Paronyms distinguishing feigning illness to shirk duty from lingering behind."
+  },
+  {
+    "id": 588,
+    "flippable": false,
+    "reason": "Paronyms distinguishing terminal decline from unhealthy psychological obsession with death."
+  },
+  {
+    "id": 589,
+    "flippable": false,
+    "reason": "Paronyms taking different objects: easing symptoms versus soothing an angry person."
+  },
+  {
+    "id": 590,
+    "flippable": false,
+    "reason": "Distinct medical domains: originating cause versus structural disease manifestations."
+  },
+  {
+    "id": 591,
+    "flippable": false,
+    "reason": "Phonetic paronyms: combining into a whole versus worsening a problem."
+  },
+  {
+    "id": 592,
+    "flippable": false,
+    "reason": "Phonetic paronyms: going off course versus being cautious of danger."
+  },
+  {
+    "id": 593,
+    "flippable": false,
+    "reason": "Paronyms distinguishing clever evasion of obstacles from physically sailing around."
+  },
+  {
+    "id": 594,
+    "flippable": true,
+    "reason": "Both describe quick actions, distinguishing ethical opportunism from efficient speed."
+  },
+  {
+    "id": 595,
+    "flippable": true,
+    "reason": "Both assist processes, distinguishing accelerating completion time from easing difficulty."
+  },
+  {
+    "id": 596,
+    "flippable": true,
+    "reason": "Both describe distress, distinguishing clumsy struggling from complete failure and sinking."
+  },
+  {
+    "id": 597,
+    "flippable": true,
+    "reason": "Both describe action philosophies, distinguishing realistic compromise from principled idealism."
+  },
+  {
+    "id": 598,
+    "flippable": true,
+    "reason": "Both describe formal renunciations, distinguishing retracting beliefs from relinquishing rights."
+  },
+  {
+    "id": 599,
+    "flippable": true,
+    "reason": "Both describe formal renunciations, distinguishing relinquishing rights from retracting beliefs."
+  },
+  {
+    "id": 600,
+    "flippable": true,
+    "reason": "Both emphasize practicality, distinguishing strict functional utility from realistic adaptability."
+  },
+  {
+    "id": 601,
+    "flippable": false,
+    "reason": "Unrelated meanings: cultural rebirth versus military observation."
+  },
+  {
+    "id": 602,
+    "flippable": true,
+    "reason": "Both describe irregular deviations; differ on whether the departure is defective."
+  },
+  {
+    "id": 603,
+    "flippable": true,
+    "reason": "Both describe deviations; differ in whether an unwelcome defect occurred."
+  },
+  {
+    "id": 604,
+    "flippable": true,
+    "reason": "Both describe standard models; differ in depth versus oversimplified clich\u00e9."
+  },
+  {
+    "id": 605,
+    "flippable": false,
+    "reason": "Unrelated meanings: fundamentally dissimilar versus despairing or reckless."
+  },
+  {
+    "id": 606,
+    "flippable": false,
+    "reason": "Unrelated qualities: diverse aesthetic selection versus unconventional or bizarre behavior."
+  },
+  {
+    "id": 607,
+    "flippable": false,
+    "reason": "Unrelated meanings: quintessential embodiment versus descriptive nickname or label."
+  },
+  {
+    "id": 608,
+    "flippable": false,
+    "reason": "Distinct concepts: solemn severity versus physical resistance to change."
+  },
+  {
+    "id": 609,
+    "flippable": true,
+    "reason": "Both describe mentored talents; differ in innate genius versus guided sponsorship."
+  },
+  {
+    "id": 610,
+    "flippable": false,
+    "reason": "Different parts of speech and meanings: verb restricting versus adjective cautious."
+  },
+  {
+    "id": 611,
+    "flippable": false,
+    "reason": "Unrelated meanings: proportionate in measure versus supremely skilled or complete."
+  },
+  {
+    "id": 612,
+    "flippable": true,
+    "reason": "Both describe spatial connection; differ in touching borders versus seamless continuity."
+  },
+  {
+    "id": 613,
+    "flippable": true,
+    "reason": "Both describe establishing limits; differ in descriptive detailing versus setting hard boundaries."
+  },
+  {
+    "id": 614,
+    "flippable": false,
+    "reason": "Homophones describing unrelated concepts: individually distinct versus tactful and secretive."
+  },
+  {
+    "id": 615,
+    "flippable": true,
+    "reason": "Both describe outer boundaries; differ in exact measured border versus vague outskirts."
+  },
+  {
+    "id": 616,
+    "flippable": true,
+    "reason": "Both describe barring access; differ in barring entry versus making impossible."
+  },
+  {
+    "id": 617,
+    "flippable": false,
+    "reason": "Unrelated meanings: physical nearness versus behavioral inclination or tendency."
+  },
+  {
+    "id": 618,
+    "flippable": true,
+    "reason": "Both describe isolation; differ in general seclusion versus disease-prevention confinement."
+  },
+  {
+    "id": 619,
+    "flippable": false,
+    "reason": "Unrelated meanings: equivalent in effect versus supreme in importance."
+  },
+  {
+    "id": 620,
+    "flippable": true,
+    "reason": "Both describe group alignment; differ in unvarying consistency versus complete consensus."
+  },
+  {
+    "id": 621,
+    "flippable": true,
+    "reason": "Both describe shortening communication; differ in condensing a work versus truncating words."
+  },
+  {
+    "id": 622,
+    "flippable": false,
+    "reason": "Unrelated concepts and parts of speech: metallic mixture versus calming fears."
+  },
+  {
+    "id": 623,
+    "flippable": false,
+    "reason": "Polar opposites in scale: immeasurably microscopic versus endlessly boundless."
+  },
+  {
+    "id": 624,
+    "flippable": false,
+    "reason": "Unrelated mathematical and general concepts: essential component versus whole number."
+  },
+  {
+    "id": 625,
+    "flippable": true,
+    "reason": "Both describe necessary conditions; differ in essential requirement versus strictly prior condition."
+  },
+  {
+    "id": 626,
+    "flippable": true,
+    "reason": "Both describe failed attempts; differ in inherent futility versus deliberate premature termination."
+  },
+  {
+    "id": 627,
+    "flippable": true,
+    "reason": "Both describe aggressive confrontations; differ in confrontational approach versus physical violence."
+  },
+  {
+    "id": 628,
+    "flippable": false,
+    "reason": "Unrelated meanings: quarrelsome or controversial versus diligent and duty-bound."
+  },
+  {
+    "id": 629,
+    "flippable": false,
+    "reason": "Unrelated meanings: shockingly terrible versus highly sociable and outgoing."
+  },
+  {
+    "id": 630,
+    "flippable": false,
+    "reason": "Distinct targets: worsening an objective condition versus intensely irritating a person."
+  },
+  {
+    "id": 631,
+    "flippable": false,
+    "reason": "Distinct targets: irritating a human being versus worsening an external problem."
+  },
+  {
+    "id": 632,
+    "flippable": true,
+    "reason": "Both describe distressed victims; differ in bad luck versus lacking agency."
+  },
+  {
+    "id": 633,
+    "flippable": false,
+    "reason": "Unrelated meanings: heavy and tedious versus deeply reflective or contemplative."
+  },
+  {
+    "id": 634,
+    "flippable": false,
+    "reason": "Unrelated actions: extending duration versus withdrawing a statement or object."
+  },
+  {
+    "id": 635,
+    "flippable": true,
+    "reason": "Both describe obstructing progress; differ in thwarting through obstacles versus suffocating development."
+  },
+  {
+    "id": 636,
+    "flippable": true,
+    "reason": "Both describe benevolent giving; differ in selfless personal motive versus organized donations."
+  },
+  {
+    "id": 637,
+    "flippable": false,
+    "reason": "Opposing roles in a transaction: the generous giver versus the recipient."
+  },
+  {
+    "id": 638,
+    "flippable": true,
+    "reason": "Both describe non-threatening natures; differ in active goodwill versus mere harmless neutrality."
+  },
+  {
+    "id": 639,
+    "flippable": true,
+    "reason": "Both describe inherited assets; differ in specific testamentary gift versus general succession."
+  },
+  {
+    "id": 640,
+    "flippable": false,
+    "reason": "Unrelated meanings: generous financial bestowal versus great physical size."
+  },
+  {
+    "id": 641,
+    "flippable": true,
+    "reason": "Both describe charitable giving; differ in organized institutional donations versus selfless motivation."
+  },
+  {
+    "id": 642,
+    "flippable": false,
+    "reason": "Unrelated meanings: wastefully extravagant spending versus immense size or talent."
+  },
+  {
+    "id": 643,
+    "flippable": true,
+    "reason": "Both describe fortunate outcomes; differ in human foresight versus miraculous divine luck."
+  },
+  {
+    "id": 644,
+    "flippable": false,
+    "reason": "Different parts of speech: adjective expressing caring concern versus verb requesting something."
+  },
+  {
+    "id": 645,
+    "flippable": false,
+    "reason": "Distinct concepts: renouncing personal rights or desires versus logically nullifying something."
+  },
+  {
+    "id": 646,
+    "flippable": true,
+    "reason": "Both describe dietary restraint; differ in total avoidance versus disciplined moderation."
+  },
+  {
+    "id": 647,
+    "flippable": false,
+    "reason": "Unrelated meanings: severe austere self-denial versus appreciation of artistic beauty."
+  },
+  {
+    "id": 648,
+    "flippable": true,
+    "reason": "Both describe stern harshness; differ in unadorned simplicity versus punishing intensity."
+  },
+  {
+    "id": 649,
+    "flippable": true,
+    "reason": "Both describe sexual restraint; differ in unmarried status versus moral purity."
+  },
+  {
+    "id": 650,
+    "flippable": false,
+    "reason": "Different parts of speech and meanings: verb refraining versus noun ancestor."
+  },
+  {
+    "id": 651,
+    "flippable": true,
+    "reason": "Both describe refraining; differ in giving up an option versus exercising patience."
+  },
+  {
+    "id": 652,
+    "flippable": true,
+    "reason": "Both describe giving something up; differ in total desertion versus declining options."
+  },
+  {
+    "id": 653,
+    "flippable": true,
+    "reason": "Both describe tight spending; differ in prudent economy versus unreasonable stinginess."
+  },
+  {
+    "id": 654,
+    "flippable": true,
+    "reason": "Both describe resource conservation; differ in miserly stinginess versus prudent thrift."
+  },
+  {
+    "id": 655,
+    "flippable": true,
+    "reason": "Both describe avoiding alcohol; differ in holistic temperance versus total physical cessation."
+  },
+  {
+    "id": 656,
+    "flippable": true,
+    "reason": "Both describe restraint; differ in moderate balanced consumption versus complete avoidance."
+  },
+  {
+    "id": 657,
+    "flippable": false,
+    "reason": "Unrelated meanings: corrupting a substance versus excessively flattering someone."
+  },
+  {
+    "id": 658,
+    "flippable": true,
+    "reason": "Both describe skillful craft; differ in aesthetic beauty versus crafty cunning."
+  },
+  {
+    "id": 659,
+    "flippable": false,
+    "reason": "Unrelated meanings: deceiving someone mind versus physically or conceptually evading capture."
+  },
+  {
+    "id": 660,
+    "flippable": false,
+    "reason": "Unrelated meanings: deceitful double-dealing versus creating an identical copy."
+  },
+  {
+    "id": 661,
+    "flippable": true,
+    "reason": "Both describe deception; differ in inventing whole-cloth lies versus altering genuine records."
+  },
+  {
+    "id": 662,
+    "flippable": true,
+    "reason": "Both describe clever maneuvering; differ in subtle tact versus devious, shady manipulation."
+  },
+  {
+    "id": 663,
+    "flippable": true,
+    "reason": "Both describe invalid claims; differ in superficial plausibility versus outright illegitimate falsity."
+  },
+  {
+    "id": 664,
+    "flippable": true,
+    "reason": "Both describe unclear language; differ in multiple interpretations versus blurry, imprecise detail."
+  },
+  {
+    "id": 665,
+    "flippable": true,
+    "reason": "Both describe non-linear paths; differ in winding indirectness versus self-referential circular looping."
+  },
+  {
+    "id": 666,
+    "flippable": false,
+    "reason": "Unrelated concepts: roundabout evasive speech versus bypassing a rule or obstacle."
+  },
+  {
+    "id": 667,
+    "flippable": true,
+    "reason": "Both describe obscure communication; differ in omitted words versus deliberately puzzling code."
+  },
+  {
+    "id": 668,
+    "flippable": true,
+    "reason": "Both describe dual interpretations; differ in accidental double-meaning versus deliberate evasive intent."
+  },
+  {
+    "id": 669,
+    "flippable": true,
+    "reason": "Both describe softened language; differ in polite substitution versus downplaying actual scale."
+  },
+  {
+    "id": 670,
+    "flippable": true,
+    "reason": "Both describe indirect suggestion; differ in neutral implication versus sinister malicious accusation."
+  },
+  {
+    "id": 671,
+    "flippable": false,
+    "reason": "Unrelated meanings: untruthful or lying versus a beggar living on alms."
+  },
+  {
+    "id": 672,
+    "flippable": true,
+    "reason": "Both describe obscuring facts; differ in deliberate confusion versus natural, unintentional concealment."
+  },
+  {
+    "id": 673,
+    "flippable": false,
+    "reason": "Unrelated qualities: indirect or evasive communication versus dull-witted lack of comprehension."
+  },
+  {
+    "id": 674,
+    "flippable": false,
+    "reason": "Unrelated meanings: professed or apparent versus flashy showy and pretentious."
+  },
+  {
+    "id": 675,
+    "flippable": true,
+    "reason": "Both describe solemn declarations; differ in acknowledging truth versus promising future action."
+  },
+  {
+    "id": 676,
+    "flippable": true,
+    "reason": "Feedback shifts from admirable honesty to tactless insensitivity with added context."
+  },
+  {
+    "id": 677,
+    "flippable": false,
+    "reason": "Credulous describes gullibility while credible describes believability of testimony."
+  },
+  {
+    "id": 678,
+    "flippable": true,
+    "reason": "An observer's aloofness shifts between principled impartiality and sheer boredom."
+  },
+  {
+    "id": 679,
+    "flippable": true,
+    "reason": "Instructions shift between directly stated clarity and detailed particular requirements."
+  },
+  {
+    "id": 680,
+    "flippable": true,
+    "reason": "Allegiance shifts between personal moral loyalty and sworn hierarchical duty."
+  },
+  {
+    "id": 681,
+    "flippable": true,
+    "reason": "Fairness shifts between principled impartiality and having zero personal stake."
+  },
+  {
+    "id": 682,
+    "flippable": false,
+    "reason": "Ingenuous means naive and artless while ingenious means brilliantly inventive."
+  },
+  {
+    "id": 683,
+    "flippable": true,
+    "reason": "An accomplice's involvement shifts based on whether they lacked knowledge or consent."
+  },
+  {
+    "id": 684,
+    "flippable": false,
+    "reason": "Affectation is artificial pretension while affection is a feeling of genuine fondness."
+  },
+  {
+    "id": 685,
+    "flippable": true,
+    "reason": "Outward appearance shifts between concealing an inner state and inadvertently revealing it."
+  },
+  {
+    "id": 686,
+    "flippable": true,
+    "reason": "A narrative plot shifts between excessive complexity and artificially forced convenience."
+  },
+  {
+    "id": 687,
+    "flippable": true,
+    "reason": "Assessment shifts between specific facial expression and overall outward bearing."
+  },
+  {
+    "id": 688,
+    "flippable": true,
+    "reason": "Insults shift from disparaging personal remarks to legally actionable false claims."
+  },
+  {
+    "id": 689,
+    "flippable": true,
+    "reason": "Religious behavior shifts from sincere devotion to hypocritical moral grandstanding."
+  },
+  {
+    "id": 690,
+    "flippable": true,
+    "reason": "Outward piety shifts from suspected hypocrisy to quiet, sincere personal devotion."
+  },
+  {
+    "id": 691,
+    "flippable": true,
+    "reason": "Flattery shifts between oily, insincere charm and servile, groveling obedience."
+  },
+  {
+    "id": 692,
+    "flippable": true,
+    "reason": "A formal statement shifts between an unverified accusation and a confident declaration."
+  },
+  {
+    "id": 693,
+    "flippable": true,
+    "reason": "An unscientific story shifts between a genuine personal account and fabricated myth."
+  },
+  {
+    "id": 694,
+    "flippable": true,
+    "reason": "A conclusion shifts between evidence-based logical deduction and speculative guesswork."
+  },
+  {
+    "id": 695,
+    "flippable": true,
+    "reason": "A statement shifts between having multiple interpretations and being untrustworthy."
+  },
+  {
+    "id": 696,
+    "flippable": true,
+    "reason": "A plan shifts between formal interim status and hesitant, noncommittal uncertainty."
+  },
+  {
+    "id": 697,
+    "flippable": true,
+    "reason": "An attribution shifts between general societal consensus and a contested allegation."
+  },
+  {
+    "id": 698,
+    "flippable": true,
+    "reason": "An account shifts between neutral journalistic reporting and implied skepticism."
+  },
+  {
+    "id": 699,
+    "flippable": true,
+    "reason": "An assumed status shifts from widespread presumption to an explicitly contested claim."
+  },
+  {
+    "id": 700,
+    "flippable": true,
+    "reason": "Flawed arguments shift from superficially attractive reasoning to outright counterfeit evidence."
+  },
+  {
+    "id": 701,
+    "flippable": true,
+    "reason": "An arrangement shifts from cautious, provisional status to flimsy, fragile insubstantiality."
+  },
+  {
+    "id": 702,
+    "flippable": true,
+    "reason": "A fragile connection shifts from flimsy substance to cautious provisional experimentation."
+  },
+  {
+    "id": 703,
+    "flippable": false,
+    "reason": "Acerbic describes biting tone while acetic is a chemical vinegar property."
+  },
+  {
+    "id": 704,
+    "flippable": true,
+    "reason": "Comic imitation shifts between stylistic spoofing and broad, exaggerated grotesque mockery."
+  },
+  {
+    "id": 705,
+    "flippable": true,
+    "reason": "A drawing shifts between a simple graphic illustration and deliberate, exaggerated mockery."
+  },
+  {
+    "id": 706,
+    "flippable": true,
+    "reason": "Mockery shifts in intensity from mild ironic teasing to bitterly corrosive cruelty."
+  },
+  {
+    "id": 707,
+    "flippable": true,
+    "reason": "Inappropriate remarks shift between deliberate flippant joking and genuine, empty-headed foolishness."
+  },
+  {
+    "id": 708,
+    "flippable": true,
+    "reason": "An explanation shifts from an intentional flippant joke to an absurdly unworkable spectacle."
+  },
+  {
+    "id": 709,
+    "flippable": false,
+    "reason": "Invective is vitriolic verbal abuse while incentive is motivation to act."
+  },
+  {
+    "id": 710,
+    "flippable": true,
+    "reason": "An event shifts between pure accidental chance and meaningful, contradictory reversal."
+  },
+  {
+    "id": 711,
+    "flippable": true,
+    "reason": "Satirical imitation shifts between affectionate stylistic mimicry and a savage personal attack."
+  },
+  {
+    "id": 712,
+    "flippable": true,
+    "reason": "Humor shifts between imitating a specific work and critiquing broader societal vices."
+  },
+  {
+    "id": 713,
+    "flippable": false,
+    "reason": "Arbiter is a noun for a judge while arbitrary is an adjective."
+  },
+  {
+    "id": 714,
+    "flippable": true,
+    "reason": "Criticism shifts from belittling opinions to legally actionable false claims about reputation."
+  },
+  {
+    "id": 715,
+    "flippable": false,
+    "reason": "Indignant describes righteous anger while indigent describes severe material poverty."
+  },
+  {
+    "id": 716,
+    "flippable": true,
+    "reason": "Defamation shifts between transitory spoken remarks and permanent written publications."
+  },
+  {
+    "id": 717,
+    "flippable": false,
+    "reason": "Litigate means taking legal action while mitigate means reducing harm or severity."
+  },
+  {
+    "id": 718,
+    "flippable": true,
+    "reason": "Suspect testimony shifts between secondhand repetition and deliberate falsehoods under oath."
+  },
+  {
+    "id": 719,
+    "flippable": false,
+    "reason": "Precedent is a prior guiding model while precedence is superiority in priority."
+  },
+  {
+    "id": 720,
+    "flippable": true,
+    "reason": "Challenging an argument shifts from presenting opposing points to conclusively disproving it."
+  },
+  {
+    "id": 721,
+    "flippable": true,
+    "reason": "Accusations shift between mutual retaliatory blame and evidence demonstrating actual guilt."
+  },
+  {
+    "id": 722,
+    "flippable": true,
+    "reason": "Defamation shifts from temporary spoken words to lasting written publications."
+  },
+  {
+    "id": 723,
+    "flippable": false,
+    "reason": "Stipulate means contractually requiring terms while speculate means guessing without evidence."
+  },
+  {
+    "id": 724,
+    "flippable": true,
+    "reason": "A humiliating act shifts from causing self-conscious embarrassment to degrading someone's dignity."
+  },
+  {
+    "id": 725,
+    "flippable": true,
+    "reason": "Restraint shifts between disciplined moderation and complete, total refraining from indulgence."
+  },
+  {
+    "id": 726,
+    "flippable": false,
+    "reason": "Accrete describes physical material growth while accrue describes accumulating interest or benefits."
+  },
+  {
+    "id": 727,
+    "flippable": true,
+    "reason": "Old practices shift between being historically outdated and belonging to the wrong era."
+  },
+  {
+    "id": 728,
+    "flippable": false,
+    "reason": "Antiseptic applies to surface disinfectants while antibiotic refers to systemic internal medicines."
+  },
+  {
+    "id": 729,
+    "flippable": true,
+    "reason": "Unresponsiveness shifts between emotional lack of care and physical lack of energy."
+  },
+  {
+    "id": 730,
+    "flippable": false,
+    "reason": "Arid describes dry parched conditions while acrid describes sharp, pungent smells."
+  },
+  {
+    "id": 731,
+    "flippable": false,
+    "reason": "Aural relates to the ear and hearing while oral relates to the mouth."
+  },
+  {
+    "id": 732,
+    "flippable": true,
+    "reason": "Self-governance shifts from internal administrative freedom to supreme, absolute state authority."
+  },
+  {
+    "id": 733,
+    "flippable": false,
+    "reason": "Averse describes personal reluctance while adverse describes harmful or unfavorable external conditions."
+  },
+  {
+    "id": 734,
+    "flippable": true,
+    "reason": "Philanthropy shifts between kindly, well-meaning intentions and active, generous deeds."
+  },
+  {
+    "id": 735,
+    "flippable": false,
+    "reason": "Beneficial describes advantageous outcomes while beneficent describes a generous, charitable actor."
+  },
+  {
+    "id": 736,
+    "flippable": false,
+    "reason": "Bereave denotes deprivation by death while grieve describes the emotional sorrow felt."
+  },
+  {
+    "id": 737,
+    "flippable": false,
+    "reason": "Bolster means strengthening or supporting while bluster means speaking aggressively without substance."
+  },
+  {
+    "id": 738,
+    "flippable": true,
+    "reason": "Loud behavior shifts between high-spirited rowdiness and pretentious, inflated pomposity."
+  },
+  {
+    "id": 739,
+    "flippable": false,
+    "reason": "Brook means tolerating something while broach means raising a sensitive topic."
+  },
+  {
+    "id": 740,
+    "flippable": false,
+    "reason": "Callous is an adjective meaning unfeeling while callus is a noun."
+  },
+  {
+    "id": 741,
+    "flippable": true,
+    "reason": "Direct speech shifts from admirable frankness to tactless, hurtful insensitivity."
+  },
+  {
+    "id": 742,
+    "flippable": true,
+    "reason": "Argumentative behavior shifts between personal grumpiness and provoking substantive disputes."
+  },
+  {
+    "id": 743,
+    "flippable": true,
+    "reason": "Healing experiences shift between gentle, steady restoration and an intense emotional purge."
+  },
+  {
+    "id": 744,
+    "flippable": true,
+    "reason": "A historical document shifts between a bare chronological timeline and a narrative chronicle."
+  },
+  {
+    "id": 745,
+    "flippable": true,
+    "reason": "Secrecy shifts between legitimate, authorized privacy and illicit, undercover concealment."
+  },
+  {
+    "id": 746,
+    "flippable": false,
+    "reason": "Concur means agreeing while conquer means defeating or overcoming by force."
+  },
+  {
+    "id": 747,
+    "flippable": false,
+    "reason": "Conspicuous means clearly noticeable while conscientious means diligent and thorough."
+  },
+  {
+    "id": 748,
+    "flippable": true,
+    "reason": "A problem shifts between a puzzling riddle and a forced, agonizing choice."
+  },
+  {
+    "id": 749,
+    "flippable": true,
+    "reason": "Scientific relationship shifts between mutual statistical variation and direct causal production."
+  },
+  {
+    "id": 750,
+    "flippable": false,
+    "reason": "Credible means believable while creditable means praiseworthy and deserving honor."
+  },
+  {
+    "id": 751,
+    "flippable": true,
+    "reason": "Both describe medical treatments, differing in curing disease versus managing symptoms."
+  },
+  {
+    "id": 752,
+    "flippable": true,
+    "reason": "Both describe disproving claims, differing in exposing fraud versus logical argument."
+  },
+  {
+    "id": 753,
+    "flippable": true,
+    "reason": "Both describe inactive entities, differing in whether revival remains possible."
+  },
+  {
+    "id": 754,
+    "flippable": false,
+    "reason": "Different parts of speech and unrelated meanings: modest adjective versus objecting verb."
+  },
+  {
+    "id": 755,
+    "flippable": false,
+    "reason": "Sound-alike verbs describing distinct actions: condemning others versus relinquishing one's ties."
+  },
+  {
+    "id": 756,
+    "flippable": true,
+    "reason": "Both describe yielding behavior, differing in timid shyness versus respectful submission."
+  },
+  {
+    "id": 757,
+    "flippable": true,
+    "reason": "Both describe attentive oversight, differing in thorough effort versus alert threat detection."
+  },
+  {
+    "id": 758,
+    "flippable": true,
+    "reason": "Both mourn the dead, differing in funeral song versus reflective poem."
+  },
+  {
+    "id": 759,
+    "flippable": true,
+    "reason": "Both describe dissatisfied people, differing in severed loyalty versus mere annoyance."
+  },
+  {
+    "id": 760,
+    "flippable": true,
+    "reason": "Both describe rejecting associations, differing in denying connection versus forceful condemnation."
+  },
+  {
+    "id": 761,
+    "flippable": false,
+    "reason": "Misused sound-alikes: causing acute embarrassment versus causing physical or mild unease."
+  },
+  {
+    "id": 762,
+    "flippable": true,
+    "reason": "Both describe intellectual communication, differing in broad discussion versus two-way conversation."
+  },
+  {
+    "id": 763,
+    "flippable": false,
+    "reason": "Sound-alike words describing unrelated concepts: musical discord versus political opposition."
+  },
+  {
+    "id": 764,
+    "flippable": true,
+    "reason": "Both describe differences, differing in branching apart versus variety in composition."
+  },
+  {
+    "id": 765,
+    "flippable": false,
+    "reason": "Distinct meanings: relating to financial systems versus saving money or resources."
+  },
+  {
+    "id": 766,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated pollution: foul airborne vapors versus liquid waste discharge."
+  },
+  {
+    "id": 767,
+    "flippable": true,
+    "reason": "Both describe offensive behavior, differing in perpetrator audacity versus victim insult."
+  },
+  {
+    "id": 768,
+    "flippable": true,
+    "reason": "Both describe enthusiastic expression, differing in emotional gushing versus high energy."
+  },
+  {
+    "id": 769,
+    "flippable": true,
+    "reason": "Both describe altering accounts, differing in exaggerating details versus inventing outright lies."
+  },
+  {
+    "id": 770,
+    "flippable": true,
+    "reason": "Both describe caring for others, differing in sharing feelings versus offering pity."
+  },
+  {
+    "id": 771,
+    "flippable": true,
+    "reason": "Both describe combating problems, differing in total elimination versus partial harm reduction."
+  },
+  {
+    "id": 772,
+    "flippable": true,
+    "reason": "Both describe unusual behavior, differing in unpredictable inconsistency versus harmless quirkiness."
+  },
+  {
+    "id": 773,
+    "flippable": false,
+    "reason": "Sound-alike nouns: systematic schooling process versus profound, specialized scholarly knowledge."
+  },
+  {
+    "id": 774,
+    "flippable": true,
+    "reason": "Both describe demanding situations, differing in urgent need versus strict precision requirements."
+  },
+  {
+    "id": 775,
+    "flippable": true,
+    "reason": "Both describe excess, differing in unreasonable cost versus lavish, wasteful indulgence."
+  },
+  {
+    "id": 776,
+    "flippable": true,
+    "reason": "Both describe excessive expense, differing in unreasonable pricing versus lavish indulgence."
+  },
+  {
+    "id": 777,
+    "flippable": false,
+    "reason": "Sound-alike nouns: explanatory written text versus public display of physical objects."
+  },
+  {
+    "id": 778,
+    "flippable": false,
+    "reason": "Sound-alike words describing unrelated concepts: joyful high spirits versus unreasonably high prices."
+  },
+  {
+    "id": 779,
+    "flippable": true,
+    "reason": "Both describe deceptive records, differing in inventing data versus altering existing evidence."
+  },
+  {
+    "id": 780,
+    "flippable": true,
+    "reason": "Both describe incorrect claims, differing in flawed logical reasoning versus factual untruth."
+  },
+  {
+    "id": 781,
+    "flippable": true,
+    "reason": "Both describe achievable outcomes, differing in practical viability versus theoretical potential."
+  },
+  {
+    "id": 782,
+    "flippable": true,
+    "reason": "Both describe favorable turns, differing in apt suitability versus sheer good luck."
+  },
+  {
+    "id": 783,
+    "flippable": true,
+    "reason": "Both describe inappropriate levity, differing in disrespectful dismissiveness versus misplaced humor."
+  },
+  {
+    "id": 784,
+    "flippable": false,
+    "reason": "Sound-alike verbs describing opposite acts: nurturing development versus imposing unwanted burdens."
+  },
+  {
+    "id": 785,
+    "flippable": true,
+    "reason": "Both describe lavish praise, differing in cloying, excessive flattery versus heartfelt enthusiasm."
+  },
+  {
+    "id": 786,
+    "flippable": false,
+    "reason": "Homophones naming unrelated things: an embarrassing blunder versus a hooked fishing pole."
+  },
+  {
+    "id": 787,
+    "flippable": false,
+    "reason": "Sound-alike verbs describing unrelated actions: accumulating resources versus decorating food."
+  },
+  {
+    "id": 788,
+    "flippable": true,
+    "reason": "Both describe pleasant appeal, differing in cheerful warmth versus shared mutual compatibility."
+  },
+  {
+    "id": 789,
+    "flippable": true,
+    "reason": "Both describe urging action, differing in provocative stinging pressure versus gentle persuasion."
+  },
+  {
+    "id": 790,
+    "flippable": true,
+    "reason": "Both describe balanced states, differing in dynamic self-regulation versus general balanced forces."
+  },
+  {
+    "id": 791,
+    "flippable": false,
+    "reason": "Misused sound-alikes: sharpening a tool versus moving directly toward a target."
+  },
+  {
+    "id": 792,
+    "flippable": true,
+    "reason": "Both describe slowing progress, differing in external obstruction versus internal suppression."
+  },
+  {
+    "id": 793,
+    "flippable": true,
+    "reason": "Both describe motivators of action, differing in driving momentum versus promised reward."
+  },
+  {
+    "id": 794,
+    "flippable": true,
+    "reason": "Both describe unstated qualities, differing in implied meaning versus intrinsic essential nature."
+  },
+  {
+    "id": 795,
+    "flippable": true,
+    "reason": "Both describe unwise decisions, differing in failing to save versus general rashness."
+  },
+  {
+    "id": 796,
+    "flippable": true,
+    "reason": "Both describe brash conduct, differing in insolent disrespect versus lack of foresight."
+  },
+  {
+    "id": 797,
+    "flippable": true,
+    "reason": "Both describe unformed expression, differing in embryonic early stage versus illogical confusion."
+  },
+  {
+    "id": 798,
+    "flippable": true,
+    "reason": "Both describe unstructured ideas, differing in illogical confusion versus embryonic early stage."
+  },
+  {
+    "id": 799,
+    "flippable": false,
+    "reason": "Near-antonym sound-alikes: indisputably proven truth versus an issue provoking fierce dispute."
+  },
+  {
+    "id": 800,
+    "flippable": false,
+    "reason": "Sound-alike nouns describing unrelated trips: a hostile invasion versus a leisure outing."
+  },
+  {
+    "id": 801,
+    "flippable": false,
+    "reason": "Distinct legal stages: formally charging a suspect versus finding a defendant guilty."
+  },
+  {
+    "id": 802,
+    "flippable": false,
+    "reason": "Sound-alikes describing unrelated traits: enigmatic mysteriousness versus lack of moral principles."
+  },
+  {
+    "id": 803,
+    "flippable": true,
+    "reason": "Both describe financial failure, differing in cash-flow inability versus formal legal declaration."
+  },
+  {
+    "id": 804,
+    "flippable": true,
+    "reason": "Both describe summoning presence, differing in formal appeal versus emotional conjuring."
+  },
+  {
+    "id": 805,
+    "flippable": true,
+    "reason": "Both describe world-weariness, differing in emotional exhaustion versus distrust of human motives."
+  },
+  {
+    "id": 806,
+    "flippable": true,
+    "reason": "Both describe cheerful humor, differing in joke-telling banter versus hearty, warm sociability."
+  },
+  {
+    "id": 807,
+    "flippable": true,
+    "reason": "Both describe close connection, differing in natural compatibility versus deep familial bond."
+  },
+  {
+    "id": 808,
+    "flippable": false,
+    "reason": "Different grammatical roles: actively expressing praise versus being deserving of praise."
+  },
+  {
+    "id": 809,
+    "flippable": true,
+    "reason": "Both describe opulent settings, differing in sheer profusion versus refined, comfortable elegance."
+  },
+  {
+    "id": 810,
+    "flippable": true,
+    "reason": "Both describe unenforced rules, differing in negligent carelessness versus intentional mercy."
+  },
+  {
+    "id": 811,
+    "flippable": false,
+    "reason": "Homophones naming unrelated things: an earthen flood embankment versus a tax assessment."
+  },
+  {
+    "id": 812,
+    "flippable": false,
+    "reason": "Different parts of speech: lawsuit-prone adjective versus noun for a lawsuit party."
+  },
+  {
+    "id": 813,
+    "flippable": true,
+    "reason": "Both describe damage, differing in superficial spoiling versus lasting, permanent injury."
+  },
+  {
+    "id": 814,
+    "flippable": true,
+    "reason": "Both describe painstaking thoroughness, differing in technical precision versus moral integrity."
+  },
+  {
+    "id": 815,
+    "flippable": false,
+    "reason": "Sound-alikes: an objective required threshold versus an indefinite tiny token amount."
+  },
+  {
+    "id": 816,
+    "flippable": false,
+    "reason": "Specialized biological self-propulsion versus general physical ability to move freely."
+  },
+  {
+    "id": 817,
+    "flippable": true,
+    "reason": "Both describe large quantities, differing in sheer count versus diverse, varied types."
+  },
+  {
+    "id": 818,
+    "flippable": false,
+    "reason": "Sound-alike nouns describing unrelated concepts: numerical abundance versus deceitful double-dealing."
+  },
+  {
+    "id": 819,
+    "flippable": true,
+    "reason": "Both describe unwavering determination, differing in unreasonable stubbornness versus praiseworthy tenacity."
+  },
+  {
+    "id": 820,
+    "flippable": true,
+    "reason": "Both describe elaborate design, differing in intricate decoration versus boastful, showy pretension."
+  },
+  {
+    "id": 821,
+    "flippable": true,
+    "reason": "Both describe shifting states, differing in regular pendulum swinging versus irregular variation."
+  },
+  {
+    "id": 822,
+    "flippable": true,
+    "reason": "Both describe non-curative care, differing in active symptom relief versus psychological expectation."
+  },
+  {
+    "id": 823,
+    "flippable": true,
+    "reason": "Both praise someone, differing in grand public tribute versus funeral memorial speech."
+  },
+  {
+    "id": 824,
+    "flippable": true,
+    "reason": "Both describe comparative connections, differing in direct correspondence versus explanatory illustration."
+  },
+  {
+    "id": 825,
+    "flippable": true,
+    "reason": "Both describe fair balance, differing in identical equality versus needs-based justice."
+  },
+  {
+    "id": 826,
+    "flippable": true,
+    "reason": "Both describe strict educators; flips on constructive teaching versus trivial rules."
+  },
+  {
+    "id": 827,
+    "flippable": false,
+    "reason": "Perspicacious describes discerning minds; perspicuous describes lucid language or expression."
+  },
+  {
+    "id": 828,
+    "flippable": true,
+    "reason": "Both describe aid efforts; flips on financial donation versus hands-on relief."
+  },
+  {
+    "id": 829,
+    "flippable": true,
+    "reason": "Both describe sharp taste; flips on pleasant zest versus biting harshness."
+  },
+  {
+    "id": 830,
+    "flippable": true,
+    "reason": "Both describe calm demeanor; flips on serene peace versus oblivious neglect."
+  },
+  {
+    "id": 831,
+    "flippable": false,
+    "reason": "Homophones describing measuring verticality versus a fruit or desirable prize."
+  },
+  {
+    "id": 832,
+    "flippable": false,
+    "reason": "Different parts of speech: powerful monarch noun versus enhance strength verb."
+  },
+  {
+    "id": 833,
+    "flippable": true,
+    "reason": "Both describe early emergence; flips on gifted maturity versus unready hastiness."
+  },
+  {
+    "id": 834,
+    "flippable": true,
+    "reason": "Both describe extraordinary knowledge; flips on foreseeing future versus knowing everything."
+  },
+  {
+    "id": 835,
+    "flippable": true,
+    "reason": "Both describe upright conduct; flips on inner moral integrity versus decorum."
+  },
+  {
+    "id": 836,
+    "flippable": false,
+    "reason": "Unrelated concepts: physical or kinship proximity versus natural behavioral inclination."
+  },
+  {
+    "id": 837,
+    "flippable": false,
+    "reason": "Unrelated concepts: formal printed brochure versus anticipated future possibility."
+  },
+  {
+    "id": 838,
+    "flippable": false,
+    "reason": "Unrelated roles: expert public commentator versus petty detail-obsessed stickler."
+  },
+  {
+    "id": 839,
+    "flippable": true,
+    "reason": "Both describe sharp flavors; flips on harsh overpowering bite versus zest."
+  },
+  {
+    "id": 840,
+    "flippable": false,
+    "reason": "Different actions: suppressing disorder or rebellion versus extinguishing flame or thirst."
+  },
+  {
+    "id": 841,
+    "flippable": true,
+    "reason": "Both describe quiet inaction; flips on passive dormancy versus submissive consent."
+  },
+  {
+    "id": 842,
+    "flippable": true,
+    "reason": "Both describe protective walls; flips on broad embankment versus low barrier."
+  },
+  {
+    "id": 843,
+    "flippable": false,
+    "reason": "Unrelated attributes: bitter emotional malice versus loud, disorderly harsh noise."
+  },
+  {
+    "id": 844,
+    "flippable": false,
+    "reason": "Opposite homophones: tear completely down versus build or lift up."
+  },
+  {
+    "id": 845,
+    "flippable": true,
+    "reason": "Both describe responding in kind; flips on mutual equivalence versus vengeance."
+  },
+  {
+    "id": 846,
+    "flippable": false,
+    "reason": "Unrelated concepts: moral righteousness versus absolute subjective certainty."
+  },
+  {
+    "id": 847,
+    "flippable": true,
+    "reason": "Both describe increasing effort; flips on general intensification versus numerical doubling."
+  },
+  {
+    "id": 848,
+    "flippable": false,
+    "reason": "Different targets: negligent person in duty versus faulty or disordered situation."
+  },
+  {
+    "id": 849,
+    "flippable": false,
+    "reason": "Unrelated concepts: depraved unprincipled person versus legal validation of a will."
+  },
+  {
+    "id": 850,
+    "flippable": true,
+    "reason": "Both describe off-color humor; flips on coarse crudeness versus suggestive wit."
+  },
+  {
+    "id": 851,
+    "flippable": false,
+    "reason": "Different domains: promoting physical health versus providing beneficial moral correction."
+  },
+  {
+    "id": 852,
+    "flippable": true,
+    "reason": "Both describe mocking wit; flips on broad societal critique versus taunts."
+  },
+  {
+    "id": 853,
+    "flippable": true,
+    "reason": "Both describe gloomy disposition; flips on somber brooding versus petulant resentment."
+  },
+  {
+    "id": 854,
+    "flippable": false,
+    "reason": "Unrelated attributes: sparkling intellectual brilliance versus superficial or erotic stimulation."
+  },
+  {
+    "id": 855,
+    "flippable": false,
+    "reason": "Direct antonyms: wasteful extravagant spender versus careful, economical saver."
+  },
+  {
+    "id": 856,
+    "flippable": true,
+    "reason": "Both describe wretched conditions; flips on physical filth versus moral depravity."
+  },
+  {
+    "id": 857,
+    "flippable": false,
+    "reason": "Homophones and different parts of speech: sedate adjective versus verb stayed."
+  },
+  {
+    "id": 858,
+    "flippable": true,
+    "reason": "Both describe cleanliness; flips on completely germ-free versus hygienically safe."
+  },
+  {
+    "id": 859,
+    "flippable": false,
+    "reason": "Different qualities: loud grating vocal sound versus strict, tightly enforced rules."
+  },
+  {
+    "id": 860,
+    "flippable": false,
+    "reason": "Different parts of speech: prove with evidence verb versus substantial adjective."
+  },
+  {
+    "id": 861,
+    "flippable": true,
+    "reason": "Both describe deceptive tactics; flips on overarching scheme versus stated excuse."
+  },
+  {
+    "id": 862,
+    "flippable": true,
+    "reason": "Both describe gloomy demeanor; flips on petulant sulkiness versus somber temperament."
+  },
+  {
+    "id": 863,
+    "flippable": true,
+    "reason": "Both describe adding something; flips on completely replacing versus complementary augmentation."
+  },
+  {
+    "id": 864,
+    "flippable": true,
+    "reason": "Both describe beneficial cooperation; flips on enhanced output versus essential interdependence."
+  },
+  {
+    "id": 865,
+    "flippable": false,
+    "reason": "Homophones and different parts of speech: pulled tight adjective versus verb."
+  },
+  {
+    "id": 866,
+    "flippable": false,
+    "reason": "Unrelated concepts: personal disposition or nature versus moderation and self-restraint."
+  },
+  {
+    "id": 867,
+    "flippable": false,
+    "reason": "Unrelated properties: secular or worldly domain versus brief, limited duration."
+  },
+  {
+    "id": 868,
+    "flippable": true,
+    "reason": "Both describe daring persistence; flips on admirable determination versus reckless audacity."
+  },
+  {
+    "id": 869,
+    "flippable": true,
+    "reason": "Both describe medical interventions; flips on curing illness versus relieving symptoms."
+  },
+  {
+    "id": 870,
+    "flippable": false,
+    "reason": "Homophones describing musical vocal quality versus processed wood or lumber."
+  },
+  {
+    "id": 871,
+    "flippable": true,
+    "reason": "Both describe manageable behavior; flips on reasonable compliance versus passive submission."
+  },
+  {
+    "id": 872,
+    "flippable": true,
+    "reason": "Both describe non-permanent states; flips on brief duration versus bridging changes."
+  },
+  {
+    "id": 873,
+    "flippable": false,
+    "reason": "Unrelated qualities: aggressively combative disposition versus chaotic, stormy disorder."
+  },
+  {
+    "id": 874,
+    "flippable": true,
+    "reason": "Both describe wavering positions; flips on indecision versus rhythmic alternating movement."
+  },
+  {
+    "id": 875,
+    "flippable": true,
+    "reason": "Both describe empty expressions; flips on lacking intelligence versus absent-minded blankness."
+  },
+  {
+    "id": 876,
+    "flippable": true,
+    "reason": "Both describe shallow content; flips on dull flavorlessness versus mindless emptiness."
+  },
+  {
+    "id": 877,
+    "flippable": false,
+    "reason": "Unrelated concepts: truthfulness or accuracy versus ravenous hunger or greed."
+  },
+  {
+    "id": 878,
+    "flippable": false,
+    "reason": "Unrelated qualities: lush green vegetation versus relating to the spring season."
+  },
+  {
+    "id": 879,
+    "flippable": true,
+    "reason": "Both describe troublesome problems; flips on emotional frustration versus intellectual confusion."
+  },
+  {
+    "id": 880,
+    "flippable": false,
+    "reason": "Unrelated concepts: experienced through another versus dangerously unstable or insecure."
+  },
+  {
+    "id": 881,
+    "flippable": false,
+    "reason": "Different parts of speech: watchful adjective versus self-appointed enforcer noun."
+  },
+  {
+    "id": 882,
+    "flippable": true,
+    "reason": "Both describe short narratives; flips on evocative mood sketch versus story."
+  },
+  {
+    "id": 883,
+    "flippable": false,
+    "reason": "Different parts of speech: clear of blame verb versus vengeful adjective."
+  },
+  {
+    "id": 884,
+    "flippable": false,
+    "reason": "Different parts of speech: spiteful adjective versus justify or clear verb."
+  },
+  {
+    "id": 885,
+    "flippable": false,
+    "reason": "Unrelated concepts: thick sticky liquid versus deliberately cruel and violent."
+  },
+  {
+    "id": 886,
+    "flippable": true,
+    "reason": "Both describe grand ambition; flips on practical foresight versus impractical dreaming."
+  },
+  {
+    "id": 887,
+    "flippable": true,
+    "reason": "Both describe vehement opposition; flips on abusive insults versus clamorous volume."
+  },
+  {
+    "id": 888,
+    "flippable": true,
+    "reason": "Both describe unpredictable behavior; flips on charming playfulness versus erratic fickleness."
+  }
+]

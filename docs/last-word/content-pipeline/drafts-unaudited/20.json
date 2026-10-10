@@ -1,0 +1,1342 @@
+{
+ "set_id": "abdicate-resign",
+ "source_pair_id": 20,
+ "words": [
+  {
+   "word": "abdicate",
+   "sense": "To renounce one's throne or supreme authority.",
+   "concise_meaning": "To formally relinquish a sovereign power.",
+   "connotation": "Formal, weighty, often implying an abandonment of duty.",
+   "register": "Formal",
+   "grammar": "Used with direct object (e.g., abdicate the throne) or intransitively.",
+   "collocations": [
+    "abdicate the throne",
+    "abdicate all responsibility",
+    "abdicate power"
+   ],
+   "misconceptions": [
+    "Thinking it means to simply quit any job."
+   ]
+  },
+  {
+   "word": "resign",
+   "sense": "To voluntarily leave an ordinary office or position.",
+   "concise_meaning": "To give up a job or position voluntarily.",
+   "connotation": "Standard, professional, neutral to negative.",
+   "register": "Neutral/Professional",
+   "grammar": "Used with 'from' (resign from the position).",
+   "collocations": [
+    "resign from the post",
+    "resigned in protest",
+    "resigned from the board"
+   ],
+   "misconceptions": [
+    "Using it for a monarch stepping down."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "power_level",
+   "description": "Whether the position is sovereign/supreme or standard/professional."
+  },
+  {
+   "id": "formality_level",
+   "description": "How formal the act of leaving is."
+  }
+ ],
+ "edge": {
+  "a": "abdicate",
+  "b": "resign",
+  "boundary_rule": "Use 'abdicate' only for supreme authority (monarchs, absolute rulers); use 'resign' for all other roles.",
+  "clues_a": [
+   "throne",
+   "crown",
+   "sovereign",
+   "supreme power",
+   "absolute monarch"
+  ],
+  "clues_b": [
+   "job",
+   "manager",
+   "director",
+   "committee",
+   "office",
+   "contract"
+  ],
+  "irrelevant_clues": [
+   "feeling sad",
+   "leaving suddenly",
+   "leaving voluntarily",
+   "making a public speech"
+  ],
+  "misconceptions": {
+   "M1": "Confusing high formality with supreme power.",
+   "M2": "Thinking 'abdicate' is just a fancy synonym for 'quit'.",
+   "M3": "Assuming 'resign' cannot be formal."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "abdicate": [
+    "The aging king chose to abdicate, leaving the crown to his daughter.",
+    "After years of absolute rule, the dictator had to abdicate due to immense pressure.",
+    "She decided to abdicate her claim to the throne to live a quiet life.",
+    "It was unthinkable for a monarch to abdicate in the middle of a war.",
+    "The historical document details why he was forced to abdicate.",
+    "When the people demanded reform, he feared he might have to abdicate."
+   ],
+   "resign": [
+    "The project manager decided to resign from the company after five years.",
+    "Many board members resign when they disagree with the company's new direction.",
+    "The coach felt he had no choice but to resign after the team lost all games.",
+    "It is standard for officials to resign if they are involved in a scandal.",
+    "He will resign from his position on the committee next month.",
+    "After the merger, the CEO announced she would resign from her role."
+   ]
+  },
+  "counter": {
+   "abdicate": [
+    "The accountant decided to abdicate from the firm to start his own business.",
+    "The waiter was asked to abdicate his duties for being rude.",
+    "The teacher felt overwhelmed and wanted to abdicate her teaching role.",
+    "He couldn't abdicate his responsibility as a parent.",
+    "She will abdicate the role of treasurer next week.",
+    "The volunteer had to abdicate when he moved away."
+   ],
+   "resign": [
+    "The queen was forced to resign after the uprising failed.",
+    "The emperor refused to resign, despite calls for his retirement.",
+    "The dynasty fell when the king decided to resign.",
+    "It is rare for a monarch to resign without an heir.",
+    "The absolute ruler wouldn't resign even when his power was challenged.",
+    "The people waited for the king to resign."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The long-serving president of the organization decided to resign from his post.",
+    "best_word": "resign",
+    "note": "Even for the highest position in an organization, it is not sovereign power."
+   },
+   {
+    "text": "The absolute monarch felt she had to abdicate to prevent a revolution.",
+    "best_word": "abdicate",
+    "note": "Classic use for sovereign power."
+   },
+   {
+    "text": "The committee chair announced she would resign following the dispute.",
+    "best_word": "resign",
+    "note": "A committee chair is an ordinary position, not sovereign."
+   },
+   {
+    "text": "He chose to abdicate all his imperial responsibilities to become a monk.",
+    "best_word": "abdicate",
+    "note": "Implies sovereign imperial status."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "abdicate-resign_001",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The monarch's decision to ___:",
+   "beats": [
+    {
+     "text": "The sovereign monarch is tired of the crown and wants to step down.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.95,
+      "resign": 0.1
+     },
+     "decisive_clue": "sovereign monarch",
+     "reason": "Sovereign power requires 'abdicate'.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M2"
+     }
+    },
+    {
+     "text": "She wants to live a quiet life far from the palace and the court duties.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.98,
+      "resign": 0.1
+     },
+     "decisive_clue": "palace and the court",
+     "reason": "Maintaining status as sovereign monarch.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The key is the sovereign power. A monarch abdicates.",
+   "feedback_deep": "The term 'sovereign monarch' signals a supreme authority. Abdication is the formal process for such a person to leave power. 'Resign' is for everyday jobs.",
+   "contrast_rule": "Sovereigns abdicate; employees resign.",
+   "hint": "Focus on the type of power the person holds."
+  },
+  {
+   "id": "abdicate-resign_002",
+   "domain": "corporate",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "What the leader of the group chose to do: ___",
+   "beats": [
+    {
+     "text": "The leader, known as the Emperor of the region, decided to leave his post.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.9,
+      "resign": 0.2
+     },
+     "decisive_clue": "Emperor",
+     "reason": "Emperor implies sovereign power.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M2"
+     }
+    },
+    {
+     "text": "However, it was revealed that his title was merely a company branding joke.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.9
+     },
+     "decisive_clue": "company branding",
+     "reason": "Not a sovereign power, just a corporate job.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The flip occurred when the power was revealed to be corporate, not sovereign.",
+   "feedback_deep": "Initially, the word 'Emperor' suggested supreme power, which calls for 'abdicate'. Once 'company branding' clarified it was a corporate title, 'resign' became the correct choice.",
+   "contrast_rule": "Sovereign power requires abdicate; corporate roles require resign.",
+   "hint": "The title might be deceptive."
+  },
+  {
+   "id": "abdicate-resign_003",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The tour guide's decision: ___",
+   "beats": [
+    {
+     "text": "The tour guide felt he could no longer lead the tour groups around the city.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.9
+     },
+     "decisive_clue": "tour guide",
+     "reason": "A tour guide holds an ordinary position, not sovereign power.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "He handed in his uniform to the travel agency manager.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.95
+     },
+     "decisive_clue": "travel agency",
+     "reason": "Reinforces the ordinary role.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Tour guides hold professional roles, not sovereign ones, so 'resign' is correct.",
+   "feedback_deep": "The role of a tour guide is a professional position, clearly requiring 'resign' when leaving. 'Abdicate' is reserved exclusively for sovereign monarchs.",
+   "contrast_rule": "Professional roles = resign.",
+   "hint": "Is the role supreme or professional?"
+  },
+  {
+   "id": "abdicate-resign_004",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The school head's action: ___",
+   "beats": [
+    {
+     "text": "The principal of the school decided to step down.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.3,
+      "resign": 0.7
+     },
+     "decisive_clue": "principal",
+     "reason": "Principal is a professional, not sovereign role.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M3"
+     }
+    },
+    {
+     "text": "Even though he had total control over the school curriculum.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.9
+     },
+     "decisive_clue": "school curriculum",
+     "reason": "Still an ordinary role.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Total control of a school is not sovereign power; thus, 'resign' holds.",
+   "feedback_deep": "While 'total control' sounds like sovereign power, the context is an ordinary school. 'Resign' remains the correct term because a school principal is a professional administrator, not a sovereign ruler.",
+   "contrast_rule": "Administrative power is not sovereign.",
+   "hint": "Check the scope of the authority."
+  },
+  {
+   "id": "abdicate-resign_005",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The leader's move: ___",
+   "beats": [
+    {
+     "text": "The president of the republic announced his departure.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.2,
+      "resign": 0.8
+     },
+     "decisive_clue": "president",
+     "reason": "President is an elected official, not a monarch.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "In this specific constitution, the president is treated as a monarch for life.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.9,
+      "resign": 0.2
+     },
+     "decisive_clue": "monarch for life",
+     "reason": "The role has been redefined as sovereign/monarchical.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The flip happens because the constitutional definition redefined the role as sovereign.",
+   "feedback_deep": "Normally, a president 'resigns', but when defined constitutionally as a 'monarch for life', the act becomes an 'abdication'. Contextual definitions override standard usage.",
+   "contrast_rule": "Sovereign redefinition requires abdication.",
+   "hint": "Look closely at the constitutional definition."
+  },
+  {
+   "id": "abdicate-resign_006",
+   "domain": "military",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the general did: ___",
+   "beats": [
+    {
+     "text": "The general was unhappy with the orders from the defense ministry.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.9
+     },
+     "decisive_clue": "general",
+     "reason": "A general is a high-ranking officer, but not sovereign.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "He decided to leave his command and retired from the army.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.95
+     },
+     "decisive_clue": "army",
+     "reason": "Military commands are professional roles.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Military command is a professional post; hence 'resign' is appropriate.",
+   "feedback_deep": "Generals hold professional positions in a military hierarchy. They are not sovereigns. Therefore, leaving such a position is a resignation, not an abdication.",
+   "contrast_rule": "Military rank requires resignation.",
+   "hint": "Is a general a sovereign?"
+  },
+  {
+   "id": "abdicate-resign_007",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The partner's attitude: ___",
+   "beats": [
+    {
+     "text": "He decided to give up on his role in the partnership.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.8
+     },
+     "decisive_clue": "partnership",
+     "reason": "Relationship roles are not sovereign power.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "He no longer wanted to contribute his time to their shared goals.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.9
+     },
+     "decisive_clue": "shared goals",
+     "reason": "Reinforces the collaborative/non-sovereign context.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Relationship roles, even important ones, are not sovereign positions.",
+   "feedback_deep": "A partnership is collaborative. Ending one's role in it is like leaving a committee or a job, not a sovereign throne.",
+   "contrast_rule": "Partnerships = resign.",
+   "hint": "Are they a king and queen of a country, or partners in a relationship?"
+  },
+  {
+   "id": "abdicate-resign_008",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The minister's decision: ___",
+   "beats": [
+    {
+     "text": "The minister is frustrated and wants to leave the cabinet.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.9
+     },
+     "decisive_clue": "minister",
+     "reason": "Ministers are political employees.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M3"
+     }
+    },
+    {
+     "text": "The constitution says the minister acts as the sole sovereign regent.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.8,
+      "resign": 0.2
+     },
+     "decisive_clue": "sole sovereign regent",
+     "reason": "The role now defines sovereign power.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The flip occurred when the role was redefined as a sovereign regency.",
+   "feedback_deep": "While 'minister' usually leads to 'resign', the new context defining them as a 'sole sovereign regent' forces the use of 'abdicate'.",
+   "contrast_rule": "Regents/sovereigns abdicate; ministers resign.",
+   "hint": "What is the official definition of the role?"
+  },
+  {
+   "id": "abdicate-resign_009",
+   "domain": "corporate",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "What the CEO did: ___",
+   "beats": [
+    {
+     "text": "The CEO wanted to step down from the company.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.9
+     },
+     "decisive_clue": "CEO",
+     "reason": "CEO is a high-level job, but not a sovereign role.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "She had been running the company with absolute power for ten years.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.2,
+      "resign": 0.8
+     },
+     "decisive_clue": "absolute power",
+     "reason": "Absolute power is metaphorical here; it's still a corporate job.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Even with 'absolute power', a CEO's position is still a corporate role, so 'resign' is correct.",
+   "feedback_deep": "This is a false shift. 'Absolute power' is used figuratively, but the entity is still a company, not a state. A CEO does not hold sovereign power.",
+   "contrast_rule": "Corporate power is not sovereign.",
+   "hint": "Does 'absolute power' mean sovereign power in this context?"
+  },
+  {
+   "id": "abdicate-resign_010",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The prince's move: ___",
+   "beats": [
+    {
+     "text": "The prince felt he could not bear the responsibility of the crown.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.9,
+      "resign": 0.1
+     },
+     "decisive_clue": "crown",
+     "reason": "Crown equals sovereign power.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M2"
+     }
+    },
+    {
+     "text": "He announced he would give up his right to the throne forever.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.95,
+      "resign": 0.05
+     },
+     "decisive_clue": "throne",
+     "reason": "Reinforces the sovereign context.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Throne and crown clearly signal sovereign authority, necessitating 'abdicate'.",
+   "feedback_deep": "The terms 'crown' and 'throne' are direct indicators of sovereign authority. Relinquishing them requires the formal term 'abdicate'.",
+   "contrast_rule": "Thrones are abdicated.",
+   "hint": "Check the symbols of power mentioned."
+  },
+  {
+   "id": "abdicate-resign_011",
+   "domain": "corporate",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "The manager's decision: ___",
+   "beats": [
+    {
+     "text": "The branch manager decided to step down.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0,
+      "resign": 1
+     },
+     "decisive_clue": "branch manager",
+     "reason": "Ordinary professional role.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "The position was surprisingly defined by the company as a 'sovereign regional command'.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.3,
+      "resign": 0.7
+     },
+     "decisive_clue": "company",
+     "reason": "It's a company's internal jargon, not a state-level sovereign power.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Corporate internal jargon about 'sovereign' commands does not change the fact it's an ordinary professional role; 'resign' is correct.",
+   "feedback_deep": "The context attempts to reframe the manager as a 'sovereign' leader, but it's clearly corporate. Jargon doesn't confer true sovereignty. Thus, 'resign' holds.",
+   "contrast_rule": "Corporate jargon is still corporate.",
+   "hint": "Look past the jargon."
+  },
+  {
+   "id": "abdicate-resign_012",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The team captain's action: ___",
+   "beats": [
+    {
+     "text": "The team captain decided he could no longer lead his soccer team.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.95
+     },
+     "decisive_clue": "team captain",
+     "reason": "Sports roles are professional/team roles, not sovereign.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "He announced this change of heart to the club owners.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.98
+     },
+     "decisive_clue": "club owners",
+     "reason": "Reinforces the club/organizational context.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Sports positions, like a team captain, are professional roles; use 'resign'.",
+   "feedback_deep": "In sports, you are either a player or a captain in a club. These are not sovereign titles. Therefore, 'resign' is the correct term for stepping down.",
+   "contrast_rule": "Sports roles require resign.",
+   "hint": "Is a soccer team a kingdom?"
+  },
+  {
+   "id": "abdicate-resign_013",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 4,
+   "frame": "The high official's action: ___",
+   "beats": [
+    {
+     "text": "The regent decided to step down from the throne.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.9,
+      "resign": 0.1
+     },
+     "decisive_clue": "throne",
+     "reason": "Regents on a throne hold sovereign authority.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    },
+    {
+     "text": "He had technically been acting as a regent on behalf of an absent king.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.8,
+      "resign": 0.2
+     },
+     "decisive_clue": "acting as a regent",
+     "reason": "Still sovereign power while in the role.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "As a regent on a throne, he exercises sovereign power and therefore abdicates.",
+   "feedback_deep": "Even if the regent is technically acting on behalf of someone else, holding the throne means holding sovereign power. Thus, stepping down is an abdication.",
+   "contrast_rule": "Regents/Thrones = abdicate.",
+   "hint": "Do regents have sovereign power?"
+  },
+  {
+   "id": "abdicate-resign_014",
+   "domain": "government",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The governor's decision: ___",
+   "beats": [
+    {
+     "text": "The governor decided he was no longer fit for his state role.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.9
+     },
+     "decisive_clue": "governor",
+     "reason": "Governor is a state official, not sovereign.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "The constitution declared the state a kingdom and him its absolute monarch.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.9,
+      "resign": 0.1
+     },
+     "decisive_clue": "absolute monarch",
+     "reason": "Now sovereign power.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The flip happens because the title was upgraded from governor to absolute monarch.",
+   "feedback_deep": "A governor 'resigns'. Once the state was declared a kingdom and they became an 'absolute monarch', they 'abdicate'.",
+   "contrast_rule": "Monarchs abdicate; governors resign.",
+   "hint": "Did the title change?"
+  },
+  {
+   "id": "abdicate-resign_015",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The chancellor's action: ___",
+   "beats": [
+    {
+     "text": "The chancellor announced he would step down from his post.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.9
+     },
+     "decisive_clue": "chancellor",
+     "reason": "Chancellor is an ordinary government official role.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "He held the post for ten years and led the government efficiently.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.95
+     },
+     "decisive_clue": "led the government",
+     "reason": "Reinforces it as an ordinary official role.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Chancellors are government officials, not sovereigns, so they 'resign'.",
+   "feedback_deep": "Even leading a government is a professional function in a modern state; it's not a sovereign position. Thus, 'resign' is correct.",
+   "contrast_rule": "Chancellors resign.",
+   "hint": "Is a chancellor a monarch?"
+  },
+  {
+   "id": "abdicate-resign_016",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The emperor's choice: ___",
+   "beats": [
+    {
+     "text": "The emperor feared the rebellion and wanted to save his life.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.95,
+      "resign": 0.05
+     },
+     "decisive_clue": "emperor",
+     "reason": "Emperor is a sovereign power.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    },
+    {
+     "text": "He decided to give up his position as emperor to flee the country.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.98,
+      "resign": 0.02
+     },
+     "decisive_clue": "position as emperor",
+     "reason": "Reinforces the sovereign context.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Emperors hold sovereign power; thus, they 'abdicate'.",
+   "feedback_deep": "An emperor is a quintessential sovereign authority. Leaving the position, regardless of the reason (rebellion, fleeing), is formally an abdication.",
+   "contrast_rule": "Emperors abdicate.",
+   "hint": "What is the authority level of an emperor?"
+  },
+  {
+   "id": "abdicate-resign_017",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The head of the family's role: ___",
+   "beats": [
+    {
+     "text": "The head of the household wanted to stop managing the family finances.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.1,
+      "resign": 0.8
+     },
+     "decisive_clue": "head of the household",
+     "reason": "Managing finances is not sovereign power.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "He asked his sister to take over these daily duties.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.9
+     },
+     "decisive_clue": "daily duties",
+     "reason": "Reinforces the domestic, non-sovereign context.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Household management is not sovereign power, so use 'resign'.",
+   "feedback_deep": "Being the 'head' of a household is a domestic responsibility, not a sovereign one. Leaving this role is like resigning from a job.",
+   "contrast_rule": "Household management = resign.",
+   "hint": "Is a household a country with a throne?"
+  },
+  {
+   "id": "abdicate-resign_018",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "What the leader did: ___",
+   "beats": [
+    {
+     "text": "The leader of the rebel group decided to leave his position.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.05,
+      "resign": 0.95
+     },
+     "decisive_clue": "rebel group",
+     "reason": "A rebel group leader has no sovereign authority.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    },
+    {
+     "text": "He had proclaimed himself 'King of the Rebels'.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.3,
+      "resign": 0.7
+     },
+     "decisive_clue": "proclaimed himself",
+     "reason": "Self-proclamation does not create true sovereignty.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "A self-proclaimed 'king' of a rebel group does not hold true sovereign authority; 'resign' remains correct.",
+   "feedback_deep": "This is a corruption check. The rebel leader's self-proclamation as 'King' is a fake title, not a true sovereign power. Therefore, 'resign' is still appropriate.",
+   "contrast_rule": "True sovereignty is needed for abdicate.",
+   "hint": "Is the 'king' title legitimate?"
+  },
+  {
+   "id": "abdicate-resign_019",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The monarch's decision: ___",
+   "beats": [
+    {
+     "text": "The monarch wanted to leave his post to become a simple advisor.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.9,
+      "resign": 0.1
+     },
+     "decisive_clue": "monarch",
+     "reason": "Sovereign power requires 'abdicate'.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    },
+    {
+     "text": "However, it turned out his title was purely for entertainment purposes at a fair.",
+     "best_word": "resign",
+     "fit": {
+      "abdicate": 0.2,
+      "resign": 0.8
+     },
+     "decisive_clue": "entertainment purposes",
+     "reason": "Not a true sovereign role.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 1,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "abdicate": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The flip occurred when the role was revealed to be for entertainment, not sovereign authority.",
+   "feedback_deep": "The word 'monarch' initially signaled sovereign authority. Once the context revealed it was purely entertainment, the role became an ordinary professional one, hence 'resign'.",
+   "contrast_rule": "Entertainment roles are not sovereign.",
+   "hint": "What is the true nature of the monarch title?"
+  },
+  {
+   "id": "abdicate-resign_020",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The queen's decision: ___",
+   "beats": [
+    {
+     "text": "The queen decided to leave her duties as she felt exhausted.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.9,
+      "resign": 0.1
+     },
+     "decisive_clue": "queen",
+     "reason": "Queens hold sovereign power.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    },
+    {
+     "text": "She was specifically stepping down from her role as the absolute ruler.",
+     "best_word": "abdicate",
+     "fit": {
+      "abdicate": 0.98,
+      "resign": 0.02
+     },
+     "decisive_clue": "absolute ruler",
+     "reason": "Confirms the sovereign authority.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "resign": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Queens are sovereign rulers and therefore 'abdicate' their role.",
+   "feedback_deep": "A queen is a sovereign ruler. Stepping down from that position, especially as an 'absolute ruler', is a clear case of abdication.",
+   "contrast_rule": "Queens abdicate.",
+   "hint": "Does a queen hold sovereign power?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

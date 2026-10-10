@@ -1,0 +1,1222 @@
+{
+ "set_id": "sequester-quarantine",
+ "source_pair_id": 618,
+ "words": [
+  {
+   "word": "sequester",
+   "sense": "To isolate or set apart for protection, confidentiality, or legal reasons.",
+   "concise_meaning": "To remove or hide away from influence or public view.",
+   "connotation": "Formal, deliberate, protective, or administrative.",
+   "register": "Formal/Academic/Legal.",
+   "grammar": "Verb; often used in the passive voice.",
+   "collocations": [
+    "sequester the jury",
+    "sequestered assets",
+    "sequestered from view",
+    "sequester funds"
+   ],
+   "misconceptions": [
+    "Confusing it with medical isolation."
+   ]
+  },
+  {
+   "word": "quarantine",
+   "sense": "To isolate to prevent the spread of a contagious disease.",
+   "concise_meaning": "To restrict movement to control infection.",
+   "connotation": "Serious, health-focused, restrictive, medical.",
+   "register": "Formal/Medical/Public policy.",
+   "grammar": "Verb or Noun.",
+   "collocations": [
+    "under quarantine",
+    "quarantine the patient",
+    "impose a quarantine",
+    "lift the quarantine"
+   ],
+   "misconceptions": [
+    "Using it for non-disease-related isolation."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "reason_for_isolation",
+   "description": "Disease prevention vs. legal/privacy/protective action."
+  },
+  {
+   "id": "formality_level",
+   "description": "General or legal process vs. medical procedure."
+  },
+  {
+   "id": "temporal_nature",
+   "description": "Defined by contagion period vs. defined by the protective goal."
+  }
+ ],
+ "edge": {
+  "a": "sequester",
+  "b": "quarantine",
+  "boundary_rule": "Use quarantine strictly for disease-related isolation; use sequester for everything else.",
+  "clues_a": [
+   "legal or administrative purposes",
+   "financial or asset protection",
+   "jury or witness protection"
+  ],
+  "clues_b": [
+   "infection or contagion concerns",
+   "health safety of the public",
+   "medical observation"
+  ],
+  "irrelevant_clues": [
+   "the duration of isolation",
+   "the fact that someone is alone",
+   "whether the person wants to be there"
+  ],
+  "misconceptions": {
+   "M1": "Assuming medical isolation can be sequestering.",
+   "M2": "Assuming any formal isolation is a quarantine.",
+   "M3": "Ignoring the cause (health vs. other)."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "sequester": [
+    "The committee decided to sequester the sensitive documents until the investigation concluded.",
+    "To ensure a fair trial, the judge chose to sequester the jury for the duration of the case.",
+    "The company had to sequester a portion of its profits to handle the upcoming legal settlement.",
+    "The scientist managed to sequester the volatile chemicals in a locked, airtight vault.",
+    "To maintain their privacy, the celebrities sequestered themselves in a remote island villa.",
+    "The government acted to sequester the assets linked to the international smuggling ring."
+   ],
+   "quarantine": [
+    "All passengers on the plane were held in quarantine until they were tested for the virus.",
+    "The farmer had to quarantine the sick livestock to prevent the disease from killing the herd.",
+    "New plants imported from abroad must remain in quarantine to check for invasive pests.",
+    "After showing signs of the fever, the doctor advised the staff to quarantine the patient immediately.",
+    "The neighborhood was placed under strict quarantine during the height of the epidemic.",
+    "You should quarantine yourself if you have been in contact with someone infected."
+   ]
+  },
+  "counter": {
+   "sequester": [
+    "The sick child was sequestered until the doctors knew if the illness was contagious.",
+    "They sequestered the infected dogs in the shelter.",
+    "The hospital wing was sequestered to deal with the outbreak.",
+    "The healthy traveler was sequestered due to an unknown pathogen.",
+    "The city was sequestered to limit the spread of influenza.",
+    "The infected samples were sequestered in the medical lab."
+   ],
+   "quarantine": [
+    "The jury was placed in quarantine to avoid media influence during the trial.",
+    "The bank decided to quarantine the funds to prevent any unauthorized access.",
+    "The author quarantined herself in a cabin to finish her novel in peace.",
+    "They quarantined the sensitive data on a separate, offline server.",
+    "The corporation was forced to quarantine its profits to pay back debts.",
+    "The witness was quarantined to protect them from potential threats."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The spy's bank accounts were ____, ensuring no funds could be accessed until the trial.",
+    "best_word": "sequester",
+    "note": "While restrictive, the goal is legal/financial, not health-related."
+   },
+   {
+    "text": "To stop the fungus from ruining the rest of the crop, the gardener had to ____ the affected plants.",
+    "best_word": "quarantine",
+    "note": "Biological contagion, which acts like disease prevention."
+   },
+   {
+    "text": "To keep the jury free from outside opinions, the court decided to ____ them at a hotel.",
+    "best_word": "sequester",
+    "note": "Classic legal use for jury protection."
+   },
+   {
+    "text": "The patient with the rare bacterial infection was placed in ____ to protect the other patients.",
+    "best_word": "quarantine",
+    "note": "Health-related isolation."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "sequester-quarantine_001",
+   "domain": "legal",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The jury's situation: ___",
+   "beats": [
+    {
+     "text": "The judge moved the jury to a private hotel to avoid public opinion.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.95,
+      "quarantine": 0.1
+     },
+     "decisive_clue": "avoid public opinion",
+     "reason": "Isolation for legal fairness, not medical reasons.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They were also restricted from using their phones.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.98,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "restricted phones",
+     "reason": "Strengthens the legal-integrity context.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The goal is ensuring a fair trial, not containing an illness.",
+   "feedback_deep": "Isolation to maintain jury neutrality during a trial is a classic example of sequestering. It has nothing to do with health or disease.",
+   "contrast_rule": "Legal fairness vs. health safety.",
+   "hint": "Is the goal health?"
+  },
+  {
+   "id": "sequester-quarantine_002",
+   "domain": "medical",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The patient with the virus: ___",
+   "beats": [
+    {
+     "text": "The doctor ordered the patient to stay in a special room to stop the virus from spreading.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.1,
+      "quarantine": 0.95
+     },
+     "decisive_clue": "stop the virus from spreading",
+     "reason": "Medical isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    },
+    {
+     "text": "All staff must wear protective gear when entering the room.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.05,
+      "quarantine": 0.99
+     },
+     "decisive_clue": "protective gear",
+     "reason": "Supports the medical containment context.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Isolation for medical containment is a quarantine.",
+   "feedback_deep": "This is a direct application of quarantine, where the goal is to prevent the spread of a pathogen.",
+   "contrast_rule": "Disease control vs. administrative isolation.",
+   "hint": "Check the motive."
+  },
+  {
+   "id": "sequester-quarantine_003",
+   "domain": "finance",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The suspect's assets: ___",
+   "beats": [
+    {
+     "text": "The court decided to hold the suspect's bank funds until the trial concludes.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.9,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "hold funds",
+     "reason": "Legal/administrative action on assets.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "This action stops the suspect from transferring the money out of the country.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.98,
+      "quarantine": 0.02
+     },
+     "decisive_clue": "stops transferring",
+     "reason": "Confirms the administrative protective nature of the act.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Financial assets are sequestered, not quarantined.",
+   "feedback_deep": "Sequestering assets is a common legal move to ensure they remain available for later use, unrelated to medical quarantine.",
+   "contrast_rule": "Asset protection vs. biological hazard.",
+   "hint": "What is being isolated?"
+  },
+  {
+   "id": "sequester-quarantine_004",
+   "domain": "botany",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The imported plant's status: ___",
+   "beats": [
+    {
+     "text": "The customs office is holding the plant shipment for inspection.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.2,
+      "quarantine": 0.8
+     },
+     "decisive_clue": "customs office inspection",
+     "reason": "Biosecurity measure (a form of quarantine).",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M2"
+     }
+    },
+    {
+     "text": "They found invasive insects that could harm local ecosystems.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.05,
+      "quarantine": 0.99
+     },
+     "decisive_clue": "invasive insects",
+     "reason": "Confirms it's for preventing biological spread.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Biosecurity uses quarantine for containment.",
+   "feedback_deep": "Preventing the spread of invasive species is functionally similar to preventing disease, making quarantine appropriate.",
+   "contrast_rule": "Biological hazard vs. general legal isolation.",
+   "hint": "Is this a biological issue?"
+  },
+  {
+   "id": "sequester-quarantine_005",
+   "domain": "private_life",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The billionaire's holiday plan: ___",
+   "beats": [
+    {
+     "text": "The celebrity wanted to get away from the paparazzi.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.85,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "get away from paparazzi",
+     "reason": "Self-imposed isolation for privacy.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They chose a remote island where no cameras were allowed.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.99,
+      "quarantine": 0.01
+     },
+     "decisive_clue": "no cameras",
+     "reason": "Confirms the goal of privacy.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Privacy isolation is a form of sequestering.",
+   "feedback_deep": "Sequestering can mean setting oneself apart for personal reasons like privacy, entirely unrelated to health safety.",
+   "contrast_rule": "Privacy goal vs. disease containment.",
+   "hint": "What is the desired outcome?"
+  },
+  {
+   "id": "sequester-quarantine_006",
+   "domain": "technology",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The system's reaction to the compromised file: ___",
+   "beats": [
+    {
+     "text": "The antivirus software isolated the suspicious file to prevent damage.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.7,
+      "quarantine": 0.6
+     },
+     "decisive_clue": "prevent damage",
+     "reason": "Protective, non-disease containment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M1"
+     }
+    },
+    {
+     "text": "It moved the file to a secure, encrypted folder.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.9,
+      "quarantine": 0.1
+     },
+     "decisive_clue": "encrypted folder",
+     "reason": "Administrative isolation of data.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Data security is a form of sequestering.",
+   "feedback_deep": "Even if software sometimes uses the term 'quarantine' for infected files, sequestering accurately describes moving something to a restricted, secure location for protective reasons.",
+   "contrast_rule": "Security protection vs. medical containment.",
+   "hint": "Think about security versus infection."
+  },
+  {
+   "id": "sequester-quarantine_007",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The international traveler's status: ___",
+   "beats": [
+    {
+     "text": "The government requires visitors to stay in a hotel to reduce overall crowding.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.8,
+      "quarantine": 0.2
+     },
+     "decisive_clue": "reduce crowding",
+     "reason": "General social distancing/crowd control, not necessarily disease.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "After a sudden test revealed a fever, the traveler was forced to stay inside until cleared.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.1,
+      "quarantine": 0.95
+     },
+     "decisive_clue": "sudden test revealed a fever",
+     "reason": "The focus has shifted to medical contagion.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Fever changes the reason for isolation to medical.",
+   "feedback_deep": "The first beat describes general crowd management. Once a fever is confirmed, it becomes a health-driven quarantine.",
+   "contrast_rule": "Crowd control vs. health contagion.",
+   "hint": "What is the reason now?"
+  },
+  {
+   "id": "sequester-quarantine_008",
+   "domain": "whistleblowing",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The witness in the corporate scandal: ___",
+   "beats": [
+    {
+     "text": "The company moved the witness to a quiet office to stop them from talking to the press.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.9,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "stop talking to the press",
+     "reason": "Administrative isolation to hide information.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They found the witness had been exposed to toxic chemicals and needed medical isolation.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.05,
+      "quarantine": 0.95
+     },
+     "decisive_clue": "toxic chemical exposure",
+     "reason": "The isolation is now medically necessary.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The goal changed from silencing to medical safety.",
+   "feedback_deep": "Initially, they sequestered the witness to manage information. Once chemicals are involved, the medical need to quarantine takes over.",
+   "contrast_rule": "Silencing vs. medical safety.",
+   "hint": "What is the priority now?"
+  },
+  {
+   "id": "sequester-quarantine_009",
+   "domain": "data_analysis",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The data set's status: ___",
+   "beats": [
+    {
+     "text": "The researchers set aside a specific portion of the data to test their hypothesis later.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.9,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "set aside to test later",
+     "reason": "Administrative/research isolation of data.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They realized the data was corrupted by a malware virus, so they restricted access.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.1,
+      "quarantine": 0.9
+     },
+     "decisive_clue": "corrupted by malware virus",
+     "reason": "The focus shifted to containment of a harmful agent.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Malware containment acts like medical quarantine.",
+   "feedback_deep": "Setting data aside for research is sequestering. Containing a virus, even a digital one, is like medical quarantine.",
+   "contrast_rule": "Research utility vs. containment of harm.",
+   "hint": "What is the new threat?"
+  },
+  {
+   "id": "sequester-quarantine_010",
+   "domain": "pet_care",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The new dog's living situation: ___",
+   "beats": [
+    {
+     "text": "The trainer kept the new puppy in a separate room to help it adjust to the new home.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.85,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "adjust to new home",
+     "reason": "General protective/training isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "The vet discovered the puppy had a contagious parasitic infection.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.05,
+      "quarantine": 0.95
+     },
+     "decisive_clue": "contagious infection",
+     "reason": "The reason is now medical containment.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Parasite risk shifts the goal to medical containment.",
+   "feedback_deep": "Initially, isolation was for training. Once an infection is found, the purpose becomes medical quarantine.",
+   "contrast_rule": "Training goal vs. medical safety.",
+   "hint": "Is the goal now medical?"
+  },
+  {
+   "id": "sequester-quarantine_011",
+   "domain": "diplomacy",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The diplomat's status: ___",
+   "beats": [
+    {
+     "text": "The embassy assigned the diplomat a separate apartment to ensure their privacy and safety.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.9,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "ensure privacy and safety",
+     "reason": "Administrative protective isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "It turned out they had a highly contagious respiratory virus, and they were ordered to isolate.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.05,
+      "quarantine": 0.95
+     },
+     "decisive_clue": "contagious respiratory virus",
+     "reason": "The focus has turned to health containment.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Contagion makes isolation a quarantine.",
+   "feedback_deep": "Privacy isolation is sequestering; health-based isolation is quarantine.",
+   "contrast_rule": "Privacy vs. health-based isolation.",
+   "hint": "What is the new health fact?"
+  },
+  {
+   "id": "sequester-quarantine_012",
+   "domain": "culinary",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "The chef's treatment of the ingredients: ___",
+   "beats": [
+    {
+     "text": "The head chef kept the expensive truffles in a special cabinet to prevent theft.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.9,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "prevent theft",
+     "reason": "Protective, non-medical isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They were found to be spoiled by a dangerous, bacteria-producing fungus, so they were sealed away.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.1,
+      "quarantine": 0.9
+     },
+     "decisive_clue": "bacteria-producing fungus",
+     "reason": "The reason for isolation is now health hazard.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Health risk shifts the goal to medical containment.",
+   "feedback_deep": "Protecting against theft is sequestering; preventing the spread of a harmful fungus is quarantine.",
+   "contrast_rule": "Theft protection vs. health safety.",
+   "hint": "Is there a health hazard now?"
+  },
+  {
+   "id": "sequester-quarantine_013",
+   "domain": "environment",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The jury in a trial: ___",
+   "beats": [
+    {
+     "text": "The jury was separated to ensure they heard no news reports about the trial.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.95,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "no news reports",
+     "reason": "Standard legal sequestering.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They remained in this state for several weeks.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.99,
+      "quarantine": 0.01
+     },
+     "decisive_clue": "remained in this state",
+     "reason": "Narrows the scope to legal procedure.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Legal isolation is only sequestering.",
+   "feedback_deep": "The context is purely legal, which confirms sequestering throughout.",
+   "contrast_rule": "Legal isolation vs. medical.",
+   "hint": "Is this a legal procedure?"
+  },
+  {
+   "id": "sequester-quarantine_014",
+   "domain": "government",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The dictator's action: ___",
+   "beats": [
+    {
+     "text": "The dictator removed the activists from public life.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.8,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "removed from public life",
+     "reason": "Administrative isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They were locked away permanently to silence their opposition.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.98,
+      "quarantine": 0.01
+     },
+     "decisive_clue": "silence opposition",
+     "reason": "Narrows it down to political isolation.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Political silencing is a form of sequestering.",
+   "feedback_deep": "Sequestering can describe the forced removal or isolation of people for political control, distinct from medical quarantine.",
+   "contrast_rule": "Political control vs. disease safety.",
+   "hint": "Is the reason medical?"
+  },
+  {
+   "id": "sequester-quarantine_015",
+   "domain": "epidemiology",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 2,
+   "frame": "The virus control measure: ___",
+   "beats": [
+    {
+     "text": "The health department placed the town in isolation to monitor for symptoms.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.1,
+      "quarantine": 0.9
+     },
+     "decisive_clue": "health department, monitor symptoms",
+     "reason": "Medical isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    },
+    {
+     "text": "They are specifically looking for signs of the influenza variant.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.01,
+      "quarantine": 0.99
+     },
+     "decisive_clue": "influenza variant",
+     "reason": "Narrows to disease-specific context.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Disease monitoring is a classic quarantine.",
+   "feedback_deep": "Health departments using isolation to monitor for influenza is the exact purpose of a quarantine.",
+   "contrast_rule": "Disease control vs. administrative isolation.",
+   "hint": "Check the health agency's role."
+  },
+  {
+   "id": "sequester-quarantine_016",
+   "domain": "archaeology",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The discovered ancient object's state: ___",
+   "beats": [
+    {
+     "text": "The researchers set the fragile pottery aside in a climate-controlled room.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.8,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "set aside, climate-controlled",
+     "reason": "Preservative, non-disease isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "It was just to protect it from humidity, not because of any risk of contamination.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.99,
+      "quarantine": 0.01
+     },
+     "decisive_clue": "not contamination",
+     "reason": "Confirming no disease, so it remains sequester.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M1"
+     }
+    }
+   ],
+   "feedback_short": "No contamination risk, so it stays sequester.",
+   "feedback_deep": "The false shift makes you think it might be a quarantine, but clarifying that it's only for humidity preservation keeps it sequestered.",
+   "contrast_rule": "Preservation vs. disease safety.",
+   "hint": "Is there a health risk?"
+  },
+  {
+   "id": "sequester-quarantine_017",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "The family's decision for the sick guest: ___",
+   "beats": [
+    {
+     "text": "The guest was isolated because they were loud.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.7,
+      "quarantine": 0.05
+     },
+     "decisive_clue": "isolated because loud",
+     "reason": "Administrative isolation for peace.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    },
+    {
+     "text": "They were loud because they were playing music, not because they were coughing.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.95,
+      "quarantine": 0.01
+     },
+     "decisive_clue": "not coughing",
+     "reason": "No disease, so still sequestered.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M1"
+     }
+    }
+   ],
+   "feedback_short": "It was just to stop the noise, not for illness.",
+   "feedback_deep": "Isolation for noise control is sequestering. Because there is no illness, it cannot be a quarantine.",
+   "contrast_rule": "Noise control vs. disease safety.",
+   "hint": "Is it illness related?"
+  },
+  {
+   "id": "sequester-quarantine_018",
+   "domain": "management",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 5,
+   "frame": "The manager's treatment of the troublesome employee: ___",
+   "beats": [
+    {
+     "text": "The manager isolated the employee from the team for health reasons.",
+     "best_word": "quarantine",
+     "fit": {
+      "sequester": 0.2,
+      "quarantine": 0.8
+     },
+     "decisive_clue": "health reasons",
+     "reason": "Medical isolation.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "sequester": "M1"
+     }
+    },
+    {
+     "text": "Actually, that was a mistake; it was just a simple performance improvement plan.",
+     "best_word": "sequester",
+     "fit": {
+      "sequester": 0.8,
+      "quarantine": 0.1
+     },
+     "decisive_clue": "mistake, performance plan",
+     "reason": "Rehabilitates to administrative isolation (sequester).",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "quarantine": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Performance management is sequestering, not quarantine.",
+   "feedback_deep": "When it's clarified as a performance plan, the initial 'quarantine' (health) is invalidated, making 'sequester' (administrative) correct.",
+   "contrast_rule": "Performance management vs. medical.",
+   "hint": "Was it really medical?"
+  }
+ ],
+ "drafted_by": "hermes"
+}

@@ -1,0 +1,1808 @@
+{
+  "set_id": "stigmatize-stereotype",
+  "source_pair_id": 71,
+  "words": [
+    {
+      "word": "stigmatize",
+      "sense": "mark or treat a person, practice, or condition as shameful, disgraceful, or socially unacceptable, creating a lasting discrediting label",
+      "concise_meaning": "to brand someone or something with social shame, moral disgrace, or public unacceptability",
+      "connotation": "strongly negative; conveys social ostracism, public dishonor, moral taint, and institutional exclusion",
+      "register": "formal, academic, sociological, journalistic",
+      "grammar": "transitive verb; takes a direct object ('stigmatize an applicant'), often with prepositional phrases ('stigmatize someone for seeking help', 'stigmatize an illness as a character flaw')",
+      "collocations": [
+        "stigmatize mental illness",
+        "stigmatize poverty",
+        "stigmatize failure",
+        "socially stigmatize",
+        "deeply stigmatize"
+      ],
+      "misconceptions": [
+        "Assuming that any negative appraisal or unfair generalization is stigmatizing, overlooking that stigmatization requires attaching a mark of shame, moral disgrace, or social unacceptability."
+      ]
+    },
+    {
+      "word": "stereotype",
+      "sense": "assign a fixed, oversimplified, and generalized trait, behavior, or role to an individual based entirely on their membership in a broader cohort or group",
+      "concise_meaning": "to assume an individual shares an identical generalized trait or habit with every other member of their group",
+      "connotation": "reductive and biased; flattens individuality through sweeping preconceptions, even when superficially flattering or harmless",
+      "register": "formal, sociological, psychological, educational, general discourse",
+      "grammar": "transitive verb; takes a direct object ('stereotype students'), frequently used with 'as' ('stereotype older workers as resistant to technology') or in passive constructions ('be stereotyped as quiet')",
+      "collocations": [
+        "stereotype people as",
+        "unfairly stereotype",
+        "tend to stereotype",
+        "routinely stereotype",
+        "crudely stereotype"
+      ],
+      "misconceptions": [
+        "Assuming that stereotyping must always involve malice, hatred, or social disgrace, missing that attributing even harmless or superficially complimentary traits across an entire category is stereotyping."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "evaluative_disgrace_vs_cognitive_cliche",
+      "description": "Attaching deep social shame, moral deviance, or public disgrace (stigmatize) vs. applying a rigid, sweeping assumption about group habits or aptitudes without necessarily implying moral ruin or social contamination (stereotype)."
+    },
+    {
+      "id": "individual_taint_vs_cohort_flattening",
+      "description": "Branding a person or practice with a persistent social mark that leads to ostracism and exclusion (stigmatize) vs. treating an individual as a cookie-cutter representative of a broader category by ignoring their individual variance (stereotype)."
+    },
+    {
+      "id": "affective_charge_and_valence",
+      "description": "Always punitive, discrediting, and marked by social aversion (stigmatize) vs. cognitive overgeneralization that can be ostensibly benign, neutral, or complimentary in tone while still intellectually reductive (stereotype)."
+    }
+  ],
+  "edge": {
+    "a": "stigmatize",
+    "b": "stereotype",
+    "boundary_rule": "To stigmatize is to brand someone with social shame, disgrace, or unacceptability; to stereotype is to assign a generalized trait or assumption to an entire group.",
+    "clues_a": [
+      "attaching enduring social disgrace, shame, or moral contamination to a condition or choice",
+      "imposing social ostracism, exclusion, or reputational taint that discredits public standing",
+      "framing an individual or practice as dirty, shameful, or socially unacceptable",
+      "treating a past misfortune or health struggle as a mark of personal unfitness or dishonor",
+      "erecting social barriers and taboos that punish open admission of an issue"
+    ],
+    "clues_b": [
+      "assuming all members of a collective category possess identical skills, tastes, or habits",
+      "attributing a generalized behavior to an individual solely based on their demographic group",
+      "relying on cultural clichés or fixed assumptions about how a certain group thinks or behaves",
+      "erasing individual variance by treating one person's traits as representative of the whole cohort",
+      "imputing specific unearned strengths or predictable weaknesses universally to an entire category"
+    ],
+    "irrelevant_clues": [
+      "whether the speaker expresses hostility, mild curiosity, or polite intent",
+      "whether the setting is an academic institution, workplace, family home, or sports club",
+      "whether the target of the comment is an adolescent or an adult",
+      "whether the statement is delivered verbally in private or published in a written policy"
+    ],
+    "misconceptions": {
+      "M1": "Confusing stigmatizing (attaching lasting shame, disgrace, or social unacceptability) with stereotyping (attributing a generalized trait across an entire group).",
+      "M2": "Assuming that any generalization or category-based assumption must stigmatize the target, even when it carries no element of shame, disgrace, or social ostracism.",
+      "M3": "Assuming that an act cannot stereotype someone if the generalized trait is benign, neutral, or superficially complimentary."
+    }
+  },
+  "anchors": {
+    "positive": {
+      "stigmatize": [
+        "The clinic's practice of forcing addiction patients to line up on the street corner turned their recovery into a public spectacle of civic shame.",
+        "Community elders publicly denounced families who had defaulted on microloans, treating their financial hardship as an infectious moral stain that justified neighborhood shunning.",
+        "The company's human resources policy effectively marked employees who sought psychiatric counseling as unstable liabilities, causing colleagues to avoid them in the hallway.",
+        "The boarding academy's punitive protocol forced pupils who repeated a grade to wear distinctive yellow sashes, marking them with open disgrace before their peers.",
+        "Local civic leaders launched a whisper campaign against former convicts who had completed their sentences, framing their presence in public parks as an unacceptable social menace.",
+        "The department head treated any professor who took family leave as professional deadweight, creating an office taboo that turned parental care into a disgraceful secret."
+      ],
+      "stereotype": [
+        "The hiring panel routinely assumed that any candidate from an engineering university would naturally excel at quantitative modeling but lack basic conversational empathy.",
+        "The marketing agency designed its holiday campaign around the lazy presumption that all grandparents spend their weekends knitting wool blankets and baking fruit pies.",
+        "The sports commentator casually asserted that athletes from coastal towns were inherently better distance runners than peers from mountain villages.",
+        "The guidance counselor automatically directed every art student into graphic design courses under the belief that creative minds are universally incapable of handling calculus.",
+        "The tourism director assumed that all visitors from neighboring provinces would prefer spicy street food over sit-down dining without asking for their individual preferences.",
+        "The head chef assumed that every apprentice trained in continental Europe would have flawless knife techniques and disdain modern electric appliances."
+      ]
+    },
+    "counter": {
+      "stigmatize": [
+        "The talent scout assumed every recruit from the northern academy possessed exceptional stamina and tactical patience on the court.",
+        "The retail supervisor presumed that teenage cashiers would inherently grasp digital inventory software faster than older clerks.",
+        "The music teacher believed that all string players were quiet introverts who preferred solo practice to ensemble performance.",
+        "The travel blogger asserted that everyone raised in metropolitan cities inevitably loved fast-paced crowds and espresso bars.",
+        "The scholarship committee assumed that applicants from farming communities were uniquely hardworking and disciplined.",
+        "The seminar organizer presumed that all software programmers preferred communicating via chat rather than speaking during workshops."
+      ],
+      "stereotype": [
+        "The villagers treated the family whose home caught fire as cursed outcasts, forbidding children from playing near their ruins.",
+        "The sports club revoked a gymnast's locker privileges after her depressive diagnosis, declaring her psychological condition too disgraceful for team facilities.",
+        "The landlord posted public notices naming tenants who had received rental assistance, explicitly shaming their dependence on welfare to discourage others.",
+        "The school administration barred a pupil who survived a viral infection from the cafeteria, treating him as a lingering source of moral pollution.",
+        "The civic society expelled a member who declared bankruptcy, framing his commercial insolvency as an unforgivable mark of personal dishonor.",
+        "The firm forced employees taking stress leave to use a rear service entrance, turning their medical care into a concealed badge of company shame."
+      ]
+    },
+    "borderline": [
+      {
+        "text": "The admissions director assumed that applicants from low-income postal codes would inevitably struggle with abstract literature and have poor study discipline.",
+        "best_word": "stereotype",
+        "note": "While the assumption is disparaging and harmful, its operational mechanism is attributing a sweeping deficit uniformly across an entire geographic group rather than branding a specific person with social shame or moral disgrace."
+      },
+      {
+        "text": "The municipal housing authority published a neighborhood bulletin warning residents that former welfare recipients in the complex were bad influences whose presence lowered community standards.",
+        "best_word": "stigmatize",
+        "note": "The notice actively casts welfare receipt as a badge of moral unacceptability and incites social exclusion against those marked by it, making social disgrace the primary harm."
+      },
+      {
+        "text": "The debate coach presumed that all students from rural high schools were innately passionate public speakers who lacked formal debate etiquette.",
+        "best_word": "stereotype",
+        "note": "The coach projects a sweeping, unexamined profile of strengths and flaws onto an entire demographic category rather than imposing social ostracism or shame."
+      },
+      {
+        "text": "The youth sports league required children whose parents missed uniform dues to sit in an unpainted holding pen during matches, visibly exposing their family's poverty to spectators.",
+        "best_word": "stigmatize",
+        "note": "The ritualized public exposure attaches an unmistakable mark of shame and indignity to poverty, actively degrading the children's social standing."
+      }
+    ]
+  },
+  "chains": [
+    {
+      "id": "stigmatize-stereotype_001",
+      "domain": "workplace_recruitment",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the hiring manager's policy does to applicants with past debt defaults: ___",
+      "beats": [
+        {
+          "text": "Marcus notices that the personnel office stamps candidate folders containing prior debt defaults with a bright scarlet marker and files them in a separate cabinet labeled 'untrustworthy backgrounds'.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.94,
+            "stereotype": 0.06
+          },
+          "decisive_clue": "marking folders with a scarlet marker and labeling them untrustworthy backgrounds",
+          "reason": "Branding candidates with a visible mark of personal disgrace and moral unfitness is stigmatizing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "When an applicant asks about an opening, the director whispers to receptionists that anyone with a stained balance sheet brings dishonor to the firm and should never be offered a seat in the lobby.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.96,
+            "stereotype": 0.04
+          },
+          "decisive_clue": "framing a financial setback as dishonor and barring them from sitting in the lobby",
+          "reason": "Treating personal financial difficulty as a shameful contamination that demands public isolation deepens the social disgrace.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Marcus discovers that this policy does not make broad sociological generalizations about economic cohorts, but specifically punishes individuals by treating their past credit relief as a disgraceful mark of shame.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.98,
+            "stereotype": 0.02
+          },
+          "decisive_clue": "punishing applicants by treating credit relief as a disgraceful mark of shame",
+          "reason": "The core harm is active social disgrace and moral unacceptability rather than an oversimplified group generalization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Treating past debt as a badge of moral dishonor and unacceptability stigmatizes the applicants.",
+      "feedback_deep": "To stigmatize is to mark someone as socially shameful, disgraceful, or unacceptable. The manager does not generalize habits across a demographic class; he brands individuals with a lasting badge of moral pollution and denies them basic social dignity.",
+      "contrast_rule": "Stigmatizing brands someone with social shame; stereotyping attributes a generalized trait to an entire group.",
+      "hint": "Look at whether the manager is marking people with moral disgrace or making a sweeping group assumption."
+    },
+    {
+      "id": "stigmatize-stereotype_002",
+      "domain": "secondary_education",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the academic counselor's assumption does to students from rural high schools: ___",
+      "beats": [
+        {
+          "text": "Mr. Henderson informs the admissions board that every student arriving from a small farming village will inherently lack computer literacy and prefer outdoor manual crafts over programming.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.08,
+            "stereotype": 0.92
+          },
+          "decisive_clue": "assuming all students from farming villages inherently lack computer literacy and prefer crafts",
+          "reason": "Attributing an identical set of habits and deficits to all members of a geographic cohort is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "He pairs this remark with the belief that rural applicants are universally humble, quiet, and uncomfortable participating in lively seminar debates.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.06,
+            "stereotype": 0.94
+          },
+          "decisive_clue": "presuming all rural applicants are universally humble, quiet, and uncomfortable in debates",
+          "reason": "Applying a uniform personality profile across an entire background flattens individual differences into a standard cliché.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Mr. Henderson expresses genuine goodwill toward these candidates and plans extra tutoring for them, yet he remains convinced that their regional background dictates their personal aptitudes.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.04,
+            "stereotype": 0.96
+          },
+          "decisive_clue": "maintaining goodwill while believing regional origin determines individual aptitudes",
+          "reason": "Even with supportive intentions and zero moral disgrace, assigning fixed collective traits remains stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Assuming all rural students share the same personality and skills stereotypes the group.",
+      "feedback_deep": "To stereotype is to assign a generalized trait to an entire category of people regardless of individual variation. Mr. Henderson bears no ill will and imposes no moral disgrace, but his sweeping preconceptions flatten diverse individuals into a fixed profile.",
+      "contrast_rule": "Stereotyping generalizes traits across a collective cohort; stigmatizing marks an individual or condition with social disgrace.",
+      "hint": "Consider whether the counselor is projecting a blanket group profile or casting moral disgrace upon them."
+    },
+    {
+      "id": "stigmatize-stereotype_003",
+      "domain": "public_health",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "What the municipal health campaign does to patients diagnosed with chronic skin lesions: ___",
+      "beats": [
+        {
+          "text": "The city health board prints posters warning that citizens who develop untreated dermal patches are guilty of personal neglect and hygiene failure, calling them a civic hazard.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.93,
+            "stereotype": 0.07
+          },
+          "decisive_clue": "accusing patients of personal neglect and branding them a civic hazard",
+          "reason": "Attaching moral blame, personal failure, and public hazard to a medical condition stigmatizes those who suffer from it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Public bathhouses and civic pools immediately install warning notices requiring patrons with visible rashes to leave the water and sit on marked isolation benches.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.96,
+            "stereotype": 0.04
+          },
+          "decisive_clue": "ordering patients to sit on marked isolation benches in full view of the public",
+          "reason": "Enforcing visible public separation and social humiliation marks the patients with enduring disgrace.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Although health officials clarify that the skin condition is non-contagious, they refuse to retract the hygiene warnings, leaving affected residents marked as unclean in community life.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.97,
+            "stereotype": 0.03
+          },
+          "decisive_clue": "leaving affected residents marked as unclean despite knowing the illness is non-contagious",
+          "reason": "Perpetuating social taint and disgust around an illness constitutes severe stigmatization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Marking patients with skin conditions as unclean hazards attaches social disgrace, which stigmatizes them.",
+      "feedback_deep": "To stigmatize is to treat someone or their condition as shameful, disgraceful, or contaminated. The city health board's punitive warnings and public isolation benches create lasting social unacceptability rather than merely generalizing group behavior.",
+      "contrast_rule": "Stigmatizing imposes a mark of social disgrace; stereotyping projects a uniform assumption onto an entire category.",
+      "hint": "Focus on whether the campaign produces moral disgrace and isolation or simply an overgeneralized habit."
+    },
+    {
+      "id": "stigmatize-stereotype_004",
+      "domain": "culinary_arts",
+      "transfer": false,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "What the head instructor's assumption does to pastry apprentices: ___",
+      "beats": [
+        {
+          "text": "Chef Antoine tells the kitchen staff that anyone who chooses pastry over savory cooking will always be overly sensitive, obsessed with measurement, and terrified of open flame.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.07,
+            "stereotype": 0.93
+          },
+          "decisive_clue": "declaring all pastry chefs to be overly sensitive, rigid with measurements, and fearful of flame",
+          "reason": "Assigning sweeping temperament traits to an entire culinary specialization is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "When a new baking trainee demonstrates excellent knife speed on the butcher block, Antoine expresses shock, insisting that delicate dessert makers never possess physical kitchen power.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.05,
+            "stereotype": 0.95
+          },
+          "decisive_clue": "insisting dessert makers can never possess physical power despite contrary evidence",
+          "reason": "Clinging to a rigid group preconception in the face of counter-evidence demonstrates entrenched stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Antoine praises pastry chefs as brilliant artists worthy of high wages, yet he refuses to let any of them touch the grill station because he thinks their minds work in only one delicate way.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.04,
+            "stereotype": 0.96
+          },
+          "decisive_clue": "praising their artistic brilliance while assuming their minds work in only one delicate way",
+          "reason": "Even complimentary generalizations that confine a group to a narrow archetype are instances of stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Antoine's assumption that all pastry chefs share identical temperament and limitations stereotypes the trainees.",
+      "feedback_deep": "To stereotype is to assume that all individuals in a group share fixed characteristics. Antoine does not view baking as shameful or morally tainted; he simply locks all pastry cooks into a rigid mold that ignores their individual kitchen versatility.",
+      "contrast_rule": "Stereotyping reduces varied individuals to a fixed collective mold; stigmatizing casts them out as socially shameful.",
+      "hint": "Notice whether Antoine is casting moral dishonor or pigeonholing workers into a single archetype."
+    },
+    {
+      "id": "stigmatize-stereotype_005",
+      "domain": "household_domestic",
+      "transfer": true,
+      "chain_type": "stay",
+      "difficulty": 3,
+      "frame": "What the landlord's rule does to tenants who receive housing vouchers: ___",
+      "beats": [
+        {
+          "text": "Arthur requires families paying rent with municipal relief vouchers to enter through the basement alley and forbids them from sitting on the front courtyard lawn.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.94,
+            "stereotype": 0.06
+          },
+          "decisive_clue": "forcing voucher families into the basement alley and barring them from the front lawn",
+          "reason": "Subjecting low-income families to degrading physical segregation and public indignity is stigmatizing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "In the communal laundry room, Arthur posts a sign warning that subsidized tenants must run machines only after midnight so other residents do not have to share washing water with them.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.97,
+            "stereotype": 0.03
+          },
+          "decisive_clue": "treating subsidized tenants as contaminating laundry water and restricting their hours",
+          "reason": "Framing economic assistance as an unhygienic taint that contaminates neighbors deepens the social disgrace.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Arthur admits that these families pay on time, but he insists that displaying government aid openly devalues the building's prestige by welcoming shameful poverty.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.98,
+            "stereotype": 0.02
+          },
+          "decisive_clue": "treating government aid as a badge of shameful poverty that must be hidden",
+          "reason": "Branding public assistance as a shameful stain that degrades social standing is the essence of stigmatizing.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Treating voucher recipients as contaminated and shameful outcasts stigmatizes the tenants.",
+      "feedback_deep": "To stigmatize is to brand someone with social shame and unacceptability. Arthur's segregated entrances and degrading laundry rules impose a humiliating mark of moral and social contamination upon tenants who receive public assistance.",
+      "contrast_rule": "Stigmatizing treats an attribute as a disgraceful taint; stereotyping assumes uniform traits across a category.",
+      "hint": "Consider whether the landlord is enforcing humiliating social shame or projecting a generalized habit."
+    },
+    {
+      "id": "stigmatize-stereotype_006",
+      "domain": "recreational_sports",
+      "transfer": true,
+      "chain_type": "stay",
+      "difficulty": 2,
+      "frame": "What the team captain's assumption does to players who wear glasses: ___",
+      "beats": [
+        {
+          "text": "During amateur basketball tryouts, Carlos automatically moves all players wearing spectacles onto the bench, telling his co-captain that people who wear glasses are clumsy and timid under the rim.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.07,
+            "stereotype": 0.93
+          },
+          "decisive_clue": "claiming everyone who wears glasses is inherently clumsy and timid under the basket",
+          "reason": "Attributing poor physical confidence and coordination to an entire group based on eyewear is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Carlos adds that spectacle-wearers will naturally have superior tactical memory and should be assigned exclusively to tracking foul counts on the clipboard.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.05,
+            "stereotype": 0.95
+          },
+          "decisive_clue": "assuming all players with spectacles possess superior tactical memory for tracking stats",
+          "reason": "Projecting an unearned intellectual strength onto a group based on eyewear reinforces the sweeping generalization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M3"
+          }
+        },
+        {
+          "text": "Even when one glasses-wearing guard sinks five consecutive three-pointers, Carlos dismisses it as a fluke and insists the player belongs in the statistical analyst chair.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.03,
+            "stereotype": 0.97
+          },
+          "decisive_clue": "refusing to accept athletic evidence and keeping the player confined to a bookish role",
+          "reason": "Treating individuals as fixed archetypes while discounting observed reality is the hallmark of stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Assuming all players with glasses are bookish and clumsy stereotypes them.",
+      "feedback_deep": "To stereotype is to assign fixed, generalized attributes to individuals based on an arbitrary group marker. Carlos views glasses as shorthand for poor athleticism and high intellect, pigeonholing players without judging their actual physical capability.",
+      "contrast_rule": "Stereotyping generalizes personality and ability from group markers; stigmatizing imposes social dishonor and shame.",
+      "hint": "Look at whether Carlos is applying a generalized cliché or casting moral disgrace upon the players."
+    },
+    {
+      "id": "stigmatize-stereotype_007",
+      "domain": "fine_arts",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the gallery director's treatment does to self-taught painters: ___",
+      "beats": [
+        {
+          "text": "At the opening exhibition, Julian remarks to critics that all self-taught painters are naive dreamers who paint colorful folklore because they lack the discipline to master anatomy.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.12,
+            "stereotype": 0.88
+          },
+          "decisive_clue": "assuming all self-taught painters are naive dreamers who lack discipline for anatomy",
+          "reason": "Sweeping generalization about the style, discipline, and limitations of non-academic artists is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Julian goes further the next morning, hanging a notice stating that any artwork created without an academic diploma is an uncultured vulgarity that will pollute the gallery's moral purity.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.91,
+            "stereotype": 0.09
+          },
+          "decisive_clue": "labeling self-taught work an uncultured vulgarity that pollutes moral purity",
+          "reason": "The language shifts from a broad artistic generalization to branding the artists with moral disgrace, dirtiness, and public unacceptability.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Julian orders assistants to scrub the floor tiles where the self-taught painter stood, loudly announcing to wealthy patrons that admitting such unwashed amateurs brought disgrace upon the salon.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.97,
+            "stereotype": 0.03
+          },
+          "decisive_clue": "scrubbing the floor where the artist stood and proclaiming their presence brought disgrace",
+          "reason": "Ritual cleansing and explicit declarations of social disgrace make the action an extreme form of stigmatizing.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Treating self-taught artists as contaminating polluters whose presence brings disgrace stigmatizes them.",
+      "feedback_deep": "What began as an intellectual cliché about self-taught art flipped into stigmatization once Julian introduced ritual disgust, moral pollution, and open public dishonor. Stigmatizing transforms a difference into an intolerable, shameful badge of exclusion.",
+      "contrast_rule": "Stereotyping generalizes artistic traits; stigmatizing treats the artist as a shameful, contaminating presence.",
+      "hint": "Watch how the director shifts from criticizing artistic skill to treating the person as a shameful contamination."
+    },
+    {
+      "id": "stigmatize-stereotype_008",
+      "domain": "software_engineering",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the engineering lead's attitude does to boot camp graduates: ___",
+      "beats": [
+        {
+          "text": "Vikram tells the department that junior developers who trained at coding boot camps are an embarrassing stain on the firm, ordering that their pull requests be hidden from client view to protect company reputation.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.92,
+            "stereotype": 0.08
+          },
+          "decisive_clue": "calling boot camp graduates an embarrassing stain and concealing their work to protect company honor",
+          "reason": "Framing an educational background as an embarrassing mark of shame that must be hidden stigmatizes the engineers.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "After review by management, Vikram drops the talk of shame and instead explains that every single boot camp recruit is identical: brilliant at quick frontend mockups but hopelessly incapable of understanding database algorithms.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.11,
+            "stereotype": 0.89
+          },
+          "decisive_clue": "declaring every boot camp recruit identical in having fast frontend skills but zero database ability",
+          "reason": "The motive shifts from inflicting moral disgrace to applying a sweeping, uniform assumption about technical skill across a group.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Vikram assigns all incoming boot camp hires to the exact same interface sprint without testing their background, convinced that every candidate from that program thinks in the exact same pattern.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.06,
+            "stereotype": 0.94
+          },
+          "decisive_clue": "assigning all recruits to the same task believing everyone from the program thinks alike",
+          "reason": "Treating individuals as interchangeable clones based on their educational category solidifies the stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Assuming all boot camp graduates have identical technical strengths and weaknesses stereotypes them.",
+      "feedback_deep": "Once Vikram abandons the language of shame and reputational embarrassment, his behavior becomes stereotyping: he projects a uniform set of capabilities across an entire cohort, ignoring their unique individual aptitudes.",
+      "contrast_rule": "Stigmatizing treats an identity as an embarrassing stain; stereotyping assumes all cohort members think alike.",
+      "hint": "Notice the shift from concealing a shameful background to assuming uniform group capabilities."
+    },
+    {
+      "id": "stigmatize-stereotype_009",
+      "domain": "civic_administration",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the city inspector's policy does to residents of modular housing estates: ___",
+      "beats": [
+        {
+          "text": "Inspector Vance notes in the urban report that residents living in pre-fabricated modular houses are universally boisterous, fond of loud barbecues, and indifferent to property maintenance schedules.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.14,
+            "stereotype": 0.86
+          },
+          "decisive_clue": "asserting modular house dwellers are universally boisterous and careless with maintenance",
+          "reason": "A broad, sweeping characterization of lifestyle and habits attributed to housing type is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "A week later, Vance orders police to erect yellow barricades around the modular estate, issuing a directive that residents must wear visitor badges outside the perimeter to prevent moral contamination of neighboring wards.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.94,
+            "stereotype": 0.06
+          },
+          "decisive_clue": "forcing residents to wear perimeter badges to prevent moral contamination of other wards",
+          "reason": "Mandating badges and citing moral contamination marks the residents with public disgrace and unacceptability.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Vance informs the town council that allowing modular estate families into the civic center would disgrace the municipality and degrade the town's social decency.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.97,
+            "stereotype": 0.03
+          },
+          "decisive_clue": "barring families from the civic center because their presence degrades social decency",
+          "reason": "Actively excluding a group on grounds of social disgrace and moral unworthiness is stigmatization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Barring residents as sources of moral contamination and civic disgrace stigmatizes them.",
+      "feedback_deep": "Vance's initial lifestyle generalizations were stereotyping, but his subsequent implementation of badges, barricades, and moral contamination rhetoric crosses into stigmatizing: branding an entire neighborhood as a disgraceful, tainted underclass.",
+      "contrast_rule": "Stereotyping assumes common behavioral habits; stigmatizing imposes badges of social disgrace and unacceptability.",
+      "hint": "Watch when Vance moves from describing lifestyle habits to imposing quarantine-like badges of dishonor."
+    },
+    {
+      "id": "stigmatize-stereotype_010",
+      "domain": "retail_commerce",
+      "transfer": false,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the store manager's guidance does to shoppers paying with coins: ___",
+      "beats": [
+        {
+          "text": "Gretchen instructs cashiers to spray disinfectant on any customer who counts out small copper coins, announcing over the loudspeaker that cash reliance is a filthy habit of social degenerates.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.95,
+            "stereotype": 0.05
+          },
+          "decisive_clue": "spraying disinfectant on coin payers and calling them filthy social degenerates",
+          "reason": "Humiliating patrons, spraying disinfectant, and labeling them filthy degenerates marks them with acute shame.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "After an employee complaint, Gretchen replaces the spray policy with a memo asserting that all coin users are elderly collectors who have poor eyesight, move at half speed, and adore chatting about the weather.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.09,
+            "stereotype": 0.91
+          },
+          "decisive_clue": "assuming all coin payers are elderly people with poor eyesight who chat about weather",
+          "reason": "The humiliation ceases, replaced by a blanket, reductive generalization about the age, speed, and habits of coin users.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Gretchen tells the staff to always speak in loud, slow voices to anyone opening a coin purse, regardless of whether the shopper is a young college student in a hurry.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.04,
+            "stereotype": 0.96
+          },
+          "decisive_clue": "speaking in loud, slow voices to every coin payer regardless of their real age or haste",
+          "reason": "Treating every customer who uses coins as an identical archetype of slow hearing is pure stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Assuming all coin users are slow elderly talkers stereotypes the shoppers.",
+      "feedback_deep": "Gretchen initially stigmatized coin users through humiliating disinfectant rituals. Once she switched to assuming all coin payers share the same age, vision deficits, and conversational habits, her treatment became stereotyping.",
+      "contrast_rule": "Stigmatizing treats an action as filthy disgrace; stereotyping assumes uniform demographic traits.",
+      "hint": "Notice the transition from public degradation to a blanket assumption about customer age and speed."
+    },
+    {
+      "id": "stigmatize-stereotype_011",
+      "domain": "personal_relationships",
+      "transfer": true,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What Derek's reaction does to friends who attend grief therapy: ___",
+      "beats": [
+        {
+          "text": "When Derek learns that his childhood companion is seeing a grief counselor, Derek remarks that anyone who talks to a therapist is simply a self-absorbed diarist who likes dwelling on the past instead of taking a brisk walk.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.18,
+            "stereotype": 0.82
+          },
+          "decisive_clue": "dismissing therapy attendees as self-absorbed diarists who merely like dwelling on the past",
+          "reason": "Reducing therapy clients to a superficial caricature of self-absorbed diary keepers is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Two days later, Derek tells the friend circle that psychological therapy is an infectious character failure, demanding that the group uninvite the companion from dinner so his broken aura does not taint the evening.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.93,
+            "stereotype": 0.07
+          },
+          "decisive_clue": "declaring therapy a character failure and disinviting the friend so his aura does not taint them",
+          "reason": "Shunning the friend, framing emotional care as a shameful character defect, and fearing contamination is stigmatizing.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Derek posts in their group chat that seeking emotional counseling is a permanent mark of cowardice that should bar anyone from holding leadership in their social circle.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.97,
+            "stereotype": 0.03
+          },
+          "decisive_clue": "branding counseling a permanent mark of cowardice and barring them from social leadership",
+          "reason": "Imposing lasting social disqualification and branding the choice with shame constitutes severe stigmatization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ostracizing a friend and labeling grief counseling a disgraceful character failure stigmatizes them.",
+      "feedback_deep": "Derek initially engaged in stereotyping by reducing therapy patients to self-absorbed clichés. He flipped to stigmatizing when he treated counseling as an infectious personal disgrace, demanding social ostracism to prevent contamination.",
+      "contrast_rule": "Stereotyping mocks someone as a cliché; stigmatizing marks them as a contaminated social outcast.",
+      "hint": "Notice when Derek stops mocking habits and starts demanding social banishment and moral shaming."
+    },
+    {
+      "id": "stigmatize-stereotype_012",
+      "domain": "international_travel",
+      "transfer": true,
+      "chain_type": "flip",
+      "difficulty": 3,
+      "frame": "What the tour operator's assumption does to solo backpackers: ___",
+      "beats": [
+        {
+          "text": "The resort manager makes solo backpackers sign an affidavit of personal decency, instructing clerks to place them in rear bungalows away from family suites so their loose, shameful morals do not corrupt the resort.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.93,
+            "stereotype": 0.07
+          },
+          "decisive_clue": "forcing an affidavit of decency and isolating them so their shameful morals do not corrupt families",
+          "reason": "Framing solo travelers as morally shameful polluters requiring quarantine and special declarations is stigmatizing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Under new ownership, the resort removes the moral warnings and simply assumes that every solo backpacker is a digital nomad who lives on black coffee, needs ultra-fast wireless internet, and sleeps until noon.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.08,
+            "stereotype": 0.92
+          },
+          "decisive_clue": "assuming all solo backpackers are digital nomads living on coffee and sleeping late",
+          "reason": "The moral disgust disappears, replaced by a harmless, sweeping archetype of nomad lifestyle and daily habits.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "The manager prints welcome kits containing only instant espresso and late-night party guides for every single lone traveler, completely disregarding those who came for sunrise mountain hiking.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.04,
+            "stereotype": 0.96
+          },
+          "decisive_clue": "giving all lone travelers party kits while ignoring those who came for sunrise hiking",
+          "reason": "Enforcing a uniform leisure profile across every solo guest regardless of individual itinerary is stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Assuming all solo travelers are late-sleeping digital nomads stereotypes the guests.",
+      "feedback_deep": "The resort initially stigmatized lone travelers by treating them as morally corrupt risks. Once the new management abandoned moral disgrace and instead applied a fixed archetype of habits and coffee tastes to every solo guest, the action became stereotyping.",
+      "contrast_rule": "Stigmatizing brands travelers with moral dishonor; stereotyping assumes all solo guests share identical habits.",
+      "hint": "Look for the switch from moral isolation to a blanket assumption about travel habits."
+    },
+    {
+      "id": "stigmatize-stereotype_013",
+      "domain": "university_campus",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "What the campus honor committee's reprimand does to the accused student: ___",
+      "beats": [
+        {
+          "text": "When an architecture student is cleared of academic cheating, the committee chair still mandates that his final portfolio be stamped with a black triangular seal denoting 'subject of formal ethics review'.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.88,
+            "stereotype": 0.12
+          },
+          "decisive_clue": "stamping an ethics review triangular seal on his portfolio despite being cleared",
+          "reason": "Affixing an indelible symbolic mark of suspicion and public scrutiny attaches lasting dishonor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "The committee further rules that during the annual graduate showcase, the student must display his models at an isolated trestle table away from the main exhibit hall.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.94,
+            "stereotype": 0.06
+          },
+          "decisive_clue": "forcing the cleared student to present at an isolated table away from the main hall",
+          "reason": "Physical banishment to a segregated corner publicly exhibits his tarnished status to visiting firms.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Faculty members clarify that this punishment carries no generalizations about architecture students as a class; rather, it attaches a permanent social warning exclusively to this one individual's academic record.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.98,
+            "stereotype": 0.02
+          },
+          "decisive_clue": "attaching a permanent social warning exclusively to this individual without group generalizations",
+          "reason": "Narrowing the context confirms that no group generalization exists; the harm is purely individualized social disgrace.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Stamping the student's portfolio and isolating his showcase table stigmatizes him with lasting suspicion.",
+      "feedback_deep": "To stigmatize is to mark an individual with social shame and lasting suspicion. The honor committee does not project a group cliché onto architecture students; it inflicts an indelible badge of disgrace onto one cleared student, damaging his professional standing.",
+      "contrast_rule": "Stigmatizing brands an individual with suspicion and shame; stereotyping projects traits across a group.",
+      "hint": "Focus on whether the committee is generalizing a group or marking a single student with suspicion."
+    },
+    {
+      "id": "stigmatize-stereotype_014",
+      "domain": "journalism_media",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "What the senior editor's assignment rule does to investigative reporters: ___",
+      "beats": [
+        {
+          "text": "Editor Sullivan insists that reporters who specialize in investigative crime stories should never cover human interest pieces because crime writers are cynical, emotionally callous, and blind to joy.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.12,
+            "stereotype": 0.88
+          },
+          "decisive_clue": "asserting all crime reporters are cynical, emotionally callous, and blind to joy",
+          "reason": "Assigning emotional numbness and cynicism as blanket traits to an entire professional beat is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Sullivan explains that this has nothing to do with ethical disgrace or moral failure, as he regards these writers as heroic watchdogs of civic integrity.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.06,
+            "stereotype": 0.94
+          },
+          "decisive_clue": "clarifying that the writers are heroic watchdogs with zero ethical disgrace",
+          "reason": "Explicitly eliminating moral disgrace narrows the meaning away from stigmatizing, keeping the focus on cognitive cliché.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Instead, Sullivan simply takes it as an absolute rule that writing about corruption permanently shapes a person's inner outlook into a single uniform temperament.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.03,
+            "stereotype": 0.97
+          },
+          "decisive_clue": "believing crime coverage locks every journalist into the exact same uniform temperament",
+          "reason": "Narrowing onto the assumption of uniform psychological flattening confirms pure stereotyping.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Assuming all crime reporters share a callous, cynical temperament stereotypes them.",
+      "feedback_deep": "To stereotype is to assume all individuals in a category share identical emotional and mental traits. Sullivan admires his crime reporters and assigns zero moral shame, but his insistence that they all possess the exact same callous temperament is classic stereotyping.",
+      "contrast_rule": "Stereotyping locks a cohort into a uniform temperament; stigmatizing attaches moral shame.",
+      "hint": "Look at how the editor admires their ethics while assuming they all share the same personality."
+    },
+    {
+      "id": "stigmatize-stereotype_015",
+      "domain": "neighborhood_association",
+      "transfer": false,
+      "chain_type": "narrow",
+      "difficulty": 3,
+      "frame": "What the neighborhood council's decree does to homeowners facing mortgage default: ___",
+      "beats": [
+        {
+          "text": "The suburban council president circulates a newsletter naming three families facing home auction, warning that mortgage default is an offensive contagion that drags down the neighborhood's moral character.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.89,
+            "stereotype": 0.11
+          },
+          "decisive_clue": "naming defaulted families and calling debt an offensive contagion dragging down moral character",
+          "reason": "Framing financial misfortune as a moral contagion that soils community standing is stigmatizing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "The council votes to bar the adults of these three households from speaking at quarterly meetings and cancels their children's access to the community swimming pool.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.95,
+            "stereotype": 0.05
+          },
+          "decisive_clue": "barring them from town meetings and revoking pool access for their children",
+          "reason": "Punitive civic exclusion and ostracizing family members deepens the social disgrace.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "When asked about regional economic trends, the president dismisses demographic statistics entirely, emphasizing that the council's focus is strictly on expelling these specific disgraced households.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.98,
+            "stereotype": 0.02
+          },
+          "decisive_clue": "rejecting economic generalizations and focusing strictly on expelling disgraced households",
+          "reason": "Narrowing away from group statistics highlights that the sanction is targeted social disgrace and banishment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Barring defaulting families from meetings and labeling them a moral contagion stigmatizes them.",
+      "feedback_deep": "To stigmatize is to treat someone as shameful, tainted, or socially unacceptable. The association does not analyze statistical trends or demographic habits; it inflicts active public disgrace and community shunning onto families facing financial ruin.",
+      "contrast_rule": "Stigmatizing inflicts active social disgrace and exclusion; stereotyping relies on generalized group assumptions.",
+      "hint": "Consider whether the council is making broad statistical assumptions or inflicting social ostracism."
+    },
+    {
+      "id": "stigmatize-stereotype_016",
+      "domain": "library_services",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 4,
+      "frame": "What the head librarian's training rule does to teenage patrons: ___",
+      "beats": [
+        {
+          "text": "Mrs. Gable instructs apprentice clerks that every visitor between fourteen and eighteen years old will invariably seek out manga graphic novels, whisper continuously, and leave candy wrappers on the mahogany tables.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.08,
+            "stereotype": 0.92
+          },
+          "decisive_clue": "asserting every teenage visitor will invariably seek manga, whisper, and leave candy trash",
+          "reason": "Attributing uniform reading choices and messy habits to all adolescents is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Mrs. Gable creates a dedicated youth lounge with complimentary snacks and colorful cushions, hoping to make the teenagers feel pampered while keeping the main reading room quiet.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.06,
+            "stereotype": 0.94
+          },
+          "decisive_clue": "offering snacks and cushions while still herding all adolescents into a separate reading zone",
+          "reason": "The hospitable amenities appear welcoming, but herding all adolescents into one room still presumes they all behave identically.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M3"
+          }
+        },
+        {
+          "text": "When a sixteen-year-old student asks for seventeenth-century poetry in the historical archive, Mrs. Gable gently redirects him toward the lounge, convinced that teenagers never actually enjoy classical verse.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.04,
+            "stereotype": 0.96
+          },
+          "decisive_clue": "redirecting the student away from classical verse under the belief adolescents cannot enjoy it",
+          "reason": "Pigeonholing an individual based on an age-group assumption confirms ongoing stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Assuming all teenagers read graphic novels and cannot enjoy classical poetry stereotypes the patrons.",
+      "feedback_deep": "To stereotype is to assign uniform tastes and behaviors to a demographic group. Mrs. Gable's lounge provides cozy perks, but her friendly gestures do not erase her underlying conviction that all adolescents share identical, limited reading interests.",
+      "contrast_rule": "Stereotyping generalizes reading preferences across an age bracket; stigmatizing marks people with moral shame.",
+      "hint": "Do not let polite hospitality distract you from the sweeping assumption about what teenagers read."
+    },
+    {
+      "id": "stigmatize-stereotype_017",
+      "domain": "vocational_training",
+      "transfer": false,
+      "chain_type": "false_shift",
+      "difficulty": 4,
+      "frame": "What the institute director's policy does to students who dropped out of secondary school: ___",
+      "beats": [
+        {
+          "text": "Director Lawson mandates that apprentices who previously left high school must wear dull grey overalls instead of the standard navy uniforms, describing their academic record as an open badge of civic failure.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.93,
+            "stereotype": 0.07
+          },
+          "decisive_clue": "forcing dropouts into grey overalls and calling their record an open badge of civic failure",
+          "reason": "Forcing students to wear distinct attire symbolizing civic failure and disgrace is stigmatizing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Lawson schedules motivational evening workshops and offers free carpentry toolkits to these grey-suited students to help them build career discipline.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.91,
+            "stereotype": 0.09
+          },
+          "decisive_clue": "providing toolkits while maintaining the degrading grey overalls that mark their past failure",
+          "reason": "Adding constructive career help does not eliminate the degrading uniform that continues to brand the students with public shame.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "During the trade exhibition, Lawson forbids grey-suited apprentices from shaking hands with visiting employers, warning that displaying disgraced students would taint the institute's credibility.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.97,
+            "stereotype": 0.03
+          },
+          "decisive_clue": "forbidding apprentices from shaking hands with employers to avoid tainting credibility",
+          "reason": "Treating the apprentices as a disgraceful taint in front of visiting employers cements their stigmatized status.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Forcing dropouts into degrading overalls and forbidding handshakes with employers stigmatizes them.",
+      "feedback_deep": "To stigmatize is to brand someone with social shame and unacceptability. Providing toolkits and extra tutoring might seem like a supportive shift, but Lawson continues to brandish their past dropout status as an embarrassing badge of dishonor.",
+      "contrast_rule": "Stigmatizing brands individuals with visible badges of disgrace; stereotyping assumes uniform group traits.",
+      "hint": "Look past the free toolkits to the ongoing practice of marking students with humiliating physical labels."
+    },
+    {
+      "id": "stigmatize-stereotype_018",
+      "domain": "performing_arts",
+      "transfer": false,
+      "chain_type": "reframe",
+      "difficulty": 4,
+      "frame": "What the casting director's assumption does to actors trained in musical comedy: ___",
+      "beats": [
+        {
+          "text": "During auditions for a tragic war drama, Fiona immediately rejects musical comedy performers, telling her staff that people from stage musicals are perpetually insincere, manic, and incapable of feeling authentic human grief.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.15,
+            "stereotype": 0.85
+          },
+          "decisive_clue": "declaring musical performers perpetually insincere, manic, and incapable of human grief",
+          "reason": "Attributing an inability to portray grief to an entire performance discipline is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Fiona frames this rule not as personal contempt, but as an affectionate tribute, explaining that musical performers are pure sunshine beings whose natural optimism makes them universally unsuited for sorrow.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.08,
+            "stereotype": 0.92
+          },
+          "decisive_clue": "reframing them as sunshine beings whose natural optimism prevents them from acting sorrow",
+          "reason": "Reframing the deficit as a complimentary, sunny virtue demonstrates that stereotyping can operate through positive clichés.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M3"
+          }
+        },
+        {
+          "text": "Fiona sends all musical comedy applicants a complimentary ticket to a children's pantomime, firmly closing the tragic drama roles without evaluating a single monologue.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.04,
+            "stereotype": 0.96
+          },
+          "decisive_clue": "barring them from dramatic auditions based solely on the sunny archetype",
+          "reason": "Denying professional opportunities by enforcing a generalized personality mold is stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Assuming musical performers are cheerful sunshine beings incapable of drama stereotypes the actors.",
+      "feedback_deep": "To stereotype is to ascribe fixed generalized traits to members of a group. Fiona reframes her restriction with flattering language about sunshine and optimism, but relying on sweet clichés to deny dramatic versatility is still stereotyping.",
+      "contrast_rule": "Stereotyping can disguise itself in flattering clichés; stigmatizing relies on social dishonor and shame.",
+      "hint": "Consider whether the flattering label of sunshine beings is still a sweeping group preconception."
+    },
+    {
+      "id": "stigmatize-stereotype_019",
+      "domain": "scientific_research",
+      "transfer": false,
+      "chain_type": "rehabilitate",
+      "difficulty": 4,
+      "frame": "What the laboratory head's treatment does to researchers who retracted a paper: ___",
+      "beats": [
+        {
+          "text": "Dr. Al-Mansoor strips an honest postdoctoral researcher of her desk after she voluntarily retracted an experiment due to faulty reagent batches, branding her lab bench with a red hazard stripe.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.92,
+            "stereotype": 0.08
+          },
+          "decisive_clue": "stripping her desk and painting a red hazard stripe on her bench after voluntary retraction",
+          "reason": "Affixing a red hazard stripe to brand an honest scientist with public disgrace is stigmatizing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "When colleagues point out that retracting honest errors is commendable, Al-Mansoor reinstates her email privileges, but still requires her to wear a badge identifying her as a 'supervised researcher' during consortium meetings.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.9,
+            "stereotype": 0.1
+          },
+          "decisive_clue": "reinstating email but forcing her to wear a supervised badge at public meetings",
+          "reason": "Even after partial rehabilitation, forcing a visible badge of dishonor at professional meetings preserves the social stigma.",
+          "shift_type": "rehabilitate",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "text": "Al-Mansoor tells visiting fellows that working beside her could contaminate their grant proposals, actively discouraging them from sharing common glassware in the facility.",
+          "best_word": "stigmatize",
+          "fit": {
+            "stigmatize": 0.97,
+            "stereotype": 0.03
+          },
+          "decisive_clue": "warning that working beside her contaminates grants and forbidding shared glassware",
+          "reason": "Treating an individual scientist as a contaminated entity whose presence corrupts colleagues is stigmatization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Marking the researcher with badges and warning that she contaminates grant proposals stigmatizes her.",
+      "feedback_deep": "To stigmatize is to mark someone with enduring shame, discredit, or social unacceptability. While Al-Mansoor partially rehabilitated her email access, his ongoing insistence on badges and rhetoric of contamination keeps her socially disgraced.",
+      "contrast_rule": "Stigmatizing treats an individual as a contaminated pariah; stereotyping assumes uniform group traits.",
+      "hint": "Observe whether partial restoration of privileges actually removed the badge of public shame."
+    },
+    {
+      "id": "stigmatize-stereotype_020",
+      "domain": "environmental_activism",
+      "transfer": false,
+      "chain_type": "precision",
+      "difficulty": 4,
+      "frame": "What the campaign director's assumption does to volunteers from financial backgrounds: ___",
+      "beats": [
+        {
+          "text": "Tariq notes that whenever a corporate accountant joins the conservation campaign, the field organizers assume the new recruit will be cold-blooded, obsessed with balance sheets, and incapable of loving wilderness.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.16,
+            "stereotype": 0.84
+          },
+          "decisive_clue": "assuming recruits from accounting are cold-blooded and incapable of loving wilderness",
+          "reason": "Assigning an emotional deficit and fixed personality to anyone with a corporate background is stereotyping.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Although Tariq ensures these volunteers are warmly embraced and given crucial leadership roles managing the legal defense budget, organizers continue to act surprised whenever an accountant cries at a forestry documentary.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.08,
+            "stereotype": 0.92
+          },
+          "decisive_clue": "acting shocked when an accountant shows tears because of the belief they cannot feel for nature",
+          "reason": "Warm professional inclusion proves there is zero social disgrace, isolating the bias as pure group stereotyping.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        },
+        {
+          "text": "Tariq emphasizes that this is not an issue of moral shaming or social dishonor, but an unthinking reliance on a cultural caricature that equates working with numbers to possessing an unfeeling heart.",
+          "best_word": "stereotype",
+          "fit": {
+            "stigmatize": 0.03,
+            "stereotype": 0.97
+          },
+          "decisive_clue": "clarifying it is a cultural caricature equating finance work with an unfeeling heart, not moral shame",
+          "reason": "Precisely differentiating between moral shaming and an unthinking cultural caricature confirms stereotyping.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stigmatize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Treating accountants as unfeeling caricatures who cannot care for nature stereotypes the volunteers.",
+      "feedback_deep": "To stereotype is to reduce individuals to an oversimplified group profile. The campaign respects and welcomes financial volunteers without imposing moral disgrace, but organizers continually let a cultural cliché dictate their expectations of their empathy.",
+      "contrast_rule": "Stereotyping relies on cultural caricatures; stigmatizing marks people with moral shame and unacceptability.",
+      "hint": "Note how the volunteers are warmly welcomed, showing there is zero moral shame or social exclusion."
+    }
+  ]
+}

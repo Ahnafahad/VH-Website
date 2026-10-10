@@ -1,0 +1,18 @@
+START todo=532 batch=12 conc=3
+batch 1: generated 12/12 mechanically clean (ids 400..71)
+batch 1: critic 3/6 PASS, 1 REJECT
+START todo=532 batch=12 conc=3
+batch 1: generated 5/12 clean after full review (ids 400..71)
+STOPPED batch 1: too many mechanical failures or quota exhausted — see rejected/ and logs/
+START todo=527 batch=12 conc=3
+batch 1: generated 0/12 clean after full review (ids 23..351)
+STOPPED batch 1: too many mechanical failures or quota exhausted — see rejected/ and logs/
+START todo=10 batch=6 conc=3
+batch 1: generated 0/6 clean after full review (ids 23..59)
+STOPPED batch 1: too many mechanical failures or quota exhausted — see rejected/ and logs/
+START todo=18 batch=6 conc=3
+batch 1: generated 0/6 clean after full review (ids 23..59)
+STOPPED batch 1: too many mechanical failures or quota exhausted — see rejected/ and logs/
+START todo=29 batch=6 conc=3
+batch 1: generated 0/6 clean after full review (ids 23..59)
+STOPPED batch 1: too many mechanical failures or quota exhausted — see rejected/ and logs/

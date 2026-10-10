@@ -1,0 +1,1665 @@
+{
+ "set_id": "eccentric-eclectic",
+ "source_pair_id": 295,
+ "words": [
+  {
+   "word": "eccentric",
+   "sense": "unconventional, idiosyncratic, and departing harmlessly from standard social norms or routines",
+   "concise_meaning": "deviating noticeably and harmlessly from customary character, convention, or social norms through peculiar individual habits or mannerisms",
+   "connotation": "mildly amusing, colorful, nonconformist, harmlessly strange",
+   "register": "standard to formal",
+   "grammar": "adjective; can be used attributively ('an eccentric inventor') or predicatively ('her behavior is eccentric'); also functions as a countable noun ('an eccentric')",
+   "collocations": [
+    "eccentric behavior",
+    "eccentric habits",
+    "eccentric millionaire",
+    "eccentric mannerisms",
+    "rather eccentric"
+   ],
+   "misconceptions": [
+    "Assuming that any collection or combination of unusual items makes someone eccentric, confusing personal behavioral peculiarity with diverse stylistic gathering."
+   ]
+  },
+  {
+   "word": "eclectic",
+   "sense": "selecting, combining, or composed of elements drawn from a wide variety of diverse sources or traditions",
+   "concise_meaning": "deriving ideas, tastes, styles, or methods from a broad, varied, and heterogeneous range of independent sources",
+   "connotation": "positive, cultured, broad-minded, versatile",
+   "register": "standard to formal, intellectual, aesthetic",
+   "grammar": "adjective; used attributively ('an eclectic mix', 'an eclectic taste') or predicatively ('the menu is eclectic')",
+   "collocations": [
+    "eclectic mix",
+    "eclectic taste",
+    "eclectic collection",
+    "eclectic approach",
+    "eclectic style"
+   ],
+   "misconceptions": [
+    "Believing eclectic means weird, random, or socially bizarre, missing that it specifically signifies deliberate variety and breadth of originating sources."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "source_of_unorthodoxy",
+   "description": "Personal idiosyncrasy deviating from social norms (eccentric) vs. breadth of origin drawing from diverse external traditions, genres, or disciplines (eclectic)."
+  },
+  {
+   "id": "structural_composition",
+   "description": "A singular, peculiar way of doing things centered on individual quirks (eccentric) vs. a composite mixture assembled by selecting from varied independent sources (eclectic)."
+  },
+  {
+   "id": "social_evaluation",
+   "description": "Seen as odd, unconventional, or out of step with everyday expectations (eccentric) vs. seen as varied, wide-ranging, and culturally or intellectually diverse (eclectic)."
+  }
+ ],
+ "edge": {
+  "a": "eccentric",
+  "b": "eclectic",
+  "boundary_rule": "Eccentric applies when behavior, personal habits, or thinking deviate strangely from conventional social norms; eclectic applies when an approach, taste, or collection draws together elements from a wide variety of distinct sources.",
+  "clues_a": [
+   "following bizarre, self-invented personal routines with no cultural precedent",
+   "insisting on odd personal rituals that violate standard everyday etiquette",
+   "wearing standard items in nonsensical or peculiar ways out of personal idiosyncrasy",
+   "harmless fixations that isolate the actor from ordinary societal habits",
+   "refusing conventional conveniences in favor of strange personal superstitions"
+  ],
+  "clues_b": [
+   "deliberately combining elements from multiple distinct cultures, genres, or eras",
+   "curating a selection that spans unrelated intellectual disciplines or art movements",
+   "blending disparate traditions into a unified project or menu",
+   "drawing methods and insights from several competing schools of thought",
+   "displaying tastes that reject single-genre allegiance in favor of broad variety"
+  ],
+  "irrelevant_clues": [
+   "whether the person is wealthy, celebrated, or socially prominent",
+   "how loudly or quietly the action is performed",
+   "whether onlookers find the end result visually striking or unexpected",
+   "the total financial cost of the materials or habits involved"
+  ],
+  "misconceptions": {
+   "M1": "Assuming any unusual or unconventional taste must be eccentric, overlooking that drawing intentionally from multiple diverse traditions makes it eclectic.",
+   "M2": "Confusing a singular bizarre personal quirk with eclectic variety, failing to check whether multiple external sources are actually involved.",
+   "M3": "Believing eclectic implies chaotic or disordered behavior, ignoring that eclectic properly denotes curated diversity from varied origins."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "eccentric": [
+    "The retired mathematics professor insisted on walking backward to the village market every morning while reciting prime numbers aloud.",
+    "Lord Harrington slept inside an open wooden coffin lined with velvet because he claimed beds trapped stale household air.",
+    "The village clockmaker refused paper money and only accepted payment in polished river stones of identical weight.",
+    "Miriam kept seven antique tea kettles boiling around her desk because she believed steam prevented negative thoughts from settling.",
+    "The wealthy recluse wore formal Victorian morning coats to the community swimming pool and greeted swimmers with a silver cane.",
+    "Old Mr. Gallagher spent every Tuesday afternoon tipping his bowler hat to the statues in the municipal park."
+   ],
+   "eclectic": [
+    "The chef's tasting menu paired Mexican chipotle marinades with Japanese dashi broths and French pastry techniques.",
+    "Her personal bookshelf held medieval Icelandic sagas, modern cyberpunk novellas, and treatises on agricultural chemistry.",
+    "The festival program featured Appalachian bluegrass fiddlers, Ghanaian drumming ensembles, and electronic synthesizer pioneers.",
+    "His living room furniture combined mid-century Danish armchairs, Victorian carved tables, and bright handwoven Andean rugs.",
+    "The researcher's methodology borrowed survey techniques from sociology, statistical models from astrophysics, and field interviews from anthropology.",
+    "The band's debut album blended Delta blues slide guitar with Brazilian bossa nova rhythms and classical string arrangements."
+   ]
+  },
+  "counter": {
+   "eccentric": [
+    "The university syllabus gathered essays from feminist theorists, Marxist economists, and neoclassical market analysts.",
+    "The interior decorator assembled contemporary Scandinavian lamps, antique Japanese screens, and rustic Italian pottery.",
+    "The diner ordered two scrambled eggs with white toast and black coffee, the standard breakfast she ate every morning.",
+    "The symphony orchestra performed Beethoven's Fifth Symphony strictly following the traditional tempo markings.",
+    "The disc jockey played a set mixing Chicago house, Jamaican dub, Punjabi bhangra, and Detroit techno.",
+    "The accountant filed her tax receipts in chronological order within standard labeled manila folders."
+   ],
+   "eclectic": [
+    "The reclusive heiress ate all her meals while sitting atop a fifteen-foot stepladder in the center of her drawing room.",
+    "The museum exhibition displayed fifty oil paintings produced exclusively by Dutch landscape painters between 1640 and 1650.",
+    "The botanist only wore clothes made of unbleached yellow burlap because he believed dyed fabrics blocked solar energy.",
+    "The coffee shop served exclusively medium-roast Colombian drip coffee poured into identical white ceramic mugs.",
+    "The hermit insisted on entering every room through the window instead of using the front door.",
+    "The violinist practiced only Bach solo partitas for eight hours each day, refusing to listen to or play any other composer."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "A fashion designer sends models down the runway in tailored tweed hunting jackets paired with luminous neoprene scuba pants and sequined ballroom slippers.",
+    "best_word": "eclectic",
+    "note": "While the runway look appears visually startling, the core creative act is synthesizing apparel from distinct, disparate sartorial genres and traditions rather than manifesting an individual mental quirk."
+   },
+   {
+    "text": "A neighborhood baker bakes his loaves using a medieval stone mill, decorates his shop with hubcaps, and delivers bread while riding a vintage penny-farthing bicycle.",
+    "best_word": "eccentric",
+    "note": "Although multiple odd habits are on display, they do not form a systematic cross-cultural synthesis; rather, they reflect one individual's personal departure from conventional daily routines."
+   },
+   {
+    "text": "An architect designs a private villa featuring Moorish arched courtyards, Japanese cedar sliding screens, and Bauhaus steel-and-glass pavilions.",
+    "best_word": "eclectic",
+    "note": "The structure draws directly and deliberately from three widely separated architectural traditions, making the design a classic example of multi-sourced synthesis."
+   },
+   {
+    "text": "A retired judge spends his afternoons tending a garden populated solely by carved stone gargoyles that he whispers to and tucks in with blankets.",
+    "best_word": "eccentric",
+    "note": "The judge's behavior reflects deeply idiosyncratic, nonconformist personal conduct that departs harmlessly from conventional social habits without drawing on diverse traditions."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "eccentric-eclectic_001",
+   "domain": "fashion",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "Beatrix's personal dressing habit is: ___",
+   "beats": [
+    {
+     "text": "At the fashion academy, Beatrix attends every lecture wearing a heavy woolen winter coat buttoned up to her chin, despite the sweltering thirty-degree summer heat in the studio.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.91,
+      "eclectic": 0.09
+     },
+     "decisive_clue": "wearing heavy winter outerwear in midsummer heat out of personal habit",
+     "reason": "Her choice is an odd personal deviation from ordinary seasonal norms with no mixture of diverse styles.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "When asked about the coat, she explains that she refuses to take it off indoors because she believes air conditioning strips away her creative instincts.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.95,
+      "eclectic": 0.05
+     },
+     "decisive_clue": "peculiar superstitious belief about indoor air conditioning",
+     "reason": "The rationale reinforces a harmless personal quirk rather than any borrowing from varied sartorial traditions.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "She completes the outfit each day with bright rubber gardening boots and a swimmer's silicone cap, regardless of the occasion.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.96,
+      "eclectic": 0.04
+     },
+     "decisive_clue": "bizarre mismatched utility gear worn as daily attire",
+     "reason": "The ensemble reflects an idiosyncratic personal oddity rather than a curated synthesis of varied design schools.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Her bizarre refusal to dress for summer weather stems from personal quirks, making her attire eccentric.",
+   "feedback_deep": "Eccentric marks behavior that deviates strangely from accepted social norms. Beatrix's heavy coat in the summer heat and rubber boots reflect individual oddities, not an aesthetic curated from varied cultural traditions.",
+   "contrast_rule": "Eccentric is departing from standard social norms; eclectic is gathering from varied diverse sources.",
+   "hint": "Notice whether her clothing reflects an unusual personal quirk or styles borrowed from multiple cultures.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_002",
+   "domain": "culinary_arts",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "Chef Mateo's restaurant menu is: ___",
+   "beats": [
+    {
+     "text": "Chef Mateo's dinner menu lists Korean fermented kimchi pancakes alongside Argentine chimichurri steaks and southern Italian polenta.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.12,
+      "eclectic": 0.88
+     },
+     "decisive_clue": "dishes drawn directly from three distinct continental culinary traditions",
+     "reason": "The menu deliberately combines recipes from widely separated global food cultures.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "For dessert, diners can choose between Austrian spiced strudel, Japanese matcha mousse, and traditional Moroccan almond pastries.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.08,
+      "eclectic": 0.92
+     },
+     "decisive_clue": "desserts sourced across European, East Asian, and North African cuisines",
+     "reason": "The sweet offerings expand the range of independent cultural sources without showing personal weirdness.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "The wine cellar mirrors this philosophy, stocking vintages from Georgian clay amphorae, Chilean high-altitude valleys, and South African coastal vineyards.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.06,
+      "eclectic": 0.94
+     },
+     "decisive_clue": "cellar selections spanning disparate winemaking regions and techniques",
+     "reason": "The overarching program consistently gathers components from diverse external origins.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Drawing recipes and wines from diverse global traditions marks Chef Mateo's menu as eclectic.",
+   "feedback_deep": "Eclectic describes compositions drawn from a wide variety of independent sources or styles. Mateo's kitchen intentionally synthesizes culinary elements from Korea, Argentina, Italy, Austria, and Morocco, rather than departing into bizarre individual quirks.",
+   "contrast_rule": "Eclectic gathers from varied origins; eccentric deviates from standard behavior.",
+   "hint": "Consider the wide geographical origins of the recipes on the menu.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_003",
+   "domain": "literature",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Professor Vance's writing routine is: ___",
+   "beats": [
+    {
+     "text": "Professor Vance drafts all his historical manuscripts standing on his left foot at a tall podium while wearing a velvet eye patch over a healthy eye.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.93,
+      "eclectic": 0.07
+     },
+     "decisive_clue": "bizarre physical stance and unnecessary eye patch during composition",
+     "reason": "Standing on one foot with a decorative patch is a peculiar personal habit with no basis in external research traditions.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "He pauses every twenty minutes to feed stale breadcrumbs to a stuffed ceramic pigeon perched on his dictionary.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.97,
+      "eclectic": 0.03
+     },
+     "decisive_clue": "feeding breadcrumbs to an inanimate ceramic bird",
+     "reason": "This bizarre ritual reinforces an idiosyncratic departure from normal academic conduct.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "He will only dip his quill into homemade blackberry ink that he boils exclusively during the full moon.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.96,
+      "eclectic": 0.04
+     },
+     "decisive_clue": "lunar schedule for boiling homemade berry ink",
+     "reason": "The behavior is driven by private superstitious oddities rather than diverse historical synthesis.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Feeding ceramic pigeons and writing on one foot show eccentric personal habits departing from normal conduct.",
+   "feedback_deep": "Eccentric behavior departs harmlessly from ordinary social conventions. Vance's bizarre private rituals and superstitions are singular idiosyncrasies, not a synthesis drawn from diverse literary traditions.",
+   "contrast_rule": "Eccentric centers on unusual personal oddities; eclectic centers on diverse borrowed elements.",
+   "hint": "Focus on the odd personal superstitions governing how he produces his drafts.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_004",
+   "domain": "music",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Nadia's personal playlist curation is: ___",
+   "beats": [
+    {
+     "text": "Nadia's public music playlist transitions seamlessly from sixteenth-century Renaissance madrigals to gritty 1990s Memphis hip-hop.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.14,
+      "eclectic": 0.86
+     },
+     "decisive_clue": "bridging ancient choral pieces and late-twentieth-century southern rap",
+     "reason": "The curation deliberately pairs two vastly different musical periods and genres.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "The following tracks feature Norwegian folk metal, Tuvan throat singing, and vintage Detroit techno anthems.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.1,
+      "eclectic": 0.9
+     },
+     "decisive_clue": "incorporating Nordic folk, Central Asian overtone chants, and electronic dance music",
+     "reason": "The additions deepen the diversity of global genres and cultural traditions represented.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "She arranges the entire four-hour sequence by key signatures, creating harmonic flow across these wildly contrasting genres.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.08,
+      "eclectic": 0.92
+     },
+     "decisive_clue": "sophisticated synthesis of vastly different musical traditions into one coherent sequence",
+     "reason": "Her method demonstrates thoughtful curation across diverse sources rather than random personal oddity.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Assembling tracks from Renaissance madrigals to Tuvan throat singing makes Nadia's playlist curation eclectic.",
+   "feedback_deep": "Eclectic describes taste or work drawn from a broad, diverse range of sources. Nadia's selection spans unrelated centuries, continents, and genres, brought together into a curated program.",
+   "contrast_rule": "Eclectic is drawing from varied distinct traditions; eccentric is acting in bizarre, uncommon ways.",
+   "hint": "Look at the broad range of musical traditions and periods she brings together.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_005",
+   "domain": "interior_design",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "The aesthetic of Leila's townhouse living room is: ___",
+   "beats": [
+    {
+     "text": "Leila's living room features an ornate eighteenth-century French gilt mirror mounted directly above a sleek, minimalist Japanese cedar bench.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.15,
+      "eclectic": 0.85
+     },
+     "decisive_clue": "combining ornate French baroque decor with minimalist Japanese woodwork",
+     "reason": "The room pairs pieces from two distinct historical eras and design cultures.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Beside the bench rests a mid-century Scandinavian tubular chrome armchair upholstered in hand-spun Turkish kilim wool.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.11,
+      "eclectic": 0.89
+     },
+     "decisive_clue": "blending Nordic industrial furniture design with traditional Anatolian weaving",
+     "reason": "The furnishings integrate another pair of contrasting design heritages.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Lighting the entire space is an industrial copper factory pendant salvaged from a Glasgow shipyard, hanging beside delicate Venetian glass sconces.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.09,
+      "eclectic": 0.91
+     },
+     "decisive_clue": "juxtaposing Scottish heavy industrial fixtures with Venetian artisanal glassware",
+     "reason": "The design coheres through curated diversity of origins rather than private bizarre behavior.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Furnishing the room with French baroque, Japanese cedar, and Scandinavian chrome makes the aesthetic eclectic.",
+   "feedback_deep": "Eclectic applies when an aesthetic brings together items from widely different periods, styles, or cultures. Leila's living room gathers pieces from France, Japan, Scandinavia, Turkey, Scotland, and Venice into a balanced composition.",
+   "contrast_rule": "Eclectic brings together varied external styles; eccentric deviates from standard conduct.",
+   "hint": "Notice the diverse historical and cultural sources of each piece of furniture.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_006",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "Grandmother Clara's household chore routine is: ___",
+   "beats": [
+    {
+     "text": "Every morning at sunrise, Grandmother Clara mops the living room floor while balancing a porcelain teacup filled with pennies on top of her head.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.94,
+      "eclectic": 0.06
+     },
+     "decisive_clue": "balancing a teacup filled with pennies on her head while mopping",
+     "reason": "This is a peculiar, harmless individual habit departing from normal household practices.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "She insists that if a single penny falls, she must restart the mopping from the beginning while humming maritime sea shanties backward.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.97,
+      "eclectic": 0.03
+     },
+     "decisive_clue": "restarting chores if coins drop and humming backward",
+     "reason": "The elaborate personal ritual confirms an idiosyncratic departure from ordinary behavior.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "She dusts her furniture using peacock feathers tied to knitting needles, refusing any standard duster because she claims feathers preserve household harmony.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.96,
+      "eclectic": 0.04
+     },
+     "decisive_clue": "peculiar cleaning implements tied to personal superstitions",
+     "reason": "Her behavior reflects bizarre private eccentricities rather than techniques borrowed from diverse cultures.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Balancing a teacup of pennies and humming backward show Clara's household routine is eccentric.",
+   "feedback_deep": "Eccentric behavior departs oddly from conventional norms without harm. Clara's coin balancing, backward humming, and feather-knitting duster are idiosyncratic personal rituals, not an approach gathered from diverse traditions.",
+   "contrast_rule": "Eccentric describes odd individual quirks; eclectic describes varied external sources.",
+   "hint": "Look at the strange personal superstitions governing her cleaning habits.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_007",
+   "domain": "architecture",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The architectural style of the new university library is: ___",
+   "beats": [
+    {
+     "text": "The new university library features an aggressively chaotic exterior of jagged, asymmetrical walls and irregularly curved roofs that defy all conventional structural norms.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.88,
+      "eclectic": 0.12
+     },
+     "decisive_clue": "chaotic, rule-breaking structural design departing from conventional norms",
+     "reason": "The jarring, rule-defying silhouette appears to be a bizarre, idiosyncratic personal design choice.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "The blueprint reveals that this complex silhouette deliberately integrates and reproduces three distinct historical masterworks: Ottoman domes, Bauhaus glass facades, and medieval English ramparts.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.18,
+      "eclectic": 0.82
+     },
+     "decisive_clue": "deliberate integration of Ottoman, Bauhaus, and medieval English architectural traditions",
+     "reason": "The structure is not a random personal oddity, but a multi-sourced synthesis of established global styles.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "The campus handbook confirms that the architect sought to create a structural dialogue between distinct historical traditions across three continents.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.1,
+      "eclectic": 0.9
+     },
+     "decisive_clue": "curated cross-continental dialogue among historical design traditions",
+     "reason": "The deliberate integration of varied historical schools firmly establishes its multi-sourced nature.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Revealing the deliberate integration of Ottoman, Bauhaus, and medieval traditions flips the building's style to eclectic.",
+   "feedback_deep": "What initially looks like an eccentric, chaotic design becomes eclectic once understood as a deliberate synthesis of diverse external traditions. The Ottoman, Bauhaus, and English elements represent curated sources rather than personal whim.",
+   "contrast_rule": "Eccentric is odd departure from convention; eclectic is synthesis from diverse traditions.",
+   "hint": "Watch how learning the origins of the architectural components reframes the building's design.",
+   "qa": "revised"
+  },
+  {
+   "id": "eccentric-eclectic_009",
+   "domain": "education",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "Dr. Sonya's classroom pedagogy is: ___",
+   "beats": [
+    {
+     "text": "Dr. Sonya begins her graduate seminar by having students solve math equations while standing on tables and singing nursery rhymes, bewildering the department chair.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.84,
+      "eclectic": 0.16
+     },
+     "decisive_clue": "singing nursery rhymes atop tables during graduate mathematics",
+     "reason": "The bizarre classroom conduct appears to be an idiosyncratic, baffling departure from academic norms.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "She distributes an academic syllabus demonstrating that this exercise integrates Montessori kinesthetic learning, classical Vedic memorization chants, and modern cognitive psychology.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.2,
+      "eclectic": 0.8
+     },
+     "decisive_clue": "grounding the exercise in Montessori, ancient Vedic chanting, and modern cognitive psychology",
+     "reason": "The method is revealed as a purposeful synthesis of diverse pedagogical and cultural traditions.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Her subsequent lessons combine Finnish outdoor inquiry methods with Socratic dialogue and Brazilian critical pedagogy.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.08,
+      "eclectic": 0.92
+     },
+     "decisive_clue": "drawing upon Finnish, Greek Socratic, and Brazilian educational frameworks",
+     "reason": "Her pedagogy is consistently structured around a broad variety of international educational theories.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Grounding the exercises in Montessori, Vedic, Finnish, and Socratic traditions flips her pedagogy to eclectic.",
+   "feedback_deep": "An unusual classroom routine that looks like an eccentric personal stunt flips to eclectic once proven to be a deliberate synthesis of diverse global pedagogical traditions.",
+   "contrast_rule": "Eccentric is odd personal behavior; eclectic is synthesis from diverse traditions.",
+   "hint": "Watch how the theoretical sources behind her teaching methods change the classification.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_010",
+   "domain": "visual_art",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "Marco's approach to sculptural design is: ___",
+   "beats": [
+    {
+     "text": "Marco's new sculpture garden combines ancient Roman marble columns, intricate Chinese jade carvings, and welded American industrial steel.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.15,
+      "eclectic": 0.85
+     },
+     "decisive_clue": "combining Roman, Chinese, and American industrial artistic elements",
+     "reason": "The garden deliberately combines aesthetic elements from widely disparate artistic traditions.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "He admits he has no interest in these cultures; he only gathered the items to perfectly map the constellation Orion because he believes he was born there.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.81,
+      "eclectic": 0.19
+     },
+     "decisive_clue": "arranging items solely to map a constellation based on a bizarre personal belief",
+     "reason": "His decisions are governed by idiosyncratic personal nonconformity rather than curated multi-cultural synthesis.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "He refuses to let visitors view the garden unless they hop on one foot and hum at a specific frequency to avoid disturbing the stones' energy.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.93,
+      "eclectic": 0.07
+     },
+     "decisive_clue": "forcing visitors to hop and hum due to superstitious beliefs",
+     "reason": "His behavior reflects bizarre private superstitions rather than diverse cross-cultural curation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Arranging the objects to map a constellation based on a bizarre belief flips Marco's approach to eccentric.",
+   "feedback_deep": "While the statues appear to be an eclectic curation of global traditions, learning that Marco selected them solely for a bizarre personal ritual regarding his cosmic origins reveals his true approach is eccentric.",
+   "contrast_rule": "Eclectic draws from varied traditions; eccentric reflects bizarre personal rituals.",
+   "hint": "Pay attention to the peculiar physical rituals behind his painting method.",
+   "qa": "revised"
+  },
+  {
+   "id": "eccentric-eclectic_011",
+   "domain": "theater",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "Tariq's costume design for the Shakespeare production is: ___",
+   "beats": [
+    {
+     "text": "For Hamlet, Tariq outfits the Danish king in a bright yellow scuba diving suit paired with an Elizabethan lace ruff, leaving theater critics baffled.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.85,
+      "eclectic": 0.15
+     },
+     "decisive_clue": "baffling pairing of an Elizabethan ruff with modern scuba diving gear",
+     "reason": "The combination appears as a bizarre, jarring visual stunt departing from dramatic norms.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "The full stage reveal shows Ophelia in West African kente cloth, the guards in feudal Japanese samurai armor, and Polonius in an Ottoman kaftan.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.18,
+      "eclectic": 0.82
+     },
+     "decisive_clue": "ensemble integrating Elizabethan, West African, feudal Japanese, and Ottoman garments",
+     "reason": "The design is not an isolated oddity but an intentional synthesis of historic world textiles and styles.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Tariq explains in the program notes that each world tradition was selected to symbolize a distinct political faction in the play.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.08,
+      "eclectic": 0.92
+     },
+     "decisive_clue": "methodical symbolic curation of global sartorial traditions",
+     "reason": "The deliberate thematic sourcing across global cultures cements the multi-sourced nature of the collection.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Revealing garments curated from African, Japanese, and Ottoman traditions flips Tariq's costume design to eclectic.",
+   "feedback_deep": "What initially seemed like an eccentric prank with a scuba suit is revealed across the full cast to be an eclectic visual program deliberately drawing from diverse global textile traditions.",
+   "contrast_rule": "Eccentric is odd personal nonconformity; eclectic is curated variety of origins.",
+   "hint": "Consider how the full cast's costumes reveal a multi-cultural design strategy.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_013",
+   "domain": "philosophy",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 4,
+   "frame": "Professor Amina's theoretical approach to ethics is: ___",
+   "beats": [
+    {
+     "text": "Professor Amina's ethics monograph draws arguments that strike mainstream moral philosophers as unusually diverse and nonconformist.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.46,
+      "eclectic": 0.54
+     },
+     "decisive_clue": "unusually diverse philosophical arguments departing from standard consensus",
+     "reason": "Both words are plausible: her nonconformist stance suggests eccentricity, while diverse arguments suggest eclecticism.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Her central framework explicitly weaves together Buddhist mindfulness ethics, Kantian duty, and indigenous American restorative justice models.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.15,
+      "eclectic": 0.85
+     },
+     "decisive_clue": "weaving together Buddhist, Kantian, and indigenous restorative justice traditions",
+     "reason": "The explicit combination of three independent philosophical traditions narrows the description decisively.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "She demonstrates that each borrowed tradition supplies logical solutions to the structural flaws found in the others.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.06,
+      "eclectic": 0.94
+     },
+     "decisive_clue": "intellectual synthesis resolving flaws by drawing upon multiple philosophical traditions",
+     "reason": "The rigorous integration of varied external traditions leaves no doubt that her method is multi-sourced.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Synthesizing Buddhist, Kantian, and indigenous traditions narrows Amina's philosophical framework decisively to eclectic.",
+   "feedback_deep": "Beat 1 was genuinely close between nonconformity and breadth. Once her framework is shown to combine Buddhist, Kantian, and indigenous traditions to resolve theoretical problems, it narrows decisively to eclectic.",
+   "contrast_rule": "Eclectic derives from varied independent traditions; eccentric marks personal oddity.",
+   "hint": "Look for whether her theories represent personal quirks or a synthesis of established schools.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_014",
+   "domain": "urban_planning",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 4,
+   "frame": "Councilman Ward's traffic management proposal is: ___",
+   "beats": [
+    {
+     "text": "Councilman Ward proposes a traffic management overhaul that the municipal transportation committee finds completely unconventional and startling.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.53,
+      "eclectic": 0.47
+     },
+     "decisive_clue": "unconventional and startling municipal traffic proposal",
+     "reason": "Unconventional planning could stem from combining varied city models or from a bizarre personal idea.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "His proposal demands that all traffic lights be replaced with giant chimes and that drivers must honk in musical harmony before entering intersections.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.89,
+      "eclectic": 0.11
+     },
+     "decisive_clue": "replacing traffic lights with chimes and requiring musical honking",
+     "reason": "The plan is an idiosyncratic, bizarre personal oddity with no origin in diverse transportation systems.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "He insists that tuning city traffic to the musical key of F major will align the drivers' emotional chakras.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.97,
+      "eclectic": 0.03
+     },
+     "decisive_clue": "belief that musical keys align drivers' mystical energy",
+     "reason": "The mystical personal justification proves the idea is purely a bizarre deviation from reality.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Replacing traffic lights with chimes to tune emotional chakras narrows Ward's proposal to eccentric.",
+   "feedback_deep": "Beat 1 was close because unconventional city planning can be eclectic or eccentric. Once the proposal requires musical chimes and alignment of mystical chakras, it narrows decisively to eccentric.",
+   "contrast_rule": "Eccentric is bizarre personal departure from convention; eclectic is multi-source synthesis.",
+   "hint": "Notice whether the proposal draws on varied global transit systems or a private musical obsession.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_015",
+   "domain": "woodworking",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 4,
+   "frame": "Master craftsman Kenji's furniture design style is: ___",
+   "beats": [
+    {
+     "text": "Master craftsman Kenji builds dining tables that confound traditional carpenters by refusing to match any single standard category.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.48,
+      "eclectic": 0.52
+     },
+     "decisive_clue": "refusing to match any single standard furniture category",
+     "reason": "Defying standard categories could indicate an odd personal whim or a synthesis of varied craft traditions.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "His flagship table joins Japanese sashimono joinery with American Shaker simplicity and ornate Moroccan mother-of-pearl inlay.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.14,
+      "eclectic": 0.86
+     },
+     "decisive_clue": "combining Japanese joinery, American Shaker design, and Moroccan inlay work",
+     "reason": "The specific combination of three global woodworking lineages narrows the classification decisively.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "He sources his timber exclusively from sustainable plantations in Scandinavia, tropical walnut from Costa Rica, and salvaged French oak wine barrels.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.07,
+      "eclectic": 0.93
+     },
+     "decisive_clue": "materials gathered across disparate international and historical sources",
+     "reason": "The multi-sourced materials and craftsmanship traditions leave no ambiguity.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Uniting Japanese joinery, Shaker forms, and Moroccan inlays narrows Kenji's furniture style to eclectic.",
+   "feedback_deep": "Beat 1 was close as nonstandard carpentry could be eccentric. Once the work is revealed as an intentional union of Japanese, Shaker, and Moroccan traditions, it narrows decisively to eclectic.",
+   "contrast_rule": "Eclectic combines diverse external traditions; eccentric pursues peculiar personal quirks.",
+   "hint": "Examine the multiple woodworking traditions joined in his pieces.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_016",
+   "domain": "journalism",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "Zainab's weekly magazine column is: ___",
+   "beats": [
+    {
+     "text": "Zainab's magazine column synthesizes insights from quantum physics papers, seventeenth-century Ottoman trade logs, and contemporary urban graffiti.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.13,
+      "eclectic": 0.87
+     },
+     "decisive_clue": "synthesizing quantum physics, Ottoman history, and contemporary street art",
+     "reason": "The column draws its material from widely varied, heterogeneous fields of knowledge.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "Readers are startled when she writes one entire column using an ancient typewriter that only types in magenta ink while sitting in a bathtub.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.38,
+      "eclectic": 0.62
+     },
+     "decisive_clue": "unusual typing method in a bathtub distracting from the intellectual sources",
+     "reason": "Although her personal typing habit looks odd, the core nature of her column remains defined by its varied intellectual sources.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "The published article itself weaves together mathematical graph theory, ancient Roman farming manuals, and modern pop song lyrics.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.12,
+      "eclectic": 0.88
+     },
+     "decisive_clue": "continued integration of mathematics, Roman agriculture, and modern pop lyrics",
+     "reason": "The text confirms that the column's substantive content is firmly multi-sourced across varied domains.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Her strange bathtub typing routine is distracting, but her column's diverse subject matter remains eclectic.",
+   "feedback_deep": "A bizarre writing habit introduced in beat 2 tempts a shift toward eccentric, but the target frame is the column itself. Because the column consistently synthesizes mathematics, Roman manuals, and pop culture, it remains eclectic.",
+   "contrast_rule": "Eclectic describes diverse sources; odd physical habits do not change content nature.",
+   "hint": "Keep your eye on the content of the column rather than her personal writing posture.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_017",
+   "domain": "antiques",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "Mr. Pemberton's clock-winding habit is: ___",
+   "beats": [
+    {
+     "text": "Mr. Pemberton winds all forty grandfather clocks in his mansion while wearing a bowler hat and marching backward in precise circles around each room.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.92,
+      "eclectic": 0.08
+     },
+     "decisive_clue": "marching backward in circles while winding clocks in a bowler hat",
+     "reason": "His routine is an idiosyncratic personal oddity with no grounding in established traditions.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "The clocks themselves were crafted across three centuries in Switzerland, imperial China, colonial America, and Bavaria.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.74,
+      "eclectic": 0.26
+     },
+     "decisive_clue": "diverse origins of the clocks creating a distracting temptation toward variety",
+     "reason": "While the clocks represent diverse geographical origins, the subject evaluated is his winding habit, which remains a bizarre personal ritual.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "He will only wind them if his pet parrot sits on his shoulder whistling the exact pitch of middle C.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.95,
+      "eclectic": 0.05
+     },
+     "decisive_clue": "requiring a parrot to whistle middle C during winding",
+     "reason": "The additional ritual confirms that his behavior is driven entirely by peculiar individual quirks.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The varied origins of the clocks distract, but his backward marching winding habit is eccentric.",
+   "feedback_deep": "Although the clocks come from varied countries, the frame evaluates Mr. Pemberton's winding habit. His backward marching and parrot ritual are purely eccentric personal behaviors.",
+   "contrast_rule": "Eccentric describes odd personal behavior; diverse objects do not make a habit eclectic.",
+   "hint": "Focus on how he performs the action, not where the objects were manufactured.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_018",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "reframe",
+   "difficulty": 3,
+   "frame": "Dev's gift-giving approach to his friends is: ___",
+   "beats": [
+    {
+     "text": "For his friends' birthdays, Dev presents carefully selected music boxes: one playing French cabaret, another Nigerian highlife, and a third playing classical Indian ragas.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.15,
+      "eclectic": 0.85
+     },
+     "decisive_clue": "curating musical gifts from French, Nigerian, and Indian traditions",
+     "reason": "The gifts appear to be a deliberate, diverse curation of global musical cultures.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "He admits he ignores the music completely, buying them solely because he compulsively dismantles them to count their internal gears as a daily ritual.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.86,
+      "eclectic": 0.14
+     },
+     "decisive_clue": "dismantling the gifts for a bizarre daily counting ritual",
+     "reason": "His selection is driven not by cross-cultural appreciation, but by a peculiar personal obsession with counting gears.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "He then requires his friends to accept the dismantled gears in an airtight jar while whistling a single continuous note to ward off bad luck.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.96,
+      "eclectic": 0.04
+     },
+     "decisive_clue": "forcing friends to accept gears in jars while whistling to ward off bad luck",
+     "reason": "The elaborate superstitious delivery confirms his approach is deeply idiosyncratic and nonconformist.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Buying the boxes solely to dismantle them for a counting ritual reframes Dev's approach as eccentric.",
+   "feedback_deep": "While the musical origins initially suggested an eclectic appreciation of global cultures, learning that Dev only cares about feeding his bizarre gear-counting obsession reframes his gift-giving as purely eccentric.",
+   "contrast_rule": "Eclectic reflects broad multi-source curation; eccentric reflects peculiar personal fixations.",
+   "hint": "Look at the strange private obsession that actually dictates which gifts he selects.",
+   "qa": "revised"
+  },
+  {
+   "id": "eccentric-eclectic_019",
+   "domain": "archaeology",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 4,
+   "frame": "Professor Thorne's excavation field methodology is: ___",
+   "beats": [
+    {
+     "text": "At the desert dig, Professor Thorne confuses his field crew by measuring trench depths with an antique clock pendulum and sifting sand through woven silk scarves.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.86,
+      "eclectic": 0.14
+     },
+     "decisive_clue": "measuring archaeological trenches with clock pendulums and silk scarves",
+     "reason": "His field habits appear to be bizarre, idiosyncratic departures from established scientific excavation standards.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "In his monograph, he demonstrates that the pendulum applies seventeenth-century Dutch gravitational physics, while the silk weave adapts ancient Chinese textile sediment filtration.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.2,
+      "eclectic": 0.8
+     },
+     "decisive_clue": "integrating Dutch gravitational mechanics with ancient Chinese sediment filtration",
+     "reason": "The odd tools are rehabilitated as a rigorous, deliberate synthesis of historical physics and foreign engineering traditions.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M1"
+     }
+    },
+    {
+     "text": "He supplements these with soil chemistry formulas from Russian agronomy and mapping algorithms from satellite oceanography.",
+     "best_word": "eclectic",
+     "fit": {
+      "eccentric": 0.07,
+      "eclectic": 0.93
+     },
+     "decisive_clue": "combining Russian agronomy, oceanographic algorithms, and Dutch physics",
+     "reason": "His excavation methodology draws deliberately and productively from widely disparate academic and historical disciplines.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eccentric": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Proving his field tools synthesize Dutch physics and Chinese engineering rehabilitates Thorne's method as eclectic.",
+   "feedback_deep": "What initially seemed like an eccentric scientist's bizarre habits is rehabilitated when shown to be an eclectic methodology thoughtfully adapted from Dutch mechanics, Chinese textile filtration, Russian agronomy, and modern satellite algorithms.",
+   "contrast_rule": "Eccentric marks peculiar personal whims; eclectic marks purposeful borrowing from varied disciplines.",
+   "hint": "Notice how the historical sources behind his tools transform our understanding of his methods.",
+   "qa": "pass"
+  },
+  {
+   "id": "eccentric-eclectic_020",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "Victor's pre-match marathon warmup routine is: ___",
+   "beats": [
+    {
+     "text": "Before every marathon, Victor warms up by skipping backward around the stadium track while wearing a velvet smoking jacket over his running shorts.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.88,
+      "eclectic": 0.12
+     },
+     "decisive_clue": "skipping backward in a velvet smoking jacket before a marathon",
+     "reason": "The backward skipping and formal velvet smoking jacket form an unusual personal habit departing from athletic norms.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M1"
+     }
+    },
+    {
+     "text": "He stops at each quarter-mile marker to bow deeply to the stadium grass and balance a hollow bone on his nose for thirty seconds.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.94,
+      "eclectic": 0.06
+     },
+     "decisive_clue": "bowing to grass and balancing a bone on his nose",
+     "reason": "The precise, bizarre physical rituals lack any connection to varied fitness traditions, heightening precision around personal idiosyncrasy.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    },
+    {
+     "text": "He refuses sports drinks, taking hydration only through an antique porcelain dropper filled with warm peppermint tea.",
+     "best_word": "eccentric",
+     "fit": {
+      "eccentric": 0.98,
+      "eclectic": 0.02
+     },
+     "decisive_clue": "drinking tea via a porcelain dropper instead of standard athletic hydration",
+     "reason": "His entire warmup is governed by harmless, idiosyncratic personal oddities that violate every standard sports convention.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "eclectic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Skipping backward in velvet and balancing bones on his nose make Victor's warmup routine eccentric.",
+   "feedback_deep": "Eccentric describes conduct that departs strangely from common social or athletic conventions. Victor's velvet smoking jacket, backward skipping, bone-balancing, and porcelain dropper are private idiosyncrasies, not methods derived from diverse sports cultures.",
+   "contrast_rule": "Eccentric reflects peculiar personal quirks; eclectic reflects varied borrowed sources.",
+   "hint": "Notice the bizarre individual nonconformity in how he prepares to run.",
+   "qa": "pass"
+  }
+ ],
+ "qa": {
+  "pass": 15,
+  "revised": 3,
+  "rejected": 2
+ }
+}

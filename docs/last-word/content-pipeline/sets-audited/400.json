@@ -1,0 +1,1695 @@
+{
+ "set_id": "agnostic-atheist",
+ "source_pair_id": 400,
+ "words": [
+  {
+   "word": "agnostic",
+   "sense": "a person who believes that nothing is known or can be known of the existence or nature of God",
+   "concise_meaning": "a person holding that the existence of a deity is unknown and perhaps unknowable, suspending judgment between belief and disbelief",
+   "connotation": "neutral, philosophical, intellectually cautious",
+   "register": "formal, academic, reflective",
+   "grammar": "countable noun; frequently used with an indefinite article ('an agnostic') or attributively ('an agnostic stance')",
+   "collocations": [
+    "professed agnostic",
+    "avowed agnostic",
+    "philosophical agnostic",
+    "lifelong agnostic",
+    "strict agnostic"
+   ],
+   "misconceptions": [
+    "Assuming that agnosticism is simply lazy indecision or apathy, rather than a principled philosophical conclusion regarding the limits of human knowledge and empirical verification."
+   ]
+  },
+  {
+   "word": "atheist",
+   "sense": "a person who disbelieves or lacks belief in the existence of God or gods",
+   "concise_meaning": "a person who does not believe in any gods, rejecting theistic claims and living without belief in divine beings",
+   "connotation": "neutral to direct, assertive",
+   "register": "formal, standard, public discourse",
+   "grammar": "countable noun; typically used with an indefinite article ('an atheist') or plural ('atheists')",
+   "collocations": [
+    "avowed atheist",
+    "committed atheist",
+    "outspoken atheist",
+    "convinced atheist",
+    "staunch atheist"
+   ],
+   "misconceptions": [
+    "Assuming that being an atheist requires claiming absolute cosmic omniscience or harboring hostility toward religious people, rather than simply having an absence of belief in deities."
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "epistemic_stance_vs_belief",
+   "description": "Withholding judgment because metaphysical reality is unknown or unknowable vs. adopting an active non-belief or rejection of deities."
+  },
+  {
+   "id": "stance_on_proof_and_evidence",
+   "description": "Holding that human reason and empirical tools cannot settle the question of God vs. concluding that the absence of empirical evidence warrants concluding that gods do not exist."
+  },
+  {
+   "id": "ontological_commitment",
+   "description": "Maintaining strict neutrality between affirmation and denial vs. maintaining a worldview that explicitly excludes divine beings."
+  }
+ ],
+ "edge": {
+  "a": "agnostic",
+  "b": "atheist",
+  "boundary_rule": "An agnostic suspends judgment on whether a god exists because it is unknown or unknowable, whereas an atheist rejects belief in gods altogether.",
+  "clues_a": [
+   "expresses that human knowledge cannot definitively prove or disprove God",
+   "actively refuses to take either a believing or disbelieving stance",
+   "emphasizes the limits of empirical measurement regarding metaphysical questions",
+   "treats the question of divine existence as permanently open or unanswerable",
+   "withholds judgment due to lack of conclusive proof on either side"
+  ],
+  "clues_b": [
+   "explicitly denies that any gods or supernatural deities exist",
+   "rejects belief in divine creators as human myth or superstition",
+   "operates on the firm premise that the universe contains no divine beings",
+   "argues that belief in gods is unwarranted and actively disbelieves them",
+   "categorically refuses to accept the existence of any supreme being"
+  ],
+  "irrelevant_clues": [
+   "whether the person was raised in a religious or secular household",
+   "how emotionally respectful or critical the person is toward religious traditions",
+   "whether the person studies philosophy, astronomy, or physics",
+   "whether the person celebrates cultural or family religious holidays"
+  ],
+  "misconceptions": {
+   "M1": "Confusing withholding judgment on unknowable matters with an active rejection of belief in gods.",
+   "M2": "Assuming an atheist must claim cosmic omniscience rather than simply lacking or rejecting belief in deities.",
+   "M3": "Viewing an agnostic as merely indecisive or indifferent rather than holding a principled position on the limits of knowledge."
+  }
+ },
+ "anchors": {
+  "positive": {
+   "agnostic": [
+    "Dr. Aris Thorne maintains that human sensory apparatus and scientific instruments cannot access metaphysical realms, so whether an ultimate architect conceived the cosmos remains fundamentally unverifiable.",
+    "When questioned by her classmates about whether a cosmic designer created nature, Mei-Ling replied that evidence on either side is impossible to gather, choosing to suspend judgment entirely.",
+    "Father Gregory asked Tariq if he accepted or denied the Lord, but Tariq replied that he refused to choose between affirmation and denial because ultimate truth is beyond human proof.",
+    "In her public lecture, Professor Vance stated that neither religious revelation nor physics provides definitive proof, meaning human reason must confess total ignorance about divine existence.",
+    "Confronted by street evangelists and secular campaigners alike, Julian politely declined to side with either faction, arguing that the existence of a higher power is forever unanswerable.",
+    "Soraya explained that because cosmic beginnings precede empirical observation, she will not say God exists nor say God does not exist."
+   ],
+   "atheist": [
+    "Marcus firmly concluded that all religions are human inventions and stated unequivocally that no deities or supernatural powers exist in the universe.",
+    "During the panel on cosmology, Dr. Chen argued that natural laws explain all cosmic phenomena, rejecting any concept of a divine creator as unfounded mythology.",
+    "When filling out the civic census on faith, Fatima wrote that she actively disbelieves in all gods and organizes her life without any supernatural assumptions.",
+    "Farhan made clear to his family that he does not believe in a supreme being, viewing tales of divine intervention as ancient folklore.",
+    "In his published essays, Arthur rejected divine providence, asserting that humanity exists alone in an indifferent, purely material universe.",
+    "Soren explained that he holds zero belief in any gods, convinced by the complete absence of empirical evidence that deities do not exist."
+   ]
+  },
+  "counter": {
+   "agnostic": [
+    "Elena campaigned actively against religious superstition, openly proclaiming that no gods exist anywhere in reality.",
+    "Tariq stated bluntly that he rejects all notions of a creator and lives on the firm conviction that deities are imaginary.",
+    "Mei-Ling published an article declaring that divine beings are purely mythological fictions that rational people should abandon.",
+    "Marcus refused to participate in the blessing, telling his relatives that he simply does not believe in any supreme deity.",
+    "Dr. Vance wrote that the universe is exclusively physical, dismissing the existence of any god as an obsolete hypothesis.",
+    "Fatima explained that she holds no faith in deities, concluding that science has proven supernatural creators do not exist."
+   ],
+   "atheist": [
+    "Liam stated that because human intellect has finite limits, nobody can ever prove or disprove the existence of a supreme creator.",
+    "Priya refused to take a stand on whether God exists, insisting that the available evidence leaves the question permanently open.",
+    "Kenji explained to his peers that he neither believes in a higher power nor denies one, as ultimate truth cannot be tested.",
+    "Professor Thorne argued that divine existence belongs to a metaphysical category beyond empirical confirmation, making dogmatic denial just as unjustified as dogma.",
+    "Sunita told her interviewers that she withholds judgment on a cosmic maker until humans possess tools capable of peering outside spacetime.",
+    "Zoya maintained that claims about a supernatural origin cannot be verified or falsified, so she adopts a neutral middle ground."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "A theoretical physicist states that current cosmological models cannot determine what preceded the Big Bang, so whether an intelligence caused it is entirely unprovable.",
+    "best_word": "agnostic",
+    "note": "The physicist focuses strictly on the epistemic impossibility of verifying cosmic origins, suspending judgment rather than denying a creator."
+   },
+   {
+    "text": "A biologist argues that because no laboratory test has ever detected a soul or divine intervention, she operates daily under the conviction that no gods exist.",
+    "best_word": "atheist",
+    "note": "Relying on the absence of evidence to reach a definitive stance of non-belief in gods moves the position into positive disbelief."
+   },
+   {
+    "text": "A student says he does not attend services or pray because he simply cannot find convincing reasons to believe in any deity, though he doesn't claim to possess cosmic secrets.",
+    "best_word": "atheist",
+    "note": "Lacking belief in deities defines this stance, even when the speaker remains modest and avoids claiming absolute cosmic certainty."
+   },
+   {
+    "text": "A philosopher argues that since every argument for God and every argument against God contains logical vulnerabilities, intellectual honesty requires refusing both positions.",
+    "best_word": "agnostic",
+    "note": "Rejecting both affirmation and denial due to balanced counterarguments is the classic epistemic suspension of judgment."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "agnostic-atheist_001",
+   "domain": "astronomy",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Regarding the existence of an ultimate cosmic creator, Daniel is an ___.",
+   "beats": [
+    {
+     "text": "Daniel analyzes deep-space background radiation data and concludes that current physics cannot reveal what existed prior to the earliest expansion. When colleagues ask whether a supreme intelligence sparked the event, he notes that empirical science has no tools to verify or refute metaphysical claims.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.92,
+      "atheist": 0.18
+     },
+     "decisive_clue": "treating the question of a cosmic creator as unprovable with empirical tools",
+     "reason": "Daniel withholds judgment because human science cannot test metaphysical origins.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "A secular conference speaker insists that because no physical trace of divinity has ever been recorded, researchers should formally declare the universe entirely free of supernatural creators. Daniel declines to endorse the resolution, reiterating that human observational limits preclude reaching any definitive verdict.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.94,
+      "atheist": 0.12
+     },
+     "decisive_clue": "refusing to declare the universe devoid of creators due to observational limits",
+     "reason": "He rejects an invitation to adopt a stance of disbelief, reaffirming that the matter is unknown.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "Later, a devout colleague invites Daniel to attend a local cathedral service, pointing out that awe toward cosmic beauty often inspires reverence. Daniel expresses genuine admiration for ecclesiastical choir music while gently maintaining that wonder does not equate to knowable divine proof.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.91,
+      "atheist": 0.22
+     },
+     "decisive_clue": "maintaining neutrality despite appreciating religious aesthetics",
+     "reason": "Enjoying church music does not alter his principled position that divine reality remains unknown.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Daniel consistently insists that cosmic origins are beyond empirical verification, refusing both belief and denial.",
+   "feedback_deep": "Daniel's position centers on epistemic limits: because empirical tools cannot access what lies beyond spacetime, one cannot assert that a creator exists or that none exists. Even when pressured by a secular speaker or invited to church, he maintains that the answer is unknowable.",
+   "contrast_rule": "The position of unknowability suspends judgment; the position of disbelief rejects gods.",
+   "hint": "Notice whether Daniel concludes that gods do not exist or argues that evidence cannot settle the question.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_002",
+   "domain": "tech_culture",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "In her worldview regarding deities, Mei-Ling is an ___.",
+   "beats": [
+    {
+     "text": "Mei-Ling designs automated verification algorithms and applies the same rigorous physical criteria to existential questions. During an office panel on ethics, she states plainly that gods are fictional constructs invented by ancient cultures, asserting that she holds zero belief in any divine entity.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.12,
+      "atheist": 0.95
+     },
+     "decisive_clue": "categorizing gods as human fictions and declaring zero belief in divine entities",
+     "reason": "Mei-Ling affirmatively rejects belief in gods rather than suspending judgment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "A coworker suggests that complex neural networks resemble an invisible guiding hand, asking whether such emergent order could reflect a higher cosmic consciousness. Mei-Ling laughs and points to deterministic mathematical code, explaining that natural computation leaves no room for supernatural beings.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.15,
+      "atheist": 0.93
+     },
+     "decisive_clue": "dismissing supernatural consciousness in favor of purely material explanation",
+     "reason": "She continues to deny the existence of supernatural beings when presented with analogies.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "When filling out an anonymous diversity survey that asks whether respondents observe holy days or private rituals, Mei-Ling marks 'None' and notes that she organizes her life entirely without reference to any celestial authority.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.14,
+      "atheist": 0.94
+     },
+     "decisive_clue": "living fully without reference to deities based on active absence of belief",
+     "reason": "Her daily practice and convictions consistently reflect a complete rejection of deities.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Mei-Ling explicitly rejects belief in deities, viewing divine entities as human fictions rather than unknown mysteries.",
+   "feedback_deep": "Mei-Ling does not say that the existence of God is an open question or beyond proof; she arrives at a definite stance that gods do not exist and that nature is purely material. Her explicit non-belief firmly places her in the disbelieving category.",
+   "contrast_rule": "One who rejects belief in gods takes a definite stance; one who withholds judgment stays neutral.",
+   "hint": "Look at whether Mei-Ling regards divine reality as an unsolved puzzle or as an unfounded myth.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_003",
+   "domain": "hospital_ethics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Regarding the existence of a supernatural creator, Dr. Aris Thorne is an ___.",
+   "beats": [
+    {
+     "text": "Dr. Aris Thorne serves on a hospital palliative review board reviewing terminal patient care protocols. When asked by a resident whether a divine architect receives the departed, he replies that human medicine has no empirical means of observing what lies beyond the physical universe.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.91,
+      "atheist": 0.19
+     },
+     "decisive_clue": "recognizing human inability to observe or verify a divine architect",
+     "reason": "Dr. Thorne treats metaphysical afterlife claims as inherently unknown to science.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "A secular bioethicist argues that since neurological activity ceases at flatline, the board should officially conclude that life is solely mechanical and dismiss all divine possibilities. Dr. Thorne cautions that science can map biological function but cannot logically disprove a metaphysical creator beyond sensory reach.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.94,
+      "atheist": 0.14
+     },
+     "decisive_clue": "arguing that absence of biological trace does not logically disprove a metaphysical creator",
+     "reason": "He actively refrains from adopting an affirmative materialist denial.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "When a hospital chaplain offers a bedside prayer to God for a comatose patient, Dr. Thorne stands respectfully aside, recognizing that while comfort matters, no physician can claim definitive factual knowledge about a supreme being.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.9,
+      "atheist": 0.2
+     },
+     "decisive_clue": "adhering to epistemic humility regarding a supreme being while remaining respectful",
+     "reason": "He continues to withhold judgment on whether spiritual reality exists.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Dr. Thorne insists that science cannot prove or disprove a creator, refusing both religious belief and materialist denial.",
+   "feedback_deep": "Dr. Thorne focuses on epistemic limitations: the inability of medicine to detect a supreme being does not constitute logical disproof. By refusing to conclude definitively that no creator exists, he maintains an open, neutral stance grounded in intellectual restraint.",
+   "contrast_rule": "Saying 'we cannot know' marks the neutral stance; saying 'it does not exist' marks disbelief.",
+   "hint": "Observe whether Dr. Thorne declares a creator nonexistent or fundamentally outside empirical measurement.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_004",
+   "domain": "courtroom",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "In his personal convictions about a supreme creator, Tariq is an ___.",
+   "beats": [
+    {
+     "text": "Tariq steps into the witness box to testify in a commercial fraud trial. When the court clerk presents a holy scripture and asks him to swear to God that his testimony is true, Tariq declines the book, stating that he holds no belief in any divine power and requests a secular affirmation instead.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.21,
+      "atheist": 0.93
+     },
+     "decisive_clue": "stating an active lack of belief in any divine power when swearing",
+     "reason": "Tariq explicitly affirms that he does not believe in God.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "During cross-examination, the opposing counsel attempts to challenge his moral reliability by asking whether fear of divine punishment governs his conscience. Tariq answers calmly that human ethics arise from empathy and social contract, firmly reiterating that he does not recognize any supernatural creator.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.15,
+      "atheist": 0.95
+     },
+     "decisive_clue": "grounding morality entirely in human contracts while denying supernatural creators",
+     "reason": "He reaffirms his positive conviction that morality does not depend on nonexistent gods.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "The judge confirms that his secular solemn promise carries full legal weight, and Tariq delivers his factual evidence without appealing to any sacred providence.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.18,
+      "atheist": 0.92
+     },
+     "decisive_clue": "proceeding solely under secular principles with explicit rejection of divinity",
+     "reason": "His courtroom stance remains firmly anchored in the non-existence of deities.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Tariq explicitly rejects belief in divine powers, choosing a secular affirmation over swearing to an entity he does not believe in.",
+   "feedback_deep": "Tariq's objection to swearing on scripture is rooted in his explicit non-belief in any deity. He does not claim that God is an unresolvable mystery; rather, he directly disavows belief in God and grounds his ethical obligation in human responsibility.",
+   "contrast_rule": "One who rejects belief avoids divine oaths on principle; one who withholds judgment questions knowability.",
+   "hint": "Focus on whether Tariq merely doubts human knowledge or directly states that he holds no belief in God.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_005",
+   "domain": "archaeology",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Regarding the actual existence of celestial beings worshiped in antiquity, Priya is an ___.",
+   "beats": [
+    {
+     "text": "Priya excavates a Bronze Age temple complex dedicated to a sky deity in Anatolia. In her field report, she documents the sacrificial altars and ritual pottery, noting that while human devotion is historically tangible, whether any transcendent reality corresponds to these rites is an epistemological question archaeology cannot answer.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.92,
+      "atheist": 0.2
+     },
+     "decisive_clue": "viewing whether transcendent reality exists as unanswerable by scientific inquiry",
+     "reason": "Priya withholds judgment on metaphysical existence, citing empirical limitations.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "A visiting doctoral candidate suggests that finding natural explanations for local weather patterns proves ancient sky gods were pure delusions and that divine forces are impossible. Priya responds that exposing human myth-making does not resolve the broader question of whether a cosmic architect exists.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.94,
+      "atheist": 0.14
+     },
+     "decisive_clue": "differentiating debunked mythological stories from the ultimate unanswerable cosmic question",
+     "reason": "She refuses to jump from discrediting specific myths to declaring that no higher power could exist.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "A religious tour group asks her whether digging ancient ruins has strengthened or weakened her faith. Priya smiles and explains that she remains in the exact middle: she cannot affirm that gods dwell in the sky, nor can she declare with certainty that the universe lacks a creator.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.96,
+      "atheist": 0.12
+     },
+     "decisive_clue": "standing firmly in the middle, neither affirming nor denying a creator",
+     "reason": "Her stance is the textbook definition of suspending judgment between affirmation and denial.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Priya refuses both to affirm celestial creators and to rule them out, maintaining that ultimate truth cannot be proven.",
+   "feedback_deep": "Priya carefully separates the study of human myth from the ultimate metaphysical question. While she acknowledges that specific ancient stories are cultural inventions, she refuses to declare that no supreme intelligence exists, maintaining a principled middle stance.",
+   "contrast_rule": "Suspending judgment leaves the door open to the unknown; rejecting belief shuts the door.",
+   "hint": "Notice whether Priya asserts that no creator exists or insists that humans cannot know either way.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_006",
+   "domain": "journalism",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 3,
+   "frame": "Regarding the existence of divine miracles and deities, Marcus is an ___.",
+   "beats": [
+    {
+     "text": "Marcus investigates reports of weeping statues and spontaneous healing at a mountain shrine for an investigative magazine. His opening column states bluntly that supernatural miracles violate the immutable laws of thermodynamics and that deities do not exist outside human imagination.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.16,
+      "atheist": 0.94
+     },
+     "decisive_clue": "stating bluntly that deities do not exist outside human imagination",
+     "reason": "Marcus explicitly denies the existence of gods and supernatural agency.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "When laboratory analysis reveals that oil on the statue came from an overhead ventilation duct, an editor asks whether divine mystery might still have guided the leak. Marcus dismisses the suggestion as absurd rationalization, writing that rational observers must discard belief in gods when confronted by plain reality.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.13,
+      "atheist": 0.95
+     },
+     "decisive_clue": "urging the discarding of belief in gods rather than leaving room for mystery",
+     "reason": "He actively argues against belief in deities rather than suspending judgment.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "In his summary editorial, Marcus writes that human societies progress only when they abandon reliance on nonexistent cosmic protectors and accept full responsibility for their own future.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.11,
+      "atheist": 0.96
+     },
+     "decisive_clue": "characterizing cosmic protectors as nonexistent and advocating abandonment of faith",
+     "reason": "His stance is an active, principled rejection of belief in deities.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Marcus explicitly rejects belief in deities, arguing that gods are imaginary constructs that humanity must discard.",
+   "feedback_deep": "Marcus does not view the miraculous as an unresolved enigma; he actively investigates and concludes that claims of divine action are fraudulent and that deities do not exist. His position is a clear affirmation of disbelief.",
+   "contrast_rule": "Rejecting gods as nonexistent belongs to disbelief; reserving judgment belongs to epistemic doubt.",
+   "hint": "Look at whether Marcus treats divine existence as unprovable or as an outright falsehood.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_007",
+   "domain": "philosophy_seminar",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "In her philosophical stance on whether a supreme being exists, Elena is an ___.",
+   "beats": [
+    {
+     "text": "During an introductory philosophy debate on the problem of evil, Elena argues that the sheer volume of gratuitous suffering on Earth disproves the existence of any benevolent deity. She states clearly that she rejects belief in all gods, convinced that the universe is purely natural.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.16,
+      "atheist": 0.94
+     },
+     "decisive_clue": "declaring that gratuitous suffering disproves deities and rejecting belief in all gods",
+     "reason": "Elena starts with an explicit rejection of belief in deities.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "As the seminar advances to epistemology, the professor presents proofs demonstrating that finite human minds cannot determine whether an incomprehensible cosmic entity exists outside spacetime. Elena pauses, concedes that disproving an entity beyond logical comprehension is impossible, and adjusts her position to hold that the question is fundamentally unanswerable.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.93,
+      "atheist": 0.22
+     },
+     "decisive_clue": "conceding that divine existence cannot be proven or disproven and is unanswerable",
+     "reason": "She shifts from actively denying gods to suspending judgment because knowledge is impossible.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Elena shifts from actively denying gods to recognizing that ultimate cosmic reality is fundamentally beyond human knowledge.",
+   "feedback_deep": "Elena begins with a clear rejection of belief in gods based on the problem of evil. However, when confronted with the epistemic limits of human reason, she changes her stance to recognize that whether a transcendent being exists cannot be known, moving from denial to suspended judgment.",
+   "contrast_rule": "Denying gods exist is disbelief; admitting that humans cannot know is suspended judgment.",
+   "hint": "Watch how Elena's stance changes once she accepts the epistemic limits of human reason.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_008",
+   "domain": "campus_debate",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "Regarding his belief in divine beings, Kenji is an ___.",
+   "beats": [
+    {
+     "text": "At a university roundtable on science and religion, Kenji explains that he does not take sides on whether a cosmic mind created the universe, noting that neither physics nor theology has provided definitive answers. He states that he simply does not know.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.94,
+      "atheist": 0.17
+     },
+     "decisive_clue": "stating that he does not take sides because neither physics nor theology can provide answers",
+     "reason": "Kenji initially suspends judgment due to lack of conclusive knowledge.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "A philosophy professor challenges him, arguing that suspending judgment treats unfounded myths with undue respect. Persuaded that a total lack of evidence warrants active disbelief rather than neutrality, Kenji abandons his middle ground and declares that he now entirely rejects the existence of any deities.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.23,
+      "atheist": 0.93
+     },
+     "decisive_clue": "abandoning his middle ground to actively reject the existence of any deities",
+     "reason": "He is persuaded to drop his neutral stance and adopt active disbelief.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Kenji moves from a neutral stance of ignorance to actively rejecting the existence of deities.",
+   "feedback_deep": "Kenji initially expresses neutral uncertainty about whether cosmic questions can be answered. However, when challenged on the logic of his neutrality, he adopts a stance of active disbelief, concluding that a lack of evidence justifies rejecting deities altogether.",
+   "contrast_rule": "Claiming ignorance withholds judgment; admitting an absence of belief defines non-belief.",
+   "hint": "Notice the difference between not claiming definitive proof and actually possessing no belief in gods.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_009",
+   "domain": "journalism",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "In his personal conviction concerning the divine, Farhan is an ___.",
+   "beats": [
+    {
+     "text": "Farhan authors an essay in a national daily arguing that all concept of divine providence is an archaic illusion, stating unequivocally that humanity exists in an unguided, godless universe.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.15,
+      "atheist": 0.95
+     },
+     "decisive_clue": "declaring divine providence an illusion and describing the universe as godless",
+     "reason": "Farhan asserts an affirmative non-theistic worldview.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "After reading critique letters from theoretical physicists highlighting quantum indeterminacy and multiple dimensions, Farhan writes a follow-up column admitting that humans know so little about fundamental reality that ruling out a transcendent entity is logically premature.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.91,
+      "atheist": 0.25
+     },
+     "decisive_clue": "admitting that human ignorance makes ruling out a transcendent entity logically premature",
+     "reason": "He steps back from denial to suspend judgment based on human ignorance.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "Months later, in a podcast retrospective, Farhan states that he has reconsidered his philosophical doubt. Concluding that quantum mystery does not justify theological speculation, he fully returns to his original conviction and actively rejects belief in any supernatural deities.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.18,
+      "atheist": 0.94
+     },
+     "decisive_clue": "returning to his original conviction and actively rejecting belief in supernatural deities",
+     "reason": "He actively rejects theological speculation, returning to definitive non-belief.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Farhan initially denies gods, briefly suspends judgment over physical mysteries, but ultimately returns to active disbelief.",
+   "feedback_deep": "Farhan journeys through a classic intellectual cycle: starting with dogmatic denial, softening into epistemic doubt when confronted with cosmological limits, and finally returning to a clear rejection of belief in deities as his personal conviction.",
+   "contrast_rule": "Epistemic doubt pauses judgment; personal rejection of deities confirms disbelief.",
+   "hint": "Track how Farhan moves from denial, to acknowledging ignorance, and back to a personal stance of disbelief.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_010",
+   "domain": "literature_club",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 4,
+   "frame": "Regarding her belief in an ultimate maker, Chloe is an ___.",
+   "beats": [
+    {
+     "text": "While discussing John Milton's Paradise Lost in her literature circle, Chloe remarks that human language and cognition are incapable of proving whether a supreme creator exists, leaving the divine question perpetually open.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.93,
+      "atheist": 0.17
+     },
+     "decisive_clue": "deeming human cognition incapable of resolving whether a supreme creator exists",
+     "reason": "Chloe initially treats the divine as unknowable and withholds judgment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "A peer argues that Milton's depiction reveals God as a literary tyrant, prompting Chloe to declare that she refuses to believe in any such despotic entity and has completely discarded faith in all deities.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.24,
+      "atheist": 0.92
+     },
+     "decisive_clue": "discarding faith in all deities and refusing to believe in divine entities",
+     "reason": "Her emotional reaction leads to an explicit declaration of non-belief.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "Upon further reflection the next morning, Chloe amends her comment, explaining that her rejection of biblical characterization does not solve the cosmic mystery: she cannot prove or disprove an ultimate maker and must remain neutral.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.94,
+      "atheist": 0.18
+     },
+     "decisive_clue": "reverting to a neutral stance because cosmic origin cannot be proven or disproven",
+     "reason": "She re-establishes her epistemic neutrality, returning to suspension of judgment.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Chloe shifts from unknowability to rejecting faith, then returns to neutrality upon recognizing that cosmic truth remains unprovable.",
+   "feedback_deep": "Chloe's temporary shift into disbelief is triggered by rejecting a literary depiction of God. However, upon sober reflection, she separates literary storytelling from metaphysical truth, returning to her foundational position that the existence of a higher power is fundamentally unknowable.",
+   "contrast_rule": "Rejecting a specific religion can trigger disbelief; questioning all proof returns to neutrality.",
+   "hint": "Observe whether Chloe ends by rejecting gods entirely or by holding that ultimate reality cannot be known.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_011",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "In her fundamental worldview regarding the divine, Amina is an ___.",
+   "beats": [
+    {
+     "text": "Before planning their wedding ceremony, Amina tells her fiancé that she wants a purely civil marriage without blessings, explaining that she does not believe in God and views all religious claims as baseless fiction.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.14,
+      "atheist": 0.95
+     },
+     "decisive_clue": "stating she does not believe in God and calling religious claims baseless fiction",
+     "reason": "Amina articulates a definite rejection of belief in deities.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "Her fiancé, who studies philosophy, asks if she claims to possess proof that no higher consciousness exists in the cosmos. Amina pauses and admits that nobody can prove a negative; she clarifies that she does not know whether a higher power exists, only that evidence is entirely unavailable, leading her to suspend all judgment.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.93,
+      "atheist": 0.22
+     },
+     "decisive_clue": "admitting nobody can prove a negative and suspending all judgment on a higher power",
+     "reason": "Conceding the impossibility of proof flips her stance from denial to suspended judgment.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Amina moves from rejecting belief in God to recognizing that the question is fundamentally unprovable and suspending judgment.",
+   "feedback_deep": "Amina starts with an assertive declaration of disbelief when planning a civil ceremony. However, when probed on whether she claims absolute proof, she recognizes the impossibility of proving that no higher consciousness exists, shifting her stance to epistemic doubt and neutrality.",
+   "contrast_rule": "Claiming gods do not exist is disbelief; admitting we cannot prove their absence is neutrality.",
+   "hint": "Look at how Amina's response changes when asked whether she can actually prove non-existence.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_012",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "Regarding his belief in divine influence or gods, Liam is an ___.",
+   "beats": [
+    {
+     "text": "Following a championship win, Liam tells a reporter that mortals cannot know whether cosmic forces exist or intervene in human games, genuinely choosing neither to credit nor deny heaven.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.92,
+      "atheist": 0.18
+     },
+     "decisive_clue": "stating mortals cannot know whether cosmic forces exist, choosing neither to credit nor deny",
+     "reason": "Liam refuses to take a side, treating cosmic influence as unknowable.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "Years later, after reflecting on the sheer physical mechanics of his career, Liam abandons his previous neutrality. He now credits grueling drills alone and explicitly rejects belief in any gods or divine overseers.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.13,
+      "atheist": 0.95
+     },
+     "decisive_clue": "abandoning neutrality to explicitly reject belief in any gods or divine overseers",
+     "reason": "He abandons epistemic neutrality and adopts active disbelief in gods.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Liam shifts from viewing cosmic forces as unknowable to an explicit declaration that he rejects belief in any deities.",
+   "feedback_deep": "Liam initially expresses neutral uncertainty about whether cosmic forces intervene in human affairs. However, after deep reflection on his career, he abandons this neutrality and actively disbelieves in gods, attributing reality strictly to human effort.",
+   "contrast_rule": "Diplomatic uncertainty points to neutrality; outright rejection of divine creators points to disbelief.",
+   "hint": "Compare Liam's initial diplomatic evasion with his explicit rejection of deities in the biography.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_013",
+   "domain": "philosophy_seminar",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "Regarding the metaphysical existence of a first cause, Soren is an ___.",
+   "beats": [
+    {
+     "text": "Soren attends a debate on the origin of the cosmos and comments that neither side has provided a convincing argument about whether a supreme intelligence sparked creation.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.78,
+      "atheist": 0.38
+     },
+     "decisive_clue": "noting that neither side has provided convincing arguments on cosmic intelligence",
+     "reason": "Soren displays initial hesitation, leaning toward suspension of judgment.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M3"
+     }
+    },
+    {
+     "text": "When asked if he simply needs more scientific evidence, Soren clarifies that his stance is not temporary ignorance: he believes that by definition, metaphysical truths lie beyond the finite cognitive capacity of all rational beings.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.94,
+      "atheist": 0.16
+     },
+     "decisive_clue": "asserting that metaphysical truths are permanently beyond finite human cognitive capacity",
+     "reason": "He narrows his position to principled, permanent epistemic unknowability.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "A fellow student challenges him to pick a side, but Soren insists that asserting or denying what cannot be known is an intellectual vice, confirming his unwavering neutrality.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.96,
+      "atheist": 0.11
+     },
+     "decisive_clue": "calling both assertion and denial of the unknowable an intellectual vice",
+     "reason": "His commitment to suspended judgment is hardened into an ethical imperative of restraint.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Soren narrows his initial uncertainty into a principled philosophical conviction that metaphysical reality is permanently unknowable.",
+   "feedback_deep": "Soren begins with apparent indecision, but quickly narrows his view into a rigorous epistemic position: human minds are fundamentally incapable of verifying cosmic creators. His stance is not laziness or doubt, but a principled refusal to assert or deny.",
+   "contrast_rule": "Principled refusal to choose between belief and disbelief marks the unknowable stance.",
+   "hint": "Notice how Soren's position deepens from casual doubt into a principled stance on human cognitive limits.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_014",
+   "domain": "tech_culture",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "Regarding the existence of divine entities, Kavita is an ___.",
+   "beats": [
+    {
+     "text": "During a lunch discussion about spirituality, Kavita explains that she lives entirely without faith, stating that she has never accepted the existence of any deities.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.28,
+      "atheist": 0.82
+     },
+     "decisive_clue": "stating that she lives without faith and has never accepted the existence of deities",
+     "reason": "An explicit lack of acceptance of deities establishes non-belief.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "A colleague asks whether she considers herself undecided about higher powers. Kavita clarifies that she is not undecided at all: she has examined the arguments for deities and reached a definite conclusion that no such entities exist.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.18,
+      "atheist": 0.93
+     },
+     "decisive_clue": "clarifying that she is not undecided and concluding no deities exist",
+     "reason": "She narrows her position from casual non-observance to a definitive rejection of deities.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "Kavita adds that she bases her worldview exclusively on observable material evidence and logic, explicitly rejecting belief in all supernatural creators.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.12,
+      "atheist": 0.96
+     },
+     "decisive_clue": "explicitly rejecting belief in all supernatural creators based on material evidence",
+     "reason": "Her stance is solidly confirmed as principled non-belief in gods.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Kavita narrows her initial non-belief into an uncompromising, evidence-based rejection of all supernatural creators.",
+   "feedback_deep": "Kavita begins by explaining that she lives without faith in deities. When questioned on whether she is merely undecided, she narrows her position into a definitive conclusion: deities do not exist. She then confirms that her entire worldview relies on empirical evidence, eliminating any agnosticism.",
+   "contrast_rule": "Arriving at a firm negative conclusion marks disbelief, not indecision.",
+   "hint": "Observe how Kavita rejects being described as undecided and affirms that no deities exist.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_015",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "Regarding her belief in supernatural entities or spirits, Sunita is an ___.",
+   "beats": [
+    {
+     "text": "Sunita hikes to an ancient cliffside monastery where monks chant ancient mantras. Asked by her guide if she feels the presence of divine guardians, Sunita replies that she cannot tell whether spirits inhabit the peaks.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.79,
+      "atheist": 0.35
+     },
+     "decisive_clue": "admitting she cannot tell whether divine spirits inhabit the peaks",
+     "reason": "Sunita expresses initial uncertainty about supernatural presence.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "Her guide asks if that means she plans to embrace the mountain faith once she learns the teachings. Sunita explains that no amount of theological lore could ever turn spiritual intuition into empirical certainty, meaning she will never endorse or deny divine presence.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.94,
+      "atheist": 0.16
+     },
+     "decisive_clue": "explaining spiritual claims can never become empirical certainty, refusing endorsement or denial",
+     "reason": "She narrows her view into a firm epistemological boundary.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "In her travel journal, Sunita writes that true intellectual peace comes from accepting that the ultimate nature of the universe is permanently shrouded in mystery, requiring one to suspend belief and disbelief alike.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.96,
+      "atheist": 0.12
+     },
+     "decisive_clue": "formulating a mature commitment to suspend both belief and disbelief alike",
+     "reason": "Her final journal entry solidifies her stance as deep epistemic suspension.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M3"
+     }
+    }
+   ],
+   "feedback_short": "Sunita moves from traveler's wonder to a definitive realization that divine truth is permanently unknowable, suspending judgment.",
+   "feedback_deep": "Sunita's experience narrows from simple atmospheric uncertainty into a mature philosophical realization: spiritual claims cannot be empirically verified. By committing to suspend both belief and disbelief, she firmly establishes her neutral stance.",
+   "contrast_rule": "Accepting that cosmic reality is permanently mysterious defines the unknowable stance.",
+   "hint": "Look at whether Sunita denies the presence of spirits or concludes that their reality cannot be known.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_016",
+   "domain": "archaeology",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "Regarding belief in gods and the supernatural, David is an ___.",
+   "beats": [
+    {
+     "text": "David leads an excavation of a Neolithic burial mound and concludes that early grave goods reflect primitive fears of mortality rather than real cosmic deities, asserting that gods have never existed.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.16,
+      "atheist": 0.94
+     },
+     "decisive_clue": "asserting that grave goods reflect fear and that gods have never existed",
+     "reason": "David begins with a clear, positive rejection of deities.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "When an interviewer points out that modern science cannot explain how the first living cell assembled, David acknowledges that scientists do not yet know the exact biochemical sequence, admitting that vast mysteries remain in evolutionary biology.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.32,
+      "atheist": 0.86
+     },
+     "decisive_clue": "admitting biological mysteries while maintaining rejection of supernatural creators",
+     "reason": "Admitting a scientific mystery does not change his underlying rejection of belief in deities.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "David immediately clarifies that an unsolved scientific puzzle does not justify inventing supernatural deities; he remains convinced that natural mechanisms alone govern existence and completely rejects belief in divine creators.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.14,
+      "atheist": 0.95
+     },
+     "decisive_clue": "refusing to let unsolved puzzles validate deities and reaffirming rejection of divine creators",
+     "reason": "His worldview firmly stays one of non-belief in gods.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "David admits scientific gaps without wavering in his conviction that supernatural gods do not exist.",
+   "feedback_deep": "The second beat introduces a plausible distraction: David admits that science does not yet understand abiogenesis. However, admitting an unsolved physical puzzle is not the same as adopting epistemic neutrality toward God; he continues to reject supernatural belief entirely.",
+   "contrast_rule": "Admitting a gap in scientific knowledge does not turn rejection of gods into neutrality.",
+   "hint": "Distinguish between admitting that science has unanswered questions and changing one's stance on God.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_017",
+   "domain": "astronomy",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 4,
+   "frame": "Regarding whether an architect designed the universe, Zoya is an ___.",
+   "beats": [
+    {
+     "text": "Zoya measures stellar parallax and maintains that human sensory capacity is too constrained to determine whether a conscious architect conceived the physical universe, leaving the question unresolved.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.93,
+      "atheist": 0.17
+     },
+     "decisive_clue": "viewing human sensory capacity as too constrained to resolve whether an architect exists",
+     "reason": "Zoya holds that the divine question is unknowable.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "During an astronomy society lecture, Zoya delivers a sharp critique of mythological creation stories, demonstrating that stars form through gravitational collapse rather than divine decrees.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.85,
+      "atheist": 0.33
+     },
+     "decisive_clue": "critiquing mythological folklore while retaining broader epistemic neutrality",
+     "reason": "Debunking specific mythologies is a distraction; it does not change her neutrality on an ultimate creator.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 3,
+      "context_length": 3,
+      "implicitness": 3,
+      "ambiguity": 2,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    },
+    {
+     "text": "When asked if debunking ancient folklore means she now denies the existence of any cosmic creator, Zoya clarifies that rejecting primitive myths does not alter her core position: ultimate cosmic origin remains fundamentally unprovable.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.95,
+      "atheist": 0.13
+     },
+     "decisive_clue": "confirming that rejecting folklore does not alter her view that cosmic origin is unprovable",
+     "reason": "She reaffirms that ultimate reality remains beyond proof or disproof.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Zoya debunks primitive myths without abandoning her core position that ultimate cosmic origin is fundamentally unprovable.",
+   "feedback_deep": "Disproving specific religious stories can make a thinker look like they are denying gods entirely. However, Zoya demonstrates that debunking folklore does not mean ruling out a cosmic creator; she maintains that ultimate truth remains beyond proof.",
+   "contrast_rule": "Rejecting ancient mythology does not equate to rejecting the possibility of a creator.",
+   "hint": "Notice whether Zoya's critique of ancient folklore changes her underlying stance on the unknowable.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_018",
+   "domain": "hospital_ethics",
+   "transfer": false,
+   "chain_type": "reframe",
+   "difficulty": 4,
+   "frame": "Regarding the existence of a higher power, Julian is an ___.",
+   "beats": [
+    {
+     "text": "Julian directs a hospice program and often tells junior staff that religious promises of divine restoration are false comfort, stating that he does not believe in any gods and lives with clear rejection of the divine.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.16,
+      "atheist": 0.94
+     },
+     "decisive_clue": "stating he does not believe in gods and lives with clear rejection of the divine",
+     "reason": "Julian initially articulates explicit disbelief in deities.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "During an ethics retreat on grief, a palliative psychologist reframes the issue not around dogma, but around human existential boundaries: can any mortal truly know what transcends life? Julian listens closely and reconsiders, admitting that dogmatic denial of the divine is just as ungrounded as blind faith, choosing instead to suspend judgment.",
+     "best_word": "agnostic",
+     "fit": {
+      "agnostic": 0.92,
+      "atheist": 0.24
+     },
+     "decisive_clue": "reframing the question around human limits and choosing to suspend judgment",
+     "reason": "Reframing the problem as human limitations shifts his stance to suspension of judgment.",
+     "shift_type": "reframe",
+     "difficulty": {
+      "lexical_difficulty": 4,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 3
+     },
+     "misconception_by_wrong_choice": {
+      "atheist": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Julian reframes his outlook from active denial of gods to an humble suspension of judgment regarding mortal limits.",
+   "feedback_deep": "Julian initially takes an adversarial stance against religious comfort, actively denying gods. When the conversation reframes the problem around human existential limits, he realizes that definitive denial claims more certainty than humans possess, moving to a neutral stance.",
+   "contrast_rule": "Reframing certainty around human limitations transforms denial into suspended judgment.",
+   "hint": "Watch how reframing the debate around mortal limits alters Julian's willingness to deny gods.",
+   "qa": "revised"
+  },
+  {
+   "id": "agnostic-atheist_019",
+   "domain": "family_counseling",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "Regarding her personal belief in God, Fatima is an ___.",
+   "beats": [
+    {
+     "text": "Fatima informs her extended family that she does not believe in God and will not participate in religious rituals, prompting her relatives to accuse her of harboring bitterness, rebellion, and hatred toward faith.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.2,
+      "atheist": 0.89
+     },
+     "decisive_clue": "declaring that she does not believe in God and refusing rituals",
+     "reason": "Stating explicitly that she does not believe in God establishes non-belief, despite relatives misinterpreting her motives.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 2,
+      "ambiguity": 2,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "In a family counseling session, Fatima calmly rehabilitates her stance, explaining that her refusal is entirely devoid of anger or hostility: she simply lacks belief in the existence of deities after careful reflection.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.18,
+      "atheist": 0.94
+     },
+     "decisive_clue": "explaining her non-belief is thoughtful and free from anger or hostility",
+     "reason": "Rehabilitating her motivation clarifies that non-belief is intellectual and calm.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "She assures her parents that she deeply loves them and respects their cultural heritage, while remaining completely settled in her personal lack of belief in any supreme creator.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.15,
+      "atheist": 0.95
+     },
+     "decisive_clue": "expressing love and respect while remaining settled in her lack of belief in deities",
+     "reason": "Her stance is firmly established as a peaceful, positive absence of belief in gods.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 2,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Fatima rehabilitates her position, demonstrating that lacking belief in deities stems from calm reflection rather than anger.",
+   "feedback_deep": "Family members often mistake disbelief for emotional rebellion or malice. Fatima rehabilitates her position by showing that her rejection of belief in God is a thoughtful, settled philosophical stance, free from resentment or hostility toward believers.",
+   "contrast_rule": "Lacking belief in deities can be calm and respectful; hostility is not a requirement.",
+   "hint": "Notice how Fatima clarifies that her lack of belief in God is a thoughtful conclusion, not anger.",
+   "qa": "pass"
+  },
+  {
+   "id": "agnostic-atheist_020",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "Regarding his conviction about whether God exists, Arthur is an ___.",
+   "beats": [
+    {
+     "text": "At the dinner table, Arthur's grandmother asks him to lead the evening prayer. Arthur declines gently, explaining that he does not believe in God and cannot pray to a deity.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.3,
+      "atheist": 0.82
+     },
+     "decisive_clue": "declining prayer by stating he does not believe in God",
+     "reason": "Stating that he does not believe in God points directly to non-belief.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 2,
+      "semantic_distance": 3,
+      "context_length": 2,
+      "implicitness": 3,
+      "ambiguity": 3,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    },
+    {
+     "text": "His sister asks whether he simply feels unsure about God or whether he holds a definite conviction. Arthur provides a precise distinction: he does not regard the existence of God as an open question; he has examined the concept and reached a firm conclusion that deities do not exist.",
+     "best_word": "atheist",
+     "fit": {
+      "agnostic": 0.12,
+      "atheist": 0.96
+     },
+     "decisive_clue": "stating he does not regard God as open and reaching a firm conclusion deities do not exist",
+     "reason": "Arthur replaces a vague non-religious label with a precise affirmation of disbelief.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 3,
+      "semantic_distance": 2,
+      "context_length": 3,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 2
+     },
+     "misconception_by_wrong_choice": {
+      "agnostic": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Arthur sharpens his vague non-religious description into a precise, definitive conclusion that deities do not exist.",
+   "feedback_deep": "Saying one is 'not religious' leaves room for indifference or uncertainty. Arthur brings precision to his stance by explicitly rejecting the idea that God's existence is an open mystery, confirming his positive conviction that deities do not exist.",
+   "contrast_rule": "Vague secularity is imprecise; concluding that deities do not exist defines non-belief.",
+   "hint": "Notice how Arthur replaces a vague description of being non-religious with a clear rejection of deities.",
+   "qa": "pass"
+  }
+ ],
+ "qa": {
+  "pass": 12,
+  "revised": 8,
+  "rejected": 0
+ }
+}

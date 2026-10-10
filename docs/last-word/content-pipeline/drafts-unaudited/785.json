@@ -1,0 +1,1338 @@
+{
+ "set_id": "fulsome-effusive",
+ "source_pair_id": 785,
+ "words": [
+  {
+   "word": "fulsome",
+   "sense": "praise that is perceived as excessive and insincere",
+   "concise_meaning": "excessive to the point of being offensive or manipulative",
+   "connotation": "negative, insincere",
+   "register": "formal, critical",
+   "grammar": "adjective",
+   "collocations": [
+    "fulsome praise",
+    "fulsome apology",
+    "fulsome tribute"
+   ],
+   "misconceptions": [
+    "thinking it means 'abundant' or 'generous'"
+   ]
+  },
+  {
+   "word": "effusive",
+   "sense": "praise that is demonstrative and warm",
+   "concise_meaning": "expressing emotions or praise freely and genuinely",
+   "connotation": "positive or neutral, warm",
+   "register": "standard",
+   "grammar": "adjective",
+   "collocations": [
+    "effusive welcome",
+    "effusive praise",
+    "effusive gratitude"
+   ],
+   "misconceptions": [
+    "thinking it means 'loud' or 'chaotic'"
+   ]
+  }
+ ],
+ "semantic_axes": [
+  {
+   "id": "perceived_sincerity",
+   "description": "from manipulative/calculated (fulsome) to genuine/spontaneous (effusive)"
+  },
+  {
+   "id": "recipient_response",
+   "description": "from uncomfortable/cynical (fulsome) to embraced/valued (effusive)"
+  }
+ ],
+ "edge": {
+  "a": "fulsome",
+  "b": "effusive",
+  "boundary_rule": "use fulsome if the praise implies a hidden, self-serving motive; use effusive if the praise implies an uncontrollable, genuine emotional outpouring.",
+  "clues_a": [
+   "hidden agenda",
+   "over-the-top language",
+   "suddenness",
+   "disproportionate scale"
+  ],
+  "clues_b": [
+   "warmth",
+   "long-standing relationship",
+   "unrestrained feeling",
+   "shared joy"
+  ],
+  "irrelevant_clues": [
+   "loudness",
+   "formal vocabulary",
+   "public setting"
+  ],
+  "misconceptions": {
+   "M1": "assuming fulsome means 'full/abundant'",
+   "M2": "assuming any over-the-top praise is automatically fulsome",
+   "M3": "assuming effusive must be loud or aggressive"
+  }
+ },
+ "anchors": {
+  "positive": {
+   "fulsome": [
+    "The consultant's comments about the CEO's minor idea were fulsome, clearly designed to secure the promotion.",
+    "His fulsome apology for the small delay felt like a tactic to avoid real accountability.",
+    "The lobbyist offered fulsome praise to the senator, hoping to win the contract immediately.",
+    "Their fulsome tribute felt more like a campaign advertisement than a heartfelt goodbye.",
+    "She found the director's fulsome flattery about her average performance deeply manipulative.",
+    "The applicant's fulsome letter of intent aimed to mask his lack of relevant experience."
+   ],
+   "effusive": [
+    "The crowd gave the performers an effusive welcome, cheering until their throats were sore.",
+    "After five years apart, their reunion was marked by an effusive exchange of hugs and tears.",
+    "The mentor gave an effusive recommendation, genuinely believing in her student's potential.",
+    "He sent an effusive thank-you note, completely overwhelmed by his friend's thoughtful gesture.",
+    "The team's effusive celebration after winning the final point was a joy to behold.",
+    "Her effusive response to the good news showed her pure, uncontained excitement."
+   ]
+  },
+  "counter": {
+   "fulsome": [
+    "The fans gave an effusive cheer when the band started playing their biggest hit.",
+    "Her genuine, overwhelming happiness was effusive, not manipulative.",
+    "He expressed his thanks in an effusive manner because he was truly touched.",
+    "The teacher's warm encouragement was effusive and very much appreciated by the shy student.",
+    "Their celebration after the big win was rightfully effusive.",
+    "Seeing his old friend, he greeted him in an effusive, warm way."
+   ],
+   "effusive": [
+    "The salesman's fulsome compliments about my appearance were clearly just to sell the car.",
+    "His fulsome speech about his own brilliance was cringe-worthy and insincere.",
+    "The candidate's fulsome praise for the local policies was widely dismissed as political posturing.",
+    "She felt insulted by the fulsome flattery from someone who usually ignored her.",
+    "Their fulsome support for the risky project was motivated by potential profit-sharing.",
+    "The donor offered fulsome thanks, but everyone knew he wanted a building named after him."
+   ]
+  },
+  "borderline": [
+   {
+    "text": "The diplomat's praise for the host nation was ___ and widely accepted as genuine.",
+    "best_word": "effusive",
+    "note": "While extravagant, the context 'widely accepted as genuine' points away from the manipulative sense of fulsome."
+   },
+   {
+    "text": "The applicant's ___ letter made the hiring manager suspicious of his true intentions.",
+    "best_word": "fulsome",
+    "note": "Suspicion of 'true intentions' links the praise to the manipulative sense."
+   },
+   {
+    "text": "Her ___ response to the feedback surprised everyone given their strained history.",
+    "best_word": "fulsome",
+    "note": "Given the 'strained history', the sudden, exaggerated praise suggests a tactic rather than genuine warmth."
+   },
+   {
+    "text": "They were so ___ about the new project that their colleagues were infected by their enthusiasm.",
+    "best_word": "effusive",
+    "note": "The ability to 'infect' colleagues with enthusiasm marks it as genuine, warm emotion, not insincere flattery."
+   }
+  ]
+ },
+ "chains": [
+  {
+   "id": "fulsome-effusive_001",
+   "domain": "professional",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "What the junior consultant said to the partner: ___",
+   "beats": [
+    {
+     "text": "The junior consultant told the partner, 'Your insight is genius, simply unparalleled, I've never seen such brilliance.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.3
+     },
+     "decisive_clue": "unparalleled/genius",
+     "reason": "The praise is extreme and feels like calculated flattery.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The junior consultant then asked the partner for a significant raise in their salary.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 1,
+      "effusive": 0.1
+     },
+     "decisive_clue": "asked for a raise",
+     "reason": "The motive of the praise becomes clear as manipulative.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The praise is a tactic to get a raise.",
+   "feedback_deep": "Fulsome praise is often manipulative, aimed at flattery rather than honest admiration. The subsequent request for a raise confirms the ulterior motive.",
+   "contrast_rule": "Fulsome is a calculated tactic; effusive is a genuine release.",
+   "hint": "What does the praise lead to?"
+  },
+  {
+   "id": "fulsome-effusive_002",
+   "domain": "academic",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The professor's comments on the student's essay are ___",
+   "beats": [
+    {
+     "text": "The professor wrote, 'This essay is the finest work of art I have ever encountered in my thirty years of teaching.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.8,
+      "effusive": 0.4
+     },
+     "decisive_clue": "finest work of art",
+     "reason": "The praise is hyperbolic and likely insincere.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The professor only gave the student a 'B' grade despite the grand words.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 1,
+      "effusive": 0.1
+     },
+     "decisive_clue": "B grade",
+     "reason": "The discrepancy confirms the praise was insincere.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The praise contradicts the grade.",
+   "feedback_deep": "When high praise contradicts objective results (a 'B'), it points to insincerity. Fulsome is the better fit for praise that seems hollow.",
+   "contrast_rule": "Fulsome praise often lacks grounding.",
+   "hint": "Does the grade match the praise?"
+  },
+  {
+   "id": "fulsome-effusive_003",
+   "domain": "politics",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The politician's praise for the opponent is ___",
+   "beats": [
+    {
+     "text": "The politician stood on stage and said, 'My opponent is a beacon of hope and a paragon of virtue.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.3
+     },
+     "decisive_clue": "beacon of hope",
+     "reason": "Hyperbolic praise between political rivals is usually a facade.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "Later that night, the politician privately ridiculed the opponent's policies.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 1,
+      "effusive": 0.1
+     },
+     "decisive_clue": "privately ridiculed",
+     "reason": "This confirms the public praise was manipulative and insincere.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Private actions expose public insincerity.",
+   "feedback_deep": "Fulsome praise is often political posturing. The private ridicule confirms the public praise was insincere, making 'fulsome' the correct choice.",
+   "contrast_rule": "Fulsome is often a political tactic.",
+   "hint": "Does the private action match the public praise?"
+  },
+  {
+   "id": "fulsome-effusive_004",
+   "domain": "greeting",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The friends' greeting is ___",
+   "beats": [
+    {
+     "text": "Seeing her best friend after a year, Maria cried out, 'Oh my goodness, you look absolutely amazing, I am so incredibly happy to see you!'",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "best friend/cried out",
+     "reason": "This is a genuine, warm expression of emotion.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    },
+    {
+     "text": "They spent the next three hours laughing and sharing intimate stories.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.1,
+      "effusive": 1
+     },
+     "decisive_clue": "laughing/intimate stories",
+     "reason": "This confirms the initial excitement was authentic.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The emotion is authentic and warm.",
+   "feedback_deep": "Effusive praise or expression is warm and genuine. The long conversation confirms the initial joy was authentic and not insincere.",
+   "contrast_rule": "Effusive is authentic warmth.",
+   "hint": "Is the emotion genuine?"
+  },
+  {
+   "id": "fulsome-effusive_005",
+   "domain": "celebration",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The family's praise for the winner is ___",
+   "beats": [
+    {
+     "text": "The family cheered loudly when David won the race, yelling, 'We are so proud of you, you're the best ever!'",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.2,
+      "effusive": 0.9
+     },
+     "decisive_clue": "cheered/proud",
+     "reason": "A supportive family offering encouragement is a classic example of genuine effusiveness.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    },
+    {
+     "text": "They had supported David through every practice session for the past five years.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.1,
+      "effusive": 1
+     },
+     "decisive_clue": "supported for years",
+     "reason": "Long-term commitment confirms the genuineness of their joy.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    }
+   ],
+   "feedback_short": "Long-term support confirms genuine pride.",
+   "feedback_deep": "Effusive praise is genuinely felt. Supporting someone for years validates that the praise is sincere, not an attempt to flatter.",
+   "contrast_rule": "Effusive joy is grounded in reality.",
+   "hint": "Does the family's history support the praise?"
+  },
+  {
+   "id": "fulsome-effusive_006",
+   "domain": "performance",
+   "transfer": false,
+   "chain_type": "stay",
+   "difficulty": 2,
+   "frame": "The audience's reaction is ___",
+   "beats": [
+    {
+     "text": "The audience jumped to their feet when the violinist finished, their applause roaring, 'Incredible! You've changed our lives!'",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "jumping/roaring applause",
+     "reason": "The audience is genuinely moved by the performance.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    },
+    {
+     "text": "Many audience members were moved to tears, and they lingered after the show to thank the artist personally.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.1,
+      "effusive": 1
+     },
+     "decisive_clue": "lingered to thank",
+     "reason": "Their actions confirm their deep, genuine appreciation.",
+     "shift_type": "stay",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    }
+   ],
+   "feedback_short": "The emotion is sincere and sustained.",
+   "feedback_deep": "Effusive emotion is genuine and uncontained. Lingering to personally thank the artist confirms their applause was not just polite or tactical, but heartfelt.",
+   "contrast_rule": "Effusive praise is heartfelt.",
+   "hint": "Do the actions match the applause?"
+  },
+  {
+   "id": "fulsome-effusive_007",
+   "domain": "relationships",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "How Sarah responded to her partner’s cooking: ___",
+   "beats": [
+    {
+     "text": "Sarah said, 'This is the most incredible, divine, transcendent meal ever tasted in human history.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.8,
+      "effusive": 0.4
+     },
+     "decisive_clue": "human history",
+     "reason": "This is absurdly over-the-top, suggesting Sarah is trying too hard.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "Sarah explained that she had been starving for days and was honestly overwhelmed by the simple comfort of the meal.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "overwhelmed by simple comfort",
+     "reason": "The context reveals Sarah wasn't manipulating; she was just truly hungry and appreciative.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The revelation of genuine hunger changes the perception.",
+   "feedback_deep": "Initially, the praise seems absurd and potentially insincere (fulsome). Learning she was genuinely overwhelmed by hunger reframes the praise as authentic emotion (effusive).",
+   "contrast_rule": "Genuineness reframes the praise.",
+   "hint": "What was Sarah's underlying state?"
+  },
+  {
+   "id": "fulsome-effusive_008",
+   "domain": "sport",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The commentator's remarks about the player: ___",
+   "beats": [
+    {
+     "text": "The commentator said, 'This player is a god, a perfect being, a miracle of athletic evolution.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.8,
+      "effusive": 0.4
+     },
+     "decisive_clue": "athletic evolution",
+     "reason": "The praise is hyperbolic and likely pandering to the audience.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The commentator had witnessed the player overcome a severe, career-ending injury earlier that same season.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "overcome injury",
+     "reason": "The emotional context of the injury makes the praise feel genuine rather than just hyperbolic.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Context of adversity makes the praise sincere.",
+   "feedback_deep": "Hyperbole often masks insincerity (fulsome). However, knowing the player's history of adversity validates the intensity of the praise as a genuine emotional response (effusive).",
+   "contrast_rule": "Context justifies intensity.",
+   "hint": "Why was the commentator so excited?"
+  },
+  {
+   "id": "fulsome-effusive_009",
+   "domain": "travel",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The travel guide's description of the city: ___",
+   "beats": [
+    {
+     "text": "The guide described, 'Every corner of this city is a paradise, unmatched in the entire universe.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.8,
+      "effusive": 0.3
+     },
+     "decisive_clue": "entire universe",
+     "reason": "Such extreme, vague language is classic sales brochure flattery.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The guide had lived in this city for thirty years and had actively campaigned to save its historic architecture.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "thirty years/campaigned",
+     "reason": "Deep, long-term personal connection makes the praise feel genuine.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Personal investment makes the praise genuine.",
+   "feedback_deep": "Extreme praise can seem like insincere flattery (fulsome). But understanding the guide's thirty-year commitment reveals a genuine, emotional attachment (effusive).",
+   "contrast_rule": "Commitment signals sincerity.",
+   "hint": "Does the guide have a personal stake?"
+  },
+  {
+   "id": "fulsome-effusive_010",
+   "domain": "household",
+   "transfer": true,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The roommate's praise for the chore list: ___",
+   "beats": [
+    {
+     "text": "The roommate said, 'This is a revolutionary masterpiece of organization, truly a work of divine genius.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.3
+     },
+     "decisive_clue": "revolutionary masterpiece",
+     "reason": "The praise is comically overdone, suggesting irony or flattery.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The roommate was completely disorganized and had been desperately hoping someone would take over chores.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "desperately hoping",
+     "reason": "The exaggeration is a genuine expression of relief and gratitude.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Relief and gratitude make the praise genuine.",
+   "feedback_deep": "Extravagant praise for something mundane often suggests insincerity (fulsome). However, deep relief from someone disorganized reveals the praise to be an authentic, emotional reaction (effusive).",
+   "contrast_rule": "Relief reframes the praise.",
+   "hint": "What was the roommate feeling?"
+  },
+  {
+   "id": "fulsome-effusive_011",
+   "domain": "business",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The manager's feedback for the employee is ___",
+   "beats": [
+    {
+     "text": "The manager said, 'You are an absolute legend, I am constantly mesmerized by every single word you speak.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.3
+     },
+     "decisive_clue": "mesmerized",
+     "reason": "This is overly personal and professionaly inappropriate, suggesting a manipulative aim.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The employee had just saved the company from a million-dollar lawsuit through their quick thinking.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "saved the company",
+     "reason": "The dramatic saving of the company makes the manager's high intensity seem earned and genuine.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The scale of impact validates the intense praise.",
+   "feedback_deep": "Over-the-top praise often seems insincere (fulsome). But when an action is of massive, life-changing importance (like saving millions), intense praise becomes an understandable, genuine reaction (effusive).",
+   "contrast_rule": "Impact justifies intensity.",
+   "hint": "What did the employee achieve?"
+  },
+  {
+   "id": "fulsome-effusive_012",
+   "domain": "arts",
+   "transfer": false,
+   "chain_type": "flip",
+   "difficulty": 3,
+   "frame": "The critic's praise for the new play is ___",
+   "beats": [
+    {
+     "text": "The critic wrote, 'A triumph! I cried, I laughed, I was reborn by this play!'",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "cried/laughed",
+     "reason": "This is a classic example of genuine emotional reaction to art.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    },
+    {
+     "text": "The critic was actually the playwright's long-term investor who needed the show to be a hit to avoid bankruptcy.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.2
+     },
+     "decisive_clue": "needed the show to be a hit",
+     "reason": "The critic's financial stake implies the praise is biased and tactical.",
+     "shift_type": "flip",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Financial stakes reveal the praise is a tactic.",
+   "feedback_deep": "Initially, the praise seems like a genuine emotional response to art (effusive). Knowing the critic is a desperate investor reframes the praise as a tactical manipulation (fulsome).",
+   "contrast_rule": "Financial bias corrupts praise.",
+   "hint": "Does the critic have a hidden stake?"
+  },
+  {
+   "id": "fulsome-effusive_013",
+   "domain": "social",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The host's welcome is ___",
+   "beats": [
+    {
+     "text": "The host opened the door, smiled broadly, and said, 'It's so wonderful to see you, I've been waiting for this all week!'",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.5,
+      "effusive": 0.6
+     },
+     "decisive_clue": "broad smile/waiting all week",
+     "reason": "The situation is warm and friendly; could be fulsome but more likely effusive.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    },
+    {
+     "text": "The host had already prepared their favorite dinner and set up the room specifically for their guest's comfort.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.2,
+      "effusive": 0.9
+     },
+     "decisive_clue": "prepared dinner/set up room",
+     "reason": "The actions provide evidence of genuine preparation and care.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Actions provide evidence of genuine care.",
+   "feedback_deep": "Both words could describe a warm welcome. The host's deliberate, thoughtful actions (preparing dinner) confirm the warmth is genuine, favoring 'effusive'.",
+   "contrast_rule": "Effusive is genuine warmth; fulsome is insincere.",
+   "hint": "What actions did the host take?"
+  },
+  {
+   "id": "fulsome-effusive_014",
+   "domain": "dining",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The critic's comments on the wine are ___",
+   "beats": [
+    {
+     "text": "The critic described the vintage as 'divine, a masterpiece, a liquid symphony.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.6,
+      "effusive": 0.5
+     },
+     "decisive_clue": "liquid symphony",
+     "reason": "The praise is a bit hyperbolic and could be interpreted either way.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "It was revealed that the critic had accepted a massive payment from the wine's distributor for the review.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.2
+     },
+     "decisive_clue": "accepted payment",
+     "reason": "The payment makes the praise a clear tactic rather than a genuine opinion.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The payment reveals the praise is a paid tactic.",
+   "feedback_deep": "When praise for something is already excessive, hidden financial incentives turn that excess into clear manipulation ('fulsome').",
+   "contrast_rule": "Financial stakes expose fulsome praise.",
+   "hint": "Why did the critic write the review?"
+  },
+  {
+   "id": "fulsome-effusive_015",
+   "domain": "public",
+   "transfer": false,
+   "chain_type": "narrow",
+   "difficulty": 3,
+   "frame": "The mayor's statement about the charity is ___",
+   "beats": [
+    {
+     "text": "The mayor declared, 'This charity is the most important, profound, and transformative organization in human existence.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.6,
+      "effusive": 0.5
+     },
+     "decisive_clue": "human existence",
+     "reason": "The language is extreme, but the context is not yet set.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The charity had been secretly funding the mayor's own election campaign.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.2
+     },
+     "decisive_clue": "secretly funding campaign",
+     "reason": "The praise is a tactical cover for a corrupt financial relationship.",
+     "shift_type": "narrow",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The corrupt relationship reveals the praise is a cover-up.",
+   "feedback_deep": "Excessive praise used to distract from a corrupt financial relationship ('secretly funding') fits the manipulative, insincere definition of 'fulsome'.",
+   "contrast_rule": "Corrupt relationships favor fulsome.",
+   "hint": "Does the charity have a relationship with the mayor?"
+  },
+  {
+   "id": "fulsome-effusive_016",
+   "domain": "charity",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The volunteer's praise is ___",
+   "beats": [
+    {
+     "text": "The volunteer said, 'The training program you've designed is so comprehensive, brilliant, and perfect, I don't know how I'll ever manage to thank you!'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.7,
+      "effusive": 0.4
+     },
+     "decisive_clue": "so comprehensive/brilliant/perfect",
+     "reason": "The praise is very intense and potentially hollow flattery.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The volunteer was a notoriously sycophantic person who used the same extreme language for every minor task.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.2
+     },
+     "decisive_clue": "notoriously sycophantic",
+     "reason": "This confirms the behavior is a personality trait of manipulation/sycophancy.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Sycophancy confirms the insincerity.",
+   "feedback_deep": "Even when praise seems potentially effusive, the context of the volunteer being 'notoriously sycophantic' reveals it is a habitual tactic for manipulation ('fulsome').",
+   "contrast_rule": "Sycophancy points to fulsome.",
+   "hint": "Is this behavior typical for the volunteer?"
+  },
+  {
+   "id": "fulsome-effusive_017",
+   "domain": "research",
+   "transfer": false,
+   "chain_type": "false_shift",
+   "difficulty": 3,
+   "frame": "The peer reviewer's feedback is ___",
+   "beats": [
+    {
+     "text": "The reviewer commented, 'This study is an astounding achievement, a monumental contribution to science, utterly breathtaking.'",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "monumental contribution",
+     "reason": "This sounds like a genuine, impressed reviewer.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    },
+    {
+     "text": "The reviewer was the author's lifelong mentor, who had helped shape the methodology and knew every painstaking step of the research.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.1,
+      "effusive": 1
+     },
+     "decisive_clue": "lifelong mentor",
+     "reason": "The deep, established, and positive connection justifies the intense, genuine pride.",
+     "shift_type": "false_shift",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The mentor's pride is genuine.",
+   "feedback_deep": "Effusive praise is genuine and warm. Knowing the reviewer is the author's lifelong mentor explains their intense pride in the 'astounding achievement', confirming 'effusive'.",
+   "contrast_rule": "Mentorship justifies intense pride.",
+   "hint": "What is the relationship between reviewer and author?"
+  },
+  {
+   "id": "fulsome-effusive_018",
+   "domain": "volunteering",
+   "transfer": false,
+   "chain_type": "rehabilitate",
+   "difficulty": 3,
+   "frame": "The coordinator's praise for the new volunteer: ___",
+   "beats": [
+    {
+     "text": "The coordinator said, 'Your efforts are beyond divine, you have transformed this place into a paradise with your magnificent work.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.2
+     },
+     "decisive_clue": "paradise/magnificent",
+     "reason": "The language is absurdly hyperbolic, suggesting the coordinator is trying too hard to please the volunteer.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The volunteer had single-handedly organized the entire relief effort after a disaster, literally saving dozens of lives.",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "saving dozens of lives",
+     "reason": "The volunteer's actions were life-changing, so the extreme praise is genuinely earned and reflective of the coordinator's deep gratitude.",
+     "shift_type": "rehabilitate",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M1"
+     }
+    }
+   ],
+   "feedback_short": "Life-saving actions justify the intense gratitude.",
+   "feedback_deep": "What initially seemed like insincere hyperbole ('fulsome') is revealed as a sincere, if intense, expression of profound gratitude ('effusive') due to the volunteer's life-saving impact.",
+   "contrast_rule": "Profound impact justifies intense praise.",
+   "hint": "What did the volunteer do?"
+  },
+  {
+   "id": "fulsome-effusive_019",
+   "domain": "meetings",
+   "transfer": false,
+   "chain_type": "corrupt",
+   "difficulty": 3,
+   "frame": "The CEO's praise for the new hire: ___",
+   "beats": [
+    {
+     "text": "The CEO said, 'We are so delighted to have you, your background is just absolutely perfect, it's such a joy to have you here!'",
+     "best_word": "effusive",
+     "fit": {
+      "fulsome": 0.3,
+      "effusive": 0.9
+     },
+     "decisive_clue": "delighted/perfect",
+     "reason": "This is standard, warm welcome language for a new hire.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 1,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "fulsome": "M2"
+     }
+    },
+    {
+     "text": "The CEO then quietly told their assistant that they were planning to use the new hire as a scapegoat for the company's impending bankruptcy.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.9,
+      "effusive": 0.1
+     },
+     "decisive_clue": "use as scapegoat",
+     "reason": "The true intent was manipulative, turning the initial 'warm' welcome into a cynical tactic.",
+     "shift_type": "corrupt",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The true intent was to manipulate.",
+   "feedback_deep": "What seemed like a sincere, warm welcome (effusive) is revealed as a manipulative tactic to prepare a scapegoat, fitting the insincere sense of 'fulsome'.",
+   "contrast_rule": "Manipulative intent corrupts praise.",
+   "hint": "What did the CEO say privately?"
+  },
+  {
+   "id": "fulsome-effusive_020",
+   "domain": "mentoring",
+   "transfer": false,
+   "chain_type": "precision",
+   "difficulty": 3,
+   "frame": "The artist's comment about the mentee's work: ___",
+   "beats": [
+    {
+     "text": "The artist stated, 'Your work is simply breathtaking, undeniably a masterpiece, the work of a god.'",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 0.8,
+      "effusive": 0.3
+     },
+     "decisive_clue": "work of a god",
+     "reason": "The praise is hyperbolic and suggests insincerity.",
+     "shift_type": "initial",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 1,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M2"
+     }
+    },
+    {
+     "text": "The artist then immediately tried to convince the mentee to sell the piece to the artist's own collector.",
+     "best_word": "fulsome",
+     "fit": {
+      "fulsome": 1,
+      "effusive": 0.1
+     },
+     "decisive_clue": "sell to collector",
+     "reason": "The praise is clearly a tactic to facilitate the artist's own gain.",
+     "shift_type": "precision",
+     "difficulty": {
+      "lexical_difficulty": 1,
+      "semantic_distance": 2,
+      "context_length": 2,
+      "implicitness": 1,
+      "ambiguity": 1,
+      "cultural_specificity": 1,
+      "processing_pressure": 1
+     },
+     "misconception_by_wrong_choice": {
+      "effusive": "M1"
+     }
+    }
+   ],
+   "feedback_short": "The praise is a tactic for personal gain.",
+   "feedback_deep": "Hyperbolic praise ('masterpiece', 'work of a god') used to influence a mentee for financial gain is a classic example of 'fulsome' praise.",
+   "contrast_rule": "Personal gain points to fulsome.",
+   "hint": "What did the artist do right after the praise?"
+  }
+ ],
+ "drafted_by": "hermes"
+}
