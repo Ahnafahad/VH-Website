@@ -73,7 +73,7 @@ type Accent = keyof typeof ACCENT_STYLES;
 function StatCard({
   icon: Icon, label, value, sub, accent = 'crimson',
 }: {
-  icon: React.ElementType;
+  icon: React.ComponentType<import('lucide-react').LucideProps>;
   label: string;
   value: string | number;
   sub?: string;

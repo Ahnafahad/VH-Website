@@ -1,0 +1,304 @@
+{
+  "schema_version": 1,
+  "set_id": "frugal-thrifty-miserly",
+  "title": "Saving, ingenuity, and needless harm",
+  "words": [
+    {
+      "word": "frugal",
+      "sense": "careful in using money or resources and avoiding waste",
+      "connotation": "usually positive",
+      "register": "general",
+      "misconceptions": [
+        "all low spending is harmful"
+      ]
+    },
+    {
+      "word": "thrifty",
+      "sense": "careful and resourceful in making money or resources go further",
+      "connotation": "positive",
+      "register": "general",
+      "misconceptions": [
+        "thrifty and frugal never overlap"
+      ]
+    },
+    {
+      "word": "miserly",
+      "sense": "unreasonably unwilling to spend or give",
+      "connotation": "negative",
+      "register": "general",
+      "misconceptions": [
+        "any saving is miserliness"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "resourcefulness",
+      "description": "whether saving involves useful reuse or ingenuity"
+    },
+    {
+      "id": "harm_from_under_spending",
+      "description": "whether refusal to spend deprives someone of a necessity"
+    }
+  ],
+  "edges": [
+    {
+      "id": "frugal__miserly",
+      "a": "frugal",
+      "b": "miserly",
+      "boundary_rule": "Frugal avoids waste; thrifty adds resourceful saving; miserly withholds spending even when it causes needless harm.",
+      "clues_a": [
+        "avoids unnecessary purchases"
+      ],
+      "clues_b": [
+        "refuses affordable necessities"
+      ],
+      "irrelevant_clues": [
+        "owns inexpensive things"
+      ]
+    },
+    {
+      "id": "frugal__thrifty",
+      "a": "frugal",
+      "b": "thrifty",
+      "boundary_rule": "Both avoid waste; thrifty can emphasize ingenious reuse, without making frugal incorrect.",
+      "clues_a": [
+        "chooses no unnecessary expense"
+      ],
+      "clues_b": [
+        "repairs and reuses creatively"
+      ],
+      "irrelevant_clues": [
+        "keeps a budget"
+      ]
+    }
+  ],
+  "chains": [
+    {
+      "id": "ft_flip",
+      "edge_id": "frugal__miserly",
+      "domain": "shared_house",
+      "characters": [
+        "Dev"
+      ],
+      "purpose": "practice",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ft_flip_b1",
+          "text": "Dev decides not to replace a working kettle just to get a newer colour, keeping the money for necessary repairs.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.97,
+            "thrifty": 0.89,
+            "miserly": 0.15
+          },
+          "decisive_clue": "keeping the money for necessary repairs",
+          "reason": "Frugal emphasizes avoiding waste; thrifty is also a strong, defensible description.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "thrifty": "misses_the_decisive_clue",
+            "miserly": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+            "axis": "Notice resourcefulness and the cost of refusing to spend.",
+            "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+          }
+        },
+        {
+          "id": "ft_flip_b2",
+          "text": "When the shared refrigerator fails, Dev refuses an affordable repair and tells the housemates to go without safe food storage.",
+          "best_word": "miserly",
+          "fit": {
+            "frugal": 0.22,
+            "thrifty": 0.18,
+            "miserly": 0.98
+          },
+          "decisive_clue": "refuses an affordable repair",
+          "reason": "Refusing a necessary, affordable expense imposes avoidable harm on others.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "misses_the_decisive_clue",
+            "thrifty": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+            "axis": "Notice resourcefulness and the cost of refusing to spend.",
+            "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+          }
+        },
+        {
+          "id": "ft_flip_b3",
+          "text": "After seeing spoiled food, Dev pays for the repair and replaces the groceries, then cuts an unused subscription instead.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.97,
+            "thrifty": 0.89,
+            "miserly": 0.12
+          },
+          "decisive_clue": "pays for the repair and replaces the groceries",
+          "reason": "Necessary needs are met; the saving now comes from an unused expense.",
+          "shift_type": "rehabilitate",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "thrifty": "misses_the_decisive_clue",
+            "miserly": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+            "axis": "Notice resourcefulness and the cost of refusing to spend.",
+            "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+          }
+        }
+      ],
+      "feedback_short": "Avoiding an unnecessary purchase differs from withholding affordable necessities.",
+      "feedback_deep": "The first choice avoids waste. Refusing safe food storage despite having the money causes needless harm. The repair and food purchase remove that harmful refusal.",
+      "contrast_rule": "Frugal avoids waste; thrifty adds resourceful saving; miserly withholds spending even when it causes needless harm.",
+      "hints": {
+        "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+        "axis": "Notice resourcefulness and the cost of refusing to spend.",
+        "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+      }
+    },
+    {
+      "id": "ft_resourceful",
+      "edge_id": "frugal__thrifty",
+      "domain": "community_garden",
+      "characters": [
+        "Pia"
+      ],
+      "purpose": "transfer",
+      "difficulty": 8,
+      "beats": [
+        {
+          "id": "ft_resourceful_b1",
+          "text": "Pia turns discarded jars into seed pots and repairs an old tray, making a small garden budget go further.",
+          "best_word": "thrifty",
+          "fit": {
+            "frugal": 0.9,
+            "thrifty": 0.98,
+            "miserly": 0.12
+          },
+          "decisive_clue": "turns discarded jars into seed pots",
+          "reason": "Resourceful reuse makes thrifty precise, while frugal remains strongly defensible.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "misses_the_decisive_clue",
+            "miserly": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+            "axis": "Notice resourcefulness and the cost of refusing to spend.",
+            "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+          }
+        },
+        {
+          "id": "ft_resourceful_b2",
+          "text": "A neighbour offers shiny new pots, but Pia keeps the repaired containers because they work well and save the money for seeds.",
+          "best_word": "thrifty",
+          "fit": {
+            "frugal": 0.93,
+            "thrifty": 0.97,
+            "miserly": 0.18
+          },
+          "decisive_clue": "save the money for seeds",
+          "reason": "Keeping useful reused materials preserves the resourceful saving; the alternative frugal remains natural.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "misses_the_decisive_clue",
+            "miserly": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+            "axis": "Notice resourcefulness and the cost of refusing to spend.",
+            "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+          }
+        },
+        {
+          "id": "ft_resourceful_b3",
+          "text": "When a tray cracks beyond repair, Pia buys a safe replacement and turns the usable pieces into plant labels.",
+          "best_word": "thrifty",
+          "fit": {
+            "frugal": 0.89,
+            "thrifty": 0.98,
+            "miserly": 0.1
+          },
+          "decisive_clue": "turns the usable pieces into plant labels",
+          "reason": "Pia meets the practical need while finding another useful purpose for the remains.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "misses_the_decisive_clue",
+            "miserly": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+            "axis": "Notice resourcefulness and the cost of refusing to spend.",
+            "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+          }
+        }
+      ],
+      "feedback_short": "Creative reuse makes thrifty especially precise; frugal remains a strong answer.",
+      "feedback_deep": "These words genuinely overlap. Reusing materials emphasizes resourcefulness, making thrifty particularly apt. Frugal still fits well and receives substantial partial credit.",
+      "contrast_rule": "Frugal avoids waste; thrifty adds resourceful saving; miserly withholds spending even when it causes needless harm.",
+      "hints": {
+        "attention": "What is saved, how is it saved, and does anybody lose something necessary?",
+        "axis": "Notice resourcefulness and the cost of refusing to spend.",
+        "contrast": "Saving through reuse differs from avoiding waste or withholding necessities."
+      }
+    }
+  ]
+}

@@ -36,6 +36,13 @@
       "when": 1791223200000,
       "tag": "0004_operational_admin",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1791590400000,
+      "tag": "0005_last_word",
+      "breakpoints": true
     }
   ]
 }

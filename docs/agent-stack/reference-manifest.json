@@ -1,0 +1,90 @@
+[
+  {
+    "name": "three",
+    "url": "https://github.com/mrdoob/three.js.git",
+    "path": ".references/three",
+    "ref": "r186",
+    "commit": "9b4a2ac29c63ccb43fd51c5661f2f873ac2c39b8",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "react-three-fiber",
+    "url": "https://github.com/pmndrs/react-three-fiber.git",
+    "path": ".references/react-three-fiber",
+    "ref": "v9.8.1",
+    "commit": "53ec672ac4a7189711766b87ece18889abbb32d4",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "drei",
+    "url": "https://github.com/pmndrs/drei.git",
+    "path": ".references/drei",
+    "ref": "v10.7.9",
+    "commit": "66b9bda91eee0ae98837e16c053888c34341421e",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "react-spring",
+    "url": "https://github.com/pmndrs/react-spring.git",
+    "path": ".references/react-spring",
+    "ref": "v10.1.2",
+    "commit": "59b1e5306402d3039120e2da464b66e10b1a1aa1",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "use-gesture",
+    "url": "https://github.com/pmndrs/use-gesture.git",
+    "path": ".references/use-gesture",
+    "ref": "default branch",
+    "commit": "c779631aa05959638dee81b9a25fb1299a7467f6",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "motion",
+    "url": "https://github.com/motiondivision/motion.git",
+    "path": ".references/motion",
+    "ref": "v12.38.0",
+    "commit": "0bfc9fe015f7170c538ca70ba4677ec59d83ee76",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "xstate",
+    "url": "https://github.com/statelyai/xstate.git",
+    "path": ".references/xstate",
+    "ref": "xstate@5.33.2",
+    "commit": "fbee62e7c1586315ed478c2fedf530d7e0ff5a3e",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "zustand",
+    "url": "https://github.com/pmndrs/zustand.git",
+    "path": ".references/zustand",
+    "ref": "v5.0.15",
+    "commit": "2115efb9e270e73ad1d3472dfe0e0c7b8c6abcd4",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "howler",
+    "url": "https://github.com/goldfire/howler.js.git",
+    "path": ".references/howler",
+    "ref": "v2.2.4",
+    "commit": "003b917c40cb41cf382ba47ae0ed7a35ca2abe76",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "uikit",
+    "url": "https://github.com/pmndrs/uikit.git",
+    "path": ".references/uikit",
+    "ref": "default branch",
+    "commit": "7fbb8bb04478bfcf337274f42824ba004014a3e2",
+    "fetched": "2026-10-04"
+  },
+  {
+    "name": "motion-ai",
+    "url": "https://github.com/motiondivision/ai-kit.git",
+    "path": ".references/motion-ai",
+    "ref": "default branch",
+    "commit": "d1c5c26f424adfd47c112d894e9d424b57338c7e",
+    "fetched": "2026-10-04"
+  }
+]

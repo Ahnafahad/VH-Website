@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "set_id": "assure-ensure",
+  "title": "Words of comfort, actions of certainty",
+  "words": [
+    {
+      "word": "assure",
+      "sense": "tell someone confidently to remove doubt",
+      "connotation": "neutral",
+      "register": "general",
+      "misconceptions": [
+        "a reassuring promise itself guarantees the result"
+      ]
+    },
+    {
+      "word": "ensure",
+      "sense": "make certain that something happens",
+      "connotation": "neutral",
+      "register": "general",
+      "misconceptions": [
+        "making a promise and securing an outcome are the same action"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "target_of_action",
+      "description": "a person’s doubt versus the certainty of an outcome"
+    }
+  ],
+  "edges": [
+    {
+      "id": "assure__ensure",
+      "a": "assure",
+      "b": "ensure",
+      "boundary_rule": "Assure addresses a person’s doubt; ensure makes an outcome happen.",
+      "clues_a": [
+        "speaks to relieve worry"
+      ],
+      "clues_b": [
+        "takes steps that secure the result"
+      ],
+      "irrelevant_clues": [
+        "speaker sounds confident",
+        "task matters a great deal"
+      ]
+    }
+  ],
+  "chains": [
+    {
+      "id": "ae_flip",
+      "edge_id": "assure__ensure",
+      "domain": "travel_planning",
+      "characters": [
+        "Nabil"
+      ],
+      "purpose": "practice",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ae_flip_b1",
+          "text": "A traveller worries about missing a bus. Nabil tells her, “You have plenty of time,” hoping to calm her.",
+          "best_word": "assure",
+          "fit": {
+            "assure": 0.98,
+            "ensure": 0.22
+          },
+          "decisive_clue": "tells her, “You have plenty of time,”",
+          "reason": "His action is giving a worried person confidence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ensure": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Is this action addressing worry or making an outcome happen?",
+            "axis": "Separate reassurance from practical prevention.",
+            "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+          }
+        },
+        {
+          "id": "ae_flip_b2",
+          "text": "Nabil now sets two alarms and books a car early enough to get her to the stop before departure.",
+          "best_word": "ensure",
+          "fit": {
+            "assure": 0.2,
+            "ensure": 0.98
+          },
+          "decisive_clue": "sets two alarms and books a car early enough",
+          "reason": "This new action is a practical safeguard for reaching the stop on time.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "assure": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Is this action addressing worry or making an outcome happen?",
+            "axis": "Separate reassurance from practical prevention.",
+            "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+          }
+        },
+        {
+          "id": "ae_flip_b3",
+          "text": "When she asks whether the plan is reliable, Nabil looks at her and says, “I have checked it; you can count on it.”",
+          "best_word": "assure",
+          "fit": {
+            "assure": 0.98,
+            "ensure": 0.3
+          },
+          "decisive_clue": "looks at her and says",
+          "reason": "The current action is speaking to remove her doubt about the plan.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ensure": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Is this action addressing worry or making an outcome happen?",
+            "axis": "Separate reassurance from practical prevention.",
+            "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+          }
+        }
+      ],
+      "feedback_short": "Speaking to a worried person and securing a result are different actions.",
+      "feedback_deep": "Judge the action described in each new beat. Nabil first gives reassurance, then removes the practical risk, then returns to reassuring the traveller.",
+      "contrast_rule": "Assure addresses a person’s doubt; ensure makes an outcome happen.",
+      "hints": {
+        "attention": "Is this action addressing worry or making an outcome happen?",
+        "axis": "Separate reassurance from practical prevention.",
+        "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+      }
+    },
+    {
+      "id": "ae_hold",
+      "edge_id": "assure__ensure",
+      "domain": "parcel_dispatch",
+      "characters": [
+        "Jo"
+      ],
+      "purpose": "transfer",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "ae_hold_b1",
+          "text": "Jo verifies the address against the order and attaches a clear label so the parcel reaches the right house.",
+          "best_word": "ensure",
+          "fit": {
+            "assure": 0.12,
+            "ensure": 0.98
+          },
+          "decisive_clue": "verifies the address against the order",
+          "reason": "The action secures an outcome rather than addressing someone’s feelings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "assure": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Is this action addressing worry or making an outcome happen?",
+            "axis": "Separate reassurance from practical prevention.",
+            "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+          }
+        },
+        {
+          "id": "ae_hold_b2",
+          "text": "The parcel contains a precious gift, so Jo checks the house number a second time before dispatch.",
+          "best_word": "ensure",
+          "fit": {
+            "assure": 0.16,
+            "ensure": 0.98
+          },
+          "decisive_clue": "checks the house number a second time",
+          "reason": "The emotional value adds stakes, but the action remains a delivery safeguard.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "assure": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Is this action addressing worry or making an outcome happen?",
+            "axis": "Separate reassurance from practical prevention.",
+            "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+          }
+        },
+        {
+          "id": "ae_hold_b3",
+          "text": "Jo feels certain it is correct, yet also checks the postcode with the recipient before sending it.",
+          "best_word": "ensure",
+          "fit": {
+            "assure": 0.25,
+            "ensure": 0.97
+          },
+          "decisive_clue": "checks the postcode with the recipient",
+          "reason": "The described action is verification, even though Jo also feels confident.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "assure": "misses_the_decisive_clue"
+          },
+          "hints": {
+            "attention": "Is this action addressing worry or making an outcome happen?",
+            "axis": "Separate reassurance from practical prevention.",
+            "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+          }
+        }
+      ],
+      "feedback_short": "A valuable parcel raises the stakes; the action still secures the delivery outcome.",
+      "feedback_deep": "Each step is a practical safeguard. Jo’s confidence is background information, while the checks make a successful delivery more likely.",
+      "contrast_rule": "Assure addresses a person’s doubt; ensure makes an outcome happen.",
+      "hints": {
+        "attention": "Is this action addressing worry or making an outcome happen?",
+        "axis": "Separate reassurance from practical prevention.",
+        "contrast": "Words can give a person confidence; checks and safeguards can make an outcome certain."
+      }
+    }
+  ]
+}

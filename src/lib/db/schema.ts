@@ -1,6 +1,71 @@
 import { integer, real, sqliteTable, text, unique, index } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 
+// Last Word is a separate learning graph; curriculum source rows are never mutated.
+export const lastWordSessions = sqliteTable('last_word_sessions', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  clientId: text('client_id').notNull(),
+  startedAt: integer('started_at', { mode: 'timestamp_ms' }).notNull(),
+  completedAt: integer('completed_at', { mode: 'timestamp_ms' }).notNull(),
+  score: integer('score').notNull(),
+  decisionCount: integer('decision_count').notNull(),
+  submission: text('submission').notNull(),
+}, (t) => [unique().on(t.userId, t.clientId), index('last_word_sessions_user_idx').on(t.userId)]);
+
+export const lastWordNodeMastery = sqliteTable('last_word_node_mastery', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  word: text('word').notNull(),
+  data: text('data').notNull(), // Versioned pure-core NodeMastery JSON.
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).notNull(),
+}, (t) => [unique().on(t.userId, t.word)]);
+
+export const lastWordEdgeMastery = sqliteTable('last_word_edge_mastery', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  edgeId: text('edge_id').notNull(),
+  data: text('data').notNull(), // Versioned pure-core EdgeMastery JSON.
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).notNull(),
+}, (t) => [unique().on(t.userId, t.edgeId)]);
+
+export const lastWordReviews = sqliteTable('last_word_reviews', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  edgeId: text('edge_id').notNull(),
+  dueAt: integer('due_at', { mode: 'timestamp_ms' }).notNull(),
+  intervalDays: real('interval_days').notNull(),
+  data: text('data').notNull(),
+}, (t) => [unique().on(t.userId, t.edgeId), index('last_word_reviews_due_idx').on(t.userId, t.dueAt)]);
+
+export const lastWordDecisions = sqliteTable('last_word_decisions', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  userId: integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  sessionId: integer('session_id').notNull().references(() => lastWordSessions.id, { onDelete: 'cascade' }),
+  clientId: text('client_id').notNull(),
+  setId: text('set_id').notNull(),
+  edgeId: text('edge_id').notNull(),
+  scenarioId: text('scenario_id').notNull(),
+  beatId: text('beat_id').notNull(),
+  presentedWords: text('presented_words').notNull(),
+  selectedWord: text('selected_word').notNull(),
+  bestWord: text('best_word').notNull(),
+  semanticFit: real('semantic_fit').notNull(),
+  correctness: text('correctness').notNull(),
+  reactionTimeMs: integer('reaction_time_ms').notNull(),
+  changedSelection: integer('changed_selection', { mode: 'boolean' }).notNull(),
+  previousSelection: text('previous_selection'),
+  hintLevel: integer('hint_level').notNull(),
+  confidence: text('confidence'),
+  misconceptionTag: text('misconception_tag'),
+  contentDifficulty: text('content_difficulty').notNull(),
+  reviewIntervalDays: real('review_interval_days').notNull(),
+  score: integer('score').notNull(),
+  evidenceWeight: real('evidence_weight').notNull(),
+  occurredAt: integer('occurred_at', { mode: 'timestamp_ms' }).notNull(),
+  data: text('data').notNull(),
+}, (t) => [unique().on(t.sessionId, t.clientId), unique().on(t.sessionId, t.scenarioId, t.beatId), index('last_word_decisions_edge_idx').on(t.userId, t.edgeId)]);
+
 // ─── Users ────────────────────────────────────────────────────────────────────
 
 export const users = sqliteTable('users', {
