@@ -1190,7 +1190,9 @@ export async function sendAdminAnnouncement(
   }
 }
 
-interface EssayNoticeData {
+interface StudentNoticeData {
+  /** Small caps label above the heading, e.g. 'VH Essays'. */
+  kicker: string;
   name: string;
   heading: string;
   /** Plain text — escaped here. */
@@ -1204,15 +1206,16 @@ function escapeEmailHtml(s: string): string {
 }
 
 /**
- * Essays: results published, script rejected, marks changed, deadline reminder.
+ * Generic one-message student notice (Essays results/rejections/reminders,
+ * PrintDesk ready/rejected): heading, plain-text message, one button.
  */
-export async function sendEssayNotice(
+export async function sendStudentNotice(
   to: string,
   subject: string,
-  data: EssayNoticeData,
+  data: StudentNoticeData,
 ): Promise<{ success: number; failed: number; total: number }> {
   if (!process.env.RESEND_API_KEY) {
-    console.warn('[email] RESEND_API_KEY not set — skipping sendEssayNotice');
+    console.warn('[email] RESEND_API_KEY not set — skipping sendStudentNotice');
     return { success: 0, failed: 1, total: 1 };
   }
 
@@ -1225,7 +1228,7 @@ export async function sendEssayNotice(
   <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
     <div style="max-width:600px;margin:0 auto;">
       <div style="background:#1A0507;padding:24px 32px;">
-        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH Essays</p>
+        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">${escapeEmailHtml(data.kicker)}</p>
         <h1 style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:400;color:#FAF5EF;">${escapeEmailHtml(data.heading)}</h1>
       </div>
       <div style="padding:28px 32px;background:#FAF5EF;">
@@ -1248,7 +1251,7 @@ export async function sendEssayNotice(
   });
 
   if (result.error) {
-    console.error('sendEssayNotice failed:', result.error);
+    console.error('sendStudentNotice failed:', result.error);
     return { success: 0, failed: 1, total: 1 };
   }
   return { success: 1, failed: 0, total: 1 };

@@ -1,18 +1,20 @@
 /**
- * Essay notifications — push (when the student has a site-wide subscription
- * and announcement notifications on) plus email. Always fire-and-forget:
- * callers wrap these in `after()` so a slow mail provider never blocks marking.
+ * One-off student notices (Essays, PrintDesk) — push (when the student has a
+ * site-wide subscription and announcement notifications on) plus email.
+ * Always fire-and-forget: callers wrap these in `after()` so a slow mail
+ * provider never blocks the staff action that triggered it.
  */
 
 import { inArray } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { users } from '@/lib/db/schema';
-import { sendEssayNotice } from '@/lib/email';
+import { sendStudentNotice } from '@/lib/email';
 import { sendPushToUser } from '@/lib/notifications/push';
 
 const BASE_URL = (process.env.NEXTAUTH_URL ?? 'https://www.vh-beyondthehorizons.org').replace(/\/$/, '');
 
-export interface EssayNotice {
+export interface StudentNotice {
+  kicker?: string; // email label, default 'VH LMS'
   subject: string;
   heading: string;
   message: string;
@@ -20,7 +22,7 @@ export interface EssayNotice {
   ctaLabel: string;
 }
 
-export async function notifyStudents(userIds: number[], notice: EssayNotice): Promise<void> {
+export async function notifyStudents(userIds: number[], notice: StudentNotice): Promise<void> {
   const ids = [...new Set(userIds)];
   if (ids.length === 0) return;
   const rows = await db
@@ -33,7 +35,8 @@ export async function notifyStudents(userIds: number[], notice: EssayNotice): Pr
   for (let i = 0; i < rows.length; i += CHUNK) {
     await Promise.allSettled(
       rows.slice(i, i + CHUNK).flatMap(r => [
-        sendEssayNotice(r.email, notice.subject, {
+        sendStudentNotice(r.email, notice.subject, {
+          kicker: notice.kicker ?? 'VH LMS',
           name: r.name.split(' ')[0] || r.name,
           heading: notice.heading,
           message: notice.message,

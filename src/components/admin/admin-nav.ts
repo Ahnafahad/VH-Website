@@ -21,6 +21,7 @@ import {
   Drama,
   Route,
   NotebookPen,
+  Printer,
 } from 'lucide-react';
 
 // Single source of truth for the admin navigation: the desktop sidebar and the mobile menu both
@@ -51,6 +52,7 @@ export const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
       { href: '/admin/classes',            label: 'Classes',   icon: CalendarDays  },
       { href: '/admin/materials',          label: 'Materials', icon: FileText      },
       { href: '/admin/homework',           label: 'Homework',  icon: BookMarked    },
+      { href: '/admin/printdesk',          label: 'PrintDesk', icon: Printer       },
       { href: '/admin/bookings',           label: 'Bookings',  icon: CalendarClock },
       { href: '/admin/announcements-feed', label: 'Feed',      icon: Rss           },
     ],
@@ -88,6 +90,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/classes',            label: 'Classes',  icon: CalendarDays  },
       { href: '/admin/materials',          label: 'Materials',icon: FileText      },
       { href: '/admin/homework',           label: 'Homework', icon: BookMarked    },
+      { href: '/admin/printdesk',          label: 'PrintDesk',icon: Printer       },
       { href: '/admin/bookings',           label: 'Bookings', icon: CalendarClock },
       { href: '/admin/announcements-feed', label: 'Feed',     icon: Rss           },
     ],

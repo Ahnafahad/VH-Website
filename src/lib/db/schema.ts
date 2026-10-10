@@ -2010,3 +2010,44 @@ export type EssaySeries      = typeof essaySeries.$inferSelect;
 export type EssaySubmission  = typeof essaySubmissions.$inferSelect;
 export type EssayPage        = typeof essayPages.$inferSelect;
 export type EssayCommentBankEntry = typeof essayCommentBank.$inferSelect;
+
+// ══════════════════════════════════════════════════════════════════════════════
+// PRINTDESK — students (with a batch) request printed copies of the PDF
+// materials they can access (never solutions, never links). One copy of each
+// material per request; a material can't sit on two live requests of the same
+// student. Staff move a request requested → printed → collected, or reject it
+// with a reason. Students can edit or cancel only while it is 'requested'.
+// ══════════════════════════════════════════════════════════════════════════════
+
+export const printRequests = sqliteTable('print_requests', {
+  id:           integer('id').primaryKey({ autoIncrement: true }),
+  userId:       integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  // 'requested' | 'printed' | 'collected' | 'rejected' | 'cancelled'
+  status:       text('status').notNull().default('requested'),
+  rejectReason: text('reject_reason'),
+  printedAt:    integer('printed_at', { mode: 'timestamp' }),
+  printedBy:    integer('printed_by').references(() => users.id, { onDelete: 'set null' }),
+  collectedAt:  integer('collected_at', { mode: 'timestamp' }),
+  collectedBy:  integer('collected_by').references(() => users.id, { onDelete: 'set null' }),
+  rejectedAt:   integer('rejected_at', { mode: 'timestamp' }),
+  rejectedBy:   integer('rejected_by').references(() => users.id, { onDelete: 'set null' }),
+  cancelledAt:  integer('cancelled_at', { mode: 'timestamp' }),
+  createdAt:    integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:    integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_print_requests_status').on(t.status, t.createdAt),
+  index('idx_print_requests_user').on(t.userId),
+]);
+
+export const printRequestItems = sqliteTable('print_request_items', {
+  id:         integer('id').primaryKey({ autoIncrement: true }),
+  requestId:  integer('request_id').notNull().references(() => printRequests.id, { onDelete: 'cascade' }),
+  materialId: integer('material_id').notNull().references(() => materials.id, { onDelete: 'cascade' }),
+}, (t) => [
+  unique('uq_print_item_request_material').on(t.requestId, t.materialId),
+  index('idx_print_items_material').on(t.materialId),
+]);
+
+export type PrintRequest     = typeof printRequests.$inferSelect;
+export type PrintRequestItem = typeof printRequestItems.$inferSelect;
+export type PrintRequestStatus = 'requested' | 'printed' | 'collected' | 'rejected' | 'cancelled';

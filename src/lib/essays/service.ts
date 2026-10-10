@@ -36,7 +36,7 @@ import { resolveAudience, isAudienceProduct } from '@/lib/audience/resolve';
 import { lmsScopeConditions } from '@/lib/lms/access';
 import { parseAnnotations, parseStoredAnnotations, type EssayAnnotation } from './annotations';
 import { canSeeSeries, isEssayAdmin } from './access';
-import { notifyStudents } from './notify';
+import { notifyStudents } from '@/lib/notifications/notify-students';
 import {
   LOCK_MINUTES,
   cleanMarks,
@@ -294,6 +294,7 @@ export async function tryAutoPublish(seriesId: number): Promise<boolean> {
   const recipients = subs.filter(x => x.status === 'graded').map(x => x.userId);
   after(() =>
     notifyStudents(recipients, {
+      kicker: 'VH Essays',
       subject: `Your ${s.title} results are out`,
       heading: `${s.title} — results published`,
       message: `Your marked script and marks for ${s.title} are ready. Open them to see your teacher's markings and comments.`,
@@ -907,6 +908,7 @@ export async function saveMarks(
   if (seriesOut && becomingGraded) {
     after(() =>
       notifyStudents([sub.userId], {
+        kicker: 'VH Essays',
         subject: `Your ${s.title} script has been marked`,
         heading: `${s.title} — marked`,
         message: `Your resubmitted essay for ${s.title} has been marked. Open it to see your marks and your teacher's comments.`,
@@ -917,6 +919,7 @@ export async function saveMarks(
   } else if (seriesOut && sub.status === 'graded' && body.notify === true) {
     after(() =>
       notifyStudents([sub.userId], {
+        kicker: 'VH Essays',
         subject: `Your ${s.title} marks were updated`,
         heading: `${s.title} — marks updated`,
         message: `Your teacher updated the marking on your ${s.title} essay. Your total is now ${total} / ${s.totalMarks}.`,
@@ -952,6 +955,7 @@ export async function rejectScript(submissionId: number, user: UserWithProducts,
 
   after(() =>
     notifyStudents([sub.userId], {
+      kicker: 'VH Essays',
       subject: `Please resubmit your ${s.title} essay`,
       heading: `${s.title} — please resubmit`,
       message: `Your essay ${s.essayCount > 1 ? `${sub.essayIndex} ` : ''}for ${s.title} was sent back.\nReason: ${reason}\nYou can upload it again from your portal.`,
@@ -1230,6 +1234,7 @@ export async function sendDeadlineReminders(): Promise<{ series: number; student
     const targets = [...new Set(audience.filter(a => (perUser.get(a.id) ?? 0) < s.essayCount).map(a => a.id))];
     const dhaka = new Intl.DateTimeFormat('en-BD', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Asia/Dhaka' }).format(s.deadline);
     await notifyStudents(targets, {
+      kicker: 'VH Essays',
       subject: `Reminder: submit your ${s.title} essay`,
       heading: `${s.title} closes soon`,
       message: `You haven't submitted your essay for ${s.title} yet. Submissions close at ${dhaka} (Dhaka time) and late submissions are not accepted.`,

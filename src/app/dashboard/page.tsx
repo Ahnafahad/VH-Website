@@ -7,6 +7,7 @@ import DashboardScreen from '@/components/lms/DashboardScreen';
 import type { UserProduct } from '@/lib/db/schema';
 import { canAccessRedline, isRedlineStaff } from '@/lib/redline/access';
 import { getConfig as getRedlineConfig } from '@/lib/redline/service';
+import { printDeskEligibility } from '@/lib/printdesk/service';
 
 export const metadata = { title: 'Dashboard — VH' };
 
@@ -32,6 +33,8 @@ export default async function DashboardPage({ searchParams }: PageProps) {
   const data = await getDashboardData(user, activeProduct);
   const showRedline = canAccessRedline(user) && (isRedlineStaff(user) || (await getRedlineConfig()).active);
 
+  const showPrintDesk = printDeskEligibility(user).ok;
+
   return (
     <DashboardScreen
       data={data}
@@ -41,6 +44,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
       products={user.products}
       activeProduct={activeProduct}
       showRedline={showRedline}
+      showPrintDesk={showPrintDesk}
     />
   );
 }
