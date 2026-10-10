@@ -20,6 +20,7 @@ import {
   LineChart,
   Drama,
   Route,
+  NotebookPen,
 } from 'lucide-react';
 
 // Single source of truth for the admin navigation: the desktop sidebar and the mobile menu both
@@ -59,6 +60,7 @@ export const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
     items: [
       { href: '/admin/students',      label: 'Progress',      icon: LineChart },
       { href: '/admin/tests',         label: 'Tests & marks', icon: ClipboardList },
+      { href: '/admin/essays',        label: 'Essays',        icon: NotebookPen },
       { href: '/admin/analytics',     label: 'LMS statistics', icon: BarChart3 },
       { href: '/admin/practice', label: 'Practice & Diagnosis', icon: Route, also: ['/admin/marathon', '/admin/sprint', '/admin/redline', '/admin/diagnosis-fbs'] },
     ],
@@ -94,6 +96,7 @@ export const NAV_SECTIONS: NavSection[] = [
     label: 'MARKS & PRACTICE',
     items: [
       { href: '/admin/tests',       label: 'Tests & marks',icon: ClipboardList },
+      { href: '/admin/essays',      label: 'Essays',      icon: NotebookPen   },
       { href: '/admin/analytics',   label: 'LMS statistics',icon: BarChart3 },
       { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
       { href: '/admin/words',       label: 'Word Bank',   icon: Database      },

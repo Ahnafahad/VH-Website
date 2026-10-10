@@ -1189,3 +1189,67 @@ export async function sendAdminAnnouncement(
     return { success: 0, failed: to.length, total: to.length };
   }
 }
+
+interface EssayNoticeData {
+  name: string;
+  heading: string;
+  /** Plain text — escaped here. */
+  message: string;
+  ctaLabel: string;
+  ctaUrl: string;
+}
+
+function escapeEmailHtml(s: string): string {
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+/**
+ * Essays: results published, script rejected, marks changed, deadline reminder.
+ */
+export async function sendEssayNotice(
+  to: string,
+  subject: string,
+  data: EssayNoticeData,
+): Promise<{ success: number; failed: number; total: number }> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendEssayNotice');
+    return { success: 0, failed: 1, total: 1 };
+  }
+
+  const htmlContent = `<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body style="margin:0;padding:0;background:#FAF5EF;font-family:-apple-system,Helvetica,Arial,sans-serif;color:#1A0507;">
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:#1A0507;padding:24px 32px;">
+        <p style="margin:0 0 4px 0;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#D4B094;">VH Essays</p>
+        <h1 style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:400;color:#FAF5EF;">${escapeEmailHtml(data.heading)}</h1>
+      </div>
+      <div style="padding:28px 32px;background:#FAF5EF;">
+        <p style="margin:0 0 16px 0;font-size:16px;color:#1A0507;">Hi ${escapeEmailHtml(data.name)},</p>
+        <p style="margin:0 0 20px 0;font-size:14px;color:#3D1A0E;line-height:1.7;white-space:pre-line;">${escapeEmailHtml(data.message)}</p>
+        <a href="${escapeEmailHtml(data.ctaUrl)}"
+           style="display:inline-block;background:#1A0507;color:#FAF5EF;text-decoration:none;padding:12px 28px;font-size:12px;letter-spacing:2px;text-transform:uppercase;">
+          ${escapeEmailHtml(data.ctaLabel)}
+        </a>
+      </div>
+    </div>
+  </body>
+</html>`;
+
+  const result = await resend.emails.send({
+    from: 'VH LMS <noreply@vh-beyondthehorizons.org>',
+    to,
+    subject,
+    html: htmlContent,
+  });
+
+  if (result.error) {
+    console.error('sendEssayNotice failed:', result.error);
+    return { success: 0, failed: 1, total: 1 };
+  }
+  return { success: 1, failed: 0, total: 1 };
+}

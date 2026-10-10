@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
-import { BookOpenText, Calculator, ClipboardList, CalendarPlus, PenLine, Route, Timer } from 'lucide-react';
+import { BookOpenText, Calculator, ClipboardList, CalendarPlus, NotebookPen, PenLine, Route, Timer } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { DashboardGames } from '@/lib/lms/dashboard-data';
 import type { UserProduct } from '@/lib/db/schema';
@@ -71,6 +71,12 @@ const BLOCKS: GameBlock[] = [
     href: '/sprint',
     icon: Timer,
     stat: () => 'In-class MCQ rounds →',
+  },
+  {
+    name: 'Essays',
+    href: '/essays',
+    icon: NotebookPen,
+    stat: () => 'Submit & see marked scripts →',
   },
   {
     name: 'Redline',

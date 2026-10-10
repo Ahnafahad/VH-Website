@@ -1912,3 +1912,101 @@ export const operationalExtraClasses = sqliteTable('operational_extra_classes', 
   createdAt:    integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:    integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [index('idx_operational_extra_classes_starts_at').on(t.startsAt)]);
+
+// ══════════════════════════════════════════════════════════════════════════════
+// ESSAYS — handwritten essay series. Students photograph their F4 scripts and
+// submit them per essay; staff mark them page by page (pen/stamps/comments
+// stored as vector annotations per page, never burned into the image) and
+// enter marks per section. A series auto-publishes once its deadline has
+// passed and every submission is graded or rejected (src/lib/essays/service.ts).
+// ══════════════════════════════════════════════════════════════════════════════
+
+export const essaySeries = sqliteTable('essay_series', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  title:       text('title').notNull(),                    // e.g. 'Essay Series 3'
+  prompt:      text('prompt').notNull().default(''),
+  essayDate:   text('essay_date'),                         // Bangladesh calendar date (YYYY-MM-DD)
+  essayCount:  integer('essay_count').notNull().default(1), // essays per student in this series
+  // JSON: { key: string; name: string; max: number }[] — marking sections, applied to every essay
+  sections:    text('sections').notNull(),
+  totalMarks:  real('total_marks').notNull(),               // per essay = sum of section maxima
+  product:     text('product').notNull(),                   // 'iba' | 'fbs' | 'fbs_detailed'
+  batch:       text('batch'),                               // null = every batch of the product
+  deadline:    integer('deadline', { mode: 'timestamp' }).notNull(),
+  // 'active' | 'archived' — archived series are hidden from students
+  status:      text('status').notNull().default('active'),
+  publishedAt: integer('published_at', { mode: 'timestamp' }),
+  reminderSentAt: integer('reminder_sent_at', { mode: 'timestamp' }),
+  createdBy:   integer('created_by').references(() => users.id, { onDelete: 'set null' }),
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:   integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_essay_series_product_batch').on(t.product, t.batch),
+]);
+
+// One row per (series, student, essay number). A rejected script is resubmitted
+// in place: its pages are replaced and the status goes back to 'submitted'.
+export const essaySubmissions = sqliteTable('essay_submissions', {
+  id:              integer('id').primaryKey({ autoIncrement: true }),
+  seriesId:        integer('series_id').notNull().references(() => essaySeries.id, { onDelete: 'cascade' }),
+  userId:          integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  essayIndex:      integer('essay_index').notNull().default(1),   // 1-based
+  // 'submitted' | 'graded' | 'rejected'
+  status:          text('status').notNull().default('submitted'),
+  attempt:         integer('attempt').notNull().default(1),
+  submittedAt:     integer('submitted_at', { mode: 'timestamp' }).notNull(),
+  rejectReason:    text('reject_reason'),
+  rejectedBy:      integer('rejected_by').references(() => users.id, { onDelete: 'set null' }),
+  rejectedAt:      integer('rejected_at', { mode: 'timestamp' }),
+  // JSON: Record<sectionKey, number | null>
+  marks:           text('marks').notNull().default('{}'),
+  // JSON: Record<sectionKey, string>
+  sectionComments: text('section_comments').notNull().default('{}'),
+  total:           real('total'),
+  overallFeedback: text('overall_feedback').notNull().default(''),
+  privateNote:     text('private_note').notNull().default(''),  // staff only — never sent to the student
+  gradedBy:        integer('graded_by').references(() => users.id, { onDelete: 'set null' }),
+  gradedAt:        integer('graded_at', { mode: 'timestamp' }),
+  assignedTo:      integer('assigned_to').references(() => users.id, { onDelete: 'set null' }),
+  lockedBy:        integer('locked_by').references(() => users.id, { onDelete: 'set null' }),
+  lockExpiresAt:   integer('lock_expires_at', { mode: 'timestamp' }),
+  isReference:     integer('is_reference', { mode: 'boolean' }).notNull().default(false),
+  referenceLabel:  text('reference_label'),
+  updatedAt:       integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  unique('uq_essay_sub_series_user_essay').on(t.seriesId, t.userId, t.essayIndex),
+  index('idx_essay_sub_series_status').on(t.seriesId, t.status),
+  index('idx_essay_sub_user').on(t.userId),
+]);
+
+// One row per photographed page. `annotations` is the grader's vector markup for
+// the page — JSON EssayAnnotation[] with coordinates normalized 0–1 to the page
+// (see src/lib/essays/annotations.ts).
+export const essayPages = sqliteTable('essay_pages', {
+  id:           integer('id').primaryKey({ autoIncrement: true }),
+  submissionId: integer('submission_id').notNull().references(() => essaySubmissions.id, { onDelete: 'cascade' }),
+  pageIndex:    integer('page_index').notNull(),               // 0-based order
+  r2Key:        text('r2_key').notNull(),
+  width:        integer('width').notNull(),
+  height:       integer('height').notNull(),
+  rotation:     integer('rotation').notNull().default(0),      // 0 | 90 | 180 | 270, display only
+  annotations:  text('annotations').notNull().default('[]'),
+  updatedAt:    integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_essay_pages_submission').on(t.submissionId, t.pageIndex),
+]);
+
+// Saved comments graders drop onto pages. userId null = shared bank (admins manage).
+export const essayCommentBank = sqliteTable('essay_comment_bank', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  userId:    integer('user_id').references(() => users.id, { onDelete: 'cascade' }),
+  text:      text('text').notNull(),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [
+  index('idx_essay_comment_bank_user').on(t.userId),
+]);
+
+export type EssaySeries      = typeof essaySeries.$inferSelect;
+export type EssaySubmission  = typeof essaySubmissions.$inferSelect;
+export type EssayPage        = typeof essayPages.$inferSelect;
+export type EssayCommentBankEntry = typeof essayCommentBank.$inferSelect;

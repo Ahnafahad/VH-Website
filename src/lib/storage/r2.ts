@@ -139,3 +139,14 @@ export async function resolveFileUrl(
   if (ref.startsWith('http')) return ref;
   return r2PresignGet(ref, expiresSeconds);
 }
+
+/**
+ * Fetch an object's bytes from R2 (used to stream private images through an
+ * authenticated route instead of handing out bucket URLs).
+ */
+export async function r2GetBytes(key: string): Promise<{ body: Uint8Array; contentType: string }> {
+  const res = await getClient().send(new GetObjectCommand({ Bucket: getBucket(), Key: key }));
+  if (!res.Body) throw new Error(`R2 object has no body: ${key}`);
+  const body = await res.Body.transformToByteArray();
+  return { body, contentType: res.ContentType ?? 'application/octet-stream' };
+}
