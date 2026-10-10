@@ -6,6 +6,14 @@ and why, where the spec leaves room.
 
 ## Assets (2026-10-10)
 
+- **Visual specification lives in ASSETS_NEEDED.md Part I.** Three signature elements carry the
+  premium identity at low render cost: **the Fulcrum** (a filament balanced on a pivot jewel that
+  tilts toward the player's *current selection*, never the answer, and releases identically on stay
+  and flip beats), **Evidence Strata** (earlier beats recede as text-free glass panes behind the live
+  DOM context), and **the Seal** (lock ring + one-time gold underline on the Last Word). The mastery
+  map is the **Lexicon Observatory**. Added `model.fulcrum`, `model.evidence-pane`,
+  `texture.star-dust` (all nice-to-have with procedural fallbacks); 52 assets, 12 must-have.
+
 - **Manifest-driven, all optional.** Every asset is declared once in
   `src/features/last-word/assets/asset-manifest.json` (id, path, format, tier, budgets, fallback).
   Code refers to assets by id only. The game must run with zero files: each id has a procedural

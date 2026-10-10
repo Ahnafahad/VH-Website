@@ -3,28 +3,60 @@
   "version": 1,
   "root": "last-word/assets",
   "tierBudgets": {
-    "full": { "initialBytes": 2600000, "note": "Models, textures, env map and SFX loaded on entering the chamber. Music streams later." },
-    "standard": { "initialBytes": 1100000, "note": "Standard models and 512px textures, SFX." },
-    "lite": { "initialBytes": 500000, "note": "No WebGL. Backdrop image, Lite tile surface, SFX, icons." }
+    "full": {
+      "initialBytes": 2600000,
+      "note": "Models, textures, env map and SFX loaded on entering the chamber. Music streams later."
+    },
+    "standard": {
+      "initialBytes": 1100000,
+      "note": "Standard models and 512px textures, SFX."
+    },
+    "lite": {
+      "initialBytes": 500000,
+      "note": "No WebGL. Backdrop image, Lite tile surface, SFX, icons."
+    }
   },
   "assets": [
     {
       "id": "model.word-tile.full",
       "category": "model",
       "priority": "must",
-      "tiers": ["full"],
+      "tiers": [
+        "full"
+      ],
       "path": "models/word-tile.full.glb",
       "format": "glb",
       "purpose": "The 3D word object (§17.2): a floating semantic tile/monolith that each candidate word sits on. The word itself is live DOM text aligned over the tile.",
       "usedBy": "SemanticChamber > WordObject (Full tier)",
-      "budget": { "maxBytes": 420000, "maxTriangles": 6000, "maxTextureSize": 1024, "maxMaterials": 3, "maxMeshes": 4 },
+      "budget": {
+        "maxBytes": 420000,
+        "maxTriangles": 6000,
+        "maxTextureSize": 1024,
+        "maxMaterials": 3,
+        "maxMeshes": 4
+      },
       "model": {
-        "requiredNodes": ["tile_body"],
-        "optionalNodes": ["tile_rim", "tile_face"],
-        "size": [1.0, 1.4, 0.2],
+        "requiredNodes": [
+          "tile_body"
+        ],
+        "optionalNodes": [
+          "tile_rim",
+          "tile_face"
+        ],
+        "size": [
+          1.0,
+          1.4,
+          0.2
+        ],
         "sizeTolerance": 0.08,
         "centered": true,
-        "forbiddenExtensions": ["KHR_draco_mesh_compression", "EXT_meshopt_compression", "KHR_texture_basisu", "KHR_materials_transmission", "KHR_materials_volume"]
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu",
+          "KHR_materials_transmission",
+          "KHR_materials_volume"
+        ]
       },
       "fallback": "Procedural rounded box (Drei RoundedBox) with physical material; same size, same motion."
     },
@@ -32,19 +64,43 @@
       "id": "model.word-tile.standard",
       "category": "model",
       "priority": "must",
-      "tiers": ["standard"],
+      "tiers": [
+        "standard"
+      ],
       "path": "models/word-tile.standard.glb",
       "format": "glb",
       "purpose": "Low-cost version of the word tile for mid-range phones.",
       "usedBy": "SemanticChamber > WordObject (Standard tier)",
-      "budget": { "maxBytes": 160000, "maxTriangles": 1500, "maxTextureSize": 512, "maxMaterials": 2, "maxMeshes": 3 },
+      "budget": {
+        "maxBytes": 160000,
+        "maxTriangles": 1500,
+        "maxTextureSize": 512,
+        "maxMaterials": 2,
+        "maxMeshes": 3
+      },
       "model": {
-        "requiredNodes": ["tile_body"],
-        "optionalNodes": ["tile_rim", "tile_face"],
-        "size": [1.0, 1.4, 0.2],
+        "requiredNodes": [
+          "tile_body"
+        ],
+        "optionalNodes": [
+          "tile_rim",
+          "tile_face"
+        ],
+        "size": [
+          1.0,
+          1.4,
+          0.2
+        ],
         "sizeTolerance": 0.08,
         "centered": true,
-        "forbiddenExtensions": ["KHR_draco_mesh_compression", "EXT_meshopt_compression", "KHR_texture_basisu", "KHR_materials_transmission", "KHR_materials_volume", "KHR_materials_clearcoat"]
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu",
+          "KHR_materials_transmission",
+          "KHR_materials_volume",
+          "KHR_materials_clearcoat"
+        ]
       },
       "fallback": "Procedural rounded box with standard material."
     },
@@ -52,17 +108,47 @@
       "id": "model.chamber-shell.full",
       "category": "model",
       "priority": "nice",
-      "tiers": ["full"],
+      "tiers": [
+        "full"
+      ],
       "path": "models/chamber-shell.full.glb",
       "format": "glb",
       "purpose": "Layer 0–1 of the Semantic Chamber (§17.1): a shallow curved rear wall / arches that give depth behind the word field. Must sit behind the tiles and never behind text.",
       "usedBy": "SemanticChamber > Atmosphere (Full tier)",
-      "budget": { "maxBytes": 700000, "maxTriangles": 12000, "maxTextureSize": 1024, "maxMaterials": 3, "maxMeshes": 6 },
+      "budget": {
+        "maxBytes": 700000,
+        "maxTriangles": 12000,
+        "maxTextureSize": 1024,
+        "maxMaterials": 3,
+        "maxMeshes": 6
+      },
       "model": {
-        "requiredNodes": ["shell"],
-        "optionalNodes": ["floor", "arches"],
-        "bounds": { "min": [-7, -4, -4], "max": [7, 4, -0.6] },
-        "forbiddenExtensions": ["KHR_draco_mesh_compression", "EXT_meshopt_compression", "KHR_texture_basisu", "KHR_materials_transmission", "KHR_materials_volume"]
+        "requiredNodes": [
+          "shell"
+        ],
+        "optionalNodes": [
+          "floor",
+          "arches"
+        ],
+        "bounds": {
+          "min": [
+            -7,
+            -4,
+            -4
+          ],
+          "max": [
+            7,
+            4,
+            -0.6
+          ]
+        },
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu",
+          "KHR_materials_transmission",
+          "KHR_materials_volume"
+        ]
       },
       "fallback": "Layered CSS/shader gradients and a faint procedural ring field."
     },
@@ -70,17 +156,48 @@
       "id": "model.chamber-shell.standard",
       "category": "model",
       "priority": "nice",
-      "tiers": ["standard"],
+      "tiers": [
+        "standard"
+      ],
       "path": "models/chamber-shell.standard.glb",
       "format": "glb",
       "purpose": "Low-cost chamber backdrop geometry.",
       "usedBy": "SemanticChamber > Atmosphere (Standard tier)",
-      "budget": { "maxBytes": 250000, "maxTriangles": 3000, "maxTextureSize": 512, "maxMaterials": 2, "maxMeshes": 4 },
+      "budget": {
+        "maxBytes": 250000,
+        "maxTriangles": 3000,
+        "maxTextureSize": 512,
+        "maxMaterials": 2,
+        "maxMeshes": 4
+      },
       "model": {
-        "requiredNodes": ["shell"],
-        "optionalNodes": ["floor", "arches"],
-        "bounds": { "min": [-7, -4, -4], "max": [7, 4, -0.6] },
-        "forbiddenExtensions": ["KHR_draco_mesh_compression", "EXT_meshopt_compression", "KHR_texture_basisu", "KHR_materials_transmission", "KHR_materials_volume", "KHR_materials_clearcoat"]
+        "requiredNodes": [
+          "shell"
+        ],
+        "optionalNodes": [
+          "floor",
+          "arches"
+        ],
+        "bounds": {
+          "min": [
+            -7,
+            -4,
+            -4
+          ],
+          "max": [
+            7,
+            4,
+            -0.6
+          ]
+        },
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu",
+          "KHR_materials_transmission",
+          "KHR_materials_volume",
+          "KHR_materials_clearcoat"
+        ]
       },
       "fallback": "Layered CSS gradients."
     },
@@ -88,19 +205,38 @@
       "id": "model.lock-ring",
       "category": "model",
       "priority": "nice",
-      "tiers": ["full", "standard"],
+      "tiers": [
+        "full",
+        "standard"
+      ],
       "path": "models/lock-ring.glb",
       "format": "glb",
       "purpose": "The 'tight snap' lock moment (§18.1): a thin seal/ring that closes around the chosen tile when the player has the Last Word.",
       "usedBy": "SemanticChamber > LockSeal",
-      "budget": { "maxBytes": 120000, "maxTriangles": 1500, "maxTextureSize": 512, "maxMaterials": 2, "maxMeshes": 2 },
+      "budget": {
+        "maxBytes": 120000,
+        "maxTriangles": 1500,
+        "maxTextureSize": 512,
+        "maxMaterials": 2,
+        "maxMeshes": 2
+      },
       "model": {
-        "requiredNodes": ["ring"],
+        "requiredNodes": [
+          "ring"
+        ],
         "optionalNodes": [],
-        "size": [1.3, 1.7, 0.12],
+        "size": [
+          1.3,
+          1.7,
+          0.12
+        ],
         "sizeTolerance": 0.15,
         "centered": true,
-        "forbiddenExtensions": ["KHR_draco_mesh_compression", "EXT_meshopt_compression", "KHR_texture_basisu"]
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu"
+        ]
       },
       "fallback": "Procedural rounded-rectangle line loop."
     },
@@ -108,228 +244,1144 @@
       "id": "model.mastery-node",
       "category": "model",
       "priority": "nice",
-      "tiers": ["full", "standard"],
+      "tiers": [
+        "full",
+        "standard"
+      ],
       "path": "models/mastery-node.glb",
       "format": "glb",
       "purpose": "A word node on the 3D mastery map (§22.7, §38). Instanced once per word; edges are drawn as lines in code.",
       "usedBy": "MasteryMap3D > WordNode",
-      "budget": { "maxBytes": 80000, "maxTriangles": 600, "maxTextureSize": 256, "maxMaterials": 1, "maxMeshes": 1 },
+      "budget": {
+        "maxBytes": 80000,
+        "maxTriangles": 600,
+        "maxTextureSize": 256,
+        "maxMaterials": 1,
+        "maxMeshes": 1
+      },
       "model": {
-        "requiredNodes": ["node"],
+        "requiredNodes": [
+          "node"
+        ],
         "optionalNodes": [],
-        "size": [1.0, 1.0, 1.0],
+        "size": [
+          1.0,
+          1.0,
+          1.0
+        ],
         "sizeTolerance": 0.2,
         "centered": true,
-        "forbiddenExtensions": ["KHR_draco_mesh_compression", "EXT_meshopt_compression", "KHR_texture_basisu"]
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu"
+        ]
       },
       "fallback": "Low-poly icosphere with emissive material."
+    },
+    {
+      "id": "model.fulcrum",
+      "category": "model",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard"
+      ],
+      "path": "models/fulcrum.glb",
+      "format": "glb",
+      "purpose": "Signature element 'The Fulcrum': a hairline filament of light suspended between the word tiles with a small pivot jewel at its centre. It tilts toward the player's CURRENT selection (never the correct answer), loosens to level on every new beat, and goes rigid on lock. Makes §17.4 'context hovers between words' and §18 'magnetic pull' physical.",
+      "usedBy": "SemanticChamber > Fulcrum",
+      "budget": {
+        "maxBytes": 90000,
+        "maxTriangles": 1200,
+        "maxTextureSize": 256,
+        "maxMaterials": 2,
+        "maxMeshes": 2
+      },
+      "model": {
+        "requiredNodes": [
+          "beam",
+          "pivot"
+        ],
+        "optionalNodes": [],
+        "size": [
+          3.0,
+          0.16,
+          0.16
+        ],
+        "sizeTolerance": 0.15,
+        "centered": true,
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu",
+          "KHR_materials_transmission",
+          "KHR_materials_volume"
+        ]
+      },
+      "fallback": "Procedural thin emissive cylinder with an octahedron pivot."
+    },
+    {
+      "id": "model.evidence-pane",
+      "category": "model",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard"
+      ],
+      "path": "models/evidence-pane.glb",
+      "format": "glb",
+      "purpose": "Signature element 'Evidence Strata' (§17.1 Layer 1, §17.3): each earlier context beat becomes a thin smoked-glass pane that recedes a step deeper behind the live DOM context card, so the evolving situation has physical history. Panes carry no text; the readable text stays in DOM.",
+      "usedBy": "SemanticChamber > EvidenceStrata",
+      "budget": {
+        "maxBytes": 60000,
+        "maxTriangles": 400,
+        "maxTextureSize": 512,
+        "maxMaterials": 1,
+        "maxMeshes": 1
+      },
+      "model": {
+        "requiredNodes": [
+          "pane"
+        ],
+        "optionalNodes": [],
+        "size": [
+          1.6,
+          0.9,
+          0.03
+        ],
+        "sizeTolerance": 0.1,
+        "centered": true,
+        "forbiddenExtensions": [
+          "KHR_draco_mesh_compression",
+          "EXT_meshopt_compression",
+          "KHR_texture_basisu",
+          "KHR_materials_transmission",
+          "KHR_materials_volume"
+        ]
+      },
+      "fallback": "Procedural rounded plane with a vertical gradient and edge highlight."
     },
     {
       "id": "envmap.chamber",
       "category": "envmap",
       "priority": "nice",
-      "tiers": ["full"],
+      "tiers": [
+        "full"
+      ],
       "path": "textures/chamber-env.hdr",
       "format": "hdr",
       "purpose": "Soft studio reflections for tile edges and metal/glass materials. Dark room, two soft lights (cool ivory key, faint crimson rim).",
       "usedBy": "SemanticChamber > Environment (Full tier)",
-      "budget": { "maxBytes": 400000 },
-      "image": { "width": 512, "height": 256 },
+      "budget": {
+        "maxBytes": 400000
+      },
+      "image": {
+        "width": 512,
+        "height": 256
+      },
       "fallback": "Drei Lightformer rig built in code."
     },
     {
       "id": "texture.noise-grain",
       "category": "texture",
       "priority": "nice",
-      "tiers": ["full", "standard", "lite"],
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
       "path": "textures/noise-grain.webp",
       "format": "webp",
       "purpose": "Seamless monochrome film grain for the chamber atmosphere and card surfaces (matches LexiCore's 0.025 fractal-noise shell texture).",
       "usedBy": "Atmosphere overlay (CSS) and tile shader detail",
-      "budget": { "maxBytes": 60000 },
-      "image": { "width": 256, "height": 256, "pot": true, "seamless": true },
+      "budget": {
+        "maxBytes": 60000
+      },
+      "image": {
+        "width": 256,
+        "height": 256,
+        "pot": true,
+        "seamless": true
+      },
       "fallback": "Procedurally generated canvas noise."
     },
     {
       "id": "texture.soft-glow",
       "category": "texture",
       "priority": "nice",
-      "tiers": ["full", "standard"],
+      "tiers": [
+        "full",
+        "standard"
+      ],
       "path": "textures/soft-glow.webp",
       "format": "webp",
       "purpose": "Radial halo sprite for the selected-tile magnetic glow and particle bodies.",
       "usedBy": "WordObject halo, SemanticField particles",
-      "budget": { "maxBytes": 30000 },
-      "image": { "width": 256, "height": 256, "pot": true, "alpha": true },
+      "budget": {
+        "maxBytes": 30000
+      },
+      "image": {
+        "width": 256,
+        "height": 256,
+        "pot": true,
+        "alpha": true
+      },
       "fallback": "Canvas-generated radial gradient sprite."
     },
     {
       "id": "texture.spark",
       "category": "texture",
       "priority": "nice",
-      "tiers": ["full"],
+      "tiers": [
+        "full"
+      ],
       "path": "textures/spark.webp",
       "format": "webp",
       "purpose": "Tiny particle for semantic-bridge particles between contending words and the mastery bloom.",
       "usedBy": "SemanticField particles, mastery moment",
-      "budget": { "maxBytes": 12000 },
-      "image": { "width": 64, "height": 64, "pot": true, "alpha": true },
+      "budget": {
+        "maxBytes": 12000
+      },
+      "image": {
+        "width": 64,
+        "height": 64,
+        "pot": true,
+        "alpha": true
+      },
       "fallback": "Canvas-generated dot sprite."
     },
     {
       "id": "texture.fracture-mask",
       "category": "texture",
       "priority": "nice",
-      "tiers": ["full"],
+      "tiers": [
+        "full"
+      ],
       "path": "textures/fracture-mask.webp",
       "format": "webp",
       "purpose": "Grayscale dissolve mask for the 'rejected interpretation' card fracture (§18.1) after a judgment. Never shown before the player decides.",
       "usedBy": "WordObject reject dissolve shader",
-      "budget": { "maxBytes": 90000 },
-      "image": { "width": 512, "height": 512, "pot": true },
+      "budget": {
+        "maxBytes": 90000
+      },
+      "image": {
+        "width": 512,
+        "height": 512,
+        "pot": true
+      },
       "fallback": "Opacity/scale fade."
+    },
+    {
+      "id": "texture.star-dust",
+      "category": "texture",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard"
+      ],
+      "path": "textures/star-dust.webp",
+      "format": "webp",
+      "purpose": "Seamless deep field for the 'Lexicon Observatory' mastery map: sparse faint dust and a few soft points, so the map reads as a navigable depth field (§38) without competing with node labels.",
+      "usedBy": "MasteryMap3D background",
+      "budget": {
+        "maxBytes": 160000
+      },
+      "image": {
+        "width": 1024,
+        "height": 1024,
+        "pot": true,
+        "seamless": true
+      },
+      "fallback": "Procedural point field."
     },
     {
       "id": "texture.tile-surface.lite",
       "category": "texture",
       "priority": "nice",
-      "tiers": ["lite"],
+      "tiers": [
+        "lite"
+      ],
       "path": "textures/tile-surface.lite.webp",
       "format": "webp",
       "purpose": "Pre-rendered tile material (no text) for the Lite 2.5D CSS card, so Lite still looks like the same object family.",
       "usedBy": "Lite WordCard background",
-      "budget": { "maxBytes": 70000 },
-      "image": { "width": 512, "height": 720, "alpha": true },
+      "budget": {
+        "maxBytes": 70000
+      },
+      "image": {
+        "width": 512,
+        "height": 720,
+        "alpha": true
+      },
       "fallback": "CSS gradient + border treatment."
     },
     {
       "id": "image.chamber-backdrop.landscape",
       "category": "image",
       "priority": "must",
-      "tiers": ["lite"],
+      "tiers": [
+        "lite"
+      ],
       "path": "images/chamber-backdrop.landscape.webp",
       "format": "webp",
       "purpose": "Static depth image of the Semantic Chamber for Lite, WebGL-off and reduced-motion desktop. Background only; the centre 60% must stay calm and dark for text.",
       "usedBy": "Lite/no-WebGL background (≥ 768 px wide)",
-      "budget": { "maxBytes": 220000 },
-      "image": { "width": 1920, "height": 1080 },
+      "budget": {
+        "maxBytes": 220000
+      },
+      "image": {
+        "width": 1920,
+        "height": 1080
+      },
       "fallback": "CSS radial gradients."
     },
     {
       "id": "image.chamber-backdrop.portrait",
       "category": "image",
       "priority": "must",
-      "tiers": ["lite"],
+      "tiers": [
+        "lite"
+      ],
       "path": "images/chamber-backdrop.portrait.webp",
       "format": "webp",
       "purpose": "Portrait version of the static chamber backdrop for phones.",
       "usedBy": "Lite/no-WebGL background (< 768 px wide)",
-      "budget": { "maxBytes": 200000 },
-      "image": { "width": 1080, "height": 1920 },
+      "budget": {
+        "maxBytes": 200000
+      },
+      "image": {
+        "width": 1080,
+        "height": 1920
+      },
       "fallback": "CSS radial gradients."
     },
     {
       "id": "image.launch-sculpture",
       "category": "image",
       "priority": "nice",
-      "tiers": ["lite"],
+      "tiers": [
+        "lite"
+      ],
       "path": "images/launch-sculpture.webp",
       "format": "webp",
       "purpose": "Home-screen hero: two blank floating tiles facing each other with a faint orbit between them. Used where the live 3D hero is off.",
       "usedBy": "Launch screen (Lite / reduced motion)",
-      "budget": { "maxBytes": 120000 },
-      "image": { "width": 1200, "height": 800, "alpha": true },
+      "budget": {
+        "maxBytes": 120000
+      },
+      "image": {
+        "width": 1200,
+        "height": 800,
+        "alpha": true
+      },
       "fallback": "CSS mini tiles."
     },
     {
       "id": "image.og",
       "category": "image",
       "priority": "nice",
-      "tiers": ["full", "standard", "lite"],
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
       "path": "images/og-last-word.png",
       "format": "png",
       "purpose": "Social share card for /last-word.",
       "usedBy": "Page metadata (openGraph.images)",
-      "budget": { "maxBytes": 400000 },
-      "image": { "width": 1200, "height": 630 },
+      "budget": {
+        "maxBytes": 400000
+      },
+      "image": {
+        "width": 1200,
+        "height": 630
+      },
       "fallback": "Host default share image."
     },
-    { "id": "sfx.arrival", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/arrival.mp3", "altPaths": ["audio/sfx/arrival.webm"], "format": "mp3",
-      "purpose": "New context beat arrives (§20.1 'context arrival'). Must sound identical whether or not the answer changes.", "usedBy": "BeatController new evidence",
-      "budget": { "maxBytes": 40000 }, "audio": { "minMs": 250, "maxMs": 500, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.select", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/select.mp3", "altPaths": ["audio/sfx/select.webm"], "format": "mp3",
-      "purpose": "Low magnetic click when a word is chosen.", "usedBy": "ChoiceController select",
-      "budget": { "maxBytes": 20000 }, "audio": { "minMs": 50, "maxMs": 140, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.switch", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/switch.mp3", "altPaths": ["audio/sfx/switch.webm"], "format": "mp3",
-      "purpose": "Fast sliding tone when the player changes their choice.", "usedBy": "ChoiceController switch",
-      "budget": { "maxBytes": 25000 }, "audio": { "minMs": 100, "maxMs": 240, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.lock", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/lock.mp3", "altPaths": ["audio/sfx/lock.webm"], "format": "mp3",
-      "purpose": "Short resolved impact when a beat locks / the Last Word is committed.", "usedBy": "BeatController lock",
-      "budget": { "maxBytes": 30000 }, "audio": { "minMs": 140, "maxMs": 320, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.best", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/best.mp3", "altPaths": ["audio/sfx/best.webm"], "format": "mp3",
-      "purpose": "Tonal resolution for a best answer.", "usedBy": "FeedbackLayer best",
-      "budget": { "maxBytes": 45000 }, "audio": { "minMs": 280, "maxMs": 650, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.defensible", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/defensible.mp3", "altPaths": ["audio/sfx/defensible.webm"], "format": "mp3",
-      "purpose": "Unresolved partial cadence for a defensible-but-less-precise answer.", "usedBy": "FeedbackLayer defensible",
-      "budget": { "maxBytes": 45000 }, "audio": { "minMs": 280, "maxMs": 650, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.incorrect", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/incorrect.mp3", "altPaths": ["audio/sfx/incorrect.webm"], "format": "mp3",
-      "purpose": "Dampened displacement for an incorrect answer. Never a buzzer (§20.1, §40).", "usedBy": "FeedbackLayer incorrect",
-      "budget": { "maxBytes": 40000 }, "audio": { "minMs": 220, "maxMs": 550, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.hold", "category": "sfx", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/hold.mp3", "altPaths": ["audio/sfx/hold.webm"], "format": "mp3",
-      "purpose": "'Hold Your Ground' bonus: the player correctly kept their word through a false shift (§8.3).", "usedBy": "FeedbackLayer hold bonus",
-      "budget": { "maxBytes": 45000 }, "audio": { "minMs": 300, "maxMs": 650, "loop": false }, "fallback": "sfx.best" },
-    { "id": "sfx.perfect-read", "category": "sfx", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/perfect-read.mp3", "altPaths": ["audio/sfx/perfect-read.webm"], "format": "mp3",
-      "purpose": "'Perfect Read' — every beat of a shifting chain correct (§8.4).", "usedBy": "Round summary",
-      "budget": { "maxBytes": 70000 }, "audio": { "minMs": 600, "maxMs": 1300, "loop": false }, "fallback": "sfx.best" },
-    { "id": "sfx.mastery", "category": "sfx", "priority": "must", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/mastery.mp3", "altPaths": ["audio/sfx/mastery.webm"], "format": "mp3",
-      "purpose": "Wider harmonic bloom when a distinction's status rises (recap, mastery map).", "usedBy": "Recap / mastery moment",
-      "budget": { "maxBytes": 80000 }, "audio": { "minMs": 700, "maxMs": 1400, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.review-due", "category": "sfx", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/review-due.mp3", "altPaths": ["audio/sfx/review-due.webm"], "format": "mp3",
-      "purpose": "Understated cue on the launch screen when reviews are due.", "usedBy": "Launch screen",
-      "budget": { "maxBytes": 35000 }, "audio": { "minMs": 200, "maxMs": 550, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.hint", "category": "sfx", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/hint.mp3", "altPaths": ["audio/sfx/hint.webm"], "format": "mp3",
-      "purpose": "Soft reveal when a hint level opens.", "usedBy": "Hint panel",
-      "budget": { "maxBytes": 25000 }, "audio": { "minMs": 120, "maxMs": 320, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.ui-tap", "category": "sfx", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/ui-tap.mp3", "altPaths": ["audio/sfx/ui-tap.webm"], "format": "mp3",
-      "purpose": "Neutral tap for menus, settings and navigation.", "usedBy": "Menus / settings",
-      "budget": { "maxBytes": 15000 }, "audio": { "minMs": 30, "maxMs": 110, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "sfx.reveal", "category": "sfx", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/sfx/reveal.mp3", "altPaths": ["audio/sfx/reveal.webm"], "format": "mp3",
-      "purpose": "Recap / mastery map opening swell.", "usedBy": "Session recap, mastery map",
-      "budget": { "maxBytes": 55000 }, "audio": { "minMs": 400, "maxMs": 900, "loop": false }, "fallback": "Web Audio synthesized cue." },
-    { "id": "music.chamber-ambience", "category": "music", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/music/chamber-ambience.mp3", "altPaths": ["audio/music/chamber-ambience.webm"], "format": "mp3",
-      "purpose": "Optional seamless ambient bed under play. Off by default; separate Music toggle; ducks during feedback.", "usedBy": "Play screens (streamed after first interaction)",
-      "budget": { "maxBytes": 1700000 }, "audio": { "minMs": 45000, "maxMs": 95000, "loop": true }, "fallback": "Silence." },
-    { "id": "music.map-ambience", "category": "music", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "audio/music/map-ambience.mp3", "altPaths": ["audio/music/map-ambience.webm"], "format": "mp3",
-      "purpose": "Optional quieter loop for the mastery map and recap.", "usedBy": "Mastery map, recap",
-      "budget": { "maxBytes": 1200000 }, "audio": { "minMs": 30000, "maxMs": 75000, "loop": true }, "fallback": "Silence." },
+    {
+      "id": "sfx.arrival",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/arrival.mp3",
+      "altPaths": [
+        "audio/sfx/arrival.webm"
+      ],
+      "format": "mp3",
+      "purpose": "New context beat arrives (§20.1 'context arrival'). Must sound identical whether or not the answer changes.",
+      "usedBy": "BeatController new evidence",
+      "budget": {
+        "maxBytes": 40000
+      },
+      "audio": {
+        "minMs": 250,
+        "maxMs": 500,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.select",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/select.mp3",
+      "altPaths": [
+        "audio/sfx/select.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Low magnetic click when a word is chosen.",
+      "usedBy": "ChoiceController select",
+      "budget": {
+        "maxBytes": 20000
+      },
+      "audio": {
+        "minMs": 50,
+        "maxMs": 140,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.switch",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/switch.mp3",
+      "altPaths": [
+        "audio/sfx/switch.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Fast sliding tone when the player changes their choice.",
+      "usedBy": "ChoiceController switch",
+      "budget": {
+        "maxBytes": 25000
+      },
+      "audio": {
+        "minMs": 100,
+        "maxMs": 240,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.lock",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/lock.mp3",
+      "altPaths": [
+        "audio/sfx/lock.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Short resolved impact when a beat locks / the Last Word is committed.",
+      "usedBy": "BeatController lock",
+      "budget": {
+        "maxBytes": 30000
+      },
+      "audio": {
+        "minMs": 140,
+        "maxMs": 320,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.best",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/best.mp3",
+      "altPaths": [
+        "audio/sfx/best.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Tonal resolution for a best answer.",
+      "usedBy": "FeedbackLayer best",
+      "budget": {
+        "maxBytes": 45000
+      },
+      "audio": {
+        "minMs": 280,
+        "maxMs": 650,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.defensible",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/defensible.mp3",
+      "altPaths": [
+        "audio/sfx/defensible.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Unresolved partial cadence for a defensible-but-less-precise answer.",
+      "usedBy": "FeedbackLayer defensible",
+      "budget": {
+        "maxBytes": 45000
+      },
+      "audio": {
+        "minMs": 280,
+        "maxMs": 650,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.incorrect",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/incorrect.mp3",
+      "altPaths": [
+        "audio/sfx/incorrect.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Dampened displacement for an incorrect answer. Never a buzzer (§20.1, §40).",
+      "usedBy": "FeedbackLayer incorrect",
+      "budget": {
+        "maxBytes": 40000
+      },
+      "audio": {
+        "minMs": 220,
+        "maxMs": 550,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.hold",
+      "category": "sfx",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/hold.mp3",
+      "altPaths": [
+        "audio/sfx/hold.webm"
+      ],
+      "format": "mp3",
+      "purpose": "'Hold Your Ground' bonus: the player correctly kept their word through a false shift (§8.3).",
+      "usedBy": "FeedbackLayer hold bonus",
+      "budget": {
+        "maxBytes": 45000
+      },
+      "audio": {
+        "minMs": 300,
+        "maxMs": 650,
+        "loop": false
+      },
+      "fallback": "sfx.best"
+    },
+    {
+      "id": "sfx.perfect-read",
+      "category": "sfx",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/perfect-read.mp3",
+      "altPaths": [
+        "audio/sfx/perfect-read.webm"
+      ],
+      "format": "mp3",
+      "purpose": "'Perfect Read' — every beat of a shifting chain correct (§8.4).",
+      "usedBy": "Round summary",
+      "budget": {
+        "maxBytes": 70000
+      },
+      "audio": {
+        "minMs": 600,
+        "maxMs": 1300,
+        "loop": false
+      },
+      "fallback": "sfx.best"
+    },
+    {
+      "id": "sfx.mastery",
+      "category": "sfx",
+      "priority": "must",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/mastery.mp3",
+      "altPaths": [
+        "audio/sfx/mastery.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Wider harmonic bloom when a distinction's status rises (recap, mastery map).",
+      "usedBy": "Recap / mastery moment",
+      "budget": {
+        "maxBytes": 80000
+      },
+      "audio": {
+        "minMs": 700,
+        "maxMs": 1400,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.review-due",
+      "category": "sfx",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/review-due.mp3",
+      "altPaths": [
+        "audio/sfx/review-due.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Understated cue on the launch screen when reviews are due.",
+      "usedBy": "Launch screen",
+      "budget": {
+        "maxBytes": 35000
+      },
+      "audio": {
+        "minMs": 200,
+        "maxMs": 550,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.hint",
+      "category": "sfx",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/hint.mp3",
+      "altPaths": [
+        "audio/sfx/hint.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Soft reveal when a hint level opens.",
+      "usedBy": "Hint panel",
+      "budget": {
+        "maxBytes": 25000
+      },
+      "audio": {
+        "minMs": 120,
+        "maxMs": 320,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.ui-tap",
+      "category": "sfx",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/ui-tap.mp3",
+      "altPaths": [
+        "audio/sfx/ui-tap.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Neutral tap for menus, settings and navigation.",
+      "usedBy": "Menus / settings",
+      "budget": {
+        "maxBytes": 15000
+      },
+      "audio": {
+        "minMs": 30,
+        "maxMs": 110,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "sfx.reveal",
+      "category": "sfx",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/sfx/reveal.mp3",
+      "altPaths": [
+        "audio/sfx/reveal.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Recap / mastery map opening swell.",
+      "usedBy": "Session recap, mastery map",
+      "budget": {
+        "maxBytes": 55000
+      },
+      "audio": {
+        "minMs": 400,
+        "maxMs": 900,
+        "loop": false
+      },
+      "fallback": "Web Audio synthesized cue."
+    },
+    {
+      "id": "music.chamber-ambience",
+      "category": "music",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/music/chamber-ambience.mp3",
+      "altPaths": [
+        "audio/music/chamber-ambience.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Optional seamless ambient bed under play. Off by default; separate Music toggle; ducks during feedback.",
+      "usedBy": "Play screens (streamed after first interaction)",
+      "budget": {
+        "maxBytes": 1700000
+      },
+      "audio": {
+        "minMs": 45000,
+        "maxMs": 95000,
+        "loop": true
+      },
+      "fallback": "Silence."
+    },
+    {
+      "id": "music.map-ambience",
+      "category": "music",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "audio/music/map-ambience.mp3",
+      "altPaths": [
+        "audio/music/map-ambience.webm"
+      ],
+      "format": "mp3",
+      "purpose": "Optional quieter loop for the mastery map and recap.",
+      "usedBy": "Mastery map, recap",
+      "budget": {
+        "maxBytes": 1200000
+      },
+      "audio": {
+        "minMs": 30000,
+        "maxMs": 75000,
+        "loop": true
+      },
+      "fallback": "Silence."
+    },
     {
       "id": "haptics.patterns",
       "category": "haptics",
       "priority": "nice",
-      "tiers": ["full", "standard", "lite"],
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
       "path": "haptics/patterns.json",
       "format": "json",
       "purpose": "Overrides for the built-in haptic patterns (§20.2). Web uses the vibration arrays; the Android app maps each event to a Capacitor impact/notification style.",
       "usedBy": "HapticSoundHooks",
-      "budget": { "maxBytes": 4000 },
-      "haptics": { "events": ["select", "switch", "lock", "best", "defensible", "incorrect", "hold", "mastery", "arrival", "hint"] },
+      "budget": {
+        "maxBytes": 4000
+      },
+      "haptics": {
+        "events": [
+          "select",
+          "switch",
+          "lock",
+          "best",
+          "defensible",
+          "incorrect",
+          "hold",
+          "mastery",
+          "arrival",
+          "hint"
+        ]
+      },
       "fallback": "Built-in defaults in src/features/last-word/presentation/feedback.ts."
     },
-    { "id": "icon.hint", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/hint.svg", "format": "svg", "purpose": "Hint button (§34).", "usedBy": "Round HUD", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide Lightbulb" },
-    { "id": "icon.lock", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/lock.svg", "format": "svg", "purpose": "Locked decision indicator.", "usedBy": "Word tile status, action button", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide Lock" },
-    { "id": "icon.switch", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/switch.svg", "format": "svg", "purpose": "Switched judgment marker in round history.", "usedBy": "Feedback history", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide ArrowLeftRight" },
-    { "id": "icon.hold", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/hold.svg", "format": "svg", "purpose": "Hold Your Ground bonus marker.", "usedBy": "Feedback", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide Anchor" },
-    { "id": "icon.perfect-read", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/perfect-read.svg", "format": "svg", "purpose": "Perfect Read marker.", "usedBy": "Round summary, recap", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide Sparkles" },
-    { "id": "icon.review", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/review.svg", "format": "svg", "purpose": "Review / due action.", "usedBy": "Launch screen", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide RotateCcw" },
-    { "id": "icon.mastery-map", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/mastery-map.svg", "format": "svg", "purpose": "Mastery Map action.", "usedBy": "Launch screen, recap", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide Network" },
-    { "id": "icon.quick-run", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/quick-run.svg", "format": "svg", "purpose": "Quick Run action.", "usedBy": "Launch screen", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide Zap" },
-    { "id": "icon.continue", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/continue.svg", "format": "svg", "purpose": "Continue (recommended path) action.", "usedBy": "Launch screen", "budget": { "maxBytes": 6000 }, "svg": { "currentColor": true }, "fallback": "lucide Play" },
-    { "id": "icon.status-new", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/status-new.svg", "format": "svg", "purpose": "Distinction status NEW (§25).", "usedBy": "Recap, mastery map list", "budget": { "maxBytes": 4000 }, "svg": { "currentColor": true }, "fallback": "CSS status glyph" },
-    { "id": "icon.status-getting-it", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/status-getting-it.svg", "format": "svg", "purpose": "Distinction status GETTING IT.", "usedBy": "Recap, mastery map list", "budget": { "maxBytes": 4000 }, "svg": { "currentColor": true }, "fallback": "CSS status glyph" },
-    { "id": "icon.status-reliable", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/status-reliable.svg", "format": "svg", "purpose": "Distinction status RELIABLE.", "usedBy": "Recap, mastery map list", "budget": { "maxBytes": 4000 }, "svg": { "currentColor": true }, "fallback": "CSS status glyph" },
-    { "id": "icon.status-fluent", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/status-fluent.svg", "format": "svg", "purpose": "Distinction status FLUENT.", "usedBy": "Recap, mastery map list", "budget": { "maxBytes": 4000 }, "svg": { "currentColor": true }, "fallback": "CSS status glyph" },
-    { "id": "icon.status-mastered", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/status-mastered.svg", "format": "svg", "purpose": "Distinction status MASTERED.", "usedBy": "Recap, mastery map list", "budget": { "maxBytes": 4000 }, "svg": { "currentColor": true }, "fallback": "CSS status glyph" },
-    { "id": "icon.status-review-due", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/status-review-due.svg", "format": "svg", "purpose": "Distinction status REVIEW DUE.", "usedBy": "Recap, mastery map list", "budget": { "maxBytes": 4000 }, "svg": { "currentColor": true }, "fallback": "CSS status glyph" },
-    { "id": "icon.wordmark", "category": "icon", "priority": "nice", "tiers": ["full", "standard", "lite"], "path": "icons/last-word-wordmark.svg", "format": "svg", "purpose": "LAST WORD wordmark for the header and launch screen. Also keep live text as the accessible name.", "usedBy": "Header, launch screen", "budget": { "maxBytes": 12000 }, "svg": { "currentColor": false }, "fallback": "Live text in Cormorant Garamond." }
+    {
+      "id": "icon.hint",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/hint.svg",
+      "format": "svg",
+      "purpose": "Hint button (§34).",
+      "usedBy": "Round HUD",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide Lightbulb"
+    },
+    {
+      "id": "icon.lock",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/lock.svg",
+      "format": "svg",
+      "purpose": "Locked decision indicator.",
+      "usedBy": "Word tile status, action button",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide Lock"
+    },
+    {
+      "id": "icon.switch",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/switch.svg",
+      "format": "svg",
+      "purpose": "Switched judgment marker in round history.",
+      "usedBy": "Feedback history",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide ArrowLeftRight"
+    },
+    {
+      "id": "icon.hold",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/hold.svg",
+      "format": "svg",
+      "purpose": "Hold Your Ground bonus marker.",
+      "usedBy": "Feedback",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide Anchor"
+    },
+    {
+      "id": "icon.perfect-read",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/perfect-read.svg",
+      "format": "svg",
+      "purpose": "Perfect Read marker.",
+      "usedBy": "Round summary, recap",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide Sparkles"
+    },
+    {
+      "id": "icon.review",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/review.svg",
+      "format": "svg",
+      "purpose": "Review / due action.",
+      "usedBy": "Launch screen",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide RotateCcw"
+    },
+    {
+      "id": "icon.mastery-map",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/mastery-map.svg",
+      "format": "svg",
+      "purpose": "Mastery Map action.",
+      "usedBy": "Launch screen, recap",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide Network"
+    },
+    {
+      "id": "icon.quick-run",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/quick-run.svg",
+      "format": "svg",
+      "purpose": "Quick Run action.",
+      "usedBy": "Launch screen",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide Zap"
+    },
+    {
+      "id": "icon.continue",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/continue.svg",
+      "format": "svg",
+      "purpose": "Continue (recommended path) action.",
+      "usedBy": "Launch screen",
+      "budget": {
+        "maxBytes": 6000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "lucide Play"
+    },
+    {
+      "id": "icon.status-new",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/status-new.svg",
+      "format": "svg",
+      "purpose": "Distinction status NEW (§25).",
+      "usedBy": "Recap, mastery map list",
+      "budget": {
+        "maxBytes": 4000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "CSS status glyph"
+    },
+    {
+      "id": "icon.status-getting-it",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/status-getting-it.svg",
+      "format": "svg",
+      "purpose": "Distinction status GETTING IT.",
+      "usedBy": "Recap, mastery map list",
+      "budget": {
+        "maxBytes": 4000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "CSS status glyph"
+    },
+    {
+      "id": "icon.status-reliable",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/status-reliable.svg",
+      "format": "svg",
+      "purpose": "Distinction status RELIABLE.",
+      "usedBy": "Recap, mastery map list",
+      "budget": {
+        "maxBytes": 4000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "CSS status glyph"
+    },
+    {
+      "id": "icon.status-fluent",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/status-fluent.svg",
+      "format": "svg",
+      "purpose": "Distinction status FLUENT.",
+      "usedBy": "Recap, mastery map list",
+      "budget": {
+        "maxBytes": 4000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "CSS status glyph"
+    },
+    {
+      "id": "icon.status-mastered",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/status-mastered.svg",
+      "format": "svg",
+      "purpose": "Distinction status MASTERED.",
+      "usedBy": "Recap, mastery map list",
+      "budget": {
+        "maxBytes": 4000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "CSS status glyph"
+    },
+    {
+      "id": "icon.status-review-due",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/status-review-due.svg",
+      "format": "svg",
+      "purpose": "Distinction status REVIEW DUE.",
+      "usedBy": "Recap, mastery map list",
+      "budget": {
+        "maxBytes": 4000
+      },
+      "svg": {
+        "currentColor": true
+      },
+      "fallback": "CSS status glyph"
+    },
+    {
+      "id": "icon.wordmark",
+      "category": "icon",
+      "priority": "nice",
+      "tiers": [
+        "full",
+        "standard",
+        "lite"
+      ],
+      "path": "icons/last-word-wordmark.svg",
+      "format": "svg",
+      "purpose": "LAST WORD wordmark for the header and launch screen. Also keep live text as the accessible name.",
+      "usedBy": "Header, launch screen",
+      "budget": {
+        "maxBytes": 12000
+      },
+      "svg": {
+        "currentColor": false
+      },
+      "fallback": "Live text in Cormorant Garamond."
+    }
   ]
 }

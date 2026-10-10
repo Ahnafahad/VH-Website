@@ -1,6 +1,6 @@
 # Last Word — assets needed
 
-**Status:** spec ready for production. The game is built to run with **zero** of these files: every asset has a procedural or code-drawn placeholder. When you drop in a real file, it replaces the placeholder with **no code change**.
+**Status:** spec ready for production. **Part I** is the visual specification (how the game looks, moment by moment, and its three signature elements). **Part II** lists every file to make: 52 assets, 12 of them must-have. The game is built to run with **zero** of these files: every asset has a procedural or code-drawn placeholder. When you drop in a real file, it replaces the placeholder with **no code change**.
 
 - **Source of truth:** [`src/features/last-word/assets/asset-manifest.json`](../../src/features/last-word/assets/asset-manifest.json). This document mirrors it. If they ever disagree, the manifest wins (the validator reads it).
 - **Where files go:** `public/last-word/assets/<folder>/<filename>`, with the exact names below.
@@ -8,6 +8,259 @@
 - **What the game does with a bad file:** the validator leaves it out of `available.json`, so the game keeps the placeholder. A bad asset can never break play.
 
 ---
+
+# Part I — Visual specification: how Last Word looks and feels
+
+This part is the art direction every asset in Part II must serve. It is checked line by line against the design spec (§6–7, §17–22, §38, §40–42, §50–53) in A12. If an asset you make doesn't fit a frame described here, it doesn't belong in the game.
+
+## A1. The idea in one picture
+
+> **A dark, quiet chamber. Two or three dark tiles hang in it, each holding one word. Above them, a pane of glass carries the situation. Between the words, a single hair of light balances on a jewel, and it leans toward whichever word you choose. When new evidence arrives, the old pane sinks back into the dark, a ripple passes through the room, and the light lets go. You decide again. When you have the Last Word, a fine seal closes around your choice.**
+
+Everything follows from that picture:
+
+- **Words are objects** (§17.2): heavy, calm, dark tiles. The word is printed on them as live text, never painted into the art.
+- **Context is a pane of evidence** (§17.3): clear, readable and frontal. Earlier panes stay visible as receding history.
+- **Judgment is a balance** (§17.4, §18): the player's choice physically tilts the scene, and the scene never tilts toward the answer.
+- **Commitment is a seal** (§6 "Last Word moment", §18 "tight snap").
+- **Knowledge is a sky** (§22.7, §38): the mastery map is an observatory of word-stars joined by distinctions.
+
+**Mood words:** *nocturnal, archival, precise, hushed, tactile, earned.*
+**Never:** *neon, arcade, fantasy, cute, glossy, busy, triumphant.*
+
+## A2. The three signature elements (what makes Last Word exclusive)
+
+These three elements are what someone will remember and describe. They are also the premium layer: each costs very little to render and carries meaning, not decoration.
+
+### Signature 1 — The Fulcrum (`models/fulcrum.glb`)
+
+A filament of ivory light, about 3 m long and only 4–6 mm thick, hangs horizontally just below the context pane. At its centre sits a small faceted **pivot jewel** of smoky quartz with a faint warm core. The filament's two ends point at the outermost word tiles.
+
+| Moment | What the Fulcrum does | Why |
+|---|---|---|
+| Nothing selected | Level. A barely visible breathing glow (2 s period, ±6% intensity) | "Unresolved" (§18.1 soft float) |
+| Player selects a word | Tilts **toward the selected tile** by 3–4°, with a spring (tension 290, friction 26). The jewel's core warms slightly | "Magnetic pull = selected" (§18.1). It shows *your* judgment |
+| Player switches | Slips across to the other side, overshooting by 0.5° (lateral slip) | "Lateral slip = switching" |
+| New beat arrives (stay **or** flip) | Releases to level over 450 ms; a low ripple runs along the filament from the jewel outward; the jewel dims, then glows | "The old selection loosens magnetically" (§17.5). **Identical for stay and flip** |
+| Lock | Snaps rigid, 160–240 ms. The filament brightens once along its length (a single 300 ms light-sweep) | "Tight snap = locked" |
+| Feedback | Stays where the player put it. Never moves toward the best word | The correction is told by the tiles and text (A6), not by the balance |
+| Mastery moment | Filament turns faint gold for 900 ms, then settles | "Stable glow / settle = mastery" |
+
+For three-word sets the Fulcrum becomes a shallow **arc** through all three tiles, and the jewel slides along it toward the chosen tile instead of tilting.
+
+### Signature 2 — Evidence Strata (`models/evidence-pane.glb`)
+
+The context card is live HTML text on a glass panel. Behind it, inside the 3D scene, every **earlier beat** is a thin smoked-glass pane (1.6 × 0.9 m, 3 cm deep) that has stepped back:
+
+```text
+   z = -0.9   beat 1 pane   (opacity 0.30, 4% smaller, 6 cm higher)
+   z = -0.6   beat 2 pane   (opacity 0.45)
+   z =  0     LIVE pane     (DOM text, crisp)
+```
+
+When a new beat arrives, the current pane slides back one step (350–650 ms, eased, never bouncing) as the new text fades up in front. The player can *see* the situation accumulating. The previous beat's sentence is also printed, dimmed, above the live sentence in DOM for reading and screen readers. The 3D panes carry no text and are atmosphere only.
+
+### Signature 3 — The Seal (`models/lock-ring.glb` + code)
+
+When the player has the Last Word on the final beat:
+
+1. The scene compresses inward: camera dolly of 2–3 cm and a vignette tighten (§6 "the environment compresses inward").
+2. The **lock ring** closes around the chosen tile, scaling from 112% to 100% with a 200 ms snap.
+3. A **hairline gold underline** draws once beneath the live word (SVG stroke in DOM, 400 ms). This is the only gold in the round until feedback, and it marks *commitment*, not correctness.
+4. The `lock` sound and a medium haptic land on the same frame as the snap.
+
+The Seal is the game's "chord". It should feel like closing a well-made box.
+
+### Bonus — The Lexicon Observatory (mastery map, `models/mastery-node.glb` + `textures/star-dust.webp`)
+
+The mastery map is a slow, navigable sky (§38). Each **word is a crystal seed** (node) and each **distinction is a filament** (edge), drawn in code:
+
+| Edge state (§22.7) | Filament look |
+|---|---|
+| Unseen | Not drawn; region veiled in dust |
+| Developing (Exploring / Distinguishing) | Broken dashes that shimmer slowly |
+| Reliable / Fluent | Continuous ivory line, steady |
+| Mastered | Clean line with a thin gold core |
+| Review due | Gentle pulse (1.6 s) travelling along the line |
+
+Node seeds glow in the LexiCore mastery colours (new gray → learning orange → familiar blue → strong teal → mastered green) **plus** a shape glyph and a text label, so no state relies on colour. Selecting a node pulls its neighbours forward (§38) and opens a DOM panel listing its distinctions.
+
+## A3. Spatial composition
+
+### Depth layers (§17.1), world units in metres, camera at +z looking toward −z
+
+```text
+side view (x →, z ↓ toward the camera)
+
+ z -4.0 ┆ ░░ Layer 0  chamber shell, fog, dust              (chamber-shell.*.glb, env)
+ z -1.7 ┆  ▭ Layer 1  evidence strata (oldest)               (evidence-pane.glb)
+ z -0.9 ┆   ▭         evidence strata
+ z  0.0 ┆ ▮   ▮ Layer 2  word tiles at rest                  (word-tile.*.glb)
+ z +0.35┆  ▮     selected tile pulls forward
+ z +0.65┆  ▮     locked tile                                 (lock-ring.glb around it)
+ z +0.1 ┆ ━━◆━━ Layer 3  the Fulcrum under the context pane   (fulcrum.glb)
+ DOM    ┆ ▓▓▓▓▓ Layer 3  context card — live HTML over the canvas
+ z 0…0.2┆ · ✦ · Layer 4  halo sprites, bridge particles       (soft-glow, spark)
+ DOM    ┆ ═════ Layer 5  HUD, beat dots, buttons — live HTML
+```
+
+### Camera
+
+- Perspective, **28° vertical FOV**, at z = 10, aimed at the origin. A narrow FOV keeps depth gentle and the tiles undistorted.
+- Ambient drift follows pointer or device tilt: at most **±1.5° yaw and ±1° pitch**, with 1.2 s easing. Drift is frozen while a new beat is being read (first 1.2 s after arrival) and fully off in reduced motion (§41: "motion pauses while a new context beat is being read").
+- "Compression" on the Last Word: dolly of 0.25 m over 600 ms, and back after feedback.
+
+### Screen layout
+
+```text
+Phone portrait (390 × 844)                Desktop (1440 × 900)
+┌──────────────────────────┐              ┌──────────────────────────────────────────┐
+│ ‹  LAST WORD     ●●○  ⏸ ?│ 56 px HUD     │ ‹ LAST WORD          ●●○      ? ⏸  ⚙    │
+│                          │               │                                          │
+│  (earlier beat, dimmed)  │               │        ┌──────────────────────────┐      │
+│ ┌──────────────────────┐ │               │        │ earlier beat (dimmed)    │      │
+│ │ Live context sentence│ │ ~36%          │        │ LIVE CONTEXT SENTENCE    │ 640  │
+│ │ on the glass pane    │ │               │        └──────────────────────────┘ max  │
+│ └──────────────────────┘ │               │      ────────────◆────────────          │
+│   ─────────◆─────────    │ Fulcrum       │   ┌────────┐            ┌────────┐       │
+│ ┌────────┐  ┌────────┐   │               │   │PERSIST-│            │OBSTIN- │       │
+│ │PERSIST-│  │OBSTIN- │   │ tiles in      │   │  ENT   │            │  ATE   │       │
+│ │  ENT   │  │  ATE   │   │ thumb zone    │   └────────┘            └────────┘       │
+│ └────────┘  └────────┘   │               │                                          │
+│ [   Lock this reading  ] │ 52 px CTA     │          [ Lock this reading ]           │
+└──────────────────────────┘ safe area     └──────────────────────────────────────────┘
+```
+
+- Tiles always sit in the lower third on phones (one-handed reach, LexiCore §6). Touch targets cover the whole tile, at least 120 × 96 px.
+- The context pane never overlaps a tile, and no particle ever crosses the text.
+- Three-word sets: tiles sit on a shallow arc, with the middle tile 0.15 m deeper.
+
+## A4. Light
+
+| Light | Setup | Purpose |
+|---|---|---|
+| Key | Large soft ivory `#F5F5F5` area/softbox upper-left at 45°, intensity so bevels peak at ~85% white | Reveals tile form; reads as "studio quiet" |
+| Fill | None. Darkness is the fill | Keeps contrast for text |
+| Environment | `chamber-env.hdr` (Full) / code lightformers | Bevel and edge reflections only |
+| Selection | **Emissive** on `tile_rim` (crimson `#E63946` at 35%), **not** a scene light | Shows the player's choice without lighting the other tile (no hint) |
+| Mastery | Emissive gold `#F4A828` on rim, filament or node | Earned value only |
+| Fog | Linear `#0F0F0F` from z −1 to −5 | Depth falloff; removes shell detail behind text |
+| Exposure | ACES filmic, slightly under. Blacks stay `#0F0F0F`, never crushed to pure black | Premium, not murky |
+
+## A5. Material guide
+
+| Surface | Base colour | Metal | Rough | Extras | Feel |
+|---|---|---|---|---|---|
+| Tile body | `#1A1A1A` | 0.55 | 0.42 | Fine grain normal (0.15) · Full: clearcoat 0.6 / 0.25 | Blackened metal block |
+| Tile bevel | `#242424` | 0.7 | 0.3 | Catches the key light as a 1–2 px ivory line | Machined edge |
+| Tile rim (`tile_rim`) | `#111111` | 0.4 | 0.5 | Emissive slot (runtime colour) | Dormant filament |
+| Tile face (`tile_face`) | `#161616` | 0.1 | 0.85 | Flat and matte | A calm page for the word |
+| Evidence pane | `#20262A` @ 35% | 0 | 0.15 | Full: clearcoat 1.0; edges 1 px ivory | Smoked glass |
+| Fulcrum beam | ivory emissive 0.6 | — | — | Unlit core + soft halo sprite | Hair of light |
+| Pivot jewel | smoky `#3A3530` | 0 | 0.1 | Inner emissive warm `#F4A828` at 15% | Smoky quartz |
+| Lock ring | `#2A2A2A` | 0.85 | 0.35 | Brushed (anisotropic look in the texture) + emissive inner edge | Jeweller's bezel |
+| Chamber shell | `#121212`–`#1E1E1E` | 0.3 | 0.7 | Grain; ribs catch the key light | Stone and metal nave |
+| Mastery node | `#2B2B30` glass | 0 | 0.08 | Emissive core (runtime) | Crystal seed |
+
+## A6. Every state, frame by frame
+
+Timing tokens are the spec's (§18.2): micro 80–140 · snap 160–240 · card 240–420 · context 350–650 · flip 450–750 · mastery 700–1300 · scene 500–900 ms.
+
+| State | Tiles | Fulcrum | Context / strata | Effects | Sound · haptic |
+|---|---|---|---|---|---|
+| **Launch** | Two blank tiles drift in a slow orbit (Full); `launch-sculpture.webp` (Lite) | Level, breathing | — | Dust | `review-due` if reviews are due |
+| **Set intro** (§22.2) | Tiles for the set fly into their spatial arrangement (scene 700 ms), labelled with the words. No definitions | Appears last, level | — | — | `reveal` |
+| **Reading, unresolved** | Soft float ±1.5 cm, 4 s period, all identical | Level, breathing | New text fades up (context 480 ms); strata step back | Ambient only | `arrival` · light tick |
+| **Selected** | Chosen tile pulls forward 0.35 m and turns 3° toward the centre; rim crimson 35%; halo sprite 40% | Tilts 3–4° toward it | — | Bridge particles drift toward the chosen tile (Full) | `select` · light |
+| **Switching** | Old tile releases (card 320 ms); new tile pulls with a 0.5 cm lateral overshoot | Slips across | — | Faint 200 ms trail on the jewel | `switch` · double tick |
+| **Locked (mid-chain)** | Chosen tile snaps to z +0.65 (snap 200 ms), float stops | Rigid, light-sweep once | — | — | `lock` · medium |
+| **New evidence** (stay *and* flip, identical) | Locked tile drifts back to "selected" depth; rim fades to 15% (still visibly yours) | Releases to level over 450 ms | Pane steps back into the strata; new text fades up; ripple ring passes once (flip 600 ms) | Ripple only | `arrival` · light tick |
+| **Last Word** | Seal closes; camera compresses | Rigid | Pane holds | Vignette +10% | `lock` · medium |
+| **Feedback: best** | Chosen tile settles forward, rim → soft ivory; the other tile dims to 60% | Stays where it is | Decisive clue highlighted in the sentence (DOM `mark`) | One soft glow pulse (300 ms) | `best` · success |
+| **Feedback: defensible** | Chosen tile stays; best tile rises 4 cm beside it and both rims glow ivory | Stays | Clue highlighted; "fits more precisely" copy | — | `defensible` · light |
+| **Feedback: incorrect** (§40) | Chosen tile *holds* 250 ms, then a short recoil (−6 cm); fracture dissolve to 35% (Full) or fade (others); best tile moves 4 cm toward the clue; scene re-centres | Stays | Clue highlighted; contrast line | Field unsteady for 300 ms, then calm | `incorrect` · warning |
+| **Hold Your Ground** | As "best", plus a tiny anchor icon on the tile | — | — | — | `hold` |
+| **Perfect Read** (§8.4) | The best-word path replays as a light thread tracing tile → tile across beats (900 ms) | Gold filament | — | Spark trail (Full) | `perfect-read` · success |
+| **Diagnosis result** | Tiles settle side by side; a calm gold seam between them if "you already own this" | Gold if skipped (A), ivory otherwise | — | — | `mastery` (A) / `reveal` |
+| **Paused** | Everything freezes; 40% darken | Freeze | Text unchanged | — | — |
+| **Hint open** (§34) | No tile change (a hint never points at a tile) | — | Hint text slides under the pane | — | `hint` |
+| **Recap** (§22.6) | Each improved distinction shows as two mini tiles joined by its filament, brightening in turn (mastery 900 ms each, skippable) | — | — | — | `reveal`, then `mastery` per status rise |
+| **Mastery map** | Observatory (A2 bonus) | — | — | Star dust parallax ±1° | `reveal` |
+
+## A7. Rules against revealing the answer (§17.3, §17.5, §50)
+
+1. Before judgment, **every word tile is pixel-identical** except for the player's own selection state.
+2. Stay and flip transitions are **the same animation, sound and haptic**. The QA test is to record both and diff them; they must match.
+3. The Fulcrum tracks the **player**, never the content.
+4. No colour on any tile means "right" or "wrong" before feedback. Crimson means "your choice", gold means "earned".
+5. After feedback, correctness is always told in **words** as well (verdict line), never by motion or colour alone (§41).
+
+## A8. Tiers side by side (§42)
+
+| | **Full** | **Standard** | **Lite** | **Reduced motion** (any tier) |
+|---|---|---|---|---|
+| Tiles | `word-tile.full.glb`, clearcoat, env reflections | `word-tile.standard.glb`, no clearcoat | CSS 2.5D card on `tile-surface.lite.webp`, `perspective` tilt | Same objects, no float or tilt |
+| Fulcrum | `fulcrum.glb` + halo | `fulcrum.glb`, no halo | CSS hairline with a rotating jewel glyph | Tilt shown as a static angle, no spring |
+| Strata | 2 glass panes | 1 pane | Dimmed DOM previous beat | Same |
+| Chamber | `chamber-shell.full.glb`, fog, dust, env | `chamber-shell.standard.glb`, fog | `chamber-backdrop.*.webp` | Static backdrop / no dust |
+| Seal | Ring snap + light-sweep + dolly | Ring snap | CSS ring + underline | Instant ring + underline |
+| Particles | ≤ 24 bridge, mastery spark burst | ≤ 8 | none | none |
+| Ripple | Shader ring | Shader ring | CSS ring fade | 150 ms opacity pulse |
+| Learning info | **Identical** | **Identical** | **Identical** | **Identical** |
+
+## A9. Typography inside the scene
+
+- **The word on a tile:** Cormorant Garamond 700, 30–40 px (clamped to tile width), tracking −0.01 em, ivory `#F5F5F5`, centred on `tile_face`. Long words (≥ 11 letters) drop to 26 px rather than wrap. Never all-caps; the serif carries the elegance.
+- **Context sentence:** Cormorant Garamond 500, 22–26 px, line-height 1.45, max 34 em per line, ivory. Previous beat 17 px at 55% opacity.
+- **Decisive clue in feedback:** the same text with a soft gold underline-highlight (not a box). It reads like a scholar's annotation.
+- **HUD, buttons, eyebrows:** Sora (LexiCore rules): eyebrows 11 px uppercase, tracking 0.14 em.
+- **Verdicts:** Cormorant 700 italic, 28–34 px ("Obstinate fits better.").
+
+## A10. What makes it premium (and what would cheapen it)
+
+**Do:**
+- One dominant light, deep blacks and fine grain: the restraint *is* the luxury.
+- Every motion means something (A6). Nothing loops for decoration except the faint breathing.
+- Micro-details: a 1 px ivory bevel highlight on tiles, a single light-sweep on lock, the gold underline drawn once, sound and haptic landing on the same frame as the snap.
+- Sounds in one family (felt, glass, wood, air) in one key, so the whole game sounds like one instrument.
+- Text that is crisper than anything else on screen.
+
+**Don't:**
+- Bloom on text, chromatic aberration, lens flares, screen shake or confetti.
+- Saturated gradients, rainbow particles, or glassmorphism on everything.
+- Long unskippable celebrations (§18.2). A mastery moment stays under 1.3 s.
+- 3D text, or words engraved into geometry.
+
+## A11. Moodboard in words (for briefing artists and AI tools)
+
+> *A museum of language at night.* Think: an obsidian monolith in a dark gallery; a jeweller's loupe and a single hair of light; smoked glass panes stacked in an archive; a planetarium dome dimmed to its faintest stars; Japanese-minimal stagecraft; Dieter Rams precision. Matte charcoal, blackened steel, smoky quartz, ivory light, one crimson thread, a rare gold seam.
+
+## A12. Check against the design spec
+
+| Spec | Requirement | How it is visualised | Assets |
+|---|---|---|---|
+| §6 | Last Word moment: environment compresses, chosen word comes forward | The Seal (A2) | lock-ring, word-tile |
+| §7.1 | Drag/tilt the context toward a word; swipe to switch; tap to magnetise | Drag tilts the Fulcrum; release beyond threshold selects; tap selects | fulcrum |
+| §7.3 | Selection reversible until the beat closes | Switching state, A6 | — |
+| §8.3–8.4 | Hold Your Ground; Perfect Read replays the path | A6 rows | hold, perfect-read sfx, spark |
+| §17.1 | Six depth layers | A3 | shell, strata, tiles, fulcrum |
+| §17.2 | Word objects with depth, edge light, tilt, inertia, halo; crisp frontal type | A5, A9 | word-tile, soft-glow |
+| §17.3 | Context revealed into the scene; never reveals the answer | Evidence Strata + A7 | evidence-pane |
+| §17.4 | Context hovers between contenders; faint particle bridge; no colour coding | Fulcrum + bridge particles | fulcrum, spark |
+| §17.5 | Flip: ripple, card shifts, old selection loosens, field live again, haptic tick | New-evidence row (identical for stay) | — |
+| §18 | Motion grammar and timing tokens | A2 tables, A6 | — |
+| §18.4 / §41 | Reduced motion keeps all meaning; text stable while reading | A8 column; drift frozen on arrival | — |
+| §19 | Sparse premium effects; composition over cost; degrade by device | A8, A10 | all textures |
+| §20 | Sound families and haptics, independently optional | Part II §5–§7 | sfx, haptics |
+| §22.1–22.7 | Launch, set intro, live round, feedback, recap, mastery map | A6, Observatory | launch-sculpture, star-dust, mastery-node |
+| §38 | Mastery map as a navigable depth field with luminous nodes and edge states | Observatory table | mastery-node, star-dust |
+| §40 | Failure: hold, unstable, clue highlight, stronger word relates to clue, recentre | Incorrect row | fracture-mask |
+| §42 | Full / Standard / Lite | A8 | per-tier files |
+| §50 | "The animation does not reveal the answer" | A7 | — |
+
+---
+
+# Part II — Asset production spec
 
 ## 0. Ground rules for every asset
 
@@ -152,6 +405,36 @@ Reduced motion uses whichever tier is active but freezes ambient motion. Music i
 **Prompt:**
 > A small softly faceted crystal seed, like a cut smoky-quartz pebble, neutral charcoal glass with an inner core that can glow. Minimal, elegant, no text. Under 600 triangles, centred pivot.
 
+### 1.7 The Fulcrum — signature element · `nice-to-have`
+
+| | |
+|---|---|
+| **File** | `public/last-word/assets/models/fulcrum.glb` (Full and Standard) |
+| **Purpose** | Signature 1 (Part I, A2): a hair of light balanced on a pivot jewel between the words. It tilts toward the player's selection, releases on each new beat, and goes rigid on lock |
+| **Size** | **3.0 m long × ≤ 0.16 m × ≤ 0.16 m**, centred, beam along **X**. The runtime stretches only the `beam` node to the distance between tiles, so keep the beam a plain cylinder whose length is along X |
+| **Budget** | ≤ 1,200 triangles · ≤ 90 KB · ≤ 2 materials · ≤ 2 meshes · texture ≤ 256 px |
+| **Required nodes** | `beam` (thin cylinder, 4–6 mm radius, ivory emissive-ready material), `pivot` (faceted jewel, ~0.14 m, at the origin) |
+| **Material** | Beam: unlit/emissive ivory. Pivot: smoky quartz `#3A3530`, roughness 0.1, with an inner emissive core the runtime warms to gold |
+| **If missing** | Procedural emissive cylinder + octahedron (same behaviour) |
+
+**Prompt (text-to-3D):**
+> A minimalist balance element: an extremely thin, perfectly straight horizontal rod of light, 3 units long, with a small faceted smoky-quartz jewel at its exact centre acting as a pivot. The jewel is a softly cut octahedral gem, dark smoky brown-gray, translucent, with a faint warm glow deep inside. Precise, jewellery-grade, minimal, no ornaments, no supports, no text. Under 1,200 triangles. Separate objects for the rod and the jewel, pivot at the jewel's centre.
+
+### 1.8 Evidence pane — signature element · `nice-to-have`
+
+| | |
+|---|---|
+| **File** | `public/last-word/assets/models/evidence-pane.glb` (Full and Standard) |
+| **Purpose** | Signature 2 (Part I, A2): earlier context beats recede behind the live context card as stacked smoked-glass panes. The panes carry **no text** |
+| **Size** | **1.6 × 0.9 × 0.03 m**, centred, face toward +Z |
+| **Budget** | ≤ 400 triangles · ≤ 60 KB · 1 material · 1 mesh · texture ≤ 512 px |
+| **Required nodes** | `pane` |
+| **Material** | Smoked glass `#20262A` at about 35% opacity (alpha blend), roughness 0.15, polished 1 px edges that catch the key light. Full may add `KHR_materials_clearcoat`; transmission is not allowed |
+| **If missing** | Procedural rounded plane with a gradient and an edge highlight |
+
+**Prompt (text-to-3D):**
+> A single thin pane of smoked glass, 1.6 by 0.9 units, 3 cm thick, with softly rounded corners and finely polished edges that catch light. Dark smoky gray-blue tint, mostly transparent, completely blank surface, no text, no frame. Minimal, archival, precise. Under 400 triangles, centred pivot.
+
 ---
 
 ## 2. Textures and environment maps
@@ -166,6 +449,7 @@ Shaders (the semantic-flip ripple, rim lighting, grain and reject dissolve) are 
 | 2.4 | `textures/spark.webp` | WebP **64 × 64**, **alpha** | 12 KB | Full | nice | Tiny particle for the semantic bridge and the mastery bloom | Canvas dot |
 | 2.5 | `textures/fracture-mask.webp` | WebP **512 × 512**, grayscale | 90 KB | Full | nice | Dissolve mask for the "rejected interpretation" card fracture, used only *after* judgment | Opacity/scale fade |
 | 2.6 | `textures/tile-surface.lite.webp` | WebP **512 × 720**, **alpha** | 70 KB | Lite | nice | A pre-rendered tile face (no text) so Lite's 2.5D CSS cards match the 3D family | CSS gradient tile |
+| 2.7 | `textures/star-dust.webp` | WebP **1024 × 1024**, **seamless** | 160 KB | Full, Std | nice | Deep field behind the Lexicon Observatory mastery map (Part I, A2) | Procedural point field |
 
 **Prompts:**
 
@@ -174,6 +458,7 @@ Shaders (the semantic-flip ripple, rim lighting, grain and reject dissolve) are 
 - **2.3 soft glow:** *"Soft radial light falloff, white centre fading smoothly to fully transparent edge, no rings, no banding, transparent PNG/WebP 256 px."* The runtime tints it.
 - **2.4 spark:** *"Tiny soft four-point light spark, white on transparent, very subtle, 64 px."*
 - **2.5 fracture mask:** *"Grayscale crack-propagation mask for a dissolve shader: fine branching fracture lines radiating from the centre, values from black (first to dissolve) to white (last), no text, 512 px seamless edges not required."*
+- **2.7 star dust:** *"Seamless tileable deep-space dust field, nearly black #0F0F0F, very sparse faint ivory specks of varied size, two or three soft blurred points, faint warm haze in places, no nebula colours, no planets, calm and minimal, 1024 px."* Verify by tiling 2×2: no visible seams or repeated clusters.
 - **2.6 Lite tile surface:** a render of the Full word tile (1.1) straight on, at 512×720 with a transparent background, no text, no selection glow. Render it from the GLB once it exists so the families match.
 
 ---
@@ -355,7 +640,9 @@ The status icons carry meaning in **shape**, not colour (§41: no meaning by col
 - [ ] `audio/sfx/incorrect.mp3`
 - [ ] `audio/sfx/mastery.mp3`
 
-### Nice-to-have — 3D and visuals (14)
+### Nice-to-have — 3D and visuals (17)
+- [ ] `models/fulcrum.glb` *(signature)*
+- [ ] `models/evidence-pane.glb` *(signature)*
 - [ ] `models/chamber-shell.full.glb`
 - [ ] `models/chamber-shell.standard.glb`
 - [ ] `models/lock-ring.glb`
@@ -366,6 +653,7 @@ The status icons carry meaning in **shape**, not colour (§41: no meaning by col
 - [ ] `textures/spark.webp`
 - [ ] `textures/fracture-mask.webp`
 - [ ] `textures/tile-surface.lite.webp`
+- [ ] `textures/star-dust.webp`
 - [ ] `images/launch-sculpture.webp`
 - [ ] `images/og-last-word.png`
 - [ ] `icons/last-word-wordmark.svg`
@@ -400,4 +688,4 @@ The status icons carry meaning in **shape**, not colour (§41: no meaning by col
 
 Optional `.webm` (Opus) twins of any audio file are welcome and are validated when present.
 
-**Suggested order:** word tiles (1.1, 1.2) and the eight must-have sound effects first. They define how the game *feels*. Then the backdrops (3.1, 3.2), then everything else.
+**Suggested order:** word tiles (1.1, 1.2) and the eight must-have sound effects first. They define how the game *feels*. Then the backdrops (3.1, 3.2). Then the signature pieces, which carry the premium identity: the Fulcrum (1.7), the Evidence pane (1.8) and the lock ring (1.5). Then everything else.
