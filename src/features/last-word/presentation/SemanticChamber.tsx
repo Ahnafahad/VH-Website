@@ -85,7 +85,8 @@ function ProceduralTile({ width, glow, color, tier }: { width: number; glow: num
 function WordTile({ index, props }: { index: number; props: ChamberProps }) {
   const viewport = useThree(state => state.viewport);
   const slot = viewport.width / props.words.length;
-  const width = Math.min(slot * 0.8, viewport.height / 1.55);
+  // Fit inside the DOM button it sits behind; selected tiles come forward (z) so they need headroom.
+  const width = Math.min(slot * 0.6, (viewport.height * 0.66) / 1.4);
   const homeX = (index - (props.words.length - 1) / 2) * slot;
   const word = props.words[index];
   const chosen = word === props.selected;
@@ -179,7 +180,6 @@ function EvidencePanes({ props }: { props: ChamberProps }) {
 
 function Chamber(props: ChamberProps) {
   const env = props.tier === 'full' ? assetUrl(props.assets, 'envmap.chamber') : null;
-  const shell = assetUrl(props.assets, props.tier === 'full' ? 'model.chamber-shell.full' : 'model.chamber-shell.standard');
   return (
     <>
       <ambientLight intensity={0.25} />
@@ -193,7 +193,6 @@ function Chamber(props: ChamberProps) {
           <Lightformer form="rect" intensity={0.6} position={[4, -3, 2]} scale={[1, 3, 1]} color="#E63946" />
         </Environment>
       )}
-      {shell && <Model url={shell} fallback={null}>{scene => <Clone object={scene} />}</Model>}
       {!props.reduced && <EvidencePanes props={props} />}
       {props.words.map((word, index) => <WordTile key={word} index={index} props={props} />)}
       <Fulcrum props={props} />
@@ -208,13 +207,31 @@ export default function SemanticChamber(props: ChamberProps) {
       camera={{ position: [0, 0, 10], fov: 28 }}
       dpr={props.tier === 'full' ? [1, 1.75] : 1}
       frameloop={props.reduced ? 'demand' : 'always'}
-      gl={{ antialias: props.tier === 'full', alpha: true, powerPreference: 'low-power' }}
+      gl={{ antialias: true, alpha: true, powerPreference: 'low-power' }}
       onCreated={({ gl }) => {
         gl.domElement.dataset.chamber = 'ready';
         gl.domElement.addEventListener('webglcontextlost', props.onUnavailable, { once: true });
       }}
     >
       <Chamber {...props} />
+    </Canvas>
+  );
+}
+
+/**
+ * Layer 0 (§17.1): the chamber shell as a full-screen, static backdrop behind the page. It renders on
+ * demand only (one frame per resize), so the second context costs almost nothing. No shell file → the
+ * backdrop image is used instead (CSS).
+ */
+export function ChamberBackdrop({ tier, assets }: { tier: ChamberProps['tier']; assets: AssetUrls }) {
+  const shell = assetUrl(assets, tier === 'full' ? 'model.chamber-shell.full' : 'model.chamber-shell.standard');
+  if (!shell) return null;
+  return (
+    <Canvas camera={{ position: [0, 0, 10], fov: 28 }} dpr={1} frameloop="demand" gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}>
+      <ambientLight intensity={0.2} />
+      <directionalLight position={[-5, 5, 6]} intensity={1.6} color={IVORY} />
+      <directionalLight position={[5, -4, 2]} intensity={0.5} color={CRIMSON} />
+      <Model url={shell} fallback={null}>{scene => <Clone object={scene} />}</Model>
     </Canvas>
   );
 }

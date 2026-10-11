@@ -24,6 +24,7 @@ import { detectTier, timing, type PresentationTier } from './presentation/tokens
 import './last-word.css';
 
 const Chamber = dynamic(() => import('./presentation/SemanticChamber'), { ssr: false });
+const Backdrop = dynamic(() => import('./presentation/SemanticChamber').then(m => m.ChamberBackdrop), { ssr: false });
 class ChamberBoundary extends Component<{ children: ReactNode; onUnavailable: () => void }, { failed: boolean }> {
   state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
@@ -222,6 +223,7 @@ export default function LastWordGame({ sets }: { sets: LastWordSet[] }) {
       <main ref={root} className="lw-game" data-tier={tier} data-reduced={reduced} data-phase={phase}
         style={{ ['--lw-backdrop' as string]: backdrop ? `url(${backdrop})` : 'none', ['--lw-backdrop-portrait' as string]: backdropPortrait ? `url(${backdropPortrait})` : 'none', ['--lw-tile' as string]: liteTile ? `url(${liteTile})` : 'none' }}>
         <div className="lw-atmosphere" aria-hidden="true"><div /><div /></div>
+        {tier !== 'lite' && !mapOpen && <div className="lw-backdrop-canvas" aria-hidden="true"><ChamberBoundary onUnavailable={onUnavailable}><Backdrop tier={tier} assets={assets} /></ChamberBoundary></div>}
         <header className="lw-header">
           <Link href="/vocab/home" className="lw-back" aria-label="Back to vocabulary"><ArrowLeft size={18} /></Link>
           <span className="lw-logotype">{assetUrl(assets, 'icon.wordmark') ? <img src={assetUrl(assets, 'icon.wordmark')!} alt="Last Word" height={18} /> : <>LAST<span>WORD</span></>}</span>

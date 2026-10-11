@@ -19,8 +19,9 @@
 .lw-atmosphere div { position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(100px); opacity: .1; }
 .lw-atmosphere div:first-child { background: var(--lw-accent); bottom: -40vmax; right: -25vmax; }
 .lw-atmosphere div:last-child { background: #F5F5F5; top: -40vmax; left: -25vmax; opacity: .05; }
-.lw-game[data-tier='lite']::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--lw-backdrop) center / cover no-repeat; opacity: .55; }
-@media (orientation: portrait) { .lw-game[data-tier='lite']::before { background-image: var(--lw-backdrop-portrait); } }
+.lw-backdrop-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .7; }
+.lw-game::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--lw-backdrop) center / cover no-repeat; opacity: .55; }
+@media (orientation: portrait) { .lw-game::before { background-image: var(--lw-backdrop-portrait); } }
 
 /* Header / footer */
 .lw-header, .lw-footer, .lw-round-header, .lw-context-top, .lw-action-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
@@ -83,18 +84,21 @@
 .lw-hint { display: flex; align-items: center; gap: 8px; margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--lw-object); color: var(--lw-ink); font-size: .95rem; }
 
 /* Layer 2: word objects. In Full/Standard the 3D tile renders behind a transparent DOM button. */
-.lw-word-field { position: relative; min-height: clamp(170px, 30vh, 240px); display: grid; align-items: center; touch-action: pan-y; }
-.lw-canvas { position: absolute; inset: -28px -8px; z-index: 0; pointer-events: none; }
+.lw-word-field { position: relative; min-height: clamp(190px, 36vh, 320px); display: grid; align-items: center; touch-action: pan-y; }
+.lw-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .lw-choices { position: relative; z-index: 1; display: grid; gap: clamp(12px, 3vw, 28px); }
 .lw-word { position: relative; display: grid; place-items: center; align-content: center; gap: 6px; min-height: clamp(130px, 24vh, 200px); padding: 14px; border: 1px solid var(--lw-line); border-radius: 14px; background: var(--lw-tile, none) center / 100% 100% no-repeat, linear-gradient(160deg, #262626, #141414); color: var(--lw-ink); cursor: pointer; transition: transform 200ms var(--lw-ease), border-color 200ms, box-shadow 200ms; }
 .lw-game[data-tier='lite'] .lw-word[style], .lw-game[data-tier='lite'] .lw-word { background-color: transparent; }
 .lw-game[data-tier='lite'] .lw-word { border-color: transparent; transform: perspective(700px) rotateY(var(--lw-ry, 0deg)); box-shadow: 0 20px 40px #0009; }
 .lw-game[data-tier='lite'] .lw-word:first-child { --lw-ry: 6deg; }
 .lw-game[data-tier='lite'] .lw-word:last-child { --lw-ry: -6deg; }
-.lw-game:not([data-tier='lite']) .lw-word { background: none; border-color: transparent; }
+.lw-game:not([data-tier='lite']) .lw-word { background: none; border-color: transparent; padding-inline: 18%; }
+.lw-game:not([data-tier='lite']) .lw-word strong { font-size: clamp(1.1rem, 2.6vw, 1.9rem); }
+/* 3D tiers: the tile's rim light shows selection; the DOM keeps the status text and focus ring. */
+.lw-game:not([data-tier='lite']) .lw-word[data-selected='true'], .lw-game:not([data-tier='lite']) .lw-word[data-stronger='true'] { outline: none; }
 .lw-word strong { font: 700 clamp(1.25rem, 4vw, 2.2rem)/1 var(--lw-display); letter-spacing: -.01em; overflow-wrap: anywhere; text-shadow: 0 2px 12px #000; }
 .lw-word-index { position: absolute; top: 10px; left: 12px; }
-.lw-word-status { min-height: 1em; font-size: .62rem; }
+.lw-word-status { min-height: 1em; font-size: .62rem; text-align: center; text-wrap: balance; }
 .lw-word[data-selected='true'] { outline: 2px solid var(--lw-accent); outline-offset: -2px; }
 .lw-game[data-tier='lite'] .lw-word[data-selected='true'] { transform: perspective(700px) translateZ(30px) translateY(-6px); box-shadow: 0 0 0 1px var(--lw-accent), 0 24px 60px color-mix(in srgb, var(--lw-accent) 30%, transparent); }
 .lw-word[data-stronger='true'] { outline: 2px dashed var(--lw-gold); outline-offset: -2px; }

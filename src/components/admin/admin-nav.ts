@@ -22,6 +22,7 @@ import {
   Route,
   NotebookPen,
   Printer,
+  Scale,
 } from 'lucide-react';
 
 // Single source of truth for the admin navigation: the desktop sidebar and the mobile menu both
@@ -63,6 +64,7 @@ export const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
       { href: '/admin/students',      label: 'Progress',      icon: LineChart },
       { href: '/admin/tests',         label: 'Tests & marks', icon: ClipboardList },
       { href: '/admin/essays',        label: 'Essays',        icon: NotebookPen },
+      { href: '/admin/last-word',     label: 'Last Word',     icon: Scale },
       { href: '/admin/analytics',     label: 'LMS statistics', icon: BarChart3 },
       { href: '/admin/practice', label: 'Practice & Diagnosis', icon: Route, also: ['/admin/marathon', '/admin/sprint', '/admin/redline', '/admin/diagnosis-fbs'] },
     ],
@@ -103,6 +105,7 @@ export const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/analytics',   label: 'LMS statistics',icon: BarChart3 },
       { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
       { href: '/admin/words',       label: 'Word Bank',   icon: Database      },
+      { href: '/admin/last-word',   label: 'Last Word',   icon: Scale         },
       { href: '/admin/leaderboard', label: 'Leaderboard', icon: Trophy        },
       { href: '/admin/practice', label: 'Practice & Diagnosis', icon: Route, also: ['/admin/marathon', '/admin/sprint', '/admin/redline', '/admin/diagnosis-fbs'] },
     ],
