@@ -1,121 +1,137 @@
 import { assign, setup } from 'xstate';
 import type { LastWordSet } from '../content/schema';
-import { diagnosticOutcome, evaluateDecision } from '../core/learning';
-import type { Confidence, DecisionRecord } from '../core/types';
+import { evaluateDecision } from '../core/learning';
+import type { Confidence, DecisionRecord, MasterySnapshot } from '../core/types';
+import { nextStep, planGoals, reviewIntervalDays, type Goal, type Mode, type Round, type Step } from './session';
 
-export const itinerary = [
-  ['confident-arrogant', 'ca_tutorial_flip'],
-  ['confident-arrogant', 'ca_tutorial_hold'],
-  ['persistent-obstinate', 'po_diagnostic_1'],
-  ['persistent-obstinate', 'po_diagnostic_2'],
-  ['persistent-obstinate', 'po_probe'],
-  ['persistent-obstinate', 'po_flip'],
-  ['persistent-obstinate', 'po_hold'],
-] as const;
-
+/**
+ * Game flow. The machine owns phase, beat, selection and committed decisions; the planner (session.ts)
+ * decides what comes next. Presentation observes this state and never feeds animation timing back in.
+ */
 export interface GameContext {
   sets: LastWordSet[];
+  baseline: MasterySnapshot;
+  mode: Mode;
   sessionId: string;
   startedAt: number;
   completedAt: number | null;
-  round: number;
+  goals: Goal[];
+  steps: Step[];
   beat: number;
   selected: string | null;
   confidence: Confidence;
+  hintLevel: 0 | 1 | 2 | 3;
   openedAt: number;
-  records: DecisionRecord[];
   pausedAt: number | null;
+  records: DecisionRecord[];
 }
-type GameEvent = { type: 'START' | 'NEXT' | 'FINISH' | 'RESTART'; now: number; sessionId?: string }
+export type GameEvent =
+  | { type: 'START'; mode: Mode; now: number; sessionId: string; baseline: MasterySnapshot; tutorialDone: boolean }
   | { type: 'SELECT'; word: string }
   | { type: 'CONFIDENCE'; confidence: Confidence }
-  | { type: 'LOCK' | 'PAUSE' | 'RESUME'; now: number };
+  | { type: 'HINT' }
+  | { type: 'LOCK' | 'NEXT' | 'PAUSE' | 'RESUME' | 'FINISH'; now: number }
+  | { type: 'HOME' };
 
-export function currentContent(context: GameContext) {
-  const [setId, chainId] = itinerary[context.round];
-  const set = context.sets.find((item) => item.set_id === setId)!;
-  const chain = set.chains.find((item) => item.id === chainId)!;
-  return { set, chain, beat: chain.beats[context.beat] };
+export const currentStep = (context: GameContext): Step | undefined => context.steps.at(-1);
+export function currentRound(context: GameContext) {
+  const step = currentStep(context);
+  if (step?.kind !== 'round') return null;
+  const set = context.sets.find(item => item.set_id === step.setId)!;
+  const chain = set.chains.find(item => item.id === step.chainId)!;
+  return { round: step as Round, set, chain, beat: chain.beats[context.beat] };
 }
-export function diagnostic(context: GameContext) {
-  return diagnosticOutcome(
-    context.records.filter((r) => r.scenarioId.startsWith('po_diagnostic')),
-    context.records.filter((r) => r.scenarioId === 'po_probe'),
-  );
-}
+const nowOf = (event: GameEvent) => ('now' in event ? event.now : 0);
+const roleOf = (context: GameContext) => currentRound(context)?.round.role;
 
 export const lastWordMachine = setup({
-  types: { context: {} as GameContext, events: {} as GameEvent, input: {} as { sets: LastWordSet[]; sessionId: string; now: number } },
+  types: { context: {} as GameContext, events: {} as GameEvent, input: {} as { sets: LastWordSet[] } },
   guards: {
+    done: ({ context }) => context.completedAt !== null,
+    isRound: ({ context }) => currentStep(context)?.kind === 'round',
     selected: ({ context }) => context.selected !== null,
-    validWord: ({ context, event }) => event.type === 'SELECT' && currentContent(context).set.words.some((w) => w.word === event.word),
-    moreBeats: ({ context }) => context.beat + 1 < currentContent(context).chain.beats.length,
-    tutorial: ({ context }) => context.round < 2,
-    diagnostic: ({ context }) => context.round >= 2 && context.round <= 4,
-    firstCold: ({ context }) => context.round === 2,
-    needsProbe: ({ context }) => context.round === 3 && diagnostic(context).needsProbe,
+    validWord: ({ context, event }) => event.type === 'SELECT' && Boolean(currentRound(context)?.round.words.includes(event.word)),
+    asksConfidence: ({ context }) => Boolean(currentRound(context)?.round.askConfidence),
+    canHint: ({ context }) => Boolean(currentRound(context)?.round.hintsAllowed) && context.hintLevel < 3,
+    moreBeats: ({ context }) => { const r = currentRound(context); return Boolean(r && context.beat + 1 < r.chain.beats.length); },
+    tutorial: ({ context }) => roleOf(context) === 'tutorial',
+    diagnostic: ({ context }) => roleOf(context) === 'diagnostic' || roleOf(context) === 'probe',
+    // §14 D: a confident misconception is corrected immediately, even during the cold read.
     confidentMiss: ({ context }) => {
       const last = context.records.at(-1);
-      return last?.confidence === 'certain' && last.correctness === 'incorrect';
+      return (roleOf(context) === 'diagnostic' || roleOf(context) === 'probe') && last?.confidence === 'certain' && last.correctness === 'incorrect';
     },
-    lastRound: ({ context }) => context.round === itinerary.length - 1,
   },
   actions: {
-    select: assign(({ event }) => event.type === 'SELECT' ? { selected: event.word } : {}),
-    confidence: assign(({ event }) => event.type === 'CONFIDENCE' ? { confidence: event.confidence } : {}),
-    open: assign(({ event }) => ({ openedAt: 'now' in event ? event.now : 0 })),
+    start: assign(({ event, context }) => {
+      if (event.type !== 'START') return {};
+      return {
+        mode: event.mode, sessionId: event.sessionId, baseline: event.baseline, startedAt: event.now, completedAt: null,
+        goals: planGoals(context.sets, event.baseline, event.mode, event.now, event.tutorialDone), steps: [], records: [],
+      };
+    }),
+    advance: assign(({ context, event }) => {
+      const now = nowOf(event);
+      const next = nextStep({ sets: context.sets, baseline: context.baseline, mode: context.mode, now, sessionId: context.sessionId, goals: context.goals, steps: context.steps, records: context.records });
+      if (!next) return { completedAt: now };
+      return { steps: [...context.steps, next.step], goals: next.goals, beat: 0, selected: null, confidence: null, hintLevel: 0 as const, openedAt: now };
+    }),
+    select: assign(({ event }) => (event.type === 'SELECT' ? { selected: event.word } : {})),
+    confidence: assign(({ event }) => (event.type === 'CONFIDENCE' ? { confidence: event.confidence } : {})),
+    hint: assign(({ context }) => ({ hintLevel: Math.min(3, context.hintLevel + 1) as 1 | 2 | 3 })),
     commit: assign(({ context, event }) => {
-      if (event.type !== 'LOCK' || !context.selected) return {};
-      const { set, chain, beat } = currentContent(context);
-      const previous = context.records.at(-1);
+      const current = currentRound(context);
+      if (event.type !== 'LOCK' || !current || !context.selected) return {};
+      const { round, set, chain, beat } = current;
+      const previous = context.beat > 0 ? context.records.findLast(r => r.scenarioId === chain.id) : undefined;
       const record = evaluateDecision({
         id: `${context.sessionId}-${context.records.length}`, sessionId: context.sessionId,
         setId: set.set_id, scenarioId: chain.id, beatId: beat.id,
-        presentedWords: set.words.map((word) => word.word), selectedWord: context.selected,
-        previousSelection: context.beat > 0 ? previous?.selectedWord ?? null : null,
-        reactionTimeMs: Math.max(0, event.now - context.openedAt), hintLevel: 0,
-        confidence: context.confidence, reviewIntervalDays: 0, occurredAt: event.now,
-      }, set, previous?.streak ?? 0);
+        presentedWords: round.words, selectedWord: context.selected, previousSelection: previous?.selectedWord ?? null,
+        reactionTimeMs: Math.max(0, event.now - context.openedAt), hintLevel: context.hintLevel, confidence: context.confidence,
+        reviewIntervalDays: reviewIntervalDays(context.baseline, chain.edge_id, event.now), occurredAt: event.now,
+      }, set, context.records.at(-1)?.streak ?? 0);
       return { records: [...context.records, record] };
     }),
-    nextBeat: assign(({ context, event }) => ({ beat: context.beat + 1, confidence: null, openedAt: 'now' in event ? event.now : 0 })),
-    nextRound: assign(({ context, event }) => ({ round: context.round + 1, beat: 0, selected: null, confidence: null, openedAt: 'now' in event ? event.now : 0 })),
-    practice: assign(({ event }) => ({ round: 5, beat: 0, selected: null, confidence: null, openedAt: 'now' in event ? event.now : 0 })),
-    finish: assign(({ event }) => ({ completedAt: 'now' in event ? event.now : 0 })),
-    pause: assign(({ event }) => ({ pausedAt: 'now' in event ? event.now : null })),
-    resume: assign(({ context, event }) => ({ openedAt: context.openedAt + ('now' in event ? event.now - (context.pausedAt ?? event.now) : 0), pausedAt: null })),
-    restart: assign(({ event }) => ({ round: 0, beat: 0, selected: null, records: [], confidence: null, completedAt: null, startedAt: 'now' in event ? event.now : 0, sessionId: event.type === 'RESTART' ? event.sessionId ?? '' : '' })),
+    nextBeat: assign(({ context, event }) => ({ beat: context.beat + 1, confidence: null, hintLevel: 0 as const, openedAt: nowOf(event) })),
+    pause: assign(({ event }) => ({ pausedAt: nowOf(event) })),
+    resume: assign(({ context, event }) => ({ openedAt: context.openedAt + (nowOf(event) - (context.pausedAt ?? nowOf(event))), pausedAt: null })),
+    finish: assign(({ event }) => ({ completedAt: nowOf(event) })),
+    reset: assign(() => ({ steps: [], goals: [], records: [], completedAt: null, beat: 0, selected: null })),
   },
 }).createMachine({
-  id: 'last-word', initial: 'home',
-  context: ({ input }) => ({ sets: input.sets, sessionId: input.sessionId, startedAt: input.now, completedAt: null, round: 0, beat: 0, selected: null, confidence: null, openedAt: input.now, records: [], pausedAt: null }),
+  id: 'last-word',
+  initial: 'home',
+  context: ({ input }) => ({
+    sets: input.sets, baseline: { nodes: {}, edges: {}, reviews: {} }, mode: 'journey', sessionId: '', startedAt: 0, completedAt: null,
+    goals: [], steps: [], beat: 0, selected: null, confidence: null, hintLevel: 0, openedAt: 0, pausedAt: null, records: [],
+  }),
   states: {
-    home: { on: { START: { target: 'reading', actions: 'open' } } },
-    reading: { on: {
-      SELECT: { guard: 'validWord', actions: 'select' }, CONFIDENCE: { actions: 'confidence' },
-      LOCK: { guard: 'selected', target: 'locked', actions: 'commit' },
-      PAUSE: { target: 'paused', actions: 'pause' },
-    } },
-    paused: { on: { RESUME: { target: 'reading', actions: 'resume' } } },
-    locked: { on: { NEXT: [
-      { guard: 'tutorial', target: 'feedback' },
-      { guard: ({ context }) => context.round >= 2 && context.round <= 4 && context.records.at(-1)?.confidence === 'certain' && context.records.at(-1)?.correctness === 'incorrect', target: 'feedback' },
-      { guard: 'moreBeats', target: 'reading', actions: 'nextBeat' },
-      { guard: 'diagnostic', target: 'diagnosticRouting' },
-      { target: 'feedback' },
-    ] } },
-    diagnosticRouting: { always: [
-      { guard: 'firstCold', target: 'reading', actions: 'nextRound' },
-      { guard: 'needsProbe', target: 'reading', actions: 'nextRound' },
-      { target: 'diagnosis' },
-    ] },
-    diagnosis: { on: { NEXT: { target: 'reading', actions: 'practice' }, FINISH: { target: 'recap', actions: 'finish' } } },
-    feedback: { on: { NEXT: [
-      { guard: 'moreBeats', target: 'reading', actions: 'nextBeat' },
-      { guard: 'diagnostic', target: 'diagnosticRouting' },
-      { guard: 'lastRound', target: 'recap', actions: 'finish' },
-      { target: 'reading', actions: 'nextRound' },
-    ] } },
-    recap: { on: { RESTART: { target: 'home', actions: 'restart' } } },
+    home: { on: { START: { target: 'routing', actions: ['start', 'advance'] } } },
+    routing: { always: [{ guard: 'done', target: 'recap' }, { guard: 'isRound', target: 'reading' }, { target: 'card' }] },
+    reading: {
+      on: {
+        SELECT: { guard: 'validWord', actions: 'select' },
+        CONFIDENCE: { guard: 'asksConfidence', actions: 'confidence' },
+        HINT: { guard: 'canHint', actions: 'hint' },
+        LOCK: { guard: 'selected', target: 'judging', actions: 'commit' },
+        PAUSE: { target: 'paused', actions: 'pause' },
+        FINISH: { target: 'recap', actions: 'finish' },
+      },
+    },
+    judging: {
+      always: [
+        { guard: 'tutorial', target: 'beatFeedback' },
+        { guard: 'confidentMiss', target: 'feedback' },
+        { guard: 'moreBeats', target: 'reading', actions: 'nextBeat' },
+        { guard: 'diagnostic', target: 'routing', actions: 'advance' },
+        { target: 'feedback' },
+      ],
+    },
+    paused: { on: { RESUME: { target: 'reading', actions: 'resume' }, FINISH: { target: 'recap', actions: 'finish' } } },
+    beatFeedback: { on: { NEXT: [{ guard: 'moreBeats', target: 'reading', actions: 'nextBeat' }, { target: 'routing', actions: 'advance' }] } },
+    feedback: { on: { NEXT: { target: 'routing', actions: 'advance' }, FINISH: { target: 'recap', actions: 'finish' } } },
+    card: { on: { NEXT: { target: 'routing', actions: 'advance' }, FINISH: { target: 'recap', actions: 'finish' } } },
+    recap: { on: { HOME: { target: 'home', actions: 'reset' } } },
   },
 });

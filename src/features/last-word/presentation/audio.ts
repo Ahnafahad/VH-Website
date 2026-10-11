@@ -1,47 +1,77 @@
 'use client';
 
 import { Howl } from 'howler';
+import { Capacitor } from '@capacitor/core';
+import { Haptics, ImpactStyle, NotificationType } from '@capacitor/haptics';
+import { assetUrl, type AssetUrls } from '../assets/runtime';
 
-export type Cue = 'arrival' | 'selection' | 'switch' | 'lock' | 'best' | 'defensible' | 'incorrect' | 'mastery' | 'review';
-const frequencies: Record<Cue, number> = {
-  arrival: 320, selection: 180, switch: 240, lock: 120,
-  best: 520, defensible: 390, incorrect: 150, mastery: 660, review: 440,
+/** Presentation-only cues. Playback failures never affect game state (stack rule: Howler never drives flow). */
+export type Cue = 'arrival' | 'select' | 'switch' | 'lock' | 'best' | 'defensible' | 'incorrect' | 'hold' | 'perfect-read' | 'mastery' | 'review-due' | 'hint' | 'ui-tap' | 'reveal';
+type Haptic = { web: number | number[]; native: 'light' | 'medium' | 'heavy' | 'success' | 'warning' | 'error' };
+
+// Placeholder tones (Web Audio, so the CSP's media-src 'self' never blocks them). Pitches in D Dorian.
+const TONES: Record<Cue, number[]> = {
+  arrival: [587], select: [294], switch: [392, 440], lock: [147, 294], best: [440, 587], defensible: [440, 523],
+  incorrect: [196, 175], hold: [220], 'perfect-read': [440, 494, 587], mastery: [294, 440, 587], 'review-due': [659],
+  hint: [880], 'ui-tap': [330], reveal: [294, 587],
+};
+const DEFAULT_HAPTICS: Partial<Record<Cue, Haptic>> = {
+  select: { web: 6, native: 'light' }, switch: { web: [6, 12, 6], native: 'light' }, lock: { web: 18, native: 'medium' },
+  arrival: { web: 4, native: 'light' }, best: { web: [12, 40, 12], native: 'success' }, defensible: { web: [10, 50, 6], native: 'light' },
+  incorrect: { web: [24, 60, 16], native: 'warning' }, hold: { web: [18, 30, 18], native: 'success' },
+  mastery: { web: [20, 50, 20, 50, 60], native: 'success' }, hint: { web: 5, native: 'light' },
 };
 
-function synthesize(frequency: number) {
-  const rate = 22050;
-  const samples = Math.floor(rate * 0.16);
-  const data = new ArrayBuffer(44 + samples * 2);
-  const view = new DataView(data);
-  const text = (offset: number, value: string) => [...value].forEach((c, i) => view.setUint8(offset + i, c.charCodeAt(0)));
-  text(0, 'RIFF'); view.setUint32(4, 36 + samples * 2, true); text(8, 'WAVE');
-  text(12, 'fmt '); view.setUint32(16, 16, true); view.setUint16(20, 1, true);
-  view.setUint16(22, 1, true); view.setUint32(24, rate, true); view.setUint32(28, rate * 2, true);
-  view.setUint16(32, 2, true); view.setUint16(34, 16, true); text(36, 'data'); view.setUint32(40, samples * 2, true);
-  for (let i = 0; i < samples; i++) {
-    const t = i / rate;
-    const envelope = Math.min(t / 0.008, 1) * Math.exp(-t * 28);
-    view.setInt16(44 + i * 2, (Math.sin(t * frequency * Math.PI * 2) + 0.22 * Math.sin(t * frequency * 3 * Math.PI)) * envelope * 6500, true);
-  }
-  let binary = '';
-  for (const byte of new Uint8Array(data)) binary += String.fromCharCode(byte);
-  return `data:audio/wav;base64,${btoa(binary)}`;
-}
+export function createFeedback(assets: AssetUrls) {
+  const howls = new Map<Cue, Howl>();
+  let context: AudioContext | null = null;
+  let haptics = DEFAULT_HAPTICS;
+  const patterns = assetUrl(assets, 'haptics.patterns');
+  if (patterns) fetch(patterns).then(r => r.json()).then(json => { haptics = { ...DEFAULT_HAPTICS, ...json }; }).catch(() => {});
 
-export function createFeedbackHooks() {
-  const sounds = new Map<Cue, Howl>();
+  function tone(cue: Cue) {
+    context ??= new AudioContext();
+    const start = context.currentTime;
+    TONES[cue].forEach((frequency, i) => {
+      const osc = context!.createOscillator();
+      const gain = context!.createGain();
+      const t = start + i * 0.07;
+      osc.type = 'sine';
+      osc.frequency.value = frequency;
+      gain.gain.setValueAtTime(0, t);
+      gain.gain.linearRampToValueAtTime(0.12, t + 0.008);
+      gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.28);
+      osc.connect(gain).connect(context!.destination);
+      osc.start(t);
+      osc.stop(t + 0.3);
+    });
+  }
+
   return {
-    play(cue: Cue, sound: boolean, haptics: boolean) {
+    play(cue: Cue, sound: boolean, haptic: boolean) {
       if (sound) {
-        let howl = sounds.get(cue);
-        if (!howl) {
-          howl = new Howl({ src: [synthesize(frequencies[cue])], format: ['wav'], volume: 0.28 });
-          sounds.set(cue, howl);
-        }
-        howl.play();
+        try {
+          const url = assetUrl(assets, `sfx.${cue}`);
+          if (url) {
+            let howl = howls.get(cue);
+            if (!howl) howls.set(cue, (howl = new Howl({ src: [url], volume: 0.7 })));
+            howl.play();
+          } else tone(cue);
+        } catch { /* audio is optional */ }
       }
-      if (haptics && typeof navigator.vibrate === 'function') navigator.vibrate(cue === 'lock' ? 18 : cue === 'switch' ? [6, 12, 6] : 7);
+      const pattern = haptics[cue];
+      if (!haptic || !pattern) return;
+      if (Capacitor.isNativePlatform()) {
+        const n = pattern.native;
+        if (n === 'success' || n === 'warning' || n === 'error') void Haptics.notification({ type: { success: NotificationType.Success, warning: NotificationType.Warning, error: NotificationType.Error }[n] });
+        else void Haptics.impact({ style: { light: ImpactStyle.Light, medium: ImpactStyle.Medium, heavy: ImpactStyle.Heavy }[n] });
+      } else if (typeof navigator !== 'undefined' && navigator.vibrate) navigator.vibrate(pattern.web);
     },
-    dispose() { sounds.forEach((sound) => sound.unload()); sounds.clear(); },
+    dispose() {
+      howls.forEach(h => h.unload());
+      howls.clear();
+      void context?.close();
+    },
   };
 }
+export type Feedback = ReturnType<typeof createFeedback>;

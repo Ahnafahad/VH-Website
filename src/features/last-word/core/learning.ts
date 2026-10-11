@@ -98,8 +98,10 @@ export function diagnosticOutcome(cold: DecisionRecord[], probe: DecisionRecord[
   if (all.some(d => d.correctness === 'incorrect' && d.confidence === 'certain')) return { outcome: 'D', needsProbe: false, skipDefinitions: true, skipInstruction: false, message: 'One confident judgment missed the boundary. Test that clue in a fresh context.' };
   const coldComplete = new Set(cold.map(d => d.scenarioId)).size >= 2;
   const perfectCold = coldComplete && cold.every(d => d.correctness === 'best' && !d.hintLevel);
-  const perfectProbe = probe.length > 0 && probe.every(d => d.correctness === 'best' && !d.hintLevel) && probe.some(d => d.kind === 'transfer' || d.kind === 'shift');
+  // The probe must exercise a harder judgment: a shift, a held false shift, or a transfer context.
+  const perfectProbe = probe.length > 0 && probe.every(d => d.correctness === 'best' && !d.hintLevel) && probe.some(d => d.kind === 'transfer' || d.kind === 'shift' || d.kind === 'hold');
   if (perfectCold && perfectProbe) return { outcome: 'A', needsProbe: false, skipDefinitions: true, skipInstruction: true, message: 'You already own this distinction. Instruction skipped; a later fresh context will check retention.' };
-  const partial = all.some(d => d.correctness !== 'incorrect');
+  // Partial mastery means most judgments landed; one lucky hit among misses is weak mastery.
+  const partial = all.length > 0 && all.filter(d => d.correctness !== 'incorrect').length / all.length >= 0.5;
   return { outcome: partial ? 'B' : 'C', needsProbe: perfectCold && probe.length === 0, skipDefinitions: partial, skipInstruction: false, message: partial ? 'The meanings are familiar. Focus on the boundary between them.' : 'Start with clear clues, then follow how the context changes.' };
 }

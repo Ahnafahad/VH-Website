@@ -59,8 +59,9 @@ describe('pipeline converter', () => {
   });
 
   it('marks a set without a critic block as draft', () => {
-    const { qa: _qa, ...draft } = audited(133);
-    expect(convertPipelineSet(draft as PipelineSet).status).toBe('draft');
+    const draft = audited(133);
+    delete draft.qa;
+    expect(convertPipelineSet(draft).status).toBe('draft');
   });
 
   it('tells the two formats apart', () => {

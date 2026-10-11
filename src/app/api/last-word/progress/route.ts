@@ -3,7 +3,8 @@ import { eq } from 'drizzle-orm';
 import { db, users } from '@/lib/db';
 import { ApiException, safeApiHandler, validateAuth } from '@/lib/api-utils';
 import { DatabaseLastWordPersistence } from '@/features/last-word/persistence/database';
-import { loadContent, selectPlayable } from '@/features/last-word/content/load';
+import { isStaffRole } from '@/lib/auth/roles';
+import { loadContent, PLAYER_STATUSES, selectPlayable } from '@/features/last-word/content/load';
 import { reviewStatuses } from '@/features/last-word/content/schema';
 import { parseSubmission } from '@/features/last-word/persistence/submission';
 import { PersistenceValidationError } from '@/features/last-word/persistence/types';
@@ -12,10 +13,10 @@ export const dynamic = 'force-dynamic';
 
 async function authenticatedPersistence() {
   const { email } = await validateAuth();
-  const [user] = await db.select({ id: users.id }).from(users).where(eq(users.email, email.toLowerCase())).limit(1);
+  const [user] = await db.select({ id: users.id, role: users.role }).from(users).where(eq(users.email, email.toLowerCase())).limit(1);
   if (!user) throw new ApiException('User not found', 404);
-  // Any loadable status: staff may preview audited sets; errors-free chains only.
-  return new DatabaseLastWordPersistence(db, user.id, selectPlayable(loadContent(), reviewStatuses));
+  // Players may only submit against approved/published content; staff previews may include audited sets.
+  return new DatabaseLastWordPersistence(db, user.id, selectPlayable(loadContent(), isStaffRole(user.role) ? reviewStatuses : PLAYER_STATUSES));
 }
 
 export async function GET() {
