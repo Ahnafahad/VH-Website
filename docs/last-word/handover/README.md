@@ -3,7 +3,7 @@
 - **Repository:** `Ahnafahad/VH-Website`
 - **Working branch:** [`claude/relaxed-goodall-ioky1j`](https://github.com/Ahnafahad/VH-Website/tree/claude/relaxed-goodall-ioky1j)
 - **Prepared:** 2026-10-10
-- **Status:** Last Word is a runnable, fixture-backed Phase 1 checkpoint. It is not a finished game or a production release.
+- **Status (2026-10-11):** MVP built and verified. Read [`../FINAL_REPORT.md`](../FINAL_REPORT.md) for the §50–51 acceptance results, [`../RUNBOOK.md`](../RUNBOOK.md) for adding content and assets, applying the migration and deploying, and [`../DECISIONS.md`](../DECISIONS.md) for the reasoning behind the design. The rest of this file is the 2026-10-10 handover, kept for history.
 
 This branch already had the handwritten **essay feature** at commit `7441cbf74a6deabca5c03eb0b1087b63e9348ea0`. Preserve it. The Last Word bootstrap and partial game from `codex/last-word-game` (`9b7b10a`, `3a57687`, `df8c966`, `32bf531`) were integrated on top of it in merge commit `8b5c6dc1d7144474506c6fff308a4fc0fc420056`. This handover and all referenced project files are tracked on GitHub; the next agent should work from this branch, not from anyone's local checkout.
 
