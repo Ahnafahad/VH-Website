@@ -1,6 +1,7 @@
 import { and, eq } from 'drizzle-orm';
 import type { LibSQLDatabase } from 'drizzle-orm/libsql';
 import * as schema from '@/lib/db/schema';
+import type { LastWordSet } from '../content/schema';
 import type { EdgeMastery, NodeMastery, ReviewSchedule } from '../core/types';
 import { applySubmission, parseSubmission } from './submission';
 import { PersistenceValidationError, type LastWordPersistence, type LearningSnapshot, type SessionSubmission } from './types';
@@ -10,7 +11,7 @@ const { lastWordSessions: sessions, lastWordNodeMastery: nodes, lastWordEdgeMast
 
 /** Inject a local/in-memory database in tests; the API alone injects the host connection. */
 export class DatabaseLastWordPersistence implements LastWordPersistence {
-  constructor(private database: Database, private userId: number) {}
+  constructor(private database: Database, private userId: number, private sets: LastWordSet[]) {}
 
   private async read(connection: Pick<Database, 'select'>): Promise<LearningSnapshot> {
     const nodeRows = await connection.select().from(nodes).where(eq(nodes.userId, this.userId));
@@ -37,7 +38,7 @@ export class DatabaseLastWordPersistence implements LastWordPersistence {
         if (existing.submission !== JSON.stringify(submission)) throw new PersistenceValidationError('A saved session cannot be replaced.');
         return this.read(tx);
       }
-      const { snapshot, decisions: records } = applySubmission(await this.read(tx), submission);
+      const { snapshot, decisions: records } = applySubmission(await this.read(tx), submission, this.sets);
       const summary = snapshot.sessions[snapshot.sessions.length - 1];
       const [saved] = await tx.insert(sessions).values({
         userId: this.userId,

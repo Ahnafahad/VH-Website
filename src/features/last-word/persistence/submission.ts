@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { getFixtureSet } from '../content/fixtures';
+import type { LastWordSet } from '../content/schema';
 import { evaluateDecision, updateMastery } from '../core/learning';
 import type { DecisionRecord } from '../core/types';
 import { PersistenceValidationError, type LearningSnapshot, type SessionSubmission } from './types';
@@ -53,17 +53,19 @@ export function parseSubmission(value: unknown): SessionSubmission {
 }
 
 /** This boundary never accepts client-derived scores, fits, mastery, or review intervals. */
-export function applySubmission(snapshot: LearningSnapshot, value: unknown): { snapshot: LearningSnapshot; decisions: DecisionRecord[]; submission: SessionSubmission } {
+/** sets is the content the session was played against. eplay skips decisions whose content has since been withdrawn (stored guest history) instead of rejecting them. */
+export function applySubmission(snapshot: LearningSnapshot, value: unknown, sets: LastWordSet[], { replay = false } = {}): { snapshot: LearningSnapshot; decisions: DecisionRecord[]; submission: SessionSubmission } {
   const submission = parseSubmission(value);
   let mastery = snapshot;
   let streak = 0;
   const decisions: DecisionRecord[] = [];
   const previousByScenario = new Map<string, { index: number; word: string }>();
   for (const input of submission.decisions) {
-    const set = getFixtureSet(input.setId);
-    const chain = set.chains.find(item => item.id === input.scenarioId);
+    const set = sets.find(item => item.set_id === input.setId);
+    const chain = set?.chains.find(item => item.id === input.scenarioId);
     const beatIndex = chain?.beats.findIndex(beat => beat.id === input.beatId) ?? -1;
-    if (!chain || beatIndex < 0) throw new PersistenceValidationError('Unknown scenario or beat.');
+    if (replay && (!set || !chain || beatIndex < 0)) continue;
+    if (!set || !chain || beatIndex < 0) throw new PersistenceValidationError('Unknown scenario or beat.');
     const expectedWords = set.words.map(word => word.word);
     if (new Set(input.presentedWords).size !== expectedWords.length || input.presentedWords.length !== expectedWords.length || expectedWords.some(word => !input.presentedWords.includes(word)) || !expectedWords.includes(input.selectedWord)) {
       throw new PersistenceValidationError('Presented and selected words must match the content.');

@@ -3,6 +3,8 @@ import { eq } from 'drizzle-orm';
 import { db, users } from '@/lib/db';
 import { ApiException, safeApiHandler, validateAuth } from '@/lib/api-utils';
 import { DatabaseLastWordPersistence } from '@/features/last-word/persistence/database';
+import { loadContent, selectPlayable } from '@/features/last-word/content/load';
+import { reviewStatuses } from '@/features/last-word/content/schema';
 import { parseSubmission } from '@/features/last-word/persistence/submission';
 import { PersistenceValidationError } from '@/features/last-word/persistence/types';
 
@@ -12,7 +14,8 @@ async function authenticatedPersistence() {
   const { email } = await validateAuth();
   const [user] = await db.select({ id: users.id }).from(users).where(eq(users.email, email.toLowerCase())).limit(1);
   if (!user) throw new ApiException('User not found', 404);
-  return new DatabaseLastWordPersistence(db, user.id);
+  // Any loadable status: staff may preview audited sets; errors-free chains only.
+  return new DatabaseLastWordPersistence(db, user.id, selectPlayable(loadContent(), reviewStatuses));
 }
 
 export async function GET() {

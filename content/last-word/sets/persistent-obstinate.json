@@ -2,6 +2,10 @@
   "schema_version": 1,
   "set_id": "persistent-obstinate",
   "title": "The goal and the method",
+  "status": "approved",
+  "source": {
+    "format": "hand-authored"
+  },
   "words": [
     {
       "word": "persistent",

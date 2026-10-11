@@ -2,6 +2,10 @@
   "schema_version": 1,
   "set_id": "confident-arrogant",
   "title": "Belief, without superiority",
+  "status": "approved",
+  "source": {
+    "format": "hand-authored"
+  },
   "words": [
     {
       "word": "confident",

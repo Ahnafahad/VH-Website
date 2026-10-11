@@ -19,7 +19,10 @@
     "typecheck": "tsc --noEmit",
     "test:stack": "playwright test --config playwright.last-word.config.ts",
     "verify:stack-peers": "node scripts/verify-last-word-peers.mjs",
-    "last-word:validate-assets": "node scripts/last-word/validate-assets.mjs"
+    "last-word:validate-assets": "node scripts/last-word/validate-assets.mjs",
+    "last-word:validate-content": "tsx scripts/last-word/content.ts validate",
+    "last-word:import-content": "tsx scripts/last-word/content.ts import",
+    "last-word:set-status": "tsx scripts/last-word/content.ts status"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1078.0",

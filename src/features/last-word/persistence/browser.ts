@@ -1,3 +1,4 @@
+import type { LastWordSet } from '../content/schema';
 import { applySubmission, parseSubmission } from './submission';
 import { emptyLearningSnapshot, PersistenceValidationError, type LastWordPersistence, type LearningSnapshot, type SessionSubmission } from './types';
 
@@ -5,7 +6,7 @@ type BrowserStorage = Pick<Storage, 'getItem' | 'setItem'>;
 
 /** Browser-only guest progress; never uploaded or merged into authenticated evidence. */
 export class BrowserLastWordPersistence implements LastWordPersistence {
-  constructor(private storage: BrowserStorage, private key = 'last-word:guest:v1') {}
+  constructor(private storage: BrowserStorage, private sets: LastWordSet[], private key = 'last-word:guest:v1') {}
 
   private submissions(): SessionSubmission[] {
     const raw = this.storage.getItem(this.key);
@@ -16,7 +17,7 @@ export class BrowserLastWordPersistence implements LastWordPersistence {
   }
 
   async load(): Promise<LearningSnapshot> {
-    return this.submissions().reduce((snapshot, submission) => applySubmission(snapshot, submission).snapshot, emptyLearningSnapshot());
+    return this.submissions().reduce((snapshot, submission) => applySubmission(snapshot, submission, this.sets, { replay: true }).snapshot, emptyLearningSnapshot());
   }
 
   async saveSession(value: SessionSubmission): Promise<LearningSnapshot> {
@@ -27,7 +28,7 @@ export class BrowserLastWordPersistence implements LastWordPersistence {
       if (JSON.stringify(existing) !== JSON.stringify(submission)) throw new PersistenceValidationError('A saved session cannot be replaced.');
       return this.load();
     }
-    const snapshot = applySubmission(await this.load(), submission).snapshot;
+    const snapshot = applySubmission(await this.load(), submission, this.sets).snapshot;
     this.storage.setItem(this.key, JSON.stringify([...submissions, submission]));
     return snapshot;
   }

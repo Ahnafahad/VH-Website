@@ -73,7 +73,7 @@ export default function LastWordGame({ sets }: { sets: LastWordSet[] }) {
   useEffect(() => {
     if (authStatus === 'loading') return;
     let cancelled = false;
-    repository.current = authStatus === 'authenticated' ? new HttpLastWordPersistence() : new BrowserLastWordPersistence(localStorage);
+    repository.current = authStatus === 'authenticated' ? new HttpLastWordPersistence() : new BrowserLastWordPersistence(localStorage, sets);
     repository.current.load().then((snapshot) => {
       if (cancelled) return;
       setBaseline(snapshot); useLastWordMastery.getState().replace(snapshot);
@@ -85,7 +85,7 @@ export default function LastWordGame({ sets }: { sets: LastWordSet[] }) {
       setReady(true);
     });
     return () => { cancelled = true; };
-  }, [authStatus]);
+  }, [authStatus, sets]);
 
   const cue = useCallback((name: Cue) => {
     const preferences = useLastWordSettings.getState();
