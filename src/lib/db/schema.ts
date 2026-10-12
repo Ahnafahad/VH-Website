@@ -1992,9 +1992,12 @@ export const essaySeries = sqliteTable('essay_series', {
   prompt:      text('prompt').notNull().default(''),
   essayDate:   text('essay_date'),                         // Bangladesh calendar date (YYYY-MM-DD)
   essayCount:  integer('essay_count').notNull().default(1), // essays per student in this series
-  // JSON: { key: string; name: string; max: number }[] — marking sections, applied to every essay
+  // LEGACY (pre-2026-10-12): per-section marking. New series write '[]'; read via parseEssays().
   sections:    text('sections').notNull(),
-  totalMarks:  real('total_marks').notNull(),               // per essay = sum of section maxima
+  // JSON: { prompt: string; max: number }[] — one entry per essay, each with its own prompt and maximum.
+  // essayCount = essays.length. '[]' on legacy rows → derive from essayCount/prompt/totalMarks (parseEssays).
+  essays:      text('essays').notNull().default('[]'),
+  totalMarks:  real('total_marks').notNull(),               // whole-series maximum = sum of essays[].max
   product:     text('product').notNull(),                   // 'iba' | 'fbs' | 'fbs_detailed'
   batch:       text('batch'),                               // null = every batch of the product
   deadline:    integer('deadline', { mode: 'timestamp' }).notNull(),
@@ -2023,11 +2026,10 @@ export const essaySubmissions = sqliteTable('essay_submissions', {
   rejectReason:    text('reject_reason'),
   rejectedBy:      integer('rejected_by').references(() => users.id, { onDelete: 'set null' }),
   rejectedAt:      integer('rejected_at', { mode: 'timestamp' }),
-  // JSON: Record<sectionKey, number | null>
+  // LEGACY per-section marks/comments (pre-2026-10-12); new grading writes '{}'.
   marks:           text('marks').notNull().default('{}'),
-  // JSON: Record<sectionKey, string>
   sectionComments: text('section_comments').notNull().default('{}'),
-  total:           real('total'),
+  total:           real('total'),                              // THE mark for this essay (0..essays[essayIndex-1].max)
   overallFeedback: text('overall_feedback').notNull().default(''),
   privateNote:     text('private_note').notNull().default(''),  // staff only — never sent to the student
   gradedBy:        integer('graded_by').references(() => users.id, { onDelete: 'set null' }),
