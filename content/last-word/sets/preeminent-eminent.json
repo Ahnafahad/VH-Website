@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "preeminent-eminent",
+  "title": "preeminent / eminent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[8]",
+    "source_pair_id": 28,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "preeminent",
+      "sense": "Surpassing all others in a field or category",
+      "connotation": "strong praise",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming being celebrated proves being the single leader.",
+        "Treating every prize as an overall first-place ranking."
+      ]
+    },
+    {
+      "word": "eminent",
+      "sense": "Highly distinguished and respected",
+      "connotation": "high praise",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming being celebrated proves being the single leader.",
+        "Overlooking evidence of being foremost among peers."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "foremost_rank_vs_distinction",
+      "description": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else."
+    }
+  ],
+  "edges": [
+    {
+      "id": "preeminent__eminent",
+      "a": "preeminent",
+      "b": "eminent",
+      "boundary_rule": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else.",
+      "clues_a": [
+        "chosen above all rivals",
+        "sets the leading standard"
+      ],
+      "clues_b": [
+        "respected expert among several",
+        "established recognition without top rank"
+      ],
+      "irrelevant_clues": [
+        "publicity",
+        "number of interviews"
+      ],
+      "misconceptions": {
+        "M1": "Assuming being celebrated proves being the single leader.",
+        "M2": "Treating every prize as an overall first-place ranking.",
+        "M3": "Overlooking evidence of being foremost among peers."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "preeminent-eminent_001",
+      "edge_id": "preeminent__eminent",
+      "domain": "community_baking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Maya among local bakers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preeminent-eminent_001_b1",
+          "text": "In a blind tasting, Maya's bread ranks first against every bakery in the city.",
+          "best_word": "preeminent",
+          "fit": {
+            "preeminent": 0.91,
+            "eminent": 0.26
+          },
+          "decisive_clue": "first place across the whole local field",
+          "reason": "The initial evidence is first place across the whole local field; it best supports preeminent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eminent": "M1"
+          }
+        },
+        {
+          "id": "preeminent-eminent_001_b2",
+          "text": "The judges repeat the test with different loaves, and hers again wins overall.",
+          "best_word": "preeminent",
+          "fit": {
+            "preeminent": 0.93,
+            "eminent": 0.21
+          },
+          "decisive_clue": "repeat first-place results against all peers",
+          "reason": "Repeated top rankings support her position above every competitor in that field.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "eminent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Repeated top rankings support her position above every competitor in that field.",
+      "feedback_deep": "Preeminent means foremost among peers; eminent means widely respected for achievement. Repeated top rankings support her position above every competitor in that field.",
+      "contrast_rule": "Preeminent means at the top; eminent means among the respected.",
+      "hints": {
+        "attention": "Was she compared with everyone?",
+        "axis": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else.",
+        "contrast": "Preeminent means at the top; eminent means among the respected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preeminent-eminent_002",
+      "edge_id": "preeminent__eminent",
+      "domain": "music_teaching",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ines as a music teacher?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preeminent-eminent_002_b1",
+          "text": "Ines has earned several respected teaching awards and is often invited to advise other teachers.",
+          "best_word": "eminent",
+          "fit": {
+            "eminent": 0.91,
+            "preeminent": 0.26
+          },
+          "decisive_clue": "high professional distinction without top ranking",
+          "reason": "The initial evidence is high professional distinction without top ranking; it best supports eminent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "preeminent": "M1"
+          }
+        },
+        {
+          "id": "preeminent-eminent_002_b2",
+          "text": "Her office is on the third floor of the school.",
+          "best_word": "eminent",
+          "fit": {
+            "eminent": 0.93,
+            "preeminent": 0.21
+          },
+          "decisive_clue": "high professional distinction without top ranking",
+          "reason": "Office location says nothing about surpassing all other teachers.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "preeminent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Office location says nothing about surpassing all other teachers.",
+      "feedback_deep": "Preeminent means foremost among peers; eminent means widely respected for achievement. Office location says nothing about surpassing all other teachers.",
+      "contrast_rule": "Preeminent means at the top; eminent means among the respected.",
+      "hints": {
+        "attention": "What level of recognition is established?",
+        "axis": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else.",
+        "contrast": "Preeminent means at the top; eminent means among the respected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preeminent-eminent_003",
+      "edge_id": "preeminent__eminent",
+      "domain": "local_coaching",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Salma among the town's swimming coaches?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preeminent-eminent_003_b1",
+          "text": "All six clubs agree Salma is the town's leading coach and ask her to train their instructors.",
+          "best_word": "preeminent",
+          "fit": {
+            "preeminent": 0.91,
+            "eminent": 0.26
+          },
+          "decisive_clue": "field-wide recognition as foremost coach",
+          "reason": "The initial evidence is field-wide recognition as foremost coach; it best supports preeminent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eminent": "M1"
+          }
+        },
+        {
+          "id": "preeminent-eminent_003_b2",
+          "text": "Even competing clubs follow the training methods she developed.",
+          "best_word": "preeminent",
+          "fit": {
+            "preeminent": 0.93,
+            "eminent": 0.21
+          },
+          "decisive_clue": "influence setting the standard for peers",
+          "reason": "Her methods guide even rivals, supporting the claim of leading standing.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "eminent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Her methods guide even rivals, supporting the claim of leading standing.",
+      "feedback_deep": "Preeminent means foremost among peers; eminent means widely respected for achievement. Her methods guide even rivals, supporting the claim of leading standing.",
+      "contrast_rule": "Preeminent means at the top; eminent means among the respected.",
+      "hints": {
+        "attention": "Whose standard do the others follow?",
+        "axis": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else.",
+        "contrast": "Preeminent means at the top; eminent means among the respected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preeminent-eminent_004",
+      "edge_id": "preeminent__eminent",
+      "domain": "local_architecture",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Karim as an architect?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preeminent-eminent_004_b1",
+          "text": "Karim's buildings have won prestigious prizes, and leading professionals seek his advice.",
+          "best_word": "eminent",
+          "fit": {
+            "eminent": 0.91,
+            "preeminent": 0.26
+          },
+          "decisive_clue": "widely acknowledged professional achievement",
+          "reason": "The initial evidence is widely acknowledged professional achievement; it best supports eminent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "preeminent": "M1"
+          }
+        },
+        {
+          "id": "preeminent-eminent_004_b2",
+          "text": "A magazine calls his latest office design 'brilliant.'",
+          "best_word": "eminent",
+          "fit": {
+            "eminent": 0.93,
+            "preeminent": 0.21
+          },
+          "decisive_clue": "widely acknowledged professional achievement",
+          "reason": "Extra praise does not rank Karim above every architect in his field.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "preeminent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Extra praise does not rank Karim above every architect in his field.",
+      "feedback_deep": "Preeminent means foremost among peers; eminent means widely respected for achievement. Extra praise does not rank Karim above every architect in his field.",
+      "contrast_rule": "Preeminent means at the top; eminent means among the respected.",
+      "hints": {
+        "attention": "Does praise establish an overall first place?",
+        "axis": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else.",
+        "contrast": "Preeminent means at the top; eminent means among the respected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preeminent-eminent_005",
+      "edge_id": "preeminent__eminent",
+      "domain": "photography_exhibition",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Tarek as a photographer?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "preeminent-eminent_005_b1",
+          "text": "Tarek's photographs hang in important galleries, and reviewers consistently call his work outstanding.",
+          "best_word": "eminent",
+          "fit": {
+            "eminent": 0.91,
+            "preeminent": 0.26
+          },
+          "decisive_clue": "major recognition within photography",
+          "reason": "The initial evidence is major recognition within photography; it best supports eminent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "preeminent": "M1"
+          }
+        },
+        {
+          "id": "preeminent-eminent_005_b2",
+          "text": "Two other photographers receive the same career award that he receives this year.",
+          "best_word": "eminent",
+          "fit": {
+            "eminent": 0.93,
+            "preeminent": 0.21
+          },
+          "decisive_clue": "distinction shared with other accomplished peers",
+          "reason": "The shared award shows achievement without singling him out as the one foremost figure.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "preeminent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The shared award shows achievement without singling him out as the one foremost figure.",
+      "feedback_deep": "Preeminent means foremost among peers; eminent means widely respected for achievement. The shared award shows achievement without singling him out as the one foremost figure.",
+      "contrast_rule": "Preeminent means at the top; eminent means among the respected.",
+      "hints": {
+        "attention": "Does an honour establish exclusivity?",
+        "axis": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else.",
+        "contrast": "Preeminent means at the top; eminent means among the respected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preeminent-eminent_006",
+      "edge_id": "preeminent__eminent",
+      "domain": "book_awards",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Noah among contemporary storytellers?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "preeminent-eminent_006_b1",
+          "text": "A national jury names Noah the single most influential living storyteller in its yearly review.",
+          "best_word": "preeminent",
+          "fit": {
+            "preeminent": 0.91,
+            "eminent": 0.26
+          },
+          "decisive_clue": "explicit designation as the foremost living writer",
+          "reason": "The initial evidence is explicit designation as the foremost living writer; it best supports preeminent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "eminent": "M1"
+          }
+        },
+        {
+          "id": "preeminent-eminent_006_b2",
+          "text": "Publishers across the country now use his work as their reference point for the field.",
+          "best_word": "preeminent",
+          "fit": {
+            "preeminent": 0.93,
+            "eminent": 0.21
+          },
+          "decisive_clue": "unique leading influence across peers",
+          "reason": "The later impact reinforces the top position already identified.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "eminent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The later impact reinforces the top position already identified.",
+      "feedback_deep": "Preeminent means foremost among peers; eminent means widely respected for achievement. The later impact reinforces the top position already identified.",
+      "contrast_rule": "Preeminent means at the top; eminent means among the respected.",
+      "hints": {
+        "attention": "Was he singled out above all others?",
+        "axis": "Preeminent identifies the foremost figure in a field; eminent signals high standing without establishing that anyone outranks everyone else.",
+        "contrast": "Preeminent means at the top; eminent means among the respected."
+      },
+      "qa": "pass"
+    }
+  ]
+}

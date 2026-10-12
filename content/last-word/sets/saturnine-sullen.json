@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "saturnine-sullen",
+  "title": "saturnine / sullen",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[187]",
+    "source_pair_id": 853,
+    "qa": {
+      "pass": 4,
+      "revised": 2,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "saturnine",
+      "sense": "Persistently gloomy, solemn, and slow to display warmth or enthusiasm.",
+      "connotation": "dark, literary, critical",
+      "register": "literary",
+      "misconceptions": [
+        "Treating resentful refusal to speak as a settled temperament.",
+        "Ignoring whether the gloom persists across occasions."
+      ]
+    },
+    {
+      "word": "sullen",
+      "sense": "Gloomily resentful, often refusing to talk or cooperate because of displeasure.",
+      "connotation": "negative, everyday",
+      "register": "standard",
+      "misconceptions": [
+        "Treating enduring solemnity as resentment over a grievance.",
+        "Ignoring whether the gloom persists across occasions."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "enduring_somberness_vs_resentful_silence",
+      "description": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure."
+    }
+  ],
+  "edges": [
+    {
+      "id": "saturnine__sullen",
+      "a": "saturnine",
+      "b": "sullen",
+      "boundary_rule": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure.",
+      "clues_a": [
+        "grave manner across occasions",
+        "rarely shows enthusiasm",
+        "somber even in success"
+      ],
+      "clues_b": [
+        "withdraws after being crossed",
+        "refuses to answer in resentment",
+        "sulks over a decision"
+      ],
+      "irrelevant_clues": [
+        "clothing colour",
+        "a single polite action",
+        "winning or losing alone"
+      ],
+      "misconceptions": {
+        "M1": "Treating enduring solemnity as resentment over a grievance.",
+        "M2": "Treating resentful refusal to speak as a settled temperament.",
+        "M3": "Ignoring whether the gloom persists across occasions."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "saturnine-sullen_001",
+      "edge_id": "saturnine__sullen",
+      "domain": "family_gatherings",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Pavel’s usual manner with relatives?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "saturnine-sullen_001_b1",
+          "text": "At every gathering, Pavel spoke slowly, rarely smiled, and looked grave even when everyone else celebrated.",
+          "best_word": "saturnine",
+          "fit": {
+            "saturnine": 0.92,
+            "sullen": 0.19
+          },
+          "decisive_clue": "consistent grave manner across many celebrations",
+          "reason": "Consistent grave manner across many celebrations. Persistently gloomy, solemn, and slow to display warmth or enthusiasm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        },
+        {
+          "id": "saturnine-sullen_001_b2",
+          "text": "Even when relatives handed him birthday presents, he thanked them with the same grave expression.",
+          "best_word": "saturnine",
+          "fit": {
+            "saturnine": 0.92,
+            "sullen": 0.19
+          },
+          "decisive_clue": "receiving presents does not alter his settled grave expression",
+          "reason": "Receiving presents does not alter his settled grave expression. Persistently gloomy, solemn, and slow to display warmth or enthusiasm.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Receiving presents does not alter his settled grave expression.",
+      "feedback_deep": "Saturnine means persistently gloomy, solemn, and slow to display warmth or enthusiasm; sullen means gloomily resentful, often refusing to talk or cooperate because of displeasure. Here, consistent grave manner across many celebrations. The new detail does not change the deciding fact: receiving presents does not alter his settled grave expression. Thus saturnine remains the stronger choice.",
+      "contrast_rule": "Saturnine is lasting gloom; sullen is gloom with a grievance.",
+      "hints": {
+        "attention": "Focus on whether this happens at just one gathering or repeatedly.",
+        "axis": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure.",
+        "contrast": "Saturnine is lasting gloom; sullen is gloom with a grievance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "saturnine-sullen_002",
+      "edge_id": "saturnine__sullen",
+      "domain": "football_loss",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mei’s mood after the match?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "saturnine-sullen_002_b1",
+          "text": "After the match, when her teammates rejected her plan, Mei folded her arms and refused to answer their questions.",
+          "best_word": "sullen",
+          "fit": {
+            "saturnine": 0.19,
+            "sullen": 0.92
+          },
+          "decisive_clue": "resentful refusal to speak after her plan was rejected",
+          "reason": "Resentful refusal to speak after her plan was rejected indicates a sullen mood.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M1"
+          }
+        },
+        {
+          "id": "saturnine-sullen_002_b2",
+          "text": "She was wearing a bright yellow jersey.",
+          "best_word": "sullen",
+          "fit": {
+            "saturnine": 0.19,
+            "sullen": 0.92
+          },
+          "decisive_clue": "the jersey’s colour does not alter her offended silence",
+          "reason": "The jersey’s colour does not alter her offended silence, so sullen remains the stronger choice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Her offended silence after the rejection is unchanged by her jersey’s colour.",
+      "feedback_deep": "Sullen describes gloomily resentful withdrawal after displeasure. Mei’s refusal to answer follows her teammates’ rejection of her plan, while the jersey’s colour is irrelevant. Saturnine describes a lasting gloomy disposition, which is not the decisive clue here.",
+      "contrast_rule": "Saturnine is lasting gloom; sullen is gloom with a grievance.",
+      "hints": {
+        "attention": "Focus on what caused her silence after the match.",
+        "axis": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure.",
+        "contrast": "Saturnine is lasting gloom; sullen is gloom with a grievance."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "saturnine-sullen_003",
+      "edge_id": "saturnine__sullen",
+      "domain": "family_milestone",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Sameer’s general expression at family events?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "saturnine-sullen_003_b1",
+          "text": "Sameer attended every celebration with a grave expression and little interest in joining the laughter.",
+          "best_word": "saturnine",
+          "fit": {
+            "saturnine": 0.92,
+            "sullen": 0.19
+          },
+          "decisive_clue": "habitually grave across celebrations",
+          "reason": "A grave manner repeated across celebrations indicates a saturnine disposition.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        },
+        {
+          "id": "saturnine-sullen_003_b2",
+          "text": "Even when he received the job offer he had always wanted, his expression barely changed.",
+          "best_word": "saturnine",
+          "fit": {
+            "saturnine": 0.92,
+            "sullen": 0.19
+          },
+          "decisive_clue": "personal success does not change the settled gloomy manner",
+          "reason": "Personal success does not change the settled gloomy manner, reinforcing saturnine rather than sullen.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M3"
+          }
+        }
+      ],
+      "feedback_short": "His grave manner persists even after personal success.",
+      "feedback_deep": "Saturnine describes a persistently gloomy, solemn disposition. Sameer shows that manner across celebrations, and even welcome personal success barely changes his expression. Sullen would require a specific grievance or resentful withdrawal, which is not present.",
+      "contrast_rule": "Saturnine is lasting gloom; sullen is gloom with a grievance.",
+      "hints": {
+        "attention": "Focus on whether his solemn manner persists after good news.",
+        "axis": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure.",
+        "contrast": "Saturnine is lasting gloom; sullen is gloom with a grievance."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "saturnine-sullen_004",
+      "edge_id": "saturnine__sullen",
+      "domain": "restaurant_choice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elif’s manner in the car?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "saturnine-sullen_004_b1",
+          "text": "After her siblings chose a restaurant she had opposed, Elif faced the window and answered every question with a shrug.",
+          "best_word": "sullen",
+          "fit": {
+            "saturnine": 0.19,
+            "sullen": 0.92
+          },
+          "decisive_clue": "silent resentment after losing a family decision",
+          "reason": "Silent resentment after losing a family decision. Gloomily resentful, often refusing to talk or cooperate because of displeasure.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M1"
+          }
+        },
+        {
+          "id": "saturnine-sullen_004_b2",
+          "text": "She had spent the morning arguing for a different place.",
+          "best_word": "sullen",
+          "fit": {
+            "saturnine": 0.19,
+            "sullen": 0.92
+          },
+          "decisive_clue": "earlier argument confirms the grievance behind her withdrawal",
+          "reason": "Earlier argument confirms the grievance behind her withdrawal. Gloomily resentful, often refusing to talk or cooperate because of displeasure.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Earlier argument confirms the grievance behind her withdrawal.",
+      "feedback_deep": "Saturnine means persistently gloomy, solemn, and slow to display warmth or enthusiasm; sullen means gloomily resentful, often refusing to talk or cooperate because of displeasure. Here, silent resentment after losing a family decision. The added evidence clarifies that fact: earlier argument confirms the grievance behind her withdrawal. Thus sullen remains the stronger choice.",
+      "contrast_rule": "Saturnine is lasting gloom; sullen is gloom with a grievance.",
+      "hints": {
+        "attention": "Focus on why she answers with shrugs.",
+        "axis": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure.",
+        "contrast": "Saturnine is lasting gloom; sullen is gloom with a grievance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "saturnine-sullen_005",
+      "edge_id": "saturnine__sullen",
+      "domain": "friends_group_plan",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Kiran’s behaviour toward his friends?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "saturnine-sullen_005_b1",
+          "text": "When his friends made plans without consulting him, Kiran scowled and stopped speaking to them.",
+          "best_word": "sullen",
+          "fit": {
+            "saturnine": 0.19,
+            "sullen": 0.92
+          },
+          "decisive_clue": "aggrieved silence directed at friends who excluded him",
+          "reason": "Aggrieved silence directed at friends who excluded him. Gloomily resentful, often refusing to talk or cooperate because of displeasure.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M1"
+          }
+        },
+        {
+          "id": "saturnine-sullen_005_b2",
+          "text": "He still sat with the group, but only shrugged whenever the friends who excluded him spoke.",
+          "best_word": "sullen",
+          "fit": {
+            "saturnine": 0.19,
+            "sullen": 0.92
+          },
+          "decisive_clue": "sitting with the group does not undo his offended refusal to talk",
+          "reason": "Sitting with the group does not undo his offended refusal to talk. Gloomily resentful, often refusing to talk or cooperate because of displeasure.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Sitting with the group does not undo his offended refusal to talk.",
+      "feedback_deep": "Saturnine means persistently gloomy, solemn, and slow to display warmth or enthusiasm; sullen means gloomily resentful, often refusing to talk or cooperate because of displeasure. Here, aggrieved silence directed at friends who excluded him. The apparent distraction does not change the deciding fact: sitting with the group does not undo his offended refusal to talk. Thus sullen remains the stronger choice.",
+      "contrast_rule": "Saturnine is lasting gloom; sullen is gloom with a grievance.",
+      "hints": {
+        "attention": "Focus on toward whom his silence is directed.",
+        "axis": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure.",
+        "contrast": "Saturnine is lasting gloom; sullen is gloom with a grievance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "saturnine-sullen_006",
+      "edge_id": "saturnine__sullen",
+      "domain": "board-game_night",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Noor’s manner during family games?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "saturnine-sullen_006_b1",
+          "text": "At every game night, Noor watched with a grave expression and barely reacted even when she won.",
+          "best_word": "saturnine",
+          "fit": {
+            "saturnine": 0.92,
+            "sullen": 0.19
+          },
+          "decisive_clue": "a settled solemn manner across repeated enjoyable games",
+          "reason": "A settled solemn manner across repeated enjoyable games. Persistently gloomy, solemn, and slow to display warmth or enthusiasm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        },
+        {
+          "id": "saturnine-sullen_006_b2",
+          "text": "She enjoyed being included and had no quarrel with anyone; her solemn manner was familiar to the whole family.",
+          "best_word": "saturnine",
+          "fit": {
+            "saturnine": 0.92,
+            "sullen": 0.19
+          },
+          "decisive_clue": "enjoyment without a quarrel points to temperament rather than resentment",
+          "reason": "Enjoyment without a quarrel points to temperament rather than resentment. Persistently gloomy, solemn, and slow to display warmth or enthusiasm.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Enjoyment without a quarrel points to temperament rather than resentment.",
+      "feedback_deep": "Saturnine means persistently gloomy, solemn, and slow to display warmth or enthusiasm; sullen means gloomily resentful, often refusing to talk or cooperate because of displeasure. Here, a settled solemn manner across repeated enjoyable games. The added context helps interpret that fact: enjoyment without a quarrel points to temperament rather than resentment. Thus saturnine remains the stronger choice.",
+      "contrast_rule": "Saturnine is lasting gloom; sullen is gloom with a grievance.",
+      "hints": {
+        "attention": "Focus on whether anyone has actually upset her.",
+        "axis": "Saturnine describes a lasting gloomy disposition; sullen describes resentful withdrawal in response to displeasure.",
+        "contrast": "Saturnine is lasting gloom; sullen is gloom with a grievance."
+      },
+      "qa": "pass"
+    }
+  ]
+}

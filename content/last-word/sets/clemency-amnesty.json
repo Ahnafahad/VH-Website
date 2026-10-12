@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "clemency-amnesty",
+  "title": "clemency / amnesty",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[34]",
+    "source_pair_id": 144,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "clemency",
+      "sense": "mercy reducing or forgiving a punishment, usually for a particular offender",
+      "connotation": "merciful",
+      "register": "formal and legal",
+      "misconceptions": [
+        "Reducing an individual's penalty is automatically a group pardon"
+      ]
+    },
+    {
+      "word": "amnesty",
+      "sense": "official pardon given to a group for specified past offences",
+      "connotation": "political or legal reconciliation",
+      "register": "formal and legal",
+      "misconceptions": [
+        "Any personal act of mercy is a collective pardon"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "individual_leniency_vs_group_pardon",
+      "description": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences."
+    }
+  ],
+  "edges": [
+    {
+      "id": "clemency__amnesty",
+      "a": "clemency",
+      "b": "amnesty",
+      "boundary_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "clues_a": [
+        "prison term reduced for one offender",
+        "individual penalty forgiven",
+        "particular appeal for mercy granted"
+      ],
+      "clues_b": [
+        "one pardon covering a named group",
+        "specified old offences forgiven collectively",
+        "group eligibility by shared conduct"
+      ],
+      "irrelevant_clues": [
+        "announcement length",
+        "public applause",
+        "emotional appeals"
+      ],
+      "misconceptions": {
+        "M1": "Any mercy to an offender is a group-wide pardon",
+        "M2": "A group-wide pardon is merely a shorter sentence for one person",
+        "M3": "Whether the public approves decides the legal nature of the relief"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "clemency-amnesty_001",
+      "edge_id": "clemency__amnesty",
+      "domain": "prison_sentence",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the governor's decision for Amara?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "clemency-amnesty_001_b1",
+          "text": "The governor shortened Amara's individual prison sentence after reviewing her request for mercy.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.9,
+            "amnesty": 0.165
+          },
+          "decisive_clue": "one person's sentence was reduced",
+          "reason": "The official gives individualized leniency, not a group pardon.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        },
+        {
+          "id": "clemency-amnesty_001_b2",
+          "text": "No other sentence was included in the order.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.9,
+            "amnesty": 0.165
+          },
+          "decisive_clue": "individual relief confined to one offender",
+          "reason": "Its limited scope confirms the choice.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains individual relief confined to one offender.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. The official gives individualized leniency, not a group pardon. Its limited scope confirms the choice.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Look at whose penalty was changed.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "clemency-amnesty_002",
+      "edge_id": "clemency__amnesty",
+      "domain": "student_protest",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the president's announcement about Tariq's group?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "clemency-amnesty_002_b1",
+          "text": "The president formally pardoned everyone charged for taking part in a specified campus protest.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.19,
+            "amnesty": 0.92
+          },
+          "decisive_clue": "one order pardoned a defined group",
+          "reason": "It is collective forgiveness for past offences.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        },
+        {
+          "id": "clemency-amnesty_002_b2",
+          "text": "Any participant charged for that protest qualified under the same order.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.19,
+            "amnesty": 0.92
+          },
+          "decisive_clue": "eligibility depended on a common past offence",
+          "reason": "The group-wide rule confirms the kind of pardon.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains eligibility depended on a common past offence.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. It is collective forgiveness for past offences. The group-wide rule confirms the kind of pardon.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Check whether the decision covers a class of people.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "clemency-amnesty_003",
+      "edge_id": "clemency__amnesty",
+      "domain": "traffic_conviction",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the decision about Mei's penalty?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "clemency-amnesty_003_b1",
+          "text": "An official waived the remainder of Mei's sentence after considering her personal circumstances.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.94,
+            "amnesty": 0.215
+          },
+          "decisive_clue": "individual penalty waived after a personal review",
+          "reason": "This is leniency toward a particular offender.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        },
+        {
+          "id": "clemency-amnesty_003_b2",
+          "text": "The news spread quickly through her neighbourhood.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.94,
+            "amnesty": 0.215
+          },
+          "decisive_clue": "individual mercy despite widespread attention",
+          "reason": "Public reaction has no bearing on whether others receive the same relief.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains individual mercy despite widespread attention.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. This is leniency toward a particular offender. Public reaction has no bearing on whether others receive the same relief.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Focus on who was covered by the decision.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "clemency-amnesty_004",
+      "edge_id": "clemency__amnesty",
+      "domain": "historic_curfew",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the government's measure concerning Yusuf's neighbours?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "clemency-amnesty_004_b1",
+          "text": "The government pardoned all residents convicted of breaking a specified curfew during last year's demonstrations.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.14,
+            "amnesty": 0.88
+          },
+          "decisive_clue": "whole class pardoned for specified past conduct",
+          "reason": "The order covers a group, not a discretionary reduction for one person.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        },
+        {
+          "id": "clemency-amnesty_004_b2",
+          "text": "The announcement was read on radio and printed in newspapers.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.14,
+            "amnesty": 0.88
+          },
+          "decisive_clue": "group pardon unchanged by announcement format",
+          "reason": "Broadcasting does not change eligibility or scope.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains group pardon unchanged by announcement format.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. The order covers a group, not a discretionary reduction for one person. Broadcasting does not change eligibility or scope.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Read who qualifies, not how the news travels.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "clemency-amnesty_005",
+      "edge_id": "clemency__amnesty",
+      "domain": "court_fine",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the mayor's decision about Nadia?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "clemency-amnesty_005_b1",
+          "text": "The mayor used a lawful power to forgive the unpaid part of Nadia's particular penalty.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.9,
+            "amnesty": 0.165
+          },
+          "decisive_clue": "a particular person's penalty was forgiven",
+          "reason": "It is relief directed at one individual.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        },
+        {
+          "id": "clemency-amnesty_005_b2",
+          "text": "The mayor praised her community work, but the order did not cover other people with similar fines.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.9,
+            "amnesty": 0.165
+          },
+          "decisive_clue": "personalized penalty relief rather than a class-wide pardon",
+          "reason": "Praise does not turn a one-person decision into collective forgiveness.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains personalized penalty relief rather than a class-wide pardon.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. It is relief directed at one individual. Praise does not turn a one-person decision into collective forgiveness.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Look at how eligibility was defined.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "clemency-amnesty_006",
+      "edge_id": "clemency__amnesty",
+      "domain": "public_disorder_cases",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the official decision concerning Kenji's group?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "clemency-amnesty_006_b1",
+          "text": "The government issued a pardon covering every person prosecuted for one defined category of past disorder offences.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.19,
+            "amnesty": 0.92
+          },
+          "decisive_clue": "collective pardon applied by offence category",
+          "reason": "It frees a group under a common rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        },
+        {
+          "id": "clemency-amnesty_006_b2",
+          "text": "The order applied even to people who had never filed individual requests.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.19,
+            "amnesty": 0.92
+          },
+          "decisive_clue": "automatic group coverage without separate petitions",
+          "reason": "Collective eligibility reinforces the sense of a group pardon.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains automatic group coverage without separate petitions.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. It frees a group under a common rule. Collective eligibility reinforces the sense of a group pardon.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Ask whether applications were considered one by one.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "clemency-amnesty_007",
+      "edge_id": "clemency__amnesty",
+      "domain": "individual_appeal",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the ruler's response to Lucia's appeal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "clemency-amnesty_007_b1",
+          "text": "The ruler reduced Lucia's punishment from twelve months to three after hearing her appeal.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.94,
+            "amnesty": 0.215
+          },
+          "decisive_clue": "one offender received a shorter penalty",
+          "reason": "The decision is individualized mercy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        },
+        {
+          "id": "clemency-amnesty_007_b2",
+          "text": "A large crowd cheered when the decision was announced.",
+          "best_word": "clemency",
+          "fit": {
+            "clemency": 0.94,
+            "amnesty": 0.215
+          },
+          "decisive_clue": "single person's reduced penalty, not the cheering",
+          "reason": "Public excitement does not extend the order to a whole group.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction does not matter: single person's reduced penalty, not the cheering.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. The decision is individualized mercy. Public excitement does not extend the order to a whole group.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Count how many offenders benefit from the order.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "clemency-amnesty_008",
+      "edge_id": "clemency__amnesty",
+      "domain": "migration_cases",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the decree that affected Ben's neighbours?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "clemency-amnesty_008_b1",
+          "text": "An official decree forgave past paperwork offences for everyone who arrived during a specified year.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.14,
+            "amnesty": 0.88
+          },
+          "decisive_clue": "collective pardon tied to a defined past offence",
+          "reason": "The pardon applies through a shared eligibility rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        },
+        {
+          "id": "clemency-amnesty_008_b2",
+          "text": "Some residents had already paid fines, yet the decree still addressed the entire category, not personal appeals.",
+          "best_word": "amnesty",
+          "fit": {
+            "clemency": 0.14,
+            "amnesty": 0.88
+          },
+          "decisive_clue": "group relief independent of individual fine histories",
+          "reason": "Different prior penalties do not erase the decree's collective scope.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains group relief independent of individual fine histories.",
+      "feedback_deep": "Clemency means discretionary leniency in an imposed or threatened penalty; amnesty means an official collective pardon covering a defined category of past offences. The pardon applies through a shared eligibility rule. Different prior penalties do not erase the decree's collective scope.",
+      "contrast_rule": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences.",
+      "hints": {
+        "attention": "Identify whether eligibility is individual or categorical.",
+        "axis": "Personalized mercy over a penalty differs from a collective pardon for a class of past offences.",
+        "contrast": "clemency is leniency toward punishment; amnesty is an official pardon for a defined group’s past offences."
+      },
+      "qa": "pass"
+    }
+  ]
+}

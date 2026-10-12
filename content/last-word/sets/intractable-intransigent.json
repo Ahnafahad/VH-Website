@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "set_id": "intractable-intransigent",
+  "title": "intractable / intransigent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[118]",
+    "source_pair_id": 469,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "intractable",
+      "sense": "especially hard to manage, solve, or settle",
+      "connotation": "frustrating difficulty",
+      "register": "formal",
+      "misconceptions": [
+        "Every difficult disagreement is caused by someone rejecting compromise"
+      ]
+    },
+    {
+      "word": "intransigent",
+      "sense": "refusing to change a position or make concessions",
+      "connotation": "unyielding attitude",
+      "register": "formal",
+      "misconceptions": [
+        "All hard-to-solve problems are matters of personal stubbornness"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "difficulty_of_problem_vs_refusal_to_yield",
+      "description": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions."
+    }
+  ],
+  "edges": [
+    {
+      "id": "intractable__intransigent",
+      "a": "intractable",
+      "b": "intransigent",
+      "boundary_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "clues_a": [
+        "many failed approaches",
+        "complicated problem resists every solution",
+        "no practical fix emerges"
+      ],
+      "clues_b": [
+        "rejects every compromise",
+        "refuses to alter demands",
+        "will not reconsider stated position"
+      ],
+      "irrelevant_clues": [
+        "length of dispute",
+        "volume of argument",
+        "number of people watching"
+      ],
+      "misconceptions": {
+        "M1": "Mistakes difficulty of resolution for refusal to compromise",
+        "M2": "Mistakes personal inflexibility for inherent complexity",
+        "M3": "Treats mere disagreement as proof of either stronger label"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "intractable-intransigent_001",
+      "edge_id": "intractable__intransigent",
+      "domain": "school_timetable",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the scheduling problem Leena faced?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "intractable-intransigent_001_b1",
+          "text": "Leena could not find a timetable that accommodated all eight classes, despite testing dozens of combinations.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.91,
+            "intransigent": 0.17
+          },
+          "decisive_clue": "numerous combinations failed to solve a difficult puzzle",
+          "reason": "The issue is stubborn complexity of the problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        },
+        {
+          "id": "intractable-intransigent_001_b2",
+          "text": "She tried a second scheduling app, but the same clashes appeared.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.91,
+            "intransigent": 0.17
+          },
+          "decisive_clue": "problem resisted another method",
+          "reason": "Multiple failed methods confirm severe difficulty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: problem resisted another method.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. The issue is stubborn complexity of the problem. Multiple failed methods confirm severe difficulty.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Examine the problem, not anyone's attitude.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_002",
+      "edge_id": "intractable__intransigent",
+      "domain": "flatmate_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Malik during the flatmates’ chore discussion?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "intractable-intransigent_002_b1",
+          "text": "Working out chores with Malik was extremely difficult; every proposed arrangement led to another unresolved problem.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.9,
+            "intransigent": 0.2
+          },
+          "decisive_clue": "extremely difficult to reach any workable arrangement with him",
+          "reason": "The first account emphasizes how hard he is to deal with, not an explicit refusal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        },
+        {
+          "id": "intractable-intransigent_002_b2",
+          "text": "He then rejected every proposed change and declared that not a single one of his demands could be adjusted.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.2,
+            "intransigent": 0.93
+          },
+          "decisive_clue": "refused to change any demand or consider compromises",
+          "reason": "His express refusal to make concessions now defines the behavior.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key new fact: refused to change any demand or consider compromises.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. The first account emphasizes how hard he is to deal with, not an explicit refusal. His express refusal to make concessions now defines the behavior.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Decide whether difficulty or deliberate refusal is central.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_003",
+      "edge_id": "intractable__intransigent",
+      "domain": "family_repairs",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the leak Yara was trying to fix?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "intractable-intransigent_003_b1",
+          "text": "Yara’s kitchen ceiling kept leaking after three separate repairs.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.95,
+            "intransigent": 0.23
+          },
+          "decisive_clue": "repeated repairs failed to solve the problem",
+          "reason": "The defect resists efforts to fix it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        },
+        {
+          "id": "intractable-intransigent_003_b2",
+          "text": "Each time one gap was sealed, water found another route.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.95,
+            "intransigent": 0.23
+          },
+          "decisive_clue": "problem persisted through multiple fixes",
+          "reason": "New information confirms the repair problem's difficulty.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: problem persisted through multiple fixes.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. The defect resists efforts to fix it. New information confirms the repair problem's difficulty.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Follow the results of attempted solutions.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_004",
+      "edge_id": "intractable__intransigent",
+      "domain": "sports_committee",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Andre’s position in the team vote?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "intractable-intransigent_004_b1",
+          "text": "Andre rejected every suggestion to move practice by even fifteen minutes and insisted on his original time.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.15,
+            "intransigent": 0.89
+          },
+          "decisive_clue": "refused even small concessions",
+          "reason": "This describes an unwillingness to adjust his stance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        },
+        {
+          "id": "intractable-intransigent_004_b2",
+          "text": "He explained the position in a long email.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.15,
+            "intransigent": 0.89
+          },
+          "decisive_clue": "still refused to change his fixed demand",
+          "reason": "Email length does not change the refusal.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: still refused to change his fixed demand.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. This describes an unwillingness to adjust his stance. Email length does not change the refusal.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Look at how he treats alternatives.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_005",
+      "edge_id": "intractable__intransigent",
+      "domain": "neighbour_dispute",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Farida’s position about the shared fence?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "intractable-intransigent_005_b1",
+          "text": "Farida would not consider moving the fence by a single centimetre, despite several fair proposals.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.17,
+            "intransigent": 0.91
+          },
+          "decisive_clue": "rejected every attempt at compromise",
+          "reason": "Her stance is unyielding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        },
+        {
+          "id": "intractable-intransigent_005_b2",
+          "text": "She said the answer would be the same even if all the neighbours agreed on a new plan.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.17,
+            "intransigent": 0.91
+          },
+          "decisive_clue": "refusal continued despite consensus",
+          "reason": "Her expressed unwillingness makes the attitude clearer.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: refusal continued despite consensus.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. Her stance is unyielding. Her expressed unwillingness makes the attitude clearer.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Find whether she will consider any concession.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_006",
+      "edge_id": "intractable__intransigent",
+      "domain": "online_puzzle",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the puzzle Jin posted to his friends?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "intractable-intransigent_006_b1",
+          "text": "Jin’s puzzle resisted every solution that dozens of experienced players tried.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.93,
+            "intransigent": 0.2
+          },
+          "decisive_clue": "many approaches failed to solve the puzzle",
+          "reason": "Its difficulty is the central issue.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        },
+        {
+          "id": "intractable-intransigent_006_b2",
+          "text": "The puzzle appeared under a funny cartoon.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.93,
+            "intransigent": 0.2
+          },
+          "decisive_clue": "puzzle remained difficult despite playful appearance",
+          "reason": "Presentation does not make someone unwilling to compromise.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: puzzle remained difficult despite playful appearance.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. Its difficulty is the central issue. Presentation does not make someone unwilling to compromise.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Think about solvability.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_007",
+      "edge_id": "intractable__intransigent",
+      "domain": "part-time_job",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amina’s stance on swapping shifts?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "intractable-intransigent_007_b1",
+          "text": "Amina rejected every proposed swap and refused to change any date she had chosen.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.23,
+            "intransigent": 0.95
+          },
+          "decisive_clue": "unwilling to adjust the schedule at all",
+          "reason": "Her position is inflexible.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        },
+        {
+          "id": "intractable-intransigent_007_b2",
+          "text": "She rejected even a swap that would give her every requested day off.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.23,
+            "intransigent": 0.95
+          },
+          "decisive_clue": "refused compromise despite meeting stated needs",
+          "reason": "The extra example removes doubt about her refusal.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: refused compromise despite meeting stated needs.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. Her position is inflexible. The extra example removes doubt about her refusal.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Look at her reaction to a generous offer.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_008",
+      "edge_id": "intractable__intransigent",
+      "domain": "community_parking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the parking problem Tomas studied?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "intractable-intransigent_008_b1",
+          "text": "Tomas found that every possible parking arrangement blocked someone’s driveway, despite repeated redesigns.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.89,
+            "intransigent": 0.15
+          },
+          "decisive_clue": "no workable solution after many attempts",
+          "reason": "This is an extremely difficult practical problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        },
+        {
+          "id": "intractable-intransigent_008_b2",
+          "text": "The planning notes were written in blue ink.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.89,
+            "intransigent": 0.15
+          },
+          "decisive_clue": "difficult problem despite irrelevant note color",
+          "reason": "Ink colour does not turn complexity into resistance to compromise.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction changes nothing; decisive clue: difficult problem despite irrelevant note color.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. This is an extremely difficult practical problem. Ink colour does not turn complexity into resistance to compromise.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Pay attention to unsuccessful designs.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_009",
+      "edge_id": "intractable__intransigent",
+      "domain": "travel_planning",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Noor’s stance on the group holiday?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "intractable-intransigent_009_b1",
+          "text": "Noor refused every destination except the one she had chosen and would not discuss alternatives.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.17,
+            "intransigent": 0.91
+          },
+          "decisive_clue": "unwilling to consider any alternative",
+          "reason": "The defining feature is an uncompromising preference.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        },
+        {
+          "id": "intractable-intransigent_009_b2",
+          "text": "Even a cheaper destination with all her requested activities got an immediate refusal.",
+          "best_word": "intransigent",
+          "fit": {
+            "intractable": 0.17,
+            "intransigent": 0.91
+          },
+          "decisive_clue": "refused a concession that met her needs",
+          "reason": "The new detail underlines her inflexibility rather than a difficult itinerary.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intractable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The clarification points to: refused a concession that met her needs.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. The defining feature is an uncompromising preference. The new detail underlines her inflexibility rather than a difficult itinerary.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Ask whether she evaluates the alternatives.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "intractable-intransigent_010",
+      "edge_id": "intractable__intransigent",
+      "domain": "caf_scheduling",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the café’s staffing problem Pavel faced?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "intractable-intransigent_010_b1",
+          "text": "Pavel tried multiple shift patterns, but none covered the busiest hours without leaving another shift understaffed.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.93,
+            "intransigent": 0.2
+          },
+          "decisive_clue": "every attempted staffing arrangement created another gap",
+          "reason": "The scheduling task is extremely difficult to resolve.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        },
+        {
+          "id": "intractable-intransigent_010_b2",
+          "text": "He checked the calculations three times and found no mistakes.",
+          "best_word": "intractable",
+          "fit": {
+            "intractable": 0.93,
+            "intransigent": 0.2
+          },
+          "decisive_clue": "problem persisted despite verified calculations",
+          "reason": "Confirmed calculations reinforce the difficulty rather than personal obstinacy.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "intransigent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: problem persisted despite verified calculations.",
+      "feedback_deep": "intractable means extremely difficult to handle or resolve; intransigent means unwilling to reconsider a stance or compromise. The scheduling task is extremely difficult to resolve. Confirmed calculations reinforce the difficulty rather than personal obstinacy.",
+      "contrast_rule": "intractable is hard to solve; intransigent refuses to compromise.",
+      "hints": {
+        "attention": "Focus on the failure of proposed solutions.",
+        "axis": "A problem is intractable when extremely hard to solve; a stance is intransigent when its holder refuses concessions.",
+        "contrast": "intractable is hard to solve; intransigent refuses to compromise."
+      },
+      "qa": "pass"
+    }
+  ]
+}

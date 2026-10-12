@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "replenish-replace",
+  "title": "replenish / replace",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[133]",
+    "source_pair_id": 520,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "replenish",
+      "sense": "To restore a supply by adding more after some has been used up.",
+      "connotation": "Neutral; often practical.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Treating any new purchase as restocking."
+      ]
+    },
+    {
+      "word": "replace",
+      "sense": "To remove or substitute one object, part, or person with another.",
+      "connotation": "Neutral.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Treating refilling a supply as swapping out the container."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "restock_vs_substitute",
+      "description": "Replenish restores a depleted supply; replace substitutes a different item for an existing item."
+    }
+  ],
+  "edges": [
+    {
+      "id": "replenish__replace",
+      "a": "replenish",
+      "b": "replace",
+      "boundary_rule": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+      "clues_a": [
+        "tops up what is running low",
+        "restocks a supply",
+        "adds units back into a container"
+      ],
+      "clues_b": [
+        "removes a damaged item",
+        "installs a substitute part",
+        "swaps one object for another"
+      ],
+      "irrelevant_clues": [
+        "the brand or colour of new stock",
+        "whether the shop is busy",
+        "whether the replacement comes in a box"
+      ],
+      "misconceptions": {
+        "M1": "Treating any new purchase as restocking.",
+        "M2": "Treating refilling a supply as swapping out the container.",
+        "M3": "Ignoring whether an individual item was removed."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "replenish-replace_001",
+      "edge_id": "replenish__replace",
+      "domain": "coffee_supplies",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Faye did with the coffee beans?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "replenish-replace_001_b1",
+          "text": "Faye pours fresh coffee beans into a canister that has almost run out.",
+          "best_word": "replenish",
+          "fit": {
+            "replenish": 0.91,
+            "replace": 0.22
+          },
+          "decisive_clue": "adds stock to a depleted supply",
+          "reason": "Adds stock to a depleted supply. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replace": "M3"
+          }
+        },
+        {
+          "id": "replenish-replace_001_b2",
+          "text": "A handful of the older beans remains at the bottom as she fills it.",
+          "best_word": "replenish",
+          "fit": {
+            "replenish": 0.91,
+            "replace": 0.22
+          },
+          "decisive_clue": "adds stock to a depleted supply",
+          "reason": "The new detail does not overturn the original clue: adds stock to a depleted supply. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replace": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Beans are being added to an existing supply.",
+      "feedback_deep": "Replenish restores a depleted supply; replace substitutes a different item for an existing item. Nothing was taken out and swapped for a distinct new object.",
+      "contrast_rule": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+      "hints": {
+        "attention": "See whether a quantity is restored or a particular object is swapped out.",
+        "axis": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+        "contrast": "Replenish restores a depleted supply; replace substitutes a different item for an existing item."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "replenish-replace_002",
+      "edge_id": "replenish__replace",
+      "domain": "car_maintenance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Haruto did with the windscreen wiper?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "replenish-replace_002_b1",
+          "text": "Haruto unclips a torn wiper blade from his car and fits a new blade in its place.",
+          "best_word": "replace",
+          "fit": {
+            "replenish": 0.22,
+            "replace": 0.91
+          },
+          "decisive_clue": "removes one damaged part and installs another",
+          "reason": "Removes one damaged part and installs another. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replenish": "M1"
+          }
+        },
+        {
+          "id": "replenish-replace_002_b2",
+          "text": "He puts the worn blade in the recycling bin.",
+          "best_word": "replace",
+          "fit": {
+            "replenish": 0.22,
+            "replace": 0.91
+          },
+          "decisive_clue": "removes one damaged part and installs another",
+          "reason": "The new detail does not overturn the original clue: removes one damaged part and installs another. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replenish": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The old blade is taken out; the new one occupies its position.",
+      "feedback_deep": "Replenish restores a depleted supply; replace substitutes a different item for an existing item. This is a part swap, not the restoration of a stockpile.",
+      "contrast_rule": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+      "hints": {
+        "attention": "See whether a quantity is restored or a particular object is swapped out.",
+        "axis": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+        "contrast": "Replenish restores a depleted supply; replace substitutes a different item for an existing item."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "replenish-replace_003",
+      "edge_id": "replenish__replace",
+      "domain": "first-aid_cupboard",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mina’s work on the first-aid cupboard?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "replenish-replace_003_b1",
+          "text": "Mina buys more bandages after the first-aid cupboard runs low during a school sports day.",
+          "best_word": "replenish",
+          "fit": {
+            "replenish": 0.91,
+            "replace": 0.22
+          },
+          "decisive_clue": "restores supplies after use",
+          "reason": "Restores supplies after use. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replace": "M2"
+          }
+        },
+        {
+          "id": "replenish-replace_003_b2",
+          "text": "She puts the fresh packets next to the few unopened ones already there.",
+          "best_word": "replenish",
+          "fit": {
+            "replenish": 0.91,
+            "replace": 0.22
+          },
+          "decisive_clue": "adds to the remaining stock without changing the cupboard",
+          "reason": "Adds to the remaining stock without changing the cupboard. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replace": "M3"
+          }
+        }
+      ],
+      "feedback_short": "More bandages restore a reduced stock.",
+      "feedback_deep": "Replenish restores a depleted supply; replace substitutes a different item for an existing item. Remaining packets and new packets make up the same supply.",
+      "contrast_rule": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+      "hints": {
+        "attention": "See whether a quantity is restored or a particular object is swapped out.",
+        "axis": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+        "contrast": "Replenish restores a depleted supply; replace substitutes a different item for an existing item."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "replenish-replace_004",
+      "edge_id": "replenish__replace",
+      "domain": "home_internet_equipment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Imran did with his router?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "replenish-replace_004_b1",
+          "text": "Imran disconnects his failed internet router and installs a new model in the same location.",
+          "best_word": "replace",
+          "fit": {
+            "replenish": 0.22,
+            "replace": 0.91
+          },
+          "decisive_clue": "substitutes a functioning device for a failed device",
+          "reason": "Substitutes a functioning device for a failed device. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replenish": "M3"
+          }
+        },
+        {
+          "id": "replenish-replace_004_b2",
+          "text": "The new device is smaller, but the broken one is no longer connected.",
+          "best_word": "replace",
+          "fit": {
+            "replenish": 0.22,
+            "replace": 0.91
+          },
+          "decisive_clue": "one entire device takes the place of another",
+          "reason": "One entire device takes the place of another. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replenish": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The whole router is swapped out; no quantity is being topped up.",
+      "feedback_deep": "Replenish restores a depleted supply; replace substitutes a different item for an existing item. The size difference matters less than the exchange of devices.",
+      "contrast_rule": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+      "hints": {
+        "attention": "See whether a quantity is restored or a particular object is swapped out.",
+        "axis": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+        "contrast": "Replenish restores a depleted supply; replace substitutes a different item for an existing item."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "replenish-replace_005",
+      "edge_id": "replenish__replace",
+      "domain": "bakery_inventory",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Sofia’s order for flour?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "replenish-replace_005_b1",
+          "text": "Sofia orders more bags of flour after her bakery has nearly sold out its supply.",
+          "best_word": "replenish",
+          "fit": {
+            "replenish": 0.91,
+            "replace": 0.22
+          },
+          "decisive_clue": "new bags restore used-up inventory",
+          "reason": "New bags restore used-up inventory. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replace": "M1"
+          }
+        },
+        {
+          "id": "replenish-replace_005_b2",
+          "text": "The supplier has changed the bag design, but the shelf is restocked with the same flour.",
+          "best_word": "replenish",
+          "fit": {
+            "replenish": 0.91,
+            "replace": 0.22
+          },
+          "decisive_clue": "new bags restore used-up inventory",
+          "reason": "The new detail does not overturn the original clue: new bags restore used-up inventory. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replace": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The changed packaging does not change the restocking action.",
+      "feedback_deep": "Replenish restores a depleted supply; replace substitutes a different item for an existing item. The bakery needs more of an existing stock rather than a substitute for a particular item.",
+      "contrast_rule": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+      "hints": {
+        "attention": "See whether a quantity is restored or a particular object is swapped out.",
+        "axis": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+        "contrast": "Replenish restores a depleted supply; replace substitutes a different item for an existing item."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "replenish-replace_006",
+      "edge_id": "replenish__replace",
+      "domain": "chair_repair",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Diego’s action on the chair cushion?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "replenish-replace_006_b1",
+          "text": "Diego removes a flattened cushion from his dining chair and fits a fresh cushion of the same size.",
+          "best_word": "replace",
+          "fit": {
+            "replenish": 0.22,
+            "replace": 0.91
+          },
+          "decisive_clue": "exchanges one worn cushion for a new cushion",
+          "reason": "Exchanges one worn cushion for a new cushion. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replenish": "M2"
+          }
+        },
+        {
+          "id": "replenish-replace_006_b2",
+          "text": "He keeps the chair frame, but throws away the old cushion.",
+          "best_word": "replace",
+          "fit": {
+            "replenish": 0.22,
+            "replace": 0.91
+          },
+          "decisive_clue": "the individual cushion is substituted even though the chair remains",
+          "reason": "The individual cushion is substituted even though the chair remains. Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "replenish": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Keeping the chair does not turn a cushion swap into a refill.",
+      "feedback_deep": "Replenish restores a depleted supply; replace substitutes a different item for an existing item. It is the cushion that has been removed and exchanged.",
+      "contrast_rule": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+      "hints": {
+        "attention": "See whether a quantity is restored or a particular object is swapped out.",
+        "axis": "Replenish restores a depleted supply; replace substitutes a different item for an existing item.",
+        "contrast": "Replenish restores a depleted supply; replace substitutes a different item for an existing item."
+      },
+      "qa": "pass"
+    }
+  ]
+}

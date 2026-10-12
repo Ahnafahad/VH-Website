@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "philanthropic-humanitarian",
+  "title": "philanthropic / humanitarian",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[183]",
+    "source_pair_id": 828,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "philanthropic",
+      "sense": "Directed at public welfare through giving private money, resources, or organized charitable support.",
+      "connotation": "Positive; charitable.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming every kind deed is primarily a financial gift."
+      ]
+    },
+    {
+      "word": "humanitarian",
+      "sense": "Directed at alleviating human suffering and safeguarding people in need.",
+      "connotation": "Positive; compassionate and protective.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming humanitarian work always requires donating personal wealth."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "charitable_contribution_vs_relief",
+      "description": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare."
+    }
+  ],
+  "edges": [
+    {
+      "id": "philanthropic__humanitarian",
+      "a": "philanthropic",
+      "b": "humanitarian",
+      "boundary_rule": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+      "clues_a": [
+        "funds lasting opportunities",
+        "donates private resources",
+        "sponsors a community initiative"
+      ],
+      "clues_b": [
+        "responds to urgent human needs",
+        "safeguards vulnerable people",
+        "delivers relief and protection"
+      ],
+      "irrelevant_clues": [
+        "whether the effort is publicized",
+        "the helper’s clothing",
+        "whether the activity occurs in a big city"
+      ],
+      "misconceptions": {
+        "M1": "Assuming every kind deed is primarily a financial gift.",
+        "M2": "Assuming humanitarian work always requires donating personal wealth.",
+        "M3": "Ignoring whether the account emphasizes giving resources or protecting people from harm."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "philanthropic-humanitarian_001",
+      "edge_id": "philanthropic__humanitarian",
+      "domain": "bookstore_charitable_fund",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amina’s bookstore initiative?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "philanthropic-humanitarian_001_b1",
+          "text": "Amina puts part of her shop profits into free reading lessons for children who cannot afford them.",
+          "best_word": "philanthropic",
+          "fit": {
+            "philanthropic": 0.91,
+            "humanitarian": 0.22
+          },
+          "decisive_clue": "private business income funds a public-benefit program",
+          "reason": "Private business income funds a public-benefit program. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "humanitarian": "M3"
+          }
+        },
+        {
+          "id": "philanthropic-humanitarian_001_b2",
+          "text": "She renews the funding each year so the lessons can keep running.",
+          "best_word": "philanthropic",
+          "fit": {
+            "philanthropic": 0.91,
+            "humanitarian": 0.22
+          },
+          "decisive_clue": "private business income funds a public-benefit program",
+          "reason": "The new detail does not overturn the original clue: private business income funds a public-benefit program. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "humanitarian": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ongoing gifts from her shop support education in the community.",
+      "feedback_deep": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare. The emphasis is on Amina making private resources available for public benefit.",
+      "contrast_rule": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+      "hints": {
+        "attention": "Pay attention to the main action: providing resources or responding to human need.",
+        "axis": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+        "contrast": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "philanthropic-humanitarian_002",
+      "edge_id": "philanthropic__humanitarian",
+      "domain": "flood_response",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ravi’s work after the flood?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "philanthropic-humanitarian_002_b1",
+          "text": "Ravi distributes safe drinking water to families forced from their homes by flooding.",
+          "best_word": "humanitarian",
+          "fit": {
+            "philanthropic": 0.22,
+            "humanitarian": 0.91
+          },
+          "decisive_clue": "responds directly to displaced families’ immediate needs",
+          "reason": "Responds directly to displaced families’ immediate needs. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropic": "M1"
+          }
+        },
+        {
+          "id": "philanthropic-humanitarian_002_b2",
+          "text": "He returns to the temporary shelter after dark so nobody is left without water.",
+          "best_word": "humanitarian",
+          "fit": {
+            "philanthropic": 0.22,
+            "humanitarian": 0.91
+          },
+          "decisive_clue": "responds directly to displaced families’ immediate needs",
+          "reason": "The new detail does not overturn the original clue: responds directly to displaced families’ immediate needs. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Providing essential water to displaced people is direct relief.",
+      "feedback_deep": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare. Ravi’s response protects people facing a crisis rather than focusing on the source of his own funds.",
+      "contrast_rule": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+      "hints": {
+        "attention": "Pay attention to the main action: providing resources or responding to human need.",
+        "axis": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+        "contrast": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "philanthropic-humanitarian_003",
+      "edge_id": "philanthropic__humanitarian",
+      "domain": "scholarship_trust",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nora’s scholarship project?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "philanthropic-humanitarian_003_b1",
+          "text": "Nora invests money from selling her old house into a fund that pays local students’ college fees.",
+          "best_word": "philanthropic",
+          "fit": {
+            "philanthropic": 0.91,
+            "humanitarian": 0.22
+          },
+          "decisive_clue": "private proceeds are committed to a scholarship",
+          "reason": "Private proceeds are committed to a scholarship. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "humanitarian": "M2"
+          }
+        },
+        {
+          "id": "philanthropic-humanitarian_003_b2",
+          "text": "The money is managed so future classes of students can also receive support.",
+          "best_word": "philanthropic",
+          "fit": {
+            "philanthropic": 0.91,
+            "humanitarian": 0.22
+          },
+          "decisive_clue": "funding is organized to benefit others over many years",
+          "reason": "Funding is organized to benefit others over many years. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "humanitarian": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Nora uses personal assets to build a lasting opportunity for students.",
+      "feedback_deep": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare. The financing and charitable provision are central to the action.",
+      "contrast_rule": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+      "hints": {
+        "attention": "Pay attention to the main action: providing resources or responding to human need.",
+        "axis": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+        "contrast": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "philanthropic-humanitarian_004",
+      "edge_id": "philanthropic__humanitarian",
+      "domain": "refugee_assistance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dawit’s work with newly arrived families?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "philanthropic-humanitarian_004_b1",
+          "text": "Dawit escorts displaced families to safe temporary accommodation and helps them find medical attention.",
+          "best_word": "humanitarian",
+          "fit": {
+            "philanthropic": 0.22,
+            "humanitarian": 0.91
+          },
+          "decisive_clue": "provides safety and care to vulnerable displaced people",
+          "reason": "Provides safety and care to vulnerable displaced people. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropic": "M3"
+          }
+        },
+        {
+          "id": "philanthropic-humanitarian_004_b2",
+          "text": "He checks which families need urgent treatment before arranging rides to clinics.",
+          "best_word": "humanitarian",
+          "fit": {
+            "philanthropic": 0.22,
+            "humanitarian": 0.91
+          },
+          "decisive_clue": "his effort prioritizes protection from immediate harm",
+          "reason": "His effort prioritizes protection from immediate harm. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Finding safety and urgent care for displaced people centers on human protection.",
+      "feedback_deep": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare. Nothing in the scene requires a donation of the helper’s personal wealth.",
+      "contrast_rule": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+      "hints": {
+        "attention": "Pay attention to the main action: providing resources or responding to human need.",
+        "axis": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+        "contrast": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "philanthropic-humanitarian_005",
+      "edge_id": "philanthropic__humanitarian",
+      "domain": "music_lessons_funding",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Mei’s gift to the community centre?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "philanthropic-humanitarian_005_b1",
+          "text": "Mei pays for free music lessons at the community centre using money she has saved from her wages.",
+          "best_word": "philanthropic",
+          "fit": {
+            "philanthropic": 0.91,
+            "humanitarian": 0.22
+          },
+          "decisive_clue": "personal savings provide a public educational benefit",
+          "reason": "Personal savings provide a public educational benefit. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "humanitarian": "M1"
+          }
+        },
+        {
+          "id": "philanthropic-humanitarian_005_b2",
+          "text": "Her gift arrives with a handwritten card, but the centre uses the funds for the same lessons.",
+          "best_word": "philanthropic",
+          "fit": {
+            "philanthropic": 0.91,
+            "humanitarian": 0.22
+          },
+          "decisive_clue": "personal savings provide a public educational benefit",
+          "reason": "The new detail does not overturn the original clue: personal savings provide a public educational benefit. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "humanitarian": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A handwritten card changes presentation, not the charitable use of savings.",
+      "feedback_deep": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare. Mei contributes her own resources to others’ opportunities.",
+      "contrast_rule": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+      "hints": {
+        "attention": "Pay attention to the main action: providing resources or responding to human need.",
+        "axis": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+        "contrast": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "philanthropic-humanitarian_006",
+      "edge_id": "philanthropic__humanitarian",
+      "domain": "emergency_treatment_advocacy",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Karim’s campaign after the earthquake?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "philanthropic-humanitarian_006_b1",
+          "text": "Karim helps arrange emergency treatment for injured residents who have no safe way to reach a clinic.",
+          "best_word": "humanitarian",
+          "fit": {
+            "philanthropic": 0.22,
+            "humanitarian": 0.91
+          },
+          "decisive_clue": "organizes care for people facing urgent danger",
+          "reason": "Organizes care for people facing urgent danger. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropic": "M2"
+          }
+        },
+        {
+          "id": "philanthropic-humanitarian_006_b2",
+          "text": "He keeps a list of people still needing transport so the most seriously injured are reached first.",
+          "best_word": "humanitarian",
+          "fit": {
+            "philanthropic": 0.22,
+            "humanitarian": 0.91
+          },
+          "decisive_clue": "the action prioritizes reducing suffering and physical risk",
+          "reason": "The action prioritizes reducing suffering and physical risk. Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The central goal is urgent care for those at risk.",
+      "feedback_deep": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare. The work is organized around protecting people after a disaster.",
+      "contrast_rule": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+      "hints": {
+        "attention": "Pay attention to the main action: providing resources or responding to human need.",
+        "axis": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare.",
+        "contrast": "Philanthropic emphasizes giving or organizing private resources for the public good; humanitarian emphasizes relieving suffering or protecting human welfare."
+      },
+      "qa": "pass"
+    }
+  ]
+}

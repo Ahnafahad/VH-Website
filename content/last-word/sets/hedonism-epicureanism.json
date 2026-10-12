@@ -1,0 +1,815 @@
+{
+  "schema_version": 1,
+  "set_id": "hedonism-epicureanism",
+  "title": "hedonism / epicureanism",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[68]",
+    "source_pair_id": 312,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 8
+    }
+  },
+  "words": [
+    {
+      "word": "hedonism",
+      "sense": "the pursuit of immediate, intense sensory pleasure, often without regard for long-term consequences",
+      "connotation": "can be negative, suggesting excess, impulsivity, and short-sightedness",
+      "register": "neutral to critical",
+      "misconceptions": [
+        "thinking it just means 'having fun'",
+        "believing it requires being wealthy"
+      ]
+    },
+    {
+      "word": "epicureanism",
+      "sense": "the philosophy of pursuing refined, moderate, sustainable pleasure, such as friendship and tranquility",
+      "connotation": "often positive, suggesting wisdom, moderation, and cultured taste",
+      "register": "neutral to positive",
+      "misconceptions": [
+        "thinking it's only about fine food",
+        "confusing it with laziness"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "intensity_of_pleasure",
+      "description": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)"
+    },
+    {
+      "id": "sustainability_of_pursuit",
+      "description": "ranges from short-term, immediate gratification (hedonism) to long-term, sustainable tranquility (epicureanism)"
+    },
+    {
+      "id": "nature_of_pleasure",
+      "description": "ranges from raw, physical experience (hedonism) to intellectual, social, or aesthetic refinement (epicureanism)"
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "hedonism": [
+        "He lived in a state of pure hedonism, spending all his money on parties and gambling.",
+        "The festival was a display of wild hedonism, with people dancing until dawn in reckless abandon.",
+        "Some criticize the movie for promoting hedonism over any sense of responsibility.",
+        "Her life of hedonism left her feeling empty and exhausted by the time she reached thirty.",
+        "The corporate culture had devolved into a form of hedonism, where immediate profit was all that mattered.",
+        "His unchecked hedonism led him to ignore all his health problems."
+      ],
+      "epicureanism": [
+        "She found happiness in a quiet epicureanism, enjoying the simple pleasure of a book and a tea.",
+        "His epicureanism was not about luxury, but about cultivating a calm and satisfied mind.",
+        "They spent the afternoon discussing philosophy, embodying a true epicureanism.",
+        "The retreat encouraged a form of epicureanism, focusing on nature and mindful living.",
+        "He argued that epicureanism is the key to lasting contentment rather than fleeting thrills.",
+        "Her approach to dinner was one of epicureanism; she chose quality over quantity, savoring every bite."
+      ]
+    },
+    "counter": {
+      "hedonism": [
+        "She embraced epicureanism by carefully selecting a few close friends to spend a tranquil evening with.",
+        "The monk's lifestyle was the opposite of hedonism, emphasizing self-denial.",
+        "His goal was long-term health, which was incompatible with rampant hedonism.",
+        "The philosopher advocated for moderation, rejecting all forms of hedonism.",
+        "They valued serenity over sensation, distancing themselves from hedonism.",
+        "His disciplined routine allowed no room for reckless hedonism."
+      ],
+      "epicureanism": [
+        "Driven by hedonism, he ate until he was sick just to feel the intense flavors.",
+        "The party was pure hedonism, with no regard for anyone else's comfort.",
+        "He didn't care about tranquility; his life was defined by the relentless pursuit of hedonism.",
+        "The aim was sheer intensity, a clear rejection of epicureanism.",
+        "The riot was a display of chaotic hedonism, far from the ideals of epicureanism.",
+        "She didn't want moderation or wisdom; her desire for hedonism overruled everything else."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "hedonism__epicureanism",
+      "a": "hedonism",
+      "b": "epicureanism",
+      "boundary_rule": "hedonism is the pursuit of raw, intense pleasure without moderation, while epicureanism is the deliberate, moderate pursuit of simple, refined pleasures for tranquility.",
+      "clues_a": [
+        "impulsive",
+        "excessive",
+        "immediate gratification",
+        "sensory overload",
+        "lack of restraint"
+      ],
+      "clues_b": [
+        "moderate",
+        "thoughtful",
+        "refined",
+        "simple pleasures",
+        "social harmony",
+        "tranquility"
+      ],
+      "irrelevant_clues": [
+        "cost of the activity",
+        "number of people involved",
+        "location of the activity"
+      ],
+      "misconceptions": {
+        "M1": "Hedonism equals 'enjoyment'",
+        "M2": "Epicureanism equals 'fine dining'",
+        "M3": "Hedonism is inherently wicked"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "hedonism-epicureanism_001",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "party",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How Marcus spends his weekend: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_001_b1",
+          "text": "Marcus spends all weekend throwing wild parties with loud music and limitless drinks.",
+          "best_word": "hedonism",
+          "fit": {
+            "hedonism": 0.9,
+            "epicureanism": 0.1
+          },
+          "decisive_clue": "wild parties with loud music and limitless drinks",
+          "reason": "The focus on loud, excessive consumption indicates hedonism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "epicureanism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_001_b2",
+          "text": "Even when he's exhausted, Marcus keeps inviting more people and ordering more alcohol to keep the intensity high.",
+          "best_word": "hedonism",
+          "fit": {
+            "hedonism": 0.95,
+            "epicureanism": 0.05
+          },
+          "decisive_clue": "keep the intensity high despite exhaustion",
+          "reason": "Continuing excess despite discomfort confirms hedonism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "epicureanism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The pursuit of intense sensation despite exhaustion, lacking moderation, defines hedonism.",
+      "feedback_deep": "Hedonism involves pursuing intense pleasure, often to the point of excess, and ignoring the need for rest or moderation. Epicureanism, conversely, seeks sustained tranquility and would favor resting when exhausted rather than pushing for more sensation.",
+      "contrast_rule": "If it's about pushing sensation despite pain, it's hedonism; if it's about avoiding pain for calm, it's epicureanism.",
+      "hints": {
+        "attention": "Look at whether Marcus cares about his comfort.",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "If it's about pushing sensation despite pain, it's hedonism; if it's about avoiding pain for calm, it's epicureanism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_002",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "reading",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How Elena spends her weekend: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_002_b1",
+          "text": "Elena spends all weekend in her garden, reading classic books and sipping herbal tea.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.1,
+            "epicureanism": 0.9
+          },
+          "decisive_clue": "reading classic books and sipping herbal tea",
+          "reason": "The focus on quiet, intellectual pleasure indicates epicureanism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_002_b2",
+          "text": "She ignores calls from friends, choosing instead to focus on the tranquility and intellectual refinement of her books.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.05,
+            "epicureanism": 0.95
+          },
+          "decisive_clue": "tranquility and intellectual refinement",
+          "reason": "Seeking mental clarity and peace defines epicureanism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Choosing tranquility and intellectual reflection over high-intensity stimulation is characteristic of epicureanism.",
+      "feedback_deep": "Epicureanism is about cultivating lasting peace and refined intellectual satisfaction, whereas hedonism would likely seek more active, loud, or intense experiences.",
+      "contrast_rule": "If it's quiet refinement, it's epicureanism; if it's loud sensory stimulation, it's hedonism.",
+      "hints": {
+        "attention": "What kind of pleasure does Elena value?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "If it's quiet refinement, it's epicureanism; if it's loud sensory stimulation, it's hedonism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_003",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How Julian experiences dining: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_003_b1",
+          "text": "Julian enjoys fine dining, savoring each course with good company and deep conversation.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.3,
+            "epicureanism": 0.7
+          },
+          "decisive_clue": "savoring each course with good company and deep conversation",
+          "reason": "The focus on appreciation and company suggests epicureanism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_003_b2",
+          "text": "Suddenly, he orders five more main courses, eating them rapidly to feel the maximum sensation, ignoring his guests.",
+          "best_word": "hedonism",
+          "fit": {
+            "hedonism": 0.9,
+            "epicureanism": 0.1
+          },
+          "decisive_clue": "orders five more main courses, eating them rapidly to feel the maximum sensation",
+          "reason": "The switch to overconsumption for sensation changes the frame to hedonism.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "epicureanism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "When the focus shifts from savoring to raw overconsumption, the label becomes hedonism.",
+      "feedback_deep": "Epicureanism is about moderation and appreciation, while hedonism is about maximizing the intensity of the sensation, even if it leads to excess or discomfort.",
+      "contrast_rule": "Savoring is epicurean; overconsuming for maximum sensation is hedonistic.",
+      "hints": {
+        "attention": "Does Julian still care about the quality or the company?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "Savoring is epicurean; overconsuming for maximum sensation is hedonistic."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_008",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "hobby",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How Leo approaches skiing: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_008_b1",
+          "text": "Leo loves the rush of skiing down steep slopes as fast as he possibly can.",
+          "best_word": "hedonism",
+          "fit": {
+            "hedonism": 0.8,
+            "epicureanism": 0.2
+          },
+          "decisive_clue": "rush of skiing down steep slopes as fast as he possibly can",
+          "reason": "The focus on intense speed and sensory rush defines hedonism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "epicureanism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_008_b2",
+          "text": "He deliberately ignores the beautiful scenery, only caring about the physical adrenaline he gets from the speed.",
+          "best_word": "hedonism",
+          "fit": {
+            "hedonism": 0.95,
+            "epicureanism": 0.05
+          },
+          "decisive_clue": "ignores scenery, only cares about the physical adrenaline",
+          "reason": "The focus on adrenaline over appreciation confirms hedonism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "epicureanism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Chasing adrenaline to the exclusion of all else is a classic sign of hedonism.",
+      "feedback_deep": "Hedonism is often defined by the pursuit of intense, immediate physical sensations (like adrenaline). Epicureanism would involve appreciating the scenery and the calm beauty of the mountain while skiing.",
+      "contrast_rule": "Adrenaline-chasing is hedonistic; appreciating the environment is epicurean.",
+      "hints": {
+        "attention": "What does Leo *not* care about?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "Adrenaline-chasing is hedonistic; appreciating the environment is epicurean."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_009",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "hobby",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How Maya approaches gardening: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_009_b1",
+          "text": "Maya finds peace in gardening, carefully cultivating each plant to create a harmonious space.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.1,
+            "epicureanism": 0.9
+          },
+          "decisive_clue": "peace... cultivating each plant to create a harmonious space",
+          "reason": "The focus on peace and harmony suggests epicureanism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_009_b2",
+          "text": "She spends hours quietly working, finding that the slow growth of the plants brings her true tranquility.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.05,
+            "epicureanism": 0.95
+          },
+          "decisive_clue": "slow growth... brings her true tranquility",
+          "reason": "The emphasis on tranquility and slow, steady growth defines epicureanism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Seeking lasting tranquility through slow, deliberate activity is quintessential epicureanism.",
+      "feedback_deep": "Epicureanism is about finding simple, sustainable pleasures that lead to peace of mind. Gardening fits this perfectly, as it requires patience and rewards with serenity, unlike the frantic search for stimulation in hedonism.",
+      "contrast_rule": "Slow tranquility is epicurean; frantic stimulation is hedonistic.",
+      "hints": {
+        "attention": "Does Maya seem in a hurry?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "Slow tranquility is epicurean; frantic stimulation is hedonistic."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_010",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How Sam travels: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_010_b1",
+          "text": "Sam books a mountain cabin, solely to enjoy the silence and the view of the forest.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.1,
+            "epicureanism": 0.9
+          },
+          "decisive_clue": "enjoy the silence and the view of the forest",
+          "reason": "The focus on simplicity and silence indicates epicureanism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_010_b2",
+          "text": "However, he complains constantly because the cabin doesn't have an intense nightlife scene or any exciting thrills nearby.",
+          "best_word": "hedonism",
+          "fit": {
+            "hedonism": 0.9,
+            "epicureanism": 0.1
+          },
+          "decisive_clue": "complains... doesn't have intense nightlife or exciting thrills",
+          "reason": "The switch to complaining about lack of intensity reveals his true desire for stimulation, changing the label to hedonism.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "epicureanism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "When the goal is intense stimulation rather than quiet reflection, it is hedonism, not epicureanism.",
+      "feedback_deep": "Epicureanism is satisfied with silence and simple beauty. Hedonism requires active, intense, and varied stimuli to feel fulfilled, leading to disappointment when those are absent.",
+      "contrast_rule": "If you need thrill to be happy, it's hedonism; if you're happy with silence, it's epicureanism.",
+      "hints": {
+        "attention": "What does Sam actually want?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "If you need thrill to be happy, it's hedonism; if you're happy with silence, it's epicureanism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_011",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How Nina travels: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_011_b1",
+          "text": "Nina travels to the city, wanting to find the loudest club and drink as much as possible.",
+          "best_word": "hedonism",
+          "fit": {
+            "hedonism": 0.9,
+            "epicureanism": 0.1
+          },
+          "decisive_clue": "loudest club and drink as much as possible",
+          "reason": "The focus on intense sensory overstimulation defines hedonism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "epicureanism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_011_b2",
+          "text": "After a while, she stops, realizing that she prefers small, quiet cafes where she can talk to friends and enjoy the architecture.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.1,
+            "epicureanism": 0.9
+          },
+          "decisive_clue": "prefers small, quiet cafes... talk to friends... architecture",
+          "reason": "The shift to social, intellectual, and aesthetic appreciation defines epicureanism.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Shifting from loud sensory overload to quiet, refined social connection is a shift to epicureanism.",
+      "feedback_deep": "Hedonism thrives on intense, immediate sensation (loud clubs). Epicureanism thrives on sustainable, refined connections (talking to friends) and aesthetic appreciation (architecture), which foster lasting tranquility.",
+      "contrast_rule": "Loud sensation is hedonistic; quiet connection is epicurean.",
+      "hints": {
+        "attention": "What does Nina appreciate in the end?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "Loud sensation is hedonistic; quiet connection is epicurean."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_017",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "food",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "precision",
+      "frame": "How Li experiences her daily coffee: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_017_b1",
+          "text": "Li drinks a single cup of coffee, slowly enjoying the nuanced flavor profile and the calm morning atmosphere.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.1,
+            "epicureanism": 0.9
+          },
+          "decisive_clue": "slowly enjoying... nuanced flavor profile and calm morning atmosphere",
+          "reason": "The focus on slow enjoyment, nuance, and calm defines epicureanism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_017_b2",
+          "text": "She rejects any faster, stronger coffee, arguing that the true pleasure is in the patience and the refinement.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.05,
+            "epicureanism": 0.95
+          },
+          "decisive_clue": "rejects faster, stronger coffee... true pleasure is in patience and refinement",
+          "reason": "The rejection of intensity for the sake of refinement confirms epicureanism.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Choosing patience and nuance over strength and speed is the essence of epicureanism.",
+      "feedback_deep": "Epicureanism emphasizes the appreciation of simple things when they are done with refinement and moderation. Hedonism would favor the most intense, strongest option possible for an immediate kick.",
+      "contrast_rule": "Refined patience is epicurean; intense strength is hedonistic.",
+      "hints": {
+        "attention": "Why does Li choose this cup?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "Refined patience is epicurean; intense strength is hedonistic."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_018",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "sports",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "How Ali approaches his daily run: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_018_b1",
+          "text": "Ali goes for a run, not to compete, but to feel the rhythmic movement and enjoy the clarity of mind it brings.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.1,
+            "epicureanism": 0.9
+          },
+          "decisive_clue": "not to compete, but to feel the rhythmic movement and enjoy the clarity of mind",
+          "reason": "The focus on rhythm and mental clarity suggests epicureanism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_018_b2",
+          "text": "He deliberately slows down, finding that the enjoyment of the path itself is more sustainable than any peak performance.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.05,
+            "epicureanism": 0.95
+          },
+          "decisive_clue": "deliberately slows down... enjoyment of the path... more sustainable",
+          "reason": "The preference for sustainability and enjoyment of the process over intensity confirms epicureanism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Finding pleasure in the sustainable process rather than pushing for intense performance is epicurean.",
+      "feedback_deep": "Epicureanism is about finding simple, sustainable pleasures. Running for clarity and rhythm is a refined pleasure, whereas running to achieve a maximum, intense output would lean towards hedonism.",
+      "contrast_rule": "Sustainable rhythm is epicurean; intense performance is hedonistic.",
+      "hints": {
+        "attention": "Does he care about the competition or the experience?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "Sustainable rhythm is epicurean; intense performance is hedonistic."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hedonism-epicureanism_019",
+      "edge_id": "hedonism__epicureanism",
+      "domain": "relationship",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "How Maria approaches her relationship: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hedonism-epicureanism_019_b1",
+          "text": "Maria values her relationship for the deep, calm understanding and mutual support she shares with her partner.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.1,
+            "epicureanism": 0.9
+          },
+          "decisive_clue": "deep, calm understanding and mutual support",
+          "reason": "The focus on calm understanding and support defines epicureanism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M1"
+          }
+        },
+        {
+          "id": "hedonism-epicureanism_019_b2",
+          "text": "She prioritizes this long-term stability over any fleeting, exciting moments, finding it the only true source of happiness.",
+          "best_word": "epicureanism",
+          "fit": {
+            "hedonism": 0.05,
+            "epicureanism": 0.95
+          },
+          "decisive_clue": "prioritizes long-term stability over fleeting, exciting moments",
+          "reason": "The preference for long-term tranquility over fleeting thrills defines epicureanism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hedonism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Valuing stable, calm understanding over fleeting excitement is epicureanism.",
+      "feedback_deep": "Epicureanism is about the sustained pleasure of peace, stability, and mutual growth. Hedonism would be constantly searching for the next exciting peak, which is fundamentally incompatible with the quiet, long-term building of a relationship.",
+      "contrast_rule": "Stable tranquility is epicurean; fleeting excitement is hedonistic.",
+      "hints": {
+        "attention": "What does Maria value in her partner?",
+        "axis": "ranges from intense, sensory stimulation (hedonism) to moderate, refined enjoyment (epicureanism)",
+        "contrast": "Stable tranquility is epicurean; fleeting excitement is hedonistic."
+      },
+      "qa": "pass"
+    }
+  ]
+}

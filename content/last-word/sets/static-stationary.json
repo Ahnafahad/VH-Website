@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "set_id": "static-stationary",
+  "title": "static / stationary",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[54]",
+    "source_pair_id": 281,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "static",
+      "sense": "Remaining in the same condition without meaningful change or development.",
+      "connotation": "neutral",
+      "register": "formal",
+      "misconceptions": [
+        "Any object that is not moving is best called static."
+      ]
+    },
+    {
+      "word": "stationary",
+      "sense": "Not changing physical location or moving through space.",
+      "connotation": "neutral",
+      "register": "general",
+      "misconceptions": [
+        "An unchanged plan must be stationary."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "decisive_boundary",
+      "description": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place."
+    }
+  ],
+  "edges": [
+    {
+      "id": "static__stationary",
+      "a": "static",
+      "b": "stationary",
+      "boundary_rule": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place.",
+      "clues_a": [
+        "no updates for months",
+        "same policy and content"
+      ],
+      "clues_b": [
+        "remained at the curb",
+        "did not change physical position"
+      ],
+      "irrelevant_clues": [
+        "whether it was noisy",
+        "whether the object was expensive"
+      ],
+      "misconceptions": {
+        "M1": "Any object that is not moving is best called static.",
+        "M2": "An unchanged plan must be stationary.",
+        "M3": "Activity within an unmoving object means it cannot be stationary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "static-stationary_001",
+      "edge_id": "static__stationary",
+      "domain": "school_website",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the school website Amira manages?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "static-stationary_001_b1",
+          "text": "Amira’s school website has shown the same notices, timetable, and links for two years.",
+          "best_word": "static",
+          "fit": {
+            "static": 0.91,
+            "stationary": 0.26
+          },
+          "decisive_clue": "the content and layout have not developed",
+          "reason": "The website has undergone no meaningful revision.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stationary": "M2"
+          }
+        },
+        {
+          "id": "static-stationary_001_b2",
+          "text": "Students still open the site from their phones every day.",
+          "best_word": "static",
+          "fit": {
+            "static": 0.95,
+            "stationary": 0.26
+          },
+          "decisive_clue": "unchanged site despite frequent visits",
+          "reason": "Visitor activity does not change the content.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stationary": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A website can remain unchanged even when hundreds of people visit it.",
+      "feedback_deep": "Static describes a lack of change or development. Stationary means physically unmoving, which is not the relevant property of a website.",
+      "contrast_rule": "Static stays the same; stationary stays in the same place.",
+      "hints": {
+        "attention": "Track changes to the website itself.",
+        "axis": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place.",
+        "contrast": "Static stays the same; stationary stays in the same place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "static-stationary_002",
+      "edge_id": "static__stationary",
+      "domain": "driving_lesson",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the practice car Mei is watching?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "static-stationary_002_b1",
+          "text": "The practice car waited at the marked stop line without moving forward.",
+          "best_word": "stationary",
+          "fit": {
+            "static": 0.26,
+            "stationary": 0.91
+          },
+          "decisive_clue": "held the same road position",
+          "reason": "The fact concerns movement in space.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "static": "M1"
+          }
+        },
+        {
+          "id": "static-stationary_002_b2",
+          "text": "Its engine was running and its turn signal blinked.",
+          "best_word": "stationary",
+          "fit": {
+            "static": 0.26,
+            "stationary": 0.95
+          },
+          "decisive_clue": "did not move despite active engine and lights",
+          "reason": "Internal activity does not move the car from its location.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "static": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The car remained in place although its engine and lights were active.",
+      "feedback_deep": "Stationary concerns position, not whether every part is silent or inactive. Static usually describes an unchanged condition rather than a vehicle stopped on the road.",
+      "contrast_rule": "Static stays the same; stationary stays in the same place.",
+      "hints": {
+        "attention": "Look at the car’s position on the road.",
+        "axis": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place.",
+        "contrast": "Static stays the same; stationary stays in the same place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "static-stationary_003",
+      "edge_id": "static__stationary",
+      "domain": "club_membership",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Diego’s membership plan?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "static-stationary_003_b1",
+          "text": "Diego’s club kept the same fees, benefits, and joining rules through three seasons.",
+          "best_word": "static",
+          "fit": {
+            "static": 0.91,
+            "stationary": 0.26
+          },
+          "decisive_clue": "terms and benefits stayed unchanged",
+          "reason": "The plan did not develop over time.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stationary": "M2"
+          }
+        },
+        {
+          "id": "static-stationary_003_b2",
+          "text": "The plan remained unchanged when its printed leaflet was moved to a different display stand.",
+          "best_word": "static",
+          "fit": {
+            "static": 0.95,
+            "stationary": 0.26
+          },
+          "decisive_clue": "membership terms stayed unchanged despite leaflet relocation",
+          "reason": "Moving the paper does not alter the plan.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stationary": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Moving a leaflet does not change the fees or benefits it describes.",
+      "feedback_deep": "Static refers to unchanging conditions. The physical movement of a printed copy is irrelevant when the subject is the membership plan itself.",
+      "contrast_rule": "Static stays the same; stationary stays in the same place.",
+      "hints": {
+        "attention": "Which thing is the question asking you to classify?",
+        "axis": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place.",
+        "contrast": "Static stays the same; stationary stays in the same place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "static-stationary_004",
+      "edge_id": "static__stationary",
+      "domain": "bus_station",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the bus Noor noticed?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "static-stationary_004_b1",
+          "text": "The bus remained beside the same platform while passengers got on.",
+          "best_word": "stationary",
+          "fit": {
+            "static": 0.26,
+            "stationary": 0.91
+          },
+          "decisive_clue": "stayed beside the same platform",
+          "reason": "The bus itself did not change location.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "static": "M1"
+          }
+        },
+        {
+          "id": "static-stationary_004_b2",
+          "text": "The driver opened the doors, checked tickets, and spoke to passengers.",
+          "best_word": "stationary",
+          "fit": {
+            "static": 0.26,
+            "stationary": 0.95
+          },
+          "decisive_clue": "bus position remained fixed while tasks continued",
+          "reason": "Activities inside do not constitute movement of the vehicle.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "static": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Boarding and ticket checks did not move the bus from its platform.",
+      "feedback_deep": "Stationary means remaining in one place. The bus can still be a busy setting; being physically still does not require complete inactivity.",
+      "contrast_rule": "Static stays the same; stationary stays in the same place.",
+      "hints": {
+        "attention": "Distinguish the bus from what happens aboard it.",
+        "axis": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place.",
+        "contrast": "Static stays the same; stationary stays in the same place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "static-stationary_005",
+      "edge_id": "static__stationary",
+      "domain": "office_policy",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Hana’s remote-work policy?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "static-stationary_005_b1",
+          "text": "Hana’s office has used exactly the same remote-work rules for five years.",
+          "best_word": "static",
+          "fit": {
+            "static": 0.91,
+            "stationary": 0.26
+          },
+          "decisive_clue": "rules have not changed in years",
+          "reason": "The subject is an enduring condition, not a location.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stationary": "M2"
+          }
+        },
+        {
+          "id": "static-stationary_005_b2",
+          "text": "Employees now work from three buildings, but all follow those unchanged rules.",
+          "best_word": "static",
+          "fit": {
+            "static": 0.95,
+            "stationary": 0.26
+          },
+          "decisive_clue": "rules remain identical despite multiple work sites",
+          "reason": "The workers’ locations do not change the policy.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stationary": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Different workplaces do not make the policy itself move or develop.",
+      "feedback_deep": "Static is appropriate for a rule or arrangement that does not evolve. Stationary applies to physical position and is not the natural label for unchanged rules.",
+      "contrast_rule": "Static stays the same; stationary stays in the same place.",
+      "hints": {
+        "attention": "Focus on the policy, not the buildings.",
+        "axis": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place.",
+        "contrast": "Static stays the same; stationary stays in the same place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "static-stationary_006",
+      "edge_id": "static__stationary",
+      "domain": "shopping_mall",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the bench Kofi sat beside?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "static-stationary_006_b1",
+          "text": "The heavy bench stayed in its marked spot throughout the busy afternoon.",
+          "best_word": "stationary",
+          "fit": {
+            "static": 0.26,
+            "stationary": 0.91
+          },
+          "decisive_clue": "maintained the same physical position",
+          "reason": "The issue is whether the bench moved.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "static": "M1"
+          }
+        },
+        {
+          "id": "static-stationary_006_b2",
+          "text": "The advertisement on its backrest changed from one picture to another.",
+          "best_word": "stationary",
+          "fit": {
+            "static": 0.26,
+            "stationary": 0.95
+          },
+          "decisive_clue": "bench position stayed fixed despite changing advert",
+          "reason": "An updated image does not relocate the bench.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "static": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The bench stayed in place even though its displayed advertisement changed.",
+      "feedback_deep": "Stationary refers to an object not moving from its location. Its decoration or content may change; that is different from physical movement.",
+      "contrast_rule": "Static stays the same; stationary stays in the same place.",
+      "hints": {
+        "attention": "Observe where the bench is, not what is printed on it.",
+        "axis": "Static emphasizes an unchanged state or lack of development; stationary specifically means staying in one physical place.",
+        "contrast": "Static stays the same; stationary stays in the same place."
+      },
+      "qa": "pass"
+    }
+  ]
+}

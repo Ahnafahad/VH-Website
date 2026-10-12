@@ -41,6 +41,7 @@ export function contentProblems(set: LastWordSet): ContentProblem[] {
       else if (candidates.filter(word => beat.fit[word] === top).length > 1) err(`${where}: two words tie for top fit, so "best" is arbitrary.`, id);
       if (beat.fit[beat.best_word] < 0.7) warn(`${where}: best fit is ${beat.fit[beat.best_word]} (below 0.7, “strongly defensible” per §9).`, id);
       if (leak.test(beat.text)) err(`${where}: context contains a candidate word or its stem.`, id);
+      if (!beat.difficulty) warn(`${where}: no difficulty ratings.`, id);
       if (!beat.text.includes(beat.decisive_clue)) warn(`${where}: decisive_clue is not an exact excerpt, so it is shown quoted instead of highlighted.`, id);
       for (const word of candidates) {
         if (word !== beat.best_word && beat.fit[word] < 0.4 && !beat.misconception_by_wrong_choice[word]) warn(`${where}: no misconception tag for wrong choice "${word}".`, id);

@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "altruism-philanthropy",
+  "title": "altruism / philanthropy",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[151]",
+    "source_pair_id": 636,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "altruism",
+      "sense": "selfless concern expressed in personally costly help without expected reward",
+      "connotation": "selfless individual motive",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming altruism and philanthropy mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for philanthropy."
+      ]
+    },
+    {
+      "word": "philanthropy",
+      "sense": "organized donation of resources for the good of others or the public",
+      "connotation": "organized public-benefit giving",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming altruism and philanthropy mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for altruism."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "motive_vs_organized_giving",
+      "description": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit."
+    }
+  ],
+  "edges": [
+    {
+      "id": "altruism__philanthropy",
+      "a": "altruism",
+      "b": "philanthropy",
+      "boundary_rule": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit.",
+      "clues_a": [
+        "helps without seeking repayment",
+        "accepts personal loss to benefit another",
+        "offers time privately and freely"
+      ],
+      "clues_b": [
+        "pooled giving distributed systematically",
+        "organized public-benefit funding",
+        "ongoing managed donation program"
+      ],
+      "irrelevant_clues": [
+        "public recognition alone",
+        "donor clothing",
+        "colour of charity materials"
+      ],
+      "misconceptions": {
+        "M1": "Assuming altruism and philanthropy mean the same thing whenever both appear relevant.",
+        "M2": "Ignoring the defining evidence needed for philanthropy.",
+        "M3": "Ignoring the defining evidence needed for altruism."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "altruism-philanthropy_001",
+      "edge_id": "altruism__philanthropy",
+      "domain": "commute",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Nadia’s decision at the station?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "altruism-philanthropy_001_b1",
+          "text": "Nadia gave her last bus fare to a stranded classmate and walked the long route home without asking for anything back.",
+          "best_word": "altruism",
+          "fit": {
+            "altruism": 0.92,
+            "philanthropy": 0.3
+          },
+          "decisive_clue": "personal sacrifice made without expected return",
+          "reason": "Personal sacrifice made without expected return is the strongest evidence for altruism here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropy": "M2"
+          }
+        },
+        {
+          "id": "altruism-philanthropy_001_b2",
+          "text": "She never told anyone else why she had walked home that evening.",
+          "best_word": "altruism",
+          "fit": {
+            "altruism": 0.94,
+            "philanthropy": 0.26
+          },
+          "decisive_clue": "personal sacrifice made without expected return; private nature of the story does not change that",
+          "reason": "She spent something she needed to help another person; the absence of publicity changes nothing.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Personal sacrifice made without expected return still decides; the later detail does not change that.",
+      "feedback_deep": "Altruism means selfless concern expressed in personally costly help without expected reward; philanthropy means organized donation of resources for the good of others or the public. She spent something she needed to help another person; the absence of publicity changes nothing.",
+      "contrast_rule": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically.",
+      "hints": {
+        "attention": "Ask who bears the cost and expects a reward.",
+        "axis": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit.",
+        "contrast": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "altruism-philanthropy_002",
+      "edge_id": "altruism__philanthropy",
+      "domain": "scholarship_fund",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Lian’s scholarship initiative?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "altruism-philanthropy_002_b1",
+          "text": "Lian created a fund where many donors contribute money and a committee awards grants to students each term.",
+          "best_word": "philanthropy",
+          "fit": {
+            "philanthropy": 0.92,
+            "altruism": 0.3
+          },
+          "decisive_clue": "pooled donations administered through a grant committee",
+          "reason": "Pooled donations administered through a grant committee is the strongest evidence for philanthropy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "altruism": "M3"
+          }
+        },
+        {
+          "id": "altruism-philanthropy_002_b2",
+          "text": "The group now publishes yearly figures for collected donations and awarded grants.",
+          "best_word": "philanthropy",
+          "fit": {
+            "philanthropy": 0.94,
+            "altruism": 0.26
+          },
+          "decisive_clue": "pooled donations administered through a grant committee; further evidence: regular public accounting of contributions and awards",
+          "reason": "The repeated, structured distribution of pooled resources makes this organized giving.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "altruism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Regular public accounting of contributions and awards confirms the earlier clue: pooled donations administered through a grant committee.",
+      "feedback_deep": "Altruism means selfless concern expressed in personally costly help without expected reward; philanthropy means organized donation of resources for the good of others or the public. The repeated, structured distribution of pooled resources makes this organized giving.",
+      "contrast_rule": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically.",
+      "hints": {
+        "attention": "Look at the funding structure and decisions.",
+        "axis": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit.",
+        "contrast": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "altruism-philanthropy_003",
+      "edge_id": "altruism__philanthropy",
+      "domain": "exam_help",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Rafi’s choice to tutor a younger student?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "altruism-philanthropy_003_b1",
+          "text": "Rafi gave up his free Saturdays to tutor a younger student and refused the offered fee.",
+          "best_word": "altruism",
+          "fit": {
+            "altruism": 0.92,
+            "philanthropy": 0.3
+          },
+          "decisive_clue": "costly unpaid help with no expected reward",
+          "reason": "Costly unpaid help with no expected reward is the strongest evidence for altruism here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropy": "M1"
+          }
+        },
+        {
+          "id": "altruism-philanthropy_003_b2",
+          "text": "Rafi enjoyed hearing a grateful thank-you after each session, but still turned down every offer of payment.",
+          "best_word": "altruism",
+          "fit": {
+            "altruism": 0.94,
+            "philanthropy": 0.26
+          },
+          "decisive_clue": "costly unpaid help with no expected reward; gratitude received without any agreed reward does not change that",
+          "reason": "Enjoying thanks does not erase his costly decision to help without expecting compensation.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Costly unpaid help with no expected reward still decides; the later detail does not change that.",
+      "feedback_deep": "Altruism means selfless concern expressed in personally costly help without expected reward; philanthropy means organized donation of resources for the good of others or the public. Enjoying thanks does not erase his costly decision to help without expecting compensation.",
+      "contrast_rule": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically.",
+      "hints": {
+        "attention": "Was he acting for something in return?",
+        "axis": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit.",
+        "contrast": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "altruism-philanthropy_004",
+      "edge_id": "altruism__philanthropy",
+      "domain": "community_books",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sofia’s neighbourhood book initiative?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "altruism-philanthropy_004_b1",
+          "text": "Sofia set up a monthly fund into which residents pay, and its elected volunteers buy books for free public shelves.",
+          "best_word": "philanthropy",
+          "fit": {
+            "philanthropy": 0.92,
+            "altruism": 0.3
+          },
+          "decisive_clue": "formal pooling of money for public book access",
+          "reason": "Formal pooling of money for public book access is the strongest evidence for philanthropy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "altruism": "M3"
+          }
+        },
+        {
+          "id": "altruism-philanthropy_004_b2",
+          "text": "Sofia gave the initiative a cheerful blue logo, while the monthly collection and book deliveries continued.",
+          "best_word": "philanthropy",
+          "fit": {
+            "philanthropy": 0.94,
+            "altruism": 0.26
+          },
+          "decisive_clue": "formal pooling of money for public book access; initiative gained a cheerful logo does not change that",
+          "reason": "A new logo does not change the organized donation and public distribution of books.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "altruism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Formal pooling of money for public book access still decides; the later detail does not change that.",
+      "feedback_deep": "Altruism means selfless concern expressed in personally costly help without expected reward; philanthropy means organized donation of resources for the good of others or the public. A new logo does not change the organized donation and public distribution of books.",
+      "contrast_rule": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically.",
+      "hints": {
+        "attention": "Think about how the initiative collects and uses resources.",
+        "axis": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit.",
+        "contrast": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "altruism-philanthropy_005",
+      "edge_id": "altruism__philanthropy",
+      "domain": "neighbourly_help",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Esma’s choice after helping an older neighbour?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "altruism-philanthropy_005_b1",
+          "text": "Already late for an appointment, Esma carried the neighbour’s groceries upstairs and waved away payment.",
+          "best_word": "altruism",
+          "fit": {
+            "altruism": 0.92,
+            "philanthropy": 0.3
+          },
+          "decisive_clue": "sacrificed scarce time while refusing compensation",
+          "reason": "Sacrificed scarce time while refusing compensation is the strongest evidence for altruism here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropy": "M2"
+          }
+        },
+        {
+          "id": "altruism-philanthropy_005_b2",
+          "text": "When offered a signed volunteer-hours slip afterward, she politely declined that too.",
+          "best_word": "altruism",
+          "fit": {
+            "altruism": 0.94,
+            "philanthropy": 0.26
+          },
+          "decisive_clue": "also declined proof that could benefit her",
+          "reason": "The later refusal confirms the original action was done for the neighbour rather than personal credit.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philanthropy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Also declined proof that could benefit her makes altruism the better choice.",
+      "feedback_deep": "Altruism means selfless concern expressed in personally costly help without expected reward; philanthropy means organized donation of resources for the good of others or the public. The later refusal confirms the original action was done for the neighbour rather than personal credit.",
+      "contrast_rule": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically.",
+      "hints": {
+        "attention": "Look at what she gives up, then at what she refuses.",
+        "axis": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit.",
+        "contrast": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "altruism-philanthropy_006",
+      "edge_id": "altruism__philanthropy",
+      "domain": "winter_clothing_drive",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hugo’s coat-giving project?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "altruism-philanthropy_006_b1",
+          "text": "Hugo arranged regular staff donations, logged each contribution and distributed purchased coats through community centres.",
+          "best_word": "philanthropy",
+          "fit": {
+            "philanthropy": 0.92,
+            "altruism": 0.3
+          },
+          "decisive_clue": "organized collection and allocation of donated resources",
+          "reason": "Organized collection and allocation of donated resources is the strongest evidence for philanthropy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "altruism": "M1"
+          }
+        },
+        {
+          "id": "altruism-philanthropy_006_b2",
+          "text": "The project now partners with local charities to choose where its next batch of coats will go.",
+          "best_word": "philanthropy",
+          "fit": {
+            "philanthropy": 0.94,
+            "altruism": 0.26
+          },
+          "decisive_clue": "organized collection and allocation of donated resources; further evidence: established distribution partners for later rounds",
+          "reason": "The continuing coordinated resource-giving, not any one giver’s motive, is what stands out.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "altruism": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Established distribution partners for later rounds confirms the earlier clue: organized collection and allocation of donated resources.",
+      "feedback_deep": "Altruism means selfless concern expressed in personally costly help without expected reward; philanthropy means organized donation of resources for the good of others or the public. The continuing coordinated resource-giving, not any one giver’s motive, is what stands out.",
+      "contrast_rule": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically.",
+      "hints": {
+        "attention": "Consider the scale and organization of the gifts.",
+        "axis": "Altruism highlights selfless help despite personal cost; philanthropy highlights structured giving of resources for wider benefit.",
+        "contrast": "Altruism: helps without seeking repayment; philanthropy: pooled giving distributed systematically."
+      },
+      "qa": "pass"
+    }
+  ]
+}

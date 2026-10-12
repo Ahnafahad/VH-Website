@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "aphorism-maxim",
+  "title": "aphorism / maxim",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[81]",
+    "source_pair_id": 337,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "aphorism",
+      "sense": "A brief, memorable statement capturing a general truth, paradox, or observation about life.",
+      "connotation": "thoughtful / witty",
+      "register": "literary / standard",
+      "misconceptions": [
+        "Any memorable statement must give advice."
+      ]
+    },
+    {
+      "word": "maxim",
+      "sense": "A short principle prescribing or recommending how to behave.",
+      "connotation": "instructive",
+      "register": "standard / literary",
+      "misconceptions": [
+        "A rule for behavior is only an observation."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "observation_vs_guidance",
+      "description": "Whether a saying chiefly observes how life works or tells people how to act."
+    }
+  ],
+  "edges": [
+    {
+      "id": "aphorism__maxim",
+      "a": "aphorism",
+      "b": "maxim",
+      "boundary_rule": "An aphorism states a compact insight about life; a maxim recommends a rule for conduct.",
+      "clues_a": [
+        "a sharp observation",
+        "memorable paradox",
+        "general insight without instruction"
+      ],
+      "clues_b": [
+        "instruction for conduct",
+        "practical do-or-do-not rule",
+        "principle to follow"
+      ],
+      "irrelevant_clues": [
+        "speaker’s age",
+        "whether the saying rhymes",
+        "where the saying is printed"
+      ],
+      "misconceptions": {
+        "M1": "Any memorable statement must give advice.",
+        "M2": "A rule for behavior is only an observation.",
+        "M3": "Rhyme or length, rather than purpose, determines the label."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "aphorism-maxim_001",
+      "edge_id": "aphorism__maxim",
+      "domain": "journal_entry",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Sana’s line in her journal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "aphorism-maxim_001_b1",
+          "text": "Sana writes, “A crowded room can be the loneliest place.”",
+          "best_word": "aphorism",
+          "fit": {
+            "aphorism": 0.9,
+            "maxim": 0.24
+          },
+          "decisive_clue": "compact observation about human experience",
+          "reason": "The situation shows compact observation about human experience, which points to aphorism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "maxim": "M2"
+          }
+        },
+        {
+          "id": "aphorism-maxim_001_b2",
+          "text": "She uses the line to capture a contradiction she has noticed, not to tell anyone what to do.",
+          "best_word": "aphorism",
+          "fit": {
+            "aphorism": 0.94,
+            "maxim": 0.21
+          },
+          "decisive_clue": "expresses a paradox rather than an instruction",
+          "reason": "It captures a general insight without prescribing an action.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "maxim": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Expresses a paradox rather than an instruction: aphorism fits better.",
+      "feedback_deep": "An aphorism states a compact insight about life; a maxim recommends a rule for conduct. Here, it captures a general insight without prescribing an action.",
+      "contrast_rule": "Aphorism observes life; maxim guides action.",
+      "hints": {
+        "attention": "Does the line describe life or direct behaviour?",
+        "axis": "Whether a saying chiefly observes how life works or tells people how to act.",
+        "contrast": "Aphorism observes life; maxim guides action."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "aphorism-maxim_002",
+      "edge_id": "aphorism__maxim",
+      "domain": "family_advice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ethan’s saying to his younger brother?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "aphorism-maxim_002_b1",
+          "text": "Ethan says, “Return what you borrow before anyone has to ask.”",
+          "best_word": "maxim",
+          "fit": {
+            "aphorism": 0.24,
+            "maxim": 0.9
+          },
+          "decisive_clue": "short instruction about conduct",
+          "reason": "The situation shows short instruction about conduct, which points to maxim.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "aphorism": "M1"
+          }
+        },
+        {
+          "id": "aphorism-maxim_002_b2",
+          "text": "He repeats it whenever someone takes a family item.",
+          "best_word": "maxim",
+          "fit": {
+            "aphorism": 0.21,
+            "maxim": 0.94
+          },
+          "decisive_clue": "used repeatedly as a rule for behaving",
+          "reason": "The saying is a practical rule, not just a clever observation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "aphorism": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Used repeatedly as a rule for behaving: maxim fits better.",
+      "feedback_deep": "An aphorism states a compact insight about life; a maxim recommends a rule for conduct. Here, the saying is a practical rule, not just a clever observation.",
+      "contrast_rule": "Aphorism observes life; maxim guides action.",
+      "hints": {
+        "attention": "What is the listener expected to do?",
+        "axis": "Whether a saying chiefly observes how life works or tells people how to act.",
+        "contrast": "Aphorism observes life; maxim guides action."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "aphorism-maxim_003",
+      "edge_id": "aphorism__maxim",
+      "domain": "classroom_wall",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Inès’s quotation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "aphorism-maxim_003_b1",
+          "text": "Inès displays the line “Wealth consists not in having great possessions, but in having few wants.”",
+          "best_word": "aphorism",
+          "fit": {
+            "aphorism": 0.9,
+            "maxim": 0.23
+          },
+          "decisive_clue": "memorable insight about a human experience",
+          "reason": "The situation shows memorable insight about a human experience, which points to aphorism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "maxim": "M2"
+          }
+        },
+        {
+          "id": "aphorism-maxim_003_b2",
+          "text": "She prints it in blue lettering beside the classroom clock.",
+          "best_word": "aphorism",
+          "fit": {
+            "aphorism": 0.91,
+            "maxim": 0.22
+          },
+          "decisive_clue": "memorable insight about a human experience",
+          "reason": "The added detail does not change the original clue: memorable insight about a human experience.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "maxim": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Memorable insight about a human experience still decides; the added detail changes nothing.",
+      "feedback_deep": "An aphorism states a compact insight about life; a maxim recommends a rule for conduct. Here, print colour and placement do not change the statement’s observational purpose.",
+      "contrast_rule": "Aphorism observes life; maxim guides action.",
+      "hints": {
+        "attention": "Ignore the lettering and examine its claim.",
+        "axis": "Whether a saying chiefly observes how life works or tells people how to act.",
+        "contrast": "Aphorism observes life; maxim guides action."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "aphorism-maxim_004",
+      "edge_id": "aphorism__maxim",
+      "domain": "retail_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dev’s motto for the new staff?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "aphorism-maxim_004_b1",
+          "text": "Dev tells new staff, “Check the receipt before handing over the bag.”",
+          "best_word": "maxim",
+          "fit": {
+            "aphorism": 0.24,
+            "maxim": 0.9
+          },
+          "decisive_clue": "brief operational rule",
+          "reason": "The situation shows brief operational rule, which points to maxim.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "aphorism": "M1"
+          }
+        },
+        {
+          "id": "aphorism-maxim_004_b2",
+          "text": "He expects them to apply the sentence at every sale.",
+          "best_word": "maxim",
+          "fit": {
+            "aphorism": 0.21,
+            "maxim": 0.94
+          },
+          "decisive_clue": "staff are expected to use it as a repeatable rule",
+          "reason": "It tells people how to act in a recurring situation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "aphorism": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Staff are expected to use it as a repeatable rule: maxim fits better.",
+      "feedback_deep": "An aphorism states a compact insight about life; a maxim recommends a rule for conduct. Here, it tells people how to act in a recurring situation.",
+      "contrast_rule": "Aphorism observes life; maxim guides action.",
+      "hints": {
+        "attention": "Would following it change someone’s conduct?",
+        "axis": "Whether a saying chiefly observes how life works or tells people how to act.",
+        "contrast": "Aphorism observes life; maxim guides action."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "aphorism-maxim_005",
+      "edge_id": "aphorism__maxim",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Yara’s favorite quotation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "aphorism-maxim_005_b1",
+          "text": "Yara likes “The past grows brighter when the present feels uncertain.”",
+          "best_word": "aphorism",
+          "fit": {
+            "aphorism": 0.9,
+            "maxim": 0.24
+          },
+          "decisive_clue": "compressed observation about memory and experience",
+          "reason": "The situation shows compressed observation about memory and experience, which points to aphorism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "maxim": "M2"
+          }
+        },
+        {
+          "id": "aphorism-maxim_005_b2",
+          "text": "The quotation appears in italics halfway through the chapter.",
+          "best_word": "aphorism",
+          "fit": {
+            "aphorism": 0.94,
+            "maxim": 0.21
+          },
+          "decisive_clue": "compressed observation about memory and experience",
+          "reason": "The added detail does not change the original clue: compressed observation about memory and experience.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "maxim": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Compressed observation about memory and experience still decides; the added detail changes nothing.",
+      "feedback_deep": "An aphorism states a compact insight about life; a maxim recommends a rule for conduct. Here, the state of the book has no bearing on the saying’s purpose.",
+      "contrast_rule": "Aphorism observes life; maxim guides action.",
+      "hints": {
+        "attention": "Focus on the proposition, not the book.",
+        "axis": "Whether a saying chiefly observes how life works or tells people how to act.",
+        "contrast": "Aphorism observes life; maxim guides action."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "aphorism-maxim_006",
+      "edge_id": "aphorism__maxim",
+      "domain": "sports_coaching",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kwame’s coaching rule?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "aphorism-maxim_006_b1",
+          "text": "Kwame tells the team, “Praise effort in public; correct mistakes in private.”",
+          "best_word": "maxim",
+          "fit": {
+            "aphorism": 0.23,
+            "maxim": 0.9
+          },
+          "decisive_clue": "a rule directing how people should behave",
+          "reason": "The situation shows a rule directing how people should behave, which points to maxim.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "aphorism": "M1"
+          }
+        },
+        {
+          "id": "aphorism-maxim_006_b2",
+          "text": "He writes the words on a small card he keeps in his pocket.",
+          "best_word": "maxim",
+          "fit": {
+            "aphorism": 0.22,
+            "maxim": 0.91
+          },
+          "decisive_clue": "a rule directing how people should behave",
+          "reason": "The added detail does not change the original clue: a rule directing how people should behave.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "aphorism": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A rule directing how people should behave still decides; the added detail changes nothing.",
+      "feedback_deep": "An aphorism states a compact insight about life; a maxim recommends a rule for conduct. Here, the pocket card is incidental; the statement offers guidance for action.",
+      "contrast_rule": "Aphorism observes life; maxim guides action.",
+      "hints": {
+        "attention": "What behaviour does the saying recommend?",
+        "axis": "Whether a saying chiefly observes how life works or tells people how to act.",
+        "contrast": "Aphorism observes life; maxim guides action."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -25,7 +25,7 @@ export interface DecisionRecord extends DecisionInput {
   correctness: Correctness;
   changedSelection: boolean;
   misconceptionTag: string | null;
-  contentDifficulty: DifficultyDimensions;
+  contentDifficulty: DifficultyDimensions | null;
   score: number;
   evidenceWeight: number;
   streak: number;

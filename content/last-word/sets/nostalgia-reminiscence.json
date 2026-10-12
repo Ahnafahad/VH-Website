@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "nostalgia-reminiscence",
+  "title": "nostalgia / reminiscence",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[59]",
+    "source_pair_id": 292,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "nostalgia",
+      "sense": "Sentimental longing for a remembered past",
+      "connotation": "wistful",
+      "register": "neutral-to-literary",
+      "misconceptions": [
+        "Treating every memory as nostalgia.",
+        "Confusing emotional longing with simple recollection."
+      ]
+    },
+    {
+      "word": "reminiscence",
+      "sense": "Recalling or recounting a past experience",
+      "connotation": "reflective",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Treating every memory as nostalgia.",
+        "Assuming a happy memory necessarily means wanting the past back."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "longing_vs_recalling",
+      "description": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing."
+    }
+  ],
+  "edges": [
+    {
+      "id": "nostalgia__reminiscence",
+      "a": "nostalgia",
+      "b": "reminiscence",
+      "boundary_rule": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing.",
+      "clues_a": [
+        "wishes to relive earlier times",
+        "aches for the old days"
+      ],
+      "clues_b": [
+        "tells a past incident",
+        "retrieves details without wishing to return"
+      ],
+      "irrelevant_clues": [
+        "old photographs",
+        "precise dates"
+      ],
+      "misconceptions": {
+        "M1": "Treating every memory as nostalgia.",
+        "M2": "Confusing emotional longing with simple recollection.",
+        "M3": "Assuming a happy memory necessarily means wanting the past back."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "nostalgia-reminiscence_001",
+      "edge_id": "nostalgia__reminiscence",
+      "domain": "office_farewell",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Leila's story during lunch?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nostalgia-reminiscence_001_b1",
+          "text": "Leila recounts how she accidentally emailed her first supervisor a grocery list instead of a report.",
+          "best_word": "reminiscence",
+          "fit": {
+            "reminiscence": 0.91,
+            "nostalgia": 0.26
+          },
+          "decisive_clue": "recounts a particular past incident",
+          "reason": "The initial evidence is recounts a particular past incident; it best supports reminiscence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nostalgia": "M1"
+          }
+        },
+        {
+          "id": "nostalgia-reminiscence_001_b2",
+          "text": "Her colleagues ask her to tell the story again because it makes them laugh.",
+          "best_word": "reminiscence",
+          "fit": {
+            "reminiscence": 0.93,
+            "nostalgia": 0.21
+          },
+          "decisive_clue": "recounts a particular past incident",
+          "reason": "Laughter does not turn a told memory into longing for an earlier life.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nostalgia": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Laughter does not turn a told memory into longing for an earlier life.",
+      "feedback_deep": "Nostalgia means wistful attachment to earlier times; reminiscence means a memory or act of remembering. Laughter does not turn a told memory into longing for an earlier life.",
+      "contrast_rule": "Nostalgia misses yesterday; reminiscence remembers yesterday.",
+      "hints": {
+        "attention": "Is she telling a story or wishing to return?",
+        "axis": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing.",
+        "contrast": "Nostalgia misses yesterday; reminiscence remembers yesterday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nostalgia-reminiscence_002",
+      "edge_id": "nostalgia__reminiscence",
+      "domain": "childhood_bedroom",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mei's response to her old bedroom?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nostalgia-reminiscence_002_b1",
+          "text": "Mei visits her old room and wishes she could return to the years when her family all lived there.",
+          "best_word": "nostalgia",
+          "fit": {
+            "nostalgia": 0.91,
+            "reminiscence": 0.26
+          },
+          "decisive_clue": "wishes to return to an earlier period",
+          "reason": "The initial evidence is wishes to return to an earlier period; it best supports nostalgia.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminiscence": "M1"
+          }
+        },
+        {
+          "id": "nostalgia-reminiscence_002_b2",
+          "text": "She keeps the faded curtains because they make those years feel close again.",
+          "best_word": "nostalgia",
+          "fit": {
+            "nostalgia": 0.93,
+            "reminiscence": 0.21
+          },
+          "decisive_clue": "desire to recover an earlier period",
+          "reason": "The curtains matter as a link to the past she longs to recover.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reminiscence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The curtains matter as a link to the past she longs to recover.",
+      "feedback_deep": "Nostalgia means wistful attachment to earlier times; reminiscence means a memory or act of remembering. The curtains matter as a link to the past she longs to recover.",
+      "contrast_rule": "Nostalgia misses yesterday; reminiscence remembers yesterday.",
+      "hints": {
+        "attention": "Look at what she wishes she could regain.",
+        "axis": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing.",
+        "contrast": "Nostalgia misses yesterday; reminiscence remembers yesterday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nostalgia-reminiscence_003",
+      "edge_id": "nostalgia__reminiscence",
+      "domain": "train_journey",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Tomas's account of the journey?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nostalgia-reminiscence_003_b1",
+          "text": "Tomas tells his sister which stops they passed on their first train trip together.",
+          "best_word": "reminiscence",
+          "fit": {
+            "reminiscence": 0.91,
+            "nostalgia": 0.26
+          },
+          "decisive_clue": "retrieves specific trip details",
+          "reason": "The initial evidence is retrieves specific trip details; it best supports reminiscence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nostalgia": "M1"
+          }
+        },
+        {
+          "id": "nostalgia-reminiscence_003_b2",
+          "text": "He still owns the paper ticket from that day.",
+          "best_word": "reminiscence",
+          "fit": {
+            "reminiscence": 0.93,
+            "nostalgia": 0.21
+          },
+          "decisive_clue": "retrieves specific trip details",
+          "reason": "Keeping a souvenir does not itself show a wish to relive the journey.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nostalgia": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Keeping a souvenir does not itself show a wish to relive the journey.",
+      "feedback_deep": "Nostalgia means wistful attachment to earlier times; reminiscence means a memory or act of remembering. Keeping a souvenir does not itself show a wish to relive the journey.",
+      "contrast_rule": "Nostalgia misses yesterday; reminiscence remembers yesterday.",
+      "hints": {
+        "attention": "Notice the function of the memory.",
+        "axis": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing.",
+        "contrast": "Nostalgia misses yesterday; reminiscence remembers yesterday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nostalgia-reminiscence_004",
+      "edge_id": "nostalgia__reminiscence",
+      "domain": "bus_ride",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nadia's reaction to an old song?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nostalgia-reminiscence_004_b1",
+          "text": "Nadia hears a childhood song on the bus and murmurs, 'Those afternoons should have lasted forever.'",
+          "best_word": "nostalgia",
+          "fit": {
+            "nostalgia": 0.91,
+            "reminiscence": 0.26
+          },
+          "decisive_clue": "wish for a vanished period",
+          "reason": "The initial evidence is wish for a vanished period; it best supports nostalgia.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminiscence": "M1"
+          }
+        },
+        {
+          "id": "nostalgia-reminiscence_004_b2",
+          "text": "She plays it again after getting home and sits quietly, missing her old neighbourhood.",
+          "best_word": "nostalgia",
+          "fit": {
+            "nostalgia": 0.93,
+            "reminiscence": 0.21
+          },
+          "decisive_clue": "wish for a vanished period",
+          "reason": "Her repeated listening expresses attachment to a lost time, not merely recalling an event.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reminiscence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Her repeated listening expresses attachment to a lost time, not merely recalling an event.",
+      "feedback_deep": "Nostalgia means wistful attachment to earlier times; reminiscence means a memory or act of remembering. Her repeated listening expresses attachment to a lost time, not merely recalling an event.",
+      "contrast_rule": "Nostalgia misses yesterday; reminiscence remembers yesterday.",
+      "hints": {
+        "attention": "Listen to how she talks about the past.",
+        "axis": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing.",
+        "contrast": "Nostalgia misses yesterday; reminiscence remembers yesterday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nostalgia-reminiscence_005",
+      "edge_id": "nostalgia__reminiscence",
+      "domain": "family_recipe",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Arun's feeling while cooking?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nostalgia-reminiscence_005_b1",
+          "text": "Arun cooks his grandmother's recipe and wishes he could spend another Saturday in her kitchen.",
+          "best_word": "nostalgia",
+          "fit": {
+            "nostalgia": 0.91,
+            "reminiscence": 0.26
+          },
+          "decisive_clue": "longing for past family time",
+          "reason": "The initial evidence is longing for past family time; it best supports nostalgia.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminiscence": "M1"
+          }
+        },
+        {
+          "id": "nostalgia-reminiscence_005_b2",
+          "text": "He keeps her handwritten instructions beside the stove even though he knows the recipe by heart.",
+          "best_word": "nostalgia",
+          "fit": {
+            "nostalgia": 0.93,
+            "reminiscence": 0.21
+          },
+          "decisive_clue": "desire to revisit the earlier experience",
+          "reason": "Keeping the instructions deepens the connection to the time he misses.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reminiscence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Keeping the instructions deepens the connection to the time he misses.",
+      "feedback_deep": "Nostalgia means wistful attachment to earlier times; reminiscence means a memory or act of remembering. Keeping the instructions deepens the connection to the time he misses.",
+      "contrast_rule": "Nostalgia misses yesterday; reminiscence remembers yesterday.",
+      "hints": {
+        "attention": "Notice whether the past feels absent.",
+        "axis": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing.",
+        "contrast": "Nostalgia misses yesterday; reminiscence remembers yesterday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nostalgia-reminiscence_006",
+      "edge_id": "nostalgia__reminiscence",
+      "domain": "photo_album",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Zara's remarks about the family photos?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nostalgia-reminiscence_006_b1",
+          "text": "Zara identifies the guests in each picture and recalls what happened before dinner.",
+          "best_word": "reminiscence",
+          "fit": {
+            "reminiscence": 0.91,
+            "nostalgia": 0.26
+          },
+          "decisive_clue": "reconstructs a sequence of events",
+          "reason": "The initial evidence is reconstructs a sequence of events; it best supports reminiscence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nostalgia": "M1"
+          }
+        },
+        {
+          "id": "nostalgia-reminiscence_006_b2",
+          "text": "She even remembers who took the photograph just before everyone sat down.",
+          "best_word": "reminiscence",
+          "fit": {
+            "reminiscence": 0.93,
+            "nostalgia": 0.21
+          },
+          "decisive_clue": "accurate recollection of past details",
+          "reason": "The added detail makes her recollection fuller without suggesting she misses that period.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nostalgia": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The added detail makes her recollection fuller without suggesting she misses that period.",
+      "feedback_deep": "Nostalgia means wistful attachment to earlier times; reminiscence means a memory or act of remembering. The added detail makes her recollection fuller without suggesting she misses that period.",
+      "contrast_rule": "Nostalgia misses yesterday; reminiscence remembers yesterday.",
+      "hints": {
+        "attention": "Focus on what she is doing with memory.",
+        "axis": "Nostalgia adds emotional yearning for an earlier time; reminiscence is remembering or recounting the past without requiring that longing.",
+        "contrast": "Nostalgia misses yesterday; reminiscence remembers yesterday."
+      },
+      "qa": "pass"
+    }
+  ]
+}

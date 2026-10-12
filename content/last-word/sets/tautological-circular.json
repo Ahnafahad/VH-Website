@@ -1,0 +1,768 @@
+{
+  "schema_version": 1,
+  "set_id": "tautological-circular",
+  "title": "tautological / circular",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[80]",
+    "source_pair_id": 336,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "tautological",
+      "sense": "A statement that merely restates the same idea as if explaining it",
+      "connotation": "critical/analytical",
+      "register": "formal/academic",
+      "misconceptions": [
+        "All unhelpful arguments are tautological",
+        "Rewording and premise-conclusion loops are the same flaw"
+      ]
+    },
+    {
+      "word": "circular",
+      "sense": "Reasoning that assumes the conclusion it is supposed to establish",
+      "connotation": "critical/analytical",
+      "register": "standard/academic",
+      "misconceptions": [
+        "Any repetition is circular proof",
+        "Rewording and premise-conclusion loops are the same flaw"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_repetition",
+      "description": "Whether the scene turns on semantic repetition."
+    },
+    {
+      "id": "reasoning_dependency",
+      "description": "Whether the scene turns on reasoning dependency."
+    }
+  ],
+  "edges": [
+    {
+      "id": "tautological__circular",
+      "a": "tautological",
+      "b": "circular",
+      "boundary_rule": "Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "clues_a": [
+        "definition restates itself",
+        "same claim with synonyms",
+        "no new information"
+      ],
+      "clues_b": [
+        "claim proves premise",
+        "premise relies on conclusion",
+        "justification loops back"
+      ],
+      "irrelevant_clues": [
+        "speaker’s accent",
+        "font on page",
+        "who heard it"
+      ],
+      "misconceptions": {
+        "M1": "All unhelpful arguments are tautological",
+        "M2": "Any repetition is circular proof",
+        "M3": "Rewording and premise-conclusion loops are the same flaw"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "tautological-circular_001",
+      "edge_id": "tautological__circular",
+      "domain": "classroom_rule",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Uma’s explanation of compulsory attendance?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_001_b1",
+          "text": "Uma says, “Attendance is compulsory because everyone is required to attend.”",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.93,
+            "circular": 0.32
+          },
+          "decisive_clue": "requirement merely restated",
+          "reason": "The detail about requirement merely restated supports tautological more strongly than circular.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M3"
+          }
+        },
+        {
+          "id": "tautological-circular_001_b2",
+          "text": "She adds, “Required means you have to do it,” without offering any reason for the rule.",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.96,
+            "circular": 0.2
+          },
+          "decisive_clue": "same idea in different words",
+          "reason": "The detail about same idea in different words supports tautological more strongly than circular.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Same idea in different words leaves tautological the better fit.",
+      "feedback_deep": "The first clue is requirement merely restated. The later clue is same idea in different words; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_002",
+      "edge_id": "tautological__circular",
+      "domain": "online_shop_rating",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Basil’s argument that a shop’s reviews are reliable?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_002_b1",
+          "text": "Basil says the reviews are reliable because the shop’s own rating system says so.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.36,
+            "circular": 0.96
+          },
+          "decisive_clue": "reliability justified by own system",
+          "reason": "The detail about reliability justified by own system supports circular more strongly than tautological.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M1"
+          }
+        },
+        {
+          "id": "tautological-circular_002_b2",
+          "text": "He claims the rating system is trustworthy only because those very reviews endorse it.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.24,
+            "circular": 0.88
+          },
+          "decisive_clue": "proof loops back to reviews",
+          "reason": "The detail about proof loops back to reviews supports circular more strongly than tautological.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Proof loops back to reviews leaves circular the better fit.",
+      "feedback_deep": "The first clue is reliability justified by own system. The later clue is proof loops back to reviews; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_003",
+      "edge_id": "tautological__circular",
+      "domain": "school_newsletter",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Leila’s definition of a weekly newsletter?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_003_b1",
+          "text": "Leila writes, “A weekly newsletter is a newsletter that comes out every week.”",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.88,
+            "circular": 0.2
+          },
+          "decisive_clue": "definition merely repeats term",
+          "reason": "The detail about definition merely repeats term supports tautological more strongly than circular.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M2"
+          }
+        },
+        {
+          "id": "tautological-circular_003_b2",
+          "text": "Her next sentence says that weekly publication means publication once each week.",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.91,
+            "circular": 0.28
+          },
+          "decisive_clue": "paraphrase still supplies no explanation",
+          "reason": "The detail about paraphrase still supplies no explanation supports tautological more strongly than circular.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Paraphrase still supplies no explanation makes tautological an even clearer fit.",
+      "feedback_deep": "The first clue is definition merely repeats term. The later clue is paraphrase still supplies no explanation; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_004",
+      "edge_id": "tautological__circular",
+      "domain": "sports_captain_vote",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rohan’s reasoning for trusting the election result?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_004_b1",
+          "text": "Rohan argues that the vote is fair because the election committee certifies it.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.24,
+            "circular": 0.91
+          },
+          "decisive_clue": "committee used to guarantee fairness",
+          "reason": "The detail about committee used to guarantee fairness supports circular more strongly than tautological.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M3"
+          }
+        },
+        {
+          "id": "tautological-circular_004_b2",
+          "text": "His only reason for trusting the committee is that the fair vote selected its members.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.32,
+            "circular": 0.93
+          },
+          "decisive_clue": "committee credibility rests on election fairness",
+          "reason": "The detail about committee credibility rests on election fairness supports circular more strongly than tautological.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Committee credibility rests on election fairness makes circular an even clearer fit.",
+      "feedback_deep": "The first clue is committee used to guarantee fairness. The later clue is committee credibility rests on election fairness; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_005",
+      "edge_id": "tautological__circular",
+      "domain": "part-time_job",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amira’s explanation of being punctual?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_005_b1",
+          "text": "Amira says, “Being punctual means arriving on time, which means not arriving late.”",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.93,
+            "circular": 0.28
+          },
+          "decisive_clue": "same arrival-time concept rephrased",
+          "reason": "The detail about same arrival-time concept rephrased supports tautological more strongly than circular.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M1"
+          }
+        },
+        {
+          "id": "tautological-circular_005_b2",
+          "text": "She calls this a complete explanation of why punctuality matters.",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.96,
+            "circular": 0.36
+          },
+          "decisive_clue": "adds no substantive reason",
+          "reason": "The detail about adds no substantive reason supports tautological more strongly than circular.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Adds no substantive reason leaves tautological the better fit.",
+      "feedback_deep": "The first clue is same arrival-time concept rephrased. The later clue is adds no substantive reason; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_006",
+      "edge_id": "tautological__circular",
+      "domain": "travel_chat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Kenzo’s argument for trusting a travel blogger?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_006_b1",
+          "text": "Kenzo says the blogger is truthful because the blogger’s own posts confirm it.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.32,
+            "circular": 0.96
+          },
+          "decisive_clue": "source offered as proof of itself",
+          "reason": "The detail about source offered as proof of itself supports circular more strongly than tautological.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M2"
+          }
+        },
+        {
+          "id": "tautological-circular_006_b2",
+          "text": "The posts are displayed with beautiful landscape photographs.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.2,
+            "circular": 0.88
+          },
+          "decisive_clue": "photos do not supply independent evidence",
+          "reason": "The detail about photos do not supply independent evidence supports circular more strongly than tautological.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Source offered as proof of itself still matters; photos do not supply independent evidence does not change the answer.",
+      "feedback_deep": "The first clue is source offered as proof of itself. The later clue is photos do not supply independent evidence; that does not touch the decisive difference. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_007",
+      "edge_id": "tautological__circular",
+      "domain": "community_contest",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zahra’s explanation of a tie?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_007_b1",
+          "text": "Zahra says, “A tie is when neither side wins because both sides finish equal.”",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.88,
+            "circular": 0.36
+          },
+          "decisive_clue": "definition repeats equality",
+          "reason": "The detail about definition repeats equality supports tautological more strongly than circular.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M3"
+          }
+        },
+        {
+          "id": "tautological-circular_007_b2",
+          "text": "She restates that equal scores mean the same result for each side.",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.91,
+            "circular": 0.24
+          },
+          "decisive_clue": "synonymous restatement instead of explanation",
+          "reason": "The detail about synonymous restatement instead of explanation supports tautological more strongly than circular.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Synonymous restatement instead of explanation leaves tautological the better fit.",
+      "feedback_deep": "The first clue is definition repeats equality. The later clue is synonymous restatement instead of explanation; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_008",
+      "edge_id": "tautological__circular",
+      "domain": "phone_app_review",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Felix’s reasoning that an app’s rankings are accurate?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_008_b1",
+          "text": "Felix says the rankings must be accurate because the app labels them verified.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.2,
+            "circular": 0.91
+          },
+          "decisive_clue": "verification label supports ranking",
+          "reason": "The detail about verification label supports ranking supports circular more strongly than tautological.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M1"
+          }
+        },
+        {
+          "id": "tautological-circular_008_b2",
+          "text": "He trusts the verification label only because the rankings are supposedly accurate.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.28,
+            "circular": 0.93
+          },
+          "decisive_clue": "label credibility presumes the ranking claim",
+          "reason": "The detail about label credibility presumes the ranking claim supports circular more strongly than tautological.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Label credibility presumes the ranking claim leaves circular the better fit.",
+      "feedback_deep": "The first clue is verification label supports ranking. The later clue is label credibility presumes the ranking claim; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_009",
+      "edge_id": "tautological__circular",
+      "domain": "family_allowance",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Nadia’s definition of an allowance increase?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_009_b1",
+          "text": "Nadia says, “An increase in allowance means getting more allowance than before.”",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.93,
+            "circular": 0.24
+          },
+          "decisive_clue": "increase defined as getting more",
+          "reason": "The detail about increase defined as getting more supports tautological more strongly than circular.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M2"
+          }
+        },
+        {
+          "id": "tautological-circular_009_b2",
+          "text": "She adds that having more means receiving a larger amount.",
+          "best_word": "tautological",
+          "fit": {
+            "tautological": 0.96,
+            "circular": 0.32
+          },
+          "decisive_clue": "same concept restated again",
+          "reason": "The detail about same concept restated again supports tautological more strongly than circular.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "circular": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Same concept restated again leaves tautological the better fit.",
+      "feedback_deep": "The first clue is increase defined as getting more. The later clue is same concept restated again; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tautological-circular_010",
+      "edge_id": "tautological__circular",
+      "domain": "neighbourhood_notice",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Jules’s defence of a notice’s truthfulness?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "tautological-circular_010_b1",
+          "text": "Jules argues that the notice is accurate because the notice board never posts false information.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.28,
+            "circular": 0.96
+          },
+          "decisive_clue": "claim relies on board reliability",
+          "reason": "The detail about claim relies on board reliability supports circular more strongly than tautological.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M3"
+          }
+        },
+        {
+          "id": "tautological-circular_010_b2",
+          "text": "His only evidence that the board is reliable is that this particular notice is accurate.",
+          "best_word": "circular",
+          "fit": {
+            "tautological": 0.36,
+            "circular": 0.88
+          },
+          "decisive_clue": "board reliability relies on original claim",
+          "reason": "The detail about board reliability relies on original claim supports circular more strongly than tautological.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tautological": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Board reliability relies on original claim makes circular an even clearer fit.",
+      "feedback_deep": "The first clue is claim relies on board reliability. The later clue is board reliability relies on original claim; that strengthens or preserves the same classification. Tautological wording repeats the same idea; circular reasoning uses the claim itself to justify that claim.",
+      "contrast_rule": "Tautological restates a point; circular uses the point as its proof.",
+      "hints": {
+        "attention": "Trace whether the words repeat a meaning or the proof depends on itself.",
+        "axis": "Whether the scene turns on semantic repetition.",
+        "contrast": "Tautological restates a point; circular uses the point as its proof."
+      },
+      "qa": "pass"
+    }
+  ]
+}

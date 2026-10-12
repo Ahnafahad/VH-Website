@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "amoralism-relativism",
+  "title": "amoralism / relativism",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[65]",
+    "source_pair_id": 307,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "amoralism",
+      "sense": "view that moral categories do not apply or lack real meaning",
+      "connotation": "philosophical; can sound dismissive of moral evaluation",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming rejecting universal rules rejects morality itself.",
+        "Treating context-dependent moral rules as no rules at all."
+      ]
+    },
+    {
+      "word": "relativism",
+      "sense": "view that judgments of right and wrong depend on culture or perspective",
+      "connotation": "context-sensitive; may stress tolerance of difference",
+      "register": "general",
+      "misconceptions": [
+        "Treating doubts about moral labels as a debate over cultures."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "moral_judgment_status",
+      "description": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture."
+    }
+  ],
+  "edges": [
+    {
+      "id": "amoralism__relativism",
+      "a": "amoralism",
+      "b": "relativism",
+      "boundary_rule": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture.",
+      "clues_a": [
+        "denies value of right/wrong labels",
+        "treats moral verdicts as meaningless"
+      ],
+      "clues_b": [
+        "different moral standards across communities",
+        "judgment depends on viewpoint"
+      ],
+      "irrelevant_clues": [
+        "volume of debate",
+        "speaker popularity",
+        "venue of discussion"
+      ],
+      "misconceptions": {
+        "M1": "Assuming rejecting universal rules rejects morality itself.",
+        "M2": "Treating doubts about moral labels as a debate over cultures.",
+        "M3": "Treating context-dependent moral rules as no rules at all."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "amoralism-relativism_001",
+      "edge_id": "amoralism__relativism",
+      "domain": "school_ethics_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Nila's position in the class debate?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amoralism-relativism_001_b1",
+          "text": "Nila says calling a classmate good or bad is no more meaningful than calling a chair guilty.",
+          "best_word": "amoralism",
+          "fit": {
+            "amoralism": 0.89,
+            "relativism": 0.22
+          },
+          "decisive_clue": "she treats moral labels as meaningless",
+          "reason": "She treats moral labels as meaningless is the evidence for amoralism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "relativism": "M2"
+          }
+        },
+        {
+          "id": "amoralism-relativism_001_b2",
+          "text": "She applies that view even when everyone in the room agrees an action caused harm.",
+          "best_word": "amoralism",
+          "fit": {
+            "amoralism": 0.92,
+            "relativism": 0.22
+          },
+          "decisive_clue": "moral labels remain meaningless even with agreement",
+          "reason": "Agreement about harm does not make right-and-wrong labels meaningful in her view.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "relativism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she treats moral labels as meaningless.",
+      "feedback_deep": "Amoralism denies that moral judgments have meaningful application. Relativism would still allow judgments based on a group or perspective. Nila rejects the category itself, even when a group agrees.",
+      "contrast_rule": "Amoralism dismisses moral judgment; relativism changes whose standard is used.",
+      "hints": {
+        "attention": "Ask whether any moral standard survives, and where it comes from.",
+        "axis": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture.",
+        "contrast": "Amoralism dismisses moral judgment; relativism changes whose standard is used."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amoralism-relativism_002",
+      "edge_id": "amoralism__relativism",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar's argument at dinner?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amoralism-relativism_002_b1",
+          "text": "Omar says a duty in one household may be optional in another, because families develop different rules.",
+          "best_word": "relativism",
+          "fit": {
+            "amoralism": 0.25,
+            "relativism": 0.9
+          },
+          "decisive_clue": "he grounds duties in each household’s standards",
+          "reason": "He grounds duties in each household’s standards is the evidence for relativism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amoralism": "M3"
+          }
+        },
+        {
+          "id": "amoralism-relativism_002_b2",
+          "text": "He adds that each household can still fairly judge its members against its own expectations.",
+          "best_word": "relativism",
+          "fit": {
+            "amoralism": 0.25,
+            "relativism": 0.93
+          },
+          "decisive_clue": "he preserves standards within each household",
+          "reason": "The added qualification strengthens the context-dependent standard rather than abandoning judgment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amoralism": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he preserves standards within each household.",
+      "feedback_deep": "Relativism lets standards vary by setting; it does not mean nobody can act wrongly. Omar allows each family to hold members to its own rules.",
+      "contrast_rule": "Amoralism dismisses moral judgment; relativism changes whose standard is used.",
+      "hints": {
+        "attention": "Ask whether any moral standard survives, and where it comes from.",
+        "axis": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture.",
+        "contrast": "Amoralism dismisses moral judgment; relativism changes whose standard is used."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amoralism-relativism_003",
+      "edge_id": "amoralism__relativism",
+      "domain": "online_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Mei's view in her forum post?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amoralism-relativism_003_b1",
+          "text": "Mei first says that different gaming clubs have different ideas about fair play.",
+          "best_word": "relativism",
+          "fit": {
+            "amoralism": 0.19,
+            "relativism": 0.88
+          },
+          "decisive_clue": "different clubs apply different judgments",
+          "reason": "Different clubs apply different judgments is the evidence for relativism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amoralism": "M1"
+          }
+        },
+        {
+          "id": "amoralism-relativism_003_b2",
+          "text": "She explains that no such rule carries any moral meaning, even for the club that created it.",
+          "best_word": "amoralism",
+          "fit": {
+            "amoralism": 0.91,
+            "relativism": 0.19
+          },
+          "decisive_clue": "she denies moral meaning even within a club",
+          "reason": "The new claim rejects moral judgment itself, not merely universal standards.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "relativism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she denies moral meaning even within a club.",
+      "feedback_deep": "The first claim fits relativism: judgments vary across clubs. Her clarification goes further and removes moral meaning even within a given group, which is amoralism.",
+      "contrast_rule": "Amoralism dismisses moral judgment; relativism changes whose standard is used.",
+      "hints": {
+        "attention": "Ask whether any moral standard survives, and where it comes from.",
+        "axis": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture.",
+        "contrast": "Amoralism dismisses moral judgment; relativism changes whose standard is used."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amoralism-relativism_004",
+      "edge_id": "amoralism__relativism",
+      "domain": "neighbourhood_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Luis's claim at the meeting?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amoralism-relativism_004_b1",
+          "text": "Luis says no one can meaningfully call a neighbour morally better merely for following a rule.",
+          "best_word": "amoralism",
+          "fit": {
+            "amoralism": 0.89,
+            "relativism": 0.22
+          },
+          "decisive_clue": "he denies the validity of moral praise",
+          "reason": "He denies the validity of moral praise is the evidence for amoralism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "relativism": "M2"
+          }
+        },
+        {
+          "id": "amoralism-relativism_004_b2",
+          "text": "His point is that praise and blame, not just punishments, lack any moral force.",
+          "best_word": "amoralism",
+          "fit": {
+            "amoralism": 0.92,
+            "relativism": 0.22
+          },
+          "decisive_clue": "he rejects moral praise and blame altogether",
+          "reason": "Including blame confirms that he rejects the whole category of moral evaluation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "relativism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he rejects moral praise and blame altogether.",
+      "feedback_deep": "Amoralism concerns whether moral judgments apply at all. Luis denies both moral praise and blame rather than comparing the standards of different neighbourhoods.",
+      "contrast_rule": "Amoralism dismisses moral judgment; relativism changes whose standard is used.",
+      "hints": {
+        "attention": "Ask whether any moral standard survives, and where it comes from.",
+        "axis": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture.",
+        "contrast": "Amoralism dismisses moral judgment; relativism changes whose standard is used."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amoralism-relativism_005",
+      "edge_id": "amoralism__relativism",
+      "domain": "shopping_reviews",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Inez's opinion about rating sellers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amoralism-relativism_005_b1",
+          "text": "Inez says a seller’s refusal to accept returns is fair in markets where that practice is understood, but unfair where returns are promised.",
+          "best_word": "relativism",
+          "fit": {
+            "amoralism": 0.25,
+            "relativism": 0.9
+          },
+          "decisive_clue": "she judges fairness by agreed market norms",
+          "reason": "She judges fairness by agreed market norms is the evidence for relativism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amoralism": "M1"
+          }
+        },
+        {
+          "id": "amoralism-relativism_005_b2",
+          "text": "Her post attracts five hundred responses and is pinned at the top of the shop forum.",
+          "best_word": "relativism",
+          "fit": {
+            "amoralism": 0.25,
+            "relativism": 0.93
+          },
+          "decisive_clue": "the original dependence on local agreements is decisive",
+          "reason": "The number of responses changes the post’s visibility, not her context-dependent judgment.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amoralism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she judges fairness by agreed market norms.",
+      "feedback_deep": "Relativism lets judgments depend on accepted standards. Inez is applying each market’s expectations to the same practice; the popularity of her post changes nothing.",
+      "contrast_rule": "Amoralism dismisses moral judgment; relativism changes whose standard is used.",
+      "hints": {
+        "attention": "Ask whether any moral standard survives, and where it comes from.",
+        "axis": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture.",
+        "contrast": "Amoralism dismisses moral judgment; relativism changes whose standard is used."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amoralism-relativism_006",
+      "edge_id": "amoralism__relativism",
+      "domain": "youth_volunteer_group",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ayaan's view of volunteer duties?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amoralism-relativism_006_b1",
+          "text": "Ayaan says refusing a weekend shift is judged selfish in one community but perfectly acceptable in another.",
+          "best_word": "relativism",
+          "fit": {
+            "amoralism": 0.19,
+            "relativism": 0.88
+          },
+          "decisive_clue": "he makes judgment depend on community standards",
+          "reason": "He makes judgment depend on community standards is the evidence for relativism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amoralism": "M3"
+          }
+        },
+        {
+          "id": "amoralism-relativism_006_b2",
+          "text": "He insists that each community must apply its own expectations rather than borrow someone else’s.",
+          "best_word": "relativism",
+          "fit": {
+            "amoralism": 0.19,
+            "relativism": 0.91
+          },
+          "decisive_clue": "community standards still determine each judgment",
+          "reason": "Insisting that groups use their own standards reinforces, rather than removes, his original view.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amoralism": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he makes judgment depend on community standards.",
+      "feedback_deep": "Relativism makes moral evaluation depend on a perspective or culture. Ayaan does not deny the category of selfishness; he changes which community’s rules determine it.",
+      "contrast_rule": "Amoralism dismisses moral judgment; relativism changes whose standard is used.",
+      "hints": {
+        "attention": "Ask whether any moral standard survives, and where it comes from.",
+        "axis": "Amoralism denies meaningful moral judgments, whereas relativism accepts judgments but makes their standards dependent on perspective or culture.",
+        "contrast": "Amoralism dismisses moral judgment; relativism changes whose standard is used."
+      },
+      "qa": "pass"
+    }
+  ]
+}

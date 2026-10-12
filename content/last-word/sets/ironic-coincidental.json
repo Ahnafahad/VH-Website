@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "ironic-coincidental",
+  "title": "ironic / coincidental",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[167]",
+    "source_pair_id": 710,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "ironic",
+      "sense": "expression says the opposite of its intended meaning",
+      "connotation": "wry or critical",
+      "register": "standard",
+      "misconceptions": [
+        "Mistaking a chance verbal match for a deliberate reversal of meaning."
+      ]
+    },
+    {
+      "word": "coincidental",
+      "sense": "a connection happens through chance rather than deliberate meaning",
+      "connotation": "neutral",
+      "register": "standard",
+      "misconceptions": [
+        "Missing deliberate opposite meaning because a remark happens during a surprising event."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "intended_reversal_vs_chance",
+      "description": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal."
+    }
+  ],
+  "edges": [
+    {
+      "id": "ironic__coincidental",
+      "a": "ironic",
+      "b": "coincidental",
+      "boundary_rule": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+      "clues_a": [
+        "literal praise amid an obvious disaster",
+        "remark meant as criticism through reversal",
+        "words deliberately mean their opposite"
+      ],
+      "clues_b": [
+        "unplanned verbal match",
+        "prediction accidentally lines up",
+        "unrelated timing happens to coincide"
+      ],
+      "irrelevant_clues": [
+        "speaker’s hairstyle",
+        "color of a notebook",
+        "number of listeners"
+      ],
+      "misconceptions": {
+        "M1": "Confuses ironic with coincidental by overlooking the defining difference: An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+        "M2": "Assumes evidence for coincidental necessarily proves ironic; these are different tests.",
+        "M3": "Overweights a later superficial detail instead of retaining or appropriately updating the original boundary evidence."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "ironic-coincidental_001",
+      "edge_id": "ironic__coincidental",
+      "domain": "leaking_apartment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the relationship between Esra’s remark and the situation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ironic-coincidental_001_b1",
+          "text": "As rain dripped through the ceiling, Esra looked up and said, “Wonderful roof we have.”",
+          "best_word": "ironic",
+          "fit": {
+            "ironic": 0.93,
+            "coincidental": 0.16
+          },
+          "decisive_clue": "literal praise contrasts with visible failure",
+          "reason": "Her words praise what the situation shows is bad.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coincidental": "M1"
+          }
+        },
+        {
+          "id": "ironic-coincidental_001_b2",
+          "text": "She said the same words while holding a bucket beneath the leak.",
+          "best_word": "ironic",
+          "fit": {
+            "ironic": 0.93,
+            "coincidental": 0.16
+          },
+          "decisive_clue": "the leak makes her intended criticism unmistakable",
+          "reason": "The bucket underscores that the praise is deliberately reversed.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coincidental": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The leak makes her intended criticism unmistakable; the bucket underscores that the praise is deliberately reversed.",
+      "feedback_deep": "Ironic means expression says the opposite of its intended meaning; coincidental means a connection happens through chance rather than deliberate meaning. The bucket underscores that the praise is deliberately reversed.",
+      "contrast_rule": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+      "hints": {
+        "attention": "Does she mean the praise literally?",
+        "axis": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+        "contrast": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ironic-coincidental_002",
+      "edge_id": "ironic__coincidental",
+      "domain": "street_crossing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the match involving Nico’s phrase?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ironic-coincidental_002_b1",
+          "text": "Nico picked “purple bicycle” from a shuffled word card; a purple bicycle then passed outside.",
+          "best_word": "coincidental",
+          "fit": {
+            "ironic": 0.16,
+            "coincidental": 0.93
+          },
+          "decisive_clue": "an accidental match between random words and an event",
+          "reason": "The phrase matches reality by chance rather than expressing its opposite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ironic": "M2"
+          }
+        },
+        {
+          "id": "ironic-coincidental_002_b2",
+          "text": "He had drawn the card before looking toward the street.",
+          "best_word": "coincidental",
+          "fit": {
+            "ironic": 0.16,
+            "coincidental": 0.93
+          },
+          "decisive_clue": "no prior view could explain the match",
+          "reason": "The timing rules out a planned reference to the bicycle.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ironic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "No prior view could explain the match; the timing rules out a planned reference to the bicycle.",
+      "feedback_deep": "Ironic means expression says the opposite of its intended meaning; coincidental means a connection happens through chance rather than deliberate meaning. The timing rules out a planned reference to the bicycle.",
+      "contrast_rule": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+      "hints": {
+        "attention": "Was the match planned or accidental?",
+        "axis": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+        "contrast": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ironic-coincidental_003",
+      "edge_id": "ironic__coincidental",
+      "domain": "library_visit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the relationship between Lian’s remark and the situation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "ironic-coincidental_003_b1",
+          "text": "Three alarms blared as Lian murmured, “What a peaceful library.”",
+          "best_word": "ironic",
+          "fit": {
+            "ironic": 0.93,
+            "coincidental": 0.16
+          },
+          "decisive_clue": "a deliberately contrary description of noisy surroundings",
+          "reason": "She describes a loud place with a word meaning the opposite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coincidental": "M1"
+          }
+        },
+        {
+          "id": "ironic-coincidental_003_b2",
+          "text": "She emphasized “peaceful” while the noise continued.",
+          "best_word": "ironic",
+          "fit": {
+            "ironic": 0.93,
+            "coincidental": 0.16
+          },
+          "decisive_clue": "a deliberately contrary description of noisy surroundings",
+          "reason": "Emphasis strengthens the contrast without changing its nature.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coincidental": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A deliberately contrary description of noisy surroundings; emphasis strengthens the contrast without changing its nature.",
+      "feedback_deep": "Ironic means expression says the opposite of its intended meaning; coincidental means a connection happens through chance rather than deliberate meaning. Emphasis strengthens the contrast without changing its nature.",
+      "contrast_rule": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+      "hints": {
+        "attention": "Compare the spoken description with the noise.",
+        "axis": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+        "contrast": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ironic-coincidental_004",
+      "edge_id": "ironic__coincidental",
+      "domain": "weather_game",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the match involving Aisha’s prediction?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "ironic-coincidental_004_b1",
+          "text": "Aisha drew “rain by lunch” from a shuffled game card; a shower began at noon.",
+          "best_word": "coincidental",
+          "fit": {
+            "ironic": 0.16,
+            "coincidental": 0.93
+          },
+          "decisive_clue": "a randomly chosen phrase matched later weather",
+          "reason": "Chance explains the agreement between the card and the weather.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ironic": "M2"
+          }
+        },
+        {
+          "id": "ironic-coincidental_004_b2",
+          "text": "The card she drew had a yellow border.",
+          "best_word": "coincidental",
+          "fit": {
+            "ironic": 0.16,
+            "coincidental": 0.93
+          },
+          "decisive_clue": "a randomly chosen phrase matched later weather",
+          "reason": "The card’s border does not supply any deliberate opposite meaning.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ironic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A randomly chosen phrase matched later weather; the card’s border does not supply any deliberate opposite meaning.",
+      "feedback_deep": "Ironic means expression says the opposite of its intended meaning; coincidental means a connection happens through chance rather than deliberate meaning. The card’s border does not supply any deliberate opposite meaning.",
+      "contrast_rule": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+      "hints": {
+        "attention": "How did the prediction come to be chosen?",
+        "axis": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+        "contrast": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ironic-coincidental_005",
+      "edge_id": "ironic__coincidental",
+      "domain": "bus_journal",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the match involving Rafael’s sentence?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ironic-coincidental_005_b1",
+          "text": "Rafael wrote about a red scarf in his journal; minutes later, a stranger wearing one boarded his bus.",
+          "best_word": "coincidental",
+          "fit": {
+            "ironic": 0.16,
+            "coincidental": 0.93
+          },
+          "decisive_clue": "unplanned correspondence between writing and a stranger",
+          "reason": "The red scarf matches something written independently.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ironic": "M2"
+          }
+        },
+        {
+          "id": "ironic-coincidental_005_b2",
+          "text": "He had written that sentence days earlier and had never met the stranger.",
+          "best_word": "coincidental",
+          "fit": {
+            "ironic": 0.16,
+            "coincidental": 0.93
+          },
+          "decisive_clue": "the sentence preceded any possible knowledge of this encounter",
+          "reason": "The earlier date reinforces that the correspondence was accidental.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ironic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The sentence preceded any possible knowledge of this encounter; the earlier date reinforces that the correspondence was accidental.",
+      "feedback_deep": "Ironic means expression says the opposite of its intended meaning; coincidental means a connection happens through chance rather than deliberate meaning. The earlier date reinforces that the correspondence was accidental.",
+      "contrast_rule": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+      "hints": {
+        "attention": "Could the writer have arranged the match?",
+        "axis": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+        "contrast": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ironic-coincidental_006",
+      "edge_id": "ironic__coincidental",
+      "domain": "late_delivery",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the relationship between Farah’s remark and the delivery?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "ironic-coincidental_006_b1",
+          "text": "When dinner arrived three hours late, Farah said, “Perfect timing,” beside the cold plates.",
+          "best_word": "ironic",
+          "fit": {
+            "ironic": 0.93,
+            "coincidental": 0.16
+          },
+          "decisive_clue": "positive words used to criticize obvious lateness",
+          "reason": "Her literal praise communicates dissatisfaction with the delay.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coincidental": "M1"
+          }
+        },
+        {
+          "id": "ironic-coincidental_006_b2",
+          "text": "She slowly stressed the word “perfect” as the courier apologized.",
+          "best_word": "ironic",
+          "fit": {
+            "ironic": 0.93,
+            "coincidental": 0.16
+          },
+          "decisive_clue": "positive words used to criticize obvious lateness",
+          "reason": "The emphasis does not turn the remark into a chance encounter.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coincidental": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Positive words used to criticize obvious lateness; the emphasis does not turn the remark into a chance encounter.",
+      "feedback_deep": "Ironic means expression says the opposite of its intended meaning; coincidental means a connection happens through chance rather than deliberate meaning. The emphasis does not turn the remark into a chance encounter.",
+      "contrast_rule": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+      "hints": {
+        "attention": "What does the phrase mean in context?",
+        "axis": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal.",
+        "contrast": "An ironic remark deliberately communicates the opposite of its literal words; a coincidental match happens by chance without such an intended reversal."
+      },
+      "qa": "pass"
+    }
+  ]
+}

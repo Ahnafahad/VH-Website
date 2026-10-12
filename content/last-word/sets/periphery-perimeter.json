@@ -1,0 +1,487 @@
+{
+  "schema_version": 1,
+  "set_id": "periphery-perimeter",
+  "title": "periphery / perimeter",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[147]",
+    "source_pair_id": 615,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "periphery",
+      "sense": "outer area or marginal part furthest from the centre",
+      "connotation": "positional; may suggest less central involvement",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming every enclosing line is an outer district."
+      ]
+    },
+    {
+      "word": "perimeter",
+      "sense": "boundary line around an area or the distance measured along it",
+      "connotation": "geometric or practical boundary measurement",
+      "register": "general",
+      "misconceptions": [
+        "Thinking any location near an edge is the measured boundary.",
+        "Confusing the broad outskirts with an exact outline."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "outer_area_versus_boundary_line",
+      "description": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area."
+    }
+  ],
+  "edges": [
+    {
+      "id": "periphery__perimeter",
+      "a": "periphery",
+      "b": "perimeter",
+      "boundary_rule": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area.",
+      "clues_a": [
+        "fringe or outer district",
+        "position outside the centre",
+        "marginal involvement"
+      ],
+      "clues_b": [
+        "enclosing line",
+        "measured length around",
+        "marked external boundary"
+      ],
+      "irrelevant_clues": [
+        "fence material",
+        "weather",
+        "number of visitors"
+      ],
+      "misconceptions": {
+        "M1": "Thinking any location near an edge is the measured boundary.",
+        "M2": "Confusing the broad outskirts with an exact outline.",
+        "M3": "Assuming every enclosing line is an outer district."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "periphery-perimeter_001",
+      "edge_id": "periphery__perimeter",
+      "domain": "town_shopping_district",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes where Salma's shop sits in town?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "periphery-perimeter_001_b1",
+          "text": "Salma runs her shop among quiet streets far from the main square and its busiest stores.",
+          "best_word": "periphery",
+          "fit": {
+            "periphery": 0.89,
+            "perimeter": 0.22
+          },
+          "decisive_clue": "the shop is in the outer part of town",
+          "reason": "The shop is in the outer part of town is the evidence for periphery.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perimeter": "M1"
+          }
+        },
+        {
+          "id": "periphery-perimeter_001_b2",
+          "text": "It is still within the town, but customers usually reach it from the outer residential roads.",
+          "best_word": "periphery",
+          "fit": {
+            "periphery": 0.92,
+            "perimeter": 0.22
+          },
+          "decisive_clue": "it occupies an outlying district rather than a measured line",
+          "reason": "The additional location confirms that this is an area on the outskirts, not a drawn boundary.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perimeter": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: it occupies an outlying district rather than a measured line.",
+      "feedback_deep": "Periphery describes a marginal or outer region. Salma’s shop is located in the outlying part of town; no enclosing line is being measured.",
+      "contrast_rule": "Periphery is the outskirts; perimeter traces the edge.",
+      "hints": {
+        "attention": "Check whether the reference is an outer zone or an enclosing line.",
+        "axis": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area.",
+        "contrast": "Periphery is the outskirts; perimeter traces the edge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "periphery-perimeter_002",
+      "edge_id": "periphery__perimeter",
+      "domain": "park_maintenance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the feature Jonah measures at the park?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "periphery-perimeter_002_b1",
+          "text": "Jonah walks the park’s complete outside fence with a measuring wheel to find its total length.",
+          "best_word": "perimeter",
+          "fit": {
+            "periphery": 0.25,
+            "perimeter": 0.9
+          },
+          "decisive_clue": "he measures the enclosing boundary",
+          "reason": "He measures the enclosing boundary is the evidence for perimeter.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "periphery": "M3"
+          }
+        },
+        {
+          "id": "periphery-perimeter_002_b2",
+          "text": "His notebook records the distance for every side before he adds them together.",
+          "best_word": "perimeter",
+          "fit": {
+            "periphery": 0.25,
+            "perimeter": 0.93
+          },
+          "decisive_clue": "he totals the distance all around the outline",
+          "reason": "Summing the sides explicitly identifies the measured boundary length.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "periphery": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he totals the distance all around the outline.",
+      "feedback_deep": "Perimeter can mean the boundary itself or its total length. Jonah measures the line around the park, not a broad outer zone.",
+      "contrast_rule": "Periphery is the outskirts; perimeter traces the edge.",
+      "hints": {
+        "attention": "Check whether the reference is an outer zone or an enclosing line.",
+        "axis": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area.",
+        "contrast": "Periphery is the outskirts; perimeter traces the edge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "periphery-perimeter_003",
+      "edge_id": "periphery__perimeter",
+      "domain": "debate_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Priya's position within the club?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "periphery-perimeter_003_b1",
+          "text": "Priya attends occasional meetings but stays away from the group that plans most debates.",
+          "best_word": "periphery",
+          "fit": {
+            "periphery": 0.88,
+            "perimeter": 0.19
+          },
+          "decisive_clue": "she is at the margins of the group’s activity",
+          "reason": "She is at the margins of the group’s activity is the evidence for periphery.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perimeter": "M1"
+          }
+        },
+        {
+          "id": "periphery-perimeter_003_b2",
+          "text": "She rarely gets involved when the main organisers choose topics.",
+          "best_word": "periphery",
+          "fit": {
+            "periphery": 0.91,
+            "perimeter": 0.19
+          },
+          "decisive_clue": "she remains peripheral to key decisions",
+          "reason": "Not planning topics reinforces marginal involvement, not a physical boundary.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perimeter": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she is at the margins of the group’s activity.",
+      "feedback_deep": "Periphery works figuratively for the less central part of a group. Priya is involved only at its margins; perimeter is a spatial boundary.",
+      "contrast_rule": "Periphery is the outskirts; perimeter traces the edge.",
+      "hints": {
+        "attention": "Check whether the reference is an outer zone or an enclosing line.",
+        "axis": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area.",
+        "contrast": "Periphery is the outskirts; perimeter traces the edge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "periphery-perimeter_004",
+      "edge_id": "periphery__perimeter",
+      "domain": "sports_field",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the court marking?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "periphery-perimeter_004_b1",
+          "text": "The painted marking follows the exact outside edge of the playing area without entering its middle.",
+          "best_word": "perimeter",
+          "fit": {
+            "periphery": 0.22,
+            "perimeter": 0.89
+          },
+          "decisive_clue": "the marking traces the enclosing edge",
+          "reason": "The marking traces the enclosing edge is the evidence for perimeter.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "periphery": "M3"
+          }
+        },
+        {
+          "id": "periphery-perimeter_004_b2",
+          "text": "A coach checks the marking after rain to make sure the corners are still visible.",
+          "best_word": "perimeter",
+          "fit": {
+            "periphery": 0.22,
+            "perimeter": 0.92
+          },
+          "decisive_clue": "the exact outside outline remains decisive",
+          "reason": "Rain affects visibility, not the marking’s role as the boundary line.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "periphery": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the marking traces the enclosing edge.",
+      "feedback_deep": "Perimeter is the enclosing line. The weather does not turn a court marking into a surrounding outer district.",
+      "contrast_rule": "Periphery is the outskirts; perimeter traces the edge.",
+      "hints": {
+        "attention": "Check whether the reference is an outer zone or an enclosing line.",
+        "axis": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area.",
+        "contrast": "Periphery is the outskirts; perimeter traces the edge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "periphery-perimeter_005",
+      "edge_id": "periphery__perimeter",
+      "domain": "garden_layout",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the position of Layla's flowers in the garden?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "periphery-perimeter_005_b1",
+          "text": "Layla plants flowers in a broad band outside the vegetable beds and away from the central path.",
+          "best_word": "periphery",
+          "fit": {
+            "periphery": 0.9,
+            "perimeter": 0.25
+          },
+          "decisive_clue": "the flowers occupy the outer zone of the garden",
+          "reason": "The flowers occupy the outer zone of the garden is the evidence for periphery.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perimeter": "M1"
+          }
+        },
+        {
+          "id": "periphery-perimeter_005_b2",
+          "text": "The band is several steps wide, with small shrubs growing through it.",
+          "best_word": "periphery",
+          "fit": {
+            "periphery": 0.93,
+            "perimeter": 0.25
+          },
+          "decisive_clue": "the outer band has substantial width",
+          "reason": "The band’s width shows an outlying area, not a single enclosing line.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perimeter": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the outer band has substantial width.",
+      "feedback_deep": "Periphery refers to the outer portion of a space. Layla’s plants fill an outer band, whereas a perimeter would be the boundary traced around it.",
+      "contrast_rule": "Periphery is the outskirts; perimeter traces the edge.",
+      "hints": {
+        "attention": "Check whether the reference is an outer zone or an enclosing line.",
+        "axis": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area.",
+        "contrast": "Periphery is the outskirts; perimeter traces the edge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "periphery-perimeter_006",
+      "edge_id": "periphery__perimeter",
+      "domain": "home_improvement",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amir's patio marking?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "periphery-perimeter_006_b1",
+          "text": "Amir stretches string around the exact shape of the future patio so he can buy enough edging.",
+          "best_word": "perimeter",
+          "fit": {
+            "periphery": 0.19,
+            "perimeter": 0.88
+          },
+          "decisive_clue": "the string traces the patio’s outer boundary",
+          "reason": "The string traces the patio’s outer boundary is the evidence for perimeter.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "periphery": "M3"
+          }
+        },
+        {
+          "id": "periphery-perimeter_006_b2",
+          "text": "He measures each straight section and calculates the total length of the string.",
+          "best_word": "perimeter",
+          "fit": {
+            "periphery": 0.19,
+            "perimeter": 0.91
+          },
+          "decisive_clue": "the measured enclosing outline remains the subject",
+          "reason": "Calculating length reinforces the original boundary; it does not change the object being described.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "periphery": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the string traces the patio’s outer boundary.",
+      "feedback_deep": "Perimeter is the boundary or distance around a shape. Amir marks and measures its outline, not a wide outer region.",
+      "contrast_rule": "Periphery is the outskirts; perimeter traces the edge.",
+      "hints": {
+        "attention": "Check whether the reference is an outer zone or an enclosing line.",
+        "axis": "Periphery names a region or position near the edge, whereas perimeter names the precise line or measured distance enclosing an area.",
+        "contrast": "Periphery is the outskirts; perimeter traces the edge."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,480 @@
+{
+  "schema_version": 1,
+  "set_id": "ruminate-reminisce",
+  "title": "ruminate / reminisce",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[88]",
+    "source_pair_id": 375,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 4
+    }
+  },
+  "words": [
+    {
+      "word": "ruminate",
+      "sense": "sustained reflective thought",
+      "connotation": "neutral, introspective",
+      "register": "formal",
+      "misconceptions": [
+        "Mistaking sustained analysis for memory-sharing"
+      ]
+    },
+    {
+      "word": "reminisce",
+      "sense": "remember earlier experiences",
+      "connotation": "often warm or nostalgic",
+      "register": "neutral",
+      "misconceptions": [
+        "Mistaking fond recollection for problem analysis"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "mental_activity",
+      "description": "Analysis and prolonged consideration versus recollection of past experience"
+    }
+  ],
+  "edges": [
+    {
+      "id": "ruminate__reminisce",
+      "a": "ruminate",
+      "b": "reminisce",
+      "boundary_rule": "To ruminate is to think deeply and repeatedly about an issue; to reminisce is to recall or share experiences from the past, often fondly.",
+      "clues_a": [
+        "repeatedly weighs meanings, causes, or options"
+      ],
+      "clues_b": [
+        "recalls stories from earlier days for their own sake"
+      ],
+      "irrelevant_clues": [
+        "something happened long ago, quietness, looking at a photo"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking sustained analysis for memory-sharing",
+        "M2": "Mistaking fond recollection for problem analysis",
+        "M3": "Assuming everything about the past is nostalgic"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "ruminate-reminisce_001",
+      "edge_id": "ruminate__reminisce",
+      "domain": "job_placement_choice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which verb best describes what Haruto is doing?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "ruminate-reminisce_001_b1",
+          "text": "Haruto spent hours weighing whether to accept a job placement, turning every consequence over in his mind.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.92,
+            "reminisce": 0.2
+          },
+          "decisive_clue": "repeatedly considered a difficult choice",
+          "reason": "The clue 'repeatedly considered a difficult choice' points to sustained reflective thought, not remember earlier experiences.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        },
+        {
+          "id": "ruminate-reminisce_001_b2",
+          "text": "After dinner he returned to the same question and compared the risks again.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.95,
+            "reminisce": 0.16
+          },
+          "decisive_clue": "revisited the problem analytically rather than telling memories",
+          "reason": "The detail 'revisited the problem analytically rather than telling memories' leaves sustained reflective thought as the better fit, not remember earlier experiences.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Revisited the problem analytically rather than telling memories; ruminate still fits best.",
+      "feedback_deep": "ruminate means think over the same issue deeply and at length; reminisce means recall and often tell stories about times gone by. The first clue is \"repeatedly considered a difficult choice\"; the next is \"revisited the problem analytically rather than telling memories\". Ruminate examines a thought; reminisce revisits a memory.",
+      "contrast_rule": "Ruminate examines a thought; reminisce revisits a memory.",
+      "hints": {
+        "attention": "What is he trying to work out?",
+        "axis": "Analysis and prolonged consideration versus recollection of past experience",
+        "contrast": "Ruminate examines a thought; reminisce revisits a memory."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ruminate-reminisce_002",
+      "edge_id": "ruminate__reminisce",
+      "domain": "summer_camp_photographs",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which verb best describes what Mila is doing?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "ruminate-reminisce_002_b1",
+          "text": "Mila studied an old camp photo for hours, trying to understand why her closest friendship had faded.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.92,
+            "reminisce": 0.2
+          },
+          "decisive_clue": "analyzed the cause of a past friendship change",
+          "reason": "The clue 'analyzed the cause of a past friendship change' points to sustained reflective thought, not remember earlier experiences.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        },
+        {
+          "id": "ruminate-reminisce_002_b2",
+          "text": "Then she put that question aside and happily retold funny camp adventures to old friends.",
+          "best_word": "reminisce",
+          "fit": {
+            "ruminate": 0.16,
+            "reminisce": 0.95
+          },
+          "decisive_clue": "stopped analyzing and recalled shared adventures",
+          "reason": "The new clue 'stopped analyzing and recalled shared adventures' shifts the interpretation to remember earlier experiences, rather than sustained reflective thought.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ruminate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Stopped analyzing and recalled shared adventures; now reminisce fits best.",
+      "feedback_deep": "ruminate means think over the same issue deeply and at length; reminisce means recall and often tell stories about times gone by. The first clue is \"analyzed the cause of a past friendship change\"; the next is \"stopped analyzing and recalled shared adventures\". Ruminate examines a thought; reminisce revisits a memory.",
+      "contrast_rule": "Ruminate examines a thought; reminisce revisits a memory.",
+      "hints": {
+        "attention": "Does she keep solving a question, or start reliving stories?",
+        "axis": "Analysis and prolonged consideration versus recollection of past experience",
+        "contrast": "Ruminate examines a thought; reminisce revisits a memory."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ruminate-reminisce_003",
+      "edge_id": "ruminate__reminisce",
+      "domain": "school_reunion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which verb best describes what Kofi is doing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ruminate-reminisce_003_b1",
+          "text": "Kofi laughed with classmates as they recalled getting lost together on a school trip.",
+          "best_word": "reminisce",
+          "fit": {
+            "ruminate": 0.2,
+            "reminisce": 0.92
+          },
+          "decisive_clue": "shared an old experience for pleasure",
+          "reason": "The clue 'shared an old experience for pleasure' points to remember earlier experiences, not sustained reflective thought.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ruminate": "M2"
+          }
+        },
+        {
+          "id": "ruminate-reminisce_003_b2",
+          "text": "They added cheerful details from that day without trying to solve any problem about it.",
+          "best_word": "reminisce",
+          "fit": {
+            "ruminate": 0.16,
+            "reminisce": 0.95
+          },
+          "decisive_clue": "recalled details rather than examining causes",
+          "reason": "The detail 'recalled details rather than examining causes' leaves remember earlier experiences as the better fit, not sustained reflective thought.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ruminate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Recalled details rather than examining causes; reminisce still fits best.",
+      "feedback_deep": "ruminate means think over the same issue deeply and at length; reminisce means recall and often tell stories about times gone by. The first clue is \"shared an old experience for pleasure\"; the next is \"recalled details rather than examining causes\". Ruminate examines a thought; reminisce revisits a memory.",
+      "contrast_rule": "Ruminate examines a thought; reminisce revisits a memory.",
+      "hints": {
+        "attention": "Are they sharing memories or working through a question?",
+        "axis": "Analysis and prolonged consideration versus recollection of past experience",
+        "contrast": "Ruminate examines a thought; reminisce revisits a memory."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ruminate-reminisce_005",
+      "edge_id": "ruminate__reminisce",
+      "domain": "old_disagreement",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which verb best describes what Jamal is doing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ruminate-reminisce_005_b1",
+          "text": "Jamal began telling his sister how a quarrel with a friend had unfolded years earlier.",
+          "best_word": "reminisce",
+          "fit": {
+            "ruminate": 0.2,
+            "reminisce": 0.92
+          },
+          "decisive_clue": "recounted what happened years ago",
+          "reason": "The clue 'recounted what happened years ago' points to remember earlier experiences, not sustained reflective thought.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ruminate": "M2"
+          }
+        },
+        {
+          "id": "ruminate-reminisce_005_b2",
+          "text": "He then kept examining his own reply, repeatedly weighing what he should have said differently.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.95,
+            "reminisce": 0.16
+          },
+          "decisive_clue": "turned repeatedly to analytical self-questioning",
+          "reason": "The new clue 'turned repeatedly to analytical self-questioning' shifts the interpretation to sustained reflective thought, rather than remember earlier experiences.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Turned repeatedly to analytical self-questioning; now ruminate fits best.",
+      "feedback_deep": "ruminate means think over the same issue deeply and at length; reminisce means recall and often tell stories about times gone by. The first clue is \"recounted what happened years ago\"; the next is \"turned repeatedly to analytical self-questioning\". Ruminate examines a thought; reminisce revisits a memory.",
+      "contrast_rule": "Ruminate examines a thought; reminisce revisits a memory.",
+      "hints": {
+        "attention": "Has his activity changed from telling to examining?",
+        "axis": "Analysis and prolonged consideration versus recollection of past experience",
+        "contrast": "Ruminate examines a thought; reminisce revisits a memory."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ruminate-reminisce_006",
+      "edge_id": "ruminate__reminisce",
+      "domain": "apartment_decision",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which verb best describes what Esmé is doing?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ruminate-reminisce_006_b1",
+          "text": "Esmé repeatedly weighed the costs and consequences of sharing a flat with friends.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.92,
+            "reminisce": 0.2
+          },
+          "decisive_clue": "examined the choice from several angles",
+          "reason": "The clue 'examined the choice from several angles' points to sustained reflective thought, not remember earlier experiences.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        },
+        {
+          "id": "ruminate-reminisce_006_b2",
+          "text": "An old favorite song played nearby, but she kept turning the decision over in her mind.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.95,
+            "reminisce": 0.16
+          },
+          "decisive_clue": "nostalgic music did not turn reflection into storytelling",
+          "reason": "The detail 'nostalgic music did not turn reflection into storytelling' leaves sustained reflective thought as the better fit, not remember earlier experiences.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Nostalgic music did not turn reflection into storytelling; ruminate still fits best.",
+      "feedback_deep": "ruminate means think over the same issue deeply and at length; reminisce means recall and often tell stories about times gone by. The first clue is \"examined the choice from several angles\"; the next is \"nostalgic music did not turn reflection into storytelling\". Ruminate examines a thought; reminisce revisits a memory.",
+      "contrast_rule": "Ruminate examines a thought; reminisce revisits a memory.",
+      "hints": {
+        "attention": "Does hearing an old song change what she is thinking about?",
+        "axis": "Analysis and prolonged consideration versus recollection of past experience",
+        "contrast": "Ruminate examines a thought; reminisce revisits a memory."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ruminate-reminisce_008",
+      "edge_id": "ruminate__reminisce",
+      "domain": "difficult_conversation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which verb best describes what Layla is doing?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ruminate-reminisce_008_b1",
+          "text": "Layla kept thinking about why a recent conversation ended badly, considering one explanation after another.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.92,
+            "reminisce": 0.2
+          },
+          "decisive_clue": "repeatedly examined a conversation’s causes",
+          "reason": "The clue 'repeatedly examined a conversation’s causes' points to sustained reflective thought, not remember earlier experiences.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        },
+        {
+          "id": "ruminate-reminisce_008_b2",
+          "text": "Long after others forgot it, she replayed her words to decide whether she had been unfair.",
+          "best_word": "ruminate",
+          "fit": {
+            "ruminate": 0.95,
+            "reminisce": 0.16
+          },
+          "decisive_clue": "the goal was judgment and understanding, not nostalgic recall",
+          "reason": "The detail 'the goal was judgment and understanding, not nostalgic recall' leaves sustained reflective thought as the better fit, not remember earlier experiences.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reminisce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The goal was judgment and understanding, not nostalgic recall; ruminate still fits best.",
+      "feedback_deep": "ruminate means think over the same issue deeply and at length; reminisce means recall and often tell stories about times gone by. The first clue is \"repeatedly examined a conversation’s causes\"; the next is \"the goal was judgment and understanding, not nostalgic recall\". Ruminate examines a thought; reminisce revisits a memory.",
+      "contrast_rule": "Ruminate examines a thought; reminisce revisits a memory.",
+      "hints": {
+        "attention": "Is she evaluating her actions or telling an old story?",
+        "axis": "Analysis and prolonged consideration versus recollection of past experience",
+        "contrast": "Ruminate examines a thought; reminisce revisits a memory."
+      },
+      "qa": "pass"
+    }
+  ]
+}

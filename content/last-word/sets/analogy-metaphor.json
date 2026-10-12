@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "analogy-metaphor",
+  "title": "analogy / metaphor",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[103]",
+    "source_pair_id": 424,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "analogy",
+      "sense": "comparison explains a relationship through a shared structure",
+      "connotation": "neutral, explanatory",
+      "register": "standard",
+      "misconceptions": [
+        "Thinking any figurative image necessarily explains a structural parallel."
+      ]
+    },
+    {
+      "word": "metaphor",
+      "sense": "figurative description calls one thing another",
+      "connotation": "expressive",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming an explanatory comparison is only an imaginative identification."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "explanatory_parallel_vs_figurative_identity",
+      "description": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image."
+    }
+  ],
+  "edges": [
+    {
+      "id": "analogy__metaphor",
+      "a": "analogy",
+      "b": "metaphor",
+      "boundary_rule": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+      "clues_a": [
+        "parallel processes mapped step by step",
+        "comparison explains a hidden mechanism",
+        "shared relationship clarifies a concept"
+      ],
+      "clues_b": [
+        "one thing is named as another",
+        "figurative image rather than mapped reasoning",
+        "compressed symbolic description"
+      ],
+      "irrelevant_clues": [
+        "speaker’s age",
+        "font on the page",
+        "length of the applause"
+      ],
+      "misconceptions": {
+        "M1": "Confuses analogy with metaphor by overlooking the defining difference: An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+        "M2": "Assumes evidence for metaphor necessarily proves analogy; these are different tests.",
+        "M3": "Overweights a later superficial detail instead of retaining or appropriately updating the original boundary evidence."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "analogy-metaphor_001",
+      "edge_id": "analogy__metaphor",
+      "domain": "budget_lesson",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which term best describes Lena’s comparison in the budget lesson?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "analogy-metaphor_001_b1",
+          "text": "Lena explained a household budget using a bucket: income pours in while bills drain it.",
+          "best_word": "analogy",
+          "fit": {
+            "analogy": 0.93,
+            "metaphor": 0.16
+          },
+          "decisive_clue": "matched parts of a bucket to stages of managing money",
+          "reason": "The comparison explains how a budget functions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "metaphor": "M1"
+          }
+        },
+        {
+          "id": "analogy-metaphor_001_b2",
+          "text": "She compared savings with the water remaining after the outflow.",
+          "best_word": "analogy",
+          "fit": {
+            "analogy": 0.93,
+            "metaphor": 0.16
+          },
+          "decisive_clue": "continued mapping the parallel to clarify savings",
+          "reason": "The additional correspondence makes the explanatory parallel more complete.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "metaphor": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Continued mapping the parallel to clarify savings; the additional correspondence makes the explanatory parallel more complete.",
+      "feedback_deep": "Analogy means comparison explains a relationship through a shared structure; metaphor means figurative description calls one thing another. The additional correspondence makes the explanatory parallel more complete.",
+      "contrast_rule": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+      "hints": {
+        "attention": "Is the comparison being used to explain a process?",
+        "axis": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+        "contrast": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "analogy-metaphor_002",
+      "edge_id": "analogy__metaphor",
+      "domain": "classroom_diary",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which term best describes Omar’s description of the classroom?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "analogy-metaphor_002_b1",
+          "text": "Omar wrote, “The classroom was a beehive,” as students talked over one another.",
+          "best_word": "metaphor",
+          "fit": {
+            "analogy": 0.16,
+            "metaphor": 0.93
+          },
+          "decisive_clue": "calls the classroom another kind of thing for effect",
+          "reason": "The image describes one thing as another.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "analogy": "M2"
+          }
+        },
+        {
+          "id": "analogy-metaphor_002_b2",
+          "text": "He used the sentence as the opening line of his diary entry.",
+          "best_word": "metaphor",
+          "fit": {
+            "analogy": 0.16,
+            "metaphor": 0.93
+          },
+          "decisive_clue": "calls the classroom another kind of thing for effect",
+          "reason": "Its place in the diary does not turn it into a step-by-step comparison.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "analogy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Calls the classroom another kind of thing for effect; its place in the diary does not turn it into a step-by-step comparison.",
+      "feedback_deep": "Analogy means comparison explains a relationship through a shared structure; metaphor means figurative description calls one thing another. Its place in the diary does not turn it into a step-by-step comparison.",
+      "contrast_rule": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+      "hints": {
+        "attention": "How are the two things put into words?",
+        "axis": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+        "contrast": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "analogy-metaphor_003",
+      "edge_id": "analogy__metaphor",
+      "domain": "traffic_lesson",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which term best describes Mia’s comparison in her traffic explanation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "analogy-metaphor_003_b1",
+          "text": "Mia compared merging cars with a zipper: each line takes turns joining a single row.",
+          "best_word": "analogy",
+          "fit": {
+            "analogy": 0.93,
+            "metaphor": 0.16
+          },
+          "decisive_clue": "shared alternating pattern explains how two lines merge",
+          "reason": "The comparison uses a common mechanism to teach another one.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "metaphor": "M1"
+          }
+        },
+        {
+          "id": "analogy-metaphor_003_b2",
+          "text": "She pointed out how alternating spaces keep both sides moving.",
+          "best_word": "analogy",
+          "fit": {
+            "analogy": 0.93,
+            "metaphor": 0.16
+          },
+          "decisive_clue": "the parallel clarifies why taking turns works",
+          "reason": "The added correspondence makes the explanation more useful.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "metaphor": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The parallel clarifies why taking turns works; the added correspondence makes the explanation more useful.",
+      "feedback_deep": "Analogy means comparison explains a relationship through a shared structure; metaphor means figurative description calls one thing another. The added correspondence makes the explanation more useful.",
+      "contrast_rule": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+      "hints": {
+        "attention": "Does the likeness clarify how something works?",
+        "axis": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+        "contrast": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "analogy-metaphor_004",
+      "edge_id": "analogy__metaphor",
+      "domain": "message_diary",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which term best describes Nadiya’s description of her inbox?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "analogy-metaphor_004_b1",
+          "text": "Nadiya called her crowded inbox “a bottomless pit” after receiving dozens of messages.",
+          "best_word": "metaphor",
+          "fit": {
+            "analogy": 0.16,
+            "metaphor": 0.93
+          },
+          "decisive_clue": "figuratively names the inbox as a different thing",
+          "reason": "The phrase directly presents the inbox as something else.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "analogy": "M2"
+          }
+        },
+        {
+          "id": "analogy-metaphor_004_b2",
+          "text": "She wrote the phrase in green ink.",
+          "best_word": "metaphor",
+          "fit": {
+            "analogy": 0.16,
+            "metaphor": 0.93
+          },
+          "decisive_clue": "figuratively names the inbox as a different thing",
+          "reason": "Ink color has nothing to do with how the comparison works.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "analogy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Figuratively names the inbox as a different thing; ink color has nothing to do with how the comparison works.",
+      "feedback_deep": "Analogy means comparison explains a relationship through a shared structure; metaphor means figurative description calls one thing another. Ink color has nothing to do with how the comparison works.",
+      "contrast_rule": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+      "hints": {
+        "attention": "Is it an image or a mapped explanation?",
+        "axis": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+        "contrast": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "analogy-metaphor_005",
+      "edge_id": "analogy__metaphor",
+      "domain": "friendship_story",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which term best describes Carlos’s description of patience?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "analogy-metaphor_005_b1",
+          "text": "Carlos wrote, “Her patience was a cracked cup,” after describing another argument.",
+          "best_word": "metaphor",
+          "fit": {
+            "analogy": 0.16,
+            "metaphor": 0.93
+          },
+          "decisive_clue": "direct figurative identification of patience with an object",
+          "reason": "The expression makes an image by equating unlike things.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "analogy": "M2"
+          }
+        },
+        {
+          "id": "analogy-metaphor_005_b2",
+          "text": "He kept that short image without explaining a detailed correspondence between cups and feelings.",
+          "best_word": "metaphor",
+          "fit": {
+            "analogy": 0.16,
+            "metaphor": 0.93
+          },
+          "decisive_clue": "the image stands without an explanatory mapping",
+          "reason": "The lack of an extended parallel reinforces its figurative purpose.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "analogy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The image stands without an explanatory mapping; the lack of an extended parallel reinforces its figurative purpose.",
+      "feedback_deep": "Analogy means comparison explains a relationship through a shared structure; metaphor means figurative description calls one thing another. The lack of an extended parallel reinforces its figurative purpose.",
+      "contrast_rule": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+      "hints": {
+        "attention": "Is the comparison mainly meant to evoke an image?",
+        "axis": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+        "contrast": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "analogy-metaphor_006",
+      "edge_id": "analogy__metaphor",
+      "domain": "guitar_tutoring",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which term best describes Pavel’s comparison during his music lesson?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "analogy-metaphor_006_b1",
+          "text": "Pavel compared learning guitar with learning a language: chords were words and songs were sentences.",
+          "best_word": "analogy",
+          "fit": {
+            "analogy": 0.93,
+            "metaphor": 0.16
+          },
+          "decisive_clue": "corresponding parts explain how musical learning works",
+          "reason": "The parallel teaches a structure through familiar relationships.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "metaphor": "M1"
+          }
+        },
+        {
+          "id": "analogy-metaphor_006_b2",
+          "text": "He used the parallel to explain why small practice patterns help build complete songs.",
+          "best_word": "analogy",
+          "fit": {
+            "analogy": 0.93,
+            "metaphor": 0.16
+          },
+          "decisive_clue": "corresponding parts explain how musical learning works",
+          "reason": "Using that relationship to explain practice confirms its instructional role.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "metaphor": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Corresponding parts explain how musical learning works; using that relationship to explain practice confirms its instructional role.",
+      "feedback_deep": "Analogy means comparison explains a relationship through a shared structure; metaphor means figurative description calls one thing another. Using that relationship to explain practice confirms its instructional role.",
+      "contrast_rule": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+      "hints": {
+        "attention": "Do the compared parts help explain each other?",
+        "axis": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image.",
+        "contrast": "An analogy compares how two different things work to explain an idea; a metaphor describes one thing as another to create meaning or an image."
+      },
+      "qa": "pass"
+    }
+  ]
+}

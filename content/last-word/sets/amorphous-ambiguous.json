@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "amorphous-ambiguous",
+  "title": "amorphous / ambiguous",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[90]",
+    "source_pair_id": 380,
+    "qa": {
+      "pass": 7,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "amorphous",
+      "sense": "without a definite shape, organization, or boundaries",
+      "connotation": "vague, unformed",
+      "register": "formal",
+      "misconceptions": [
+        "Any unclear wording has no structure"
+      ]
+    },
+    {
+      "word": "ambiguous",
+      "sense": "capable of being understood in two or more ways",
+      "connotation": "uncertain, equivocal",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Any unorganized project contains two definite interpretations"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "missing_structure_vs_multiple_meanings",
+      "description": "Lacking a definite shape or organization differs from having two or more plausible meanings."
+    }
+  ],
+  "edges": [
+    {
+      "id": "amorphous__ambiguous",
+      "a": "amorphous",
+      "b": "ambiguous",
+      "boundary_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "clues_a": [
+        "ideas without sequence or roles",
+        "object without a defined shape",
+        "group without structure"
+      ],
+      "clues_b": [
+        "sentence supports two readings",
+        "instruction permits two interpretations",
+        "message has two plausible referents"
+      ],
+      "irrelevant_clues": [
+        "length of sentence",
+        "attractive layout",
+        "speaker confidence"
+      ],
+      "misconceptions": {
+        "M1": "Treats every unclear message as formless rather than multiply interpretable",
+        "M2": "Treats every unstructured plan as having two concrete meanings",
+        "M3": "Surface style alone decides whether the problem is form or interpretation"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "amorphous-ambiguous_001",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "neighbourhood_project",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Aarav's project outline?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_001_b1",
+          "text": "Aarav's proposal mixed goals, chores and dates with no sections, priorities or assigned responsibilities.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.9,
+            "ambiguous": 0.165
+          },
+          "decisive_clue": "proposal had no coherent organizational structure",
+          "reason": "The problem is how the plan is formed, not competing interpretations of one statement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_001_b2",
+          "text": "When asked who would do what first, he could not separate tasks from long-term wishes.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.9,
+            "ambiguous": 0.165
+          },
+          "decisive_clue": "unclear task boundaries and sequence",
+          "reason": "His difficulty shows the plan has not taken a definite form.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains unclear task boundaries and sequence.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. The problem is how the plan is formed, not competing interpretations of one statement. His difficulty shows the plan has not taken a definite form.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Look for an overall structure.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amorphous-ambiguous_002",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "email_scheduling",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Bianca's message about the meeting?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_002_b1",
+          "text": "Bianca wrote 'I'll see you next Friday' on a Friday, and her colleagues read it as two different dates.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.19,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "two reasonable calendar interpretations",
+          "reason": "The same wording supports different meanings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_002_b2",
+          "text": "One colleague expected the coming Friday; another expected the Friday after that.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.19,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "recipients identified two plausible dates",
+          "reason": "Their disagreement demonstrates an interpretation problem.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains recipients identified two plausible dates.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. The same wording supports different meanings. Their disagreement demonstrates an interpretation problem.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Count the reasonable readings of the same line.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amorphous-ambiguous_003",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "sculpture_workshop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Chen's sculpture so far?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_003_b1",
+          "text": "Chen's clay sat in a spreading lump with no recognizable outline, edges or intended figure.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.94,
+            "ambiguous": 0.215
+          },
+          "decisive_clue": "clay had no recognizable physical form",
+          "reason": "The sculpture itself lacks a defined shape.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_003_b2",
+          "text": "Chen pressed a shallow groove into the lump, but it still had no recognizable outline or intended figure.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.94,
+            "ambiguous": 0.215
+          },
+          "decisive_clue": "the clay still lacked a recognizable shape after minor shaping",
+          "reason": "A small surface mark does not give the sculpture a definite form.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains the clay's lack of a recognizable shape after minor shaping.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. The sculpture itself lacks a defined shape. A small surface mark does not give it a definite form.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Examine whether the clay has acquired a definite shape.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "amorphous-ambiguous_004",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "building_notice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Dalia's notice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_004_b1",
+          "text": "Dalia posted 'Meet at the bank,' although the street had both a riverbank and a bank branch.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.14,
+            "ambiguous": 0.88
+          },
+          "decisive_clue": "one location phrase identified two possible places",
+          "reason": "The phrase permits two sensible readings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_004_b2",
+          "text": "The notice was laminated before being posted.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.14,
+            "ambiguous": 0.88
+          },
+          "decisive_clue": "two locations remain possible despite lamination",
+          "reason": "Presentation quality does not settle the intended location.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains two locations remain possible despite lamination.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. The phrase permits two sensible readings. Presentation quality does not settle the intended location.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Ask where two readers might go.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amorphous-ambiguous_005",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "school_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ethan's new club?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_005_b1",
+          "text": "Ethan's group had no membership rules, organizer or clear activities; nobody knew where one responsibility ended and another began.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.9,
+            "ambiguous": 0.165
+          },
+          "decisive_clue": "group had no settled boundaries or organization",
+          "reason": "The trouble is lack of form rather than two rival readings of a statement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_005_b2",
+          "text": "Members agreed on the club's name, but that did not establish roles or an activity plan.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.9,
+            "ambiguous": 0.165
+          },
+          "decisive_clue": "a name did not supply missing structure",
+          "reason": "A single defined label cannot organize a still-formless group.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains a name did not supply missing structure.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. The trouble is lack of form rather than two rival readings of a statement. A single defined label cannot organize a still-formless group.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Distinguish naming something from organizing it.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amorphous-ambiguous_006",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "shopping_discount",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Farah's store announcement?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_006_b1",
+          "text": "Farah displayed 'Discount for students with cards,' leaving shoppers unsure whether any card counted or only student ID.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.19,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "the phrase 'with cards' permits two interpretations",
+          "reason": "The wording has at least two plausible readings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_006_b2",
+          "text": "Staff members also disagreed about which cards the sentence referred to.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.19,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "different readers attached different meanings to cards",
+          "reason": "The disagreement confirms competing interpretations of the same text.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains different readers attached different meanings to cards.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. The wording has at least two plausible readings. The disagreement confirms competing interpretations of the same text.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Notice the specific phrase people read differently.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amorphous-ambiguous_007",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "online_brainstorm",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Gita's notes?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_007_b1",
+          "text": "Gita added dozens of suggestions to one document without separating goals, decisions, costs or next steps.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.94,
+            "ambiguous": 0.215
+          },
+          "decisive_clue": "notes lacked any usable organization",
+          "reason": "The material has not been shaped into a coherent plan.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_007_b2",
+          "text": "She changed every heading to a cheerful green font.",
+          "best_word": "amorphous",
+          "fit": {
+            "amorphous": 0.94,
+            "ambiguous": 0.215
+          },
+          "decisive_clue": "unorganized ideas despite colourful headings",
+          "reason": "Decoration does not sort the suggestions into meaningful parts.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction does not matter: unorganized ideas despite colourful headings.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. The material has not been shaped into a coherent plan. Decoration does not sort the suggestions into meaningful parts.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Consider how the information is arranged.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amorphous-ambiguous_008",
+      "edge_id": "amorphous__ambiguous",
+      "domain": "wardrobe_request",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Hugo's text to his roommate?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amorphous-ambiguous_008_b1",
+          "text": "Hugo texted 'Please bring my light shoes,' and his roommate could choose the pale pair or the lightweight pair.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.14,
+            "ambiguous": 0.88
+          },
+          "decisive_clue": "light refers either to colour or weight",
+          "reason": "Both readings fit the same request.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        },
+        {
+          "id": "amorphous-ambiguous_008_b2",
+          "text": "The text was short and grammatically complete, but still failed to identify which pair Hugo wanted.",
+          "best_word": "ambiguous",
+          "fit": {
+            "amorphous": 0.14,
+            "ambiguous": 0.88
+          },
+          "decisive_clue": "complete sentence retained two plausible meanings",
+          "reason": "A clear-looking sentence can still support more than one interpretation.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amorphous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains complete sentence retained two plausible meanings.",
+      "feedback_deep": "Amorphous means lacking a clear shape or coherent structure; ambiguous means open to more than one plausible interpretation. Both readings fit the same request. A clear-looking sentence can still support more than one interpretation.",
+      "contrast_rule": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation.",
+      "hints": {
+        "attention": "Identify the word that points to two different pairs.",
+        "axis": "Lacking a definite shape or organization differs from having two or more plausible meanings.",
+        "contrast": "amorphous lacks coherent form or boundaries; ambiguous allows more than one plausible interpretation."
+      },
+      "qa": "pass"
+    }
+  ]
+}

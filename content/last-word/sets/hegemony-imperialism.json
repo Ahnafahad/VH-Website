@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "hegemony-imperialism",
+  "title": "hegemony / imperialism",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[2]",
+    "source_pair_id": 3,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "hegemony",
+      "sense": "dominance through influence or power",
+      "connotation": "political, analytical",
+      "register": "academic",
+      "misconceptions": [
+        "Requires annexation or direct rule."
+      ]
+    },
+    {
+      "word": "imperialism",
+      "sense": "policy of extending national rule abroad",
+      "connotation": "critical, political",
+      "register": "academic",
+      "misconceptions": [
+        "Means any strong cultural influence."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "influence_vs_foreign_rule",
+      "description": "Hegemony is dominance or leadership over others, often through indirect influence, while imperialism is a national policy of extending rule beyond the state’s borders."
+    }
+  ],
+  "edges": [
+    {
+      "id": "hegemony__imperialism",
+      "a": "hegemony",
+      "b": "imperialism",
+      "boundary_rule": "Hegemony is dominance or leadership over others, often through indirect influence, while imperialism is a national policy of extending rule beyond the state’s borders.",
+      "clues_a": [
+        "dominant influence",
+        "neighbours retain self-rule",
+        "economic or cultural pressure"
+      ],
+      "clues_b": [
+        "claims foreign territory",
+        "imposes laws abroad",
+        "policy of outside rule"
+      ],
+      "irrelevant_clues": [
+        "military uniforms in artwork",
+        "economic size alone",
+        "the speaker’s opinion"
+      ],
+      "misconceptions": {
+        "M1": "Assuming any dominance is territorial expansion.",
+        "M2": "Assuming foreign expansion must start with armed conquest.",
+        "M3": "Confusing influence with direct rule."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "hegemony-imperialism_001",
+      "edge_id": "hegemony__imperialism",
+      "domain": "school_debate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Leena's fictional country’s influence?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hegemony-imperialism_001_b1",
+          "text": "Leena describes a powerful fictional country setting trade terms that its neighbours follow while keeping their own governments.",
+          "best_word": "hegemony",
+          "fit": {
+            "hegemony": 0.91,
+            "imperialism": 0.28
+          },
+          "decisive_clue": "outside countries retain their own governments",
+          "reason": "The country leads through pressure without taking foreign rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperialism": "M2"
+          }
+        },
+        {
+          "id": "hegemony-imperialism_001_b2",
+          "text": "Her debate notes add that its popular films shape tastes across those neighbours too.",
+          "best_word": "hegemony",
+          "fit": {
+            "hegemony": 0.94,
+            "imperialism": 0.24
+          },
+          "decisive_clue": "cultural influence strengthens dominance",
+          "reason": "Popular films add influence, not a policy of governing foreign territory.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperialism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Popular films add influence, not a policy of governing foreign territory.",
+      "feedback_deep": "Hegemony means a powerful group’s dominance, which can operate through economic, cultural, or political influence. Imperialism names a policy of extending a state’s rule outside its own borders. Popular films add influence, not a policy of governing foreign territory.",
+      "contrast_rule": "Hegemony influences others; imperialism extends national rule.",
+      "hints": {
+        "attention": "Check who actually governs the neighbours.",
+        "axis": "Hegemony is dominance or leadership over others, often through indirect influence, while imperialism is a national policy of extending rule beyond the state’s borders.",
+        "contrast": "Hegemony influences others; imperialism extends national rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hegemony-imperialism_002",
+      "edge_id": "hegemony__imperialism",
+      "domain": "board-game_night",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Santiago's game strategy?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hegemony-imperialism_002_b1",
+          "text": "Santiago’s nation in the game gains leverage by making nearby nations depend on its exports.",
+          "best_word": "hegemony",
+          "fit": {
+            "hegemony": 0.91,
+            "imperialism": 0.28
+          },
+          "decisive_clue": "economic leverage without territorial rule",
+          "reason": "Trade dependence first shows indirect dominance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperialism": "M3"
+          }
+        },
+        {
+          "id": "hegemony-imperialism_002_b2",
+          "text": "His government then adopts a policy of taking their land and governing it as part of its own territory.",
+          "best_word": "imperialism",
+          "fit": {
+            "hegemony": 0.24,
+            "imperialism": 0.94
+          },
+          "decisive_clue": "policy to govern neighbouring territory",
+          "reason": "The new territorial policy makes expansion of national rule the decisive feature.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hegemony": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The new territorial policy makes expansion of national rule the decisive feature.",
+      "feedback_deep": "Hegemony means a powerful group’s dominance, which can operate through economic, cultural, or political influence. Imperialism names a policy of extending a state’s rule outside its own borders. The new territorial policy makes expansion of national rule the decisive feature.",
+      "contrast_rule": "Hegemony influences others; imperialism extends national rule.",
+      "hints": {
+        "attention": "Notice what happens to the border.",
+        "axis": "Hegemony is dominance or leadership over others, often through indirect influence, while imperialism is a national policy of extending rule beyond the state’s borders.",
+        "contrast": "Hegemony influences others; imperialism extends national rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hegemony-imperialism_003",
+      "edge_id": "hegemony__imperialism",
+      "domain": "online_news_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Anika's commentary?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hegemony-imperialism_003_b1",
+          "text": "Anika explains how one invented nation persuades smaller countries to adopt its preferred rules through loans.",
+          "best_word": "hegemony",
+          "fit": {
+            "hegemony": 0.91,
+            "imperialism": 0.28
+          },
+          "decisive_clue": "strong influence through loans",
+          "reason": "Financial leverage creates dominance without annexation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperialism": "M1"
+          }
+        },
+        {
+          "id": "hegemony-imperialism_003_b2",
+          "text": "She stresses that those countries still choose their own leaders.",
+          "best_word": "hegemony",
+          "fit": {
+            "hegemony": 0.94,
+            "imperialism": 0.24
+          },
+          "decisive_clue": "others still choose their leaders",
+          "reason": "Their continued self-government confirms influence rather than outside rule.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperialism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Their continued self-government confirms influence rather than outside rule.",
+      "feedback_deep": "Hegemony means a powerful group’s dominance, which can operate through economic, cultural, or political influence. Imperialism names a policy of extending a state’s rule outside its own borders. Their continued self-government confirms influence rather than outside rule.",
+      "contrast_rule": "Hegemony influences others; imperialism extends national rule.",
+      "hints": {
+        "attention": "Ask whether political independence remains.",
+        "axis": "Hegemony is dominance or leadership over others, often through indirect influence, while imperialism is a national policy of extending rule beyond the state’s borders.",
+        "contrast": "Hegemony influences others; imperialism extends national rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hegemony-imperialism_004",
+      "edge_id": "hegemony__imperialism",
+      "domain": "family_quiz",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Omar's fictional government policy?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hegemony-imperialism_004_b1",
+          "text": "Omar reads that an imagined kingdom claims nearby land and imposes its laws on the people living there.",
+          "best_word": "imperialism",
+          "fit": {
+            "hegemony": 0.28,
+            "imperialism": 0.91
+          },
+          "decisive_clue": "claims land and imposes national laws abroad",
+          "reason": "This is a policy of extending state rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hegemony": "M2"
+          }
+        },
+        {
+          "id": "hegemony-imperialism_004_b2",
+          "text": "The quiz says the kingdom plans more such overseas acquisitions.",
+          "best_word": "imperialism",
+          "fit": {
+            "hegemony": 0.24,
+            "imperialism": 0.94
+          },
+          "decisive_clue": "further acquisitions reinforce expansion",
+          "reason": "Additional acquisitions continue the same outward policy; mere influence is not the main fact.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hegemony": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Additional acquisitions continue the same outward policy; mere influence is not the main fact.",
+      "feedback_deep": "Hegemony means a powerful group’s dominance, which can operate through economic, cultural, or political influence. Imperialism names a policy of extending a state’s rule outside its own borders. Additional acquisitions continue the same outward policy; mere influence is not the main fact.",
+      "contrast_rule": "Hegemony influences others; imperialism extends national rule.",
+      "hints": {
+        "attention": "Focus on the kind of control described.",
+        "axis": "Hegemony is dominance or leadership over others, often through indirect influence, while imperialism is a national policy of extending rule beyond the state’s borders.",
+        "contrast": "Hegemony influences others; imperialism extends national rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hegemony-imperialism_009",
+      "edge_id": "hegemony__imperialism",
+      "domain": "library_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Amira's storyline?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hegemony-imperialism_009_b1",
+          "text": "Amira’s story shows one federation dominating the region because smaller states need its banks and markets.",
+          "best_word": "hegemony",
+          "fit": {
+            "hegemony": 0.91,
+            "imperialism": 0.28
+          },
+          "decisive_clue": "dominance through dependence",
+          "reason": "Economic dependence permits indirect control.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperialism": "M1"
+          }
+        },
+        {
+          "id": "hegemony-imperialism_009_b2",
+          "text": "She reveals that those states are free to reject its advice, though doing so would cost them business.",
+          "best_word": "hegemony",
+          "fit": {
+            "hegemony": 0.94,
+            "imperialism": 0.24
+          },
+          "decisive_clue": "formal choice exists despite pressure",
+          "reason": "The costly option to refuse helps identify pressure rather than formal annexation.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperialism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The costly option to refuse helps identify pressure rather than formal annexation.",
+      "feedback_deep": "Hegemony means a powerful group’s dominance, which can operate through economic, cultural, or political influence. Imperialism names a policy of extending a state’s rule outside its own borders. The costly option to refuse helps identify pressure rather than formal annexation.",
+      "contrast_rule": "Hegemony influences others; imperialism extends national rule.",
+      "hints": {
+        "attention": "Notice the gap between choice and pressure.",
+        "axis": "Hegemony is dominance or leadership over others, often through indirect influence, while imperialism is a national policy of extending rule beyond the state’s borders.",
+        "contrast": "Hegemony influences others; imperialism extends national rule."
+      },
+      "qa": "pass"
+    }
+  ]
+}

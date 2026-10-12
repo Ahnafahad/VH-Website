@@ -1,0 +1,1081 @@
+{
+  "schema_version": 1,
+  "set_id": "belabor-elaborate",
+  "title": "belabor / elaborate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[109]",
+    "source_pair_id": 445,
+    "qa": {
+      "pass": 14,
+      "revised": 0,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "belabor",
+      "sense": "To dwell on something excessively to the point of tedium.",
+      "connotation": "negative",
+      "register": "formal",
+      "misconceptions": [
+        "mistakenly thinking it relates to 'working hard' (labor)"
+      ]
+    },
+    {
+      "word": "elaborate",
+      "sense": "To explain something by adding useful, clarifying detail.",
+      "connotation": "neutral/positive",
+      "register": "formal",
+      "misconceptions": [
+        "mistakenly thinking it means 'complicated' or 'fancy'"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "utility_of_added_info",
+      "description": "Whether the added information genuinely enhances understanding or is merely redundant."
+    },
+    {
+      "id": "listener_perception",
+      "description": "Whether the audience is enlightened (positive) or bored and frustrated (negative)."
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "belabor": [
+        "He continued to belabor the point even after the group had unanimously agreed.",
+        "Please stop belaboring the obvious facts; we all understand.",
+        "The professor tended to belabor simple concepts, frustrating advanced students.",
+        "There is no need to belabor the details of our agreement; they are clear.",
+        "She felt the candidate was belaboring the issue instead of offering solutions.",
+        "Don't belabor the argument; it’s already settled."
+      ],
+      "elaborate": [
+        "Could you elaborate on your proposal for the new marketing strategy?",
+        "The expert was asked to elaborate on the findings of her latest research.",
+        "She began to elaborate on the design features of the prototype.",
+        "The teacher helped the class by elaborating on the difficult historical process.",
+        "They needed more time to elaborate on the technical explanation.",
+        "Please elaborate on what you meant by 'urgent'."
+      ]
+    },
+    "counter": {
+      "belabor": [
+        "She belabor on the complex design perfectly.",
+        "The project team belabored their proposal until it was clear to everyone.",
+        "He successfully belabored his theory during the lecture.",
+        "The architect belabored the blueprint for hours until it was complete.",
+        "They were asked to belabor on the results.",
+        "I appreciate you belaboring the solution."
+      ],
+      "elaborate": [
+        "He continued to elaborate on the point even after the group had unanimously agreed.",
+        "Please stop elaborating on the obvious facts; we all understand.",
+        "The professor tended to elaborate on simple concepts, frustrating advanced students.",
+        "There is no need to elaborate on the details of our agreement; they are clear.",
+        "She felt the candidate was elaborating the issue instead of offering solutions.",
+        "Don't elaborate the argument; it’s already settled."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "belabor__elaborate",
+      "a": "belabor",
+      "b": "elaborate",
+      "boundary_rule": "Is the added detail useful for comprehension (elaborate) or redundant/tedious repetition of what is already known (belabor)?",
+      "clues_a": [
+        "repetition of known points",
+        "ignoring feedback to move on",
+        "excessive time spent on simple concepts",
+        "listener annoyance"
+      ],
+      "clues_b": [
+        "addition of new data",
+        "clarification of a complex concept",
+        "enlightening the listener",
+        "listener engagement"
+      ],
+      "irrelevant_clues": [
+        "the volume or speed of speaking",
+        "the length of the explanation if it's actually adding new useful facts"
+      ],
+      "misconceptions": {
+        "M1": "Confusing belabor with literal physical labor.",
+        "M2": "Assuming elaborate always means something fancy or complicated.",
+        "M3": "Ignoring the utility of the detail."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "belabor-elaborate_001",
+      "edge_id": "belabor__elaborate",
+      "domain": "meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the manager is doing to the budget discussion: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "belabor-elaborate_001_b1",
+          "text": "The manager went over the budget again, although everyone already agreed.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.7,
+            "elaborate": 0.3
+          },
+          "decisive_clue": "everyone already agreed",
+          "reason": "The manager is dwelling on a resolved point, which is tedious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_001_b2",
+          "text": "He spent another twenty minutes explaining why the ink costs were too high, adding nothing we didn't know.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.95,
+            "elaborate": 0.05
+          },
+          "decisive_clue": "adding nothing we didn't know",
+          "reason": "Reinforces the repetitive/unnecessary nature of the action.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The manager is repeating known information, not adding new, useful details.",
+      "feedback_deep": "The manager is going over the budget again, despite everyone agreeing. He is adding no new information and is just wasting time by repeating known points. This is a classic case of dwelling on something until it becomes tedious, which fits belabor.",
+      "contrast_rule": "If the information is already known, you belabor it; if it's new and useful, you elaborate.",
+      "hints": {
+        "attention": "Is the manager adding new information or just repeating?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "If the information is already known, you belabor it; if it's new and useful, you elaborate."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_002",
+      "edge_id": "belabor__elaborate",
+      "domain": "research",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How the student is handling her proposal: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "belabor-elaborate_002_b1",
+          "text": "The student provided a brief outline of the new study, though it lacked clarity.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.2,
+            "elaborate": 0.8
+          },
+          "decisive_clue": "lacked clarity",
+          "reason": "The student needs to add detail to improve understanding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_002_b2",
+          "text": "She followed up by adding specific research methodology and sample size targets that truly filled the gap.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.05,
+            "elaborate": 0.95
+          },
+          "decisive_clue": "truly filled the gap",
+          "reason": "The added detail is useful and clarifies the proposal.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The student is adding missing, helpful details to clarify the project.",
+      "feedback_deep": "The student's initial outline lacked clarity, so she added specific methodology and sample size targets. This is exactly what it means to elaborate—providing necessary information to improve understanding, not repeating what is already known.",
+      "contrast_rule": "Elaborate adds useful depth; belabor dwells on the known.",
+      "hints": {
+        "attention": "Does the student's detail help or hinder?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Elaborate adds useful depth; belabor dwells on the known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_003",
+      "edge_id": "belabor__elaborate",
+      "domain": "essay",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the writer is presenting his main argument: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_003_b1",
+          "text": "The writer keeps explaining the premise of the book, which we already understood perfectly.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.9,
+            "elaborate": 0.1
+          },
+          "decisive_clue": "already understood perfectly",
+          "reason": "Repeating understood premises is belaboring.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_003_b2",
+          "text": "He just added a crucial missing fact about the author's intent that clarified everything.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.2,
+            "elaborate": 0.8
+          },
+          "decisive_clue": "crucial missing fact",
+          "reason": "The new detail is helpful, so he is elaborating.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The focus shifted from unnecessary repetition to providing a crucial missing fact.",
+      "feedback_deep": "Initially, the writer was repeating a premise we already understood (belabor). However, adding the crucial missing fact about the author's intent provided new, useful information that improved understanding (elaborate). The goal changed from being tedious to being helpful.",
+      "contrast_rule": "If it adds crucial new information, it's not belaboring.",
+      "hints": {
+        "attention": "Does the second beat add anything necessary?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "If it adds crucial new information, it's not belaboring."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_004",
+      "edge_id": "belabor__elaborate",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How the politician is addressing the question: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_004_b1",
+          "text": "The politician refused to answer the direct question, instead rephrasing the same basic stance.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.8,
+            "elaborate": 0.2
+          },
+          "decisive_clue": "rephrasing the same basic stance",
+          "reason": "Repeating the same stance instead of giving new information is belaboring.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_004_b2",
+          "text": "He then repeated the same stance for the fourth time, even after the host asked for new data.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.95,
+            "elaborate": 0.05
+          },
+          "decisive_clue": "repeated... for the fourth time",
+          "reason": "The repetition is clearly tedious.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The politician is stubbornly repeating the same stance instead of providing new data.",
+      "feedback_deep": "Repeating the same basic stance repeatedly, even when asked for new data, is the definition of belaboring a point. It's a refusal to add new, useful information, turning the explanation into something tedious for the listener.",
+      "contrast_rule": "If it's just repeating what's already been said, it's belaboring.",
+      "hints": {
+        "attention": "Is the politician providing anything fresh?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "If it's just repeating what's already been said, it's belaboring."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_005",
+      "edge_id": "belabor__elaborate",
+      "domain": "cooking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How the chef is explaining his recipe: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "belabor-elaborate_005_b1",
+          "text": "The chef described how to whisk the eggs until fluffy, but he was missing a few steps.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.2,
+            "elaborate": 0.8
+          },
+          "decisive_clue": "missing a few steps",
+          "reason": "Needs detail.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_005_b2",
+          "text": "He added that you should use a stainless steel bowl and ice bath, which really helped.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.05,
+            "elaborate": 0.95
+          },
+          "decisive_clue": "really helped",
+          "reason": "The added detail is useful.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The chef provided helpful, clarifying details on the recipe.",
+      "feedback_deep": "The chef initially missed steps, but adding the advice to use a stainless steel bowl and ice bath (useful, new details) clarified the recipe and made it easier for the listener to follow. This is a clear case of elaborating.",
+      "contrast_rule": "Useful detail is elaborating; redundant detail is belaboring.",
+      "hints": {
+        "attention": "Does the chef's extra info help?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Useful detail is elaborating; redundant detail is belaboring."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_006",
+      "edge_id": "belabor__elaborate",
+      "domain": "debate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the debater is presenting his stance: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_006_b1",
+          "text": "The debater provided a clear initial position and then added a new, compelling case study.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.1,
+            "elaborate": 0.9
+          },
+          "decisive_clue": "added a new, compelling case study",
+          "reason": "Adding new detail that improves the argument is elaborating.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_006_b2",
+          "text": "For the rest of the time, he just kept rehashing that same case study over and over.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.9,
+            "elaborate": 0.1
+          },
+          "decisive_clue": "rehashing that same case study over and over",
+          "reason": "Repeating the same information is belaboring.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He shifted from adding a useful study to just repeating it tediously.",
+      "feedback_deep": "He started well by adding a useful case study to his argument (elaborate). But then he switched to just rehashing the same information, which is the definition of belaboring a point—making the argument tedious by repeating what's already been heard.",
+      "contrast_rule": "Adding new information is elaborating; repeating the same info is belaboring.",
+      "hints": {
+        "attention": "What changed after the case study?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Adding new information is elaborating; repeating the same info is belaboring."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_007",
+      "edge_id": "belabor__elaborate",
+      "domain": "science",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "How the lab tech is describing the procedure: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_007_b1",
+          "text": "The lab tech explained the procedure to the new interns, clarifying each step.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.2,
+            "elaborate": 0.8
+          },
+          "decisive_clue": "clarifying each step",
+          "reason": "Useful detail.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_007_b2",
+          "text": "She added a list of specific safety protocols that the interns hadn't considered.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.05,
+            "elaborate": 0.95
+          },
+          "decisive_clue": "hadn't considered",
+          "reason": "Adding helpful safety protocols is elaborating.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "She added genuinely helpful, necessary information.",
+      "feedback_deep": "The lab tech was already elaborating by clarifying steps, but adding safety protocols that the interns hadn't considered made it even more clearly an act of adding useful information. Both steps were about enhancing understanding.",
+      "contrast_rule": "Adding useful, new depth is always elaborating.",
+      "hints": {
+        "attention": "Is the new information helpful or redundant?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Adding useful, new depth is always elaborating."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_011",
+      "edge_id": "belabor__elaborate",
+      "domain": "education",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "How the teacher is describing the science experiment: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_011_b1",
+          "text": "The teacher described the experiment but skipped the safety step, leaving students confused.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.3,
+            "elaborate": 0.7
+          },
+          "decisive_clue": "skipped the safety step",
+          "reason": "Needs detail.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_011_b2",
+          "text": "She then went back and added that specific safety step, which resolved the confusion.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.05,
+            "elaborate": 0.95
+          },
+          "decisive_clue": "resolved the confusion",
+          "reason": "Useful, clarifying detail.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "She added a crucial, clarifying piece of information.",
+      "feedback_deep": "The teacher went back to add the specific safety step she had initially missed. This is exactly what it means to elaborate—providing missing, useful information to complete the explanation and clear up confusion. It's not repetition.",
+      "contrast_rule": "Fixing a missing detail is elaborating.",
+      "hints": {
+        "attention": "Was the addition necessary for understanding?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Fixing a missing detail is elaborating."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_013",
+      "edge_id": "belabor__elaborate",
+      "domain": "technology",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "precision",
+      "frame": "How the developer is describing the new feature: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_013_b1",
+          "text": "The developer explained how the new feature would improve user experience, but it was still a bit abstract.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.2,
+            "elaborate": 0.8
+          },
+          "decisive_clue": "a bit abstract",
+          "reason": "Needs detail.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_013_b2",
+          "text": "He provided a specific example of how it would reduce load times by two seconds.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.05,
+            "elaborate": 0.95
+          },
+          "decisive_clue": "specific example",
+          "reason": "Adding concrete detail is elaborating.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He provided a specific example that made the abstract explanation concrete.",
+      "feedback_deep": "The developer initially provided an abstract explanation. Adding a specific example about reducing load times is a perfect example of elaborating—providing useful, concrete detail to make the explanation more understandable.",
+      "contrast_rule": "Specific examples are great tools to elaborate.",
+      "hints": {
+        "attention": "Does the specific example make the feature clearer?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Specific examples are great tools to elaborate."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_014",
+      "edge_id": "belabor__elaborate",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "How Mark is dealing with his past disagreement with Sarah: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_014_b1",
+          "text": "Mark brought up the argument from last week, although Sarah thought it was resolved.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.7,
+            "elaborate": 0.3
+          },
+          "decisive_clue": "thought it was resolved",
+          "reason": "Rehashing resolved arguments is tedious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_014_b2",
+          "text": "He spent an hour rehashing every single sentence from that night, even though she already knew his position perfectly well.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.95,
+            "elaborate": 0.05
+          },
+          "decisive_clue": "already knew his position",
+          "reason": "This is definitely tedious.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Rehashing resolved arguments that the other person already understands is tedious.",
+      "feedback_deep": "Mark is repeating information Sarah already understands perfectly, turning a resolved argument into something tedious to discuss. This is a clear case of belaboring the point, which is damaging to the relationship.",
+      "contrast_rule": "If you are repeating what they already know, you are belaboring it.",
+      "hints": {
+        "attention": "Is Sarah learning anything new from Mark's repetition?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "If you are repeating what they already know, you are belaboring it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_015",
+      "edge_id": "belabor__elaborate",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "How the coach is giving instructions to his team: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_015_b1",
+          "text": "The coach explained the new defensive formation, but the players seemed unsure.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.3,
+            "elaborate": 0.7
+          },
+          "decisive_clue": "players seemed unsure",
+          "reason": "Needs detail.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_015_b2",
+          "text": "He then demonstrated how each player should pivot and communicate, which helped them understand perfectly.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.05,
+            "elaborate": 0.95
+          },
+          "decisive_clue": "helped them understand",
+          "reason": "Useful, clarifying detail.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He provided a demonstration that clarified the new formation.",
+      "feedback_deep": "The coach initially failed to make the formation clear, but by demonstrating the pivots and communication, he provided useful, clarifying information that allowed the players to understand. This is a classic example of elaborating.",
+      "contrast_rule": "A demonstration to clarify understanding is elaborating.",
+      "hints": {
+        "attention": "Did the demonstration help the players?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "A demonstration to clarify understanding is elaborating."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_016",
+      "edge_id": "belabor__elaborate",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "How the tour guide is describing the old castle: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_016_b1",
+          "text": "The guide gave a quick, general overview of the castle's history, but people asked for more details.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.1,
+            "elaborate": 0.9
+          },
+          "decisive_clue": "people asked for more details",
+          "reason": "Needs detail.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_016_b2",
+          "text": "He then insisted on talking about the same room for the entire duration of the tour, ignoring other areas.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.8,
+            "elaborate": 0.2
+          },
+          "decisive_clue": "ignoring other areas",
+          "reason": "This is tedious and unhelpful.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He shifted from being helpful to being tedious and repetitive.",
+      "feedback_deep": "Initially, the guide was about to be helpful by adding details, but he instead got stuck on one single room for the entire tour, ignoring the rest. This became tedious, turning his guide service into something repetitive and frustrating.",
+      "contrast_rule": "Spending the whole tour on one point is belaboring.",
+      "hints": {
+        "attention": "What changed when he focused on only one room?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Spending the whole tour on one point is belaboring."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_018",
+      "edge_id": "belabor__elaborate",
+      "domain": "public_situation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the announcer is handling the delay: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_018_b1",
+          "text": "The announcer informed the passengers about the delay and explained the technical issue clearly.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.1,
+            "elaborate": 0.9
+          },
+          "decisive_clue": "technical issue clearly",
+          "reason": "Useful, new info.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_018_b2",
+          "text": "He then spent the next hour repeating the same vague excuse, ignoring all the passengers' questions.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.95,
+            "elaborate": 0.05
+          },
+          "decisive_clue": "repeating the same vague excuse",
+          "reason": "Repetitive and unhelpful.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He shifted from being informative to being tediously repetitive.",
+      "feedback_deep": "The announcer was initially informative (elaborate), but repeating the same vague excuse for an hour is a classic case of belaboring. It stops being informative and starts being tedious for the passengers.",
+      "contrast_rule": "Informative detail is elaborate; repetitive excuse is belabor.",
+      "hints": {
+        "attention": "What changed from the first to the second announcement?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "Informative detail is elaborate; repetitive excuse is belabor."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "belabor-elaborate_019",
+      "edge_id": "belabor__elaborate",
+      "domain": "abstract_argument",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the philosopher is presenting his theory: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "belabor-elaborate_019_b1",
+          "text": "The philosopher presented the theory and added new evidence that proved his point.",
+          "best_word": "elaborate",
+          "fit": {
+            "belabor": 0.1,
+            "elaborate": 0.9
+          },
+          "decisive_clue": "added new evidence",
+          "reason": "New, useful detail.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "belabor": "M3"
+          }
+        },
+        {
+          "id": "belabor-elaborate_019_b2",
+          "text": "He then spent hours talking about that same evidence, adding nothing new to his argument.",
+          "best_word": "belabor",
+          "fit": {
+            "belabor": 0.9,
+            "elaborate": 0.1
+          },
+          "decisive_clue": "adding nothing new",
+          "reason": "Tedious repetition.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "elaborate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He shifted from adding new evidence to tediously repeating it.",
+      "feedback_deep": "The philosopher was initially elaborating by providing useful new evidence. But spending hours talking about that same evidence without adding anything new turns it into a tedious repetition, which is belaboring the point.",
+      "contrast_rule": "If it adds nothing new, it's not elaborating.",
+      "hints": {
+        "attention": "Did the hours of extra talking add new insight?",
+        "axis": "Whether the added information genuinely enhances understanding or is merely redundant.",
+        "contrast": "If it adds nothing new, it's not elaborating."
+      },
+      "qa": "pass"
+    }
+  ]
+}

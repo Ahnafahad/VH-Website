@@ -1,0 +1,419 @@
+{
+  "schema_version": 1,
+  "set_id": "burgeon-flourish",
+  "title": "burgeon / flourish",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[130]",
+    "source_pair_id": 513,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "burgeon",
+      "sense": "grow or expand rapidly, especially from a new start",
+      "connotation": "energetic expansion",
+      "register": "standard, literary",
+      "misconceptions": [
+        "Assuming burgeon and flourish mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for flourish."
+      ]
+    },
+    {
+      "word": "flourish",
+      "sense": "do very well or thrive, whether growth is fast or slow",
+      "connotation": "positive sustained success",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming burgeon and flourish mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for burgeon."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "speed_vs_success",
+      "description": "Burgeon focuses on a rapid increase in size or activity; flourish focuses on thriving successfully, even at a steady size."
+    }
+  ],
+  "edges": [
+    {
+      "id": "burgeon__flourish",
+      "a": "burgeon",
+      "b": "flourish",
+      "boundary_rule": "Burgeon focuses on a rapid increase in size or activity; flourish focuses on thriving successfully, even at a steady size.",
+      "clues_a": [
+        "numbers multiply quickly",
+        "many new branches or members",
+        "rapid surge from a new start"
+      ],
+      "clues_b": [
+        "consistent healthy performance",
+        "stable success over time",
+        "doing well without expansion"
+      ],
+      "irrelevant_clues": [
+        "new logo",
+        "fashionability",
+        "publicity alone"
+      ],
+      "misconceptions": {
+        "M1": "Assuming burgeon and flourish mean the same thing whenever both appear relevant.",
+        "M2": "Ignoring the defining evidence needed for flourish.",
+        "M3": "Ignoring the defining evidence needed for burgeon."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "burgeon-flourish_001",
+      "edge_id": "burgeon__flourish",
+      "domain": "bookshop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Laila’s bookshop is doing?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "burgeon-flourish_001_b1",
+          "text": "Laila’s bookshop has paid its bills and kept loyal customers for six years, with about the same monthly sales.",
+          "best_word": "flourish",
+          "fit": {
+            "flourish": 0.92,
+            "burgeon": 0.3
+          },
+          "decisive_clue": "steady financial health without rising sales",
+          "reason": "Steady financial health without rising sales is the strongest evidence for flourish here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "burgeon": "M3"
+          }
+        },
+        {
+          "id": "burgeon-flourish_001_b2",
+          "text": "She recently painted its front door yellow.",
+          "best_word": "flourish",
+          "fit": {
+            "flourish": 0.94,
+            "burgeon": 0.26
+          },
+          "decisive_clue": "steady financial health without rising sales; new colour of the front door does not change that",
+          "reason": "The shop remains healthy despite little expansion; the paint says nothing about growth.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "burgeon": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Steady financial health without rising sales still decides; the later detail does not change that.",
+      "feedback_deep": "Burgeon means grow or expand rapidly, especially from a new start; flourish means do very well or thrive, whether growth is fast or slow. The shop remains healthy despite little expansion; the paint says nothing about growth.",
+      "contrast_rule": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance.",
+      "hints": {
+        "attention": "Focus on its performance over time.",
+        "axis": "Burgeon focuses on a rapid increase in size or activity; flourish focuses on thriving successfully, even at a steady size.",
+        "contrast": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "burgeon-flourish_002",
+      "edge_id": "burgeon__flourish",
+      "domain": "student_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes the development of Omar’s language club?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "burgeon-flourish_002_b1",
+          "text": "Omar’s club grew from five members to eighty during its first ten days.",
+          "best_word": "burgeon",
+          "fit": {
+            "burgeon": 0.92,
+            "flourish": 0.3
+          },
+          "decisive_clue": "membership rose sharply in ten days",
+          "reason": "Membership rose sharply in ten days is the strongest evidence for burgeon here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "flourish": "M2"
+          }
+        },
+        {
+          "id": "burgeon-flourish_002_b2",
+          "text": "By the following term membership had settled at eighty, and its weekly meetings continued to draw enthusiastic crowds.",
+          "best_word": "flourish",
+          "fit": {
+            "flourish": 0.94,
+            "burgeon": 0.26
+          },
+          "decisive_clue": "rapid increase stopped but the club continued doing well",
+          "reason": "At first the club was expanding rapidly; later it was thriving at a stable size.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "burgeon": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Rapid increase stopped but the club continued doing well makes flourish the better choice.",
+      "feedback_deep": "Burgeon means grow or expand rapidly, especially from a new start; flourish means do very well or thrive, whether growth is fast or slow. At first the club was expanding rapidly; later it was thriving at a stable size.",
+      "contrast_rule": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance.",
+      "hints": {
+        "attention": "Look for a change in pace, not in the club’s identity.",
+        "axis": "Burgeon focuses on a rapid increase in size or activity; flourish focuses on thriving successfully, even at a steady size.",
+        "contrast": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "burgeon-flourish_003",
+      "edge_id": "burgeon__flourish",
+      "domain": "school_sport",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the development of Hana’s running group?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "burgeon-flourish_003_b1",
+          "text": "Hana started with three runners; within two weeks, thirty classmates were meeting to train.",
+          "best_word": "burgeon",
+          "fit": {
+            "burgeon": 0.92,
+            "flourish": 0.3
+          },
+          "decisive_clue": "membership grew tenfold in two weeks",
+          "reason": "Membership grew tenfold in two weeks is the strongest evidence for burgeon here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "flourish": "M1"
+          }
+        },
+        {
+          "id": "burgeon-flourish_003_b2",
+          "text": "Before the month ended, its waiting list had doubled again.",
+          "best_word": "burgeon",
+          "fit": {
+            "burgeon": 0.94,
+            "flourish": 0.26
+          },
+          "decisive_clue": "membership grew tenfold in two weeks; further evidence: new demand also doubled within the month",
+          "reason": "The continued surge strengthens the evidence of fast expansion.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "flourish": "M1"
+          }
+        }
+      ],
+      "feedback_short": "New demand also doubled within the month confirms the earlier clue: membership grew tenfold in two weeks.",
+      "feedback_deep": "Burgeon means grow or expand rapidly, especially from a new start; flourish means do very well or thrive, whether growth is fast or slow. The continued surge strengthens the evidence of fast expansion.",
+      "contrast_rule": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance.",
+      "hints": {
+        "attention": "Notice the membership figures and dates.",
+        "axis": "Burgeon focuses on a rapid increase in size or activity; flourish focuses on thriving successfully, even at a steady size.",
+        "contrast": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "burgeon-flourish_005",
+      "edge_id": "burgeon__flourish",
+      "domain": "community_garden",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Mei’s garden project is developing?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "burgeon-flourish_005_b1",
+          "text": "Mei’s garden has supplied vegetables reliably for four seasons with the same six plots.",
+          "best_word": "flourish",
+          "fit": {
+            "flourish": 0.92,
+            "burgeon": 0.3
+          },
+          "decisive_clue": "productive success across four seasons",
+          "reason": "Productive success across four seasons is the strongest evidence for flourish here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "burgeon": "M3"
+          }
+        },
+        {
+          "id": "burgeon-flourish_005_b2",
+          "text": "This spring she recruited forty new growers in one week and opened twenty additional plots by Sunday.",
+          "best_word": "burgeon",
+          "fit": {
+            "burgeon": 0.94,
+            "flourish": 0.26
+          },
+          "decisive_clue": "twenty new plots and forty growers in one week",
+          "reason": "It was already thriving, but the new detail makes sudden expansion the defining development.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "flourish": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Twenty new plots and forty growers in one week makes burgeon the better choice.",
+      "feedback_deep": "Burgeon means grow or expand rapidly, especially from a new start; flourish means do very well or thrive, whether growth is fast or slow. It was already thriving, but the new detail makes sudden expansion the defining development.",
+      "contrast_rule": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance.",
+      "hints": {
+        "attention": "Compare established success with the new pace.",
+        "axis": "Burgeon focuses on a rapid increase in size or activity; flourish focuses on thriving successfully, even at a steady size.",
+        "contrast": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "burgeon-flourish_006",
+      "edge_id": "burgeon__flourish",
+      "domain": "online_reading_group",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes what has happened to Salma’s reading group?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "burgeon-flourish_006_b1",
+          "text": "Salma’s group opened on Monday and gained hundreds of members before Friday.",
+          "best_word": "burgeon",
+          "fit": {
+            "burgeon": 0.92,
+            "flourish": 0.3
+          },
+          "decisive_clue": "hundreds joined in a matter of days",
+          "reason": "Hundreds joined in a matter of days is the strongest evidence for burgeon here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "flourish": "M1"
+          }
+        },
+        {
+          "id": "burgeon-flourish_006_b2",
+          "text": "Most newcomers have not posted yet, though invitations are still arriving by the minute.",
+          "best_word": "burgeon",
+          "fit": {
+            "burgeon": 0.94,
+            "flourish": 0.26
+          },
+          "decisive_clue": "rapid sign-ups do not yet establish successful participation",
+          "reason": "Even without proven engagement, the documented rise in membership is rapid expansion.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "flourish": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Rapid sign-ups do not yet establish successful participation makes burgeon the better choice.",
+      "feedback_deep": "Burgeon means grow or expand rapidly, especially from a new start; flourish means do very well or thrive, whether growth is fast or slow. Even without proven engagement, the documented rise in membership is rapid expansion.",
+      "contrast_rule": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance.",
+      "hints": {
+        "attention": "What has clearly increased?",
+        "axis": "Burgeon focuses on a rapid increase in size or activity; flourish focuses on thriving successfully, even at a steady size.",
+        "contrast": "Burgeon: numbers multiply quickly; flourish: consistent healthy performance."
+      },
+      "qa": "pass"
+    }
+  ]
+}

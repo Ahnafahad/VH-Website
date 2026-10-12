@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "integrate-incorporate",
+  "title": "integrate / incorporate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[131]",
+    "source_pair_id": 518,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "integrate",
+      "sense": "join separate parts into a system that works together effectively",
+      "connotation": "connected functionality",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming integrate and incorporate mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for incorporate."
+      ]
+    },
+    {
+      "word": "incorporate",
+      "sense": "include something as one element within a larger whole",
+      "connotation": "addition or inclusion",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming integrate and incorporate mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for integrate."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "functional_link_vs_inclusion",
+      "description": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation."
+    }
+  ],
+  "edges": [
+    {
+      "id": "integrate__incorporate",
+      "a": "integrate",
+      "b": "incorporate",
+      "boundary_rule": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation.",
+      "clues_a": [
+        "one update changes connected parts",
+        "teams coordinate one process",
+        "features exchange information"
+      ],
+      "clues_b": [
+        "added as a component",
+        "included on a page",
+        "new ingredient present"
+      ],
+      "irrelevant_clues": [
+        "colour",
+        "page count",
+        "branding"
+      ],
+      "misconceptions": {
+        "M1": "Assuming integrate and incorporate mean the same thing whenever both appear relevant.",
+        "M2": "Ignoring the defining evidence needed for incorporate.",
+        "M3": "Ignoring the defining evidence needed for integrate."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "integrate-incorporate_001",
+      "edge_id": "integrate__incorporate",
+      "domain": "student_newsletter",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Erin did with the chart in her newsletter?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "integrate-incorporate_001_b1",
+          "text": "Erin placed a chart between two newsletter articles so readers could view it beside the text.",
+          "best_word": "incorporate",
+          "fit": {
+            "incorporate": 0.92,
+            "integrate": 0.3
+          },
+          "decisive_clue": "chart simply included in the publication",
+          "reason": "Chart simply included in the publication is the strongest evidence for incorporate here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "integrate": "M3"
+          }
+        },
+        {
+          "id": "integrate-incorporate_001_b2",
+          "text": "She printed the chart itself in brighter blue ink on the next edition.",
+          "best_word": "incorporate",
+          "fit": {
+            "incorporate": 0.94,
+            "integrate": 0.26
+          },
+          "decisive_clue": "chart simply included in the publication; brighter ink used for the chart does not change that",
+          "reason": "The chart is still an included element; changing its ink does not create connected functionality.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "integrate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Chart simply included in the publication still decides; the later detail does not change that.",
+      "feedback_deep": "Integrate means join separate parts into a system that works together effectively; incorporate means include something as one element within a larger whole. The chart is still an included element; changing its ink does not create connected functionality.",
+      "contrast_rule": "Integrate: one update changes connected parts; incorporate: added as a component.",
+      "hints": {
+        "attention": "Does the chart work with anything, or simply appear there?",
+        "axis": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation.",
+        "contrast": "Integrate: one update changes connected parts; incorporate: added as a component."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "integrate-incorporate_002",
+      "edge_id": "integrate__incorporate",
+      "domain": "club_registration",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Pavel joined the club’s registration tools?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "integrate-incorporate_002_b1",
+          "text": "Pavel linked the attendance list to the reminder system, so each new sign-up automatically received the correct message.",
+          "best_word": "integrate",
+          "fit": {
+            "integrate": 0.92,
+            "incorporate": 0.3
+          },
+          "decisive_clue": "sign-up records automatically control reminders",
+          "reason": "Sign-up records automatically control reminders is the strongest evidence for integrate here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incorporate": "M2"
+          }
+        },
+        {
+          "id": "integrate-incorporate_002_b2",
+          "text": "Changing a meeting time now updates each member’s reminder without anyone copying the details.",
+          "best_word": "integrate",
+          "fit": {
+            "integrate": 0.94,
+            "incorporate": 0.26
+          },
+          "decisive_clue": "sign-up records automatically control reminders; further evidence: meeting edits update reminders too",
+          "reason": "Automatic coordination from the registration records to the reminders shows separate tools functioning as one system.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incorporate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Meeting edits update reminders too confirms the earlier clue: sign-up records automatically control reminders.",
+      "feedback_deep": "Integrate means join separate parts into a system that works together effectively; incorporate means include something as one element within a larger whole. Automatic coordination from the registration records to the reminders shows separate tools functioning as one system.",
+      "contrast_rule": "Integrate: one update changes connected parts; incorporate: added as a component.",
+      "hints": {
+        "attention": "Look at what happens when one record changes.",
+        "axis": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation.",
+        "contrast": "Integrate: one update changes connected parts; incorporate: added as a component."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "integrate-incorporate_003",
+      "edge_id": "integrate__incorporate",
+      "domain": "home_cooking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Suri did with the herbs in her rice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "integrate-incorporate_003_b1",
+          "text": "Suri stirred chopped basil into her rice just before serving it.",
+          "best_word": "incorporate",
+          "fit": {
+            "incorporate": 0.92,
+            "integrate": 0.3
+          },
+          "decisive_clue": "basil was added as an ingredient",
+          "reason": "Basil was added as an ingredient is the strongest evidence for incorporate here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "integrate": "M1"
+          }
+        },
+        {
+          "id": "integrate-incorporate_003_b2",
+          "text": "The leaves came from a prize-winning garden and smelled wonderful.",
+          "best_word": "incorporate",
+          "fit": {
+            "incorporate": 0.94,
+            "integrate": 0.26
+          },
+          "decisive_clue": "basil was added as an ingredient; quality and origin of the leaves does not change that",
+          "reason": "A fine ingredient is still simply included in the dish; neither quality nor source establishes system coordination.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "integrate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Basil was added as an ingredient still decides; the later detail does not change that.",
+      "feedback_deep": "Integrate means join separate parts into a system that works together effectively; incorporate means include something as one element within a larger whole. A fine ingredient is still simply included in the dish; neither quality nor source establishes system coordination.",
+      "contrast_rule": "Integrate: one update changes connected parts; incorporate: added as a component.",
+      "hints": {
+        "attention": "Think about adding a part versus linking functions.",
+        "axis": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation.",
+        "contrast": "Integrate: one update changes connected parts; incorporate: added as a component."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "integrate-incorporate_004",
+      "edge_id": "integrate__incorporate",
+      "domain": "school_calendar",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Aisha used her club’s timetable in the shared calendar?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "integrate-incorporate_004_b1",
+          "text": "Aisha connected the timetable to volunteer shifts so a time change automatically reassigned the duty slots.",
+          "best_word": "integrate",
+          "fit": {
+            "integrate": 0.92,
+            "incorporate": 0.3
+          },
+          "decisive_clue": "time changes automatically altered connected shifts",
+          "reason": "Time changes automatically altered connected shifts is the strongest evidence for integrate here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incorporate": "M2"
+          }
+        },
+        {
+          "id": "integrate-incorporate_004_b2",
+          "text": "She later switched off that connection; the same timetable now appears only as a pasted note inside the calendar.",
+          "best_word": "incorporate",
+          "fit": {
+            "incorporate": 0.94,
+            "integrate": 0.26
+          },
+          "decisive_clue": "timetable is now only an inserted note",
+          "reason": "Removing the operational link leaves the timetable included but no longer working with the shifts.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "integrate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Timetable is now only an inserted note makes incorporate the better choice.",
+      "feedback_deep": "Integrate means join separate parts into a system that works together effectively; incorporate means include something as one element within a larger whole. Removing the operational link leaves the timetable included but no longer working with the shifts.",
+      "contrast_rule": "Integrate: one update changes connected parts; incorporate: added as a component.",
+      "hints": {
+        "attention": "What changed about how the timetable functions?",
+        "axis": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation.",
+        "contrast": "Integrate: one update changes connected parts; incorporate: added as a component."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "integrate-incorporate_005",
+      "edge_id": "integrate__incorporate",
+      "domain": "school_app",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Jun used the attendance table in his app?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "integrate-incorporate_005_b1",
+          "text": "Jun added an attendance table on the app’s homepage for teachers to view.",
+          "best_word": "incorporate",
+          "fit": {
+            "incorporate": 0.92,
+            "integrate": 0.3
+          },
+          "decisive_clue": "table was simply included on the homepage",
+          "reason": "Table was simply included on the homepage is the strongest evidence for incorporate here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "integrate": "M3"
+          }
+        },
+        {
+          "id": "integrate-incorporate_005_b2",
+          "text": "He then connected each marked absence to the messaging tool, which now sends the relevant reminder automatically.",
+          "best_word": "integrate",
+          "fit": {
+            "integrate": 0.94,
+            "incorporate": 0.26
+          },
+          "decisive_clue": "absence entries now trigger messages in another tool",
+          "reason": "The same table moved from being a page element to working together with another feature.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incorporate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Absence entries now trigger messages in another tool makes integrate the better choice.",
+      "feedback_deep": "Integrate means join separate parts into a system that works together effectively; incorporate means include something as one element within a larger whole. The same table moved from being a page element to working together with another feature.",
+      "contrast_rule": "Integrate: one update changes connected parts; incorporate: added as a component.",
+      "hints": {
+        "attention": "Follow what an attendance entry now triggers.",
+        "axis": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation.",
+        "contrast": "Integrate: one update changes connected parts; incorporate: added as a component."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "integrate-incorporate_006",
+      "edge_id": "integrate__incorporate",
+      "domain": "workplace_shifts",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes how Amadou arranged the two support teams?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "integrate-incorporate_006_b1",
+          "text": "Amadou gave both teams a single handover log; each team’s updates automatically shape the next team’s assignments.",
+          "best_word": "integrate",
+          "fit": {
+            "integrate": 0.92,
+            "incorporate": 0.3
+          },
+          "decisive_clue": "teams coordinate their assignments through one log",
+          "reason": "Teams coordinate their assignments through one log is the strongest evidence for integrate here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incorporate": "M1"
+          }
+        },
+        {
+          "id": "integrate-incorporate_006_b2",
+          "text": "Although they work on different floors, their daily duties still depend on that shared log.",
+          "best_word": "integrate",
+          "fit": {
+            "integrate": 0.94,
+            "incorporate": 0.26
+          },
+          "decisive_clue": "separate floors do not disrupt operational coordination",
+          "reason": "Physical separation does not matter when the teams’ work is functionally linked.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incorporate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Separate floors do not disrupt operational coordination makes integrate the better choice.",
+      "feedback_deep": "Integrate means join separate parts into a system that works together effectively; incorporate means include something as one element within a larger whole. Physical separation does not matter when the teams’ work is functionally linked.",
+      "contrast_rule": "Integrate: one update changes connected parts; incorporate: added as a component.",
+      "hints": {
+        "attention": "Focus on the workflow, not the buildings.",
+        "axis": "Integrate links parts so they operate together; incorporate includes a part without requiring shared operation.",
+        "contrast": "Integrate: one update changes connected parts; incorporate: added as a component."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "set_id": "cadence-tempo",
+  "title": "cadence / tempo",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[96]",
+    "source_pair_id": 406,
+    "qa": {
+      "pass": 7,
+      "revised": 0,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "cadence",
+      "sense": "rhythmic shape and flow",
+      "connotation": "neutral to literary",
+      "register": "neutral to literary",
+      "misconceptions": [
+        "Calling phrasing and intonation merely speed"
+      ]
+    },
+    {
+      "word": "tempo",
+      "sense": "rate of musical performance",
+      "connotation": "neutral",
+      "register": "neutral, musical",
+      "misconceptions": [
+        "Calling changes in musical speed changes in phrasing"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "rhythmic_quality",
+      "description": "Phrasing and rise-and-fall versus rate in time"
+    }
+  ],
+  "edges": [
+    {
+      "id": "cadence__tempo",
+      "a": "cadence",
+      "b": "tempo",
+      "boundary_rule": "Cadence is the flowing pattern of rhythmic rises, falls, accents and pauses; tempo is how quickly or slowly a piece of music is performed.",
+      "clues_a": [
+        "swaying phrase pattern, stresses or pauses"
+      ],
+      "clues_b": [
+        "faster or slower playing rate"
+      ],
+      "irrelevant_clues": [
+        "loud volume, instrument choice, emotional subject"
+      ],
+      "misconceptions": {
+        "M1": "Calling phrasing and intonation merely speed",
+        "M2": "Calling changes in musical speed changes in phrasing",
+        "M3": "Confusing length or loudness with rhythmic shape"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "cadence-tempo_001",
+      "edge_id": "cadence__tempo",
+      "domain": "poetry_recital",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which term best describes the feature of Layla's performance being discussed?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "cadence-tempo_001_b1",
+          "text": "Layla read the poem with soft rises in her voice and pauses that made each line flow smoothly.",
+          "best_word": "cadence",
+          "fit": {
+            "cadence": 0.92,
+            "tempo": 0.2
+          },
+          "decisive_clue": "rise-and-fall and pauses shaped the reading",
+          "reason": "The clue 'rise-and-fall and pauses shaped the reading' points to rhythmic shape and flow, not rate of musical performance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tempo": "M1"
+          }
+        },
+        {
+          "id": "cadence-tempo_001_b2",
+          "text": "Even while speaking slowly, she kept the same lilting pattern across the lines.",
+          "best_word": "cadence",
+          "fit": {
+            "cadence": 0.95,
+            "tempo": 0.16
+          },
+          "decisive_clue": "the lilt persisted independently of speed",
+          "reason": "The detail 'the lilt persisted independently of speed' leaves rhythmic shape and flow as the better fit, not rate of musical performance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tempo": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The lilt persisted independently of speed; cadence still fits best.",
+      "feedback_deep": "cadence means pattern of rise, fall and pauses in speech or music; tempo means speed at which music is played. The first clue is \"rise-and-fall and pauses shaped the reading\"; the next is \"the lilt persisted independently of speed\". Cadence is rhythmic shape; tempo is musical speed.",
+      "contrast_rule": "Cadence is rhythmic shape; tempo is musical speed.",
+      "hints": {
+        "attention": "Listen for how the phrases move, not just how fast.",
+        "axis": "Phrasing and rise-and-fall versus rate in time",
+        "contrast": "Cadence is rhythmic shape; tempo is musical speed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cadence-tempo_002",
+      "edge_id": "cadence__tempo",
+      "domain": "guitar_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which term best describes the feature of Maya's performance being discussed?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "cadence-tempo_002_b1",
+          "text": "Maya's tune moved through a gentle sequence of accented notes and resting phrases.",
+          "best_word": "cadence",
+          "fit": {
+            "cadence": 0.92,
+            "tempo": 0.2
+          },
+          "decisive_clue": "the musical phrases had rhythmic shape",
+          "reason": "The clue 'the musical phrases had rhythmic shape' points to rhythmic shape and flow, not rate of musical performance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tempo": "M1"
+          }
+        },
+        {
+          "id": "cadence-tempo_002_b2",
+          "text": "The teacher then singled out her playing as much too fast, saying the phrasing itself was fine.",
+          "best_word": "tempo",
+          "fit": {
+            "cadence": 0.16,
+            "tempo": 0.95
+          },
+          "decisive_clue": "speed, rather than phrasing, was the teacher’s concern",
+          "reason": "The new clue 'speed, rather than phrasing, was the teacher’s concern' shifts the interpretation to rate of musical performance, rather than rhythmic shape and flow.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cadence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Speed, rather than phrasing, was the teacher’s concern; now tempo fits best.",
+      "feedback_deep": "cadence means pattern of rise, fall and pauses in speech or music; tempo means speed at which music is played. The first clue is \"the musical phrases had rhythmic shape\"; the next is \"speed, rather than phrasing, was the teacher’s concern\". Cadence is rhythmic shape; tempo is musical speed.",
+      "contrast_rule": "Cadence is rhythmic shape; tempo is musical speed.",
+      "hints": {
+        "attention": "What aspect of the same performance has become decisive?",
+        "axis": "Phrasing and rise-and-fall versus rate in time",
+        "contrast": "Cadence is rhythmic shape; tempo is musical speed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cadence-tempo_003",
+      "edge_id": "cadence__tempo",
+      "domain": "school_band",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which term best describes the feature of Otto's performance being discussed?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cadence-tempo_003_b1",
+          "text": "Otto's band played the song far faster than they had during rehearsal.",
+          "best_word": "tempo",
+          "fit": {
+            "cadence": 0.2,
+            "tempo": 0.92
+          },
+          "decisive_clue": "performance speed increased",
+          "reason": "The clue 'performance speed increased' points to rate of musical performance, not rhythmic shape and flow.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cadence": "M2"
+          }
+        },
+        {
+          "id": "cadence-tempo_003_b2",
+          "text": "Every accent and pause remained in place; only the playing speed had increased.",
+          "best_word": "tempo",
+          "fit": {
+            "cadence": 0.16,
+            "tempo": 0.95
+          },
+          "decisive_clue": "the phrase pattern stayed unchanged while speed changed",
+          "reason": "The detail 'the phrase pattern stayed unchanged while speed changed' leaves rate of musical performance as the better fit, not rhythmic shape and flow.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cadence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The phrase pattern stayed unchanged while speed changed; tempo still fits best.",
+      "feedback_deep": "cadence means pattern of rise, fall and pauses in speech or music; tempo means speed at which music is played. The first clue is \"performance speed increased\"; the next is \"the phrase pattern stayed unchanged while speed changed\". Cadence is rhythmic shape; tempo is musical speed.",
+      "contrast_rule": "Cadence is rhythmic shape; tempo is musical speed.",
+      "hints": {
+        "attention": "What changed between the two renditions?",
+        "axis": "Phrasing and rise-and-fall versus rate in time",
+        "contrast": "Cadence is rhythmic shape; tempo is musical speed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cadence-tempo_004",
+      "edge_id": "cadence__tempo",
+      "domain": "dance_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which term best describes the feature of Iman's performance being discussed?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cadence-tempo_004_b1",
+          "text": "Iman played the track too slowly for the dancers and increased its speed until their steps matched.",
+          "best_word": "tempo",
+          "fit": {
+            "cadence": 0.2,
+            "tempo": 0.92
+          },
+          "decisive_clue": "rate of playback was too slow",
+          "reason": "The clue 'rate of playback was too slow' points to rate of musical performance, not rhythmic shape and flow.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cadence": "M2"
+          }
+        },
+        {
+          "id": "cadence-tempo_004_b2",
+          "text": "The tune kept the same melody and accents while the pace changed.",
+          "best_word": "tempo",
+          "fit": {
+            "cadence": 0.16,
+            "tempo": 0.95
+          },
+          "decisive_clue": "only pace changed, not note grouping",
+          "reason": "The detail 'only pace changed, not note grouping' leaves rate of musical performance as the better fit, not rhythmic shape and flow.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cadence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Only pace changed, not note grouping; tempo still fits best.",
+      "feedback_deep": "cadence means pattern of rise, fall and pauses in speech or music; tempo means speed at which music is played. The first clue is \"rate of playback was too slow\"; the next is \"only pace changed, not note grouping\". Cadence is rhythmic shape; tempo is musical speed.",
+      "contrast_rule": "Cadence is rhythmic shape; tempo is musical speed.",
+      "hints": {
+        "attention": "Which adjustable feature helped the dancers?",
+        "axis": "Phrasing and rise-and-fall versus rate in time",
+        "contrast": "Cadence is rhythmic shape; tempo is musical speed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cadence-tempo_006",
+      "edge_id": "cadence__tempo",
+      "domain": "storytelling_evening",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which term best describes the feature of Moussa's performance being discussed?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "cadence-tempo_006_b1",
+          "text": "Moussa told the story with alternating short pauses and rising, falling phrases that sounded almost musical.",
+          "best_word": "cadence",
+          "fit": {
+            "cadence": 0.92,
+            "tempo": 0.2
+          },
+          "decisive_clue": "phrases rose and fell with patterned pauses",
+          "reason": "The clue 'phrases rose and fell with patterned pauses' points to rhythmic shape and flow, not rate of musical performance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tempo": "M1"
+          }
+        },
+        {
+          "id": "cadence-tempo_006_b2",
+          "text": "He finished in under a minute, but his voice still flowed in that recognizable pattern.",
+          "best_word": "cadence",
+          "fit": {
+            "cadence": 0.95,
+            "tempo": 0.16
+          },
+          "decisive_clue": "short duration did not change the patterned delivery",
+          "reason": "The detail 'short duration did not change the patterned delivery' leaves rhythmic shape and flow as the better fit, not rate of musical performance.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tempo": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Short duration did not change the patterned delivery; cadence still fits best.",
+      "feedback_deep": "cadence means pattern of rise, fall and pauses in speech or music; tempo means speed at which music is played. The first clue is \"phrases rose and fell with patterned pauses\"; the next is \"short duration did not change the patterned delivery\". Cadence is rhythmic shape; tempo is musical speed.",
+      "contrast_rule": "Cadence is rhythmic shape; tempo is musical speed.",
+      "hints": {
+        "attention": "Does finishing quickly erase the rhythm of the voice?",
+        "axis": "Phrasing and rise-and-fall versus rate in time",
+        "contrast": "Cadence is rhythmic shape; tempo is musical speed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cadence-tempo_007",
+      "edge_id": "cadence__tempo",
+      "domain": "guitar_practice_app",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which term best describes the feature of Clara's performance being discussed?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "cadence-tempo_007_b1",
+          "text": "Clara used a beat-tracking app to slow the guitar piece until she could play it accurately.",
+          "best_word": "tempo",
+          "fit": {
+            "cadence": 0.2,
+            "tempo": 0.92
+          },
+          "decisive_clue": "slowed the rate of playing",
+          "reason": "The clue 'slowed the rate of playing' points to rate of musical performance, not rhythmic shape and flow.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cadence": "M2"
+          }
+        },
+        {
+          "id": "cadence-tempo_007_b2",
+          "text": "The melody still sounded tender; the adjustment was to its speed.",
+          "best_word": "tempo",
+          "fit": {
+            "cadence": 0.16,
+            "tempo": 0.95
+          },
+          "decisive_clue": "an emotional quality remained while speed changed",
+          "reason": "The detail 'an emotional quality remained while speed changed' leaves rate of musical performance as the better fit, not rhythmic shape and flow.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cadence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An emotional quality remained while speed changed; tempo still fits best.",
+      "feedback_deep": "cadence means pattern of rise, fall and pauses in speech or music; tempo means speed at which music is played. The first clue is \"slowed the rate of playing\"; the next is \"an emotional quality remained while speed changed\". Cadence is rhythmic shape; tempo is musical speed.",
+      "contrast_rule": "Cadence is rhythmic shape; tempo is musical speed.",
+      "hints": {
+        "attention": "What did the app help her adjust?",
+        "axis": "Phrasing and rise-and-fall versus rate in time",
+        "contrast": "Cadence is rhythmic shape; tempo is musical speed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cadence-tempo_008",
+      "edge_id": "cadence__tempo",
+      "domain": "choir_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which term best describes the feature of Noah's performance being discussed?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "cadence-tempo_008_b1",
+          "text": "Noah guided the choir through phrases that swelled, dipped and paused in a graceful repeated pattern.",
+          "best_word": "cadence",
+          "fit": {
+            "cadence": 0.92,
+            "tempo": 0.2
+          },
+          "decisive_clue": "rhythmic rise-and-fall organized phrases",
+          "reason": "The clue 'rhythmic rise-and-fall organized phrases' points to rhythmic shape and flow, not rate of musical performance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tempo": "M1"
+          }
+        },
+        {
+          "id": "cadence-tempo_008_b2",
+          "text": "They preserved that pattern even when they rehearsed the piece a little faster.",
+          "best_word": "cadence",
+          "fit": {
+            "cadence": 0.95,
+            "tempo": 0.16
+          },
+          "decisive_clue": "the characteristic flow survived a speed change",
+          "reason": "The detail 'the characteristic flow survived a speed change' leaves rhythmic shape and flow as the better fit, not rate of musical performance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tempo": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The characteristic flow survived a speed change; cadence still fits best.",
+      "feedback_deep": "cadence means pattern of rise, fall and pauses in speech or music; tempo means speed at which music is played. The first clue is \"rhythmic rise-and-fall organized phrases\"; the next is \"the characteristic flow survived a speed change\". Cadence is rhythmic shape; tempo is musical speed.",
+      "contrast_rule": "Cadence is rhythmic shape; tempo is musical speed.",
+      "hints": {
+        "attention": "Which feature survives the faster version?",
+        "axis": "Phrasing and rise-and-fall versus rate in time",
+        "contrast": "Cadence is rhythmic shape; tempo is musical speed."
+      },
+      "qa": "pass"
+    }
+  ]
+}

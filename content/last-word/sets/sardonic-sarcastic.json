@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "set_id": "sardonic-sarcastic",
+  "title": "sardonic / sarcastic",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[45]",
+    "source_pair_id": 184,
+    "qa": {
+      "pass": 9,
+      "revised": 1,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "sardonic",
+      "sense": "contemptuous mocking humor",
+      "connotation": "biting and cynical",
+      "register": "literary to neutral",
+      "misconceptions": [
+        "Missing cynical disdain beneath mocking humor"
+      ]
+    },
+    {
+      "word": "sarcastic",
+      "sense": "cutting ironic speech",
+      "connotation": "ironic, often sharp",
+      "register": "neutral",
+      "misconceptions": [
+        "Projecting cynical disdain onto ordinary verbal irony"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "tone_and_target",
+      "description": "Cynical scorn versus cutting verbal irony"
+    }
+  ],
+  "edges": [
+    {
+      "id": "sardonic__sarcastic",
+      "a": "sardonic",
+      "b": "sarcastic",
+      "boundary_rule": "Sardonic remarks mock with cynical contempt for people or motives; sarcastic remarks use cutting irony without necessarily condemning human motives.",
+      "clues_a": [
+        "bitterly suggests kindness is self-serving"
+      ],
+      "clues_b": [
+        "opposite-meaning praise mocks a specific failure"
+      ],
+      "irrelevant_clues": [
+        "mere laughter, smiling, ordinary criticism"
+      ],
+      "misconceptions": {
+        "M1": "Missing cynical disdain beneath mocking humor",
+        "M2": "Projecting cynical disdain onto ordinary verbal irony",
+        "M3": "Using a smile or harshness as the only clue"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "sardonic-sarcastic_001",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "charity_event",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zara's remark?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_001_b1",
+          "text": "Zara said, 'Funny how everyone discovered generosity when the cameras arrived,' with a thin, bitter smile.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.92,
+            "sarcastic": 0.2
+          },
+          "decisive_clue": "mocked the volunteers as insincere",
+          "reason": "The clue 'mocked the volunteers as insincere' points to contemptuous mocking humor, not cutting ironic speech.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_001_b2",
+          "text": "She believed the volunteers cared more about being admired than helping anyone.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.95,
+            "sarcastic": 0.16
+          },
+          "decisive_clue": "her remark expressed contempt for their motives",
+          "reason": "The detail 'her remark expressed contempt for their motives' leaves contemptuous mocking humor as the better fit, not cutting ironic speech.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her remark expressed contempt for their motives; sardonic still fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"mocked the volunteers as insincere\"; the next is \"her remark expressed contempt for their motives\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "Is she mocking a mistake or people's supposed selfishness?",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sardonic-sarcastic_002",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "club_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Sven's remark?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_002_b1",
+          "text": "When a late speaker finally arrived, Sven remarked, 'How heartwarming to see someone pretend their schedule matters,' with a thin, bitter smile.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.92,
+            "sarcastic": 0.2
+          },
+          "decisive_clue": "bitter contempt for self-important pretensions",
+          "reason": "The clue 'bitter contempt for self-important pretensions' points to contemptuous mocking humor, not cutting ironic speech.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_002_b2",
+          "text": "In fact, he was only teasing a close friend who missed a bus, playfully saying the opposite of what happened rather than sneering at his character.",
+          "best_word": "sarcastic",
+          "fit": {
+            "sardonic": 0.16,
+            "sarcastic": 0.95
+          },
+          "decisive_clue": "playful verbal irony about a missed bus rather than disdain",
+          "reason": "The new clue 'playful verbal irony about a missed bus rather than disdain' shifts the interpretation to cutting ironic speech, rather than contemptuous mocking humor.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sardonic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Playful verbal irony about a missed bus rather than disdain; now sarcastic fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"bitter contempt for self-important pretensions\"; the next is \"playful verbal irony about a missed bus rather than disdain\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "Identify what his remark is actually attacking.",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "sardonic-sarcastic_004",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "surprise_party",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Daniel's remark?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_004_b1",
+          "text": "After a friend spoiled the surprise, Daniel said, 'Brilliant job keeping a secret.'",
+          "best_word": "sarcastic",
+          "fit": {
+            "sardonic": 0.2,
+            "sarcastic": 0.92
+          },
+          "decisive_clue": "ironic compliment about spoiling a surprise",
+          "reason": "The clue 'ironic compliment about spoiling a surprise' points to cutting ironic speech, not contemptuous mocking humor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sardonic": "M2"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_004_b2",
+          "text": "He then helped rearrange the party; he wasn't expressing a bleak view of people's motives.",
+          "best_word": "sarcastic",
+          "fit": {
+            "sardonic": 0.16,
+            "sarcastic": 0.95
+          },
+          "decisive_clue": "a single blunder, not human selfishness, drew the barb",
+          "reason": "The detail 'a single blunder, not human selfishness, drew the barb' leaves cutting ironic speech as the better fit, not contemptuous mocking humor.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sardonic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A single blunder, not human selfishness, drew the barb; sarcastic still fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"ironic compliment about spoiling a surprise\"; the next is \"a single blunder, not human selfishness, drew the barb\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "Look at whether he condemns the person broadly.",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sardonic-sarcastic_005",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "shared_kitchen",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Nadia's remark?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_005_b1",
+          "text": "Seeing everyone leave their dishes for one person, Nadia said, 'What wonderful teamwork.'",
+          "best_word": "sarcastic",
+          "fit": {
+            "sardonic": 0.2,
+            "sarcastic": 0.92
+          },
+          "decisive_clue": "opposite-meaning praise of absent teamwork",
+          "reason": "The clue 'opposite-meaning praise of absent teamwork' points to cutting ironic speech, not contemptuous mocking humor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sardonic": "M2"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_005_b2",
+          "text": "She meant that people love praising cooperation while making others do the work, and laughed with bitter contempt.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.95,
+            "sarcastic": 0.16
+          },
+          "decisive_clue": "bitter scorn for self-serving claims of cooperation",
+          "reason": "The new clue 'bitter scorn for self-serving claims of cooperation' shifts the interpretation to contemptuous mocking humor, rather than cutting ironic speech.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Bitter scorn for self-serving claims of cooperation; now sardonic fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"opposite-meaning praise of absent teamwork\"; the next is \"bitter scorn for self-serving claims of cooperation\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "Does her comment only flag a mistake, or condemn motives?",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sardonic-sarcastic_006",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "publicity_visit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Elif's remark?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_006_b1",
+          "text": "Elif murmured, 'How touching that they remember our club when reporters visit,' with open scorn.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.92,
+            "sarcastic": 0.2
+          },
+          "decisive_clue": "scorned a supposedly generous visit as a publicity act",
+          "reason": "The clue 'scorned a supposedly generous visit as a publicity act' points to contemptuous mocking humor, not cutting ironic speech.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_006_b2",
+          "text": "The visitors also brought free snacks, but she still thought their kindness was staged for publicity.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.95,
+            "sarcastic": 0.16
+          },
+          "decisive_clue": "free snacks do not remove her cynical reading of motives",
+          "reason": "The detail 'free snacks do not remove her cynical reading of motives' leaves contemptuous mocking humor as the better fit, not cutting ironic speech.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Free snacks do not remove her cynical reading of motives; sardonic still fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"scorned a supposedly generous visit as a publicity act\"; the next is \"free snacks do not remove her cynical reading of motives\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "Does a practical gift change the target of her ridicule?",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sardonic-sarcastic_007",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "rainy_hike",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Theo's remark?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_007_b1",
+          "text": "As rain soaked his shoes, Theo announced, 'Lovely weather for a dry walk.'",
+          "best_word": "sarcastic",
+          "fit": {
+            "sardonic": 0.2,
+            "sarcastic": 0.92
+          },
+          "decisive_clue": "ironic praise despite pouring rain",
+          "reason": "The clue 'ironic praise despite pouring rain' points to cutting ironic speech, not contemptuous mocking humor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sardonic": "M2"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_007_b2",
+          "text": "He aimed the joke at the miserable weather, not at anyone's hidden intentions.",
+          "best_word": "sarcastic",
+          "fit": {
+            "sardonic": 0.16,
+            "sarcastic": 0.95
+          },
+          "decisive_clue": "the joke targets bad conditions rather than motives",
+          "reason": "The detail 'the joke targets bad conditions rather than motives' leaves cutting ironic speech as the better fit, not contemptuous mocking humor.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sardonic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The joke targets bad conditions rather than motives; sarcastic still fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"ironic praise despite pouring rain\"; the next is \"the joke targets bad conditions rather than motives\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "Listen for the contrast between praise and reality.",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sardonic-sarcastic_009",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "airport_delay",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Kenji's remark?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_009_b1",
+          "text": "After yet another delay, Kenji said, 'Wonderful service,' as the loudspeaker announced an apology.",
+          "best_word": "sarcastic",
+          "fit": {
+            "sardonic": 0.2,
+            "sarcastic": 0.92
+          },
+          "decisive_clue": "ironic praise of delayed service",
+          "reason": "The clue 'ironic praise of delayed service' points to cutting ironic speech, not contemptuous mocking humor.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sardonic": "M2"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_009_b2",
+          "text": "He added that companies apologize only to keep customers paying, with a dry, contemptuous grin.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.95,
+            "sarcastic": 0.16
+          },
+          "decisive_clue": "contempt for apologies as deliberately self-serving",
+          "reason": "The new clue 'contempt for apologies as deliberately self-serving' shifts the interpretation to contemptuous mocking humor, rather than cutting ironic speech.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Contempt for apologies as deliberately self-serving; now sardonic fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"ironic praise of delayed service\"; the next is \"contempt for apologies as deliberately self-serving\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "What new belief does he reveal about the apology?",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sardonic-sarcastic_010",
+      "edge_id": "sardonic__sarcastic",
+      "domain": "clothing_shop",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ines's remark?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "sardonic-sarcastic_010_b1",
+          "text": "Seeing an expensive charity-themed display, Ines muttered, 'Kindness with a price tag. How inspiring.'",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.92,
+            "sarcastic": 0.2
+          },
+          "decisive_clue": "mocked a display as commercialized kindness",
+          "reason": "The clue 'mocked a display as commercialized kindness' points to contemptuous mocking humor, not cutting ironic speech.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        },
+        {
+          "id": "sardonic-sarcastic_010_b2",
+          "text": "She was ridiculing a shop she believed used sympathy purely to increase sales.",
+          "best_word": "sardonic",
+          "fit": {
+            "sardonic": 0.95,
+            "sarcastic": 0.16
+          },
+          "decisive_clue": "the joke rested on cynical scorn for commercial motives",
+          "reason": "The detail 'the joke rested on cynical scorn for commercial motives' leaves contemptuous mocking humor as the better fit, not cutting ironic speech.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sarcastic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The joke rested on cynical scorn for commercial motives; sardonic still fits best.",
+      "feedback_deep": "sardonic means dry, scornful humor showing cynical disdain; sarcastic means mockery that says the opposite of what is meant. The first clue is \"mocked a display as commercialized kindness\"; the next is \"the joke rested on cynical scorn for commercial motives\". Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "contrast_rule": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly.",
+      "hints": {
+        "attention": "Is the ridicule about mere pricing, or claimed goodness?",
+        "axis": "Cynical scorn versus cutting verbal irony",
+        "contrast": "Sarcastic irony stings; sardonic wit also sneers at motives or human folly."
+      },
+      "qa": "pass"
+    }
+  ]
+}

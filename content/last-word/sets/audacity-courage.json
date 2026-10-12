@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "set_id": "audacity-courage",
+  "title": "audacity / courage",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[42]",
+    "source_pair_id": 178,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 4
+    }
+  },
+  "words": [
+    {
+      "word": "audacity",
+      "sense": "Bold willingness to do something shockingly presumptuous or rude, often reckless",
+      "connotation": "mixed; often critical",
+      "register": "standard/formal",
+      "misconceptions": [
+        "Every brave action is audacious",
+        "Fearlessness and facing fear are identical"
+      ]
+    },
+    {
+      "word": "courage",
+      "sense": "Readiness to act despite fear or real danger",
+      "connotation": "admiring",
+      "register": "standard",
+      "misconceptions": [
+        "Any bold or rude action is courageous",
+        "Fearlessness and facing fear are identical"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "social_boundary",
+      "description": "Whether the scene turns on social boundary."
+    },
+    {
+      "id": "response_to_fear",
+      "description": "Whether the scene turns on response to fear."
+    }
+  ],
+  "edges": [
+    {
+      "id": "audacity__courage",
+      "a": "audacity",
+      "b": "courage",
+      "boundary_rule": "Audacity is startling, boundary-crossing boldness; courage is facing danger or fear despite being afraid.",
+      "clues_a": [
+        "shocking presumption",
+        "reckless public challenge",
+        "rude boundary crossing"
+      ],
+      "clues_b": [
+        "acts despite fear",
+        "confronts genuine risk",
+        "protects someone under threat"
+      ],
+      "irrelevant_clues": [
+        "how loudly someone speaks",
+        "clothing style",
+        "how many people watch"
+      ],
+      "misconceptions": {
+        "M1": "Every brave action is audacious",
+        "M2": "Any bold or rude action is courageous",
+        "M3": "Fearlessness and facing fear are identical"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "audacity-courage_001",
+      "edge_id": "audacity__courage",
+      "domain": "school_assembly",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Dalia’s decision to speak up at assembly?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "audacity-courage_001_b1",
+          "text": "Dalia was shaking, but she spoke out against an unfair rule in front of the school.",
+          "best_word": "courage",
+          "fit": {
+            "audacity": 0.32,
+            "courage": 0.93
+          },
+          "decisive_clue": "faced fear to object to unfairness",
+          "reason": "The detail about faced fear to object to unfairness supports courage more strongly than audacity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "audacity": "M3"
+          }
+        },
+        {
+          "id": "audacity-courage_001_b2",
+          "text": "She did it by snatching the microphone mid-speech and mocking the principal to his face.",
+          "best_word": "audacity",
+          "fit": {
+            "audacity": 0.96,
+            "courage": 0.2
+          },
+          "decisive_clue": "brazenly interrupted and insulted principal",
+          "reason": "The detail about brazenly interrupted and insulted principal supports audacity more strongly than courage.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "courage": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Brazenly interrupted and insulted principal makes audacity the better description.",
+      "feedback_deep": "Initially, faced fear to object to unfairness points toward courage. The new detail, brazenly interrupted and insulted principal, instead makes audacity the stronger choice. Audacity is startling, boundary-crossing boldness; courage is facing danger or fear despite being afraid.",
+      "contrast_rule": "Audacity crosses boundaries; courage faces fear.",
+      "hints": {
+        "attention": "Consider the risk and how the person crosses boundaries.",
+        "axis": "Whether the scene turns on social boundary.",
+        "contrast": "Audacity crosses boundaries; courage faces fear."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "audacity-courage_002",
+      "edge_id": "audacity__courage",
+      "domain": "street_crossing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amir’s actions beside the road?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "audacity-courage_002_b1",
+          "text": "Amir felt terrified but stepped forward to guide a lost child away from moving traffic.",
+          "best_word": "courage",
+          "fit": {
+            "audacity": 0.36,
+            "courage": 0.96
+          },
+          "decisive_clue": "helped despite genuine fear",
+          "reason": "The detail about helped despite genuine fear supports courage more strongly than audacity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "audacity": "M1"
+          }
+        },
+        {
+          "id": "audacity-courage_002_b2",
+          "text": "He waited for the traffic to stop before taking the child to safety.",
+          "best_word": "courage",
+          "fit": {
+            "audacity": 0.24,
+            "courage": 0.88
+          },
+          "decisive_clue": "acted carefully despite danger",
+          "reason": "The detail about acted carefully despite danger supports courage more strongly than audacity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "audacity": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Acted carefully despite danger leaves courage the better fit.",
+      "feedback_deep": "The first clue is helped despite genuine fear. The later clue is acted carefully despite danger; that strengthens or preserves the same classification. Audacity is startling, boundary-crossing boldness; courage is facing danger or fear despite being afraid.",
+      "contrast_rule": "Audacity crosses boundaries; courage faces fear.",
+      "hints": {
+        "attention": "Consider the risk and how the person crosses boundaries.",
+        "axis": "Whether the scene turns on social boundary.",
+        "contrast": "Audacity crosses boundaries; courage faces fear."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "audacity-courage_003",
+      "edge_id": "audacity__courage",
+      "domain": "retail_shop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Giulia’s demand to the shop owner?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "audacity-courage_003_b1",
+          "text": "Giulia pushed ahead of everyone and demanded a free coat for being a frequent visitor.",
+          "best_word": "audacity",
+          "fit": {
+            "audacity": 0.88,
+            "courage": 0.2
+          },
+          "decisive_clue": "shocking entitlement",
+          "reason": "The detail about shocking entitlement supports audacity more strongly than courage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "courage": "M2"
+          }
+        },
+        {
+          "id": "audacity-courage_003_b2",
+          "text": "She then ordered the owner to apologise for making her wait behind paying customers.",
+          "best_word": "audacity",
+          "fit": {
+            "audacity": 0.91,
+            "courage": 0.28
+          },
+          "decisive_clue": "rude demand becomes more blatant",
+          "reason": "The detail about rude demand becomes more blatant supports audacity more strongly than courage.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "courage": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Rude demand becomes more blatant leaves audacity the better fit.",
+      "feedback_deep": "The first clue is shocking entitlement. The later clue is rude demand becomes more blatant; that strengthens or preserves the same classification. Audacity is startling, boundary-crossing boldness; courage is facing danger or fear despite being afraid.",
+      "contrast_rule": "Audacity crosses boundaries; courage faces fear.",
+      "hints": {
+        "attention": "Consider the risk and how the person crosses boundaries.",
+        "axis": "Whether the scene turns on social boundary.",
+        "contrast": "Audacity crosses boundaries; courage faces fear."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "audacity-courage_004",
+      "edge_id": "audacity__courage",
+      "domain": "team_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kareem’s decision to try the high climbing wall?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "audacity-courage_004_b1",
+          "text": "Kareem was afraid of heights but agreed to climb with the required harness and supervision.",
+          "best_word": "courage",
+          "fit": {
+            "audacity": 0.24,
+            "courage": 0.91
+          },
+          "decisive_clue": "acted while afraid",
+          "reason": "The detail about acted while afraid supports courage more strongly than audacity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "audacity": "M3"
+          }
+        },
+        {
+          "id": "audacity-courage_004_b2",
+          "text": "He kept climbing carefully even while his hands shook.",
+          "best_word": "courage",
+          "fit": {
+            "audacity": 0.32,
+            "courage": 0.93
+          },
+          "decisive_clue": "fear present throughout measured action",
+          "reason": "The detail about fear present throughout measured action supports courage more strongly than audacity.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "audacity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Fear present throughout measured action makes courage an even clearer fit.",
+      "feedback_deep": "The first clue is acted while afraid. The later clue is fear present throughout measured action; that strengthens or preserves the same classification. Audacity is startling, boundary-crossing boldness; courage is facing danger or fear despite being afraid.",
+      "contrast_rule": "Audacity crosses boundaries; courage faces fear.",
+      "hints": {
+        "attention": "Consider the risk and how the person crosses boundaries.",
+        "axis": "Whether the scene turns on social boundary.",
+        "contrast": "Audacity crosses boundaries; courage faces fear."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "audacity-courage_006",
+      "edge_id": "audacity__courage",
+      "domain": "restaurant_service",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Benoit’s behaviour toward the waiter?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "audacity-courage_006_b1",
+          "text": "Benoit demanded that the waiter give him another guest’s reserved table and laughed at the objection.",
+          "best_word": "audacity",
+          "fit": {
+            "audacity": 0.96,
+            "courage": 0.32
+          },
+          "decisive_clue": "brazenly claimed another guest’s table",
+          "reason": "The detail about brazenly claimed another guest’s table supports audacity more strongly than courage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "courage": "M2"
+          }
+        },
+        {
+          "id": "audacity-courage_006_b2",
+          "text": "The restaurant had soft music playing in the background.",
+          "best_word": "audacity",
+          "fit": {
+            "audacity": 0.88,
+            "courage": 0.2
+          },
+          "decisive_clue": "music does not change rude presumption",
+          "reason": "The detail about music does not change rude presumption supports audacity more strongly than courage.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "courage": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Brazenly claimed another guest’s table still matters; music does not change rude presumption does not change the answer.",
+      "feedback_deep": "The first clue is brazenly claimed another guest’s table. The later clue is music does not change rude presumption; that does not touch the decisive difference. Audacity is startling, boundary-crossing boldness; courage is facing danger or fear despite being afraid.",
+      "contrast_rule": "Audacity crosses boundaries; courage faces fear.",
+      "hints": {
+        "attention": "Consider the risk and how the person crosses boundaries.",
+        "axis": "Whether the scene turns on social boundary.",
+        "contrast": "Audacity crosses boundaries; courage faces fear."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "audacity-courage_008",
+      "edge_id": "audacity__courage",
+      "domain": "work_presentation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Jasper’s decision to report a serious error?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "audacity-courage_008_b1",
+          "text": "Jasper feared losing his internship but told his supervisor about an error that might hurt customers.",
+          "best_word": "courage",
+          "fit": {
+            "audacity": 0.2,
+            "courage": 0.91
+          },
+          "decisive_clue": "disclosed mistake despite personal risk",
+          "reason": "The detail about disclosed mistake despite personal risk supports courage more strongly than audacity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "audacity": "M1"
+          }
+        },
+        {
+          "id": "audacity-courage_008_b2",
+          "text": "He chose to accept the risk instead of hiding the problem.",
+          "best_word": "courage",
+          "fit": {
+            "audacity": 0.28,
+            "courage": 0.93
+          },
+          "decisive_clue": "responsible act rather than boundary-breaking show",
+          "reason": "The detail about responsible act rather than boundary-breaking show supports courage more strongly than audacity.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "audacity": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Responsible act rather than boundary-breaking show leaves courage the better fit.",
+      "feedback_deep": "The first clue is disclosed mistake despite personal risk. The later clue is responsible act rather than boundary-breaking show; that strengthens or preserves the same classification. Audacity is startling, boundary-crossing boldness; courage is facing danger or fear despite being afraid.",
+      "contrast_rule": "Audacity crosses boundaries; courage faces fear.",
+      "hints": {
+        "attention": "Consider the risk and how the person crosses boundaries.",
+        "axis": "Whether the scene turns on social boundary.",
+        "contrast": "Audacity crosses boundaries; courage faces fear."
+      },
+      "qa": "pass"
+    }
+  ]
+}

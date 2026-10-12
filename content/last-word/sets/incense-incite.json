@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "set_id": "incense-incite",
+  "title": "incense / incite",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[110]",
+    "source_pair_id": 449,
+    "qa": {
+      "pass": 7,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "incense",
+      "sense": "Provoke intense anger or outrage in someone.",
+      "connotation": "strongly negative",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Any provocative message that angers people necessarily incites them."
+      ]
+    },
+    {
+      "word": "incite",
+      "sense": "Stir or urge people to take action, often harmful or unlawful.",
+      "connotation": "often strongly negative; linked to provocation",
+      "register": "standard to formal",
+      "misconceptions": [
+        "An instruction to act is merely an expression of anger."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "effect_of_message",
+      "description": "Outrage felt by recipients versus actions the message pushes them to take."
+    },
+    {
+      "id": "directive",
+      "description": "Presence of a call to do something rather than just an insult."
+    }
+  ],
+  "edges": [
+    {
+      "id": "incense__incite",
+      "a": "incense",
+      "b": "incite",
+      "boundary_rule": "To incense people is to make them furious; to incite people is to spur them toward an action, not merely a feeling.",
+      "clues_a": [
+        "recipients fume or demand an apology",
+        "insult produces intense outrage",
+        "people burn with indignation"
+      ],
+      "clues_b": [
+        "speaker tells a group what to do next",
+        "message urges people to break a rule",
+        "organizer encourages a disruptive act"
+      ],
+      "irrelevant_clues": [
+        "size of audience",
+        "volume of speaker",
+        "whether people agree with the speaker"
+      ],
+      "misconceptions": {
+        "M1": "Any provocative message that angers people necessarily incites them.",
+        "M2": "An instruction to act is merely an expression of anger.",
+        "M3": "The crowd’s size or noise alone determines the verb."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "incense-incite_001",
+      "edge_id": "incense__incite",
+      "domain": "restaurant_review",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Rina’s review did to diners?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "incense-incite_001_b1",
+          "text": "Rina’s review mocked customers who ordered the cheapest meals; readers flooded the comments with angry complaints.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.91,
+            "incite": 0.19
+          },
+          "decisive_clue": "insult triggered furious reader reactions",
+          "reason": "The review provoked indignation among its readers.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        },
+        {
+          "id": "incense-incite_001_b2",
+          "text": "Several readers demanded that she apologize for insulting people on small budgets.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.91,
+            "incite": 0.19
+          },
+          "decisive_clue": "the response focuses on demanding an apology for the insult",
+          "reason": "The apology demands confirm outrage at the insult, not a push from Rina toward some action.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The apology demands confirm outrage at the insult, not a push from Rina toward some action.",
+      "feedback_deep": "The review provoked indignation among its readers. The apology demands confirm outrage at the insult, not a push from Rina toward some action. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "Look at the effect on the readers.",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incense-incite_002",
+      "edge_id": "incense__incite",
+      "domain": "school_protest",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Jamal’s message did?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incense-incite_002_b1",
+          "text": "Jamal posted, “Everyone, block the school gates tomorrow until the rule changes.”",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "direct call to block school gates",
+          "reason": "He urged classmates to carry out a disruptive action.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        },
+        {
+          "id": "incense-incite_002_b2",
+          "text": "The message told classmates exactly when to gather and where to stand.",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "specific instructions about the proposed blockade",
+          "reason": "The time and place make the call more concrete; anger alone would not define the message.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The time and place make the call more concrete; anger alone would not define the message.",
+      "feedback_deep": "He urged classmates to carry out a disruptive action. The time and place make the call more concrete; anger alone would not define the message. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "Find the instruction, if any.",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incense-incite_003",
+      "edge_id": "incense__incite",
+      "domain": "apartment_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Linh’s comment did to neighbors?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "incense-incite_003_b1",
+          "text": "Linh accused the neighbors of being too stupid to read a notice; several left the meeting red-faced and shaking.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.91,
+            "incite": 0.19
+          },
+          "decisive_clue": "insult produced visible indignation",
+          "reason": "The personal insult provoked extreme anger.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        },
+        {
+          "id": "incense-incite_003_b2",
+          "text": "Her comment was delivered in a whisper rather than a shout.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.91,
+            "incite": 0.19
+          },
+          "decisive_clue": "insult produced visible indignation",
+          "reason": "Whispering changes the volume, not the impact of the insulting comment.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Whispering changes the volume, not the impact of the insulting comment.",
+      "feedback_deep": "The personal insult provoked extreme anger. Whispering changes the volume, not the impact of the insulting comment. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "Judge the response, not the volume.",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incense-incite_004",
+      "edge_id": "incense__incite",
+      "domain": "sports_chat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Pavel’s group message did?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "incense-incite_004_b1",
+          "text": "Pavel told supporters to rush onto the pitch when the final whistle blew.",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "urged supporters to rush onto the field",
+          "reason": "The message pushed others toward a specific breach of the rules.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        },
+        {
+          "id": "incense-incite_004_b2",
+          "text": "He added a map showing the entrance closest to the field.",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "urged supporters to rush onto the field",
+          "reason": "The map helps with logistics but does not change the already explicit push to act.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The map helps with logistics but does not change the already explicit push to act.",
+      "feedback_deep": "The message pushed others toward a specific breach of the rules. The map helps with logistics but does not change the already explicit push to act. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "What behavior was encouraged?",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incense-incite_005",
+      "edge_id": "incense__incite",
+      "domain": "customer_service",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Amira’s email did to the subscribers?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incense-incite_005_b1",
+          "text": "Amira told subscribers their complaints were childish; dozens replied with furious objections.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.91,
+            "incite": 0.19
+          },
+          "decisive_clue": "contemptuous wording aroused intense resentment",
+          "reason": "Subscribers reacted angrily to being dismissed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        },
+        {
+          "id": "incense-incite_005_b2",
+          "text": "Subscribers who had not complained also replied angrily after reading the insult.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.93,
+            "incite": 0.17
+          },
+          "decisive_clue": "the insult provoked anger rather than urging an action",
+          "reason": "The wider angry reaction confirms that the email made recipients furious; it did not direct them toward a particular act.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The wider angry reaction confirms outrage at the insult, not a push toward a particular action.",
+      "feedback_deep": "Subscribers reacted angrily to being dismissed. The wider angry reaction confirms outrage at the insult, not a push toward a particular action. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "Distinguish the recipients’ feelings from instructions.",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "incense-incite_006",
+      "edge_id": "incense__incite",
+      "domain": "neighborhood_cleanup",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Diego’s speech to the volunteers?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "incense-incite_006_b1",
+          "text": "Diego urged volunteers to remove the locked fence from the public path that evening.",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "urges a group to remove a locked barrier",
+          "reason": "He calls for an act rather than merely expressing disgust.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        },
+        {
+          "id": "incense-incite_006_b2",
+          "text": "He repeatedly told them to bring tools and meet there after dark.",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "repeated instructions supply means and time for the action",
+          "reason": "The practical instructions make the mobilizing purpose of his speech unmistakable.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The practical instructions make the mobilizing purpose of his speech unmistakable.",
+      "feedback_deep": "He calls for an act rather than merely expressing disgust. The practical instructions make the mobilizing purpose of his speech unmistakable. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "Is he expressing a feeling or organizing behavior?",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incense-incite_007",
+      "edge_id": "incense__incite",
+      "domain": "online_shopping",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Tessa’s reply did to shoppers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "incense-incite_007_b1",
+          "text": "Tessa answered refund requests by calling the customers greedy; many sent scorching replies.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.91,
+            "incite": 0.19
+          },
+          "decisive_clue": "dismissive insult caused furious reactions",
+          "reason": "Its offensive content provoked outrage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        },
+        {
+          "id": "incense-incite_007_b2",
+          "text": "Her reply used polished grammar and a friendly greeting.",
+          "best_word": "incense",
+          "fit": {
+            "incense": 0.91,
+            "incite": 0.19
+          },
+          "decisive_clue": "dismissive insult caused furious reactions",
+          "reason": "A polite opening cannot undo the anger created by the insulting message.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A polite opening cannot undo the anger created by the insulting message.",
+      "feedback_deep": "Its offensive content provoked outrage. A polite opening cannot undo the anger created by the insulting message. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "Look beyond the greeting.",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incense-incite_008",
+      "edge_id": "incense__incite",
+      "domain": "train-station_gathering",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Hassan’s announcement did?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incense-incite_008_b1",
+          "text": "Hassan told a group to force open a closed station entrance so everyone could board without tickets.",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "announcement pressed others to break into station",
+          "reason": "The announcement solicited rule-breaking behavior.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        },
+        {
+          "id": "incense-incite_008_b2",
+          "text": "He repeated the instruction when some listeners began walking away.",
+          "best_word": "incite",
+          "fit": {
+            "incense": 0.19,
+            "incite": 0.91
+          },
+          "decisive_clue": "repeated urging when listeners hesitated",
+          "reason": "Repeating the order to hesitant listeners strengthens the action-directed meaning.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incense": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Repeating the order to hesitant listeners strengthens the action-directed meaning.",
+      "feedback_deep": "The announcement solicited rule-breaking behavior. Repeating the order to hesitant listeners strengthens the action-directed meaning. Incense creates outrage; incite pushes people to act.",
+      "contrast_rule": "Incense creates outrage; incite pushes people to act.",
+      "hints": {
+        "attention": "What response does the speaker seek?",
+        "axis": "Outrage felt by recipients versus actions the message pushes them to take.",
+        "contrast": "Incense creates outrage; incite pushes people to act."
+      },
+      "qa": "pass"
+    }
+  ]
+}

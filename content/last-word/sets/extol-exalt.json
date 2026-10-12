@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "extol-exalt",
+  "title": "extol / exalt",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[124]",
+    "source_pair_id": 486,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "extol",
+      "sense": "Praise a person or thing enthusiastically and in detail",
+      "connotation": "admiring",
+      "register": "formal",
+      "misconceptions": [
+        "Equating any praise with a rise in rank.",
+        "Assuming official elevation is merely a compliment."
+      ]
+    },
+    {
+      "word": "exalt",
+      "sense": "Raise someone or something to higher dignity, rank, or status",
+      "connotation": "reverential",
+      "register": "formal-to-literary",
+      "misconceptions": [
+        "Equating any praise with a rise in rank.",
+        "Mistaking audience size for the nature of the act."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "enthusiastic_praise_vs_elevated_status",
+      "description": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity."
+    }
+  ],
+  "edges": [
+    {
+      "id": "extol__exalt",
+      "a": "extol",
+      "b": "exalt",
+      "boundary_rule": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity.",
+      "clues_a": [
+        "detailed enthusiastic endorsement",
+        "lists many virtues"
+      ],
+      "clues_b": [
+        "treated as an icon",
+        "officially raised to revered standing"
+      ],
+      "irrelevant_clues": [
+        "length of ceremony",
+        "size of crowd"
+      ],
+      "misconceptions": {
+        "M1": "Equating any praise with a rise in rank.",
+        "M2": "Assuming official elevation is merely a compliment.",
+        "M3": "Mistaking audience size for the nature of the act."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "extol-exalt_001",
+      "edge_id": "extol__exalt",
+      "domain": "school_hall_of_honour",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the school does to Kaito?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extol-exalt_001_b1",
+          "text": "The school places Kaito's portrait above its former champions and names him the model every future athlete should follow.",
+          "best_word": "exalt",
+          "fit": {
+            "exalt": 0.91,
+            "extol": 0.26
+          },
+          "decisive_clue": "elevates him to exceptional symbolic standing",
+          "reason": "The initial evidence is elevates him to exceptional symbolic standing; it best supports exalt.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extol": "M1"
+          }
+        },
+        {
+          "id": "extol-exalt_001_b2",
+          "text": "A new annual prize is created in his name as the highest honour athletes can receive.",
+          "best_word": "exalt",
+          "fit": {
+            "exalt": 0.93,
+            "extol": 0.21
+          },
+          "decisive_clue": "raises his standing into a lasting revered standard",
+          "reason": "The named prize institutionalizes the higher status already conferred.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extol": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The named prize institutionalizes the higher status already conferred.",
+      "feedback_deep": "Extol means celebrate merits verbally or in writing; exalt means elevate standing or place on a pedestal. The named prize institutionalizes the higher status already conferred.",
+      "contrast_rule": "Extol tells why someone is excellent; exalt lifts their standing.",
+      "hints": {
+        "attention": "Did his position change in others' eyes?",
+        "axis": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity.",
+        "contrast": "Extol tells why someone is excellent; exalt lifts their standing."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extol-exalt_002",
+      "edge_id": "extol__exalt",
+      "domain": "book_club_review",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Bianca does for the novel?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extol-exalt_002_b1",
+          "text": "Bianca writes three pages explaining why the novel's dialogue, pacing, characters, and ending work so beautifully.",
+          "best_word": "extol",
+          "fit": {
+            "extol": 0.91,
+            "exalt": 0.26
+          },
+          "decisive_clue": "extended enthusiastic praise of several merits",
+          "reason": "The initial evidence is extended enthusiastic praise of several merits; it best supports extol.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "exalt": "M1"
+          }
+        },
+        {
+          "id": "extol-exalt_002_b2",
+          "text": "She adds examples of sentences she thinks readers should admire.",
+          "best_word": "extol",
+          "fit": {
+            "extol": 0.93,
+            "exalt": 0.21
+          },
+          "decisive_clue": "detailed endorsement supported by examples",
+          "reason": "The examples make the praise richer without granting the book a new rank or status.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "exalt": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The examples make the praise richer without granting the book a new rank or status.",
+      "feedback_deep": "Extol means celebrate merits verbally or in writing; exalt means elevate standing or place on a pedestal. The examples make the praise richer without granting the book a new rank or status.",
+      "contrast_rule": "Extol tells why someone is excellent; exalt lifts their standing.",
+      "hints": {
+        "attention": "Is she praising qualities or changing standing?",
+        "axis": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity.",
+        "contrast": "Extol tells why someone is excellent; exalt lifts their standing."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extol-exalt_003",
+      "edge_id": "extol__exalt",
+      "domain": "neighbourhood_tribute",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the neighbourhood does to Nala?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extol-exalt_003_b1",
+          "text": "Residents place Nala's name at the top of their civic honour roll as the person who best represents the community.",
+          "best_word": "exalt",
+          "fit": {
+            "exalt": 0.91,
+            "extol": 0.26
+          },
+          "decisive_clue": "public elevation to highest civic standing",
+          "reason": "The initial evidence is public elevation to highest civic standing; it best supports exalt.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extol": "M1"
+          }
+        },
+        {
+          "id": "extol-exalt_003_b2",
+          "text": "The unveiling takes place on a rainy afternoon.",
+          "best_word": "exalt",
+          "fit": {
+            "exalt": 0.93,
+            "extol": 0.21
+          },
+          "decisive_clue": "public elevation to highest civic standing",
+          "reason": "Weather cannot alter her newly elevated standing in the community.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extol": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Weather cannot alter her newly elevated standing in the community.",
+      "feedback_deep": "Extol means celebrate merits verbally or in writing; exalt means elevate standing or place on a pedestal. Weather cannot alter her newly elevated standing in the community.",
+      "contrast_rule": "Extol tells why someone is excellent; exalt lifts their standing.",
+      "hints": {
+        "attention": "Look at the place she is given.",
+        "axis": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity.",
+        "contrast": "Extol tells why someone is excellent; exalt lifts their standing."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extol-exalt_004",
+      "edge_id": "extol__exalt",
+      "domain": "team_farewell",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Haris does for his coach?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extol-exalt_004_b1",
+          "text": "Haris spends five minutes describing his coach's patience, thoughtful planning, and support for struggling players.",
+          "best_word": "extol",
+          "fit": {
+            "extol": 0.91,
+            "exalt": 0.26
+          },
+          "decisive_clue": "enthusiastic detailed tribute",
+          "reason": "The initial evidence is enthusiastic detailed tribute; it best supports extol.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "exalt": "M1"
+          }
+        },
+        {
+          "id": "extol-exalt_004_b2",
+          "text": "He uses a microphone borrowed from the cafeteria.",
+          "best_word": "extol",
+          "fit": {
+            "extol": 0.93,
+            "exalt": 0.21
+          },
+          "decisive_clue": "enthusiastic detailed tribute",
+          "reason": "Borrowed equipment does not turn verbal praise into a change of rank.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "exalt": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Borrowed equipment does not turn verbal praise into a change of rank.",
+      "feedback_deep": "Extol means celebrate merits verbally or in writing; exalt means elevate standing or place on a pedestal. Borrowed equipment does not turn verbal praise into a change of rank.",
+      "contrast_rule": "Extol tells why someone is excellent; exalt lifts their standing.",
+      "hints": {
+        "attention": "Focus on what the speech does.",
+        "axis": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity.",
+        "contrast": "Extol tells why someone is excellent; exalt lifts their standing."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extol-exalt_005",
+      "edge_id": "extol__exalt",
+      "domain": "online_product_review",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Amelie does for the headphones?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "extol-exalt_005_b1",
+          "text": "Amelie spends her entire review describing the headphones' rich sound, excellent comfort, solid build, and impressive battery life.",
+          "best_word": "extol",
+          "fit": {
+            "extol": 0.91,
+            "exalt": 0.26
+          },
+          "decisive_clue": "lengthy praise of outstanding product qualities",
+          "reason": "The initial evidence is lengthy praise of outstanding product qualities; it best supports extol.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "exalt": "M1"
+          }
+        },
+        {
+          "id": "extol-exalt_005_b2",
+          "text": "She supports every compliment with a personal example from weeks of use.",
+          "best_word": "extol",
+          "fit": {
+            "extol": 0.93,
+            "exalt": 0.21
+          },
+          "decisive_clue": "sustained detailed commendation",
+          "reason": "The examples strengthen her praise rather than raise an institutionally recognized status.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "exalt": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The examples strengthen her praise rather than raise an institutionally recognized status.",
+      "feedback_deep": "Extol means celebrate merits verbally or in writing; exalt means elevate standing or place on a pedestal. The examples strengthen her praise rather than raise an institutionally recognized status.",
+      "contrast_rule": "Extol tells why someone is excellent; exalt lifts their standing.",
+      "hints": {
+        "attention": "What do all her examples accomplish?",
+        "axis": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity.",
+        "contrast": "Extol tells why someone is excellent; exalt lifts their standing."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "extol-exalt_006",
+      "edge_id": "extol__exalt",
+      "domain": "music_fans",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes how the fan club treats Rafael?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "extol-exalt_006_b1",
+          "text": "The fan club treats Rafael, once a local singer, as the defining cultural symbol of their generation.",
+          "best_word": "exalt",
+          "fit": {
+            "exalt": 0.91,
+            "extol": 0.26
+          },
+          "decisive_clue": "places an artist at a revered symbolic level",
+          "reason": "The initial evidence is places an artist at a revered symbolic level; it best supports exalt.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extol": "M1"
+          }
+        },
+        {
+          "id": "extol-exalt_006_b2",
+          "text": "Members refer to his career as the standard by which every later singer should be judged.",
+          "best_word": "exalt",
+          "fit": {
+            "exalt": 0.93,
+            "extol": 0.21
+          },
+          "decisive_clue": "establishes him as a standard above his peers",
+          "reason": "The comparison changes his standing beyond a list of compliments.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extol": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The comparison changes his standing beyond a list of compliments.",
+      "feedback_deep": "Extol means celebrate merits verbally or in writing; exalt means elevate standing or place on a pedestal. The comparison changes his standing beyond a list of compliments.",
+      "contrast_rule": "Extol tells why someone is excellent; exalt lifts their standing.",
+      "hints": {
+        "attention": "Is he merely admired or placed on a pedestal?",
+        "axis": "Extol means praising qualities enthusiastically; exalt means raising someone or something to a much higher status or dignity.",
+        "contrast": "Extol tells why someone is excellent; exalt lifts their standing."
+      },
+      "qa": "pass"
+    }
+  ]
+}

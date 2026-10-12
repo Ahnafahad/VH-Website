@@ -1,6 +1,6 @@
 # Last Word: final report
 
-**Branch:** `claude/relaxed-goodall-ioky1j`. **Verified:** 2026-10-11 on Windows 11, Node 24.20, against a production build (`next build` + `next start`) with a disposable in-memory database. No production data was written.
+**Branch:** `claude/relaxed-goodall-ioky1j`. **Verified:** 2026-10-11, re-verified 2026-10-12 with the full question bank, on Windows 11, Node 24.20, against a production build (`next build` + `next start`) with a disposable in-memory database. **Production (2026-10-12, with the owner's permission):** migration applied, and the branch merged to `main` and deployed (see "Production").
 
 ## Verification
 
@@ -10,13 +10,13 @@
 | `npm run typecheck` | pass, 0 errors |
 | `npm run lint` | pass, no warnings or errors |
 | `npm test` (Vitest) | **66 files, 623 tests pass**. Last Word: 67 tests in `content.test.ts`, `learning.test.ts`, `database.test.ts` and `asset-checks.test.ts` |
-| `npm run last-word:validate-content` | 9 sets load, 0 broken; 2 chains withheld (see "Content still needed") |
+| `npm run last-word:validate-content` | **200 sets (1,568 chains) load, 0 broken, all approved**; 5 chains withheld (see "Content still needed") |
 | `npm run last-word:validate-assets -- --strict` | 52/52 assets accepted |
 | `npm run build` | pass, 216 static pages |
 | Playwright `tests/last-word/game.spec.ts` (production build) | **10/10 pass** |
 | Playwright `tests/last-word-stack` (dev server) | 2/2 pass |
 | Security review, auth gates (`security-reviewer`) | no critical or high findings; the two low findings were fixed |
-| Read-only recheck of `vocab_word_contrasts` | 888 rows, all `draft`. Untouched. `last_word_*` tables are not in production |
+| Read-only recheck of `vocab_word_contrasts` | 888 rows, all `draft`. Untouched |
 
 Screenshots are in `docs/last-word/screenshots/`: Full desktop home and round, Standard and Lite at 390 px.
 
@@ -35,7 +35,7 @@ Screenshots are in `docs/last-word/screenshots/`: Full desktop home and round, S
 | Reviews test delayed retrieval and transfer | **Pass** | Review mode selects due edges, prefers transfer chains and asks for confidence. A ≥ 7-day gap counts as retention evidence. Unit `review scheduling`, `review mode tests…` |
 | Looks and feels premium without hurting readability | **Pass** (subjective; see screenshots) | Text is plain DOM on a calm card, never over particles. 3D tiles sit behind it. Motion settles before reading |
 | Reduced-motion and low-performance modes keep the full learning interaction | **Pass** | e2e `identical learning outcome` for Full, Standard, Lite, and Full + reduced motion all match one snapshot; `WebGL unavailable falls back to the Lite chamber with the same game` |
-| Content analytics can detect bad questions | **Pass** (logic); no live data yet | `content/quality.ts` flags items strong learners miss, split answers, implausible picks and slow reads, plus position bias. Shown on `/admin/last-word`. Unit `content QA flags (§45)`. Needs the migration and real play to produce data |
+| Content analytics can detect bad questions | **Pass** (logic); collects live data from the 2026-10-12 deploy | `content/quality.ts` flags items strong learners miss, split answers, implausible picks and slow reads, plus position bias. Shown on `/admin/last-word`. Unit `content QA flags (§45)`. Needs the migration and real play to produce data |
 
 ## §50: round quality
 
@@ -57,7 +57,7 @@ Most §50 items are editorial judgements about the wording, which this build can
 
 | Item | Status |
 |---|---|
-| 2–3 word confusion sets | Pass: 4 hand-made sets (one with 3 words) + 5 audited pipeline pairs |
+| 2–3 word confusion sets | Pass: 4 hand-made sets (one with 3 words) + 196 pipeline pairs |
 | 3-beat evolving scenarios | Pass |
 | Stay, flip and false-shift rounds | Pass (plus narrow, reframe, corrupt and rehabilitate in the pipeline sets) |
 | Best/acceptable/incorrect scoring | Pass |
@@ -88,19 +88,34 @@ All 52 are supplied and pass strict validation. Earlier audit results are record
 - Listen to `mastery.mp3` and `perfect-read.mp3`; their shimmer is very quiet.
 - The production backdrop canvas renders the shell at 70% opacity over the backdrop image. If the image alone looks better, delete `model.chamber-shell.*`.
 
-## Content still needed
+## Content
 
-- **No set is approved for players yet.** The 4 hand-made demo sets are `approved`, so the game is playable today. The 5 pipeline sets are `audited` and need an editor's read before `set-status … approved`.
-- **2 chains are withheld until reworded:**
-  - `agnostic-atheist_019`: beat 2 is tagged `rehabilitate` but keeps the same answer.
+- **200 approved sets are live**, 1,568 chains:
+  - 4 hand-made sets.
+  - 196 sets from `last-word-content/output/last-word-question-bank.json` (2026-10-12). Every chain in the bank had passed or been repaired in the independent audit, and the owner approved the bank for play.
+- **One bank set was not imported:** `exorbitance-extravagance` (source pair 775). Its edge names definitions ("unfair/unreasonable demand…") instead of the two words. Skipped; the wording was not changed.
+- **5 chains are withheld until reworded:**
+  - `agnostic-atheist_019`, `purportedly-reportedly_016` and `stigmatize-stereotype_019`: a "rehabilitate" beat keeps the same answer.
+  - `inept-inapt_012`: a "corrupt" beat keeps the same answer.
   - `mortify-horrify_017`: `feedback_short` is 24 words; the maximum is 22.
-- **276 decisive clues are paraphrases.** They work, but are shown quoted instead of highlighted. Future pipeline prompts could ask for exact excerpts.
-- **7 beats have a best fit below 0.7.** Editorial warning.
-- **Scale:** 527 of the 532 flippable pairs have no audited set. Content generation stays outside this repository.
+- **Clue wording:** the bank's clues are paraphrased the same way as before. Only 212 of 3,290 are exact quotes, and 10 more differ only in capitalisation or punctuation. The game now matches clues regardless of capitalisation. The rest are shown quoted under the sentence, not highlighted in it. Making them exact quotes is a wording job for the content pipeline.
+- **6 critic-revised beats have no difficulty ratings.** They play normally; the validator lists them and decisions store `null` for them.
+- **Coverage:** 196 of the 532 flippable curriculum pairs now have content.
 
-## Blocked or not done
+## Production
 
-- **Production migration** is written down in `RUNBOOK.md` §3 and not executed, by instruction. Until then, signed-in saves fail with a retry; guests save locally.
-- **Turso MCP** failed to connect in this session. The read-only recheck ran instead through a one-off `@libsql/client` `SELECT` using the local `.env.local`.
-- **Not verified:** real-device performance (Chromium software rendering only), audio playback on devices, haptics on phones, and the "under two minutes" claim with real learners.
-- **Phase 2 items** (§49) are not built: Daily Chain, Shift/Transfer Run modes, a dedicated "What Would Flip It?" interaction (the feedback counterfactual covers the idea), and teacher-authored sets in the UI.
+- **Database (2026-10-12):** 11 new tables in production, created in one atomic batch:
+  - 5 from `drizzle/0005_last_word.sql`.
+  - 6 for Essays and PrintDesk. These features were on this branch, but their tables had never been created in production. Their `CREATE` statements were generated from `schema.ts` with `drizzle-kit export`.
+- **How it was applied:**
+  - The batch was dry-run first on a disposable database.
+  - It was applied with nothing existing touched: 11 tables and 13 indexes, `CREATE` only.
+  - A check afterwards found production matches every table and column in `schema.ts`.
+  - `drizzle-kit push` was deliberately not used, because of the documented journal desync.
+- **Deploy:** branch merged into `main` and pushed; Vercel builds from `main`.
+- **Content delivery:** the bank (about 5 MB as files) is served as a statically built, cacheable `/api/last-word/content` with unused fields removed, instead of being embedded in every page. `next.config.ts` `outputFileTracingIncludes` ships `content/last-word/sets` with the routes that read it at runtime.
+
+## Not done or not verified
+
+- Real-device performance (Chromium software rendering only), audio playback on devices, haptics on phones, and the "under two minutes" claim with real learners.
+- Phase 2 items (§49): Daily Chain, Shift/Transfer Run modes, a dedicated "What Would Flip It?" interaction (the feedback counterfactual covers the idea), and teacher-authored sets in the UI.

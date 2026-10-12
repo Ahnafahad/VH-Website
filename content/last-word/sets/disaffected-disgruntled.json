@@ -1,0 +1,1500 @@
+{
+  "schema_version": 1,
+  "set_id": "disaffected-disgruntled",
+  "title": "disaffected / disgruntled",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[171]",
+    "source_pair_id": 759,
+    "qa": {
+      "pass": 11,
+      "revised": 9,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "disaffected",
+      "sense": "loss of loyalty due to perceived fundamental failure of the system/leader",
+      "connotation": "serious, ideological, final",
+      "register": "formal to neutral",
+      "misconceptions": [
+        "confusing it with simple annoyance"
+      ]
+    },
+    {
+      "word": "disgruntled",
+      "sense": "dissatisfied, annoyed, sulky, but not necessarily disloyal",
+      "connotation": "petty, temporary, vocal",
+      "register": "neutral",
+      "misconceptions": [
+        "assuming it implies rebellion or breaking ties"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "loyalty_status",
+      "description": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)"
+    },
+    {
+      "id": "grievance_depth",
+      "description": "Specific, incident-focused (disgruntled) vs. Systemic, value-focused (disaffected)"
+    },
+    {
+      "id": "future_intent",
+      "description": "Vocal grumbling within the system (disgruntled) vs. Passive withdrawal or opposition (disaffected)"
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "disaffected": [
+        "After years of corruption, the party members were deeply disaffected and stopped voting.",
+        "The once-loyal staff became disaffected and started looking for jobs elsewhere.",
+        "Disaffected citizens organized their own community services to bypass the failed government.",
+        "The soldiers were disaffected by the senseless orders and abandoned their posts.",
+        "Seeing the mission fail repeatedly, the volunteers became disaffected and ceased their efforts.",
+        "He became disaffected with the company's new philosophy and stopped attending meetings."
+      ],
+      "disgruntled": [
+        "The disgruntled customer demanded a refund because their meal was cold.",
+        "She remained disgruntled about the new office seating arrangement all week.",
+        "The disgruntled team grumbled about the extra hours requested for the project.",
+        "He is just disgruntled because his favorite parking spot was taken.",
+        "Disgruntled by the lack of feedback, the candidate wrote an email asking for a follow-up.",
+        "Despite being disgruntled about the changes, the employees still did their work."
+      ]
+    },
+    "counter": {
+      "disaffected": [
+        "She was disaffected just because she had to wait ten minutes in line.",
+        "The customer was disaffected because the product color was slightly off.",
+        "The team was disaffected because they didn't get to choose the color of the paint.",
+        "He was disaffected that his desk lamp was broken.",
+        "The students were disaffected when the cafeteria ran out of pizza.",
+        "The players were disaffected because the practice field was muddy."
+      ],
+      "disgruntled": [
+        "The entire nation grew disgruntled with the regime and staged a revolution.",
+        "He was so disgruntled by the organization's moral decay that he burned his membership card.",
+        "The movement grew disgruntled and abandoned its original goals entirely.",
+        "The community felt disgruntled toward the entire democratic system.",
+        "After discovering the bank's long-term fraud, he felt disgruntled and quit immediately.",
+        "The voters felt disgruntled with the fundamental nature of the party."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "disaffected__disgruntled",
+      "a": "disaffected",
+      "b": "disgruntled",
+      "boundary_rule": "disaffected implies loss of faith in the institution; disgruntled implies annoyance with specific circumstances.",
+      "clues_a": [
+        "withdrew support",
+        "lost faith",
+        "stopped participating",
+        "abandoned the ideology"
+      ],
+      "clues_b": [
+        "complaining about rules",
+        "grumbling about workload",
+        "annoyed by treatment",
+        "vocal dissatisfaction"
+      ],
+      "irrelevant_clues": [
+        "volume of the person's voice",
+        "duration of the unhappiness",
+        "being angry vs. being sad"
+      ],
+      "misconceptions": {
+        "M1": "thinking all angry employees are disaffected",
+        "M2": "thinking withdrawal must be loud to be disaffected",
+        "M3": "thinking grumbling is always a sign of disaffection"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "disaffected-disgruntled_001",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "corporate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What Maria's attitude toward the recent company changes is: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_001_b1",
+          "text": "Maria complains that the new software update is slower than the previous one.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.2,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "complaining about software",
+          "reason": "Specific annoyance with software performance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_001_b2",
+          "text": "She also grumbles that management never listens to employee feedback on minor UI tweaks.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.3,
+            "disgruntled": 0.8
+          },
+          "decisive_clue": "grumbles about UI tweaks",
+          "reason": "Still specific grievances about minor issues.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Maria's complaints are about specific tools and feedback processes, not the company itself.",
+      "feedback_deep": "Even with multiple complaints, they remain targeted at specific, operational, or minor issues. She is annoyed, but she is still engaged with the tools of the job and giving feedback, showing she hasn't withdrawn her support for the organization.",
+      "contrast_rule": "Grumbling about specific tasks is disgruntled; losing faith in the mission is disaffected.",
+      "hints": {
+        "attention": "Is she unhappy with the entire system, or just the current tools?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Grumbling about specific tasks is disgruntled; losing faith in the mission is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_002",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "university",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What Sarah's feelings about the university administration are: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_002_b1",
+          "text": "Sarah is complaining loudly about the hike in cafeteria prices.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "complaining about cafeteria prices",
+          "reason": "Specific annoyance with service.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_002_b2",
+          "text": "Upon discovering the funds were funneled to private consultants rather than students, she loses all faith in the leadership and joins a boycott.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.2
+          },
+          "decisive_clue": "loses all faith in the leadership and joins a boycott",
+          "reason": "Loss of loyalty and institutional trust leading to active withdrawal.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The realization of betrayal changes the focus from petty annoyance to a complete loss of trust and loyalty.",
+      "feedback_deep": "Initially, Sarah is just annoyed about a price increase (disgruntled). When she discovers corrupt leadership and withdraws her allegiance by joining a boycott, her attitude shifts to disaffected.",
+      "contrast_rule": "A price hike is annoying; a breach of trust is disaffecting.",
+      "hints": {
+        "attention": "Does she care about the money now, or what the money reveals about the leadership?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "A price hike is annoying; a breach of trust is disaffecting."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_003",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "sports",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "What Liam's attitude as a fan of the struggling team is: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_003_b1",
+          "text": "Liam is vocal about the coach's poor player selections.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.2,
+            "disgruntled": 0.8
+          },
+          "decisive_clue": "vocal about player selections",
+          "reason": "Specific annoyance with coaching decisions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_003_b2",
+          "text": "He stops watching the games entirely because he feels the club no longer cares about its original mission.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.2
+          },
+          "decisive_clue": "stops watching; mission failure",
+          "reason": "Total withdrawal based on value misalignment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He moves from complaining to total disengagement from the cause.",
+      "feedback_deep": "Complaining about selections is standard fan grumbling. Stopping support altogether because of a perceived loss of the team's 'original mission' marks a shift to being disaffected, as the bond of trust is broken.",
+      "contrast_rule": "Grumbling is disgruntled; disengagement based on principles is disaffected.",
+      "hints": {
+        "attention": "Does he still want the team to change, or has he given up on them?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Grumbling is disgruntled; disengagement based on principles is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_004",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "household",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "What Hiroshi's attitude toward the shared apartment cleaning schedule is: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_004_b1",
+          "text": "Hiroshi grumbles about the unfair cleaning schedule.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about schedule",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_004_b2",
+          "text": "He also complains that his roommates never buy their own toilet paper.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "complains about toilet paper",
+          "reason": "More specific household grievances.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He is annoyed about two separate issues, but neither indicates a loss of commitment to the household.",
+      "feedback_deep": "This is a false shift. Adding more complaints (about toilet paper) does not change the nature of his unhappiness. He is still vocal and annoyed about specific household tasks, not ideologically disaffected from the living arrangement.",
+      "contrast_rule": "Multiple specific complaints still equal disgruntled.",
+      "hints": {
+        "attention": "Does he hate the apartment, or just his roommates' habits?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Multiple specific complaints still equal disgruntled."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_005",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "What the passenger's attitude toward the airline is: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_005_b1",
+          "text": "The passenger loudly curses the flight delay.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "curses the delay",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_005_b2",
+          "text": "They then mention they will never fly this airline again because of their systematic disregard for safety.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.2
+          },
+          "decisive_clue": "systematic disregard for safety",
+          "reason": "Principles-based withdrawal.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The delay is an annoyance, but safety concerns make them fundamentally distrust the company.",
+      "feedback_deep": "The passenger starts off merely annoyed by the delay (disgruntled). However, they reveal that the delay is symptomatic of a 'systematic disregard for safety,' reframing their annoyance as a fundamental loss of trust, making them disaffected.",
+      "contrast_rule": "Annoyance with delay is disgruntled; distrust of safety standards is disaffected.",
+      "hints": {
+        "attention": "Is the issue the current moment, or the company's integrity?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Annoyance with delay is disgruntled; distrust of safety standards is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_006",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "protest",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What the protester's mood is toward the movement organizers: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_006_b1",
+          "text": "The activist grumbles irritably that the march route was poorly chosen and started an hour late.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about route and delay",
+          "reason": "Specific annoyance with organizational logistics.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_006_b2",
+          "text": "They decide to quit the organization entirely because they believe the leadership has sold out their founding principles.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.1
+          },
+          "decisive_clue": "quit organization; sold out founding principles",
+          "reason": "Complete withdrawal of loyalty due to fundamental ideological betrayal.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Leaving the organization because leaders sold out principles marks a total breakdown of loyalty.",
+      "feedback_deep": "Grumbling about delays and march routes represents surface-level irritation with organizational hiccups (disgruntled). Quitting because the leadership has betrayed its founding ideals marks complete withdrawal of loyalty (disaffected).",
+      "contrast_rule": "Grumbling about logistics is disgruntled; leaving over betrayed principles is disaffected.",
+      "hints": {
+        "attention": "Is the activist irritated by logistical hiccups or alienated from the leadership?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Grumbling about logistics is disgruntled; leaving over betrayed principles is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_007",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "artist",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the member of the art collective is toward the director: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_007_b1",
+          "text": "The artist complains that the director didn't use their painting in the exhibit.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "painting not in exhibit",
+          "reason": "Specific disappointment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_007_b2",
+          "text": "They also grumble that the director's taste is outdated.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumble about taste",
+          "reason": "More specific grievances.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Both complaints are about the director's specific choices, not the collective's values.",
+      "feedback_deep": "The artist is clearly unhappy about their painting and the director's taste, but they are still participating and voicing these complaints within the group. This indicates being disgruntled, not disaffected.",
+      "contrast_rule": "Complaining about personal treatment is disgruntled; losing faith in the collective's purpose is disaffected.",
+      "hints": {
+        "attention": "Is the artist questioning the collective's purpose or just the director's choices?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Complaining about personal treatment is disgruntled; losing faith in the collective's purpose is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_008",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "restaurant",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What the server's mood is toward the restaurant manager: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_008_b1",
+          "text": "The server grumbles that the manager made them work a double shift.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about double shift",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_008_b2",
+          "text": "They also discover the manager is stealing tips from the staff, and they start leaving their station unattended.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.2
+          },
+          "decisive_clue": "manager stealing tips",
+          "reason": "Betrayal/lost loyalty.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The revelation of theft shifts the situation from a complaint about shifts to total loss of trust.",
+      "feedback_deep": "The server starts as disgruntled about a tough shift. When they learn about the theft, they lose faith in the manager, their commitment to the restaurant, and stop doing their work—making them disaffected.",
+      "contrast_rule": "Complaining about hours is disgruntled; loss of trust due to theft is disaffected.",
+      "hints": {
+        "attention": "Did the server's loyalty to the manager change, or just their work load?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Complaining about hours is disgruntled; loss of trust due to theft is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_009",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "orchestra",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the violinist's mood is toward the conductor: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_009_b1",
+          "text": "The violinist complains that the conductor keeps stopping to redo the same bar.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "complains about stopping",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_009_b2",
+          "text": "They also grumble that the conductor has no concept of artistic nuance.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.2,
+            "disgruntled": 0.8
+          },
+          "decisive_clue": "grumble about nuance",
+          "reason": "More specific artistic criticisms.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Both complaints are artistic criticisms within the framework of rehearsals, not a rejection of the orchestra itself.",
+      "feedback_deep": "The violinist is clearly unhappy with the conductor's methods and interpretation. However, they are still participating in the rehearsal process and vocalizing these specific criticisms, showing they are merely disgruntled.",
+      "contrast_rule": "Criticizing rehearsals is disgruntled; rejecting the orchestra is disaffected.",
+      "hints": {
+        "attention": "Does the violinist still play in the orchestra, or are they planning to leave?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Criticizing rehearsals is disgruntled; rejecting the orchestra is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_010",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "retail",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What the shop assistant's mood is toward the regional manager: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_010_b1",
+          "text": "The assistant grumbles about the new, mandatory dress code.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about dress code",
+          "reason": "Specific annoyance with workplace rules.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_010_b2",
+          "text": "After reading a memo showing the manager is arbitrarily firing staff to hit bonus targets, the assistant completely mentally checks out and begins helping union organizers.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.2
+          },
+          "decisive_clue": "mentally checks out and begins helping union organizers",
+          "reason": "Systemic betrayal leading to loss of loyalty and active alienation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The revelation of predatory management moves the assistant from being annoyed by rules to actively withdrawing loyalty.",
+      "feedback_deep": "Initially, the assistant is just annoyed by the dress code (disgruntled). Discovering that management abuses employees for bonuses breaks their institutional loyalty entirely, making them disaffected.",
+      "contrast_rule": "Annoyance with dress code is disgruntled; alienation and loss of loyalty is disaffected.",
+      "hints": {
+        "attention": "Does the assistant just dislike the new rules, or have they lost faith in management?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Annoyance with dress code is disgruntled; alienation and loss of loyalty is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_011",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "family",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "What the cousin's attitude toward the family business is: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_011_b1",
+          "text": "The cousin constantly grumbles that they never get weekends off.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about weekends off",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_011_b2",
+          "text": "They finally quit, realizing the family's traditional business model has no future.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.1
+          },
+          "decisive_clue": "business model has no future",
+          "reason": "Loss of belief in model.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Quitting due to lack of faith in the business model is a deeper issue than just wanting time off.",
+      "feedback_deep": "The cousin is disgruntled about hours, but the decision to leave because they don't believe in the business model shows a loss of belief in the institution (the family business) itself, making them disaffected.",
+      "contrast_rule": "Complaining about hours is disgruntled; quitting due to business model failure is disaffected.",
+      "hints": {
+        "attention": "Is the issue the schedule, or the business's future?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Complaining about hours is disgruntled; quitting due to business model failure is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_012",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "tech",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the programmer's mood is toward the product owner: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_012_b1",
+          "text": "The programmer grumbles that the product owner changes the specifications every week.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about changing specs",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_012_b2",
+          "text": "They also complain that the product owner doesn't understand technical debt.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "complains about technical debt understanding",
+          "reason": "More technical grievances.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "These are complaints about specific management failures, not a total breakdown of the programmer's trust in the product.",
+      "feedback_deep": "The programmer is annoyed by management and their decisions, but this is a technical professional expressing frustration with the job's current environment. They are disgruntled, but haven't given up on the project.",
+      "contrast_rule": "Complaining about management decisions is disgruntled; giving up on the mission is disaffected.",
+      "hints": {
+        "attention": "Is the programmer complaining about how things are run or the project's goal?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Complaining about management decisions is disgruntled; giving up on the mission is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_013",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "hospital",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What the nurse's mood is toward the hospital administration: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_013_b1",
+          "text": "The nurse is grumbling about the faulty equipment in the ward.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbling about faulty equipment",
+          "reason": "Specific annoyance with tools and resources.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_013_b2",
+          "text": "Learning that leadership cut safety budgets purely to fund executive bonuses, the nurse feels completely alienated and stops volunteering for extra duties.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.1
+          },
+          "decisive_clue": "feels completely alienated and stops volunteering",
+          "reason": "Loss of loyalty and trust resulting in withdrawal of commitment.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The realization that leadership prioritized greed over patient safety causes the nurse to withdraw all goodwill.",
+      "feedback_deep": "The nurse starts disgruntled by faulty equipment. Learning that the administration prioritized bonuses over hospital safety is a betrayal that fundamentally shatters their institutional commitment, making them disaffected.",
+      "contrast_rule": "Complaining about equipment is disgruntled; withdrawal of loyalty due to corruption is disaffected.",
+      "hints": {
+        "attention": "Is the issue just the equipment, or what the administration prioritized over it?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Complaining about equipment is disgruntled; withdrawal of loyalty due to corruption is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_014",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "volunteering",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "What the volunteer's mood is toward the charity's local office: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_014_b1",
+          "text": "The volunteer is grumbling about the disorganized storage room.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbling about storage",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_014_b2",
+          "text": "They also complain that the staff doesn't provide enough snacks during long shifts.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "complains about snacks",
+          "reason": "More specific complaints.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Both are minor, specific complaints that don't indicate a loss of commitment to the charity's mission.",
+      "feedback_deep": "This is a false shift. Adding another petty complaint (about snacks) does not change the situation from disgruntled to disaffected. The volunteer is still there, still complaining, and still participating.",
+      "contrast_rule": "Multiple complaints about petty things are still disgruntled.",
+      "hints": {
+        "attention": "Does the volunteer still believe in the charity, or are they just annoyed by small issues?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Multiple complaints about petty things are still disgruntled."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_015",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "library",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the librarian's mood is toward the head librarian: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_015_b1",
+          "text": "The librarian grumbles that the new cataloging system takes twice as long to update.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about cataloging system",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_015_b2",
+          "text": "They also complain that the head librarian won't authorize money for new books.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.2,
+            "disgruntled": 0.8
+          },
+          "decisive_clue": "complains about book money",
+          "reason": "More specific grievances.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Both complaints focus on specific management choices and resource allocation within the library.",
+      "feedback_deep": "The librarian is annoyed by the new system and the lack of funding. However, these are professional frustrations that haven't led them to give up their belief in the library's purpose, keeping them disgruntled.",
+      "contrast_rule": "Complaining about management's decisions is disgruntled; losing faith in the library is disaffected.",
+      "hints": {
+        "attention": "Is the librarian complaining about the system or the institution's purpose?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Complaining about management's decisions is disgruntled; losing faith in the library is disaffected."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disaffected-disgruntled_016",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "construction",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What the construction worker's attitude toward the foreman is: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_016_b1",
+          "text": "The worker grumbles that the foreman never listens to advice on the safest way to lift heavy materials.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about lifting advice",
+          "reason": "Specific annoyance with supervisor's daily habits.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_016_b2",
+          "text": "Upon discovering the foreman has been endangering the crew with defective materials to pocket kickbacks, the worker loses all respect for his authority and walks off the job.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.1
+          },
+          "decisive_clue": "loses all respect for authority and walks off",
+          "reason": "Complete breakdown of institutional trust and withdrawal of cooperation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Discovering corrupt endangerment transforms supervisory annoyance into total loss of loyalty and withdrawal.",
+      "feedback_deep": "The worker is first just annoyed about being ignored (disgruntled). When they realize the foreman's corruption endangers everyone for profit, their trust in his leadership is shattered, making them disaffected.",
+      "contrast_rule": "Annoyance with advice is disgruntled; loss of trust due to danger and corruption is disaffected.",
+      "hints": {
+        "attention": "Did the foreman's behavior just become more annoying, or fundamentally dishonest?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Annoyance with advice is disgruntled; loss of trust due to danger and corruption is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_017",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "research",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "What the researcher's mood is toward the lab director: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_017_b1",
+          "text": "The researcher is grumbling that they have to work late on a Saturday.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbling about Saturday work",
+          "reason": "Specific annoyance with scheduling.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_017_b2",
+          "text": "Discovering that the director has been falsifying experimental data to win grants, the researcher loses all faith in the project and stops collaborating.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.1
+          },
+          "decisive_clue": "loses all faith in project and stops collaborating",
+          "reason": "Betrayal of core scientific integrity leading to complete loss of loyalty.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Falsifying data is a fundamental breach of scientific trust, making the researcher disaffected.",
+      "feedback_deep": "Working late is annoying (disgruntled). Discovering that their lab's research is built on fraud causes the researcher to lose all faith in the director and withdraw participation, making them disaffected.",
+      "contrast_rule": "Working late is disgruntled; falsifying data and losing loyalty is disaffected.",
+      "hints": {
+        "attention": "Does the researcher still care about the lab's scientific integrity?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Working late is disgruntled; falsifying data and losing loyalty is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_018",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "What Hiro's attitude toward his domestic partner is: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_018_b1",
+          "text": "Hiro grumbles loudly every night when he finds the sink full of dishes.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbles about dishes",
+          "reason": "Specific annoyance with chores.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_018_b2",
+          "text": "He also complains that his partner never remembers to take out the trash.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "complains about trash",
+          "reason": "More specific domestic grievances.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        }
+      ],
+      "feedback_short": "These are persistent complaints about household chores, but they haven't led him to lose faith in the relationship.",
+      "feedback_deep": "Hiro is clearly annoyed and vocal about his partner's messy habits. However, these are specific, recurring domestic frustrations that keep him merely disgruntled, as he hasn't questioned the relationship itself.",
+      "contrast_rule": "Grumbling about chores is disgruntled; questioning the relationship's foundation is disaffected.",
+      "hints": {
+        "attention": "Is Hiro unhappy with his partner's habits, or with their fundamental connection?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Grumbling about chores is disgruntled; questioning the relationship's foundation is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_019",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "What the team captain's mood is toward the team owner: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_019_b1",
+          "text": "The captain is grumbling that they were forced to train at 6 AM.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbling about 6 AM",
+          "reason": "Specific annoyance with training schedule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_019_b2",
+          "text": "When the captain learns the owner is selling the club to rivals and gutting the staff, he strips off his armband and refuses to play.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.1
+          },
+          "decisive_clue": "strips off armband and refuses to play",
+          "reason": "Betrayal of club loyalty leading to complete withdrawal of allegiance.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Selling the club and betraying loyal staff leads the captain to forfeit allegiance entirely.",
+      "feedback_deep": "Early on, the captain is just grumpy about training hours (disgruntled). Learning that the owner is liquidating the team shatters his institutional loyalty, making him disaffected.",
+      "contrast_rule": "Complaining about training is disgruntled; loss of faith due to betrayal is disaffected.",
+      "hints": {
+        "attention": "Does the captain care about the hours now, or the owner's betrayal?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Complaining about training is disgruntled; loss of faith due to betrayal is disaffected."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disaffected-disgruntled_020",
+      "edge_id": "disaffected__disgruntled",
+      "domain": "transport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "What the commuter's attitude toward the public bus system is: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disaffected-disgruntled_020_b1",
+          "text": "The commuter is grumbling that the bus is late again.",
+          "best_word": "disgruntled",
+          "fit": {
+            "disaffected": 0.1,
+            "disgruntled": 0.9
+          },
+          "decisive_clue": "grumbling about lateness",
+          "reason": "Specific annoyance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "disaffected": "M1"
+          }
+        },
+        {
+          "id": "disaffected-disgruntled_020_b2",
+          "text": "They eventually stop using the bus entirely, convinced the city intentionally neglects this route.",
+          "best_word": "disaffected",
+          "fit": {
+            "disaffected": 0.9,
+            "disgruntled": 0.1
+          },
+          "decisive_clue": "stop using bus; city neglect",
+          "reason": "Loss of faith/withdrawal.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgruntled": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Stopping support based on perceived city neglect is a systemic issue, deeper than lateness.",
+      "feedback_deep": "The commuter is disgruntled about lateness. Convinced that the city is intentionally neglecting the route, they stop participating (using the bus) altogether, showing they are disaffected from the system.",
+      "contrast_rule": "Annoyance with lateness is disgruntled; withdrawal due to systemic distrust is disaffected.",
+      "hints": {
+        "attention": "Is the commuter just waiting for the bus, or have they fundamentally given up on the service?",
+        "axis": "Intact but unhappy (disgruntled) vs. Compromised/withdrawn (disaffected)",
+        "contrast": "Annoyance with lateness is disgruntled; withdrawal due to systemic distrust is disaffected."
+      },
+      "qa": "pass"
+    }
+  ]
+}

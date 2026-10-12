@@ -1,0 +1,492 @@
+{
+  "schema_version": 1,
+  "set_id": "polarize-politicize",
+  "title": "polarize / politicize",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[11]",
+    "source_pair_id": 37,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 4
+    }
+  },
+  "words": [
+    {
+      "word": "polarize",
+      "sense": "Divide people into sharply opposed groups with little middle ground",
+      "connotation": "often critical",
+      "register": "standard/formal",
+      "misconceptions": [
+        "Any political issue has polarized people",
+        "Public attention is the same as either process"
+      ]
+    },
+    {
+      "word": "politicize",
+      "sense": "Turn a previously nonpolitical issue into a subject of political argument or competition",
+      "connotation": "neutral or critical",
+      "register": "standard/formal",
+      "misconceptions": [
+        "Sharp disagreement must involve politics",
+        "Public attention is the same as either process"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "division_intensity",
+      "description": "Whether the scene turns on division intensity."
+    },
+    {
+      "id": "political_framing",
+      "description": "Whether the scene turns on political framing."
+    }
+  ],
+  "edges": [
+    {
+      "id": "polarize__politicize",
+      "a": "polarize",
+      "b": "politicize",
+      "boundary_rule": "Polarize means create sharply hostile camps; politicize means bring an issue into politics, even if views remain varied.",
+      "clues_a": [
+        "opposed camps",
+        "hostile division",
+        "no moderate position"
+      ],
+      "clues_b": [
+        "party campaigns",
+        "electoral debate",
+        "politicians adopt an issue"
+      ],
+      "irrelevant_clues": [
+        "a larger audience",
+        "a meeting room",
+        "a newspaper photograph"
+      ],
+      "misconceptions": {
+        "M1": "Any political issue has polarized people",
+        "M2": "Sharp disagreement must involve politics",
+        "M3": "Public attention is the same as either process"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "polarize-politicize_001",
+      "edge_id": "polarize__politicize",
+      "domain": "school_uniform_debate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes what Anika’s uniform petition did?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "polarize-politicize_001_b1",
+          "text": "Anika got local candidates to put school uniforms in their election speeches.",
+          "best_word": "politicize",
+          "fit": {
+            "polarize": 0.32,
+            "politicize": 0.93
+          },
+          "decisive_clue": "turned uniforms into electoral issue",
+          "reason": "The detail about turned uniforms into electoral issue supports politicize more strongly than polarize.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "polarize": "M3"
+          }
+        },
+        {
+          "id": "polarize-politicize_001_b2",
+          "text": "Her campaign soon split parents into two angry groups that refused any compromise on uniforms.",
+          "best_word": "polarize",
+          "fit": {
+            "polarize": 0.96,
+            "politicize": 0.2
+          },
+          "decisive_clue": "left two hostile camps",
+          "reason": "The detail about left two hostile camps supports polarize more strongly than politicize.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "politicize": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Left two hostile camps makes polarize the better description.",
+      "feedback_deep": "Initially, turned uniforms into electoral issue points toward politicize. The new detail, left two hostile camps, instead makes polarize the stronger choice. Polarize means create sharply hostile camps; politicize means bring an issue into politics, even if views remain varied.",
+      "contrast_rule": "Polarize divides into camps; politicize brings into politics.",
+      "hints": {
+        "attention": "Look for a change in public alignment, not just increased attention.",
+        "axis": "Whether the scene turns on division intensity.",
+        "contrast": "Polarize divides into camps; politicize brings into politics."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "polarize-politicize_002",
+      "edge_id": "polarize__politicize",
+      "domain": "neighbourhood_garden",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Rafi did to the garden proposal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "polarize-politicize_002_b1",
+          "text": "Rafi persuaded two council candidates to discuss funding the garden at a public debate.",
+          "best_word": "politicize",
+          "fit": {
+            "polarize": 0.36,
+            "politicize": 0.96
+          },
+          "decisive_clue": "candidates debated the issue",
+          "reason": "The detail about candidates debated the issue supports politicize more strongly than polarize.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "polarize": "M1"
+          }
+        },
+        {
+          "id": "polarize-politicize_002_b2",
+          "text": "Residents still suggested several mixed options for sharing the space.",
+          "best_word": "politicize",
+          "fit": {
+            "polarize": 0.24,
+            "politicize": 0.88
+          },
+          "decisive_clue": "plenty of middle-ground views",
+          "reason": "The detail about plenty of middle-ground views supports politicize more strongly than polarize.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "polarize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Plenty of middle-ground views leaves politicize the better fit.",
+      "feedback_deep": "The first clue is candidates debated the issue. The later clue is plenty of middle-ground views; that strengthens or preserves the same classification. Polarize means create sharply hostile camps; politicize means bring an issue into politics, even if views remain varied.",
+      "contrast_rule": "Polarize divides into camps; politicize brings into politics.",
+      "hints": {
+        "attention": "Look for a change in public alignment, not just increased attention.",
+        "axis": "Whether the scene turns on division intensity.",
+        "contrast": "Polarize divides into camps; politicize brings into politics."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "polarize-politicize_003",
+      "edge_id": "polarize__politicize",
+      "domain": "office_lunch_policy",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the effect of Camila’s lunch-policy message?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "polarize-politicize_003_b1",
+          "text": "Camila’s message split colleagues into rival groups that stopped eating together over the new policy.",
+          "best_word": "polarize",
+          "fit": {
+            "polarize": 0.88,
+            "politicize": 0.2
+          },
+          "decisive_clue": "sharp hostility between groups",
+          "reason": "The detail about sharp hostility between groups supports polarize more strongly than politicize.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "politicize": "M2"
+          }
+        },
+        {
+          "id": "polarize-politicize_003_b2",
+          "text": "Even a suggestion to try the policy for one week was rejected by both groups.",
+          "best_word": "polarize",
+          "fit": {
+            "polarize": 0.91,
+            "politicize": 0.28
+          },
+          "decisive_clue": "rejection of middle ground",
+          "reason": "The detail about rejection of middle ground supports polarize more strongly than politicize.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "politicize": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Rejection of middle ground leaves polarize the better fit.",
+      "feedback_deep": "The first clue is sharp hostility between groups. The later clue is rejection of middle ground; that strengthens or preserves the same classification. Polarize means create sharply hostile camps; politicize means bring an issue into politics, even if views remain varied.",
+      "contrast_rule": "Polarize divides into camps; politicize brings into politics.",
+      "hints": {
+        "attention": "Look for a change in public alignment, not just increased attention.",
+        "axis": "Whether the scene turns on division intensity.",
+        "contrast": "Polarize divides into camps; politicize brings into politics."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "polarize-politicize_004",
+      "edge_id": "polarize__politicize",
+      "domain": "football_team_selection",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Arjun did to the team-selection question?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "polarize-politicize_004_b1",
+          "text": "Arjun asked student election candidates to promise a new team-selection process.",
+          "best_word": "politicize",
+          "fit": {
+            "polarize": 0.24,
+            "politicize": 0.91
+          },
+          "decisive_clue": "brought question into election politics",
+          "reason": "The detail about brought question into election politics supports politicize more strongly than polarize.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "polarize": "M3"
+          }
+        },
+        {
+          "id": "polarize-politicize_004_b2",
+          "text": "Candidates included the issue in campaign leaflets, without dividing players into fixed sides.",
+          "best_word": "politicize",
+          "fit": {
+            "polarize": 0.32,
+            "politicize": 0.93
+          },
+          "decisive_clue": "campaign activity but no hostile camps",
+          "reason": "The detail about campaign activity but no hostile camps supports politicize more strongly than polarize.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "polarize": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Campaign activity but no hostile camps makes politicize an even clearer fit.",
+      "feedback_deep": "The first clue is brought question into election politics. The later clue is campaign activity but no hostile camps; that strengthens or preserves the same classification. Polarize means create sharply hostile camps; politicize means bring an issue into politics, even if views remain varied.",
+      "contrast_rule": "Polarize divides into camps; politicize brings into politics.",
+      "hints": {
+        "attention": "Look for a change in public alignment, not just increased attention.",
+        "axis": "Whether the scene turns on division intensity.",
+        "contrast": "Polarize divides into camps; politicize brings into politics."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "polarize-politicize_006",
+      "edge_id": "polarize__politicize",
+      "domain": "video_platform",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Victor’s post did to the app-fee discussion?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "polarize-politicize_006_b1",
+          "text": "Victor’s post provoked two angry camps, each blocking anyone who suggested a compromise.",
+          "best_word": "polarize",
+          "fit": {
+            "polarize": 0.96,
+            "politicize": 0.32
+          },
+          "decisive_clue": "two hostile camps and no compromise",
+          "reason": "The detail about two hostile camps and no compromise supports polarize more strongly than politicize.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "politicize": "M2"
+          }
+        },
+        {
+          "id": "polarize-politicize_006_b2",
+          "text": "The video happened to have cheerful background music.",
+          "best_word": "polarize",
+          "fit": {
+            "polarize": 0.88,
+            "politicize": 0.2
+          },
+          "decisive_clue": "music does not soften the divide",
+          "reason": "The detail about music does not soften the divide supports polarize more strongly than politicize.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "politicize": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Two hostile camps and no compromise still matters; music does not soften the divide does not change the answer.",
+      "feedback_deep": "The first clue is two hostile camps and no compromise. The later clue is music does not soften the divide; that does not touch the decisive difference. Polarize means create sharply hostile camps; politicize means bring an issue into politics, even if views remain varied.",
+      "contrast_rule": "Polarize divides into camps; politicize brings into politics.",
+      "hints": {
+        "attention": "Look for a change in public alignment, not just increased attention.",
+        "axis": "Whether the scene turns on division intensity.",
+        "contrast": "Polarize divides into camps; politicize brings into politics."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "polarize-politicize_008",
+      "edge_id": "polarize__politicize",
+      "domain": "sports_centre_funding",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes what Javier did to the sports-centre budget?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "polarize-politicize_008_b1",
+          "text": "Javier made the budget a major topic in the council election.",
+          "best_word": "politicize",
+          "fit": {
+            "polarize": 0.2,
+            "politicize": 0.91
+          },
+          "decisive_clue": "election campaigning",
+          "reason": "The detail about election campaigning supports politicize more strongly than polarize.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "polarize": "M1"
+          }
+        },
+        {
+          "id": "polarize-politicize_008_b2",
+          "text": "Candidates from several parties still agreed on basic repairs and avoided turning the issue into a bitter dispute.",
+          "best_word": "politicize",
+          "fit": {
+            "polarize": 0.28,
+            "politicize": 0.93
+          },
+          "decisive_clue": "politics without entrenched opposition",
+          "reason": "The detail about politics without entrenched opposition supports politicize more strongly than polarize.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "polarize": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Politics without entrenched opposition leaves politicize the better fit.",
+      "feedback_deep": "The first clue is election campaigning. The later clue is politics without entrenched opposition; that strengthens or preserves the same classification. Polarize means create sharply hostile camps; politicize means bring an issue into politics, even if views remain varied.",
+      "contrast_rule": "Polarize divides into camps; politicize brings into politics.",
+      "hints": {
+        "attention": "Look for a change in public alignment, not just increased attention.",
+        "axis": "Whether the scene turns on division intensity.",
+        "contrast": "Polarize divides into camps; politicize brings into politics."
+      },
+      "qa": "pass"
+    }
+  ]
+}

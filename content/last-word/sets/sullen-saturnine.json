@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "set_id": "sullen-saturnine",
+  "title": "sullen / saturnine",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[189]",
+    "source_pair_id": 862,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "sullen",
+      "sense": "Withdrawn and ill-tempered, typically because of a particular hurt or resentment.",
+      "connotation": "negative",
+      "register": "general",
+      "misconceptions": [
+        "Any serious-looking person is sulking about something."
+      ]
+    },
+    {
+      "word": "saturnine",
+      "sense": "Marked by a lasting disposition toward dark, somber moods.",
+      "connotation": "somber, literary",
+      "register": "literary",
+      "misconceptions": [
+        "A temporary offended silence proves a permanent temperament."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "decisive_boundary",
+      "description": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition."
+    }
+  ],
+  "edges": [
+    {
+      "id": "sullen__saturnine",
+      "a": "sullen",
+      "b": "saturnine",
+      "boundary_rule": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition.",
+      "clues_a": [
+        "withdraws after disappointment",
+        "bristles at attempts to talk"
+      ],
+      "clues_b": [
+        "somber in many situations",
+        "long-standing disposition"
+      ],
+      "irrelevant_clues": [
+        "weather",
+        "clothing colors"
+      ],
+      "misconceptions": {
+        "M1": "Any serious-looking person is sulking about something.",
+        "M2": "A temporary offended silence proves a permanent temperament.",
+        "M3": "Quiet speech automatically means resentment."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "sullen-saturnine_001",
+      "edge_id": "sullen__saturnine",
+      "domain": "football_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which adjective best describes Elias after team selection?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sullen-saturnine_001_b1",
+          "text": "After being left off the team, Elias sat apart, frowned, and refused to answer friendly questions.",
+          "best_word": "sullen",
+          "fit": {
+            "sullen": 0.91,
+            "saturnine": 0.26
+          },
+          "decisive_clue": "resentful withdrawal after rejection",
+          "reason": "His mood follows a specific disappointment and turns others away.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M2"
+          }
+        },
+        {
+          "id": "sullen-saturnine_001_b2",
+          "text": "He remained silent while the rest of the players packed their bags.",
+          "best_word": "sullen",
+          "fit": {
+            "sullen": 0.95,
+            "saturnine": 0.26
+          },
+          "decisive_clue": "offended withdrawal continues after selection",
+          "reason": "The continued silence belongs to the same disappointed mood.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Elias turns away after being excluded; his silence reflects that specific disappointment.",
+      "feedback_deep": "Sullen describes resentful withdrawal after an upsetting event. Saturnine suggests a broad, habitual somber disposition, which a single episode does not establish.",
+      "contrast_rule": "Sullen broods over a slight; saturnine carries a lasting shadow.",
+      "hints": {
+        "attention": "Look at what happened immediately before his mood changed.",
+        "axis": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition.",
+        "contrast": "Sullen broods over a slight; saturnine carries a lasting shadow."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sullen-saturnine_002",
+      "edge_id": "sullen__saturnine",
+      "domain": "family_celebrations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which adjective best describes Miriam’s usual manner?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sullen-saturnine_002_b1",
+          "text": "For years, Miriam has rarely laughed or shown excitement, even at the happiest family gatherings.",
+          "best_word": "saturnine",
+          "fit": {
+            "sullen": 0.26,
+            "saturnine": 0.91
+          },
+          "decisive_clue": "years of somber conduct across happy occasions",
+          "reason": "This is a lasting way of being, not one offended reaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        },
+        {
+          "id": "sullen-saturnine_002_b2",
+          "text": "At her own birthday dinner, she gave the same quiet, unsmiling thanks after receiving the gifts she wanted.",
+          "best_word": "saturnine",
+          "fit": {
+            "sullen": 0.26,
+            "saturnine": 0.95
+          },
+          "decisive_clue": "the same long-standing reserve persists during pleasure",
+          "reason": "The later occasion reinforces a stable temperament.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Miriam’s somber manner persists even when she receives something she wants.",
+      "feedback_deep": "Saturnine is about someone’s characteristic gloom. Sullen usually implies ill-tempered withdrawal connected with resentment or disappointment.",
+      "contrast_rule": "Sullen broods over a slight; saturnine carries a lasting shadow.",
+      "hints": {
+        "attention": "Consider the pattern over years, not one evening.",
+        "axis": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition.",
+        "contrast": "Sullen broods over a slight; saturnine carries a lasting shadow."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sullen-saturnine_003",
+      "edge_id": "sullen__saturnine",
+      "domain": "exam_results",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which adjective best describes Nia’s reaction to her grade?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sullen-saturnine_003_b1",
+          "text": "After seeing the mark she disliked, Nia folded her arms, stared at the floor, and snapped at friends who approached.",
+          "best_word": "sullen",
+          "fit": {
+            "sullen": 0.91,
+            "saturnine": 0.26
+          },
+          "decisive_clue": "resentful reaction to a disappointing mark",
+          "reason": "Her withdrawal and irritation have a clear trigger.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M2"
+          }
+        },
+        {
+          "id": "sullen-saturnine_003_b2",
+          "text": "The grade was printed on blue paper rather than white.",
+          "best_word": "sullen",
+          "fit": {
+            "sullen": 0.95,
+            "saturnine": 0.26
+          },
+          "decisive_clue": "resentment over the mark remains regardless of paper color",
+          "reason": "The paper does not explain the bad-tempered response.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Nia’s irritated withdrawal follows the grade; the paper color has no bearing.",
+      "feedback_deep": "Sullen is a mood of withdrawn resentment. The trigger and her response matter; incidental presentation details do not establish a lifelong gloomy character.",
+      "contrast_rule": "Sullen broods over a slight; saturnine carries a lasting shadow.",
+      "hints": {
+        "attention": "Find the cause of her withdrawal.",
+        "axis": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition.",
+        "contrast": "Sullen broods over a slight; saturnine carries a lasting shadow."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "sullen-saturnine_004",
+      "edge_id": "sullen__saturnine",
+      "domain": "neighbor_conversations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which adjective best describes Kenji’s general manner?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sullen-saturnine_004_b1",
+          "text": "For as long as anyone remembers, Kenji has greeted neighbors with an unsmiling face and a low, flat voice.",
+          "best_word": "saturnine",
+          "fit": {
+            "sullen": 0.26,
+            "saturnine": 0.91
+          },
+          "decisive_clue": "persistent somber demeanor across years",
+          "reason": "No particular recent slight is offered as the cause.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        },
+        {
+          "id": "sullen-saturnine_004_b2",
+          "text": "He responds in the same subdued way even on the day his long-awaited holiday begins.",
+          "best_word": "saturnine",
+          "fit": {
+            "sullen": 0.26,
+            "saturnine": 0.95
+          },
+          "decisive_clue": "habitual gravity persists during a welcome event",
+          "reason": "A happy occasion does not change the established pattern.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Kenji’s serious manner is long-standing, even when something pleasant happens.",
+      "feedback_deep": "Saturnine characterizes an enduring gloomy temperament. Sullen would more strongly suggest sulking or offended silence caused by a particular event.",
+      "contrast_rule": "Sullen broods over a slight; saturnine carries a lasting shadow.",
+      "hints": {
+        "attention": "Decide whether this is a mood or a disposition.",
+        "axis": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition.",
+        "contrast": "Sullen broods over a slight; saturnine carries a lasting shadow."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sullen-saturnine_005",
+      "edge_id": "sullen__saturnine",
+      "domain": "shared_housing",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which adjective best describes Ada’s response at home?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sullen-saturnine_005_b1",
+          "text": "After her roommates borrowed her food without asking, Ada stayed in her room and answered invitations with short, irritated replies.",
+          "best_word": "sullen",
+          "fit": {
+            "sullen": 0.91,
+            "saturnine": 0.26
+          },
+          "decisive_clue": "specific grievance drives withdrawn irritation",
+          "reason": "The behavior reflects resentment about the borrowed food.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M2"
+          }
+        },
+        {
+          "id": "sullen-saturnine_005_b2",
+          "text": "She still checked every message they sent, but replied only with a curt “fine.”",
+          "best_word": "sullen",
+          "fit": {
+            "sullen": 0.95,
+            "saturnine": 0.26
+          },
+          "decisive_clue": "resentful refusal of warm interaction continues",
+          "reason": "The terse reply develops the immediate grievance, not a permanent nature.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "saturnine": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Ada’s curt replies reflect a recent grievance rather than a lifelong disposition.",
+      "feedback_deep": "Sullen means brooding, bad-tempered withdrawal. Saturnine instead describes a person characteristically inclined to gloom in many situations.",
+      "contrast_rule": "Sullen broods over a slight; saturnine carries a lasting shadow.",
+      "hints": {
+        "attention": "Focus on the grievance behind the curt replies.",
+        "axis": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition.",
+        "contrast": "Sullen broods over a slight; saturnine carries a lasting shadow."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sullen-saturnine_006",
+      "edge_id": "sullen__saturnine",
+      "domain": "part-time_library_work",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which adjective best describes Yusuf’s usual demeanor?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sullen-saturnine_006_b1",
+          "text": "For many years, Yusuf has rarely smiled and has spoken in a low, heavy tone at work, on trips, and during family games.",
+          "best_word": "saturnine",
+          "fit": {
+            "sullen": 0.26,
+            "saturnine": 0.91
+          },
+          "decisive_clue": "similar grave manner across settings over many years",
+          "reason": "His mood appears characteristic rather than reactive.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        },
+        {
+          "id": "sullen-saturnine_006_b2",
+          "text": "He is polite and helps visitors whenever they ask.",
+          "best_word": "saturnine",
+          "fit": {
+            "sullen": 0.26,
+            "saturnine": 0.95
+          },
+          "decisive_clue": "habitual somber appearance despite considerate behavior",
+          "reason": "Kindness does not rule out a grave temperament.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sullen": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Yusuf can be consistently somber while still treating others kindly.",
+      "feedback_deep": "Saturnine need not imply hostility; it describes enduring gloom. Sullen more directly suggests resentful, ill-tempered withdrawal from others.",
+      "contrast_rule": "Sullen broods over a slight; saturnine carries a lasting shadow.",
+      "hints": {
+        "attention": "Distinguish temperament from how politely he treats people.",
+        "axis": "Sullen is a resentful or sulky response to something; saturnine is a more enduring somber disposition.",
+        "contrast": "Sullen broods over a slight; saturnine carries a lasting shadow."
+      },
+      "qa": "pass"
+    }
+  ]
+}

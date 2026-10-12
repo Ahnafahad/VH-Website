@@ -1,0 +1,411 @@
+{
+  "schema_version": 1,
+  "set_id": "cynic-skeptic",
+  "title": "cynic / skeptic",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[66]",
+    "source_pair_id": 309,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "cynic",
+      "sense": "distrust of human goodness",
+      "connotation": "negative, distrustful",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Mistaking motive accusations for evidence-seeking"
+      ]
+    },
+    {
+      "word": "skeptic",
+      "sense": "doubt pending evidence",
+      "connotation": "often neutral, questioning",
+      "register": "neutral",
+      "misconceptions": [
+        "Mistaking evidence-seeking for accusations of selfishness"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "assumption_about_motives",
+      "description": "Automatic selfish-motive attribution versus open-minded questioning"
+    }
+  ],
+  "edges": [
+    {
+      "id": "cynic__skeptic",
+      "a": "cynic",
+      "b": "skeptic",
+      "boundary_rule": "A cynic assumes people act from selfish motives rather than genuine goodness; a skeptic questions whether claims are true without presuming bad motives.",
+      "clues_a": [
+        "attributes kindness to hidden payoff"
+      ],
+      "clues_b": [
+        "asks for proof without accusing anyone of selfishness"
+      ],
+      "irrelevant_clues": [
+        "asking questions, a serious face, previous disappointment"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking motive accusations for evidence-seeking",
+        "M2": "Mistaking evidence-seeking for accusations of selfishness",
+        "M3": "Assuming any doubt reveals distrust of all human motives"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "cynic-skeptic_001",
+      "edge_id": "cynic__skeptic",
+      "domain": "school_volunteering",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which noun best describes Aaliyah?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "cynic-skeptic_001_b1",
+          "text": "Aaliyah insisted her classmate volunteered only to earn credit, never because he wanted to help.",
+          "best_word": "cynic",
+          "fit": {
+            "cynic": 0.92,
+            "skeptic": 0.2
+          },
+          "decisive_clue": "assumed volunteering concealed selfish reward",
+          "reason": "The clue 'assumed volunteering concealed selfish reward' points to distrust of human goodness, not doubt pending evidence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "skeptic": "M1"
+          }
+        },
+        {
+          "id": "cynic-skeptic_001_b2",
+          "text": "When she learned there was no credit, she claimed he must be seeking attention instead.",
+          "best_word": "cynic",
+          "fit": {
+            "cynic": 0.95,
+            "skeptic": 0.16
+          },
+          "decisive_clue": "replaced one self-serving motive with another",
+          "reason": "The detail 'replaced one self-serving motive with another' leaves distrust of human goodness as the better fit, not doubt pending evidence.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "skeptic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Replaced one self-serving motive with another; cynic still fits best.",
+      "feedback_deep": "cynic means person who assumes supposedly good actions hide self-interest; skeptic means person who questions claims or demands sound evidence. The first clue is \"assumed volunteering concealed selfish reward\"; the next is \"replaced one self-serving motive with another\". A skeptic asks for evidence; a cynic assumes self-interest.",
+      "contrast_rule": "A skeptic asks for evidence; a cynic assumes self-interest.",
+      "hints": {
+        "attention": "What motive does she assume without evidence?",
+        "axis": "Automatic selfish-motive attribution versus open-minded questioning",
+        "contrast": "A skeptic asks for evidence; a cynic assumes self-interest."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cynic-skeptic_002",
+      "edge_id": "cynic__skeptic",
+      "domain": "neighborhood_donation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which noun best describes Ravi?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "cynic-skeptic_002_b1",
+          "text": "Ravi called his neighbor's anonymous donation a publicity stunt before asking about it.",
+          "best_word": "cynic",
+          "fit": {
+            "cynic": 0.92,
+            "skeptic": 0.2
+          },
+          "decisive_clue": "assumed a donation was motivated by publicity",
+          "reason": "The clue 'assumed a donation was motivated by publicity' points to distrust of human goodness, not doubt pending evidence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "skeptic": "M1"
+          }
+        },
+        {
+          "id": "cynic-skeptic_002_b2",
+          "text": "After seeing the donation was private, he accepted the good intention but asked for proof it reached the charity.",
+          "best_word": "skeptic",
+          "fit": {
+            "cynic": 0.16,
+            "skeptic": 0.95
+          },
+          "decisive_clue": "stopped attacking motives and checked factual delivery",
+          "reason": "The new clue 'stopped attacking motives and checked factual delivery' shifts the interpretation to doubt pending evidence, rather than distrust of human goodness.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cynic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Stopped attacking motives and checked factual delivery; now skeptic fits best.",
+      "feedback_deep": "cynic means person who assumes supposedly good actions hide self-interest; skeptic means person who questions claims or demands sound evidence. The first clue is \"assumed a donation was motivated by publicity\"; the next is \"stopped attacking motives and checked factual delivery\". A skeptic asks for evidence; a cynic assumes self-interest.",
+      "contrast_rule": "A skeptic asks for evidence; a cynic assumes self-interest.",
+      "hints": {
+        "attention": "Does he question honesty of motives or proof of results?",
+        "axis": "Automatic selfish-motive attribution versus open-minded questioning",
+        "contrast": "A skeptic asks for evidence; a cynic assumes self-interest."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cynic-skeptic_003",
+      "edge_id": "cynic__skeptic",
+      "domain": "new_learning_app",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which noun best describes Yasmine?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cynic-skeptic_003_b1",
+          "text": "Yasmine asked what evidence supported an app's claim that it doubled study speed.",
+          "best_word": "skeptic",
+          "fit": {
+            "cynic": 0.2,
+            "skeptic": 0.92
+          },
+          "decisive_clue": "requested evidence of a product claim",
+          "reason": "The clue 'requested evidence of a product claim' points to doubt pending evidence, not distrust of human goodness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cynic": "M2"
+          }
+        },
+        {
+          "id": "cynic-skeptic_003_b2",
+          "text": "She said an independent test would convince her, without accusing the developers of greed.",
+          "best_word": "skeptic",
+          "fit": {
+            "cynic": 0.16,
+            "skeptic": 0.95
+          },
+          "decisive_clue": "remained open to proof and made no selfish-motive accusation",
+          "reason": "The detail 'remained open to proof and made no selfish-motive accusation' leaves doubt pending evidence as the better fit, not distrust of human goodness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cynic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Remained open to proof and made no selfish-motive accusation; skeptic still fits best.",
+      "feedback_deep": "cynic means person who assumes supposedly good actions hide self-interest; skeptic means person who questions claims or demands sound evidence. The first clue is \"requested evidence of a product claim\"; the next is \"remained open to proof and made no selfish-motive accusation\". A skeptic asks for evidence; a cynic assumes self-interest.",
+      "contrast_rule": "A skeptic asks for evidence; a cynic assumes self-interest.",
+      "hints": {
+        "attention": "Would valid evidence change her mind?",
+        "axis": "Automatic selfish-motive attribution versus open-minded questioning",
+        "contrast": "A skeptic asks for evidence; a cynic assumes self-interest."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cynic-skeptic_005",
+      "edge_id": "cynic__skeptic",
+      "domain": "office_charity_drive",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which noun best describes Tariq?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cynic-skeptic_005_b1",
+          "text": "Tariq questioned whether donations from the office charity drive would reach the right families.",
+          "best_word": "skeptic",
+          "fit": {
+            "cynic": 0.2,
+            "skeptic": 0.92
+          },
+          "decisive_clue": "wanted evidence of responsible donation delivery",
+          "reason": "The clue 'wanted evidence of responsible donation delivery' points to doubt pending evidence, not distrust of human goodness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cynic": "M2"
+          }
+        },
+        {
+          "id": "cynic-skeptic_005_b2",
+          "text": "After an independent audit confirmed delivery, he still insisted the organizers only wanted praise, not to help.",
+          "best_word": "cynic",
+          "fit": {
+            "cynic": 0.95,
+            "skeptic": 0.16
+          },
+          "decisive_clue": "assumed self-serving motives even after delivery was proved",
+          "reason": "The new clue 'assumed self-serving motives even after delivery was proved' shifts the interpretation to distrust of human goodness, rather than doubt pending evidence.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "skeptic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Assumed self-serving motives even after delivery was proved; now cynic fits best.",
+      "feedback_deep": "cynic means person who assumes supposedly good actions hide self-interest; skeptic means person who questions claims or demands sound evidence. The first clue is \"wanted evidence of responsible donation delivery\"; the next is \"assumed self-serving motives even after delivery was proved\". A skeptic asks for evidence; a cynic assumes self-interest.",
+      "contrast_rule": "A skeptic asks for evidence; a cynic assumes self-interest.",
+      "hints": {
+        "attention": "What does he accuse the organizers of after verification?",
+        "axis": "Automatic selfish-motive attribution versus open-minded questioning",
+        "contrast": "A skeptic asks for evidence; a cynic assumes self-interest."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cynic-skeptic_006",
+      "edge_id": "cynic__skeptic",
+      "domain": "online_compliment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which noun best describes Emi?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "cynic-skeptic_006_b1",
+          "text": "Emi assumed a stranger's warm compliment was merely a tactic to gain a favor later.",
+          "best_word": "cynic",
+          "fit": {
+            "cynic": 0.92,
+            "skeptic": 0.2
+          },
+          "decisive_clue": "treated a compliment as a tactic for personal gain",
+          "reason": "The clue 'treated a compliment as a tactic for personal gain' points to distrust of human goodness, not doubt pending evidence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "skeptic": "M1"
+          }
+        },
+        {
+          "id": "cynic-skeptic_006_b2",
+          "text": "The compliment arrived in a private message, but she still believed kindness always hides a payoff.",
+          "best_word": "cynic",
+          "fit": {
+            "cynic": 0.95,
+            "skeptic": 0.16
+          },
+          "decisive_clue": "private setting did not change her motive assumption",
+          "reason": "The detail 'private setting did not change her motive assumption' leaves distrust of human goodness as the better fit, not doubt pending evidence.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "skeptic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Private setting did not change her motive assumption; cynic still fits best.",
+      "feedback_deep": "cynic means person who assumes supposedly good actions hide self-interest; skeptic means person who questions claims or demands sound evidence. The first clue is \"treated a compliment as a tactic for personal gain\"; the next is \"private setting did not change her motive assumption\". A skeptic asks for evidence; a cynic assumes self-interest.",
+      "contrast_rule": "A skeptic asks for evidence; a cynic assumes self-interest.",
+      "hints": {
+        "attention": "Does privacy prove she trusts genuine kindness?",
+        "axis": "Automatic selfish-motive attribution versus open-minded questioning",
+        "contrast": "A skeptic asks for evidence; a cynic assumes self-interest."
+      },
+      "qa": "pass"
+    }
+  ]
+}

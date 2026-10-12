@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "perjury-hearsay",
+  "title": "perjury / hearsay",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[168]",
+    "source_pair_id": 718,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "perjury",
+      "sense": "Knowingly making a false statement while under oath in a legal proceeding.",
+      "connotation": "strongly negative; criminal",
+      "register": "legal",
+      "misconceptions": [
+        "Assuming a confident or accurate retelling becomes firsthand evidence.",
+        "Missing that perjury requires a knowingly false statement under legal oath."
+      ]
+    },
+    {
+      "word": "hearsay",
+      "sense": "An out-of-court statement repeated or presented as evidence that what it says is true.",
+      "connotation": "often doubtful; legal or informal",
+      "register": "legal or standard",
+      "misconceptions": [
+        "Treating repeated secondhand claims as deliberate sworn lies.",
+        "Missing that perjury requires a knowingly false statement under legal oath."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "sworn_deliberate_falsehood_vs_reported_statement",
+      "description": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact."
+    }
+  ],
+  "edges": [
+    {
+      "id": "perjury__hearsay",
+      "a": "perjury",
+      "b": "hearsay",
+      "boundary_rule": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact.",
+      "clues_a": [
+        "under oath and knowingly false",
+        "deliberately untrue sworn declaration",
+        "fabricated fact in sworn testimony"
+      ],
+      "clues_b": [
+        "reports what another person said",
+        "relies on a message as proof",
+        "secondhand account offered for its truth"
+      ],
+      "irrelevant_clues": [
+        "length of statement",
+        "confidence of speaker",
+        "whether evidence is written"
+      ],
+      "misconceptions": {
+        "M1": "Treating repeated secondhand claims as deliberate sworn lies.",
+        "M2": "Assuming a confident or accurate retelling becomes firsthand evidence.",
+        "M3": "Missing that perjury requires a knowingly false statement under legal oath."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "perjury-hearsay_001",
+      "edge_id": "perjury__hearsay",
+      "domain": "rent_hearing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Fatima’s sworn statement about her rent?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "perjury-hearsay_001_b1",
+          "text": "Under oath, Fatima told the judge she had paid on Monday, although she knew no payment had been made.",
+          "best_word": "perjury",
+          "fit": {
+            "perjury": 0.92,
+            "hearsay": 0.19
+          },
+          "decisive_clue": "deliberate false claim while under oath",
+          "reason": "Deliberate false claim while under oath. Knowingly making a false statement while under oath in a legal proceeding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hearsay": "M1"
+          }
+        },
+        {
+          "id": "perjury-hearsay_001_b2",
+          "text": "Her statement was only six words long.",
+          "best_word": "perjury",
+          "fit": {
+            "perjury": 0.92,
+            "hearsay": 0.19
+          },
+          "decisive_clue": "a short statement can still be a knowing falsehood under oath",
+          "reason": "A short statement can still be a knowing falsehood under oath. Knowingly making a false statement while under oath in a legal proceeding.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hearsay": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A short statement can still be a knowing falsehood under oath.",
+      "feedback_deep": "Perjury means knowingly making a false statement while under oath in a legal proceeding; hearsay means an out-of-court statement repeated or presented as evidence that what it says is true. Here, deliberate false claim while under oath. The new detail does not change the deciding fact: a short statement can still be a knowing falsehood under oath. Thus perjury remains the stronger choice.",
+      "contrast_rule": "Perjury lies under oath; hearsay repeats another person’s claim as proof.",
+      "hints": {
+        "attention": "Focus on whether she knew the sworn claim was false.",
+        "axis": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact.",
+        "contrast": "Perjury lies under oath; hearsay repeats another person’s claim as proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "perjury-hearsay_002",
+      "edge_id": "perjury__hearsay",
+      "domain": "school_discipline_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Luca’s evidence at the school meeting?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "perjury-hearsay_002_b1",
+          "text": "Luca said a classmate had told him who broke the window; Luca had not witnessed it himself.",
+          "best_word": "hearsay",
+          "fit": {
+            "perjury": 0.19,
+            "hearsay": 0.92
+          },
+          "decisive_clue": "secondhand account offered to establish who broke the window",
+          "reason": "Secondhand account offered to establish who broke the window. An out-of-court statement repeated or presented as evidence that what it says is true.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "perjury": "M1"
+          }
+        },
+        {
+          "id": "perjury-hearsay_002_b2",
+          "text": "He repeated the classmate’s words exactly as he remembered them.",
+          "best_word": "hearsay",
+          "fit": {
+            "perjury": 0.19,
+            "hearsay": 0.92
+          },
+          "decisive_clue": "accurate repetition is still an account from another person",
+          "reason": "Accurate repetition is still an account from another person. An out-of-court statement repeated or presented as evidence that what it says is true.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perjury": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Accurate repetition is still an account from another person.",
+      "feedback_deep": "Perjury means knowingly making a false statement while under oath in a legal proceeding; hearsay means an out-of-court statement repeated or presented as evidence that what it says is true. Here, secondhand account offered to establish who broke the window. The new detail does not change the deciding fact: accurate repetition is still an account from another person. Thus hearsay remains the stronger choice.",
+      "contrast_rule": "Perjury lies under oath; hearsay repeats another person’s claim as proof.",
+      "hints": {
+        "attention": "Focus on whose eyes actually saw the event.",
+        "axis": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact.",
+        "contrast": "Perjury lies under oath; hearsay repeats another person’s claim as proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "perjury-hearsay_003",
+      "edge_id": "perjury__hearsay",
+      "domain": "small-claims_affidavit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dinesh’s declaration about his lost phone?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "perjury-hearsay_003_b1",
+          "text": "Dinesh submitted an affidavit to the small-claims court, swearing that his phone was never returned although he had already collected it.",
+          "best_word": "perjury",
+          "fit": {
+            "perjury": 0.92,
+            "hearsay": 0.19
+          },
+          "decisive_clue": "knowingly false assertion in a sworn declaration",
+          "reason": "Knowingly false assertion in a sworn declaration. Knowingly making a false statement while under oath in a legal proceeding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hearsay": "M1"
+          }
+        },
+        {
+          "id": "perjury-hearsay_003_b2",
+          "text": "A dated collection receipt in his pocket confirmed that he knew it was back.",
+          "best_word": "perjury",
+          "fit": {
+            "perjury": 0.92,
+            "hearsay": 0.19
+          },
+          "decisive_clue": "the receipt reinforces deliberate knowledge rather than an innocent mistake",
+          "reason": "The receipt reinforces deliberate knowledge rather than an innocent mistake. Knowingly making a false statement while under oath in a legal proceeding.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hearsay": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The receipt reinforces deliberate knowledge rather than an innocent mistake.",
+      "feedback_deep": "Perjury means knowingly making a false statement while under oath in a legal proceeding; hearsay means an out-of-court statement repeated or presented as evidence that what it says is true. Here, knowingly false assertion in a sworn declaration. The added evidence clarifies that fact: the receipt reinforces deliberate knowledge rather than an innocent mistake. Thus perjury remains the stronger choice.",
+      "contrast_rule": "Perjury lies under oath; hearsay repeats another person’s claim as proof.",
+      "hints": {
+        "attention": "Focus on what he knew when he signed.",
+        "axis": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact.",
+        "contrast": "Perjury lies under oath; hearsay repeats another person’s claim as proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "perjury-hearsay_004",
+      "edge_id": "perjury__hearsay",
+      "domain": "volunteer_inquiry",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kara’s submitted email as evidence?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "perjury-hearsay_004_b1",
+          "text": "Kara submitted an email quoting a friend’s claim that a volunteer took the missing money; Kara had seen no theft.",
+          "best_word": "hearsay",
+          "fit": {
+            "perjury": 0.19,
+            "hearsay": 0.92
+          },
+          "decisive_clue": "an earlier third-party allegation offered for its truth",
+          "reason": "An earlier third-party allegation offered for its truth. An out-of-court statement repeated or presented as evidence that what it says is true.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "perjury": "M1"
+          }
+        },
+        {
+          "id": "perjury-hearsay_004_b2",
+          "text": "She offered the quotation to prove who took the money, not merely to show that someone had accused the volunteer.",
+          "best_word": "hearsay",
+          "fit": {
+            "perjury": 0.19,
+            "hearsay": 0.92
+          },
+          "decisive_clue": "the email is being used to prove the allegation rather than only that it was said",
+          "reason": "The email is being used to prove the allegation rather than only that it was said. An out-of-court statement repeated or presented as evidence that what it says is true.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perjury": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The email is being used to prove the allegation rather than only that it was said.",
+      "feedback_deep": "Perjury means knowingly making a false statement while under oath in a legal proceeding; hearsay means an out-of-court statement repeated or presented as evidence that what it says is true. Here, an earlier third-party allegation offered for its truth. The added evidence clarifies that fact: the email is being used to prove the allegation rather than only that it was said. Thus hearsay remains the stronger choice.",
+      "contrast_rule": "Perjury lies under oath; hearsay repeats another person’s claim as proof.",
+      "hints": {
+        "attention": "Focus on what the quotation is supposed to prove.",
+        "axis": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact.",
+        "contrast": "Perjury lies under oath; hearsay repeats another person’s claim as proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "perjury-hearsay_005",
+      "edge_id": "perjury__hearsay",
+      "domain": "traffic_court",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Maya’s sworn account of the traffic sign?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "perjury-hearsay_005_b1",
+          "text": "Maya swore she had never seen the sign, despite having photographed it before deliberately driving past.",
+          "best_word": "perjury",
+          "fit": {
+            "perjury": 0.92,
+            "hearsay": 0.19
+          },
+          "decisive_clue": "she knowingly lied about the sign while under oath",
+          "reason": "She knowingly lied about the sign while under oath. Knowingly making a false statement while under oath in a legal proceeding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hearsay": "M1"
+          }
+        },
+        {
+          "id": "perjury-hearsay_005_b2",
+          "text": "She delivered the statement calmly and without hesitation.",
+          "best_word": "perjury",
+          "fit": {
+            "perjury": 0.92,
+            "hearsay": 0.19
+          },
+          "decisive_clue": "calm delivery does not make a deliberate sworn lie truthful",
+          "reason": "Calm delivery does not make a deliberate sworn lie truthful. Knowingly making a false statement while under oath in a legal proceeding.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hearsay": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Calm delivery does not make a deliberate sworn lie truthful.",
+      "feedback_deep": "Perjury means knowingly making a false statement while under oath in a legal proceeding; hearsay means an out-of-court statement repeated or presented as evidence that what it says is true. Here, she knowingly lied about the sign while under oath. The apparent distraction does not change the deciding fact: calm delivery does not make a deliberate sworn lie truthful. Thus perjury remains the stronger choice.",
+      "contrast_rule": "Perjury lies under oath; hearsay repeats another person’s claim as proof.",
+      "hints": {
+        "attention": "Focus on what she knew before speaking.",
+        "axis": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact.",
+        "contrast": "Perjury lies under oath; hearsay repeats another person’s claim as proof."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "perjury-hearsay_006",
+      "edge_id": "perjury__hearsay",
+      "domain": "neighbour_dispute",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Rina’s claim during the fence dispute?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "perjury-hearsay_006_b1",
+          "text": "Rina used her friend’s description of the damaged fence as proof, though she had not visited the yard.",
+          "best_word": "hearsay",
+          "fit": {
+            "perjury": 0.19,
+            "hearsay": 0.92
+          },
+          "decisive_clue": "a friend’s earlier account is used to establish damage",
+          "reason": "A friend’s earlier account is used to establish damage. An out-of-court statement repeated or presented as evidence that what it says is true.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "perjury": "M1"
+          }
+        },
+        {
+          "id": "perjury-hearsay_006_b2",
+          "text": "She trusted her friend completely, but that confidence gave her no direct knowledge of the damage.",
+          "best_word": "hearsay",
+          "fit": {
+            "perjury": 0.19,
+            "hearsay": 0.92
+          },
+          "decisive_clue": "sincere belief in the source does not turn it into firsthand evidence",
+          "reason": "Sincere belief in the source does not turn it into firsthand evidence. An out-of-court statement repeated or presented as evidence that what it says is true.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "perjury": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Sincere belief in the source does not turn it into firsthand evidence.",
+      "feedback_deep": "Perjury means knowingly making a false statement while under oath in a legal proceeding; hearsay means an out-of-court statement repeated or presented as evidence that what it says is true. Here, a friend’s earlier account is used to establish damage. The added context helps interpret that fact: sincere belief in the source does not turn it into firsthand evidence. Thus hearsay remains the stronger choice.",
+      "contrast_rule": "Perjury lies under oath; hearsay repeats another person’s claim as proof.",
+      "hints": {
+        "attention": "Focus on the difference between confidence and personal observation.",
+        "axis": "Perjury is a deliberate false statement made under legal oath; hearsay is someone else’s earlier statement offered to establish a fact.",
+        "contrast": "Perjury lies under oath; hearsay repeats another person’s claim as proof."
+      },
+      "qa": "pass"
+    }
+  ]
+}

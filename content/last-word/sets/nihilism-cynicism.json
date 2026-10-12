@@ -1,0 +1,528 @@
+{
+  "schema_version": 1,
+  "set_id": "nihilism-cynicism",
+  "title": "nihilism / cynicism",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[71]",
+    "source_pair_id": 315,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 14
+    }
+  },
+  "words": [
+    {
+      "word": "nihilism",
+      "sense": "Philosophical rejection of inherent meaning or value",
+      "connotation": "Bleak, abstract, existential.",
+      "register": "Academic, philosophical.",
+      "misconceptions": [
+        "Confusing it with mere depression or negative mood."
+      ]
+    },
+    {
+      "word": "cynicism",
+      "sense": "Distrust of human motives or sincerity",
+      "connotation": "Bitter, skeptical, interpersonal.",
+      "register": "Common, political, social.",
+      "misconceptions": [
+        "Assuming it implies believing existence is totally void of point."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "target_scope",
+      "description": "Whether the focus is on the cosmic/existential void (nihilism) or interpersonal/human motives (cynicism)."
+    },
+    {
+      "id": "active_stance",
+      "description": "Whether the attitude involves active, distrustful engagement with others (cynicism) or passive, resigned detachment from all value (nihilism)."
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "nihilism": [
+        "He rejected the idea that any action matters, viewing all human endeavors as a descent into nihilism.",
+        "The philosophical school of nihilism argues that existence is inherently void.",
+        "She found a strange comfort in nihilism, knowing that nothing mattered in the grand cosmic scale.",
+        "His nihilism led him to abandon all moral constraints.",
+        "Nihilism can be a dangerous, passive embrace of the void.",
+        "The text suggests that nihilism is the inevitable end of rational thought."
+      ],
+      "cynicism": [
+        "His cynicism grew every time he saw a politician promise change while taking bribes.",
+        "Despite her idealism, she developed a sharp cynicism about human nature.",
+        "The manager's cynicism meant he never believed a word his employees said.",
+        "Such deep cynicism prevented her from trusting any charity.",
+        "His cynicism was a defense mechanism against being hurt by others again.",
+        "Political cynicism is widespread in modern society."
+      ]
+    },
+    "counter": {
+      "nihilism": [
+        "She didn't believe her boss was cheating; her nihilism didn't extend to office politics.",
+        "He was a nihilist because he hated his neighbor (Wrong: that's social distrust/cynicism).",
+        "It was total nihilism when he decided not to eat that cake (Wrong: triviality).",
+        "The student believed people were selfish, thus proving nihilism (Wrong: that's cynicism).",
+        "Her nihilism was shattered when she fell in love (Wrong: love doesn't disprove nihilism).",
+        "He thought the film was bad, proving his nihilism (Wrong: subjective taste)."
+      ],
+      "cynicism": [
+        "He believed the universe was a cold, meaningless accident: true cynicism (Wrong: nihilism).",
+        "She practiced cynicism by refusing to acknowledge any objective truth (Wrong: nihilism).",
+        "His cynicism meant he thought atoms don't exist (Wrong: not cynicism).",
+        "Cynicism is the belief that physics is fake (Wrong: unrelated).",
+        "She felt that life was empty, so she was in a state of cynicism (Wrong: nihilism).",
+        "He distrusted the laws of gravity, showing his cynicism (Wrong: absurdity)."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "nihilism__cynicism",
+      "a": "nihilism",
+      "b": "cynicism",
+      "boundary_rule": "If the problem is 'human selfishness', use cynicism; if the problem is 'the universe is inherently pointlessly void', use nihilism.",
+      "clues_a": [
+        "No inherent truth/purpose",
+        "Meaningless existence",
+        "Void of values"
+      ],
+      "clues_b": [
+        "People are selfish",
+        "Hidden agendas",
+        "Expect deceit"
+      ],
+      "irrelevant_clues": [
+        "Sadness",
+        "Pessimism",
+        "Wit"
+      ],
+      "misconceptions": {
+        "M1": "I am depressed/sad, so I am a nihilist.",
+        "M2": "I distrust people, so life must have no meaning.",
+        "M3": "I don't think there is a god, so I must believe in nothing (nihilism)."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "nihilism-cynicism_001",
+      "edge_id": "nihilism__cynicism",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How Marcus views his government: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "nihilism-cynicism_001_b1",
+          "text": "Marcus sees his government officials passing bills that only benefit their donors.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "distrust of motives",
+          "reason": "Distrust of people's motives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M2"
+          }
+        },
+        {
+          "id": "nihilism-cynicism_001_b2",
+          "text": "He thinks they've done this for decades, assuming no one in power is actually honest.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "distrust of people",
+          "reason": "Consistent distrust of motive.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Marcus focuses on the selfish motives of people, not the nature of existence.",
+      "feedback_deep": "Marcus distrusts the people in power, believing they are selfish. This is a classic example of cynicism, which targets human motives, rather than nihilism, which denies all meaning.",
+      "contrast_rule": "If it's about selfish people, it's cynicism; if it's about the void, it's nihilism.",
+      "hints": {
+        "attention": "Does he doubt the existence of truth, or just the honesty of these specific people?",
+        "axis": "Whether the focus is on the cosmic/existential void (nihilism) or interpersonal/human motives (cynicism).",
+        "contrast": "If it's about selfish people, it's cynicism; if it's about the void, it's nihilism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nihilism-cynicism_002",
+      "edge_id": "nihilism__cynicism",
+      "domain": "art",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "How Elena interprets the painting: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nihilism-cynicism_002_b1",
+          "text": "Elena looks at the painting of a vast, empty landscape and feels that it captures the pointlessness of our existence.",
+          "best_word": "nihilism",
+          "fit": {
+            "nihilism": 0.9,
+            "cynicism": 0.1
+          },
+          "decisive_clue": "pointlessness of existence",
+          "reason": "Cosmic emptiness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "cynicism": "M3"
+          }
+        },
+        {
+          "id": "nihilism-cynicism_002_b2",
+          "text": "She tells her friends that this image represents the absolute lack of inherent purpose in the universe.",
+          "best_word": "nihilism",
+          "fit": {
+            "nihilism": 0.9,
+            "cynicism": 0.1
+          },
+          "decisive_clue": "lack of purpose",
+          "reason": "Consistent focus on inherent meaning.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "cynicism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Elena describes the lack of cosmic purpose, which defines nihilism.",
+      "feedback_deep": "Elena's interpretation focuses on the lack of purpose in the universe, which is the core of nihilism. She isn't criticizing people's motives.",
+      "contrast_rule": "Focus on motive = cynicism; focus on cosmic emptiness = nihilism.",
+      "hints": {
+        "attention": "Is she criticizing the artist's motives, or the nature of existence itself?",
+        "axis": "Whether the focus is on the cosmic/existential void (nihilism) or interpersonal/human motives (cynicism).",
+        "contrast": "Focus on motive = cynicism; focus on cosmic emptiness = nihilism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nihilism-cynicism_003",
+      "edge_id": "nihilism__cynicism",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "How David views his date: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nihilism-cynicism_003_b1",
+          "text": "David watches his date smile, but he instantly assumes she is only interested in his bank account.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "assumes she is interested in money",
+          "reason": "Distrust of motives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M2"
+          }
+        },
+        {
+          "id": "nihilism-cynicism_003_b2",
+          "text": "He thinks that everyone is ultimately acting out of pure, calculated self-interest, regardless of what they say.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "self-interest",
+          "reason": "Distrust of people.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "David's focus on the selfish motives of his date defines cynicism.",
+      "feedback_deep": "David is judging his date's motives, believing them to be purely selfish. This is cynicism, not nihilism, which is about the lack of objective meaning in the universe.",
+      "contrast_rule": "Distrusting individuals = cynicism; denying all purpose = nihilism.",
+      "hints": {
+        "attention": "Does he doubt his date's intentions, or does he doubt that anything matters?",
+        "axis": "Whether the focus is on the cosmic/existential void (nihilism) or interpersonal/human motives (cynicism).",
+        "contrast": "Distrusting individuals = cynicism; denying all purpose = nihilism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nihilism-cynicism_007",
+      "edge_id": "nihilism__cynicism",
+      "domain": "society",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How Ken views charitable work: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nihilism-cynicism_007_b1",
+          "text": "Ken sees the entire concept of charity as a futile exercise because he believes there is no objective good or bad in this universe.",
+          "best_word": "nihilism",
+          "fit": {
+            "nihilism": 0.9,
+            "cynicism": 0.1
+          },
+          "decisive_clue": "no objective good",
+          "reason": "Denial of morality/value.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "cynicism": "M2"
+          }
+        },
+        {
+          "id": "nihilism-cynicism_007_b2",
+          "text": "He then watches a celebrity donate money and claims they are only doing it to boost their own image for profit.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "only doing it for image",
+          "reason": "Distrust of motives.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Ken flips from denying objective moral value (nihilism) to suspecting selfish motives (cynicism).",
+      "feedback_deep": "Initially, Ken questions the very existence of moral value, which is nihilism. When he targets the celebrity's selfish intent, he pivots to cynicism, which is about doubting individual motives.",
+      "contrast_rule": "If it's about the universe's lack of value, it's nihilism; if it's about a person's greed, it's cynicism.",
+      "hints": {
+        "attention": "Does he still focus on the cosmic void, or is he now accusing someone of a hidden agenda?",
+        "axis": "Whether the focus is on the cosmic/existential void (nihilism) or interpersonal/human motives (cynicism).",
+        "contrast": "If it's about the universe's lack of value, it's nihilism; if it's about a person's greed, it's cynicism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nihilism-cynicism_008",
+      "edge_id": "nihilism__cynicism",
+      "domain": "journalism",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How Sarah views the news: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nihilism-cynicism_008_b1",
+          "text": "Sarah reads the headlines and assumes every single story is skewed to push a corporate agenda.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "skewed for agenda",
+          "reason": "Distrust of motives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M2"
+          }
+        },
+        {
+          "id": "nihilism-cynicism_008_b2",
+          "text": "She further claims that, ultimately, nothing reported in any outlet holds true weight, as truth itself is merely a convenient fiction in a purposeless world.",
+          "best_word": "nihilism",
+          "fit": {
+            "nihilism": 0.9,
+            "cynicism": 0.1
+          },
+          "decisive_clue": "truth is a fiction",
+          "reason": "Denial of absolute truth.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "cynicism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Sarah flips from distrusting reporters' motives (cynicism) to denying truth itself (nihilism).",
+      "feedback_deep": "Sarah starts with cynicism, doubting the reporters' motives. She then expands her view to a nihilistic claim that truth itself has no objective reality or meaning in our world.",
+      "contrast_rule": "Distrusting individuals = cynicism; denying all absolute truth = nihilism.",
+      "hints": {
+        "attention": "Is she criticizing the reporters, or attacking the very concept of objective reality?",
+        "axis": "Whether the focus is on the cosmic/existential void (nihilism) or interpersonal/human motives (cynicism).",
+        "contrast": "Distrusting individuals = cynicism; denying all absolute truth = nihilism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nihilism-cynicism_016",
+      "edge_id": "nihilism__cynicism",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "How Maya views the hotel review: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nihilism-cynicism_016_b1",
+          "text": "Maya thinks the five-star review was written by an employee, not a real guest.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "written by employee",
+          "reason": "Distrust of motives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M2"
+          }
+        },
+        {
+          "id": "nihilism-cynicism_016_b2",
+          "text": "She assumes all such reviews are just manufactured attempts to trick tourists, proving that no one can be trusted.",
+          "best_word": "cynicism",
+          "fit": {
+            "nihilism": 0.1,
+            "cynicism": 0.9
+          },
+          "decisive_clue": "manufactured attempts to trick",
+          "reason": "Consistent distrust of people.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "nihilism": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Maya distrusts the reviewer, and her attitude remains cynical.",
+      "feedback_deep": "Maya continues to be skeptical of human behavior, now applying it to all hotel reviews. She is still being cynical (distrusting motives), even though she is expressing a broader sentiment.",
+      "contrast_rule": "Suspect selfish motives = cynicism; deny existence's meaning = nihilism.",
+      "hints": {
+        "attention": "Is she talking about the void of the universe, or the dishonest people?",
+        "axis": "Whether the focus is on the cosmic/existential void (nihilism) or interpersonal/human motives (cynicism).",
+        "contrast": "Suspect selfish motives = cynicism; deny existence's meaning = nihilism."
+      },
+      "qa": "pass"
+    }
+  ]
+}

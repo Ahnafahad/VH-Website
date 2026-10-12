@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "genre-style",
+  "title": "genre / style",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[122]",
+    "source_pair_id": 477,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "genre",
+      "sense": "A category of art, writing, or music identified by shared subject, form, or conventions.",
+      "connotation": "neutral classification",
+      "register": "general",
+      "misconceptions": [
+        "An unusual voice does not alone establish a category."
+      ]
+    },
+    {
+      "word": "style",
+      "sense": "The distinctive manner in which something is expressed or made.",
+      "connotation": "neutral or evaluative",
+      "register": "general",
+      "misconceptions": [
+        "A subject-based category is not one creator’s manner."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "category_vs_manner",
+      "description": "Category based on common conventions versus characteristic mode of expression."
+    }
+  ],
+  "edges": [
+    {
+      "id": "genre__style",
+      "a": "genre",
+      "b": "style",
+      "boundary_rule": "Genre identifies the kind of creative work; style identifies how the work is expressed.",
+      "clues_a": [
+        "shared story conventions",
+        "recognized class of songs",
+        "subject-and-form classification"
+      ],
+      "clues_b": [
+        "sentence rhythm",
+        "brushwork",
+        "a singer’s delivery"
+      ],
+      "irrelevant_clues": [
+        "popularity",
+        "length of the piece",
+        "the creator’s age"
+      ],
+      "misconceptions": {
+        "M1": "Confuses shared conventions of a creative category with an artist’s personal manner.",
+        "M2": "Treats distinctive delivery or brushwork as a category of work.",
+        "M3": "Lets an irrelevant feature such as length or popularity decide the choice."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "genre-style_001",
+      "edge_id": "genre__style",
+      "domain": "library_reading",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the grouping on Lila’s reading list?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "genre-style_001_b1",
+          "text": "Lila puts together novels built around a puzzling crime, scattered clues, and a final solution.",
+          "best_word": "genre",
+          "fit": {
+            "genre": 0.91,
+            "style": 0.24
+          },
+          "decisive_clue": "works share a recognizable mystery plot structure",
+          "reason": "The first detail establishes works share a recognizable mystery plot structure; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "style": "M1"
+          }
+        },
+        {
+          "id": "genre-style_001_b2",
+          "text": "Some are written in short chapters and others in long ones, but all use the same kind of plot.",
+          "best_word": "genre",
+          "fit": {
+            "genre": 0.93,
+            "style": 0.18
+          },
+          "decisive_clue": "different sentence lengths do not undo the shared category",
+          "reason": "The new detail confirms different sentence lengths do not undo the shared category and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "style": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Shared plot conventions define the grouping despite different writing methods.",
+      "feedback_deep": "Genre means a category of creative work. Style means a characteristic manner of expression. Here, the selection follows narrative conventions rather than one author’s prose habits.",
+      "contrast_rule": "Genre asks what kind; style asks how it is expressed.",
+      "hints": {
+        "attention": "What do all the books have in common?",
+        "axis": "Category based on common conventions versus characteristic mode of expression.",
+        "contrast": "Genre asks what kind; style asks how it is expressed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "genre-style_002",
+      "edge_id": "genre__style",
+      "domain": "music_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Tariq’s way of singing?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "genre-style_002_b1",
+          "text": "Tariq stretches the last syllable of each line and sings the next one in a hushed voice.",
+          "best_word": "style",
+          "fit": {
+            "genre": 0.24,
+            "style": 0.91
+          },
+          "decisive_clue": "a personal manner of vocal delivery",
+          "reason": "The first detail establishes a personal manner of vocal delivery; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "genre": "M2"
+          }
+        },
+        {
+          "id": "genre-style_002_b2",
+          "text": "He uses the same delivery for a lullaby and a fast dance song.",
+          "best_word": "style",
+          "fit": {
+            "genre": 0.18,
+            "style": 0.93
+          },
+          "decisive_clue": "his delivery remains recognizable across different song types",
+          "reason": "The deciding fact remains a personal manner of vocal delivery; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "genre": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The characteristic delivery survives a change in song type.",
+      "feedback_deep": "Genre means a category of creative work. Style means a characteristic manner of expression. Here, changing the kind of music does not turn a singing manner into a class of music.",
+      "contrast_rule": "Genre asks what kind; style asks how it is expressed.",
+      "hints": {
+        "attention": "Listen to how he sings, not which songs he chooses.",
+        "axis": "Category based on common conventions versus characteristic mode of expression.",
+        "contrast": "Genre asks what kind; style asks how it is expressed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "genre-style_003",
+      "edge_id": "genre__style",
+      "domain": "film_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the label on Priya’s film-club shelf?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "genre-style_003_b1",
+          "text": "Priya places films about journeys to distant planets and invented future machines together.",
+          "best_word": "genre",
+          "fit": {
+            "genre": 0.91,
+            "style": 0.24
+          },
+          "decisive_clue": "the films share a kind of imagined subject matter",
+          "reason": "The first detail establishes the films share a kind of imagined subject matter; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "style": "M1"
+          }
+        },
+        {
+          "id": "genre-style_003_b2",
+          "text": "Their camera work ranges from slow close-ups to fast cuts, but the imagined settings link them.",
+          "best_word": "genre",
+          "fit": {
+            "genre": 0.93,
+            "style": 0.18
+          },
+          "decisive_clue": "camera techniques vary while the subject-based grouping remains",
+          "reason": "The deciding fact remains the films share a kind of imagined subject matter; the added detail does not change that.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "style": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Different camera techniques do not change the subject-based film grouping.",
+      "feedback_deep": "Genre means a category of creative work. Style means a characteristic manner of expression. Here, camera techniques may differ widely within one category of film.",
+      "contrast_rule": "Genre asks what kind; style asks how it is expressed.",
+      "hints": {
+        "attention": "Is the label about subject matter or camera technique?",
+        "axis": "Category based on common conventions versus characteristic mode of expression.",
+        "contrast": "Genre asks what kind; style asks how it is expressed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "genre-style_004",
+      "edge_id": "genre__style",
+      "domain": "class_essay",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Sora’s prose in her class essay?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "genre-style_004_b1",
+          "text": "Sora writes in tiny sentences, then ends every paragraph with a surprising, longer line.",
+          "best_word": "style",
+          "fit": {
+            "genre": 0.24,
+            "style": 0.91
+          },
+          "decisive_clue": "a recurring pattern of sentence construction",
+          "reason": "The first detail establishes a recurring pattern of sentence construction; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "genre": "M2"
+          }
+        },
+        {
+          "id": "genre-style_004_b2",
+          "text": "Her essay is about local bus routes, but the same sentence pattern appears in her travel journal.",
+          "best_word": "style",
+          "fit": {
+            "genre": 0.18,
+            "style": 0.93
+          },
+          "decisive_clue": "the same verbal manner appears across different subjects",
+          "reason": "The new detail confirms the same verbal manner appears across different subjects and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "genre": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The pattern of sentences, not the subject, is what repeats.",
+      "feedback_deep": "Genre means a category of creative work. Style means a characteristic manner of expression. Here, sentence rhythm is the distinctive feature even when subject matter changes.",
+      "contrast_rule": "Genre asks what kind; style asks how it is expressed.",
+      "hints": {
+        "attention": "Look for the feature carried between different works.",
+        "axis": "Category based on common conventions versus characteristic mode of expression.",
+        "contrast": "Genre asks what kind; style asks how it is expressed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "genre-style_005",
+      "edge_id": "genre__style",
+      "domain": "bookstore_display",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Hugo’s selection of stories?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "genre-style_005_b1",
+          "text": "Hugo groups stories in which ordinary life is interrupted by mysterious events that have no natural explanation.",
+          "best_word": "genre",
+          "fit": {
+            "genre": 0.91,
+            "style": 0.24
+          },
+          "decisive_clue": "shared supernatural story conventions define the grouping",
+          "reason": "The first detail establishes shared supernatural story conventions define the grouping; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "style": "M1"
+          }
+        },
+        {
+          "id": "genre-style_005_b2",
+          "text": "He discovers the stories come from five countries and were written decades apart.",
+          "best_word": "genre",
+          "fit": {
+            "genre": 0.93,
+            "style": 0.18
+          },
+          "decisive_clue": "the common story pattern remains across different origins",
+          "reason": "Viewed in its fuller context, the common story pattern remains across different origins; the original distinction still decides it.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "style": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The stories share a recognizable kind despite differing origins.",
+      "feedback_deep": "Genre means a category of creative work. Style means a characteristic manner of expression. Here, the grouping is based on what sort of stories they are, not on their place or date of origin.",
+      "contrast_rule": "Genre asks what kind; style asks how it is expressed.",
+      "hints": {
+        "attention": "What connects the stories themselves?",
+        "axis": "Category based on common conventions versus characteristic mode of expression.",
+        "contrast": "Genre asks what kind; style asks how it is expressed."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "genre-style_006",
+      "edge_id": "genre__style",
+      "domain": "street_art",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mina’s approach to painting her mural?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "genre-style_006_b1",
+          "text": "Mina paints with repeated sharp triangles and thin silver lines, even when drawing curved objects.",
+          "best_word": "style",
+          "fit": {
+            "genre": 0.24,
+            "style": 0.91
+          },
+          "decisive_clue": "a consistent individual way of making marks",
+          "reason": "The first detail establishes a consistent individual way of making marks; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "genre": "M2"
+          }
+        },
+        {
+          "id": "genre-style_006_b2",
+          "text": "The mural is large enough to cover a wall, but its distinctive marks remain the same.",
+          "best_word": "style",
+          "fit": {
+            "genre": 0.18,
+            "style": 0.93
+          },
+          "decisive_clue": "scale does not alter the characteristic painting manner",
+          "reason": "The deciding fact remains a consistent individual way of making marks; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "genre": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The visual manner matters; the wall’s size does not.",
+      "feedback_deep": "Genre means a category of creative work. Style means a characteristic manner of expression. Here, size affects the work’s dimensions, not the expressive approach that identifies its maker.",
+      "contrast_rule": "Genre asks what kind; style asks how it is expressed.",
+      "hints": {
+        "attention": "Notice the repeated marks rather than the mural’s dimensions.",
+        "axis": "Category based on common conventions versus characteristic mode of expression.",
+        "contrast": "Genre asks what kind; style asks how it is expressed."
+      },
+      "qa": "pass"
+    }
+  ]
+}

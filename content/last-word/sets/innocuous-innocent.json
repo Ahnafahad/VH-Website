@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "set_id": "innocuous-innocent",
+  "title": "innocuous / innocent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[38]",
+    "source_pair_id": 164,
+    "qa": {
+      "pass": 6,
+      "revised": 1,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "innocuous",
+      "sense": "Unable or unlikely to cause harm, offense, or damage.",
+      "connotation": "reassuring / neutral",
+      "register": "standard / formal",
+      "misconceptions": [
+        "Anything harmless must involve innocence or an accusation."
+      ]
+    },
+    {
+      "word": "innocent",
+      "sense": "Not responsible for wrongdoing, or acting without harmful intention.",
+      "connotation": "reassuring / legal or moral",
+      "register": "standard",
+      "misconceptions": [
+        "An accident that causes damage cannot be innocent."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "effect_vs_responsibility",
+      "description": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent."
+    }
+  ],
+  "edges": [
+    {
+      "id": "innocuous__innocent",
+      "a": "innocuous",
+      "b": "innocent",
+      "boundary_rule": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs.",
+      "clues_a": [
+        "causes no disturbance",
+        "no damage after use",
+        "not offensive in context"
+      ],
+      "clues_b": [
+        "not responsible for alleged act",
+        "accidental harm with no bad intention",
+        "unfounded accusation"
+      ],
+      "irrelevant_clues": [
+        "whether the item is colourful",
+        "how many people are watching",
+        "whether an accident is embarrassing"
+      ],
+      "misconceptions": {
+        "M1": "Anything harmless must involve innocence or an accusation.",
+        "M2": "An accident that causes damage cannot be innocent.",
+        "M3": "A person’s intent and an action’s effect mean the same thing."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "innocuous-innocent_001",
+      "edge_id": "innocuous__innocent",
+      "domain": "group_chat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Noor’s message?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "innocuous-innocent_001_b1",
+          "text": "Noor posts a weather emoji and a reminder to bring umbrellas; nobody in the chat objects or feels singled out.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.9,
+            "innocent": 0.24
+          },
+          "decisive_clue": "message causes no offense or harm",
+          "reason": "The situation shows message causes no offense or harm, which points to innocuous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        },
+        {
+          "id": "innocuous-innocent_001_b2",
+          "text": "The message neither reveals private details nor asks anyone for money.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.94,
+            "innocent": 0.21
+          },
+          "decisive_clue": "message has no apparent harmful effect or risky demand",
+          "reason": "The issue is the message’s harmless character, not anyone’s guilt.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Message has no apparent harmful effect or risky demand: innocuous fits better.",
+      "feedback_deep": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs. Here, the issue is the message’s harmless character, not anyone’s guilt.",
+      "contrast_rule": "Innocuous does no harm; innocent bears no blame.",
+      "hints": {
+        "attention": "Consider what the message could do to readers.",
+        "axis": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent.",
+        "contrast": "Innocuous does no harm; innocent bears no blame."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "innocuous-innocent_002",
+      "edge_id": "innocuous__innocent",
+      "domain": "sports_equipment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elias’s role in the missing-ball incident?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "innocuous-innocent_002_b1",
+          "text": "Elias was blamed for hiding the team’s ball, but a recording shows he left before it went missing.",
+          "best_word": "innocent",
+          "fit": {
+            "innocuous": 0.24,
+            "innocent": 0.9
+          },
+          "decisive_clue": "evidence excludes Elias from the alleged act",
+          "reason": "The situation shows evidence excludes Elias from the alleged act, which points to innocent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innocuous": "M1"
+          }
+        },
+        {
+          "id": "innocuous-innocent_002_b2",
+          "text": "The ball later turns up inside a storage box he had not opened.",
+          "best_word": "innocent",
+          "fit": {
+            "innocuous": 0.21,
+            "innocent": 0.94
+          },
+          "decisive_clue": "the later discovery further excludes his responsibility",
+          "reason": "The evidence concerns whether Elias did anything wrong, not whether an object is safe.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innocuous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The later discovery further excludes his responsibility: innocent fits better.",
+      "feedback_deep": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs. Here, the evidence concerns whether Elias did anything wrong, not whether an object is safe.",
+      "contrast_rule": "Innocuous does no harm; innocent bears no blame.",
+      "hints": {
+        "attention": "Think about responsibility for the missing ball.",
+        "axis": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent.",
+        "contrast": "Innocuous does no harm; innocent bears no blame."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "innocuous-innocent_003",
+      "edge_id": "innocuous__innocent",
+      "domain": "home_decoration",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sumi’s small wall sticker?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "innocuous-innocent_003_b1",
+          "text": "Sumi tests the sticker on painted wood; it peels off cleanly without leaving a mark.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.9,
+            "innocent": 0.23
+          },
+          "decisive_clue": "sticker leaves no damage",
+          "reason": "The situation shows sticker leaves no damage, which points to innocuous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        },
+        {
+          "id": "innocuous-innocent_003_b2",
+          "text": "The sticker shows a bright orange flower.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.91,
+            "innocent": 0.22
+          },
+          "decisive_clue": "sticker leaves no damage",
+          "reason": "The added detail does not change the original clue: sticker leaves no damage.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Sticker leaves no damage still decides; the added detail changes nothing.",
+      "feedback_deep": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs. Here, its design changes nothing about its non-damaging effect.",
+      "contrast_rule": "Innocuous does no harm; innocent bears no blame.",
+      "hints": {
+        "attention": "Ignore its picture and look at what it does.",
+        "axis": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent.",
+        "contrast": "Innocuous does no harm; innocent bears no blame."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "innocuous-innocent_004",
+      "edge_id": "innocuous__innocent",
+      "domain": "school_art_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rafael’s mistake with the paint?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "innocuous-innocent_004_b1",
+          "text": "Rafael bumps a paint cup while reaching for his book and spills it over a classmate’s picture.",
+          "best_word": "innocent",
+          "fit": {
+            "innocuous": 0.24,
+            "innocent": 0.9
+          },
+          "decisive_clue": "spill occurs by accident without harmful purpose",
+          "reason": "The situation shows spill occurs by accident without harmful purpose, which points to innocent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innocuous": "M1"
+          }
+        },
+        {
+          "id": "innocuous-innocent_004_b2",
+          "text": "He had been trying to keep the picture dry and apologizes as soon as he sees the spill.",
+          "best_word": "innocent",
+          "fit": {
+            "innocuous": 0.21,
+            "innocent": 0.94
+          },
+          "decisive_clue": "his careful intention and immediate apology show lack of malice",
+          "reason": "The picture was harmed, but the mistake was not deliberate.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innocuous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "His careful intention and immediate apology show lack of malice: innocent fits better.",
+      "feedback_deep": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs. Here, the picture was harmed, but the mistake was not deliberate.",
+      "contrast_rule": "Innocuous does no harm; innocent bears no blame.",
+      "hints": {
+        "attention": "Distinguish the outcome from his intent.",
+        "axis": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent.",
+        "contrast": "Innocuous does no harm; innocent bears no blame."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "innocuous-innocent_005",
+      "edge_id": "innocuous__innocent",
+      "domain": "tea_shop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Hyejin’s comment to the cashier?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "innocuous-innocent_005_b1",
+          "text": "Hyejin remarks that the afternoon rain has finally stopped, and the cashier simply nods.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.9,
+            "innocent": 0.24
+          },
+          "decisive_clue": "ordinary remark creates no apparent harm or offense",
+          "reason": "The situation shows ordinary remark creates no apparent harm or offense, which points to innocuous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        },
+        {
+          "id": "innocuous-innocent_005_b2",
+          "text": "Her remark is only five words long.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.94,
+            "innocent": 0.21
+          },
+          "decisive_clue": "ordinary remark creates no apparent harm or offense",
+          "reason": "The added detail does not change the original clue: ordinary remark creates no apparent harm or offense.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Ordinary remark creates no apparent harm or offense still decides; the added detail changes nothing.",
+      "feedback_deep": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs. Here, the comment's brief length changes nothing about its harmless nature.",
+      "contrast_rule": "Innocuous does no harm; innocent bears no blame.",
+      "hints": {
+        "attention": "Consider the remark itself.",
+        "axis": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent.",
+        "contrast": "Innocuous does no harm; innocent bears no blame."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "innocuous-innocent_006",
+      "edge_id": "innocuous__innocent",
+      "domain": "library_desk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Samir’s part in the damaged-book incident?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "innocuous-innocent_006_b1",
+          "text": "Samir is accused of tearing a library book, but the return log shows the pages were damaged before he borrowed it.",
+          "best_word": "innocent",
+          "fit": {
+            "innocuous": 0.24,
+            "innocent": 0.9
+          },
+          "decisive_clue": "record shows Samir was not responsible",
+          "reason": "The situation shows record shows Samir was not responsible, which points to innocent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innocuous": "M1"
+          }
+        },
+        {
+          "id": "innocuous-innocent_006_b2",
+          "text": "A photo in the log shows the same torn corner on the earlier date.",
+          "best_word": "innocent",
+          "fit": {
+            "innocuous": 0.21,
+            "innocent": 0.94
+          },
+          "decisive_clue": "dated photo independently confirms earlier damage",
+          "reason": "The evidence rules out blame for the damage.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innocuous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Dated photo independently confirms earlier damage: innocent fits better.",
+      "feedback_deep": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs. Here, the evidence rules out blame for the damage.",
+      "contrast_rule": "Innocuous does no harm; innocent bears no blame.",
+      "hints": {
+        "attention": "When did the damage occur?",
+        "axis": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent.",
+        "contrast": "Innocuous does no harm; innocent bears no blame."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "innocuous-innocent_007",
+      "edge_id": "innocuous__innocent",
+      "domain": "office_snack",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Camila’s desk decoration?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "innocuous-innocent_007_b1",
+          "text": "Camila puts a soft felt figure beside her screen; it has no sharp edges and does not disturb anyone nearby.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.9,
+            "innocent": 0.23
+          },
+          "decisive_clue": "decoration poses no apparent risk or disturbance",
+          "reason": "The situation shows decoration poses no apparent risk or disturbance, which points to innocuous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        },
+        {
+          "id": "innocuous-innocent_007_b2",
+          "text": "It was a gift from her cousin last winter.",
+          "best_word": "innocuous",
+          "fit": {
+            "innocuous": 0.91,
+            "innocent": 0.22
+          },
+          "decisive_clue": "decoration poses no apparent risk or disturbance",
+          "reason": "The added detail does not change the original clue: decoration poses no apparent risk or disturbance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "innocent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Decoration poses no apparent risk or disturbance still decides; the added detail changes nothing.",
+      "feedback_deep": "Innocuous means causing no harm; innocent means not culpable or not intending harm, even if harm occurs. Here, the history of the gift does not change its harmless character.",
+      "contrast_rule": "Innocuous does no harm; innocent bears no blame.",
+      "hints": {
+        "attention": "Look at effects, not where it came from.",
+        "axis": "Whether the focus is lack of harmful effect or absence of guilt or harmful intent.",
+        "contrast": "Innocuous does no harm; innocent bears no blame."
+      },
+      "qa": "pass"
+    }
+  ]
+}

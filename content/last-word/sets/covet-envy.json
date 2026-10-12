@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "set_id": "covet-envy",
+  "title": "covet / envy",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[24]",
+    "source_pair_id": 103,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "covet",
+      "sense": "desire for another’s possession",
+      "connotation": "negative, acquisitive",
+      "register": "formal or literary",
+      "misconceptions": [
+        "Confusing desire for the item with resentment of its owner"
+      ]
+    },
+    {
+      "word": "envy",
+      "sense": "resentment of another’s good fortune",
+      "connotation": "negative, comparative",
+      "register": "everyday to formal",
+      "misconceptions": [
+        "Confusing resentment of an advantage with a wish to possess an item"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "focus_of_feeling",
+      "description": "Possessing another’s thing versus resenting another’s advantage"
+    }
+  ],
+  "edges": [
+    {
+      "id": "covet__envy",
+      "a": "covet",
+      "b": "envy",
+      "boundary_rule": "To covet is to long intensely to possess another person’s thing; to envy is to resent another person for having an advantage.",
+      "clues_a": [
+        "imagines owning that particular possession"
+      ],
+      "clues_b": [
+        "resents the owner for getting the advantage"
+      ],
+      "irrelevant_clues": [
+        "admiring appearance, noticing a purchase, polite praise"
+      ],
+      "misconceptions": {
+        "M1": "Confusing desire for the item with resentment of its owner",
+        "M2": "Confusing resentment of an advantage with a wish to possess an item",
+        "M3": "Failing to identify the object of the emotion"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "covet-envy_001",
+      "edge_id": "covet__envy",
+      "domain": "neighbor_s_music_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which verb best describes how Hiro responds to another person's advantage?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "covet-envy_001_b1",
+          "text": "Hiro stared at his neighbor's vintage guitar and wished intensely that it were hanging on his own wall.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.92,
+            "envy": 0.2
+          },
+          "decisive_clue": "wanted to own the neighbor’s specific guitar",
+          "reason": "The clue 'wanted to own the neighbor’s specific guitar' points to desire for another’s possession, not resentment of another’s good fortune.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "covet-envy_001_b2",
+          "text": "He admired the neighbor and spent evenings imagining himself playing that exact instrument.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.95,
+            "envy": 0.16
+          },
+          "decisive_clue": "admired the owner while longing for the object",
+          "reason": "The detail 'admired the owner while longing for the object' leaves desire for another’s possession as the better fit, not resentment of another’s good fortune.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Admired the owner while longing for the object; covet still fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"wanted to own the neighbor’s specific guitar\"; the next is \"admired the owner while longing for the object\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "What exactly does he wish were his?",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "covet-envy_002",
+      "edge_id": "covet__envy",
+      "domain": "photography_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which verb best describes how Leo responds to another person's advantage?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "covet-envy_002_b1",
+          "text": "Leo saved photos of a classmate's new camera and dreamed of having that model himself.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.92,
+            "envy": 0.2
+          },
+          "decisive_clue": "longed to own that particular camera",
+          "reason": "The clue 'longed to own that particular camera' points to desire for another’s possession, not resentment of another’s good fortune.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "covet-envy_002_b2",
+          "text": "Even after discovering it wouldn't suit him, he felt bitter that she could afford costly equipment so easily.",
+          "best_word": "envy",
+          "fit": {
+            "covet": 0.16,
+            "envy": 0.95
+          },
+          "decisive_clue": "resented her purchasing power despite losing interest in the camera",
+          "reason": "The new clue 'resented her purchasing power despite losing interest in the camera' shifts the interpretation to resentment of another’s good fortune, rather than desire for another’s possession.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "covet": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Resented her purchasing power despite losing interest in the camera; now envy fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"longed to own that particular camera\"; the next is \"resented her purchasing power despite losing interest in the camera\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "Has the feeling shifted from the object to her advantage?",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "covet-envy_003",
+      "edge_id": "covet__envy",
+      "domain": "school_play",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which verb best describes how Omar responds to another person's advantage?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "covet-envy_003_b1",
+          "text": "Omar felt bitter that Hana won the lead role and received everyone's praise.",
+          "best_word": "envy",
+          "fit": {
+            "covet": 0.2,
+            "envy": 0.92
+          },
+          "decisive_clue": "resented Hana’s recognition",
+          "reason": "The clue 'resented Hana’s recognition' points to resentment of another’s good fortune, not desire for another’s possession.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "covet": "M2"
+          }
+        },
+        {
+          "id": "covet-envy_003_b2",
+          "text": "He didn't want to act at all; he resented the attention Hana received.",
+          "best_word": "envy",
+          "fit": {
+            "covet": 0.16,
+            "envy": 0.95
+          },
+          "decisive_clue": "did not want the role but still begrudged her acclaim",
+          "reason": "The detail 'did not want the role but still begrudged her acclaim' leaves resentment of another’s good fortune as the better fit, not desire for another’s possession.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "covet": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Did not want the role but still begrudged her acclaim; envy still fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"resented Hana’s recognition\"; the next is \"did not want the role but still begrudged her acclaim\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "Would he actually want to possess the role?",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "covet-envy_004",
+      "edge_id": "covet__envy",
+      "domain": "sibling_promotion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which verb best describes how Belle responds to another person's advantage?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "covet-envy_004_b1",
+          "text": "Belle felt a sharp pang of resentment every time her sister was congratulated on a promotion.",
+          "best_word": "envy",
+          "fit": {
+            "covet": 0.2,
+            "envy": 0.92
+          },
+          "decisive_clue": "resented her sister’s professional success",
+          "reason": "The clue 'resented her sister’s professional success' points to resentment of another’s good fortune, not desire for another’s possession.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "covet": "M2"
+          }
+        },
+        {
+          "id": "covet-envy_004_b2",
+          "text": "She offered congratulations herself but privately hated seeing her sister recognized more.",
+          "best_word": "envy",
+          "fit": {
+            "covet": 0.16,
+            "envy": 0.95
+          },
+          "decisive_clue": "outward politeness did not erase the resentment",
+          "reason": "The detail 'outward politeness did not erase the resentment' leaves resentment of another’s good fortune as the better fit, not desire for another’s possession.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "covet": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Outward politeness did not erase the resentment; envy still fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"resented her sister’s professional success\"; the next is \"outward politeness did not erase the resentment\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "Does her polite response change her private feeling?",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "covet-envy_006",
+      "edge_id": "covet__envy",
+      "domain": "roommate_s_wardrobe",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which verb best describes how Yusef responds to another person's advantage?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "covet-envy_006_b1",
+          "text": "Yusef longed to own his roommate's leather jacket and imagined wearing it every weekend.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.92,
+            "envy": 0.2
+          },
+          "decisive_clue": "strong desire to possess the jacket",
+          "reason": "The clue 'strong desire to possess the jacket' points to desire for another’s possession, not resentment of another’s good fortune.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "covet-envy_006_b2",
+          "text": "The roommate received plenty of compliments, but Yusef felt no anger toward him.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.95,
+            "envy": 0.16
+          },
+          "decisive_clue": "compliments to the owner did not produce resentment",
+          "reason": "The detail 'compliments to the owner did not produce resentment' leaves desire for another’s possession as the better fit, not resentment of another’s good fortune.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Compliments to the owner did not produce resentment; covet still fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"strong desire to possess the jacket\"; the next is \"compliments to the owner did not produce resentment\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "Does someone else's praise make his desire personal?",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "covet-envy_008",
+      "edge_id": "covet__envy",
+      "domain": "handmade_decorations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which verb best describes how Tenzin responds to another person's advantage?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "covet-envy_008_b1",
+          "text": "Tenzin desperately wanted the handmade lamp displayed in a friend's living room for his own desk.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.92,
+            "envy": 0.2
+          },
+          "decisive_clue": "desired one particular belonging",
+          "reason": "The clue 'desired one particular belonging' points to desire for another’s possession, not resentment of another’s good fortune.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "covet-envy_008_b2",
+          "text": "He respected his friend's talent; it was the exact lamp he wished he could possess.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.95,
+            "envy": 0.16
+          },
+          "decisive_clue": "the object, not resentment of its maker, remained central",
+          "reason": "The detail 'the object, not resentment of its maker, remained central' leaves desire for another’s possession as the better fit, not resentment of another’s good fortune.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The object, not resentment of its maker, remained central; covet still fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"desired one particular belonging\"; the next is \"the object, not resentment of its maker, remained central\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "Ask whether admiration of talent is separate from wanting the item.",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "covet-envy_009",
+      "edge_id": "covet__envy",
+      "domain": "beach_picnic",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which verb best describes how Ibrahim responds to another person's advantage?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "covet-envy_009_b1",
+          "text": "Ibrahim spent the picnic wishing he owned his cousin's large beach umbrella.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.92,
+            "envy": 0.2
+          },
+          "decisive_clue": "wished for the cousin’s umbrella",
+          "reason": "The clue 'wished for the cousin’s umbrella' points to desire for another’s possession, not resentment of another’s good fortune.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "covet-envy_009_b2",
+          "text": "He later realized he had no use for it; what stung was how easily his cousin bought things he couldn't afford.",
+          "best_word": "envy",
+          "fit": {
+            "covet": 0.16,
+            "envy": 0.95
+          },
+          "decisive_clue": "resented the cousin’s financial advantage, not the umbrella itself",
+          "reason": "The new clue 'resented the cousin’s financial advantage, not the umbrella itself' shifts the interpretation to resentment of another’s good fortune, rather than desire for another’s possession.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "covet": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Resented the cousin’s financial advantage, not the umbrella itself; now envy fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"wished for the cousin’s umbrella\"; the next is \"resented the cousin’s financial advantage, not the umbrella itself\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "What continues to bother him after the object loses its appeal?",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "covet-envy_010",
+      "edge_id": "covet__envy",
+      "domain": "apartment_viewing",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which verb best describes how Ivo responds to another person's advantage?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "covet-envy_010_b1",
+          "text": "Ivo kept picturing the landlord's antique mirror in his own hallway as he toured the flat.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.92,
+            "envy": 0.2
+          },
+          "decisive_clue": "imagined possessing the landlord’s mirror",
+          "reason": "The clue 'imagined possessing the landlord’s mirror' points to desire for another’s possession, not resentment of another’s good fortune.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "covet-envy_010_b2",
+          "text": "He wasn't angry at its owner; he wanted that exact mirror, not merely the status of owning antiques.",
+          "best_word": "covet",
+          "fit": {
+            "covet": 0.95,
+            "envy": 0.16
+          },
+          "decisive_clue": "specific longing for ownership rather than resentment",
+          "reason": "The detail 'specific longing for ownership rather than resentment' leaves desire for another’s possession as the better fit, not resentment of another’s good fortune.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Specific longing for ownership rather than resentment; covet still fits best.",
+      "feedback_deep": "covet means strongly want to own what belongs to another; envy means feel dissatisfied because someone else possesses an advantage. The first clue is \"imagined possessing the landlord’s mirror\"; the next is \"specific longing for ownership rather than resentment\". Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "contrast_rule": "Covet fixes on obtaining the thing; envy resents the person who has it.",
+      "hints": {
+        "attention": "Is his desire about an object or another person's fortune?",
+        "axis": "Possessing another’s thing versus resenting another’s advantage",
+        "contrast": "Covet fixes on obtaining the thing; envy resents the person who has it."
+      },
+      "qa": "pass"
+    }
+  ]
+}

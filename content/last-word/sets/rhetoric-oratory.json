@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "rhetoric-oratory",
+  "title": "rhetoric / oratory",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[102]",
+    "source_pair_id": 420,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "rhetoric",
+      "sense": "art of using language effectively to persuade in speech or writing",
+      "connotation": "can be admiring or critical of persuasion",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming any speech skill is primarily persuasion by wording."
+      ]
+    },
+    {
+      "word": "oratory",
+      "sense": "art and style of delivering formal speeches to audiences",
+      "connotation": "usually formal and associated with speaking skill",
+      "register": "general",
+      "misconceptions": [
+        "Assuming all persuasive language is public speaking.",
+        "Mistaking polished writing for speech delivery."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "medium_and_function",
+      "description": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking."
+    }
+  ],
+  "edges": [
+    {
+      "id": "rhetoric__oratory",
+      "a": "rhetoric",
+      "b": "oratory",
+      "boundary_rule": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking.",
+      "clues_a": [
+        "word choice shapes an argument",
+        "a written appeal moves readers"
+      ],
+      "clues_b": [
+        "public address and vocal delivery",
+        "formal speech to a crowd"
+      ],
+      "irrelevant_clues": [
+        "dress of speaker",
+        "length of applause",
+        "topic prestige"
+      ],
+      "misconceptions": {
+        "M1": "Assuming all persuasive language is public speaking.",
+        "M2": "Mistaking polished writing for speech delivery.",
+        "M3": "Assuming any speech skill is primarily persuasion by wording."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "rhetoric-oratory_001",
+      "edge_id": "rhetoric__oratory",
+      "domain": "school_newsletter",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Zara's work on the school appeal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "rhetoric-oratory_001_b1",
+          "text": "Zara rewrites a printed funding appeal to lead with a question that makes readers consider what students will lose.",
+          "best_word": "rhetoric",
+          "fit": {
+            "rhetoric": 0.89,
+            "oratory": 0.22
+          },
+          "decisive_clue": "she arranges written words to persuade readers",
+          "reason": "She arranges written words to persuade readers is the evidence for rhetoric.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oratory": "M1"
+          }
+        },
+        {
+          "id": "rhetoric-oratory_001_b2",
+          "text": "She also rearranges the arguments so each answer leads into the next.",
+          "best_word": "rhetoric",
+          "fit": {
+            "rhetoric": 0.92,
+            "oratory": 0.22
+          },
+          "decisive_clue": "the written argument is shaped to change readers’ minds",
+          "reason": "The new structure strengthens the persuasive written appeal without making it a speech performance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oratory": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the written argument is shaped to change readers’ minds.",
+      "feedback_deep": "Rhetoric is effective persuasive language in writing or speech. Zara is crafting the written case, not delivering a formal address.",
+      "contrast_rule": "Rhetoric persuades through language; oratory commands a live audience.",
+      "hints": {
+        "attention": "Notice whether the skill lies in persuasive wording or in public delivery.",
+        "axis": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking.",
+        "contrast": "Rhetoric persuades through language; oratory commands a live audience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "rhetoric-oratory_002",
+      "edge_id": "rhetoric__oratory",
+      "domain": "graduation_ceremony",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ravi's strength at graduation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "rhetoric-oratory_002_b1",
+          "text": "Ravi addresses the hall, adjusting his pauses and volume until even people at the back follow him.",
+          "best_word": "oratory",
+          "fit": {
+            "rhetoric": 0.25,
+            "oratory": 0.9
+          },
+          "decisive_clue": "his skill appears in formal public delivery",
+          "reason": "His skill appears in formal public delivery is the evidence for oratory.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rhetoric": "M3"
+          }
+        },
+        {
+          "id": "rhetoric-oratory_002_b2",
+          "text": "He holds the microphone lower and projects his voice without rushing.",
+          "best_word": "oratory",
+          "fit": {
+            "rhetoric": 0.25,
+            "oratory": 0.93
+          },
+          "decisive_clue": "his controlled live delivery remains decisive",
+          "reason": "Moving the microphone does not turn the speaking performance into a written persuasive technique.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rhetoric": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: his skill appears in formal public delivery.",
+      "feedback_deep": "Oratory focuses on the art and style of formal speech delivery. Ravi’s voice, pacing, and audience control are decisive; rhetoric could describe particular persuasive wording, which is not the focus.",
+      "contrast_rule": "Rhetoric persuades through language; oratory commands a live audience.",
+      "hints": {
+        "attention": "Notice whether the skill lies in persuasive wording or in public delivery.",
+        "axis": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking.",
+        "contrast": "Rhetoric persuades through language; oratory commands a live audience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "rhetoric-oratory_003",
+      "edge_id": "rhetoric__oratory",
+      "domain": "neighbourhood_petition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hana's contribution to the petition?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "rhetoric-oratory_003_b1",
+          "text": "Hana replaces a list of complaints with a short written appeal that anticipates the landlord’s objections.",
+          "best_word": "rhetoric",
+          "fit": {
+            "rhetoric": 0.88,
+            "oratory": 0.19
+          },
+          "decisive_clue": "she crafts a written argument for persuasion",
+          "reason": "She crafts a written argument for persuasion is the evidence for rhetoric.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oratory": "M1"
+          }
+        },
+        {
+          "id": "rhetoric-oratory_003_b2",
+          "text": "Her last paragraph offers a practical solution before asking for signatures.",
+          "best_word": "rhetoric",
+          "fit": {
+            "rhetoric": 0.91,
+            "oratory": 0.19
+          },
+          "decisive_clue": "the written case anticipates objections",
+          "reason": "The practical solution supports the same written persuasive strategy rather than turning it into public speech.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oratory": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she crafts a written argument for persuasion.",
+      "feedback_deep": "Rhetoric includes persuasive writing. Hana’s language is organized to overcome objections; there is no formal speech delivery to evaluate.",
+      "contrast_rule": "Rhetoric persuades through language; oratory commands a live audience.",
+      "hints": {
+        "attention": "Notice whether the skill lies in persuasive wording or in public delivery.",
+        "axis": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking.",
+        "contrast": "Rhetoric persuades through language; oratory commands a live audience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "rhetoric-oratory_004",
+      "edge_id": "rhetoric__oratory",
+      "domain": "club_awards_night",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Pablo's talent at the awards night?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "rhetoric-oratory_004_b1",
+          "text": "Pablo gives a formal address, holding a crowded room through changes in pitch and a carefully timed pause.",
+          "best_word": "oratory",
+          "fit": {
+            "rhetoric": 0.22,
+            "oratory": 0.89
+          },
+          "decisive_clue": "his formal address is carried by live delivery",
+          "reason": "His formal address is carried by live delivery is the evidence for oratory.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rhetoric": "M3"
+          }
+        },
+        {
+          "id": "rhetoric-oratory_004_b2",
+          "text": "He speaks without looking down at his notes even when the lights dim.",
+          "best_word": "oratory",
+          "fit": {
+            "rhetoric": 0.22,
+            "oratory": 0.92
+          },
+          "decisive_clue": "his delivery skill remains the main evidence",
+          "reason": "Not needing notes is an extra performance detail; the main distinction remains formal public speaking.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rhetoric": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: his formal address is carried by live delivery.",
+      "feedback_deep": "The evidence concerns Pablo’s command of a live formal address. That is oratory; the lighting and notes do not turn the task into constructing a persuasive argument.",
+      "contrast_rule": "Rhetoric persuades through language; oratory commands a live audience.",
+      "hints": {
+        "attention": "Notice whether the skill lies in persuasive wording or in public delivery.",
+        "axis": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking.",
+        "contrast": "Rhetoric persuades through language; oratory commands a live audience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "rhetoric-oratory_005",
+      "edge_id": "rhetoric__oratory",
+      "domain": "online_fundraising",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Samira's technique in her donation post?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "rhetoric-oratory_005_b1",
+          "text": "Samira writes, “For the price of one snack, a child can have a book,” to make a small gift feel possible.",
+          "best_word": "rhetoric",
+          "fit": {
+            "rhetoric": 0.9,
+            "oratory": 0.25
+          },
+          "decisive_clue": "her written comparison is designed to persuade",
+          "reason": "Her written comparison is designed to persuade is the evidence for rhetoric.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oratory": "M1"
+          }
+        },
+        {
+          "id": "rhetoric-oratory_005_b2",
+          "text": "Her post reaches readers who have never heard of the charity before.",
+          "best_word": "rhetoric",
+          "fit": {
+            "rhetoric": 0.93,
+            "oratory": 0.25
+          },
+          "decisive_clue": "her comparison makes giving feel achievable to new readers",
+          "reason": "The audience widens, but the skill remains a persuasive written comparison.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oratory": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: her comparison makes giving feel achievable to new readers.",
+      "feedback_deep": "Rhetoric includes framing an appeal so readers rethink an action. Samira’s comparison works in text without relying on a formal public performance.",
+      "contrast_rule": "Rhetoric persuades through language; oratory commands a live audience.",
+      "hints": {
+        "attention": "Notice whether the skill lies in persuasive wording or in public delivery.",
+        "axis": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking.",
+        "contrast": "Rhetoric persuades through language; oratory commands a live audience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "rhetoric-oratory_006",
+      "edge_id": "rhetoric__oratory",
+      "domain": "student_election_assembly",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elias's ability during his election speech?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "rhetoric-oratory_006_b1",
+          "text": "Elias stands before the year group and carries his speech with clear projection, rhythm and deliberate silence.",
+          "best_word": "oratory",
+          "fit": {
+            "rhetoric": 0.19,
+            "oratory": 0.88
+          },
+          "decisive_clue": "the strength is formal spoken delivery",
+          "reason": "The strength is formal spoken delivery is the evidence for oratory.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rhetoric": "M3"
+          }
+        },
+        {
+          "id": "rhetoric-oratory_006_b2",
+          "text": "He slows at the difficult section so everyone can hear each point.",
+          "best_word": "oratory",
+          "fit": {
+            "rhetoric": 0.19,
+            "oratory": 0.91
+          },
+          "decisive_clue": "he controls pace to sustain audience attention",
+          "reason": "Slowing the speech adds evidence about the quality of the live performance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rhetoric": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he controls pace to sustain audience attention.",
+      "feedback_deep": "Oratory is skilled formal public speaking. Elias’s pacing and projection distinguish it from rhetoric, which would focus on persuasive language choices.",
+      "contrast_rule": "Rhetoric persuades through language; oratory commands a live audience.",
+      "hints": {
+        "attention": "Notice whether the skill lies in persuasive wording or in public delivery.",
+        "axis": "Rhetoric concerns how words persuade in speech or writing, whereas oratory specifically concerns skilled formal public speaking.",
+        "contrast": "Rhetoric persuades through language; oratory commands a live audience."
+      },
+      "qa": "pass"
+    }
+  ]
+}

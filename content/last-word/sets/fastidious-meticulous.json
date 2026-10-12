@@ -1,0 +1,618 @@
+{
+  "schema_version": 1,
+  "set_id": "fastidious-meticulous",
+  "title": "fastidious / meticulous",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[27]",
+    "source_pair_id": 126,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "fastidious",
+      "sense": "exacting fussiness",
+      "connotation": "often disapproving, picky",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Mistaking excessive standards for necessary carefulness"
+      ]
+    },
+    {
+      "word": "meticulous",
+      "sense": "systematic detail care",
+      "connotation": "usually approving",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Mistaking necessary precision for extreme fussiness"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "standards_vs_care",
+      "description": "Fussy exacting demands versus practical thorough precision"
+    }
+  ],
+  "edges": [
+    {
+      "id": "fastidious__meticulous",
+      "a": "fastidious",
+      "b": "meticulous",
+      "boundary_rule": "Fastidious implies demanding, sometimes excessively fussy standards of neatness or quality; meticulous means careful and thorough about details without that fussiness.",
+      "clues_a": [
+        "rejects harmless imperfections as unacceptable"
+      ],
+      "clues_b": [
+        "checks relevant details for accuracy and function"
+      ],
+      "irrelevant_clues": [
+        "working slowly, a large number of steps, good results"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking excessive standards for necessary carefulness",
+        "M2": "Mistaking necessary precision for extreme fussiness",
+        "M3": "Assuming slow work proves either description"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "fastidious-meticulous_001",
+      "edge_id": "fastidious__meticulous",
+      "domain": "dinner_table",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Rina handles the task?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_001_b1",
+          "text": "Rina asked for her clean dinner plate to be replaced three times because of nearly invisible marks.",
+          "best_word": "fastidious",
+          "fit": {
+            "fastidious": 0.92,
+            "meticulous": 0.2
+          },
+          "decisive_clue": "rejected harmless tiny marks",
+          "reason": "The clue 'rejected harmless tiny marks' points to exacting fussiness, not systematic detail care.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_001_b2",
+          "text": "She then polished already spotless cutlery before letting anyone set it down.",
+          "best_word": "fastidious",
+          "fit": {
+            "fastidious": 0.95,
+            "meticulous": 0.16
+          },
+          "decisive_clue": "demanded perfection even of already clean items",
+          "reason": "The detail 'demanded perfection even of already clean items' leaves exacting fussiness as the better fit, not systematic detail care.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Demanded perfection even of already clean items; fastidious still fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"rejected harmless tiny marks\"; the next is \"demanded perfection even of already clean items\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "Are these details important to safety or just her exact standards?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fastidious-meticulous_002",
+      "edge_id": "fastidious__meticulous",
+      "domain": "gift_wrapping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Dina handles the task?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_002_b1",
+          "text": "Dina rejected a wrapped gift because its ribbon seemed slightly uneven.",
+          "best_word": "fastidious",
+          "fit": {
+            "fastidious": 0.92,
+            "meticulous": 0.2
+          },
+          "decisive_clue": "appeared bothered by a harmless uneven ribbon",
+          "reason": "The clue 'appeared bothered by a harmless uneven ribbon' points to exacting fussiness, not systematic detail care.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_002_b2",
+          "text": "A closer look showed its fastening was tearing and would open in transit, so she carefully repaired the weak point.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.16,
+            "meticulous": 0.95
+          },
+          "decisive_clue": "noticed a functional flaw and repaired it thoroughly",
+          "reason": "The new clue 'noticed a functional flaw and repaired it thoroughly' shifts the interpretation to systematic detail care, rather than exacting fussiness.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Noticed a functional flaw and repaired it thoroughly; now meticulous fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"appeared bothered by a harmless uneven ribbon\"; the next is \"noticed a functional flaw and repaired it thoroughly\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "Was the ribbon only cosmetic, or at risk of failing?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fastidious-meticulous_003",
+      "edge_id": "fastidious__meticulous",
+      "domain": "university_application",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Farah handles the task?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_003_b1",
+          "text": "Farah checked every date and spelling on her application against the original documents.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.2,
+            "meticulous": 0.92
+          },
+          "decisive_clue": "cross-checked relevant information",
+          "reason": "The clue 'cross-checked relevant information' points to systematic detail care, not exacting fussiness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_003_b2",
+          "text": "She ignored trivial font differences and focused on preventing actual submission errors.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.16,
+            "meticulous": 0.95
+          },
+          "decisive_clue": "prioritized correctness over fussy appearance",
+          "reason": "The detail 'prioritized correctness over fussy appearance' leaves systematic detail care as the better fit, not exacting fussiness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Prioritized correctness over fussy appearance; meticulous still fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"cross-checked relevant information\"; the next is \"prioritized correctness over fussy appearance\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "What kind of details does she care about?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fastidious-meticulous_004",
+      "edge_id": "fastidious__meticulous",
+      "domain": "costume_sewing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Luca handles the task?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_004_b1",
+          "text": "Luca measured every seam of a costume twice so it would fit properly.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.2,
+            "meticulous": 0.92
+          },
+          "decisive_clue": "double-checked measurements for fit",
+          "reason": "The clue 'double-checked measurements for fit' points to systematic detail care, not exacting fussiness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_004_b2",
+          "text": "He used the same checklist on hidden seams that could affect its strength.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.16,
+            "meticulous": 0.95
+          },
+          "decisive_clue": "included useful hidden structural details",
+          "reason": "The detail 'included useful hidden structural details' leaves systematic detail care as the better fit, not exacting fussiness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Included useful hidden structural details; meticulous still fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"double-checked measurements for fit\"; the next is \"included useful hidden structural details\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "Are his checks connected to function?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fastidious-meticulous_005",
+      "edge_id": "fastidious__meticulous",
+      "domain": "shared_bookshelf",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Omar handles the task?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_005_b1",
+          "text": "Omar lined up books carefully by number so everyone could find them.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.2,
+            "meticulous": 0.92
+          },
+          "decisive_clue": "organized books carefully for easy searching",
+          "reason": "The clue 'organized books carefully for easy searching' points to systematic detail care, not exacting fussiness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_005_b2",
+          "text": "He then made others restart because one harmless spine leaned by a millimeter.",
+          "best_word": "fastidious",
+          "fit": {
+            "fastidious": 0.95,
+            "meticulous": 0.16
+          },
+          "decisive_clue": "insisted on correcting a negligible cosmetic flaw",
+          "reason": "The new clue 'insisted on correcting a negligible cosmetic flaw' shifts the interpretation to exacting fussiness, rather than systematic detail care.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Insisted on correcting a negligible cosmetic flaw; now fastidious fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"organized books carefully for easy searching\"; the next is \"insisted on correcting a negligible cosmetic flaw\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "Did the new demand improve anyone’s ability to find a book?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fastidious-meticulous_007",
+      "edge_id": "fastidious__meticulous",
+      "domain": "family_holiday_booking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Mikhail handles the task?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_007_b1",
+          "text": "Mikhail checked every name, date and passport spelling before confirming the family's trip booking.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.2,
+            "meticulous": 0.92
+          },
+          "decisive_clue": "verified important booking details",
+          "reason": "The clue 'verified important booking details' points to systematic detail care, not exacting fussiness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_007_b2",
+          "text": "He finished promptly and didn't demand pointless cosmetic changes to the itinerary.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.16,
+            "meticulous": 0.95
+          },
+          "decisive_clue": "care remained practical and efficient",
+          "reason": "The detail 'care remained practical and efficient' leaves systematic detail care as the better fit, not exacting fussiness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Care remained practical and efficient; meticulous still fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"verified important booking details\"; the next is \"care remained practical and efficient\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "Which checked details could cause real travel problems?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fastidious-meticulous_009",
+      "edge_id": "fastidious__meticulous",
+      "domain": "bicycle_workshop",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Yara handles the task?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_009_b1",
+          "text": "Yara refused to hand over a repaired bicycle because of a tiny mark beneath the seat.",
+          "best_word": "fastidious",
+          "fit": {
+            "fastidious": 0.92,
+            "meticulous": 0.2
+          },
+          "decisive_clue": "appeared to reject a bicycle for a minor mark",
+          "reason": "The clue 'appeared to reject a bicycle for a minor mark' points to exacting fussiness, not systematic detail care.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_009_b2",
+          "text": "The mark revealed a crack in the seat support that could fail during riding, so she inspected the joint carefully.",
+          "best_word": "meticulous",
+          "fit": {
+            "fastidious": 0.16,
+            "meticulous": 0.95
+          },
+          "decisive_clue": "a safety-relevant crack justified precise inspection",
+          "reason": "The new clue 'a safety-relevant crack justified precise inspection' shifts the interpretation to systematic detail care, rather than exacting fussiness.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fastidious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A safety-relevant crack justified precise inspection; now meticulous fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"appeared to reject a bicycle for a minor mark\"; the next is \"a safety-relevant crack justified precise inspection\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "Does the mark turn out to matter?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fastidious-meticulous_010",
+      "edge_id": "fastidious__meticulous",
+      "domain": "flower_shop",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes how Tomas handles the task?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "fastidious-meticulous_010_b1",
+          "text": "Tomas rejected several fresh bouquets because a single leaf on each tilted slightly out of line.",
+          "best_word": "fastidious",
+          "fit": {
+            "fastidious": 0.92,
+            "meticulous": 0.2
+          },
+          "decisive_clue": "rejected good flowers for tiny visual imperfections",
+          "reason": "The clue 'rejected good flowers for tiny visual imperfections' points to exacting fussiness, not systematic detail care.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        },
+        {
+          "id": "fastidious-meticulous_010_b2",
+          "text": "None was damaged; he simply demanded flawless appearance even when customers liked the arrangements.",
+          "best_word": "fastidious",
+          "fit": {
+            "fastidious": 0.95,
+            "meticulous": 0.16
+          },
+          "decisive_clue": "no functional problem justified his rigid standards",
+          "reason": "The detail 'no functional problem justified his rigid standards' leaves exacting fussiness as the better fit, not systematic detail care.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "meticulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "No functional problem justified his rigid standards; fastidious still fits best.",
+      "feedback_deep": "fastidious means very particular about cleanliness, neatness or quality, sometimes excessively; meticulous means extremely careful and precise about every relevant detail. The first clue is \"rejected good flowers for tiny visual imperfections\"; the next is \"no functional problem justified his rigid standards\". Fastidious demands near-perfection; meticulous checks details with care.",
+      "contrast_rule": "Fastidious demands near-perfection; meticulous checks details with care.",
+      "hints": {
+        "attention": "Is he checking quality or insisting on cosmetic perfection?",
+        "axis": "Fussy exacting demands versus practical thorough precision",
+        "contrast": "Fastidious demands near-perfection; meticulous checks details with care."
+      },
+      "qa": "pass"
+    }
+  ]
+}

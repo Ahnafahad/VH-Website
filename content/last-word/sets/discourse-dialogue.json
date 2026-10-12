@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "discourse-dialogue",
+  "title": "discourse / dialogue",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[173]",
+    "source_pair_id": 762,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "discourse",
+      "sense": "A sustained, organized treatment or discussion of ideas in speech or writing.",
+      "connotation": "formal, academic",
+      "register": "formal",
+      "misconceptions": [
+        "Assumes all communication is two-way exchange.",
+        "Treats any conversation, however brief, as developed discourse."
+      ]
+    },
+    {
+      "word": "dialogue",
+      "sense": "A direct two-way exchange in which participants respond to each other.",
+      "connotation": "neutral, conversational",
+      "register": "general or educated",
+      "misconceptions": [
+        "Assumes all communication is two-way exchange.",
+        "Treats any conversation, however brief, as developed discourse."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_basis",
+      "description": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants."
+    }
+  ],
+  "edges": [
+    {
+      "id": "discourse__dialogue",
+      "a": "discourse",
+      "b": "dialogue",
+      "boundary_rule": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+      "clues_a": [
+        "organized extended treatment",
+        "connects ideas across an essay",
+        "structured exploration of a topic"
+      ],
+      "clues_b": [
+        "participants take turns",
+        "answers respond to questions",
+        "mutual exchange shapes discussion"
+      ],
+      "irrelevant_clues": [
+        "room size",
+        "microphone quality",
+        "formal clothing"
+      ],
+      "misconceptions": {
+        "M1": "Assumes all communication is two-way exchange.",
+        "M2": "Treats any conversation, however brief, as developed discourse.",
+        "M3": "Mistakes formality or length for proof of a particular interaction pattern."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "discourse-dialogue_001",
+      "edge_id": "discourse__dialogue",
+      "domain": "school_newsletter",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya’s article about school uniforms?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "discourse-dialogue_001_b1",
+          "text": "Priya developed several arguments, compared objections, and ended by weighing the trade-offs.",
+          "best_word": "discourse",
+          "fit": {
+            "discourse": 0.87,
+            "dialogue": 0.2
+          },
+          "decisive_clue": "extended and structured examination of ideas",
+          "reason": "The first beat supplies the deciding evidence: extended and structured examination of ideas.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dialogue": "M3"
+          }
+        },
+        {
+          "id": "discourse-dialogue_001_b2",
+          "text": "Her article appeared beside a colourful photograph.",
+          "best_word": "discourse",
+          "fit": {
+            "discourse": 0.89,
+            "dialogue": 0.17
+          },
+          "decisive_clue": "extended and structured examination of ideas",
+          "reason": "A photo does not change the organized discussion in the article.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dialogue": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Extended and structured examination of ideas is what distinguishes discourse here.",
+      "feedback_deep": "Discourse means a sustained, organized treatment or discussion of ideas in speech or writing. Dialogue means a direct two-way exchange in which participants respond to each other. Here, extended and structured examination of ideas; a photo does not change the organized discussion in the article.",
+      "contrast_rule": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+      "hints": {
+        "attention": "Focus on organization rather than incidental details.",
+        "axis": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+        "contrast": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "discourse-dialogue_002",
+      "edge_id": "discourse__dialogue",
+      "domain": "student_mentoring",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the conversation between Tariq and his mentor?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "discourse-dialogue_002_b1",
+          "text": "Tariq asked why his plan failed, and his mentor’s reply led him to ask a new question.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.23,
+            "dialogue": 0.89
+          },
+          "decisive_clue": "back-and-forth replies change each participant’s contribution",
+          "reason": "The first beat supplies the deciding evidence: back-and-forth replies change each participant’s contribution.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M1"
+          }
+        },
+        {
+          "id": "discourse-dialogue_002_b2",
+          "text": "They both adjusted their suggestions as they spoke.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.2,
+            "dialogue": 0.91
+          },
+          "decisive_clue": "back-and-forth replies change each participant’s contribution",
+          "reason": "The exchange develops through direct response to one another.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Back-and-forth replies change each participant’s contribution is what distinguishes dialogue here.",
+      "feedback_deep": "Discourse means a sustained, organized treatment or discussion of ideas in speech or writing. Dialogue means a direct two-way exchange in which participants respond to each other. Here, back-and-forth replies change each participant’s contribution; the exchange develops through direct response to one another.",
+      "contrast_rule": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+      "hints": {
+        "attention": "Focus on reciprocity rather than incidental details.",
+        "axis": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+        "contrast": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "discourse-dialogue_003",
+      "edge_id": "discourse__dialogue",
+      "domain": "community_radio",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Elena’s broadcast about public transport?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "discourse-dialogue_003_b1",
+          "text": "Elena examined costs, access, and possible improvements in a connected half-hour talk.",
+          "best_word": "discourse",
+          "fit": {
+            "discourse": 0.91,
+            "dialogue": 0.16
+          },
+          "decisive_clue": "an extended organized treatment of a topic",
+          "reason": "The first beat supplies the deciding evidence: an extended organized treatment of a topic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dialogue": "M2"
+          }
+        },
+        {
+          "id": "discourse-dialogue_003_b2",
+          "text": "Her broadcast was recorded rather than live.",
+          "best_word": "discourse",
+          "fit": {
+            "discourse": 0.93,
+            "dialogue": 0.13
+          },
+          "decisive_clue": "an extended organized treatment of a topic",
+          "reason": "Recording does not make the ideas less systematically developed.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dialogue": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An extended organized treatment of a topic — the later detail does not change that distinction.",
+      "feedback_deep": "Discourse means a sustained, organized treatment or discussion of ideas in speech or writing. Dialogue means a direct two-way exchange in which participants respond to each other. Here, an extended organized treatment of a topic; recording does not make the ideas less systematically developed.",
+      "contrast_rule": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+      "hints": {
+        "attention": "Focus on structure rather than incidental details.",
+        "axis": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+        "contrast": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "discourse-dialogue_004",
+      "edge_id": "discourse__dialogue",
+      "domain": "online_support",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the exchange between Hugo and the support agent?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "discourse-dialogue_004_b1",
+          "text": "Hugo described the problem, the agent asked follow-up questions, and Hugo clarified which button failed.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.2,
+            "dialogue": 0.85
+          },
+          "decisive_clue": "two participants repeatedly respond to each other",
+          "reason": "The first beat supplies the deciding evidence: two participants repeatedly respond to each other.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M3"
+          }
+        },
+        {
+          "id": "discourse-dialogue_004_b2",
+          "text": "Their messages appeared several minutes apart.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.17,
+            "dialogue": 0.87
+          },
+          "decisive_clue": "two participants repeatedly respond to each other",
+          "reason": "A delay between messages does not remove the two-way pattern.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Two participants repeatedly respond to each other — the later detail does not change that distinction.",
+      "feedback_deep": "Discourse means a sustained, organized treatment or discussion of ideas in speech or writing. Dialogue means a direct two-way exchange in which participants respond to each other. Here, two participants repeatedly respond to each other; a delay between messages does not remove the two-way pattern.",
+      "contrast_rule": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+      "hints": {
+        "attention": "Focus on exchange rather than incidental details.",
+        "axis": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+        "contrast": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "discourse-dialogue_006",
+      "edge_id": "discourse__dialogue",
+      "domain": "family_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the exchange between Ren and his sister?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "discourse-dialogue_006_b1",
+          "text": "Ren proposed leaving earlier; his sister explained her concern, and Ren revised the plan in response.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.16,
+            "dialogue": 0.89
+          },
+          "decisive_clue": "replies to one another directly shape the plan",
+          "reason": "The first beat supplies the deciding evidence: replies to one another directly shape the plan.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M2"
+          }
+        },
+        {
+          "id": "discourse-dialogue_006_b2",
+          "text": "Both remained calm throughout.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.13,
+            "dialogue": 0.91
+          },
+          "decisive_clue": "replies to one another directly shape the plan",
+          "reason": "Politeness does not alter the interactive nature of their conversation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Replies to one another directly shape the plan — the later detail does not change that distinction.",
+      "feedback_deep": "Discourse means a sustained, organized treatment or discussion of ideas in speech or writing. Dialogue means a direct two-way exchange in which participants respond to each other. Here, replies to one another directly shape the plan; politeness does not alter the interactive nature of their conversation.",
+      "contrast_rule": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+      "hints": {
+        "attention": "Focus on turn taking rather than incidental details.",
+        "axis": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+        "contrast": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "discourse-dialogue_008",
+      "edge_id": "discourse__dialogue",
+      "domain": "neighbourhood_mediation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the discussion between Salma and her neighbour?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "discourse-dialogue_008_b1",
+          "text": "Salma explained why the noise troubled her; her neighbour proposed a change, and Salma suggested a compromise.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.23,
+            "dialogue": 0.85
+          },
+          "decisive_clue": "each side responds directly and adjusts its position",
+          "reason": "The first beat supplies the deciding evidence: each side responds directly and adjusts its position.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M1"
+          }
+        },
+        {
+          "id": "discourse-dialogue_008_b2",
+          "text": "They agreed to continue talking the next day.",
+          "best_word": "dialogue",
+          "fit": {
+            "discourse": 0.2,
+            "dialogue": 0.87
+          },
+          "decisive_clue": "each side responds directly and adjusts its position",
+          "reason": "A continuing exchange remains two-way even if no final agreement is reached.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "discourse": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Each side responds directly and adjusts its position is what distinguishes dialogue here.",
+      "feedback_deep": "Discourse means a sustained, organized treatment or discussion of ideas in speech or writing. Dialogue means a direct two-way exchange in which participants respond to each other. Here, each side responds directly and adjusts its position; a continuing exchange remains two-way even if no final agreement is reached.",
+      "contrast_rule": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+      "hints": {
+        "attention": "Focus on mutual response rather than incidental details.",
+        "axis": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants.",
+        "contrast": "Discourse emphasizes sustained development of ideas, while dialogue emphasizes reciprocal exchange between participants."
+      },
+      "qa": "pass"
+    }
+  ]
+}

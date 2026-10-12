@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "set_id": "refute-rebut",
+  "title": "refute / rebut",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[111]",
+    "source_pair_id": 451,
+    "qa": {
+      "pass": 5,
+      "revised": 2,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "refute",
+      "sense": "prove a claim false",
+      "connotation": "decisive",
+      "register": "standard/formal",
+      "misconceptions": [
+        "Any contrary opinion counts as proof."
+      ]
+    },
+    {
+      "word": "rebut",
+      "sense": "answer with an opposing argument",
+      "connotation": "argumentative",
+      "register": "standard/formal",
+      "misconceptions": [
+        "Every rebuttal settles the issue."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "counterargument_vs_disproof",
+      "description": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it."
+    }
+  ],
+  "edges": [
+    {
+      "id": "refute__rebut",
+      "a": "refute",
+      "b": "rebut",
+      "boundary_rule": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+      "clues_a": [
+        "conclusive records",
+        "logical contradiction",
+        "proof of impossibility"
+      ],
+      "clues_b": [
+        "counterargument",
+        "alternative explanation",
+        "challenge without decisive evidence"
+      ],
+      "irrelevant_clues": [
+        "confident voice",
+        "length of reply",
+        "polite tone"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking any disagreement for disproof.",
+        "M2": "Assuming a rebuttal is always conclusive.",
+        "M3": "Mistaking an emphatic tone for evidence."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "refute-rebut_001",
+      "edge_id": "refute__rebut",
+      "domain": "school_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Fatima's response to a criticism?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "refute-rebut_001_b1",
+          "text": "Fatima tells classmates she thinks the criticism of the play is unfair and offers a different interpretation.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.28,
+            "rebut": 0.91
+          },
+          "decisive_clue": "contrary interpretation",
+          "reason": "She challenges the view without disproving it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        },
+        {
+          "id": "refute-rebut_001_b2",
+          "text": "She speaks confidently, but neither side produces proof settling the disagreement.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.24,
+            "rebut": 0.94
+          },
+          "decisive_clue": "confidence does not prove claim wrong",
+          "reason": "A confident delivery does not supply the evidence needed to settle the issue.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A confident delivery does not supply the evidence needed to settle the issue.",
+      "feedback_deep": "Refute means show a claim is false through sufficient evidence or reasoning. Rebut means respond to a claim with an opposing argument, even if the disagreement remains unresolved. A confident delivery does not supply the evidence needed to settle the issue.",
+      "contrast_rule": "Rebut argues back; refute proves wrong.",
+      "hints": {
+        "attention": "Separate tone from proof.",
+        "axis": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+        "contrast": "Rebut argues back; refute proves wrong."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "refute-rebut_002",
+      "edge_id": "refute__rebut",
+      "domain": "online_shop_review",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Minh's reply to a complaint?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "refute-rebut_002_b1",
+          "text": "Minh disputes a customer’s claim that a parcel was never dispatched.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.28,
+            "rebut": 0.91
+          },
+          "decisive_clue": "initial disagreement with claim",
+          "reason": "The initial response merely opposes the complaint.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M3"
+          }
+        },
+        {
+          "id": "refute-rebut_002_b2",
+          "text": "He supplies the dated delivery receipt bearing the customer’s signature, proving the parcel arrived.",
+          "best_word": "refute",
+          "fit": {
+            "refute": 0.94,
+            "rebut": 0.24
+          },
+          "decisive_clue": "signed receipt proves delivery",
+          "reason": "The signed delivery record directly disproves the factual allegation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "rebut": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The signed delivery record directly disproves the factual allegation.",
+      "feedback_deep": "Refute means show a claim is false through sufficient evidence or reasoning. Rebut means respond to a claim with an opposing argument, even if the disagreement remains unresolved. The signed delivery record directly disproves the factual allegation.",
+      "contrast_rule": "Rebut argues back; refute proves wrong.",
+      "hints": {
+        "attention": "Look for evidence that settles the specific claim.",
+        "axis": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+        "contrast": "Rebut argues back; refute proves wrong."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "refute-rebut_003",
+      "edge_id": "refute__rebut",
+      "domain": "family_budget",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Isabella's answer to a claim?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "refute-rebut_003_b1",
+          "text": "Isabella argues that the grocery spending was not excessive and suggests a different way to compare costs.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.28,
+            "rebut": 0.91
+          },
+          "decisive_clue": "alternative comparison",
+          "reason": "This is an opposing argument, not disproof.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M1"
+          }
+        },
+        {
+          "id": "refute-rebut_003_b2",
+          "text": "She concedes that the figures could support more than one judgment.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.24,
+            "rebut": 0.94
+          },
+          "decisive_clue": "figures remain open to interpretation",
+          "reason": "Her concession shows why no factual conclusion has been established beyond doubt.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Her concession shows why no factual conclusion has been established beyond doubt.",
+      "feedback_deep": "Refute means show a claim is false through sufficient evidence or reasoning. Rebut means respond to a claim with an opposing argument, even if the disagreement remains unresolved. Her concession shows why no factual conclusion has been established beyond doubt.",
+      "contrast_rule": "Rebut argues back; refute proves wrong.",
+      "hints": {
+        "attention": "Can the claim still reasonably be defended?",
+        "axis": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+        "contrast": "Rebut argues back; refute proves wrong."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "refute-rebut_004",
+      "edge_id": "refute__rebut",
+      "domain": "school_attendance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Samir's response to an accusation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "refute-rebut_004_b1",
+          "text": "Samir shows an official attendance record establishing that he was in class on the day he was accused of being absent.",
+          "best_word": "refute",
+          "fit": {
+            "refute": 0.91,
+            "rebut": 0.28
+          },
+          "decisive_clue": "verified record contradicts accusation",
+          "reason": "The evidence disproves the specific accusation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rebut": "M2"
+          }
+        },
+        {
+          "id": "refute-rebut_004_b2",
+          "text": "Samir points to the teacher's original register, which independently confirms the attendance record.",
+          "best_word": "refute",
+          "fit": {
+            "refute": 0.94,
+            "rebut": 0.24
+          },
+          "decisive_clue": "independent register confirms record",
+          "reason": "His additional record strengthens the evidence disproving the accusation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "rebut": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The independently confirmed attendance record strengthens the proof rather than changing its kind.",
+      "feedback_deep": "Refute means show a claim is false through sufficient evidence or reasoning. Rebut means respond to a claim with an opposing argument, even if the disagreement remains unresolved. The independently confirmed attendance record strengthens the proof rather than changing its kind.",
+      "contrast_rule": "Rebut argues back; refute proves wrong.",
+      "hints": {
+        "attention": "Look at how the allegation is tested.",
+        "axis": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+        "contrast": "Rebut argues back; refute proves wrong."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "refute-rebut_006",
+      "edge_id": "refute__rebut",
+      "domain": "apartment_deposit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Omar's response to an allegation?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "refute-rebut_006_b1",
+          "text": "Omar denies taking the landlord’s spare key and suggests someone misplaced it.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.28,
+            "rebut": 0.91
+          },
+          "decisive_clue": "alternative explanation without proof",
+          "reason": "The first reply is merely a challenge.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M1"
+          }
+        },
+        {
+          "id": "refute-rebut_006_b2",
+          "text": "He produces a timestamped handover form showing the key remained with the landlord throughout the disputed period.",
+          "best_word": "refute",
+          "fit": {
+            "refute": 0.94,
+            "rebut": 0.24
+          },
+          "decisive_clue": "handover record rules out taking",
+          "reason": "The verified record establishes the allegation was wrong for the period in question.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "rebut": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The verified record establishes the allegation was wrong for the period in question.",
+      "feedback_deep": "Refute means show a claim is false through sufficient evidence or reasoning. Rebut means respond to a claim with an opposing argument, even if the disagreement remains unresolved. The verified record establishes the allegation was wrong for the period in question.",
+      "contrast_rule": "Rebut argues back; refute proves wrong.",
+      "hints": {
+        "attention": "Watch for a record that closes the factual gap.",
+        "axis": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+        "contrast": "Rebut argues back; refute proves wrong."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "refute-rebut_008",
+      "edge_id": "refute__rebut",
+      "domain": "travel_booking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nico's response to a claim?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "refute-rebut_008_b1",
+          "text": "Nico counters a claim that he bought his ticket too late with an airline confirmation showing payment before the deadline.",
+          "best_word": "refute",
+          "fit": {
+            "refute": 0.91,
+            "rebut": 0.28
+          },
+          "decisive_clue": "documents establish purchase time",
+          "reason": "Records disprove any claim he bought too late.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "rebut": "M3"
+          }
+        },
+        {
+          "id": "refute-rebut_008_b2",
+          "text": "Nico points out that the booking reference matches the official payment receipt exactly.",
+          "best_word": "refute",
+          "fit": {
+            "refute": 0.94,
+            "rebut": 0.24
+          },
+          "decisive_clue": "matching receipt strengthens proof",
+          "reason": "He supplies matching records that bolster the evidence disproving the claim.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "rebut": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Nico's matching records bolster the decisive evidence disproving the claim.",
+      "feedback_deep": "Refute means show a claim is false through sufficient evidence or reasoning. Rebut means respond to a claim with an opposing argument, even if the disagreement remains unresolved. Nico's matching records bolster the decisive evidence disproving the claim.",
+      "contrast_rule": "Rebut argues back; refute proves wrong.",
+      "hints": {
+        "attention": "Consider whether the date can be independently checked.",
+        "axis": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+        "contrast": "Rebut argues back; refute proves wrong."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "refute-rebut_009",
+      "edge_id": "refute__rebut",
+      "domain": "neighbourhood_meeting",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Suki's answer to a proposal?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "refute-rebut_009_b1",
+          "text": "Suki argues against the proposal, saying it may cost more than expected.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.28,
+            "rebut": 0.91
+          },
+          "decisive_clue": "counterargument about future cost",
+          "reason": "Her reasoning questions the proposal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M1"
+          }
+        },
+        {
+          "id": "refute-rebut_009_b2",
+          "text": "She admits the final costs are unknown and that her objection is a warning rather than a demonstration.",
+          "best_word": "rebut",
+          "fit": {
+            "refute": 0.24,
+            "rebut": 0.94
+          },
+          "decisive_clue": "explicit uncertainty prevents disproof",
+          "reason": "Uncertain future costs mean she has offered opposition, not established factual falsity.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Uncertain future costs mean she has offered opposition, not established factual falsity.",
+      "feedback_deep": "Refute means show a claim is false through sufficient evidence or reasoning. Rebut means respond to a claim with an opposing argument, even if the disagreement remains unresolved. Uncertain future costs mean she has offered opposition, not established factual falsity.",
+      "contrast_rule": "Rebut argues back; refute proves wrong.",
+      "hints": {
+        "attention": "Is the objection conclusive or tentative?",
+        "axis": "To refute a claim is to establish that it is false; to rebut it is to answer with a contrary argument, which may not conclusively disprove it.",
+        "contrast": "Rebut argues back; refute proves wrong."
+      },
+      "qa": "pass"
+    }
+  ]
+}

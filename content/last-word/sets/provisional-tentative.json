@@ -1,0 +1,1016 @@
+{
+  "schema_version": 1,
+  "set_id": "provisional-tentative",
+  "title": "provisional / tentative",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[165]",
+    "source_pair_id": 696,
+    "qa": {
+      "pass": 0,
+      "revised": 13,
+      "rejected": 7
+    }
+  },
+  "words": [
+    {
+      "word": "provisional",
+      "sense": "Formally put in place for now but expected to change once more information becomes available; arranged but not yet final.",
+      "connotation": "Formal, structured, organized.",
+      "register": "Formal, academic, administrative.",
+      "misconceptions": [
+        "thinking it means hesitant or unsure of oneself"
+      ]
+    },
+    {
+      "word": "tentative",
+      "sense": "Uncertain or hesitant rather than formally temporary.",
+      "connotation": "Subjective, emotional, cautious.",
+      "register": "Neutral, common usage.",
+      "misconceptions": [
+        "thinking it means officially arranged or temporary"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "formal_status",
+      "description": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative)."
+    },
+    {
+      "id": "certainty",
+      "description": "Whether the uncertainty comes from a lack of information (provisional) or lack of personal commitment (tentative)."
+    },
+    {
+      "id": "locus",
+      "description": "Whether the quality is in the external setup (provisional) or internal state (tentative)."
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "provisional": [
+        "The board signed a provisional agreement until the legal review is complete.",
+        "We have a provisional timetable for the construction of the new laboratory.",
+        "The government formed a provisional administration to stabilize the country.",
+        "She was granted a provisional license to drive while her application was processed.",
+        "This is just a provisional budget; we will finalize it in September.",
+        "They made a provisional arrangement for the conference to be held next month."
+      ],
+      "tentative": [
+        "He took a tentative step onto the ice, afraid it might crack.",
+        "She offered a tentative smile, unsure how they would react to the news.",
+        "Our plan for the weekend is still tentative until we hear back from Sam.",
+        "He made a tentative approach to the group, not wanting to intrude.",
+        "There was a tentative agreement to meet again, but no one was truly committed.",
+        "They held a tentative conversation about the possibility of working together."
+      ]
+    },
+    "counter": {
+      "provisional": [
+        "He took a provisional step onto the ice.",
+        "She offered a provisional smile.",
+        "Our plan for the weekend is still provisional.",
+        "He made a provisional approach to the group.",
+        "There was a provisional agreement to meet again.",
+        "They held a provisional conversation."
+      ],
+      "tentative": [
+        "The board signed a tentative agreement until the legal review is complete.",
+        "We have a tentative timetable for the construction of the new laboratory.",
+        "The government formed a tentative administration.",
+        "She was granted a tentative license to drive.",
+        "This is just a tentative budget.",
+        "They made a tentative arrangement for the conference."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "provisional__tentative",
+      "a": "provisional",
+      "b": "tentative",
+      "boundary_rule": "Use provisional for things (agreements, plans) that are officially set up but not finalized. Use tentative for actions or attitudes that are hesitant or lack confidence.",
+      "clues_a": [
+        "formal agreement",
+        "official setup",
+        "pending finalization",
+        "structural planning"
+      ],
+      "clues_b": [
+        "hesitation",
+        "lack of commitment",
+        "shyness",
+        "cautiousness"
+      ],
+      "irrelevant_clues": [
+        "it might change later",
+        "it is new"
+      ],
+      "misconceptions": {
+        "M1": "Provisional implies emotional uncertainty.",
+        "M2": "Tentative implies a planned interim step.",
+        "M3": "Any plan that might change is provisional."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "provisional-tentative_001",
+      "edge_id": "provisional__tentative",
+      "domain": "academic_administration",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The library operating policy is ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "provisional-tentative_001_b1",
+          "text": "The university senate officially adopted a set of revised weekend library hours, decreeing that the schedule will take effect immediately while student attendance data is collected across the semester.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.95,
+            "tentative": 0.05
+          },
+          "decisive_clue": "officially adopted a set of revised weekend library hours, decreeing that the schedule will take effect immediately while student attendance data is collected",
+          "reason": "The policy is formally enacted and in force on an interim basis pending subsequent review.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M1"
+          }
+        },
+        {
+          "id": "provisional-tentative_001_b2",
+          "text": "The dean reaffirmed that these posted hours constitute the campus library's formal operating timetable until the board convenes in December to finalize permanent regulations.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.96,
+            "tentative": 0.04
+          },
+          "decisive_clue": "formal operating timetable until the board convenes in December to finalize permanent regulations",
+          "reason": "It remains an officially sanctioned administrative structure pending formal ratification.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An officially enacted schedule operating until permanent rules are passed is provisional.",
+      "feedback_deep": "Provisional applies to formal arrangements, administrative measures, or policies that are officially put in place for now but subject to future confirmation. It does not reflect emotional hesitation.",
+      "contrast_rule": "Formal interim measures are provisional; hesitant or uncommitted decisions are tentative.",
+      "hints": {
+        "attention": "Notice that the schedule is officially in force rather than an uncertain suggestion.",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Formal interim measures are provisional; hesitant or uncommitted decisions are tentative."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_002",
+      "edge_id": "provisional__tentative",
+      "domain": "social",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The couple's RSVP commitment is ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "provisional-tentative_002_b1",
+          "text": "Sarah and Ken told the party hosts they might stop by for an hour, but cautioned that their attendance depended entirely on how exhausted they felt after work.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.08,
+            "tentative": 0.92
+          },
+          "decisive_clue": "might stop by for an hour, but cautioned that their attendance depended entirely on how exhausted they felt",
+          "reason": "Their social response is cautious, noncommittal, and hesitant rather than an official interim arrangement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M1"
+          }
+        },
+        {
+          "id": "provisional-tentative_002_b2",
+          "text": "When the hosts requested a definite headcount for catering, the couple checked the 'maybe' box and reiterated that they were still reluctant to make a firm promise.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.05,
+            "tentative": 0.95
+          },
+          "decisive_clue": "checked the 'maybe' box and reiterated that they were still reluctant to make a firm promise",
+          "reason": "The commitment continues to reflect subjective uncertainty and lack of personal commitment.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A noncommittal response reflecting personal reluctance to promise attendance is tentative.",
+      "feedback_deep": "Tentative describes attitudes, gestures, or personal plans that lack confidence or full commitment. Because the couple is simply hesitant about attending, their commitment is tentative.",
+      "contrast_rule": "Hesitant, uncommitted responses are tentative; formal temporary arrangements are provisional.",
+      "hints": {
+        "attention": "Are they enacting an official interim system or just hesitating to commit?",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Hesitant, uncommitted responses are tentative; formal temporary arrangements are provisional."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_003",
+      "edge_id": "provisional__tentative",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The tournament starting lineup is ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "provisional-tentative_003_b1",
+          "text": "The head coach submitted a roster sheet to tournament officials that formally registers eleven starters, while noting that several players still need pre-match medical clearance on Saturday morning.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.95,
+            "tentative": 0.05
+          },
+          "decisive_clue": "submitted a roster sheet to tournament officials that formally registers eleven starters, while noting that several players still need pre-match medical clearance",
+          "reason": "The starting roster has been officially registered with the governing body, but remains subject to formal medical verification.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M1"
+          }
+        },
+        {
+          "id": "provisional-tentative_003_b2",
+          "text": "The league officials officially published this registered squad in the match program with an asterisk indicating that final substitutions may be logged right up to kickoff.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.96,
+            "tentative": 0.04
+          },
+          "decisive_clue": "officially published this registered squad in the match program with an asterisk indicating that final substitutions may be logged",
+          "reason": "The roster is the sanctioned official lineup for the event, standing as valid until any official change occurs.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An officially registered athletic roster pending medical confirmation is provisional.",
+      "feedback_deep": "An official lineup filed with match organizers is a provisional roster. It is a formal administrative structure, not a hesitant or timid feeling.",
+      "contrast_rule": "Officially registered rosters are provisional; uncommitted suggestions are tentative.",
+      "hints": {
+        "attention": "Look at whether the lineup has been formally submitted to match officials.",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Officially registered rosters are provisional; uncommitted suggestions are tentative."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_005",
+      "edge_id": "provisional__tentative",
+      "domain": "household",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The family's choice of paint color is ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "provisional-tentative_005_b1",
+          "text": "While browsing paint swatches, the family picked out pale blue as a possible option, but remained unsure whether it would look too cold once applied to the walls.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.08,
+            "tentative": 0.92
+          },
+          "decisive_clue": "picked out pale blue as a possible option, but remained unsure whether it would look too cold",
+          "reason": "The selection is cautious and hesitant, lacking firm commitment or conviction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M1"
+          }
+        },
+        {
+          "id": "provisional-tentative_005_b2",
+          "text": "At the hardware counter, they hesitated before the cans and opted to purchase only a tiny sample jar to test in case they quickly change their minds.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.05,
+            "tentative": 0.95
+          },
+          "decisive_clue": "hesitated before the cans and opted to purchase only a tiny sample jar to test in case they quickly change their minds",
+          "reason": "Buying a test tester jar out of reluctance to commit demonstrates a cautious, tentative approach.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A hesitant preference guarded by doubt and tested with a small sample is tentative.",
+      "feedback_deep": "Tentative describes choices made with hesitation and a lack of firm confidence. A casual household preference that may be reconsidered at any moment is tentative, not an official provisional measure.",
+      "contrast_rule": "Hesitant, uncommitted choices are tentative; structured interim agreements are provisional.",
+      "hints": {
+        "attention": "Are they establishing an official formal policy or just hesitating over paint colors?",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Hesitant, uncommitted choices are tentative; structured interim agreements are provisional."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_006",
+      "edge_id": "provisional__tentative",
+      "domain": "public_administration",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The municipality's road repair timetable is ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "provisional-tentative_006_b1",
+          "text": "The city public works department gazetted a month-long schedule of resurfacing works, establishing street closures that remain subject to modification if inclement weather halts asphalt pouring.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.94,
+            "tentative": 0.06
+          },
+          "decisive_clue": "gazetted a month-long schedule of resurfacing works, establishing street closures that remain subject to modification if inclement weather halts asphalt pouring",
+          "reason": "The timetable is an official municipal schedule published for administrative execution, pending external weather factors.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M1"
+          }
+        },
+        {
+          "id": "provisional-tentative_006_b2",
+          "text": "The department confirmed that all contractor contracts and public detour notices will execute according to this published roster until seasonal rains trigger a formal revision.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.96,
+            "tentative": 0.04
+          },
+          "decisive_clue": "all contractor contracts and public detour notices will execute according to this published roster until seasonal rains trigger a formal revision",
+          "reason": "The schedule has full official operative status in the interim rather than personal uncertainty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An officially gazetted schedule operating until weather necessitates formal updates is provisional.",
+      "feedback_deep": "Provisional applies to formal plans, budgets, and timetables that are officially authorized for current operations, even if future conditions may require adjustment.",
+      "contrast_rule": "Formally published operational timetables are provisional; hesitant or timid plans are tentative.",
+      "hints": {
+        "attention": "The municipality has officially enacted the timetable for road contractors.",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Formally published operational timetables are provisional; hesitant or timid plans are tentative."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_008",
+      "edge_id": "provisional__tentative",
+      "domain": "social",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The colleagues' plan to meet for dinner is ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "provisional-tentative_008_b1",
+          "text": "Sarah suggested grabbing dinner around six o'clock, but cautioned her coworker that she was awaiting an urgent client email and could easily end up canceling.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.08,
+            "tentative": 0.92
+          },
+          "decisive_clue": "suggested grabbing dinner around six o'clock, but cautioned her coworker that she was awaiting an urgent client email and could easily end up canceling",
+          "reason": "The dinner arrangement is informal, uncertain, and subject to personal schedule clashes rather than a structured interim protocol.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M3"
+          }
+        },
+        {
+          "id": "provisional-tentative_008_b2",
+          "text": "Her coworker replied that six sounded good in theory, but agreed they should avoid making any restaurant reservations until both confirmed their availability at five thirty.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.05,
+            "tentative": 0.95
+          },
+          "decisive_clue": "avoid making any restaurant reservations until both confirmed their availability at five thirty",
+          "reason": "Both parties remain cautious and noncommittal, holding off on securing any firm arrangement.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M1"
+          }
+        }
+      ],
+      "feedback_short": "An informal dinner plan left open and unbooked due to uncertain availability is tentative.",
+      "feedback_deep": "Tentative is the standard term for casual, uncommitted plans that depend on circumstances settling down. It implies hesitation and flexibility, not a formal administrative interim measure.",
+      "contrast_rule": "Informal, uncommitted plans are tentative; formal, binding interim structures are provisional.",
+      "hints": {
+        "attention": "Are the friends making an official binding agreement or holding an uncommitted casual plan?",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Informal, uncommitted plans are tentative; formal, binding interim structures are provisional."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_010",
+      "edge_id": "provisional__tentative",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The emergency tariff statute is ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "provisional-tentative_010_b1",
+          "text": "Following the border dispute, parliament enacted a tariff statute designed to govern cross-border commerce for six months until bilateral trade negotiations conclude with a permanent treaty.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.95,
+            "tentative": 0.05
+          },
+          "decisive_clue": "enacted a tariff statute designed to govern cross-border commerce for six months until bilateral trade negotiations conclude with a permanent treaty",
+          "reason": "The statute is an official legal measure enacted to serve in the interim while a permanent agreement is drafted.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M2"
+          }
+        },
+        {
+          "id": "provisional-tentative_010_b2",
+          "text": "The legislative gazette formally promulgated these customs duties as the nation's governing legal framework pending ratification of the final diplomatic pact.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.97,
+            "tentative": 0.03
+          },
+          "decisive_clue": "formally promulgated these customs duties as the nation's governing legal framework pending ratification of the final diplomatic pact",
+          "reason": "The law is officially in effect and legally binding as a structured interim arrangement.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An officially enacted statute operating until a permanent treaty is ratified is provisional.",
+      "feedback_deep": "In legal and political contexts, measures, statutes, or governments established temporarily pending full constitutional or treaty ratification are termed provisional.",
+      "contrast_rule": "Binding interim legal frameworks are provisional; doubtful or hesitant policies are tentative.",
+      "hints": {
+        "attention": "Is this an officially promulgated statute or an uncertain proposal?",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Binding interim legal frameworks are provisional; doubtful or hesitant policies are tentative."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_012",
+      "edge_id": "provisional__tentative",
+      "domain": "business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The corporate merger agreement is ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "provisional-tentative_012_b1",
+          "text": "The two corporations signed an initial accord outlining operating terms and share valuations, explicitly stipulating that full execution remains contingent upon regulatory antitrust clearance.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.94,
+            "tentative": 0.06
+          },
+          "decisive_clue": "signed an initial accord outlining operating terms and share valuations, explicitly stipulating that full execution remains contingent upon regulatory antitrust clearance",
+          "reason": "The agreement is a formal, signed commercial accord establishing interim binding terms pending regulatory review.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M2"
+          }
+        },
+        {
+          "id": "provisional-tentative_012_b2",
+          "text": "Both executive boards officially ratified this interim commercial compact to govern combined supply-chain logistics until federal regulators deliver their final ruling next spring.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.96,
+            "tentative": 0.04
+          },
+          "decisive_clue": "officially ratified this interim commercial compact to govern combined supply-chain logistics until federal regulators deliver their final ruling",
+          "reason": "The compact possesses formal contractual authority in the interim, reflecting administrative structure rather than hesitation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A formally signed corporate accord governing operations pending regulatory clearance is provisional.",
+      "feedback_deep": "Provisional agreements are formal, legally structured compacts put in place to manage affairs until final approval is secured. They are not characterized by personal reluctance or timidness.",
+      "contrast_rule": "Formally signed interim agreements are provisional; noncommittal understandings are tentative.",
+      "hints": {
+        "attention": "Notice the formal ratification and interim operational terms governing the companies.",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Formally signed interim agreements are provisional; noncommittal understandings are tentative."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_013",
+      "edge_id": "provisional__tentative",
+      "domain": "science",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The research team's hypothesis is ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "provisional-tentative_013_b1",
+          "text": "The epidemiologists proposed an explanation for the disease cluster based on early lab cultures, but cautioned colleagues that the scarce sample size left them hesitant to draw firm conclusions.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.08,
+            "tentative": 0.92
+          },
+          "decisive_clue": "scarce sample size left them hesitant to draw firm conclusions",
+          "reason": "The scientific proposal is advanced cautiously with substantial hesitation and uncertainty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M2"
+          }
+        },
+        {
+          "id": "provisional-tentative_013_b2",
+          "text": "In their preliminary symposium paper, the authors explicitly described the proposed mechanism as a cautious conjecture subject to radical revision once larger trials conclude.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.05,
+            "tentative": 0.95
+          },
+          "decisive_clue": "explicitly described the proposed mechanism as a cautious conjecture subject to radical revision",
+          "reason": "The scientific stance continues to emphasize epistemic uncertainty, caution, and lack of definite commitment.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A scientific conjecture advanced cautiously with hesitation due to early data is tentative.",
+      "feedback_deep": "Scientific explanations or hypotheses offered cautiously before adequate evidence is established are called tentative. Provisional is reserved for formal institutional or interim arrangements.",
+      "contrast_rule": "Cautious scientific conjectures are tentative; official interim arrangements are provisional.",
+      "hints": {
+        "attention": "Are the researchers offering a cautious, hesitant explanation or an official interim decree?",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Cautious scientific conjectures are tentative; official interim arrangements are provisional."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_014",
+      "edge_id": "provisional__tentative",
+      "domain": "management",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The director's endorsement of the project is ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "provisional-tentative_014_b1",
+          "text": "When presented with the multimillion-dollar expansion proposal, the managing director offered a guarded nod, remarking that while the core concept seemed promising, he harbored serious misgivings about cost overruns.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.07,
+            "tentative": 0.93
+          },
+          "decisive_clue": "offered a guarded nod, remarking that while the core concept seemed promising, he harbored serious misgivings",
+          "reason": "The director's reaction is marked by personal caution, hesitation, and a reluctance to fully commit.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M1"
+          }
+        },
+        {
+          "id": "provisional-tentative_014_b2",
+          "text": "He refused to sign the capital expenditure authorization, stating that he would only give his full backing once independent financial auditors stress-tested the revenue projections.",
+          "best_word": "tentative",
+          "fit": {
+            "provisional": 0.05,
+            "tentative": 0.95
+          },
+          "decisive_clue": "refused to sign the capital expenditure authorization, stating that he would only give his full backing once independent financial auditors stress-tested",
+          "reason": "His professional stance remains withheld, hesitant, and uncommitted until further proof is provided.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "provisional": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A cautious managerial reaction withholding full commitment due to doubts is tentative.",
+      "feedback_deep": "Tentative denotes hesitation, caution, or a lack of full commitment. The director's reserved reaction to the expansion pitch is an attitude of hesitation, not a formal interim authorization.",
+      "contrast_rule": "Hesitant, guarded support is tentative; formal temporary authorizations are provisional.",
+      "hints": {
+        "attention": "Does the director display personal caution and hesitation, or enact a formal interim measure?",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Hesitant, guarded support is tentative; formal temporary authorizations are provisional."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_015",
+      "edge_id": "provisional__tentative",
+      "domain": "housing",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The commercial property tenancy agreement is ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "provisional-tentative_015_b1",
+          "text": "The estate agent drafted a temporary occupancy contract allowing the retail tenant to trade on the premises while municipal zoning appeals and the standard ten-year lease await final registration.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.95,
+            "tentative": 0.05
+          },
+          "decisive_clue": "drafted a temporary occupancy contract allowing the retail tenant to trade on the premises while municipal zoning appeals and the standard ten-year lease await final registration",
+          "reason": "The contract is a formalized interim legal instrument governing tenancy until long-term lease registration is finalized.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M2"
+          }
+        },
+        {
+          "id": "provisional-tentative_015_b2",
+          "text": "Both parties signed the document, affirming that its legal covenants will govern store operations and rent collection until the definitive deed receives official land registry certification.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.97,
+            "tentative": 0.03
+          },
+          "decisive_clue": "Both parties signed the document, affirming that its legal covenants will govern store operations and rent collection until the definitive deed receives official land registry certification",
+          "reason": "The agreement is legally binding and operative in the interim rather than an expression of personal uncertainty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A signed interim tenancy contract governing occupancy until deed certification is provisional.",
+      "feedback_deep": "Provisional modifies formal documents, licenses, and contracts that have operative legal force temporarily pending the completion of a permanent administrative procedure.",
+      "contrast_rule": "Formally executed interim contracts are provisional; hesitant or uncommitted agreements are tentative.",
+      "hints": {
+        "attention": "Notice that both parties signed a legally binding interim contract to govern operations.",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Formally executed interim contracts are provisional; hesitant or uncommitted agreements are tentative."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_017",
+      "edge_id": "provisional__tentative",
+      "domain": "business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The agency's project budget allocation is ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "provisional-tentative_017_b1",
+          "text": "The development agency published an interim funding notice authorizing project managers to spend twenty thousand dollars on preliminary surveying while the comprehensive annual grant awaits ministerial sign-off.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.95,
+            "tentative": 0.05
+          },
+          "decisive_clue": "published an interim funding notice authorizing project managers to spend twenty thousand dollars on preliminary surveying while the comprehensive annual grant awaits ministerial sign-off",
+          "reason": "The budget allocation is a formalized administrative figure authorized to operate in the interim pending final ratification.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M2"
+          }
+        },
+        {
+          "id": "provisional-tentative_017_b2",
+          "text": "The comptroller confirmed that payroll and field procurement will execute against this interim figure until parliament enacts the permanent fiscal appropriations bill.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.96,
+            "tentative": 0.04
+          },
+          "decisive_clue": "payroll and field procurement will execute against this interim figure until parliament enacts the permanent fiscal appropriations bill",
+          "reason": "The allocation functions as an official, binding expenditure baseline during the transition period.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An officially authorized interim budget allocation operating until the formal appropriations bill passes is provisional.",
+      "feedback_deep": "Provisional budget allocations are official, structured administrative measures enacted to authorize spending pending final legislative or board approval. They do not denote personal hesitation.",
+      "contrast_rule": "Officially authorized interim figures are provisional; uncommitted estimates are tentative.",
+      "hints": {
+        "attention": "Is the expenditure figure officially authorized for operations in the interim?",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Officially authorized interim figures are provisional; uncommitted estimates are tentative."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "provisional-tentative_020",
+      "edge_id": "provisional__tentative",
+      "domain": "legal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The contract's licensing clause is ___.",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "provisional-tentative_020_b1",
+          "text": "The international software agreement features a section that temporarily authorizes the distributor to service corporate clients across Europe while formal patent certifications undergo scrutiny in patent court.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.95,
+            "tentative": 0.05
+          },
+          "decisive_clue": "temporarily authorizes the distributor to service corporate clients across Europe while formal patent certifications undergo scrutiny in patent court",
+          "reason": "The clause is an official legal provision designed to grant formal interim rights pending ultimate judicial certification.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M2"
+          }
+        },
+        {
+          "id": "provisional-tentative_020_b2",
+          "text": "Corporate counsel confirmed that this interim article legally protects operations today, though it will automatically expire and be superseded once permanent patent registration is granted.",
+          "best_word": "provisional",
+          "fit": {
+            "provisional": 0.96,
+            "tentative": 0.04
+          },
+          "decisive_clue": "legally protects operations today, though it will automatically expire and be superseded once permanent patent registration is granted",
+          "reason": "The clause holds binding legal validity in the interim until formal permanent registration occurs.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tentative": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A contractual article conferring temporary legal authority pending official certification is provisional.",
+      "feedback_deep": "Provisional clauses in commercial law are structured, legally binding interim arrangements established to regulate conduct pending final certification. They reflect formal administrative mechanics, not human hesitation.",
+      "contrast_rule": "Formally enacted interim legal clauses are provisional; hesitant or uncommitted statements are tentative.",
+      "hints": {
+        "attention": "Look at whether the clause provides legally binding authority in the interim.",
+        "axis": "Whether something is a formal arrangement (provisional) or an attitude/feeling (tentative).",
+        "contrast": "Formally enacted interim legal clauses are provisional; hesitant or uncommitted statements are tentative."
+      },
+      "qa": "revised"
+    }
+  ]
+}

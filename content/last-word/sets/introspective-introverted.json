@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "set_id": "introspective-introverted",
+  "title": "introspective / introverted",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[86]",
+    "source_pair_id": 370,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "introspective",
+      "sense": "Habitually examines inner thoughts, feelings and motives",
+      "connotation": "neutral/thoughtful",
+      "register": "standard/formal",
+      "misconceptions": [
+        "Anyone quiet must be introspective",
+        "Introversion means shyness or fear rather than preference"
+      ]
+    },
+    {
+      "word": "introverted",
+      "sense": "Tends to prefer quiet settings and limited social stimulation",
+      "connotation": "neutral",
+      "register": "standard",
+      "misconceptions": [
+        "Anyone reflective must avoid company",
+        "Introversion means shyness or fear rather than preference"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "inner_examination",
+      "description": "Whether the scene turns on inner examination."
+    },
+    {
+      "id": "social_stimulation_preference",
+      "description": "Whether the scene turns on social stimulation preference."
+    }
+  ],
+  "edges": [
+    {
+      "id": "introspective__introverted",
+      "a": "introspective",
+      "b": "introverted",
+      "boundary_rule": "Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "clues_a": [
+        "reflects on motives",
+        "examines feelings",
+        "keeps a self-questioning journal"
+      ],
+      "clues_b": [
+        "prefers small groups",
+        "recharges alone",
+        "avoids crowded social settings"
+      ],
+      "irrelevant_clues": [
+        "speaks softly",
+        "is good at school",
+        "wears headphones"
+      ],
+      "misconceptions": {
+        "M1": "Anyone quiet must be introspective",
+        "M2": "Anyone reflective must avoid company",
+        "M3": "Introversion means shyness or fear rather than preference"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "introspective-introverted_001",
+      "edge_id": "introspective__introverted",
+      "domain": "school_dance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Kei’s choice to skip the dance?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "introspective-introverted_001_b1",
+          "text": "Kei declined the crowded dance and sat alone in an empty classroom.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.32,
+            "introverted": 0.93
+          },
+          "decisive_clue": "chose solitude instead of crowd",
+          "reason": "The detail about chose solitude instead of crowd supports introverted more strongly than introspective.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M3"
+          }
+        },
+        {
+          "id": "introspective-introverted_001_b2",
+          "text": "He was examining why he felt jealous of a friend and had no objection to crowds or conversation.",
+          "best_word": "introspective",
+          "fit": {
+            "introspective": 0.96,
+            "introverted": 0.2
+          },
+          "decisive_clue": "purpose was examining a personal feeling",
+          "reason": "The detail about purpose was examining a personal feeling supports introspective more strongly than introverted.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introverted": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Purpose was examining a personal feeling makes introspective the better description.",
+      "feedback_deep": "Initially, chose solitude instead of crowd points toward introverted. The new detail, purpose was examining a personal feeling, instead makes introspective the stronger choice. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "introspective-introverted_002",
+      "edge_id": "introspective__introverted",
+      "domain": "family_weekend",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Fatima’s social preferences?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "introspective-introverted_002_b1",
+          "text": "Fatima enjoys family gatherings but usually leaves early to spend a quiet evening alone.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.36,
+            "introverted": 0.96
+          },
+          "decisive_clue": "preference for limited social activity",
+          "reason": "The detail about preference for limited social activity supports introverted more strongly than introspective.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M1"
+          }
+        },
+        {
+          "id": "introspective-introverted_002_b2",
+          "text": "She feels refreshed by calm time and prefers one visitor to ten.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.24,
+            "introverted": 0.88
+          },
+          "decisive_clue": "small-group comfort and quiet recharge",
+          "reason": "The detail about small-group comfort and quiet recharge supports introverted more strongly than introspective.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Small-group comfort and quiet recharge leaves introverted the better fit.",
+      "feedback_deep": "The first clue is preference for limited social activity. The later clue is small-group comfort and quiet recharge; that strengthens or preserves the same classification. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "introspective-introverted_003",
+      "edge_id": "introspective__introverted",
+      "domain": "journal_habit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo’s habit of writing after arguments?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "introspective-introverted_003_b1",
+          "text": "Mateo writes down what he felt, what triggered it and why he reacted as he did.",
+          "best_word": "introspective",
+          "fit": {
+            "introspective": 0.88,
+            "introverted": 0.2
+          },
+          "decisive_clue": "active examination of personal reactions",
+          "reason": "The detail about active examination of personal reactions supports introspective more strongly than introverted.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introverted": "M2"
+          }
+        },
+        {
+          "id": "introspective-introverted_003_b2",
+          "text": "He rereads entries to test whether he misjudged his own motives.",
+          "best_word": "introspective",
+          "fit": {
+            "introspective": 0.91,
+            "introverted": 0.28
+          },
+          "decisive_clue": "careful analysis of motives",
+          "reason": "The detail about careful analysis of motives supports introspective more strongly than introverted.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introverted": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Careful analysis of motives leaves introspective the better fit.",
+      "feedback_deep": "The first clue is active examination of personal reactions. The later clue is careful analysis of motives; that strengthens or preserves the same classification. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "introspective-introverted_004",
+      "edge_id": "introspective__introverted",
+      "domain": "office_lunch",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Zuri’s preferred lunch break?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "introspective-introverted_004_b1",
+          "text": "Zuri turns down the busy lunch table most days and eats quietly with one colleague.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.24,
+            "introverted": 0.91
+          },
+          "decisive_clue": "recurring small-group preference",
+          "reason": "The detail about recurring small-group preference supports introverted more strongly than introspective.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M3"
+          }
+        },
+        {
+          "id": "introspective-introverted_004_b2",
+          "text": "After crowded meetings, the calmer setting helps her regain energy.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.32,
+            "introverted": 0.93
+          },
+          "decisive_clue": "recharges after social stimulation",
+          "reason": "The detail about recharges after social stimulation supports introverted more strongly than introspective.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Recharges after social stimulation makes introverted an even clearer fit.",
+      "feedback_deep": "The first clue is recurring small-group preference. The later clue is recharges after social stimulation; that strengthens or preserves the same classification. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "introspective-introverted_005",
+      "edge_id": "introspective__introverted",
+      "domain": "study_retreat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Ravi’s time alone after an exam?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "introspective-introverted_005_b1",
+          "text": "Ravi went to a quiet room instead of joining a noisy celebration.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.28,
+            "introverted": 0.93
+          },
+          "decisive_clue": "chose quiet over social celebration",
+          "reason": "The detail about chose quiet over social celebration supports introverted more strongly than introspective.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M1"
+          }
+        },
+        {
+          "id": "introspective-introverted_005_b2",
+          "text": "He spent the hour tracing his anxiety back to the expectations he had set for himself.",
+          "best_word": "introspective",
+          "fit": {
+            "introspective": 0.96,
+            "introverted": 0.36
+          },
+          "decisive_clue": "investigated the cause of his anxiety",
+          "reason": "The detail about investigated the cause of his anxiety supports introspective more strongly than introverted.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introverted": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Investigated the cause of his anxiety makes introspective the better description.",
+      "feedback_deep": "Initially, chose quiet over social celebration points toward introverted. The new detail, investigated the cause of his anxiety, instead makes introspective the stronger choice. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "introspective-introverted_007",
+      "edge_id": "introspective__introverted",
+      "domain": "running_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Yusuf’s quiet walk after training?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "introspective-introverted_007_b1",
+          "text": "Yusuf often leaves the lively post-run gathering to walk alone.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.36,
+            "introverted": 0.88
+          },
+          "decisive_clue": "initial preference for solitude",
+          "reason": "The detail about initial preference for solitude supports introverted more strongly than introspective.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M3"
+          }
+        },
+        {
+          "id": "introspective-introverted_007_b2",
+          "text": "During those walks, he carefully questions why competition makes him resent other runners, though he enjoys big gatherings too.",
+          "best_word": "introspective",
+          "fit": {
+            "introspective": 0.91,
+            "introverted": 0.24
+          },
+          "decisive_clue": "uses walk to analyse resentment, not avoid people",
+          "reason": "The detail about uses walk to analyse resentment, not avoid people supports introspective more strongly than introverted.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introverted": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Uses walk to analyse resentment, not avoid people makes introspective the better description.",
+      "feedback_deep": "Initially, initial preference for solitude points toward introverted. The new detail, uses walk to analyse resentment, not avoid people, instead makes introspective the stronger choice. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "introspective-introverted_008",
+      "edge_id": "introspective__introverted",
+      "domain": "art_exhibition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Isabel’s reflections on her paintings?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "introspective-introverted_008_b1",
+          "text": "Isabel studies her paintings to understand which feelings she has avoided expressing.",
+          "best_word": "introspective",
+          "fit": {
+            "introspective": 0.91,
+            "introverted": 0.2
+          },
+          "decisive_clue": "examines her feelings through art",
+          "reason": "The detail about examines her feelings through art supports introspective more strongly than introverted.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introverted": "M1"
+          }
+        },
+        {
+          "id": "introspective-introverted_008_b2",
+          "text": "She is sociable at the opening, yet continues questioning what each choice reveals about herself.",
+          "best_word": "introspective",
+          "fit": {
+            "introspective": 0.93,
+            "introverted": 0.28
+          },
+          "decisive_clue": "social ease does not cancel self-examination",
+          "reason": "The detail about social ease does not cancel self-examination supports introspective more strongly than introverted.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introverted": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Social ease does not cancel self-examination leaves introspective the better fit.",
+      "feedback_deep": "The first clue is examines her feelings through art. The later clue is social ease does not cancel self-examination; that strengthens or preserves the same classification. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "introspective-introverted_009",
+      "edge_id": "introspective__introverted",
+      "domain": "bus_commute",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Basma’s usual choice on the bus?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "introspective-introverted_009_b1",
+          "text": "Basma prefers a quiet seat alone after a full day working with a large group.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.24,
+            "introverted": 0.93
+          },
+          "decisive_clue": "prefers calm after social activity",
+          "reason": "The detail about prefers calm after social activity supports introverted more strongly than introspective.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M2"
+          }
+        },
+        {
+          "id": "introspective-introverted_009_b2",
+          "text": "She enjoys her friends but finds a silent commute more refreshing than another conversation.",
+          "best_word": "introverted",
+          "fit": {
+            "introspective": 0.32,
+            "introverted": 0.96
+          },
+          "decisive_clue": "less social stimulation restores energy",
+          "reason": "The detail about less social stimulation restores energy supports introverted more strongly than introspective.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "introspective": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Less social stimulation restores energy leaves introverted the better fit.",
+      "feedback_deep": "The first clue is prefers calm after social activity. The later clue is less social stimulation restores energy; that strengthens or preserves the same classification. Introspective people examine their own thoughts and motives; introverted people prefer less social stimulation.",
+      "contrast_rule": "Introspective examines the self; introverted prefers quieter company.",
+      "hints": {
+        "attention": "Look at what the private time is for.",
+        "axis": "Whether the scene turns on inner examination.",
+        "contrast": "Introspective examines the self; introverted prefers quieter company."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "predilection-predisposition",
+  "title": "predilection / predisposition",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[64]",
+    "source_pair_id": 302,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "predilection",
+      "sense": "A personal, often longstanding preference or special liking.",
+      "connotation": "neutral; personal taste",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming unchosen susceptibility is a preferred habit.",
+        "Ignoring whether the person desires the repeated outcome."
+      ]
+    },
+    {
+      "word": "predisposition",
+      "sense": "An underlying tendency or susceptibility, not necessarily wanted or consciously chosen.",
+      "connotation": "neutral; often risk or tendency",
+      "register": "formal",
+      "misconceptions": [
+        "Treating any recurring behaviour as a personal liking.",
+        "Ignoring whether the person desires the repeated outcome."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "chosen_preference_vs_involuntary_tendency",
+      "description": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want."
+    }
+  ],
+  "edges": [
+    {
+      "id": "predilection__predisposition",
+      "a": "predilection",
+      "b": "predisposition",
+      "boundary_rule": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+      "clues_a": [
+        "repeated willing choice",
+        "enjoyment of a favourite"
+      ],
+      "clues_b": [
+        "unwanted tendency or sensitivity",
+        "automatic recurring reaction"
+      ],
+      "irrelevant_clues": [
+        "frequency alone",
+        "time of day"
+      ],
+      "misconceptions": {
+        "M1": "Treating any recurring behaviour as a personal liking.",
+        "M2": "Assuming unchosen susceptibility is a preferred habit.",
+        "M3": "Ignoring whether the person desires the repeated outcome."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "predilection-predisposition_001",
+      "edge_id": "predilection__predisposition",
+      "domain": "library_browsing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mirela’s relationship with mystery novels?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_001_b1",
+          "text": "Mirela almost always chooses detective stories because she loves following the clues.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "deliberate choice based on enjoyment",
+          "reason": "Deliberate choice based on enjoyment. A personal, often longstanding preference or special liking..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_001_b2",
+          "text": "Even with many genres available, she happily returns to mysteries.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "other options make her sustained preference clearer",
+          "reason": "Other options make her sustained preference clearer. A personal, often longstanding preference or special liking..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Other options make her sustained preference clearer makes predilection the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, other options make her sustained preference clearer; that is why predilection wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on liking versus an automatic reaction.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_002",
+      "edge_id": "predilection__predisposition",
+      "domain": "public_speaking_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Daniel’s tendency to blush under pressure?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_002_b1",
+          "text": "Daniel’s face reddens whenever he must speak unexpectedly, even though he wants to stay calm.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "involuntary blushing under pressure",
+          "reason": "Involuntary blushing under pressure. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_002_b2",
+          "text": "It happened again despite careful preparation and breathing exercises.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "preparation did not remove the unchosen tendency",
+          "reason": "Preparation did not remove the unchosen tendency. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Preparation did not remove the unchosen tendency makes predisposition the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, preparation did not remove the unchosen tendency; that is why predisposition wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on whether he wants the reaction.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_003",
+      "edge_id": "predilection__predisposition",
+      "domain": "family_breakfast",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Anya’s fondness for sour fruit?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_003_b1",
+          "text": "Anya picks grapefruit every morning because she genuinely enjoys its sharp taste.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "pleasure drives a repeated food choice",
+          "reason": "Pleasure drives a repeated food choice. A personal, often longstanding preference or special liking..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_003_b2",
+          "text": "She passes over sweeter fruit when both are offered.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "rejecting alternatives confirms active preference",
+          "reason": "Rejecting alternatives confirms active preference. A personal, often longstanding preference or special liking..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Rejecting alternatives confirms active preference makes predilection the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, rejecting alternatives confirms active preference; that is why predilection wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on choice rather than susceptibility.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_004",
+      "edge_id": "predilection__predisposition",
+      "domain": "sports_competition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Omar’s tendency to tense up before matches?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_004_b1",
+          "text": "Omar’s hands shake before close games, although he wishes they would stay steady.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "an unwanted recurring stress response",
+          "reason": "An unwanted recurring stress response. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_004_b2",
+          "text": "The same reaction happens even when he feels confident about winning.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "confidence does not stop the automatic reaction",
+          "reason": "Confidence does not stop the automatic reaction. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Confidence does not stop the automatic reaction makes predisposition the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, confidence does not stop the automatic reaction; that is why predisposition wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on a favourite or an unchosen pattern.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_005",
+      "edge_id": "predilection__predisposition",
+      "domain": "cinema_outing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Lien’s liking for subtitled films?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_005_b1",
+          "text": "Lien seeks out films with subtitles because she enjoys hearing different languages.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "she actively likes and selects subtitled films",
+          "reason": "She actively likes and selects subtitled films. A personal, often longstanding preference or special liking..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_005_b2",
+          "text": "Her friends sometimes choose a dubbed version, but she still picks subtitles when free to decide.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "friends’ choices do not alter her taste",
+          "reason": "Friends’ choices do not alter her taste. A personal, often longstanding preference or special liking..",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Friends’ choices do not alter her taste makes predilection the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, friends’ choices do not alter her taste; that is why predilection wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on her own preferred option.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_006",
+      "edge_id": "predilection__predisposition",
+      "domain": "busy_train_commute",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hakeem’s susceptibility to travel nausea?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_006_b1",
+          "text": "Hakeem often feels sick on crowded, moving trains despite wanting to travel comfortably.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "travel triggers unwanted nausea",
+          "reason": "Travel triggers unwanted nausea. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_006_b2",
+          "text": "He experiences the sensation before he even starts reading or using his phone.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "it recurs independently of optional activities",
+          "reason": "It recurs independently of optional activities. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M3"
+          }
+        }
+      ],
+      "feedback_short": "It recurs independently of optional activities makes predisposition the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, it recurs independently of optional activities; that is why predisposition wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on whether the tendency is welcomed.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_007",
+      "edge_id": "predilection__predisposition",
+      "domain": "school_art_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Sofia’s tendency to choose watercolours?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_007_b1",
+          "text": "Sofia reaches for watercolours because she finds their soft effects beautiful.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "watercolours are her favourite medium",
+          "reason": "Watercolours are her favourite medium. A personal, often longstanding preference or special liking..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_007_b2",
+          "text": "She is not unable to use other paints; these are simply the ones she enjoys most.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "freedom to choose distinguishes preference from susceptibility",
+          "reason": "Freedom to choose distinguishes preference from susceptibility. A personal, often longstanding preference or special liking..",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Freedom to choose distinguishes preference from susceptibility makes predilection the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, freedom to choose distinguishes preference from susceptibility; that is why predilection wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on what motivates her selection.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_008",
+      "edge_id": "predilection__predisposition",
+      "domain": "workplace_presentation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Tariq’s tendency to lose his voice when nervous?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_008_b1",
+          "text": "Tariq’s voice becomes strained before presentations even when he is eager to speak.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "unwanted automatic strain under stress",
+          "reason": "Unwanted automatic strain under stress. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_008_b2",
+          "text": "He has noticed the pattern since his first office meeting.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "long duration shows a stable tendency, not a liking",
+          "reason": "Long duration shows a stable tendency, not a liking. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Long duration shows a stable tendency, not a liking makes predisposition the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, long duration shows a stable tendency, not a liking; that is why predisposition wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on whether he chooses the reaction.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_009",
+      "edge_id": "predilection__predisposition",
+      "domain": "gardening_shop",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yuna’s liking for small flowering plants?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_009_b1",
+          "text": "Yuna regularly buys tiny flowering plants because tending them delights her.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "sustained enjoyment of small plants",
+          "reason": "Sustained enjoyment of small plants. A personal, often longstanding preference or special liking..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_009_b2",
+          "text": "She has room for larger plants but personally prefers the smaller ones.",
+          "best_word": "predilection",
+          "fit": {
+            "predilection": 0.93,
+            "predisposition": 0.18
+          },
+          "decisive_clue": "alternatives are available but less appealing",
+          "reason": "Alternatives are available but less appealing. A personal, often longstanding preference or special liking..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predisposition": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Alternatives are available but less appealing makes predilection the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, alternatives are available but less appealing; that is why predilection wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on her deliberate taste.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "predilection-predisposition_010",
+      "edge_id": "predilection__predisposition",
+      "domain": "cooking_workshop",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Felix’s tendency to get flustered under time limits?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "predilection-predisposition_010_b1",
+          "text": "Felix becomes flustered whenever a timer starts, though he knows the recipes well.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "repeated unwanted response to time pressure",
+          "reason": "Repeated unwanted response to time pressure. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M1"
+          }
+        },
+        {
+          "id": "predilection-predisposition_010_b2",
+          "text": "He wishes he could relax and finds the same reaction returning each class.",
+          "best_word": "predisposition",
+          "fit": {
+            "predilection": 0.18,
+            "predisposition": 0.93
+          },
+          "decisive_clue": "he does not enjoy or seek the reaction",
+          "reason": "He does not enjoy or seek the reaction. An underlying tendency or susceptibility, not necessarily wanted or consciously chosen..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "predilection": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He does not enjoy or seek the reaction makes predisposition the better fit.",
+      "feedback_deep": "Predilection means a personal, often longstanding preference or special liking; predisposition means an underlying tendency or susceptibility, not necessarily wanted or consciously chosen. Here, he does not enjoy or seek the reaction; that is why predisposition wins even after the new detail.",
+      "contrast_rule": "Predilection is a liking; predisposition is an inclination that happens.",
+      "hints": {
+        "attention": "Focus on an underlying pattern versus personal taste.",
+        "axis": "Predilection is something a person especially likes or chooses; predisposition is a tendency or susceptibility they may not want.",
+        "contrast": "Predilection is a liking; predisposition is an inclination that happens."
+      },
+      "qa": "pass"
+    }
+  ]
+}

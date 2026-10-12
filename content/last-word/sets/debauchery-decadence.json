@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "debauchery-decadence",
+  "title": "debauchery / decadence",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[30]",
+    "source_pair_id": 134,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "debauchery",
+      "sense": "Wild, excessive pursuit of pleasure, commonly involving drinking and loss of self-control.",
+      "connotation": "Strongly disapproving.",
+      "register": "formal to literary",
+      "misconceptions": [
+        "Thinking every luxury is a wild drinking spree."
+      ]
+    },
+    {
+      "word": "decadence",
+      "sense": "Lavish self-indulgence and luxury linked with eroding values or standards.",
+      "connotation": "Critical; sometimes playfully luxurious.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Thinking every rowdy party involves a decline of cultural standards."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "reckless_revelry_vs_lavish_decline",
+      "description": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards."
+    }
+  ],
+  "edges": [
+    {
+      "id": "debauchery__decadence",
+      "a": "debauchery",
+      "b": "decadence",
+      "boundary_rule": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+      "clues_a": [
+        "reckless late-night excess",
+        "harmful drinking and dares",
+        "loss of restraint at a gathering"
+      ],
+      "clues_b": [
+        "lavish spending despite neglect",
+        "extravagant comforts replacing responsibilities",
+        "luxury accompanying decay of standards"
+      ],
+      "irrelevant_clues": [
+        "how ornate the invitation is",
+        "whether the gathering is small",
+        "whether the room is decorated in gold"
+      ],
+      "misconceptions": {
+        "M1": "Thinking every luxury is a wild drinking spree.",
+        "M2": "Thinking every rowdy party involves a decline of cultural standards.",
+        "M3": "Judging pleasure solely by cost instead of the form of excess."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "debauchery-decadence_001",
+      "edge_id": "debauchery__decadence",
+      "domain": "out-of-control_party",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the excess at Rohan’s party?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "debauchery-decadence_001_b1",
+          "text": "At Rohan’s party, guests drink until dawn, break furniture, and stumble noisily into the street.",
+          "best_word": "debauchery",
+          "fit": {
+            "debauchery": 0.91,
+            "decadence": 0.22
+          },
+          "decisive_clue": "reckless drinking and damage dominate the celebration",
+          "reason": "Reckless drinking and damage dominate the celebration. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "decadence": "M3"
+          }
+        },
+        {
+          "id": "debauchery-decadence_001_b2",
+          "text": "The guests ignore repeated requests to stop throwing bottles across the room.",
+          "best_word": "debauchery",
+          "fit": {
+            "debauchery": 0.91,
+            "decadence": 0.22
+          },
+          "decisive_clue": "reckless drinking and damage dominate the celebration",
+          "reason": "The new detail does not overturn the original clue: reckless drinking and damage dominate the celebration. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "decadence": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The drinking and destruction show a loss of restraint, not merely costly luxury.",
+      "feedback_deep": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards. The conduct itself is wildly excessive and harmful.",
+      "contrast_rule": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+      "hints": {
+        "attention": "Distinguish reckless conduct from lavish self-indulgence tied to decline.",
+        "axis": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+        "contrast": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "debauchery-decadence_002",
+      "edge_id": "debauchery__decadence",
+      "domain": "lavish_personal_lifestyle",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Celeste’s lifestyle?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "debauchery-decadence_002_b1",
+          "text": "Celeste orders extravagant meals and buys expensive silk furniture while leaving important business bills unpaid.",
+          "best_word": "decadence",
+          "fit": {
+            "debauchery": 0.22,
+            "decadence": 0.91
+          },
+          "decisive_clue": "luxury takes priority over basic responsibilities",
+          "reason": "Luxury takes priority over basic responsibilities. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "debauchery": "M1"
+          }
+        },
+        {
+          "id": "debauchery-decadence_002_b2",
+          "text": "She purchases gold cutlery even as unpaid invoices pile up.",
+          "best_word": "decadence",
+          "fit": {
+            "debauchery": 0.22,
+            "decadence": 0.91
+          },
+          "decisive_clue": "luxury takes priority over basic responsibilities",
+          "reason": "The new detail does not overturn the original clue: luxury takes priority over basic responsibilities. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "debauchery": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Celeste’s expensive comforts grow while her responsibilities go unmet.",
+      "feedback_deep": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards. The contrast between luxury and decline is more central than a riotous party.",
+      "contrast_rule": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+      "hints": {
+        "attention": "Distinguish reckless conduct from lavish self-indulgence tied to decline.",
+        "axis": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+        "contrast": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "debauchery-decadence_003",
+      "edge_id": "debauchery__decadence",
+      "domain": "reckless_holiday_nights",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dina’s behaviour on holiday?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "debauchery-decadence_003_b1",
+          "text": "Dina spends every holiday night drinking heavily and taking dangerous dares with strangers.",
+          "best_word": "debauchery",
+          "fit": {
+            "debauchery": 0.91,
+            "decadence": 0.22
+          },
+          "decisive_clue": "her pleasure seeking becomes reckless and risky",
+          "reason": "Her pleasure seeking becomes reckless and risky. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "decadence": "M2"
+          }
+        },
+        {
+          "id": "debauchery-decadence_003_b2",
+          "text": "She misses her morning train after another night of drinking and reckless bets.",
+          "best_word": "debauchery",
+          "fit": {
+            "debauchery": 0.91,
+            "decadence": 0.22
+          },
+          "decisive_clue": "unrestrained nights cause real personal consequences",
+          "reason": "Unrestrained nights cause real personal consequences. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "decadence": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Repeated heavy drinking and dangerous dares show reckless excess.",
+      "feedback_deep": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards. The missed train adds a consequence to behaviour already out of control.",
+      "contrast_rule": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+      "hints": {
+        "attention": "Distinguish reckless conduct from lavish self-indulgence tied to decline.",
+        "axis": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+        "contrast": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "debauchery-decadence_004",
+      "edge_id": "debauchery__decadence",
+      "domain": "luxury_restaurant_neglect",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the excess at Farid’s restaurant?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "debauchery-decadence_004_b1",
+          "text": "Farid’s restaurant adds marble fixtures and silver serving trays while delaying staff pay for months.",
+          "best_word": "decadence",
+          "fit": {
+            "debauchery": 0.22,
+            "decadence": 0.91
+          },
+          "decisive_clue": "lavish displays come at the expense of basic obligations",
+          "reason": "Lavish displays come at the expense of basic obligations. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "debauchery": "M3"
+          }
+        },
+        {
+          "id": "debauchery-decadence_004_b2",
+          "text": "It replaces ordinary plates with gold-trimmed ones but still leaves wages unpaid.",
+          "best_word": "decadence",
+          "fit": {
+            "debauchery": 0.22,
+            "decadence": 0.91
+          },
+          "decisive_clue": "luxury escalates while treatment of workers deteriorates",
+          "reason": "Luxury escalates while treatment of workers deteriorates. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "debauchery": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The growing luxury comes alongside the neglect of staff.",
+      "feedback_deep": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards. The focus is extravagant indulgence at the cost of ordinary standards.",
+      "contrast_rule": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+      "hints": {
+        "attention": "Distinguish reckless conduct from lavish self-indulgence tied to decline.",
+        "axis": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+        "contrast": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "debauchery-decadence_005",
+      "edge_id": "debauchery__decadence",
+      "domain": "party_invitation_contrast",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Marta’s house party?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "debauchery-decadence_005_b1",
+          "text": "At Marta’s house party, guests gamble away rent money, drink until vomiting, and smash glassware.",
+          "best_word": "debauchery",
+          "fit": {
+            "debauchery": 0.91,
+            "decadence": 0.22
+          },
+          "decisive_clue": "unrestrained harmful revelry characterizes the party",
+          "reason": "Unrestrained harmful revelry characterizes the party. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "decadence": "M1"
+          }
+        },
+        {
+          "id": "debauchery-decadence_005_b2",
+          "text": "The invitations were printed on costly gold-edged card, but the same harmful behavior filled the night.",
+          "best_word": "debauchery",
+          "fit": {
+            "debauchery": 0.91,
+            "decadence": 0.22
+          },
+          "decisive_clue": "unrestrained harmful revelry characterizes the party",
+          "reason": "The new detail does not overturn the original clue: unrestrained harmful revelry characterizes the party. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "decadence": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Expensive invitations do not change the party’s reckless conduct.",
+      "feedback_deep": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards. Its defining feature is the loss of restraint, not the invitation’s appearance.",
+      "contrast_rule": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+      "hints": {
+        "attention": "Distinguish reckless conduct from lavish self-indulgence tied to decline.",
+        "axis": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+        "contrast": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "debauchery-decadence_006",
+      "edge_id": "debauchery__decadence",
+      "domain": "theatre_decline",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the decline at Kenji’s theatre?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "debauchery-decadence_006_b1",
+          "text": "Kenji’s theatre installs private dining rooms and velvet lounges while cancelling most of its stage productions.",
+          "best_word": "decadence",
+          "fit": {
+            "debauchery": 0.22,
+            "decadence": 0.91
+          },
+          "decisive_clue": "luxury replaces the theatre’s defining cultural purpose",
+          "reason": "Luxury replaces the theatre’s defining cultural purpose. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "debauchery": "M2"
+          }
+        },
+        {
+          "id": "debauchery-decadence_006_b2",
+          "text": "It now hosts expensive banquets in rooms where audiences once watched plays.",
+          "best_word": "decadence",
+          "fit": {
+            "debauchery": 0.22,
+            "decadence": 0.91
+          },
+          "decisive_clue": "lavish social comforts displace the institution’s cultural work",
+          "reason": "Lavish social comforts displace the institution’s cultural work. Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "debauchery": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The theatre sacrifices its artistic purpose for expensive comfort.",
+      "feedback_deep": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards. The excess is associated with an erosion of what the theatre was supposed to offer.",
+      "contrast_rule": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+      "hints": {
+        "attention": "Distinguish reckless conduct from lavish self-indulgence tied to decline.",
+        "axis": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards.",
+        "contrast": "Debauchery centers on reckless overindulgent behavior; decadence centers on luxurious excess linked to declining standards."
+      },
+      "qa": "pass"
+    }
+  ]
+}

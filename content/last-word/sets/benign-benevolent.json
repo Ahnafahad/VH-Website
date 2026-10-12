@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "benign-benevolent",
+  "title": "benign / benevolent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[37]",
+    "source_pair_id": 160,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "benign",
+      "sense": "gentle or harmless in effect; not threatening",
+      "connotation": "reassuring, mild",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Being harmless proves someone has actively helped"
+      ]
+    },
+    {
+      "word": "benevolent",
+      "sense": "actively well-disposed and motivated to do good for others",
+      "connotation": "generous, charitable",
+      "register": "formal",
+      "misconceptions": [
+        "Kind intentions always require an absence of danger or harm as sole evidence"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "harmless_mildness_vs_active_goodwill",
+      "description": "A gentle, harmless manner differs from an intention expressed through active help to others."
+    }
+  ],
+  "edges": [
+    {
+      "id": "benign__benevolent",
+      "a": "benign",
+      "b": "benevolent",
+      "boundary_rule": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others.",
+      "clues_a": [
+        "nonthreatening response",
+        "mild effect",
+        "gentle harmless manner"
+      ],
+      "clues_b": [
+        "voluntary effort to assist",
+        "uses own resources for others",
+        "initiates helpful action"
+      ],
+      "irrelevant_clues": [
+        "soft voice",
+        "expensive clothing",
+        "public recognition"
+      ],
+      "misconceptions": {
+        "M1": "Harmlessness itself proves generous goodwill",
+        "M2": "Active voluntary help can be reduced to mere lack of harm",
+        "M3": "A pleasant appearance establishes benevolent intention"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "benign-benevolent_001",
+      "edge_id": "benign__benevolent",
+      "domain": "classroom_correction",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Arun's response to a classmate's mistake?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "benign-benevolent_001_b1",
+          "text": "Arun corrected a small mistake with a calm smile and no cutting remark; the classmate felt at ease.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.9,
+            "benevolent": 0.165
+          },
+          "decisive_clue": "gentle manner caused no distress",
+          "reason": "The defining quality is mildness, not an active effort to provide support.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        },
+        {
+          "id": "benign-benevolent_001_b2",
+          "text": "He was wearing a bright yellow sweater that morning.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.9,
+            "benevolent": 0.165
+          },
+          "decisive_clue": "nonthreatening correction regardless of clothing",
+          "reason": "The sweater does not establish additional helpful action.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains nonthreatening correction regardless of clothing.",
+      "feedback_deep": "Benign means kindly mild or unlikely to cause harm; benevolent means showing goodwill by seeking to benefit other people. The defining quality is mildness, not an active effort to provide support. The sweater does not establish additional helpful action.",
+      "contrast_rule": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others.",
+      "hints": {
+        "attention": "Judge the effect of the correction.",
+        "axis": "A gentle, harmless manner differs from an intention expressed through active help to others.",
+        "contrast": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benign-benevolent_002",
+      "edge_id": "benign__benevolent",
+      "domain": "neighbourhood_groceries",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Basma's actions for a neighbour?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "benign-benevolent_002_b1",
+          "text": "Basma saw her neighbour struggling with bags and carried the groceries upstairs without being asked.",
+          "best_word": "benevolent",
+          "fit": {
+            "benign": 0.19,
+            "benevolent": 0.92
+          },
+          "decisive_clue": "chose to provide practical help",
+          "reason": "Her conduct is actively directed at another person's benefit.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        },
+        {
+          "id": "benign-benevolent_002_b2",
+          "text": "She returned the next day with a trolley the neighbour could borrow.",
+          "best_word": "benevolent",
+          "fit": {
+            "benign": 0.19,
+            "benevolent": 0.92
+          },
+          "decisive_clue": "followed up with additional practical support",
+          "reason": "The continuing effort shows purposeful goodwill.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains followed up with additional practical support.",
+      "feedback_deep": "Benign means kindly mild or unlikely to cause harm; benevolent means showing goodwill by seeking to benefit other people. Her conduct is actively directed at another person's benefit. The continuing effort shows purposeful goodwill.",
+      "contrast_rule": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others.",
+      "hints": {
+        "attention": "Look at what she voluntarily does for someone else.",
+        "axis": "A gentle, harmless manner differs from an intention expressed through active help to others.",
+        "contrast": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benign-benevolent_004",
+      "edge_id": "benign__benevolent",
+      "domain": "lost_luggage",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Daria's conduct toward stranded travellers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "benign-benevolent_004_b1",
+          "text": "Daria paid for meals for several travellers whose bags were lost, though she owed them nothing.",
+          "best_word": "benevolent",
+          "fit": {
+            "benign": 0.14,
+            "benevolent": 0.88
+          },
+          "decisive_clue": "spent her own money to help strangers",
+          "reason": "The action is motivated by their welfare.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        },
+        {
+          "id": "benign-benevolent_004_b2",
+          "text": "The meal vouchers were printed on plain white paper.",
+          "best_word": "benevolent",
+          "fit": {
+            "benign": 0.14,
+            "benevolent": 0.88
+          },
+          "decisive_clue": "voluntary provision of meals despite plain vouchers",
+          "reason": "Paper design does not affect the helping action.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains voluntary provision of meals despite plain vouchers.",
+      "feedback_deep": "Benign means kindly mild or unlikely to cause harm; benevolent means showing goodwill by seeking to benefit other people. The action is motivated by their welfare. Paper design does not affect the helping action.",
+      "contrast_rule": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others.",
+      "hints": {
+        "attention": "Follow where her resources went.",
+        "axis": "A gentle, harmless manner differs from an intention expressed through active help to others.",
+        "contrast": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benign-benevolent_005",
+      "edge_id": "benign__benevolent",
+      "domain": "friendly_teasing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Efe's remark during the game?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "benign-benevolent_005_b1",
+          "text": "Efe made a playful comment about a missed shot; the teammate laughed and carried on comfortably.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.9,
+            "benevolent": 0.165
+          },
+          "decisive_clue": "remark was gentle and caused no harm",
+          "reason": "Its harmless effect distinguishes it from purposeful aid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        },
+        {
+          "id": "benign-benevolent_005_b2",
+          "text": "The comment happened in front of a large crowd.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.9,
+            "benevolent": 0.165
+          },
+          "decisive_clue": "harmless teasing despite audience size",
+          "reason": "Crowd size alone does not turn gentle teasing into active generosity.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction does not matter: harmless teasing despite audience size.",
+      "feedback_deep": "Benign means kindly mild or unlikely to cause harm; benevolent means showing goodwill by seeking to benefit other people. Its harmless effect distinguishes it from purposeful aid. Crowd size alone does not turn gentle teasing into active generosity.",
+      "contrast_rule": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others.",
+      "hints": {
+        "attention": "Focus on how the remark affected the teammate.",
+        "axis": "A gentle, harmless manner differs from an intention expressed through active help to others.",
+        "contrast": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benign-benevolent_007",
+      "edge_id": "benign__benevolent",
+      "domain": "pet_encounter",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Gustavo's dog's behaviour with visitors?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "benign-benevolent_007_b1",
+          "text": "Gustavo's dog approached guests quietly, never snapped, and allowed children to pet it without alarm.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.94,
+            "benevolent": 0.215
+          },
+          "decisive_clue": "animal behaved gently and without threat",
+          "reason": "The adjective concerns a harmless disposition.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        },
+        {
+          "id": "benign-benevolent_007_b2",
+          "text": "When a toddler tugged gently at its collar, the dog stepped away and settled quietly under a chair.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.94,
+            "benevolent": 0.215
+          },
+          "decisive_clue": "reassuring conduct rather than active aid",
+          "reason": "Comfortable visitors do not imply the dog undertook charitable action.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains reassuring conduct rather than active aid.",
+      "feedback_deep": "Benign means kindly mild or unlikely to cause harm; benevolent means showing goodwill by seeking to benefit other people. The adjective concerns a harmless disposition. Comfortable visitors do not imply the dog undertook charitable action.",
+      "contrast_rule": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others.",
+      "hints": {
+        "attention": "Judge the animal's manner, not imagined intentions.",
+        "axis": "A gentle, harmless manner differs from an intention expressed through active help to others.",
+        "contrast": "benign describes gentleness or lack of harm; benevolent describes active goodwill toward others."
+      },
+      "qa": "pass"
+    }
+  ]
+}

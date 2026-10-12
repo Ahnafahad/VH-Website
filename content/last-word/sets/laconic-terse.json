@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "laconic-terse",
+  "title": "laconic / terse",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[101]",
+    "source_pair_id": 419,
+    "qa": {
+      "pass": 3,
+      "revised": 3,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "laconic",
+      "sense": "Using very few words, without implying rudeness or coldness.",
+      "connotation": "neutral or approving",
+      "register": "formal",
+      "misconceptions": [
+        "Ignoring dismissive delivery because a response is grammatically correct.",
+        "Equating word count with the speaker’s attitude."
+      ]
+    },
+    {
+      "word": "terse",
+      "sense": "Brief in an abrupt, unfriendly, or impatient manner.",
+      "connotation": "mildly negative",
+      "register": "standard",
+      "misconceptions": [
+        "Treating any short reply as cold or impatient.",
+        "Equating word count with the speaker’s attitude."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "neutral_brevity_vs_brusk_brevity",
+      "description": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly."
+    }
+  ],
+  "edges": [
+    {
+      "id": "laconic__terse",
+      "a": "laconic",
+      "b": "terse",
+      "boundary_rule": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly.",
+      "clues_a": [
+        "short helpful reply",
+        "few words with a warm manner",
+        "unembellished but welcoming"
+      ],
+      "clues_b": [
+        "abrupt command",
+        "cutting someone off",
+        "impatient short reply"
+      ],
+      "irrelevant_clues": [
+        "message length alone",
+        "spelling accuracy",
+        "spoken versus typed"
+      ],
+      "misconceptions": {
+        "M1": "Treating any short reply as cold or impatient.",
+        "M2": "Ignoring dismissive delivery because a response is grammatically correct.",
+        "M3": "Equating word count with the speaker’s attitude."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "laconic-terse_001",
+      "edge_id": "laconic__terse",
+      "domain": "meeting_arrangements",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ali’s reply about the meeting time?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "laconic-terse_001_b1",
+          "text": "Ali answered, “Wednesday at six,” then smiled and offered to set up the chairs.",
+          "best_word": "laconic",
+          "fit": {
+            "laconic": 0.92,
+            "terse": 0.19
+          },
+          "decisive_clue": "few words accompanied by a helpful, warm manner",
+          "reason": "Few words accompanied by a helpful, warm manner. Using very few words, without implying rudeness or coldness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "laconic-terse_001_b2",
+          "text": "His brief reply remained warm and helpful even as more than fifty guests were expected.",
+          "best_word": "laconic",
+          "fit": {
+            "laconic": 0.92,
+            "terse": 0.19
+          },
+          "decisive_clue": "the reply remains brief but warm and helpful",
+          "reason": "The reply remains brief but warm and helpful. Using very few words, without implying rudeness or coldness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The reply remains brief but warm and helpful.",
+      "feedback_deep": "Laconic means using very few words, without implying rudeness or coldness; terse means brief in an abrupt, unfriendly, or impatient manner. Ali’s reply is brief but warm and helpful, so laconic remains the stronger choice.",
+      "contrast_rule": "Laconic saves words; terse cuts them short.",
+      "hints": {
+        "attention": "Focus on both the brevity and the manner of the reply.",
+        "axis": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly.",
+        "contrast": "Laconic saves words; terse cuts them short."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "laconic-terse_002",
+      "edge_id": "laconic__terse",
+      "domain": "friend_interruption",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Esme’s reply to her friend?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "laconic-terse_002_b1",
+          "text": "Esme cut off her friend’s explanation with “Enough. Leave,” and turned away.",
+          "best_word": "terse",
+          "fit": {
+            "laconic": 0.19,
+            "terse": 0.92
+          },
+          "decisive_clue": "an abrupt order and dismissive departure",
+          "reason": "An abrupt order and dismissive departure. Brief in an abrupt, unfriendly, or impatient manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "laconic": "M1"
+          }
+        },
+        {
+          "id": "laconic-terse_002_b2",
+          "text": "She said the entire thing in just two words.",
+          "best_word": "terse",
+          "fit": {
+            "laconic": 0.19,
+            "terse": 0.92
+          },
+          "decisive_clue": "the same cutting tone, not just word count, decides the description",
+          "reason": "The same cutting tone, not just word count, decides the description. Brief in an abrupt, unfriendly, or impatient manner.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "laconic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The same cutting tone, not just word count, decides the description.",
+      "feedback_deep": "Laconic means using very few words, without implying rudeness or coldness; terse means brief in an abrupt, unfriendly, or impatient manner. Here, an abrupt order and dismissive departure. The new detail does not change the deciding fact: the same cutting tone, not just word count, decides the description. Thus terse remains the stronger choice.",
+      "contrast_rule": "Laconic saves words; terse cuts them short.",
+      "hints": {
+        "attention": "Focus on how she treats the person speaking.",
+        "axis": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly.",
+        "contrast": "Laconic saves words; terse cuts them short."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "laconic-terse_003",
+      "edge_id": "laconic__terse",
+      "domain": "group_directions",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ren’s message giving directions?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "laconic-terse_003_b1",
+          "text": "Ren sent a short address and added a cheerful thumbs-up when asked how to find the hall.",
+          "best_word": "laconic",
+          "fit": {
+            "laconic": 0.92,
+            "terse": 0.19
+          },
+          "decisive_clue": "compact answer with friendly follow-through",
+          "reason": "Compact answer with friendly follow-through. Using very few words, without implying rudeness or coldness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "laconic-terse_003_b2",
+          "text": "The message stayed concise while its cheerful tone made the directions welcoming rather than cold.",
+          "best_word": "laconic",
+          "fit": {
+            "laconic": 0.92,
+            "terse": 0.19
+          },
+          "decisive_clue": "the message remains concise but welcoming",
+          "reason": "The message remains concise but welcoming. Using very few words, without implying rudeness or coldness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The message remains concise but welcoming.",
+      "feedback_deep": "Laconic means using very few words, without implying rudeness or coldness; terse means brief in an abrupt, unfriendly, or impatient manner. Ren’s message is concise but welcoming, so laconic remains the stronger choice.",
+      "contrast_rule": "Laconic saves words; terse cuts them short.",
+      "hints": {
+        "attention": "Focus on the message’s tone as well as its brevity.",
+        "axis": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly.",
+        "contrast": "Laconic saves words; terse cuts them short."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "laconic-terse_004",
+      "edge_id": "laconic__terse",
+      "domain": "trip_invitation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Yasmin’s refusal of the trip?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "laconic-terse_004_b1",
+          "text": "Yasmin replied “No. Stop asking,” with a sharp look when a friend invited her.",
+          "best_word": "terse",
+          "fit": {
+            "laconic": 0.19,
+            "terse": 0.92
+          },
+          "decisive_clue": "brief refusal delivered as a sharp rebuff",
+          "reason": "Brief refusal delivered as a sharp rebuff. Brief in an abrupt, unfriendly, or impatient manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "laconic": "M1"
+          }
+        },
+        {
+          "id": "laconic-terse_004_b2",
+          "text": "Her refusal remained abrupt and dismissive, leaving no room for further discussion.",
+          "best_word": "terse",
+          "fit": {
+            "laconic": 0.19,
+            "terse": 0.92
+          },
+          "decisive_clue": "the refusal remains abrupt and dismissive",
+          "reason": "The refusal remains abrupt and dismissive. Brief in an abrupt, unfriendly, or impatient manner.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "laconic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The refusal remains abrupt and dismissive.",
+      "feedback_deep": "Laconic means using very few words, without implying rudeness or coldness; terse means brief in an abrupt, unfriendly, or impatient manner. Yasmin’s refusal is abrupt and dismissive, so terse remains the stronger choice.",
+      "contrast_rule": "Laconic saves words; terse cuts them short.",
+      "hints": {
+        "attention": "Focus on how the refusal is delivered.",
+        "axis": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly.",
+        "contrast": "Laconic saves words; terse cuts them short."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "laconic-terse_005",
+      "edge_id": "laconic__terse",
+      "domain": "sports_practice",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Mateo’s reply to the coach?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "laconic-terse_005_b1",
+          "text": "Mateo answered “Yes, tomorrow,” with a relaxed nod and an easy smile.",
+          "best_word": "laconic",
+          "fit": {
+            "laconic": 0.92,
+            "terse": 0.19
+          },
+          "decisive_clue": "few words paired with a relaxed, willing manner",
+          "reason": "Few words paired with a relaxed, willing manner. Using very few words, without implying rudeness or coldness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "laconic-terse_005_b2",
+          "text": "The coach had expected a longer answer, but Mateo was happy to explain if asked.",
+          "best_word": "laconic",
+          "fit": {
+            "laconic": 0.92,
+            "terse": 0.19
+          },
+          "decisive_clue": "another person wanting more detail does not make Mateo rude",
+          "reason": "Another person wanting more detail does not make Mateo rude. Using very few words, without implying rudeness or coldness.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Another person wanting more detail does not make Mateo rude.",
+      "feedback_deep": "Laconic means using very few words, without implying rudeness or coldness; terse means brief in an abrupt, unfriendly, or impatient manner. Here, few words paired with a relaxed, willing manner. The apparent distraction does not change the deciding fact: another person wanting more detail does not make Mateo rude. Thus laconic remains the stronger choice.",
+      "contrast_rule": "Laconic saves words; terse cuts them short.",
+      "hints": {
+        "attention": "Focus on his attitude rather than the number of words.",
+        "axis": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly.",
+        "contrast": "Laconic saves words; terse cuts them short."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "laconic-terse_006",
+      "edge_id": "laconic__terse",
+      "domain": "work_email",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nora’s email to her teammate?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "laconic-terse_006_b1",
+          "text": "Nora wrote, “Read the instructions. I won’t repeat them,” and ended the message there.",
+          "best_word": "terse",
+          "fit": {
+            "laconic": 0.19,
+            "terse": 0.92
+          },
+          "decisive_clue": "short, impatient wording that brushes off a teammate",
+          "reason": "Short, impatient wording that brushes off a teammate. Brief in an abrupt, unfriendly, or impatient manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "laconic": "M1"
+          }
+        },
+        {
+          "id": "laconic-terse_006_b2",
+          "text": "Every sentence was correctly punctuated and free of spelling mistakes.",
+          "best_word": "terse",
+          "fit": {
+            "laconic": 0.19,
+            "terse": 0.92
+          },
+          "decisive_clue": "technical correctness does not remove the dismissive tone",
+          "reason": "Technical correctness does not remove the dismissive tone. Brief in an abrupt, unfriendly, or impatient manner.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "laconic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Technical correctness does not remove the dismissive tone.",
+      "feedback_deep": "Laconic means using very few words, without implying rudeness or coldness; terse means brief in an abrupt, unfriendly, or impatient manner. Here, short, impatient wording that brushes off a teammate. The added context helps interpret that fact: technical correctness does not remove the dismissive tone. Thus terse remains the stronger choice.",
+      "contrast_rule": "Laconic saves words; terse cuts them short.",
+      "hints": {
+        "attention": "Focus on the effect of the words on the recipient.",
+        "axis": "Laconic speech is simply spare in words; terse speech is short in a way that comes across as abrupt or unfriendly.",
+        "contrast": "Laconic saves words; terse cuts them short."
+      },
+      "qa": "pass"
+    }
+  ]
+}

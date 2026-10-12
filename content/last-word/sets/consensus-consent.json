@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "consensus-consent",
+  "title": "consensus / consent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[117]",
+    "source_pair_id": 465,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "consensus",
+      "sense": "Broad agreement reached by members of a group on a shared decision.",
+      "connotation": "Cooperative, neutral.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Treating one person’s permission as group-wide agreement."
+      ]
+    },
+    {
+      "word": "consent",
+      "sense": "Permission or approval given by a person for an action affecting them.",
+      "connotation": "Neutral; emphasizes personal choice.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming a majority decision gives permission on behalf of everyone affected."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "group_agreement_vs_permission",
+      "description": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act."
+    }
+  ],
+  "edges": [
+    {
+      "id": "consensus__consent",
+      "a": "consensus",
+      "b": "consent",
+      "boundary_rule": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+      "clues_a": [
+        "group settles on one plan",
+        "members accept a compromise",
+        "shared position emerges after discussion"
+      ],
+      "clues_b": [
+        "one person authorizes use",
+        "individual can say yes or no",
+        "permission is knowingly given"
+      ],
+      "irrelevant_clues": [
+        "the colour of the voting slips",
+        "how the decision is announced",
+        "whether the permission is handwritten"
+      ],
+      "misconceptions": {
+        "M1": "Treating one person’s permission as group-wide agreement.",
+        "M2": "Assuming a majority decision gives permission on behalf of everyone affected.",
+        "M3": "Confusing people accepting a shared plan with authorizing use of something personal."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "consensus-consent_001",
+      "edge_id": "consensus__consent",
+      "domain": "student_venue_committee",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Lina’s committee’s decision?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "consensus-consent_001_b1",
+          "text": "Lina’s committee discusses three event venues until nearly everyone supports using the library hall.",
+          "best_word": "consensus",
+          "fit": {
+            "consensus": 0.91,
+            "consent": 0.22
+          },
+          "decisive_clue": "the group settles broadly on one venue",
+          "reason": "The group settles broadly on one venue. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consent": "M3"
+          }
+        },
+        {
+          "id": "consensus-consent_001_b2",
+          "text": "The last member accepts the library choice despite originally preferring the gym.",
+          "best_word": "consensus",
+          "fit": {
+            "consensus": 0.91,
+            "consent": 0.22
+          },
+          "decisive_clue": "the group settles broadly on one venue",
+          "reason": "The new detail does not overturn the original clue: the group settles broadly on one venue. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Nearly all members accept one shared choice.",
+      "feedback_deep": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act. The key is a position adopted by a group, not permission from one person.",
+      "contrast_rule": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+      "hints": {
+        "attention": "Check whether the answer is a group position or a person’s permission.",
+        "axis": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+        "contrast": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "consensus-consent_002",
+      "edge_id": "consensus__consent",
+      "domain": "photo_permission",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Naveed’s decision about his photograph?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "consensus-consent_002_b1",
+          "text": "Naveed checks a box allowing his school club to use his photograph on a poster.",
+          "best_word": "consent",
+          "fit": {
+            "consensus": 0.22,
+            "consent": 0.91
+          },
+          "decisive_clue": "he personally authorizes use of his image",
+          "reason": "He personally authorizes use of his image. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consensus": "M1"
+          }
+        },
+        {
+          "id": "consensus-consent_002_b2",
+          "text": "The form states he may withdraw that permission later.",
+          "best_word": "consent",
+          "fit": {
+            "consensus": 0.22,
+            "consent": 0.91
+          },
+          "decisive_clue": "he personally authorizes use of his image",
+          "reason": "The new detail does not overturn the original clue: he personally authorizes use of his image. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consensus": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Naveed is authorizing use of his own picture.",
+      "feedback_deep": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act. The option to withdraw reinforces that his individual choice is involved.",
+      "contrast_rule": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+      "hints": {
+        "attention": "Check whether the answer is a group position or a person’s permission.",
+        "axis": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+        "contrast": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "consensus-consent_003",
+      "edge_id": "consensus__consent",
+      "domain": "neighbors_quiet_hours",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Daria’s neighbours’ decision?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "consensus-consent_003_b1",
+          "text": "Daria’s neighbours settle on quiet hours after several meetings where everyone suggests different times.",
+          "best_word": "consensus",
+          "fit": {
+            "consensus": 0.91,
+            "consent": 0.22
+          },
+          "decisive_clue": "a shared rule emerges from group discussion",
+          "reason": "A shared rule emerges from group discussion. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consent": "M2"
+          }
+        },
+        {
+          "id": "consensus-consent_003_b2",
+          "text": "Several wanted an earlier start, but all agree to follow the final schedule.",
+          "best_word": "consensus",
+          "fit": {
+            "consensus": 0.91,
+            "consent": 0.22
+          },
+          "decisive_clue": "members accept a compromise despite differing preferences",
+          "reason": "Members accept a compromise despite differing preferences. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The neighbours accept one common rule, even without getting their first choice.",
+      "feedback_deep": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act. A shared decision need not mean unanimous enthusiasm.",
+      "contrast_rule": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+      "hints": {
+        "attention": "Check whether the answer is a group position or a person’s permission.",
+        "axis": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+        "contrast": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "consensus-consent_004",
+      "edge_id": "consensus__consent",
+      "domain": "bicycle_borrowing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s answer about his bicycle?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "consensus-consent_004_b1",
+          "text": "Omar tells a friend she may borrow his bicycle while he is away.",
+          "best_word": "consent",
+          "fit": {
+            "consensus": 0.22,
+            "consent": 0.91
+          },
+          "decisive_clue": "owner individually permits the borrowing",
+          "reason": "Owner individually permits the borrowing. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consensus": "M3"
+          }
+        },
+        {
+          "id": "consensus-consent_004_b2",
+          "text": "He gives her the lock code after she asks whether tomorrow would be suitable.",
+          "best_word": "consent",
+          "fit": {
+            "consensus": 0.22,
+            "consent": 0.91
+          },
+          "decisive_clue": "the owner authorizes this specific use",
+          "reason": "The owner authorizes this specific use. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consensus": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Omar gives an individual the go-ahead to use his bicycle.",
+      "feedback_deep": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act. His personal permission, not a group agreement, is the issue.",
+      "contrast_rule": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+      "hints": {
+        "attention": "Check whether the answer is a group position or a person’s permission.",
+        "axis": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+        "contrast": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "consensus-consent_005",
+      "edge_id": "consensus__consent",
+      "domain": "training_schedule_decision",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Elena’s team’s choice of practice time?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "consensus-consent_005_b1",
+          "text": "Elena’s team talks through conflicting schedules and settles on one time everyone can manage.",
+          "best_word": "consensus",
+          "fit": {
+            "consensus": 0.91,
+            "consent": 0.22
+          },
+          "decisive_clue": "the team reaches a broadly shared time choice",
+          "reason": "The team reaches a broadly shared time choice. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consent": "M1"
+          }
+        },
+        {
+          "id": "consensus-consent_005_b2",
+          "text": "Their agreed schedule is printed on a colourful poster with drawings of footballs.",
+          "best_word": "consensus",
+          "fit": {
+            "consensus": 0.91,
+            "consent": 0.22
+          },
+          "decisive_clue": "the team reaches a broadly shared time choice",
+          "reason": "The new detail does not overturn the original clue: the team reaches a broadly shared time choice. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A colourful poster does not change how the group arrived at the practice time.",
+      "feedback_deep": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act. Members had accepted a shared arrangement before anyone decorated it.",
+      "contrast_rule": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+      "hints": {
+        "attention": "Check whether the answer is a group position or a person’s permission.",
+        "axis": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+        "contrast": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "consensus-consent_006",
+      "edge_id": "consensus__consent",
+      "domain": "survey_agreement",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ari’s decision about the survey?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "consensus-consent_006_b1",
+          "text": "Ari reads the survey instructions and signs a form allowing her answers to be included in a research project.",
+          "best_word": "consent",
+          "fit": {
+            "consensus": 0.22,
+            "consent": 0.91
+          },
+          "decisive_clue": "she personally authorizes use of her responses",
+          "reason": "She personally authorizes use of her responses. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consensus": "M2"
+          }
+        },
+        {
+          "id": "consensus-consent_006_b2",
+          "text": "Before signing, she asks how the answers will be stored and then decides to give permission.",
+          "best_word": "consent",
+          "fit": {
+            "consensus": 0.22,
+            "consent": 0.91
+          },
+          "decisive_clue": "the authorization follows her own informed decision",
+          "reason": "The authorization follows her own informed decision. Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "consensus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Ari makes a personal choice after checking what she is agreeing to.",
+      "feedback_deep": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act. The form records permission from one participant rather than a group’s shared position.",
+      "contrast_rule": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+      "hints": {
+        "attention": "Check whether the answer is a group position or a person’s permission.",
+        "axis": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act.",
+        "contrast": "Consensus is a group’s broadly shared decision; consent is an individual’s permission or agreement to a proposed act."
+      },
+      "qa": "revised"
+    }
+  ]
+}

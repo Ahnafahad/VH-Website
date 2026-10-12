@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "set_id": "concise-terse",
+  "title": "concise / terse",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[100]",
+    "source_pair_id": 416,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "concise",
+      "sense": "brief yet clear, supplying necessary information without filler",
+      "connotation": "usually approving",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming every short message is rude.",
+        "Assuming a clear message cannot be brusque."
+      ]
+    },
+    {
+      "word": "terse",
+      "sense": "extremely brief in a way that sounds abrupt or unfriendly",
+      "connotation": "often critical of tone",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming every short message is rude.",
+        "Assuming a clear message cannot be brusque."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "effect_of_brevity",
+      "description": "Efficient clarity versus brusque tone."
+    }
+  ],
+  "edges": [
+    {
+      "id": "concise__terse",
+      "a": "concise",
+      "b": "terse",
+      "boundary_rule": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt.",
+      "clues_a": [
+        "brief but complete",
+        "easy to understand"
+      ],
+      "clues_b": [
+        "clipped commands",
+        "abrupt or unfriendly tone"
+      ],
+      "irrelevant_clues": [
+        "font size",
+        "message length alone",
+        "recipient location"
+      ],
+      "misconceptions": {
+        "M1": "Assuming every short message is rude.",
+        "M2": "Assuming a clear message cannot be brusque.",
+        "M3": "Ignoring tone while judging word count."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "concise-terse_001",
+      "edge_id": "concise__terse",
+      "domain": "school_instructions",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Aisha's class instructions?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "concise-terse_001_b1",
+          "text": "She gives the three necessary steps in two clear sentences without extra stories.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.93,
+            "terse": 0.14
+          },
+          "decisive_clue": "all necessary steps are clear",
+          "reason": "All necessary steps are clear; this favors concise rather than terse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "concise-terse_001_b2",
+          "text": "She reads the instructions from a blue card instead of her phone.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.93,
+            "terse": 0.14
+          },
+          "decisive_clue": "the card changes no wording or tone",
+          "reason": "The card changes no wording or tone; this favors concise rather than terse.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The card changes no wording or tone points to concise, not terse.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Aisha's situation ultimately hinges on this clue: the card changes no wording or tone. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_002",
+      "edge_id": "concise__terse",
+      "domain": "office_email",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Ben's email?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "concise-terse_002_b1",
+          "text": "His draft explains the deadline and requested change clearly in three lines.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.95,
+            "terse": 0.18
+          },
+          "decisive_clue": "the short draft communicates both essentials",
+          "reason": "The short draft communicates both essentials; this favors concise rather than terse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "concise-terse_002_b2",
+          "text": "Before sending, he deletes the explanation and leaves only 'Do it. Now.'",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.18,
+            "terse": 0.95
+          },
+          "decisive_clue": "the final message is a bare, abrupt command",
+          "reason": "The final message is a bare, abrupt command; this favors terse rather than concise.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The final message is a bare, abrupt command points to terse, not concise.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Ben's situation ultimately hinges on this clue: the final message is a bare, abrupt command. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_003",
+      "edge_id": "concise__terse",
+      "domain": "travel_directions",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Chika's directions?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "concise-terse_003_b1",
+          "text": "She explains the route in just two sentences, naming each turn clearly.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.91,
+            "terse": 0.1
+          },
+          "decisive_clue": "short directions include every turn",
+          "reason": "Short directions include every turn; this favors concise rather than terse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "concise-terse_003_b2",
+          "text": "Her friend follows them without needing to ask a single question.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.91,
+            "terse": 0.1
+          },
+          "decisive_clue": "the few words are sufficient and clear",
+          "reason": "The few words are sufficient and clear; this favors concise rather than terse.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The few words are sufficient and clear points to concise, not terse.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Chika's situation ultimately hinges on this clue: the few words are sufficient and clear. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_004",
+      "edge_id": "concise__terse",
+      "domain": "family_group_chat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Diego's family reply?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "concise-terse_004_b1",
+          "text": "His draft contains only 'No.' with no explanation.",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.14,
+            "terse": 0.93
+          },
+          "decisive_clue": "a single bare refusal feels abrupt",
+          "reason": "A single bare refusal feels abrupt; this favors terse rather than concise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        },
+        {
+          "id": "concise-terse_004_b2",
+          "text": "He adds a kind sentence giving his reason before pressing send, while keeping the reply short.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.93,
+            "terse": 0.14
+          },
+          "decisive_clue": "the completed reply is brief, clear, and considerate",
+          "reason": "The completed reply is brief, clear, and considerate; this favors concise rather than terse.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The completed reply is brief, clear, and considerate points to concise, not terse.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Diego's situation ultimately hinges on this clue: the completed reply is brief, clear, and considerate. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_005",
+      "edge_id": "concise__terse",
+      "domain": "customer_support",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Elif's customer-service reply?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "concise-terse_005_b1",
+          "text": "She answers an upset buyer with 'Read the page.' and nothing more.",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.18,
+            "terse": 0.95
+          },
+          "decisive_clue": "the clipped command sounds dismissive",
+          "reason": "The clipped command sounds dismissive; this favors terse rather than concise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        },
+        {
+          "id": "concise-terse_005_b2",
+          "text": "She sends it within one minute, using a perfectly functioning keyboard.",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.18,
+            "terse": 0.95
+          },
+          "decisive_clue": "speed and equipment do not soften the wording",
+          "reason": "Speed and equipment do not soften the wording; this favors terse rather than concise.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Speed and equipment do not soften the wording points to terse, not concise.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Elif's situation ultimately hinges on this clue: speed and equipment do not soften the wording. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_006",
+      "edge_id": "concise__terse",
+      "domain": "sports_coaching",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Farah's halftime instructions?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "concise-terse_006_b1",
+          "text": "She names two changes in one clear sentence and checks that everyone understands.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.91,
+            "terse": 0.1
+          },
+          "decisive_clue": "brevity does not sacrifice meaning",
+          "reason": "Brevity does not sacrifice meaning; this favors concise rather than terse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "concise-terse_006_b2",
+          "text": "The crowd outside is noisy, and she speaks more loudly than usual.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.91,
+            "terse": 0.1
+          },
+          "decisive_clue": "volume does not make the wording curt",
+          "reason": "Volume does not make the wording curt; this favors concise rather than terse.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Volume does not make the wording curt points to concise, not terse.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Farah's situation ultimately hinges on this clue: volume does not make the wording curt. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_007",
+      "edge_id": "concise__terse",
+      "domain": "shopping_messages",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Gustav's message to a seller?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "concise-terse_007_b1",
+          "text": "His first draft politely asks about the size and pickup time in two lines.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.93,
+            "terse": 0.14
+          },
+          "decisive_clue": "short request is clear and polite",
+          "reason": "Short request is clear and polite; this favors concise rather than terse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "concise-terse_007_b2",
+          "text": "Annoyed by the delay, he replaces it with 'Size? Hurry up.'",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.14,
+            "terse": 0.93
+          },
+          "decisive_clue": "the replacement uses abrupt, impatient fragments",
+          "reason": "The replacement uses abrupt, impatient fragments; this favors terse rather than concise.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The replacement uses abrupt, impatient fragments points to terse, not concise.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Gustav's situation ultimately hinges on this clue: the replacement uses abrupt, impatient fragments. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_008",
+      "edge_id": "concise__terse",
+      "domain": "online_gaming",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hyejin's reply to teammates?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "concise-terse_008_b1",
+          "text": "Asked for help, she types 'No.' and logs off.",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.18,
+            "terse": 0.95
+          },
+          "decisive_clue": "the bare refusal is curt",
+          "reason": "The bare refusal is curt; this favors terse rather than concise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        },
+        {
+          "id": "concise-terse_008_b2",
+          "text": "She adds no reason or sign of friendliness before leaving the chat.",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.18,
+            "terse": 0.95
+          },
+          "decisive_clue": "there is still no softening context",
+          "reason": "There is still no softening context; this favors terse rather than concise.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "There is still no softening context points to terse, not concise.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Hyejin's situation ultimately hinges on this clue: there is still no softening context. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_009",
+      "edge_id": "concise__terse",
+      "domain": "neighbour_notice",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Idris's building notice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "concise-terse_009_b1",
+          "text": "He states the lift's closing time and alternative stairs in two plain sentences.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.91,
+            "terse": 0.1
+          },
+          "decisive_clue": "the practical information is complete",
+          "reason": "The practical information is complete; this favors concise rather than terse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "concise-terse_009_b2",
+          "text": "He prints it on bright yellow paper to make it easy to spot.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.91,
+            "terse": 0.1
+          },
+          "decisive_clue": "paper color does not affect brevity or tone",
+          "reason": "Paper color does not affect brevity or tone; this favors concise rather than terse.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Paper color does not affect brevity or tone points to concise, not terse.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Idris's situation ultimately hinges on this clue: paper color does not affect brevity or tone. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "concise-terse_010",
+      "edge_id": "concise__terse",
+      "domain": "birthday_invitation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Jun's invitation message?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "concise-terse_010_b1",
+          "text": "His one-line note gives the correct time and address with no filler.",
+          "best_word": "concise",
+          "fit": {
+            "concise": 0.93,
+            "terse": 0.14
+          },
+          "decisive_clue": "the short message supplies essential logistics",
+          "reason": "The short message supplies essential logistics; this favors concise rather than terse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terse": "M1"
+          }
+        },
+        {
+          "id": "concise-terse_010_b2",
+          "text": "It turns out the entire note reads 'Seven. My place. Be there.' without a greeting or request.",
+          "best_word": "terse",
+          "fit": {
+            "concise": 0.14,
+            "terse": 0.93
+          },
+          "decisive_clue": "the full wording is clipped and commanding",
+          "reason": "The full wording is clipped and commanding; this favors terse rather than concise.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "concise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The full wording is clipped and commanding points to terse, not concise.",
+      "feedback_deep": "Concise communication says enough clearly in few words; terse communication is so abrupt that its brevity feels curt. Here, Jun's situation ultimately hinges on this clue: the full wording is clipped and commanding. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Concise saves words; terse cuts warmth.",
+      "hints": {
+        "attention": "Consider clarity and whether the wording sounds curt.",
+        "axis": "Efficient clarity versus brusque tone.",
+        "contrast": "Concise saves words; terse cuts warmth."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "set_id": "amnesty-clemency",
+  "title": "amnesty / clemency",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[115]",
+    "source_pair_id": 462,
+    "qa": {
+      "pass": 7,
+      "revised": 0,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "amnesty",
+      "sense": "official collective pardon for past offenses",
+      "connotation": "collective relief",
+      "register": "formal and legal",
+      "misconceptions": [
+        "Any individual sentence reduction is a collective pardon"
+      ]
+    },
+    {
+      "word": "clemency",
+      "sense": "merciful reduction or easing of a penalty",
+      "connotation": "compassionate relief",
+      "register": "formal and legal",
+      "misconceptions": [
+        "A group pardon must be the same as individual leniency"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "collective_pardon_vs_individual_mercy",
+      "description": "A broad pardon for a group differs from mercy that lessens an existing penalty."
+    }
+  ],
+  "edges": [
+    {
+      "id": "amnesty__clemency",
+      "a": "amnesty",
+      "b": "clemency",
+      "boundary_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "clues_a": [
+        "all participants pardoned",
+        "entire group freed from penalty",
+        "blanket official pardon"
+      ],
+      "clues_b": [
+        "one sentence reduced",
+        "individual spared a penalty",
+        "specific case reviewed for mercy"
+      ],
+      "irrelevant_clues": [
+        "emotional appeal",
+        "length of hearing",
+        "celebrations after announcement"
+      ],
+      "misconceptions": {
+        "M1": "Thinks any act of mercy is a general pardon",
+        "M2": "Thinks an entire group pardon is just an individual sentence change",
+        "M3": "Confuses public sympathy with the legal scope of relief"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "amnesty-clemency_001",
+      "edge_id": "amnesty__clemency",
+      "domain": "college_news_bulletin",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the government decision Amina read about?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amnesty-clemency_001_b1",
+          "text": "Amina read that officials wiped out the penalties for every participant in last year’s banned demonstration.",
+          "best_word": "amnesty",
+          "fit": {
+            "amnesty": 0.91,
+            "clemency": 0.17
+          },
+          "decisive_clue": "official pardon covered a whole group",
+          "reason": "Collective relief for past offenses is the defining fact.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M1"
+          }
+        },
+        {
+          "id": "amnesty-clemency_001_b2",
+          "text": "The decision was announced on television after a long debate.",
+          "best_word": "amnesty",
+          "fit": {
+            "amnesty": 0.91,
+            "clemency": 0.17
+          },
+          "decisive_clue": "groupwide forgiveness despite a public announcement",
+          "reason": "Publicity does not make this an individual penalty reduction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: groupwide forgiveness despite a public announcement.",
+      "feedback_deep": "amnesty means an official pardon granted to a defined group for earlier offenses; clemency means mercy that reduces or softens a punishment, often for an individual. Collective relief for past offenses is the defining fact. Publicity does not make this an individual penalty reduction.",
+      "contrast_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "hints": {
+        "attention": "Identify how many people the decision covers.",
+        "axis": "A broad pardon for a group differs from mercy that lessens an existing penalty.",
+        "contrast": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amnesty-clemency_002",
+      "edge_id": "amnesty__clemency",
+      "domain": "family_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the decision Gabriel discussed at dinner?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amnesty-clemency_002_b1",
+          "text": "Gabriel said a prisoner’s ten-year sentence had been cut to four years after a personal appeal.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.2,
+            "clemency": 0.93
+          },
+          "decisive_clue": "one prison sentence was mercifully reduced",
+          "reason": "The penalty remains but has been softened for one person.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        },
+        {
+          "id": "amnesty-clemency_002_b2",
+          "text": "Relatives celebrated the shorter sentence with a large meal.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.2,
+            "clemency": 0.93
+          },
+          "decisive_clue": "individual punishment was reduced",
+          "reason": "The celebration does not change the legal scope.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: individual punishment was reduced.",
+      "feedback_deep": "amnesty means an official pardon granted to a defined group for earlier offenses; clemency means mercy that reduces or softens a punishment, often for an individual. The penalty remains but has been softened for one person. The celebration does not change the legal scope.",
+      "contrast_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "hints": {
+        "attention": "Ask whether punishment vanished for a group.",
+        "axis": "A broad pardon for a group differs from mercy that lessens an existing penalty.",
+        "contrast": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amnesty-clemency_003",
+      "edge_id": "amnesty__clemency",
+      "domain": "community_radio",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the policy Zoya heard announced?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amnesty-clemency_003_b1",
+          "text": "Zoya heard that everyone charged under a former protest ban would be forgiven for those past violations.",
+          "best_word": "amnesty",
+          "fit": {
+            "amnesty": 0.95,
+            "clemency": 0.23
+          },
+          "decisive_clue": "all people in a category were pardoned",
+          "reason": "The policy provides general official relief.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M1"
+          }
+        },
+        {
+          "id": "amnesty-clemency_003_b2",
+          "text": "It even covered people whose cases had not yet reached court.",
+          "best_word": "amnesty",
+          "fit": {
+            "amnesty": 0.95,
+            "clemency": 0.23
+          },
+          "decisive_clue": "blanket coverage of previous offenses",
+          "reason": "The extra cases confirm the policy's group-wide scope.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M1"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: blanket coverage of previous offenses.",
+      "feedback_deep": "amnesty means an official pardon granted to a defined group for earlier offenses; clemency means mercy that reduces or softens a punishment, often for an individual. The policy provides general official relief. The extra cases confirm the policy's group-wide scope.",
+      "contrast_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "hints": {
+        "attention": "Look at the breadth of coverage.",
+        "axis": "A broad pardon for a group differs from mercy that lessens an existing penalty.",
+        "contrast": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amnesty-clemency_004",
+      "edge_id": "amnesty__clemency",
+      "domain": "online_petition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the mercy Ethan requested for a neighbour?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "amnesty-clemency_004_b1",
+          "text": "Ethan asked authorities to shorten one neighbour’s fine because paying the full amount would cause hardship.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.15,
+            "clemency": 0.89
+          },
+          "decisive_clue": "requested a lower penalty in one case",
+          "reason": "This is personal mercy relating to a particular punishment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        },
+        {
+          "id": "amnesty-clemency_004_b2",
+          "text": "His letter named the neighbour and asked to halve only that fine.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.15,
+            "clemency": 0.89
+          },
+          "decisive_clue": "specific individual penalty reduction",
+          "reason": "The precise request reinforces case-by-case mercy.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: specific individual penalty reduction.",
+      "feedback_deep": "amnesty means an official pardon granted to a defined group for earlier offenses; clemency means mercy that reduces or softens a punishment, often for an individual. This is personal mercy relating to a particular punishment. The precise request reinforces case-by-case mercy.",
+      "contrast_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "hints": {
+        "attention": "Notice whom the request concerns.",
+        "axis": "A broad pardon for a group differs from mercy that lessens an existing penalty.",
+        "contrast": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amnesty-clemency_008",
+      "edge_id": "amnesty__clemency",
+      "domain": "letter_to_governor",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the decision Oliver requested?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amnesty-clemency_008_b1",
+          "text": "Oliver requested a shorter sentence for his imprisoned friend rather than release for everyone convicted under the same law.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.15,
+            "clemency": 0.89
+          },
+          "decisive_clue": "requested mercy in one case",
+          "reason": "His request is explicitly individualized.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        },
+        {
+          "id": "amnesty-clemency_008_b2",
+          "text": "He mailed the letter in a thick envelope with twelve supporting signatures.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.15,
+            "clemency": 0.89
+          },
+          "decisive_clue": "one person's sentence still at stake",
+          "reason": "Letter thickness and signatures do not broaden the request.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The distraction changes nothing; decisive clue: one person's sentence still at stake.",
+      "feedback_deep": "amnesty means an official pardon granted to a defined group for earlier offenses; clemency means mercy that reduces or softens a punishment, often for an individual. His request is explicitly individualized. Letter thickness and signatures do not broaden the request.",
+      "contrast_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "hints": {
+        "attention": "Ignore how many people signed.",
+        "axis": "A broad pardon for a group differs from mercy that lessens an existing penalty.",
+        "contrast": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amnesty-clemency_009",
+      "edge_id": "amnesty__clemency",
+      "domain": "travel_conversation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the new rule Fatou mentioned on the train?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amnesty-clemency_009_b1",
+          "text": "Fatou said officials had forgiven every person fined under an old border-permit rule.",
+          "best_word": "amnesty",
+          "fit": {
+            "amnesty": 0.91,
+            "clemency": 0.17
+          },
+          "decisive_clue": "all offenders in a category were pardoned",
+          "reason": "It applies to a defined group with past penalties.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M1"
+          }
+        },
+        {
+          "id": "amnesty-clemency_009_b2",
+          "text": "Although some individuals owed different amounts, the forgiveness applied to all of them.",
+          "best_word": "amnesty",
+          "fit": {
+            "amnesty": 0.91,
+            "clemency": 0.17
+          },
+          "decisive_clue": "group coverage regardless of different fines",
+          "reason": "Unequal original punishments do not erase the group-wide pardon.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "clemency": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The clarification points to: group coverage regardless of different fines.",
+      "feedback_deep": "amnesty means an official pardon granted to a defined group for earlier offenses; clemency means mercy that reduces or softens a punishment, often for an individual. It applies to a defined group with past penalties. Unequal original punishments do not erase the group-wide pardon.",
+      "contrast_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "hints": {
+        "attention": "Look at who is covered, not the size of fines.",
+        "axis": "A broad pardon for a group differs from mercy that lessens an existing penalty.",
+        "contrast": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "amnesty-clemency_010",
+      "edge_id": "amnesty__clemency",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the official mercy Haruto heard about after practice?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "amnesty-clemency_010_b1",
+          "text": "Haruto learned that one convicted person would serve two years instead of eight after officials accepted a plea for mercy.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.2,
+            "clemency": 0.93
+          },
+          "decisive_clue": "one sentence reduced on compassionate grounds",
+          "reason": "The decision lessens an individual penalty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        },
+        {
+          "id": "amnesty-clemency_010_b2",
+          "text": "The sports team had helped deliver the appeal letter to the office.",
+          "best_word": "clemency",
+          "fit": {
+            "amnesty": 0.2,
+            "clemency": 0.93
+          },
+          "decisive_clue": "individual leniency despite team involvement",
+          "reason": "A group helping with the appeal does not make the relief collective.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "amnesty": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: individual leniency despite team involvement.",
+      "feedback_deep": "amnesty means an official pardon granted to a defined group for earlier offenses; clemency means mercy that reduces or softens a punishment, often for an individual. The decision lessens an individual penalty. A group helping with the appeal does not make the relief collective.",
+      "contrast_rule": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty.",
+      "hints": {
+        "attention": "Distinguish the helpers from the beneficiary.",
+        "axis": "A broad pardon for a group differs from mercy that lessens an existing penalty.",
+        "contrast": "amnesty wipes away punishment for a group of past offenses; clemency mercifully eases a penalty."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "cajole-coerce",
+  "title": "cajole / coerce",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[19]",
+    "source_pair_id": 73,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "cajole",
+      "sense": "win agreement through flattery and persistent gentle persuasion",
+      "connotation": "wheedling, sometimes manipulative",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Friendly repetition must mean an actual threat"
+      ]
+    },
+    {
+      "word": "coerce",
+      "sense": "compel someone through threatened harm, force or intimidation",
+      "connotation": "harsh, coercive",
+      "register": "formal",
+      "misconceptions": [
+        "A charming tone cancels any threat attached to the demand"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "coaxing_vs_threatened_consequences",
+      "description": "Flattery and patient coaxing differ from imposing compliance through threats or force."
+    }
+  ],
+  "edges": [
+    {
+      "id": "cajole__coerce",
+      "a": "cajole",
+      "b": "coerce",
+      "boundary_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "clues_a": [
+        "repeated praise and gentle asking",
+        "offers encouragement without a penalty",
+        "wins agreement by charm"
+      ],
+      "clues_b": [
+        "explicit threat of punishment",
+        "uses control to remove a choice",
+        "demands compliance through intimidation"
+      ],
+      "irrelevant_clues": [
+        "polite voice",
+        "length of conversation",
+        "public setting"
+      ],
+      "misconceptions": {
+        "M1": "Assumes persistence is the same as a threat",
+        "M2": "Assumes a friendly tone makes a threat harmless",
+        "M3": "Confuses offers or praise with penalties for refusal"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "cajole-coerce_001",
+      "edge_id": "cajole__coerce",
+      "domain": "group_project",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Amina's effort to get help with her slides?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cajole-coerce_001_b1",
+          "text": "Amina praised her classmate's design skills and kept asking if he would help polish the slides.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.9,
+            "coerce": 0.165
+          },
+          "decisive_clue": "flattery and repeated requests without a threat",
+          "reason": "She is trying to win agreement through praise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "cajole-coerce_001_b2",
+          "text": "She then said she would delete his finished work from the shared folder unless he agreed.",
+          "best_word": "coerce",
+          "fit": {
+            "cajole": 0.165,
+            "coerce": 0.9
+          },
+          "decisive_clue": "threatened destruction of his work for refusal",
+          "reason": "A threatened penalty turns this into compulsion, not merely friendly coaxing.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cajole": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The new fact changes the answer: threatened destruction of his work for refusal.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. She is trying to win agreement through praise. A threatened penalty turns this into compulsion, not merely friendly coaxing.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Watch what happens if he says no.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cajole-coerce_002",
+      "edge_id": "cajole__coerce",
+      "domain": "sports_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Bruno's effort to recruit a teammate?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "cajole-coerce_002_b1",
+          "text": "Bruno complimented a teammate's speed and kept asking him to join the relay, offering to practice together.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.92,
+            "coerce": 0.19
+          },
+          "decisive_clue": "used praise and encouragement to win participation",
+          "reason": "No consequence is imposed for refusal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "cajole-coerce_002_b2",
+          "text": "He repeated the invitation after the teammate said he felt nervous.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.92,
+            "coerce": 0.19
+          },
+          "decisive_clue": "continued friendly coaxing without any penalty",
+          "reason": "Repeating an invitation is not automatically intimidation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains continued friendly coaxing without any penalty.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. No consequence is imposed for refusal. Repeating an invitation is not automatically intimidation.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Ask whether saying no carries a threatened cost.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cajole-coerce_003",
+      "edge_id": "cajole__coerce",
+      "domain": "part-time_job",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Celia's demand to a colleague?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "cajole-coerce_003_b1",
+          "text": "Celia told a colleague she would report a made-up rule violation unless he covered her weekend shift.",
+          "best_word": "coerce",
+          "fit": {
+            "cajole": 0.215,
+            "coerce": 0.94
+          },
+          "decisive_clue": "threatened a false accusation to obtain compliance",
+          "reason": "The leverage is intimidation rather than a persuasive appeal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cajole": "M2"
+          }
+        },
+        {
+          "id": "cajole-coerce_003_b2",
+          "text": "She held up a drafted complaint while repeating the demand.",
+          "best_word": "coerce",
+          "fit": {
+            "cajole": 0.215,
+            "coerce": 0.94
+          },
+          "decisive_clue": "showed the threatened complaint as leverage",
+          "reason": "Her action makes the pressure concrete.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cajole": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains showed the threatened complaint as leverage.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. The leverage is intimidation rather than a persuasive appeal. Her action makes the pressure concrete.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Find the consequence attached to refusal.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cajole-coerce_004",
+      "edge_id": "cajole__coerce",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dinesh's attempt to get his brother to cook?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cajole-coerce_004_b1",
+          "text": "Dinesh praised his brother's cooking and asked repeatedly for his favourite dish, promising to do the washing-up.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.88,
+            "coerce": 0.14
+          },
+          "decisive_clue": "combined flattery with a pleasant bargain",
+          "reason": "He uses encouragement rather than a penalty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "cajole-coerce_004_b2",
+          "text": "When his brother hesitated, Dinesh reminded him how well everyone enjoyed his last meal.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.88,
+            "coerce": 0.14
+          },
+          "decisive_clue": "further praise rather than threatened harm",
+          "reason": "Extra compliments reinforce coaxing, not coercion.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains further praise rather than threatened harm.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. He uses encouragement rather than a penalty. Extra compliments reinforce coaxing, not coercion.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Identify whether the appeal offers benefits or penalties.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cajole-coerce_006",
+      "edge_id": "cajole__coerce",
+      "domain": "neighbourhood_parking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Farid's demand about a parking space?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "cajole-coerce_006_b1",
+          "text": "Farid said he would scratch his neighbour's car unless the neighbour moved it from the space.",
+          "best_word": "coerce",
+          "fit": {
+            "cajole": 0.19,
+            "coerce": 0.92
+          },
+          "decisive_clue": "threatened damage to compel compliance",
+          "reason": "Threatened harm controls the choice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cajole": "M2"
+          }
+        },
+        {
+          "id": "cajole-coerce_006_b2",
+          "text": "He delivered the message in a soft, almost cheerful voice.",
+          "best_word": "coerce",
+          "fit": {
+            "cajole": 0.19,
+            "coerce": 0.92
+          },
+          "decisive_clue": "property-damage threat despite a gentle voice",
+          "reason": "Tone does not neutralize the threatened act.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cajole": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains property-damage threat despite a gentle voice.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. Threatened harm controls the choice. Tone does not neutralize the threatened act.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Focus on the consequence, not the tone.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cajole-coerce_007",
+      "edge_id": "cajole__coerce",
+      "domain": "school_fundraiser",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Grace's effort to get donations?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cajole-coerce_007_b1",
+          "text": "Grace warmly praised a friend's generosity and asked several times for a small contribution, accepting that the friend could decline.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.94,
+            "coerce": 0.215
+          },
+          "decisive_clue": "used praise and repeated requests while permitting refusal",
+          "reason": "The persuasion rests on charm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "cajole-coerce_007_b2",
+          "text": "She wore a bright costume while speaking.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.94,
+            "coerce": 0.215
+          },
+          "decisive_clue": "flattery without a penalty, regardless of costume",
+          "reason": "Clothing has nothing to do with whether a threat is present.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction does not matter: flattery without a penalty, regardless of costume.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. The persuasion rests on charm. Clothing has nothing to do with whether a threat is present.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Notice whether refusal remains possible without harm.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cajole-coerce_008",
+      "edge_id": "cajole__coerce",
+      "domain": "travel_booking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hamza's attempt to arrange the seats?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "cajole-coerce_008_b1",
+          "text": "Hamza repeatedly praised his companion's patience and asked her to trade window seats, offering to carry her bags.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.88,
+            "coerce": 0.14
+          },
+          "decisive_clue": "used praise and a helpful offer to seek agreement",
+          "reason": "He tries to make the exchange appealing without a penalty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "cajole-coerce_008_b2",
+          "text": "He added that he would let her choose their seats on the return journey.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.88,
+            "coerce": 0.14
+          },
+          "decisive_clue": "improved the offer without attaching a threat",
+          "reason": "A promised benefit can encourage a decision without forcing it.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains improved the offer without attaching a threat.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. He tries to make the exchange appealing without a penalty. A promised benefit can encourage a decision without forcing it.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Distinguish a reward for agreeing from punishment for refusing.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cajole-coerce_010",
+      "edge_id": "cajole__coerce",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Juno's request to a friend?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cajole-coerce_010_b1",
+          "text": "Juno complimented her friend's reading voice and repeatedly invited her to lead the book discussion.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.92,
+            "coerce": 0.19
+          },
+          "decisive_clue": "encouraged participation with praise",
+          "reason": "The invitation relies on positive persuasion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "cajole-coerce_010_b2",
+          "text": "She promised to help prepare questions, but never suggested any loss or punishment if her friend declined.",
+          "best_word": "cajole",
+          "fit": {
+            "cajole": 0.92,
+            "coerce": 0.19
+          },
+          "decisive_clue": "offered help without threatening a penalty",
+          "reason": "An offer of assistance is not compulsion.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains offered help without threatening a penalty.",
+      "feedback_deep": "Cajole means to coax or flatter someone into doing something; coerce means to pressure someone into compliance through force or threats. The invitation relies on positive persuasion. An offer of assistance is not compulsion.",
+      "contrast_rule": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force.",
+      "hints": {
+        "attention": "Distinguish help offered from harm threatened.",
+        "axis": "Flattery and patient coaxing differ from imposing compliance through threats or force.",
+        "contrast": "cajole persuades by coaxing or flattery; coerce compels through threat, intimidation or force."
+      },
+      "qa": "pass"
+    }
+  ]
+}

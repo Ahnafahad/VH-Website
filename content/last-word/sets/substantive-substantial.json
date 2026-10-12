@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "set_id": "substantive-substantial",
+  "title": "substantive / substantial",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[141]",
+    "source_pair_id": 579,
+    "qa": {
+      "pass": 6,
+      "revised": 2,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "substantive",
+      "sense": "Having meaningful content, effect, or value rather than being merely superficial.",
+      "connotation": "approving, serious",
+      "register": "formal",
+      "misconceptions": [
+        "Treats length or size as proof of meaningful content.",
+        "Treats thoughtful content as necessarily large in quantity."
+      ]
+    },
+    {
+      "word": "substantial",
+      "sense": "Large or considerable in size, amount, or extent.",
+      "connotation": "neutral to emphatic",
+      "register": "general or educated",
+      "misconceptions": [
+        "Treats length or size as proof of meaningful content.",
+        "Treats thoughtful content as necessarily large in quantity."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_basis",
+      "description": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+    }
+  ],
+  "edges": [
+    {
+      "id": "substantive__substantial",
+      "a": "substantive",
+      "b": "substantial",
+      "boundary_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "clues_a": [
+        "develops a reasoned argument",
+        "changes the actual decision",
+        "provides relevant evidence"
+      ],
+      "clues_b": [
+        "doubles an amount",
+        "takes up a large share",
+        "requires many hours"
+      ],
+      "irrelevant_clues": [
+        "document colour",
+        "publicity",
+        "word count alone"
+      ],
+      "misconceptions": {
+        "M1": "Treats length or size as proof of meaningful content.",
+        "M2": "Treats thoughtful content as necessarily large in quantity.",
+        "M3": "Ignores the original basis when an impressive distraction appears."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "substantive-substantial_001",
+      "edge_id": "substantive__substantial",
+      "domain": "school_essay",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amina’s revision to her essay?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "substantive-substantial_001_b1",
+          "text": "Amina replaced broad claims with comparisons and evidence that changed her conclusion.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.87,
+            "substantial": 0.2
+          },
+          "decisive_clue": "evidence changed the actual argument",
+          "reason": "The first beat supplies the deciding evidence: evidence changed the actual argument.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M3"
+          }
+        },
+        {
+          "id": "substantive-substantial_001_b2",
+          "text": "Her new version was also shorter than the draft she handed in last week.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.89,
+            "substantial": 0.17
+          },
+          "decisive_clue": "evidence changed the actual argument",
+          "reason": "A shorter text can still make a meaningful intellectual change.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Evidence changed the actual argument — the later detail does not change that distinction.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, evidence changed the actual argument; a shorter text can still make a meaningful intellectual change.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on content rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "substantive-substantial_002",
+      "edge_id": "substantive__substantial",
+      "domain": "summer_job",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Leo’s pay increase?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "substantive-substantial_002_b1",
+          "text": "Leo’s hourly pay rose from twelve dollars to twenty-four.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.23,
+            "substantial": 0.89
+          },
+          "decisive_clue": "hourly pay doubled",
+          "reason": "The first beat supplies the deciding evidence: hourly pay doubled.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M1"
+          }
+        },
+        {
+          "id": "substantive-substantial_002_b2",
+          "text": "The increase occupied only one short line on his payslip.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.2,
+            "substantial": 0.91
+          },
+          "decisive_clue": "hourly pay doubled",
+          "reason": "A brief announcement does not make the size of a raise smaller.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Hourly pay doubled — the later detail does not change that distinction.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, hourly pay doubled; a brief announcement does not make the size of a raise smaller.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on scale rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "substantive-substantial_003",
+      "edge_id": "substantive__substantial",
+      "domain": "neighbourhood_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Noor’s proposal at the meeting?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "substantive-substantial_003_b1",
+          "text": "Noor proposed changing who can approve spending, rather than merely changing the committee’s title.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.91,
+            "substantial": 0.16
+          },
+          "decisive_clue": "it changes decision-making authority",
+          "reason": "The first beat supplies the deciding evidence: it changes decision-making authority.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M2"
+          }
+        },
+        {
+          "id": "substantive-substantial_003_b2",
+          "text": "She specified that elected members, not advisers, would make the final decision.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.93,
+            "substantial": 0.13
+          },
+          "decisive_clue": "it changes decision-making authority",
+          "reason": "Specifying voting authority reinforces that the change affects real power rather than mere procedure.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M3"
+          }
+        }
+      ],
+      "feedback_short": "It changes decision-making authority is what distinguishes substantive here.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, it changes decision-making authority by giving real power to elected members rather than merely altering titles.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on effect rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "substantive-substantial_004",
+      "edge_id": "substantive__substantial",
+      "domain": "travel_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo’s luggage load?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "substantive-substantial_004_b1",
+          "text": "Mateo packed enough clothes and books to fill two oversized cases.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.2,
+            "substantial": 0.85
+          },
+          "decisive_clue": "two oversized cases were filled",
+          "reason": "The first beat supplies the deciding evidence: two oversized cases were filled.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M3"
+          }
+        },
+        {
+          "id": "substantive-substantial_004_b2",
+          "text": "He labelled both cases with tiny handwritten tags.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.17,
+            "substantial": 0.87
+          },
+          "decisive_clue": "two oversized cases were filled",
+          "reason": "The size of the load, not its labels, determines the word.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Two oversized cases were filled — the later detail does not change that distinction.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, two oversized cases were filled; the size of the load, not its labels, determines the word.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on quantity rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "substantive-substantial_005",
+      "edge_id": "substantive__substantial",
+      "domain": "online_review",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya’s response to the faulty app?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "substantive-substantial_005_b1",
+          "text": "Priya identified the failing feature, reproduced the error, and suggested a workable fix.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.87,
+            "substantial": 0.23
+          },
+          "decisive_clue": "the response diagnoses and addresses the problem",
+          "reason": "The first beat supplies the deciding evidence: the response diagnoses and addresses the problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M1"
+          }
+        },
+        {
+          "id": "substantive-substantial_005_b2",
+          "text": "Her response received fewer likes than a one-line complaint.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.89,
+            "substantial": 0.2
+          },
+          "decisive_clue": "the response diagnoses and addresses the problem",
+          "reason": "Popularity does not decide whether a response contributes anything important.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The response diagnoses and addresses the problem is what distinguishes substantive here.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, the response diagnoses and addresses the problem; popularity does not decide whether a response contributes anything important.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on usefulness rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "substantive-substantial_006",
+      "edge_id": "substantive__substantial",
+      "domain": "shopping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Dario’s discount on the sofa?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "substantive-substantial_006_b1",
+          "text": "Dario paid almost half the original price after the shop cleared its stock.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.16,
+            "substantial": 0.89
+          },
+          "decisive_clue": "price fell by almost half",
+          "reason": "The first beat supplies the deciding evidence: price fell by almost half.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M2"
+          }
+        },
+        {
+          "id": "substantive-substantial_006_b2",
+          "text": "The reduction was printed on a small handwritten price tag.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.13,
+            "substantial": 0.91
+          },
+          "decisive_clue": "price fell by almost half",
+          "reason": "The size or appearance of the price tag has no bearing on the size of the price reduction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Price fell by almost half — the later detail does not change that distinction.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, price fell by almost half; the modest appearance of the tag does not change the considerable amount saved.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on degree rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "substantive-substantial_007",
+      "edge_id": "substantive__substantial",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Zoya’s change to the club rules?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "substantive-substantial_007_b1",
+          "text": "Zoya’s amendment gave every member a vote on which teams could compete.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.91,
+            "substantial": 0.2
+          },
+          "decisive_clue": "it redistributes voting power",
+          "reason": "The first beat supplies the deciding evidence: it redistributes voting power.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M3"
+          }
+        },
+        {
+          "id": "substantive-substantial_007_b2",
+          "text": "It took only two lines to write into the club handbook.",
+          "best_word": "substantive",
+          "fit": {
+            "substantive": 0.93,
+            "substantial": 0.17
+          },
+          "decisive_clue": "it redistributes voting power",
+          "reason": "Brevity hides a genuine change to how decisions are made.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantial": "M1"
+          }
+        }
+      ],
+      "feedback_short": "It redistributes voting power is what distinguishes substantive here.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, it redistributes voting power; brevity hides a genuine change to how decisions are made.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on governance rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "substantive-substantial_008",
+      "edge_id": "substantive__substantial",
+      "domain": "family_renovation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kenji’s work on the family kitchen?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "substantive-substantial_008_b1",
+          "text": "Kenji spent five full weekends replacing all the cupboards and floor tiles.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.23,
+            "substantial": 0.85
+          },
+          "decisive_clue": "five weekends and nearly all surfaces",
+          "reason": "The first beat supplies the deciding evidence: five weekends and nearly all surfaces.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M1"
+          }
+        },
+        {
+          "id": "substantive-substantial_008_b2",
+          "text": "The finished kitchen kept exactly the same layout.",
+          "best_word": "substantial",
+          "fit": {
+            "substantive": 0.2,
+            "substantial": 0.87
+          },
+          "decisive_clue": "five weekends and nearly all surfaces",
+          "reason": "Keeping the layout does not make the volume of work insignificant.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "substantive": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Five weekends and nearly all surfaces is what distinguishes substantial here.",
+      "feedback_deep": "Substantive means having meaningful content, effect, or value rather than being merely superficial. Substantial means large or considerable in size, amount, or extent. Here, five weekends and nearly all surfaces; keeping the layout does not make the volume of work insignificant.",
+      "contrast_rule": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+      "hints": {
+        "attention": "Focus on extent rather than incidental details.",
+        "axis": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent.",
+        "contrast": "Substantive emphasizes meaningful content or effect, whereas substantial emphasizes considerable magnitude or extent."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "opaque-translucent",
+  "title": "opaque / translucent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[83]",
+    "source_pair_id": 356,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "opaque",
+      "sense": "Not allowing light to pass through a physical material.",
+      "connotation": "descriptive, neutral",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming material colour or thickness alone settles light transmission.",
+        "Confusing water resistance or privacy with stopping all light."
+      ]
+    },
+    {
+      "word": "translucent",
+      "sense": "Allowing some light through while blurring objects behind it.",
+      "connotation": "descriptive, neutral",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming blurred visibility means no light passes through.",
+        "Confusing water resistance or privacy with stopping all light."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "light_blocking_vs_light_diffusion",
+      "description": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it."
+    }
+  ],
+  "edges": [
+    {
+      "id": "opaque__translucent",
+      "a": "opaque",
+      "b": "translucent",
+      "boundary_rule": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it.",
+      "clues_a": [
+        "no light transmitted",
+        "dark solid shadow",
+        "no glow even with a lamp"
+      ],
+      "clues_b": [
+        "glows from light behind",
+        "brightens a room without clear shapes",
+        "blurred outlines"
+      ],
+      "irrelevant_clues": [
+        "colour",
+        "thickness",
+        "water resistance"
+      ],
+      "misconceptions": {
+        "M1": "Assuming blurred visibility means no light passes through.",
+        "M2": "Assuming material colour or thickness alone settles light transmission.",
+        "M3": "Confusing water resistance or privacy with stopping all light."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "opaque-translucent_001",
+      "edge_id": "opaque__translucent",
+      "domain": "painted_door",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Nora’s wooden door?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "opaque-translucent_001_b1",
+          "text": "Nora switched on the hallway lamp, but no glow came through the closed wooden door.",
+          "best_word": "opaque",
+          "fit": {
+            "opaque": 0.92,
+            "translucent": 0.19
+          },
+          "decisive_clue": "the door transmitted no lamp light",
+          "reason": "The door transmitted no lamp light. Not allowing light to pass through a physical material.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "translucent": "M1"
+          }
+        },
+        {
+          "id": "opaque-translucent_001_b2",
+          "text": "The door was painted pale yellow.",
+          "best_word": "opaque",
+          "fit": {
+            "opaque": 0.92,
+            "translucent": 0.19
+          },
+          "decisive_clue": "yellow paint does not change the observed failure to pass light",
+          "reason": "Yellow paint does not change the observed failure to pass light. Not allowing light to pass through a physical material.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "translucent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Yellow paint does not change the observed failure to pass light.",
+      "feedback_deep": "Opaque means not allowing light to pass through a physical material; translucent means allowing some light through while blurring objects behind it. Here, the door transmitted no lamp light. The new detail does not change the deciding fact: yellow paint does not change the observed failure to pass light. Thus opaque remains the stronger choice.",
+      "contrast_rule": "Opaque stops light; translucent lets light in but blurs the view.",
+      "hints": {
+        "attention": "Focus on what the lamp shows on the other side.",
+        "axis": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it.",
+        "contrast": "Opaque stops light; translucent lets light in but blurs the view."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "opaque-translucent_002",
+      "edge_id": "opaque__translucent",
+      "domain": "privacy_window_film",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Idris’s window film?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "opaque-translucent_002_b1",
+          "text": "Daylight brightened Idris’s kitchen through the film, but people outside appeared only as vague patches.",
+          "best_word": "translucent",
+          "fit": {
+            "opaque": 0.19,
+            "translucent": 0.92
+          },
+          "decisive_clue": "daylight passed through without revealing clear figures",
+          "reason": "Daylight passed through without revealing clear figures. Allowing some light through while blurring objects behind it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "opaque": "M1"
+          }
+        },
+        {
+          "id": "opaque-translucent_002_b2",
+          "text": "The roll was labelled “for kitchens” by the shop.",
+          "best_word": "translucent",
+          "fit": {
+            "opaque": 0.19,
+            "translucent": 0.92
+          },
+          "decisive_clue": "the shop label does not alter the film’s light transmission",
+          "reason": "The shop label does not alter the film’s light transmission. Allowing some light through while blurring objects behind it.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "opaque": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The shop label does not alter the film’s light transmission.",
+      "feedback_deep": "Opaque means not allowing light to pass through a physical material; translucent means allowing some light through while blurring objects behind it. Here, daylight passed through without revealing clear figures. The new detail does not change the deciding fact: the shop label does not alter the film’s light transmission. Thus translucent remains the stronger choice.",
+      "contrast_rule": "Opaque stops light; translucent lets light in but blurs the view.",
+      "hints": {
+        "attention": "Focus on whether brightness and clear shapes both pass.",
+        "axis": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it.",
+        "contrast": "Opaque stops light; translucent lets light in but blurs the view."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "opaque-translucent_003",
+      "edge_id": "opaque__translucent",
+      "domain": "lunchbox_lid",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Eleni’s lunchbox lid?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "opaque-translucent_003_b1",
+          "text": "Eleni held the lid toward the sun and saw no brightness passing through it.",
+          "best_word": "opaque",
+          "fit": {
+            "opaque": 0.92,
+            "translucent": 0.19
+          },
+          "decisive_clue": "sunlight did not pass through the lid",
+          "reason": "Sunlight did not pass through the lid. Not allowing light to pass through a physical material.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "translucent": "M1"
+          }
+        },
+        {
+          "id": "opaque-translucent_003_b2",
+          "text": "Even with a powerful torch pressed against it, she saw no glow on the other side.",
+          "best_word": "opaque",
+          "fit": {
+            "opaque": 0.92,
+            "translucent": 0.19
+          },
+          "decisive_clue": "a stronger light confirms that the lid blocks transmission",
+          "reason": "A stronger light confirms that the lid blocks transmission. Not allowing light to pass through a physical material.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "translucent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A stronger light confirms that the lid blocks transmission.",
+      "feedback_deep": "Opaque means not allowing light to pass through a physical material; translucent means allowing some light through while blurring objects behind it. Here, sunlight did not pass through the lid. The added evidence clarifies that fact: a stronger light confirms that the lid blocks transmission. Thus opaque remains the stronger choice.",
+      "contrast_rule": "Opaque stops light; translucent lets light in but blurs the view.",
+      "hints": {
+        "attention": "Focus on what happens when the light source grows stronger.",
+        "axis": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it.",
+        "contrast": "Opaque stops light; translucent lets light in but blurs the view."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "opaque-translucent_004",
+      "edge_id": "opaque__translucent",
+      "domain": "paper_lampshade",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Tariq’s paper lampshade?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "opaque-translucent_004_b1",
+          "text": "Tariq’s lampshade glowed when the bulb was switched on, yet the bulb itself could not be seen clearly.",
+          "best_word": "translucent",
+          "fit": {
+            "opaque": 0.19,
+            "translucent": 0.92
+          },
+          "decisive_clue": "the shade passes a soft glow without a clear view",
+          "reason": "The shade passes a soft glow without a clear view. Allowing some light through while blurring objects behind it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "opaque": "M1"
+          }
+        },
+        {
+          "id": "opaque-translucent_004_b2",
+          "text": "Letters held behind the shade looked like shapeless dark patches.",
+          "best_word": "translucent",
+          "fit": {
+            "opaque": 0.19,
+            "translucent": 0.92
+          },
+          "decisive_clue": "blurred letters confirm that light passes without clear detail",
+          "reason": "Blurred letters confirm that light passes without clear detail. Allowing some light through while blurring objects behind it.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "opaque": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Blurred letters confirm that light passes without clear detail.",
+      "feedback_deep": "Opaque means not allowing light to pass through a physical material; translucent means allowing some light through while blurring objects behind it. Here, the shade passes a soft glow without a clear view. The added evidence clarifies that fact: blurred letters confirm that light passes without clear detail. Thus translucent remains the stronger choice.",
+      "contrast_rule": "Opaque stops light; translucent lets light in but blurs the view.",
+      "hints": {
+        "attention": "Focus on what becomes of fine details behind the shade.",
+        "axis": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it.",
+        "contrast": "Opaque stops light; translucent lets light in but blurs the view."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "opaque-translucent_005",
+      "edge_id": "opaque__translucent",
+      "domain": "rain_umbrella",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Mina’s umbrella fabric?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "opaque-translucent_005_b1",
+          "text": "Mina could see the cloudy sky’s brightness through her umbrella, though she could not make out the clouds.",
+          "best_word": "translucent",
+          "fit": {
+            "opaque": 0.19,
+            "translucent": 0.92
+          },
+          "decisive_clue": "daylight filtered through but cloud shapes did not",
+          "reason": "Daylight filtered through but cloud shapes did not. Allowing some light through while blurring objects behind it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "opaque": "M1"
+          }
+        },
+        {
+          "id": "opaque-translucent_005_b2",
+          "text": "The umbrella kept every drop of rain off her hair.",
+          "best_word": "translucent",
+          "fit": {
+            "opaque": 0.19,
+            "translucent": 0.92
+          },
+          "decisive_clue": "blocking rain does not mean blocking light",
+          "reason": "Blocking rain does not mean blocking light. Allowing some light through while blurring objects behind it.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "opaque": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Blocking rain does not mean blocking light.",
+      "feedback_deep": "Opaque means not allowing light to pass through a physical material; translucent means allowing some light through while blurring objects behind it. Here, daylight filtered through but cloud shapes did not. The apparent distraction does not change the deciding fact: blocking rain does not mean blocking light. Thus translucent remains the stronger choice.",
+      "contrast_rule": "Opaque stops light; translucent lets light in but blurs the view.",
+      "hints": {
+        "attention": "Focus on which property of the fabric is being tested.",
+        "axis": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it.",
+        "contrast": "Opaque stops light; translucent lets light in but blurs the view."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "opaque-translucent_006",
+      "edge_id": "opaque__translucent",
+      "domain": "padded_mailer",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Jun’s mailing envelope?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "opaque-translucent_006_b1",
+          "text": "Jun held the mailer against a bright window and could not detect a glow through it.",
+          "best_word": "opaque",
+          "fit": {
+            "opaque": 0.92,
+            "translucent": 0.19
+          },
+          "decisive_clue": "no window light passed through the mailer",
+          "reason": "No window light passed through the mailer. Not allowing light to pass through a physical material.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "translucent": "M1"
+          }
+        },
+        {
+          "id": "opaque-translucent_006_b2",
+          "text": "Although it felt nearly as thin as writing paper, the light test gave the same result.",
+          "best_word": "opaque",
+          "fit": {
+            "opaque": 0.92,
+            "translucent": 0.19
+          },
+          "decisive_clue": "thinness did not change the evidence that the mailer blocks light",
+          "reason": "Thinness did not change the evidence that the mailer blocks light. Not allowing light to pass through a physical material.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "translucent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Thinness did not change the evidence that the mailer blocks light.",
+      "feedback_deep": "Opaque means not allowing light to pass through a physical material; translucent means allowing some light through while blurring objects behind it. Here, no window light passed through the mailer. The added context helps interpret that fact: thinness did not change the evidence that the mailer blocks light. Thus opaque remains the stronger choice.",
+      "contrast_rule": "Opaque stops light; translucent lets light in but blurs the view.",
+      "hints": {
+        "attention": "Focus on whether thickness predicts what light actually does.",
+        "axis": "An opaque material blocks light; a translucent material passes some light but does not permit a clear view through it.",
+        "contrast": "Opaque stops light; translucent lets light in but blurs the view."
+      },
+      "qa": "pass"
+    }
+  ]
+}

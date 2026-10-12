@@ -31,7 +31,7 @@ export function evaluateDecision(input: DecisionInput, set: LastWordSet, streak 
   const kind: EvidenceKind = input.reviewIntervalDays >= 7 ? 'retention' : chain.purpose === 'transfer' || chain.purpose === 'probe' ? 'transfer' : correctHold ? 'hold' : index > 0 && chain.beats[index - 1].best_word !== beat.best_word ? 'shift' : chain.difficulty <= 1 ? 'anchor' : 'standard';
   const weights: Record<EvidenceKind, number> = { anchor: 0.5, standard: 1, shift: 1.4, hold: 1.5, transfer: 1.8, retention: 2 };
   const evidenceWeight = correctness === 'incorrect' ? (input.confidence === 'certain' ? -1.5 : -1) : correctness === 'defensible' ? 0.2 : input.hintLevel ? 0.35 : weights[kind];
-  return { ...input, edgeId: chain.edge_id, bestWord: beat.best_word, semanticFit: beat.fit[input.selectedWord], correctness, changedSelection, misconceptionTag: correctness === 'best' ? null : beat.misconception_by_wrong_choice[input.selectedWord], contentDifficulty: beat.difficulty, score, evidenceWeight, streak: nextStreak, kind };
+  return { ...input, edgeId: chain.edge_id, bestWord: beat.best_word, semanticFit: beat.fit[input.selectedWord], correctness, changedSelection, misconceptionTag: correctness === 'best' ? null : beat.misconception_by_wrong_choice[input.selectedWord], contentDifficulty: beat.difficulty ?? null, score, evidenceWeight, streak: nextStreak, kind };
 }
 
 export function scheduleReview(previous: ReviewSchedule | undefined, decision: DecisionRecord): ReviewSchedule {

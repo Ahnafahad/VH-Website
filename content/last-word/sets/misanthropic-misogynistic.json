@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "misanthropic-misogynistic",
+  "title": "misanthropic / misogynistic",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[70]",
+    "source_pair_id": 314,
+    "qa": {
+      "pass": 6,
+      "revised": 4,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "misanthropic",
+      "sense": "Deeply distrustful or contemptuous of humanity as a whole.",
+      "connotation": "strongly negative",
+      "register": "formal",
+      "misconceptions": [
+        "Mistaking gender-specific contempt for general social withdrawal.",
+        "Ignoring who is excluded or treated as inferior."
+      ]
+    },
+    {
+      "word": "misogynistic",
+      "sense": "Prejudiced, hostile or contemptuous toward women specifically.",
+      "connotation": "strongly negative",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Mistaking blanket distrust of humanity for women-directed prejudice.",
+        "Ignoring who is excluded or treated as inferior."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "general_human_dislike_vs_gendered_prejudice",
+      "description": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women."
+    }
+  ],
+  "edges": [
+    {
+      "id": "misanthropic__misogynistic",
+      "a": "misanthropic",
+      "b": "misogynistic",
+      "boundary_rule": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+      "clues_a": [
+        "equally hostile to people across groups",
+        "general low opinion of humanity"
+      ],
+      "clues_b": [
+        "unequal contempt for women",
+        "excludes women because of gender"
+      ],
+      "irrelevant_clues": [
+        "age of speaker",
+        "number of meetings"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking blanket distrust of humanity for women-directed prejudice.",
+        "M2": "Mistaking gender-specific contempt for general social withdrawal.",
+        "M3": "Ignoring who is excluded or treated as inferior."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "misanthropic-misogynistic_001",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "neighbourhood_gathering",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Rafael’s attitude toward people?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_001_b1",
+          "text": "Rafael refused to attend any gathering, saying humans in general were selfish and not worth knowing.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "distrusted humanity in general",
+          "reason": "Distrusted humanity in general. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_001_b2",
+          "text": "He spoke that way about strangers and relatives alike.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "hostility crosses relationships rather than targeting women",
+          "reason": "Hostility crosses relationships rather than targeting women. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Hostility crosses relationships rather than targeting women makes misanthropic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, hostility crosses relationships rather than targeting women; that is why misanthropic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on whether his dislike covers everyone.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "misanthropic-misogynistic_002",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "student_committee",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Owen’s attitude toward fellow committee members?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_002_b1",
+          "text": "Owen dismissed every suggestion from female members, saying women were unfit to make decisions.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "rejected women explicitly for their gender",
+          "reason": "Rejected women explicitly for their gender. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_002_b2",
+          "text": "He praised identical ideas when male members proposed them.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "double standard confirms gender-directed prejudice",
+          "reason": "Double standard confirms gender-directed prejudice. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Double standard confirms gender-directed prejudice makes misogynistic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, double standard confirms gender-directed prejudice; that is why misogynistic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on who receives unfair treatment.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "misanthropic-misogynistic_003",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "office_lunchroom",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes what Maya thinks of her colleagues?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_003_b1",
+          "text": "Maya announced that nobody in her office could be trusted and avoided every lunch invitation.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "expressed sweeping distrust of coworkers",
+          "reason": "Expressed sweeping distrust of coworkers. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_003_b2",
+          "text": "Yet she socialised easily with male colleagues and reserved her contempt for women at work.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "actual hostility singled out women",
+          "reason": "Actual hostility singled out women. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Actual hostility singled out women makes misogynistic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, actual hostility singled out women; that is why misogynistic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on whether her actions match her broad claim.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "misanthropic-misogynistic_004",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "family_reunion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elias’s attitude toward company?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_004_b1",
+          "text": "Elias said people everywhere were cruel and that he wanted to spend life away from them.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "rejected people as a whole",
+          "reason": "Rejected people as a whole. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_004_b2",
+          "text": "He included men and women, relatives and strangers, in that judgment.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "applies equally across genders and relationships",
+          "reason": "Applies equally across genders and relationships. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Applies equally across genders and relationships makes misanthropic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, applies equally across genders and relationships; that is why misanthropic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on the range of people he condemns.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "misanthropic-misogynistic_005",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "sports_club_election",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Nadia’s attitude toward the candidates?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_005_b1",
+          "text": "Nadia declared that women should never lead the club, whatever their experience.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "opposed women as leaders because of gender",
+          "reason": "Opposed women as leaders because of gender. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_005_b2",
+          "text": "She smiled while saying it, but still voted against qualified women solely because they were women.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "friendly expression does not erase discriminatory belief",
+          "reason": "Friendly expression does not erase discriminatory belief. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Friendly expression does not erase discriminatory belief makes misogynistic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, friendly expression does not erase discriminatory belief; that is why misogynistic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on the reason for excluding candidates.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "misanthropic-misogynistic_006",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "online_discussion_board",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Jonas’s view of the forum members?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_006_b1",
+          "text": "Jonas wrote that humans are fundamentally dishonest and that no one deserves trust.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "condemned humanity without exception",
+          "reason": "Condemned humanity without exception. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_006_b2",
+          "text": "He criticised every kind of participant, not any particular gender.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "hostility is not limited by gender",
+          "reason": "Hostility is not limited by gender. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Hostility is not limited by gender makes misanthropic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, hostility is not limited by gender; that is why misanthropic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on whether the target is humanity or women.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "misanthropic-misogynistic_007",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "music_audition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Talia’s attitude toward the auditioning musicians?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_007_b1",
+          "text": "Talia claimed women lacked talent simply because they were women and refused to judge their auditions fairly.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "discounted female musicians on gender grounds",
+          "reason": "Discounted female musicians on gender grounds. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_007_b2",
+          "text": "She listened respectfully to men playing at the same skill level.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "unequal assessment confirms sexist prejudice",
+          "reason": "Unequal assessment confirms sexist prejudice. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Unequal assessment confirms sexist prejudice makes misogynistic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, unequal assessment confirms sexist prejudice; that is why misogynistic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on whether judgments differ by gender.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "misanthropic-misogynistic_008",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "house-share_search",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Farah’s attitude toward potential housemates?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_008_b1",
+          "text": "Farah said she trusted no human being and preferred to live entirely alone.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "complete distrust of people in general",
+          "reason": "Complete distrust of people in general. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_008_b2",
+          "text": "She rejected all applicants regardless of their gender, habits or references.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "uniform rejection shows no particular gender target",
+          "reason": "Uniform rejection shows no particular gender target. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Uniform rejection shows no particular gender target makes misanthropic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, uniform rejection shows no particular gender target; that is why misanthropic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on how broadly she distrusts others.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "misanthropic-misogynistic_009",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "volunteer_training",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Amir’s attitude toward the volunteers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_009_b1",
+          "text": "Amir said female volunteers were unreliable and refused to accept their help.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "initially singled out women as unreliable",
+          "reason": "Initially singled out women as unreliable. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_009_b2",
+          "text": "He then admitted he trusted no volunteers of any gender, regarding all people as hopelessly dishonest.",
+          "best_word": "misanthropic",
+          "fit": {
+            "misanthropic": 0.93,
+            "misogynistic": 0.18
+          },
+          "decisive_clue": "later revealed an equally sweeping distrust of everyone",
+          "reason": "Later revealed an equally sweeping distrust of everyone. Deeply distrustful or contemptuous of humanity as a whole..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misogynistic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Later revealed an equally sweeping distrust of everyone makes misanthropic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, later revealed an equally sweeping distrust of everyone; that is why misanthropic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on whether women are the only target.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "misanthropic-misogynistic_010",
+      "edge_id": "misanthropic__misogynistic",
+      "domain": "travel_planning_group",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Selin’s attitude toward trip organisers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "misanthropic-misogynistic_010_b1",
+          "text": "Selin rejected women’s travel suggestions solely because she claimed women could not plan sensible trips.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "explicit prejudice against women’s competence",
+          "reason": "Explicit prejudice against women’s competence. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M1"
+          }
+        },
+        {
+          "id": "misanthropic-misogynistic_010_b2",
+          "text": "She happily accepted the same plans when men proposed them, so this was not distrust of everyone.",
+          "best_word": "misogynistic",
+          "fit": {
+            "misanthropic": 0.18,
+            "misogynistic": 0.93
+          },
+          "decisive_clue": "differential treatment rules out broad human distrust",
+          "reason": "Differential treatment rules out broad human distrust. Prejudiced, hostile or contemptuous toward women specifically..",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "misanthropic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Differential treatment rules out broad human distrust makes misogynistic the better fit.",
+      "feedback_deep": "Misanthropic means deeply distrustful or contemptuous of humanity as a whole; misogynistic means prejudiced, hostile or contemptuous toward women specifically. Here, differential treatment rules out broad human distrust; that is why misogynistic wins even after the new detail.",
+      "contrast_rule": "Misanthropic distrusts people; misogynistic targets women.",
+      "hints": {
+        "attention": "Focus on whether her standard changes with gender.",
+        "axis": "Misanthropic rejects people broadly; misogynistic targets women specifically because they are women.",
+        "contrast": "Misanthropic distrusts people; misogynistic targets women."
+      },
+      "qa": "revised"
+    }
+  ]
+}

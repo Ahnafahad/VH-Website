@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "surfeit-surplus",
+  "title": "surfeit / surplus",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[134]",
+    "source_pair_id": 535,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "surfeit",
+      "sense": "unwelcome or overwhelming excess",
+      "connotation": "negative",
+      "register": "formal",
+      "misconceptions": [
+        "Having extra stock does not mean it has become too much to use."
+      ]
+    },
+    {
+      "word": "surplus",
+      "sense": "usable extra beyond current requirements",
+      "connotation": "neutral to positive",
+      "register": "standard",
+      "misconceptions": [
+        "A flood of excess can overwhelm rather than help."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "manageable_extra_vs_overwhelming_excess",
+      "description": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome."
+    }
+  ],
+  "edges": [
+    {
+      "id": "surfeit__surplus",
+      "a": "surfeit",
+      "b": "surplus",
+      "boundary_rule": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome.",
+      "clues_a": [
+        "an overwhelming number of options",
+        "excess that spoils before use",
+        "quantity becomes a nuisance"
+      ],
+      "clues_b": [
+        "useful extra supplies",
+        "leftover funds kept for later",
+        "spare stock earmarked for future needs"
+      ],
+      "irrelevant_clues": [
+        "color of the containers",
+        "whether guests compliment the display",
+        "whether the items are new"
+      ],
+      "misconceptions": {
+        "M1": "Having extra stock does not mean it has become too much to use.",
+        "M2": "A flood of excess can overwhelm rather than help.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "surfeit-surplus_001",
+      "edge_id": "surfeit__surplus",
+      "domain": "school_canteen",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the lunch boxes Eleni had left?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "surfeit-surplus_001_b1",
+          "text": "Eleni counted twelve extra lunch boxes after everyone had eaten; the staff refrigerated them for tomorrow.",
+          "best_word": "surplus",
+          "fit": {
+            "surfeit": 0.2,
+            "surplus": 0.93
+          },
+          "decisive_clue": "usable meals beyond today’s needs",
+          "reason": "The extras can serve a later need.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surfeit": "M2"
+          }
+        },
+        {
+          "id": "surfeit-surplus_001_b2",
+          "text": "She wrote the date on each lid.",
+          "best_word": "surplus",
+          "fit": {
+            "surfeit": 0.15,
+            "surplus": 0.95
+          },
+          "decisive_clue": "usable meals beyond today’s needs",
+          "reason": "Dating the lids changes nothing about their usefulness as extra stock.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surfeit": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is usable meals beyond today’s needs; dating the lids changes nothing about their usefulness as extra stock.",
+      "feedback_deep": "Surfeit concerns unwelcome or overwhelming excess; surplus concerns usable extra beyond current requirements. Dating the lids changes nothing about their usefulness as extra stock.",
+      "contrast_rule": "Surfeit: an overwhelming number of options; surplus: useful extra supplies.",
+      "hints": {
+        "attention": "Do the remaining meals serve a useful future purpose?",
+        "axis": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome.",
+        "contrast": "Surfeit: an overwhelming number of options; surplus: useful extra supplies."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surfeit-surplus_002",
+      "edge_id": "surfeit__surplus",
+      "domain": "birthday_party",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the cakes Omar provided?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "surfeit-surplus_002_b1",
+          "text": "Omar put out nine huge cakes for twelve guests, and almost everyone stopped eating after one slice.",
+          "best_word": "surfeit",
+          "fit": {
+            "surfeit": 0.93,
+            "surplus": 0.2
+          },
+          "decisive_clue": "a hugely excessive amount that guests cannot finish",
+          "reason": "The quantity is far beyond what anyone wants.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surplus": "M1"
+          }
+        },
+        {
+          "id": "surfeit-surplus_002_b2",
+          "text": "By evening, the untouched cakes occupied the entire fridge, leaving no space for dinner.",
+          "best_word": "surfeit",
+          "fit": {
+            "surfeit": 0.95,
+            "surplus": 0.15
+          },
+          "decisive_clue": "a hugely excessive amount overwhelming storage",
+          "reason": "The storage problem makes the unwelcome excess unmistakable.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surplus": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is a hugely excessive amount overwhelming storage; the storage problem makes the unwelcome excess unmistakable.",
+      "feedback_deep": "Surfeit concerns unwelcome or overwhelming excess; surplus concerns usable extra beyond current requirements. The storage problem makes the unwelcome excess unmistakable.",
+      "contrast_rule": "Surfeit: an overwhelming number of options; surplus: useful extra supplies.",
+      "hints": {
+        "attention": "Notice the effect of having far too much.",
+        "axis": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome.",
+        "contrast": "Surfeit: an overwhelming number of options; surplus: useful extra supplies."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surfeit-surplus_003",
+      "edge_id": "surfeit__surplus",
+      "domain": "office_supplies",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the remaining notebooks Yara kept?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "surfeit-surplus_003_b1",
+          "text": "Yara had twenty unopened notebooks left after buying everything the team needed; she reserved them for new hires.",
+          "best_word": "surplus",
+          "fit": {
+            "surfeit": 0.2,
+            "surplus": 0.93
+          },
+          "decisive_clue": "useful notebooks kept beyond current requirements",
+          "reason": "The leftovers have a sensible future use.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surfeit": "M2"
+          }
+        },
+        {
+          "id": "surfeit-surplus_003_b2",
+          "text": "Their covers were dark green.",
+          "best_word": "surplus",
+          "fit": {
+            "surfeit": 0.15,
+            "surplus": 0.95
+          },
+          "decisive_clue": "useful notebooks kept beyond current requirements",
+          "reason": "Cover color does not make the extra notebooks an unwelcome excess.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surfeit": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is useful notebooks kept beyond current requirements; cover color does not make the extra notebooks an unwelcome excess.",
+      "feedback_deep": "Surfeit concerns unwelcome or overwhelming excess; surplus concerns usable extra beyond current requirements. Cover color does not make the extra notebooks an unwelcome excess.",
+      "contrast_rule": "Surfeit: an overwhelming number of options; surplus: useful extra supplies.",
+      "hints": {
+        "attention": "What is planned for the extra notebooks?",
+        "axis": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome.",
+        "contrast": "Surfeit: an overwhelming number of options; surplus: useful extra supplies."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surfeit-surplus_004",
+      "edge_id": "surfeit__surplus",
+      "domain": "streaming_queue",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the suggestions Musa received?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "surfeit-surplus_004_b1",
+          "text": "Musa received hundreds of viewing suggestions every hour until choosing one film felt exhausting.",
+          "best_word": "surfeit",
+          "fit": {
+            "surfeit": 0.93,
+            "surplus": 0.2
+          },
+          "decisive_clue": "so many suggestions that choosing becomes burdensome",
+          "reason": "The volume itself undermines enjoyment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surplus": "M1"
+          }
+        },
+        {
+          "id": "surfeit-surplus_004_b2",
+          "text": "Most suggestions included colorful cover pictures.",
+          "best_word": "surfeit",
+          "fit": {
+            "surfeit": 0.95,
+            "surplus": 0.15
+          },
+          "decisive_clue": "so many suggestions that choosing becomes burdensome",
+          "reason": "Pictures do not remove the overload of recommendations.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surplus": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is so many suggestions that choosing becomes burdensome; pictures do not remove the overload of recommendations.",
+      "feedback_deep": "Surfeit concerns unwelcome or overwhelming excess; surplus concerns usable extra beyond current requirements. Pictures do not remove the overload of recommendations.",
+      "contrast_rule": "Surfeit: an overwhelming number of options; surplus: useful extra supplies.",
+      "hints": {
+        "attention": "What does the amount do to his experience?",
+        "axis": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome.",
+        "contrast": "Surfeit: an overwhelming number of options; surplus: useful extra supplies."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surfeit-surplus_005",
+      "edge_id": "surfeit__surplus",
+      "domain": "community_garden",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the extra carrots Anika harvested?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "surfeit-surplus_005_b1",
+          "text": "Anika harvested more carrots than the volunteers needed and arranged to send the rest to a food bank.",
+          "best_word": "surplus",
+          "fit": {
+            "surfeit": 0.2,
+            "surplus": 0.93
+          },
+          "decisive_clue": "extra produce with a planned use",
+          "reason": "Beyond the volunteers’ needs, the harvest still has beneficiaries.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surfeit": "M2"
+          }
+        },
+        {
+          "id": "surfeit-surplus_005_b2",
+          "text": "The remaining crates were fresh and ready for pickup that afternoon.",
+          "best_word": "surplus",
+          "fit": {
+            "surfeit": 0.15,
+            "surplus": 0.95
+          },
+          "decisive_clue": "extra produce with a planned use",
+          "reason": "Freshness and scheduled pickup confirm the extras remain useful.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surfeit": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is extra produce with a planned use; freshness and scheduled pickup confirm the extras remain useful.",
+      "feedback_deep": "Surfeit concerns unwelcome or overwhelming excess; surplus concerns usable extra beyond current requirements. Freshness and scheduled pickup confirm the extras remain useful.",
+      "contrast_rule": "Surfeit: an overwhelming number of options; surplus: useful extra supplies.",
+      "hints": {
+        "attention": "Consider whether someone can still make good use of the extra harvest.",
+        "axis": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome.",
+        "contrast": "Surfeit: an overwhelming number of options; surplus: useful extra supplies."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surfeit-surplus_006",
+      "edge_id": "surfeit__surplus",
+      "domain": "club_appreciation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the praise Felix received?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "surfeit-surplus_006_b1",
+          "text": "Felix received hours of glowing praise after completing a tiny errand, until he began avoiding anyone offering more.",
+          "best_word": "surfeit",
+          "fit": {
+            "surfeit": 0.93,
+            "surplus": 0.2
+          },
+          "decisive_clue": "unwelcome excess of praise that drives him away",
+          "reason": "The excessive praise has made ordinary attention unpleasant.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surplus": "M1"
+          }
+        },
+        {
+          "id": "surfeit-surplus_006_b2",
+          "text": "Several admirers continued praising him at length for the same small deed.",
+          "best_word": "surfeit",
+          "fit": {
+            "surfeit": 0.95,
+            "surplus": 0.15
+          },
+          "decisive_clue": "unwelcome excess of praise that drives him away",
+          "reason": "The continued, disproportionate praise reinforces that the attention is excessive and unwelcome.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surplus": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is unwelcome excess of praise that drives him away; continued disproportionate praise reinforces the same boundary.",
+      "feedback_deep": "Surfeit concerns unwelcome or overwhelming excess; surplus concerns usable extra beyond current requirements. Continued, disproportionate praise for a minor deed remains an unwelcome excess.",
+      "contrast_rule": "Surfeit: unwelcome or overwhelming excess; surplus: usable extra beyond current requirements.",
+      "hints": {
+        "attention": "Does Felix welcome this disproportionate amount of praise?",
+        "axis": "A surplus is an extra amount beyond current need; a surfeit is so much excess that it becomes unwelcome or burdensome.",
+        "contrast": "Surfeit: unwelcome or overwhelming excess; surplus: usable extra beyond current requirements."
+      },
+      "qa": "revised"
+    }
+  ]
+}

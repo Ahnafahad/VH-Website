@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "stymie-stifle",
+  "title": "stymie / stifle",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[150]",
+    "source_pair_id": 635,
+    "qa": {
+      "pass": 4,
+      "revised": 2,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "stymie",
+      "sense": "To obstruct progress toward a goal or prevent a plan from succeeding.",
+      "connotation": "frustrating obstruction",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Missing the suppression of developing ideas when existing tasks continue.",
+        "Confusing obstacles to a goal with discouragement of expression."
+      ]
+    },
+    {
+      "word": "stifle",
+      "sense": "To hold back an expression, feeling, or emerging activity.",
+      "connotation": "constraining, often critical",
+      "register": "standard",
+      "misconceptions": [
+        "Calling any expression of reluctance a complete block to progress.",
+        "Confusing obstacles to a goal with discouragement of expression."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "obstruction_vs_suppression",
+      "description": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself."
+    }
+  ],
+  "edges": [
+    {
+      "id": "stymie__stifle",
+      "a": "stymie",
+      "b": "stifle",
+      "boundary_rule": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself.",
+      "clues_a": [
+        "unable to finish",
+        "blocked by a requirement",
+        "progress halted"
+      ],
+      "clues_b": [
+        "holding back feelings",
+        "ideas no longer voiced",
+        "expression discouraged"
+      ],
+      "irrelevant_clues": [
+        "effort expended",
+        "polite wording",
+        "whether work is enjoyable"
+      ],
+      "misconceptions": {
+        "M1": "Calling any expression of reluctance a complete block to progress.",
+        "M2": "Missing the suppression of developing ideas when existing tasks continue.",
+        "M3": "Confusing obstacles to a goal with discouragement of expression."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "stymie-stifle_001",
+      "edge_id": "stymie__stifle",
+      "domain": "course_application",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the missing signature did to Leila’s application?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "stymie-stifle_001_b1",
+          "text": "Without the required signature, Leila could not submit her course application before the deadline.",
+          "best_word": "stymie",
+          "fit": {
+            "stymie": 0.92,
+            "stifle": 0.19
+          },
+          "decisive_clue": "one missing requirement prevented submission",
+          "reason": "One missing requirement prevented submission. To obstruct progress toward a goal or prevent a plan from succeeding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stifle": "M1"
+          }
+        },
+        {
+          "id": "stymie-stifle_001_b2",
+          "text": "She had already filled in every other field correctly.",
+          "best_word": "stymie",
+          "fit": {
+            "stymie": 0.92,
+            "stifle": 0.19
+          },
+          "decisive_clue": "completed fields do not remove the signature that blocks submission",
+          "reason": "Completed fields do not remove the signature that blocks submission. To obstruct progress toward a goal or prevent a plan from succeeding.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stifle": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Completed fields do not remove the signature that blocks submission.",
+      "feedback_deep": "Stymie means to obstruct progress toward a goal or prevent a plan from succeeding; stifle means to hold back an expression, feeling, or emerging activity. Here, one missing requirement prevented submission. The new detail does not change the deciding fact: completed fields do not remove the signature that blocks submission. Thus stymie remains the stronger choice.",
+      "contrast_rule": "Stymie blocks a goal; stifle holds back what is trying to emerge.",
+      "hints": {
+        "attention": "Focus on whether the application could actually go forward.",
+        "axis": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself.",
+        "contrast": "Stymie blocks a goal; stifle holds back what is trying to emerge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "stymie-stifle_002",
+      "edge_id": "stymie__stifle",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Omar did with his reply?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "stymie-stifle_002_b1",
+          "text": "Omar pressed his lips together to keep an angry answer from escaping when his cousin interrupted him.",
+          "best_word": "stifle",
+          "fit": {
+            "stymie": 0.19,
+            "stifle": 0.92
+          },
+          "decisive_clue": "deliberately held back an angry response",
+          "reason": "Deliberately held back an angry response. To hold back an expression, feeling, or emerging activity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stymie": "M1"
+          }
+        },
+        {
+          "id": "stymie-stifle_002_b2",
+          "text": "Even when his cousin interrupted again, Omar kept the angry words to himself.",
+          "best_word": "stifle",
+          "fit": {
+            "stymie": 0.19,
+            "stifle": 0.92
+          },
+          "decisive_clue": "repeated interruption does not change Omar’s choice to hold back the angry reply",
+          "reason": "Repeated interruption does not change Omar’s choice to hold back the angry reply. To hold back an expression, feeling, or emerging activity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stymie": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Repeated interruption does not change Omar’s choice to hold back the angry reply.",
+      "feedback_deep": "Stymie means to obstruct progress toward a goal or prevent a plan from succeeding; stifle means to hold back an expression, feeling, or emerging activity. Here, deliberately held back an angry response. The new detail does not change the deciding fact: repeated interruption does not change Omar’s choice to hold back the angry reply. Thus stifle remains the stronger choice.",
+      "contrast_rule": "Stymie blocks a goal; stifle holds back what is trying to emerge.",
+      "hints": {
+        "attention": "Focus on what happened to the words he wanted to say.",
+        "axis": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself.",
+        "contrast": "Stymie blocks a goal; stifle holds back what is trying to emerge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "stymie-stifle_003",
+      "edge_id": "stymie__stifle",
+      "domain": "video-project_upload",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the effect of Nia’s upload limit?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "stymie-stifle_003_b1",
+          "text": "Nia could finish her video offline, but the upload limit made her stop sharing early clips to get comments from friends.",
+          "best_word": "stifle",
+          "fit": {
+            "stymie": 0.19,
+            "stifle": 0.92
+          },
+          "decisive_clue": "video completion remained possible while early sharing was discouraged",
+          "reason": "Video completion remained possible while early sharing was discouraged. To hold back an expression, feeling, or emerging activity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stymie": "M1"
+          }
+        },
+        {
+          "id": "stymie-stifle_003_b2",
+          "text": "Her finished video was submitted on a USB drive; only the exchange of unfinished ideas had been suppressed.",
+          "best_word": "stifle",
+          "fit": {
+            "stymie": 0.19,
+            "stifle": 0.92
+          },
+          "decisive_clue": "successful submission confirms the main loss was sharing emerging ideas",
+          "reason": "Successful submission confirms the main loss was sharing emerging ideas. To hold back an expression, feeling, or emerging activity.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stymie": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Successful submission confirms the main loss was sharing emerging ideas.",
+      "feedback_deep": "Stymie means to obstruct progress toward a goal or prevent a plan from succeeding; stifle means to hold back an expression, feeling, or emerging activity. Here, video completion remained possible while early sharing was discouraged. The added evidence clarifies that fact: successful submission confirms the main loss was sharing emerging ideas. Thus stifle remains the stronger choice.",
+      "contrast_rule": "Stymie blocks a goal; stifle holds back what is trying to emerge.",
+      "hints": {
+        "attention": "Focus on what Nia could still finish despite the upload limit.",
+        "axis": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself.",
+        "contrast": "Stymie blocks a goal; stifle holds back what is trying to emerge."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "stymie-stifle_004",
+      "edge_id": "stymie__stifle",
+      "domain": "office_suggestions",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the supervisor’s effect on Priya’s suggestions?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "stymie-stifle_004_b1",
+          "text": "Whenever Priya proposed an improvement, her supervisor laughed at it, and she gradually stopped speaking up.",
+          "best_word": "stifle",
+          "fit": {
+            "stymie": 0.19,
+            "stifle": 0.92
+          },
+          "decisive_clue": "ridicule made Priya stop voicing new ideas",
+          "reason": "Ridicule made Priya stop voicing new ideas. To hold back an expression, feeling, or emerging activity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stymie": "M1"
+          }
+        },
+        {
+          "id": "stymie-stifle_004_b2",
+          "text": "She still completed every project that had already been approved.",
+          "best_word": "stifle",
+          "fit": {
+            "stymie": 0.19,
+            "stifle": 0.92
+          },
+          "decisive_clue": "approved projects continued, so the main harm was silencing suggestions",
+          "reason": "Approved projects continued, so the main harm was silencing suggestions. To hold back an expression, feeling, or emerging activity.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stymie": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Approved projects continued, so the main harm was silencing suggestions.",
+      "feedback_deep": "Stymie means to obstruct progress toward a goal or prevent a plan from succeeding; stifle means to hold back an expression, feeling, or emerging activity. Here, ridicule made Priya stop voicing new ideas. The added evidence clarifies that fact: approved projects continued, so the main harm was silencing suggestions. Thus stifle remains the stronger choice.",
+      "contrast_rule": "Stymie blocks a goal; stifle holds back what is trying to emerge.",
+      "hints": {
+        "attention": "Focus on which activity faded and which continued.",
+        "axis": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself.",
+        "contrast": "Stymie blocks a goal; stifle holds back what is trying to emerge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "stymie-stifle_005",
+      "edge_id": "stymie__stifle",
+      "domain": "swimming_test",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what the closed pool did to Isaac’s test?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "stymie-stifle_005_b1",
+          "text": "A burst pipe closed the pool, preventing Isaac from completing his required swimming test that day.",
+          "best_word": "stymie",
+          "fit": {
+            "stymie": 0.92,
+            "stifle": 0.19
+          },
+          "decisive_clue": "pool closure stopped the required test",
+          "reason": "Pool closure stopped the required test. To obstruct progress toward a goal or prevent a plan from succeeding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stifle": "M1"
+          }
+        },
+        {
+          "id": "stymie-stifle_005_b2",
+          "text": "Isaac knew every part of the test, but the closure still prevented him from taking it.",
+          "best_word": "stymie",
+          "fit": {
+            "stymie": 0.92,
+            "stifle": 0.19
+          },
+          "decisive_clue": "knowing the test does not remove the physical barrier to taking it",
+          "reason": "Knowing the test does not remove the physical barrier to taking it. To obstruct progress toward a goal or prevent a plan from succeeding.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stifle": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Knowing the test does not remove the physical barrier to taking it.",
+      "feedback_deep": "Stymie means to obstruct progress toward a goal or prevent a plan from succeeding; stifle means to hold back an expression, feeling, or emerging activity. Here, pool closure stopped the required test. The apparent distraction does not change the deciding fact: knowing the test does not remove the physical barrier to taking it. Thus stymie remains the stronger choice.",
+      "contrast_rule": "Stymie blocks a goal; stifle holds back what is trying to emerge.",
+      "hints": {
+        "attention": "Focus on whether his skill solves the obstacle.",
+        "axis": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself.",
+        "contrast": "Stymie blocks a goal; stifle holds back what is trying to emerge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "stymie-stifle_006",
+      "edge_id": "stymie__stifle",
+      "domain": "blocked_forum_publication",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the account suspension did to Zara’s publication efforts?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "stymie-stifle_006_b1",
+          "text": "After her account was suspended, Zara could no longer publish any of the weekly discussion posts she had prepared.",
+          "best_word": "stymie",
+          "fit": {
+            "stymie": 0.92,
+            "stifle": 0.19
+          },
+          "decisive_clue": "the suspension stopped all publication of her prepared posts",
+          "reason": "The suspension stopped all publication of her prepared posts. To obstruct progress toward a goal or prevent a plan from succeeding.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stifle": "M1"
+          }
+        },
+        {
+          "id": "stymie-stifle_006_b2",
+          "text": "She continued drafting at home, but the platform rejected every attempt to submit them.",
+          "best_word": "stymie",
+          "fit": {
+            "stymie": 0.92,
+            "stifle": 0.19
+          },
+          "decisive_clue": "continued drafting could not get past the publishing block",
+          "reason": "Continued drafting could not get past the publishing block. To obstruct progress toward a goal or prevent a plan from succeeding.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stifle": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Continued drafting could not get past the publishing block.",
+      "feedback_deep": "Stymie means to obstruct progress toward a goal or prevent a plan from succeeding; stifle means to hold back an expression, feeling, or emerging activity. Here, the suspension stopped all publication of her prepared posts. The added context reinforces that the obstacle remained insurmountable despite continued effort. Thus stymie remains the stronger choice.",
+      "contrast_rule": "Stymie blocks a goal; stifle holds back what is trying to emerge.",
+      "hints": {
+        "attention": "Focus on whether the finished posts can reach the forum.",
+        "axis": "Stymie blocks progress toward a goal, while stifle suppresses expression or growth without necessarily stopping the goal itself.",
+        "contrast": "Stymie blocks a goal; stifle holds back what is trying to emerge."
+      },
+      "qa": "revised"
+    }
+  ]
+}

@@ -1,0 +1,1498 @@
+{
+  "schema_version": 1,
+  "set_id": "repercussion-ramification",
+  "title": "repercussion / ramification",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[135]",
+    "source_pair_id": 551,
+    "qa": {
+      "pass": 0,
+      "revised": 20,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "repercussion",
+      "sense": "Delayed, usually negative, consequence",
+      "connotation": "negative, punitive, consequential",
+      "register": "standard, formal",
+      "misconceptions": [
+        "confusing with immediate reaction"
+      ]
+    },
+    {
+      "word": "ramification",
+      "sense": "Branching, complex consequence",
+      "connotation": "neutral, complex, structural",
+      "register": "standard, formal",
+      "misconceptions": [
+        "thinking it must be negative"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "valence",
+      "description": "negative impact (repercussion) vs neutral or complex structural change (ramification)"
+    },
+    {
+      "id": "temporal",
+      "description": "delayed fallout (repercussion) vs immediate/structural expansion (ramification)"
+    },
+    {
+      "id": "complexity",
+      "description": "direct effect (repercussion) vs branching/systemic (ramification)"
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "repercussion": [
+        "The manager feared the repercussion of the unauthorized budget cuts.",
+        "They are now dealing with the severe repercussion of their earlier mistakes.",
+        "The public outcry was a direct repercussion of the senator's offensive speech.",
+        "She knew she would face some repercussion for being late again.",
+        "The policy change caused a painful repercussion in employee morale.",
+        "He ignored the potential repercussion of skipping the safety training."
+      ],
+      "ramification": [
+        "The new law has a vast ramification for small businesses.",
+        "We must consider every ramification of this complex architectural decision.",
+        "The discovery of the new planet has a fascinating ramification for space travel.",
+        "The restructuring plan carries an unexpected ramification for staff hierarchy.",
+        "Exploring the full ramification of this theory will take years.",
+        "The project's failure had a negative ramification for all departments involved."
+      ]
+    },
+    "counter": {
+      "repercussion": [
+        "The new architectural design has a vast repercussion for urban planning. (use: ramification)",
+        "The scientific study explores the structural repercussion of the new engine. (use: ramification)",
+        "The company's expansion has a positive repercussion for the industry. (use: ramification)",
+        "The branching nature of the treaty creates a difficult repercussion. (use: ramification)",
+        "The decision to add a new wing has a structural repercussion. (use: ramification)",
+        "They studied the legal repercussion of the merger. (use: ramification)"
+      ],
+      "ramification": [
+        "The team suffered a harsh ramification for breaking the league rules. (use: repercussion)",
+        "She felt the bitter ramification of ignoring the boss's orders. (use: repercussion)",
+        "The artist feared the ramification of her controversial post. (use: repercussion)",
+        "The company faced a disciplinary ramification for the fraud. (use: repercussion)",
+        "There will be a painful ramification if you lie again. (use: repercussion)",
+        "The severe ramification of the security breach was the fire. (use: repercussion)"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "repercussion__ramification",
+      "a": "repercussion",
+      "b": "ramification",
+      "boundary_rule": "use repercussion for negative fallout, ramification for complex branching effects.",
+      "clues_a": [
+        "punishment",
+        "negative outcome",
+        "later fallout"
+      ],
+      "clues_b": [
+        "complexity",
+        "branching effects",
+        "systemic change"
+      ],
+      "irrelevant_clues": [
+        "surprise",
+        "importance",
+        "size"
+      ],
+      "misconceptions": {
+        "M1": "assuming all negative consequences are repercussions",
+        "M2": "assuming all ramifications are negative",
+        "M3": "ignoring the branching aspect of ramification"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "repercussion-ramification_001",
+      "edge_id": "repercussion__ramification",
+      "domain": "work",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Arthur's repeated lateness brought an immediate ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_001_b1",
+          "text": "Arthur was late for work three days in a row, earning an official reprimand and a pay deduction from his supervisor.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.88,
+            "ramification": 0.12
+          },
+          "decisive_clue": "official reprimand and pay deduction",
+          "reason": "Direct punitive fallout for breaking workplace rules.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_001_b2",
+          "text": "Arthur was late for work three days in a row, earning an official reprimand and a pay deduction from his supervisor. When he arrived late again on Friday, HR summoned him to a formal disciplinary hearing to initiate termination proceedings.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.94,
+            "ramification": 0.06
+          },
+          "decisive_clue": "formal disciplinary hearing to initiate termination proceedings",
+          "reason": "Escalating punitive negative consequence rather than structural branching complexity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Arthur's lateness led directly to disciplinary penalties and termination hearings, which are punitive repercussions.",
+      "feedback_deep": "Both the reprimand and the HR disciplinary hearing represent direct punitive fallout (repercussions) for breaking workplace rules. The scenario does not involve branching structural complexity across systems.",
+      "contrast_rule": "Use repercussion for negative fallout and disciplinary consequences.",
+      "hints": {
+        "attention": "Is the outcome a direct disciplinary penalty?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for negative fallout and disciplinary consequences."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_002",
+      "edge_id": "repercussion__ramification",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Lina's sudden relocation created a major ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repercussion-ramification_002_b1",
+          "text": "Lina abruptly moved to another city without telling her partner, provoking bitter resentment and an immediate separation.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.86,
+            "ramification": 0.14
+          },
+          "decisive_clue": "bitter resentment and an immediate separation",
+          "reason": "Direct emotional and interpersonal fallout from an inconsiderate action.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_002_b2",
+          "text": "Lina abruptly moved to another city without telling her partner, provoking bitter resentment and an immediate separation. Untangling their shared life now requires renegotiating joint mortgages, dividing shared business assets, restructuring co-parenting custody, and altering tax filings across two states.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.18,
+            "ramification": 0.82
+          },
+          "decisive_clue": "renegotiating mortgages, dividing business assets, restructuring custody, and altering multi-state tax filings",
+          "reason": "The consequence broadens into intricate, branching legal and financial structural changes.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Initial relationship fallout gave way to intricate, branching legal and financial ramifications.",
+      "feedback_deep": "Beat 1 centers on the painful emotional and interpersonal fallout (repercussion) of Lina's move. Beat 2 broadens the scope to a sprawling web of legal, financial, and custody adjustments, embodying branching ramifications.",
+      "contrast_rule": "Repercussion describes negative fallout; ramification describes branching systemic complexity.",
+      "hints": {
+        "attention": "Does the effect spread across interconnected legal and financial structures?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Repercussion describes negative fallout; ramification describes branching systemic complexity."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_003",
+      "edge_id": "repercussion__ramification",
+      "domain": "science",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The laboratory's breakthrough carries a wide-ranging ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_003_b1",
+          "text": "The laboratory developed an instantaneous gene-editing technique that fundamentally alters biological research and agricultural breeding.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.12,
+            "ramification": 0.88
+          },
+          "decisive_clue": "fundamentally alters biological research and agricultural breeding",
+          "reason": "A neutral technological breakthrough creating secondary impacts across multiple scientific fields.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        },
+        {
+          "id": "repercussion-ramification_003_b2",
+          "text": "The laboratory developed an instantaneous gene-editing technique that fundamentally alters biological research and agricultural breeding. Beyond medicine, it forces lawmakers, patent offices, and bioethics panels worldwide to overhaul their regulatory frameworks.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.08,
+            "ramification": 0.92
+          },
+          "decisive_clue": "forces lawmakers, patent offices, and bioethics panels worldwide to overhaul frameworks",
+          "reason": "Further demonstrates sprawling systemic and institutional branches originating from one discovery.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The scientific breakthrough sets off complex, branching effects throughout law, ethics, and industry.",
+      "feedback_deep": "The gene-editing breakthrough creates multifaceted, neutral structural shifts across science, commerce, and regulatory policy. These systemic consequences are ramifications, not negative repercussions.",
+      "contrast_rule": "Use ramification for branching, structural secondary effects.",
+      "hints": {
+        "attention": "Does the discovery trigger branching consequences across multiple distinct fields?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use ramification for branching, structural secondary effects."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_004",
+      "edge_id": "repercussion__ramification",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The athlete suffered a swift ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_004_b1",
+          "text": "Following her positive test for performance-enhancing drugs, the committee stripped the sprinter of her gold medal.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.88,
+            "ramification": 0.12
+          },
+          "decisive_clue": "stripped the sprinter of her gold medal",
+          "reason": "A direct punitive penalty imposed for a violation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_004_b2",
+          "text": "Following her positive test for performance-enhancing drugs, the committee stripped the sprinter of her gold medal. Within twenty-four hours, the athletics federation handed down a four-year competitive ban and terminated all national funding.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.93,
+            "ramification": 0.07
+          },
+          "decisive_clue": "four-year competitive ban and terminated national funding",
+          "reason": "Additional direct disciplinary penalties reinforce the punitive negative fallout.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Medal stripping, competitive bans, and funding losses are direct punitive repercussions.",
+      "feedback_deep": "The athlete's violations triggered severe disciplinary penalties designed as punishment. Because these are direct negative sanctions rather than systemic branchings, repercussion is the appropriate term.",
+      "contrast_rule": "Use repercussion for punitive penalties and negative fallout.",
+      "hints": {
+        "attention": "Is the outcome a direct disciplinary sanction?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for punitive penalties and negative fallout."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_005",
+      "edge_id": "repercussion__ramification",
+      "domain": "business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The corporate merger produced an intricate structural ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_005_b1",
+          "text": "Merging the two multinational retailers created a tangled network of overlapping supplier contracts and conflicting software ecosystems.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.15,
+            "ramification": 0.85
+          },
+          "decisive_clue": "tangled network of overlapping supplier contracts and conflicting software ecosystems",
+          "reason": "An intricate, non-punitive structural complication arising from corporate consolidation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        },
+        {
+          "id": "repercussion-ramification_005_b2",
+          "text": "Merging the two multinational retailers created a tangled network of overlapping supplier contracts and conflicting software ecosystems. Resolving it requires restructuring global supply chains, aligning payroll databases across four jurisdictions, and reconciling divergent compliance standards.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.1,
+            "ramification": 0.9
+          },
+          "decisive_clue": "restructuring supply chains, aligning payroll across jurisdictions, reconciling compliance standards",
+          "reason": "Deepens the demonstration of branching operational complexity spreading through the enterprise.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The merger caused systemic operational restructuring, which is a classic organizational ramification.",
+      "feedback_deep": "The merger creates multifaceted, structural complexities that ripple across supply chains, payroll systems, and compliance frameworks. These branching consequences exemplify ramifications rather than punitive repercussions.",
+      "contrast_rule": "Ramification applies to branching, complex organizational impacts.",
+      "hints": {
+        "attention": "Does the event branch out into multifaceted operational changes?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Ramification applies to branching, complex organizational impacts."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_006",
+      "edge_id": "repercussion__ramification",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The sudden blizzard brought a painful ___ for stranded passengers.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_006_b1",
+          "text": "The blizzard shut down the regional airport overnight, leaving thousands of passengers sleeping on cold terminal floors.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.89,
+            "ramification": 0.11
+          },
+          "decisive_clue": "passengers sleeping on cold terminal floors",
+          "reason": "Direct unpleasant physical discomfort and disruption caused by an adverse event.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_006_b2",
+          "text": "The blizzard shut down the regional airport overnight, leaving thousands of passengers sleeping on cold terminal floors. By morning, nearby hotels had surged their rates, lost luggage piled up uncollected, and travelers were forced to pay nonrefundable charges out of pocket.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.92,
+            "ramification": 0.08
+          },
+          "decisive_clue": "surged rates, lost luggage, nonrefundable out-of-pocket charges",
+          "reason": "Compound negative fallout and financial misery inflicted directly upon the travelers.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Being stranded, overcharged, and separated from luggage is adverse personal fallout (repercussions).",
+      "feedback_deep": "The adverse effects described are direct, unpleasant hardships endured by passengers as a result of the weather. Because the context highlights unpleasant fallout rather than structural branching, repercussion is the precise choice.",
+      "contrast_rule": "Use repercussion for adverse, unpleasant fallout.",
+      "hints": {
+        "attention": "Is the situation focused on unpleasant personal hardship?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for adverse, unpleasant fallout."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_007",
+      "edge_id": "repercussion__ramification",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The senator's rogue vote generated an unforeseen ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repercussion-ramification_007_b1",
+          "text": "By voting against her own party's flagship legislation, the senator was promptly stripped of her committee chairmanships and faced calls for censure.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.88,
+            "ramification": 0.12
+          },
+          "decisive_clue": "stripped of committee chairmanships and faced calls for censure",
+          "reason": "Direct political retaliation and disciplinary backlash.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_007_b2",
+          "text": "By voting against her own party's flagship legislation, the senator was promptly stripped of her committee chairmanships and faced calls for censure. Furthermore, the bill's defeat automatically triggered a clause that stalled regional infrastructure grants, disrupted pending interstate transit compacts, and forced adjacent states to renegotiate their joint transportation budgets.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.18,
+            "ramification": 0.82
+          },
+          "decisive_clue": "stalled infrastructure grants, disrupted transit compacts, and forced multi-state budget renegotiations",
+          "reason": "The consequence transforms into systemic, branching legislative and budgetary chain reactions across states.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Personal party discipline was a repercussion, but the cascading interstate policy impacts are ramifications.",
+      "feedback_deep": "Beat 1 portrays punitive political retaliation against the individual lawmaker (repercussion). Beat 2 expands the scope to a sprawling legislative ripple effect impacting interstate agreements and budgets (ramifications).",
+      "contrast_rule": "Repercussion is punitive backlash; ramification is systemic, branching disruption.",
+      "hints": {
+        "attention": "Does the outcome branch into complex interstate policy shifts?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Repercussion is punitive backlash; ramification is systemic, branching disruption."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_008",
+      "edge_id": "repercussion__ramification",
+      "domain": "household",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Ignoring the building's maintenance warnings brought a severe financial ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_008_b1",
+          "text": "The landlord neglected the corroded boiler for months until it failed mid-winter, resulting in hefty municipal fines and mandatory tenant rent refunds.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.88,
+            "ramification": 0.12
+          },
+          "decisive_clue": "hefty municipal fines and mandatory tenant rent refunds",
+          "reason": "Unpleasant, delayed financial penalties following negligent behavior.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_008_b2",
+          "text": "The landlord neglected the corroded boiler for months until it failed mid-winter, resulting in hefty municipal fines and mandatory tenant rent refunds. To make matters worse, the city housing authority suspended his leasing license and ordered emergency code audits on all his properties.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.93,
+            "ramification": 0.07
+          },
+          "decisive_clue": "suspended licensing and emergency punitive code audits",
+          "reason": "Escalating punitive and regulatory fallout penalizing the landlord's neglect.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Fines, mandatory refunds, and suspended licenses are punitive repercussions for landlord neglect.",
+      "feedback_deep": "The penalties and regulatory enforcement are direct negative repercussions stemming from failure to maintain the property. They represent punitive fallout rather than neutral branching structural complexity.",
+      "contrast_rule": "Use repercussion for punitive penalties and negative fallout.",
+      "hints": {
+        "attention": "Are these legal fines and sanctions punitive outcomes?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for punitive penalties and negative fallout."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_009",
+      "edge_id": "repercussion__ramification",
+      "domain": "technology",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The architectural update created a far-reaching technical ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_009_b1",
+          "text": "Migrating the core operating system to a decentralized microkernel model branched into new dependencies across third-party plugin frameworks.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.12,
+            "ramification": 0.88
+          },
+          "decisive_clue": "branched into new dependencies across third-party plugin frameworks",
+          "reason": "Complex architectural restructuring spreading through system dependencies.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        },
+        {
+          "id": "repercussion-ramification_009_b2",
+          "text": "Migrating the core operating system to a decentralized microkernel model branched into new dependencies across third-party plugin frameworks. It now forces database vendors, device manufacturers, and cloud security suites to redesign their communication interfaces.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.08,
+            "ramification": 0.92
+          },
+          "decisive_clue": "forces database vendors, device manufacturers, and cloud security suites to redesign interfaces",
+          "reason": "Expands on widespread secondary effects branching out into multiple external technical ecosystems.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A core architectural overhaul creating branching dependencies across multiple software ecosystems is a ramification.",
+      "feedback_deep": "The architectural migration creates structural, branching ripple effects that alter how separate components and third-party vendors interact. Such systemic structural consequences are ramifications.",
+      "contrast_rule": "Ramification refers to branching structural effects in complex systems.",
+      "hints": {
+        "attention": "Does the technical change branch out into multiple software ecosystems?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Ramification refers to branching structural effects in complex systems."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_010",
+      "edge_id": "repercussion__ramification",
+      "domain": "education",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Eliminating the fine arts department provoked a serious ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repercussion-ramification_010_b1",
+          "text": "The school board eliminated the fine arts department overnight, prompting intense student walkouts and a unanimous vote of no confidence from the faculty.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.89,
+            "ramification": 0.11
+          },
+          "decisive_clue": "prompting intense student walkouts and a vote of no confidence",
+          "reason": "Immediate hostile public backlash and negative fallout from an unpopular administrative decision.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_010_b2",
+          "text": "The school board eliminated the fine arts department overnight, prompting intense student walkouts and a unanimous vote of no confidence from the faculty. Administratively, the closure invalidated several university matriculation pathways, disrupted regional inter-school accreditations, and triggered mandatory redistributions of state elective funding across five unrelated subjects.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.16,
+            "ramification": 0.84
+          },
+          "decisive_clue": "invalidated matriculation pathways, disrupted accreditations, and redistributed funding across five subjects",
+          "reason": "The focus turns to complex, branching institutional and regulatory consequences.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Walkouts and no-confidence votes are repercussions; disrupted accreditations and funding restructuring are ramifications.",
+      "feedback_deep": "Beat 1 highlights the immediate hostile backlash (repercussion) against school administrators. Beat 2 shifts focus to systemic structural ripples across degree accreditation, funding formulas, and course schedules (ramifications).",
+      "contrast_rule": "Use repercussion for hostile fallout; use ramification for systemic, branching institutional effects.",
+      "hints": {
+        "attention": "Does the effect shift from angry backlash to complex institutional restructuring?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for hostile fallout; use ramification for systemic, branching institutional effects."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_011",
+      "edge_id": "repercussion__ramification",
+      "domain": "art",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The gallery's provocative installation produced a lasting ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repercussion-ramification_011_b1",
+          "text": "The provocative installation sparked fierce street protests outside the gallery, leading sponsors to pull all promotional funding.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.87,
+            "ramification": 0.13
+          },
+          "decisive_clue": "fierce street protests and sponsors pulling promotional funding",
+          "reason": "Adverse public backlash and punitive commercial fallout.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_011_b2",
+          "text": "The provocative installation sparked fierce street protests outside the gallery, leading sponsors to pull all promotional funding. In response, the municipal arts council had to overhaul citywide endowment guidelines, establish new statutory definitions for public display, and restructure civic arts grants across all municipal venues.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.17,
+            "ramification": 0.83
+          },
+          "decisive_clue": "overhaul citywide endowment guidelines, establish statutory definitions, and restructure civic grants",
+          "reason": "Branching policy overhaul and institutional structural reorganization.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Lost sponsorships are adverse repercussions, while sweeping policy changes to public art endowments are ramifications.",
+      "feedback_deep": "The initial fallout consists of hostile boycotts and cancelled funding (repercussions). Beat 2 reveals complex, branching statutory and institutional shifts across the broader cultural sector (ramifications).",
+      "contrast_rule": "Repercussion is negative backlash; ramification is systemic, branching policy restructuring.",
+      "hints": {
+        "attention": "Does the outcome evolve into widespread regulatory and policy changes?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Repercussion is negative backlash; ramification is systemic, branching policy restructuring."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_012",
+      "edge_id": "repercussion__ramification",
+      "domain": "finance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The central bank's policy shift carried an economy-wide ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_012_b1",
+          "text": "The central bank raised benchmark interest rates by a full percentage point, altering capital allocation across commercial lending and bond markets.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.14,
+            "ramification": 0.86
+          },
+          "decisive_clue": "altering capital allocation across commercial lending and bond markets",
+          "reason": "Macroeconomic structural shifts branching through the financial system.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        },
+        {
+          "id": "repercussion-ramification_012_b2",
+          "text": "The central bank raised benchmark interest rates by a full percentage point, altering capital allocation across commercial lending and bond markets. The shift immediately cascaded into mortgage underwriting, foreign exchange rates, corporate capital expenditure, and consumer credit terms.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.09,
+            "ramification": 0.91
+          },
+          "decisive_clue": "cascaded into mortgage underwriting, foreign exchange rates, corporate expenditure, and consumer credit",
+          "reason": "Expands on the multifaceted, branching nature of macroeconomic policy consequences.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Interest rate changes produce sprawling, multi-sector structural ramifications throughout the economy.",
+      "feedback_deep": "Interest rate hikes alter numerous interconnected economic sectors—from mortgages and currency valuation to business spending. Because these consequences branch across complex structures neutrally, they are ramifications.",
+      "contrast_rule": "Ramification describes complex, branching systemic consequences.",
+      "hints": {
+        "attention": "Does the monetary policy branch across varied financial markets?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Ramification describes complex, branching systemic consequences."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_013",
+      "edge_id": "repercussion__ramification",
+      "domain": "law",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The landmark court ruling brought an immense ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repercussion-ramification_013_b1",
+          "text": "The jury convicted the pharmaceutical CEO of fraud, triggering an immediate prison sentence and the seizure of all his personal assets.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.91,
+            "ramification": 0.09
+          },
+          "decisive_clue": "prison sentence and the seizure of all personal assets",
+          "reason": "Direct punitive and penal consequences suffered by the guilty party.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_013_b2",
+          "text": "The jury convicted the pharmaceutical CEO of fraud, triggering an immediate prison sentence and the seizure of all his personal assets. Beyond his punishment, the verdict established a novel legal test that forces compliance officers across the entire healthcare industry to overhaul clinical reporting, modify patent disclosures, and redraft thousands of vendor contracts.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.15,
+            "ramification": 0.85
+          },
+          "decisive_clue": "novel legal test forcing industry-wide overhaul of clinical reporting, patent disclosures, and vendor contracts",
+          "reason": "The consequence broadens into widespread, structural precedent branching through an entire industry.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Prison time is a punitive repercussion, while industry-wide changes in precedent are ramifications.",
+      "feedback_deep": "The CEO's prison sentence is a direct punitive penalty (repercussion). However, the creation of a new legal test that reshapes contractual and regulatory practices across medicine is a branching structural consequence (ramification).",
+      "contrast_rule": "Repercussion is personal punitive fallout; ramification is branching structural impact.",
+      "hints": {
+        "attention": "Does the ruling establish widespread structural precedents across an industry?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Repercussion is personal punitive fallout; ramification is branching structural impact."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_014",
+      "edge_id": "repercussion__ramification",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The commuter train breakdown had a direct, unpleasant ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_014_b1",
+          "text": "The commuter train stalled between stations for three hours without air conditioning, causing dozens of dehydrated passengers to suffer heat exhaustion.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.9,
+            "ramification": 0.1
+          },
+          "decisive_clue": "dehydrated passengers suffering heat exhaustion",
+          "reason": "Direct, distressing physical fallout resulting from transit equipment failure.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_014_b2",
+          "text": "The commuter train stalled between stations for three hours without air conditioning, causing dozens of dehydrated passengers to suffer heat exhaustion. Consequently, commuters missed crucial final exams and job interviews, prompting a class-action negligence claim against the transit authority.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.92,
+            "ramification": 0.08
+          },
+          "decisive_clue": "missed exams and interviews, prompting a negligence claim",
+          "reason": "Compounding negative consequences and hostile legal fallout resulting from the service failure.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Heat exhaustion and missed opportunities are direct, unpleasant repercussions of the transit failure.",
+      "feedback_deep": "The physical distress and personal disruption experienced by passengers constitute direct negative fallout (repercussions) from the mechanical breakdown, rather than a web of branching structural shifts.",
+      "contrast_rule": "Use repercussion for negative fallout and adverse personal consequences.",
+      "hints": {
+        "attention": "Is the focus on distressing personal fallout and grievances?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for negative fallout and adverse personal consequences."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_015",
+      "edge_id": "repercussion__ramification",
+      "domain": "environment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Clearing the coastal wetlands produced an intricate ecological ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_015_b1",
+          "text": "Clearing the coastal wetlands triggered unexpected shifts in water salinity and disrupted local fish breeding cycles.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.16,
+            "ramification": 0.84
+          },
+          "decisive_clue": "unexpected shifts in water salinity and disrupted fish breeding cycles",
+          "reason": "Secondary environmental consequences branching across interconnected natural systems.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        },
+        {
+          "id": "repercussion-ramification_015_b2",
+          "text": "Clearing the coastal wetlands triggered unexpected shifts in water salinity and disrupted local fish breeding cycles. In turn, this altered regional mangrove filtration, destabilized agricultural freshwater aquifers, and forced inland farms to alter their irrigation schedules.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.1,
+            "ramification": 0.9
+          },
+          "decisive_clue": "altered mangrove filtration, destabilized freshwater aquifers, and forced farm irrigation changes",
+          "reason": "Illustrates widespread, interconnected branching ripple effects through an ecosystem.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Environmental disturbances that branch through aquifers, agriculture, and salinity are ecological ramifications.",
+      "feedback_deep": "Clearing wetlands sets off a complex sequence of interconnected environmental effects that spread through marine life, ground aquifers, and farming practices. Such branching systemic ripple effects are ramifications.",
+      "contrast_rule": "Ramification applies to branching, complex systemic changes.",
+      "hints": {
+        "attention": "Does the ecological damage branch into multiple interconnected environmental systems?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Ramification applies to branching, complex systemic changes."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_016",
+      "edge_id": "repercussion__ramification",
+      "domain": "health",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The hospital administrator's falsification of safety logs brought a devastating ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_016_b1",
+          "text": "When inspectors uncovered that the administrator had falsified surgical sterilization logs, she was immediately fired and stripped of her healthcare license.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.92,
+            "ramification": 0.08
+          },
+          "decisive_clue": "immediately fired and stripped of her healthcare license",
+          "reason": "Direct punitive and disciplinary fallout for fraudulent misconduct.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_016_b2",
+          "text": "When inspectors uncovered that the administrator had falsified surgical sterilization logs, she was immediately fired and stripped of her healthcare license. Furthermore, state prosecutors filed criminal negligence charges against her, seeking substantial restitution for affected patients.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.95,
+            "ramification": 0.05
+          },
+          "decisive_clue": "criminal negligence charges seeking substantial restitution",
+          "reason": "Escalating legal penalties and punitive retribution reinforce severe negative fallout.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Termination, license revocation, and criminal charges are punitive repercussions of wrongdoing.",
+      "feedback_deep": "The penalties described are severe, punitive outcomes (repercussions) resulting from administrative wrongdoing. They represent direct disciplinary and legal retribution rather than systemic branching.",
+      "contrast_rule": "Use repercussion for punitive penalties and negative fallout.",
+      "hints": {
+        "attention": "Are these legal sanctions and license revocations punitive penalties?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for punitive penalties and negative fallout."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_017",
+      "edge_id": "repercussion__ramification",
+      "domain": "urban",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Constructing the massive expressway through downtown created a multifaceted ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_017_b1",
+          "text": "Building the downtown expressway severed traditional pedestrian corridors and redirected traffic flow across three adjacent neighborhoods.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.17,
+            "ramification": 0.83
+          },
+          "decisive_clue": "severed pedestrian corridors and redirected traffic flow across three adjacent neighborhoods",
+          "reason": "Structural urban consequences altering spatial and logistical flows across neighborhoods.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        },
+        {
+          "id": "repercussion-ramification_017_b2",
+          "text": "Building the downtown expressway severed traditional pedestrian corridors and redirected traffic flow across three adjacent neighborhoods. This restructuring subsequently altered commercial retail zoning, shifted school bus routes, and prompted utility companies to rebuild entire subterranean sewer networks.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.08,
+            "ramification": 0.92
+          },
+          "decisive_clue": "altered commercial retail zoning, shifted school bus routes, and prompted sewer rebuilds",
+          "reason": "Expands on extensive, branching structural ripple effects through civic infrastructure.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An infrastructure project that reshapes zoning, utilities, and school routes produces structural ramifications.",
+      "feedback_deep": "The construction sets off wide-ranging, branching consequences across traffic, zoning, utilities, and civic routines. These systemic structural adjustments are properly termed ramifications.",
+      "contrast_rule": "Ramification describes branching structural and systemic impacts.",
+      "hints": {
+        "attention": "Does the infrastructure project branch into diverse urban and utility systems?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Ramification describes branching structural and systemic impacts."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_018",
+      "edge_id": "repercussion__ramification",
+      "domain": "management",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The abrupt cancellation of the division's budget brought a major ___.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repercussion-ramification_018_b1",
+          "text": "The executive suddenly cancelled the product division's annual budget, triggering deep resentment among the engineers and prompt resignations from key leaders.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.88,
+            "ramification": 0.12
+          },
+          "decisive_clue": "deep resentment among engineers and prompt resignations from key leaders",
+          "reason": "Unpleasant emotional fallout and immediate negative personnel fallout from an executive decision.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_018_b2",
+          "text": "The executive suddenly cancelled the product division's annual budget, triggering deep resentment among the engineers and prompt resignations from key leaders. Furthermore, halting the project voided third-party software licensing agreements, required reallocating offshore manufacturing plants, and forced the company to revise its five-year investor roadmap.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.15,
+            "ramification": 0.85
+          },
+          "decisive_clue": "voided licensing agreements, reallocating offshore manufacturing plants, and revising five-year investor roadmaps",
+          "reason": "The consequence broadens into intricate, branching operational and strategic realignments across the enterprise.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Resignations and resentment are negative repercussions; voided licenses and restructured roadmaps are ramifications.",
+      "feedback_deep": "The initial employee anger and resignations represent adverse emotional and personnel fallout (repercussions). Beat 2 expands to a web of contractual, manufacturing, and strategic adjustments across the enterprise (ramifications).",
+      "contrast_rule": "Repercussion is adverse personal/personnel fallout; ramification is complex, branching organizational restructuring.",
+      "hints": {
+        "attention": "Does the consequence shift into branching contractual and operational changes?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Repercussion is adverse personal/personnel fallout; ramification is complex, branching organizational restructuring."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_019",
+      "edge_id": "repercussion__ramification",
+      "domain": "workplace",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Marcus's public outburst at the board meeting brought a swift ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_019_b1",
+          "text": "Marcus yelled insults at the company vice president during a live broadcast, resulting in his immediate suspension without pay.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.92,
+            "ramification": 0.08
+          },
+          "decisive_clue": "immediate suspension without pay",
+          "reason": "Direct punitive disciplinary penalty for unprofessional conduct.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        },
+        {
+          "id": "repercussion-ramification_019_b2",
+          "text": "Marcus yelled insults at the company vice president during a live broadcast, resulting in his immediate suspension without pay. Within days, colleagues ostracized him, industry clients terminated their accounts with him, and his professional reputation was thoroughly ruined.",
+          "best_word": "repercussion",
+          "fit": {
+            "repercussion": 0.94,
+            "ramification": 0.06
+          },
+          "decisive_clue": "colleagues ostracized him, clients terminated accounts, reputation ruined",
+          "reason": "Severe compounded social and professional fallout penalizing his behavior.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "ramification": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Suspension, ostracism, and lost clients are direct punitive repercussions of bad behavior.",
+      "feedback_deep": "Marcus suffers direct disciplinary and personal fallout as retribution for his misconduct. Because these consequences are punitive and harmful rather than branching structural complexities, repercussion is correct.",
+      "contrast_rule": "Use repercussion for punitive penalties and adverse fallout.",
+      "hints": {
+        "attention": "Is the outcome a punitive personal penalty?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Use repercussion for punitive penalties and adverse fallout."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repercussion-ramification_020",
+      "edge_id": "repercussion__ramification",
+      "domain": "language",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The historical vowel shift produced an enduring linguistic ___.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "repercussion-ramification_020_b1",
+          "text": "The historical vowel shift transformed English pronunciation, creating distinct vowel splits that branched across regional dialects throughout the British Isles.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.11,
+            "ramification": 0.89
+          },
+          "decisive_clue": "distinct vowel splits that branched across regional dialects",
+          "reason": "A neutral, systemic linguistic development that branches into diverse regional patterns.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        },
+        {
+          "id": "repercussion-ramification_020_b2",
+          "text": "The historical vowel shift transformed English pronunciation, creating distinct vowel splits that branched across regional dialects throughout the British Isles. Over centuries, these phonetic splits altered rhyming conventions in literature, decoupled orthography from pronunciation, and necessitated entirely new dictionaries and spelling reforms.",
+          "best_word": "ramification",
+          "fit": {
+            "repercussion": 0.07,
+            "ramification": 0.93
+          },
+          "decisive_clue": "altered rhyming conventions, decoupled orthography from pronunciation, necessitated spelling reforms",
+          "reason": "Expands on widespread structural secondary effects across literacy, literature, and lexicography.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 3,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "repercussion": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Phonetic shifts altering spelling conventions, dictionaries, and literature are structural linguistic ramifications.",
+      "feedback_deep": "Linguistic evolutions like the Great Vowel Shift are not punitive blunders; they are structural transformations that branch out into spelling rules, poetic meter, and lexicography over centuries. These branching systemic consequences are ramifications.",
+      "contrast_rule": "Ramification applies to neutral, branching structural transformations.",
+      "hints": {
+        "attention": "Does the linguistic change branch into widespread structural and spelling shifts?",
+        "axis": "negative impact (repercussion) vs neutral or complex structural change (ramification)",
+        "contrast": "Ramification applies to neutral, branching structural transformations."
+      },
+      "qa": "revised"
+    }
+  ]
+}

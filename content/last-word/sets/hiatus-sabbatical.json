@@ -1,0 +1,1297 @@
+{
+  "schema_version": 1,
+  "set_id": "hiatus-sabbatical",
+  "title": "hiatus / sabbatical",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[136]",
+    "source_pair_id": 555,
+    "qa": {
+      "pass": 0,
+      "revised": 17,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "hiatus",
+      "sense": "A neutral or involuntary interruption in an activity or process.",
+      "connotation": "neutral or negative, implies a disruption in flow.",
+      "register": "standard, slightly formal.",
+      "misconceptions": [
+        "Thinking it always means a permanent end.",
+        "Confusing it with a planned vacation."
+      ]
+    },
+    {
+      "word": "sabbatical",
+      "sense": "A planned, structured, and often extended leave from work for rest or professional growth.",
+      "connotation": "positive, professional, restorative.",
+      "register": "formal, academic/professional.",
+      "misconceptions": [
+        "Using it for any casual or short-term time off.",
+        "Thinking it is mandatory."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "intent",
+      "description": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus)."
+    },
+    {
+      "id": "structure",
+      "description": "Whether the break is a formal leave of absence from a career (sabbatical) or just a gap in a sequence (hiatus)."
+    },
+    {
+      "id": "duration",
+      "description": "Sabbaticals tend to be extended; a hiatus can range from brief to extended."
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "hiatus": [
+        "The show went on a long hiatus after the lead actor fell ill.",
+        "Production was forced into a hiatus due to the unexpected power failure.",
+        "She came back to the project after a two-year hiatus.",
+        "The band took a brief hiatus, but fans hope for a reunion soon.",
+        "There was a noticeable hiatus in their communication during the conflict.",
+        "He found the hiatus in his routine to be deeply frustrating."
+      ],
+      "sabbatical": [
+        "The professor used her sabbatical to complete her research in London.",
+        "He is on sabbatical this year, studying new trends in graphic design.",
+        "She planned her sabbatical months in advance to ensure her team was ready.",
+        "After ten years, the company allows employees to take a paid sabbatical.",
+        "During his sabbatical, he finally learned to speak Italian fluently.",
+        "The primary goal of her sabbatical was personal and professional rejuvenation."
+      ]
+    },
+    "counter": {
+      "hiatus": [
+        "The professor used her hiatus to complete her research in London.",
+        "He is on hiatus this year, studying new trends in graphic design.",
+        "She planned her hiatus months in advance to ensure her team was ready.",
+        "After ten years, the company allows employees to take a paid hiatus.",
+        "During his hiatus, he finally learned to speak Italian fluently.",
+        "The primary goal of her hiatus was personal and professional rejuvenation."
+      ],
+      "sabbatical": [
+        "The show went on a long sabbatical after the lead actor fell ill.",
+        "Production was forced into a sabbatical due to the unexpected power failure.",
+        "She came back to the project after a two-year sabbatical.",
+        "The band took a brief sabbatical, but fans hope for a reunion soon.",
+        "There was a noticeable sabbatical in their communication during the conflict.",
+        "He found the sabbatical in his routine to be deeply frustrating."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "hiatus__sabbatical",
+      "a": "hiatus",
+      "b": "sabbatical",
+      "boundary_rule": "A 'hiatus' is an unplanned or neutral interruption of activity; a 'sabbatical' is an intentional, planned, and extended professional leave.",
+      "clues_a": [
+        "unplanned",
+        "unexpected",
+        "interrupted",
+        "forced",
+        "sudden"
+      ],
+      "clues_b": [
+        "planned",
+        "professional",
+        "restorative",
+        "structured",
+        "growth"
+      ],
+      "irrelevant_clues": [
+        "length of time",
+        "being in a different location",
+        "doing nothing at all"
+      ],
+      "misconceptions": {
+        "M1": "Assuming any break from work is a sabbatical.",
+        "M2": "Assuming any pause in a sequence is an intentional, structured leave.",
+        "M3": "Ignoring the element of intent and planning in defining a sabbatical."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "hiatus-sabbatical_001",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the manager put the project on: a ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_001_b1",
+          "text": "When venture capital suddenly collapsed mid-quarter, the manager halted development on the app without any timeline for resuming.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.94,
+            "sabbatical": 0.06
+          },
+          "decisive_clue": "venture capital suddenly collapsed mid-quarter, the manager halted development on the app without any timeline",
+          "reason": "An unexpected halt to an operational workflow due to an external financial shock is a hiatus; a project cannot take a sabbatical.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_001_b2",
+          "text": "With bank accounts frozen and no clear reopening date, the remaining contract staff were dismissed indefinitely.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.96,
+            "sabbatical": 0.04
+          },
+          "decisive_clue": "accounts frozen and no clear reopening date, the remaining contract staff were dismissed indefinitely",
+          "reason": "Indefinite suspension and team dispersal confirm an involuntary operational disruption rather than a planned leave.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Projects experience a hiatus when operations are interrupted; only people take sabbaticals.",
+      "feedback_deep": "The shutdown was forced by sudden funding loss and applies to an organizational project, making 'hiatus' the only correct term.",
+      "contrast_rule": "Sabbaticals are planned leaves for individuals; operational gaps and project suspensions are hiatuses.",
+      "hints": {
+        "attention": "Can a software project take a professional leave?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Sabbaticals are planned leaves for individuals; operational gaps and project suspensions are hiatuses."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_002",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The manager placed the team's ongoing campaign on a ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_002_b1",
+          "text": "To allow the marketing department to recalibrate quarterly targets, the director suspended all promotional ad runs for two weeks.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.91,
+            "sabbatical": 0.09
+          },
+          "decisive_clue": "suspended all promotional ad runs for two weeks",
+          "reason": "A scheduled pause in an operational campaign is a hiatus; inanimate projects and campaigns cannot take sabbaticals.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_002_b2",
+          "text": "The pause was strictly restricted to campaign output, requiring all specialists to stay at their desks revising analytics.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.95,
+            "sabbatical": 0.05
+          },
+          "decisive_clue": "strictly restricted to campaign output, requiring all specialists to stay at their desks",
+          "reason": "Because the personnel remain on active duty while their public output is frozen, the process is on hiatus while the staff take no leave.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        }
+      ],
+      "feedback_short": "An operational pause in campaign output is a hiatus, especially when staff remain on duty.",
+      "feedback_deep": "Sabbaticals refer to personal leaves of absence from employment, whereas an interruption in a project or workflow is a hiatus.",
+      "contrast_rule": "Campaigns and activities enter a hiatus; individuals take a sabbatical.",
+      "hints": {
+        "attention": "Who or what is actually pausing activity?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Campaigns and activities enter a hiatus; individuals take a sabbatical."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_003",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "academic",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The professor's extended time away from teaching is a ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_003_b1",
+          "text": "Following a sudden cardiac collapse during midterms, the biology professor was immediately ordered off campus by physicians without any timeline for return.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.93,
+            "sabbatical": 0.07
+          },
+          "decisive_clue": "sudden cardiac collapse during midterms, ordered off campus by physicians without any timeline",
+          "reason": "An emergency, involuntary medical interruption of duties is an unplanned hiatus rather than a planned academic leave.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_003_b2",
+          "text": "Once fully stabilized, he submitted formal paperwork to the faculty senate to spend the next twelve months in Oxford researching cellular aging.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.08,
+            "sabbatical": 0.92
+          },
+          "decisive_clue": "submitted formal paperwork to the faculty senate to spend the next twelve months in Oxford researching",
+          "reason": "Transitioning to a formalized, faculty-approved research leave for scholarly development turns the leave into a sabbatical.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The absence flipped from an emergency medical hiatus to an approved academic research sabbatical.",
+      "feedback_deep": "The sudden hospitalization created an involuntary hiatus, but the subsequent formal application for year-long scholarship at Oxford made the leave a sabbatical.",
+      "contrast_rule": "Involuntary emergency absences are hiatuses; faculty-approved research leaves are sabbaticals.",
+      "hints": {
+        "attention": "Notice how the leave shifted into a formal research assignment.",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Involuntary emergency absences are hiatuses; faculty-approved research leaves are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_004",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "academic",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The dean's formal absence from university governance is a ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_004_b1",
+          "text": "Pending the outcome of an unexpected state financial audit into department accounts, the university provost abruptly suspended the dean's administrative duties.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.92,
+            "sabbatical": 0.08
+          },
+          "decisive_clue": "unexpected state financial audit, abruptly suspended the dean's administrative duties",
+          "reason": "An abrupt, involuntary suspension prompted by an ongoing external probe is an involuntary hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_004_b2",
+          "text": "After being fully exonerated, the board granted his scheduled petition for a funded academic year abroad to write a monograph on institutional leadership.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.07,
+            "sabbatical": 0.93
+          },
+          "decisive_clue": "granted his scheduled petition for a funded academic year abroad to write a monograph",
+          "reason": "A board-sanctioned, funded leave dedicated to writing scholarly research represents an intentional sabbatical.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An involuntary administrative suspension is a hiatus; approved scholarly leave for writing is a sabbatical.",
+      "feedback_deep": "The probe imposed a disruptive hiatus, whereas the subsequent board-approved year of scholarship fulfills all criteria of an academic sabbatical.",
+      "contrast_rule": "Involuntary administrative interruptions are hiatuses; institutional scholarly leaves are sabbaticals.",
+      "hints": {
+        "attention": "Compare an abrupt administrative suspension with an approved writing fellowship.",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Involuntary administrative interruptions are hiatuses; institutional scholarly leaves are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_005",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "art",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the painter's career has entered: a ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_005_b1",
+          "text": "When an overnight electrical fire burned down her studio along with all her canvases and supplies, the painter had to halt all creative production.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.94,
+            "sabbatical": 0.06
+          },
+          "decisive_clue": "overnight electrical fire burned down her studio, had to halt all creative production",
+          "reason": "An unwanted cessation of artistic work brought on by physical destruction is an involuntary hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_005_b2",
+          "text": "Struggling with insurance claims and lacking gallery representation or a replacement workspace, she has remained unable to touch a brush for over a year.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.95,
+            "sabbatical": 0.05
+          },
+          "decisive_clue": "struggling with insurance claims, lacking a replacement workspace, remained unable to touch a brush",
+          "reason": "Extended, agonizing inability to produce art due to logistics and grief confirms an ongoing hiatus, not a refreshing leave.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A career standstill caused by property destruction and hardship is a hiatus, not a sabbatical.",
+      "feedback_deep": "Because the hiatus was forced by a studio fire rather than chosen for rejuvenation or focused study, it cannot be called a sabbatical.",
+      "contrast_rule": "Catastrophic disruptions cause a hiatus; elective professional development defines a sabbatical.",
+      "hints": {
+        "attention": "Was this time away chosen by the artist or forced by disaster?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Catastrophic disruptions cause a hiatus; elective professional development defines a sabbatical."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_006",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "art",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The artist's planned year away from gallery commitments is a ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_006_b1",
+          "text": "After a decade of continuous gallery exhibitions, the sculptor notified her dealer that she was taking a planned twelve months off to study Japanese woodblock carving in Kyoto.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.09,
+            "sabbatical": 0.91
+          },
+          "decisive_clue": "taking a planned twelve months off to study Japanese woodblock carving",
+          "reason": "A scheduled, intentional break from commercial obligations to master a new craft is a classic sabbatical.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_006_b2",
+          "text": "She established a rigorous daily studio schedule with a master printmaker, treating the residency as an investment in her artistic evolution.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.05,
+            "sabbatical": 0.95
+          },
+          "decisive_clue": "rigorous daily studio schedule, investment in her artistic evolution",
+          "reason": "A highly disciplined curriculum dedicated to professional enrichment reinforces the sabbatical nature of the leave.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A structured, intentional period of artistic study away from commercial sales is a sabbatical.",
+      "feedback_deep": "The sculptor deliberately scheduled this time off to advance her professional technique in Kyoto, distinguishing it from an aimless hiatus.",
+      "contrast_rule": "Planned professional growth constitutes a sabbatical; passive interruptions are hiatuses.",
+      "hints": {
+        "attention": "Look at the intentional educational agenda behind the leave.",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Planned professional growth constitutes a sabbatical; passive interruptions are hiatuses."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_007",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "technology",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The software engineer's period away from daily coding is a ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_007_b1",
+          "text": "When a severe wrist injury prevented him from typing, the lead developer had to step away from all sprint cycles indefinitely.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.92,
+            "sabbatical": 0.08
+          },
+          "decisive_clue": "severe wrist injury prevented him from typing, step away from all sprint cycles indefinitely",
+          "reason": "An unplanned medical incapacitation halting daily workflow is an involuntary hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_007_b2",
+          "text": "Once his physical therapy concluded, he arranged a company-sponsored leave of absence to spend eight months auditing AI ethics seminars at Stanford.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.08,
+            "sabbatical": 0.92
+          },
+          "decisive_clue": "arranged a company-sponsored leave of absence to spend eight months auditing AI ethics seminars",
+          "reason": "A company-approved, long-term leave devoted to structured academic study transforms the absence into a sabbatical.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An unexpected injury caused a hiatus, but arranged company study time became a sabbatical.",
+      "feedback_deep": "The developer began with an enforced medical hiatus, which shifted into an intentional, company-backed educational sabbatical at Stanford.",
+      "contrast_rule": "Involuntary injury absences are hiatuses; employer-sponsored educational leaves are sabbaticals.",
+      "hints": {
+        "attention": "Notice how the leave shifted from medical downtime to structured university study.",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Involuntary injury absences are hiatuses; employer-sponsored educational leaves are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_008",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "technology",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The data scientist's time away from industry employment is a ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_008_b1",
+          "text": "Her corporate contract was abruptly terminated when administrative delays held up her work visa, leaving her legally forbidden from working.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.94,
+            "sabbatical": 0.06
+          },
+          "decisive_clue": "abruptly terminated when administrative delays held up her work visa, legally forbidden from working",
+          "reason": "A bureaucratic obstacle compelling an individual to cease employment is an involuntary hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_008_b2",
+          "text": "While awaiting immigration clearance, she secured a formal research fellowship at a university institute to co-author papers on algorithmic fairness.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.11,
+            "sabbatical": 0.89
+          },
+          "decisive_clue": "secured a formal research fellowship at a university institute to co-author papers",
+          "reason": "Engaging in a formal academic research post turns the career pause into an intellectual sabbatical.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A visa-enforced career freeze is a hiatus; structured academic fellowship work is a sabbatical.",
+      "feedback_deep": "The forced legal delay was initially a hiatus, but organizing a formal institutional research fellowship gave it the structured character of a sabbatical.",
+      "contrast_rule": "Involuntary bureaucratic pauses are hiatuses; deliberate scholarly appointments are sabbaticals.",
+      "hints": {
+        "attention": "What institutional structure did she attach to her time off?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Involuntary bureaucratic pauses are hiatuses; deliberate scholarly appointments are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_009",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "literature",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The author's silence between novels is a ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_009_b1",
+          "text": "Crippled by persistent writer's block and depression, the novelist failed to write a single paragraph despite frantic publisher deadlines.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.93,
+            "sabbatical": 0.07
+          },
+          "decisive_clue": "crippled by persistent writer's block, failed to write a single paragraph despite frantic publisher deadlines",
+          "reason": "An agonized, involuntary inability to produce work under contractual pressure is a hiatus, not a refreshing leave.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_009_b2",
+          "text": "Every morning spent staring blankly at the empty screen deepened his despair at this completely unwanted interruption to his storytelling career.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.95,
+            "sabbatical": 0.05
+          },
+          "decisive_clue": "despair at this completely unwanted interruption to his storytelling career",
+          "reason": "The explicitly unwanted nature of the creative freeze confirms it is an involuntary hiatus.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An involuntary creative freeze caused by writer's block is a hiatus.",
+      "feedback_deep": "Sabbaticals require intention and planning. An agonizing, unwanted pause in publication caused by psychological block is purely a hiatus.",
+      "contrast_rule": "Unwanted creative paralysis is a hiatus; planned professional renewal is a sabbatical.",
+      "hints": {
+        "attention": "Was this break a restorative plan or an unwelcome disruption?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Unwanted creative paralysis is a hiatus; planned professional renewal is a sabbatical."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_010",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "literature",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The author's deliberate pause from regular publication is a ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_010_b1",
+          "text": "After negotiating a formal contractual pause with her publisher, the author scheduled an entire year to conduct archival research across European libraries.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.09,
+            "sabbatical": 0.91
+          },
+          "decisive_clue": "contractual pause with her publisher, scheduled an entire year to conduct archival research",
+          "reason": "A scheduled, formally negotiated leave dedicated to deep professional research fits sabbatical.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_010_b2",
+          "text": "She followed an organized syllabus of manuscript studies in Oxford to lay the rigorous factual groundwork for her historical epic.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.05,
+            "sabbatical": 0.95
+          },
+          "decisive_clue": "organized syllabus of manuscript studies, rigorous factual groundwork",
+          "reason": "Structured research and intentional professional preparation embody a sabbatical.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A planned, structured year of archival research away from writing deadlines is a sabbatical.",
+      "feedback_deep": "The author intentionally carved out funded research time with her publisher's consent, qualifying the break as a sabbatical rather than an accidental hiatus.",
+      "contrast_rule": "Deliberately scheduled research leaves are sabbaticals; circumstantial halts are hiatuses.",
+      "hints": {
+        "attention": "Look at the structured research agenda behind the leave.",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Deliberately scheduled research leaves are sabbaticals; circumstantial halts are hiatuses."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_011",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "health",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The surgeon's absence from the operating theater is a ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_011_b1",
+          "text": "The hospital board summarily stripped the surgeon of clinical privileges during a sudden disciplinary inquiry into hospital protocol violations.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.93,
+            "sabbatical": 0.07
+          },
+          "decisive_clue": "summarily stripped of clinical privileges during a sudden disciplinary inquiry",
+          "reason": "An emergency administrative suspension removing a doctor from clinical practice is an involuntary hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_011_b2",
+          "text": "Following full reinstatement, the chief of surgery approved her funded petition to spend nine months mastering robotic micro-surgery at a specialized institute.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.08,
+            "sabbatical": 0.92
+          },
+          "decisive_clue": "approved her funded petition to spend nine months mastering robotic micro-surgery",
+          "reason": "A sanctioned, funded leave dedicated to acquiring advanced professional clinical expertise is a sabbatical.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An involuntary disciplinary suspension is a hiatus; approved clinical fellowship training is a sabbatical.",
+      "feedback_deep": "The disciplinary ban was an imposed hiatus, but once the surgeon was granted official funded leave for surgical mastery, it became a sabbatical.",
+      "contrast_rule": "Disciplinary suspensions are hiatuses; institutional training leaves are sabbaticals.",
+      "hints": {
+        "attention": "Notice how the absence turned from an enforced suspension into advanced institutional training.",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Disciplinary suspensions are hiatuses; institutional training leaves are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_012",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "health",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The nutritionist's leave from clinical practice is a ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_012_b1",
+          "text": "When flash floods demolished her medical clinic and destroyed patient records, the nutritionist was forced to halt all consultations overnight.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.94,
+            "sabbatical": 0.06
+          },
+          "decisive_clue": "flash floods demolished her medical clinic, forced to halt all consultations overnight",
+          "reason": "An unexpected disaster shutting down business operations produces an involuntary hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_012_b2",
+          "text": "Rather than waiting idly for reconstruction, she secured an accredited university placement to spend the next two terms studying clinical nutrigenomics.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.12,
+            "sabbatical": 0.88
+          },
+          "decisive_clue": "secured an accredited university placement to spend the next two terms studying clinical nutrigenomics",
+          "reason": "Enrolling in a formal academic program for professional development converts the break into a sabbatical.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A flood shutdown is a hiatus; an organized university study placement is a sabbatical.",
+      "feedback_deep": "The catastrophic flood forced an emergency hiatus, but intentionally undertaking structured university coursework gave the leave the character of a sabbatical.",
+      "contrast_rule": "Catastrophic disruptions cause a hiatus; university-accredited study creates a sabbatical.",
+      "hints": {
+        "attention": "How did the nature of the time away change after the flood?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Catastrophic disruptions cause a hiatus; university-accredited study creates a sabbatical."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_013",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The athlete's time away from competition is a ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_013_b1",
+          "text": "After tearing his ACL during the finals, the star striker was sidelined from professional soccer for the foreseeable future.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.94,
+            "sabbatical": 0.06
+          },
+          "decisive_clue": "tearing his ACL during the finals, sidelined from professional soccer for the foreseeable future",
+          "reason": "An involuntary sports absence caused by severe bodily trauma is a hiatus, not a professional sabbatical.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_013_b2",
+          "text": "Surgical complications prolonged his mandatory bed rest, leaving team trainers unable to set even an approximate return date.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.96,
+            "sabbatical": 0.04
+          },
+          "decisive_clue": "surgical complications prolonged his mandatory bed rest, unable to set even an approximate return date",
+          "reason": "Enforced medical recovery without personal professional agency reinforces that the break is an involuntary hiatus.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        }
+      ],
+      "feedback_short": "An athlete sidelined by injury and medical recovery is on a hiatus.",
+      "feedback_deep": "Sabbaticals are intentional leaves for career development. Being incapacitated by torn ligaments is an involuntary disruption, making 'hiatus' the accurate word.",
+      "contrast_rule": "Injury-enforced downtime is a hiatus; structured career leave is a sabbatical.",
+      "hints": {
+        "attention": "Did the player choose this break to develop their career?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Injury-enforced downtime is a hiatus; structured career leave is a sabbatical."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_016",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The traveler's unplanned delay is a ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_016_b1",
+          "text": "When border authorities seized her passport due to a clerical mix-up, the documentary filmmaker had to halt her expedition indefinitely.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.94,
+            "sabbatical": 0.06
+          },
+          "decisive_clue": "border authorities seized her passport, had to halt her expedition indefinitely",
+          "reason": "An unexpected bureaucratic stoppage interrupting travel is an involuntary hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_016_b2",
+          "text": "Stuck in a remote border hotel waiting for consular clearance, she could only sit idle as weeks slipped away without resolution.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.95,
+            "sabbatical": 0.05
+          },
+          "decisive_clue": "stuck in a remote border hotel waiting for consular clearance, sit idle as weeks slipped away",
+          "reason": "Forced idleness while waiting on diplomatic bureaucracy confirms an unplanned gap in activity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An involuntary travel delay caused by passport issues is a hiatus.",
+      "feedback_deep": "Being stranded by passport complications is an external, involuntary interruption of progress, fitting 'hiatus' rather than an intentional sabbatical.",
+      "contrast_rule": "Unplanned administrative delays are hiatuses; intentional leaves of absence are sabbaticals.",
+      "hints": {
+        "attention": "Was this travel halt an intentional study period or an enforced pause?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Unplanned administrative delays are hiatuses; intentional leaves of absence are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_017",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The senator's leave of absence is a ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_017_b1",
+          "text": "The senator stepped away from legislative proceedings mid-session after an acute family medical emergency required her constant presence.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.88,
+            "sabbatical": 0.12
+          },
+          "decisive_clue": "acute family medical emergency required her constant presence",
+          "reason": "An emergency, reactive departure from public service is an involuntary hiatus rather than an academic or professional sabbatical.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_017_b2",
+          "text": "Her office clarified that all legislative sponsorships were frozen and she would resume voting the moment the health crisis subsided.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.93,
+            "sabbatical": 0.07
+          },
+          "decisive_clue": "legislative sponsorships were frozen, resume voting the moment the health crisis subsided",
+          "reason": "Pausing work reactively until a crisis resolves marks an unplanned hiatus, not a structured development sabbatical.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Emergency leaves taken to attend to family crises are hiatuses, not sabbaticals.",
+      "feedback_deep": "A sabbatical is a planned leave for professional growth. An emergency exit from duty to manage a family medical crisis is an unforeseen hiatus.",
+      "contrast_rule": "Emergency crisis leaves are hiatuses; planned developmental leaves are sabbaticals.",
+      "hints": {
+        "attention": "Is this leave taken for professional advancement or because of an unexpected crisis?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Emergency crisis leaves are hiatuses; planned developmental leaves are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_019",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "media",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The news anchor's extended time off the air is a ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_019_b1",
+          "text": "The network pulled the primetime anchor from the evening broadcast without notice pending an internal review of defamatory remarks.",
+          "best_word": "hiatus",
+          "fit": {
+            "hiatus": 0.94,
+            "sabbatical": 0.06
+          },
+          "decisive_clue": "pulled the primetime anchor from the evening broadcast without notice pending an internal review",
+          "reason": "An involuntary removal from broadcasting during a misconduct review is a hiatus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "sabbatical": "M1"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_019_b2",
+          "text": "Following arbitration, the network formalized a paid twelve-month fellowship for her to conduct media integrity research at Columbia University.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.09,
+            "sabbatical": 0.91
+          },
+          "decisive_clue": "formalized a paid twelve-month fellowship for her to conduct media integrity research at Columbia University",
+          "reason": "A formal, paid institutional fellowship devoted to academic research and professional enrichment is a sabbatical.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An involuntary broadcast suspension is a hiatus; a formal university research fellowship is a sabbatical.",
+      "feedback_deep": "The anchor's initial removal was an enforced hiatus. Once transitioned into a structured, network-sponsored university research fellowship, it became a sabbatical.",
+      "contrast_rule": "Suspensions and broadcast bans are hiatuses; formal academic fellowships are sabbaticals.",
+      "hints": {
+        "attention": "How did the absence evolve from a disciplinary removal into university research?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Suspensions and broadcast bans are hiatuses; formal academic fellowships are sabbaticals."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "hiatus-sabbatical_020",
+      "edge_id": "hiatus__sabbatical",
+      "domain": "finance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The accountant's structured leave of absence is a ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hiatus-sabbatical_020_b1",
+          "text": "The senior auditor coordinated with his accounting firm a full year in advance to take nine months of paid leave to complete his forensic accounting credential.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.08,
+            "sabbatical": 0.92
+          },
+          "decisive_clue": "coordinated a full year in advance to take nine months of paid leave to complete his forensic accounting credential",
+          "reason": "A scheduled, employer-negotiated leave designed for career education is a quintessential sabbatical.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M2"
+          }
+        },
+        {
+          "id": "hiatus-sabbatical_020_b2",
+          "text": "His firm guaranteed his managerial seat upon return, structuring the leave as an investment in senior staff development.",
+          "best_word": "sabbatical",
+          "fit": {
+            "hiatus": 0.04,
+            "sabbatical": 0.96
+          },
+          "decisive_clue": "guaranteed his managerial seat upon return, structuring the leave as an investment in senior staff development",
+          "reason": "Guaranteed job reinstatement and formal professional development framing confirm a structured sabbatical.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "hiatus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A structured, employer-sponsored leave for advanced professional credentials is a sabbatical.",
+      "feedback_deep": "The accountant planned this absence well in advance with his employer to acquire professional qualifications, which defines a sabbatical rather than a circumstantial hiatus.",
+      "contrast_rule": "Planned professional development leaves are sabbaticals; circumstantial pauses are hiatuses.",
+      "hints": {
+        "attention": "Was this leave negotiated in advance for career development?",
+        "axis": "Whether the break is planned and desired (sabbatical) or circumstantial and potentially unwelcome (hiatus).",
+        "contrast": "Planned professional development leaves are sabbaticals; circumstantial pauses are hiatuses."
+      },
+      "qa": "revised"
+    }
+  ]
+}

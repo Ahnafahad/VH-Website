@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "goad-coax",
+  "title": "goad / coax",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[175]",
+    "source_pair_id": 789,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "goad",
+      "sense": "provoke someone into action through criticism, challenges or irritation",
+      "connotation": "pressuring; often negative",
+      "register": "formal",
+      "misconceptions": [
+        "Thinking any persistent persuasion is harsh.",
+        "Treating supportive patience as emotional provocation."
+      ]
+    },
+    {
+      "word": "coax",
+      "sense": "persuade gently and patiently through reassuring encouragement",
+      "connotation": "warm, patient; may be persistent",
+      "register": "general",
+      "misconceptions": [
+        "Confusing a resulting action with the method used."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "pressure_method",
+      "description": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement."
+    }
+  ],
+  "edges": [
+    {
+      "id": "goad__coax",
+      "a": "goad",
+      "b": "coax",
+      "boundary_rule": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement.",
+      "clues_a": [
+        "taunts and public challenges",
+        "irritating repeated jabs"
+      ],
+      "clues_b": [
+        "gentle assurances",
+        "patient invitation",
+        "friendly encouragement"
+      ],
+      "irrelevant_clues": [
+        "outcome success",
+        "setting",
+        "number of observers"
+      ],
+      "misconceptions": {
+        "M1": "Thinking any persistent persuasion is harsh.",
+        "M2": "Confusing a resulting action with the method used.",
+        "M3": "Treating supportive patience as emotional provocation."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "goad-coax_001",
+      "edge_id": "goad__coax",
+      "domain": "school_group_assignment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Amina pushed Sef to finish his slide?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "goad-coax_001_b1",
+          "text": "Amina keeps saying, “Everyone else managed theirs,” whenever Sef pauses over the slide.",
+          "best_word": "goad",
+          "fit": {
+            "goad": 0.89,
+            "coax": 0.22
+          },
+          "decisive_clue": "she uses comparison to sting him into working",
+          "reason": "She uses comparison to sting him into working is the evidence for goad.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coax": "M2"
+          }
+        },
+        {
+          "id": "goad-coax_001_b2",
+          "text": "She repeats the comparison in front of the whole group when the deadline gets close.",
+          "best_word": "goad",
+          "fit": {
+            "goad": 0.92,
+            "coax": 0.22
+          },
+          "decisive_clue": "the repeated public comparison still pressures him",
+          "reason": "Public repetition intensifies the existing challenge; it does not become gentle encouragement.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coax": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she uses comparison to sting him into working.",
+      "feedback_deep": "Goading uses pointed pressure or irritation to trigger action. Amina relies on comparison and embarrassment; coaxing would be patient reassurance.",
+      "contrast_rule": "Goad with a jab; coax with patience.",
+      "hints": {
+        "attention": "Listen to how the person tries to get the other person moving.",
+        "axis": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement.",
+        "contrast": "Goad with a jab; coax with patience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "goad-coax_002",
+      "edge_id": "goad__coax",
+      "domain": "family_outing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Kenji encouraged his niece to enter the pool?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "goad-coax_002_b1",
+          "text": "Kenji sits beside her, offers his hand and says she can try just one step whenever she feels ready.",
+          "best_word": "coax",
+          "fit": {
+            "goad": 0.25,
+            "coax": 0.9
+          },
+          "decisive_clue": "he offers a patient invitation with control left to her",
+          "reason": "He offers a patient invitation with control left to her is the evidence for coax.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "goad": "M3"
+          }
+        },
+        {
+          "id": "goad-coax_002_b2",
+          "text": "When she hesitates, he waits without pulling her closer.",
+          "best_word": "coax",
+          "fit": {
+            "goad": 0.25,
+            "coax": 0.93
+          },
+          "decisive_clue": "he waits without forcing a response",
+          "reason": "His willingness to wait confirms gentle persuasion rather than provocation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "goad": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he waits without forcing a response.",
+      "feedback_deep": "Coaxing relies on patience and reassurance while the other person chooses. Kenji avoids irritation or dares.",
+      "contrast_rule": "Goad with a jab; coax with patience.",
+      "hints": {
+        "attention": "Listen to how the person tries to get the other person moving.",
+        "axis": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement.",
+        "contrast": "Goad with a jab; coax with patience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "goad-coax_003",
+      "edge_id": "goad__coax",
+      "domain": "sports_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Idris got Leo to attempt the difficult jump?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "goad-coax_003_b1",
+          "text": "Idris smiles and says, “Try the smaller version first; I’ll show you how,” until Leo nods.",
+          "best_word": "coax",
+          "fit": {
+            "goad": 0.19,
+            "coax": 0.88
+          },
+          "decisive_clue": "he initially reassures Leo with an easier step",
+          "reason": "He initially reassures Leo with an easier step is the evidence for coax.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "goad": "M1"
+          }
+        },
+        {
+          "id": "goad-coax_003_b2",
+          "text": "Then Idris adds, “Unless you’re scared to let the team see you fail.”",
+          "best_word": "goad",
+          "fit": {
+            "goad": 0.91,
+            "coax": 0.19
+          },
+          "decisive_clue": "he adds a challenge meant to sting Leo into acting",
+          "reason": "The challenge changes the pressure tactic from supportive invitation to provocation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coax": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he adds a challenge meant to sting Leo into acting.",
+      "feedback_deep": "The initial method is coaxing because it offers an easier step. The added taunt pressures Leo through fear of looking cowardly, which better fits goading.",
+      "contrast_rule": "Goad with a jab; coax with patience.",
+      "hints": {
+        "attention": "Listen to how the person tries to get the other person moving.",
+        "axis": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement.",
+        "contrast": "Goad with a jab; coax with patience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "goad-coax_004",
+      "edge_id": "goad__coax",
+      "domain": "travel_plans",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Sofia tried to get Noura onto the ferry?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "goad-coax_004_b1",
+          "text": "Sofia sends Noura a calm message offering to stand with her the entire short ride.",
+          "best_word": "coax",
+          "fit": {
+            "goad": 0.22,
+            "coax": 0.89
+          },
+          "decisive_clue": "she reassures Noura without taking away her choice",
+          "reason": "She reassures Noura without taking away her choice is the evidence for coax.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "goad": "M3"
+          }
+        },
+        {
+          "id": "goad-coax_004_b2",
+          "text": "She adds that they can leave the queue if Noura changes her mind.",
+          "best_word": "coax",
+          "fit": {
+            "goad": 0.22,
+            "coax": 0.92
+          },
+          "decisive_clue": "the option to leave keeps the invitation voluntary",
+          "reason": "Giving an exit option supports the patient invitation rather than increasing emotional pressure.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "goad": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she reassures Noura without taking away her choice.",
+      "feedback_deep": "Coaxing can involve repeated encouragement, but its method remains gentle. Sofia leaves the choice with Noura.",
+      "contrast_rule": "Goad with a jab; coax with patience.",
+      "hints": {
+        "attention": "Listen to how the person tries to get the other person moving.",
+        "axis": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement.",
+        "contrast": "Goad with a jab; coax with patience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "goad-coax_005",
+      "edge_id": "goad__coax",
+      "domain": "online_game",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes how Malik pressed his teammate to join one more match?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "goad-coax_005_b1",
+          "text": "Malik keeps typing, “So you quit whenever the score gets tough?” until his teammate rejoins.",
+          "best_word": "goad",
+          "fit": {
+            "goad": 0.9,
+            "coax": 0.25
+          },
+          "decisive_clue": "he uses repeated accusations to provoke a response",
+          "reason": "He uses repeated accusations to provoke a response is the evidence for goad.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coax": "M2"
+          }
+        },
+        {
+          "id": "goad-coax_005_b2",
+          "text": "He points out every time the teammate has backed out this week.",
+          "best_word": "goad",
+          "fit": {
+            "goad": 0.93,
+            "coax": 0.25
+          },
+          "decisive_clue": "the original accusatory taunt is still the decisive method",
+          "reason": "The history of past matches adds context but does not change how Malik provokes his teammate.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coax": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: he uses repeated accusations to provoke a response.",
+      "feedback_deep": "Goading works through irritating challenges or criticism. Malik’s accusations are decisive; counting previous games is incidental to that method.",
+      "contrast_rule": "Goad with a jab; coax with patience.",
+      "hints": {
+        "attention": "Listen to how the person tries to get the other person moving.",
+        "axis": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement.",
+        "contrast": "Goad with a jab; coax with patience."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "goad-coax_006",
+      "edge_id": "goad__coax",
+      "domain": "shopping_trip",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Priya got her brother to try the coat?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "goad-coax_006_b1",
+          "text": "Priya tells her brother the colour suits him and offers to fetch another size if the first one feels awkward.",
+          "best_word": "coax",
+          "fit": {
+            "goad": 0.19,
+            "coax": 0.88
+          },
+          "decisive_clue": "she encourages him with kind words and a helpful offer",
+          "reason": "She encourages him with kind words and a helpful offer is the evidence for coax.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "goad": "M3"
+          }
+        },
+        {
+          "id": "goad-coax_006_b2",
+          "text": "She lets him study himself in the mirror and waits until he asks to try it.",
+          "best_word": "coax",
+          "fit": {
+            "goad": 0.19,
+            "coax": 0.91
+          },
+          "decisive_clue": "she patiently gives him control over the choice",
+          "reason": "Giving him time and a choice confirms reassurance instead of provoking him through embarrassment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "goad": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: she patiently gives him control over the choice.",
+      "feedback_deep": "Coaxing means persuading through warmth and gentle persistence. Priya’s compliments and helpful offer invite a choice, unlike goading through challenges.",
+      "contrast_rule": "Goad with a jab; coax with patience.",
+      "hints": {
+        "attention": "Listen to how the person tries to get the other person moving.",
+        "axis": "Goading drives action through provocation or emotional pressure, whereas coaxing invites it through gentle, patient encouragement.",
+        "contrast": "Goad with a jab; coax with patience."
+      },
+      "qa": "pass"
+    }
+  ]
+}

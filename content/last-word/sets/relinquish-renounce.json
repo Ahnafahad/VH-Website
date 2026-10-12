@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "relinquish-renounce",
+  "title": "relinquish / renounce",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[119]",
+    "source_pair_id": 471,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 4
+    }
+  },
+  "words": [
+    {
+      "word": "relinquish",
+      "sense": "voluntarily surrender something held or controlled",
+      "connotation": "neutral to reluctant",
+      "register": "formal",
+      "misconceptions": [
+        "Giving up a role is always a formal rejection of it"
+      ]
+    },
+    {
+      "word": "renounce",
+      "sense": "formally reject a belief, claim, or association",
+      "connotation": "decisive and public",
+      "register": "formal",
+      "misconceptions": [
+        "Handing over an object necessarily rejects a principle"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "object_handed_over_vs_formal_disavowal",
+      "description": "Giving up control of a thing or position differs from officially denying a claim, affiliation, or belief."
+    }
+  ],
+  "edges": [
+    {
+      "id": "relinquish__renounce",
+      "a": "relinquish",
+      "b": "renounce",
+      "boundary_rule": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association.",
+      "clues_a": [
+        "hands over the keys",
+        "steps down from office",
+        "gives another person control"
+      ],
+      "clues_b": [
+        "formally disowns a claim",
+        "publicly rejects an affiliation",
+        "signs a declaration against a belief"
+      ],
+      "irrelevant_clues": [
+        "emotional reluctance",
+        "public attention",
+        "length of the meeting"
+      ],
+      "misconceptions": {
+        "M1": "Any loss or handover counts as formal disavowal",
+        "M2": "Any verbal rejection is merely a transfer of possession",
+        "M3": "A public or difficult decision alone determines the verb"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "relinquish-renounce_001",
+      "edge_id": "relinquish__renounce",
+      "domain": "school_council",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amira’s decision about her council role?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "relinquish-renounce_001_b1",
+          "text": "Amira passed the council badge and voting rights to the new leader after the election.",
+          "best_word": "relinquish",
+          "fit": {
+            "relinquish": 0.91,
+            "renounce": 0.17
+          },
+          "decisive_clue": "handed over an office she held",
+          "reason": "A transfer of responsibility is at issue.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "renounce": "M1"
+          }
+        },
+        {
+          "id": "relinquish-renounce_001_b2",
+          "text": "She was sad to leave and kept a photo of her old team.",
+          "best_word": "relinquish",
+          "fit": {
+            "relinquish": 0.91,
+            "renounce": 0.17
+          },
+          "decisive_clue": "gave up an office despite mixed feelings",
+          "reason": "Her emotions do not turn a handover into rejection of a belief.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "renounce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: gave up an office despite mixed feelings.",
+      "feedback_deep": "relinquish means to let go of something one holds or controls; renounce means to formally disavow a belief, claim, or affiliation. A transfer of responsibility is at issue. Her emotions do not turn a handover into rejection of a belief.",
+      "contrast_rule": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association.",
+      "hints": {
+        "attention": "Notice what she actually gave up.",
+        "axis": "Giving up control of a thing or position differs from officially denying a claim, affiliation, or belief.",
+        "contrast": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "relinquish-renounce_002",
+      "edge_id": "relinquish__renounce",
+      "domain": "family_estate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Mateo’s declaration about the family house?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "relinquish-renounce_002_b1",
+          "text": "Mateo signed a letter handing his sister control of the family house he had managed.",
+          "best_word": "relinquish",
+          "fit": {
+            "relinquish": 0.9,
+            "renounce": 0.2
+          },
+          "decisive_clue": "letter handed over authority he previously held",
+          "reason": "The written decision initially looks like a transfer of control.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "renounce": "M1"
+          }
+        },
+        {
+          "id": "relinquish-renounce_002_b2",
+          "text": "The same letter also formally denied that he had any rightful claim to inherit or own the house.",
+          "best_word": "renounce",
+          "fit": {
+            "relinquish": 0.2,
+            "renounce": 0.93
+          },
+          "decisive_clue": "the same document formally rejected his ownership claim",
+          "reason": "The declaration now explicitly disavows a right, not merely control of the house.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "relinquish": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key new fact: the same document formally rejected his ownership claim.",
+      "feedback_deep": "relinquish means to let go of something one holds or controls; renounce means to formally disavow a belief, claim, or affiliation. The written decision initially looks like a transfer of control. The declaration now explicitly disavows a right, not merely control of the house.",
+      "contrast_rule": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association.",
+      "hints": {
+        "attention": "Read what his one signed document says about his rights.",
+        "axis": "Giving up control of a thing or position differs from officially denying a claim, affiliation, or belief.",
+        "contrast": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "relinquish-renounce_004",
+      "edge_id": "relinquish__renounce",
+      "domain": "online_community",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kenji’s announcement to his online group?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "relinquish-renounce_004_b1",
+          "text": "Kenji posted a signed statement saying he no longer belonged to the movement he had publicly supported.",
+          "best_word": "renounce",
+          "fit": {
+            "relinquish": 0.15,
+            "renounce": 0.89
+          },
+          "decisive_clue": "publicly rejected his former association",
+          "reason": "He declares a break with an affiliation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "relinquish": "M2"
+          }
+        },
+        {
+          "id": "relinquish-renounce_004_b2",
+          "text": "More than five thousand people viewed the post by morning.",
+          "best_word": "renounce",
+          "fit": {
+            "relinquish": 0.15,
+            "renounce": 0.89
+          },
+          "decisive_clue": "formally rejected an affiliation despite the audience size",
+          "reason": "The view count does not change the statement's meaning.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "relinquish": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: formally rejected an affiliation despite the audience size.",
+      "feedback_deep": "relinquish means to let go of something one holds or controls; renounce means to formally disavow a belief, claim, or affiliation. He declares a break with an affiliation. The view count does not change the statement's meaning.",
+      "contrast_rule": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association.",
+      "hints": {
+        "attention": "Look beyond the number of viewers.",
+        "axis": "Giving up control of a thing or position differs from officially denying a claim, affiliation, or belief.",
+        "contrast": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "relinquish-renounce_005",
+      "edge_id": "relinquish__renounce",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nadia’s statement at the book club?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "relinquish-renounce_005_b1",
+          "text": "Nadia read a prepared declaration rejecting the theory she had defended for years.",
+          "best_word": "renounce",
+          "fit": {
+            "relinquish": 0.17,
+            "renounce": 0.91
+          },
+          "decisive_clue": "explicitly disowned a long-held belief",
+          "reason": "The statement rejects an intellectual position.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "relinquish": "M2"
+          }
+        },
+        {
+          "id": "relinquish-renounce_005_b2",
+          "text": "She asked the secretary to record her rejection in the minutes.",
+          "best_word": "renounce",
+          "fit": {
+            "relinquish": 0.17,
+            "renounce": 0.91
+          },
+          "decisive_clue": "put her rejection of a belief on record",
+          "reason": "Recording the words reinforces their formal nature.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "relinquish": "M2"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: put her rejection of a belief on record.",
+      "feedback_deep": "relinquish means to let go of something one holds or controls; renounce means to formally disavow a belief, claim, or affiliation. The statement rejects an intellectual position. Recording the words reinforces their formal nature.",
+      "contrast_rule": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association.",
+      "hints": {
+        "attention": "Consider the function of the minutes.",
+        "axis": "Giving up control of a thing or position differs from officially denying a claim, affiliation, or belief.",
+        "contrast": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "relinquish-renounce_008",
+      "edge_id": "relinquish__renounce",
+      "domain": "neighbourhood_garden",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Omar’s action in the shared garden?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "relinquish-renounce_008_b1",
+          "text": "Omar passed responsibility for the garden plot to his neighbour and returned its only gate key.",
+          "best_word": "relinquish",
+          "fit": {
+            "relinquish": 0.89,
+            "renounce": 0.15
+          },
+          "decisive_clue": "surrendered control of a plot",
+          "reason": "He has given up something he managed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "renounce": "M1"
+          }
+        },
+        {
+          "id": "relinquish-renounce_008_b2",
+          "text": "He wore a suit to the handover and invited a photographer.",
+          "best_word": "relinquish",
+          "fit": {
+            "relinquish": 0.89,
+            "renounce": 0.15
+          },
+          "decisive_clue": "actually gave up control rather than a belief",
+          "reason": "Ceremony and clothing do not redefine the action.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "renounce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction changes nothing; decisive clue: actually gave up control rather than a belief.",
+      "feedback_deep": "relinquish means to let go of something one holds or controls; renounce means to formally disavow a belief, claim, or affiliation. He has given up something he managed. Ceremony and clothing do not redefine the action.",
+      "contrast_rule": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association.",
+      "hints": {
+        "attention": "Separate the ceremony from the decision.",
+        "axis": "Giving up control of a thing or position differs from officially denying a claim, affiliation, or belief.",
+        "contrast": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "relinquish-renounce_010",
+      "edge_id": "relinquish__renounce",
+      "domain": "holiday_house",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kwame’s decision about his holiday house?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "relinquish-renounce_010_b1",
+          "text": "Kwame returned the keys to the holiday house he had been managing and handed its upkeep to his cousin.",
+          "best_word": "relinquish",
+          "fit": {
+            "relinquish": 0.93,
+            "renounce": 0.2
+          },
+          "decisive_clue": "passed on practical control of a home",
+          "reason": "He handed over a responsibility he had held.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "renounce": "M1"
+          }
+        },
+        {
+          "id": "relinquish-renounce_010_b2",
+          "text": "He was reluctant to leave, but his cousin now made every decision about repairs and visitors.",
+          "best_word": "relinquish",
+          "fit": {
+            "relinquish": 0.93,
+            "renounce": 0.2
+          },
+          "decisive_clue": "surrendered control despite reluctance",
+          "reason": "His feelings do not turn a handover into formal rejection of any claim.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "renounce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: surrendered control despite reluctance.",
+      "feedback_deep": "relinquish means to let go of something one holds or controls; renounce means to formally disavow a belief, claim, or affiliation. He handed over a responsibility he had held. His feelings do not turn a handover into formal rejection of any claim.",
+      "contrast_rule": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association.",
+      "hints": {
+        "attention": "Watch who manages the house after he leaves.",
+        "axis": "Giving up control of a thing or position differs from officially denying a claim, affiliation, or belief.",
+        "contrast": "relinquish gives up something held or controlled; renounce formally rejects a belief, claim, or association."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "set_id": "dubious-ambiguous",
+  "title": "dubious / ambiguous",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[164]",
+    "source_pair_id": 695,
+    "qa": {
+      "pass": 7,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "dubious",
+      "sense": "Giving reasons to doubt honesty, accuracy, or reliability.",
+      "connotation": "skeptical, distrustful",
+      "register": "standard",
+      "misconceptions": [
+        "Confused with ambiguous when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "ambiguous",
+      "sense": "Allowing two or more plausible meanings.",
+      "connotation": "neutral, uncertain",
+      "register": "standard",
+      "misconceptions": [
+        "Confused with dubious when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "reliability_versus_interpretation",
+      "description": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading."
+    }
+  ],
+  "edges": [
+    {
+      "id": "dubious__ambiguous",
+      "a": "dubious",
+      "b": "ambiguous",
+      "boundary_rule": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "clues_a": [
+        "Questionable or untrustworthy.",
+        "Giving reasons to doubt honesty, accuracy, or reliability."
+      ],
+      "clues_b": [
+        "Unclear because it has multiple readings.",
+        "Allowing two or more plausible meanings."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating dubious as though it always means ambiguous.",
+        "M2": "Treating ambiguous as though it always means dubious.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "dubious-ambiguous_001",
+      "edge_id": "dubious__ambiguous",
+      "domain": "online_shopping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Yara’s delivery listing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_001_b1",
+          "text": "The listing promised next-day delivery but offered neither a seller address nor a tracking procedure.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.87,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "its reliability is undermined by missing seller details",
+          "reason": "This establishes that its reliability is undermined by missing seller details.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_001_b2",
+          "text": "Its five glowing reviews had all been posted within the same minute.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.93,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "its reliability is undermined by missing seller details",
+          "reason": "The suspiciously timed reviews strengthen doubts about honesty, not uncertainty over what the promise means.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Its reliability is undermined by missing seller details; that detail favors dubious.",
+      "feedback_deep": "The suspiciously timed reviews strengthen doubts about honesty, not uncertainty over what the promise means. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Judge credibility rather than the number of possible readings.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "dubious-ambiguous_002",
+      "edge_id": "dubious__ambiguous",
+      "domain": "travel_plans",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mateo’s meeting note?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_002_b1",
+          "text": "Mateo’s note said “Meet me by the bank” without saying whether he meant the river or a financial branch.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.87
+          },
+          "decisive_clue": "the word bank allows two plausible meeting places",
+          "reason": "This establishes that the word bank allows two plausible meeting places.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_002_b2",
+          "text": "It included the meeting time but gave no street name.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.93
+          },
+          "decisive_clue": "the word bank allows two plausible meeting places",
+          "reason": "A time does not remove the competing readings of the location.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The word bank allows two plausible meeting places; that detail favors ambiguous.",
+      "feedback_deep": "A time does not remove the competing readings of the location. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Look for two possible meanings of the same phrase.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "dubious-ambiguous_003",
+      "edge_id": "dubious__ambiguous",
+      "domain": "school_competition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Aisha’s result notice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_003_b1",
+          "text": "Aisha received a winner’s notice for a competition she had never entered.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.87,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "the notice makes an implausible claim about her participation",
+          "reason": "This establishes that the notice makes an implausible claim about her participation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_003_b2",
+          "text": "The notice used an email address that misspelled the event’s name.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.93,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "the notice makes an implausible claim about her participation",
+          "reason": "The misspelling adds reason for distrust, not a second plausible meaning.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The notice makes an implausible claim about her participation; that detail favors dubious.",
+      "feedback_deep": "The misspelling adds reason for distrust, not a second plausible meaning. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Ask whether the message is believable.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "dubious-ambiguous_004",
+      "edge_id": "dubious__ambiguous",
+      "domain": "school_announcement",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Ravi’s early-collection notice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_004_b1",
+          "text": "The notice said pupils could leave early “if necessary” but never said who decided what counted as necessary.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.87
+          },
+          "decisive_clue": "the condition permits competing interpretations of who decides",
+          "reason": "This establishes that the condition permits competing interpretations of who decides.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_004_b2",
+          "text": "Its heading was printed in large, dark letters.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.93
+          },
+          "decisive_clue": "the condition permits competing interpretations of who decides",
+          "reason": "Large lettering is irrelevant; the uncertainty about authority remains.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The condition permits competing interpretations of who decides; that detail favors ambiguous.",
+      "feedback_deep": "Large lettering is irrelevant; the uncertainty about authority remains. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Ignore its appearance and read the condition.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "dubious-ambiguous_005",
+      "edge_id": "dubious__ambiguous",
+      "domain": "group_chat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Nora’s message to the group?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_005_b1",
+          "text": "Nora wrote “I’ll take care of it” after the group discussed both paying the deposit and making the reservation.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.87
+          },
+          "decisive_clue": "the pronoun it could refer to either pending task",
+          "reason": "This establishes that the pronoun it could refer to either pending task.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_005_b2",
+          "text": "She added a smiling emoji beneath the sentence.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.93
+          },
+          "decisive_clue": "the pronoun it could refer to either pending task",
+          "reason": "The emoji indicates tone but does not identify which task she meant.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The pronoun it could refer to either pending task; that detail favors ambiguous.",
+      "feedback_deep": "The emoji indicates tone but does not identify which task she meant. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Find the possible referents of one word.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "dubious-ambiguous_006",
+      "edge_id": "dubious__ambiguous",
+      "domain": "office_accounts",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kaito’s expense receipt?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_006_b1",
+          "text": "Kaito’s receipt showed a higher payment than the amount deducted from his bank account.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.87,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "the recorded amount conflicts with the actual charge",
+          "reason": "This establishes that the recorded amount conflicts with the actual charge.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_006_b2",
+          "text": "Its handwritten total had been crossed out and changed twice.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.93,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "the recorded amount conflicts with the actual charge",
+          "reason": "Repeated changes cast further doubt on accuracy rather than introducing different readings of the amount.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The recorded amount conflicts with the actual charge; that detail favors dubious.",
+      "feedback_deep": "Repeated changes cast further doubt on accuracy rather than introducing different readings of the amount. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Compare the stated fact with independent evidence.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "dubious-ambiguous_007",
+      "edge_id": "dubious__ambiguous",
+      "domain": "secondhand_market",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Lina’s phone listing?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_007_b1",
+          "text": "Lina’s listing called the phone unopened, but its pictures showed scratches beside the charging port.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.87,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "the condition shown conflicts with the seller’s claim",
+          "reason": "This establishes that the condition shown conflicts with the seller’s claim.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_007_b2",
+          "text": "The seller also used the same photo for three supposedly different phones.",
+          "best_word": "dubious",
+          "fit": {
+            "dubious": 0.93,
+            "ambiguous": 0.32
+          },
+          "decisive_clue": "the condition shown conflicts with the seller’s claim",
+          "reason": "The reused image is additional evidence that the listing cannot be trusted.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The condition shown conflicts with the seller’s claim; that detail favors dubious.",
+      "feedback_deep": "The reused image is additional evidence that the listing cannot be trusted. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Check whether the claims match the evidence.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "dubious-ambiguous_008",
+      "edge_id": "dubious__ambiguous",
+      "domain": "cafe_entrance",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Samir’s Friday offer sign?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "dubious-ambiguous_008_b1",
+          "text": "The sign said “Students eat free on Fridays” without specifying whether the offer covered full meals or snacks.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.87
+          },
+          "decisive_clue": "the scope of free food has more than one reading",
+          "reason": "This establishes that the scope of free food has more than one reading.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        },
+        {
+          "id": "dubious-ambiguous_008_b2",
+          "text": "A smaller line on the sign gave opening hours but explained nothing about the menu.",
+          "best_word": "ambiguous",
+          "fit": {
+            "dubious": 0.32,
+            "ambiguous": 0.93
+          },
+          "decisive_clue": "the scope of free food has more than one reading",
+          "reason": "The hours provide information about access, not an answer to what the offer includes.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dubious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The scope of free food has more than one reading; that detail favors ambiguous.",
+      "feedback_deep": "The hours provide information about access, not an answer to what the offer includes. Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+      "contrast_rule": "Dubious questions truth; ambiguous questions meaning.",
+      "hints": {
+        "attention": "Look for unresolved alternatives in the offer.",
+        "axis": "Dubious gives grounds to distrust a claim; ambiguous leaves its meaning open to more than one reading.",
+        "contrast": "Dubious questions truth; ambiguous questions meaning."
+      },
+      "qa": "revised"
+    }
+  ]
+}

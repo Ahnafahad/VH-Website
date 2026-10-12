@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "attrition-atrophy",
+  "title": "attrition / atrophy",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[139]",
+    "source_pair_id": 563,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "attrition",
+      "sense": "gradual loss of people, strength or resources through repeated pressures",
+      "connotation": "slow depletion",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming attrition and atrophy mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for atrophy."
+      ]
+    },
+    {
+      "word": "atrophy",
+      "sense": "weakening or wasting away through prolonged disuse or neglect",
+      "connotation": "loss of ability or tissue",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming attrition and atrophy mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for attrition."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "loss_mechanism",
+      "description": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected."
+    }
+  ],
+  "edges": [
+    {
+      "id": "attrition__atrophy",
+      "a": "attrition",
+      "b": "atrophy",
+      "boundary_rule": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected.",
+      "clues_a": [
+        "members leave one by one",
+        "repeated small losses drain resources",
+        "numbers shrink under pressure"
+      ],
+      "clues_b": [
+        "ability fades without practice",
+        "unused skill weakens",
+        "neglect causes deterioration"
+      ],
+      "irrelevant_clues": [
+        "new colour",
+        "public attention",
+        "equipment price"
+      ],
+      "misconceptions": {
+        "M1": "Assuming attrition and atrophy mean the same thing whenever both appear relevant.",
+        "M2": "Ignoring the defining evidence needed for atrophy.",
+        "M3": "Ignoring the defining evidence needed for attrition."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "attrition-atrophy_001",
+      "edge_id": "attrition__atrophy",
+      "domain": "volunteer_rota",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the decline in Javed’s volunteer team?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "attrition-atrophy_001_b1",
+          "text": "Javed’s team lost one helper almost every week as longer work shifts made participation difficult.",
+          "best_word": "attrition",
+          "fit": {
+            "attrition": 0.92,
+            "atrophy": 0.3
+          },
+          "decisive_clue": "repeated volunteer departures under continuing pressure",
+          "reason": "Repeated volunteer departures under continuing pressure is the strongest evidence for attrition here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atrophy": "M2"
+          }
+        },
+        {
+          "id": "attrition-atrophy_001_b2",
+          "text": "Javed’s team switched from white shirts to bright orange ones, but people kept leaving.",
+          "best_word": "attrition",
+          "fit": {
+            "attrition": 0.94,
+            "atrophy": 0.26
+          },
+          "decisive_clue": "repeated volunteer departures under continuing pressure; team shirts changed colour does not change that",
+          "reason": "New team shirts do not alter the pattern of people gradually leaving.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "atrophy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Repeated volunteer departures under continuing pressure still decides; the later detail does not change that.",
+      "feedback_deep": "Attrition means gradual loss of people, strength or resources through repeated pressures; atrophy means weakening or wasting away through prolonged disuse or neglect. New team shirts do not alter the pattern of people gradually leaving.",
+      "contrast_rule": "Attrition: members leave one by one; atrophy: ability fades without practice.",
+      "hints": {
+        "attention": "Look at the team’s numbers and why they fall.",
+        "axis": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected.",
+        "contrast": "Attrition: members leave one by one; atrophy: ability fades without practice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "attrition-atrophy_002",
+      "edge_id": "attrition__atrophy",
+      "domain": "music_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what happened to Elif’s guitar technique?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "attrition-atrophy_002_b1",
+          "text": "Elif once changed chords smoothly, but after two years without playing she now fumbles familiar transitions.",
+          "best_word": "atrophy",
+          "fit": {
+            "atrophy": 0.92,
+            "attrition": 0.3
+          },
+          "decisive_clue": "playing ability deteriorated after two years of disuse",
+          "reason": "Playing ability deteriorated after two years of disuse is the strongest evidence for atrophy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "attrition": "M3"
+          }
+        },
+        {
+          "id": "attrition-atrophy_002_b2",
+          "text": "Even songs she used to play without looking require long pauses between chord changes.",
+          "best_word": "atrophy",
+          "fit": {
+            "atrophy": 0.94,
+            "attrition": 0.26
+          },
+          "decisive_clue": "playing ability deteriorated after two years of disuse; further evidence: previously easy transitions also fail",
+          "reason": "The extra detail confirms a once-used skill has weakened from lack of practice.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "attrition": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Previously easy transitions also fail confirms the earlier clue: playing ability deteriorated after two years of disuse.",
+      "feedback_deep": "Attrition means gradual loss of people, strength or resources through repeated pressures; atrophy means weakening or wasting away through prolonged disuse or neglect. The extra detail confirms a once-used skill has weakened from lack of practice.",
+      "contrast_rule": "Attrition: members leave one by one; atrophy: ability fades without practice.",
+      "hints": {
+        "attention": "Look at the period without practice.",
+        "axis": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected.",
+        "contrast": "Attrition: members leave one by one; atrophy: ability fades without practice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "attrition-atrophy_003",
+      "edge_id": "attrition__atrophy",
+      "domain": "household_budget",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what happened to Boris’s savings?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "attrition-atrophy_003_b1",
+          "text": "Small monthly fees steadily ate into Boris’s savings account for three years.",
+          "best_word": "attrition",
+          "fit": {
+            "attrition": 0.92,
+            "atrophy": 0.3
+          },
+          "decisive_clue": "repeated charges cumulatively reduced savings",
+          "reason": "Repeated charges cumulatively reduced savings is the strongest evidence for attrition here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atrophy": "M1"
+          }
+        },
+        {
+          "id": "attrition-atrophy_003_b2",
+          "text": "Each fee was modest, but after thirty-six deductions the account held much less money.",
+          "best_word": "attrition",
+          "fit": {
+            "attrition": 0.94,
+            "atrophy": 0.26
+          },
+          "decisive_clue": "repeated charges cumulatively reduced savings; further evidence: thirty-six deductions created a large total loss",
+          "reason": "The accumulation of small, sustained losses is the relevant mechanism.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atrophy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Thirty-six deductions created a large total loss confirms the earlier clue: repeated charges cumulatively reduced savings.",
+      "feedback_deep": "Attrition means gradual loss of people, strength or resources through repeated pressures; atrophy means weakening or wasting away through prolonged disuse or neglect. The accumulation of small, sustained losses is the relevant mechanism.",
+      "contrast_rule": "Attrition: members leave one by one; atrophy: ability fades without practice.",
+      "hints": {
+        "attention": "Focus on repeated deductions, not any single one.",
+        "axis": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected.",
+        "contrast": "Attrition: members leave one by one; atrophy: ability fades without practice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "attrition-atrophy_004",
+      "edge_id": "attrition__atrophy",
+      "domain": "foreign-language_learning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what happened to Sakura’s spoken French?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "attrition-atrophy_004_b1",
+          "text": "Sakura stopped using French after school, and several years later she struggled to form sentences she once spoke easily.",
+          "best_word": "atrophy",
+          "fit": {
+            "atrophy": 0.92,
+            "attrition": 0.3
+          },
+          "decisive_clue": "once-fluent ability faded through years of nonuse",
+          "reason": "Once-fluent ability faded through years of nonuse is the strongest evidence for atrophy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "attrition": "M3"
+          }
+        },
+        {
+          "id": "attrition-atrophy_004_b2",
+          "text": "Her spoken sentences still contain impressive vocabulary, but she pauses before even the simplest verbs.",
+          "best_word": "atrophy",
+          "fit": {
+            "atrophy": 0.94,
+            "attrition": 0.26
+          },
+          "decisive_clue": "once-fluent ability faded through years of nonuse; impressive vocabulary despite halting speech does not change that",
+          "reason": "Knowing many words does not undo the loss of speaking fluency through disuse.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "attrition": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Once-fluent ability faded through years of nonuse still decides; the later detail does not change that.",
+      "feedback_deep": "Attrition means gradual loss of people, strength or resources through repeated pressures; atrophy means weakening or wasting away through prolonged disuse or neglect. Knowing many words does not undo the loss of speaking fluency through disuse.",
+      "contrast_rule": "Attrition: members leave one by one; atrophy: ability fades without practice.",
+      "hints": {
+        "attention": "Distinguish remembered words from practised fluency.",
+        "axis": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected.",
+        "contrast": "Attrition: members leave one by one; atrophy: ability fades without practice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "attrition-atrophy_005",
+      "edge_id": "attrition__atrophy",
+      "domain": "recovery_at_home",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the change in Mateo’s calf muscle?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "attrition-atrophy_005_b1",
+          "text": "Mateo kept one leg in a brace for seven weeks; afterward, that calf looked much smaller than the other.",
+          "best_word": "atrophy",
+          "fit": {
+            "atrophy": 0.92,
+            "attrition": 0.3
+          },
+          "decisive_clue": "calf muscle shrank after weeks without use",
+          "reason": "Calf muscle shrank after weeks without use is the strongest evidence for atrophy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "attrition": "M3"
+          }
+        },
+        {
+          "id": "attrition-atrophy_005_b2",
+          "text": "He ate normally throughout the seven weeks, but the same muscle had hardly been used.",
+          "best_word": "atrophy",
+          "fit": {
+            "atrophy": 0.94,
+            "attrition": 0.26
+          },
+          "decisive_clue": "normal meals did not compensate for lack of movement",
+          "reason": "The muscle became smaller through nonuse, rather than from a series of external losses.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "attrition": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Normal meals did not compensate for lack of movement makes atrophy the better choice.",
+      "feedback_deep": "Attrition means gradual loss of people, strength or resources through repeated pressures; atrophy means weakening or wasting away through prolonged disuse or neglect. The muscle became smaller through nonuse, rather than from a series of external losses.",
+      "contrast_rule": "Attrition: members leave one by one; atrophy: ability fades without practice.",
+      "hints": {
+        "attention": "Look at what happened while the leg could not move normally.",
+        "axis": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected.",
+        "contrast": "Attrition: members leave one by one; atrophy: ability fades without practice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "attrition-atrophy_006",
+      "edge_id": "attrition__atrophy",
+      "domain": "local_bus_service",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the decline in Ines’s monthly-pass customers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "attrition-atrophy_006_b1",
+          "text": "Ines watched the number of monthly-pass buyers drop a few at a time as successive price rises drove riders away.",
+          "best_word": "attrition",
+          "fit": {
+            "attrition": 0.92,
+            "atrophy": 0.3
+          },
+          "decisive_clue": "repeated customer losses after successive price rises",
+          "reason": "Repeated customer losses after successive price rises is the strongest evidence for attrition here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atrophy": "M1"
+          }
+        },
+        {
+          "id": "attrition-atrophy_006_b2",
+          "text": "The remaining buyers still used the passes as frequently as before.",
+          "best_word": "attrition",
+          "fit": {
+            "attrition": 0.94,
+            "atrophy": 0.26
+          },
+          "decisive_clue": "repeated customer losses after successive price rises; unchanged use by remaining customers does not change that",
+          "reason": "Continued use by the customers left does not undo the gradual losses in their number.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atrophy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Repeated customer losses after successive price rises still decides; the later detail does not change that.",
+      "feedback_deep": "Attrition means gradual loss of people, strength or resources through repeated pressures; atrophy means weakening or wasting away through prolonged disuse or neglect. Continued use by the customers left does not undo the gradual losses in their number.",
+      "contrast_rule": "Attrition: members leave one by one; atrophy: ability fades without practice.",
+      "hints": {
+        "attention": "Look at how the customer base shrinks.",
+        "axis": "Attrition is cumulative loss under continuing pressure; atrophy is deterioration because something is unused or neglected.",
+        "contrast": "Attrition: members leave one by one; atrophy: ability fades without practice."
+      },
+      "qa": "pass"
+    }
+  ]
+}

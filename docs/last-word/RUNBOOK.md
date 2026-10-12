@@ -35,7 +35,9 @@ To withdraw a set: `npm run last-word:set-status -- <set_id> draft`, then commit
 3. Optional local check: `npm run last-word:validate-assets -- --write`, then reload `/last-word`.
 4. Commit and deploy. `prebuild` regenerates `available.json`, so only validated files are ever served. A rejected file never breaks the build; it is simply left out, and its placeholder stays.
 
-## 3. Apply the database migration to production (written down, not executed)
+## 3. Apply the database migration to production
+
+> **Done 2026-10-12.** All five Last Word tables, plus the six Essays/PrintDesk tables this branch also needed, were created in production in one atomic batch after a dry run. Production now matches `schema.ts` (see `FINAL_REPORT.md` → Production). Keep these steps for rebuilding a database from scratch.
 
 Without this step the game still works: guests save in the browser, and signed-in saves fail with a retry button. The migration adds five new tables and changes no existing table.
 

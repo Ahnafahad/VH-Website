@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "brevity-terseness",
+  "title": "brevity / terseness",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[99]",
+    "source_pair_id": 412,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "brevity",
+      "sense": "Shortness of speech or writing, without necessarily implying unfriendly tone.",
+      "connotation": "neutral / approving",
+      "register": "standard / formal",
+      "misconceptions": [
+        "A short polite response must be terse."
+      ]
+    },
+    {
+      "word": "terseness",
+      "sense": "Extreme shortness of speech or writing, often sounding curt or abrupt.",
+      "connotation": "often critical",
+      "register": "standard / formal",
+      "misconceptions": [
+        "A clipped answer is no different from efficient concision."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "length_vs_tone",
+      "description": "Whether the notable feature is economy of words or sharply clipped, abrupt expression."
+    }
+  ],
+  "edges": [
+    {
+      "id": "brevity__terseness",
+      "a": "brevity",
+      "b": "terseness",
+      "boundary_rule": "Brevity is simply shortness; terseness adds a notably abrupt or curt manner.",
+      "clues_a": [
+        "short but complete explanation",
+        "few warm words",
+        "concise message with enough context"
+      ],
+      "clues_b": [
+        "clipped one-word reply",
+        "dismissive fragments",
+        "abrupt ending to exchange"
+      ],
+      "irrelevant_clues": [
+        "font colour",
+        "email signature",
+        "how fast a message arrives"
+      ],
+      "misconceptions": {
+        "M1": "A short polite response must be terse.",
+        "M2": "A clipped answer is no different from efficient concision.",
+        "M3": "Tone does not matter when choosing between the words."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "brevity-terseness_001",
+      "edge_id": "brevity__terseness",
+      "domain": "school_announcement",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the length of Farah’s announcement?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "brevity-terseness_001_b1",
+          "text": "Farah explains the changed classroom in two friendly sentences, including the room number and a thank-you.",
+          "best_word": "brevity",
+          "fit": {
+            "brevity": 0.9,
+            "terseness": 0.24
+          },
+          "decisive_clue": "short friendly message includes needed information",
+          "reason": "The situation shows short friendly message includes needed information, which points to brevity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terseness": "M2"
+          }
+        },
+        {
+          "id": "brevity-terseness_001_b2",
+          "text": "No one needs to ask a follow-up question because the essential details are there.",
+          "best_word": "brevity",
+          "fit": {
+            "brevity": 0.94,
+            "terseness": 0.21
+          },
+          "decisive_clue": "concise message is also complete and helpful",
+          "reason": "The point is efficient shortness without an abrupt manner.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terseness": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Concise message is also complete and helpful: brevity fits better.",
+      "feedback_deep": "Brevity is simply shortness; terseness adds a notably abrupt or curt manner. Here, the point is efficient shortness without an abrupt manner.",
+      "contrast_rule": "Brevity saves words; terseness can cut them short.",
+      "hints": {
+        "attention": "Look at both length and usefulness.",
+        "axis": "Whether the notable feature is economy of words or sharply clipped, abrupt expression.",
+        "contrast": "Brevity saves words; terseness can cut them short."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "brevity-terseness_002",
+      "edge_id": "brevity__terseness",
+      "domain": "work_email",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the tone of Lucas’s reply?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "brevity-terseness_002_b1",
+          "text": "Lucas answers a careful request with just “No.” and closes the email without a greeting.",
+          "best_word": "terseness",
+          "fit": {
+            "brevity": 0.24,
+            "terseness": 0.9
+          },
+          "decisive_clue": "one-word reply sounds abrupt",
+          "reason": "The situation shows one-word reply sounds abrupt, which points to terseness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "brevity": "M1"
+          }
+        },
+        {
+          "id": "brevity-terseness_002_b2",
+          "text": "The sender had asked for an explanation, but the reply gives none.",
+          "best_word": "terseness",
+          "fit": {
+            "brevity": 0.21,
+            "terseness": 0.94
+          },
+          "decisive_clue": "clipped response withholds the requested explanation",
+          "reason": "The reply is not just short; its sharpness is the distinctive feature.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "brevity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Clipped response withholds the requested explanation: terseness fits better.",
+      "feedback_deep": "Brevity is simply shortness; terseness adds a notably abrupt or curt manner. Here, the reply is not just short; its sharpness is the distinctive feature.",
+      "contrast_rule": "Brevity saves words; terseness can cut them short.",
+      "hints": {
+        "attention": "What does the missing explanation do to the tone?",
+        "axis": "Whether the notable feature is economy of words or sharply clipped, abrupt expression.",
+        "contrast": "Brevity saves words; terseness can cut them short."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "brevity-terseness_003",
+      "edge_id": "brevity__terseness",
+      "domain": "family_note",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the length of Isha’s note?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "brevity-terseness_003_b1",
+          "text": "Isha leaves a two-line note saying where dinner is and wishing everyone a pleasant evening.",
+          "best_word": "brevity",
+          "fit": {
+            "brevity": 0.9,
+            "terseness": 0.23
+          },
+          "decisive_clue": "very short but considerate note",
+          "reason": "The situation shows very short but considerate note, which points to brevity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terseness": "M2"
+          }
+        },
+        {
+          "id": "brevity-terseness_003_b2",
+          "text": "She writes it on the back of a shopping receipt.",
+          "best_word": "brevity",
+          "fit": {
+            "brevity": 0.91,
+            "terseness": 0.22
+          },
+          "decisive_clue": "very short but considerate note",
+          "reason": "The added detail does not change the original clue: very short but considerate note.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terseness": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Very short but considerate note still decides; the added detail changes nothing.",
+      "feedback_deep": "Brevity is simply shortness; terseness adds a notably abrupt or curt manner. Here, the paper used does not change the note’s concise, friendly tone.",
+      "contrast_rule": "Brevity saves words; terseness can cut them short.",
+      "hints": {
+        "attention": "Ignore the paper; read the message.",
+        "axis": "Whether the notable feature is economy of words or sharply clipped, abrupt expression.",
+        "contrast": "Brevity saves words; terseness can cut them short."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "brevity-terseness_004",
+      "edge_id": "brevity__terseness",
+      "domain": "team_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the tone of Dmitri’s response?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "brevity-terseness_004_b1",
+          "text": "Asked for an update, Dmitri snaps “Done. Next.” and turns away before anyone can ask more.",
+          "best_word": "terseness",
+          "fit": {
+            "brevity": 0.24,
+            "terseness": 0.9
+          },
+          "decisive_clue": "clipped words and abrupt dismissal",
+          "reason": "The situation shows clipped words and abrupt dismissal, which points to terseness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "brevity": "M1"
+          }
+        },
+        {
+          "id": "brevity-terseness_004_b2",
+          "text": "His reply is later quoted word for word in the team chat.",
+          "best_word": "terseness",
+          "fit": {
+            "brevity": 0.21,
+            "terseness": 0.94
+          },
+          "decisive_clue": "clipped words and abrupt dismissal",
+          "reason": "The added detail does not change the original clue: clipped words and abrupt dismissal.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "brevity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Clipped words and abrupt dismissal still decides; the added detail changes nothing.",
+      "feedback_deep": "Brevity is simply shortness; terseness adds a notably abrupt or curt manner. Here, being quoted later in chat does not soften the curt way he responds.",
+      "contrast_rule": "Brevity saves words; terseness can cut them short.",
+      "hints": {
+        "attention": "Attend to his words and manner.",
+        "axis": "Whether the notable feature is economy of words or sharply clipped, abrupt expression.",
+        "contrast": "Brevity saves words; terseness can cut them short."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "brevity-terseness_005",
+      "edge_id": "brevity__terseness",
+      "domain": "travel_directions",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the length of Amina’s directions?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "brevity-terseness_005_b1",
+          "text": "Amina gives a visitor a short, clear route in three sentences and ends by wishing them a good trip.",
+          "best_word": "brevity",
+          "fit": {
+            "brevity": 0.9,
+            "terseness": 0.24
+          },
+          "decisive_clue": "brief complete directions with friendly closing",
+          "reason": "The situation shows brief complete directions with friendly closing, which points to brevity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terseness": "M2"
+          }
+        },
+        {
+          "id": "brevity-terseness_005_b2",
+          "text": "The visitor follows it without getting lost.",
+          "best_word": "brevity",
+          "fit": {
+            "brevity": 0.94,
+            "terseness": 0.21
+          },
+          "decisive_clue": "short directions successfully convey everything needed",
+          "reason": "An efficient explanation is not necessarily brusque.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terseness": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Short directions successfully convey everything needed: brevity fits better.",
+      "feedback_deep": "Brevity is simply shortness; terseness adds a notably abrupt or curt manner. Here, an efficient explanation is not necessarily brusque.",
+      "contrast_rule": "Brevity saves words; terseness can cut them short.",
+      "hints": {
+        "attention": "Was anything useful or courteous omitted?",
+        "axis": "Whether the notable feature is economy of words or sharply clipped, abrupt expression.",
+        "contrast": "Brevity saves words; terseness can cut them short."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "brevity-terseness_006",
+      "edge_id": "brevity__terseness",
+      "domain": "customer_support",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the tone of Jae’s customer-support message?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "brevity-terseness_006_b1",
+          "text": "Jae replies to a detailed complaint with “Read the policy.” and nothing else.",
+          "best_word": "terseness",
+          "fit": {
+            "brevity": 0.23,
+            "terseness": 0.9
+          },
+          "decisive_clue": "unhelpfully abrupt command in response",
+          "reason": "The situation shows unhelpfully abrupt command in response, which points to terseness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "brevity": "M1"
+          }
+        },
+        {
+          "id": "brevity-terseness_006_b2",
+          "text": "The message arrives within one minute of the complaint.",
+          "best_word": "terseness",
+          "fit": {
+            "brevity": 0.22,
+            "terseness": 0.91
+          },
+          "decisive_clue": "unhelpfully abrupt command in response",
+          "reason": "The added detail does not change the original clue: unhelpfully abrupt command in response.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "brevity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Unhelpfully abrupt command in response still decides; the added detail changes nothing.",
+      "feedback_deep": "Brevity is simply shortness; terseness adds a notably abrupt or curt manner. Here, fast delivery does not soften the clipped and dismissive wording.",
+      "contrast_rule": "Brevity saves words; terseness can cut them short.",
+      "hints": {
+        "attention": "Consider the response’s tone, not its speed.",
+        "axis": "Whether the notable feature is economy of words or sharply clipped, abrupt expression.",
+        "contrast": "Brevity saves words; terseness can cut them short."
+      },
+      "qa": "pass"
+    }
+  ]
+}

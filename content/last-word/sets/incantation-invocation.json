@@ -1,0 +1,768 @@
+{
+  "schema_version": 1,
+  "set_id": "incantation-invocation",
+  "title": "incantation / invocation",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[92]",
+    "source_pair_id": 392,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "incantation",
+      "sense": "A fixed sequence of spoken words believed to have special power in a ritual",
+      "connotation": "ritual/fictional",
+      "register": "formal/literary",
+      "misconceptions": [
+        "Every ritual line is an incantation",
+        "Spoken volume or ceremony alone determines the label"
+      ]
+    },
+    {
+      "word": "invocation",
+      "sense": "A direct appeal calling on a deity or spirit for help or presence",
+      "connotation": "ritual/religious",
+      "register": "formal/literary",
+      "misconceptions": [
+        "Every mention of a spirit is an invocation",
+        "Spoken volume or ceremony alone determines the label"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "mechanism_of_words",
+      "description": "Whether the scene turns on mechanism of words."
+    },
+    {
+      "id": "addressee",
+      "description": "Whether the scene turns on addressee."
+    }
+  ],
+  "edges": [
+    {
+      "id": "incantation__invocation",
+      "a": "incantation",
+      "b": "invocation",
+      "boundary_rule": "An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "clues_a": [
+        "fixed magic formula",
+        "exact syllables required",
+        "recitation activates power"
+      ],
+      "clues_b": [
+        "addresses a spirit",
+        "asks a deity for aid",
+        "calls for spiritual presence"
+      ],
+      "irrelevant_clues": [
+        "whispering instead of shouting",
+        "the colour of candles",
+        "the size of the room"
+      ],
+      "misconceptions": {
+        "M1": "Every ritual line is an incantation",
+        "M2": "Every mention of a spirit is an invocation",
+        "M3": "Spoken volume or ceremony alone determines the label"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "incantation-invocation_001",
+      "edge_id": "incantation__invocation",
+      "domain": "school_play",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the words Rina’s character speaks to open a door?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_001_b1",
+          "text": "Rina’s character repeats a fixed rhyme, believing that each syllable itself unlocks the enchanted door.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.93,
+            "invocation": 0.32
+          },
+          "decisive_clue": "fixed words believed to unlock door",
+          "reason": "The detail about fixed words believed to unlock door supports incantation more strongly than invocation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M3"
+          }
+        },
+        {
+          "id": "incantation-invocation_001_b2",
+          "text": "She must say the syllables in exactly the right order; she asks no being for assistance.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.96,
+            "invocation": 0.2
+          },
+          "decisive_clue": "power tied to exact order",
+          "reason": "The detail about power tied to exact order supports incantation more strongly than invocation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Power tied to exact order leaves incantation the better fit.",
+      "feedback_deep": "The first clue is fixed words believed to unlock door. The later clue is power tied to exact order; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_002",
+      "edge_id": "incantation__invocation",
+      "domain": "family_celebration",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Elias’s opening words at the celebration?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_002_b1",
+          "text": "Elias says, “Spirit of peace, please watch over this home and everyone inside.”",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.36,
+            "invocation": 0.96
+          },
+          "decisive_clue": "direct appeal to a spirit",
+          "reason": "The detail about direct appeal to a spirit supports invocation more strongly than incantation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M1"
+          }
+        },
+        {
+          "id": "incantation-invocation_002_b2",
+          "text": "He addresses the spirit directly, asking for its protection.",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.24,
+            "invocation": 0.88
+          },
+          "decisive_clue": "explicit request for help",
+          "reason": "The detail about explicit request for help supports invocation more strongly than incantation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Explicit request for help leaves invocation the better fit.",
+      "feedback_deep": "The first clue is direct appeal to a spirit. The later clue is explicit request for help; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_003",
+      "edge_id": "incantation__invocation",
+      "domain": "costume_party",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Maya’s words while acting as a wizard?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_003_b1",
+          "text": "Maya repeats “Stone to feather, feather to air” three times to turn a prop stone light in the game.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.88,
+            "invocation": 0.2
+          },
+          "decisive_clue": "formula for magical effect",
+          "reason": "The detail about formula for magical effect supports incantation more strongly than invocation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M2"
+          }
+        },
+        {
+          "id": "incantation-invocation_003_b2",
+          "text": "According to the party story, changing one word makes the supposed spell fail.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.91,
+            "invocation": 0.28
+          },
+          "decisive_clue": "exact wording necessary",
+          "reason": "The detail about exact wording necessary supports incantation more strongly than invocation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Exact wording necessary makes incantation an even clearer fit.",
+      "feedback_deep": "The first clue is formula for magical effect. The later clue is exact wording necessary; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_004",
+      "edge_id": "incantation__invocation",
+      "domain": "community_ceremony",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dion’s words at the start of the ceremony?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_004_b1",
+          "text": "Dion addresses a protective spirit, asking it to guide the gathering.",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.24,
+            "invocation": 0.91
+          },
+          "decisive_clue": "petition to a spirit",
+          "reason": "The detail about petition to a spirit supports invocation more strongly than incantation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M3"
+          }
+        },
+        {
+          "id": "incantation-invocation_004_b2",
+          "text": "His words are an appeal to that being, not a fixed phrase thought powerful on its own.",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.32,
+            "invocation": 0.93
+          },
+          "decisive_clue": "addressed help rather than syllable-power",
+          "reason": "The detail about addressed help rather than syllable-power supports invocation more strongly than incantation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Addressed help rather than syllable-power makes invocation an even clearer fit.",
+      "feedback_deep": "The first clue is petition to a spirit. The later clue is addressed help rather than syllable-power; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_005",
+      "edge_id": "incantation__invocation",
+      "domain": "fantasy_book_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the lines Ines reads from the story?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_005_b1",
+          "text": "Ines reads a character’s exact formula for making an invisible bridge appear.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.93,
+            "invocation": 0.28
+          },
+          "decisive_clue": "exact words that produce magic",
+          "reason": "The detail about exact words that produce magic supports incantation more strongly than invocation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M1"
+          }
+        },
+        {
+          "id": "incantation-invocation_005_b2",
+          "text": "The story says the bridge appears only if the formula is pronounced without errors.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.96,
+            "invocation": 0.36
+          },
+          "decisive_clue": "pronunciation believed essential",
+          "reason": "The detail about pronunciation believed essential supports incantation more strongly than invocation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Pronunciation believed essential leaves incantation the better fit.",
+      "feedback_deep": "The first clue is exact words that produce magic. The later clue is pronunciation believed essential; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_006",
+      "edge_id": "incantation__invocation",
+      "domain": "online_game",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the phrase Kwesi says into his headset?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_006_b1",
+          "text": "Kwesi repeats a special phrase that the game’s story says will make a locked gate vanish.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.96,
+            "invocation": 0.32
+          },
+          "decisive_clue": "magical effect attributed to fixed phrase",
+          "reason": "The detail about magical effect attributed to fixed phrase supports incantation more strongly than invocation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M2"
+          }
+        },
+        {
+          "id": "incantation-invocation_006_b2",
+          "text": "He says it softly because his microphone is sensitive.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.88,
+            "invocation": 0.2
+          },
+          "decisive_clue": "speaking volume does not affect type",
+          "reason": "The detail about speaking volume does not affect type supports incantation more strongly than invocation.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Magical effect attributed to fixed phrase still matters; speaking volume does not affect type does not change the answer.",
+      "feedback_deep": "The first clue is magical effect attributed to fixed phrase. The later clue is speaking volume does not affect type; that does not touch the decisive difference. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_007",
+      "edge_id": "incantation__invocation",
+      "domain": "neighbourhood_gathering",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yasmin’s words before the shared meal?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_007_b1",
+          "text": "Yasmin says, “Creator, be with us and bless everyone at this table.”",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.36,
+            "invocation": 0.88
+          },
+          "decisive_clue": "direct plea to a deity",
+          "reason": "The detail about direct plea to a deity supports invocation more strongly than incantation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M3"
+          }
+        },
+        {
+          "id": "incantation-invocation_007_b2",
+          "text": "She asks for blessing from the being she is addressing rather than reciting a magic password.",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.24,
+            "invocation": 0.91
+          },
+          "decisive_clue": "request for blessing, not magical wording",
+          "reason": "The detail about request for blessing, not magical wording supports invocation more strongly than incantation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Request for blessing, not magical wording leaves invocation the better fit.",
+      "feedback_deep": "The first clue is direct plea to a deity. The later clue is request for blessing, not magical wording; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_008",
+      "edge_id": "incantation__invocation",
+      "domain": "children_s_theatre",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Hassan’s line at the start of the performance?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_008_b1",
+          "text": "Hassan’s character calls, “Guardian spirit, come and protect our village.”",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.2,
+            "invocation": 0.91
+          },
+          "decisive_clue": "spirit addressed directly",
+          "reason": "The detail about spirit addressed directly supports invocation more strongly than incantation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M1"
+          }
+        },
+        {
+          "id": "incantation-invocation_008_b2",
+          "text": "The character seeks a being’s presence, not an effect produced automatically by the wording.",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.28,
+            "invocation": 0.93
+          },
+          "decisive_clue": "request for presence rather than magic formula",
+          "reason": "The detail about request for presence rather than magic formula supports invocation more strongly than incantation.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Request for presence rather than magic formula leaves invocation the better fit.",
+      "feedback_deep": "The first clue is spirit addressed directly. The later clue is request for presence rather than magic formula; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_009",
+      "edge_id": "incantation__invocation",
+      "domain": "comic_drawing",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the line Adele gives her fictional hero?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_009_b1",
+          "text": "Adele writes a chant whose exact sounds supposedly freeze a falling rock.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.93,
+            "invocation": 0.24
+          },
+          "decisive_clue": "formula credited with supernatural power",
+          "reason": "The detail about formula credited with supernatural power supports incantation more strongly than invocation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M2"
+          }
+        },
+        {
+          "id": "incantation-invocation_009_b2",
+          "text": "In the comic, any mistaken syllable leaves the rock moving.",
+          "best_word": "incantation",
+          "fit": {
+            "incantation": 0.96,
+            "invocation": 0.32
+          },
+          "decisive_clue": "exact sounds determine effect",
+          "reason": "The detail about exact sounds determine effect supports incantation more strongly than invocation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "invocation": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Exact sounds determine effect leaves incantation the better fit.",
+      "feedback_deep": "The first clue is formula credited with supernatural power. The later clue is exact sounds determine effect; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "incantation-invocation_010",
+      "edge_id": "incantation__invocation",
+      "domain": "camp_storytelling",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Pavel’s character’s appeal in his story?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "incantation-invocation_010_b1",
+          "text": "Pavel’s character calls to the forest spirit, pleading for safe passage home.",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.28,
+            "invocation": 0.96
+          },
+          "decisive_clue": "direct petition to a spirit",
+          "reason": "The detail about direct petition to a spirit supports invocation more strongly than incantation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M3"
+          }
+        },
+        {
+          "id": "incantation-invocation_010_b2",
+          "text": "The request depends on whether the spirit listens, not on a special sequence of sounds.",
+          "best_word": "invocation",
+          "fit": {
+            "incantation": 0.36,
+            "invocation": 0.88
+          },
+          "decisive_clue": "response depends on being addressed",
+          "reason": "The detail about response depends on being addressed supports invocation more strongly than incantation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incantation": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Response depends on being addressed makes invocation an even clearer fit.",
+      "feedback_deep": "The first clue is direct petition to a spirit. The later clue is response depends on being addressed; that strengthens or preserves the same classification. An incantation is a spoken formula believed powerful in itself; an invocation directly calls upon a deity or spirit.",
+      "contrast_rule": "An incantation relies on special words; an invocation appeals to a being.",
+      "hints": {
+        "attention": "Notice whether the words address someone or are treated as powerful themselves.",
+        "axis": "Whether the scene turns on mechanism of words.",
+        "contrast": "An incantation relies on special words; an invocation appeals to a being."
+      },
+      "qa": "pass"
+    }
+  ]
+}

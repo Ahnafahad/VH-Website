@@ -4,6 +4,16 @@ Running log of implementation decisions. Newest first within each area. The desi
 (`docs/last-word-complete-game-design.md`) controls product behaviour; these record how it was built
 and why, where the spec leaves room.
 
+## Question bank and production (2026-10-12)
+
+- **The full question bank was imported and approved** at the owner's request. The importer reads a bank file (`{ sets: [...] }`), and `set-status all-audited approved` promotes every audited set in one step. Chains with errors are still withheld automatically.
+- **Converter fixes, still with no wording changes:**
+  - Edge ids are slugified (accents removed), so `cliché` and `protégé` work. The words themselves keep their accents.
+  - Beat difficulty is optional, because the critic dropped it on some revised beats. Inventing ratings would break the rule against generating content.
+- **Content is delivered as a static, cacheable JSON route,** not page props. 200 sets would add megabytes to every page load; a build-time route is fetched once and revalidated by ETag. Staff previews still come from the server, one set at a time.
+- **Runtime file reads are declared to the bundler** (`outputFileTracingIncludes`). Otherwise Vercel functions would not ship `content/last-word/sets`, and the progress API and admin page would fail in production only.
+- **Migration by generated SQL, not `drizzle-kit push`.** Production lacked the Essays/PrintDesk tables as well as Last Word's. Their `CREATE` statements came from `schema.ts` via `drizzle-kit export`. All 24 statements were dry-run on a disposable database, then applied as one atomic batch. `push` was avoided because the repo's journal is known to be out of sync with production, so `push` could propose unrelated changes.
+
 ## Content (2026-10-11)
 
 - **Content is versioned files, not database rows.** `content/last-word/sets/*.json` ships with the deploy.

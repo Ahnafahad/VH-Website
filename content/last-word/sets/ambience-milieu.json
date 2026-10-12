@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "ambience-milieu",
+  "title": "ambience / milieu",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[120]",
+    "source_pair_id": 474,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "ambience",
+      "sense": "Mood or atmosphere conveyed by a place or setting",
+      "connotation": "descriptive",
+      "register": "neutral",
+      "misconceptions": [
+        "Equating all surroundings with atmosphere.",
+        "Confusing a social network with room decoration."
+      ]
+    },
+    {
+      "word": "milieu",
+      "sense": "Social or cultural surroundings shaping a person",
+      "connotation": "contextual",
+      "register": "formal",
+      "misconceptions": [
+        "Equating all surroundings with atmosphere.",
+        "Assuming a place can have only one kind of surrounding."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "felt_atmosphere_vs_social_context",
+      "description": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop."
+    }
+  ],
+  "edges": [
+    {
+      "id": "ambience__milieu",
+      "a": "ambience",
+      "b": "milieu",
+      "boundary_rule": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop.",
+      "clues_a": [
+        "sound light and mood",
+        "felt tone of place"
+      ],
+      "clues_b": [
+        "shared customs and networks",
+        "community values shape conduct"
+      ],
+      "irrelevant_clues": [
+        "street address",
+        "room size"
+      ],
+      "misconceptions": {
+        "M1": "Equating all surroundings with atmosphere.",
+        "M2": "Confusing a social network with room decoration.",
+        "M3": "Assuming a place can have only one kind of surrounding."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "ambience-milieu_001",
+      "edge_id": "ambience__milieu",
+      "domain": "neighbourhood_theatre",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the world Farah grows up in?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ambience-milieu_001_b1",
+          "text": "Farah grows up among actors who trade scripts, attend each other's shows, and treat rehearsal as part of daily life.",
+          "best_word": "milieu",
+          "fit": {
+            "milieu": 0.91,
+            "ambience": 0.26
+          },
+          "decisive_clue": "daily life shaped by an artistic community",
+          "reason": "The initial evidence is daily life shaped by an artistic community; it best supports milieu.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambience": "M1"
+          }
+        },
+        {
+          "id": "ambience-milieu_001_b2",
+          "text": "Their rehearsal room has yellow walls.",
+          "best_word": "milieu",
+          "fit": {
+            "milieu": 0.93,
+            "ambience": 0.21
+          },
+          "decisive_clue": "daily life shaped by an artistic community",
+          "reason": "Paint colour does not explain the shared practices shaping her life.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambience": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Paint colour does not explain the shared practices shaping her life.",
+      "feedback_deep": "Ambience means the felt tone of a space; milieu means a person's social and cultural environment. Paint colour does not explain the shared practices shaping her life.",
+      "contrast_rule": "Ambience is how a place feels; milieu is the world of people shaping you.",
+      "hints": {
+        "attention": "Which relationships shape her habits?",
+        "axis": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop.",
+        "contrast": "Ambience is how a place feels; milieu is the world of people shaping you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ambience-milieu_002",
+      "edge_id": "ambience__milieu",
+      "domain": "cafe_interior",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Lucia notices in the cafe?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ambience-milieu_002_b1",
+          "text": "Soft lamps and quiet music make Lucia feel at ease as soon as she enters.",
+          "best_word": "ambience",
+          "fit": {
+            "ambience": 0.91,
+            "milieu": 0.26
+          },
+          "decisive_clue": "light and sound create a relaxed mood",
+          "reason": "The initial evidence is light and sound create a relaxed mood; it best supports ambience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "milieu": "M1"
+          }
+        },
+        {
+          "id": "ambience-milieu_002_b2",
+          "text": "The low voices at nearby tables make the room feel calmer still.",
+          "best_word": "ambience",
+          "fit": {
+            "ambience": 0.93,
+            "milieu": 0.21
+          },
+          "decisive_clue": "sensory details establishing a room's mood",
+          "reason": "Other people contribute to the feeling of the room; their social values are not the point.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "milieu": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Other people contribute to the feeling of the room; their social values are not the point.",
+      "feedback_deep": "Ambience means the felt tone of a space; milieu means a person's social and cultural environment. Other people contribute to the feeling of the room; their social values are not the point.",
+      "contrast_rule": "Ambience is how a place feels; milieu is the world of people shaping you.",
+      "hints": {
+        "attention": "What does it feel like to be there?",
+        "axis": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop.",
+        "contrast": "Ambience is how a place feels; milieu is the world of people shaping you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ambience-milieu_003",
+      "edge_id": "ambience__milieu",
+      "domain": "online_coding_group",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the community surrounding Niko?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ambience-milieu_003_b1",
+          "text": "Niko learns in an online group where members review one another's projects and value sharing ideas openly.",
+          "best_word": "milieu",
+          "fit": {
+            "milieu": 0.91,
+            "ambience": 0.26
+          },
+          "decisive_clue": "social norms shape how the group operates",
+          "reason": "The initial evidence is social norms shape how the group operates; it best supports milieu.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambience": "M1"
+          }
+        },
+        {
+          "id": "ambience-milieu_003_b2",
+          "text": "The group uses a blue logo on its homepage.",
+          "best_word": "milieu",
+          "fit": {
+            "milieu": 0.93,
+            "ambience": 0.21
+          },
+          "decisive_clue": "social norms shape how the group operates",
+          "reason": "The logo is visually noticeable but irrelevant to the group's values and practices.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambience": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The logo is visually noticeable but irrelevant to the group's values and practices.",
+      "feedback_deep": "Ambience means the felt tone of a space; milieu means a person's social and cultural environment. The logo is visually noticeable but irrelevant to the group's values and practices.",
+      "contrast_rule": "Ambience is how a place feels; milieu is the world of people shaping you.",
+      "hints": {
+        "attention": "Focus on the group's habits.",
+        "axis": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop.",
+        "contrast": "Ambience is how a place feels; milieu is the world of people shaping you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ambience-milieu_004",
+      "edge_id": "ambience__milieu",
+      "domain": "bookshop_corner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the setting Dawit creates for readers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ambience-milieu_004_b1",
+          "text": "Dawit arranges warm lights and cushioned seats so visitors settle down and read slowly.",
+          "best_word": "ambience",
+          "fit": {
+            "ambience": 0.91,
+            "milieu": 0.26
+          },
+          "decisive_clue": "designed sensory comfort in a place",
+          "reason": "The initial evidence is designed sensory comfort in a place; it best supports ambience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "milieu": "M1"
+          }
+        },
+        {
+          "id": "ambience-milieu_004_b2",
+          "text": "The seats were delivered from another city.",
+          "best_word": "ambience",
+          "fit": {
+            "ambience": 0.93,
+            "milieu": 0.21
+          },
+          "decisive_clue": "designed sensory comfort in a place",
+          "reason": "Delivery location does not determine the mood created by the lighting and seating.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "milieu": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Delivery location does not determine the mood created by the lighting and seating.",
+      "feedback_deep": "Ambience means the felt tone of a space; milieu means a person's social and cultural environment. Delivery location does not determine the mood created by the lighting and seating.",
+      "contrast_rule": "Ambience is how a place feels; milieu is the world of people shaping you.",
+      "hints": {
+        "attention": "Think about the experience of the space.",
+        "axis": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop.",
+        "contrast": "Ambience is how a place feels; milieu is the world of people shaping you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ambience-milieu_005",
+      "edge_id": "ambience__milieu",
+      "domain": "hostel_lounge",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the hostel lounge Jae uses?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ambience-milieu_005_b1",
+          "text": "Jae steps into a lounge with bright windows, plants, and cheerful chatter that lifts his mood.",
+          "best_word": "ambience",
+          "fit": {
+            "ambience": 0.91,
+            "milieu": 0.26
+          },
+          "decisive_clue": "sensory features make a lively atmosphere",
+          "reason": "The initial evidence is sensory features make a lively atmosphere; it best supports ambience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "milieu": "M1"
+          }
+        },
+        {
+          "id": "ambience-milieu_005_b2",
+          "text": "Even after a long journey, he feels refreshed within minutes of sitting there.",
+          "best_word": "ambience",
+          "fit": {
+            "ambience": 0.93,
+            "milieu": 0.21
+          },
+          "decisive_clue": "felt emotional effect of the space",
+          "reason": "His immediate reaction shows how the room feels to someone inside it.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "milieu": "M2"
+          }
+        }
+      ],
+      "feedback_short": "His immediate reaction shows how the room feels to someone inside it.",
+      "feedback_deep": "Ambience means the felt tone of a space; milieu means a person's social and cultural environment. His immediate reaction shows how the room feels to someone inside it.",
+      "contrast_rule": "Ambience is how a place feels; milieu is the world of people shaping you.",
+      "hints": {
+        "attention": "Look at his response to the room.",
+        "axis": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop.",
+        "contrast": "Ambience is how a place feels; milieu is the world of people shaping you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ambience-milieu_006",
+      "edge_id": "ambience__milieu",
+      "domain": "family_restaurant_trade",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya's upbringing in the restaurant trade?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ambience-milieu_006_b1",
+          "text": "Priya is raised among relatives whose friendships, conversations, and celebrations revolve around running eateries.",
+          "best_word": "milieu",
+          "fit": {
+            "milieu": 0.91,
+            "ambience": 0.26
+          },
+          "decisive_clue": "social setting organized around a shared occupation",
+          "reason": "The initial evidence is social setting organized around a shared occupation; it best supports milieu.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambience": "M1"
+          }
+        },
+        {
+          "id": "ambience-milieu_006_b2",
+          "text": "From childhood she learns which local families help each other during busy seasons.",
+          "best_word": "milieu",
+          "fit": {
+            "milieu": 0.93,
+            "ambience": 0.21
+          },
+          "decisive_clue": "community relationships shape her outlook",
+          "reason": "The mutual-help network reveals the cultural setting she grows up inside.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambience": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The mutual-help network reveals the cultural setting she grows up inside.",
+      "feedback_deep": "Ambience means the felt tone of a space; milieu means a person's social and cultural environment. The mutual-help network reveals the cultural setting she grows up inside.",
+      "contrast_rule": "Ambience is how a place feels; milieu is the world of people shaping you.",
+      "hints": {
+        "attention": "What network surrounds her over time?",
+        "axis": "Ambience is the mood a setting creates; milieu is the social or cultural environment in which people live and develop.",
+        "contrast": "Ambience is how a place feels; milieu is the world of people shaping you."
+      },
+      "qa": "pass"
+    }
+  ]
+}

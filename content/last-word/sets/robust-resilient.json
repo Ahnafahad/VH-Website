@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "robust-resilient",
+  "title": "robust / resilient",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[41]",
+    "source_pair_id": 175,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "robust",
+      "sense": "Strong enough to endure pressure or rough use without failing.",
+      "connotation": "Positive, solid.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming staying intact and recovering later are identical."
+      ]
+    },
+    {
+      "word": "resilient",
+      "sense": "Able to regain function, form, or strength after strain or a setback.",
+      "connotation": "Positive, adaptable.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming something that bends briefly must be weak."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "withstand_vs_recover",
+      "description": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback."
+    }
+  ],
+  "edges": [
+    {
+      "id": "robust__resilient",
+      "a": "robust",
+      "b": "resilient",
+      "boundary_rule": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+      "clues_a": [
+        "does not buckle under weight",
+        "continues working under load",
+        "survives rough handling intact"
+      ],
+      "clues_b": [
+        "regains shape after pressure",
+        "returns after a setback",
+        "recovers lost function"
+      ],
+      "irrelevant_clues": [
+        "whether the object is brightly coloured",
+        "whether the person looks athletic",
+        "how much the item costs"
+      ],
+      "misconceptions": {
+        "M1": "Assuming staying intact and recovering later are identical.",
+        "M2": "Assuming something that bends briefly must be weak.",
+        "M3": "Ignoring the timing of the test: during pressure versus afterward."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "robust-resilient_001",
+      "edge_id": "robust__resilient",
+      "domain": "heavy_storage_shelves",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Saeed’s storage shelves?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "robust-resilient_001_b1",
+          "text": "Saeed’s shelves hold twelve heavy boxes without sagging or loosening at the joints.",
+          "best_word": "robust",
+          "fit": {
+            "robust": 0.91,
+            "resilient": 0.22
+          },
+          "decisive_clue": "the structure remains firm under load",
+          "reason": "The structure remains firm under load. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M3"
+          }
+        },
+        {
+          "id": "robust-resilient_001_b2",
+          "text": "Even after the boxes shift unevenly, the joints hold tight.",
+          "best_word": "robust",
+          "fit": {
+            "robust": 0.91,
+            "resilient": 0.22
+          },
+          "decisive_clue": "the structure remains firm under load",
+          "reason": "The new detail does not overturn the original clue: the structure remains firm under load. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The shelves hold their shape while supporting a heavy load.",
+      "feedback_deep": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback. Strength during stress is what matters here, not recovery after damage.",
+      "contrast_rule": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+      "hints": {
+        "attention": "Notice what happens during the strain and what happens afterward.",
+        "axis": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+        "contrast": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "robust-resilient_002",
+      "edge_id": "robust__resilient",
+      "domain": "potted_fern",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Leila’s potted fern?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "robust-resilient_002_b1",
+          "text": "Leila’s fern wilts during a hot week but stands upright again after several days of watering.",
+          "best_word": "resilient",
+          "fit": {
+            "robust": 0.22,
+            "resilient": 0.91
+          },
+          "decisive_clue": "it regains its form after heat damage",
+          "reason": "It regains its form after heat damage. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "robust": "M1"
+          }
+        },
+        {
+          "id": "robust-resilient_002_b2",
+          "text": "The drooping leaves gradually regain their earlier shape.",
+          "best_word": "resilient",
+          "fit": {
+            "robust": 0.22,
+            "resilient": 0.91
+          },
+          "decisive_clue": "it regains its form after heat damage",
+          "reason": "The new detail does not overturn the original clue: it regains its form after heat damage. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "robust": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The fern first suffered and then recovered.",
+      "feedback_deep": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback. Its return after the strain distinguishes recovery from simply staying strong throughout.",
+      "contrast_rule": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+      "hints": {
+        "attention": "Notice what happens during the strain and what happens afterward.",
+        "axis": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+        "contrast": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "robust-resilient_003",
+      "edge_id": "robust__resilient",
+      "domain": "online_shop_traffic",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s online shop website?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "robust-resilient_003_b1",
+          "text": "Omar’s website keeps taking orders when ten times more customers arrive during a sale.",
+          "best_word": "robust",
+          "fit": {
+            "robust": 0.91,
+            "resilient": 0.22
+          },
+          "decisive_clue": "it keeps functioning under an unusually heavy load",
+          "reason": "It keeps functioning under an unusually heavy load. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M2"
+          }
+        },
+        {
+          "id": "robust-resilient_003_b2",
+          "text": "Pages open a little more slowly, but customers can still complete purchases.",
+          "best_word": "robust",
+          "fit": {
+            "robust": 0.91,
+            "resilient": 0.22
+          },
+          "decisive_clue": "performance slows but never breaks down under load",
+          "reason": "Performance slows but never breaks down under load. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The site continues working under pressure, despite some slowness.",
+      "feedback_deep": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback. The key is that it withstands the surge rather than fails and later recovers.",
+      "contrast_rule": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+      "hints": {
+        "attention": "Notice what happens during the strain and what happens afterward.",
+        "axis": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+        "contrast": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "robust-resilient_004",
+      "edge_id": "robust__resilient",
+      "domain": "tennis_comeback",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Jun’s response in the tennis match?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "robust-resilient_004_b1",
+          "text": "Jun loses the first set badly but gathers herself and wins the next two sets.",
+          "best_word": "resilient",
+          "fit": {
+            "robust": 0.22,
+            "resilient": 0.91
+          },
+          "decisive_clue": "she recovers after a competitive setback",
+          "reason": "She recovers after a competitive setback. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "robust": "M3"
+          }
+        },
+        {
+          "id": "robust-resilient_004_b2",
+          "text": "She regains the accurate serves she had lost during the opening set.",
+          "best_word": "resilient",
+          "fit": {
+            "robust": 0.22,
+            "resilient": 0.91
+          },
+          "decisive_clue": "lost performance returns after difficulty",
+          "reason": "Lost performance returns after difficulty. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "robust": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Jun’s ability returns after a poor opening.",
+      "feedback_deep": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback. Recovery after being shaken is more relevant than never struggling.",
+      "contrast_rule": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+      "hints": {
+        "attention": "Notice what happens during the strain and what happens afterward.",
+        "axis": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+        "contrast": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "robust-resilient_005",
+      "edge_id": "robust__resilient",
+      "domain": "travel_luggage",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Amara’s suitcase?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "robust-resilient_005_b1",
+          "text": "Amara’s suitcase survives tumbling down a staircase without splitting or breaking its handle.",
+          "best_word": "robust",
+          "fit": {
+            "robust": 0.91,
+            "resilient": 0.22
+          },
+          "decisive_clue": "its structure survives a rough impact intact",
+          "reason": "Its structure survives a rough impact intact. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "robust-resilient_005_b2",
+          "text": "A bright sticker peels off, but the case and handle remain sound.",
+          "best_word": "robust",
+          "fit": {
+            "robust": 0.91,
+            "resilient": 0.22
+          },
+          "decisive_clue": "its structure survives a rough impact intact",
+          "reason": "The new detail does not overturn the original clue: its structure survives a rough impact intact. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A missing sticker does not change the suitcase’s ability to withstand impact.",
+      "feedback_deep": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback. The case itself remained intact under rough handling.",
+      "contrast_rule": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+      "hints": {
+        "attention": "Notice what happens during the strain and what happens afterward.",
+        "axis": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+        "contrast": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "robust-resilient_006",
+      "edge_id": "robust__resilient",
+      "domain": "injury_recovery",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Niko’s return to basketball?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "robust-resilient_006_b1",
+          "text": "After an ankle injury, Niko gradually trains again and returns to playing basketball months later.",
+          "best_word": "resilient",
+          "fit": {
+            "robust": 0.22,
+            "resilient": 0.91
+          },
+          "decisive_clue": "returns to activity after an injury",
+          "reason": "Niko returns to activity after an injury. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "robust": "M2"
+          }
+        },
+        {
+          "id": "robust-resilient_006_b2",
+          "text": "His first sessions are shaky, but he rebuilds his speed and confidence.",
+          "best_word": "resilient",
+          "fit": {
+            "robust": 0.22,
+            "resilient": 0.91
+          },
+          "decisive_clue": "performance improves after a genuine setback",
+          "reason": "Niko’s performance improves after a genuine setback. Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "robust": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Niko regains abilities lost after injury.",
+      "feedback_deep": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback. The recovery process, not immunity to injury, is the determining feature.",
+      "contrast_rule": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+      "hints": {
+        "attention": "Notice what happens during the strain and what happens afterward.",
+        "axis": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback.",
+        "contrast": "Robust describes holding up under a challenge; resilient describes bouncing back after the challenge has caused strain or a setback."
+      },
+      "qa": "revised"
+    }
+  ]
+}

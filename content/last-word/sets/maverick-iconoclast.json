@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "set_id": "maverick-iconoclast",
+  "title": "maverick / iconoclast",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[62]",
+    "source_pair_id": 300,
+    "qa": {
+      "pass": 7,
+      "revised": 0,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "maverick",
+      "sense": "An independently minded person who breaks with group practices or expectations.",
+      "connotation": "often admiring, sometimes critical",
+      "register": "general or educated",
+      "misconceptions": [
+        "Confuses doing things differently with attacking received ideas.",
+        "Assumes criticizing tradition is merely personal independence."
+      ]
+    },
+    {
+      "word": "iconoclast",
+      "sense": "A person who openly challenges or attacks established beliefs, traditions, or accepted authorities.",
+      "connotation": "provocative, sometimes admiring",
+      "register": "formal",
+      "misconceptions": [
+        "Confuses doing things differently with attacking received ideas.",
+        "Assumes criticizing tradition is merely personal independence."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_basis",
+      "description": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+    }
+  ],
+  "edges": [
+    {
+      "id": "maverick__iconoclast",
+      "a": "maverick",
+      "b": "iconoclast",
+      "boundary_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "clues_a": [
+        "chooses different methods",
+        "resists group expectations",
+        "acts independently"
+      ],
+      "clues_b": [
+        "argues tradition is wrong",
+        "seeks to overturn old beliefs",
+        "publicly challenges accepted doctrine"
+      ],
+      "irrelevant_clues": [
+        "clothing style",
+        "number of followers",
+        "whether successful"
+      ],
+      "misconceptions": {
+        "M1": "Confuses doing things differently with attacking received ideas.",
+        "M2": "Assumes criticizing tradition is merely personal independence.",
+        "M3": "Uses attention or popularity as the distinguishing test."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "maverick-iconoclast_001",
+      "edge_id": "maverick__iconoclast",
+      "domain": "school_debate_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Yara’s approach in the debate club?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "maverick-iconoclast_001_b1",
+          "text": "Yara prepares cases alone and uses a structure unlike the club’s usual template.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.87,
+            "iconoclast": 0.2
+          },
+          "decisive_clue": "independent method without attacking the group’s ideas",
+          "reason": "The first beat supplies the deciding evidence: independent method without attacking the group’s ideas.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M3"
+          }
+        },
+        {
+          "id": "maverick-iconoclast_001_b2",
+          "text": "She respects teammates who prefer the standard method.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.89,
+            "iconoclast": 0.17
+          },
+          "decisive_clue": "independent method without attacking the group’s ideas",
+          "reason": "Accepting others’ methods does not make her own approach conventional.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Independent method without attacking the group’s ideas is what distinguishes maverick here.",
+      "feedback_deep": "Maverick means an independently minded person who breaks with group practices or expectations. Iconoclast means a person who openly challenges or attacks established beliefs, traditions, or accepted authorities. Here, independent method without attacking the group’s ideas; accepting others’ methods does not make her own approach conventional.",
+      "contrast_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "hints": {
+        "attention": "Focus on independence rather than incidental details.",
+        "axis": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+        "contrast": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "maverick-iconoclast_002",
+      "edge_id": "maverick__iconoclast",
+      "domain": "community_theatre",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mateo’s role in the theatre group?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "maverick-iconoclast_002_b1",
+          "text": "Mateo publicly argues that the troupe’s old casting rules are unfair and should be abandoned.",
+          "best_word": "iconoclast",
+          "fit": {
+            "maverick": 0.23,
+            "iconoclast": 0.89
+          },
+          "decisive_clue": "openly challenges an established rule",
+          "reason": "The first beat supplies the deciding evidence: openly challenges an established rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "maverick": "M1"
+          }
+        },
+        {
+          "id": "maverick-iconoclast_002_b2",
+          "text": "He has written a detailed explanation for the next meeting.",
+          "best_word": "iconoclast",
+          "fit": {
+            "maverick": 0.2,
+            "iconoclast": 0.91
+          },
+          "decisive_clue": "openly challenges an established rule",
+          "reason": "The criticism targets the tradition itself, not merely his personal preference.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "maverick": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Openly challenges an established rule is what distinguishes iconoclast here.",
+      "feedback_deep": "Maverick means an independently minded person who breaks with group practices or expectations. Iconoclast means a person who openly challenges or attacks established beliefs, traditions, or accepted authorities. Here, openly challenges an established rule; the criticism targets the tradition itself, not merely his personal preference.",
+      "contrast_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "hints": {
+        "attention": "Focus on challenge rather than incidental details.",
+        "axis": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+        "contrast": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "maverick-iconoclast_003",
+      "edge_id": "maverick__iconoclast",
+      "domain": "school_art_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hana’s place in her art group?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "maverick-iconoclast_003_b1",
+          "text": "Hana works with recycled paper while classmates favour paint, and she chooses her own subjects.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.91,
+            "iconoclast": 0.16
+          },
+          "decisive_clue": "chooses her own creative path",
+          "reason": "The first beat supplies the deciding evidence: chooses her own creative path.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M2"
+          }
+        },
+        {
+          "id": "maverick-iconoclast_003_b2",
+          "text": "She encourages classmates to keep working in whichever medium they enjoy.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.93,
+            "iconoclast": 0.13
+          },
+          "decisive_clue": "chooses her own creative path",
+          "reason": "Supporting others’ choices does not reduce her independence.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Chooses her own creative path — the later detail does not change that distinction.",
+      "feedback_deep": "Maverick means an independently minded person who breaks with group practices or expectations. Iconoclast means a person who openly challenges or attacks established beliefs, traditions, or accepted authorities. Here, chooses her own creative path; supporting others’ choices does not reduce her independence.",
+      "contrast_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "hints": {
+        "attention": "Focus on personal practice rather than incidental details.",
+        "axis": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+        "contrast": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "maverick-iconoclast_004",
+      "edge_id": "maverick__iconoclast",
+      "domain": "neighbourhood_forum",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s approach in the neighbourhood forum?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "maverick-iconoclast_004_b1",
+          "text": "Omar questions the belief that the oldest residents should always make final decisions.",
+          "best_word": "iconoclast",
+          "fit": {
+            "maverick": 0.2,
+            "iconoclast": 0.85
+          },
+          "decisive_clue": "actively disputes established authority and seeks reform",
+          "reason": "The first beat supplies the deciding evidence: actively disputes established authority and seeks reform.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "maverick": "M3"
+          }
+        },
+        {
+          "id": "maverick-iconoclast_004_b2",
+          "text": "He wants the forum to replace that rule with open elections.",
+          "best_word": "iconoclast",
+          "fit": {
+            "maverick": 0.17,
+            "iconoclast": 0.87
+          },
+          "decisive_clue": "actively disputes established authority and seeks reform",
+          "reason": "His aim is to overturn an accepted rule, not just ignore it.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "maverick": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Actively disputes established authority and seeks reform is what distinguishes iconoclast here.",
+      "feedback_deep": "Maverick means an independently minded person who breaks with group practices or expectations. Iconoclast means a person who openly challenges or attacks established beliefs, traditions, or accepted authorities. Here, actively disputes established authority and seeks reform; his aim is to overturn an accepted rule, not just ignore it.",
+      "contrast_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "hints": {
+        "attention": "Focus on target rather than incidental details.",
+        "axis": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+        "contrast": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "maverick-iconoclast_005",
+      "edge_id": "maverick__iconoclast",
+      "domain": "workplace_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Amina’s approach to team planning?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "maverick-iconoclast_005_b1",
+          "text": "Amina maps her tasks in an unusual sequence instead of using the team’s standard calendar.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.87,
+            "iconoclast": 0.23
+          },
+          "decisive_clue": "works independently of the usual planning method",
+          "reason": "The first beat supplies the deciding evidence: works independently of the usual planning method.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M1"
+          }
+        },
+        {
+          "id": "maverick-iconoclast_005_b2",
+          "text": "Her projects still meet every agreed deadline.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.89,
+            "iconoclast": 0.2
+          },
+          "decisive_clue": "works independently of the usual planning method",
+          "reason": "Good results do not change that she follows an independent approach.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Works independently of the usual planning method — the later detail does not change that distinction.",
+      "feedback_deep": "Maverick means an independently minded person who breaks with group practices or expectations. Iconoclast means a person who openly challenges or attacks established beliefs, traditions, or accepted authorities. Here, works independently of the usual planning method; good results do not change that she follows an independent approach.",
+      "contrast_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "hints": {
+        "attention": "Focus on nonconformity rather than incidental details.",
+        "axis": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+        "contrast": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "maverick-iconoclast_006",
+      "edge_id": "maverick__iconoclast",
+      "domain": "online_book_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Luca’s contributions to the book discussion?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "maverick-iconoclast_006_b1",
+          "text": "Luca writes posts disputing the group’s long-held belief that classics should never be rewritten.",
+          "best_word": "iconoclast",
+          "fit": {
+            "maverick": 0.16,
+            "iconoclast": 0.89
+          },
+          "decisive_clue": "directly contests an accepted cultural belief",
+          "reason": "The first beat supplies the deciding evidence: directly contests an accepted cultural belief.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "maverick": "M2"
+          }
+        },
+        {
+          "id": "maverick-iconoclast_006_b2",
+          "text": "He invites others to defend that belief with reasons.",
+          "best_word": "iconoclast",
+          "fit": {
+            "maverick": 0.13,
+            "iconoclast": 0.91
+          },
+          "decisive_clue": "directly contests an accepted cultural belief",
+          "reason": "Inviting discussion does not make his attack on the tradition disappear.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "maverick": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Directly contests an accepted cultural belief is what distinguishes iconoclast here.",
+      "feedback_deep": "Maverick means an independently minded person who breaks with group practices or expectations. Iconoclast means a person who openly challenges or attacks established beliefs, traditions, or accepted authorities. Here, directly contests an accepted cultural belief; inviting discussion does not make his attack on the tradition disappear.",
+      "contrast_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "hints": {
+        "attention": "Focus on principle rather than incidental details.",
+        "axis": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+        "contrast": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "maverick-iconoclast_007",
+      "edge_id": "maverick__iconoclast",
+      "domain": "school_music_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nia’s role in the music club?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "maverick-iconoclast_007_b1",
+          "text": "Nia records music at home using her own workflow rather than following the club’s group sessions.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.91,
+            "iconoclast": 0.2
+          },
+          "decisive_clue": "uses an individual path without campaigning against conventions",
+          "reason": "The first beat supplies the deciding evidence: uses an individual path without campaigning against conventions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M3"
+          }
+        },
+        {
+          "id": "maverick-iconoclast_007_b2",
+          "text": "She shares the finished recordings but does not ask everyone else to change methods.",
+          "best_word": "maverick",
+          "fit": {
+            "maverick": 0.93,
+            "iconoclast": 0.17
+          },
+          "decisive_clue": "uses an individual path without campaigning against conventions",
+          "reason": "Choosing a separate route differs from trying to overthrow the club’s established practices.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "iconoclast": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Uses an individual path without campaigning against conventions is what distinguishes maverick here.",
+      "feedback_deep": "Maverick means an independently minded person who breaks with group practices or expectations. Iconoclast means a person who openly challenges or attacks established beliefs, traditions, or accepted authorities. Here, uses an individual path without campaigning against conventions; choosing a separate route differs from trying to overthrow the club’s established practices.",
+      "contrast_rule": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+      "hints": {
+        "attention": "Focus on agency rather than incidental details.",
+        "axis": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves.",
+        "contrast": "A maverick follows an independent path; an iconoclast actively contests the accepted ideas or traditions themselves."
+      },
+      "qa": "pass"
+    }
+  ]
+}

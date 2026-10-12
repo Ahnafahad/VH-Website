@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "set_id": "sinister-malevolent",
+  "title": "sinister / malevolent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[129]",
+    "source_pair_id": 510,
+    "qa": {
+      "pass": 6,
+      "revised": 1,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "sinister",
+      "sense": "Seeming ominous, menacing, or suggestive of hidden danger.",
+      "connotation": "ominous, unsettling",
+      "register": "standard to literary",
+      "misconceptions": [
+        "Confused with malevolent when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "malevolent",
+      "sense": "Showing a deliberate wish to harm.",
+      "connotation": "hostile, morally negative",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with sinister when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "threatening_appearance_versus_intent",
+      "description": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm."
+    }
+  ],
+  "edges": [
+    {
+      "id": "sinister__malevolent",
+      "a": "sinister",
+      "b": "malevolent",
+      "boundary_rule": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "clues_a": [
+        "Gives a threatening impression.",
+        "Seeming ominous, menacing, or suggestive of hidden danger."
+      ],
+      "clues_b": [
+        "Acts from a wish to hurt others.",
+        "Showing a deliberate wish to harm."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating sinister as though it always means malevolent.",
+        "M2": "Treating malevolent as though it always means sinister.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "sinister-malevolent_001",
+      "edge_id": "sinister__malevolent",
+      "domain": "apartment_hallway",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the note Amara found?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sinister-malevolent_001_b1",
+          "text": "Amara found an unsigned note under her door listing the times she usually returned home.",
+          "best_word": "sinister",
+          "fit": {
+            "sinister": 0.87,
+            "malevolent": 0.32
+          },
+          "decisive_clue": "the note suggests someone is secretly watching her",
+          "reason": "This establishes that the note suggests someone is secretly watching her.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malevolent": "M1"
+          }
+        },
+        {
+          "id": "sinister-malevolent_001_b2",
+          "text": "The note had been folded into a tiny square before being pushed through the gap.",
+          "best_word": "sinister",
+          "fit": {
+            "sinister": 0.93,
+            "malevolent": 0.32
+          },
+          "decisive_clue": "the note suggests someone is secretly watching her",
+          "reason": "Its unusual folding adds mystery but supplies no evidence of a proved wish to injure her.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malevolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The note suggests someone is secretly watching her; that detail favors sinister.",
+      "feedback_deep": "Its unusual folding adds mystery but supplies no evidence of a proved wish to injure her. Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "contrast_rule": "Sinister looks threatening; malevolent means to hurt.",
+      "hints": {
+        "attention": "Look for impression versus confirmed intention.",
+        "axis": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+        "contrast": "Sinister looks threatening; malevolent means to hurt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sinister-malevolent_002",
+      "edge_id": "sinister__malevolent",
+      "domain": "shared_flat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Boris’s handling of his roommate’s letter?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sinister-malevolent_002_b1",
+          "text": "Boris hid his roommate’s acceptance letter because he wanted her to miss the enrolment deadline.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.87
+          },
+          "decisive_clue": "he deliberately tried to damage her opportunity",
+          "reason": "This establishes that he deliberately tried to damage her opportunity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        },
+        {
+          "id": "sinister-malevolent_002_b2",
+          "text": "He checked the closing date twice before concealing the envelope.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.93
+          },
+          "decisive_clue": "he deliberately tried to damage her opportunity",
+          "reason": "Checking the date makes his harmful purpose deliberate rather than merely alarming in appearance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He deliberately tried to damage her opportunity; that detail favors malevolent.",
+      "feedback_deep": "Checking the date makes his harmful purpose deliberate rather than merely alarming in appearance. Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "contrast_rule": "Sinister looks threatening; malevolent means to hurt.",
+      "hints": {
+        "attention": "Ask why he hid the letter.",
+        "axis": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+        "contrast": "Sinister looks threatening; malevolent means to hurt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sinister-malevolent_003",
+      "edge_id": "sinister__malevolent",
+      "domain": "night_driving",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the car Chloe noticed?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sinister-malevolent_003_b1",
+          "text": "Chloe noticed a car following her through three turns without its headlights on.",
+          "best_word": "sinister",
+          "fit": {
+            "sinister": 0.87,
+            "malevolent": 0.32
+          },
+          "decisive_clue": "the unexplained following creates an impression of danger",
+          "reason": "This establishes that the unexplained following creates an impression of danger.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malevolent": "M1"
+          }
+        },
+        {
+          "id": "sinister-malevolent_003_b2",
+          "text": "Its windows were so dark she could not see the driver.",
+          "best_word": "sinister",
+          "fit": {
+            "sinister": 0.93,
+            "malevolent": 0.32
+          },
+          "decisive_clue": "the unexplained following creates an impression of danger",
+          "reason": "Tinted windows heighten the threatening appearance without proving the driver wished harm.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malevolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The unexplained following creates an impression of danger; that detail favors sinister.",
+      "feedback_deep": "Tinted windows heighten the threatening appearance without proving the driver wished harm. Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "contrast_rule": "Sinister looks threatening; malevolent means to hurt.",
+      "hints": {
+        "attention": "Separate a troubling sign from a known motive.",
+        "axis": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+        "contrast": "Sinister looks threatening; malevolent means to hurt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sinister-malevolent_004",
+      "edge_id": "sinister__malevolent",
+      "domain": "school_team",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Dev’s rumour about a teammate?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "sinister-malevolent_004_b1",
+          "text": "Dev invented a cheating story to get another student removed from the school team.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.87
+          },
+          "decisive_clue": "he manufactured a lie intending another person’s loss",
+          "reason": "This establishes that he manufactured a lie intending another person’s loss.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        },
+        {
+          "id": "sinister-malevolent_004_b2",
+          "text": "He sent the false claim to every team captain.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.93
+          },
+          "decisive_clue": "he manufactured a lie intending another person’s loss",
+          "reason": "The wide distribution clarifies how he pursued the damaging purpose already present.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He manufactured a lie intending another person’s loss; that detail favors malevolent.",
+      "feedback_deep": "The wide distribution clarifies how he pursued the damaging purpose already present. Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "contrast_rule": "Sinister looks threatening; malevolent means to hurt.",
+      "hints": {
+        "attention": "Trace the intended consequence for the target.",
+        "axis": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+        "contrast": "Sinister looks threatening; malevolent means to hurt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sinister-malevolent_005",
+      "edge_id": "sinister__malevolent",
+      "domain": "social_media",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elena’s anonymous messages?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "sinister-malevolent_005_b1",
+          "text": "Elena created a fake profile to frighten an ex-friend with threats she knew were false.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.87
+          },
+          "decisive_clue": "she purposely sent frightening threats to hurt someone",
+          "reason": "This establishes that she purposely sent frightening threats to hurt someone.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        },
+        {
+          "id": "sinister-malevolent_005_b2",
+          "text": "She chose times when that friend was usually home alone.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.93
+          },
+          "decisive_clue": "she purposely sent frightening threats to hurt someone",
+          "reason": "Choosing vulnerable moments intensifies the evidence of deliberate cruelty.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        }
+      ],
+      "feedback_short": "She purposely sent frightening threats to hurt someone; that detail favors malevolent.",
+      "feedback_deep": "Choosing vulnerable moments intensifies the evidence of deliberate cruelty. Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "contrast_rule": "Sinister looks threatening; malevolent means to hurt.",
+      "hints": {
+        "attention": "Look beyond how the messages appear to why they were sent.",
+        "axis": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+        "contrast": "Sinister looks threatening; malevolent means to hurt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "sinister-malevolent_006",
+      "edge_id": "sinister__malevolent",
+      "domain": "hotel_corridor",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the sound Faisal heard?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "sinister-malevolent_006_b1",
+          "text": "Faisal heard slow footsteps stop outside his locked room each night, then move away.",
+          "best_word": "sinister",
+          "fit": {
+            "sinister": 0.87,
+            "malevolent": 0.32
+          },
+          "decisive_clue": "the unexplained footsteps suggest an unseen threat",
+          "reason": "This establishes that the unexplained footsteps suggest an unseen threat.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malevolent": "M1"
+          }
+        },
+        {
+          "id": "sinister-malevolent_006_b2",
+          "text": "The steps always paused for several seconds before moving away again.",
+          "best_word": "sinister",
+          "fit": {
+            "sinister": 0.93,
+            "malevolent": 0.32
+          },
+          "decisive_clue": "the unexplained footsteps suggest an unseen threat",
+          "reason": "The lingering pause heightens the eerie impression but does not establish anyone's plan to harm him.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malevolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The unexplained footsteps suggest an unseen threat; that detail favors sinister.",
+      "feedback_deep": "The lingering pause heightens the eerie impression but does not establish anyone's plan to harm him. Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "contrast_rule": "Sinister looks threatening; malevolent means to hurt.",
+      "hints": {
+        "attention": "Ask what is actually known about the source.",
+        "axis": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+        "contrast": "Sinister looks threatening; malevolent means to hurt."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "sinister-malevolent_007",
+      "edge_id": "sinister__malevolent",
+      "domain": "community_garden",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Gianna’s damage to the plants?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "sinister-malevolent_007_b1",
+          "text": "Gianna poured salt over her neighbour’s garden beds to ruin them after an argument.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.87
+          },
+          "decisive_clue": "she intentionally destroyed another person’s plants",
+          "reason": "This establishes that she intentionally destroyed another person’s plants.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        },
+        {
+          "id": "sinister-malevolent_007_b2",
+          "text": "She did it while she knew the neighbour was away for the weekend.",
+          "best_word": "malevolent",
+          "fit": {
+            "sinister": 0.32,
+            "malevolent": 0.93
+          },
+          "decisive_clue": "she intentionally destroyed another person’s plants",
+          "reason": "Timing adds concealment but does not change the established wish to cause damage.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "sinister": "M2"
+          }
+        }
+      ],
+      "feedback_short": "She intentionally destroyed another person’s plants; that detail favors malevolent.",
+      "feedback_deep": "Timing adds concealment but does not change the established wish to cause damage. Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+      "contrast_rule": "Sinister looks threatening; malevolent means to hurt.",
+      "hints": {
+        "attention": "Focus on the reason for the damage.",
+        "axis": "Sinister describes something that seems threatening; malevolent establishes a person’s or act’s wish to do harm.",
+        "contrast": "Sinister looks threatening; malevolent means to hurt."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "set_id": "solvent-liquid",
+  "title": "solvent / liquid",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[22]",
+    "source_pair_id": 100,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "solvent",
+      "sense": "assets worth more than total debts and obligations",
+      "connotation": "reassuring about overall finances",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming valuable assets are ready cash.",
+        "Assuming cash reserves prove net assets exceed debts."
+      ]
+    },
+    {
+      "word": "liquid",
+      "sense": "enough cash or quickly accessible funds for payments now",
+      "connotation": "reassuring about immediate payments",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming valuable assets are ready cash.",
+        "Assuming cash reserves prove net assets exceed debts."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "financial_condition",
+      "description": "Overall net worth versus cash accessible at short notice."
+    }
+  ],
+  "edges": [
+    {
+      "id": "solvent__liquid",
+      "a": "solvent",
+      "b": "liquid",
+      "boundary_rule": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth.",
+      "clues_a": [
+        "assets exceed debts",
+        "positive net worth"
+      ],
+      "clues_b": [
+        "cash accessible today",
+        "current bills payable immediately"
+      ],
+      "irrelevant_clues": [
+        "office decor",
+        "publicity",
+        "new logo"
+      ],
+      "misconceptions": {
+        "M1": "Assuming valuable assets are ready cash.",
+        "M2": "Assuming cash reserves prove net assets exceed debts.",
+        "M3": "Treating long-term and immediate financial strength as identical."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "solvent-liquid_001",
+      "edge_id": "solvent__liquid",
+      "domain": "school_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mira's debate club finances?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "solvent-liquid_001_b1",
+          "text": "The club owns equipment worth more than everything it owes, but its account is almost empty.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.93,
+            "liquid": 0.14
+          },
+          "decisive_clue": "equipment value exceeds every debt",
+          "reason": "Equipment value exceeds every debt; this favors solvent rather than liquid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        },
+        {
+          "id": "solvent-liquid_001_b2",
+          "text": "A new banner arrives for the next competition, without changing its accounts.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.93,
+            "liquid": 0.14
+          },
+          "decisive_clue": "the banner does not improve available cash",
+          "reason": "The banner does not improve available cash; this favors solvent rather than liquid.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The banner does not improve available cash points to solvent, not liquid.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Mira's situation ultimately hinges on this clue: the banner does not improve available cash. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_002",
+      "edge_id": "solvent__liquid",
+      "domain": "bike_repair_shop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Ana's repair shop finances?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "solvent-liquid_002_b1",
+          "text": "The tools and stock outweigh its debts, but almost no money is in the till.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.95,
+            "liquid": 0.18
+          },
+          "decisive_clue": "assets outweigh debts despite empty till",
+          "reason": "Assets outweigh debts despite empty till; this favors solvent rather than liquid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        },
+        {
+          "id": "solvent-liquid_002_b2",
+          "text": "Ana sells several spare bicycles for cash, leaving enough on hand to settle every bill due tomorrow.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.18,
+            "liquid": 0.95
+          },
+          "decisive_clue": "cash is now ready for tomorrow’s bills",
+          "reason": "Cash is now ready for tomorrow’s bills; this favors liquid rather than solvent.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Cash is now ready for tomorrow’s bills points to liquid, not solvent.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Ana's situation ultimately hinges on this clue: cash is now ready for tomorrow’s bills. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_003",
+      "edge_id": "solvent__liquid",
+      "domain": "family_business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dev's family business finances?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "solvent-liquid_003_b1",
+          "text": "The business owns property worth well beyond its loans, though its bank balance is low.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.91,
+            "liquid": 0.1
+          },
+          "decisive_clue": "property exceeds loans",
+          "reason": "Property exceeds loans; this favors solvent rather than liquid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        },
+        {
+          "id": "solvent-liquid_003_b2",
+          "text": "A fresh valuation confirms the property belongs outright to the business and remains worth more than all obligations.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.91,
+            "liquid": 0.1
+          },
+          "decisive_clue": "the positive balance of assets over obligations is verified",
+          "reason": "The positive balance of assets over obligations is verified; this favors solvent rather than liquid.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The positive balance of assets over obligations is verified points to solvent, not liquid.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Dev's situation ultimately hinges on this clue: the positive balance of assets over obligations is verified. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_004",
+      "edge_id": "solvent__liquid",
+      "domain": "coffee_cart",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Hana's coffee cart finances?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "solvent-liquid_004_b1",
+          "text": "The cart has plenty of cash to buy beans today, although its debts exceed its total assets.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.14,
+            "liquid": 0.93
+          },
+          "decisive_clue": "cash covers immediate supplies despite negative net worth",
+          "reason": "Cash covers immediate supplies despite negative net worth; this favors liquid rather than solvent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        },
+        {
+          "id": "solvent-liquid_004_b2",
+          "text": "A creditor cancels its largest debt, leaving total assets greater than everything the cart owes.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.93,
+            "liquid": 0.14
+          },
+          "decisive_clue": "debt cancellation makes total assets exceed liabilities",
+          "reason": "Debt cancellation makes total assets exceed liabilities; this favors solvent rather than liquid.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Debt cancellation makes total assets exceed liabilities points to solvent, not liquid.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Hana's situation ultimately hinges on this clue: debt cancellation makes total assets exceed liabilities. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_005",
+      "edge_id": "solvent__liquid",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kwame's football club finances?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "solvent-liquid_005_b1",
+          "text": "Its account can pay every fee due this week, though nobody has assessed the club's total debts.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.18,
+            "liquid": 0.95
+          },
+          "decisive_clue": "money is available for current fees",
+          "reason": "Money is available for current fees; this favors liquid rather than solvent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        },
+        {
+          "id": "solvent-liquid_005_b2",
+          "text": "Players vote for a new team shirt, but the fee money stays untouched.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.18,
+            "liquid": 0.95
+          },
+          "decisive_clue": "current fee money remains accessible",
+          "reason": "Current fee money remains accessible; this favors liquid rather than solvent.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Current fee money remains accessible points to liquid, not solvent.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Kwame's situation ultimately hinges on this clue: current fee money remains accessible. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_006",
+      "edge_id": "solvent__liquid",
+      "domain": "online_craft_store",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Sofia's online shop finances?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "solvent-liquid_006_b1",
+          "text": "Her stock and equipment are worth much more than her loans; nearly all her cash is tied up.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.91,
+            "liquid": 0.1
+          },
+          "decisive_clue": "net assets exceed loans while cash is tied up",
+          "reason": "Net assets exceed loans while cash is tied up; this favors solvent rather than liquid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        },
+        {
+          "id": "solvent-liquid_006_b2",
+          "text": "She changes the store's profile picture and suddenly gains thousands of followers.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.91,
+            "liquid": 0.1
+          },
+          "decisive_clue": "followers do not change the asset-to-debt comparison",
+          "reason": "Followers do not change the asset-to-debt comparison; this favors solvent rather than liquid.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Followers do not change the asset-to-debt comparison points to solvent, not liquid.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Sofia's situation ultimately hinges on this clue: followers do not change the asset-to-debt comparison. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_007",
+      "edge_id": "solvent__liquid",
+      "domain": "neighborhood_bakery",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Ravi's bakery finances?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "solvent-liquid_007_b1",
+          "text": "The ovens and building exceed its debts in value, but wages are due with no cash available.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.93,
+            "liquid": 0.14
+          },
+          "decisive_clue": "valuable assets exceed debts",
+          "reason": "Valuable assets exceed debts; this favors solvent rather than liquid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        },
+        {
+          "id": "solvent-liquid_007_b2",
+          "text": "Ravi receives a large prepaid catering order, putting enough cash in the bank for the wages immediately.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.14,
+            "liquid": 0.93
+          },
+          "decisive_clue": "cash received can cover wages immediately",
+          "reason": "Cash received can cover wages immediately; this favors liquid rather than solvent.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Cash received can cover wages immediately points to liquid, not solvent.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Ravi's situation ultimately hinges on this clue: cash received can cover wages immediately. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_008",
+      "edge_id": "solvent__liquid",
+      "domain": "theatre_group",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Esme's theatre group's finances?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "solvent-liquid_008_b1",
+          "text": "Advance ticket money is already in its account, enough for tonight's venue payment.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.18,
+            "liquid": 0.95
+          },
+          "decisive_clue": "ticket receipts cover the imminent payment",
+          "reason": "Ticket receipts cover the imminent payment; this favors liquid rather than solvent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        },
+        {
+          "id": "solvent-liquid_008_b2",
+          "text": "The funds can be withdrawn immediately and are not reserved for anything else.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.18,
+            "liquid": 0.95
+          },
+          "decisive_clue": "cash is unrestricted and immediately accessible",
+          "reason": "Cash is unrestricted and immediately accessible; this favors liquid rather than solvent.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Cash is unrestricted and immediately accessible points to liquid, not solvent.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Esme's situation ultimately hinges on this clue: cash is unrestricted and immediately accessible. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_009",
+      "edge_id": "solvent__liquid",
+      "domain": "wedding_service",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yusuf's wedding service financially?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "solvent-liquid_009_b1",
+          "text": "Its equipment and deposits it owns exceed every outstanding loan, although today's bank balance is tiny.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.91,
+            "liquid": 0.1
+          },
+          "decisive_clue": "owned assets exceed loans",
+          "reason": "Owned assets exceed loans; this favors solvent rather than liquid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        },
+        {
+          "id": "solvent-liquid_009_b2",
+          "text": "A client compliments the company's new website but does not make a payment.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.91,
+            "liquid": 0.1
+          },
+          "decisive_clue": "website praise does not change net assets",
+          "reason": "Website praise does not change net assets; this favors solvent rather than liquid.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Website praise does not change net assets points to solvent, not liquid.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Yusuf's situation ultimately hinges on this clue: website praise does not change net assets. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "solvent-liquid_010",
+      "edge_id": "solvent__liquid",
+      "domain": "delivery_cooperative",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nadia's delivery cooperative financially?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "solvent-liquid_010_b1",
+          "text": "Its vans look valuable enough to exceed all debts, so the accounts appear comfortably positive.",
+          "best_word": "solvent",
+          "fit": {
+            "solvent": 0.93,
+            "liquid": 0.14
+          },
+          "decisive_clue": "apparent van ownership suggests assets outweigh debts",
+          "reason": "Apparent van ownership suggests assets outweigh debts; this favors solvent rather than liquid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "liquid": "M1"
+          }
+        },
+        {
+          "id": "solvent-liquid_010_b2",
+          "text": "Nadia discovers the vans are leased, not owned; the reliable figure is cash sufficient for bills due today.",
+          "best_word": "liquid",
+          "fit": {
+            "solvent": 0.14,
+            "liquid": 0.93
+          },
+          "decisive_clue": "the vans are not owned but immediate bills can be paid",
+          "reason": "The vans are not owned but immediate bills can be paid; this favors liquid rather than solvent.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "solvent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The vans are not owned but immediate bills can be paid points to liquid, not solvent.",
+      "feedback_deep": "Solvent means total assets exceed liabilities; liquid means funds are available for immediate bills, regardless of total net worth. Here, Nadia's situation ultimately hinges on this clue: the vans are not owned but immediate bills can be paid. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Solvent = net worth; liquid = ready cash.",
+      "hints": {
+        "attention": "Look for whether the evidence concerns total assets and debts or cash due now.",
+        "axis": "Overall net worth versus cash accessible at short notice.",
+        "contrast": "Solvent = net worth; liquid = ready cash."
+      },
+      "qa": "pass"
+    }
+  ]
+}

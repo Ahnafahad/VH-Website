@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "set_id": "secular-atheistic",
+  "title": "secular / atheistic",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[95]",
+    "source_pair_id": 405,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "secular",
+      "sense": "Unconnected with religious institutions, authority, or sacred purposes.",
+      "connotation": "neutral",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Anything outside a religious institution must deny gods."
+      ]
+    },
+    {
+      "word": "atheistic",
+      "sense": "Expressing or holding disbelief in gods.",
+      "connotation": "may be neutral or contentious depending on context",
+      "register": "standard",
+      "misconceptions": [
+        "Disbelief in gods is merely a neutral organizational separation."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "institutional_scope",
+      "description": "Separation from religious authority versus a claim about existence."
+    },
+    {
+      "id": "belief_claim",
+      "description": "Neutral treatment of beliefs versus explicit disbelief."
+    }
+  ],
+  "edges": [
+    {
+      "id": "secular__atheistic",
+      "a": "secular",
+      "b": "atheistic",
+      "boundary_rule": "Secular means independent of religion, whereas atheistic asserts that gods do not exist.",
+      "clues_a": [
+        "open to any belief but governed without clergy",
+        "concerned with everyday rather than sacred matters",
+        "public program without religious requirements"
+      ],
+      "clues_b": [
+        "explicitly denies any god exists",
+        "argues gods are human inventions",
+        "states disbelief in all deities"
+      ],
+      "irrelevant_clues": [
+        "holding meetings on weekends",
+        "being held in a historic building",
+        "having members of different faiths"
+      ],
+      "misconceptions": {
+        "M1": "Anything outside a religious institution must deny gods.",
+        "M2": "Disbelief in gods is merely a neutral organizational separation.",
+        "M3": "A person’s beliefs automatically determine an institution’s character."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "secular-atheistic_001",
+      "edge_id": "secular__atheistic",
+      "domain": "school_policy",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya’s proposed school policy?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "secular-atheistic_001_b1",
+          "text": "Priya proposes lessons chosen by teachers, not by any religious organization.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "school curriculum independent of religious authority",
+          "reason": "The proposal concerns governance of lessons.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        },
+        {
+          "id": "secular-atheistic_001_b2",
+          "text": "The policy lets pupils keep their own religious practices outside class.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "allows individual faith while keeping curriculum independent",
+          "reason": "Allowing personal religious practices confirms neutrality rather than disbelief in gods.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Allowing personal religious practices confirms neutrality rather than disbelief in gods.",
+      "feedback_deep": "The proposal concerns governance of lessons. Allowing personal religious practices confirms neutrality rather than disbelief in gods. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "Is the policy about authority or existence?",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "secular-atheistic_002",
+      "edge_id": "secular__atheistic",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Elias’s published position?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "secular-atheistic_002_b1",
+          "text": "Elias writes that no gods exist and that stories of divine beings are human creations.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "explicit denial of the existence of gods",
+          "reason": "His statement is about divine existence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        },
+        {
+          "id": "secular-atheistic_002_b2",
+          "text": "He invites readers to challenge his reasoning in the next club meeting.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "explicit denial of the existence of gods",
+          "reason": "Inviting disagreement does not change the claim that no gods exist.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Inviting disagreement does not change the claim that no gods exist.",
+      "feedback_deep": "His statement is about divine existence. Inviting disagreement does not change the claim that no gods exist. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "Focus on the claim being made.",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "secular-atheistic_003",
+      "edge_id": "secular__atheistic",
+      "domain": "wedding_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Zara’s ceremony plan?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "secular-atheistic_003_b1",
+          "text": "Zara asks a friend to lead the ceremony without prayers or clergy.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "ceremony without religious officiation or rites",
+          "reason": "The plan leaves out religious authority and ritual.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        },
+        {
+          "id": "secular-atheistic_003_b2",
+          "text": "The couple will exchange promises and sign the register in front of their families.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "ceremony without religious officiation or rites",
+          "reason": "Signing a register adds a practical detail, not a declaration about gods.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Signing a register adds a practical detail, not a declaration about gods.",
+      "feedback_deep": "The plan leaves out religious authority and ritual. Signing a register adds a practical detail, not a declaration about gods. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "What is absent from the ceremony?",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "secular-atheistic_004",
+      "edge_id": "secular__atheistic",
+      "domain": "student_essay",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Noah’s argument?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "secular-atheistic_004_b1",
+          "text": "Noah argues that every supposed god is an invention of human imagination.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "assertion that gods are invented",
+          "reason": "His view explicitly rejects divine beings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        },
+        {
+          "id": "secular-atheistic_004_b2",
+          "text": "He supports his point with examples from books he read.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "the claim is about existence, not school or state policy",
+          "reason": "The choice of examples does not alter the belief claim at the center of his essay.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The choice of examples does not alter the belief claim at the center of his essay.",
+      "feedback_deep": "His view explicitly rejects divine beings. The choice of examples does not alter the belief claim at the center of his essay. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "What is his conclusion about gods?",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "secular-atheistic_005",
+      "edge_id": "secular__atheistic",
+      "domain": "sports_association",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ravi’s club rules?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "secular-atheistic_005_b1",
+          "text": "Ravi writes club rules that apply equally regardless of members’ religions.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "rules do not privilege any religion",
+          "reason": "The rules govern a shared activity independently of faith.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        },
+        {
+          "id": "secular-atheistic_005_b2",
+          "text": "Membership decisions depend only on attendance and safe conduct.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "membership relies on ordinary conduct instead of religious identity",
+          "reason": "The eligibility standard clarifies institutional neutrality, not disbelief.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The eligibility standard clarifies institutional neutrality, not disbelief.",
+      "feedback_deep": "The rules govern a shared activity independently of faith. The eligibility standard clarifies institutional neutrality, not disbelief. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "Look at what determines membership.",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "secular-atheistic_006",
+      "edge_id": "secular__atheistic",
+      "domain": "podcast_episode",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Keisha’s stated outlook?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "secular-atheistic_006_b1",
+          "text": "Keisha says she believes there are no divine beings anywhere.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "personal assertion that no divine beings exist",
+          "reason": "The content is a direct claim about gods.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        },
+        {
+          "id": "secular-atheistic_006_b2",
+          "text": "She explains why she has never found claims about gods convincing.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "personal assertion that no divine beings exist",
+          "reason": "Giving her reasoning does not convert that belief into an organizational separation from religion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Giving her reasoning does not convert that belief into an organizational separation from religion.",
+      "feedback_deep": "The content is a direct claim about gods. Giving her reasoning does not convert that belief into an organizational separation from religion. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "Is it a view about belief, or an institution?",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "secular-atheistic_007",
+      "edge_id": "secular__atheistic",
+      "domain": "public_library",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hana’s library program?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "secular-atheistic_007_b1",
+          "text": "Hana organizes a reading course that treats novels as literature, not sacred guidance.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "literature is approached without sacred authority",
+          "reason": "Her course has an ordinary literary purpose.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        },
+        {
+          "id": "secular-atheistic_007_b2",
+          "text": "The course welcomes participants with many different beliefs.",
+          "best_word": "secular",
+          "fit": {
+            "secular": 0.91,
+            "atheistic": 0.19
+          },
+          "decisive_clue": "literature is approached without sacred authority",
+          "reason": "The participants’ beliefs are incidental to how the course is run.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "atheistic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The participants’ beliefs are incidental to how the course is run.",
+      "feedback_deep": "Her course has an ordinary literary purpose. The participants’ beliefs are incidental to how the course is run. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "Consider the purpose of the course.",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "secular-atheistic_008",
+      "edge_id": "secular__atheistic",
+      "domain": "online_forum",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Santiago’s forum manifesto?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "secular-atheistic_008_b1",
+          "text": "Santiago’s manifesto says gods are imaginary and that none has ever existed.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "explicit claim that gods have never existed",
+          "reason": "The manifesto rejects divine existence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        },
+        {
+          "id": "secular-atheistic_008_b2",
+          "text": "It was posted on a forum that also hosts discussions of religious texts.",
+          "best_word": "atheistic",
+          "fit": {
+            "secular": 0.19,
+            "atheistic": 0.91
+          },
+          "decisive_clue": "explicit claim that gods have never existed",
+          "reason": "The forum’s wider topics do not alter the manifesto’s own statement.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "secular": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The forum’s wider topics do not alter the manifesto’s own statement.",
+      "feedback_deep": "The manifesto rejects divine existence. The forum’s wider topics do not alter the manifesto’s own statement. Secular sets religion aside; atheistic denies gods exist.",
+      "contrast_rule": "Secular sets religion aside; atheistic denies gods exist.",
+      "hints": {
+        "attention": "Judge the manifesto, not the platform.",
+        "axis": "Separation from religious authority versus a claim about existence.",
+        "contrast": "Secular sets religion aside; atheistic denies gods exist."
+      },
+      "qa": "pass"
+    }
+  ]
+}

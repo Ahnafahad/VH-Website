@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "cogent-coherent",
+  "title": "cogent / coherent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[26]",
+    "source_pair_id": 125,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "cogent",
+      "sense": "Clear and strongly reasoned enough to persuade or withstand objection.",
+      "connotation": "strongly approving",
+      "register": "formal",
+      "misconceptions": [
+        "Ignoring strong evidence because the presentation is informal.",
+        "Assuming an understandable claim must be well supported."
+      ]
+    },
+    {
+      "word": "coherent",
+      "sense": "Logically connected and easy to understand, without necessarily being convincing.",
+      "connotation": "neutral to approving",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Treating clarity and order as proof that an argument is persuasive.",
+        "Assuming an understandable claim must be well supported."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "persuasive_support_vs_logical_clarity",
+      "description": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak."
+    }
+  ],
+  "edges": [
+    {
+      "id": "cogent__coherent",
+      "a": "cogent",
+      "b": "coherent",
+      "boundary_rule": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak.",
+      "clues_a": [
+        "relevant evidence",
+        "strongly justified conclusion",
+        "objections convincingly answered"
+      ],
+      "clues_b": [
+        "orderly explanation",
+        "connected sequence",
+        "understandable but unproven claims"
+      ],
+      "irrelevant_clues": [
+        "friendly delivery",
+        "good formatting",
+        "length"
+      ],
+      "misconceptions": {
+        "M1": "Treating clarity and order as proof that an argument is persuasive.",
+        "M2": "Ignoring strong evidence because the presentation is informal.",
+        "M3": "Assuming an understandable claim must be well supported."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "cogent-coherent_001",
+      "edge_id": "cogent__coherent",
+      "domain": "school_lunch_debate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Malik’s case for changing the lunch menu?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cogent-coherent_001_b1",
+          "text": "Malik compared supplier prices and showed that his proposed lunches would cost less while meeting the same requirements.",
+          "best_word": "cogent",
+          "fit": {
+            "cogent": 0.92,
+            "coherent": 0.19
+          },
+          "decisive_clue": "comparative figures justify the proposed change",
+          "reason": "Comparative figures justify the proposed change. Clear and strongly reasoned enough to persuade or withstand objection.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coherent": "M1"
+          }
+        },
+        {
+          "id": "cogent-coherent_001_b2",
+          "text": "He presented his figures from handwritten notes rather than slides.",
+          "best_word": "cogent",
+          "fit": {
+            "cogent": 0.92,
+            "coherent": 0.19
+          },
+          "decisive_clue": "handwritten notes do not weaken the supporting evidence",
+          "reason": "Handwritten notes do not weaken the supporting evidence. Clear and strongly reasoned enough to persuade or withstand objection.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coherent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Handwritten notes do not weaken the supporting evidence.",
+      "feedback_deep": "Cogent means clear and strongly reasoned enough to persuade or withstand objection; coherent means logically connected and easy to understand, without necessarily being convincing. Here, comparative figures justify the proposed change. The new detail does not change the deciding fact: handwritten notes do not weaken the supporting evidence. Thus cogent remains the stronger choice.",
+      "contrast_rule": "Coherent is easy to follow; cogent gives strong reasons to believe.",
+      "hints": {
+        "attention": "Focus on whether the claim has strong support.",
+        "axis": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak.",
+        "contrast": "Coherent is easy to follow; cogent gives strong reasons to believe."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cogent-coherent_002",
+      "edge_id": "cogent__coherent",
+      "domain": "film_recap",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ana’s account of the film?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cogent-coherent_002_b1",
+          "text": "Ana told the film’s events in order, making it easy to follow who did what and why.",
+          "best_word": "coherent",
+          "fit": {
+            "cogent": 0.19,
+            "coherent": 0.92
+          },
+          "decisive_clue": "events connected in an understandable sequence",
+          "reason": "Events connected in an understandable sequence. Logically connected and easy to understand, without necessarily being convincing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cogent": "M1"
+          }
+        },
+        {
+          "id": "cogent-coherent_002_b2",
+          "text": "Her friends understood the story but still thought the film sounded dull.",
+          "best_word": "coherent",
+          "fit": {
+            "cogent": 0.19,
+            "coherent": 0.92
+          },
+          "decisive_clue": "listeners finding the film dull does not make the account hard to follow",
+          "reason": "Listeners finding the film dull does not make the account hard to follow. Logically connected and easy to understand, without necessarily being convincing.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cogent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Listeners finding the film dull does not make the account hard to follow.",
+      "feedback_deep": "Cogent means clear and strongly reasoned enough to persuade or withstand objection; coherent means logically connected and easy to understand, without necessarily being convincing. Here, events connected in an understandable sequence. The new detail does not change the deciding fact: listeners finding the film dull does not make the account hard to follow. Thus coherent remains the stronger choice.",
+      "contrast_rule": "Coherent is easy to follow; cogent gives strong reasons to believe.",
+      "hints": {
+        "attention": "Focus on whether the account can be followed.",
+        "axis": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak.",
+        "contrast": "Coherent is easy to follow; cogent gives strong reasons to believe."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cogent-coherent_003",
+      "edge_id": "cogent__coherent",
+      "domain": "appeal_letter",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mira’s appeal against the fee?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cogent-coherent_003_b1",
+          "text": "Mira included dated receipts and quoted the school rule showing that the fee did not apply to her.",
+          "best_word": "cogent",
+          "fit": {
+            "cogent": 0.92,
+            "coherent": 0.19
+          },
+          "decisive_clue": "receipts and a stated rule support the appeal",
+          "reason": "Receipts and a stated rule support the appeal. Clear and strongly reasoned enough to persuade or withstand objection.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coherent": "M1"
+          }
+        },
+        {
+          "id": "cogent-coherent_003_b2",
+          "text": "She used informal greetings and smiley faces throughout the letter.",
+          "best_word": "cogent",
+          "fit": {
+            "cogent": 0.92,
+            "coherent": 0.19
+          },
+          "decisive_clue": "casual greetings do not remove its relevant evidence",
+          "reason": "Casual greetings do not remove its relevant evidence. Clear and strongly reasoned enough to persuade or withstand objection.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coherent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Casual greetings do not remove its relevant evidence.",
+      "feedback_deep": "Cogent means clear and strongly reasoned enough to persuade or withstand objection; coherent means logically connected and easy to understand, without necessarily being convincing. Here, receipts and a stated rule support the appeal. The added evidence clarifies that fact: casual greetings do not remove its relevant evidence. Thus cogent remains the stronger choice.",
+      "contrast_rule": "Coherent is easy to follow; cogent gives strong reasons to believe.",
+      "hints": {
+        "attention": "Focus on what evidence supports the request.",
+        "axis": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak.",
+        "contrast": "Coherent is easy to follow; cogent gives strong reasons to believe."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cogent-coherent_004",
+      "edge_id": "cogent__coherent",
+      "domain": "study_plan_explanation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nadia’s explanation of her study plan?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cogent-coherent_004_b1",
+          "text": "Nadia set out her tasks in numbered order, and classmates could understand every step.",
+          "best_word": "coherent",
+          "fit": {
+            "cogent": 0.19,
+            "coherent": 0.92
+          },
+          "decisive_clue": "the plan is intelligible even before feasibility is tested",
+          "reason": "The plan is intelligible even before feasibility is tested. Logically connected and easy to understand, without necessarily being convincing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cogent": "M1"
+          }
+        },
+        {
+          "id": "cogent-coherent_004_b2",
+          "text": "The plan required twenty hours of study each day, so nobody believed it could work.",
+          "best_word": "coherent",
+          "fit": {
+            "cogent": 0.19,
+            "coherent": 0.92
+          },
+          "decisive_clue": "an impossible schedule leaves the explanation clear but unpersuasive",
+          "reason": "An impossible schedule leaves the explanation clear but unpersuasive. Logically connected and easy to understand, without necessarily being convincing.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cogent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An impossible schedule leaves the explanation clear but unpersuasive.",
+      "feedback_deep": "Cogent means clear and strongly reasoned enough to persuade or withstand objection; coherent means logically connected and easy to understand, without necessarily being convincing. Here, the plan is intelligible even before feasibility is tested. The added evidence clarifies that fact: an impossible schedule leaves the explanation clear but unpersuasive. Thus coherent remains the stronger choice.",
+      "contrast_rule": "Coherent is easy to follow; cogent gives strong reasons to believe.",
+      "hints": {
+        "attention": "Focus on whether understandable also means workable.",
+        "axis": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak.",
+        "contrast": "Coherent is easy to follow; cogent gives strong reasons to believe."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cogent-coherent_005",
+      "edge_id": "cogent__coherent",
+      "domain": "road_safety_petition",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Akira’s argument for a pedestrian crossing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cogent-coherent_005_b1",
+          "text": "Akira counted near misses on the same road for a month and used the figures to explain the danger.",
+          "best_word": "cogent",
+          "fit": {
+            "cogent": 0.92,
+            "coherent": 0.19
+          },
+          "decisive_clue": "direct observations support the safety argument",
+          "reason": "Direct observations support the safety argument. Clear and strongly reasoned enough to persuade or withstand objection.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coherent": "M1"
+          }
+        },
+        {
+          "id": "cogent-coherent_005_b2",
+          "text": "The petition containing his figures was printed in tiny letters.",
+          "best_word": "cogent",
+          "fit": {
+            "cogent": 0.92,
+            "coherent": 0.19
+          },
+          "decisive_clue": "small print does not erase the recorded evidence",
+          "reason": "Small print does not erase the recorded evidence. Clear and strongly reasoned enough to persuade or withstand objection.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coherent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Small print does not erase the recorded evidence.",
+      "feedback_deep": "Cogent means clear and strongly reasoned enough to persuade or withstand objection; coherent means logically connected and easy to understand, without necessarily being convincing. Here, direct observations support the safety argument. The apparent distraction does not change the deciding fact: small print does not erase the recorded evidence. Thus cogent remains the stronger choice.",
+      "contrast_rule": "Coherent is easy to follow; cogent gives strong reasons to believe.",
+      "hints": {
+        "attention": "Focus on what supports the proposed crossing.",
+        "axis": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak.",
+        "contrast": "Coherent is easy to follow; cogent gives strong reasons to believe."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "cogent-coherent_006",
+      "edge_id": "cogent__coherent",
+      "domain": "travel_directions",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Jamal’s directions to his apartment?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "cogent-coherent_006_b1",
+          "text": "Jamal listed the turns from the station in the right order, so his guests could follow the route.",
+          "best_word": "coherent",
+          "fit": {
+            "cogent": 0.19,
+            "coherent": 0.92
+          },
+          "decisive_clue": "the directions form an intelligible sequence",
+          "reason": "The directions form an intelligible sequence. Logically connected and easy to understand, without necessarily being convincing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "cogent": "M1"
+          }
+        },
+        {
+          "id": "cogent-coherent_006_b2",
+          "text": "He gave no argument for choosing his apartment as the meeting place; the message only explained how to reach it.",
+          "best_word": "coherent",
+          "fit": {
+            "cogent": 0.19,
+            "coherent": 0.92
+          },
+          "decisive_clue": "the message aims to guide, not to persuade anyone to choose the location",
+          "reason": "The message aims to guide, not to persuade anyone to choose the location. Logically connected and easy to understand, without necessarily being convincing.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "cogent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The message aims to guide, not to persuade anyone to choose the location.",
+      "feedback_deep": "Cogent means clear and strongly reasoned enough to persuade or withstand objection; coherent means logically connected and easy to understand, without necessarily being convincing. Here, the directions form an intelligible sequence. The added context helps interpret that fact: the message aims to guide, not to persuade anyone to choose the location. Thus coherent remains the stronger choice.",
+      "contrast_rule": "Coherent is easy to follow; cogent gives strong reasons to believe.",
+      "hints": {
+        "attention": "Focus on what kind of success the message needs.",
+        "axis": "Cogent reasoning is persuasive because it is well supported; coherent reasoning is understandable and connected even if its claims are weak.",
+        "contrast": "Coherent is easy to follow; cogent gives strong reasons to believe."
+      },
+      "qa": "pass"
+    }
+  ]
+}

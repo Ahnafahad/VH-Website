@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "set_id": "benevolent-benign",
+  "title": "benevolent / benign",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[152]",
+    "source_pair_id": 638,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "benevolent",
+      "sense": "Actively kind and generous, seeking to help others",
+      "connotation": "warmly approving",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Assuming anything harmless counts as generosity.",
+        "Assuming a smile proves someone helped."
+      ]
+    },
+    {
+      "word": "benign",
+      "sense": "Gentle or harmless, without harmful effect or intent",
+      "connotation": "reassuring",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Assuming anything harmless counts as generosity.",
+        "Ignoring the difference between intent to help and absence of harm."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "active_generosity_vs_harmlessness",
+      "description": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice."
+    }
+  ],
+  "edges": [
+    {
+      "id": "benevolent__benign",
+      "a": "benevolent",
+      "b": "benign",
+      "boundary_rule": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+      "clues_a": [
+        "gives time or resources",
+        "takes initiative to ease hardship"
+      ],
+      "clues_b": [
+        "does not injure or threaten",
+        "mild in effect"
+      ],
+      "irrelevant_clues": [
+        "smiling",
+        "speaking softly"
+      ],
+      "misconceptions": {
+        "M1": "Assuming anything harmless counts as generosity.",
+        "M2": "Assuming a smile proves someone helped.",
+        "M3": "Ignoring the difference between intent to help and absence of harm."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "benevolent-benign_001",
+      "edge_id": "benevolent__benign",
+      "domain": "family_teasing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Minho's comment to his cousin?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "benevolent-benign_001_b1",
+          "text": "Minho makes a light remark about their matching socks; his cousin laughs and remains completely at ease.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.91,
+            "benevolent": 0.26
+          },
+          "decisive_clue": "remark causes no hurt or threat",
+          "reason": "The initial evidence is remark causes no hurt or threat; it best supports benign.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_001_b2",
+          "text": "He makes the remark while holding a birthday cake.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.93,
+            "benevolent": 0.21
+          },
+          "decisive_clue": "remark causes no hurt or threat",
+          "reason": "The cake is incidental; the comment's lack of harmful effect matters.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The cake is incidental; the comment's lack of harmful effect matters.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. The cake is incidental; the comment's lack of harmful effect matters.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "How does the remark land?",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benevolent-benign_002",
+      "edge_id": "benevolent__benign",
+      "domain": "neighbour_s_groceries",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Talia's action toward her neighbour?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "benevolent-benign_002_b1",
+          "text": "Talia notices her neighbour cannot carry shopping upstairs and brings the bags up every week.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.91,
+            "benign": 0.26
+          },
+          "decisive_clue": "regular voluntary help to someone who needs it",
+          "reason": "The initial evidence is regular voluntary help to someone who needs it; it best supports benevolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_002_b2",
+          "text": "She also picks up groceries when the neighbour cannot leave home.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.93,
+            "benign": 0.21
+          },
+          "decisive_clue": "additional practical care for another person",
+          "reason": "The second act reinforces her generous intention rather than mere harmlessness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The second act reinforces her generous intention rather than mere harmlessness.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. The second act reinforces her generous intention rather than mere harmlessness.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "Who benefits from her effort?",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benevolent-benign_003",
+      "edge_id": "benevolent__benign",
+      "domain": "office_message",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Priyanka's reply to a minor mistake?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "benevolent-benign_003_b1",
+          "text": "Priyanka says, 'No problem, just fix the date,' without blaming or alarming her coworker.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.91,
+            "benevolent": 0.26
+          },
+          "decisive_clue": "gentle response to an error",
+          "reason": "The initial evidence is gentle response to an error; it best supports benign.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_003_b2",
+          "text": "Her message is typed entirely in capital letters because her keyboard is stuck.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.93,
+            "benevolent": 0.21
+          },
+          "decisive_clue": "gentle response to an error",
+          "reason": "The formatting looks severe, but the actual words remain nonthreatening.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The formatting looks severe, but the actual words remain nonthreatening.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. The formatting looks severe, but the actual words remain nonthreatening.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "Judge what the message conveys.",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benevolent-benign_004",
+      "edge_id": "benevolent__benign",
+      "domain": "school_book_drive",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ibrahim's conduct at the book drive?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "benevolent-benign_004_b1",
+          "text": "Ibrahim buys extra textbooks with his savings so classmates who need them can study.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.91,
+            "benign": 0.26
+          },
+          "decisive_clue": "uses personal resources to help others",
+          "reason": "The initial evidence is uses personal resources to help others; it best supports benevolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_004_b2",
+          "text": "He carries them in a bright orange bag.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.93,
+            "benign": 0.21
+          },
+          "decisive_clue": "uses personal resources to help others",
+          "reason": "The bag colour does not change the generous action.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The bag colour does not change the generous action.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. The bag colour does not change the generous action.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "What did he give up to help?",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benevolent-benign_005",
+      "edge_id": "benevolent__benign",
+      "domain": "cafe_manager",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Anika's decision at the cafe?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "benevolent-benign_005_b1",
+          "text": "Anika learns an employee cannot afford a bus pass and quietly pays for it herself.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.91,
+            "benign": 0.26
+          },
+          "decisive_clue": "personal sacrifice to ease another's difficulty",
+          "reason": "The initial evidence is personal sacrifice to ease another's difficulty; it best supports benevolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_005_b2",
+          "text": "She arranges the payment privately so the employee will not feel embarrassed.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.93,
+            "benign": 0.21
+          },
+          "decisive_clue": "thoughtful help protecting dignity",
+          "reason": "The discretion shows consideration alongside the practical gift.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The discretion shows consideration alongside the practical gift.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. The discretion shows consideration alongside the practical gift.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "Notice the motive and effect of the gesture.",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benevolent-benign_006",
+      "edge_id": "benevolent__benign",
+      "domain": "weather_on_a_walk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the weather during Olek's walk?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "benevolent-benign_006_b1",
+          "text": "Olek walks under light clouds with no wind strong enough to interrupt the outing.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.91,
+            "benevolent": 0.26
+          },
+          "decisive_clue": "mild conditions without adverse effect",
+          "reason": "The initial evidence is mild conditions without adverse effect; it best supports benign.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_006_b2",
+          "text": "A brief drizzle stops before his clothes get wet.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.93,
+            "benevolent": 0.21
+          },
+          "decisive_clue": "weather remains harmless to the outing",
+          "reason": "The drizzle adds variety but no meaningful threat or damage.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The drizzle adds variety but no meaningful threat or damage.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. The drizzle adds variety but no meaningful threat or damage.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "Consider its practical impact.",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benevolent-benign_007",
+      "edge_id": "benevolent__benign",
+      "domain": "community_meeting",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Aditi's reaction to a disagreement?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "benevolent-benign_007_b1",
+          "text": "Aditi listens to the criticism with a relaxed expression and answers without attacking anyone.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.91,
+            "benevolent": 0.26
+          },
+          "decisive_clue": "calm reaction free of hostility",
+          "reason": "The initial evidence is calm reaction free of hostility; it best supports benign.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_007_b2",
+          "text": "Even when the room falls silent, her reply stays gentle and matter-of-fact.",
+          "best_word": "benign",
+          "fit": {
+            "benign": 0.93,
+            "benevolent": 0.21
+          },
+          "decisive_clue": "nonthreatening manner under pressure",
+          "reason": "Remaining gentle during tension confirms a mild response, not an act of material generosity.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benevolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Remaining gentle during tension confirms a mild response, not an act of material generosity.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. Remaining gentle during tension confirms a mild response, not an act of material generosity.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "Look at the tone of her response.",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "benevolent-benign_008",
+      "edge_id": "benevolent__benign",
+      "domain": "sports_fundraiser",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Yara's work for the team?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "benevolent-benign_008_b1",
+          "text": "Yara spends her weekends arranging free equipment for players whose families cannot buy it.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.91,
+            "benign": 0.26
+          },
+          "decisive_clue": "devotes time to help others participate",
+          "reason": "The initial evidence is devotes time to help others participate; it best supports benevolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M1"
+          }
+        },
+        {
+          "id": "benevolent-benign_008_b2",
+          "text": "She calls several suppliers to make sure every child has the right size.",
+          "best_word": "benevolent",
+          "fit": {
+            "benevolent": 0.93,
+            "benign": 0.21
+          },
+          "decisive_clue": "sustained effort to support others",
+          "reason": "The extra work reinforces active concern for others' needs.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "benign": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The extra work reinforces active concern for others' needs.",
+      "feedback_deep": "Benevolent means kindness expressed in helpful action; benign means not threatening or damaging. The extra work reinforces active concern for others' needs.",
+      "contrast_rule": "Benevolent does good; benign does no harm.",
+      "hints": {
+        "attention": "Who is she trying to help?",
+        "axis": "Benevolent involves an active wish to benefit others; benign means gentle or harmless without requiring a helpful sacrifice.",
+        "contrast": "Benevolent does good; benign does no harm."
+      },
+      "qa": "pass"
+    }
+  ]
+}

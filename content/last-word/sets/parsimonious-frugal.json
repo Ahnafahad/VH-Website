@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "set_id": "parsimonious-frugal",
+  "title": "parsimonious / frugal",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[156]",
+    "source_pair_id": 654,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "parsimonious",
+      "sense": "Unreasonably sparing with money or resources, even when doing so is unfair or mean.",
+      "connotation": "disapproving",
+      "register": "formal",
+      "misconceptions": [
+        "Assumes all saving is stinginess.",
+        "Treats any low spending as automatically sensible."
+      ]
+    },
+    {
+      "word": "frugal",
+      "sense": "Economical and careful about spending without unreasonable deprivation.",
+      "connotation": "often approving",
+      "register": "general or educated",
+      "misconceptions": [
+        "Assumes all saving is stinginess.",
+        "Treats any low spending as automatically sensible."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_basis",
+      "description": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+    }
+  ],
+  "edges": [
+    {
+      "id": "parsimonious__frugal",
+      "a": "parsimonious",
+      "b": "frugal",
+      "boundary_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "clues_a": [
+        "denies necessary costs",
+        "refuses fair reimbursement",
+        "saves at someone else’s expense"
+      ],
+      "clues_b": [
+        "plans purchases",
+        "avoids waste",
+        "selects inexpensive adequate options"
+      ],
+      "irrelevant_clues": [
+        "colour of wallet",
+        "income alone",
+        "size of receipt"
+      ],
+      "misconceptions": {
+        "M1": "Assumes all saving is stinginess.",
+        "M2": "Treats any low spending as automatically sensible.",
+        "M3": "Ignores harm or fairness when evaluating refusal to spend."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "parsimonious-frugal_001",
+      "edge_id": "parsimonious__frugal",
+      "domain": "student_lunch",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hira’s lunch habit?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_001_b1",
+          "text": "Hira cooks rice and vegetables in batches instead of buying lunch every day.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.2,
+            "frugal": 0.87
+          },
+          "decisive_clue": "plans affordable meals without sacrificing needs",
+          "reason": "The first beat supplies the deciding evidence: plans affordable meals without sacrificing needs.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M3"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_001_b2",
+          "text": "She also packs the food in a container she has used for years.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.17,
+            "frugal": 0.89
+          },
+          "decisive_clue": "plans affordable meals without sacrificing needs",
+          "reason": "A reused container does not turn sensible economy into meanness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Plans affordable meals without sacrificing needs — the later detail does not change that distinction.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, plans affordable meals without sacrificing needs; a reused container does not turn sensible economy into meanness.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on planning rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "parsimonious-frugal_002",
+      "edge_id": "parsimonious__frugal",
+      "domain": "part-time_workplace",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ben’s handling of staff expenses?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_002_b1",
+          "text": "Ben refuses to repay workers for required travel, even after seeing their tickets.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.89,
+            "frugal": 0.23
+          },
+          "decisive_clue": "refuses to cover legitimate work expenses",
+          "reason": "The first beat supplies the deciding evidence: refuses to cover legitimate work expenses.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M1"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_002_b2",
+          "text": "He rejects the claims even when the amounts and receipts are easy to verify.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.91,
+            "frugal": 0.2
+          },
+          "decisive_clue": "refuses to cover legitimate work expenses",
+          "reason": "Simple paperwork does not excuse withholding money owed.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Refuses to cover legitimate work expenses is what distinguishes parsimonious here.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, refuses to cover legitimate work expenses; simple paperwork does not excuse withholding money owed.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on fairness rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "parsimonious-frugal_003",
+      "edge_id": "parsimonious__frugal",
+      "domain": "family_outing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Sofia’s approach to ticket costs?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_003_b1",
+          "text": "Sofia books advance family tickets to save money, then pays for everyone’s seats.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.16,
+            "frugal": 0.91
+          },
+          "decisive_clue": "saves on tickets while covering everyone",
+          "reason": "The first beat supplies the deciding evidence: saves on tickets while covering everyone.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M2"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_003_b2",
+          "text": "She chooses the earlier show, although the seats are just as good.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.13,
+            "frugal": 0.93
+          },
+          "decisive_clue": "saves on tickets while covering everyone",
+          "reason": "An earlier performance does not make this saving unfair.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Saves on tickets while covering everyone — the later detail does not change that distinction.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, saves on tickets while covering everyone; an earlier performance does not make this saving unfair.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on adequacy rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "parsimonious-frugal_004",
+      "edge_id": "parsimonious__frugal",
+      "domain": "shared_apartment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Omar’s spending on shared supplies?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_004_b1",
+          "text": "Omar uses his flatmates’ cleaning products but repeatedly refuses to pay his agreed share.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.85,
+            "frugal": 0.2
+          },
+          "decisive_clue": "takes supplies but withholds his agreed contribution",
+          "reason": "The first beat supplies the deciding evidence: takes supplies but withholds his agreed contribution.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M3"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_004_b2",
+          "text": "He carefully records the cost of shared supplies while omitting the amount he owes.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.87,
+            "frugal": 0.17
+          },
+          "decisive_clue": "takes supplies but withholds his agreed contribution",
+          "reason": "Detailed records can coexist with unfair refusal to contribute.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Takes supplies but withholds his agreed contribution is what distinguishes parsimonious here.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, takes supplies but withholds his agreed contribution; detailed records can coexist with unfair refusal to contribute.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on obligation rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "parsimonious-frugal_005",
+      "edge_id": "parsimonious__frugal",
+      "domain": "book_shopping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mei’s choices at the bookshop?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_005_b1",
+          "text": "Mei buys a used copy with all its pages intact rather than a new hardcover.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.23,
+            "frugal": 0.87
+          },
+          "decisive_clue": "chooses an adequate cheaper copy",
+          "reason": "The first beat supplies the deciding evidence: chooses an adequate cheaper copy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M1"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_005_b2",
+          "text": "She reads it twice and later lends it to a friend.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.2,
+            "frugal": 0.89
+          },
+          "decisive_clue": "chooses an adequate cheaper copy",
+          "reason": "The purchase meets her needs while avoiding unnecessary expense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Chooses an adequate cheaper copy is what distinguishes frugal here.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, chooses an adequate cheaper copy; the purchase meets her needs while avoiding unnecessary expense.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on value rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "parsimonious-frugal_006",
+      "edge_id": "parsimonious__frugal",
+      "domain": "school_fundraiser",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Idris’s handling of the group fund?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_006_b1",
+          "text": "Idris blocks the purchase of drinking water for volunteers, despite the heat and money already collected.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.89,
+            "frugal": 0.16
+          },
+          "decisive_clue": "refuses a necessary basic expense despite available funds",
+          "reason": "The first beat supplies the deciding evidence: refuses a necessary basic expense despite available funds.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M2"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_006_b2",
+          "text": "He insists the fund should have a large balance at the end.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.91,
+            "frugal": 0.13
+          },
+          "decisive_clue": "refuses a necessary basic expense despite available funds",
+          "reason": "Wanting a balance does not justify denying needed water.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Refuses a necessary basic expense despite available funds — the later detail does not change that distinction.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, refuses a necessary basic expense despite available funds; wanting a balance does not justify denying needed water.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on deprivation rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "parsimonious-frugal_007",
+      "edge_id": "parsimonious__frugal",
+      "domain": "online_subscriptions",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Valentina’s subscription habit?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_007_b1",
+          "text": "Valentina cancels services she no longer uses and keeps the one needed for her studies.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.2,
+            "frugal": 0.91
+          },
+          "decisive_clue": "cuts unused costs but retains needed service",
+          "reason": "The first beat supplies the deciding evidence: cuts unused costs but retains needed service.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M3"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_007_b2",
+          "text": "She reviews the charges on the same date each month.",
+          "best_word": "frugal",
+          "fit": {
+            "parsimonious": 0.17,
+            "frugal": 0.93
+          },
+          "decisive_clue": "cuts unused costs but retains needed service",
+          "reason": "Regular review is consistent with economical, practical decisions.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Cuts unused costs but retains needed service is what distinguishes frugal here.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, cuts unused costs but retains needed service; regular review is consistent with economical, practical decisions.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on selectivity rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "parsimonious-frugal_008",
+      "edge_id": "parsimonious__frugal",
+      "domain": "community_garden",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yusuf’s use of the garden budget?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "parsimonious-frugal_008_b1",
+          "text": "Yusuf will not replace broken gloves, although volunteers have reported cuts and the budget covers replacements.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.85,
+            "frugal": 0.23
+          },
+          "decisive_clue": "withholds inexpensive safety equipment despite injuries",
+          "reason": "The first beat supplies the deciding evidence: withholds inexpensive safety equipment despite injuries.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M1"
+          }
+        },
+        {
+          "id": "parsimonious-frugal_008_b2",
+          "text": "He has placed the unspent cash in an envelope with a neat label.",
+          "best_word": "parsimonious",
+          "fit": {
+            "parsimonious": 0.87,
+            "frugal": 0.2
+          },
+          "decisive_clue": "withholds inexpensive safety equipment despite injuries",
+          "reason": "Neat budgeting cannot justify avoiding a necessary safety expense.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Withholds inexpensive safety equipment despite injuries — the later detail does not change that distinction.",
+      "feedback_deep": "Parsimonious means unreasonably sparing with money or resources, even when doing so is unfair or mean. Frugal means economical and careful about spending without unreasonable deprivation. Here, withholds inexpensive safety equipment despite injuries; neat budgeting cannot justify avoiding a necessary safety expense.",
+      "contrast_rule": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+      "hints": {
+        "attention": "Focus on harm rather than incidental details.",
+        "axis": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs.",
+        "contrast": "Parsimonious thrift withholds resources unreasonably; frugal thrift avoids waste while meeting legitimate needs."
+      },
+      "qa": "pass"
+    }
+  ]
+}

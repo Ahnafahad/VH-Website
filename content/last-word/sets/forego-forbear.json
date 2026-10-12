@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "forego-forbear",
+  "title": "forego / forbear",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[154]",
+    "source_pair_id": 651,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "forego",
+      "sense": "choose to go without something available",
+      "connotation": "neutral",
+      "register": "formal",
+      "misconceptions": [
+        "Treating voluntary sacrifice as though someone were resisting provocation."
+      ]
+    },
+    {
+      "word": "forbear",
+      "sense": "hold oneself back from acting, particularly when provoked",
+      "connotation": "restrained",
+      "register": "formal",
+      "misconceptions": [
+        "Treating self-restraint under provocation as simply declining an offered benefit."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "renunciation_vs_restraint",
+      "description": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation."
+    }
+  ],
+  "edges": [
+    {
+      "id": "forego__forbear",
+      "a": "forego",
+      "b": "forbear",
+      "boundary_rule": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+      "clues_a": [
+        "declines an offered perk",
+        "skips an available treat",
+        "chooses not to claim a benefit"
+      ],
+      "clues_b": [
+        "holds back a sharp reply",
+        "resists retaliating",
+        "does not react despite provocation"
+      ],
+      "irrelevant_clues": [
+        "cost of the item",
+        "time of day",
+        "other people’s clothing"
+      ],
+      "misconceptions": {
+        "M1": "Confuses forego with forbear by overlooking the defining difference: Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+        "M2": "Assumes evidence for forbear necessarily proves forego; these are different tests.",
+        "M3": "Overweights a later superficial detail instead of retaining or appropriately updating the original boundary evidence."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "forego-forbear_001",
+      "edge_id": "forego__forbear",
+      "domain": "concert_evening",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amira’s decision about the concert?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "forego-forbear_001_b1",
+          "text": "Amira declined a free ticket to a concert she wanted to attend so she could study.",
+          "best_word": "forego",
+          "fit": {
+            "forego": 0.93,
+            "forbear": 0.16
+          },
+          "decisive_clue": "voluntarily declined an available pleasure",
+          "reason": "She gives up a benefit that was available to her.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "forbear": "M1"
+          }
+        },
+        {
+          "id": "forego-forbear_001_b2",
+          "text": "Even when another seat opened beside her friend, she stayed home.",
+          "best_word": "forego",
+          "fit": {
+            "forego": 0.93,
+            "forbear": 0.16
+          },
+          "decisive_clue": "continued choosing to go without the offered experience",
+          "reason": "A second offer confirms the sacrifice was her choice.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "forbear": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Continued choosing to go without the offered experience; a second offer confirms the sacrifice was her choice.",
+      "feedback_deep": "Forego means choose to go without something available; forbear means hold oneself back from acting, particularly when provoked. A second offer confirms the sacrifice was her choice.",
+      "contrast_rule": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+      "hints": {
+        "attention": "Was she giving up a benefit or resisting an impulse to react?",
+        "axis": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+        "contrast": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "forego-forbear_002",
+      "edge_id": "forego__forbear",
+      "domain": "checkout_line",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mateo’s response to the rude comment?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "forego-forbear_002_b1",
+          "text": "When a customer mocked his mistake, Mateo pressed his lips together instead of snapping back.",
+          "best_word": "forbear",
+          "fit": {
+            "forego": 0.16,
+            "forbear": 0.93
+          },
+          "decisive_clue": "withheld an angry response despite provocation",
+          "reason": "He restrains an action he is tempted to take.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "forego": "M2"
+          }
+        },
+        {
+          "id": "forego-forbear_002_b2",
+          "text": "He finished serving the customer without answering the insult.",
+          "best_word": "forbear",
+          "fit": {
+            "forego": 0.16,
+            "forbear": 0.93
+          },
+          "decisive_clue": "continued to resist replying to the insult",
+          "reason": "Not retaliating through the encounter makes his restraint clearer.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "forego": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Continued to resist replying to the insult; not retaliating through the encounter makes his restraint clearer.",
+      "feedback_deep": "Forego means choose to go without something available; forbear means hold oneself back from acting, particularly when provoked. Not retaliating through the encounter makes his restraint clearer.",
+      "contrast_rule": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+      "hints": {
+        "attention": "What was he tempted to do?",
+        "axis": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+        "contrast": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "forego-forbear_003",
+      "edge_id": "forego__forbear",
+      "domain": "train_booking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yuki’s decision about the upgrade?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "forego-forbear_003_b1",
+          "text": "Yuki declined an available first-class upgrade because she preferred to travel with her friends.",
+          "best_word": "forego",
+          "fit": {
+            "forego": 0.93,
+            "forbear": 0.16
+          },
+          "decisive_clue": "chose to go without an offered upgrade",
+          "reason": "An optional advantage was available and she declined it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "forbear": "M1"
+          }
+        },
+        {
+          "id": "forego-forbear_003_b2",
+          "text": "Her original seat had a blue headrest.",
+          "best_word": "forego",
+          "fit": {
+            "forego": 0.93,
+            "forbear": 0.16
+          },
+          "decisive_clue": "chose to go without an offered upgrade",
+          "reason": "Seat color does not change her voluntary decision.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "forbear": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Chose to go without an offered upgrade; seat color does not change her voluntary decision.",
+      "feedback_deep": "Forego means choose to go without something available; forbear means hold oneself back from acting, particularly when provoked. Seat color does not change her voluntary decision.",
+      "contrast_rule": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+      "hints": {
+        "attention": "Focus on what she could have accepted.",
+        "axis": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+        "contrast": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "forego-forbear_004",
+      "edge_id": "forego__forbear",
+      "domain": "art_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Ibrahim’s response to criticism?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "forego-forbear_004_b1",
+          "text": "Ibrahim wanted to shout when his classmate mocked his painting, but he took a breath and said nothing.",
+          "best_word": "forbear",
+          "fit": {
+            "forego": 0.16,
+            "forbear": 0.93
+          },
+          "decisive_clue": "held back a sharp response under provocation",
+          "reason": "The issue is his restraint in the face of an insult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "forego": "M2"
+          }
+        },
+        {
+          "id": "forego-forbear_004_b2",
+          "text": "He was still holding his paintbrush at the time.",
+          "best_word": "forbear",
+          "fit": {
+            "forego": 0.16,
+            "forbear": 0.93
+          },
+          "decisive_clue": "held back a sharp response under provocation",
+          "reason": "The brush in his hand is irrelevant to that restraint.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "forego": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Held back a sharp response under provocation; the brush in his hand is irrelevant to that restraint.",
+      "feedback_deep": "Forego means choose to go without something available; forbear means hold oneself back from acting, particularly when provoked. The brush in his hand is irrelevant to that restraint.",
+      "contrast_rule": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+      "hints": {
+        "attention": "Look at what he stops himself from doing.",
+        "axis": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+        "contrast": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "forego-forbear_005",
+      "edge_id": "forego__forbear",
+      "domain": "family_messages",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Luz’s handling of her angry reply?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "forego-forbear_005_b1",
+          "text": "After a harsh family message, Luz typed an insulting response but stopped before sending it.",
+          "best_word": "forbear",
+          "fit": {
+            "forego": 0.16,
+            "forbear": 0.93
+          },
+          "decisive_clue": "held back from sending an angry message",
+          "reason": "She resists a provocative urge rather than surrendering a reward.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "forego": "M2"
+          }
+        },
+        {
+          "id": "forego-forbear_005_b2",
+          "text": "She deleted the insults and waited until she could write calmly.",
+          "best_word": "forbear",
+          "fit": {
+            "forego": 0.16,
+            "forbear": 0.93
+          },
+          "decisive_clue": "actively removed the retaliation she had prepared",
+          "reason": "Deleting the words reinforces the deliberate restraint.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "forego": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Actively removed the retaliation she had prepared; deleting the words reinforces the deliberate restraint.",
+      "feedback_deep": "Forego means choose to go without something available; forbear means hold oneself back from acting, particularly when provoked. Deleting the words reinforces the deliberate restraint.",
+      "contrast_rule": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+      "hints": {
+        "attention": "What action is she preventing herself from taking?",
+        "axis": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+        "contrast": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "forego-forbear_006",
+      "edge_id": "forego__forbear",
+      "domain": "office_reimbursement",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Priya’s decision about her allowance?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "forego-forbear_006_b1",
+          "text": "Priya decided not to claim the meal allowance she was entitled to on her trip.",
+          "best_word": "forego",
+          "fit": {
+            "forego": 0.93,
+            "forbear": 0.16
+          },
+          "decisive_clue": "voluntarily relinquished an available benefit",
+          "reason": "She chooses to do without money she could have claimed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "forbear": "M1"
+          }
+        },
+        {
+          "id": "forego-forbear_006_b2",
+          "text": "She left the reimbursement line blank on the form.",
+          "best_word": "forego",
+          "fit": {
+            "forego": 0.93,
+            "forbear": 0.16
+          },
+          "decisive_clue": "voluntarily relinquished an available benefit",
+          "reason": "The blank line confirms that decision without adding a different kind of restraint.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "forbear": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Voluntarily relinquished an available benefit; the blank line confirms that decision without adding a different kind of restraint.",
+      "feedback_deep": "Forego means choose to go without something available; forbear means hold oneself back from acting, particularly when provoked. The blank line confirms that decision without adding a different kind of restraint.",
+      "contrast_rule": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+      "hints": {
+        "attention": "Is something available being willingly passed up?",
+        "axis": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation.",
+        "contrast": "Forego means give up an available opportunity or benefit; forbear means deliberately restrain an action or response, often under provocation."
+      },
+      "qa": "pass"
+    }
+  ]
+}

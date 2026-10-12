@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "infamous-famous",
+  "title": "infamous / famous",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[17]",
+    "source_pair_id": 69,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "infamous",
+      "sense": "Widely known primarily for wrongdoing, scandal, or disgrace.",
+      "connotation": "strongly negative",
+      "register": "standard",
+      "misconceptions": [
+        "Treating any criticism as enough to make someone notorious.",
+        "Ignoring the wrongdoing that defines a public reputation."
+      ]
+    },
+    {
+      "word": "famous",
+      "sense": "Widely known, without necessarily having a bad reputation.",
+      "connotation": "neutral or positive",
+      "register": "standard",
+      "misconceptions": [
+        "Thinking widespread recognition always implies disgrace.",
+        "Ignoring the wrongdoing that defines a public reputation."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "negative_notoriety_vs_recognition",
+      "description": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition."
+    }
+  ],
+  "edges": [
+    {
+      "id": "infamous__famous",
+      "a": "infamous",
+      "b": "famous",
+      "boundary_rule": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+      "clues_a": [
+        "known for cheating or fraud",
+        "notoriety rests on wrongdoing"
+      ],
+      "clues_b": [
+        "widely recognised for achievement",
+        "known without a disgraced reputation"
+      ],
+      "irrelevant_clues": [
+        "number of followers",
+        "age of subject"
+      ],
+      "misconceptions": {
+        "M1": "Thinking widespread recognition always implies disgrace.",
+        "M2": "Treating any criticism as enough to make someone notorious.",
+        "M3": "Ignoring the wrongdoing that defines a public reputation."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "infamous-famous_001",
+      "edge_id": "infamous__famous",
+      "domain": "school_examination",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rohan’s reputation among students?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_001_b1",
+          "text": "Rohan became known across the district for selling stolen answers to entrance exams.",
+          "best_word": "infamous",
+          "fit": {
+            "infamous": 0.93,
+            "famous": 0.18
+          },
+          "decisive_clue": "recognition was built on selling stolen answers",
+          "reason": "Recognition was built on selling stolen answers. Widely known primarily for wrongdoing, scandal, or disgrace..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "famous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_001_b2",
+          "text": "Teachers still cited his scheme as a warning about cheating.",
+          "best_word": "infamous",
+          "fit": {
+            "infamous": 0.93,
+            "famous": 0.18
+          },
+          "decisive_clue": "continued attention centred on his dishonesty",
+          "reason": "Continued attention centred on his dishonesty. Widely known primarily for wrongdoing, scandal, or disgrace..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "famous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Continued attention centred on his dishonesty makes infamous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, continued attention centred on his dishonesty; that is why infamous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on why people remember him.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_002",
+      "edge_id": "infamous__famous",
+      "domain": "music_festival",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amara’s public reputation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_002_b1",
+          "text": "Amara’s songs topped charts in several countries, and crowds recognised her voice.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "widely recognised for popular music",
+          "reason": "Widely recognised for popular music. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_002_b2",
+          "text": "She had won awards for performances rather than attracting scandal.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "awards reinforce recognition without wrongdoing",
+          "reason": "Awards reinforce recognition without wrongdoing. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Awards reinforce recognition without wrongdoing makes famous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, awards reinforce recognition without wrongdoing; that is why famous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on what brought her recognition.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_003",
+      "edge_id": "infamous__famous",
+      "domain": "online_video",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Nikita’s reputation after her video spread?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_003_b1",
+          "text": "Nikita became recognisable to millions after one clip appeared on nearly every feed.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "the clip gave her broad public recognition",
+          "reason": "The clip gave her broad public recognition. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_003_b2",
+          "text": "The clip spread because it showed her deliberately humiliating a classmate for views.",
+          "best_word": "infamous",
+          "fit": {
+            "infamous": 0.93,
+            "famous": 0.18
+          },
+          "decisive_clue": "notoriety came specifically from deliberate cruelty",
+          "reason": "Notoriety came specifically from deliberate cruelty. Widely known primarily for wrongdoing, scandal, or disgrace..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "famous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Notoriety came specifically from deliberate cruelty makes infamous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, notoriety came specifically from deliberate cruelty; that is why infamous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on the reason the video spread.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_004",
+      "edge_id": "infamous__famous",
+      "domain": "neighbourhood_election",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Farid’s reputation after the vote?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_004_b1",
+          "text": "Farid became known citywide for secretly changing ballot totals to help himself.",
+          "best_word": "infamous",
+          "fit": {
+            "infamous": 0.93,
+            "famous": 0.18
+          },
+          "decisive_clue": "citywide recognition for rigging votes",
+          "reason": "Citywide recognition for rigging votes. Widely known primarily for wrongdoing, scandal, or disgrace..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "famous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_004_b2",
+          "text": "Even people who forgot the result remembered the cheating allegations that were proved.",
+          "best_word": "infamous",
+          "fit": {
+            "infamous": 0.93,
+            "famous": 0.18
+          },
+          "decisive_clue": "his bad conduct remains the reason for recognition",
+          "reason": "His bad conduct remains the reason for recognition. Widely known primarily for wrongdoing, scandal, or disgrace..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "famous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "His bad conduct remains the reason for recognition makes infamous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, his bad conduct remains the reason for recognition; that is why infamous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on the source of his reputation.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_005",
+      "edge_id": "infamous__famous",
+      "domain": "sports_interview",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Celia’s reputation as a runner?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_005_b1",
+          "text": "Celia broke a national record and became a household name for her races.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "record-breaking success created recognition",
+          "reason": "Record-breaking success created recognition. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_005_b2",
+          "text": "One interviewer criticised her bright shoes, but her achievements still made the headlines.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "a minor fashion criticism is not notoriety",
+          "reason": "A minor fashion criticism is not notoriety. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A minor fashion criticism is not notoriety makes famous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, a minor fashion criticism is not notoriety; that is why famous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on whether criticism defines her reputation.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_006",
+      "edge_id": "infamous__famous",
+      "domain": "cafe_business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Tomas’s reputation in town?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_006_b1",
+          "text": "Tomas’s cafe became widely recognised for its inventive breakfasts and long queues.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "well known for admired food",
+          "reason": "Well known for admired food. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_006_b2",
+          "text": "Visitors took photographs outside because friends had recommended his cooking.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "recommendations continue to explain its popularity",
+          "reason": "Recommendations continue to explain its popularity. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Recommendations continue to explain its popularity makes famous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, recommendations continue to explain its popularity; that is why famous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on why people know the cafe.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_007",
+      "edge_id": "infamous__famous",
+      "domain": "charity_fundraiser",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Priya’s reputation after the campaign?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_007_b1",
+          "text": "Priya’s campaign drew attention across the country, making her name instantly recognisable.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "countrywide publicity established her name",
+          "reason": "Countrywide publicity established her name. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_007_b2",
+          "text": "Investigators then proved she had kept donations for herself, and that theft dominated every report.",
+          "best_word": "infamous",
+          "fit": {
+            "infamous": 0.93,
+            "famous": 0.18
+          },
+          "decisive_clue": "proved theft became the defining reason for recognition",
+          "reason": "Proved theft became the defining reason for recognition. Widely known primarily for wrongdoing, scandal, or disgrace..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "famous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Proved theft became the defining reason for recognition makes infamous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, proved theft became the defining reason for recognition; that is why infamous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on what the reports focus on now.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_008",
+      "edge_id": "infamous__famous",
+      "domain": "community_theatre",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Yusuf’s reputation as an actor?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_008_b1",
+          "text": "Yusuf attracted national attention for his powerful stage performances.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "acclaim made his name widely known",
+          "reason": "Acclaim made his name widely known. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_008_b2",
+          "text": "Reviewers praised his acting even when they disagreed about the plays.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "mixed artistic opinions are not moral disgrace",
+          "reason": "Mixed artistic opinions are not moral disgrace. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Mixed artistic opinions are not moral disgrace makes famous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, mixed artistic opinions are not moral disgrace; that is why famous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on the nature of his public recognition.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_009",
+      "edge_id": "infamous__famous",
+      "domain": "travel_vlog",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Elena’s online reputation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_009_b1",
+          "text": "Elena’s travel videos spread internationally, making her name recognisable to viewers far beyond her home.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "her videos brought wide recognition",
+          "reason": "Her videos brought wide recognition. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_009_b2",
+          "text": "The videos later exposed her staged fake rescues and money taken from viewers, which became the centre of her reputation.",
+          "best_word": "infamous",
+          "fit": {
+            "infamous": 0.93,
+            "famous": 0.18
+          },
+          "decisive_clue": "deception became the defining source of her notoriety",
+          "reason": "Deception became the defining source of her notoriety. Widely known primarily for wrongdoing, scandal, or disgrace..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "famous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Deception became the defining source of her notoriety makes infamous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, deception became the defining source of her notoriety; that is why infamous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on what the public eventually learned about her videos.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infamous-famous_010",
+      "edge_id": "infamous__famous",
+      "domain": "apartment_association",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Bruno’s reputation in the housing community?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infamous-famous_010_b1",
+          "text": "Bruno became well known across the city for organising repairs in neglected apartment buildings.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "widely known for helpful community work",
+          "reason": "Widely known for helpful community work. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M1"
+          }
+        },
+        {
+          "id": "infamous-famous_010_b2",
+          "text": "Residents still praised his work and invited him to advise other housing groups.",
+          "best_word": "famous",
+          "fit": {
+            "infamous": 0.18,
+            "famous": 0.93
+          },
+          "decisive_clue": "ongoing praise reinforces neutral or positive recognition",
+          "reason": "Ongoing praise reinforces neutral or positive recognition. Widely known, without necessarily having a bad reputation..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infamous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Ongoing praise reinforces neutral or positive recognition makes famous the better fit.",
+      "feedback_deep": "Infamous means widely known primarily for wrongdoing, scandal, or disgrace; famous means widely known, without necessarily having a bad reputation. Here, ongoing praise reinforces neutral or positive recognition; that is why famous wins even after the new detail.",
+      "contrast_rule": "Infamous is known for bad deeds; famous is simply well known.",
+      "hints": {
+        "attention": "Focus on what the community knows him for.",
+        "axis": "Infamous means widely known for wrongdoing or disgrace; famous only requires wide recognition.",
+        "contrast": "Infamous is known for bad deeds; famous is simply well known."
+      },
+      "qa": "pass"
+    }
+  ]
+}

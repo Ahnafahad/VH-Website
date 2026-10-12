@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "set_id": "nefarious-notorious",
+  "title": "nefarious / notorious",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[32]",
+    "source_pair_id": 139,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "nefarious",
+      "sense": "Morally outrageous and deliberately wicked or criminal.",
+      "connotation": "strong moral condemnation",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with notorious when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "notorious",
+      "sense": "Widely known for something unfavorable.",
+      "connotation": "disapproving, reputational",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Confused with nefarious when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "wrongdoing_versus_bad_fame",
+      "description": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known."
+    }
+  ],
+  "edges": [
+    {
+      "id": "nefarious__notorious",
+      "a": "nefarious",
+      "b": "notorious",
+      "boundary_rule": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "clues_a": [
+        "Seriously wicked or criminal.",
+        "Morally outrageous and deliberately wicked or criminal."
+      ],
+      "clues_b": [
+        "Famous for a bad reputation.",
+        "Widely known for something unfavorable."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating nefarious as though it always means notorious.",
+        "M2": "Treating notorious as though it always means nefarious.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "nefarious-notorious_001",
+      "edge_id": "nefarious__notorious",
+      "domain": "community_relief",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ana’s plan involving flood donations?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nefarious-notorious_001_b1",
+          "text": "Ana forged signatures so she could take relief payments meant for households whose homes had flooded.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.87,
+            "notorious": 0.32
+          },
+          "decisive_clue": "she committed deliberate fraud against people awaiting aid",
+          "reason": "This establishes that she committed deliberate fraud against people awaiting aid.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        },
+        {
+          "id": "nefarious-notorious_001_b2",
+          "text": "She directed the money to an account under her own control.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.93,
+            "notorious": 0.32
+          },
+          "decisive_clue": "she committed deliberate fraud against people awaiting aid",
+          "reason": "Routing the funds to herself exposes the purpose of the fraud, not simply its reputation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She committed deliberate fraud against people awaiting aid; that detail favors nefarious.",
+      "feedback_deep": "Routing the funds to herself exposes the purpose of the fraud, not simply its reputation. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Judge what the scheme does to others.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nefarious-notorious_002",
+      "edge_id": "nefarious__notorious",
+      "domain": "local_bakery",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Bilal’s bakery?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nefarious-notorious_002_b1",
+          "text": "Bilal’s bakery was known all across town for delivering birthday cakes with burnt edges.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.87
+          },
+          "decisive_clue": "the bakery was widely known for an embarrassing failing",
+          "reason": "This establishes that the bakery was widely known for an embarrassing failing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        },
+        {
+          "id": "nefarious-notorious_002_b2",
+          "text": "Customers regularly posted photographs of the blackened icing online.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.93
+          },
+          "decisive_clue": "the bakery was widely known for an embarrassing failing",
+          "reason": "Public posts strengthen its bad reputation without showing deliberate moral wickedness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The bakery was widely known for an embarrassing failing; that detail favors notorious.",
+      "feedback_deep": "Public posts strengthen its bad reputation without showing deliberate moral wickedness. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Look at how widely its failing is known.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nefarious-notorious_003",
+      "edge_id": "nefarious__notorious",
+      "domain": "school_theatre",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Diego’s record in school performances?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nefarious-notorious_003_b1",
+          "text": "Diego was famous at school for arriving late to nearly every performance.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.87
+          },
+          "decisive_clue": "his repeated lateness gave him a widespread bad reputation",
+          "reason": "This establishes that his repeated lateness gave him a widespread bad reputation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        },
+        {
+          "id": "nefarious-notorious_003_b2",
+          "text": "Even new pupils knew the stories before meeting him.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.93
+          },
+          "decisive_clue": "his repeated lateness gave him a widespread bad reputation",
+          "reason": "The unfamiliar pupils confirm fame for a flaw, not criminal intent.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "His repeated lateness gave him a widespread bad reputation; that detail favors notorious.",
+      "feedback_deep": "The unfamiliar pupils confirm fame for a flaw, not criminal intent. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Consider reputation rather than moral severity.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nefarious-notorious_004",
+      "edge_id": "nefarious__notorious",
+      "domain": "workplace_competition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Farid’s plan against his colleague?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nefarious-notorious_004_b1",
+          "text": "Farid planted false evidence so an innocent colleague would be fired and he could take the empty position.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.87,
+            "notorious": 0.32
+          },
+          "decisive_clue": "he intentionally framed an innocent colleague for personal gain",
+          "reason": "This establishes that he intentionally framed an innocent colleague for personal gain.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        },
+        {
+          "id": "nefarious-notorious_004_b2",
+          "text": "He prepared the forged documents weeks before the disciplinary hearing.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.93,
+            "notorious": 0.32
+          },
+          "decisive_clue": "he intentionally framed an innocent colleague for personal gain",
+          "reason": "The planning reinforces the deliberate wrongdoing; recognition by outsiders is beside the point.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He intentionally framed an innocent colleague for personal gain; that detail favors nefarious.",
+      "feedback_deep": "The planning reinforces the deliberate wrongdoing; recognition by outsiders is beside the point. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Ask whether the act is itself gravely wrong.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nefarious-notorious_005",
+      "edge_id": "nefarious__notorious",
+      "domain": "apartment_building",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Esme’s apartment building?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nefarious-notorious_005_b1",
+          "text": "Esme’s building was talked about throughout the city for its constantly broken elevator.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.87
+          },
+          "decisive_clue": "the building had become widely known for its faulty elevator",
+          "reason": "This establishes that the building had become widely known for its faulty elevator.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        },
+        {
+          "id": "nefarious-notorious_005_b2",
+          "text": "A local review site had recorded complaints about it for years.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.93
+          },
+          "decisive_clue": "the building had become widely known for its faulty elevator",
+          "reason": "The long-running complaints reinforce its reputation; the building is not acting with criminal intent.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The building had become widely known for its faulty elevator; that detail favors notorious.",
+      "feedback_deep": "The long-running complaints reinforce its reputation; the building is not acting with criminal intent. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Do not treat a bad reputation as proof of wickedness.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nefarious-notorious_006",
+      "edge_id": "nefarious__notorious",
+      "domain": "online_donations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Grace’s fundraising website?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nefarious-notorious_006_b1",
+          "text": "Grace built a fake charity website to divert emergency donations into her personal account.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.87,
+            "notorious": 0.32
+          },
+          "decisive_clue": "she knowingly stole money collected for emergency help",
+          "reason": "This establishes that she knowingly stole money collected for emergency help.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        },
+        {
+          "id": "nefarious-notorious_006_b2",
+          "text": "She continued taking payments after donors asked where their money had gone.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.93,
+            "notorious": 0.32
+          },
+          "decisive_clue": "she knowingly stole money collected for emergency help",
+          "reason": "Persisting after questions underscores the fraud; being famous or obscure would not change the act.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She knowingly stole money collected for emergency help; that detail favors nefarious.",
+      "feedback_deep": "Persisting after questions underscores the fraud; being famous or obscure would not change the act. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Look at the purpose of the website.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nefarious-notorious_007",
+      "edge_id": "nefarious__notorious",
+      "domain": "restaurant_district",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Hector’s takeout restaurant?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nefarious-notorious_007_b1",
+          "text": "Hector’s restaurant was a running joke across the district for forgetting items in almost every order.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.87
+          },
+          "decisive_clue": "the restaurant was widely talked about for poor service",
+          "reason": "This establishes that the restaurant was widely talked about for poor service.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        },
+        {
+          "id": "nefarious-notorious_007_b2",
+          "text": "Regular customers warned newcomers about the mistakes.",
+          "best_word": "notorious",
+          "fit": {
+            "nefarious": 0.32,
+            "notorious": 0.93
+          },
+          "decisive_clue": "the restaurant was widely talked about for poor service",
+          "reason": "The warnings show the reputation spreading rather than proving intentional harm.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nefarious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The restaurant was widely talked about for poor service; that detail favors notorious.",
+      "feedback_deep": "The warnings show the reputation spreading rather than proving intentional harm. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Identify whether the clue is fame or misconduct.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nefarious-notorious_008",
+      "edge_id": "nefarious__notorious",
+      "domain": "school_election",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Celia’s election trick?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nefarious-notorious_008_b1",
+          "text": "Celia secretly forged ballot papers so she could remove votes from a rival candidate.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.87,
+            "notorious": 0.32
+          },
+          "decisive_clue": "she deliberately falsified an election to deprive another candidate of votes",
+          "reason": "This establishes that she deliberately falsified an election to deprive another candidate of votes.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        },
+        {
+          "id": "nefarious-notorious_008_b2",
+          "text": "She hid the extra papers inside a box marked for recycling.",
+          "best_word": "nefarious",
+          "fit": {
+            "nefarious": 0.93,
+            "notorious": 0.32
+          },
+          "decisive_clue": "she deliberately falsified an election to deprive another candidate of votes",
+          "reason": "The hiding place matters less than the fraudulent act itself.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "notorious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She deliberately falsified an election to deprive another candidate of votes; that detail favors nefarious.",
+      "feedback_deep": "The hiding place matters less than the fraudulent act itself. Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+      "contrast_rule": "Nefarious means wicked; notorious means badly known.",
+      "hints": {
+        "attention": "Judge the nature of the act, not its publicity.",
+        "axis": "Nefarious describes the moral wickedness of an act; notorious describes how widely its bad reputation is known.",
+        "contrast": "Nefarious means wicked; notorious means badly known."
+      },
+      "qa": "pass"
+    }
+  ]
+}

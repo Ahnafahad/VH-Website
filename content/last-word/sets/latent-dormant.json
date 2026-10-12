@@ -1,0 +1,416 @@
+{
+  "schema_version": 1,
+  "set_id": "latent-dormant",
+  "title": "latent / dormant",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[82]",
+    "source_pair_id": 354,
+    "qa": {
+      "pass": 4,
+      "revised": 1,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "latent",
+      "sense": "Present as hidden or undeveloped potential, not yet outwardly expressed.",
+      "connotation": "neutral or promising",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Calling undeveloped talent a paused operation.",
+        "Missing evidence that an activity already existed and could resume."
+      ]
+    },
+    {
+      "word": "dormant",
+      "sense": "Temporarily inactive after being active, but capable of restarting.",
+      "connotation": "neutral; suggests temporary pause",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming all inactivity means an earlier activity stopped.",
+        "Missing evidence that an activity already existed and could resume."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "hidden_potential_vs_paused_activity",
+      "description": "Latent potential exists without yet being expressed; something dormant was active before and is now inactive."
+    }
+  ],
+  "edges": [
+    {
+      "id": "latent__dormant",
+      "a": "latent",
+      "b": "dormant",
+      "boundary_rule": "Latent potential exists without yet being expressed; something dormant was active before and is now inactive.",
+      "clues_a": [
+        "undeveloped hidden ability",
+        "unexpressed potential"
+      ],
+      "clues_b": [
+        "once operating, now paused",
+        "able to restart after inactivity"
+      ],
+      "irrelevant_clues": [
+        "age of person",
+        "cost of equipment"
+      ],
+      "misconceptions": {
+        "M1": "Assuming all inactivity means an earlier activity stopped.",
+        "M2": "Calling undeveloped talent a paused operation.",
+        "M3": "Missing evidence that an activity already existed and could resume."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "latent-dormant_001",
+      "edge_id": "latent__dormant",
+      "domain": "school_music_lesson",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yara’s musical ability?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "latent-dormant_001_b1",
+          "text": "Yara could repeat complex rhythms by ear, but had never learned an instrument or performed publicly.",
+          "best_word": "latent",
+          "fit": {
+            "latent": 0.93,
+            "dormant": 0.18
+          },
+          "decisive_clue": "untaught musical potential is evident",
+          "reason": "Untaught musical potential is evident. Present as hidden or undeveloped potential, not yet outwardly expressed..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dormant": "M1"
+          }
+        },
+        {
+          "id": "latent-dormant_001_b2",
+          "text": "Her teacher believed careful lessons could bring out much more.",
+          "best_word": "latent",
+          "fit": {
+            "latent": 0.93,
+            "dormant": 0.18
+          },
+          "decisive_clue": "lessons could develop ability never yet expressed publicly",
+          "reason": "Lessons could develop ability never yet expressed publicly. Present as hidden or undeveloped potential, not yet outwardly expressed..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dormant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Lessons could develop ability never yet expressed publicly makes latent the better fit.",
+      "feedback_deep": "Latent means present as hidden or undeveloped potential, not yet outwardly expressed; dormant means temporarily inactive after being active, but capable of restarting. Here, lessons could develop ability never yet expressed publicly; that is why latent wins even after the new detail.",
+      "contrast_rule": "Latent has not yet emerged; dormant has gone quiet for now.",
+      "hints": {
+        "attention": "Focus on undeveloped capacity versus a paused activity.",
+        "axis": "Latent potential exists without yet being expressed; something dormant was active before and is now inactive.",
+        "contrast": "Latent has not yet emerged; dormant has gone quiet for now."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "latent-dormant_002",
+      "edge_id": "latent__dormant",
+      "domain": "neighbourhood_chess_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Matteo’s chess club?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "latent-dormant_002_b1",
+          "text": "Matteo’s club once met every Thursday but has held no games for six months.",
+          "best_word": "dormant",
+          "fit": {
+            "latent": 0.18,
+            "dormant": 0.93
+          },
+          "decisive_clue": "formerly active club has stopped meeting",
+          "reason": "Formerly active club has stopped meeting. Temporarily inactive after being active, but capable of restarting..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "latent": "M1"
+          }
+        },
+        {
+          "id": "latent-dormant_002_b2",
+          "text": "The members kept their group chat so meetings could resume next term.",
+          "best_word": "dormant",
+          "fit": {
+            "latent": 0.18,
+            "dormant": 0.93
+          },
+          "decisive_clue": "plans to restart show a pause rather than an ending",
+          "reason": "Plans to restart show a pause rather than an ending. Temporarily inactive after being active, but capable of restarting..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "latent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Plans to restart show a pause rather than an ending makes dormant the better fit.",
+      "feedback_deep": "Latent means present as hidden or undeveloped potential, not yet outwardly expressed; dormant means temporarily inactive after being active, but capable of restarting. Here, plans to restart show a pause rather than an ending; that is why dormant wins even after the new detail.",
+      "contrast_rule": "Latent has not yet emerged; dormant has gone quiet for now.",
+      "hints": {
+        "attention": "Focus on whether the club used to operate.",
+        "axis": "Latent potential exists without yet being expressed; something dormant was active before and is now inactive.",
+        "contrast": "Latent has not yet emerged; dormant has gone quiet for now."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "latent-dormant_004",
+      "edge_id": "latent__dormant",
+      "domain": "online_shop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hassan’s web store?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "latent-dormant_004_b1",
+          "text": "Hassan used to accept orders daily but has switched off checkout for a seasonal break.",
+          "best_word": "dormant",
+          "fit": {
+            "latent": 0.18,
+            "dormant": 0.93
+          },
+          "decisive_clue": "previously trading store is temporarily closed",
+          "reason": "Previously trading store is temporarily closed. Temporarily inactive after being active, but capable of restarting..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "latent": "M1"
+          }
+        },
+        {
+          "id": "latent-dormant_004_b2",
+          "text": "The website and stock remain ready for sales to resume.",
+          "best_word": "dormant",
+          "fit": {
+            "latent": 0.18,
+            "dormant": 0.93
+          },
+          "decisive_clue": "readiness to reopen confirms inactivity, not absence",
+          "reason": "Readiness to reopen confirms inactivity, not absence. Temporarily inactive after being active, but capable of restarting..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "latent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Readiness to reopen confirms inactivity, not absence makes dormant the better fit.",
+      "feedback_deep": "Latent means present as hidden or undeveloped potential, not yet outwardly expressed; dormant means temporarily inactive after being active, but capable of restarting. Here, readiness to reopen confirms inactivity, not absence; that is why dormant wins even after the new detail.",
+      "contrast_rule": "Latent has not yet emerged; dormant has gone quiet for now.",
+      "hints": {
+        "attention": "Focus on whether the activity was previously running.",
+        "axis": "Latent potential exists without yet being expressed; something dormant was active before and is now inactive.",
+        "contrast": "Latent has not yet emerged; dormant has gone quiet for now."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "latent-dormant_005",
+      "edge_id": "latent__dormant",
+      "domain": "theatre_audition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Nia’s acting talent?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "latent-dormant_005_b1",
+          "text": "Nia had a natural feel for dialogue but had never acted before an audience.",
+          "best_word": "latent",
+          "fit": {
+            "latent": 0.93,
+            "dormant": 0.18
+          },
+          "decisive_clue": "unexpressed acting ability",
+          "reason": "Unexpressed acting ability. Present as hidden or undeveloped potential, not yet outwardly expressed..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "dormant": "M1"
+          }
+        },
+        {
+          "id": "latent-dormant_005_b2",
+          "text": "She owned a colourful costume, yet she had never actually tested her gift on stage.",
+          "best_word": "latent",
+          "fit": {
+            "latent": 0.93,
+            "dormant": 0.18
+          },
+          "decisive_clue": "owning a costume is not active performance",
+          "reason": "Owning a costume is not active performance. Present as hidden or undeveloped potential, not yet outwardly expressed..",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "dormant": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Owning a costume is not active performance makes latent the better fit.",
+      "feedback_deep": "Latent means present as hidden or undeveloped potential, not yet outwardly expressed; dormant means temporarily inactive after being active, but capable of restarting. Here, owning a costume is not active performance; that is why latent wins even after the new detail.",
+      "contrast_rule": "Latent has not yet emerged; dormant has gone quiet for now.",
+      "hints": {
+        "attention": "Focus on whether ability has been put into practice.",
+        "axis": "Latent potential exists without yet being expressed; something dormant was active before and is now inactive.",
+        "contrast": "Latent has not yet emerged; dormant has gone quiet for now."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "latent-dormant_006",
+      "edge_id": "latent__dormant",
+      "domain": "sports_community_league",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Pavel’s weekend league?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "latent-dormant_006_b1",
+          "text": "Pavel’s league completed three seasons before suspending matches for stadium repairs.",
+          "best_word": "dormant",
+          "fit": {
+            "latent": 0.18,
+            "dormant": 0.93
+          },
+          "decisive_clue": "established league suspended its games",
+          "reason": "Established league suspended its games. Temporarily inactive after being active, but capable of restarting..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "latent": "M1"
+          }
+        },
+        {
+          "id": "latent-dormant_006_b2",
+          "text": "Organisers have scheduled a return once the field is ready.",
+          "best_word": "dormant",
+          "fit": {
+            "latent": 0.18,
+            "dormant": 0.93
+          },
+          "decisive_clue": "return date confirms the existing activity is paused",
+          "reason": "Return date confirms the existing activity is paused. Temporarily inactive after being active, but capable of restarting..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "latent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Return date confirms the existing activity is paused makes dormant the better fit.",
+      "feedback_deep": "Latent means present as hidden or undeveloped potential, not yet outwardly expressed; dormant means temporarily inactive after being active, but capable of restarting. Here, return date confirms the existing activity is paused; that is why dormant wins even after the new detail.",
+      "contrast_rule": "Latent has not yet emerged; dormant has gone quiet for now.",
+      "hints": {
+        "attention": "Focus on previous activity and capacity to restart.",
+        "axis": "Latent potential exists without yet being expressed; something dormant was active before and is now inactive.",
+        "contrast": "Latent has not yet emerged; dormant has gone quiet for now."
+      },
+      "qa": "pass"
+    }
+  ]
+}

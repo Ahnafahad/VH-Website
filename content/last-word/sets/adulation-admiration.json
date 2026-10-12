@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "set_id": "adulation-admiration",
+  "title": "adulation / admiration",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[123]",
+    "source_pair_id": 481,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "adulation",
+      "sense": "Praise or approval that is excessive and uncritical.",
+      "connotation": "often disapproving; uncritical worship",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Every heartfelt compliment counts as excessive adulation."
+      ]
+    },
+    {
+      "word": "admiration",
+      "sense": "Genuine favorable regard or respect without necessarily exaggerating.",
+      "connotation": "positive",
+      "register": "common",
+      "misconceptions": [
+        "Great respect cannot be strong unless it is worshipful."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "degree_of_praise",
+      "description": "Whether praise is proportionate or wildly inflated."
+    },
+    {
+      "id": "critical_judgment",
+      "description": "Whether praise can coexist with noticing shortcomings."
+    }
+  ],
+  "edges": [
+    {
+      "id": "adulation__admiration",
+      "a": "adulation",
+      "b": "admiration",
+      "boundary_rule": "Adulation is inflated or uncritical praise, while admiration can be warm and strong yet still proportionate and discriminating.",
+      "clues_a": [
+        "claims a person can do no wrong",
+        "praises every move beyond reason",
+        "rejects even mild criticism"
+      ],
+      "clues_b": [
+        "names specific earned qualities",
+        "recognizes flaws alongside strengths",
+        "offers measured approval"
+      ],
+      "irrelevant_clues": [
+        "volume of applause",
+        "size of audience",
+        "celebrity status"
+      ],
+      "misconceptions": {
+        "M1": "Every heartfelt compliment counts as excessive adulation.",
+        "M2": "Great respect cannot be strong unless it is worshipful.",
+        "M3": "Loud or public praise by itself proves excess."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "adulation-admiration_001",
+      "edge_id": "adulation__admiration",
+      "domain": "debate_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Imani’s response to her debate coach?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "adulation-admiration_001_b1",
+          "text": "Imani thanks her coach for teaching her to explain arguments more clearly.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "specific praise for a useful skill",
+          "reason": "She appreciates identifiable help from her coach.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        },
+        {
+          "id": "adulation-admiration_001_b2",
+          "text": "She also points out that last week’s practice ended too early.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "specific praise for a useful skill",
+          "reason": "Noticing a coaching weakness leaves her measured appreciation intact.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Noticing a coaching weakness leaves her measured appreciation intact.",
+      "feedback_deep": "She appreciates identifiable help from her coach. Noticing a coaching weakness leaves her measured appreciation intact. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "Can she praise without overlooking flaws?",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "adulation-admiration_002",
+      "edge_id": "adulation__admiration",
+      "domain": "music_fandom",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Owen’s praise of the singer?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "adulation-admiration_002_b1",
+          "text": "Owen calls the singer brilliant and refuses to believe any performance could be weak.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "insists no performance could be weak",
+          "reason": "He removes all room for criticism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        },
+        {
+          "id": "adulation-admiration_002_b2",
+          "text": "He describes a missed note as proof of even greater genius.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "explains away an obvious mistake as perfection",
+          "reason": "Turning a mistake into more praise makes his uncritical excess especially clear.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Turning a mistake into more praise makes his uncritical excess especially clear.",
+      "feedback_deep": "He removes all room for criticism. Turning a mistake into more praise makes his uncritical excess especially clear. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "Look at what happens when the singer makes a mistake.",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "adulation-admiration_003",
+      "edge_id": "adulation__admiration",
+      "domain": "football_team",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Yara’s praise for her captain?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "adulation-admiration_003_b1",
+          "text": "Yara says her captain was outstanding after scoring three goals.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "praise grounded in actual performance",
+          "reason": "She praises a specific achievement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        },
+        {
+          "id": "adulation-admiration_003_b2",
+          "text": "She names the two missed chances when reviewing the match.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "praise grounded in actual performance",
+          "reason": "Her match review adds nuance rather than wiping out the real achievement she respected.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Her match review adds nuance rather than wiping out the real achievement she respected.",
+      "feedback_deep": "She praises a specific achievement. Her match review adds nuance rather than wiping out the real achievement she respected. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "Does strong approval forbid criticism?",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "adulation-admiration_004",
+      "edge_id": "adulation__admiration",
+      "domain": "online_influencer",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo’s reaction to a creator?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "adulation-admiration_004_b1",
+          "text": "Mateo leaves long comments saying the creator is the wisest person alive.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "unqualified claims of unmatched wisdom",
+          "reason": "His praise treats the creator as beyond ordinary standards.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        },
+        {
+          "id": "adulation-admiration_004_b2",
+          "text": "He reposts every opinion without checking whether the claims are true.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "unqualified claims of unmatched wisdom",
+          "reason": "Sharing posts increases the reach of his praise, but its excess was already evident.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Sharing posts increases the reach of his praise, but its excess was already evident.",
+      "feedback_deep": "His praise treats the creator as beyond ordinary standards. Sharing posts increases the reach of his praise, but its excess was already evident. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "Is the judgment proportionate?",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "adulation-admiration_005",
+      "edge_id": "adulation__admiration",
+      "domain": "family_celebration",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Farah’s praise for her grandfather?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "adulation-admiration_005_b1",
+          "text": "Farah thanks her grandfather for helping her through a difficult year.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "appreciation of real personal support",
+          "reason": "Her approval is based on help she received.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        },
+        {
+          "id": "adulation-admiration_005_b2",
+          "text": "She tells cousins how his patient phone calls helped her keep studying.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "concrete example of patient support",
+          "reason": "The phone calls give evidence for genuine esteem, not extravagant devotion.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The phone calls give evidence for genuine esteem, not extravagant devotion.",
+      "feedback_deep": "Her approval is based on help she received. The phone calls give evidence for genuine esteem, not extravagant devotion. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "What supports her praise?",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "adulation-admiration_006",
+      "edge_id": "adulation__admiration",
+      "domain": "school_newspaper",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ren’s review of the school play?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "adulation-admiration_006_b1",
+          "text": "Ren calls the lead actor the greatest performer in the world after opening night.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "grandiose praise after one performance",
+          "reason": "He inflates a single performance into limitless greatness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        },
+        {
+          "id": "adulation-admiration_006_b2",
+          "text": "He writes that anyone who noticed a mistake simply lacks taste.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "dismisses all possible disagreement as ignorance",
+          "reason": "Rejecting every critic reveals the inflated review as uncritical, not merely enthusiastic.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Rejecting every critic reveals the inflated review as uncritical, not merely enthusiastic.",
+      "feedback_deep": "He inflates a single performance into limitless greatness. Rejecting every critic reveals the inflated review as uncritical, not merely enthusiastic. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "How does the reviewer handle different opinions?",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "adulation-admiration_007",
+      "edge_id": "adulation__admiration",
+      "domain": "volunteer_project",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amina’s response to a volunteer?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "adulation-admiration_007_b1",
+          "text": "Amina praises the volunteer for arriving early each weekend to help pack food.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "approval grounded in sustained volunteer work",
+          "reason": "Her regard reflects visible commitment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        },
+        {
+          "id": "adulation-admiration_007_b2",
+          "text": "She recommends the volunteer for an award and lists the work completed.",
+          "best_word": "admiration",
+          "fit": {
+            "adulation": 0.19,
+            "admiration": 0.91
+          },
+          "decisive_clue": "approval grounded in sustained volunteer work",
+          "reason": "An award nomination can be strong recognition without inflating the volunteer’s qualities.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "adulation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An award nomination can be strong recognition without inflating the volunteer’s qualities.",
+      "feedback_deep": "Her regard reflects visible commitment. An award nomination can be strong recognition without inflating the volunteer’s qualities. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "Is the recognition supported by evidence?",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "adulation-admiration_008",
+      "edge_id": "adulation__admiration",
+      "domain": "film_discussion",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Diego’s praise of the director?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "adulation-admiration_008_b1",
+          "text": "Diego insists every frame of the director’s film belongs in a museum.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "sweeping praise of every film frame",
+          "reason": "He declares flawless excellence without limits.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        },
+        {
+          "id": "adulation-admiration_008_b2",
+          "text": "He says the confusing ending cannot be questioned because its maker is incapable of error.",
+          "best_word": "adulation",
+          "fit": {
+            "adulation": 0.91,
+            "admiration": 0.19
+          },
+          "decisive_clue": "treats the maker as incapable of error",
+          "reason": "His refusal to consider a confusing ending confirms that his praise has passed beyond critical respect.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "admiration": "M1"
+          }
+        }
+      ],
+      "feedback_short": "His refusal to consider a confusing ending confirms that his praise has passed beyond critical respect.",
+      "feedback_deep": "He declares flawless excellence without limits. His refusal to consider a confusing ending confirms that his praise has passed beyond critical respect. Admiration respects merit; adulation puts it beyond criticism.",
+      "contrast_rule": "Admiration respects merit; adulation puts it beyond criticism.",
+      "hints": {
+        "attention": "Notice whether any criticism is allowed.",
+        "axis": "Whether praise is proportionate or wildly inflated.",
+        "contrast": "Admiration respects merit; adulation puts it beyond criticism."
+      },
+      "qa": "pass"
+    }
+  ]
+}

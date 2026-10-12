@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "tenable-tenuous",
+  "title": "tenable / tenuous",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[142]",
+    "source_pair_id": 580,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "tenable",
+      "sense": "defensible in light of available evidence",
+      "connotation": "neutral to positive",
+      "register": "formal",
+      "misconceptions": [
+        "A defensible claim need not be proved beyond all doubt."
+      ]
+    },
+    {
+      "word": "tenuous",
+      "sense": "weakly supported or based on a slight connection",
+      "connotation": "cautious to negative",
+      "register": "formal",
+      "misconceptions": [
+        "A coherent-sounding story can still rest on almost nothing."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "strength_of_support",
+      "description": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support."
+    }
+  ],
+  "edges": [
+    {
+      "id": "tenable__tenuous",
+      "a": "tenable",
+      "b": "tenuous",
+      "boundary_rule": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support.",
+      "clues_a": [
+        "records directly back the claim",
+        "multiple independent confirmations",
+        "reasoned position survives objections"
+      ],
+      "clues_b": [
+        "only a coincidence supports it",
+        "unverified rumor",
+        "a chain of unsupported guesses"
+      ],
+      "irrelevant_clues": [
+        "confidence of the speaker",
+        "how attractive a chart looks",
+        "how many people repeat the claim"
+      ],
+      "misconceptions": {
+        "M1": "A defensible claim need not be proved beyond all doubt.",
+        "M2": "A coherent-sounding story can still rest on almost nothing.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "tenable-tenuous_001",
+      "edge_id": "tenable__tenuous",
+      "domain": "shopping_dispute",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Priya’s claim?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "tenable-tenuous_001_b1",
+          "text": "Priya argued the cashier charged too much because her receipt showed a higher price than a nearby shelf label.",
+          "best_word": "tenable",
+          "fit": {
+            "tenable": 0.93,
+            "tenuous": 0.3
+          },
+          "decisive_clue": "a receipt and shelf label appear to support the claim",
+          "reason": "The initial comparison gives a reasonable basis for the complaint.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tenuous": "M1"
+          }
+        },
+        {
+          "id": "tenable-tenuous_001_b2",
+          "text": "The label was for a smaller package; the receipt matched the price printed beneath her own item.",
+          "best_word": "tenuous",
+          "fit": {
+            "tenable": 0.21,
+            "tenuous": 0.95
+          },
+          "decisive_clue": "the shelf label applied to another item",
+          "reason": "The corrected comparison removes the evidence supporting this specific overcharging claim.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tenable": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is the shelf label applied to another item; the corrected comparison removes the evidence supporting this specific overcharging claim.",
+      "feedback_deep": "Tenable concerns defensible in light of available evidence; tenuous concerns weakly supported or based on a slight connection. The corrected comparison removes the evidence supporting this specific overcharging claim.",
+      "contrast_rule": "Tenable: records directly back the claim; tenuous: only a coincidence supports it.",
+      "hints": {
+        "attention": "Check whether the label really applies to her purchase.",
+        "axis": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support.",
+        "contrast": "Tenable: records directly back the claim; tenuous: only a coincidence supports it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tenable-tenuous_002",
+      "edge_id": "tenable__tenuous",
+      "domain": "bus_delay",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Noah’s claim?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "tenable-tenuous_002_b1",
+          "text": "Noah blamed the bus delay on a strike after seeing one worker in a protest shirt.",
+          "best_word": "tenuous",
+          "fit": {
+            "tenable": 0.3,
+            "tenuous": 0.93
+          },
+          "decisive_clue": "a guess based on one person’s shirt",
+          "reason": "A shirt is too slight to establish a strike caused the delay.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tenable": "M2"
+          }
+        },
+        {
+          "id": "tenable-tenuous_002_b2",
+          "text": "The transport company confirmed that its drivers had stopped work that morning, delaying his route.",
+          "best_word": "tenable",
+          "fit": {
+            "tenable": 0.95,
+            "tenuous": 0.21
+          },
+          "decisive_clue": "a direct confirmation of the cause of the delay",
+          "reason": "An official confirmation directly supports that explanation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tenuous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is a direct confirmation of the cause of the delay; an official confirmation directly supports that explanation.",
+      "feedback_deep": "Tenable concerns defensible in light of available evidence; tenuous concerns weakly supported or based on a slight connection. An official confirmation directly supports that explanation.",
+      "contrast_rule": "Tenable: records directly back the claim; tenuous: only a coincidence supports it.",
+      "hints": {
+        "attention": "Look for a reliable link between the event and its supposed cause.",
+        "axis": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support.",
+        "contrast": "Tenable: records directly back the claim; tenuous: only a coincidence supports it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tenable-tenuous_003",
+      "edge_id": "tenable__tenuous",
+      "domain": "school_election",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Inez’s claim?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "tenable-tenuous_003_b1",
+          "text": "Inez claimed the vote count was wrong because she dreamed about a different result.",
+          "best_word": "tenuous",
+          "fit": {
+            "tenable": 0.3,
+            "tenuous": 0.93
+          },
+          "decisive_clue": "a dream is the only support for the allegation",
+          "reason": "The claim lacks usable evidence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tenable": "M2"
+          }
+        },
+        {
+          "id": "tenable-tenuous_003_b2",
+          "text": "She repeated the claim at a meeting with fifty students.",
+          "best_word": "tenuous",
+          "fit": {
+            "tenable": 0.21,
+            "tenuous": 0.95
+          },
+          "decisive_clue": "a dream is the only support for the allegation",
+          "reason": "A larger audience does not strengthen its basis in a dream.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tenable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A dream is the only support for the allegation; the later detail does not change the boundary.",
+      "feedback_deep": "Tenable concerns defensible in light of available evidence; tenuous concerns weakly supported or based on a slight connection. A larger audience does not strengthen its basis in a dream.",
+      "contrast_rule": "Tenable: records directly back the claim; tenuous: only a coincidence supports it.",
+      "hints": {
+        "attention": "Does a crowd make the underlying evidence stronger?",
+        "axis": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support.",
+        "contrast": "Tenable: records directly back the claim; tenuous: only a coincidence supports it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tenable-tenuous_004",
+      "edge_id": "tenable__tenuous",
+      "domain": "cafe_order",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Yusuf’s claim?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "tenable-tenuous_004_b1",
+          "text": "Yusuf said the cafe missed an item from his order, showing a receipt listing four drinks.",
+          "best_word": "tenable",
+          "fit": {
+            "tenable": 0.93,
+            "tenuous": 0.3
+          },
+          "decisive_clue": "a receipt showing four purchased drinks",
+          "reason": "The receipt gives a credible basis for the claim.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tenuous": "M1"
+          }
+        },
+        {
+          "id": "tenable-tenuous_004_b2",
+          "text": "His order bag contained only three cups, and the server checked the same list.",
+          "best_word": "tenable",
+          "fit": {
+            "tenable": 0.95,
+            "tenuous": 0.21
+          },
+          "decisive_clue": "a receipt and count confirming one missing drink",
+          "reason": "The count and server’s check independently reinforce the allegation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tenuous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is a receipt and count confirming one missing drink; the count and server’s check independently reinforce the allegation.",
+      "feedback_deep": "Tenable concerns defensible in light of available evidence; tenuous concerns weakly supported or based on a slight connection. The count and server’s check independently reinforce the allegation.",
+      "contrast_rule": "Tenable: records directly back the claim; tenuous: only a coincidence supports it.",
+      "hints": {
+        "attention": "Compare what was purchased with what arrived.",
+        "axis": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support.",
+        "contrast": "Tenable: records directly back the claim; tenuous: only a coincidence supports it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tenable-tenuous_005",
+      "edge_id": "tenable__tenuous",
+      "domain": "sports_scheduling",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Sofia’s claim?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "tenable-tenuous_005_b1",
+          "text": "Sofia maintained that the match started at six; the official timetable and both teams’ messages agreed.",
+          "best_word": "tenable",
+          "fit": {
+            "tenable": 0.93,
+            "tenuous": 0.3
+          },
+          "decisive_clue": "official schedule corroborated by both teams",
+          "reason": "Independent records agree on the starting time.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tenuous": "M1"
+          }
+        },
+        {
+          "id": "tenable-tenuous_005_b2",
+          "text": "She printed the timetable on bright yellow paper.",
+          "best_word": "tenable",
+          "fit": {
+            "tenable": 0.95,
+            "tenuous": 0.21
+          },
+          "decisive_clue": "official schedule corroborated by both teams",
+          "reason": "Printing in color adds nothing to the already sound support.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tenuous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is official schedule corroborated by both teams; printing in color adds nothing to the already sound support.",
+      "feedback_deep": "Tenable concerns defensible in light of available evidence; tenuous concerns weakly supported or based on a slight connection. Printing in color adds nothing to the already sound support.",
+      "contrast_rule": "Tenable: records directly back the claim; tenuous: only a coincidence supports it.",
+      "hints": {
+        "attention": "What evidence would survive someone challenging the starting time?",
+        "axis": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support.",
+        "contrast": "Tenable: records directly back the claim; tenuous: only a coincidence supports it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "tenable-tenuous_006",
+      "edge_id": "tenable__tenuous",
+      "domain": "online_rumor",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kojo’s claim?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "tenable-tenuous_006_b1",
+          "text": "Kojo claimed a popular singer would visit his town because a stranger posted a vague emoji.",
+          "best_word": "tenuous",
+          "fit": {
+            "tenable": 0.3,
+            "tenuous": 0.93
+          },
+          "decisive_clue": "a vague emoji from an unknown person",
+          "reason": "The inference has scarcely any basis.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "tenable": "M2"
+          }
+        },
+        {
+          "id": "tenable-tenuous_006_b2",
+          "text": "The post neither named the singer nor mentioned his town.",
+          "best_word": "tenuous",
+          "fit": {
+            "tenable": 0.21,
+            "tenuous": 0.95
+          },
+          "decisive_clue": "a message containing no identifying details",
+          "reason": "The lack of a name or location leaves the rumor even less supported.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "tenable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is a message containing no identifying details; the lack of a name or location leaves the rumor even less supported.",
+      "feedback_deep": "Tenable concerns defensible in light of available evidence; tenuous concerns weakly supported or based on a slight connection. The lack of a name or location leaves the rumor even less supported.",
+      "contrast_rule": "Tenable: records directly back the claim; tenuous: only a coincidence supports it.",
+      "hints": {
+        "attention": "What, exactly, does the post establish?",
+        "axis": "Tenable claims have enough support to withstand reasonable criticism; tenuous claims rest on weak or slight support.",
+        "contrast": "Tenable: records directly back the claim; tenuous: only a coincidence supports it."
+      },
+      "qa": "pass"
+    }
+  ]
+}

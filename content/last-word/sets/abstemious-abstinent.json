@@ -1,0 +1,767 @@
+{
+  "schema_version": 1,
+  "set_id": "abstemious-abstinent",
+  "title": "abstemious / abstinent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[170]",
+    "source_pair_id": 725,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "abstemious",
+      "sense": "moderate and restrained, especially in eating and drinking; taking only what is needed and avoiding excess",
+      "connotation": "positive, self-controlled",
+      "register": "neutral/formal",
+      "misconceptions": [
+        "confusing with abstinence (total refraining)",
+        "thinking it means 'not eating at all'"
+      ]
+    },
+    {
+      "word": "abstinent",
+      "sense": "refraining entirely rather than consuming in moderation",
+      "connotation": "neutral/formal",
+      "register": "neutral/formal",
+      "misconceptions": [
+        "confusing with moderation",
+        "thinking it only applies to religion"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "intake_level",
+      "description": "the degree of consumption, ranging from moderate/measured to zero"
+    }
+  ],
+  "edges": [
+    {
+      "id": "abstemious__abstinent",
+      "a": "abstemious",
+      "b": "abstinent",
+      "boundary_rule": "When someone is abstemious, they consume in limited, moderate amounts, whereas when someone is abstinent, they consume nothing at all.",
+      "clues_a": [
+        "small, measured amount",
+        "one portion",
+        "rarely indulges",
+        "controlled intake"
+      ],
+      "clues_b": [
+        "zero intake",
+        "refuses all",
+        "not even a little",
+        "completely avoids"
+      ],
+      "irrelevant_clues": [
+        "the person's mood",
+        "the location",
+        "time of day",
+        "who they are with"
+      ],
+      "misconceptions": {
+        "M1": "thinking any limit equals total refraining",
+        "M2": "thinking total refraining is just a very strict form of moderation",
+        "M3": "forgetting that one small amount makes A correct"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "c_001",
+      "edge_id": "abstemious__abstinent",
+      "domain": "dieting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Sarah manages her dessert portions?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "c_001_b1",
+          "text": "Sarah keeps her portions small, never taking more than a single, measured slice of cake even when others are having seconds.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.95,
+            "abstinent": 0.3
+          },
+          "decisive_clue": "takes a measured amount",
+          "reason": "She is consuming, but doing so with restraint.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M1"
+          }
+        },
+        {
+          "id": "c_001_b2",
+          "text": "She occasionally enjoys a tiny piece of chocolate to satisfy her craving, always ensuring she stops right after.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.98,
+            "abstinent": 0.15
+          },
+          "decisive_clue": "continues to consume small amounts",
+          "reason": "Still consuming, just moderately.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Sarah is clearly consuming, just in small amounts, not avoiding entirely.",
+      "feedback_deep": "Being abstemious is about consuming in moderation. Because Sarah still eats small, measured amounts, she is not abstinent.",
+      "contrast_rule": "Abstemious allows small, controlled amounts; abstinent allows none.",
+      "hints": {
+        "attention": "Does she avoid eating entirely?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstemious allows small, controlled amounts; abstinent allows none."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_002",
+      "edge_id": "abstemious__abstinent",
+      "domain": "party",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ken's choice regarding alcoholic drinks at the party?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "c_002_b1",
+          "text": "Ken has decided he will not have even a single drop of alcohol at the celebration.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.25,
+            "abstinent": 0.95
+          },
+          "decisive_clue": "refuses all alcohol",
+          "reason": "He is avoiding it entirely.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M3"
+          }
+        },
+        {
+          "id": "c_002_b2",
+          "text": "When friends offer him a champagne toast, he politely declines, reiterating his commitment to zero intake.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.1,
+            "abstinent": 0.99
+          },
+          "decisive_clue": "confirms zero intake",
+          "reason": "Still refraining entirely.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ken is avoiding alcohol entirely, not just moderating his intake.",
+      "feedback_deep": "Abstinent means refraining entirely. Since Ken refuses all alcohol, he is abstinent, not abstemious.",
+      "contrast_rule": "Abstemious allows moderation; abstinent requires total refraining.",
+      "hints": {
+        "attention": "Does he drink even a little bit?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstemious allows moderation; abstinent requires total refraining."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_003",
+      "edge_id": "abstemious__abstinent",
+      "domain": "caffeine",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Maria's approach to sugary soda?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "c_003_b1",
+          "text": "Maria has made a firm decision to have zero sugary sodas, so she orders sparkling water instead.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.2,
+            "abstinent": 0.95
+          },
+          "decisive_clue": "refuses sugary soda",
+          "reason": "She has cut it out completely.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M3"
+          }
+        },
+        {
+          "id": "c_003_b2",
+          "text": "Even when offered a free drink at the event, she turns it down, saying she doesn't want any sugar at all.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.15,
+            "abstinent": 0.98
+          },
+          "decisive_clue": "confirms zero sugar",
+          "reason": "Refusal is total.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Maria is avoiding sugary drinks entirely, not moderating them.",
+      "feedback_deep": "Abstinent requires total refraining. Because Maria has zero intake of sugary soda, she is abstinent.",
+      "contrast_rule": "Abstinent means zero intake; abstemious implies limited intake.",
+      "hints": {
+        "attention": "Does she consume any at all?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstinent means zero intake; abstemious implies limited intake."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_004",
+      "edge_id": "abstemious__abstinent",
+      "domain": "office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes David's relationship with office coffee?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "c_004_b1",
+          "text": "David drinks just one small cup of coffee every morning to help him focus, but never has a second.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.95,
+            "abstinent": 0.2
+          },
+          "decisive_clue": "has one small cup",
+          "reason": "He is consuming in moderation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M3"
+          }
+        },
+        {
+          "id": "c_004_b2",
+          "text": "His doctor told him to stop completely because of his high blood pressure, so now David has absolutely no coffee at all.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.15,
+            "abstinent": 0.95
+          },
+          "decisive_clue": "zero intake per medical advice",
+          "reason": "He has shifted to total refraining.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "David moved from moderate intake to zero intake.",
+      "feedback_deep": "Initially, David was abstemious, consuming in moderation. Once he stopped completely, he became abstinent.",
+      "contrast_rule": "Abstemious is moderate consumption; abstinent is zero consumption.",
+      "hints": {
+        "attention": "Did his consumption change from moderate to zero?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstemious is moderate consumption; abstinent is zero consumption."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_005",
+      "edge_id": "abstemious__abstinent",
+      "domain": "health",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Elena's consumption of snacks?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "c_005_b1",
+          "text": "Elena has completely cut out all processed snacks, not eating a single one for over a month.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.2,
+            "abstinent": 0.95
+          },
+          "decisive_clue": "refuses all processed snacks",
+          "reason": "She has zero intake.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M3"
+          }
+        },
+        {
+          "id": "c_005_b2",
+          "text": "However, she now allows herself one tiny piece of dark chocolate after dinner, just to enjoy the flavor.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.95,
+            "abstinent": 0.2
+          },
+          "decisive_clue": "now allows a small, measured portion",
+          "reason": "She is now consuming moderately.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Elena moved from zero intake to moderate intake.",
+      "feedback_deep": "Initially, Elena was abstinent because she had zero intake. By adding a small, measured portion, she became abstemious.",
+      "contrast_rule": "Abstinent is total refraining; abstemious is moderate consumption.",
+      "hints": {
+        "attention": "Does she consume even a little now?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstinent is total refraining; abstemious is moderate consumption."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_006",
+      "edge_id": "abstemious__abstinent",
+      "domain": "wedding",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Tom's behavior at his sister's wedding?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "c_006_b1",
+          "text": "Tom orders just one glass of champagne for the toast, and then sticks to sparkling water for the rest of the night.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.95,
+            "abstinent": 0.2
+          },
+          "decisive_clue": "has one moderate glass",
+          "reason": "He is drinking moderately.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M3"
+          }
+        },
+        {
+          "id": "c_006_b2",
+          "text": "After a health warning, he decided he cannot have any alcohol at all, so he now refuses even the celebratory glass.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.15,
+            "abstinent": 0.95
+          },
+          "decisive_clue": "refuses even the celebratory glass",
+          "reason": "He has shifted to zero intake.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Tom moved from moderate drinking to zero drinking.",
+      "feedback_deep": "Tom was abstemious while drinking moderately. Now that he has zero intake, he is abstinent.",
+      "contrast_rule": "Abstemious is moderate consumption; abstinent is zero consumption.",
+      "hints": {
+        "attention": "Has his intake changed to zero?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstemious is moderate consumption; abstinent is zero consumption."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_007",
+      "edge_id": "abstemious__abstinent",
+      "domain": "luxury",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hiro's approach to expensive chocolate?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "c_007_b1",
+          "text": "Hiro buys only one bar of high-quality dark chocolate each month, savoring just one small square each evening.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.95,
+            "abstinent": 0.2
+          },
+          "decisive_clue": "savors one small square at a time",
+          "reason": "He is consuming in moderation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M3"
+          }
+        },
+        {
+          "id": "c_007_b2",
+          "text": "His goal is to enjoy the flavor, not to consume the whole bar, so he keeps his portion strictly limited.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.98,
+            "abstinent": 0.1
+          },
+          "decisive_clue": "maintains strictly limited portion",
+          "reason": "Limiting is the core of being abstemious.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Hiro is consuming a limited, moderate amount.",
+      "feedback_deep": "Hiro is abstemious because he practices restraint in his consumption, not total refraining.",
+      "contrast_rule": "Abstemious allows controlled intake; abstinent allows none.",
+      "hints": {
+        "attention": "Does he eat any of it?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstemious allows controlled intake; abstinent allows none."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_008",
+      "edge_id": "abstemious__abstinent",
+      "domain": "allergy",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya's behavior toward peanuts?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "c_008_b1",
+          "text": "Priya has a severe peanut allergy, which means she eats absolutely nothing that contains any traces of peanuts.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.2,
+            "abstinent": 0.95
+          },
+          "decisive_clue": "zero intake due to allergy",
+          "reason": "She refrains entirely.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M3"
+          }
+        },
+        {
+          "id": "c_008_b2",
+          "text": "She reads every label carefully and refuses any food product that lists peanuts as an ingredient.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.1,
+            "abstinent": 0.99
+          },
+          "decisive_clue": "refuses all peanut-containing foods",
+          "reason": "This is total avoidance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Priya is refraining entirely.",
+      "feedback_deep": "Because Priya has zero intake of peanuts, she is abstinent. Being abstemious would imply she could have a moderate amount.",
+      "contrast_rule": "Abstinent means refraining entirely; abstemious allows moderate amounts.",
+      "hints": {
+        "attention": "Can she have even a small amount?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstinent means refraining entirely; abstemious allows moderate amounts."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_009",
+      "edge_id": "abstemious__abstinent",
+      "domain": "sports",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Leo's consumption of energy drinks during his training?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "c_009_b1",
+          "text": "Leo has completely stopped drinking energy drinks because he prefers natural hydration for his training.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.2,
+            "abstinent": 0.95
+          },
+          "decisive_clue": "stopped drinking entirely",
+          "reason": "He has zero intake.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M3"
+          }
+        },
+        {
+          "id": "c_009_b2",
+          "text": "He even refuses one at the finish line, despite feeling extremely exhausted, staying true to his no-intake policy.",
+          "best_word": "abstinent",
+          "fit": {
+            "abstemious": 0.15,
+            "abstinent": 0.98
+          },
+          "decisive_clue": "refuses even when exhausted",
+          "reason": "The refusal remains total.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstemious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Leo is still refraining entirely.",
+      "feedback_deep": "Even though he is exhausted, Leo continues to have zero intake, which confirms he is abstinent, not just being careful about his intake.",
+      "contrast_rule": "Abstinent is zero intake; abstemious implies limited intake.",
+      "hints": {
+        "attention": "Does the exhaustion change his intake?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstinent is zero intake; abstemious implies limited intake."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "c_010",
+      "edge_id": "abstemious__abstinent",
+      "domain": "dinner",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Fatima's approach to the evening meal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "c_010_b1",
+          "text": "Fatima prepares her dinner by carefully measuring out a small, nutritious portion, always stopping before she feels full.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.95,
+            "abstinent": 0.2
+          },
+          "decisive_clue": "measures a small portion",
+          "reason": "She is consuming moderately.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M3"
+          }
+        },
+        {
+          "id": "c_010_b2",
+          "text": "Her goal is to eat only what is absolutely necessary, proving that one can feel satisfied while deliberately avoiding any excess.",
+          "best_word": "abstemious",
+          "fit": {
+            "abstemious": 0.98,
+            "abstinent": 0.1
+          },
+          "decisive_clue": "consumes only what is necessary",
+          "reason": "This is the definition of being abstemious.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstinent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Fatima is practicing moderation, not total refraining.",
+      "feedback_deep": "Fatima is abstemious because she consumes in a measured, restrained manner, rather than avoiding food entirely.",
+      "contrast_rule": "Abstemious allows moderate intake; abstinent requires total refraining.",
+      "hints": {
+        "attention": "Does she consume only what is necessary, or nothing at all?",
+        "axis": "the degree of consumption, ranging from moderate/measured to zero",
+        "contrast": "Abstemious allows moderate intake; abstinent requires total refraining."
+      },
+      "qa": "pass"
+    }
+  ]
+}

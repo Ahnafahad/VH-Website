@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "set_id": "chasm-schism",
+  "title": "chasm / schism",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[10]",
+    "source_pair_id": 32,
+    "qa": {
+      "pass": 5,
+      "revised": 2,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "chasm",
+      "sense": "A very deep physical gap or a vast figurative separation.",
+      "connotation": "serious / dramatic",
+      "register": "standard / literary",
+      "misconceptions": [
+        "Any big disagreement is a schism even if the group stays together."
+      ]
+    },
+    {
+      "word": "schism",
+      "sense": "A formal or lasting division within a group caused by disagreement over beliefs or loyalties.",
+      "connotation": "serious / formal",
+      "register": "formal",
+      "misconceptions": [
+        "A group’s formal breakup is only a large difference of opinion."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "gap_vs_group_split",
+      "description": "Whether the focus is a great distance between things or a group dividing into rival bodies."
+    }
+  ],
+  "edges": [
+    {
+      "id": "chasm__schism",
+      "a": "chasm",
+      "b": "schism",
+      "boundary_rule": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties.",
+      "clues_a": [
+        "deep opening in terrain",
+        "large disagreement without formal breakup",
+        "vast separation in experience"
+      ],
+      "clues_b": [
+        "members form separate groups",
+        "formal withdrawal from shared organization",
+        "rival leadership following disputed principles"
+      ],
+      "irrelevant_clues": [
+        "how many people attended",
+        "weather at the meeting",
+        "uniform or logo colour"
+      ],
+      "misconceptions": {
+        "M1": "Any big disagreement is a schism even if the group stays together.",
+        "M2": "A group’s formal breakup is only a large difference of opinion.",
+        "M3": "Physical size and organizational division are the same kind of gap."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "chasm-schism_001",
+      "edge_id": "chasm__schism",
+      "domain": "hiking_path",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the break in Kiran’s walking route?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "chasm-schism_001_b1",
+          "text": "Kiran stops where the path ends at a dark opening in the earth, with the far side several metres away.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.9,
+            "schism": 0.24
+          },
+          "decisive_clue": "deep gap in the ground",
+          "reason": "The situation shows deep gap in the ground, which points to chasm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        },
+        {
+          "id": "chasm-schism_001_b2",
+          "text": "Looking down, Kiran cannot see the bottom.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.94,
+            "schism": 0.21
+          },
+          "decisive_clue": "deep physical opening with no visible bottom",
+          "reason": "A literal land gap is a chasm, not a split among people.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Deep physical opening with no visible bottom: chasm fits better.",
+      "feedback_deep": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties. Here, a literal land gap is a chasm, not a split among people.",
+      "contrast_rule": "Chasm separates sides; schism splits a group.",
+      "hints": {
+        "attention": "Is the separation in the ground or a group?",
+        "axis": "Whether the focus is a great distance between things or a group dividing into rival bodies.",
+        "contrast": "Chasm separates sides; schism splits a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chasm-schism_002",
+      "edge_id": "chasm__schism",
+      "domain": "school_debate_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the division in Salma’s club?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "chasm-schism_002_b1",
+          "text": "Salma’s debate club divides after a dispute about its rules; half the members establish a new club.",
+          "best_word": "schism",
+          "fit": {
+            "chasm": 0.24,
+            "schism": 0.9
+          },
+          "decisive_clue": "members form a separate organization after a dispute",
+          "reason": "The situation shows members form a separate organization after a dispute, which points to schism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chasm": "M1"
+          }
+        },
+        {
+          "id": "chasm-schism_002_b2",
+          "text": "The new club elects its own officers and refuses to attend joint meetings.",
+          "best_word": "schism",
+          "fit": {
+            "chasm": 0.21,
+            "schism": 0.94
+          },
+          "decisive_clue": "separate leadership makes the organizational break clear",
+          "reason": "A disagreement that creates distinct bodies is a schism.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chasm": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Separate leadership makes the organizational break clear: schism fits better.",
+      "feedback_deep": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties. Here, a disagreement that creates distinct bodies is a schism.",
+      "contrast_rule": "Chasm separates sides; schism splits a group.",
+      "hints": {
+        "attention": "Did the group remain one organization?",
+        "axis": "Whether the focus is a great distance between things or a group dividing into rival bodies.",
+        "contrast": "Chasm separates sides; schism splits a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chasm-schism_003",
+      "edge_id": "chasm__schism",
+      "domain": "friends_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the distance between Nico and his friend’s views?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "chasm-schism_003_b1",
+          "text": "Nico and his friend disagree so strongly about spending that neither can imagine adopting the other’s position.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.9,
+            "schism": 0.23
+          },
+          "decisive_clue": "large gulf between opposing views",
+          "reason": "The situation shows large gulf between opposing views, which points to chasm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        },
+        {
+          "id": "chasm-schism_003_b2",
+          "text": "The difference persists even after several long conversations.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.91,
+            "schism": 0.22
+          },
+          "decisive_clue": "large gulf between opposing views",
+          "reason": "The added detail does not change the original clue: large gulf between opposing views.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Large gulf between opposing views still decides; the added detail changes nothing.",
+      "feedback_deep": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties. Here, keeping their friendship does not erase the vast disagreement; no organization has split.",
+      "contrast_rule": "Chasm separates sides; schism splits a group.",
+      "hints": {
+        "attention": "Focus on the size and form of separation.",
+        "axis": "Whether the focus is a great distance between things or a group dividing into rival bodies.",
+        "contrast": "Chasm separates sides; schism splits a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chasm-schism_005",
+      "edge_id": "chasm__schism",
+      "domain": "beach_visit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the gap Tomás sees in the rocks?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "chasm-schism_005_b1",
+          "text": "Tomás peers into a broad crack between two cliff faces, far too wide to step across.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.9,
+            "schism": 0.24
+          },
+          "decisive_clue": "wide physical gap between rock faces",
+          "reason": "The situation shows wide physical gap between rock faces, which points to chasm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        },
+        {
+          "id": "chasm-schism_005_b2",
+          "text": "The opening catches the orange light of the setting sun.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.94,
+            "schism": 0.21
+          },
+          "decisive_clue": "wide physical gap between rock faces",
+          "reason": "The added detail does not change the original clue: wide physical gap between rock faces.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Wide physical gap between rock faces still decides; the added detail changes nothing.",
+      "feedback_deep": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties. Here, rock colour does not matter to the great physical separation.",
+      "contrast_rule": "Chasm separates sides; schism splits a group.",
+      "hints": {
+        "attention": "Ignore the colour of the rocks.",
+        "axis": "Whether the focus is a great distance between things or a group dividing into rival bodies.",
+        "contrast": "Chasm separates sides; schism splits a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chasm-schism_006",
+      "edge_id": "chasm__schism",
+      "domain": "community_choir",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the division in Priya’s choir?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "chasm-schism_006_b1",
+          "text": "Priya’s choir breaks into two groups after a disagreement over its direction; each group rehearses separately.",
+          "best_word": "schism",
+          "fit": {
+            "chasm": 0.23,
+            "schism": 0.9
+          },
+          "decisive_clue": "one choir divides into two rival groups",
+          "reason": "The situation shows one choir divides into two rival groups, which points to schism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chasm": "M1"
+          }
+        },
+        {
+          "id": "chasm-schism_006_b2",
+          "text": "Both groups still perform the same opening song.",
+          "best_word": "schism",
+          "fit": {
+            "chasm": 0.22,
+            "schism": 0.91
+          },
+          "decisive_clue": "one choir divides into two rival groups",
+          "reason": "The added detail does not change the original clue: one choir divides into two rival groups.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chasm": "M1"
+          }
+        }
+      ],
+      "feedback_short": "One choir divides into two rival groups still decides; the added detail changes nothing.",
+      "feedback_deep": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties. Here, singing the same song cannot undo an organizational split.",
+      "contrast_rule": "Chasm separates sides; schism splits a group.",
+      "hints": {
+        "attention": "Does performing the same repertoire mean they stayed united?",
+        "axis": "Whether the focus is a great distance between things or a group dividing into rival bodies.",
+        "contrast": "Chasm separates sides; schism splits a group."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "chasm-schism_007",
+      "edge_id": "chasm__schism",
+      "domain": "job_market_talk",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the gap Yusuf describes between two workplaces?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "chasm-schism_007_b1",
+          "text": "Yusuf says one workplace offers flexible hours while the other allows no changes at all, making their approaches worlds apart.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.9,
+            "schism": 0.23
+          },
+          "decisive_clue": "enormous difference between two approaches",
+          "reason": "The situation shows enormous difference between two approaches, which points to chasm.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        },
+        {
+          "id": "chasm-schism_007_b2",
+          "text": "The contrast remains just as wide when both workplaces offer the same salary.",
+          "best_word": "chasm",
+          "fit": {
+            "chasm": 0.91,
+            "schism": 0.22
+          },
+          "decisive_clue": "enormous difference between two approaches",
+          "reason": "The added detail does not change the original clue: enormous difference between two approaches.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "schism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Enormous difference between two approaches still decides; the added detail changes nothing.",
+      "feedback_deep": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties. Here, matching salaries changes nothing about the large difference; there is no original group breaking apart.",
+      "contrast_rule": "Chasm separates sides; schism splits a group.",
+      "hints": {
+        "attention": "Is there a split, or just great distance?",
+        "axis": "Whether the focus is a great distance between things or a group dividing into rival bodies.",
+        "contrast": "Chasm separates sides; schism splits a group."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "chasm-schism_008",
+      "edge_id": "chasm__schism",
+      "domain": "gaming_team",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the break in Beatriz’s gaming team?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "chasm-schism_008_b1",
+          "text": "Beatriz’s team divides after members disagree about how to compete, and one side registers under a new team name.",
+          "best_word": "schism",
+          "fit": {
+            "chasm": 0.24,
+            "schism": 0.9
+          },
+          "decisive_clue": "members leave to form another team",
+          "reason": "The situation shows members leave to form another team, which points to schism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chasm": "M1"
+          }
+        },
+        {
+          "id": "chasm-schism_008_b2",
+          "text": "The two sides now enter tournaments as opponents rather than teammates.",
+          "best_word": "schism",
+          "fit": {
+            "chasm": 0.21,
+            "schism": 0.94
+          },
+          "decisive_clue": "the former team now competes as two distinct sides",
+          "reason": "A lasting organizational breakup, not merely a gulf in opinion, decides the word.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chasm": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The former team now competes as two distinct sides: schism fits better.",
+      "feedback_deep": "A chasm is a deep gap or gulf; a schism is a group’s break into factions over beliefs or loyalties. Here, a lasting organizational breakup, not merely a gulf in opinion, decides the word.",
+      "contrast_rule": "Chasm separates sides; schism splits a group.",
+      "hints": {
+        "attention": "Examine what the members did after disagreeing.",
+        "axis": "Whether the focus is a great distance between things or a group dividing into rival bodies.",
+        "contrast": "Chasm separates sides; schism splits a group."
+      },
+      "qa": "pass"
+    }
+  ]
+}

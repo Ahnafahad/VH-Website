@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "ideology-philosophy",
+  "title": "ideology / philosophy",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[15]",
+    "source_pair_id": 47,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "ideology",
+      "sense": "political system of interconnected beliefs",
+      "connotation": "committed, political",
+      "register": "standard/academic",
+      "misconceptions": [
+        "Any personal maxim is an ideology."
+      ]
+    },
+    {
+      "word": "philosophy",
+      "sense": "framework for understanding life or conduct",
+      "connotation": "reflective",
+      "register": "standard/academic",
+      "misconceptions": [
+        "Must organise political power."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "political_program_vs_general_worldview",
+      "description": "An ideology is a system of beliefs guiding political or social organisation and power, while a philosophy is a broader framework for understanding life, knowledge, or conduct."
+    }
+  ],
+  "edges": [
+    {
+      "id": "ideology__philosophy",
+      "a": "ideology",
+      "b": "philosophy",
+      "boundary_rule": "An ideology is a system of beliefs guiding political or social organisation and power, while a philosophy is a broader framework for understanding life, knowledge, or conduct.",
+      "clues_a": [
+        "political movement",
+        "plans for distributing power",
+        "social system programme"
+      ],
+      "clues_b": [
+        "personal guiding principles",
+        "questions about living well",
+        "approach to learning"
+      ],
+      "irrelevant_clues": [
+        "whether ideas are popular",
+        "number of pages",
+        "speaker’s confidence"
+      ],
+      "misconceptions": {
+        "M1": "Calling every worldview a political ideology.",
+        "M2": "Calling an organised power programme merely personal guidance.",
+        "M3": "Assuming beliefs become political just because people share them."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "ideology-philosophy_001",
+      "edge_id": "ideology__philosophy",
+      "domain": "family_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Noor's approach to life?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ideology-philosophy_001_b1",
+          "text": "Noor believes people should ask thoughtful questions before making important personal choices.",
+          "best_word": "philosophy",
+          "fit": {
+            "ideology": 0.28,
+            "philosophy": 0.91
+          },
+          "decisive_clue": "general principle of living",
+          "reason": "This is a framework for personal conduct.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ideology": "M2"
+          }
+        },
+        {
+          "id": "ideology-philosophy_001_b2",
+          "text": "She explains how that principle helps her handle arguments at home.",
+          "best_word": "philosophy",
+          "fit": {
+            "ideology": 0.24,
+            "philosophy": 0.94
+          },
+          "decisive_clue": "family application is still personal",
+          "reason": "Using it in family disagreements does not make it a programme for governing society.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ideology": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Using it in family disagreements does not make it a programme for governing society.",
+      "feedback_deep": "Ideology usually names a connected set of beliefs about how society and political power should be organised. Philosophy can describe a general view of life, knowledge, learning, or conduct without a political programme. Using it in family disagreements does not make it a programme for governing society.",
+      "contrast_rule": "Ideology organises society; philosophy guides understanding.",
+      "hints": {
+        "attention": "What level of life is the belief meant to guide?",
+        "axis": "An ideology is a system of beliefs guiding political or social organisation and power, while a philosophy is a broader framework for understanding life, knowledge, or conduct.",
+        "contrast": "Ideology organises society; philosophy guides understanding."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ideology-philosophy_002",
+      "edge_id": "ideology__philosophy",
+      "domain": "campus_debate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Alex's set of beliefs?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ideology-philosophy_002_b1",
+          "text": "Alex teaches that everyone should share resources generously with friends.",
+          "best_word": "philosophy",
+          "fit": {
+            "ideology": 0.28,
+            "philosophy": 0.91
+          },
+          "decisive_clue": "personal ethical outlook",
+          "reason": "The first principle guides personal conduct.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ideology": "M3"
+          }
+        },
+        {
+          "id": "ideology-philosophy_002_b2",
+          "text": "Alex then turns that belief into a movement demanding a new system for who owns resources and controls government.",
+          "best_word": "ideology",
+          "fit": {
+            "ideology": 0.94,
+            "philosophy": 0.24
+          },
+          "decisive_clue": "organised movement about ownership and government",
+          "reason": "Its development into a programme for economic and political power changes the classification.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "philosophy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Its development into a programme for economic and political power changes the classification.",
+      "feedback_deep": "Ideology usually names a connected set of beliefs about how society and political power should be organised. Philosophy can describe a general view of life, knowledge, learning, or conduct without a political programme. Its development into a programme for economic and political power changes the classification.",
+      "contrast_rule": "Ideology organises society; philosophy guides understanding.",
+      "hints": {
+        "attention": "Look at what the movement wants to reorganise.",
+        "axis": "An ideology is a system of beliefs guiding political or social organisation and power, while a philosophy is a broader framework for understanding life, knowledge, or conduct.",
+        "contrast": "Ideology organises society; philosophy guides understanding."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ideology-philosophy_004",
+      "edge_id": "ideology__philosophy",
+      "domain": "student_election",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Marco's campaign beliefs?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ideology-philosophy_004_b1",
+          "text": "Marco supports a connected programme for distributing school funding and changing who makes student council decisions.",
+          "best_word": "ideology",
+          "fit": {
+            "ideology": 0.91,
+            "philosophy": 0.28
+          },
+          "decisive_clue": "coherent system about funding and governance",
+          "reason": "These ideas concern the organisation of collective power.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "philosophy": "M2"
+          }
+        },
+        {
+          "id": "ideology-philosophy_004_b2",
+          "text": "His posters use a different font this week, but the proposals remain unchanged.",
+          "best_word": "ideology",
+          "fit": {
+            "ideology": 0.94,
+            "philosophy": 0.24
+          },
+          "decisive_clue": "poster style is unrelated",
+          "reason": "Typography does not alter the political programme behind the campaign.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "philosophy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Typography does not alter the political programme behind the campaign.",
+      "feedback_deep": "Ideology usually names a connected set of beliefs about how society and political power should be organised. Philosophy can describe a general view of life, knowledge, learning, or conduct without a political programme. Typography does not alter the political programme behind the campaign.",
+      "contrast_rule": "Ideology organises society; philosophy guides understanding.",
+      "hints": {
+        "attention": "Look beyond the design of the posters.",
+        "axis": "An ideology is a system of beliefs guiding political or social organisation and power, while a philosophy is a broader framework for understanding life, knowledge, or conduct.",
+        "contrast": "Ideology organises society; philosophy guides understanding."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ideology-philosophy_009",
+      "edge_id": "ideology__philosophy",
+      "domain": "bookshop_conversation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Rohan's worldview?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ideology-philosophy_009_b1",
+          "text": "Rohan studies ideas about what makes a good life and how people can know what is true.",
+          "best_word": "philosophy",
+          "fit": {
+            "ideology": 0.28,
+            "philosophy": 0.91
+          },
+          "decisive_clue": "questions about life and knowledge",
+          "reason": "His concerns are broad human questions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ideology": "M1"
+          }
+        },
+        {
+          "id": "ideology-philosophy_009_b2",
+          "text": "He later discusses these questions with an entire reading circle, but proposes no changes to political institutions.",
+          "best_word": "philosophy",
+          "fit": {
+            "ideology": 0.24,
+            "philosophy": 0.94
+          },
+          "decisive_clue": "shared discussion but no political programme",
+          "reason": "More people discussing his views does not make them a plan for organising power.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ideology": "M2"
+          }
+        }
+      ],
+      "feedback_short": "More people discussing his views does not make them a plan for organising power.",
+      "feedback_deep": "Ideology usually names a connected set of beliefs about how society and political power should be organised. Philosophy can describe a general view of life, knowledge, learning, or conduct without a political programme. More people discussing his views does not make them a plan for organising power.",
+      "contrast_rule": "Ideology organises society; philosophy guides understanding.",
+      "hints": {
+        "attention": "Does a larger audience mean a political programme?",
+        "axis": "An ideology is a system of beliefs guiding political or social organisation and power, while a philosophy is a broader framework for understanding life, knowledge, or conduct.",
+        "contrast": "Ideology organises society; philosophy guides understanding."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ideology-philosophy_010",
+      "edge_id": "ideology__philosophy",
+      "domain": "community_newsletter",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Elif's beliefs?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ideology-philosophy_010_b1",
+          "text": "Elif writes that respecting others should guide everyday decisions.",
+          "best_word": "philosophy",
+          "fit": {
+            "ideology": 0.28,
+            "philosophy": 0.91
+          },
+          "decisive_clue": "broad moral guidance",
+          "reason": "The initial advice applies generally to conduct.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ideology": "M2"
+          }
+        },
+        {
+          "id": "ideology-philosophy_010_b2",
+          "text": "Her newsletter then lays out a coordinated movement to change election rules, ownership laws, and who holds government authority.",
+          "best_word": "ideology",
+          "fit": {
+            "ideology": 0.94,
+            "philosophy": 0.24
+          },
+          "decisive_clue": "linked political reforms and movement",
+          "reason": "The new political programme makes the belief system a blueprint for society.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "philosophy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The new political programme makes the belief system a blueprint for society.",
+      "feedback_deep": "Ideology usually names a connected set of beliefs about how society and political power should be organised. Philosophy can describe a general view of life, knowledge, learning, or conduct without a political programme. The new political programme makes the belief system a blueprint for society.",
+      "contrast_rule": "Ideology organises society; philosophy guides understanding.",
+      "hints": {
+        "attention": "Check whether the ideas prescribe institutions.",
+        "axis": "An ideology is a system of beliefs guiding political or social organisation and power, while a philosophy is a broader framework for understanding life, knowledge, or conduct.",
+        "contrast": "Ideology organises society; philosophy guides understanding."
+      },
+      "qa": "pass"
+    }
+  ]
+}

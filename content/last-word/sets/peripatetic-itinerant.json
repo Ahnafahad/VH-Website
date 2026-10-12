@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "set_id": "peripatetic-itinerant",
+  "title": "peripatetic / itinerant",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[63]",
+    "source_pair_id": 301,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "peripatetic",
+      "sense": "Regularly moving between sites as part of a professional working life, especially among academics or consultants.",
+      "connotation": "neutral; educated",
+      "register": "formal",
+      "misconceptions": [
+        "Any traveler who changes locations is necessarily peripatetic."
+      ]
+    },
+    {
+      "word": "itinerant",
+      "sense": "Traveling from place to place, especially to carry out practical jobs in successive locations.",
+      "connotation": "neutral; sometimes suggests insecure or temporary work",
+      "register": "standard to formal",
+      "misconceptions": [
+        "A professional who rotates through workplaces must be described as itinerant."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "professional_role",
+      "description": "Whether travel is built into a specialist career or serves practical work."
+    },
+    {
+      "id": "travel_pattern",
+      "description": "Whether sites are part of an ongoing professional circuit or successive short jobs."
+    }
+  ],
+  "edges": [
+    {
+      "id": "peripatetic__itinerant",
+      "a": "peripatetic",
+      "b": "itinerant",
+      "boundary_rule": "Peripatetic emphasizes a professional career spread across work sites, whereas itinerant emphasizes traveling between places to carry out practical work.",
+      "clues_a": [
+        "a specialist visits different offices each week",
+        "a teacher rotates among schools as their job",
+        "a consultant moves among client sites"
+      ],
+      "clues_b": [
+        "earns a living at a succession of temporary stalls",
+        "travels house to house making repairs",
+        "moves between seasonal jobs"
+      ],
+      "irrelevant_clues": [
+        "distance traveled",
+        "number of suitcases",
+        "mode of transport"
+      ],
+      "misconceptions": {
+        "M1": "Any traveler who changes locations is necessarily peripatetic.",
+        "M2": "A professional who rotates through workplaces must be described as itinerant.",
+        "M3": "A long journey alone determines which word fits."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "peripatetic-itinerant_001",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "university_teaching",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Salma’s working life?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_001_b1",
+          "text": "Salma teaches literature at three colleges, spending a fixed day at each every week.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "a lecturer rotates regularly among colleges",
+          "reason": "Her professional teaching is deliberately spread across campuses.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_001_b2",
+          "text": "Her lectures and student meetings follow the same circuit every term.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "the college circuit is part of her academic career",
+          "reason": "The repeated teaching circuit confirms a mobile professional role, not a sequence of temporary odd jobs.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The repeated teaching circuit confirms a mobile professional role, not a sequence of temporary odd jobs.",
+      "feedback_deep": "Her professional teaching is deliberately spread across campuses. The repeated teaching circuit confirms a mobile professional role, not a sequence of temporary odd jobs. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "Consider what kind of work requires the travel.",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "peripatetic-itinerant_002",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "street_vending",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kojo’s work pattern?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_002_b1",
+          "text": "Kojo sells fruit from a different neighborhood stall each morning.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "selling goods at successive street stalls",
+          "reason": "His trade moves between selling locations.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_002_b2",
+          "text": "He chooses a street each day according to where customers gather.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "selling goods at successive street stalls",
+          "reason": "The daily choice of street does not turn his practical mobile trade into a specialist professional circuit.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The daily choice of street does not turn his practical mobile trade into a specialist professional circuit.",
+      "feedback_deep": "His trade moves between selling locations. The daily choice of street does not turn his practical mobile trade into a specialist professional circuit. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "Ask what he does at each stop.",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "peripatetic-itinerant_003",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "business_consulting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nadia’s career?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_003_b1",
+          "text": "Nadia spends Mondays advising one company and Thursdays advising another on staff training.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "consultant advises clients at multiple sites",
+          "reason": "Her specialist advisory work crosses workplaces.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_003_b2",
+          "text": "She returns to those same clients as part of her year-round consulting contracts.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "recurring client visits form her professional practice",
+          "reason": "The ongoing contracts sharpen the focus on a career shared among client sites.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The ongoing contracts sharpen the focus on a career shared among client sites.",
+      "feedback_deep": "Her specialist advisory work crosses workplaces. The ongoing contracts sharpen the focus on a career shared among client sites. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "Think about the continuity of the role.",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "peripatetic-itinerant_004",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "bicycle_repair",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Hugo’s livelihood?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_004_b1",
+          "text": "Hugo repairs bicycles outside whichever apartment building calls him that day.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "practical repairs performed at changing addresses",
+          "reason": "He takes hands-on repair jobs in different places.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_004_b2",
+          "text": "His toolkit folds into a trolley so he can take jobs across town.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "practical repairs performed at changing addresses",
+          "reason": "The trolley is a practical detail; the defining clue remains the succession of on-site repair jobs.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The trolley is a practical detail; the defining clue remains the succession of on-site repair jobs.",
+      "feedback_deep": "He takes hands-on repair jobs in different places. The trolley is a practical detail; the defining clue remains the succession of on-site repair jobs. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "Does his equipment change the nature of his work?",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "peripatetic-itinerant_005",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "museum_education",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Mei’s working arrangement?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_005_b1",
+          "text": "Mei leads history workshops at several museums during the school year.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "a workshop specialist serves several museums",
+          "reason": "Her educational role regularly crosses institutional sites.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_005_b2",
+          "text": "Each museum lists her as its visiting education specialist rather than hiring her for a one-day task.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "the museums treat her as an ongoing visiting specialist",
+          "reason": "The ongoing specialist appointments explain why the movement belongs to a professional career.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The ongoing specialist appointments explain why the movement belongs to a professional career.",
+      "feedback_deep": "Her educational role regularly crosses institutional sites. The ongoing specialist appointments explain why the movement belongs to a professional career. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "Who is she professionally at these locations?",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "peripatetic-itinerant_006",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "market_tailoring",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Arjun’s work?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_006_b1",
+          "text": "Arjun carries his sewing machine to a different weekly market to mend clothes.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "takes sewing work at successive markets",
+          "reason": "His tailoring trade proceeds from market to market.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_006_b2",
+          "text": "He travels light because each market gives him only a day of customer orders.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "each market offers a short practical assignment",
+          "reason": "The one-day repair orders reinforce the practical traveling-trade sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The one-day repair orders reinforce the practical traveling-trade sense.",
+      "feedback_deep": "His tailoring trade proceeds from market to market. The one-day repair orders reinforce the practical traveling-trade sense. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "What is the unit of work at each destination?",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "peripatetic-itinerant_007",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "sports_coaching",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Lucia’s professional routine?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_007_b1",
+          "text": "Lucia coaches swimming at four schools on a rotating weekday schedule.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "professional coach rotates among school sites",
+          "reason": "Her specialist coaching career spans multiple schools.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_007_b2",
+          "text": "She designs all four schools’ annual training programs and returns throughout the year.",
+          "best_word": "peripatetic",
+          "fit": {
+            "peripatetic": 0.91,
+            "itinerant": 0.19
+          },
+          "decisive_clue": "professional coach rotates among school sites",
+          "reason": "Writing the programs adds responsibility but does not change the site-spanning professional arrangement.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Writing the programs adds responsibility but does not change the site-spanning professional arrangement.",
+      "feedback_deep": "Her specialist coaching career spans multiple schools. Writing the programs adds responsibility but does not change the site-spanning professional arrangement. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "Separate job responsibility from travel pattern.",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "peripatetic-itinerant_008",
+      "edge_id": "peripatetic__itinerant",
+      "domain": "seasonal_harvesting",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Dawit’s livelihood?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "peripatetic-itinerant_008_b1",
+          "text": "Dawit follows the harvest, taking short-paid picking jobs on different farms.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "takes successive seasonal farming jobs",
+          "reason": "He moves between short practical assignments for work.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        },
+        {
+          "id": "peripatetic-itinerant_008_b2",
+          "text": "He sends postcards from each region to his younger brother.",
+          "best_word": "itinerant",
+          "fit": {
+            "peripatetic": 0.19,
+            "itinerant": 0.91
+          },
+          "decisive_clue": "takes successive seasonal farming jobs",
+          "reason": "Sending postcards does not alter the succession of seasonal paid jobs.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "peripatetic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Sending postcards does not alter the succession of seasonal paid jobs.",
+      "feedback_deep": "He moves between short practical assignments for work. Sending postcards does not alter the succession of seasonal paid jobs. Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "contrast_rule": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place.",
+      "hints": {
+        "attention": "Which detail concerns the job itself?",
+        "axis": "Whether travel is built into a specialist career or serves practical work.",
+        "contrast": "Peripatetic highlights the mobile professional; itinerant highlights work done place to place."
+      },
+      "qa": "pass"
+    }
+  ]
+}

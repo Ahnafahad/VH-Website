@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "synergy-symbiosis",
+  "title": "synergy / symbiosis",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[191]",
+    "source_pair_id": 864,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "synergy",
+      "sense": "extra effectiveness produced by combined work beyond separate efforts",
+      "connotation": "boost through collaboration",
+      "register": "standard, often business",
+      "misconceptions": [
+        "Assuming synergy and symbiosis mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for symbiosis."
+      ]
+    },
+    {
+      "word": "symbiosis",
+      "sense": "a close ongoing mutually supportive relationship between unlike groups or organisms",
+      "connotation": "sustained mutual dependence",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming synergy and symbiosis mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for synergy."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "added_output_vs_relationship",
+      "description": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties."
+    }
+  ],
+  "edges": [
+    {
+      "id": "synergy__symbiosis",
+      "a": "synergy",
+      "b": "symbiosis",
+      "boundary_rule": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties.",
+      "clues_a": [
+        "joint effort achieves more than separate work",
+        "collaboration creates extra capacity",
+        "combined result improves markedly"
+      ],
+      "clues_b": [
+        "different groups depend on each other",
+        "ongoing mutual support",
+        "stable reciprocal exchange"
+      ],
+      "irrelevant_clues": [
+        "matching clothes",
+        "same building",
+        "separate organization names"
+      ],
+      "misconceptions": {
+        "M1": "Assuming synergy and symbiosis mean the same thing whenever both appear relevant.",
+        "M2": "Ignoring the defining evidence needed for symbiosis.",
+        "M3": "Ignoring the defining evidence needed for synergy."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "synergy-symbiosis_001",
+      "edge_id": "synergy__symbiosis",
+      "domain": "class_presentation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the result of Priyanka and Ellis working together?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "synergy-symbiosis_001_b1",
+          "text": "Separately, Priyanka and Ellis each managed one good slide an hour; editing one another’s work, they finished three strong slides an hour.",
+          "best_word": "synergy",
+          "fit": {
+            "synergy": 0.92,
+            "symbiosis": 0.3
+          },
+          "decisive_clue": "joint output exceeds their separate production rates",
+          "reason": "Joint output exceeds their separate production rates is the strongest evidence for synergy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "symbiosis": "M2"
+          }
+        },
+        {
+          "id": "synergy-symbiosis_001_b2",
+          "text": "They used different laptop brands while preparing those slides.",
+          "best_word": "synergy",
+          "fit": {
+            "synergy": 0.94,
+            "symbiosis": 0.26
+          },
+          "decisive_clue": "joint output exceeds their separate production rates; different laptop brands does not change that",
+          "reason": "The extra output created by combining efforts remains the decisive fact; laptop brands are irrelevant.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "symbiosis": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Joint output exceeds their separate production rates still decides; the later detail does not change that.",
+      "feedback_deep": "Synergy means extra effectiveness produced by combined work beyond separate efforts; symbiosis means a close ongoing mutually supportive relationship between unlike groups or organisms. The extra output created by combining efforts remains the decisive fact; laptop brands are irrelevant.",
+      "contrast_rule": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other.",
+      "hints": {
+        "attention": "Compare how much they accomplish alone and together.",
+        "axis": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties.",
+        "contrast": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "synergy-symbiosis_002",
+      "edge_id": "synergy__symbiosis",
+      "domain": "local_businesses",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the relationship between Amina’s bakery and a nearby café?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "synergy-symbiosis_002_b1",
+          "text": "For four years the bakery has supplied bread to the café, while the café sends steady customers to the bakery.",
+          "best_word": "symbiosis",
+          "fit": {
+            "symbiosis": 0.92,
+            "synergy": 0.3
+          },
+          "decisive_clue": "two different businesses repeatedly help one another",
+          "reason": "Two different businesses repeatedly help one another is the strongest evidence for symbiosis here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "synergy": "M3"
+          }
+        },
+        {
+          "id": "synergy-symbiosis_002_b2",
+          "text": "Each business plans its weekly supplies around that continuing exchange.",
+          "best_word": "symbiosis",
+          "fit": {
+            "symbiosis": 0.94,
+            "synergy": 0.26
+          },
+          "decisive_clue": "two different businesses repeatedly help one another; further evidence: weekly planning depends on the continuing exchange",
+          "reason": "The extra detail reveals durable mutual reliance rather than a single productivity boost.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "synergy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Weekly planning depends on the continuing exchange confirms the earlier clue: two different businesses repeatedly help one another.",
+      "feedback_deep": "Synergy means extra effectiveness produced by combined work beyond separate efforts; symbiosis means a close ongoing mutually supportive relationship between unlike groups or organisms. The extra detail reveals durable mutual reliance rather than a single productivity boost.",
+      "contrast_rule": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other.",
+      "hints": {
+        "attention": "Look at the pattern across years.",
+        "axis": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties.",
+        "contrast": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "synergy-symbiosis_003",
+      "edge_id": "synergy__symbiosis",
+      "domain": "school_play",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the result of Tariq’s sound and lighting crews working together?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "synergy-symbiosis_003_b1",
+          "text": "Tariq’s sound and lighting crews timed cues together and produced a scene neither crew could create by itself.",
+          "best_word": "synergy",
+          "fit": {
+            "synergy": 0.92,
+            "symbiosis": 0.3
+          },
+          "decisive_clue": "coordinated cues create an effect neither crew achieves alone",
+          "reason": "Coordinated cues create an effect neither crew achieves alone is the strongest evidence for synergy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "symbiosis": "M1"
+          }
+        },
+        {
+          "id": "synergy-symbiosis_003_b2",
+          "text": "The crews still belong to two different student clubs with their own badges.",
+          "best_word": "synergy",
+          "fit": {
+            "synergy": 0.94,
+            "symbiosis": 0.26
+          },
+          "decisive_clue": "coordinated cues create an effect neither crew achieves alone; separate club badges does not change that",
+          "reason": "Separate club identities do not remove the extra result of combined work.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "symbiosis": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Coordinated cues create an effect neither crew achieves alone still decides; the later detail does not change that.",
+      "feedback_deep": "Synergy means extra effectiveness produced by combined work beyond separate efforts; symbiosis means a close ongoing mutually supportive relationship between unlike groups or organisms. Separate club identities do not remove the extra result of combined work.",
+      "contrast_rule": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other.",
+      "hints": {
+        "attention": "Judge the produced effect, not the crew labels.",
+        "axis": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties.",
+        "contrast": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "synergy-symbiosis_004",
+      "edge_id": "synergy__symbiosis",
+      "domain": "reading_community",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the relationship between Selin’s bookshop and local reading circle?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "synergy-symbiosis_004_b1",
+          "text": "Selin gives the reading circle a weekly meeting room, and its members regularly buy books from her shop.",
+          "best_word": "symbiosis",
+          "fit": {
+            "symbiosis": 0.92,
+            "synergy": 0.3
+          },
+          "decisive_clue": "reciprocal support between different groups",
+          "reason": "Reciprocal support between different groups is the strongest evidence for symbiosis here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "synergy": "M3"
+          }
+        },
+        {
+          "id": "synergy-symbiosis_004_b2",
+          "text": "Their arrangement has continued each week for five years, through changes in the people attending.",
+          "best_word": "symbiosis",
+          "fit": {
+            "symbiosis": 0.94,
+            "synergy": 0.26
+          },
+          "decisive_clue": "reciprocal support between different groups; new participants without a break in the relationship does not change that",
+          "reason": "Changing members does not change the long-standing two-way partnership.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "synergy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Reciprocal support between different groups still decides; the later detail does not change that.",
+      "feedback_deep": "Synergy means extra effectiveness produced by combined work beyond separate efforts; symbiosis means a close ongoing mutually supportive relationship between unlike groups or organisms. Changing members does not change the long-standing two-way partnership.",
+      "contrast_rule": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other.",
+      "hints": {
+        "attention": "Ask whether the focus is a relationship or an output.",
+        "axis": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties.",
+        "contrast": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "synergy-symbiosis_005",
+      "edge_id": "synergy__symbiosis",
+      "domain": "online_groups",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the connection between Pablo’s two online communities?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "synergy-symbiosis_005_b1",
+          "text": "One community regularly shares job openings; the other sends volunteers to help members prepare applications, and both rely on the exchange.",
+          "best_word": "symbiosis",
+          "fit": {
+            "symbiosis": 0.92,
+            "synergy": 0.3
+          },
+          "decisive_clue": "distinct communities regularly exchange different forms of help",
+          "reason": "Distinct communities regularly exchange different forms of help is the strongest evidence for symbiosis here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "synergy": "M3"
+          }
+        },
+        {
+          "id": "synergy-symbiosis_005_b2",
+          "text": "The groups keep separate websites and never merge their memberships.",
+          "best_word": "symbiosis",
+          "fit": {
+            "symbiosis": 0.94,
+            "synergy": 0.26
+          },
+          "decisive_clue": "separate websites do not sever mutual reliance",
+          "reason": "They need not become one group: their continuing two-way support is the central feature.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "synergy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Separate websites do not sever mutual reliance makes symbiosis the better choice.",
+      "feedback_deep": "Synergy means extra effectiveness produced by combined work beyond separate efforts; symbiosis means a close ongoing mutually supportive relationship between unlike groups or organisms. They need not become one group: their continuing two-way support is the central feature.",
+      "contrast_rule": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other.",
+      "hints": {
+        "attention": "Notice what each group receives from the other.",
+        "axis": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties.",
+        "contrast": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "synergy-symbiosis_006",
+      "edge_id": "synergy__symbiosis",
+      "domain": "football_match",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the effect of Dae’s partnership with a teammate?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "synergy-symbiosis_006_b1",
+          "text": "Dae’s long passes and his teammate’s timed runs created scoring chances that neither managed when practicing alone.",
+          "best_word": "synergy",
+          "fit": {
+            "synergy": 0.92,
+            "symbiosis": 0.3
+          },
+          "decisive_clue": "complementary actions produce chances absent individually",
+          "reason": "Complementary actions produce chances absent individually is the strongest evidence for synergy here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "symbiosis": "M1"
+          }
+        },
+        {
+          "id": "synergy-symbiosis_006_b2",
+          "text": "In one match their combination produced three goals, after each had struggled to score independently.",
+          "best_word": "synergy",
+          "fit": {
+            "synergy": 0.94,
+            "symbiosis": 0.26
+          },
+          "decisive_clue": "complementary actions produce chances absent individually; further evidence: three goals achieved through their coordination",
+          "reason": "The evidence pinpoints a performance gain generated specifically by joint action.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "symbiosis": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Three goals achieved through their coordination confirms the earlier clue: complementary actions produce chances absent individually.",
+      "feedback_deep": "Synergy means extra effectiveness produced by combined work beyond separate efforts; symbiosis means a close ongoing mutually supportive relationship between unlike groups or organisms. The evidence pinpoints a performance gain generated specifically by joint action.",
+      "contrast_rule": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other.",
+      "hints": {
+        "attention": "Compare the outcome together with their solo results.",
+        "axis": "Synergy is the extra result of working together; symbiosis is the close, lasting relationship between different parties.",
+        "contrast": "Synergy: joint effort achieves more than separate work; symbiosis: different groups depend on each other."
+      },
+      "qa": "pass"
+    }
+  ]
+}

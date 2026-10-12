@@ -1,0 +1,1498 @@
+{
+  "schema_version": 1,
+  "set_id": "inept-inapt",
+  "title": "inept / inapt",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[47]",
+    "source_pair_id": 239,
+    "qa": {
+      "pass": 20,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "inept",
+      "sense": "lacking the requisite skill",
+      "connotation": "negative, criticizing capability",
+      "register": "standard",
+      "misconceptions": [
+        "confusing with lacking interest or motivation"
+      ]
+    },
+    {
+      "word": "inapt",
+      "sense": "not fitting the circumstances",
+      "connotation": "neutral to mildly negative, criticizing judgment or choice",
+      "register": "slightly formal",
+      "misconceptions": [
+        "confusing with lacking skill"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "cause_of_failure",
+      "description": "Lack of ability (inept) vs. mismatch with context (inapt)"
+    },
+    {
+      "id": "evaluative_focus",
+      "description": "Execution/performance focus (inept) vs. judgment/appropriateness focus (inapt)"
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "inept": [
+        "The new cook was so inept he burned the water.",
+        "His management style was entirely inept, leading to chaos.",
+        "She made an inept attempt to fix the sink.",
+        "They are socially inept at making small talk.",
+        "The captain's navigation was clearly inept.",
+        "An inept handling of the delicate situation ruined everything."
+      ],
+      "inapt": [
+        "The joke he told was completely inapt for a funeral.",
+        "That outfit is entirely inapt for a formal business meeting.",
+        "Using a hammer to fix a watch is inapt.",
+        "The metaphor was inapt for explaining the complex theory.",
+        "His choice of words was inapt under the circumstances.",
+        "A heavy coat is inapt for a summer beach party."
+      ]
+    },
+    "counter": {
+      "inept": [
+        "The joke he told was inept for a funeral.",
+        "That outfit is inept for a formal business meeting.",
+        "Using a hammer to fix a watch is inept.",
+        "The metaphor was inept for explaining the complex theory.",
+        "His choice of words was inept under the circumstances.",
+        "A heavy coat is inept for a summer beach party."
+      ],
+      "inapt": [
+        "The new cook was so inapt he burned the water.",
+        "His management style was entirely inapt, leading to chaos.",
+        "She made an inapt attempt to fix the sink.",
+        "They are socially inapt at making small talk.",
+        "The captain's navigation was clearly inapt.",
+        "An inapt handling of the delicate situation ruined everything."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "inept__inapt",
+      "a": "inept",
+      "b": "inapt",
+      "boundary_rule": "Use inept when the subject fails because they cannot physically or mentally perform the action; use inapt when the subject chooses something that doesn't fit the situation.",
+      "clues_a": [
+        "failed to execute",
+        "fumbled",
+        "no training",
+        "clumsy",
+        "bungled"
+      ],
+      "clues_b": [
+        "wrong time",
+        "wrong place",
+        "out of context",
+        "tone-deaf",
+        "unsuited"
+      ],
+      "irrelevant_clues": [
+        "degree of effort",
+        "intent to do well",
+        "length of time taken"
+      ],
+      "misconceptions": {
+        "M1": "Inept implies the person is a bad person.",
+        "M2": "Inapt is a synonym for stupid.",
+        "M3": "If it fails, it must be inept."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "inept-inapt_001",
+      "edge_id": "inept__inapt",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "What Arthur did in his apology: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "inept-inapt_001_b1",
+          "text": "Arthur apologized by joking about the argument, which felt a bit weird.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.8
+          },
+          "decisive_clue": "joking at an apology",
+          "reason": "The behavior is socially wrong, not necessarily unskilled.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_001_b2",
+          "text": "Arthur apologized by joking about the argument, which felt a bit weird, and then he brought up other people's faults to justify his own behavior.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.4,
+            "inapt": 0.9
+          },
+          "decisive_clue": "bringing up others to justify own fault",
+          "reason": "Still fundamentally a bad choice of approach for an apology; not a lack of speech ability.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Arthur's choice to joke and deflect is inappropriate, regardless of how well he speaks.",
+      "feedback_deep": "Even though he added another bad move, the failure remains one of judgment (inapt) rather than an inability to construct sentences or articulate thoughts (inept).",
+      "contrast_rule": "If the action is logically misplaced, it is inapt; if the actor fails to perform the action well, it is inept.",
+      "hints": {
+        "attention": "Focus on the context, not the execution.",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "If the action is logically misplaced, it is inapt; if the actor fails to perform the action well, it is inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_002",
+      "edge_id": "inept__inapt",
+      "domain": "music",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How Sam performed the cello: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_002_b1",
+          "text": "Sam played the cello by choosing a heavy metal song that didn't work for the instrument.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "song choice not for instrument",
+          "reason": "The choice is wrong for the setting/instrument.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_002_b2",
+          "text": "Sam played the cello by choosing a heavy metal song that didn't work for the instrument, and then he completely failed to find the right notes and dropped the bow twice.",
+          "best_word": "inept",
+          "fit": {
+            "inept": 0.9,
+            "inapt": 0.4
+          },
+          "decisive_clue": "failed to find notes and dropped bow",
+          "reason": "The failure has shifted from bad choice to poor execution.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inapt": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Adding the failure to play notes shifts this from bad choice to bad skill.",
+      "feedback_deep": "Initially, the issue was merely a stylistic mismatch (inapt). With the new details about missing notes and dropping the bow, the primary problem becomes an inability to perform (inept).",
+      "contrast_rule": "If the action is wrong for the situation, it's inapt; if the performer fails to do it right, it's inept.",
+      "hints": {
+        "attention": "Is the issue the plan or the execution?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "If the action is wrong for the situation, it's inapt; if the performer fails to do it right, it's inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_003",
+      "edge_id": "inept__inapt",
+      "domain": "classroom",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "How the teacher used the marker: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "inept-inapt_003_b1",
+          "text": "The teacher used the red marker on the whiteboard to write notes that students couldn't read from the back.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.5,
+            "inapt": 0.7
+          },
+          "decisive_clue": "chose red for long-distance legibility",
+          "reason": "The color choice is the problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_003_b2",
+          "text": "The teacher used the red marker on the whiteboard to write notes that students couldn't read from the back, despite the students explicitly telling the teacher the color is hard to see.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.9
+          },
+          "decisive_clue": "persisting despite warnings",
+          "reason": "Confirms the judgment is the issue, not skill.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Choosing the wrong tool repeatedly is inapt, even if they write perfectly well.",
+      "feedback_deep": "The teacher has the skill to write, but chooses a color that does not fit the context (distance). This is an issue of suitability.",
+      "contrast_rule": "Inept is about lacking ability; inapt is about lack of fitting judgment.",
+      "hints": {
+        "attention": "Is the teacher's handwriting the problem, or the color?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inept is about lacking ability; inapt is about lack of fitting judgment."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_004",
+      "edge_id": "inept__inapt",
+      "domain": "office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "How the intern designed the slide: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_004_b1",
+          "text": "The intern designed the slide using bright pink text on a light yellow background, making it unreadable.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.4,
+            "inapt": 0.8
+          },
+          "decisive_clue": "color choice",
+          "reason": "The design choice is wrong.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_004_b2",
+          "text": "The intern designed the slide using bright pink text on a light yellow background, making it unreadable, even though the company brand guidelines clearly specify blue text on white.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.95
+          },
+          "decisive_clue": "violating guidelines",
+          "reason": "This strengthens the choice-based error.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Ignoring guidelines is still a bad choice (inapt), not lack of design ability.",
+      "feedback_deep": "The intern is making poor aesthetic and compliance choices. This is about suitability for the company style, not an inability to use the presentation software.",
+      "contrast_rule": "Inapt: Poor choice. Inept: Poor skill.",
+      "hints": {
+        "attention": "Does the intern know how to use the software?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt: Poor choice. Inept: Poor skill."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_005",
+      "edge_id": "inept__inapt",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The coach's strategy was ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "inept-inapt_005_b1",
+          "text": "The coach's strategy was to instruct all players to only play defensively when they were down by two goals.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "defensive play when behind",
+          "reason": "The strategy is wrong for the situation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_005_b2",
+          "text": "The coach's strategy was to instruct all players to only play defensively when they were down by two goals, even though the league rules penalize passive play heavily.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.1,
+            "inapt": 0.95
+          },
+          "decisive_clue": "penalties for passive play",
+          "reason": "The choice is even less appropriate.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Choosing a doomed strategy is inapt judgment, not a lack of coaching skill.",
+      "feedback_deep": "The coach is making a choice that doesn't fit the match situation. They know how to coach, but they are choosing the wrong approach for this scenario.",
+      "contrast_rule": "Wrong strategy = inapt; Bad coaching execution = inept.",
+      "hints": {
+        "attention": "Is the coach failing to teach, or just choosing the wrong game plan?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Wrong strategy = inapt; Bad coaching execution = inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_006",
+      "edge_id": "inept__inapt",
+      "domain": "gardening",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the gardener prepared the soil: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_006_b1",
+          "text": "The gardener prepared the soil by applying a high-nitrogen fertilizer meant only for leafy greens to his desert cactus.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.9
+          },
+          "decisive_clue": "wrong fertilizer for plant type",
+          "reason": "The application choice is wrong.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_006_b2",
+          "text": "The gardener prepared the soil by applying a high-nitrogen fertilizer meant only for leafy greens to his desert cactus, and then accidentally dug up the roots entirely while trying to spread it.",
+          "best_word": "inept",
+          "fit": {
+            "inept": 0.9,
+            "inapt": 0.3
+          },
+          "decisive_clue": "dug up roots",
+          "reason": "This shows a failure in skill, not just choice.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inapt": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Destroying the roots is a skill failure (inept), adding to the earlier choice failure.",
+      "feedback_deep": "The gardener started with a bad choice (inapt). By adding that he destroyed the plant through clumsiness, he is now demonstrating a clear lack of gardening skill (inept).",
+      "contrast_rule": "Inapt choice can coexist with skill, but physical clumsiness is inept.",
+      "hints": {
+        "attention": "What happened to the plant besides the fertilizer?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt choice can coexist with skill, but physical clumsiness is inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_007",
+      "edge_id": "inept__inapt",
+      "domain": "cooking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "The cook's handling of the spices: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "inept-inapt_007_b1",
+          "text": "The cook's handling of the spices was to add cinnamon to the spicy chili, which tasted quite odd.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.8
+          },
+          "decisive_clue": "flavor mismatch",
+          "reason": "The spice choice is unsuitable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_007_b2",
+          "text": "The cook's handling of the spices was to add cinnamon to the spicy chili, which tasted quite odd; in fact, the cook thought it was a brilliant way to create fusion cuisine despite the guests complaining.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "intent to create fusion",
+          "reason": "Shows it is a choice (judgment), not clumsiness.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Knowing they *intended* the flavor confirms it is a choice (inapt), not a mistake (inept).",
+      "feedback_deep": "The new beat clarifies that this was a conscious, albeit misguided, stylistic choice, reframing the action as an issue of poor judgment rather than a cooking blunder.",
+      "contrast_rule": "Reframing a mistake as a choice highlights inaptness.",
+      "hints": {
+        "attention": "Was it an accident or a planned experiment?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Reframing a mistake as a choice highlights inaptness."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_008",
+      "edge_id": "inept__inapt",
+      "domain": "presentation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The speaker's opening: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "inept-inapt_008_b1",
+          "text": "The speaker's opening was to complain about the noisy room before starting the serious tech presentation.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "complaining about room in a professional opening",
+          "reason": "The opening is unprofessional.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_008_b2",
+          "text": "The speaker's opening was to complain about the noisy room before starting the serious tech presentation, alienating the audience right from the first minute.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.95
+          },
+          "decisive_clue": "alienating the audience",
+          "reason": "This is a consequence of the poor opening choice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A bad opening choice remains inapt, regardless of the consequences.",
+      "feedback_deep": "Complaining about the room is fundamentally not fitting for a professional opening. It's a failure of judgment, not a failure of the ability to present.",
+      "contrast_rule": "Judgment = inapt; Competence = inept.",
+      "hints": {
+        "attention": "Does the speaker know how to give a presentation?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Judgment = inapt; Competence = inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_009",
+      "edge_id": "inept__inapt",
+      "domain": "interview",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the applicant handled the interview question: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_009_b1",
+          "text": "The applicant handled the interview question by responding with a joke about their hobbies instead of their professional qualifications.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "joke instead of qualification",
+          "reason": "The answer doesn't fit the professional context.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_009_b2",
+          "text": "The applicant handled the interview question by responding with a joke about their hobbies instead of their professional qualifications, and then they completely froze and struggled to speak coherent English when asked to explain.",
+          "best_word": "inept",
+          "fit": {
+            "inept": 0.9,
+            "inapt": 0.4
+          },
+          "decisive_clue": "froze and struggled to speak",
+          "reason": "The issue is now a lack of communicative skill.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inapt": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Freezing and struggling to speak indicates ineptness.",
+      "feedback_deep": "The applicant starts by making a bad choice (inapt). However, the second beat reveals they lack the ability to handle the communication task itself (inept), making that the more critical, defining issue.",
+      "contrast_rule": "Inapt: Poor choice. Inept: Poor skill.",
+      "hints": {
+        "attention": "Is the problem the answer content or the ability to communicate?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt: Poor choice. Inept: Poor skill."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_010",
+      "edge_id": "inept__inapt",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "precision",
+      "frame": "How the tourist dressed for the temple: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_010_b1",
+          "text": "The tourist dressed for the temple visit by wearing a very short, tight outfit.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.1,
+            "inapt": 0.9
+          },
+          "decisive_clue": "outfit unsuitable for sacred location",
+          "reason": "The clothing does not fit the cultural setting.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_010_b2",
+          "text": "The tourist dressed for the temple visit by wearing a very short, tight outfit, which was explicitly against the dress code posted at the entrance.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.1,
+            "inapt": 0.95
+          },
+          "decisive_clue": "ignoring dress code",
+          "reason": "Confirmed poor judgment.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Ignoring the dress code is a choice failure (inapt), not a dressing skill issue.",
+      "feedback_deep": "The issue is entirely about the clothing being inappropriate (inapt) for the context. It is not that the tourist doesn't know how to dress themselves (inept).",
+      "contrast_rule": "Inapt = Wrong choice; Inept = Lack of skill.",
+      "hints": {
+        "attention": "Is the tourist physically struggling to put on clothes?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt = Wrong choice; Inept = Lack of skill."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_011",
+      "edge_id": "inept__inapt",
+      "domain": "writing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The author's word choice was ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_011_b1",
+          "text": "The author's word choice was to use overly technical jargon in a book meant for young children.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "technical jargon for children",
+          "reason": "The vocabulary does not fit the audience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_011_b2",
+          "text": "The author's word choice was to use overly technical jargon in a book meant for young children, which left every reader confused.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.95
+          },
+          "decisive_clue": "reader confusion",
+          "reason": "Consequence of the choice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "This is a poor fit for the target audience (inapt).",
+      "feedback_deep": "The author has the skill to write, but they have failed to adapt their language to the situation (inapt).",
+      "contrast_rule": "Inapt is about appropriateness; Inept is about ability.",
+      "hints": {
+        "attention": "Does the author know how to write, or just how to choose words for kids?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt is about appropriateness; Inept is about ability."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_012",
+      "edge_id": "inept__inapt",
+      "domain": "leadership",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "corrupt",
+      "frame": "The manager's attempt at delegation: ___",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "inept-inapt_012_b1",
+          "text": "The manager's attempt at delegation was to assign a high-stakes project to a brand-new intern without any supervision.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.4,
+            "inapt": 0.8
+          },
+          "decisive_clue": "high stakes, intern, no supervision",
+          "reason": "The delegation strategy is poorly suited for the intern's experience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_012_b2",
+          "text": "The manager's attempt at delegation was to assign a high-stakes project to a brand-new intern without any supervision, and the manager claimed this was to 'test their mettle' while refusing to explain the project goals.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.95
+          },
+          "decisive_clue": "intent to test mettle",
+          "reason": "Still fundamentally a judgment error.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "It was a poor, intentional choice (inapt).",
+      "feedback_deep": "The manager deliberately chose a bad approach to delegation. This isn't a failure of ability, but a failure of decision-making (inapt).",
+      "contrast_rule": "Intentional bad choice = inapt.",
+      "hints": {
+        "attention": "Is the manager trying, just badly?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Intentional bad choice = inapt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_013",
+      "edge_id": "inept__inapt",
+      "domain": "technology",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the user configured the router: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_013_b1",
+          "text": "The user configured the router by choosing a password that was easily guessed, like 'password123'.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.8
+          },
+          "decisive_clue": "weak password",
+          "reason": "The choice of password is poor judgment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_013_b2",
+          "text": "The user configured the router by choosing a password that was easily guessed, like 'password123', and they also accidentally disabled the firewall entirely while setting up the guest network, despite the manual saying NOT to.",
+          "best_word": "inept",
+          "fit": {
+            "inept": 0.9,
+            "inapt": 0.3
+          },
+          "decisive_clue": "disabled firewall",
+          "reason": "This is a failure of technical ability.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inapt": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Accidentally disabling the firewall makes the user inept at technical configuration.",
+      "feedback_deep": "Starting with a bad password choice (inapt), the situation worsens to a fundamental failure in handling the technical equipment (inept), making the ineptitude the defining problem.",
+      "contrast_rule": "Inapt = Wrong choice; Inept = Lack of skill/clumsiness.",
+      "hints": {
+        "attention": "Did they just pick a bad name, or did they mess up the settings?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt = Wrong choice; Inept = Lack of skill/clumsiness."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_014",
+      "edge_id": "inept__inapt",
+      "domain": "legal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "The lawyer's question was ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_014_b1",
+          "text": "The lawyer's question was to ask the witness about their childhood pet during a complex murder trial.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.1,
+            "inapt": 0.9
+          },
+          "decisive_clue": "pet question in murder trial",
+          "reason": "The question is unsuitable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_014_b2",
+          "text": "The lawyer's question was to ask the witness about their childhood pet during a complex murder trial, despite the judge having warned the lawyer that such questions were irrelevant.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.05,
+            "inapt": 0.95
+          },
+          "decisive_clue": "ignoring judge warnings",
+          "reason": "Confirmed poor judgment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Asking irrelevant questions in court is inapt judgment.",
+      "feedback_deep": "The lawyer's failure is one of knowing what questions are appropriate for the courtroom, not a failure of their ability to speak or practice law (inapt).",
+      "contrast_rule": "Judgment = inapt; Skill = inept.",
+      "hints": {
+        "attention": "Did the lawyer fail to speak clearly, or choose the wrong question?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Judgment = inapt; Skill = inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_015",
+      "edge_id": "inept__inapt",
+      "domain": "household",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "How he arranged the furniture: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "inept-inapt_015_b1",
+          "text": "He arranged the furniture by placing the huge sofa directly in front of the only doorway.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.8
+          },
+          "decisive_clue": "sofa in front of doorway",
+          "reason": "The furniture arrangement does not fit the room.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_015_b2",
+          "text": "He arranged the furniture by placing the huge sofa directly in front of the only doorway, ensuring no one could actually leave the room.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.95
+          },
+          "decisive_clue": "blocking the doorway",
+          "reason": "This confirms the unsuitable nature of the choice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Blocking the door is a poor, unsuitable choice (inapt).",
+      "feedback_deep": "Arranging furniture involves judgment of space and utility. Putting a sofa in front of a door is a bad decision, not a lack of physical strength or skill (inapt).",
+      "contrast_rule": "Choice failure = inapt.",
+      "hints": {
+        "attention": "Is the person physically capable of moving the sofa?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Choice failure = inapt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_016",
+      "edge_id": "inept__inapt",
+      "domain": "finance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the treasurer handled the budget: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_016_b1",
+          "text": "The treasurer handled the budget by allocating all funds to marketing without saving for payroll.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "no payroll allocation",
+          "reason": "The allocation choice is poor judgment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_016_b2",
+          "text": "The treasurer handled the budget by allocating all funds to marketing without saving for payroll, and they also accidentally calculated the entire budget using the wrong company revenue figures, leading to a huge deficit.",
+          "best_word": "inept",
+          "fit": {
+            "inept": 0.9,
+            "inapt": 0.3
+          },
+          "decisive_clue": "wrong revenue figures used",
+          "reason": "This is a failure of technical ability (accounting).",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inapt": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Calculating with the wrong figures is a skill failure (inept).",
+      "feedback_deep": "The treasurer started with poor judgment in allocation (inapt). But the calculation error reveals a fundamental lack of accounting skill (inept), which is the more critical failing.",
+      "contrast_rule": "Choice = inapt; Technical failure = inept.",
+      "hints": {
+        "attention": "What is the primary reason the budget failed?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Choice = inapt; Technical failure = inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_017",
+      "edge_id": "inept__inapt",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The politician's response was ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "inept-inapt_017_b1",
+          "text": "The politician's response was to smile and wave while the reporter was asking about a serious natural disaster.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.1,
+            "inapt": 0.9
+          },
+          "decisive_clue": "smiling during disaster question",
+          "reason": "The response is tone-deaf.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_017_b2",
+          "text": "The politician's response was to smile and wave while the reporter was asking about a serious natural disaster, as if they were appearing at a campaign rally.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.1,
+            "inapt": 0.95
+          },
+          "decisive_clue": "rallies as contrast",
+          "reason": "This emphasizes the poor context fit.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Smiling at the wrong moment is an inapt choice of tone.",
+      "feedback_deep": "The politician's behavior does not fit the context of a disaster. This is a failure of appropriateness (inapt), not a lack of communication skill.",
+      "contrast_rule": "Inappropriate tone = inapt; Poor speaking skill = inept.",
+      "hints": {
+        "attention": "Does the politician know how to talk?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inappropriate tone = inapt; Poor speaking skill = inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_018",
+      "edge_id": "inept__inapt",
+      "domain": "art",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the student painted the mural: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_018_b1",
+          "text": "The student painted the mural by using very dark colors in a brightly lit children's hospital ward, which felt gloomy.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "dark colors in children's ward",
+          "reason": "The color choice is wrong for the setting.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_018_b2",
+          "text": "The student painted the mural by using very dark colors in a brightly lit children's hospital ward, which felt gloomy, and they also used paint that dripped everywhere, ruining the clean floor.",
+          "best_word": "inept",
+          "fit": {
+            "inept": 0.9,
+            "inapt": 0.3
+          },
+          "decisive_clue": "paint dripped",
+          "reason": "This is a failure in the skill of painting.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inapt": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Dripping paint everywhere is a failure of painting skill (inept).",
+      "feedback_deep": "The student started with a poor stylistic choice (inapt). The additional detail about dripping paint throughout the hospital floor reveals a lack of basic painting ability (inept), making the clumsiness the main issue.",
+      "contrast_rule": "Inapt choice can exist with skill, but physical clumsiness is inept.",
+      "hints": {
+        "attention": "What is the problem with the mural's *application*?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt choice can exist with skill, but physical clumsiness is inept."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_019",
+      "edge_id": "inept__inapt",
+      "domain": "science",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The scientist's method was ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_019_b1",
+          "text": "The scientist's method was to use a survey to measure the exact temperature of a volcanic eruption, which is impossible.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.3,
+            "inapt": 0.8
+          },
+          "decisive_clue": "survey for temperature",
+          "reason": "The tool/method choice is unsuitable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_019_b2",
+          "text": "The scientist's method was to use a survey to measure the exact temperature of a volcanic eruption, which is impossible, even though thermal sensors were readily available in the lab.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.95
+          },
+          "decisive_clue": "sensors available",
+          "reason": "This emphasizes the poor judgment in choosing a method.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Choosing the wrong tool for the job is an inapt judgment.",
+      "feedback_deep": "The scientist has the capability to conduct research, but chose an approach that is completely unsuitable for the task (inapt).",
+      "contrast_rule": "Inapt choice = poor judgment; Inept action = bad skill.",
+      "hints": {
+        "attention": "Is the tool choice the main error?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt choice = poor judgment; Inept action = bad skill."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "inept-inapt_020",
+      "edge_id": "inept__inapt",
+      "domain": "management",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The leader's decision was ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "inept-inapt_020_b1",
+          "text": "The leader's decision was to hold a mandatory brainstorming meeting at 5 PM on a Friday.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.9
+          },
+          "decisive_clue": "Friday 5 PM meeting",
+          "reason": "The timing is inappropriate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        },
+        {
+          "id": "inept-inapt_020_b2",
+          "text": "The leader's decision was to hold a mandatory brainstorming meeting at 5 PM on a Friday, which angered all staff who had weekend plans.",
+          "best_word": "inapt",
+          "fit": {
+            "inept": 0.2,
+            "inapt": 0.95
+          },
+          "decisive_clue": "staff anger",
+          "reason": "Consequence of the choice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "inept": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Choosing that time is an inapt decision, upsetting staff.",
+      "feedback_deep": "The leader made a decision that does not fit the professional environment or the employees' needs. This is an issue of unsuitable judgment, not incompetence (inapt).",
+      "contrast_rule": "Inapt = Wrong choice; Inept = Lack of skill.",
+      "hints": {
+        "attention": "Is the meeting itself the problem or the timing?",
+        "axis": "Lack of ability (inept) vs. mismatch with context (inapt)",
+        "contrast": "Inapt = Wrong choice; Inept = Lack of skill."
+      },
+      "qa": "pass"
+    }
+  ]
+}

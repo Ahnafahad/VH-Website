@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "definitive-definite",
+  "title": "definitive / definite",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[91]",
+    "source_pair_id": 384,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "definitive",
+      "sense": "authoritative and conclusive",
+      "connotation": "decisive, reliable",
+      "register": "standard/formal",
+      "misconceptions": [
+        "Merely precise or certain."
+      ]
+    },
+    {
+      "word": "definite",
+      "sense": "clearly fixed or certain",
+      "connotation": "clear, assured",
+      "register": "standard",
+      "misconceptions": [
+        "Necessarily conclusive for everyone."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "degree_of_finality",
+      "description": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain."
+    }
+  ],
+  "edges": [
+    {
+      "id": "definitive__definite",
+      "a": "definitive",
+      "b": "definite",
+      "boundary_rule": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+      "clues_a": [
+        "accepted as final",
+        "resolves the debate",
+        "authoritative assessment"
+      ],
+      "clues_b": [
+        "exact date or amount",
+        "firm decision",
+        "clear specification"
+      ],
+      "irrelevant_clues": [
+        "length of document",
+        "colour of paper",
+        "number of readers"
+      ],
+      "misconceptions": {
+        "M1": "Treating certainty as conclusive authority.",
+        "M2": "Treating final authority as mere specificity.",
+        "M3": "Assuming a detailed draft is an accepted verdict."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "definitive-definite_001",
+      "edge_id": "definitive__definite",
+      "domain": "travel_booking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mina's departure plan?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "definitive-definite_001_b1",
+          "text": "Mina has booked a train leaving at exactly 8:15 on Friday.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.28,
+            "definite": 0.91
+          },
+          "decisive_clue": "precise departure time",
+          "reason": "The time is firmly specified.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M2"
+          }
+        },
+        {
+          "id": "definitive-definite_001_b2",
+          "text": "The confirmation arrives in a brightly coloured email.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.24,
+            "definite": 0.94
+          },
+          "decisive_clue": "email design is irrelevant",
+          "reason": "The colour of the confirmation does not make the timetable an authoritative settlement of a dispute.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The colour of the confirmation does not make the timetable an authoritative settlement of a dispute.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. The colour of the confirmation does not make the timetable an authoritative settlement of a dispute.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Notice the status of the departure time.",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "definitive-definite_002",
+      "edge_id": "definitive__definite",
+      "domain": "school_appeals_desk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Yasmin's decision document?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "definitive-definite_002_b1",
+          "text": "Yasmin receives a notice that clearly lists her exam score as 87.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.28,
+            "definite": 0.91
+          },
+          "decisive_clue": "an exact recorded mark",
+          "reason": "Initially we only know the score is precise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M3"
+          }
+        },
+        {
+          "id": "definitive-definite_002_b2",
+          "text": "The notice is the final ruling of the appeals board and closes every challenge to that score.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.94,
+            "definite": 0.24
+          },
+          "decisive_clue": "appeals board decision settles dispute",
+          "reason": "Its authority as the final appeal ruling makes it conclusive.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Its authority as the final appeal ruling makes it conclusive.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. Its authority as the final appeal ruling makes it conclusive.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Look at who issued the ruling and its effect.",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "definitive-definite_003",
+      "edge_id": "definitive__definite",
+      "domain": "birthday_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar's party arrangement?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "definitive-definite_003_b1",
+          "text": "Omar confirms that the dinner starts at seven, not sometime in the evening.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.28,
+            "definite": 0.91
+          },
+          "decisive_clue": "fixed starting time",
+          "reason": "Specific scheduling is not the same as settling a contested question.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M1"
+          }
+        },
+        {
+          "id": "definitive-definite_003_b2",
+          "text": "He specifies which entrance the guests should use as well.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.24,
+            "definite": 0.94
+          },
+          "decisive_clue": "added location precision",
+          "reason": "The extra detail makes the plan more precise, not more authoritative.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The extra detail makes the plan more precise, not more authoritative.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. The extra detail makes the plan more precise, not more authoritative.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Are we fixing details or resolving an argument?",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "definitive-definite_004",
+      "edge_id": "definitive__definite",
+      "domain": "community_contest",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Anika's contest result?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "definitive-definite_004_b1",
+          "text": "Anika reads the judges’ signed ruling settling who won the contest after an appeal.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.91,
+            "definite": 0.28
+          },
+          "decisive_clue": "binding decision after appeal",
+          "reason": "The official ruling closes the case.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M2"
+          }
+        },
+        {
+          "id": "definitive-definite_004_b2",
+          "text": "The organisers print the same ruling on a larger sheet for display.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.94,
+            "definite": 0.24
+          },
+          "decisive_clue": "printing larger does not alter finality",
+          "reason": "Changing the size of the display does not affect the ruling’s authority.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Changing the size of the display does not affect the ruling’s authority.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. Changing the size of the display does not affect the ruling’s authority.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Consider what the decision does, not its presentation.",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "definitive-definite_005",
+      "edge_id": "definitive__definite",
+      "domain": "clothing_order",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Theo's size instruction?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "definitive-definite_005_b1",
+          "text": "Theo writes down the exact measurements the tailor must follow.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.28,
+            "definite": 0.91
+          },
+          "decisive_clue": "precise measurements",
+          "reason": "Measurements can be fixed without being a verdict.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M3"
+          }
+        },
+        {
+          "id": "definitive-definite_005_b2",
+          "text": "He underlines them three times in red ink.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.24,
+            "definite": 0.94
+          },
+          "decisive_clue": "emphatic underlining adds no final authority",
+          "reason": "Strong visual emphasis does not make the instruction an authoritative answer to a dispute.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Strong visual emphasis does not make the instruction an authoritative answer to a dispute.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. Strong visual emphasis does not make the instruction an authoritative answer to a dispute.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Look beyond how emphatically the numbers appear.",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "definitive-definite_006",
+      "edge_id": "definitive__definite",
+      "domain": "sports_league",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Lucia's result notice?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "definitive-definite_006_b1",
+          "text": "Lucia receives a message clearly naming her team the winner.",
+          "best_word": "definite",
+          "fit": {
+            "definitive": 0.28,
+            "definite": 0.91
+          },
+          "decisive_clue": "certain announced result",
+          "reason": "The opening notice states a clear result.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definitive": "M1"
+          }
+        },
+        {
+          "id": "definitive-definite_006_b2",
+          "text": "The league confirms that the appeal period has ended and its ruling is binding.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.94,
+            "definite": 0.24
+          },
+          "decisive_clue": "binding league ruling ends appeals",
+          "reason": "Final league authority turns the notice into a conclusive decision.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Final league authority turns the notice into a conclusive decision.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. Final league authority turns the notice into a conclusive decision.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Check whether anyone can still challenge it.",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "definitive-definite_007",
+      "edge_id": "definitive__definite",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kofi's reference book?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "definitive-definite_007_b1",
+          "text": "Kofi uses a thoroughly reviewed guide recognised as the final authority on the book’s disputed ending.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.91,
+            "definite": 0.28
+          },
+          "decisive_clue": "accepted authority resolves dispute",
+          "reason": "Its scholarly standing settles the question.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M2"
+          }
+        },
+        {
+          "id": "definitive-definite_007_b2",
+          "text": "He later learns that its cover has been redesigned for the latest printing.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.94,
+            "definite": 0.24
+          },
+          "decisive_clue": "cover redesign does not undermine authority",
+          "reason": "A new cover does not change the guide’s accepted status as the final reference.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A new cover does not change the guide’s accepted status as the final reference.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. A new cover does not change the guide’s accepted status as the final reference.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Separate the contents from the cover.",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "definitive-definite_009",
+      "edge_id": "definitive__definite",
+      "domain": "library_research",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nico's answer sheet?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "definitive-definite_009_b1",
+          "text": "Nico brings an answer sheet that the review panel has approved as the final resolution of a disputed quiz question.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.91,
+            "definite": 0.28
+          },
+          "decisive_clue": "approved final answer",
+          "reason": "The panel has ended the disagreement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M1"
+          }
+        },
+        {
+          "id": "definitive-definite_009_b2",
+          "text": "A note explains that earlier answer sheets had only been provisional.",
+          "best_word": "definitive",
+          "fit": {
+            "definitive": 0.94,
+            "definite": 0.24
+          },
+          "decisive_clue": "contrast with provisional drafts",
+          "reason": "Learning that earlier versions were tentative reinforces, rather than changes, this sheet’s conclusive role.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "definite": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Learning that earlier versions were tentative reinforces, rather than changes, this sheet’s conclusive role.",
+      "feedback_deep": "Definitive means authoritative or conclusive enough to settle a matter. Definite means clear, certain, or fixed without necessarily resolving a wider dispute. Learning that earlier versions were tentative reinforces, rather than changes, this sheet’s conclusive role.",
+      "contrast_rule": "Definite is clear; definitive settles the matter.",
+      "hints": {
+        "attention": "Consider the difference between the old drafts and this sheet.",
+        "axis": "Definitive evidence or an answer settles a disputed issue authoritatively, whereas definite information is simply clear, fixed, or certain.",
+        "contrast": "Definite is clear; definitive settles the matter."
+      },
+      "qa": "pass"
+    }
+  ]
+}

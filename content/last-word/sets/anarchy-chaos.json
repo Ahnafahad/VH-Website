@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "anarchy-chaos",
+  "title": "anarchy / chaos",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[9]",
+    "source_pair_id": 31,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "anarchy",
+      "sense": "Absence of effective governing authority or enforceable order",
+      "connotation": "alarming",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Treating every crowded disorderly scene as lawlessness.",
+        "Assuming rules still work merely because a rulebook exists."
+      ]
+    },
+    {
+      "word": "chaos",
+      "sense": "Severe confusion and disorder despite possible authority",
+      "connotation": "alarming",
+      "register": "neutral",
+      "misconceptions": [
+        "Treating every crowded disorderly scene as lawlessness.",
+        "Confusing a loss of authority with an ordinary logistical mess."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "authority_vacuum_vs_disorganization",
+      "description": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists."
+    }
+  ],
+  "edges": [
+    {
+      "id": "anarchy__chaos",
+      "a": "anarchy",
+      "b": "chaos",
+      "boundary_rule": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists.",
+      "clues_a": [
+        "no recognized rule-enforcer",
+        "all leadership collapses"
+      ],
+      "clues_b": [
+        "mess despite active staff",
+        "confusion while rules remain in force"
+      ],
+      "irrelevant_clues": [
+        "noise level",
+        "number of people"
+      ],
+      "misconceptions": {
+        "M1": "Treating every crowded disorderly scene as lawlessness.",
+        "M2": "Assuming rules still work merely because a rulebook exists.",
+        "M3": "Confusing a loss of authority with an ordinary logistical mess."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "anarchy-chaos_001",
+      "edge_id": "anarchy__chaos",
+      "domain": "student_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what happens to Jamal's club?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "anarchy-chaos_001_b1",
+          "text": "The club leader resigns, no replacement takes charge, and members stop accepting any rules for meetings.",
+          "best_word": "anarchy",
+          "fit": {
+            "anarchy": 0.91,
+            "chaos": 0.26
+          },
+          "decisive_clue": "no recognized authority to enforce club rules",
+          "reason": "The initial evidence is no recognized authority to enforce club rules; it best supports anarchy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chaos": "M1"
+          }
+        },
+        {
+          "id": "anarchy-chaos_001_b2",
+          "text": "They begin making conflicting decisions with nobody empowered to settle them.",
+          "best_word": "anarchy",
+          "fit": {
+            "anarchy": 0.93,
+            "chaos": 0.21
+          },
+          "decisive_clue": "leadership vacuum prevents binding decisions",
+          "reason": "The disputes follow from the absence of a recognized decision-maker.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chaos": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The disputes follow from the absence of a recognized decision-maker.",
+      "feedback_deep": "Anarchy means disorder caused by a power vacuum; chaos means confusion or disorder, whatever its cause. The disputes follow from the absence of a recognized decision-maker.",
+      "contrast_rule": "Anarchy has no effective authority; chaos has no clear order.",
+      "hints": {
+        "attention": "Who can enforce a decision?",
+        "axis": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists.",
+        "contrast": "Anarchy has no effective authority; chaos has no clear order."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "anarchy-chaos_002",
+      "edge_id": "anarchy__chaos",
+      "domain": "restaurant_kitchen",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the scene in Hyejin's kitchen?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "anarchy-chaos_002_b1",
+          "text": "Orders pile up, cooks bump into one another, and plates reach the wrong tables while the chef keeps directing everyone.",
+          "best_word": "chaos",
+          "fit": {
+            "chaos": 0.91,
+            "anarchy": 0.26
+          },
+          "decisive_clue": "serious disorganization despite active leadership",
+          "reason": "The initial evidence is serious disorganization despite active leadership; it best supports chaos.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "anarchy": "M1"
+          }
+        },
+        {
+          "id": "anarchy-chaos_002_b2",
+          "text": "The chef is wearing a new apron today.",
+          "best_word": "chaos",
+          "fit": {
+            "chaos": 0.93,
+            "anarchy": 0.21
+          },
+          "decisive_clue": "serious disorganization despite active leadership",
+          "reason": "The apron changes nothing; the chef still leads during the confusion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "anarchy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The apron changes nothing; the chef still leads during the confusion.",
+      "feedback_deep": "Anarchy means disorder caused by a power vacuum; chaos means confusion or disorder, whatever its cause. The apron changes nothing; the chef still leads during the confusion.",
+      "contrast_rule": "Anarchy has no effective authority; chaos has no clear order.",
+      "hints": {
+        "attention": "Is anyone still in charge?",
+        "axis": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists.",
+        "contrast": "Anarchy has no effective authority; chaos has no clear order."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "anarchy-chaos_003",
+      "edge_id": "anarchy__chaos",
+      "domain": "online_gaming_forum",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the state of Eva's online forum?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "anarchy-chaos_003_b1",
+          "text": "Every moderator quits, the rules are withdrawn, and nobody can remove abusive posts.",
+          "best_word": "anarchy",
+          "fit": {
+            "anarchy": 0.91,
+            "chaos": 0.26
+          },
+          "decisive_clue": "collapse of enforceable moderation",
+          "reason": "The initial evidence is collapse of enforceable moderation; it best supports anarchy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chaos": "M1"
+          }
+        },
+        {
+          "id": "anarchy-chaos_003_b2",
+          "text": "The forum's banner still displays a cheerful cartoon.",
+          "best_word": "anarchy",
+          "fit": {
+            "anarchy": 0.93,
+            "chaos": 0.21
+          },
+          "decisive_clue": "collapse of enforceable moderation",
+          "reason": "The banner does not restore anyone's ability to govern the forum.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chaos": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The banner does not restore anyone's ability to govern the forum.",
+      "feedback_deep": "Anarchy means disorder caused by a power vacuum; chaos means confusion or disorder, whatever its cause. The banner does not restore anyone's ability to govern the forum.",
+      "contrast_rule": "Anarchy has no effective authority; chaos has no clear order.",
+      "hints": {
+        "attention": "Can anyone enforce the rules?",
+        "axis": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists.",
+        "contrast": "Anarchy has no effective authority; chaos has no clear order."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "anarchy-chaos_004",
+      "edge_id": "anarchy__chaos",
+      "domain": "airport_boarding",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the boarding area Mateus enters?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "anarchy-chaos_004_b1",
+          "text": "Passengers rush toward the wrong gate, luggage clogs the aisle, and staff repeatedly redirect them.",
+          "best_word": "chaos",
+          "fit": {
+            "chaos": 0.91,
+            "anarchy": 0.26
+          },
+          "decisive_clue": "confusion with staff still giving instructions",
+          "reason": "The initial evidence is confusion with staff still giving instructions; it best supports chaos.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "anarchy": "M1"
+          }
+        },
+        {
+          "id": "anarchy-chaos_004_b2",
+          "text": "The gate signs are printed in three languages.",
+          "best_word": "chaos",
+          "fit": {
+            "chaos": 0.93,
+            "anarchy": 0.21
+          },
+          "decisive_clue": "confusion with staff still giving instructions",
+          "reason": "Multilingual signs do not mean authority has disappeared; staff continue controlling boarding.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "anarchy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Multilingual signs do not mean authority has disappeared; staff continue controlling boarding.",
+      "feedback_deep": "Anarchy means disorder caused by a power vacuum; chaos means confusion or disorder, whatever its cause. Multilingual signs do not mean authority has disappeared; staff continue controlling boarding.",
+      "contrast_rule": "Anarchy has no effective authority; chaos has no clear order.",
+      "hints": {
+        "attention": "Distinguish confusion from absent control.",
+        "axis": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists.",
+        "contrast": "Anarchy has no effective authority; chaos has no clear order."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "anarchy-chaos_005",
+      "edge_id": "anarchy__chaos",
+      "domain": "school_concert",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the backstage scene during Sofia's concert?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "anarchy-chaos_005_b1",
+          "text": "Students scramble for missing costumes while the director assigns tasks and keeps the show moving.",
+          "best_word": "chaos",
+          "fit": {
+            "chaos": 0.91,
+            "anarchy": 0.26
+          },
+          "decisive_clue": "messy preparations under active direction",
+          "reason": "The initial evidence is messy preparations under active direction; it best supports chaos.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "anarchy": "M1"
+          }
+        },
+        {
+          "id": "anarchy-chaos_005_b2",
+          "text": "The stage manager later uses a checklist to sort the remaining mix-ups.",
+          "best_word": "chaos",
+          "fit": {
+            "chaos": 0.93,
+            "anarchy": 0.21
+          },
+          "decisive_clue": "disorder gradually corrected by functioning organizers",
+          "reason": "The checklist shows authority working, even though the backstage scene is disorderly.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "anarchy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The checklist shows authority working, even though the backstage scene is disorderly.",
+      "feedback_deep": "Anarchy means disorder caused by a power vacuum; chaos means confusion or disorder, whatever its cause. The checklist shows authority working, even though the backstage scene is disorderly.",
+      "contrast_rule": "Anarchy has no effective authority; chaos has no clear order.",
+      "hints": {
+        "attention": "Can the leaders still coordinate people?",
+        "axis": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists.",
+        "contrast": "Anarchy has no effective authority; chaos has no clear order."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "anarchy-chaos_006",
+      "edge_id": "anarchy__chaos",
+      "domain": "apartment_association",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the residents' association Anya belongs to?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "anarchy-chaos_006_b1",
+          "text": "Its committee dissolves and no new officers are chosen, leaving nobody authorized to enforce building rules.",
+          "best_word": "anarchy",
+          "fit": {
+            "anarchy": 0.91,
+            "chaos": 0.26
+          },
+          "decisive_clue": "governing body collapses without replacement",
+          "reason": "The initial evidence is governing body collapses without replacement; it best supports anarchy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chaos": "M1"
+          }
+        },
+        {
+          "id": "anarchy-chaos_006_b2",
+          "text": "Residents now reject maintenance decisions because nobody has the right to issue them.",
+          "best_word": "anarchy",
+          "fit": {
+            "anarchy": 0.93,
+            "chaos": 0.21
+          },
+          "decisive_clue": "failure of recognized governing authority",
+          "reason": "The rejection stems from no one holding the authority to decide.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chaos": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The rejection stems from no one holding the authority to decide.",
+      "feedback_deep": "Anarchy means disorder caused by a power vacuum; chaos means confusion or disorder, whatever its cause. The rejection stems from no one holding the authority to decide.",
+      "contrast_rule": "Anarchy has no effective authority; chaos has no clear order.",
+      "hints": {
+        "attention": "Is there a functioning leadership structure?",
+        "axis": "Anarchy involves the lack or collapse of effective authority; chaos describes disorder even when authority still exists.",
+        "contrast": "Anarchy has no effective authority; chaos has no clear order."
+      },
+      "qa": "pass"
+    }
+  ]
+}

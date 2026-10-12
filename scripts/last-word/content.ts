@@ -4,7 +4,7 @@
  *   npm run last-word:validate-content [-- --strict]   report every set; exit 1 on a broken file,
  *                                                      or (--strict) on any error at all
  *   npm run last-word:import-content -- <folder|file>  convert pipeline sets into content/last-word/sets/
- *   npm run last-word:set-status -- <set_id> <status>  move a set through draft → audited → approved → published
+ *   npm run last-word:set-status -- <set_id|all-audited> <status>  move sets through draft → audited → approved → published
  */
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
 import { basename, join, relative, resolve } from 'node:path';
@@ -48,16 +48,20 @@ function importSets(target: string) {
   if (path.replace(/\\/g, '/').includes('drafts-unaudited')) fail('Refusing drafts-unaudited/: unaudited drafts are never imported.');
   if (!existsSync(path)) fail(`Not found: ${target}`);
   const files = statSync(path).isDirectory() ? readdirSync(path).filter(f => f.endsWith('.json')).map(f => join(path, f)) : [path];
-  for (const file of files) {
-    const raw: unknown = JSON.parse(readFileSync(file, 'utf8'));
+  // A file may hold one set, or a question bank: { sets: [...] }.
+  const items = files.flatMap(file => {
+    const json = JSON.parse(readFileSync(file, 'utf8')) as { sets?: unknown[] };
     const source = relative(process.cwd(), file).replace(/\\/g, '/');
+    return Array.isArray(json.sets) ? json.sets.map((raw, i) => ({ raw, source: `${source}#sets[${i}]`, file })) : [{ raw: json as unknown, source, file }];
+  });
+  for (const { raw, source, file } of items) {
     try {
       const set = isPipelineSet(raw) ? convertPipelineSet(raw, source) : lastWordSetSchema.parse(raw);
       const out = join(CONTENT_DIR, `${set.set_id}.json`);
       // Re-importing must never silently promote or demote an editor's decision.
       if (existsSync(out)) set.status = (JSON.parse(readFileSync(out, 'utf8')) as { status: ReviewStatus }).status;
       writeFileSync(out, JSON.stringify(set, null, 2) + '\n');
-      console.log(`✓ ${basename(file)} → content/last-word/sets/${set.set_id}.json (${set.status})`);
+      console.log(`✓ ${source.startsWith(basename(file)) ? source : basename(file)} → content/last-word/sets/${set.set_id}.json (${set.status})`);
     } catch (error) {
       console.log(`✗ ${basename(file)}: ${(error as Error).message.slice(0, 2000)}`);
       process.exitCode = 1;
@@ -68,6 +72,11 @@ function importSets(target: string) {
 
 function setStatus(setId: string, status: ReviewStatus) {
   if (!reviewStatuses.includes(status)) fail(`Status must be one of ${reviewStatuses.join(', ')}.`);
+  // `all-audited` promotes every audited set in one go (editor-approved bank).
+  if (setId === 'all-audited') {
+    for (const { set } of readContent().sets) if (set.status === 'audited') setStatus(set.set_id, status);
+    return;
+  }
   const file = join(CONTENT_DIR, `${setId}.json`);
   if (!existsSync(file)) fail(`No set ${setId} in content/last-word/sets/.`);
   const set = JSON.parse(readFileSync(file, 'utf8')) as { status: ReviewStatus };

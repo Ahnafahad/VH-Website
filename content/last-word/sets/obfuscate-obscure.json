@@ -1,0 +1,875 @@
+{
+  "schema_version": 1,
+  "set_id": "obfuscate-obscure",
+  "title": "obfuscate / obscure",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[159]",
+    "source_pair_id": 672,
+    "qa": {
+      "pass": 1,
+      "revised": 10,
+      "rejected": 9
+    }
+  },
+  "words": [
+    {
+      "word": "obfuscate",
+      "sense": "To deliberately make something difficult to understand.",
+      "connotation": "negative/manipulative",
+      "register": "formal",
+      "misconceptions": [
+        "confusing it with simple lack of clarity"
+      ]
+    },
+    {
+      "word": "obscure",
+      "sense": "To make something hard to see or understand, without specific intent.",
+      "connotation": "neutral/descriptive",
+      "register": "neutral",
+      "misconceptions": [
+        "confusing it with intentional deception"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "intent",
+      "description": "Whether the hiding or confusing is done purposefully to manipulate."
+    },
+    {
+      "id": "transparency",
+      "description": "How much the difficulty in seeing or understanding is inherent in the object versus created by an actor."
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "obfuscate": [
+        "The politician tried to obfuscate the facts to avoid scandal.",
+        "The manager decided to obfuscate the real reason for the firing.",
+        "They used complex jargon to obfuscate the simple truth.",
+        "He chose to obfuscate the data to protect his reputation.",
+        "The witness attempted to obfuscate the events of that night.",
+        "The company used fine print to obfuscate the terms of the deal."
+      ],
+      "obscure": [
+        "Dense fog began to obscure the view of the mountain.",
+        "Large trees tend to obscure the sign at the end of the road.",
+        "His humble origins obscure his true potential to some.",
+        "The passage of time can obscure the details of memory.",
+        "The lack of evidence serves to obscure the cause of the fire.",
+        "Too much detail can obscure the main point of the argument."
+      ]
+    },
+    "counter": {
+      "obfuscate": [
+        "The clouds obfuscate the sun, making it colder.",
+        "The dust in the room obfuscates the painting on the wall.",
+        "A lack of data obfuscates our understanding of history.",
+        "He did not mean to, but his poor explanation obfuscates the problem.",
+        "The overgrown path obfuscates the way home.",
+        "Small errors obfuscate the overall result of the test."
+      ],
+      "obscure": [
+        "The lawyer tried to obscure the facts to win the case.",
+        "She deliberately decided to obscure her intentions from us.",
+        "The CEO used complex terms to obscure the financial loss.",
+        "He went to great lengths to obscure the evidence of his crime.",
+        "They planned the speech to obscure the real goal.",
+        "The expert made the process harder to obscure the simple answer."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "obfuscate__obscure",
+      "a": "obfuscate",
+      "b": "obscure",
+      "boundary_rule": "Use obfuscate when an actor is actively and purposely clouding meaning; use obscure when clarity is lost incidentally or by external factors.",
+      "clues_a": [
+        "deliberate",
+        "calculated",
+        "to hide truth",
+        "strategic complexity"
+      ],
+      "clues_b": [
+        "accidental",
+        "incidental",
+        "naturally difficult",
+        "partially hidden"
+      ],
+      "irrelevant_clues": [
+        "physical location",
+        "speaker's tone",
+        "complexity of the subject"
+      ],
+      "misconceptions": {
+        "M1": "Assuming anything difficult to understand is obfuscated.",
+        "M2": "Assuming intentionality when none is stated.",
+        "M3": "Ignoring the actor's active role in obfuscation."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "obfuscate-obscure_002",
+      "edge_id": "obfuscate__obscure",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "How the coach's new tactics ___ the team's strategy.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_002_b1",
+          "text": "The coach introduced a very complex set of new formations during practice.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.5,
+            "obscure": 0.8
+          },
+          "decisive_clue": "very complex set",
+          "reason": "Complexity itself does not equal intent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_002_b2",
+          "text": "The coach admitted he only made the formations this complex so the other teams wouldn't figure out their real game plan.",
+          "best_word": "obfuscate",
+          "fit": {
+            "obfuscate": 0.9,
+            "obscure": 0.4
+          },
+          "decisive_clue": "admitted he only made... so teams wouldn't figure out",
+          "reason": "The intent is now clear: the complexity was strategic and purposeful.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obscure": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The coach’s clear admission of strategic intent changes the situation from incidental complexity to purposeful confusion.",
+      "feedback_deep": "Initially, the tactics were just complex, making the strategy unclear (obscure). Once the coach explains he *purposely* used complexity to mislead opponents, the act becomes a deliberate effort to confuse (obfuscate).",
+      "contrast_rule": "Purposeful confusion is the key.",
+      "hints": {
+        "attention": "What was the coach's reason for the new formations?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Purposeful confusion is the key."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "obfuscate-obscure_003",
+      "edge_id": "obfuscate__obscure",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "The way the fog tends to ___ the airport runway.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_003_b1",
+          "text": "The thick fog is making it impossible for the pilots to see the runway clearly.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.05,
+            "obscure": 0.95
+          },
+          "decisive_clue": "thick fog",
+          "reason": "Natural, uncontrollable environmental factors are not deliberate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M3"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_003_b2",
+          "text": "The air traffic controller reported that the fog is still very dense, though it is lifting slightly.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.05,
+            "obscure": 0.95
+          },
+          "decisive_clue": "still very dense",
+          "reason": "It's still just the fog doing the hiding.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The fog is a natural force; it doesn't have an intention to hide anything.",
+      "feedback_deep": "Weather phenomena are classic examples of things that obscure, because they have no capacity for the deliberate, strategic intent required for obfuscation.",
+      "contrast_rule": "Nature obscures, people obfuscate.",
+      "hints": {
+        "attention": "Who or what is making the view unclear?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Nature obscures, people obfuscate."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_004",
+      "edge_id": "obfuscate__obscure",
+      "domain": "household",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "How clutter tends to ___ the kitchen counters.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_004_b1",
+          "text": "There are so many pans, bags, and groceries on the kitchen counter that you can't even see the surface.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.1,
+            "obscure": 0.9
+          },
+          "decisive_clue": "so many pans, bags, and groceries",
+          "reason": "It's just a disorganized mess; no one is hiding the counter for a reason.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_004_b2",
+          "text": "Even though he knows he needs to tidy up, he just keeps adding more things there instead.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.1,
+            "obscure": 0.9
+          },
+          "decisive_clue": "keeps adding more things",
+          "reason": "This is laziness or lack of organization, not a malicious attempt to hide the counter.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The clutter is just in the way, it isn't an intentional act to hide the counter from view.",
+      "feedback_deep": "Even if the mess is caused by someone's poor habits, the clutter itself is just physically in the way (obscure). It is not an active, calculated strategy to confuse or mislead (obfuscate).",
+      "contrast_rule": "Clutter obscures, it does not obfuscate.",
+      "hints": {
+        "attention": "Is the mess there on purpose to hide something, or is it just a mess?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Clutter obscures, it does not obfuscate."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_005",
+      "edge_id": "obfuscate__obscure",
+      "domain": "office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the manager chose to ___ the project status.",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_005_b1",
+          "text": "The project status report is extremely lengthy and uses technical terms that are hard for most team members to grasp.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.35,
+            "obscure": 0.85
+          },
+          "decisive_clue": "extremely lengthy, technical terms",
+          "reason": "The report itself is complex, but we don't know the manager's intent yet.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_005_b2",
+          "text": "We discovered the manager purposefully added the extra length and jargon, telling a colleague it was to prevent the board from asking tough questions about delays.",
+          "best_word": "obfuscate",
+          "fit": {
+            "obfuscate": 0.95,
+            "obscure": 0.2
+          },
+          "decisive_clue": "purposefully added the extra length and jargon, prevent tough questions",
+          "reason": "This is a direct admission of the intent to manipulate information.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obscure": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The manager's explicit intention to use complexity as a shield makes this an act of obfuscation.",
+      "feedback_deep": "The report was initially hard to understand, which obscured the facts. Once we learn that the complexity was added *for the purpose* of preventing scrutiny, it becomes an act of obfuscation.",
+      "contrast_rule": "Purposeful complexity is obfuscation.",
+      "hints": {
+        "attention": "Why did the manager make the report so complex?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Purposeful complexity is obfuscation."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_007",
+      "edge_id": "obfuscate__obscure",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The way the candidate managed to ___ his position on the new policy.",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_007_b1",
+          "text": "When asked about the new policy, the candidate gave a very rambling answer that didn't directly address the question.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.4,
+            "obscure": 0.8
+          },
+          "decisive_clue": "very rambling answer",
+          "reason": "He might just be a rambling speaker.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 3,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_007_b2",
+          "text": "However, his campaign manager bragged that the rambling style was carefully engineered to ensure no one would pin him down on a specific stance.",
+          "best_word": "obfuscate",
+          "fit": {
+            "obfuscate": 0.95,
+            "obscure": 0.2
+          },
+          "decisive_clue": "carefully engineered",
+          "reason": "The intent to strategically avoid a stance is the definition of obfuscation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 3,
+            "cultural_specificity": 2,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obscure": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The manager's revelation confirms that the rambling was a calculated, purposeful act to avoid clear answers.",
+      "feedback_deep": "The rambling made the position hard to find, which obscured it. Because the rambling was *carefully engineered* for this purpose, it is an act of obfuscation.",
+      "contrast_rule": "Intentional avoidance is obfuscation.",
+      "hints": {
+        "attention": "Why did the candidate ramble?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Intentional avoidance is obfuscation."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_009",
+      "edge_id": "obfuscate__obscure",
+      "domain": "history",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "How the passage of time tends to ___ the true story of the rebellion.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_009_b1",
+          "text": "After three centuries, the original records of the rebellion have faded, and stories have changed, which serves to make the true facts hard to find.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.05,
+            "obscure": 0.95
+          },
+          "decisive_clue": "After three centuries",
+          "reason": "Time and decay are natural, not human and intentional.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M3"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_009_b2",
+          "text": "Historians now struggle to piece together what actually happened due to the decay of the documents over such a long period.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.05,
+            "obscure": 0.95
+          },
+          "decisive_clue": "decay of the documents",
+          "reason": "This confirms the cause is physical degradation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 1,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Time and physical decay cannot have intent, so they can only obscure.",
+      "feedback_deep": "The passage of time and the natural decay of records are passive processes. They make facts hard to see (obscure), but because there is no human agent acting with intent, it cannot be obfuscation.",
+      "contrast_rule": "Time obscures; it cannot obfuscate.",
+      "hints": {
+        "attention": "What is the reason for the difficulty in finding the truth?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Time obscures; it cannot obfuscate."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_010",
+      "edge_id": "obfuscate__obscure",
+      "domain": "conversations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "How her silence served to ___ her true thoughts.",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_010_b1",
+          "text": "She was completely silent when I asked for her opinion on the project.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.35,
+            "obscure": 0.85
+          },
+          "decisive_clue": "completely silent",
+          "reason": "She might just be shy or thinking.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_010_b2",
+          "text": "I noticed later she had been waiting for the manager to speak first, so she could just agree with him and hide her own contrary opinion.",
+          "best_word": "obfuscate",
+          "fit": {
+            "obfuscate": 0.9,
+            "obscure": 0.25
+          },
+          "decisive_clue": "waiting for manager, hide her own contrary opinion",
+          "reason": "This shows her silence was a calculated tactic to avoid trouble while appearing to agree.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obscure": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her silence was a strategic tool used to deliberately prevent her true opinion from being known.",
+      "feedback_deep": "Her silence made her opinion unclear (obscure). Once it's revealed she used silence strategically to hide her true views, it becomes an act of obfuscation.",
+      "contrast_rule": "Strategic silence is obfuscation.",
+      "hints": {
+        "attention": "Was her silence just a lack of response, or a calculated move?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Strategic silence is obfuscation."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_011",
+      "edge_id": "obfuscate__obscure",
+      "domain": "work",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the rules serve to ___ his responsibilities.",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_011_b1",
+          "text": "The company's new policy has so many contradicting rules that it's hard to understand what he's actually responsible for.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.35,
+            "obscure": 0.85
+          },
+          "decisive_clue": "contradicting rules",
+          "reason": "It sounds like a poorly written policy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_011_b2",
+          "text": "It turns out HR made them purposefully contradictory so that they could blame any employee for failure, regardless of what they did.",
+          "best_word": "obfuscate",
+          "fit": {
+            "obfuscate": 0.95,
+            "obscure": 0.2
+          },
+          "decisive_clue": "purposefully contradictory, blame any employee",
+          "reason": "HR's clear intent to manipulate accountability makes it obfuscation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obscure": "M1"
+          }
+        }
+      ],
+      "feedback_short": "HR deliberately crafted the rules to create confusion, which is an act of obfuscation.",
+      "feedback_deep": "The policy was confusing (obscured). Because HR intentionally made it contradictory to manipulate accountability, it is an act of obfuscation.",
+      "contrast_rule": "Purposeful contradictions obfuscate.",
+      "hints": {
+        "attention": "Did HR make the rules this way on purpose?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Purposeful contradictions obfuscate."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_012",
+      "edge_id": "obfuscate__obscure",
+      "domain": "office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "precision",
+      "frame": "How his poor communication tends to ___ the goal.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_012_b1",
+          "text": "His emails are so disorganized that the main project goal is getting lost.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.1,
+            "obscure": 0.9
+          },
+          "decisive_clue": "disorganized",
+          "reason": "Disorganization is incidental.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_012_b2",
+          "text": "He seems to genuinely want to communicate better, but just lacks the skill to do it clearly.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.05,
+            "obscure": 0.95
+          },
+          "decisive_clue": "genuinely want, lacks the skill",
+          "reason": "Lack of skill is not intent.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "His lack of communication skill creates confusion incidentally, so this is not obfuscation.",
+      "feedback_deep": "The disorganized emails make the goal hard to see (obscured). Since his failure is due to a lack of skill, not a desire to confuse, it's not obfuscation.",
+      "contrast_rule": "Incompetence does not obfuscate.",
+      "hints": {
+        "attention": "Is he trying to be unclear, or is he just bad at communicating?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Incompetence does not obfuscate."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_014",
+      "edge_id": "obfuscate__obscure",
+      "domain": "conversations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How the actor's explanation served to ___ the reason he quit.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_014_b1",
+          "text": "The actor's explanation for quitting is so filled with philosophical musings that it is hard to follow.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.35,
+            "obscure": 0.85
+          },
+          "decisive_clue": "philosophical musings",
+          "reason": "He might just be a very philosophical person.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_014_b2",
+          "text": "Later, his agent admitted the actor uses these musings to avoid directly addressing the actual, less-glamorous reason for leaving.",
+          "best_word": "obfuscate",
+          "fit": {
+            "obfuscate": 0.95,
+            "obscure": 0.2
+          },
+          "decisive_clue": "uses these musings to avoid",
+          "reason": "This confirms the actor is *using* the musings to hide the truth.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obscure": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The agent confirms the actor uses philosophical talk to purposefully hide the true reason he quit.",
+      "feedback_deep": "The musings made the reason unclear (obscured). Once we know the actor uses this strategy to *avoid* explaining the real, less-glamorous reason, it becomes an act of obfuscation.",
+      "contrast_rule": "Tactical complexity is obfuscation.",
+      "hints": {
+        "attention": "Why does he use these philosophical musings?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Tactical complexity is obfuscation."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "obfuscate-obscure_018",
+      "edge_id": "obfuscate__obscure",
+      "domain": "conversations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "How his joke served to ___ his true meaning.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "obfuscate-obscure_018_b1",
+          "text": "He made a sarcastic joke about the project that was hard to interpret.",
+          "best_word": "obscure",
+          "fit": {
+            "obfuscate": 0.4,
+            "obscure": 0.8
+          },
+          "decisive_clue": "sarcastic joke",
+          "reason": "Sarcasm can just be confusing without intent to hide meaning.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obfuscate": "M2"
+          }
+        },
+        {
+          "id": "obfuscate-obscure_018_b2",
+          "text": "I found out he deliberately used the joke because he was afraid to say what he really thought of the project, as he knew the boss was listening.",
+          "best_word": "obfuscate",
+          "fit": {
+            "obfuscate": 0.95,
+            "obscure": 0.25
+          },
+          "decisive_clue": "deliberately used... afraid to say... boss was listening",
+          "reason": "The clear intent to hide his true opinion makes it obfuscation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obscure": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He used sarcasm as a shield, purposefully hiding his true opinion because the boss was present.",
+      "feedback_deep": "The joke made the meaning unclear (obscured). Once we learn he *deliberately* used it to hide his opinion from the boss, it becomes an act of obfuscation.",
+      "contrast_rule": "Sarcasm used as a shield obfuscates.",
+      "hints": {
+        "attention": "Why did he make the joke?",
+        "axis": "Whether the hiding or confusing is done purposefully to manipulate.",
+        "contrast": "Sarcasm used as a shield obfuscates."
+      },
+      "qa": "revised"
+    }
+  ]
+}

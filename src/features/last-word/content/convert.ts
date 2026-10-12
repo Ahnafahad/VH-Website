@@ -24,7 +24,7 @@ export const isPipelineSet = (value: unknown): value is PipelineSet =>
  * Fields the pipeline lacks are derived by these documented rules (content/last-word/README.md):
  *   title      = the words joined with " / "
  *   status     = "audited" when the critic's `qa` block is present, else "draft"
- *   edge.id    = "<a>__<b>"
+ *   edge.id    = "<a>__<b>", each word lower-cased, accents removed, other characters → "-"
  *   domain     = lower-cased, non [a-z0-9_-] characters → "_"
  *   purpose    = "transfer" when `transfer: true`, else "practice" (diagnostics are chosen at runtime)
  *   characters = [] (not supplied; the scheduler then varies by domain only)
@@ -34,7 +34,7 @@ export const isPipelineSet = (value: unknown): value is PipelineSet =>
  */
 export function convertPipelineSet(input: PipelineSet, sourcePath?: string): LastWordSet {
   const { a, b } = input.edge;
-  const edgeId = `${a}__${b}`;
+  const edgeId = `${slug(a)}__${slug(b)}`;
   const axis = input.semantic_axes[0]?.description ?? input.edge.boundary_rule;
   return lastWordSetSchema.parse({
     schema_version: 1,
@@ -72,3 +72,5 @@ export function convertPipelineSet(input: PipelineSet, sourcePath?: string): Las
 function pick<T extends object, K extends keyof T>(value: T, keys: K[]): Pick<T, K> {
   return Object.fromEntries(keys.filter(key => value[key] !== undefined).map(key => [key, value[key]])) as Pick<T, K>;
 }
+
+const slug = (word: string) => word.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9_]+/g, '-').replace(/^-+|-+$/g, '');

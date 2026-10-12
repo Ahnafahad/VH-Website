@@ -22,7 +22,8 @@ export const lastWordBeatSchema = z.strictObject({
   decisive_clue: text,
   reason: text,
   shift_type: z.enum(shiftTypes),
-  difficulty: difficultySchema,
+  /** Absent on some critic-revised beats; reported as a warning, stored as null. */
+  difficulty: difficultySchema.optional(),
   misconception_by_wrong_choice: z.record(text, text),
   /** Beat-specific hints; when absent the chain's hints apply. */
   hints: hintsSchema.optional(),

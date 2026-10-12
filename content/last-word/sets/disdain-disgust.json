@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "disdain-disgust",
+  "title": "disdain / disgust",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[43]",
+    "source_pair_id": 179,
+    "qa": {
+      "pass": 9,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "disdain",
+      "sense": "Contempt arising from a belief that another person or thing is beneath one’s respect.",
+      "connotation": "cold contempt",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Mistaking revulsion for a belief in superiority.",
+        "Focusing on outward rejection instead of its cause."
+      ]
+    },
+    {
+      "word": "disgust",
+      "sense": "Strong revulsion or intense distaste, without necessarily feeling superior.",
+      "connotation": "strong aversion",
+      "register": "standard",
+      "misconceptions": [
+        "Mistaking contempt for physical or moral revulsion.",
+        "Focusing on outward rejection instead of its cause."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "superiority_vs_revulsion",
+      "description": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent."
+    }
+  ],
+  "edges": [
+    {
+      "id": "disdain__disgust",
+      "a": "disdain",
+      "b": "disgust",
+      "boundary_rule": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+      "clues_a": [
+        "beneath my notice",
+        "not worthy of respect"
+      ],
+      "clues_b": [
+        "physically or morally repelled",
+        "sickened or revolted"
+      ],
+      "irrelevant_clues": [
+        "expensive clothes",
+        "public attention"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking contempt for physical or moral revulsion.",
+        "M2": "Mistaking revulsion for a belief in superiority.",
+        "M3": "Focusing on outward rejection instead of its cause."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "disdain-disgust_001",
+      "edge_id": "disdain__disgust",
+      "domain": "school_debate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Camila’s attitude toward her opponent?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_001_b1",
+          "text": "Camila rolled her eyes and said the other student was not important enough to deserve a reply.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "regarded the opponent as beneath respect",
+          "reason": "Regarded the opponent as beneath respect. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_001_b2",
+          "text": "Even after the student spoke calmly, she refused to treat the argument as worth hearing.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "continued treating the argument as unworthy",
+          "reason": "Continued treating the argument as unworthy. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Continued treating the argument as unworthy makes disdain the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, continued treating the argument as unworthy; that is why disdain wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on whether she looks down or recoils.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_002",
+      "edge_id": "disdain__disgust",
+      "domain": "restaurant_dining_area",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Malik’s reaction to the spoiled soup?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_002_b1",
+          "text": "Malik gagged at the sour smell and pushed the bowl away in revulsion.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "sour smell caused bodily revulsion",
+          "reason": "Sour smell caused bodily revulsion. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_002_b2",
+          "text": "He trusted the waiter’s intentions but could not bear another sniff.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "no contempt for the waiter is involved",
+          "reason": "No contempt for the waiter is involved. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M3"
+          }
+        }
+      ],
+      "feedback_short": "No contempt for the waiter is involved makes disgust the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, no contempt for the waiter is involved; that is why disgust wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on what made him pull away.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_003",
+      "edge_id": "disdain__disgust",
+      "domain": "office_presentation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Jun’s view of the inexperienced speaker?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_003_b1",
+          "text": "Jun smirked that the newcomer was beneath his attention and refused even to listen.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "treated the speaker as beneath him",
+          "reason": "Treated the speaker as beneath him. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_003_b2",
+          "text": "He did not feel sick or disturbed; he simply thought himself too important.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "explicit superiority rather than revulsion",
+          "reason": "Explicit superiority rather than revulsion. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Explicit superiority rather than revulsion makes disdain the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, explicit superiority rather than revulsion; that is why disdain wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on his assessment of the speaker’s worth.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_004",
+      "edge_id": "disdain__disgust",
+      "domain": "sports_locker_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Esther’s reaction to the filthy locker?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_004_b1",
+          "text": "Esther sniffed that such a cheap locker was unworthy of someone of her status.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "looked down on the locker as beneath her",
+          "reason": "Looked down on the locker as beneath her. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_004_b2",
+          "text": "Then she opened it and recoiled, nauseated by the rotting food inside.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "rotting smell triggered immediate revulsion",
+          "reason": "Rotting smell triggered immediate revulsion. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Rotting smell triggered immediate revulsion makes disgust the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, rotting smell triggered immediate revulsion; that is why disgust wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on why she reacts after opening it.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_005",
+      "edge_id": "disdain__disgust",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Vikram’s response to the burnt leftovers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_005_b1",
+          "text": "Vikram winced at the rancid taste and spat out the mouthful.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "rancid food triggered revulsion",
+          "reason": "Rancid food triggered revulsion. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_005_b2",
+          "text": "His aunt had cooked carefully, but he still felt queasy from the taste.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "a good cook does not change his sensory reaction",
+          "reason": "A good cook does not change his sensory reaction. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A good cook does not change his sensory reaction makes disgust the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, a good cook does not change his sensory reaction; that is why disgust wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on taste rather than judgment of the cook.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_006",
+      "edge_id": "disdain__disgust",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Leila’s attitude toward beginner novels?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_006_b1",
+          "text": "Leila dismissed the books as beneath a serious reader and refused to discuss them.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "believed the books were beneath her",
+          "reason": "Believed the books were beneath her. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_006_b2",
+          "text": "She had not found them offensive; she simply considered them unworthy.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "lack of revulsion sharpens the contempt clue",
+          "reason": "Lack of revulsion sharpens the contempt clue. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Lack of revulsion sharpens the contempt clue makes disdain the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, lack of revulsion sharpens the contempt clue; that is why disdain wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on whether she considers them beneath respect.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_007",
+      "edge_id": "disdain__disgust",
+      "domain": "bus_ride",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Pablo’s reaction to a foul smell?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_007_b1",
+          "text": "Pablo covered his nose, felt his stomach turn, and moved away from the smell.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "nausea from an offensive smell",
+          "reason": "Nausea from an offensive smell. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_007_b2",
+          "text": "He made no judgment about anyone’s social standing or character.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "reaction has no sense of superiority",
+          "reason": "Reaction has no sense of superiority. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Reaction has no sense of superiority makes disgust the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, reaction has no sense of superiority; that is why disgust wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on a physical recoil or social judgment.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_008",
+      "edge_id": "disdain__disgust",
+      "domain": "shopping_trip",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sana’s view of the bargain shop?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_008_b1",
+          "text": "Sana sneered that shopping there was beneath her and walked past without looking inside.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "treated the shop as beneath her status",
+          "reason": "Treated the shop as beneath her status. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_008_b2",
+          "text": "The bright window display changed nothing about her sense of superiority.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "attractive display cannot erase contempt",
+          "reason": "Attractive display cannot erase contempt. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Attractive display cannot erase contempt makes disdain the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, attractive display cannot erase contempt; that is why disdain wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on what she thinks of the shop’s worth.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "disdain-disgust_009",
+      "edge_id": "disdain__disgust",
+      "domain": "cinema_screening",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Adele’s reaction to the poorly made film?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_009_b1",
+          "text": "Adele sneered that the amateur film was beneath anyone with good taste and not worth another minute.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "regarded the film as beneath her standards",
+          "reason": "Regarded the film as beneath her standards. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_009_b2",
+          "text": "She was not disturbed by anything on-screen; she simply considered the film unworthy of her attention.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "contempt for its worth, not revulsion",
+          "reason": "Contempt for its worth, not revulsion. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Contempt for its worth, not revulsion makes disdain the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, contempt for its worth, not revulsion; that is why disdain wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on whether she looks down on the film.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "disdain-disgust_010",
+      "edge_id": "disdain__disgust",
+      "domain": "neighbourhood_cleanup",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Yusuf’s reaction to the muddy drain?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "disdain-disgust_010_b1",
+          "text": "Yusuf scoffed that clearing such a lowly drain was beneath someone like him.",
+          "best_word": "disdain",
+          "fit": {
+            "disdain": 0.93,
+            "disgust": 0.18
+          },
+          "decisive_clue": "looked down on the dirty task",
+          "reason": "Looked down on the dirty task. Contempt arising from a belief that another person or thing is beneath one’s respect..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "disgust": "M1"
+          }
+        },
+        {
+          "id": "disdain-disgust_010_b2",
+          "text": "When it was uncovered, the overpowering stench made him gag and stagger back.",
+          "best_word": "disgust",
+          "fit": {
+            "disdain": 0.18,
+            "disgust": 0.93
+          },
+          "decisive_clue": "stench caused immediate physical revulsion",
+          "reason": "Stench caused immediate physical revulsion. Strong revulsion or intense distaste, without necessarily feeling superior..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "disdain": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Stench caused immediate physical revulsion makes disgust the better fit.",
+      "feedback_deep": "Disdain means contempt arising from a belief that another person or thing is beneath one’s respect; disgust means strong revulsion or intense distaste, without necessarily feeling superior. Here, stench caused immediate physical revulsion; that is why disgust wins even after the new detail.",
+      "contrast_rule": "Disdain looks down; disgust recoils.",
+      "hints": {
+        "attention": "Focus on his response to the drain once exposed.",
+        "axis": "Disdain looks down on something as beneath respect; disgust recoils from something as repellent.",
+        "contrast": "Disdain looks down; disgust recoils."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,768 @@
+{
+  "schema_version": 1,
+  "set_id": "garrulous-loquacious",
+  "title": "garrulous / loquacious",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[97]",
+    "source_pair_id": 407,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "garrulous",
+      "sense": "Talks at excessive length about trivial matters, often wearying listeners",
+      "connotation": "critical",
+      "register": "formal",
+      "misconceptions": [
+        "Every talkative person is garrulous",
+        "Length alone proves listeners are bored"
+      ]
+    },
+    {
+      "word": "loquacious",
+      "sense": "Very talkative, without implying triviality or tedium",
+      "connotation": "neutral or mildly amused",
+      "register": "formal",
+      "misconceptions": [
+        "Garrulous means articulate or informative",
+        "Length alone proves listeners are bored"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "triviality_of_content",
+      "description": "Whether the scene turns on triviality of content."
+    },
+    {
+      "id": "listener_fatigue",
+      "description": "Whether the scene turns on listener fatigue."
+    }
+  ],
+  "edges": [
+    {
+      "id": "garrulous__loquacious",
+      "a": "garrulous",
+      "b": "loquacious",
+      "boundary_rule": "Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "clues_a": [
+        "tedious digressions",
+        "trivial details",
+        "listeners struggling to escape"
+      ],
+      "clues_b": [
+        "talking often",
+        "relevant lively explanations",
+        "listeners engaged"
+      ],
+      "irrelevant_clues": [
+        "speaks softly",
+        "speaks in another language",
+        "uses a microphone"
+      ],
+      "misconceptions": {
+        "M1": "Every talkative person is garrulous",
+        "M2": "Garrulous means articulate or informative",
+        "M3": "Length alone proves listeners are bored"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "garrulous-loquacious_001",
+      "edge_id": "garrulous__loquacious",
+      "domain": "school_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Omar’s talking during the club meeting?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_001_b1",
+          "text": "Omar spoke for most of the meeting, explaining each proposal with energy.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.32,
+            "loquacious": 0.93
+          },
+          "decisive_clue": "talkative with useful content",
+          "reason": "The detail about talkative with useful content supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M3"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_001_b2",
+          "text": "He spent the final twenty minutes listing unrelated details about his pencil collection while everyone checked the clock.",
+          "best_word": "garrulous",
+          "fit": {
+            "garrulous": 0.96,
+            "loquacious": 0.2
+          },
+          "decisive_clue": "tedious, irrelevant digression",
+          "reason": "The detail about tedious, irrelevant digression supports garrulous more strongly than loquacious.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "loquacious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Tedious, irrelevant digression makes garrulous the better description.",
+      "feedback_deep": "Initially, talkative with useful content points toward loquacious. The new detail, tedious, irrelevant digression, instead makes garrulous the stronger choice. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_002",
+      "edge_id": "garrulous__loquacious",
+      "domain": "family_supper",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mei at the dinner table?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_002_b1",
+          "text": "Mei told stories throughout dinner, asking questions and drawing others into the conversation.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.36,
+            "loquacious": 0.96
+          },
+          "decisive_clue": "many lively contributions",
+          "reason": "The detail about many lively contributions supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M1"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_002_b2",
+          "text": "Her cousins kept asking her for one more story.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.24,
+            "loquacious": 0.88
+          },
+          "decisive_clue": "engaged listeners",
+          "reason": "The detail about engaged listeners supports loquacious more strongly than garrulous.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Engaged listeners leaves loquacious the better fit.",
+      "feedback_deep": "The first clue is many lively contributions. The later clue is engaged listeners; that strengthens or preserves the same classification. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_003",
+      "edge_id": "garrulous__loquacious",
+      "domain": "bus_ride",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kofi’s conversation on the bus?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_003_b1",
+          "text": "Kofi spent the ride describing every stop on his usual route, including each cracked pavement tile.",
+          "best_word": "garrulous",
+          "fit": {
+            "garrulous": 0.88,
+            "loquacious": 0.2
+          },
+          "decisive_clue": "long trivial account",
+          "reason": "The detail about long trivial account supports garrulous more strongly than loquacious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "loquacious": "M2"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_003_b2",
+          "text": "The passenger beside him kept trying to put on headphones, but Kofi continued with more tiny details.",
+          "best_word": "garrulous",
+          "fit": {
+            "garrulous": 0.91,
+            "loquacious": 0.28
+          },
+          "decisive_clue": "listener visibly weary",
+          "reason": "The detail about listener visibly weary supports garrulous more strongly than loquacious.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "loquacious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Listener visibly weary leaves garrulous the better fit.",
+      "feedback_deep": "The first clue is long trivial account. The later clue is listener visibly weary; that strengthens or preserves the same classification. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_004",
+      "edge_id": "garrulous__loquacious",
+      "domain": "study_group",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elena during the revision session?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_004_b1",
+          "text": "Elena answered almost every question and talked freely through the examples.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.24,
+            "loquacious": 0.91
+          },
+          "decisive_clue": "high volume of speech",
+          "reason": "The detail about high volume of speech supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M3"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_004_b2",
+          "text": "Her explanations directly addressed the questions, and several classmates requested more.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.32,
+            "loquacious": 0.93
+          },
+          "decisive_clue": "useful, welcome content",
+          "reason": "The detail about useful, welcome content supports loquacious more strongly than garrulous.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Useful, welcome content makes loquacious an even clearer fit.",
+      "feedback_deep": "The first clue is high volume of speech. The later clue is useful, welcome content; that strengthens or preserves the same classification. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_005",
+      "edge_id": "garrulous__loquacious",
+      "domain": "restaurant_queue",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Bilal while waiting for a table?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_005_b1",
+          "text": "Bilal chatted continuously about the food and upcoming weekend plans.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.28,
+            "loquacious": 0.93
+          },
+          "decisive_clue": "chatty but ordinary exchange",
+          "reason": "The detail about chatty but ordinary exchange supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M1"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_005_b2",
+          "text": "He switched to a ten-minute inventory of buttons on his coat despite repeated hints that nobody cared.",
+          "best_word": "garrulous",
+          "fit": {
+            "garrulous": 0.96,
+            "loquacious": 0.36
+          },
+          "decisive_clue": "irrelevant details despite disengagement",
+          "reason": "The detail about irrelevant details despite disengagement supports garrulous more strongly than loquacious.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "loquacious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Irrelevant details despite disengagement makes garrulous the better description.",
+      "feedback_deep": "Initially, chatty but ordinary exchange points toward loquacious. The new detail, irrelevant details despite disengagement, instead makes garrulous the stronger choice. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_006",
+      "edge_id": "garrulous__loquacious",
+      "domain": "video_call",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Sara’s speech on the call?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_006_b1",
+          "text": "Sara spent fifteen minutes explaining which cereal boxes had the nicest corners, ignoring attempts to change the subject.",
+          "best_word": "garrulous",
+          "fit": {
+            "garrulous": 0.96,
+            "loquacious": 0.32
+          },
+          "decisive_clue": "tedious minor detail and ignored signals",
+          "reason": "The detail about tedious minor detail and ignored signals supports garrulous more strongly than loquacious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "loquacious": "M2"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_006_b2",
+          "text": "Her internet connection was unusually clear the entire time.",
+          "best_word": "garrulous",
+          "fit": {
+            "garrulous": 0.88,
+            "loquacious": 0.2
+          },
+          "decisive_clue": "call quality is irrelevant",
+          "reason": "The detail about call quality is irrelevant supports garrulous more strongly than loquacious.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "loquacious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Tedious minor detail and ignored signals still matters; call quality is irrelevant does not change the answer.",
+      "feedback_deep": "The first clue is tedious minor detail and ignored signals. The later clue is call quality is irrelevant; that does not touch the decisive difference. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_007",
+      "edge_id": "garrulous__loquacious",
+      "domain": "sports_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Hugo’s running commentary during practice?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_007_b1",
+          "text": "Hugo talked through each drill, keeping everyone informed and smiling.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.36,
+            "loquacious": 0.88
+          },
+          "decisive_clue": "frequent relevant commentary",
+          "reason": "The detail about frequent relevant commentary supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M3"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_007_b2",
+          "text": "Then he gave a prolonged account of every pair of socks he had owned, while the team waited to start.",
+          "best_word": "garrulous",
+          "fit": {
+            "garrulous": 0.91,
+            "loquacious": 0.24
+          },
+          "decisive_clue": "trivial monologue delaying others",
+          "reason": "The detail about trivial monologue delaying others supports garrulous more strongly than loquacious.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "loquacious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Trivial monologue delaying others makes garrulous the better description.",
+      "feedback_deep": "Initially, frequent relevant commentary points toward loquacious. The new detail, trivial monologue delaying others, instead makes garrulous the stronger choice. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_008",
+      "edge_id": "garrulous__loquacious",
+      "domain": "volunteer_booth",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Priya while welcoming visitors?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_008_b1",
+          "text": "Priya spoke at length to nearly every visitor about the event schedule.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.2,
+            "loquacious": 0.91
+          },
+          "decisive_clue": "very frequent speech",
+          "reason": "The detail about very frequent speech supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M1"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_008_b2",
+          "text": "Each visitor left with the information they needed; none was trapped in unrelated small talk.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.28,
+            "loquacious": 0.93
+          },
+          "decisive_clue": "informative rather than tedious",
+          "reason": "The detail about informative rather than tedious supports loquacious more strongly than garrulous.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Informative rather than tedious leaves loquacious the better fit.",
+      "feedback_deep": "The first clue is very frequent speech. The later clue is informative rather than tedious; that strengthens or preserves the same classification. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_009",
+      "edge_id": "garrulous__loquacious",
+      "domain": "shopping_trip",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Davi while helping friends choose shoes?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_009_b1",
+          "text": "Davi enthusiastically discussed fits, sizes and prices through three stores.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.24,
+            "loquacious": 0.93
+          },
+          "decisive_clue": "sustained helpful talk",
+          "reason": "The detail about sustained helpful talk supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M2"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_009_b2",
+          "text": "His friends welcomed the advice and continued asking him questions.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.32,
+            "loquacious": 0.96
+          },
+          "decisive_clue": "continued audience interest",
+          "reason": "The detail about continued audience interest supports loquacious more strongly than garrulous.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Continued audience interest leaves loquacious the better fit.",
+      "feedback_deep": "The first clue is sustained helpful talk. The later clue is continued audience interest; that strengthens or preserves the same classification. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "garrulous-loquacious_010",
+      "edge_id": "garrulous__loquacious",
+      "domain": "neighbourhood_lift",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amara’s conversations in the lift?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "garrulous-loquacious_010_b1",
+          "text": "Amara freely tells neighbours about caring for houseplants during the lift ride.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.28,
+            "loquacious": 0.96
+          },
+          "decisive_clue": "frequent conversation about gardening",
+          "reason": "The detail about frequent conversation about gardening supports loquacious more strongly than garrulous.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M3"
+          }
+        },
+        {
+          "id": "garrulous-loquacious_010_b2",
+          "text": "Amara often hears neighbours ask follow-up questions and thank her for the advice.",
+          "best_word": "loquacious",
+          "fit": {
+            "garrulous": 0.36,
+            "loquacious": 0.88
+          },
+          "decisive_clue": "neighbours welcome useful information",
+          "reason": "The detail about neighbours welcome useful information supports loquacious more strongly than garrulous.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "garrulous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Neighbours welcome useful information makes loquacious an even clearer fit.",
+      "feedback_deep": "The first clue is frequent conversation about gardening. The later clue is neighbours welcome useful information; that strengthens or preserves the same classification. Garrulous speech drags on about unimportant details and tires listeners; loquacious speech is simply abundant.",
+      "contrast_rule": "Garrulous wears listeners out; loquacious simply talks a lot.",
+      "hints": {
+        "attention": "Notice what fills the conversation and how others respond.",
+        "axis": "Whether the scene turns on triviality of content.",
+        "contrast": "Garrulous wears listeners out; loquacious simply talks a lot."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "celibacy-chastity",
+  "title": "celibacy / chastity",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[153]",
+    "source_pair_id": 649,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "celibacy",
+      "sense": "deliberately unmarried and sexually abstinent",
+      "connotation": "committed, often solemn",
+      "register": "formal",
+      "misconceptions": [
+        "Means merely being single."
+      ]
+    },
+    {
+      "word": "chastity",
+      "sense": "sexual restraint without an unmarried-life requirement",
+      "connotation": "restrained, sometimes moral",
+      "register": "formal",
+      "misconceptions": [
+        "Requires never marrying."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "marital_commitment",
+      "description": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status."
+    }
+  ],
+  "edges": [
+    {
+      "id": "celibacy__chastity",
+      "a": "celibacy",
+      "b": "chastity",
+      "boundary_rule": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+      "clues_a": [
+        "lasting choice not to marry",
+        "deliberate abstinence",
+        "life vow"
+      ],
+      "clues_b": [
+        "sexual boundaries",
+        "restraint while dating or married",
+        "no marriage ban"
+      ],
+      "irrelevant_clues": [
+        "religious or nonreligious motive",
+        "wedding invitations",
+        "length of dating"
+      ],
+      "misconceptions": {
+        "M1": "Confusing abstinence alone with celibacy.",
+        "M2": "Assuming chastity rules out marriage.",
+        "M3": "Assuming only religious promises count."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "celibacy-chastity_001",
+      "edge_id": "celibacy__chastity",
+      "domain": "family_gathering",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Rehan's commitment?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "celibacy-chastity_001_b1",
+          "text": "Rehan has chosen never to marry and to abstain from sexual relationships.",
+          "best_word": "celibacy",
+          "fit": {
+            "celibacy": 0.91,
+            "chastity": 0.28
+          },
+          "decisive_clue": "lasting unmarried commitment",
+          "reason": "Both parts of the lifelong choice are present.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chastity": "M2"
+          }
+        },
+        {
+          "id": "celibacy-chastity_001_b2",
+          "text": "When relatives invite him to weddings, he celebrates with them without revising his own plan.",
+          "best_word": "celibacy",
+          "fit": {
+            "celibacy": 0.94,
+            "chastity": 0.24
+          },
+          "decisive_clue": "wedding invitations do not alter the vow",
+          "reason": "Attending weddings does not change his decision to remain unmarried and abstinent.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chastity": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Attending weddings does not change his decision to remain unmarried and abstinent.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. Attending weddings does not change his decision to remain unmarried and abstinent.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Look at his own intentions, not the invitations.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "celibacy-chastity_002",
+      "edge_id": "celibacy__chastity",
+      "domain": "university_dorm",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya's choice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "celibacy-chastity_002_b1",
+          "text": "Priya decides to avoid sexual intimacy while she dates.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.28,
+            "chastity": 0.91
+          },
+          "decisive_clue": "sexual restraint while dating",
+          "reason": "Restraint alone does not entail avoiding marriage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M3"
+          }
+        },
+        {
+          "id": "celibacy-chastity_002_b2",
+          "text": "She says she hopes to marry someday, although she will keep her present boundaries.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.24,
+            "chastity": 0.94
+          },
+          "decisive_clue": "marriage remains an option",
+          "reason": "Her plans to marry clarify that she has not chosen an unmarried life.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her plans to marry clarify that she has not chosen an unmarried life.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. Her plans to marry clarify that she has not chosen an unmarried life.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Notice what she says about marriage.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "celibacy-chastity_003",
+      "edge_id": "celibacy__chastity",
+      "domain": "sports_camp",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo's personal boundary?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "celibacy-chastity_003_b1",
+          "text": "Mateo and his partner have agreed to avoid sexual intimacy for now.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.28,
+            "chastity": 0.91
+          },
+          "decisive_clue": "agreed restraint",
+          "reason": "This is restraint within a relationship.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M1"
+          }
+        },
+        {
+          "id": "celibacy-chastity_003_b2",
+          "text": "They still enjoy spending time together after his weekend matches.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.24,
+            "chastity": 0.94
+          },
+          "decisive_clue": "sport and companionship do not change boundary",
+          "reason": "Their weekend activities do not turn temporary restraint into a lifelong unmarried vow.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Their weekend activities do not turn temporary restraint into a lifelong unmarried vow.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. Their weekend activities do not turn temporary restraint into a lifelong unmarried vow.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Separate the shared rule from their leisure plans.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "celibacy-chastity_004",
+      "edge_id": "celibacy__chastity",
+      "domain": "online_advice_group",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Aya's commitment?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "celibacy-chastity_004_b1",
+          "text": "Aya posts that she will avoid sexual relationships while she is single.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.28,
+            "chastity": 0.91
+          },
+          "decisive_clue": "restraint while single",
+          "reason": "The first statement leaves marriage open.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M2"
+          }
+        },
+        {
+          "id": "celibacy-chastity_004_b2",
+          "text": "She adds that she has also pledged never to marry, and intends to keep both promises for life.",
+          "best_word": "celibacy",
+          "fit": {
+            "celibacy": 0.94,
+            "chastity": 0.24
+          },
+          "decisive_clue": "added lifetime promise not to marry",
+          "reason": "The new lifetime unmarried vow changes the best label.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chastity": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The new lifetime unmarried vow changes the best label.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. The new lifetime unmarried vow changes the best label.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Look at the added promise about her future.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "celibacy-chastity_005",
+      "edge_id": "celibacy__chastity",
+      "domain": "shopping_trip",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Jin's decision?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "celibacy-chastity_005_b1",
+          "text": "Jin tells his partner he wants to wait before becoming sexually intimate.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.28,
+            "chastity": 0.91
+          },
+          "decisive_clue": "delaying sexual intimacy",
+          "reason": "This expresses restraint, not a lifelong marital decision.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M3"
+          }
+        },
+        {
+          "id": "celibacy-chastity_005_b2",
+          "text": "At the jewellery counter he admires a ring, but says nothing about avoiding marriage.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.24,
+            "chastity": 0.94
+          },
+          "decisive_clue": "a ring does not establish an unmarried vow",
+          "reason": "Looking at jewellery gives no evidence of a vow never to marry.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Looking at jewellery gives no evidence of a vow never to marry.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. Looking at jewellery gives no evidence of a vow never to marry.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Do not read too much into the ring.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "celibacy-chastity_007",
+      "edge_id": "celibacy__chastity",
+      "domain": "wedding_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Sara's relationship rule?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "celibacy-chastity_007_b1",
+          "text": "Sara and her fiancé have chosen to avoid sexual intimacy until their wedding.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.28,
+            "chastity": 0.91
+          },
+          "decisive_clue": "restraint before marriage",
+          "reason": "This restriction has a defined endpoint.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M2"
+          }
+        },
+        {
+          "id": "celibacy-chastity_007_b2",
+          "text": "They plan to marry next month and expect their relationship to change afterward.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.24,
+            "chastity": 0.94
+          },
+          "decisive_clue": "marriage and a change of rule are anticipated",
+          "reason": "The upcoming marriage shows that restraint is not a vow to remain unmarried.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The upcoming marriage shows that restraint is not a vow to remain unmarried.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. The upcoming marriage shows that restraint is not a vow to remain unmarried.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Ask whether the rule forbids marriage itself.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "celibacy-chastity_008",
+      "edge_id": "celibacy__chastity",
+      "domain": "work_lunch",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Luca's vow?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "celibacy-chastity_008_b1",
+          "text": "Luca tells colleagues that he will neither marry nor have sexual relationships for the rest of his life.",
+          "best_word": "celibacy",
+          "fit": {
+            "celibacy": 0.91,
+            "chastity": 0.28
+          },
+          "decisive_clue": "permanent unmarried abstinence",
+          "reason": "His personal decision already meets both conditions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chastity": "M3"
+          }
+        },
+        {
+          "id": "celibacy-chastity_008_b2",
+          "text": "He explains that this is a personal decision rather than a promise to a religious group.",
+          "best_word": "celibacy",
+          "fit": {
+            "celibacy": 0.94,
+            "chastity": 0.24
+          },
+          "decisive_clue": "religious affiliation is not required",
+          "reason": "A religious institution is not required when both commitments are deliberate.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chastity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A religious institution is not required when both commitments are deliberate.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. A religious institution is not required when both commitments are deliberate.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Focus on the substance, not the source, of his vow.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "celibacy-chastity_010",
+      "edge_id": "celibacy__chastity",
+      "domain": "home_renovation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amara's personal rule?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "celibacy-chastity_010_b1",
+          "text": "Amara and her spouse agree to abstain from sexual intimacy for a period while rebuilding trust.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.28,
+            "chastity": 0.91
+          },
+          "decisive_clue": "sexual restraint within marriage",
+          "reason": "Their existing marriage rules out the unmarried-life description.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M2"
+          }
+        },
+        {
+          "id": "celibacy-chastity_010_b2",
+          "text": "The renovation keeps them busy, but they say they remain happily married.",
+          "best_word": "chastity",
+          "fit": {
+            "celibacy": 0.24,
+            "chastity": 0.94
+          },
+          "decisive_clue": "they remain married",
+          "reason": "Being married makes the distinction especially clear, regardless of why they abstain.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "celibacy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Being married makes the distinction especially clear, regardless of why they abstain.",
+      "feedback_deep": "Celibacy refers to deliberately staying unmarried and abstaining from sex. Chastity involves sexual restraint but does not itself rule out marriage. Being married makes the distinction especially clear, regardless of why they abstain.",
+      "contrast_rule": "Celibacy rules out marriage; chastity does not.",
+      "hints": {
+        "attention": "Consider the status of their marriage.",
+        "axis": "Celibacy combines a choice not to marry with sexual abstinence; chastity concerns sexual restraint without requiring lifelong unmarried status.",
+        "contrast": "Celibacy rules out marriage; chastity does not."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "set_id": "empirical-experiential",
+  "title": "empirical / experiential",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[74]",
+    "source_pair_id": 322,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "empirical",
+      "sense": "Grounded in observed or measured evidence, including controlled or systematic investigation.",
+      "connotation": "neutral; academic",
+      "register": "formal and academic",
+      "misconceptions": [
+        "Any personal anecdote counts as empirical research."
+      ]
+    },
+    {
+      "word": "experiential",
+      "sense": "Learned or understood through direct personal participation and lived experience.",
+      "connotation": "neutral; educational or reflective",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Firsthand learning must involve controlled measurements."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "evidence_source",
+      "description": "Systematically observed results compared with personal experience."
+    },
+    {
+      "id": "method",
+      "description": "Planned recordkeeping versus learning by taking part."
+    }
+  ],
+  "edges": [
+    {
+      "id": "empirical__experiential",
+      "a": "empirical",
+      "b": "experiential",
+      "boundary_rule": "Empirical claims are grounded in systematically observed evidence; experiential insights arise primarily from firsthand lived experience.",
+      "clues_a": [
+        "records and compares measured outcomes",
+        "counts observations according to a consistent method",
+        "tests a claim against recorded results"
+      ],
+      "clues_b": [
+        "learns by personally doing a task",
+        "judges from remembered sensations",
+        "reflects on what participation felt like"
+      ],
+      "irrelevant_clues": [
+        "using a spreadsheet",
+        "owning a thermometer",
+        "being older than the audience"
+      ],
+      "misconceptions": {
+        "M1": "Any personal anecdote counts as empirical research.",
+        "M2": "Firsthand learning must involve controlled measurements.",
+        "M3": "Scientific-looking language alone establishes the source of knowledge."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "empirical-experiential_001",
+      "edge_id": "empirical__experiential",
+      "domain": "bus_commuting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Anika’s evidence about commute times?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "empirical-experiential_001_b1",
+          "text": "Anika recorded how long the bus took every morning for sixty school days.",
+          "best_word": "empirical",
+          "fit": {
+            "empirical": 0.91,
+            "experiential": 0.19
+          },
+          "decisive_clue": "sixty days of recorded travel times",
+          "reason": "She bases her conclusion on systematically logged observations.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "experiential": "M1"
+          }
+        },
+        {
+          "id": "empirical-experiential_001_b2",
+          "text": "She compared the recorded times before and after a timetable change.",
+          "best_word": "empirical",
+          "fit": {
+            "empirical": 0.91,
+            "experiential": 0.19
+          },
+          "decisive_clue": "comparison of times across two defined periods",
+          "reason": "The before-and-after comparison strengthens the measured basis of the claim.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "experiential": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The before-and-after comparison strengthens the measured basis of the claim.",
+      "feedback_deep": "She bases her conclusion on systematically logged observations. The before-and-after comparison strengthens the measured basis of the claim. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "Look at how the evidence was collected.",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "empirical-experiential_002",
+      "edge_id": "empirical__experiential",
+      "domain": "cooking_lesson",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Bilal’s way of learning to cook?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "empirical-experiential_002_b1",
+          "text": "Bilal learned how firm bread dough should feel by kneading it himself.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "learned texture through hands-on kneading",
+          "reason": "The skill grew from direct sensory participation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        },
+        {
+          "id": "empirical-experiential_002_b2",
+          "text": "He repeated the movements until he could recognize the texture without looking.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "built touch-based judgment through repeated practice",
+          "reason": "Repetition refines the personal skill without turning it into a measured study.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Repetition refines the personal skill without turning it into a measured study.",
+      "feedback_deep": "The skill grew from direct sensory participation. Repetition refines the personal skill without turning it into a measured study. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "How did he gain the knowledge?",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "empirical-experiential_003",
+      "edge_id": "empirical__experiential",
+      "domain": "fitness_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Camila’s support for her training claim?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "empirical-experiential_003_b1",
+          "text": "Camila says early walks improved her sleep because she felt more rested afterward.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "conclusion initially rests on how rested she felt",
+          "reason": "At first she offers a personal feeling as support.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        },
+        {
+          "id": "empirical-experiential_003_b2",
+          "text": "She later reveals that she scored her sleep every day and compared three months of entries.",
+          "best_word": "empirical",
+          "fit": {
+            "empirical": 0.91,
+            "experiential": 0.19
+          },
+          "decisive_clue": "daily sleep ratings compared across three months",
+          "reason": "The same claim now rests on regularly recorded observations rather than an isolated impression.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "experiential": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The same claim now rests on regularly recorded observations rather than an isolated impression.",
+      "feedback_deep": "At first she offers a personal feeling as support. The same claim now rests on regularly recorded observations rather than an isolated impression. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "What new evidence supports her claim?",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "empirical-experiential_004",
+      "edge_id": "empirical__experiential",
+      "domain": "retail_display",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Dinesh’s evidence about a shop display?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "empirical-experiential_004_b1",
+          "text": "Dinesh counted sales of each product before and after moving the display.",
+          "best_word": "empirical",
+          "fit": {
+            "empirical": 0.91,
+            "experiential": 0.19
+          },
+          "decisive_clue": "counts product sales before and after a change",
+          "reason": "His conclusion uses observed sales figures.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "experiential": "M1"
+          }
+        },
+        {
+          "id": "empirical-experiential_004_b2",
+          "text": "He used the same counting method on every shift, even when the shop was busy.",
+          "best_word": "empirical",
+          "fit": {
+            "empirical": 0.91,
+            "experiential": 0.19
+          },
+          "decisive_clue": "counts product sales before and after a change",
+          "reason": "Busy shifts might affect sales but do not erase the systematically recorded evidence.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "experiential": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Busy shifts might affect sales but do not erase the systematically recorded evidence.",
+      "feedback_deep": "His conclusion uses observed sales figures. Busy shifts might affect sales but do not erase the systematically recorded evidence. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "Separate the method from possible background factors.",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "empirical-experiential_005",
+      "edge_id": "empirical__experiential",
+      "domain": "language_exchange",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Esra’s understanding of conversation?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "empirical-experiential_005_b1",
+          "text": "Esra says she finally understood polite disagreement after practicing with exchange partners.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "understanding formed through conversation practice",
+          "reason": "Her insight came from taking part in conversations.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        },
+        {
+          "id": "empirical-experiential_005_b2",
+          "text": "She describes a moment when a softened request felt kinder than a blunt one.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "reflects on a lived exchange and its emotional effect",
+          "reason": "The personal episode reveals the basis is felt interaction, not systematically compiled evidence.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The personal episode reveals the basis is felt interaction, not systematically compiled evidence.",
+      "feedback_deep": "Her insight came from taking part in conversations. The personal episode reveals the basis is felt interaction, not systematically compiled evidence. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "Is the insight measured or lived?",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "empirical-experiential_006",
+      "edge_id": "empirical__experiential",
+      "domain": "study_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Felix’s study-method comparison?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "empirical-experiential_006_b1",
+          "text": "Felix recorded quiz scores after using flashcards and after rereading notes.",
+          "best_word": "empirical",
+          "fit": {
+            "empirical": 0.91,
+            "experiential": 0.19
+          },
+          "decisive_clue": "quiz scores recorded for two methods",
+          "reason": "He uses concrete outcomes to evaluate methods.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "experiential": "M1"
+          }
+        },
+        {
+          "id": "empirical-experiential_006_b2",
+          "text": "He kept the time spent studying equal for both methods.",
+          "best_word": "empirical",
+          "fit": {
+            "empirical": 0.91,
+            "experiential": 0.19
+          },
+          "decisive_clue": "study time held equal in his comparison",
+          "reason": "Controlling study time makes the comparison more systematic.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "experiential": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Controlling study time makes the comparison more systematic.",
+      "feedback_deep": "He uses concrete outcomes to evaluate methods. Controlling study time makes the comparison more systematic. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "What was compared and controlled?",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "empirical-experiential_007",
+      "edge_id": "empirical__experiential",
+      "domain": "travel_journal",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Gita’s account of solo travel?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "empirical-experiential_007_b1",
+          "text": "Gita says traveling alone taught her patience through missed trains and changed plans.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "personal lessons drawn from traveling alone",
+          "reason": "Her insight arises from having lived through disruptions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        },
+        {
+          "id": "empirical-experiential_007_b2",
+          "text": "She writes about learning to ask strangers for directions when she felt lost.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "personal lessons drawn from traveling alone",
+          "reason": "The directions episode is another lived example, not a counted set of observations.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The directions episode is another lived example, not a counted set of observations.",
+      "feedback_deep": "Her insight arises from having lived through disruptions. The directions episode is another lived example, not a counted set of observations. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "What kind of evidence does her account offer?",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "empirical-experiential_008",
+      "edge_id": "empirical__experiential",
+      "domain": "community_garden",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Joon’s conclusion about watering?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "empirical-experiential_008_b1",
+          "text": "Joon learned to recognize thirsty seedlings by tending his own garden after work.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "judgment formed through firsthand care of seedlings",
+          "reason": "His practical knowledge comes from personally tending the plants.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        },
+        {
+          "id": "empirical-experiential_008_b2",
+          "text": "He now checks each leaf and recalls which plants drooped when he missed an evening.",
+          "best_word": "experiential",
+          "fit": {
+            "empirical": 0.19,
+            "experiential": 0.91
+          },
+          "decisive_clue": "judgment formed through firsthand care of seedlings",
+          "reason": "Remembering a missed evening adds personal context, not a systematic comparison of recorded outcomes.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "empirical": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Remembering a missed evening adds personal context, not a systematic comparison of recorded outcomes.",
+      "feedback_deep": "His practical knowledge comes from personally tending the plants. Remembering a missed evening adds personal context, not a systematic comparison of recorded outcomes. Empirical checks what happens; experiential learns what it feels like.",
+      "contrast_rule": "Empirical checks what happens; experiential learns what it feels like.",
+      "hints": {
+        "attention": "Did he learn through participation or a study?",
+        "axis": "Systematically observed results compared with personal experience.",
+        "contrast": "Empirical checks what happens; experiential learns what it feels like."
+      },
+      "qa": "pass"
+    }
+  ]
+}

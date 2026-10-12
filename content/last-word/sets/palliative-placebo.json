@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "set_id": "palliative-placebo",
+  "title": "palliative / placebo",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[181]",
+    "source_pair_id": 822,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "palliative",
+      "sense": "Relieving symptoms without curing the underlying cause.",
+      "connotation": "supportive, relief-focused",
+      "register": "medical and formal",
+      "misconceptions": [
+        "Confused with placebo when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "placebo",
+      "sense": "An inactive treatment whose apparent benefit chiefly reflects expectation.",
+      "connotation": "clinical, neutral",
+      "register": "medical and standard",
+      "misconceptions": [
+        "Confused with palliative when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "active_symptom_relief_versus_expectation",
+      "description": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation."
+    }
+  ],
+  "edges": [
+    {
+      "id": "palliative__placebo",
+      "a": "palliative",
+      "b": "placebo",
+      "boundary_rule": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "clues_a": [
+        "Soothes symptoms without a cure.",
+        "Relieving symptoms without curing the underlying cause."
+      ],
+      "clues_b": [
+        "Contains no active treatment despite perceived benefit.",
+        "An inactive treatment whose apparent benefit chiefly reflects expectation."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating palliative as though it always means placebo.",
+        "M2": "Treating placebo as though it always means palliative.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "palliative-placebo_001",
+      "edge_id": "palliative__placebo",
+      "domain": "cold_remedy",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rania’s throat lozenges?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "palliative-placebo_001_b1",
+          "text": "Rania used lozenges with a numbing ingredient, and her scratchy throat stopped hurting for an hour.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.87,
+            "placebo": 0.32
+          },
+          "decisive_clue": "an active ingredient eased a symptom without curing the cold",
+          "reason": "This establishes that an active ingredient eased a symptom without curing the cold.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        },
+        {
+          "id": "palliative-placebo_001_b2",
+          "text": "Her cold persisted for several days after the relief wore off.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.93,
+            "placebo": 0.32
+          },
+          "decisive_clue": "an active ingredient eased a symptom without curing the cold",
+          "reason": "The continuing illness confirms symptom relief rather than a cure; the lozenges were not inert.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        }
+      ],
+      "feedback_short": "An active ingredient eased a symptom without curing the cold; that detail favors palliative.",
+      "feedback_deep": "The continuing illness confirms symptom relief rather than a cure; the lozenges were not inert. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Ask whether the relief comes from an active ingredient.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "palliative-placebo_002",
+      "edge_id": "palliative__placebo",
+      "domain": "sleep_study",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Sam’s trial tablets?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "palliative-placebo_002_b1",
+          "text": "Sam received tablets made only from sugar, yet he reported better sleep after expecting a new treatment.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.87
+          },
+          "decisive_clue": "the tablets were inactive and his expectation explains the benefit",
+          "reason": "This establishes that the tablets were inactive and his expectation explains the benefit.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        },
+        {
+          "id": "palliative-placebo_002_b2",
+          "text": "He had been told the tablets came from a newly developed sleep formula.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.93
+          },
+          "decisive_clue": "the tablets were inactive and his expectation explains the benefit",
+          "reason": "The description he believed explains why an inactive treatment could seem useful.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The tablets were inactive and his expectation explains the benefit; that detail favors placebo.",
+      "feedback_deep": "The description he believed explains why an inactive treatment could seem useful. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Compare contents with expectations.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "palliative-placebo_003",
+      "edge_id": "palliative__placebo",
+      "domain": "home_exercise",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Talia’s heating pad?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "palliative-placebo_003_b1",
+          "text": "Talia’s heating pad eased her strained back muscles without changing the injury underneath.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.87,
+            "placebo": 0.32
+          },
+          "decisive_clue": "the pad reduced discomfort without treating the underlying strain",
+          "reason": "This establishes that the pad reduced discomfort without treating the underlying strain.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        },
+        {
+          "id": "palliative-placebo_003_b2",
+          "text": "It came with a washable cotton cover.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.93,
+            "placebo": 0.32
+          },
+          "decisive_clue": "the pad reduced discomfort without treating the underlying strain",
+          "reason": "A removable cover is irrelevant to the physical relief it provided.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The pad reduced discomfort without treating the underlying strain; that detail favors palliative.",
+      "feedback_deep": "A removable cover is irrelevant to the physical relief it provided. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Focus on relief versus a cure.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "palliative-placebo_004",
+      "edge_id": "palliative__placebo",
+      "domain": "stage_performance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Umar’s calming capsules?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "palliative-placebo_004_b1",
+          "text": "Umar took capsules filled with plain starch before performing, believing they contained a special calming medicine.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.87
+          },
+          "decisive_clue": "the inactive capsules were believed to contain a helpful substance",
+          "reason": "This establishes that the inactive capsules were believed to contain a helpful substance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        },
+        {
+          "id": "palliative-placebo_004_b2",
+          "text": "He felt steadier onstage after swallowing them.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.93
+          },
+          "decisive_clue": "the inactive capsules were believed to contain a helpful substance",
+          "reason": "His later calm is consistent with the expectation already created; no active treatment was present.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The inactive capsules were believed to contain a helpful substance; that detail favors placebo.",
+      "feedback_deep": "His later calm is consistent with the expectation already created; no active treatment was present. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Ask what was inside the capsules.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "palliative-placebo_005",
+      "edge_id": "palliative__placebo",
+      "domain": "studying",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Vera’s focus drops?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "palliative-placebo_005_b1",
+          "text": "Vera used drops containing only water and found concentrating easier because she expected a powerful mental boost.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.87
+          },
+          "decisive_clue": "the preparation was inactive while belief shaped perceived benefit",
+          "reason": "This establishes that the preparation was inactive while belief shaped perceived benefit.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        },
+        {
+          "id": "palliative-placebo_005_b2",
+          "text": "Her friend had described the drops as expensive and exclusive.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.93
+          },
+          "decisive_clue": "the preparation was inactive while belief shaped perceived benefit",
+          "reason": "Prestige may strengthen expectation but does not add an active effect to plain water.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The preparation was inactive while belief shaped perceived benefit; that detail favors placebo.",
+      "feedback_deep": "Prestige may strengthen expectation but does not add an active effect to plain water. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Separate what the drops contain from what she believed.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "palliative-placebo_006",
+      "edge_id": "palliative__placebo",
+      "domain": "beach_holiday",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Willow’s cooling gel?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "palliative-placebo_006_b1",
+          "text": "Willow applied a gel containing a cooling ingredient that eased the sting of her sunburn.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.87,
+            "placebo": 0.32
+          },
+          "decisive_clue": "the gel directly relieved a symptom but did not repair damage",
+          "reason": "This establishes that the gel directly relieved a symptom but did not repair damage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        },
+        {
+          "id": "palliative-placebo_006_b2",
+          "text": "The skin remained damaged and sensitive after the cooling sensation faded.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.93,
+            "placebo": 0.32
+          },
+          "decisive_clue": "the gel directly relieved a symptom but did not repair damage",
+          "reason": "The lingering damage marks temporary symptom control, not an inert expectation-based treatment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The gel directly relieved a symptom but did not repair damage; that detail favors palliative.",
+      "feedback_deep": "The lingering damage marks temporary symptom control, not an inert expectation-based treatment. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Look for an active effect on discomfort.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "palliative-placebo_007",
+      "edge_id": "palliative__placebo",
+      "domain": "dental_appointment",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Xavier’s mouth rinse?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "palliative-placebo_007_b1",
+          "text": "Xavier used a medicated rinse that reduced the ache in his sore gums while he arranged a dentist visit.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.87,
+            "placebo": 0.32
+          },
+          "decisive_clue": "the medicated rinse eased discomfort without resolving its cause",
+          "reason": "This establishes that the medicated rinse eased discomfort without resolving its cause.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        },
+        {
+          "id": "palliative-placebo_007_b2",
+          "text": "He needed the rinse again when the soreness returned after lunch.",
+          "best_word": "palliative",
+          "fit": {
+            "palliative": 0.93,
+            "placebo": 0.32
+          },
+          "decisive_clue": "the medicated rinse eased discomfort without resolving its cause",
+          "reason": "Repeated use shows symptom management, not permanent repair or an inactive pill.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "placebo": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The medicated rinse eased discomfort without resolving its cause; that detail favors palliative.",
+      "feedback_deep": "Repeated use shows symptom management, not permanent repair or an inactive pill. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Notice what the remedy does and what remains.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "palliative-placebo_008",
+      "edge_id": "palliative__placebo",
+      "domain": "commuter_journey",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yasmin’s headache patch?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "palliative-placebo_008_b1",
+          "text": "Yasmin wore a patch with no medicinal ingredient, certain that its special label meant it would help.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.87
+          },
+          "decisive_clue": "the patch had no active medicine and she expected relief",
+          "reason": "This establishes that the patch had no active medicine and she expected relief.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        },
+        {
+          "id": "palliative-placebo_008_b2",
+          "text": "She later reported less pain while keeping the patch on.",
+          "best_word": "placebo",
+          "fit": {
+            "palliative": 0.32,
+            "placebo": 0.93
+          },
+          "decisive_clue": "the patch had no active medicine and she expected relief",
+          "reason": "Her report reflects a perceived benefit consistent with expectation, not evidence that the patch contained treatment.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The patch had no active medicine and she expected relief; that detail favors placebo.",
+      "feedback_deep": "Her report reflects a perceived benefit consistent with expectation, not evidence that the patch contained treatment. A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+      "contrast_rule": "Palliative relieves symptoms; placebo relies on expectation.",
+      "hints": {
+        "attention": "Pay attention to the patch’s contents.",
+        "axis": "A palliative treatment has a symptom-relieving effect; a placebo lacks an active treatment and works chiefly through expectation.",
+        "contrast": "Palliative relieves symptoms; placebo relies on expectation."
+      },
+      "qa": "pass"
+    }
+  ]
+}

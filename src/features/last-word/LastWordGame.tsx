@@ -37,7 +37,30 @@ const ROLE_LABEL: Record<string, string> = {
   warmup: 'WARM-UP', remedial: 'A FRESH LOOK', practice: 'FOLLOW THE MEANING', shift: 'FOLLOW THE MEANING', transfer: 'NEW TERRITORY',
 };
 
-export default function LastWordGame({ sets }: { sets: LastWordSet[] }) {
+/** Loads the content bank (a cached static file) and adds any staff preview set before the game starts. */
+const NO_PREVIEW: LastWordSet[] = [];
+export default function LastWordGame({ preview = NO_PREVIEW }: { preview?: LastWordSet[] }) {
+  const [sets, setSets] = useState<LastWordSet[] | null>(null);
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    fetch('/api/last-word/content')
+      .then(response => (response.ok ? response.json() : Promise.reject(new Error(String(response.status)))))
+      .then((bank: LastWordSet[]) => setSets([...preview, ...bank.filter(set => !preview.some(p => p.set_id === set.set_id))]))
+      .catch(() => setFailed(true));
+  }, [preview]);
+  if (!sets) {
+    return (
+      <main className="lw-game" data-tier="lite" data-phase="loading">
+        <section className="lw-summary" role="status">
+          <p>{failed ? 'The chamber could not load. Check your connection and refresh.' : 'Opening the chamber…'}</p>
+        </section>
+      </main>
+    );
+  }
+  return <Game sets={sets} />;
+}
+
+function Game({ sets }: { sets: LastWordSet[] }) {
   const [state, send] = useMachine(lastWordMachine, { input: { sets } });
   const { status: authStatus } = useSession();
   const settings = useLastWordSettings();

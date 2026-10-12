@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "set_id": "narcissism-vanity",
+  "title": "narcissism / vanity",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[44]",
+    "source_pair_id": 181,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "narcissism",
+      "sense": "Extreme self-absorption and inflated self-importance that crowds out genuine concern for others.",
+      "connotation": "strongly negative; in general use not a clinical diagnosis",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Any interest in looking good proves narcissism."
+      ]
+    },
+    {
+      "word": "vanity",
+      "sense": "Excessive pride in appearance, achievements, or the opinion others hold of oneself.",
+      "connotation": "mildly to strongly disapproving",
+      "register": "common",
+      "misconceptions": [
+        "Extreme disregard for other people is only harmless pride in appearance."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "focus",
+      "description": "Concern with appearance or achievement versus pervasive self-importance."
+    },
+    {
+      "id": "regard_for_others",
+      "description": "Self-regard that coexists with care versus self-absorption that displaces care."
+    }
+  ],
+  "edges": [
+    {
+      "id": "narcissism__vanity",
+      "a": "narcissism",
+      "b": "vanity",
+      "boundary_rule": "Narcissism is extreme self-importance that eclipses concern for others, while vanity centers on pride in one’s looks or achievements.",
+      "clues_a": [
+        "ignores others’ urgent needs to secure attention",
+        "assumes other people exist to serve them",
+        "takes credit while dismissing others’ contributions"
+      ],
+      "clues_b": [
+        "obsesses over appearance in photos",
+        "seeks praise for an achievement",
+        "worries excessively about seeming impressive"
+      ],
+      "irrelevant_clues": [
+        "number of photos taken",
+        "amount of money spent on clothes",
+        "popularity"
+      ],
+      "misconceptions": {
+        "M1": "Any interest in looking good proves narcissism.",
+        "M2": "Extreme disregard for other people is only harmless pride in appearance.",
+        "M3": "A compliment or selfie alone is enough to assign either label."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "narcissism-vanity_001",
+      "edge_id": "narcissism__vanity",
+      "domain": "group_award",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amara’s behavior after the award?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "narcissism-vanity_001_b1",
+          "text": "Amara accepted the team award and told reporters she alone deserved every bit of credit.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "claims sole credit while silencing teammates",
+          "reason": "Her sense of importance pushes other people aside.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        },
+        {
+          "id": "narcissism-vanity_001_b2",
+          "text": "She cut off teammates who tried to mention their contributions.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "dismisses teammates’ contributions to preserve her superiority",
+          "reason": "Silencing others shows extreme self-focus beyond simply enjoying recognition.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Silencing others shows extreme self-focus beyond simply enjoying recognition.",
+      "feedback_deep": "Her sense of importance pushes other people aside. Silencing others shows extreme self-focus beyond simply enjoying recognition. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "What happens to other people’s contributions?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "narcissism-vanity_002",
+      "edge_id": "narcissism__vanity",
+      "domain": "birthday_photos",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Bora’s behavior before the party?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "narcissism-vanity_002_b1",
+          "text": "Bora tried on six outfits and kept asking which one made her look most impressive.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "preoccupation with looking impressive",
+          "reason": "Her attention centers on her own appearance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        },
+        {
+          "id": "narcissism-vanity_002_b2",
+          "text": "She chose the jacket after comparing photographs of herself in each outfit.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "preoccupation with looking impressive",
+          "reason": "Comparing pictures adds another appearance check, not evidence that she disregards others.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Comparing pictures adds another appearance check, not evidence that she disregards others.",
+      "feedback_deep": "Her attention centers on her own appearance. Comparing pictures adds another appearance check, not evidence that she disregards others. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "What occupies her attention?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "narcissism-vanity_003",
+      "edge_id": "narcissism__vanity",
+      "domain": "student_committee",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Carlos’s conduct at the meeting?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "narcissism-vanity_003_b1",
+          "text": "Carlos demanded that every discussion begin with praise for his ideas and ignored urgent questions from classmates.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "demands attention while dismissing classmates’ needs",
+          "reason": "He makes his importance the condition for everyone else’s work.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        },
+        {
+          "id": "narcissism-vanity_003_b2",
+          "text": "He dismissed their deadlines as unimportant unless his name appeared on the project.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "treats peers’ deadlines as irrelevant without personal recognition",
+          "reason": "The name requirement exposes his disregard for others, not merely pride in an accomplishment.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The name requirement exposes his disregard for others, not merely pride in an accomplishment.",
+      "feedback_deep": "He makes his importance the condition for everyone else’s work. The name requirement exposes his disregard for others, not merely pride in an accomplishment. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "Whose needs count to him?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "narcissism-vanity_004",
+      "edge_id": "narcissism__vanity",
+      "domain": "art_exhibition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dalia’s concern before the exhibition?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "narcissism-vanity_004_b1",
+          "text": "Dalia spent the afternoon polishing the plaque bearing her name beside her painting.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "obsessive concern over how her achievement is displayed",
+          "reason": "Her pride centers on public recognition of an achievement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        },
+        {
+          "id": "narcissism-vanity_004_b2",
+          "text": "She moved it three times until visitors would notice her title immediately.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "arranges recognition so visitors notice her name first",
+          "reason": "Seeking attention for the plaque strengthens achievement-related pride without proving lack of empathy.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Seeking attention for the plaque strengthens achievement-related pride without proving lack of empathy.",
+      "feedback_deep": "Her pride centers on public recognition of an achievement. Seeking attention for the plaque strengthens achievement-related pride without proving lack of empathy. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "Is she managing an image or disregarding people?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "narcissism-vanity_005",
+      "edge_id": "narcissism__vanity",
+      "domain": "friend_s_emergency",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elian’s reaction?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "narcissism-vanity_005_b1",
+          "text": "Elian kept talking about his promotion while his friend urgently asked for help getting home.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "makes his celebration outrank a friend’s urgent need",
+          "reason": "His self-importance overrides someone else’s immediate problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        },
+        {
+          "id": "narcissism-vanity_005_b2",
+          "text": "He told the friend to congratulate him first and ask for help another day.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "demands praise before considering the friend’s request",
+          "reason": "Requiring congratulations before help clarifies the lack of regard for his friend.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Requiring congratulations before help clarifies the lack of regard for his friend.",
+      "feedback_deep": "His self-importance overrides someone else’s immediate problem. Requiring congratulations before help clarifies the lack of regard for his friend. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "What happens when someone else needs help?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "narcissism-vanity_006",
+      "edge_id": "narcissism__vanity",
+      "domain": "job_interview",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Fiona’s concern?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "narcissism-vanity_006_b1",
+          "text": "Fiona rehearsed the way she would mention her prize so interviewers would be impressed.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "preoccupied with looking accomplished",
+          "reason": "She is anxious to make her achievements look impressive.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        },
+        {
+          "id": "narcissism-vanity_006_b2",
+          "text": "She checked whether the certificate would be visible in her folder.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "preoccupied with looking accomplished",
+          "reason": "The certificate’s position is another presentation detail, not evidence of disregard for others.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The certificate’s position is another presentation detail, not evidence of disregard for others.",
+      "feedback_deep": "She is anxious to make her achievements look impressive. The certificate’s position is another presentation detail, not evidence of disregard for others. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "What kind of impression does she want to create?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "narcissism-vanity_007",
+      "edge_id": "narcissism__vanity",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Gideon’s behavior?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "narcissism-vanity_007_b1",
+          "text": "Gideon insisted the team change its schedule to suit him, even after others explained their work commitments.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "dismisses teammates’ needs to center himself",
+          "reason": "He assumes his preferences should outweigh everyone else’s obligations.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        },
+        {
+          "id": "narcissism-vanity_007_b2",
+          "text": "He said their responsibilities mattered less than his chance to be seen playing.",
+          "best_word": "narcissism",
+          "fit": {
+            "narcissism": 0.91,
+            "vanity": 0.19
+          },
+          "decisive_clue": "dismisses teammates’ needs to center himself",
+          "reason": "The wish to be watched adds an attention motive but does not change his disregard for teammates.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vanity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The wish to be watched adds an attention motive but does not change his disregard for teammates.",
+      "feedback_deep": "He assumes his preferences should outweigh everyone else’s obligations. The wish to be watched adds an attention motive but does not change his disregard for teammates. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "Is it just pride, or whose interests matter?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "narcissism-vanity_008",
+      "edge_id": "narcissism__vanity",
+      "domain": "reunion_dinner",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hye’s preparation?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "narcissism-vanity_008_b1",
+          "text": "Hye practiced describing her recent promotion so former classmates would think she was successful.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "wants classmates to admire her status",
+          "reason": "She is unusually invested in projecting success.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        },
+        {
+          "id": "narcissism-vanity_008_b2",
+          "text": "She worried that her job title would sound less impressive than theirs.",
+          "best_word": "vanity",
+          "fit": {
+            "narcissism": 0.19,
+            "vanity": 0.91
+          },
+          "decisive_clue": "comparison with others fuels concern about appearing accomplished",
+          "reason": "Comparison anxiety sharpens the pride-and-image focus without showing indifference to anyone’s welfare.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "narcissism": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Comparison anxiety sharpens the pride-and-image focus without showing indifference to anyone’s welfare.",
+      "feedback_deep": "She is unusually invested in projecting success. Comparison anxiety sharpens the pride-and-image focus without showing indifference to anyone’s welfare. Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "contrast_rule": "Vanity wants to look exceptional; narcissism treats everyone else as secondary.",
+      "hints": {
+        "attention": "What is she trying to prove about herself?",
+        "axis": "Concern with appearance or achievement versus pervasive self-importance.",
+        "contrast": "Vanity wants to look exceptional; narcissism treats everyone else as secondary."
+      },
+      "qa": "pass"
+    }
+  ]
+}

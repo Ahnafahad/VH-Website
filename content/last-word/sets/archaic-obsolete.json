@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "archaic-obsolete",
+  "title": "archaic / obsolete",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[121]",
+    "source_pair_id": 475,
+    "qa": {
+      "pass": 7,
+      "revised": 1,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "archaic",
+      "sense": "very old-fashioned and associated with an earlier era",
+      "connotation": "dated",
+      "register": "formal",
+      "misconceptions": [
+        "Anything old has necessarily been replaced by newer equipment"
+      ]
+    },
+    {
+      "word": "obsolete",
+      "sense": "no longer used because a modern substitute took its place",
+      "connotation": "outdated or superseded",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "A thing becomes obsolete simply by looking old"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "historical_age_vs_replacement",
+      "description": "Old-fashioned appearance or usage differs from being displaced by a newer substitute."
+    }
+  ],
+  "edges": [
+    {
+      "id": "archaic__obsolete",
+      "a": "archaic",
+      "b": "obsolete",
+      "boundary_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "clues_a": [
+        "centuries-old wording",
+        "old-fashioned ceremony",
+        "survives from an earlier era"
+      ],
+      "clues_b": [
+        "new model displaced it",
+        "replaced by a modern system",
+        "no longer needed after upgrade"
+      ],
+      "irrelevant_clues": [
+        "dusty appearance",
+        "sentimental attachment",
+        "market price"
+      ],
+      "misconceptions": {
+        "M1": "Confuses age with replacement",
+        "M2": "Confuses a replacement with mere old-fashioned style",
+        "M3": "Assumes rare use alone proves either category"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "archaic-obsolete_001",
+      "edge_id": "archaic__obsolete",
+      "domain": "school_library",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the wording in Aisha’s library book?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "archaic-obsolete_001_b1",
+          "text": "Aisha found expressions in a century-old novel that modern students no longer use in conversation.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.91,
+            "obsolete": 0.17
+          },
+          "decisive_clue": "language belongs to an earlier era",
+          "reason": "The focus is the age and style of words.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        },
+        {
+          "id": "archaic-obsolete_001_b2",
+          "text": "The book had a bright new cover and clean pages.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.91,
+            "obsolete": 0.17
+          },
+          "decisive_clue": "old-fashioned expressions despite a new cover",
+          "reason": "Physical condition does not modernize historical wording.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: old-fashioned expressions despite a new cover.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. The focus is the age and style of words. Physical condition does not modernize historical wording.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Look at the expressions rather than the cover.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archaic-obsolete_002",
+      "edge_id": "archaic__obsolete",
+      "domain": "ticket_office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes the ticket machine Felix inspected?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "archaic-obsolete_002_b1",
+          "text": "Felix found a heavy machine with brass buttons that looked as though it belonged to a distant past.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.9,
+            "obsolete": 0.2
+          },
+          "decisive_clue": "obviously old-fashioned design",
+          "reason": "The first evidence concerns its era and appearance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        },
+        {
+          "id": "archaic-obsolete_002_b2",
+          "text": "The station no longer uses it because a newer digital machine took over every ticket sale.",
+          "best_word": "obsolete",
+          "fit": {
+            "archaic": 0.2,
+            "obsolete": 0.93
+          },
+          "decisive_clue": "replaced by a new machine",
+          "reason": "The replacement, rather than its antique appearance, makes it superseded.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "archaic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key new fact: replaced by a new machine.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. The first evidence concerns its era and appearance. The replacement, rather than its antique appearance, makes it superseded.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Find what displaced the machine.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archaic-obsolete_003",
+      "edge_id": "archaic__obsolete",
+      "domain": "family_letters",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the greeting in Mei’s great-grandfather’s letters?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "archaic-obsolete_003_b1",
+          "text": "Mei noticed a greeting from two hundred years ago that nobody in her family says today.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.95,
+            "obsolete": 0.23
+          },
+          "decisive_clue": "historical form of greeting",
+          "reason": "It belongs to a markedly earlier style.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        },
+        {
+          "id": "archaic-obsolete_003_b2",
+          "text": "It appeared in the same formal position at the beginning of every letter.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.95,
+            "obsolete": 0.23
+          },
+          "decisive_clue": "old customary wording from a past age",
+          "reason": "Repeated use in old letters confirms its historical character.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: old customary wording from a past age.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. It belongs to a markedly earlier style. Repeated use in old letters confirms its historical character.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Focus on the time period of the wording.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archaic-obsolete_004",
+      "edge_id": "archaic__obsolete",
+      "domain": "office_filing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ravi’s old filing method?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "archaic-obsolete_004_b1",
+          "text": "Ravi’s office abandoned handwritten index cards after installing a searchable computer database.",
+          "best_word": "obsolete",
+          "fit": {
+            "archaic": 0.15,
+            "obsolete": 0.89
+          },
+          "decisive_clue": "new digital method displaced the cards",
+          "reason": "A replacement ended the older system’s use.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "archaic": "M2"
+          }
+        },
+        {
+          "id": "archaic-obsolete_004_b2",
+          "text": "The office still keeps the cards in storage, but staff use only the searchable database.",
+          "best_word": "obsolete",
+          "fit": {
+            "archaic": 0.15,
+            "obsolete": 0.89
+          },
+          "decisive_clue": "the database replaced the card-based method",
+          "reason": "Storage does not restore the method’s former role after a newer system replaced it.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "archaic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: the database replaced the card-based method, even though the cards remain stored.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. The searchable database displaced the handwritten filing method. Keeping the cards in storage does not restore their former role.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Ask why the method stopped being used.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "archaic-obsolete_006",
+      "edge_id": "archaic__obsolete",
+      "domain": "poetry_workshop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the pronouns Noah used in his poem?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "archaic-obsolete_006_b1",
+          "text": "Noah deliberately used pronouns found in plays written several centuries earlier.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.93,
+            "obsolete": 0.2
+          },
+          "decisive_clue": "pronouns from centuries-old usage",
+          "reason": "The language deliberately invokes an older form.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        },
+        {
+          "id": "archaic-obsolete_006_b2",
+          "text": "His classmates praised the poem’s modern subject matter.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.93,
+            "obsolete": 0.2
+          },
+          "decisive_clue": "historical pronouns inside a modern poem",
+          "reason": "The subject matter does not alter the pronouns' era.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: historical pronouns inside a modern poem.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. The language deliberately invokes an older form. The subject matter does not alter the pronouns' era.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Watch the wording, not the topic.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archaic-obsolete_008",
+      "edge_id": "archaic__obsolete",
+      "domain": "neighbourhood_festival",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the greeting at Jonas’s annual festival?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "archaic-obsolete_008_b1",
+          "text": "Jonas’s neighbours still exchange a centuries-old greeting that sounds strange to younger visitors.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.89,
+            "obsolete": 0.15
+          },
+          "decisive_clue": "old greeting preserved from earlier times",
+          "reason": "Its unusual historical language is the issue.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        },
+        {
+          "id": "archaic-obsolete_008_b2",
+          "text": "This year the greeting was posted on a large LED screen.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.89,
+            "obsolete": 0.15
+          },
+          "decisive_clue": "historical phrase despite modern display",
+          "reason": "Technology used to display it does not update the greeting.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction changes nothing; decisive clue: historical phrase despite modern display.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. Its unusual historical language is the issue. Technology used to display it does not update the greeting.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Separate the words from the screen.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archaic-obsolete_009",
+      "edge_id": "archaic__obsolete",
+      "domain": "bicycle_repair",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the spare part Fatima found?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "archaic-obsolete_009_b1",
+          "text": "Fatima’s bicycle shop no longer stocks that brake part because all recent models use a redesigned fitting.",
+          "best_word": "obsolete",
+          "fit": {
+            "archaic": 0.17,
+            "obsolete": 0.91
+          },
+          "decisive_clue": "redesigned parts replaced the old fitting",
+          "reason": "It is unusable in the current product line because of newer designs.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "archaic": "M2"
+          }
+        },
+        {
+          "id": "archaic-obsolete_009_b2",
+          "text": "Although it looks almost new, no current bicycle in the shop accepts it.",
+          "best_word": "obsolete",
+          "fit": {
+            "archaic": 0.17,
+            "obsolete": 0.91
+          },
+          "decisive_clue": "superseded despite looking new",
+          "reason": "Appearance cannot reverse functional replacement.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "archaic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The clarification points to: superseded despite looking new.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. It is unusable in the current product line because of newer designs. Appearance cannot reverse functional replacement.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Check compatibility, not appearance.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archaic-obsolete_010",
+      "edge_id": "archaic__obsolete",
+      "domain": "travel_diary",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the phrase Diego copied from an old travel diary?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "archaic-obsolete_010_b1",
+          "text": "Diego copied a phrase that was common three hundred years ago but now survives mostly in historical writing.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.93,
+            "obsolete": 0.2
+          },
+          "decisive_clue": "dated expression from another era",
+          "reason": "The phrase is identified by historical usage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        },
+        {
+          "id": "archaic-obsolete_010_b2",
+          "text": "The diary was scanned last week and shared in a modern app.",
+          "best_word": "archaic",
+          "fit": {
+            "archaic": 0.93,
+            "obsolete": 0.2
+          },
+          "decisive_clue": "historical wording despite new digital access",
+          "reason": "A current medium does not change the date of a linguistic expression.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsolete": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: historical wording despite new digital access.",
+      "feedback_deep": "archaic means old-fashioned or surviving from an earlier age; obsolete means no longer in use because a newer alternative replaced it. The phrase is identified by historical usage. A current medium does not change the date of a linguistic expression.",
+      "contrast_rule": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement.",
+      "hints": {
+        "attention": "Distinguish the phrase from its modern copy.",
+        "axis": "Old-fashioned appearance or usage differs from being displaced by a newer substitute.",
+        "contrast": "archaic belongs to an earlier age; obsolete has been superseded by a newer replacement."
+      },
+      "qa": "pass"
+    }
+  ]
+}

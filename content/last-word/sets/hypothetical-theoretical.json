@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "hypothetical-theoretical",
+  "title": "hypothetical / theoretical",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[76]",
+    "source_pair_id": 324,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "hypothetical",
+      "sense": "Based on an imagined situation considered for reasoning.",
+      "connotation": "neutral",
+      "register": "general or academic",
+      "misconceptions": [
+        "An imagined case is not necessarily a general principle."
+      ]
+    },
+    {
+      "word": "theoretical",
+      "sense": "Derived from abstract principles rather than direct practice.",
+      "connotation": "often academic",
+      "register": "academic or general",
+      "misconceptions": [
+        "An untested general model need not posit a specific what-if situation."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "imagined_case_vs_abstract_principle",
+      "description": "Imaginary test case versus general explanation based on principles."
+    }
+  ],
+  "edges": [
+    {
+      "id": "hypothetical__theoretical",
+      "a": "hypothetical",
+      "b": "theoretical",
+      "boundary_rule": "Hypothetical concerns an invented scenario used for reasoning; theoretical concerns abstract principles not yet put into practice.",
+      "clues_a": [
+        "specific if-then imagined situation",
+        "made-up event examined",
+        "assumed alternative reality"
+      ],
+      "clues_b": [
+        "a general rule derived from ideas",
+        "untested conceptual framework",
+        "calculation without practical trial"
+      ],
+      "irrelevant_clues": [
+        "how entertaining an example is",
+        "whether the notes are typed",
+        "the number of classmates"
+      ],
+      "misconceptions": {
+        "M1": "Treats any abstract explanation as a specific invented scenario.",
+        "M2": "Mistakes a what-if exercise for a general untested principle.",
+        "M3": "Assumes that taking notes turns an imagined situation into a real one."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "hypothetical-theoretical_001",
+      "edge_id": "hypothetical__theoretical",
+      "domain": "lost_luggage",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ana’s question to her travel group?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hypothetical-theoretical_001_b1",
+          "text": "Ana asks, “If every suitcase vanished between flights, what would we buy first with only twenty dollars?”",
+          "best_word": "hypothetical",
+          "fit": {
+            "hypothetical": 0.91,
+            "theoretical": 0.24
+          },
+          "decisive_clue": "a specific invented luggage problem is posed",
+          "reason": "The first detail establishes a specific invented luggage problem is posed; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "theoretical": "M1"
+          }
+        },
+        {
+          "id": "hypothetical-theoretical_001_b2",
+          "text": "The group has not lost any bags; they discuss only that invented emergency.",
+          "best_word": "hypothetical",
+          "fit": {
+            "hypothetical": 0.93,
+            "theoretical": 0.18
+          },
+          "decisive_clue": "no real loss occurred and the question remains about that imagined case",
+          "reason": "The new detail confirms no real loss occurred and the question remains about that imagined case and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "theoretical": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The group is considering one invented emergency, not an abstract rule.",
+      "feedback_deep": "Hypothetical means concerning an imagined what-if case. Theoretical means grounded in concepts or abstract models. Here, the subject is a supposed event, not a broad law explaining travel.",
+      "contrast_rule": "Hypothetical asks “what if?”; theoretical asks “how should it work?”",
+      "hints": {
+        "attention": "Could this situation happen, or is it being supposed?",
+        "axis": "Imaginary test case versus general explanation based on principles.",
+        "contrast": "Hypothetical asks “what if?”; theoretical asks “how should it work?”"
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hypothetical-theoretical_002",
+      "edge_id": "hypothetical__theoretical",
+      "domain": "budget_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Dinesh’s savings explanation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hypothetical-theoretical_002_b1",
+          "text": "Dinesh uses an equation to explain how regular deposits would grow over time, without trying the plan himself.",
+          "best_word": "theoretical",
+          "fit": {
+            "hypothetical": 0.24,
+            "theoretical": 0.91
+          },
+          "decisive_clue": "an abstract equation explains savings growth without real trials",
+          "reason": "The first detail establishes an abstract equation explains savings growth without real trials; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothetical": "M2"
+          }
+        },
+        {
+          "id": "hypothetical-theoretical_002_b2",
+          "text": "He compares different rates using the same rule but still has no personal results to check.",
+          "best_word": "theoretical",
+          "fit": {
+            "hypothetical": 0.18,
+            "theoretical": 0.93
+          },
+          "decisive_clue": "the same general rule is applied to more figures, still without practice",
+          "reason": "The deciding fact remains an abstract equation explains savings growth without real trials; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hypothetical": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He applies a general equation, not a single invented incident.",
+      "feedback_deep": "Hypothetical means concerning an imagined what-if case. Theoretical means grounded in concepts or abstract models. Here, a model explaining how savings behave is about principles, not one assumed personal emergency.",
+      "contrast_rule": "Hypothetical asks “what if?”; theoretical asks “how should it work?”",
+      "hints": {
+        "attention": "Is he building an abstract rule or posing one story?",
+        "axis": "Imaginary test case versus general explanation based on principles.",
+        "contrast": "Hypothetical asks “what if?”; theoretical asks “how should it work?”"
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hypothetical-theoretical_003",
+      "edge_id": "hypothetical__theoretical",
+      "domain": "family_chores",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Mei’s dinner-table question?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hypothetical-theoretical_003_b1",
+          "text": "Mei asks, “Suppose nobody in this house could use a washing machine for a month; how would we divide laundry?”",
+          "best_word": "hypothetical",
+          "fit": {
+            "hypothetical": 0.91,
+            "theoretical": 0.24
+          },
+          "decisive_clue": "the family considers a made-up month without a machine",
+          "reason": "The first detail establishes the family considers a made-up month without a machine; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "theoretical": "M1"
+          }
+        },
+        {
+          "id": "hypothetical-theoretical_003_b2",
+          "text": "She writes down the family’s answers, though their machine is working normally.",
+          "best_word": "hypothetical",
+          "fit": {
+            "hypothetical": 0.93,
+            "theoretical": 0.18
+          },
+          "decisive_clue": "writing answers does not make the supposed scenario real",
+          "reason": "The deciding fact remains the family considers a made-up month without a machine; the added detail does not change that.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "theoretical": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Taking notes does not turn the invented month into a real event.",
+      "feedback_deep": "Hypothetical means concerning an imagined what-if case. Theoretical means grounded in concepts or abstract models. Here, recording responses is incidental to whether the case itself exists.",
+      "contrast_rule": "Hypothetical asks “what if?”; theoretical asks “how should it work?”",
+      "hints": {
+        "attention": "Was the month without a machine an actual event?",
+        "axis": "Imaginary test case versus general explanation based on principles.",
+        "contrast": "Hypothetical asks “what if?”; theoretical asks “how should it work?”"
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hypothetical-theoretical_004",
+      "edge_id": "hypothetical__theoretical",
+      "domain": "restaurant_management",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Leo’s method for calculating waiting times?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hypothetical-theoretical_004_b1",
+          "text": "Leo develops a general formula for seating customers based on average arrival rates, but has never tested it at a restaurant.",
+          "best_word": "theoretical",
+          "fit": {
+            "hypothetical": 0.24,
+            "theoretical": 0.91
+          },
+          "decisive_clue": "a broadly applicable model is derived without testing",
+          "reason": "The first detail establishes a broadly applicable model is derived without testing; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothetical": "M2"
+          }
+        },
+        {
+          "id": "hypothetical-theoretical_004_b2",
+          "text": "His formula can be applied to many dining rooms with different numbers of tables.",
+          "best_word": "theoretical",
+          "fit": {
+            "hypothetical": 0.18,
+            "theoretical": 0.93
+          },
+          "decisive_clue": "the same principle applies across many real arrangements",
+          "reason": "The new detail confirms the same principle applies across many real arrangements and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hypothetical": "M1"
+          }
+        }
+      ],
+      "feedback_short": "One untested model explains many situations; it is not a single what-if case.",
+      "feedback_deep": "Hypothetical means concerning an imagined what-if case. Theoretical means grounded in concepts or abstract models. Here, the focus is an abstract calculation, not a specific invented dinner rush.",
+      "contrast_rule": "Hypothetical asks “what if?”; theoretical asks “how should it work?”",
+      "hints": {
+        "attention": "Does the work provide a general rule?",
+        "axis": "Imaginary test case versus general explanation based on principles.",
+        "contrast": "Hypothetical asks “what if?”; theoretical asks “how should it work?”"
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hypothetical-theoretical_005",
+      "edge_id": "hypothetical__theoretical",
+      "domain": "classroom_debate",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Imani’s question during a student debate?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hypothetical-theoretical_005_b1",
+          "text": "Imani asks, “If the school library opened only at midnight next term, how would students plan their studying?”",
+          "best_word": "hypothetical",
+          "fit": {
+            "hypothetical": 0.91,
+            "theoretical": 0.24
+          },
+          "decisive_clue": "a fabricated school timetable is used as a reasoning exercise",
+          "reason": "The first detail establishes a fabricated school timetable is used as a reasoning exercise; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "theoretical": "M1"
+          }
+        },
+        {
+          "id": "hypothetical-theoretical_005_b2",
+          "text": "The principal has proposed no such change; Imani uses the question to test her classmates’ reasoning.",
+          "best_word": "hypothetical",
+          "fit": {
+            "hypothetical": 0.93,
+            "theoretical": 0.18
+          },
+          "decisive_clue": "the unreal proposal serves as a thought exercise, not an announced policy",
+          "reason": "Viewed in its fuller context, the unreal proposal serves as a thought exercise, not an announced policy; the original distinction still decides it.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "theoretical": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The midnight library schedule is invented to test an argument.",
+      "feedback_deep": "Hypothetical means concerning an imagined what-if case. Theoretical means grounded in concepts or abstract models. Here, imagining a specific alternative is the point of her question.",
+      "contrast_rule": "Hypothetical asks “what if?”; theoretical asks “how should it work?”",
+      "hints": {
+        "attention": "Is the proposed schedule real, or a case to reason through?",
+        "axis": "Imaginary test case versus general explanation based on principles.",
+        "contrast": "Hypothetical asks “what if?”; theoretical asks “how should it work?”"
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "hypothetical-theoretical_006",
+      "edge_id": "hypothetical__theoretical",
+      "domain": "sports_coaching",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Farah’s plan for improving teamwork?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "hypothetical-theoretical_006_b1",
+          "text": "Farah outlines principles for rotating roles fairly, basing the plan on an untested diagram of who communicates with whom.",
+          "best_word": "theoretical",
+          "fit": {
+            "hypothetical": 0.24,
+            "theoretical": 0.91
+          },
+          "decisive_clue": "an untested general model of team roles underlies the plan",
+          "reason": "The first detail establishes an untested general model of team roles underlies the plan; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothetical": "M2"
+          }
+        },
+        {
+          "id": "hypothetical-theoretical_006_b2",
+          "text": "The diagram treats every team as a network of roles rather than describing one actual match.",
+          "best_word": "theoretical",
+          "fit": {
+            "hypothetical": 0.18,
+            "theoretical": 0.93
+          },
+          "decisive_clue": "the plan remains an abstract account across teams",
+          "reason": "The deciding fact remains an untested general model of team roles underlies the plan; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "hypothetical": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The plan explains team organization through a general model.",
+      "feedback_deep": "Hypothetical means concerning an imagined what-if case. Theoretical means grounded in concepts or abstract models. Here, an organizing principle can be discussed without inventing a specific pretend game.",
+      "contrast_rule": "Hypothetical asks “what if?”; theoretical asks “how should it work?”",
+      "hints": {
+        "attention": "Does the diagram describe an actual example or a general principle?",
+        "axis": "Imaginary test case versus general explanation based on principles.",
+        "contrast": "Hypothetical asks “what if?”; theoretical asks “how should it work?”"
+      },
+      "qa": "pass"
+    }
+  ]
+}

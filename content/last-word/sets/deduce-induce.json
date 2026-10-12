@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "deduce-induce",
+  "title": "deduce / induce",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[73]",
+    "source_pair_id": 321,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "deduce",
+      "sense": "Reach a particular conclusion by logically applying a general rule or established facts.",
+      "connotation": "neutral; logical",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming repeated observations logically guarantee a general rule.",
+        "Ignoring whether a general policy was known before the particular case."
+      ]
+    },
+    {
+      "word": "induce",
+      "sense": "Infer a broader general pattern or rule from particular observations.",
+      "connotation": "neutral; inferential",
+      "register": "formal",
+      "misconceptions": [
+        "Confusing examples-to-rule with rule-to-example reasoning.",
+        "Ignoring whether a general policy was known before the particular case."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "direction_of_inference",
+      "description": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples."
+    }
+  ],
+  "edges": [
+    {
+      "id": "deduce__induce",
+      "a": "deduce",
+      "b": "induce",
+      "boundary_rule": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+      "clues_a": [
+        "general rule applied to a case",
+        "necessary conclusion from facts"
+      ],
+      "clues_b": [
+        "repeated cases suggest a general pattern",
+        "broad claim from samples"
+      ],
+      "irrelevant_clues": [
+        "confidence level",
+        "number of people nearby"
+      ],
+      "misconceptions": {
+        "M1": "Confusing examples-to-rule with rule-to-example reasoning.",
+        "M2": "Assuming repeated observations logically guarantee a general rule.",
+        "M3": "Ignoring whether a general policy was known before the particular case."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "deduce-induce_001",
+      "edge_id": "deduce__induce",
+      "domain": "school_locker_rules",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Yasmine reached her conclusion?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_001_b1",
+          "text": "The rule says every red-tagged locker must be emptied; Yasmine saw hers had a red tag, so she knew it must be emptied.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "applied a general rule to her specific locker",
+          "reason": "Applied a general rule to her specific locker. Specific conclusion from general rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_001_b2",
+          "text": "She checked that no exceptions applied to her locker.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "checking exceptions strengthens rule-based conclusion",
+          "reason": "Checking exceptions strengthens rule-based conclusion. Specific conclusion from general rule.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Checking exceptions strengthens rule-based conclusion makes deduce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, checking exceptions strengthens rule-based conclusion; that is why deduce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on whether she started with a rule or examples.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_002",
+      "edge_id": "deduce__induce",
+      "domain": "bus_stop_commute",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Leo formed his view of the buses?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_002_b1",
+          "text": "Leo watched six morning buses arrive late and concluded that morning buses on this route usually run late.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "generalized from several observed buses",
+          "reason": "Generalized from several observed buses. General pattern from observed instances.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_002_b2",
+          "text": "The next two buses were late as well, reinforcing his wider pattern.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "more examples support the same broad trend",
+          "reason": "More examples support the same broad trend. General pattern from observed instances.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "More examples support the same broad trend makes induce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, more examples support the same broad trend; that is why induce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on examples to general rule or reverse.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_003",
+      "edge_id": "deduce__induce",
+      "domain": "cinema_ticket_policy",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Aisha reasoned about her ticket?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_003_b1",
+          "text": "Every ticket marked student receives a discount; Aisha’s ticket has that mark, so she expects the discount.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "applied a stated policy to one ticket",
+          "reason": "Applied a stated policy to one ticket. Specific conclusion from general rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_003_b2",
+          "text": "The policy lists no extra conditions for student tickets.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "no exceptions leaves the specific conclusion intact",
+          "reason": "No exceptions leaves the specific conclusion intact. Specific conclusion from general rule.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "No exceptions leaves the specific conclusion intact makes deduce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, no exceptions leaves the specific conclusion intact; that is why deduce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on whether the policy precedes the conclusion.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_004",
+      "edge_id": "deduce__induce",
+      "domain": "cafeteria_lunch",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Diego formed his view of the soup?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_004_b1",
+          "text": "Diego tried the soup on five Fridays and found it salty each time, so he concluded Friday soup tends to be salty.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "inferred a recurring pattern from samples",
+          "reason": "Inferred a recurring pattern from samples. General pattern from observed instances.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_004_b2",
+          "text": "Another Friday serving tasted salty too.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "another serving adds one more observation",
+          "reason": "Another serving adds one more observation. General pattern from observed instances.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Another serving adds one more observation makes induce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, another serving adds one more observation; that is why induce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on a rule learned from experience.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_005",
+      "edge_id": "deduce__induce",
+      "domain": "workplace_security",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes how Priya reached her conclusion about entry?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_005_b1",
+          "text": "The posted policy says nobody enters without a badge; Priya lacks hers, so she knows she cannot enter.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "general badge rule applied to her case",
+          "reason": "General badge rule applied to her case. Specific conclusion from general rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_005_b2",
+          "text": "A guard smiled at her, but the badge rule still applies.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "friendliness does not change the posted rule",
+          "reason": "Friendliness does not change the posted rule. Specific conclusion from general rule.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Friendliness does not change the posted rule makes deduce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, friendliness does not change the posted rule; that is why deduce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on the reasoning rather than the guard’s mood.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_006",
+      "edge_id": "deduce__induce",
+      "domain": "running_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Tomas arrived at his training view?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_006_b1",
+          "text": "Tomas noticed that on each of seven rainy mornings the runners arrived late, so he expected rain to delay group runs generally.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "general expectation built from repeated examples",
+          "reason": "General expectation built from repeated examples. General pattern from observed instances.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_006_b2",
+          "text": "An eighth rainy practice started late as well.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "a further case supports the wider pattern",
+          "reason": "A further case supports the wider pattern. General pattern from observed instances.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A further case supports the wider pattern makes induce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, a further case supports the wider pattern; that is why induce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on many cases informing a general claim.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_007",
+      "edge_id": "deduce__induce",
+      "domain": "library_lending_desk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Hana reached her answer?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_007_b1",
+          "text": "All reference books must stay in the library; Hana’s volume bears the reference label, so she cannot borrow it home.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "general lending rule determines one book’s status",
+          "reason": "General lending rule determines one book’s status. Specific conclusion from general rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_007_b2",
+          "text": "Its cover is colourful, but that does not alter the lending category.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "appearance is irrelevant to the rule",
+          "reason": "Appearance is irrelevant to the rule. Specific conclusion from general rule.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Appearance is irrelevant to the rule makes deduce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, appearance is irrelevant to the rule; that is why deduce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on whether the rule already existed.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_008",
+      "edge_id": "deduce__induce",
+      "domain": "neighbourhood_bakery",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes how Omar formed his opinion of opening times?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_008_b1",
+          "text": "Omar visited on four Sundays and found the bakery closed every time; he concluded it generally closes on Sundays.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "inferred a regular opening pattern from visits",
+          "reason": "Inferred a regular opening pattern from visits. General pattern from observed instances.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_008_b2",
+          "text": "He was not reading an official schedule, just drawing a pattern from those visits.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "absence of a posted rule clarifies the evidence",
+          "reason": "Absence of a posted rule clarifies the evidence. General pattern from observed instances.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Absence of a posted rule clarifies the evidence makes induce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, absence of a posted rule clarifies the evidence; that is why induce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on observations or a written rule.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_009",
+      "edge_id": "deduce__induce",
+      "domain": "beach_equipment_rental",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Mirela reached her decision?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_009_b1",
+          "text": "The rental sign requires a deposit for every kayak; Mirela is renting a kayak, so she knows she must pay one.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "applied universal deposit rule to one rental",
+          "reason": "Applied universal deposit rule to one rental. Specific conclusion from general rule.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_009_b2",
+          "text": "The kayak is small, but the sign makes no exception for size.",
+          "best_word": "deduce",
+          "fit": {
+            "deduce": 0.93,
+            "induce": 0.18
+          },
+          "decisive_clue": "size makes no difference under the rule",
+          "reason": "Size makes no difference under the rule. Specific conclusion from general rule.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "induce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Size makes no difference under the rule makes deduce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, size makes no difference under the rule; that is why deduce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on the route from rule to this case.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "deduce-induce_010",
+      "edge_id": "deduce__induce",
+      "domain": "online_shopping",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Felix reached his view of delivery?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "deduce-induce_010_b1",
+          "text": "Felix’s last eight orders from the shop arrived early, so he concluded its deliveries are generally ahead of schedule.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "inferred a general delivery habit from examples",
+          "reason": "Inferred a general delivery habit from examples. General pattern from observed instances.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M1"
+          }
+        },
+        {
+          "id": "deduce-induce_010_b2",
+          "text": "His latest order also arrived early, adding to the pattern.",
+          "best_word": "induce",
+          "fit": {
+            "deduce": 0.18,
+            "induce": 0.93
+          },
+          "decisive_clue": "one more example supports the generalized claim",
+          "reason": "One more example supports the generalized claim. General pattern from observed instances.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "deduce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "One more example supports the generalized claim makes induce the better fit.",
+      "feedback_deep": "Deduce means reach a particular conclusion by logically applying a general rule or established facts; induce means infer a broader general pattern or rule from particular observations. Here, one more example supports the generalized claim; that is why induce wins even after the new detail.",
+      "contrast_rule": "Deduce goes rule to case; induce goes cases to rule.",
+      "hints": {
+        "attention": "Focus on sample deliveries versus a general rule.",
+        "axis": "Deduce applies a rule or established facts to a specific case; induce forms a general rule from particular examples.",
+        "contrast": "Deduce goes rule to case; induce goes cases to rule."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "itinerant-nomadic",
+  "title": "itinerant / nomadic",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[61]",
+    "source_pair_id": 299,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "itinerant",
+      "sense": "Travelling from place to place for work or practical duties rather than establishing a travelling household.",
+      "connotation": "Mobile and occupational.",
+      "register": "formal to literary",
+      "misconceptions": [
+        "Assuming everyone who travels frequently has a nomadic way of life."
+      ]
+    },
+    {
+      "word": "nomadic",
+      "sense": "Living a way of life organized around moving from one place to another rather than a fixed home.",
+      "connotation": "Rootless or mobile in lifestyle; not necessarily negative.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming working remotely automatically makes mobile living occupational travel."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "purpose_of_movement",
+      "description": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives."
+    }
+  ],
+  "edges": [
+    {
+      "id": "itinerant__nomadic",
+      "a": "itinerant",
+      "b": "nomadic",
+      "boundary_rule": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+      "clues_a": [
+        "moves between clients or worksites",
+        "travels on a scheduled job circuit",
+        "keeps travel tied to occupational duties"
+      ],
+      "clues_b": [
+        "moves the household itself",
+        "has no fixed residence by choice or circumstance",
+        "organizes everyday living around successive locations"
+      ],
+      "irrelevant_clues": [
+        "how far the journey is",
+        "whether the traveller owns a laptop",
+        "how comfortable the temporary accommodation is"
+      ],
+      "misconceptions": {
+        "M1": "Assuming everyone who travels frequently has a nomadic way of life.",
+        "M2": "Assuming working remotely automatically makes mobile living occupational travel.",
+        "M3": "Assuming the distance or number of stops, not the purpose of movement, decides the word."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "itinerant-nomadic_001",
+      "edge_id": "itinerant__nomadic",
+      "domain": "mobile_veterinary_visits",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zara’s pattern of travel?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "itinerant-nomadic_001_b1",
+          "text": "Zara drives between villages each weekday to treat farm animals, carrying her medicine bag in the car.",
+          "best_word": "itinerant",
+          "fit": {
+            "itinerant": 0.91,
+            "nomadic": 0.22
+          },
+          "decisive_clue": "visits are arranged around animal appointments",
+          "reason": "Visits are arranged around animal appointments. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nomadic": "M3"
+          }
+        },
+        {
+          "id": "itinerant-nomadic_001_b2",
+          "text": "Each evening, she returns to the same apartment, where she keeps her belongings.",
+          "best_word": "itinerant",
+          "fit": {
+            "itinerant": 0.91,
+            "nomadic": 0.22
+          },
+          "decisive_clue": "visits are arranged around animal appointments",
+          "reason": "The new detail does not overturn the original clue: visits are arranged around animal appointments. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nomadic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Animal appointments explain the trips; returning home confirms this is travel for work.",
+      "feedback_deep": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives. Her stable home does not move with the visits.",
+      "contrast_rule": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+      "hints": {
+        "attention": "Notice what organizes the movement: a task to complete or the place of everyday living.",
+        "axis": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+        "contrast": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "itinerant-nomadic_002",
+      "edge_id": "itinerant__nomadic",
+      "domain": "life_in_a_camper",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo’s way of living?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "itinerant-nomadic_002_b1",
+          "text": "Mateo keeps his clothes and cooking supplies in a camper and moves to a new town every few weeks.",
+          "best_word": "nomadic",
+          "fit": {
+            "itinerant": 0.22,
+            "nomadic": 0.91
+          },
+          "decisive_clue": "his home travels with him",
+          "reason": "His home travels with him. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        },
+        {
+          "id": "itinerant-nomadic_002_b2",
+          "text": "He sometimes earns money by selling photographs during these stops.",
+          "best_word": "nomadic",
+          "fit": {
+            "itinerant": 0.22,
+            "nomadic": 0.91
+          },
+          "decisive_clue": "his home travels with him",
+          "reason": "The new detail does not overturn the original clue: his home travels with him. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Selling photographs does not make the movement primarily a journey between jobs.",
+      "feedback_deep": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives. His everyday residence keeps changing, whether or not he works on the way.",
+      "contrast_rule": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+      "hints": {
+        "attention": "Notice what organizes the movement: a task to complete or the place of everyday living.",
+        "axis": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+        "contrast": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "itinerant-nomadic_003",
+      "edge_id": "itinerant__nomadic",
+      "domain": "touring_theatre_repairs",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elise’s travels?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "itinerant-nomadic_003_b1",
+          "text": "Elise travels between theatre buildings to repair damaged stage curtains during a summer contract.",
+          "best_word": "itinerant",
+          "fit": {
+            "itinerant": 0.91,
+            "nomadic": 0.22
+          },
+          "decisive_clue": "each journey serves a specific repair contract",
+          "reason": "Each journey serves a specific repair contract. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nomadic": "M2"
+          }
+        },
+        {
+          "id": "itinerant-nomadic_003_b2",
+          "text": "Her schedule follows the theatres’ repair dates, and she returns to her flat when the contract ends.",
+          "best_word": "itinerant",
+          "fit": {
+            "itinerant": 0.91,
+            "nomadic": 0.22
+          },
+          "decisive_clue": "the work calendar determines the route",
+          "reason": "The work calendar determines the route. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nomadic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The contract calendar, not a moving household, explains Elise’s travel.",
+      "feedback_deep": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives. The work itinerary identifies a series of duties rather than a way of living.",
+      "contrast_rule": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+      "hints": {
+        "attention": "Notice what organizes the movement: a task to complete or the place of everyday living.",
+        "axis": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+        "contrast": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "itinerant-nomadic_004",
+      "edge_id": "itinerant__nomadic",
+      "domain": "seasonal_moving_household",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s family’s movements?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "itinerant-nomadic_004_b1",
+          "text": "Omar’s family packs its cooking gear and bedding whenever it moves to another temporary campsite.",
+          "best_word": "nomadic",
+          "fit": {
+            "itinerant": 0.22,
+            "nomadic": 0.91
+          },
+          "decisive_clue": "household relocates with the family",
+          "reason": "Household relocates with the family. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M3"
+          }
+        },
+        {
+          "id": "itinerant-nomadic_004_b2",
+          "text": "Omar also takes translation calls on his laptop between moves.",
+          "best_word": "nomadic",
+          "fit": {
+            "itinerant": 0.22,
+            "nomadic": 0.91
+          },
+          "decisive_clue": "online work occurs within an already mobile way of life",
+          "reason": "Online work occurs within an already mobile way of life. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Translation calls do not turn a moving home into a work tour.",
+      "feedback_deep": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives. The family is relocating its ordinary life; the incidental laptop work is secondary.",
+      "contrast_rule": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+      "hints": {
+        "attention": "Notice what organizes the movement: a task to complete or the place of everyday living.",
+        "axis": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+        "contrast": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "itinerant-nomadic_005",
+      "edge_id": "itinerant__nomadic",
+      "domain": "craft-market_rounds",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Nila’s travels?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "itinerant-nomadic_005_b1",
+          "text": "Nila sells handmade bowls at a rotating series of weekend markets, sleeping in rented rooms near each stall.",
+          "best_word": "itinerant",
+          "fit": {
+            "itinerant": 0.91,
+            "nomadic": 0.22
+          },
+          "decisive_clue": "market sales set her travel route",
+          "reason": "Market sales set her travel route. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nomadic": "M1"
+          }
+        },
+        {
+          "id": "itinerant-nomadic_005_b2",
+          "text": "One market offers a luxurious guest room, but she still departs for the next scheduled stall.",
+          "best_word": "itinerant",
+          "fit": {
+            "itinerant": 0.91,
+            "nomadic": 0.22
+          },
+          "decisive_clue": "market sales set her travel route",
+          "reason": "The new detail does not overturn the original clue: market sales set her travel route. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nomadic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A luxurious room changes comfort, not the work-based route.",
+      "feedback_deep": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives. The accommodation sounds significant but the driving fact is the market schedule.",
+      "contrast_rule": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+      "hints": {
+        "attention": "Notice what organizes the movement: a task to complete or the place of everyday living.",
+        "axis": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+        "contrast": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "itinerant-nomadic_006",
+      "edge_id": "itinerant__nomadic",
+      "domain": "short-term_city_living",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ari’s living arrangement?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "itinerant-nomadic_006_b1",
+          "text": "Ari keeps booking a new short-term flat every month, taking all her possessions because she enjoys living in different cities.",
+          "best_word": "nomadic",
+          "fit": {
+            "itinerant": 0.22,
+            "nomadic": 0.91
+          },
+          "decisive_clue": "she moves her actual residence for a way of life",
+          "reason": "She moves her actual residence for a way of life. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M2"
+          }
+        },
+        {
+          "id": "itinerant-nomadic_006_b2",
+          "text": "She still meets the same friends online every Friday, wherever she rents.",
+          "best_word": "nomadic",
+          "fit": {
+            "itinerant": 0.22,
+            "nomadic": 0.91
+          },
+          "decisive_clue": "stable online friendships do not create a fixed home",
+          "reason": "Stable online friendships do not create a fixed home. Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "itinerant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Recurring online friendships do not make Ari’s living arrangement settled.",
+      "feedback_deep": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives. Her living location changes by choice, not because she is visiting successive job sites.",
+      "contrast_rule": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+      "hints": {
+        "attention": "Notice what organizes the movement: a task to complete or the place of everyday living.",
+        "axis": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives.",
+        "contrast": "Itinerant describes movement for work or duties; nomadic describes movement as the pattern of where someone lives."
+      },
+      "qa": "pass"
+    }
+  ]
+}

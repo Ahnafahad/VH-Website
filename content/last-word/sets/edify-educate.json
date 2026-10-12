@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "edify-educate",
+  "title": "edify / educate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[107]",
+    "source_pair_id": 437,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "edify",
+      "sense": "improve character or understanding through morally instructive experience",
+      "connotation": "uplifting",
+      "register": "formal",
+      "misconceptions": [
+        "Any lesson that teaches a fact is morally uplifting"
+      ]
+    },
+    {
+      "word": "educate",
+      "sense": "develop knowledge or skill through organized teaching",
+      "connotation": "neutral, constructive",
+      "register": "neutral",
+      "misconceptions": [
+        "Learning a moral lesson is the same as acquiring a taught skill"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "moral_growth_vs_taught_competence",
+      "description": "Character-changing instruction differs from organized transfer of knowledge or skills."
+    }
+  ],
+  "edges": [
+    {
+      "id": "edify__educate",
+      "a": "edify",
+      "b": "educate",
+      "boundary_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "clues_a": [
+        "reflection on duty and fairness",
+        "new consideration for another person",
+        "instructive example prompting ethical improvement"
+      ],
+      "clues_b": [
+        "sequence of lessons and exercises",
+        "practice of a measurable skill",
+        "knowledge taught for later use"
+      ],
+      "irrelevant_clues": [
+        "speaker’s popularity",
+        "use of a projector",
+        "location of instruction"
+      ],
+      "misconceptions": {
+        "M1": "Treats any taught skill as moral development",
+        "M2": "Treats character-changing instruction as mere technical training",
+        "M3": "Mistakes props, emotion or duration for the deciding evidence"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "edify-educate_001",
+      "edge_id": "edify__educate",
+      "domain": "school_assembly",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Aisha's talk did for the students?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "edify-educate_001_b1",
+          "text": "Aisha told how she had blamed a classmate unfairly; listeners reconsidered how quickly they judged others.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.9,
+            "educate": 0.165
+          },
+          "decisive_clue": "a story prompted reflection on unfair judgment",
+          "reason": "The lesson concerns moral responsibility rather than a specific technique.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        },
+        {
+          "id": "edify-educate_001_b2",
+          "text": "The talk took place in a crowded hall with a microphone that squeaked.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.9,
+            "educate": 0.165
+          },
+          "decisive_clue": "reflection on unfair judgment, not the noisy hall",
+          "reason": "The equipment and crowd do not change the ethical purpose.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains reflection on unfair judgment, not the noisy hall.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. The lesson concerns moral responsibility rather than a specific technique. The equipment and crowd do not change the ethical purpose.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Look at what changed in the listeners' attitudes.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "edify-educate_002",
+      "edge_id": "edify__educate",
+      "domain": "bicycle_workshop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Mateo's workshop did for beginners?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "edify-educate_002_b1",
+          "text": "Mateo demonstrated how to adjust bicycle brakes and had everyone practice the steps on their own bikes.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.19,
+            "educate": 0.92
+          },
+          "decisive_clue": "people practiced a concrete repair skill",
+          "reason": "The workshop teaches a repeatable procedure.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        },
+        {
+          "id": "edify-educate_002_b2",
+          "text": "By the end, participants could adjust the brakes without his help.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.19,
+            "educate": 0.92
+          },
+          "decisive_clue": "independent mastery of a repair procedure",
+          "reason": "Successful practice confirms skill acquisition, not necessarily moral growth.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains independent mastery of a repair procedure.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. The workshop teaches a repeatable procedure. Successful practice confirms skill acquisition, not necessarily moral growth.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Notice what participants can now do.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "edify-educate_003",
+      "edge_id": "edify__educate",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Noura's story did for her cousins?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "edify-educate_003_b1",
+          "text": "Noura described giving credit to a teammate she had once ignored, leaving her cousins questioning their own fairness.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.94,
+            "educate": 0.215
+          },
+          "decisive_clue": "encouraged self-examination about fairness",
+          "reason": "This story teaches consideration for others.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        },
+        {
+          "id": "edify-educate_003_b2",
+          "text": "One cousin later apologized for taking credit for a friend's idea.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.94,
+            "educate": 0.215
+          },
+          "decisive_clue": "reflection on fairness led to an apology",
+          "reason": "The response shows a change in conduct and conscience.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains reflection on fairness led to an apology.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. This story teaches consideration for others. The response shows a change in conduct and conscience.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Focus on their change in conduct.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "edify-educate_004",
+      "edge_id": "edify__educate",
+      "domain": "shop_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Diego's lessons did for new employees?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "edify-educate_004_b1",
+          "text": "Diego taught the new staff to calculate refunds, then checked their answers on practice orders.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.14,
+            "educate": 0.88
+          },
+          "decisive_clue": "staff learned a procedure through practice",
+          "reason": "The aim is competence in an everyday task.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        },
+        {
+          "id": "edify-educate_004_b2",
+          "text": "He included a funny story about his first shift to keep them interested.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.14,
+            "educate": 0.88
+          },
+          "decisive_clue": "systematic refund practice despite a humorous story",
+          "reason": "Humour does not turn a technical lesson into ethical instruction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains systematic refund practice despite a humorous story.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. The aim is competence in an everyday task. Humour does not turn a technical lesson into ethical instruction.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Identify the skill being assessed.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "edify-educate_005",
+      "edge_id": "edify__educate",
+      "domain": "youth_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the effect of Sora's mentoring session?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "edify-educate_005_b1",
+          "text": "Sora described refusing an easy chance to cheat, and the club members began discussing what integrity costs.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.9,
+            "educate": 0.165
+          },
+          "decisive_clue": "example developed understanding of integrity",
+          "reason": "The session invites reflection on honesty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        },
+        {
+          "id": "edify-educate_005_b2",
+          "text": "The members filled in worksheets, but the questions asked them to examine their own choices rather than memorize facts.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.9,
+            "educate": 0.165
+          },
+          "decisive_clue": "guided ethical reflection, not worksheet format",
+          "reason": "Having worksheets does not make the content merely procedural.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains guided ethical reflection, not worksheet format.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. The session invites reflection on honesty. Having worksheets does not make the content merely procedural.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Look at what the questions ask them to consider.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "edify-educate_006",
+      "edge_id": "edify__educate",
+      "domain": "cooking_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Priya's class did for the group?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "edify-educate_006_b1",
+          "text": "Priya showed how to measure ingredients, control heat and follow a recipe; students repeated each step.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.19,
+            "educate": 0.92
+          },
+          "decisive_clue": "students learned and practiced cooking techniques",
+          "reason": "Practical skill development decides the word.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        },
+        {
+          "id": "edify-educate_006_b2",
+          "text": "She praised each student warmly and gave them colourful aprons.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.19,
+            "educate": 0.92
+          },
+          "decisive_clue": "repeated cooking practice, not praise or clothing",
+          "reason": "Encouragement and aprons do not supply a distinct moral lesson.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The distraction does not matter: repeated cooking practice, not praise or clothing.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. Practical skill development decides the word. Encouragement and aprons do not supply a distinct moral lesson.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Focus on the abilities gained.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "edify-educate_007",
+      "edge_id": "edify__educate",
+      "domain": "sports_huddle",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the effect of Kwame's talk on the team?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "edify-educate_007_b1",
+          "text": "Kwame discussed why admitting a foul matters even when no referee sees it; teammates began speaking up about fair play.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.94,
+            "educate": 0.215
+          },
+          "decisive_clue": "prompted ethical reflection on honesty in sport",
+          "reason": "This improves moral judgment, not a playing technique.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        },
+        {
+          "id": "edify-educate_007_b2",
+          "text": "He drew a diagram of the court during the talk.",
+          "best_word": "edify",
+          "fit": {
+            "edify": 0.94,
+            "educate": 0.215
+          },
+          "decisive_clue": "honesty lesson despite the court diagram",
+          "reason": "The diagram does not change what the instruction seeks to improve.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "educate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains honesty lesson despite the court diagram.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. This improves moral judgment, not a playing technique. The diagram does not change what the instruction seeks to improve.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Look past the coaching materials.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "edify-educate_008",
+      "edge_id": "edify__educate",
+      "domain": "online_safety_course",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Elena's online lessons did for her neighbours?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "edify-educate_008_b1",
+          "text": "Elena walked her neighbours through recognizing fake login pages and checking website addresses.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.14,
+            "educate": 0.88
+          },
+          "decisive_clue": "taught specific online safety techniques",
+          "reason": "They acquire practical knowledge.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        },
+        {
+          "id": "edify-educate_008_b2",
+          "text": "After several exercises, they could spot suspicious links without guidance.",
+          "best_word": "educate",
+          "fit": {
+            "edify": 0.14,
+            "educate": 0.88
+          },
+          "decisive_clue": "demonstrated independent use of safety skills",
+          "reason": "The test shows knowledge and skill gained through instruction.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "edify": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains demonstrated independent use of safety skills.",
+      "feedback_deep": "Edify means to elevate understanding or character, especially through moral instruction; educate means to teach knowledge or practical skills systematically. They acquire practical knowledge. The test shows knowledge and skill gained through instruction.",
+      "contrast_rule": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction.",
+      "hints": {
+        "attention": "Notice what the learners can recognize.",
+        "axis": "Character-changing instruction differs from organized transfer of knowledge or skills.",
+        "contrast": "edify improves a person’s moral understanding or character; educate develops knowledge and skills through instruction."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,812 @@
+{
+  "schema_version": 1,
+  "set_id": "vex-perplex",
+  "title": "vex / perplex",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[194]",
+    "source_pair_id": 879,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 10
+    }
+  },
+  "words": [
+    {
+      "word": "vex",
+      "sense": "To cause persistent irritation or frustration, usually by a repetitive or difficult situation.",
+      "connotation": "Negative; implies being burdened or exasperated.",
+      "register": "Formal to neutral.",
+      "misconceptions": [
+        "Confusing it with 'to puzzle' only (ignoring the annoyance factor)."
+      ]
+    },
+    {
+      "word": "perplex",
+      "sense": "To cause someone to feel completely confused or unable to understand something.",
+      "connotation": "Neutral to negative (regarding the mental state, not necessarily the person's mood).",
+      "register": "Formal to neutral.",
+      "misconceptions": [
+        "Confusing it with 'to annoy' (ignoring that it is purely cognitive)."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "emotional_impact",
+      "description": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex)."
+    },
+    {
+      "id": "source_of_trouble",
+      "description": "Is the trouble coming from something persistently grinding or obstructive (vex) or from a logical/factual complexity (perplex)?"
+    },
+    {
+      "id": "duration",
+      "description": "Persistent, grinding issue (vex) vs. an acute mental block (perplex)."
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "vex": [
+        "The constant noise from the construction next door continued to vex her all afternoon.",
+        "His refusal to answer the same question for the tenth time began to vex the entire team.",
+        "It vexed him that the computer kept freezing at the exact same point in the presentation.",
+        "The slow, grinding pace of the bureaucracy continued to vex the organizers.",
+        "She was vexed by the repetitive, minor errors in the reports that had to be fixed manually.",
+        "The child's persistent whining began to vex the passengers on the train."
+      ],
+      "perplex": [
+        "The strange symbols found in the ancient manuscript continued to perplex the historians.",
+        "The sudden drop in sales figures, despite a robust marketing campaign, perplexed the management.",
+        "His unexpected change in demeanor perplexed everyone who knew him well.",
+        "The complex rules of the new game perplexed the players during the first round.",
+        "The doctor was perplexed by the patient's unusual symptoms that didn't fit any known diagnosis.",
+        "The logic behind the new policy still perplexes the staff."
+      ]
+    },
+    "counter": {
+      "vex": [
+        "The riddle's complexity continued to vex him, though he wasn't angry about it.",
+        "She was vexed that she couldn't understand why the machine wouldn't turn on.",
+        "The abstract nature of the philosophy lecture vexed the students who were looking for concrete answers.",
+        "He felt vexed because the math problem seemed to have two contradictory answers.",
+        "The mysterious disappearance of the keys vexed them, even though they felt no frustration.",
+        "The sheer ingenuity of the plan vexed the investigators."
+      ],
+      "perplex": [
+        "The constant, loud hammering noise began to perplex him more and more.",
+        "Her repeated interruptions during the meeting perplexed me to the point of anger.",
+        "He felt perplexed that his coworkers still refused to listen to his clear advice.",
+        "The slow service at the restaurant perplexed them, as they were just annoyed by the delay.",
+        "The persistent, unhelpful attitude of the clerk perplexed the customer, who was mostly frustrated.",
+        "The ongoing, repetitive technical glitches in the software perplexed the user."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "vex__perplex",
+      "a": "vex",
+      "b": "perplex",
+      "boundary_rule": "Use vex for emotional irritation/frustration; use perplex for cognitive confusion.",
+      "clues_a": [
+        "Irritation",
+        "Persistence",
+        "Difficulty to endure",
+        "Frustration",
+        "Trouble"
+      ],
+      "clues_b": [
+        "Confusion",
+        "Lack of understanding",
+        "Mental knot",
+        "Stumped",
+        "Complexity"
+      ],
+      "irrelevant_clues": [
+        "Duration alone",
+        "Seriousness of the situation",
+        "Public vs private"
+      ],
+      "misconceptions": {
+        "M1": "Assuming anything difficult to solve is vexing.",
+        "M2": "Assuming anything confusing is also annoying.",
+        "M3": "Ignoring the frustration component of vex."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "vex-perplex_001",
+      "edge_id": "vex__perplex",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the brother's habit does to Sarah: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "vex-perplex_001_b1",
+          "text": "Sarah's brother keeps leaving his wet towel on her bed. It is starting to ___ her.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.8,
+            "perplex": 0.2
+          },
+          "decisive_clue": "Wet towel on bed (annoyance)",
+          "reason": "It's an annoying, repetitive action.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        },
+        {
+          "id": "vex-perplex_001_b2",
+          "text": "When Sarah asked him to stop, he just laughed and did it again. It continues to ___ her.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.9,
+            "perplex": 0.1
+          },
+          "decisive_clue": "Laughed and did it again (increased annoyance/persistence)",
+          "reason": "The behavior is intentionally annoying and persistent.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The brother's behavior is persistent and irritating, not merely confusing.",
+      "feedback_deep": "The brother's action—leaving a wet towel on the bed and ignoring requests—is a classic example of annoying, repetitive behavior designed to frustrate, making 'vex' the correct term. There is no cognitive confusion here.",
+      "contrast_rule": "Irritation and repetition mean vex; confusion and complexity mean perplex.",
+      "hints": {
+        "attention": "Is Sarah frustrated by the repetition, or is she trying to solve a logic puzzle?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Irritation and repetition mean vex; confusion and complexity mean perplex."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_002",
+      "edge_id": "vex__perplex",
+      "domain": "coding",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The bug's effect on the developer: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vex-perplex_002_b1",
+          "text": "The developer is working on a bug that only appears under very specific and obscure server conditions. It truly ___ him.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.3,
+            "perplex": 0.7
+          },
+          "decisive_clue": "Obscure server conditions",
+          "reason": "It is a complex technical problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        },
+        {
+          "id": "vex-perplex_002_b2",
+          "text": "Even after checking the server logs and the code documentation, the cause remains completely hidden. The situation continues to ___ him.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.2,
+            "perplex": 0.8
+          },
+          "decisive_clue": "Hidden cause",
+          "reason": "The developer is still just confused, not necessarily angry yet.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The lack of understanding caused by complexity is the focus.",
+      "feedback_deep": "The developer is stumped by a technical mystery, not irritated by an annoying person or situation. The problem is complex, requiring cognitive effort, not endurance of an annoying behavior.",
+      "contrast_rule": "Focus on the mental struggle, not the annoyance.",
+      "hints": {
+        "attention": "Is the developer being bothered by something, or can they not figure something out?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Focus on the mental struggle, not the annoyance."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_003",
+      "edge_id": "vex__perplex",
+      "domain": "household",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The sound's effect on the resident: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "vex-perplex_003_b1",
+          "text": "A light fixture in the hallway has been buzzing loudly for three weeks. It is really starting to ___ the owner.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.8,
+            "perplex": 0.2
+          },
+          "decisive_clue": "Buzzing loudly for three weeks (persistence)",
+          "reason": "It is a constant, irritating sound.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        },
+        {
+          "id": "vex-perplex_003_b2",
+          "text": "Every night when the house is quiet, the buzzing sound just gets more noticeable. It truly ___ him.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.9,
+            "perplex": 0.1
+          },
+          "decisive_clue": "More noticeable (persistent irritation)",
+          "reason": "The annoyance only increases with time.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The persistent, annoying sound is the focus.",
+      "feedback_deep": "A buzzing light fixture that causes annoyance over three weeks is a classic vexing situation. It is bothersome, not a cognitive puzzle.",
+      "contrast_rule": "Irritating persistence equals vex.",
+      "hints": {
+        "attention": "Is the owner trying to solve a mystery, or just tired of the noise?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Irritating persistence equals vex."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_004",
+      "edge_id": "vex__perplex",
+      "domain": "botany",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The plant's growth pattern's effect on the botanist: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vex-perplex_004_b1",
+          "text": "This specific rare flower refuses to bloom at the same time as others of its species. The pattern ___ the researcher.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.2,
+            "perplex": 0.8
+          },
+          "decisive_clue": "Refuses to bloom at same time/unusual pattern",
+          "reason": "It is a biological mystery.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        },
+        {
+          "id": "vex-perplex_004_b2",
+          "text": "Even after altering light, humidity, and soil composition, the plant's behavior remains totally unpredictable. The phenomenon ___ the expert.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.1,
+            "perplex": 0.9
+          },
+          "decisive_clue": "Unpredictable/remains a mystery",
+          "reason": "It is still a scientific, cognitive struggle.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The inability to explain the biological mystery is the focus.",
+      "feedback_deep": "The botanist is struggling to understand why a plant behaves a certain way. This is a scientific problem—a cognitive challenge—not an annoying or irritating person or persistent nuisance.",
+      "contrast_rule": "Mental confusion about facts equals perplex.",
+      "hints": {
+        "attention": "Is the botanist frustrated by the plant's personality, or baffled by its behavior?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Mental confusion about facts equals perplex."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_005",
+      "edge_id": "vex__perplex",
+      "domain": "public",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The traffic situation's effect on the commuter: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "vex-perplex_005_b1",
+          "text": "The traffic lights on this route have been malfunctioning for a week, causing major delays every single day. It does ___ the daily drivers.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.8,
+            "perplex": 0.2
+          },
+          "decisive_clue": "Malfunctioning lights, major delays, every day",
+          "reason": "It is a frustrating, persistent problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        },
+        {
+          "id": "vex-perplex_005_b2",
+          "text": "City officials claim the lights are fine, yet the gridlock continues every single morning. The discrepancy continues to ___ the commuters.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.9,
+            "perplex": 0.1
+          },
+          "decisive_clue": "Gridlock continues/losing patience",
+          "reason": "The daily irritation is the main factor.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The persistent, irritating situation is the focus.",
+      "feedback_deep": "The daily gridlock and malfunctioning traffic lights are a source of constant irritation and frustration for the commuters. This fits 'vex' perfectly; it is not a cognitive confusion.",
+      "contrast_rule": "Constant irritation equals vex.",
+      "hints": {
+        "attention": "Is the main feeling confusion about why the lights are broken, or irritation that they *are* broken?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Constant irritation equals vex."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_006",
+      "edge_id": "vex__perplex",
+      "domain": "astronomy",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The star's behavior's effect on the astronomer: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vex-perplex_006_b1",
+          "text": "A distant star shows irregular brightness pulses that do not fit any known model. This activity ___ the astrophysicist.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.2,
+            "perplex": 0.8
+          },
+          "decisive_clue": "Irregular brightness/do not fit model",
+          "reason": "It is an unexplained, complex astronomical observation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        },
+        {
+          "id": "vex-perplex_006_b2",
+          "text": "Even after running dozens of simulations, the data contradicts the current theories. The data continues to ___ the scientist.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.1,
+            "perplex": 0.9
+          },
+          "decisive_clue": "Data contradicts theories",
+          "reason": "It remains a purely scientific conundrum.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The focus is on the cognitive difficulty of explaining the data.",
+      "feedback_deep": "The astronomer is faced with data that cannot be explained by current theories. This is a cognitive challenge. The astronomer is not being 'bothered' in an emotional sense; they are trying to comprehend a complex phenomenon.",
+      "contrast_rule": "Scientific bewilderment equals perplex.",
+      "hints": {
+        "attention": "Is the astronomer's data annoying, or just impossible to understand?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Scientific bewilderment equals perplex."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_010",
+      "edge_id": "vex__perplex",
+      "domain": "abstract",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The riddle's effect on the student: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vex-perplex_010_b1",
+          "text": "The professor gives the class a long riddle with seemingly contradictory premises. It is ___ to the student.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.2,
+            "perplex": 0.8
+          },
+          "decisive_clue": "Contradictory premises",
+          "reason": "It's a logical problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        },
+        {
+          "id": "vex-perplex_010_b2",
+          "text": "They have spent five hours on it, and it seems to have no solution despite dozens of hints. The sheer length of the riddle now begins to ___ the student.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.7,
+            "perplex": 0.3
+          },
+          "decisive_clue": "Five hours/no solution",
+          "reason": "The persistent, unsolvable riddle is now just irritating.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The shift from being stumped by a puzzle to being irritated by its unsolvability dictates the word change.",
+      "feedback_deep": "The riddle is a cognitive challenge initially (perplex). After five hours of failure, it has become an annoying, persistent obstacle to their progress (vex).",
+      "contrast_rule": "Confusion flips to irritation.",
+      "hints": {
+        "attention": "Is the student just thinking, or are they losing their patience?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Confusion flips to irritation."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_014",
+      "edge_id": "vex__perplex",
+      "domain": "abstract",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "The situation's effect on the researcher: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vex-perplex_014_b1",
+          "text": "The new historical document contradicts every known account of the era. The facts ___ the scholar.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.2,
+            "perplex": 0.8
+          },
+          "decisive_clue": "Contradicts every known account",
+          "reason": "It is a logical, cognitive mystery.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        },
+        {
+          "id": "vex-perplex_014_b2",
+          "text": "The scholar spends weeks trying to find any evidence for the document's claim, but finds nothing. The document continues to ___ the researcher.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.1,
+            "perplex": 0.9
+          },
+          "decisive_clue": "Spends weeks finding nothing/contradicts account",
+          "reason": "It's still just a difficult scientific problem to resolve, not an emotional annoyance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        }
+      ],
+      "feedback_short": "It's a persistent cognitive struggle, not an emotional irritation.",
+      "feedback_deep": "Even if the process takes weeks (suggesting persistence, which can mislead towards 'vex'), the fundamental nature of the problem is cognitive: how to resolve contradictory historical data. It is a puzzle, not a source of personal annoyance.",
+      "contrast_rule": "Cognitive struggle, however persistent, is perplex.",
+      "hints": {
+        "attention": "Is the researcher personally annoyed, or just intellectually stumped?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Cognitive struggle, however persistent, is perplex."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_015",
+      "edge_id": "vex__perplex",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "The neighbor's habit's effect on the resident: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vex-perplex_015_b1",
+          "text": "The neighbor talks to himself very loudly at all hours of the night. It is starting to ___ the family next door.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.8,
+            "perplex": 0.2
+          },
+          "decisive_clue": "Loudly at all hours (annoyance)",
+          "reason": "It is a persistent, annoying noise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        },
+        {
+          "id": "vex-perplex_015_b2",
+          "text": "They later learn he is practicing for a very intense theater role, but the noise remains just as loud. His loud practice continues to ___ them.",
+          "best_word": "vex",
+          "fit": {
+            "vex": 0.7,
+            "perplex": 0.3
+          },
+          "decisive_clue": "Loud/remains just as loud",
+          "reason": "Knowing *why* he's doing it doesn't make the noise any less irritating or persistent.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "perplex": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Knowledge of the reason doesn't reduce the irritation.",
+      "feedback_deep": "Knowing the neighbor is practicing theater might resolve the confusion about *why* the noise is happening, but it doesn't solve the problem: the noise is still loud and annoying, and therefore continues to 'vex' them.",
+      "contrast_rule": "Irritation is independent of understanding the reason.",
+      "hints": {
+        "attention": "Is the noise still annoying?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Irritation is independent of understanding the reason."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vex-perplex_018",
+      "edge_id": "vex__perplex",
+      "domain": "botany",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "The plant's behavior's effect on the researcher: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vex-perplex_018_b1",
+          "text": "The research plant's leaves change color in response to sound, which makes no sense to the scientists. The behavior ___ the team.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.2,
+            "perplex": 0.8
+          },
+          "decisive_clue": "Change color in response to sound/makes no sense",
+          "reason": "It's a scientific mystery.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        },
+        {
+          "id": "vex-perplex_018_b2",
+          "text": "They then discover that the sound is actually vibrations that the plant detects. They are no longer ___ by the *how*, but the speed at which it reacts is still ___.",
+          "best_word": "perplex",
+          "fit": {
+            "vex": 0.1,
+            "perplex": 0.9
+          },
+          "decisive_clue": "Speed at which it reacts",
+          "reason": "Even though they understand the mechanism, they are still confounded by the speed (a new cognitive mystery).",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vex": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The focus shifted to a new, complex puzzle.",
+      "feedback_deep": "While they understood the mechanism (vibrations), the speed of the reaction remains incomprehensible. It's a new scientific puzzle, so 'perplex' remains the correct word.",
+      "contrast_rule": "Cognitive struggle stays cognitive.",
+      "hints": {
+        "attention": "Did the team stop being confused?",
+        "axis": "Whether the primary effect is annoyance/frustration (vex) or cognitive confusion/inability to grasp (perplex).",
+        "contrast": "Cognitive struggle stays cognitive."
+      },
+      "qa": "pass"
+    }
+  ]
+}

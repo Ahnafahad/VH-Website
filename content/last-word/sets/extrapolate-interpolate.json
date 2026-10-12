@@ -1,0 +1,420 @@
+{
+  "schema_version": 1,
+  "set_id": "extrapolate-interpolate",
+  "title": "extrapolate / interpolate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[75]",
+    "source_pair_id": 323,
+    "qa": {
+      "pass": 3,
+      "revised": 3,
+      "rejected": 4
+    }
+  },
+  "words": [
+    {
+      "word": "extrapolate",
+      "sense": "estimate outside the range of observed measurements by extending a trend",
+      "connotation": "analytical, sometimes cautious",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming any estimate from a trend goes beyond the data.",
+        "Assuming a missing value is always within known observations."
+      ]
+    },
+    {
+      "word": "interpolate",
+      "sense": "estimate an unknown value between recorded observations",
+      "connotation": "analytical and neutral",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming any estimate from a trend goes beyond the data.",
+        "Assuming a missing value is always within known observations."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "location_of_estimate",
+      "description": "Outside the observed range versus inside a gap bounded by observed points."
+    }
+  ],
+  "edges": [
+    {
+      "id": "extrapolate__interpolate",
+      "a": "extrapolate",
+      "b": "interpolate",
+      "boundary_rule": "Extrapolate estimates beyond observed values or dates; interpolate estimates between known observations.",
+      "clues_a": [
+        "after latest measurement",
+        "beyond highest known value"
+      ],
+      "clues_b": [
+        "between two actual records",
+        "gap bracketed by observations"
+      ],
+      "irrelevant_clues": [
+        "graph color",
+        "spreadsheet program",
+        "presentation style"
+      ],
+      "misconceptions": {
+        "M1": "Assuming any estimate from a trend goes beyond the data.",
+        "M2": "Assuming a missing value is always within known observations.",
+        "M3": "Confusing a forecast with a measured endpoint."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "extrapolate-interpolate_001",
+      "edge_id": "extrapolate__interpolate",
+      "domain": "school_attendance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word describes how Akash estimated the value?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extrapolate-interpolate_001_b1",
+          "text": "Using actual attendance on Monday and Tuesday, he predicts Wednesday's number.",
+          "best_word": "extrapolate",
+          "fit": {
+            "extrapolate": 0.93,
+            "interpolate": 0.14
+          },
+          "decisive_clue": "Wednesday lies beyond the latest actual attendance",
+          "reason": "Wednesday lies beyond the latest actual attendance, so he extrapolates rather than interpolates.",
+          "shift_type": "initial",
+          "misconception_by_wrong_choice": {}
+        },
+        {
+          "id": "extrapolate-interpolate_001_b2",
+          "text": "He presents the prediction in a neatly coloured chart.",
+          "best_word": "extrapolate",
+          "fit": {
+            "extrapolate": 0.93,
+            "interpolate": 0.14
+          },
+          "decisive_clue": "Wednesday remains beyond the latest actual attendance",
+          "reason": "The chart presentation does not change that Wednesday lies beyond the recorded range, so extrapolate remains the precise word.",
+          "shift_type": "stay",
+          "misconception_by_wrong_choice": {}
+        }
+      ],
+      "feedback_short": "Wednesday is beyond the latest recorded attendance, so the estimate is extrapolated.",
+      "feedback_deep": "Extrapolate estimates beyond observed values or dates; interpolate estimates between known observations. Akash predicts Wednesday using records only through Tuesday, so the target lies beyond the observed range.",
+      "contrast_rule": "Extrapolate extends out; interpolate fills in.",
+      "hints": {
+        "attention": "Check whether the estimated point is beyond the recorded observations or between them.",
+        "axis": "Outside the observed range versus inside a gap bounded by observed points.",
+        "contrast": "Extrapolate extends out; interpolate fills in."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "extrapolate-interpolate_002",
+      "edge_id": "extrapolate__interpolate",
+      "domain": "cafe_sales",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word describes how Bea estimated the value?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "extrapolate-interpolate_002_b1",
+          "text": "She predicts the 8 p.m. crowd from recorded counts at 6 and 7 p.m.",
+          "best_word": "extrapolate",
+          "fit": {
+            "extrapolate": 0.95,
+            "interpolate": 0.18
+          },
+          "decisive_clue": "8 p.m. is beyond both recorded counts",
+          "reason": "8 p.m. is beyond both recorded counts; this favors extrapolate rather than interpolate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "interpolate": "M2"
+          }
+        },
+        {
+          "id": "extrapolate-interpolate_002_b2",
+          "text": "She finds the recorded 9 p.m. count and revises the 8 p.m. estimate using 7 and 9 p.m.",
+          "best_word": "interpolate",
+          "fit": {
+            "extrapolate": 0.18,
+            "interpolate": 0.95
+          },
+          "decisive_clue": "the target now lies between two recorded counts",
+          "reason": "The target now lies between two recorded counts; this favors interpolate rather than extrapolate.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "extrapolate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The target now lies between two recorded counts points to interpolate, not extrapolate.",
+      "feedback_deep": "Extrapolate estimates beyond observed values or dates; interpolate estimates between known observations. Here, Bea's situation ultimately hinges on this clue: the target now lies between two recorded counts. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Extrapolate extends out; interpolate fills in.",
+      "hints": {
+        "attention": "Check whether actual recorded points lie on both sides of the estimate.",
+        "axis": "Outside the observed range versus inside a gap bounded by observed points.",
+        "contrast": "Extrapolate extends out; interpolate fills in."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extrapolate-interpolate_003",
+      "edge_id": "extrapolate__interpolate",
+      "domain": "daily_expenses",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word describes how Chidi estimated the value?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "extrapolate-interpolate_003_b1",
+          "text": "His expense log ends on Thursday, but he projects what he might spend on Saturday.",
+          "best_word": "extrapolate",
+          "fit": {
+            "extrapolate": 0.91,
+            "interpolate": 0.1
+          },
+          "decisive_clue": "Saturday comes after the last recorded day",
+          "reason": "Saturday comes after the last recorded day; this favors extrapolate rather than interpolate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "interpolate": "M2"
+          }
+        },
+        {
+          "id": "extrapolate-interpolate_003_b2",
+          "text": "He checks again and finds Saturday is still beyond his last recorded expense.",
+          "best_word": "extrapolate",
+          "fit": {
+            "extrapolate": 0.91,
+            "interpolate": 0.1
+          },
+          "decisive_clue": "Saturday remains beyond the last actual expense record",
+          "reason": "Saturday remains beyond the last actual expense record; this favors extrapolate rather than interpolate.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "interpolate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Saturday remains beyond the last actual expense record points to extrapolate, not interpolate.",
+      "feedback_deep": "Extrapolate estimates beyond observed values or dates; interpolate estimates between known observations. Here, Chidi's situation ultimately hinges on this clue: Saturday remains beyond the last actual expense record. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Extrapolate extends out; interpolate fills in.",
+      "hints": {
+        "attention": "Check whether actual recorded points lie on both sides of the estimate.",
+        "axis": "Outside the observed range versus inside a gap bounded by observed points.",
+        "contrast": "Extrapolate extends out; interpolate fills in."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extrapolate-interpolate_005",
+      "edge_id": "extrapolate__interpolate",
+      "domain": "sports_practice_times",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word describes how Eren estimated the value?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extrapolate-interpolate_005_b1",
+          "text": "He uses recorded lap times for Monday and Friday to fill in an unrecorded Wednesday result.",
+          "best_word": "interpolate",
+          "fit": {
+            "extrapolate": 0.18,
+            "interpolate": 0.95
+          },
+          "decisive_clue": "Wednesday falls between two measured days",
+          "reason": "Wednesday falls between recorded Monday and Friday measurements, so he interpolates rather than extrapolates.",
+          "shift_type": "initial",
+          "misconception_by_wrong_choice": {}
+        },
+        {
+          "id": "extrapolate-interpolate_005_b2",
+          "text": "The Friday lap record is confirmed by the stopwatch log.",
+          "best_word": "interpolate",
+          "fit": {
+            "extrapolate": 0.18,
+            "interpolate": 0.95
+          },
+          "decisive_clue": "Wednesday remains between the confirmed Monday and Friday measurements",
+          "reason": "Confirming Friday does not change the target's position: Wednesday remains between two actual measurements, so interpolate remains correct.",
+          "shift_type": "stay",
+          "misconception_by_wrong_choice": {}
+        }
+      ],
+      "feedback_short": "Wednesday lies between the recorded Monday and Friday times, so the estimate is interpolated.",
+      "feedback_deep": "Interpolate estimates an unknown value between recorded observations; extrapolate estimates beyond them. Eren's target is Wednesday, bracketed by actual Monday and Friday lap times.",
+      "contrast_rule": "Extrapolate extends out; interpolate fills in.",
+      "hints": {
+        "attention": "Check whether actual recorded points lie on both sides of the estimate.",
+        "axis": "Outside the observed range versus inside a gap bounded by observed points.",
+        "contrast": "Extrapolate extends out; interpolate fills in."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "extrapolate-interpolate_006",
+      "edge_id": "extrapolate__interpolate",
+      "domain": "online_shop_orders",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word describes how Fatima estimated the value?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "extrapolate-interpolate_006_b1",
+          "text": "Her order records end in August, so she extends their pattern to estimate October orders.",
+          "best_word": "extrapolate",
+          "fit": {
+            "extrapolate": 0.91,
+            "interpolate": 0.1
+          },
+          "decisive_clue": "October is beyond the latest observed month",
+          "reason": "October is beyond the latest observed month, so she extrapolates rather than interpolates.",
+          "shift_type": "initial",
+          "misconception_by_wrong_choice": {}
+        },
+        {
+          "id": "extrapolate-interpolate_006_b2",
+          "text": "She switches from a paper notebook to a spreadsheet.",
+          "best_word": "extrapolate",
+          "fit": {
+            "extrapolate": 0.91,
+            "interpolate": 0.1
+          },
+          "decisive_clue": "October remains beyond the latest observed month",
+          "reason": "Changing recording tools does not change the dates of the observations; October remains beyond August, so extrapolate remains correct.",
+          "shift_type": "false_shift",
+          "misconception_by_wrong_choice": {}
+        }
+      ],
+      "feedback_short": "Changing tools does not alter the fact that October is beyond the latest observed month.",
+      "feedback_deep": "Extrapolate estimates beyond observed values or dates; interpolate estimates between known observations. Fatima's October estimate remains an extrapolation because her records still end in August.",
+      "contrast_rule": "Extrapolate extends out; interpolate fills in.",
+      "hints": {
+        "attention": "Ignore presentation details and check the target's position relative to the observations.",
+        "axis": "Outside the observed range versus inside a gap bounded by observed points.",
+        "contrast": "Extrapolate extends out; interpolate fills in."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "extrapolate-interpolate_008",
+      "edge_id": "extrapolate__interpolate",
+      "domain": "family_electricity",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word describes how Hiba estimated the value?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "extrapolate-interpolate_008_b1",
+          "text": "She uses actual January and March bills to estimate February's missing amount.",
+          "best_word": "interpolate",
+          "fit": {
+            "extrapolate": 0.18,
+            "interpolate": 0.95
+          },
+          "decisive_clue": "February falls inside two known months",
+          "reason": "February falls inside two known months; this favors interpolate rather than extrapolate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "extrapolate": "M1"
+          }
+        },
+        {
+          "id": "extrapolate-interpolate_008_b2",
+          "text": "She checks the dates and confirms that both surrounding bills are real, not forecasts.",
+          "best_word": "interpolate",
+          "fit": {
+            "extrapolate": 0.18,
+            "interpolate": 0.95
+          },
+          "decisive_clue": "verified observations bracket the missing value",
+          "reason": "Verified observations bracket the missing value; this favors interpolate rather than extrapolate.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "extrapolate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Verified observations bracket the missing value points to interpolate, not extrapolate.",
+      "feedback_deep": "Extrapolate estimates beyond observed values or dates; interpolate estimates between known observations. Here, Hiba's situation ultimately hinges on this clue: verified observations bracket the missing value. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Extrapolate extends out; interpolate fills in.",
+      "hints": {
+        "attention": "Check whether actual recorded points lie on both sides of the estimate.",
+        "axis": "Outside the observed range versus inside a gap bounded by observed points.",
+        "contrast": "Extrapolate extends out; interpolate fills in."
+      },
+      "qa": "pass"
+    }
+  ]
+}

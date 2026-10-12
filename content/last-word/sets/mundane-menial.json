@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "mundane-menial",
+  "title": "mundane / menial",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[87]",
+    "source_pair_id": 371,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "mundane",
+      "sense": "ordinary and unremarkable",
+      "connotation": "neutral to mildly negative",
+      "register": "standard",
+      "misconceptions": [
+        "Automatically means low-status work."
+      ]
+    },
+    {
+      "word": "menial",
+      "sense": "low-status and requiring little skill",
+      "connotation": "often dismissive",
+      "register": "standard",
+      "misconceptions": [
+        "Every repetitive task is menial."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "ordinariness_vs_status",
+      "description": "Mundane tasks are ordinary or dull regardless of status, while menial tasks involve low-skill, low-status work regardless of novelty."
+    }
+  ],
+  "edges": [
+    {
+      "id": "mundane__menial",
+      "a": "mundane",
+      "b": "menial",
+      "boundary_rule": "Mundane tasks are ordinary or dull regardless of status, while menial tasks involve low-skill, low-status work regardless of novelty.",
+      "clues_a": [
+        "routine",
+        "everyday",
+        "unremarkable"
+      ],
+      "clues_b": [
+        "lowest-status assignment",
+        "requires little training",
+        "subordinate work"
+      ],
+      "irrelevant_clues": [
+        "how often a task occurs",
+        "how dirty the task looks",
+        "whether the worker is bored"
+      ],
+      "misconceptions": {
+        "M1": "Thinking routine automatically means low-status.",
+        "M2": "Thinking low-status means repetitive.",
+        "M3": "Assuming challenging routine work is menial."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "mundane-menial_001",
+      "edge_id": "mundane__menial",
+      "domain": "school_office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ravi's daily duty?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "mundane-menial_001_b1",
+          "text": "Ravi, the school’s head administrator, signs the usual attendance report every morning.",
+          "best_word": "mundane",
+          "fit": {
+            "mundane": 0.91,
+            "menial": 0.28
+          },
+          "decisive_clue": "routine paperwork despite senior role",
+          "reason": "A senior official doing routine work is not necessarily doing low-status work.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "menial": "M2"
+          }
+        },
+        {
+          "id": "mundane-menial_001_b2",
+          "text": "He uses a new blue pen today, but the report is the same standard paperwork.",
+          "best_word": "mundane",
+          "fit": {
+            "mundane": 0.94,
+            "menial": 0.24
+          },
+          "decisive_clue": "pen choice does not alter status",
+          "reason": "Changing the pen leaves the report an ordinary daily task.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "menial": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Changing the pen leaves the report an ordinary daily task.",
+      "feedback_deep": "Mundane describes the everyday or unremarkable. Menial describes work that needs little skill and is treated as low-status; the two qualities may overlap but are not identical. Changing the pen leaves the report an ordinary daily task.",
+      "contrast_rule": "Mundane is ordinary; menial is low-status work.",
+      "hints": {
+        "attention": "Think about routine versus rank.",
+        "axis": "Mundane tasks are ordinary or dull regardless of status, while menial tasks involve low-skill, low-status work regardless of novelty.",
+        "contrast": "Mundane is ordinary; menial is low-status work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "mundane-menial_002",
+      "edge_id": "mundane__menial",
+      "domain": "event_setup",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Amina's assigned work?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "mundane-menial_002_b1",
+          "text": "Amina is asked to fold identical programmes before each performance.",
+          "best_word": "mundane",
+          "fit": {
+            "mundane": 0.91,
+            "menial": 0.28
+          },
+          "decisive_clue": "repeated ordinary activity",
+          "reason": "Repetition alone indicates ordinariness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "menial": "M3"
+          }
+        },
+        {
+          "id": "mundane-menial_002_b2",
+          "text": "She learns that this bottom-rank assignment needs no training and is always handed to the least senior helpers.",
+          "best_word": "menial",
+          "fit": {
+            "mundane": 0.24,
+            "menial": 0.94
+          },
+          "decisive_clue": "explicit low skill and lowest rank",
+          "reason": "The added low-skill, low-rank assignment makes status the defining feature.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The added low-skill, low-rank assignment makes status the defining feature.",
+      "feedback_deep": "Mundane describes the everyday or unremarkable. Menial describes work that needs little skill and is treated as low-status; the two qualities may overlap but are not identical. The added low-skill, low-rank assignment makes status the defining feature.",
+      "contrast_rule": "Mundane is ordinary; menial is low-status work.",
+      "hints": {
+        "attention": "Look at who gets the task and why.",
+        "axis": "Mundane tasks are ordinary or dull regardless of status, while menial tasks involve low-skill, low-status work regardless of novelty.",
+        "contrast": "Mundane is ordinary; menial is low-status work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "mundane-menial_003",
+      "edge_id": "mundane__menial",
+      "domain": "warehouse_shift",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Jonas's assignment?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "mundane-menial_003_b1",
+          "text": "Jonas spends his shift carrying boxes on request, a task requiring almost no training and given only to the lowest-ranked temporary helpers.",
+          "best_word": "menial",
+          "fit": {
+            "mundane": 0.28,
+            "menial": 0.91
+          },
+          "decisive_clue": "low-skill lowest-ranked work",
+          "reason": "The job description, not its sequence, establishes its status.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M1"
+          }
+        },
+        {
+          "id": "mundane-menial_003_b2",
+          "text": "A supervisor changes the order in which he carries them.",
+          "best_word": "menial",
+          "fit": {
+            "mundane": 0.24,
+            "menial": 0.94
+          },
+          "decisive_clue": "order of boxes changes nothing",
+          "reason": "Changing the sequence leaves the same low-skill subordinate work.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Changing the sequence leaves the same low-skill subordinate work.",
+      "feedback_deep": "Mundane describes the everyday or unremarkable. Menial describes work that needs little skill and is treated as low-status; the two qualities may overlap but are not identical. Changing the sequence leaves the same low-skill subordinate work.",
+      "contrast_rule": "Mundane is ordinary; menial is low-status work.",
+      "hints": {
+        "attention": "Ignore the order of the boxes.",
+        "axis": "Mundane tasks are ordinary or dull regardless of status, while menial tasks involve low-skill, low-status work regardless of novelty.",
+        "contrast": "Mundane is ordinary; menial is low-status work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "mundane-menial_004",
+      "edge_id": "mundane__menial",
+      "domain": "family_breakfast",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elena's household activity?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "mundane-menial_004_b1",
+          "text": "Elena sets out plates and makes the same breakfast every weekday.",
+          "best_word": "mundane",
+          "fit": {
+            "mundane": 0.91,
+            "menial": 0.28
+          },
+          "decisive_clue": "ordinary domestic routine",
+          "reason": "These are ordinary repeated activities.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "menial": "M2"
+          }
+        },
+        {
+          "id": "mundane-menial_004_b2",
+          "text": "She is simply sharing chores with her family, not serving anyone as a low-ranked worker.",
+          "best_word": "mundane",
+          "fit": {
+            "mundane": 0.94,
+            "menial": 0.24
+          },
+          "decisive_clue": "no subordinate work hierarchy",
+          "reason": "Sharing household work does not make the activity a low-status assigned job.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "menial": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Sharing household work does not make the activity a low-status assigned job.",
+      "feedback_deep": "Mundane describes the everyday or unremarkable. Menial describes work that needs little skill and is treated as low-status; the two qualities may overlap but are not identical. Sharing household work does not make the activity a low-status assigned job.",
+      "contrast_rule": "Mundane is ordinary; menial is low-status work.",
+      "hints": {
+        "attention": "Who, if anyone, ranks beneath whom?",
+        "axis": "Mundane tasks are ordinary or dull regardless of status, while menial tasks involve low-skill, low-status work regardless of novelty.",
+        "contrast": "Mundane is ordinary; menial is low-status work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "mundane-menial_010",
+      "edge_id": "mundane__menial",
+      "domain": "online_marketplace",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nina's packing job?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "mundane-menial_010_b1",
+          "text": "Nina is hired only to put plain labels on parcels, with no training or responsibility for decisions.",
+          "best_word": "menial",
+          "fit": {
+            "mundane": 0.28,
+            "menial": 0.91
+          },
+          "decisive_clue": "low-skill subordinate packing",
+          "reason": "The role, not the products, determines the label.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M2"
+          }
+        },
+        {
+          "id": "mundane-menial_010_b2",
+          "text": "Even when the parcels contain expensive products, she remains in the lowest-ranked packing role.",
+          "best_word": "menial",
+          "fit": {
+            "mundane": 0.24,
+            "menial": 0.94
+          },
+          "decisive_clue": "high product value does not raise task status",
+          "reason": "Expensive contents do not change the low-status, low-skill nature of her assignment.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Expensive contents do not change the low-status, low-skill nature of her assignment.",
+      "feedback_deep": "Mundane describes the everyday or unremarkable. Menial describes work that needs little skill and is treated as low-status; the two qualities may overlap but are not identical. Expensive contents do not change the low-status, low-skill nature of her assignment.",
+      "contrast_rule": "Mundane is ordinary; menial is low-status work.",
+      "hints": {
+        "attention": "Look at the worker’s responsibility, not the contents.",
+        "axis": "Mundane tasks are ordinary or dull regardless of status, while menial tasks involve low-skill, low-status work regardless of novelty.",
+        "contrast": "Mundane is ordinary; menial is low-status work."
+      },
+      "qa": "pass"
+    }
+  ]
+}

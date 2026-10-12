@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "set_id": "specious-spurious",
+  "title": "specious / spurious",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[157]",
+    "source_pair_id": 663,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "specious",
+      "sense": "Appearing reasonable but misleading on closer examination",
+      "connotation": "critical",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming every false item is specious.",
+        "Assuming elegant presentation makes a fake genuine."
+      ]
+    },
+    {
+      "word": "spurious",
+      "sense": "Not genuine, authentic, or valid",
+      "connotation": "critical",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming every false item is specious.",
+        "Treating an exposed reasoning flaw as proof of forgery."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "plausible_surface_vs_authenticity",
+      "description": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not."
+    }
+  ],
+  "edges": [
+    {
+      "id": "specious__spurious",
+      "a": "specious",
+      "b": "spurious",
+      "boundary_rule": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+      "clues_a": [
+        "sounds logical until examined",
+        "hides a faulty inference"
+      ],
+      "clues_b": [
+        "fabricated or altered",
+        "no genuine source"
+      ],
+      "irrelevant_clues": [
+        "polished presentation",
+        "public attention"
+      ],
+      "misconceptions": {
+        "M1": "Assuming every false item is specious.",
+        "M2": "Assuming elegant presentation makes a fake genuine.",
+        "M3": "Treating an exposed reasoning flaw as proof of forgery."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "specious-spurious_001",
+      "edge_id": "specious__spurious",
+      "domain": "school_survey",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amara's argument about the school timetable?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "specious-spurious_001_b1",
+          "text": "Amara says the new timetable suits everyone because all twelve students she asked liked it.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.91,
+            "spurious": 0.26
+          },
+          "decisive_clue": "small sample presented as universal",
+          "reason": "The initial evidence is small sample presented as universal; it best supports specious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_001_b2",
+          "text": "She had questioned only pupils who live next to school, though many others travel an hour.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.93,
+            "spurious": 0.21
+          },
+          "decisive_clue": "biased group disguised as universal evidence",
+          "reason": "The sample never justified a claim about everyone; the added detail exposes its misleading reach.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The sample never justified a claim about everyone; the added detail exposes its misleading reach.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. The sample never justified a claim about everyone; the added detail exposes its misleading reach.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Look at who the evidence represents.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "specious-spurious_002",
+      "edge_id": "specious__spurious",
+      "domain": "neighbourhood_notice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sofia's notice about the street closure?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "specious-spurious_002_b1",
+          "text": "Sofia posts a closure notice claiming to be from the council, which confirms it issued no such notice.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.91,
+            "specious": 0.26
+          },
+          "decisive_clue": "invented official reference",
+          "reason": "The initial evidence is invented official reference; it best supports spurious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_002_b2",
+          "text": "She prints it on thick paper with a gold border.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.93,
+            "specious": 0.21
+          },
+          "decisive_clue": "invented official reference",
+          "reason": "Decorative paper cannot supply an authentic council record.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Decorative paper cannot supply an authentic council record.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. Decorative paper cannot supply an authentic council record.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Check whether the notice comes from its claimed source.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "specious-spurious_003",
+      "edge_id": "specious__spurious",
+      "domain": "online_shopping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Jun's claim about the phone cover?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "specious-spurious_003_b1",
+          "text": "Jun says a cover must protect phones well because its package looks expensive.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.91,
+            "spurious": 0.26
+          },
+          "decisive_clue": "appearance treated as proof of performance",
+          "reason": "The initial evidence is appearance treated as proof of performance; it best supports specious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_003_b2",
+          "text": "The packaging also won a design prize last year.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.93,
+            "spurious": 0.21
+          },
+          "decisive_clue": "appearance treated as proof of performance",
+          "reason": "A design prize does not make packaging a sound test of protection.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A design prize does not make packaging a sound test of protection.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. A design prize does not make packaging a sound test of protection.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Ask whether the reason supports the conclusion.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "specious-spurious_004",
+      "edge_id": "specious__spurious",
+      "domain": "school_certificates",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Ravi's competition certificate?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "specious-spurious_004_b1",
+          "text": "Ravi displays a certificate that names a competition the organizers confirm never existed.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.91,
+            "specious": 0.26
+          },
+          "decisive_clue": "nonexistent issuing event",
+          "reason": "The initial evidence is nonexistent issuing event; it best supports spurious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_004_b2",
+          "text": "The certificate includes a realistic-looking signature and embossed seal.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.93,
+            "specious": 0.21
+          },
+          "decisive_clue": "nonexistent issuing event",
+          "reason": "Official-looking details do not make the invented competition real.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Official-looking details do not make the invented competition real.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. Official-looking details do not make the invented competition real.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Focus on the issuing event, not the seal.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "specious-spurious_005",
+      "edge_id": "specious__spurious",
+      "domain": "travel_booking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mina's booking confirmation?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "specious-spurious_005_b1",
+          "text": "Mina receives a hotel confirmation, but the hotel confirms it never issued that booking or code.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.91,
+            "specious": 0.26
+          },
+          "decisive_clue": "booking has no authentic record",
+          "reason": "The initial evidence is booking has no authentic record; it best supports spurious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_005_b2",
+          "text": "The hotel checks the date, guest name, and payment list; none contains her reservation.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.93,
+            "specious": 0.21
+          },
+          "decisive_clue": "no matching reservation anywhere",
+          "reason": "Multiple missing records reinforce that the confirmation is not genuine.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Multiple missing records reinforce that the confirmation is not genuine.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. Multiple missing records reinforce that the confirmation is not genuine.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Look at the independent records.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "specious-spurious_006",
+      "edge_id": "specious__spurious",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Elif's explanation for the team's success?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "specious-spurious_006_b1",
+          "text": "Elif insists the team's new socks caused its winning streak because the victories began that week.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.91,
+            "spurious": 0.26
+          },
+          "decisive_clue": "timing confused with causation",
+          "reason": "The initial evidence is timing confused with causation; it best supports specious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_006_b2",
+          "text": "She knows the same week also brought daily practice, but leaves that out of her explanation.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.93,
+            "spurious": 0.21
+          },
+          "decisive_clue": "timing confused with causation",
+          "reason": "A different possible cause exposes the weakness of the neat-sounding explanation.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A different possible cause exposes the weakness of the neat-sounding explanation.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. A different possible cause exposes the weakness of the neat-sounding explanation.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Look for an alternative cause.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "specious-spurious_007",
+      "edge_id": "specious__spurious",
+      "domain": "family_budgeting",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kofi's advice about household spending?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "specious-spurious_007_b1",
+          "text": "Kofi argues that buying two expensive kettles will save money because each has a discount sticker.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.91,
+            "spurious": 0.26
+          },
+          "decisive_clue": "discount mistaken for overall saving",
+          "reason": "The initial evidence is discount mistaken for overall saving; it best supports specious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_007_b2",
+          "text": "He has not compared either price with the family's actual need for one kettle.",
+          "best_word": "specious",
+          "fit": {
+            "specious": 0.93,
+            "spurious": 0.21
+          },
+          "decisive_clue": "mistaking a markdown for genuine saving",
+          "reason": "The extra purchase makes the supposed saving even less convincing.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "spurious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The extra purchase makes the supposed saving even less convincing.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. The extra purchase makes the supposed saving even less convincing.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Consider whether the saving survives the whole calculation.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "specious-spurious_008",
+      "edge_id": "specious__spurious",
+      "domain": "online_fundraiser",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Diego's fundraising figures?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "specious-spurious_008_b1",
+          "text": "Diego uploads a donation total copied from an image someone edited to add extra zeros.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.91,
+            "specious": 0.26
+          },
+          "decisive_clue": "altered numbers presented as real",
+          "reason": "The initial evidence is altered numbers presented as real; it best supports spurious.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M1"
+          }
+        },
+        {
+          "id": "specious-spurious_008_b2",
+          "text": "He later discovers the original receipt shows one hundredth of the posted amount.",
+          "best_word": "spurious",
+          "fit": {
+            "spurious": 0.93,
+            "specious": 0.21
+          },
+          "decisive_clue": "altered numbers presented as real",
+          "reason": "The original receipt confirms the displayed total is fabricated, not merely badly reasoned.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "specious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The original receipt confirms the displayed total is fabricated, not merely badly reasoned.",
+      "feedback_deep": "Specious means superficially persuasive but faulty; spurious means false, invented, or inauthentic. The original receipt confirms the displayed total is fabricated, not merely badly reasoned.",
+      "contrast_rule": "Specious tricks the reasoning; spurious fakes the source.",
+      "hints": {
+        "attention": "Examine where the number came from.",
+        "axis": "Specious describes an apparently convincing argument that fails scrutiny; spurious describes something counterfeit or invalid, whether persuasive or not.",
+        "contrast": "Specious tricks the reasoning; spurious fakes the source."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "surrogate-delegate",
+  "title": "surrogate / delegate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[21]",
+    "source_pair_id": 90,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "surrogate",
+      "sense": "A substitute acting in the place of another person or thing",
+      "connotation": "neutral",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Assuming anyone at a meeting represents a group.",
+        "Confusing replacing one absent person with carrying a group's instructions."
+      ]
+    },
+    {
+      "word": "delegate",
+      "sense": "An authorized representative acting for a group",
+      "connotation": "formal",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Assuming anyone at a meeting represents a group.",
+        "Ignoring who authorized the person and whose role they fill."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "replaces_individual_vs_represents_group",
+      "description": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests."
+    }
+  ],
+  "edges": [
+    {
+      "id": "surrogate__delegate",
+      "a": "surrogate",
+      "b": "delegate",
+      "boundary_rule": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests.",
+      "clues_a": [
+        "fills an absent person's role",
+        "substitutes for a missing original"
+      ],
+      "clues_b": [
+        "chosen by a group",
+        "speaks or votes on collective behalf"
+      ],
+      "irrelevant_clues": [
+        "wears a badge",
+        "speaks at a podium"
+      ],
+      "misconceptions": {
+        "M1": "Assuming anyone at a meeting represents a group.",
+        "M2": "Confusing replacing one absent person with carrying a group's instructions.",
+        "M3": "Ignoring who authorized the person and whose role they fill."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "surrogate-delegate_001",
+      "edge_id": "surrogate__delegate",
+      "domain": "family_graduation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mariam's role at the graduation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "surrogate-delegate_001_b1",
+          "text": "Mariam attends in her absent brother's place and accepts his certificate for him.",
+          "best_word": "surrogate",
+          "fit": {
+            "surrogate": 0.91,
+            "delegate": 0.26
+          },
+          "decisive_clue": "fills the place of one absent individual",
+          "reason": "The initial evidence is fills the place of one absent individual; it best supports surrogate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "delegate": "M1"
+          }
+        },
+        {
+          "id": "surrogate-delegate_001_b2",
+          "text": "She later carries the certificate directly to him.",
+          "best_word": "surrogate",
+          "fit": {
+            "surrogate": 0.93,
+            "delegate": 0.21
+          },
+          "decisive_clue": "acts in place of the named absent person",
+          "reason": "Delivering the certificate completes the replacement role; she speaks for no group.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "delegate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Delivering the certificate completes the replacement role; she speaks for no group.",
+      "feedback_deep": "Surrogate means stand-in or replacement; delegate means group representative with a mandate. Delivering the certificate completes the replacement role; she speaks for no group.",
+      "contrast_rule": "A surrogate fills someone's place; a delegate carries a group's voice.",
+      "hints": {
+        "attention": "Whose exact place is being filled?",
+        "axis": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests.",
+        "contrast": "A surrogate fills someone's place; a delegate carries a group's voice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surrogate-delegate_002",
+      "edge_id": "surrogate__delegate",
+      "domain": "student_council_conference",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zainab at the conference?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "surrogate-delegate_002_b1",
+          "text": "Students elect Zainab to speak and vote for their entire year group at the conference.",
+          "best_word": "delegate",
+          "fit": {
+            "delegate": 0.91,
+            "surrogate": 0.26
+          },
+          "decisive_clue": "elected representative of a defined group",
+          "reason": "The initial evidence is elected representative of a defined group; it best supports delegate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surrogate": "M1"
+          }
+        },
+        {
+          "id": "surrogate-delegate_002_b2",
+          "text": "She carries a purple notebook into the meeting.",
+          "best_word": "delegate",
+          "fit": {
+            "delegate": 0.93,
+            "surrogate": 0.21
+          },
+          "decisive_clue": "elected representative of a defined group",
+          "reason": "The notebook colour does not change her elected mandate.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surrogate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The notebook colour does not change her elected mandate.",
+      "feedback_deep": "Surrogate means stand-in or replacement; delegate means group representative with a mandate. The notebook colour does not change her elected mandate.",
+      "contrast_rule": "A surrogate fills someone's place; a delegate carries a group's voice.",
+      "hints": {
+        "attention": "Who selected her, and for whom?",
+        "axis": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests.",
+        "contrast": "A surrogate fills someone's place; a delegate carries a group's voice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surrogate-delegate_003",
+      "edge_id": "surrogate__delegate",
+      "domain": "school_play",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sven's role in the school play?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "surrogate-delegate_003_b1",
+          "text": "Sven goes onstage instead of an injured actor and performs the actor's assigned part.",
+          "best_word": "surrogate",
+          "fit": {
+            "surrogate": 0.91,
+            "delegate": 0.26
+          },
+          "decisive_clue": "takes over an unavailable person's role",
+          "reason": "The initial evidence is takes over an unavailable person's role; it best supports surrogate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "delegate": "M1"
+          }
+        },
+        {
+          "id": "surrogate-delegate_003_b2",
+          "text": "The costume is slightly too long for him.",
+          "best_word": "surrogate",
+          "fit": {
+            "surrogate": 0.93,
+            "delegate": 0.21
+          },
+          "decisive_clue": "takes over an unavailable person's role",
+          "reason": "Costume fit has no bearing on whether he is a stand-in.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "delegate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Costume fit has no bearing on whether he is a stand-in.",
+      "feedback_deep": "Surrogate means stand-in or replacement; delegate means group representative with a mandate. Costume fit has no bearing on whether he is a stand-in.",
+      "contrast_rule": "A surrogate fills someone's place; a delegate carries a group's voice.",
+      "hints": {
+        "attention": "What role existed before he arrived?",
+        "axis": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests.",
+        "contrast": "A surrogate fills someone's place; a delegate carries a group's voice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surrogate-delegate_004",
+      "edge_id": "surrogate__delegate",
+      "domain": "employees_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Kenzo in the negotiations?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "surrogate-delegate_004_b1",
+          "text": "Coworkers authorize Kenzo to present their joint demands to management.",
+          "best_word": "delegate",
+          "fit": {
+            "delegate": 0.91,
+            "surrogate": 0.26
+          },
+          "decisive_clue": "explicit authority to speak for coworkers",
+          "reason": "The initial evidence is explicit authority to speak for coworkers; it best supports delegate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surrogate": "M1"
+          }
+        },
+        {
+          "id": "surrogate-delegate_004_b2",
+          "text": "He stands in for another speaker at the start of the session.",
+          "best_word": "delegate",
+          "fit": {
+            "delegate": 0.93,
+            "surrogate": 0.21
+          },
+          "decisive_clue": "explicit authority to speak for coworkers",
+          "reason": "Changing speaking order does not erase his mandate from the employees.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surrogate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Changing speaking order does not erase his mandate from the employees.",
+      "feedback_deep": "Surrogate means stand-in or replacement; delegate means group representative with a mandate. Changing speaking order does not erase his mandate from the employees.",
+      "contrast_rule": "A surrogate fills someone's place; a delegate carries a group's voice.",
+      "hints": {
+        "attention": "Whose demands is he carrying?",
+        "axis": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests.",
+        "contrast": "A surrogate fills someone's place; a delegate carries a group's voice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surrogate-delegate_005",
+      "edge_id": "surrogate__delegate",
+      "domain": "neighbourhood_association",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nora's role in the planning discussion?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "surrogate-delegate_005_b1",
+          "text": "Residents choose Nora to put their shared concerns before the town planners.",
+          "best_word": "delegate",
+          "fit": {
+            "delegate": 0.91,
+            "surrogate": 0.26
+          },
+          "decisive_clue": "collective appointment to represent residents",
+          "reason": "The initial evidence is collective appointment to represent residents; it best supports delegate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "surrogate": "M1"
+          }
+        },
+        {
+          "id": "surrogate-delegate_005_b2",
+          "text": "She reads out the proposals residents approved at their last meeting.",
+          "best_word": "delegate",
+          "fit": {
+            "delegate": 0.93,
+            "surrogate": 0.21
+          },
+          "decisive_clue": "delivers agreed positions on behalf of residents",
+          "reason": "Using the approved proposals reinforces her representative authority.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "surrogate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Using the approved proposals reinforces her representative authority.",
+      "feedback_deep": "Surrogate means stand-in or replacement; delegate means group representative with a mandate. Using the approved proposals reinforces her representative authority.",
+      "contrast_rule": "A surrogate fills someone's place; a delegate carries a group's voice.",
+      "hints": {
+        "attention": "Where did her authority come from?",
+        "axis": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests.",
+        "contrast": "A surrogate fills someone's place; a delegate carries a group's voice."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "surrogate-delegate_006",
+      "edge_id": "surrogate__delegate",
+      "domain": "online_customer_support",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Aisha's position in the recorded welcome video?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "surrogate-delegate_006_b1",
+          "text": "When the usual presenter is away, Aisha appears on screen and reads that presenter's script.",
+          "best_word": "surrogate",
+          "fit": {
+            "surrogate": 0.91,
+            "delegate": 0.26
+          },
+          "decisive_clue": "substitutes for an unavailable presenter",
+          "reason": "The initial evidence is substitutes for an unavailable presenter; it best supports surrogate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "delegate": "M1"
+          }
+        },
+        {
+          "id": "surrogate-delegate_006_b2",
+          "text": "The recording is labeled with the original presenter's usual opening greeting.",
+          "best_word": "surrogate",
+          "fit": {
+            "surrogate": 0.93,
+            "delegate": 0.21
+          },
+          "decisive_clue": "performs an absent person's established function",
+          "reason": "Using the same greeting reinforces that she fills a particular individual's place.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "delegate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Using the same greeting reinforces that she fills a particular individual's place.",
+      "feedback_deep": "Surrogate means stand-in or replacement; delegate means group representative with a mandate. Using the same greeting reinforces that she fills a particular individual's place.",
+      "contrast_rule": "A surrogate fills someone's place; a delegate carries a group's voice.",
+      "hints": {
+        "attention": "Who would normally appear?",
+        "axis": "A surrogate stands in for an absent person or thing; a delegate carries authority to represent a group and its interests.",
+        "contrast": "A surrogate fills someone's place; a delegate carries a group's voice."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "malaise-ennui",
+  "title": "malaise / ennui",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[53]",
+    "source_pair_id": 277,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "malaise",
+      "sense": "A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+      "connotation": "subdued, uneasy",
+      "register": "formal",
+      "misconceptions": [
+        "Treating comfort or a full schedule as proof against weariness.",
+        "Missing when monotony specifically explains dissatisfaction."
+      ]
+    },
+    {
+      "word": "ennui",
+      "sense": "Weariness and dissatisfaction arising specifically from boredom.",
+      "connotation": "weary, literary",
+      "register": "literary",
+      "misconceptions": [
+        "Calling any low mood boredom even without a cause.",
+        "Missing when monotony specifically explains dissatisfaction."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "vague_unease_vs_boredom_caused_weariness",
+      "description": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation."
+    }
+  ],
+  "edges": [
+    {
+      "id": "malaise__ennui",
+      "a": "malaise",
+      "b": "ennui",
+      "boundary_rule": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation.",
+      "clues_a": [
+        "unease despite enjoyable plans",
+        "no identifiable source of low spirits",
+        "listlessness across varied situations"
+      ],
+      "clues_b": [
+        "repetitious idle hours",
+        "insufficient mental stimulation",
+        "nothing fresh to do"
+      ],
+      "irrelevant_clues": [
+        "comfortable surroundings",
+        "being punctual",
+        "tired shoes"
+      ],
+      "misconceptions": {
+        "M1": "Calling any low mood boredom even without a cause.",
+        "M2": "Treating comfort or a full schedule as proof against weariness.",
+        "M3": "Missing when monotony specifically explains dissatisfaction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "malaise-ennui_001",
+      "edge_id": "malaise__ennui",
+      "domain": "weekend_breakfast",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Nikhil’s mood on Saturday morning?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "malaise-ennui_001_b1",
+          "text": "Nikhil woke drained and unsettled, although he had slept well and looked forward to the day’s plans.",
+          "best_word": "malaise",
+          "fit": {
+            "malaise": 0.92,
+            "ennui": 0.19
+          },
+          "decisive_clue": "unexplained unease despite anticipated activities",
+          "reason": "Unexplained unease despite anticipated activities. A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ennui": "M1"
+          }
+        },
+        {
+          "id": "malaise-ennui_001_b2",
+          "text": "The unsettled feeling followed him through breakfast, even though he left home on time.",
+          "best_word": "malaise",
+          "fit": {
+            "malaise": 0.92,
+            "ennui": 0.19
+          },
+          "decisive_clue": "punctuality does not explain or remove the same unsettled feeling",
+          "reason": "Punctuality does not explain or remove the same unsettled feeling. A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ennui": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Punctuality does not explain or remove the same unsettled feeling.",
+      "feedback_deep": "Malaise means a vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction; ennui means weariness and dissatisfaction arising specifically from boredom. Here, unexplained unease despite anticipated activities. The new detail does not change the deciding fact: punctuality does not explain or remove the same unsettled feeling. Thus malaise remains the stronger choice.",
+      "contrast_rule": "Malaise has no clear source; ennui grows from having too little to engage you.",
+      "hints": {
+        "attention": "Focus on whether a clear source for the feeling appears.",
+        "axis": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation.",
+        "contrast": "Malaise has no clear source; ennui grows from having too little to engage you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malaise-ennui_002",
+      "edge_id": "malaise__ennui",
+      "domain": "repetitive_shift",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Marta’s feeling during her afternoon shifts?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "malaise-ennui_002_b1",
+          "text": "After weeks of repeating the same three tasks with nothing new to learn, Marta watched the clock crawl.",
+          "best_word": "ennui",
+          "fit": {
+            "malaise": 0.19,
+            "ennui": 0.92
+          },
+          "decisive_clue": "repetition and lack of stimulation drove her weariness",
+          "reason": "Repetition and lack of stimulation drove her weariness. Weariness and dissatisfaction arising specifically from boredom.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malaise": "M1"
+          }
+        },
+        {
+          "id": "malaise-ennui_002_b2",
+          "text": "The office was comfortable and her pay was fair.",
+          "best_word": "ennui",
+          "fit": {
+            "malaise": 0.19,
+            "ennui": 0.92
+          },
+          "decisive_clue": "comfort and fair pay do not cure boredom with identical work",
+          "reason": "Comfort and fair pay do not cure boredom with identical work. Weariness and dissatisfaction arising specifically from boredom.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malaise": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Comfort and fair pay do not cure boredom with identical work.",
+      "feedback_deep": "Malaise means a vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction; ennui means weariness and dissatisfaction arising specifically from boredom. Here, repetition and lack of stimulation drove her weariness. The new detail does not change the deciding fact: comfort and fair pay do not cure boredom with identical work. Thus ennui remains the stronger choice.",
+      "contrast_rule": "Malaise has no clear source; ennui grows from having too little to engage you.",
+      "hints": {
+        "attention": "Focus on what makes the shift feel endless.",
+        "axis": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation.",
+        "contrast": "Malaise has no clear source; ennui grows from having too little to engage you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malaise-ennui_003",
+      "edge_id": "malaise__ennui",
+      "domain": "train_station_waiting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Jia’s recurring low spirits at the station?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malaise-ennui_003_b1",
+          "text": "Jia felt strangely weary and restless there, but could not say what was upsetting her.",
+          "best_word": "malaise",
+          "fit": {
+            "malaise": 0.92,
+            "ennui": 0.19
+          },
+          "decisive_clue": "initially unexplained tired restlessness",
+          "reason": "Initially unexplained tired restlessness. A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ennui": "M1"
+          }
+        },
+        {
+          "id": "malaise-ennui_003_b2",
+          "text": "She noticed the feeling came only during her daily two-hour wait, when she had nothing to read, watch, or do.",
+          "best_word": "ennui",
+          "fit": {
+            "malaise": 0.19,
+            "ennui": 0.92
+          },
+          "decisive_clue": "an empty two-hour wait gives the weariness a specific cause in boredom",
+          "reason": "An empty two-hour wait gives the weariness a specific cause in boredom. Weariness and dissatisfaction arising specifically from boredom.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malaise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An empty two-hour wait gives the weariness a specific cause in boredom.",
+      "feedback_deep": "Malaise means a vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction; ennui means weariness and dissatisfaction arising specifically from boredom. At first, initially unexplained tired restlessness, but new evidence shows an empty two-hour wait gives the weariness a specific cause in boredom. The later evidence makes ennui the better answer.",
+      "contrast_rule": "Malaise has no clear source; ennui grows from having too little to engage you.",
+      "hints": {
+        "attention": "Focus on when the feeling occurs and what fills that time.",
+        "axis": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation.",
+        "contrast": "Malaise has no clear source; ennui grows from having too little to engage you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malaise-ennui_004",
+      "edge_id": "malaise__ennui",
+      "domain": "live_music_outing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hugo’s feeling at the concert?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "malaise-ennui_004_b1",
+          "text": "Hugo laughed with friends and loved the music but could not shake a heavy sense that something was wrong.",
+          "best_word": "malaise",
+          "fit": {
+            "malaise": 0.92,
+            "ennui": 0.19
+          },
+          "decisive_clue": "unease persists during an enjoyable event",
+          "reason": "Unease persists during an enjoyable event. A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ennui": "M1"
+          }
+        },
+        {
+          "id": "malaise-ennui_004_b2",
+          "text": "When asked what troubled him, he could not name a single thing.",
+          "best_word": "malaise",
+          "fit": {
+            "malaise": 0.92,
+            "ennui": 0.19
+          },
+          "decisive_clue": "the lack of a named worry reinforces the vague character of the unease",
+          "reason": "The lack of a named worry reinforces the vague character of the unease. A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ennui": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The lack of a named worry reinforces the vague character of the unease.",
+      "feedback_deep": "Malaise means a vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction; ennui means weariness and dissatisfaction arising specifically from boredom. Here, unease persists during an enjoyable event. The added evidence clarifies that fact: the lack of a named worry reinforces the vague character of the unease. Thus malaise remains the stronger choice.",
+      "contrast_rule": "Malaise has no clear source; ennui grows from having too little to engage you.",
+      "hints": {
+        "attention": "Focus on whether enjoyment removes the feeling.",
+        "axis": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation.",
+        "contrast": "Malaise has no clear source; ennui grows from having too little to engage you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malaise-ennui_005",
+      "edge_id": "malaise__ennui",
+      "domain": "dance_practice",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Aya’s mood during rehearsal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "malaise-ennui_005_b1",
+          "text": "After repeating the same short routine for four hours, Aya began staring at the wall between turns.",
+          "best_word": "ennui",
+          "fit": {
+            "malaise": 0.19,
+            "ennui": 0.92
+          },
+          "decisive_clue": "endless repetition, not physical discomfort, is draining her interest",
+          "reason": "Endless repetition, not physical discomfort, is draining her interest. Weariness and dissatisfaction arising specifically from boredom.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malaise": "M1"
+          }
+        },
+        {
+          "id": "malaise-ennui_005_b2",
+          "text": "Her shoes were tight, but she kept asking when they would finally try new steps.",
+          "best_word": "ennui",
+          "fit": {
+            "malaise": 0.19,
+            "ennui": 0.92
+          },
+          "decisive_clue": "tight shoes are a distraction; she wants a new activity",
+          "reason": "Tight shoes are a distraction; she wants a new activity. Weariness and dissatisfaction arising specifically from boredom.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malaise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Tight shoes are a distraction; she wants a new activity.",
+      "feedback_deep": "Malaise means a vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction; ennui means weariness and dissatisfaction arising specifically from boredom. Here, endless repetition, not physical discomfort, is draining her interest. The apparent distraction does not change the deciding fact: tight shoes are a distraction; she wants a new activity. Thus ennui remains the stronger choice.",
+      "contrast_rule": "Malaise has no clear source; ennui grows from having too little to engage you.",
+      "hints": {
+        "attention": "Focus on which part of the rehearsal frustrates her.",
+        "axis": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation.",
+        "contrast": "Malaise has no clear source; ennui grows from having too little to engage you."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malaise-ennui_006",
+      "edge_id": "malaise__ennui",
+      "domain": "new_workplace",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Asha’s feeling in her first week at work?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "malaise-ennui_006_b1",
+          "text": "Asha felt vaguely low and tired despite getting the varied tasks she had hoped for.",
+          "best_word": "malaise",
+          "fit": {
+            "malaise": 0.92,
+            "ennui": 0.19
+          },
+          "decisive_clue": "vague weariness despite varied engaging tasks",
+          "reason": "Vague weariness despite varied engaging tasks. A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ennui": "M1"
+          }
+        },
+        {
+          "id": "malaise-ennui_006_b2",
+          "text": "She enjoyed solving new problems every day, yet the same unsettled feeling followed her home.",
+          "best_word": "malaise",
+          "fit": {
+            "malaise": 0.92,
+            "ennui": 0.19
+          },
+          "decisive_clue": "continued stimulation leaves the unexplained unease in place",
+          "reason": "Continued stimulation leaves the unexplained unease in place. A vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ennui": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Continued stimulation leaves the unexplained unease in place.",
+      "feedback_deep": "Malaise means a vague, difficult-to-explain feeling of unease, weariness, or dissatisfaction; ennui means weariness and dissatisfaction arising specifically from boredom. Here, vague weariness despite varied engaging tasks. The added context helps interpret that fact: continued stimulation leaves the unexplained unease in place. Thus malaise remains the stronger choice.",
+      "contrast_rule": "Malaise has no clear source; ennui grows from having too little to engage you.",
+      "hints": {
+        "attention": "Focus on whether new experiences settle the feeling.",
+        "axis": "Malaise is a diffuse unease without a clear cause, whereas ennui is dissatisfaction caused by boredom or lack of stimulation.",
+        "contrast": "Malaise has no clear source; ennui grows from having too little to engage you."
+      },
+      "qa": "pass"
+    }
+  ]
+}

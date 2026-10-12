@@ -2,10 +2,10 @@
   "schema_version": 1,
   "set_id": "scrupulous-meticulous",
   "title": "scrupulous / meticulous",
-  "status": "audited",
+  "status": "approved",
   "source": {
     "format": "pipeline",
-    "path": "docs/last-word/content-pipeline/sets-audited/133.json",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[29]",
     "source_pair_id": 133,
     "qa": {
       "pass": 1,

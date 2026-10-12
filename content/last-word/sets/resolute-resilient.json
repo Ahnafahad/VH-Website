@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "set_id": "resolute-resilient",
+  "title": "resolute / resilient",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[40]",
+    "source_pair_id": 174,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "resolute",
+      "sense": "firmly determined to pursue a clear aim despite difficulty",
+      "connotation": "admiring of firm purpose",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming grit always means recovery.",
+        "Assuming recovery proves an unchanging purpose."
+      ]
+    },
+    {
+      "word": "resilient",
+      "sense": "able to recover or regain functioning after adversity",
+      "connotation": "admiring of recovery",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming grit always means recovery.",
+        "Assuming recovery proves an unchanging purpose."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "determination_versus_recovery",
+      "description": "Unwavering purpose versus bouncing back from damage or difficulty."
+    }
+  ],
+  "edges": [
+    {
+      "id": "resolute__resilient",
+      "a": "resolute",
+      "b": "resilient",
+      "boundary_rule": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback.",
+      "clues_a": [
+        "refuses to abandon a clear goal",
+        "steady commitment"
+      ],
+      "clues_b": [
+        "returns to form after loss",
+        "recovers confidence quickly"
+      ],
+      "irrelevant_clues": [
+        "weather",
+        "uniform color",
+        "applause alone"
+      ],
+      "misconceptions": {
+        "M1": "Assuming grit always means recovery.",
+        "M2": "Assuming recovery proves an unchanging purpose.",
+        "M3": "Confusing continuing through trouble with bouncing back afterward."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "resolute-resilient_001",
+      "edge_id": "resolute__resilient",
+      "domain": "school_election",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amal's campaign attitude?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "resolute-resilient_001_b1",
+          "text": "Despite criticism, she remains committed to her plan to improve the school library.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.93,
+            "resilient": 0.14
+          },
+          "decisive_clue": "she holds to a clear objective despite opposition",
+          "reason": "She holds to a clear objective despite opposition; this favors resolute rather than resilient.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "resolute-resilient_001_b2",
+          "text": "She changes the color of her campaign posters.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.93,
+            "resilient": 0.14
+          },
+          "decisive_clue": "poster color does not weaken her commitment",
+          "reason": "Poster color does not weaken her commitment; this favors resolute rather than resilient.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Poster color does not weaken her commitment points to resolute, not resilient.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Amal's situation ultimately hinges on this clue: poster color does not weaken her commitment. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_002",
+      "edge_id": "resolute__resilient",
+      "domain": "running_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Bruno's attitude?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "resolute-resilient_002_b1",
+          "text": "He promises to finish his training plan despite friends urging him to quit.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.95,
+            "resilient": 0.18
+          },
+          "decisive_clue": "he commits firmly despite pressure",
+          "reason": "He commits firmly despite pressure; this favors resolute rather than resilient.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "resolute-resilient_002_b2",
+          "text": "After an injury interrupts everything, he gradually regains fitness and returns to his previous pace.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.18,
+            "resilient": 0.95
+          },
+          "decisive_clue": "he recovers his former ability after injury",
+          "reason": "He recovers his former ability after injury; this favors resilient rather than resolute.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He recovers his former ability after injury points to resilient, not resolute.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Bruno's situation ultimately hinges on this clue: he recovers his former ability after injury. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_003",
+      "edge_id": "resolute__resilient",
+      "domain": "family_decision",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Carmen's approach to moving house?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "resolute-resilient_003_b1",
+          "text": "She has chosen a safer home and will follow through despite relatives disagreeing.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.91,
+            "resilient": 0.1
+          },
+          "decisive_clue": "her purpose is fixed despite disagreement",
+          "reason": "Her purpose is fixed despite disagreement; this favors resolute rather than resilient.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "resolute-resilient_003_b2",
+          "text": "Even after several arguments, she repeats the same well-considered plan calmly.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.91,
+            "resilient": 0.1
+          },
+          "decisive_clue": "her commitment stays firm under opposition",
+          "reason": "Her commitment stays firm under opposition; this favors resolute rather than resilient.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her commitment stays firm under opposition points to resolute, not resilient.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Carmen's situation ultimately hinges on this clue: her commitment stays firm under opposition. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_004",
+      "edge_id": "resolute__resilient",
+      "domain": "team_tournament",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Deepak after his team loses?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "resolute-resilient_004_b1",
+          "text": "He recovers his confidence within days and plays as well as before.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.14,
+            "resilient": 0.93
+          },
+          "decisive_clue": "his performance rebounds after defeat",
+          "reason": "His performance rebounds after defeat; this favors resilient rather than resolute.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        },
+        {
+          "id": "resolute-resilient_004_b2",
+          "text": "He now commits firmly to becoming captain, keeping that goal despite repeated objections.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.93,
+            "resilient": 0.14
+          },
+          "decisive_clue": "he adopts and maintains a definite goal despite opposition",
+          "reason": "He adopts and maintains a definite goal despite opposition; this favors resolute rather than resilient.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He adopts and maintains a definite goal despite opposition points to resolute, not resilient.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Deepak's situation ultimately hinges on this clue: he adopts and maintains a definite goal despite opposition. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_005",
+      "edge_id": "resolute__resilient",
+      "domain": "part-time_job",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Eloise after a difficult shift?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "resolute-resilient_005_b1",
+          "text": "A rude customer shakes her confidence, but she regains composure and works comfortably again.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.18,
+            "resilient": 0.95
+          },
+          "decisive_clue": "she regains confidence after a setback",
+          "reason": "She regains confidence after a setback; this favors resilient rather than resolute.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        },
+        {
+          "id": "resolute-resilient_005_b2",
+          "text": "She happens to wear the same uniform the following day.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.18,
+            "resilient": 0.95
+          },
+          "decisive_clue": "the uniform does not explain her recovery",
+          "reason": "The uniform does not explain her recovery; this favors resilient rather than resolute.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The uniform does not explain her recovery points to resilient, not resolute.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Eloise's situation ultimately hinges on this clue: the uniform does not explain her recovery. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_006",
+      "edge_id": "resolute__resilient",
+      "domain": "travel_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Femi's travel decision?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "resolute-resilient_006_b1",
+          "text": "Though friends suggest alternatives, he sticks to his carefully chosen route.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.91,
+            "resilient": 0.1
+          },
+          "decisive_clue": "his clear decision survives contrary advice",
+          "reason": "His clear decision survives contrary advice; this favors resolute rather than resilient.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "resolute-resilient_006_b2",
+          "text": "He keeps his tickets in a green folder.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.91,
+            "resilient": 0.1
+          },
+          "decisive_clue": "ticket-folder color is unrelated to determination",
+          "reason": "Ticket-folder color is unrelated to determination; this favors resolute rather than resilient.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ticket-folder color is unrelated to determination points to resolute, not resilient.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Femi's situation ultimately hinges on this clue: ticket-folder color is unrelated to determination. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_007",
+      "edge_id": "resolute__resilient",
+      "domain": "online_creator",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Gita's approach to her channel?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "resolute-resilient_007_b1",
+          "text": "She commits to posting weekly despite people telling her to stop.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.93,
+            "resilient": 0.14
+          },
+          "decisive_clue": "her goal persists despite discouragement",
+          "reason": "Her goal persists despite discouragement; this favors resolute rather than resilient.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "resolute-resilient_007_b2",
+          "text": "When her account is lost, she rebuilds it and quickly restores her old audience.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.14,
+            "resilient": 0.93
+          },
+          "decisive_clue": "she rebounds after losing her account",
+          "reason": "She rebounds after losing her account; this favors resilient rather than resolute.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "She rebounds after losing her account points to resilient, not resolute.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Gita's situation ultimately hinges on this clue: she rebounds after losing her account. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_008",
+      "edge_id": "resolute__resilient",
+      "domain": "neighbourhood_garden",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hiro after the garden is flooded?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "resolute-resilient_008_b1",
+          "text": "He restores the damaged beds and soon gets the plants growing again.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.18,
+            "resilient": 0.95
+          },
+          "decisive_clue": "he restores the garden after damage",
+          "reason": "He restores the garden after damage; this favors resilient rather than resolute.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        },
+        {
+          "id": "resolute-resilient_008_b2",
+          "text": "He also repairs the paths, returning the whole space to working condition.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.18,
+            "resilient": 0.95
+          },
+          "decisive_clue": "the full garden regains function after damage",
+          "reason": "The full garden regains function after damage; this favors resilient rather than resolute.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The full garden regains function after damage points to resilient, not resolute.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Hiro's situation ultimately hinges on this clue: the full garden regains function after damage. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_009",
+      "edge_id": "resolute__resilient",
+      "domain": "shopping_business",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Imani's business choice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "resolute-resilient_009_b1",
+          "text": "Despite repeated doubts, she remains firm about selling only fairly priced products.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.91,
+            "resilient": 0.1
+          },
+          "decisive_clue": "she sticks to a chosen principle despite doubt",
+          "reason": "She sticks to a chosen principle despite doubt; this favors resolute rather than resilient.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "resolute-resilient_009_b2",
+          "text": "She replaces the shop's window display for the weekend.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.91,
+            "resilient": 0.1
+          },
+          "decisive_clue": "display changes do not alter her purpose",
+          "reason": "Display changes do not alter her purpose; this favors resolute rather than resilient.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Display changes do not alter her purpose points to resolute, not resilient.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Imani's situation ultimately hinges on this clue: display changes do not alter her purpose. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "resolute-resilient_010",
+      "edge_id": "resolute__resilient",
+      "domain": "music_rehearsal",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Jae's response to a disappointing audition?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "resolute-resilient_010_b1",
+          "text": "He says he will keep trying and refuses to abandon his plan.",
+          "best_word": "resolute",
+          "fit": {
+            "resolute": 0.93,
+            "resilient": 0.14
+          },
+          "decisive_clue": "his declared plan is firm despite rejection",
+          "reason": "His declared plan is firm despite rejection; this favors resolute rather than resilient.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resilient": "M1"
+          }
+        },
+        {
+          "id": "resolute-resilient_010_b2",
+          "text": "In practice he changes goals freely; what stands out is how quickly his confidence returns after each rejection.",
+          "best_word": "resilient",
+          "fit": {
+            "resolute": 0.14,
+            "resilient": 0.93
+          },
+          "decisive_clue": "quick recovery, not adherence to one goal, defines his response",
+          "reason": "Quick recovery, not adherence to one goal, defines his response; this favors resilient rather than resolute.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "resolute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Quick recovery, not adherence to one goal, defines his response points to resilient, not resolute.",
+      "feedback_deep": "Resolute describes firm commitment to a goal; resilient describes the ability to recover after a setback. Here, Jae's situation ultimately hinges on this clue: quick recovery, not adherence to one goal, defines his response. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Resolute holds a course; resilient bounces back.",
+      "hints": {
+        "attention": "Look for a firm goal or evidence of recovery.",
+        "axis": "Unwavering purpose versus bouncing back from damage or difficulty.",
+        "contrast": "Resolute holds a course; resilient bounces back."
+      },
+      "qa": "pass"
+    }
+  ]
+}

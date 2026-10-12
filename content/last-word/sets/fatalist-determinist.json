@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "fatalist-determinist",
+  "title": "fatalist / determinist",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[67]",
+    "source_pair_id": 311,
+    "qa": {
+      "pass": 3,
+      "revised": 2,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "fatalist",
+      "sense": "believes effort cannot alter what is fated to occur",
+      "connotation": "resigned",
+      "register": "formal",
+      "misconceptions": [
+        "Caused events can still change when people change the causes."
+      ]
+    },
+    {
+      "word": "determinist",
+      "sense": "believes outcomes arise from prior causes rather than uncaused choice",
+      "connotation": "analytical or neutral",
+      "register": "formal",
+      "misconceptions": [
+        "Believing an outcome is unavoidable regardless of action is not simply tracing causes."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "fixed_outcome_vs_causal_process",
+      "description": "A fatalist thinks effort cannot change the destined result; a determinist thinks events, including choices, follow preceding causes."
+    }
+  ],
+  "edges": [
+    {
+      "id": "fatalist__determinist",
+      "a": "fatalist",
+      "b": "determinist",
+      "boundary_rule": "A fatalist thinks effort cannot change the destined result; a determinist thinks events, including choices, follow preceding causes.",
+      "clues_a": [
+        "effort makes no difference",
+        "result fixed however one acts",
+        "no intervention could matter"
+      ],
+      "clues_b": [
+        "decisions have earlier causes",
+        "different conditions produce different outcomes",
+        "behaviour comes from prior influences"
+      ],
+      "irrelevant_clues": [
+        "whether they feel hopeful",
+        "whether a prediction succeeds",
+        "how long they discuss the problem"
+      ],
+      "misconceptions": {
+        "M1": "Caused events can still change when people change the causes.",
+        "M2": "Believing an outcome is unavoidable regardless of action is not simply tracing causes.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "fatalist-determinist_001",
+      "edge_id": "fatalist__determinist",
+      "domain": "study_group",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rohan?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatalist-determinist_001_b1",
+          "text": "Rohan argued that his exam result was already settled and studying could not affect it.",
+          "best_word": "fatalist",
+          "fit": {
+            "fatalist": 0.93,
+            "determinist": 0.2
+          },
+          "decisive_clue": "belief that effort cannot alter a fixed outcome",
+          "reason": "He considers the result fixed despite possible action.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "determinist": "M1"
+          }
+        },
+        {
+          "id": "fatalist-determinist_001_b2",
+          "text": "He said even a perfect week of revision would leave the mark unchanged.",
+          "best_word": "fatalist",
+          "fit": {
+            "fatalist": 0.95,
+            "determinist": 0.15
+          },
+          "decisive_clue": "belief that even major effort cannot alter the outcome",
+          "reason": "The revision example makes his rejection of effective effort explicit.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "determinist": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is belief that even major effort cannot alter the outcome; the revision example makes his rejection of effective effort explicit.",
+      "feedback_deep": "Fatalist concerns believes effort cannot alter what is fated to occur; determinist concerns believes outcomes arise from prior causes rather than uncaused choice. The revision example makes his rejection of effective effort explicit.",
+      "contrast_rule": "Fatalist: effort makes no difference; determinist: decisions have earlier causes.",
+      "hints": {
+        "attention": "Does he think different actions could change the result?",
+        "axis": "A fatalist thinks effort cannot change the destined result; a determinist thinks events, including choices, follow preceding causes.",
+        "contrast": "Fatalist: effort makes no difference; determinist: decisions have earlier causes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fatalist-determinist_002",
+      "edge_id": "fatalist__determinist",
+      "domain": "gardening",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Elsa?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "fatalist-determinist_002_b1",
+          "text": "Elsa said every outcome, including a person's decisions, follows from earlier conditions rather than arising without causes.",
+          "best_word": "determinist",
+          "fit": {
+            "fatalist": 0.1,
+            "determinist": 0.98
+          },
+          "decisive_clue": "belief that all outcomes and decisions follow prior causes",
+          "reason": "She applies causal necessity to outcomes and human decisions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fatalist": "M2"
+          }
+        },
+        {
+          "id": "fatalist-determinist_002_b2",
+          "text": "She added that changing the watering schedule would change the results because it would change one of the prior conditions.",
+          "best_word": "determinist",
+          "fit": {
+            "fatalist": 0.1,
+            "determinist": 0.98
+          },
+          "decisive_clue": "belief that changing a prior cause changes the determined outcome",
+          "reason": "She treats intervention as part of the causal chain, not as impossible or irrelevant.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatalist": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is that all outcomes and decisions follow prior causes; changing a cause can therefore change the result.",
+      "feedback_deep": "A fatalist thinks effort cannot alter a fated result; a determinist thinks events, including choices, follow prior causes. Elsa treats intervention as part of that causal chain.",
+      "contrast_rule": "Fatalist: effort makes no difference; determinist: decisions and outcomes have earlier causes.",
+      "hints": {
+        "attention": "Does she reject intervention, or treat intervention as one cause among others?",
+        "axis": "A fatalist thinks effort cannot change the destined result; a determinist thinks events, including choices, follow preceding causes.",
+        "contrast": "Fatalist: effort makes no difference; determinist: decisions and outcomes have earlier causes."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "fatalist-determinist_003",
+      "edge_id": "fatalist__determinist",
+      "domain": "football_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Idris?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "fatalist-determinist_003_b1",
+          "text": "Idris insisted the final score was fixed and extra practice could never alter what was meant to happen.",
+          "best_word": "fatalist",
+          "fit": {
+            "fatalist": 0.93,
+            "determinist": 0.2
+          },
+          "decisive_clue": "conviction that practice cannot affect a predetermined score",
+          "reason": "He denies that effort can change the result.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "determinist": "M1"
+          }
+        },
+        {
+          "id": "fatalist-determinist_003_b2",
+          "text": "He smiled while making the prediction.",
+          "best_word": "fatalist",
+          "fit": {
+            "fatalist": 0.95,
+            "determinist": 0.15
+          },
+          "decisive_clue": "conviction that practice cannot affect a predetermined score",
+          "reason": "Smiling is irrelevant to his claim about effort having no effect.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "determinist": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is conviction that practice cannot affect a predetermined score; smiling is irrelevant to his claim about effort having no effect.",
+      "feedback_deep": "Fatalist concerns believes effort cannot alter what is fated to occur; determinist concerns believes outcomes arise from prior causes rather than uncaused choice. Smiling is irrelevant to his claim about effort having no effect.",
+      "contrast_rule": "Fatalist: effort makes no difference; determinist: decisions have earlier causes.",
+      "hints": {
+        "attention": "Ignore his mood and examine his view of effort.",
+        "axis": "A fatalist thinks effort cannot change the destined result; a determinist thinks events, including choices, follow preceding causes.",
+        "contrast": "Fatalist: effort makes no difference; determinist: decisions have earlier causes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fatalist-determinist_004",
+      "edge_id": "fatalist__determinist",
+      "domain": "workplace_habits",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Clara?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatalist-determinist_004_b1",
+          "text": "Clara argued that habits and earlier experiences shape every decision a person makes.",
+          "best_word": "determinist",
+          "fit": {
+            "fatalist": 0.2,
+            "determinist": 0.93
+          },
+          "decisive_clue": "belief that choices emerge from preceding influences",
+          "reason": "She treats human decisions as causally produced.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fatalist": "M2"
+          }
+        },
+        {
+          "id": "fatalist-determinist_004_b2",
+          "text": "She said even deciding to resist a habit has its own earlier causes.",
+          "best_word": "determinist",
+          "fit": {
+            "fatalist": 0.15,
+            "determinist": 0.95
+          },
+          "decisive_clue": "belief that even attempts to change have earlier causes",
+          "reason": "Including resistance shows the principle applies to choices as well.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatalist": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is belief that even attempts to change have earlier causes; including resistance shows the principle applies to choices as well.",
+      "feedback_deep": "Fatalist concerns believes effort cannot alter what is fated to occur; determinist concerns believes outcomes arise from prior causes rather than uncaused choice. Including resistance shows the principle applies to choices as well.",
+      "contrast_rule": "Fatalist: effort makes no difference; determinist: decisions have earlier causes.",
+      "hints": {
+        "attention": "Where does she think a decision comes from?",
+        "axis": "A fatalist thinks effort cannot change the destined result; a determinist thinks events, including choices, follow preceding causes.",
+        "contrast": "Fatalist: effort makes no difference; determinist: decisions have earlier causes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fatalist-determinist_006",
+      "edge_id": "fatalist__determinist",
+      "domain": "school_attendance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yuna?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "fatalist-determinist_006_b1",
+          "text": "Yuna argued that attendance and students' decisions about attending are determined by earlier routines, bus schedules, and family arrangements.",
+          "best_word": "determinist",
+          "fit": {
+            "fatalist": 0.1,
+            "determinist": 0.98
+          },
+          "decisive_clue": "belief that behavior and decisions follow prior conditions",
+          "reason": "She treats attendance choices as causally produced by earlier circumstances.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fatalist": "M2"
+          }
+        },
+        {
+          "id": "fatalist-determinist_006_b2",
+          "text": "She added that a later bus could improve attendance by changing one of those determining conditions.",
+          "best_word": "determinist",
+          "fit": {
+            "fatalist": 0.1,
+            "determinist": 0.98
+          },
+          "decisive_clue": "belief that changing a prior cause changes the resulting behavior",
+          "reason": "The schedule change is itself a cause in the process she describes.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatalist": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is that attendance decisions follow prior conditions; changing one of those conditions can change the result.",
+      "feedback_deep": "A fatalist thinks effort cannot alter a fated result; a determinist thinks events, including choices, follow prior causes. Yuna treats the bus schedule as one cause in that process.",
+      "contrast_rule": "Fatalist: effort makes no difference; determinist: decisions and outcomes have earlier causes.",
+      "hints": {
+        "attention": "Does she dismiss intervention, or explain how changed conditions produce changed behavior?",
+        "axis": "A fatalist thinks effort cannot change the destined result; a determinist thinks events, including choices, follow preceding causes.",
+        "contrast": "Fatalist: effort makes no difference; determinist: decisions and outcomes have earlier causes."
+      },
+      "qa": "revised"
+    }
+  ]
+}

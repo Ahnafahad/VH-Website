@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "therapeutic-palliative",
+  "title": "therapeutic / palliative",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[192]",
+    "source_pair_id": 869,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "therapeutic",
+      "sense": "helping treatment or recovery; restoring physical or emotional well-being",
+      "connotation": "healing or restorative",
+      "register": "general/health",
+      "misconceptions": [
+        "Assuming any pleasant relief repairs the underlying cause.",
+        "Mistaking symptom relief for recovery of function."
+      ]
+    },
+    {
+      "word": "palliative",
+      "sense": "relieving distressing symptoms without treating the underlying cause",
+      "connotation": "comfort-focused; not a claim of cure",
+      "register": "health",
+      "misconceptions": [
+        "Thinking all treatment has to cure immediately."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "effect_on_underlying_problem",
+      "description": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause."
+    }
+  ],
+  "edges": [
+    {
+      "id": "therapeutic__palliative",
+      "a": "therapeutic",
+      "b": "palliative",
+      "boundary_rule": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause.",
+      "clues_a": [
+        "builds strength or function",
+        "supports recovery"
+      ],
+      "clues_b": [
+        "eases discomfort only",
+        "underlying problem persists"
+      ],
+      "irrelevant_clues": [
+        "pleasant scent",
+        "price",
+        "packaging"
+      ],
+      "misconceptions": {
+        "M1": "Assuming any pleasant relief repairs the underlying cause.",
+        "M2": "Thinking all treatment has to cure immediately.",
+        "M3": "Mistaking symptom relief for recovery of function."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "therapeutic-palliative_001",
+      "edge_id": "therapeutic__palliative",
+      "domain": "physiotherapy_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Noor's weekly exercises?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "therapeutic-palliative_001_b1",
+          "text": "Noor follows movements that gradually let her injured knee bend farther and support her weight again.",
+          "best_word": "therapeutic",
+          "fit": {
+            "therapeutic": 0.89,
+            "palliative": 0.22
+          },
+          "decisive_clue": "the movements help her knee regain function",
+          "reason": "The movements help her knee regain function is the evidence for therapeutic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        },
+        {
+          "id": "therapeutic-palliative_001_b2",
+          "text": "Over several sessions, she can climb stairs she previously avoided.",
+          "best_word": "therapeutic",
+          "fit": {
+            "therapeutic": 0.92,
+            "palliative": 0.22
+          },
+          "decisive_clue": "continued exercises restore practical movement",
+          "reason": "Climbing stairs is evidence of functional recovery, not just a brief reduction in discomfort.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: continued exercises restore practical movement.",
+      "feedback_deep": "Therapeutic activities contribute to treatment and recovery. Noor’s exercises rebuild usable movement; palliative measures would primarily ease symptoms without addressing the problem.",
+      "contrast_rule": "Therapeutic helps recovery; palliative helps symptoms.",
+      "hints": {
+        "attention": "Look for recovery or only a reduction in discomfort.",
+        "axis": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause.",
+        "contrast": "Therapeutic helps recovery; palliative helps symptoms."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "therapeutic-palliative_002",
+      "edge_id": "therapeutic__palliative",
+      "domain": "family_headache_care",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo's cool forehead cloth?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "therapeutic-palliative_002_b1",
+          "text": "Mateo rests a damp cloth on his forehead; the throbbing eases, but the cause of his headache remains unchanged.",
+          "best_word": "palliative",
+          "fit": {
+            "therapeutic": 0.25,
+            "palliative": 0.9
+          },
+          "decisive_clue": "the cloth eases pain without changing its cause",
+          "reason": "The cloth eases pain without changing its cause is the evidence for palliative.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "therapeutic": "M3"
+          }
+        },
+        {
+          "id": "therapeutic-palliative_002_b2",
+          "text": "He replaces the cloth whenever the cooling sensation fades.",
+          "best_word": "palliative",
+          "fit": {
+            "therapeutic": 0.25,
+            "palliative": 0.93
+          },
+          "decisive_clue": "temporary comfort remains the only demonstrated effect",
+          "reason": "Refreshing the cloth extends symptom relief but does not make it a treatment of the cause.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "therapeutic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the cloth eases pain without changing its cause.",
+      "feedback_deep": "Palliative describes easing symptoms without resolving the underlying condition. Mateo’s cloth comforts him but has no shown effect on the headache’s cause.",
+      "contrast_rule": "Therapeutic helps recovery; palliative helps symptoms.",
+      "hints": {
+        "attention": "Look for recovery or only a reduction in discomfort.",
+        "axis": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause.",
+        "contrast": "Therapeutic helps recovery; palliative helps symptoms."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "therapeutic-palliative_003",
+      "edge_id": "therapeutic__palliative",
+      "domain": "work_stress_workshop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Aria's guided recovery programme?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "therapeutic-palliative_003_b1",
+          "text": "Aria learns breathing and coping habits that improve her sleep and help her manage recurring stress.",
+          "best_word": "therapeutic",
+          "fit": {
+            "therapeutic": 0.88,
+            "palliative": 0.19
+          },
+          "decisive_clue": "the programme improves her lasting well-being",
+          "reason": "The programme improves her lasting well-being is the evidence for therapeutic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        },
+        {
+          "id": "therapeutic-palliative_003_b2",
+          "text": "She keeps practising between sessions and notices the improvements last throughout her week.",
+          "best_word": "therapeutic",
+          "fit": {
+            "therapeutic": 0.91,
+            "palliative": 0.19
+          },
+          "decisive_clue": "sustained well-being remains the main benefit",
+          "reason": "The extra practice confirms an ongoing restorative benefit rather than a momentary distraction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the programme improves her lasting well-being.",
+      "feedback_deep": "Therapeutic covers treatment and restoration of emotional well-being. Aria develops lasting coping habits, unlike an intervention that only masks immediate symptoms.",
+      "contrast_rule": "Therapeutic helps recovery; palliative helps symptoms.",
+      "hints": {
+        "attention": "Look for recovery or only a reduction in discomfort.",
+        "axis": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause.",
+        "contrast": "Therapeutic helps recovery; palliative helps symptoms."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "therapeutic-palliative_004",
+      "edge_id": "therapeutic__palliative",
+      "domain": "clinic_waiting_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Davi's throat lozenge?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "therapeutic-palliative_004_b1",
+          "text": "Davi takes a lozenge that briefly soothes his sore throat while the infection runs its course.",
+          "best_word": "palliative",
+          "fit": {
+            "therapeutic": 0.22,
+            "palliative": 0.89
+          },
+          "decisive_clue": "it eases a sore throat without shortening illness",
+          "reason": "It eases a sore throat without shortening illness is the evidence for palliative.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "therapeutic": "M3"
+          }
+        },
+        {
+          "id": "therapeutic-palliative_004_b2",
+          "text": "He knows it does not shorten the illness and takes it mainly to speak comfortably.",
+          "best_word": "palliative",
+          "fit": {
+            "therapeutic": 0.22,
+            "palliative": 0.92
+          },
+          "decisive_clue": "its purpose is comfort rather than treating the infection",
+          "reason": "The added purpose confirms symptom management without a change to the infection.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "therapeutic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: its purpose is comfort rather than treating the infection.",
+      "feedback_deep": "Palliative relief addresses how an illness feels. Davi’s lozenge makes speaking easier but is not presented as treating the infection.",
+      "contrast_rule": "Therapeutic helps recovery; palliative helps symptoms.",
+      "hints": {
+        "attention": "Look for recovery or only a reduction in discomfort.",
+        "axis": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause.",
+        "contrast": "Therapeutic helps recovery; palliative helps symptoms."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "therapeutic-palliative_005",
+      "edge_id": "therapeutic__palliative",
+      "domain": "home_stretching_routine",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Esha's hand exercises?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "therapeutic-palliative_005_b1",
+          "text": "Esha practises small daily finger movements to rebuild grip after weeks in a splint.",
+          "best_word": "therapeutic",
+          "fit": {
+            "therapeutic": 0.9,
+            "palliative": 0.25
+          },
+          "decisive_clue": "the exercises are intended to rebuild grip",
+          "reason": "The exercises are intended to rebuild grip is the evidence for therapeutic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        },
+        {
+          "id": "therapeutic-palliative_005_b2",
+          "text": "The exercises are written on a colourful card she keeps beside her bed.",
+          "best_word": "therapeutic",
+          "fit": {
+            "therapeutic": 0.93,
+            "palliative": 0.25
+          },
+          "decisive_clue": "the original goal of rebuilding grip still determines the choice",
+          "reason": "A colourful card changes presentation, not the restorative purpose of the exercises.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "palliative": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the exercises are intended to rebuild grip.",
+      "feedback_deep": "Therapeutic refers to interventions helping functional recovery. Esha’s goal is stronger grip; the card design has no bearing on that purpose.",
+      "contrast_rule": "Therapeutic helps recovery; palliative helps symptoms.",
+      "hints": {
+        "attention": "Look for recovery or only a reduction in discomfort.",
+        "axis": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause.",
+        "contrast": "Therapeutic helps recovery; palliative helps symptoms."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "therapeutic-palliative_006",
+      "edge_id": "therapeutic__palliative",
+      "domain": "long_train_journey",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rosa's motion-sickness patch?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "therapeutic-palliative_006_b1",
+          "text": "Rosa wears a patch that reduces nausea during the trip without addressing why motion makes her ill.",
+          "best_word": "palliative",
+          "fit": {
+            "therapeutic": 0.19,
+            "palliative": 0.88
+          },
+          "decisive_clue": "it reduces nausea without addressing the trigger",
+          "reason": "It reduces nausea without addressing the trigger is the evidence for palliative.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "therapeutic": "M3"
+          }
+        },
+        {
+          "id": "therapeutic-palliative_006_b2",
+          "text": "The patch keeps working until she reaches her destination, then she removes it.",
+          "best_word": "palliative",
+          "fit": {
+            "therapeutic": 0.19,
+            "palliative": 0.91
+          },
+          "decisive_clue": "its effect lasts only while she wears it",
+          "reason": "The duration of relief does not turn symptom control into treatment of the cause.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "therapeutic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: its effect lasts only while she wears it.",
+      "feedback_deep": "Palliative measures relieve symptoms even when the underlying condition remains. The patch controls Rosa’s nausea without correcting her susceptibility to motion sickness.",
+      "contrast_rule": "Therapeutic helps recovery; palliative helps symptoms.",
+      "hints": {
+        "attention": "Look for recovery or only a reduction in discomfort.",
+        "axis": "Therapeutic emphasizes treatment or restoration of well-being, while palliative emphasizes easing symptoms without correcting the cause.",
+        "contrast": "Therapeutic helps recovery; palliative helps symptoms."
+      },
+      "qa": "pass"
+    }
+  ]
+}

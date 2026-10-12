@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "requisite-prerequisite",
+  "title": "requisite / prerequisite",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[149]",
+    "source_pair_id": 625,
+    "qa": {
+      "pass": 4,
+      "revised": 2,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "requisite",
+      "sense": "Necessary or required for a particular purpose or activity, without specifically marking sequence.",
+      "connotation": "neutral / formal",
+      "register": "formal",
+      "misconceptions": [
+        "Every necessary item must be completed in advance."
+      ]
+    },
+    {
+      "word": "prerequisite",
+      "sense": "A required condition that has to be fulfilled before another activity or stage can begin.",
+      "connotation": "neutral / administrative",
+      "register": "standard / formal",
+      "misconceptions": [
+        "A condition explicitly required before entry is merely an ordinary useful item."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "general_need_vs_prior_gate",
+      "description": "Whether a requirement is simply necessary or specifically must be satisfied first."
+    }
+  ],
+  "edges": [
+    {
+      "id": "requisite__prerequisite",
+      "a": "requisite",
+      "b": "prerequisite",
+      "boundary_rule": "Requisite means needed for a task; a prerequisite is a condition that must be met before the next step is allowed.",
+      "clues_a": [
+        "equipment needed during activity",
+        "necessary quality while performing task",
+        "essential component of a job"
+      ],
+      "clues_b": [
+        "must pass first",
+        "enrolment blocked until requirement met",
+        "condition completed ahead of entry"
+      ],
+      "irrelevant_clues": [
+        "document colour",
+        "cost of a tool",
+        "how popular the activity is"
+      ],
+      "misconceptions": {
+        "M1": "Every necessary item must be completed in advance.",
+        "M2": "A condition explicitly required before entry is merely an ordinary useful item.",
+        "M3": "The price of a necessary item determines whether it comes first."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "requisite-prerequisite_001",
+      "edge_id": "requisite__prerequisite",
+      "domain": "cooking_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the equipment Lena needs for the recipe?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "requisite-prerequisite_001_b1",
+          "text": "Lena needs a mixing bowl while combining the ingredients; without it she cannot prepare the batter.",
+          "best_word": "requisite",
+          "fit": {
+            "requisite": 0.9,
+            "prerequisite": 0.24
+          },
+          "decisive_clue": "tool is necessary while doing the task",
+          "reason": "The situation shows tool is necessary while doing the task, which points to requisite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "prerequisite": "M2"
+          }
+        },
+        {
+          "id": "requisite-prerequisite_001_b2",
+          "text": "She uses the bowl throughout the mixing step, not as a test she must pass before joining the class.",
+          "best_word": "requisite",
+          "fit": {
+            "requisite": 0.94,
+            "prerequisite": 0.21
+          },
+          "decisive_clue": "necessary tool is used during the activity itself",
+          "reason": "The bowl is needed for the task; no prior eligibility condition is involved.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "prerequisite": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Necessary tool is used during the activity itself: requisite fits better.",
+      "feedback_deep": "Requisite means needed for a task; a prerequisite is a condition that must be met before the next step is allowed. Here, the bowl is needed for the task; no prior eligibility condition is involved.",
+      "contrast_rule": "Requisite is needed; prerequisite must come first.",
+      "hints": {
+        "attention": "Is it used during the task or cleared beforehand?",
+        "axis": "Whether a requirement is simply necessary or specifically must be satisfied first.",
+        "contrast": "Requisite is needed; prerequisite must come first."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "requisite-prerequisite_002",
+      "edge_id": "requisite__prerequisite",
+      "domain": "driving_lessons",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the learner permit in Owen’s course?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "requisite-prerequisite_002_b1",
+          "text": "Owen cannot begin on-road lessons until he has obtained a learner permit.",
+          "best_word": "prerequisite",
+          "fit": {
+            "requisite": 0.24,
+            "prerequisite": 0.9
+          },
+          "decisive_clue": "permit is a condition for starting lessons",
+          "reason": "The situation shows permit is a condition for starting lessons, which points to prerequisite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "requisite": "M1"
+          }
+        },
+        {
+          "id": "requisite-prerequisite_002_b2",
+          "text": "The instructor checks the permit before handing him the car keys.",
+          "best_word": "prerequisite",
+          "fit": {
+            "requisite": 0.21,
+            "prerequisite": 0.94
+          },
+          "decisive_clue": "instructor enforces the prior condition before any driving",
+          "reason": "The permit is a gate that must be cleared first.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "requisite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Instructor enforces the prior condition before any driving: prerequisite fits better.",
+      "feedback_deep": "Requisite means needed for a task; a prerequisite is a condition that must be met before the next step is allowed. Here, the permit is a gate that must be cleared first.",
+      "contrast_rule": "Requisite is needed; prerequisite must come first.",
+      "hints": {
+        "attention": "Notice the order of events.",
+        "axis": "Whether a requirement is simply necessary or specifically must be satisfied first.",
+        "contrast": "Requisite is needed; prerequisite must come first."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "requisite-prerequisite_003",
+      "edge_id": "requisite__prerequisite",
+      "domain": "school_play",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the concentration Mei needs onstage?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "requisite-prerequisite_003_b1",
+          "text": "Mei needs steady concentration while delivering her lines; losing track would spoil the performance.",
+          "best_word": "requisite",
+          "fit": {
+            "requisite": 0.9,
+            "prerequisite": 0.23
+          },
+          "decisive_clue": "concentration is necessary during performance",
+          "reason": "The situation shows concentration is necessary during performance, which points to requisite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "prerequisite": "M2"
+          }
+        },
+        {
+          "id": "requisite-prerequisite_003_b2",
+          "text": "She maintains that focus even through the noisy final scene.",
+          "best_word": "requisite",
+          "fit": {
+            "requisite": 0.91,
+            "prerequisite": 0.22
+          },
+          "decisive_clue": "concentration is necessary during performance",
+          "reason": "The added detail does not change the original clue: concentration is necessary during performance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "prerequisite": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Concentration is necessary during performance still decides; the added detail changes nothing.",
+      "feedback_deep": "Requisite means needed for a task; a prerequisite is a condition that must be met before the next step is allowed. Here, maintaining focus during a noisy scene does not turn an onstage requirement into a prior eligibility condition.",
+      "contrast_rule": "Requisite is needed; prerequisite must come first.",
+      "hints": {
+        "attention": "What is needed during the performance?",
+        "axis": "Whether a requirement is simply necessary or specifically must be satisfied first.",
+        "contrast": "Requisite is needed; prerequisite must come first."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "requisite-prerequisite_004",
+      "edge_id": "requisite__prerequisite",
+      "domain": "gym_membership",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the induction session for Hassan’s gym access?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "requisite-prerequisite_004_b1",
+          "text": "Hassan must complete a safety introduction before the gym will activate his access card.",
+          "best_word": "prerequisite",
+          "fit": {
+            "requisite": 0.24,
+            "prerequisite": 0.9
+          },
+          "decisive_clue": "completion of introduction is required before entry",
+          "reason": "The situation shows completion of introduction is required before entry, which points to prerequisite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "requisite": "M1"
+          }
+        },
+        {
+          "id": "requisite-prerequisite_004_b2",
+          "text": "Until staff record the completed introduction, the door system rejects his card.",
+          "best_word": "prerequisite",
+          "fit": {
+            "requisite": 0.21,
+            "prerequisite": 0.94
+          },
+          "decisive_clue": "access is blocked until the earlier condition is met",
+          "reason": "The introduction is a required step that comes before entry.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "requisite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Access is blocked until the earlier condition is met: prerequisite fits better.",
+      "feedback_deep": "Requisite means needed for a task; a prerequisite is a condition that must be met before the next step is allowed. Here, the introduction is a required step that comes before entry.",
+      "contrast_rule": "Requisite is needed; prerequisite must come first.",
+      "hints": {
+        "attention": "What stops him from entering?",
+        "axis": "Whether a requirement is simply necessary or specifically must be satisfied first.",
+        "contrast": "Requisite is needed; prerequisite must come first."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "requisite-prerequisite_005",
+      "edge_id": "requisite__prerequisite",
+      "domain": "home_repair",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the gloves Nina needs for her repair work?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "requisite-prerequisite_005_b1",
+          "text": "Nina needs protective gloves to handle the rough boards while working on the shelf.",
+          "best_word": "requisite",
+          "fit": {
+            "requisite": 0.9,
+            "prerequisite": 0.24
+          },
+          "decisive_clue": "gloves are necessary during the handling task",
+          "reason": "The situation shows gloves are necessary during the handling task, which points to requisite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "prerequisite": "M2"
+          }
+        },
+        {
+          "id": "requisite-prerequisite_005_b2",
+          "text": "The gloves are bright green and sold in a pack of two.",
+          "best_word": "requisite",
+          "fit": {
+            "requisite": 0.94,
+            "prerequisite": 0.21
+          },
+          "decisive_clue": "gloves are necessary during the handling task",
+          "reason": "The added detail does not change the original clue: gloves are necessary during the handling task.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "prerequisite": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Gloves are necessary during the handling task still decides; the added detail changes nothing.",
+      "feedback_deep": "Requisite means needed for a task; a prerequisite is a condition that must be met before the next step is allowed. Here, glove colour and packaging do not change their role during the work.",
+      "contrast_rule": "Requisite is needed; prerequisite must come first.",
+      "hints": {
+        "attention": "Ignore colour and consider their purpose.",
+        "axis": "Whether a requirement is simply necessary or specifically must be satisfied first.",
+        "contrast": "Requisite is needed; prerequisite must come first."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "requisite-prerequisite_006",
+      "edge_id": "requisite__prerequisite",
+      "domain": "online_competition",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the qualifying score for Rosa’s tournament?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "requisite-prerequisite_006_b1",
+          "text": "Rosa cannot register for the final round unless she has earned at least eighty points in the earlier round.",
+          "best_word": "prerequisite",
+          "fit": {
+            "requisite": 0.23,
+            "prerequisite": 0.9
+          },
+          "decisive_clue": "score threshold must be achieved before registration",
+          "reason": "The situation shows score threshold must be achieved before registration, which points to prerequisite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "requisite": "M1"
+          }
+        },
+        {
+          "id": "requisite-prerequisite_006_b2",
+          "text": "She scored eighty-one points, just above the threshold.",
+          "best_word": "prerequisite",
+          "fit": {
+            "requisite": 0.22,
+            "prerequisite": 0.91
+          },
+          "decisive_clue": "score threshold must be achieved before registration",
+          "reason": "The added detail does not change the original clue: score threshold must be achieved before registration.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "requisite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Score threshold must be achieved before registration still decides; the added detail changes nothing.",
+      "feedback_deep": "Requisite means needed for a task; a prerequisite is a condition that must be met before the next step is allowed. Here, barely exceeding the threshold does not change that the qualifying score was a prior requirement for entry.",
+      "contrast_rule": "Requisite is needed; prerequisite must come first.",
+      "hints": {
+        "attention": "Track which condition must already be met.",
+        "axis": "Whether a requirement is simply necessary or specifically must be satisfied first.",
+        "contrast": "Requisite is needed; prerequisite must come first."
+      },
+      "qa": "revised"
+    }
+  ]
+}

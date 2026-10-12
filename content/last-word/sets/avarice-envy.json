@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "avarice-envy",
+  "title": "avarice / envy",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[23]",
+    "source_pair_id": 102,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "avarice",
+      "sense": "extreme greed for wealth and material gain",
+      "connotation": "strongly negative",
+      "register": "formal",
+      "misconceptions": [
+        "Wanting ever more wealth is not automatically resentment of another owner."
+      ]
+    },
+    {
+      "word": "envy",
+      "sense": "resentful desire for another person’s possessions or advantages",
+      "connotation": "negative",
+      "register": "standard",
+      "misconceptions": [
+        "Resenting another person’s advantage need not involve a hunger for riches."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "object_of_desire",
+      "description": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has."
+    }
+  ],
+  "edges": [
+    {
+      "id": "avarice__envy",
+      "a": "avarice",
+      "b": "envy",
+      "boundary_rule": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has.",
+      "clues_a": [
+        "hoarding wealth without a rival",
+        "wanting money far beyond need",
+        "sacrificing comforts to accumulate riches"
+      ],
+      "clues_b": [
+        "resenting a friend’s possession",
+        "wanting another person’s advantage",
+        "comparing oneself bitterly with someone else"
+      ],
+      "irrelevant_clues": [
+        "the price of an item",
+        "whether other people notice the reaction",
+        "the setting of the conversation"
+      ],
+      "misconceptions": {
+        "M1": "Wanting ever more wealth is not automatically resentment of another owner.",
+        "M2": "Resenting another person’s advantage need not involve a hunger for riches.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "avarice-envy_001",
+      "edge_id": "avarice__envy",
+      "domain": "family_budgeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amara’s attitude?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "avarice-envy_001_b1",
+          "text": "Amara kept adding to her savings, refusing basic repairs despite having enough money for years.",
+          "best_word": "avarice",
+          "fit": {
+            "avarice": 0.93,
+            "envy": 0.2
+          },
+          "decisive_clue": "accumulating money even at the cost of needs",
+          "reason": "The desire for more money overrides reasonable needs.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "avarice-envy_001_b2",
+          "text": "She counted the total again after receiving a birthday card.",
+          "best_word": "avarice",
+          "fit": {
+            "avarice": 0.95,
+            "envy": 0.15
+          },
+          "decisive_clue": "accumulating money even at the cost of needs",
+          "reason": "The card is incidental; the refusal to spend on necessities reveals extreme greed.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Accumulating money even at the cost of needs; the later detail does not change the boundary.",
+      "feedback_deep": "Avarice concerns extreme greed for wealth and material gain; envy concerns resentful desire for another person’s possessions or advantages. The card is incidental; the refusal to spend on necessities reveals extreme greed.",
+      "contrast_rule": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession.",
+      "hints": {
+        "attention": "Consider what she is willing to sacrifice to keep money.",
+        "axis": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has.",
+        "contrast": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "avarice-envy_002",
+      "edge_id": "avarice__envy",
+      "domain": "school_competition",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rafi’s attitude?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "avarice-envy_002_b1",
+          "text": "Rafi frowned when his classmate won the scholarship he had hoped for.",
+          "best_word": "envy",
+          "fit": {
+            "avarice": 0.2,
+            "envy": 0.93
+          },
+          "decisive_clue": "resentment toward another person’s success",
+          "reason": "The reaction targets what someone else obtained.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "avarice": "M2"
+          }
+        },
+        {
+          "id": "avarice-envy_002_b2",
+          "text": "He told his sister that seeing the winner celebrate bothered him more than losing the money.",
+          "best_word": "envy",
+          "fit": {
+            "avarice": 0.15,
+            "envy": 0.95
+          },
+          "decisive_clue": "resentment at the winner’s advantage",
+          "reason": "His reaction to the winner, rather than a wish to accumulate cash, fixes the distinction.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "avarice": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Resentment at the winner’s advantage; the later detail does not change the boundary.",
+      "feedback_deep": "Avarice concerns extreme greed for wealth and material gain; envy concerns resentful desire for another person’s possessions or advantages. His reaction to the winner, rather than a wish to accumulate cash, fixes the distinction.",
+      "contrast_rule": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession.",
+      "hints": {
+        "attention": "Notice whom his resentment is directed toward.",
+        "axis": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has.",
+        "contrast": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "avarice-envy_003",
+      "edge_id": "avarice__envy",
+      "domain": "online_shop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Talia’s attitude?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "avarice-envy_003_b1",
+          "text": "Talia bought boxes of collectible coins only to lock them away, saying she could never own enough.",
+          "best_word": "avarice",
+          "fit": {
+            "avarice": 0.93,
+            "envy": 0.2
+          },
+          "decisive_clue": "an insatiable drive to accumulate valuable things",
+          "reason": "The compulsion concerns acquiring more material value.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "avarice-envy_003_b2",
+          "text": "She photographed each box against a pastel background before locking it away.",
+          "best_word": "avarice",
+          "fit": {
+            "avarice": 0.95,
+            "envy": 0.15
+          },
+          "decisive_clue": "an insatiable drive to accumulate valuable things",
+          "reason": "The photos do not alter her insatiable drive to acquire and hoard valuables.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An insatiable drive to accumulate valuable things; the later detail does not change the boundary.",
+      "feedback_deep": "Avarice concerns extreme greed for wealth and material gain; envy concerns resentful desire for another person’s possessions or advantages. The photos do not alter her insatiable drive to acquire and hoard valuables.",
+      "contrast_rule": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession.",
+      "hints": {
+        "attention": "Ignore presentation and focus on her reason for buying.",
+        "axis": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has.",
+        "contrast": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "avarice-envy_004",
+      "edge_id": "avarice__envy",
+      "domain": "neighbourhood",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Diego’s attitude?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "avarice-envy_004_b1",
+          "text": "Diego saw his neighbour’s beautiful garden and spent days complaining that someone else had a better one.",
+          "best_word": "envy",
+          "fit": {
+            "avarice": 0.2,
+            "envy": 0.93
+          },
+          "decisive_clue": "resentment at a neighbour’s advantage",
+          "reason": "He is preoccupied with another person having something better.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "avarice": "M2"
+          }
+        },
+        {
+          "id": "avarice-envy_004_b2",
+          "text": "He made those complaints while watering his own healthy plants.",
+          "best_word": "envy",
+          "fit": {
+            "avarice": 0.15,
+            "envy": 0.95
+          },
+          "decisive_clue": "resentment at a neighbour’s advantage",
+          "reason": "Having his own garden does not erase the resentment toward his neighbour’s.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "avarice": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is resentment at a neighbour’s advantage; having his own garden does not erase the resentment toward his neighbour’s.",
+      "feedback_deep": "Avarice concerns extreme greed for wealth and material gain; envy concerns resentful desire for another person’s possessions or advantages. Having his own garden does not erase the resentment toward his neighbour’s.",
+      "contrast_rule": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession.",
+      "hints": {
+        "attention": "Ask whether the concern is his own wealth or someone else’s good fortune.",
+        "axis": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has.",
+        "contrast": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "avarice-envy_005",
+      "edge_id": "avarice__envy",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mei’s attitude?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "avarice-envy_005_b1",
+          "text": "Mei sulked when a teammate received the captain’s badge.",
+          "best_word": "envy",
+          "fit": {
+            "avarice": 0.2,
+            "envy": 0.93
+          },
+          "decisive_clue": "resentment of another person’s recognition",
+          "reason": "The focus is the teammate’s advantage.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "avarice": "M2"
+          }
+        },
+        {
+          "id": "avarice-envy_005_b2",
+          "text": "She had declined the position herself but still hated seeing it on that teammate.",
+          "best_word": "envy",
+          "fit": {
+            "avarice": 0.15,
+            "envy": 0.95
+          },
+          "decisive_clue": "resentment of recognition held by someone else",
+          "reason": "She did not even want the responsibility; she resents someone else possessing the honor.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "avarice": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Resentment of recognition held by someone else; the later detail does not change the boundary.",
+      "feedback_deep": "Avarice concerns extreme greed for wealth and material gain; envy concerns resentful desire for another person’s possessions or advantages. She did not even want the responsibility; she resents someone else possessing the honor.",
+      "contrast_rule": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession.",
+      "hints": {
+        "attention": "Think about why the badge bothers her.",
+        "axis": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has.",
+        "contrast": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "avarice-envy_006",
+      "edge_id": "avarice__envy",
+      "domain": "part-time_work",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Nikhil’s attitude?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "avarice-envy_006_b1",
+          "text": "Nikhil canceled promised staff bonuses so he could add the money to his own already enormous earnings.",
+          "best_word": "avarice",
+          "fit": {
+            "avarice": 0.93,
+            "envy": 0.2
+          },
+          "decisive_clue": "taking promised bonuses to increase already enormous personal wealth",
+          "reason": "His pursuit of additional wealth leads him to take benefits promised to others.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        },
+        {
+          "id": "avarice-envy_006_b2",
+          "text": "He said another million still would not feel like enough.",
+          "best_word": "avarice",
+          "fit": {
+            "avarice": 0.95,
+            "envy": 0.15
+          },
+          "decisive_clue": "taking promised bonuses to increase already enormous personal wealth",
+          "reason": "His claim that another million would not suffice confirms insatiable greed, not resentment toward another owner.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "envy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Taking promised bonuses to increase already enormous personal wealth; the later detail does not change the boundary.",
+      "feedback_deep": "Avarice concerns extreme greed for wealth and material gain; envy concerns resentful desire for another person’s possessions or advantages. His claim that another million would not suffice confirms insatiable greed, not resentment toward another owner.",
+      "contrast_rule": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession.",
+      "hints": {
+        "attention": "Notice who benefits from the canceled bonuses.",
+        "axis": "Avarice is an excessive hunger to acquire wealth itself; envy is resentment directed at what someone else has.",
+        "contrast": "Avarice: hoarding wealth without a rival; envy: resenting a friend’s possession."
+      },
+      "qa": "pass"
+    }
+  ]
+}

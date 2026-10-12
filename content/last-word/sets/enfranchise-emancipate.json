@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "enfranchise-emancipate",
+  "title": "enfranchise / emancipate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[128]",
+    "source_pair_id": 505,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "enfranchise",
+      "sense": "Grant the right to vote or participate fully in civic political life",
+      "connotation": "positive",
+      "register": "formal",
+      "misconceptions": [
+        "Treating freedom from control as the same as voting rights.",
+        "Assuming the right to vote eliminates all other restrictions."
+      ]
+    },
+    {
+      "word": "emancipate",
+      "sense": "Release someone from legal, social, or political subjection",
+      "connotation": "positive",
+      "register": "formal",
+      "misconceptions": [
+        "Treating freedom from control as the same as voting rights.",
+        "Using liberation language for a change only to the electoral roll."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "political_franchise_vs_release_from_control",
+      "description": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control."
+    }
+  ],
+  "edges": [
+    {
+      "id": "enfranchise__emancipate",
+      "a": "enfranchise",
+      "b": "emancipate",
+      "boundary_rule": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control.",
+      "clues_a": [
+        "new eligibility to cast ballots",
+        "formal inclusion in political decisions"
+      ],
+      "clues_b": [
+        "freedom from a controlling guardian",
+        "release from binding restrictions"
+      ],
+      "irrelevant_clues": [
+        "new identity cards",
+        "public celebrations"
+      ],
+      "misconceptions": {
+        "M1": "Treating freedom from control as the same as voting rights.",
+        "M2": "Assuming the right to vote eliminates all other restrictions.",
+        "M3": "Using liberation language for a change only to the electoral roll."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "enfranchise-emancipate_001",
+      "edge_id": "enfranchise__emancipate",
+      "domain": "town_elections",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the council decision does for Dina?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "enfranchise-emancipate_001_b1",
+          "text": "Dina has lived in the town for years but could not vote; a new rule now permits her to cast a ballot.",
+          "best_word": "enfranchise",
+          "fit": {
+            "enfranchise": 0.91,
+            "emancipate": 0.26
+          },
+          "decisive_clue": "new eligibility to vote in local government",
+          "reason": "The initial evidence is new eligibility to vote in local government; it best supports enfranchise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "emancipate": "M1"
+          }
+        },
+        {
+          "id": "enfranchise-emancipate_001_b2",
+          "text": "Her name is added to the official voter register before the next election.",
+          "best_word": "enfranchise",
+          "fit": {
+            "enfranchise": 0.93,
+            "emancipate": 0.21
+          },
+          "decisive_clue": "formal inclusion on the voting roll",
+          "reason": "Registration confirms the new electoral right, not release from personal control.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "emancipate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Registration confirms the new electoral right, not release from personal control.",
+      "feedback_deep": "Enfranchise means give formal political voting rights; emancipate means set free from binding authority or control. Registration confirms the new electoral right, not release from personal control.",
+      "contrast_rule": "Enfranchise gives a political voice; emancipate removes a controlling bond.",
+      "hints": {
+        "attention": "What new civic action can she take?",
+        "axis": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control.",
+        "contrast": "Enfranchise gives a political voice; emancipate removes a controlling bond."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "enfranchise-emancipate_002",
+      "edge_id": "enfranchise__emancipate",
+      "domain": "court_guardianship",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the court decision does for Asha?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "enfranchise-emancipate_002_b1",
+          "text": "After years under a legal guardian's control, Asha is declared independent and can make her own contracts.",
+          "best_word": "emancipate",
+          "fit": {
+            "emancipate": 0.91,
+            "enfranchise": 0.26
+          },
+          "decisive_clue": "release from legal guardianship",
+          "reason": "The initial evidence is release from legal guardianship; it best supports emancipate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "enfranchise": "M1"
+          }
+        },
+        {
+          "id": "enfranchise-emancipate_002_b2",
+          "text": "She can now sign her own rental agreement without requesting anyone's permission.",
+          "best_word": "emancipate",
+          "fit": {
+            "emancipate": 0.93,
+            "enfranchise": 0.21
+          },
+          "decisive_clue": "legal independence from another person's control",
+          "reason": "Signing alone is evidence of independence rather than a new voting right.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "enfranchise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Signing alone is evidence of independence rather than a new voting right.",
+      "feedback_deep": "Enfranchise means give formal political voting rights; emancipate means set free from binding authority or control. Signing alone is evidence of independence rather than a new voting right.",
+      "contrast_rule": "Enfranchise gives a political voice; emancipate removes a controlling bond.",
+      "hints": {
+        "attention": "Whose permission did she once need?",
+        "axis": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control.",
+        "contrast": "Enfranchise gives a political voice; emancipate removes a controlling bond."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "enfranchise-emancipate_003",
+      "edge_id": "enfranchise__emancipate",
+      "domain": "city_voting_rules",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes what the reform does for Sana?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "enfranchise-emancipate_003_b1",
+          "text": "A city removes its old property requirement, allowing Sana to vote despite renting her home.",
+          "best_word": "enfranchise",
+          "fit": {
+            "enfranchise": 0.91,
+            "emancipate": 0.26
+          },
+          "decisive_clue": "a previous restriction on voting is removed",
+          "reason": "The initial evidence is a previous restriction on voting is removed; it best supports enfranchise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "emancipate": "M1"
+          }
+        },
+        {
+          "id": "enfranchise-emancipate_003_b2",
+          "text": "Sana can now choose the mayor on the same ballot as other registered residents.",
+          "best_word": "enfranchise",
+          "fit": {
+            "enfranchise": 0.93,
+            "emancipate": 0.21
+          },
+          "decisive_clue": "entry into equal municipal voting",
+          "reason": "The practical result is participation in elections, not general release from another's authority.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "emancipate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The practical result is participation in elections, not general release from another's authority.",
+      "feedback_deep": "Enfranchise means give formal political voting rights; emancipate means set free from binding authority or control. The practical result is participation in elections, not general release from another's authority.",
+      "contrast_rule": "Enfranchise gives a political voice; emancipate removes a controlling bond.",
+      "hints": {
+        "attention": "Identify the practical new right.",
+        "axis": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control.",
+        "contrast": "Enfranchise gives a political voice; emancipate removes a controlling bond."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "enfranchise-emancipate_004",
+      "edge_id": "enfranchise__emancipate",
+      "domain": "workplace_restrictions",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the change for Bilal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "enfranchise-emancipate_004_b1",
+          "text": "A binding agreement once barred Bilal from leaving his employer; the court voids it and he can resign freely.",
+          "best_word": "emancipate",
+          "fit": {
+            "emancipate": 0.91,
+            "enfranchise": 0.26
+          },
+          "decisive_clue": "release from a coercive contract",
+          "reason": "The initial evidence is release from a coercive contract; it best supports emancipate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "enfranchise": "M1"
+          }
+        },
+        {
+          "id": "enfranchise-emancipate_004_b2",
+          "text": "He celebrates with a meal at his favourite cafe.",
+          "best_word": "emancipate",
+          "fit": {
+            "emancipate": 0.93,
+            "enfranchise": 0.21
+          },
+          "decisive_clue": "release from a coercive contract",
+          "reason": "The celebration does not change the fact that a controlling obligation was lifted.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "enfranchise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The celebration does not change the fact that a controlling obligation was lifted.",
+      "feedback_deep": "Enfranchise means give formal political voting rights; emancipate means set free from binding authority or control. The celebration does not change the fact that a controlling obligation was lifted.",
+      "contrast_rule": "Enfranchise gives a political voice; emancipate removes a controlling bond.",
+      "hints": {
+        "attention": "Which restriction disappeared?",
+        "axis": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control.",
+        "contrast": "Enfranchise gives a political voice; emancipate removes a controlling bond."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "enfranchise-emancipate_005",
+      "edge_id": "enfranchise__emancipate",
+      "domain": "family_business",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Elena's new freedom?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "enfranchise-emancipate_005_b1",
+          "text": "Elena's relatives once controlled all her earnings; she now has legal authority to manage her own pay.",
+          "best_word": "emancipate",
+          "fit": {
+            "emancipate": 0.91,
+            "enfranchise": 0.26
+          },
+          "decisive_clue": "freedom from another's control over earnings",
+          "reason": "The initial evidence is freedom from another's control over earnings; it best supports emancipate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "enfranchise": "M1"
+          }
+        },
+        {
+          "id": "enfranchise-emancipate_005_b2",
+          "text": "She buys a notebook with the first money she spends herself.",
+          "best_word": "emancipate",
+          "fit": {
+            "emancipate": 0.93,
+            "enfranchise": 0.21
+          },
+          "decisive_clue": "freedom from another's control over earnings",
+          "reason": "The purchase is incidental; the decisive change is who controls her income.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "enfranchise": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The purchase is incidental; the decisive change is who controls her income.",
+      "feedback_deep": "Enfranchise means give formal political voting rights; emancipate means set free from binding authority or control. The purchase is incidental; the decisive change is who controls her income.",
+      "contrast_rule": "Enfranchise gives a political voice; emancipate removes a controlling bond.",
+      "hints": {
+        "attention": "Who now controls the decisions?",
+        "axis": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control.",
+        "contrast": "Enfranchise gives a political voice; emancipate removes a controlling bond."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "enfranchise-emancipate_006",
+      "edge_id": "enfranchise__emancipate",
+      "domain": "local_council_seat",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the new charter does for Marek?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "enfranchise-emancipate_006_b1",
+          "text": "Under an old charter, Marek's district had no vote for local councillors; the revised charter grants one.",
+          "best_word": "enfranchise",
+          "fit": {
+            "enfranchise": 0.91,
+            "emancipate": 0.26
+          },
+          "decisive_clue": "restoration of political voting rights",
+          "reason": "The initial evidence is restoration of political voting rights; it best supports enfranchise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "emancipate": "M1"
+          }
+        },
+        {
+          "id": "enfranchise-emancipate_006_b2",
+          "text": "Residents in his district can now select their own representative.",
+          "best_word": "enfranchise",
+          "fit": {
+            "enfranchise": 0.93,
+            "emancipate": 0.21
+          },
+          "decisive_clue": "political representation through the ballot",
+          "reason": "The representative choice illustrates the franchise the charter grants.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "emancipate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The representative choice illustrates the franchise the charter grants.",
+      "feedback_deep": "Enfranchise means give formal political voting rights; emancipate means set free from binding authority or control. The representative choice illustrates the franchise the charter grants.",
+      "contrast_rule": "Enfranchise gives a political voice; emancipate removes a controlling bond.",
+      "hints": {
+        "attention": "Look at the type of participation.",
+        "axis": "Enfranchise grants voting or civic political rights; emancipate releases a person from imposed legal or social control.",
+        "contrast": "Enfranchise gives a political voice; emancipate removes a controlling bond."
+      },
+      "qa": "pass"
+    }
+  ]
+}

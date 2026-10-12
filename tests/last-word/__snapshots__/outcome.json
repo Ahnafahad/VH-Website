@@ -1,22 +1,15 @@
 {
  "seen": [
   "The words are familiar.",
-  "Prove what you know",
-  "The words are familiar.",
-  "Prove what you know",
-  "Let’s sharpen the boundary.",
+  "Abase fits here.",
+  "Abase fits here.",
   "Where one word stops and the other starts",
-  "Prove what you know",
-  "The words are familiar.",
-  "Persistent fits.",
-  "Persistent fits here.",
-  "Where one word stops and the other starts",
-  "Persistent fits."
+  "Abash fits here.",
+  "Abash fits here.",
+  "Abase fits here.",
+  "Abase fits here."
  ],
  "rows": [
-  "assure ↔ ensure\nYou handled a standard context, a context flip, and a new-domain transfer example.\nGETTING IT\nchanged from NEW",
-  "frugal ↔ miserly\nYou handled a standard context and a context flip.\nGETTING IT\nchanged from NEW",
-  "frugal ↔ thrifty\nYou handled a new-domain transfer example.\nGETTING IT\nchanged from NEW",
-  "persistent ↔ obstinate\nYou handled a standard context, a context flip, and a new-domain transfer example.\nGETTING IT\nchanged from NEW"
+  "abash ↔ abase\nYou handled a standard context and a new-domain transfer example.\nGETTING IT\nchanged from NEW"
  ]
 }

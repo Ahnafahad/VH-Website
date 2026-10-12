@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "coerce-compel",
+  "title": "coerce / compel",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[1]",
+    "source_pair_id": 2,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "coerce",
+      "sense": "Make a person comply through threats, intimidation or fear of serious punishment.",
+      "connotation": "strongly negative",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Ignoring an explicit threat because it was delivered politely.",
+        "Confusing impersonal requirements with intimidation."
+      ]
+    },
+    {
+      "word": "compel",
+      "sense": "Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation.",
+      "connotation": "neutral or serious",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Treating any necessary action as the product of threats.",
+        "Confusing impersonal requirements with intimidation."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "intimidation_vs_necessity",
+      "description": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone."
+    }
+  ],
+  "edges": [
+    {
+      "id": "coerce__compel",
+      "a": "coerce",
+      "b": "compel",
+      "boundary_rule": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+      "clues_a": [
+        "explicit threat for refusal",
+        "fear of retaliation"
+      ],
+      "clues_b": [
+        "unavoidable circumstances",
+        "binding requirement or urgent reason"
+      ],
+      "irrelevant_clues": [
+        "loud instructions",
+        "unpleasant effort"
+      ],
+      "misconceptions": {
+        "M1": "Treating any necessary action as the product of threats.",
+        "M2": "Ignoring an explicit threat because it was delivered politely.",
+        "M3": "Confusing impersonal requirements with intimidation."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "coerce-compel_001",
+      "edge_id": "coerce__compel",
+      "domain": "after-school_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Daria obtained Amir’s signature?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_001_b1",
+          "text": "Daria explained that joining the club required Amir to sign the consent form, so he reluctantly agreed.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "a club requirement made signing necessary",
+          "reason": "A club requirement made signing necessary. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_001_b2",
+          "text": "She also privately threatened to publish his messages if he refused to sign.",
+          "best_word": "coerce",
+          "fit": {
+            "coerce": 0.93,
+            "compel": 0.18
+          },
+          "decisive_clue": "a private threat of exposure made refusal frightening",
+          "reason": "A private threat of exposure made refusal frightening. Make a person comply through threats, intimidation or fear of serious punishment..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compel": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A private threat of exposure made refusal frightening makes coerce the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, a private threat of exposure made refusal frightening; that is why coerce wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on what else she said would happen if he refused.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_002",
+      "edge_id": "coerce__compel",
+      "domain": "apartment_fire_alarm",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what made Hugo leave his flat?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_002_b1",
+          "text": "Hugo left because thick smoke filled the hallway and staying inside was unsafe.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "immediate danger forced him to leave",
+          "reason": "Immediate danger forced him to leave. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_002_b2",
+          "text": "He wanted to finish dinner, but the danger gave him no real option.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "reluctance does not turn danger into a threat by a person",
+          "reason": "Reluctance does not turn danger into a threat by a person. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Reluctance does not turn danger into a threat by a person makes compel the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, reluctance does not turn danger into a threat by a person; that is why compel wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on whether anyone intimidated him.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_003",
+      "edge_id": "coerce__compel",
+      "domain": "workplace_rota",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Nadia got a colleague to take her shift?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_003_b1",
+          "text": "Nadia showed her colleague the compulsory shift rota assigning him Friday, and he agreed to work.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "the binding rota required the Friday shift",
+          "reason": "The binding rota required the Friday shift. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_003_b2",
+          "text": "She also warned him that she would spread a damaging lie if he declined the shift.",
+          "best_word": "coerce",
+          "fit": {
+            "coerce": 0.93,
+            "compel": 0.18
+          },
+          "decisive_clue": "threat of a damaging lie added intimidation",
+          "reason": "Threat of a damaging lie added intimidation. Make a person comply through threats, intimidation or fear of serious punishment..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compel": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Threat of a damaging lie added intimidation makes coerce the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, threat of a damaging lie added intimidation; that is why coerce wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on the pressure beyond the rota.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_004",
+      "edge_id": "coerce__compel",
+      "domain": "school_exam",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes why Felix handed over his phone?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_004_b1",
+          "text": "The exam rules required Felix to leave his phone at the desk before entering.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "standard exam rule required the action",
+          "reason": "Standard exam rule required the action. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_004_b2",
+          "text": "He disliked the rule but complied because it applied to every candidate.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "dislike of a rule does not imply intimidation",
+          "reason": "Dislike of a rule does not imply intimidation. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Dislike of a rule does not imply intimidation makes compel the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, dislike of a rule does not imply intimidation; that is why compel wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on ordinary rules versus personal threats.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_005",
+      "edge_id": "coerce__compel",
+      "domain": "gaming_group",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes how Salma got the account password?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_005_b1",
+          "text": "Salma said she would publish her friend’s embarrassing photos unless he shared the password.",
+          "best_word": "coerce",
+          "fit": {
+            "coerce": 0.93,
+            "compel": 0.18
+          },
+          "decisive_clue": "threatened exposure to obtain a password",
+          "reason": "Threatened exposure to obtain a password. Make a person comply through threats, intimidation or fear of serious punishment..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compel": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_005_b2",
+          "text": "She asked politely and used a smile, but the warning still stood.",
+          "best_word": "coerce",
+          "fit": {
+            "coerce": 0.93,
+            "compel": 0.18
+          },
+          "decisive_clue": "polite delivery does not cancel the threat",
+          "reason": "Polite delivery does not cancel the threat. Make a person comply through threats, intimidation or fear of serious punishment..",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compel": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Polite delivery does not cancel the threat makes coerce the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, polite delivery does not cancel the threat; that is why coerce wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on the consequence she attached to refusal.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_006",
+      "edge_id": "coerce__compel",
+      "domain": "stormy_ferry_ride",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what made Anton put on a life jacket?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_006_b1",
+          "text": "Anton put it on because rough waves made being unprotected dangerous.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "danger from rough water prompted action",
+          "reason": "Danger from rough water prompted action. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_006_b2",
+          "text": "He felt silly wearing it, but the risk outweighed his embarrassment.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "embarrassment does not make this intimidation",
+          "reason": "Embarrassment does not make this intimidation. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Embarrassment does not make this intimidation makes compel the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, embarrassment does not make this intimidation; that is why compel wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on a natural risk versus another person’s threat.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_007",
+      "edge_id": "coerce__compel",
+      "domain": "sports_team",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Reem got another player to hide a mistake?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_007_b1",
+          "text": "Reem threatened to ruin the player’s chance of selection if he told the coach.",
+          "best_word": "coerce",
+          "fit": {
+            "coerce": 0.93,
+            "compel": 0.18
+          },
+          "decisive_clue": "retaliation threatened for telling the truth",
+          "reason": "Retaliation threatened for telling the truth. Make a person comply through threats, intimidation or fear of serious punishment..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compel": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_007_b2",
+          "text": "He kept quiet only because he feared her retaliation.",
+          "best_word": "coerce",
+          "fit": {
+            "coerce": 0.93,
+            "compel": 0.18
+          },
+          "decisive_clue": "explicit fear confirms threatened compliance",
+          "reason": "Explicit fear confirms threatened compliance. Make a person comply through threats, intimidation or fear of serious punishment..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compel": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Explicit fear confirms threatened compliance makes coerce the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, explicit fear confirms threatened compliance; that is why coerce wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on why the player stayed quiet.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_008",
+      "edge_id": "coerce__compel",
+      "domain": "family_emergency",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes why Kofi rushed home?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_008_b1",
+          "text": "Kofi rushed home when his younger sister called to say she was injured and needed help.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "urgent concern drove him home",
+          "reason": "Urgent concern drove him home. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_008_b2",
+          "text": "Nobody ordered him or threatened him; concern made leaving unavoidable to him.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "absence of threats distinguishes obligation from intimidation",
+          "reason": "Absence of threats distinguishes obligation from intimidation. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Absence of threats distinguishes obligation from intimidation makes compel the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, absence of threats distinguishes obligation from intimidation; that is why compel wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on what made him feel he had to go.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_009",
+      "edge_id": "coerce__compel",
+      "domain": "market_stall",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes how Yara made the seller refund her?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_009_b1",
+          "text": "Yara pointed out that the seller’s posted refund policy required repayment, so he agreed to return her money.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "the written refund rule required repayment",
+          "reason": "The written refund rule required repayment. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_009_b2",
+          "text": "She then threatened to damage his stall if he did not pay, even with the policy in place.",
+          "best_word": "coerce",
+          "fit": {
+            "coerce": 0.93,
+            "compel": 0.18
+          },
+          "decisive_clue": "threat of damage was used to force payment",
+          "reason": "Threat of damage was used to force payment. Make a person comply through threats, intimidation or fear of serious punishment..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compel": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Threat of damage was used to force payment makes coerce the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, threat of damage was used to force payment; that is why coerce wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on the method she added to the policy.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "coerce-compel_010",
+      "edge_id": "coerce__compel",
+      "domain": "train_station",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes what made Emil change platforms?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "coerce-compel_010_b1",
+          "text": "Emil changed platforms because the only train to his destination had moved to another track.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "timetable change made moving necessary",
+          "reason": "Timetable change made moving necessary. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M1"
+          }
+        },
+        {
+          "id": "coerce-compel_010_b2",
+          "text": "He was carrying heavy bags, but reaching home required the move.",
+          "best_word": "compel",
+          "fit": {
+            "coerce": 0.18,
+            "compel": 0.93
+          },
+          "decisive_clue": "inconvenience does not turn necessity into intimidation",
+          "reason": "Inconvenience does not turn necessity into intimidation. Make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "coerce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Inconvenience does not turn necessity into intimidation makes compel the better fit.",
+      "feedback_deep": "Coerce means make a person comply through threats, intimidation or fear of serious punishment; compel means make action necessary or irresistible through a rule, circumstance or strong reason, without requiring intimidation. Here, inconvenience does not turn necessity into intimidation; that is why compel wins even after the new detail.",
+      "contrast_rule": "Coerce uses fear; compel can use necessity.",
+      "hints": {
+        "attention": "Focus on a practical requirement or a threat.",
+        "axis": "Coerce uses threats or intimidation to secure compliance; compel makes action necessary without necessarily threatening anyone.",
+        "contrast": "Coerce uses fear; compel can use necessity."
+      },
+      "qa": "pass"
+    }
+  ]
+}

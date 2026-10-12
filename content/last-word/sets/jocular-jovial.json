@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "set_id": "jocular-jovial",
+  "title": "jocular / jovial",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[179]",
+    "source_pair_id": 806,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "jocular",
+      "sense": "Fond of joking and making lighthearted humorous remarks.",
+      "connotation": "light, playful",
+      "register": "general or educated",
+      "misconceptions": [
+        "Assumes good humour always involves jokes.",
+        "Treats every joke as proof of overall warm sociability."
+      ]
+    },
+    {
+      "word": "jovial",
+      "sense": "Warmly cheerful, friendly, and sociable, with or without jokes.",
+      "connotation": "warm, approving",
+      "register": "general or educated",
+      "misconceptions": [
+        "Assumes good humour always involves jokes.",
+        "Treats every joke as proof of overall warm sociability."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_basis",
+      "description": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+    }
+  ],
+  "edges": [
+    {
+      "id": "jocular__jovial",
+      "a": "jocular",
+      "b": "jovial",
+      "boundary_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "clues_a": [
+        "makes playful quips",
+        "teases affectionately",
+        "builds a funny punchline"
+      ],
+      "clues_b": [
+        "greets others warmly",
+        "radiates social cheer",
+        "makes company welcome"
+      ],
+      "irrelevant_clues": [
+        "room size",
+        "volume of applause",
+        "clothes"
+      ],
+      "misconceptions": {
+        "M1": "Assumes good humour always involves jokes.",
+        "M2": "Treats every joke as proof of overall warm sociability.",
+        "M3": "Mistakes a superficial distraction for the defining behaviour."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "jocular-jovial_001",
+      "edge_id": "jocular__jovial",
+      "domain": "school_assembly",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hana’s remarks at the assembly?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "jocular-jovial_001_b1",
+          "text": "Hana told the audience that her alarm clock had filed a complaint about her early starts.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.87,
+            "jovial": 0.2
+          },
+          "decisive_clue": "turns ordinary events into deliberate jokes",
+          "reason": "The first beat supplies the deciding evidence: turns ordinary events into deliberate jokes.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M3"
+          }
+        },
+        {
+          "id": "jocular-jovial_001_b2",
+          "text": "She followed it with another playful line about breakfast.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.89,
+            "jovial": 0.17
+          },
+          "decisive_clue": "turns ordinary events into deliberate jokes",
+          "reason": "The lighthearted invented complaint signals a joke-making style.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Turns ordinary events into deliberate jokes is what distinguishes jocular here.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, turns ordinary events into deliberate jokes; the lighthearted invented complaint signals a joke-making style.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on humour rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "jocular-jovial_002",
+      "edge_id": "jocular__jovial",
+      "domain": "housewarming",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Luca’s manner at the housewarming?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "jocular-jovial_002_b1",
+          "text": "Luca greeted every arrival with a broad smile and introduced guests who had not met.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.23,
+            "jovial": 0.89
+          },
+          "decisive_clue": "warm, sociable welcome throughout the party",
+          "reason": "The first beat supplies the deciding evidence: warm, sociable welcome throughout the party.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M1"
+          }
+        },
+        {
+          "id": "jocular-jovial_002_b2",
+          "text": "He spent the evening helping people find seats and refreshments.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.2,
+            "jovial": 0.91
+          },
+          "decisive_clue": "warm, sociable welcome throughout the party",
+          "reason": "The continuing welcome, not joke-telling, is the key.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Warm, sociable welcome throughout the party — the later detail does not change that distinction.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, warm, sociable welcome throughout the party; the continuing welcome, not joke-telling, is the key.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on hospitality rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "jocular-jovial_003",
+      "edge_id": "jocular__jovial",
+      "domain": "class_group_chat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Asha’s style in the chat?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "jocular-jovial_003_b1",
+          "text": "Asha replied to a long homework list by asking whether it included a degree in carrying books.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.91,
+            "jovial": 0.16
+          },
+          "decisive_clue": "responds with a deliberately funny exaggeration",
+          "reason": "The first beat supplies the deciding evidence: responds with a deliberately funny exaggeration.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M2"
+          }
+        },
+        {
+          "id": "jocular-jovial_003_b2",
+          "text": "Her classmates reacted with laughing emojis.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.93,
+            "jovial": 0.13
+          },
+          "decisive_clue": "responds with a deliberately funny exaggeration",
+          "reason": "Reactions support, but do not create, the playful quality of her reply.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Responds with a deliberately funny exaggeration is what distinguishes jocular here.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, responds with a deliberately funny exaggeration; reactions support, but do not create, the playful quality of her reply.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on wit rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "jocular-jovial_004",
+      "edge_id": "jocular__jovial",
+      "domain": "family_reunion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Pavel’s manner at the reunion?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "jocular-jovial_004_b1",
+          "text": "Pavel moved easily between tables, remembering names and warmly asking after everyone.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.2,
+            "jovial": 0.85
+          },
+          "decisive_clue": "friendly conversation and easy sociability",
+          "reason": "The first beat supplies the deciding evidence: friendly conversation and easy sociability.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M3"
+          }
+        },
+        {
+          "id": "jocular-jovial_004_b2",
+          "text": "His stories were ordinary updates rather than punchlines.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.17,
+            "jovial": 0.87
+          },
+          "decisive_clue": "friendly conversation and easy sociability",
+          "reason": "Cheerfulness need not arrive in the form of a joke.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Friendly conversation and easy sociability is what distinguishes jovial here.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, friendly conversation and easy sociability; cheerfulness need not arrive in the form of a joke.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on mood rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "jocular-jovial_005",
+      "edge_id": "jocular__jovial",
+      "domain": "restaurant_shift",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Malia’s way of talking to colleagues?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "jocular-jovial_005_b1",
+          "text": "Malia announced that the printer was demanding a holiday after another stack of orders.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.87,
+            "jovial": 0.23
+          },
+          "decisive_clue": "turns a printer problem into a playful remark",
+          "reason": "The first beat supplies the deciding evidence: turns a printer problem into a playful remark.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M1"
+          }
+        },
+        {
+          "id": "jocular-jovial_005_b2",
+          "text": "She had been on her feet for six hours when she said it.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.89,
+            "jovial": 0.2
+          },
+          "decisive_clue": "turns a printer problem into a playful remark",
+          "reason": "Tiredness does not alter the joking form of the remark.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Turns a printer problem into a playful remark — the later detail does not change that distinction.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, turns a printer problem into a playful remark; tiredness does not alter the joking form of the remark.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on joke rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "jocular-jovial_006",
+      "edge_id": "jocular__jovial",
+      "domain": "neighbourhood_picnic",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s manner at the picnic?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "jocular-jovial_006_b1",
+          "text": "Omar laughed easily, shared food, and drew quiet newcomers into conversation.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.16,
+            "jovial": 0.89
+          },
+          "decisive_clue": "makes people feel at ease through lively friendliness",
+          "reason": "The first beat supplies the deciding evidence: makes people feel at ease through lively friendliness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M2"
+          }
+        },
+        {
+          "id": "jocular-jovial_006_b2",
+          "text": "He avoided telling stories about himself.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.13,
+            "jovial": 0.91
+          },
+          "decisive_clue": "makes people feel at ease through lively friendliness",
+          "reason": "An outwardly cheerful manner does not require self-focused stories or jokes.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Makes people feel at ease through lively friendliness is what distinguishes jovial here.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, makes people feel at ease through lively friendliness; an outwardly cheerful manner does not require self-focused stories or jokes.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on sociability rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "jocular-jovial_007",
+      "edge_id": "jocular__jovial",
+      "domain": "sports_practice",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Anika’s comment during practice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "jocular-jovial_007_b1",
+          "text": "When a ball flew over the fence, Anika asked whether it had transferred to another club.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.91,
+            "jovial": 0.2
+          },
+          "decisive_clue": "makes a playful remark about the ball",
+          "reason": "The first beat supplies the deciding evidence: makes a playful remark about the ball.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M3"
+          }
+        },
+        {
+          "id": "jocular-jovial_007_b2",
+          "text": "She delivered the line as she hurried toward the fence.",
+          "best_word": "jocular",
+          "fit": {
+            "jocular": 0.93,
+            "jovial": 0.17
+          },
+          "decisive_clue": "makes a playful remark about the ball",
+          "reason": "Helping retrieve it does not change the humorous nature of her comment.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jovial": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Makes a playful remark about the ball — the later detail does not change that distinction.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, makes a playful remark about the ball; helping retrieve it does not change the humorous nature of her comment.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on wordplay rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "jocular-jovial_008",
+      "edge_id": "jocular__jovial",
+      "domain": "train_journey",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ken’s manner on the long journey?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "jocular-jovial_008_b1",
+          "text": "Ken chatted pleasantly with fellow passengers and offered to swap seats to help a family sit together.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.23,
+            "jovial": 0.85
+          },
+          "decisive_clue": "warm sociability and upbeat helpfulness",
+          "reason": "The first beat supplies the deciding evidence: warm sociability and upbeat helpfulness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M1"
+          }
+        },
+        {
+          "id": "jocular-jovial_008_b2",
+          "text": "He barely raised his voice above the noise of the carriage.",
+          "best_word": "jovial",
+          "fit": {
+            "jocular": 0.2,
+            "jovial": 0.87
+          },
+          "decisive_clue": "warm sociability and upbeat helpfulness",
+          "reason": "Being soft-spoken does not rule out an easy, cheerful manner.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "jocular": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Warm sociability and upbeat helpfulness is what distinguishes jovial here.",
+      "feedback_deep": "Jocular means fond of joking and making lighthearted humorous remarks. Jovial means warmly cheerful, friendly, and sociable, with or without jokes. Here, warm sociability and upbeat helpfulness; being soft-spoken does not rule out an easy, cheerful manner.",
+      "contrast_rule": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+      "hints": {
+        "attention": "Focus on demeanor rather than incidental details.",
+        "axis": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes.",
+        "contrast": "Jocular describes playfulness expressed through jokes; jovial describes buoyant good cheer and sociability without requiring jokes."
+      },
+      "qa": "pass"
+    }
+  ]
+}

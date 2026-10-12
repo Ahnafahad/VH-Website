@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "set_id": "transgress-trespass",
+  "title": "transgress / trespass",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[36]",
+    "source_pair_id": 150,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "transgress",
+      "sense": "Violate an accepted moral, social, or legal limit.",
+      "connotation": "morally disapproving",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with trespass when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "trespass",
+      "sense": "Enter another person’s property without permission.",
+      "connotation": "legal or property-related",
+      "register": "standard",
+      "misconceptions": [
+        "Confused with transgress when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "rule_breach_versus_property_entry",
+      "description": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission."
+    }
+  ],
+  "edges": [
+    {
+      "id": "transgress__trespass",
+      "a": "transgress",
+      "b": "trespass",
+      "boundary_rule": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "clues_a": [
+        "Breaks a rule or boundary of conduct.",
+        "Violate an accepted moral, social, or legal limit."
+      ],
+      "clues_b": [
+        "Crosses a property boundary without consent.",
+        "Enter another person’s property without permission."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating transgress as though it always means trespass.",
+        "M2": "Treating trespass as though it always means transgress.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "transgress-trespass_001",
+      "edge_id": "transgress__trespass",
+      "domain": "friendship",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Aisha’s sharing of private messages?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "transgress-trespass_001_b1",
+          "text": "Aisha forwarded her friend’s private messages to others after promising to keep them secret.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.87,
+            "trespass": 0.32
+          },
+          "decisive_clue": "she broke an explicit promise of confidentiality",
+          "reason": "This establishes that she broke an explicit promise of confidentiality.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        },
+        {
+          "id": "transgress-trespass_001_b2",
+          "text": "She sent them into a group chat with hundreds of members.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.93,
+            "trespass": 0.32
+          },
+          "decisive_clue": "she broke an explicit promise of confidentiality",
+          "reason": "The wider audience increases the breach; the action concerns trust, not entering land.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She broke an explicit promise of confidentiality; that detail favors transgress.",
+      "feedback_deep": "The wider audience increases the breach; the action concerns trust, not entering land. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Ask what kind of boundary she crossed.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "transgress-trespass_002",
+      "edge_id": "transgress__trespass",
+      "domain": "neighbourhood",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Ben’s route home?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "transgress-trespass_002_b1",
+          "text": "Ben crossed through his neighbour’s locked garden gate without permission to shorten his walk.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.87
+          },
+          "decisive_clue": "he entered privately owned ground without consent",
+          "reason": "This establishes that he entered privately owned ground without consent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        },
+        {
+          "id": "transgress-trespass_002_b2",
+          "text": "He did not touch the plants or take anything on his way through.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.93
+          },
+          "decisive_clue": "he entered privately owned ground without consent",
+          "reason": "Taking nothing does not undo the unauthorized entry; the same property boundary was crossed.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He entered privately owned ground without consent; that detail favors trespass.",
+      "feedback_deep": "Taking nothing does not undo the unauthorized entry; the same property boundary was crossed. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Focus on permission to enter, not theft.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "transgress-trespass_003",
+      "edge_id": "transgress__trespass",
+      "domain": "school_contest",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Carmen’s alteration of the scores?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "transgress-trespass_003_b1",
+          "text": "Carmen secretly changed contest scores after agreeing to follow the judges’ rules.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.87,
+            "trespass": 0.32
+          },
+          "decisive_clue": "she violated a rule governing the competition",
+          "reason": "This establishes that she violated a rule governing the competition.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        },
+        {
+          "id": "transgress-trespass_003_b2",
+          "text": "She made the changes after the final totals had already been signed.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.93,
+            "trespass": 0.32
+          },
+          "decisive_clue": "she violated a rule governing the competition",
+          "reason": "Changing approved results reinforces the breach, which has nothing to do with property entry.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She violated a rule governing the competition; that detail favors transgress.",
+      "feedback_deep": "Changing approved results reinforces the breach, which has nothing to do with property entry. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Notice which rule the action violates.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "transgress-trespass_004",
+      "edge_id": "transgress__trespass",
+      "domain": "photography_outing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Dinesh’s visit to the warehouse yard?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "transgress-trespass_004_b1",
+          "text": "Dinesh entered a closed warehouse yard after passing a sign requiring visitors to get permission.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.87
+          },
+          "decisive_clue": "he entered restricted property without permission",
+          "reason": "This establishes that he entered restricted property without permission.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        },
+        {
+          "id": "transgress-trespass_004_b2",
+          "text": "He stayed only long enough to photograph its painted wall.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.93
+          },
+          "decisive_clue": "he entered restricted property without permission",
+          "reason": "His short visit does not change the absence of authorization.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He entered restricted property without permission; that detail favors trespass.",
+      "feedback_deep": "His short visit does not change the absence of authorization. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Ask whether he had a right to be there.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "transgress-trespass_005",
+      "edge_id": "transgress__trespass",
+      "domain": "sports_grounds",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Elena’s late-night visit to the pitch?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "transgress-trespass_005_b1",
+          "text": "Elena climbed a locked fence into a privately owned sports ground after closing.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.87
+          },
+          "decisive_clue": "she crossed into enclosed private property without consent",
+          "reason": "This establishes that she crossed into enclosed private property without consent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        },
+        {
+          "id": "transgress-trespass_005_b2",
+          "text": "She left again before anyone else arrived.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.93
+          },
+          "decisive_clue": "she crossed into enclosed private property without consent",
+          "reason": "Leaving quickly has no bearing on the unauthorized entry.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        }
+      ],
+      "feedback_short": "She crossed into enclosed private property without consent; that detail favors trespass.",
+      "feedback_deep": "Leaving quickly has no bearing on the unauthorized entry. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Notice the fence and ownership rather than how long she stayed.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "transgress-trespass_006",
+      "edge_id": "transgress__trespass",
+      "domain": "office_confidentiality",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Femi’s disclosure to a friend?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "transgress-trespass_006_b1",
+          "text": "Femi shared a customer’s private details despite having signed a promise not to disclose them.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.87,
+            "trespass": 0.32
+          },
+          "decisive_clue": "he violated a confidentiality obligation",
+          "reason": "This establishes that he violated a confidentiality obligation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        },
+        {
+          "id": "transgress-trespass_006_b2",
+          "text": "He revealed the information during a casual phone call, not in an emergency.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.93,
+            "trespass": 0.32
+          },
+          "decisive_clue": "he violated a confidentiality obligation",
+          "reason": "The informal setting does not remove the breached obligation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He violated a confidentiality obligation; that detail favors transgress.",
+      "feedback_deep": "The informal setting does not remove the breached obligation. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Look at the agreement governing his action.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "transgress-trespass_007",
+      "edge_id": "transgress__trespass",
+      "domain": "debate_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Gita’s comment in the debate?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "transgress-trespass_007_b1",
+          "text": "Gita made a personal insult even though every speaker had agreed not to attack another person’s family.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.87,
+            "trespass": 0.32
+          },
+          "decisive_clue": "she crossed a stated limit on acceptable debate conduct",
+          "reason": "This establishes that she crossed a stated limit on acceptable debate conduct.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        },
+        {
+          "id": "transgress-trespass_007_b2",
+          "text": "Her remark was about a speaker’s younger brother.",
+          "best_word": "transgress",
+          "fit": {
+            "transgress": 0.93,
+            "trespass": 0.32
+          },
+          "decisive_clue": "she crossed a stated limit on acceptable debate conduct",
+          "reason": "The target clarifies the nature of the rule breach; no property was entered.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "trespass": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She crossed a stated limit on acceptable debate conduct; that detail favors transgress.",
+      "feedback_deep": "The target clarifies the nature of the rule breach; no property was entered. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Identify the agreed limit on speech.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "transgress-trespass_008",
+      "edge_id": "transgress__trespass",
+      "domain": "driveway",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hugo’s entry onto the driveway?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "transgress-trespass_008_b1",
+          "text": "Hugo entered a neighbour’s private driveway after being directly told not to come onto the property.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.87
+          },
+          "decisive_clue": "he entered someone else’s property against an explicit refusal",
+          "reason": "This establishes that he entered someone else’s property against an explicit refusal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        },
+        {
+          "id": "transgress-trespass_008_b2",
+          "text": "He stayed outdoors and never approached the house’s front door.",
+          "best_word": "trespass",
+          "fit": {
+            "transgress": 0.32,
+            "trespass": 0.93
+          },
+          "decisive_clue": "he entered someone else’s property against an explicit refusal",
+          "reason": "Remaining outside the house does not permit entry onto the driveway.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "transgress": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He entered someone else’s property against an explicit refusal; that detail favors trespass.",
+      "feedback_deep": "Remaining outside the house does not permit entry onto the driveway. Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+      "contrast_rule": "Transgress crosses a rule; trespass crosses a property line.",
+      "hints": {
+        "attention": "Think about where the property boundary begins.",
+        "axis": "Transgress means breach a rule of conduct; trespass specifically means enter someone else’s property without permission.",
+        "contrast": "Transgress crosses a rule; trespass crosses a property line."
+      },
+      "qa": "pass"
+    }
+  ]
+}

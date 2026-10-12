@@ -1,0 +1,557 @@
+{
+  "schema_version": 1,
+  "set_id": "countenance-demeanor",
+  "title": "countenance / demeanor",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[162]",
+    "source_pair_id": 687,
+    "qa": {
+      "pass": 5,
+      "revised": 3,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "countenance",
+      "sense": "A person’s face, particularly the expression it displays.",
+      "connotation": "literary or formal",
+      "register": "formal",
+      "misconceptions": [
+        "Uses a facial expression as though it described all behaviour.",
+        "Treats bearing or manner as exclusively facial."
+      ]
+    },
+    {
+      "word": "demeanor",
+      "sense": "A person’s overall outward manner, bearing, and behaviour.",
+      "connotation": "neutral to formal",
+      "register": "general or educated",
+      "misconceptions": [
+        "Uses a facial expression as though it described all behaviour.",
+        "Treats bearing or manner as exclusively facial."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_basis",
+      "description": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+    }
+  ],
+  "edges": [
+    {
+      "id": "countenance__demeanor",
+      "a": "countenance",
+      "b": "demeanor",
+      "boundary_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "clues_a": [
+        "eyes tighten",
+        "mouth relaxes",
+        "facial expression shifts"
+      ],
+      "clues_b": [
+        "speaks softly",
+        "holds posture",
+        "moves and behaves"
+      ],
+      "irrelevant_clues": [
+        "shirt colour",
+        "weather",
+        "how many people watched"
+      ],
+      "misconceptions": {
+        "M1": "Uses a facial expression as though it described all behaviour.",
+        "M2": "Treats bearing or manner as exclusively facial.",
+        "M3": "Confuses surrounding details with what is actually observed."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "countenance-demeanor_001",
+      "edge_id": "countenance__demeanor",
+      "domain": "job_interview",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best captures the outward impression Fatima gave in the interview?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "countenance-demeanor_001_b1",
+          "text": "Fatima’s brow tightened and the corners of her mouth fell when she heard the question.",
+          "best_word": "countenance",
+          "fit": {
+            "countenance": 0.87,
+            "demeanor": 0.2
+          },
+          "decisive_clue": "brow and mouth directly display emotion",
+          "reason": "The first beat supplies the deciding evidence: brow and mouth directly display emotion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "demeanor": "M3"
+          }
+        },
+        {
+          "id": "countenance-demeanor_001_b2",
+          "text": "Her expression softened slightly as she listened to the explanation.",
+          "best_word": "countenance",
+          "fit": {
+            "countenance": 0.89,
+            "demeanor": 0.17
+          },
+          "decisive_clue": "brow and mouth directly display emotion",
+          "reason": "The observation concerns facial expression rather than her entire manner.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "demeanor": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Brow and mouth directly display emotion is what distinguishes countenance here.",
+      "feedback_deep": "Countenance means a person’s face, particularly the expression it displays. Demeanor means a person’s overall outward manner, bearing, and behaviour. Here, brow and mouth directly display emotion; the observation concerns facial expression rather than her entire manner.",
+      "contrast_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "hints": {
+        "attention": "Focus on face rather than incidental details.",
+        "axis": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+        "contrast": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "countenance-demeanor_002",
+      "edge_id": "countenance__demeanor",
+      "domain": "hotel_reception",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best captures the outward impression Amir gave to guests?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "countenance-demeanor_002_b1",
+          "text": "Amir stood attentively, spoke with patience, and offered clear directions to each guest.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.23,
+            "demeanor": 0.89
+          },
+          "decisive_clue": "steady posture, speech, and conduct",
+          "reason": "The first beat supplies the deciding evidence: steady posture, speech, and conduct.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M1"
+          }
+        },
+        {
+          "id": "countenance-demeanor_002_b2",
+          "text": "He maintained the same measured pace even as the queue grew.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.2,
+            "demeanor": 0.91
+          },
+          "decisive_clue": "steady posture, speech, and conduct",
+          "reason": "Several features of outward behaviour form an overall manner.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Steady posture, speech, and conduct is what distinguishes demeanor here.",
+      "feedback_deep": "Countenance means a person’s face, particularly the expression it displays. Demeanor means a person’s overall outward manner, bearing, and behaviour. Here, steady posture, speech, and conduct; several features of outward behaviour form an overall manner.",
+      "contrast_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "hints": {
+        "attention": "Focus on behaviour rather than incidental details.",
+        "axis": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+        "contrast": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "countenance-demeanor_004",
+      "edge_id": "countenance__demeanor",
+      "domain": "school_concert",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best captures the outward impression Hugo gave before performing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "countenance-demeanor_004_b1",
+          "text": "Hugo moved quietly to his place, kept his shoulders relaxed, and waited without fidgeting.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.2,
+            "demeanor": 0.85
+          },
+          "decisive_clue": "calm posture and movement",
+          "reason": "The first beat supplies the deciding evidence: Hugo’s posture and movement show his overall outward manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M3"
+          }
+        },
+        {
+          "id": "countenance-demeanor_004_b2",
+          "text": "He answered the stage assistant in an even voice.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.17,
+            "demeanor": 0.87
+          },
+          "decisive_clue": "calm posture, movement, and speech",
+          "reason": "His posture, movement, and even voice together show his overall outward manner.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Calm posture, movement, and speech distinguish demeanor here.",
+      "feedback_deep": "Countenance means a person’s face, particularly the expression it displays. Demeanor means a person’s overall outward manner, bearing, and behaviour. Hugo’s calm posture and movement, followed by his even voice, show his overall outward manner rather than a facial expression.",
+      "contrast_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "hints": {
+        "attention": "Focus on overall manner rather than incidental details.",
+        "axis": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+        "contrast": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "countenance-demeanor_005",
+      "edge_id": "countenance__demeanor",
+      "domain": "clinic_waiting_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best captures the outward impression Rosa gave in the waiting room?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "countenance-demeanor_005_b1",
+          "text": "Rosa’s lips pressed together and her forehead creased as she read the note.",
+          "best_word": "countenance",
+          "fit": {
+            "countenance": 0.87,
+            "demeanor": 0.23
+          },
+          "decisive_clue": "tightly pressed lips and creased forehead",
+          "reason": "The first beat supplies the deciding evidence: tightly pressed lips and creased forehead.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "demeanor": "M1"
+          }
+        },
+        {
+          "id": "countenance-demeanor_005_b2",
+          "text": "Her expression stayed tense even after she folded the note away.",
+          "best_word": "countenance",
+          "fit": {
+            "countenance": 0.89,
+            "demeanor": 0.2
+          },
+          "decisive_clue": "tightly pressed lips and creased forehead",
+          "reason": "Folding the note changes the surrounding action, but her tense facial expression remains the relevant evidence.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "demeanor": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Tightly pressed lips and a creased forehead distinguish countenance; folding the note does not change the facial evidence.",
+      "feedback_deep": "Countenance means a person’s face, particularly the expression it displays. Demeanor means a person’s overall outward manner, bearing, and behaviour. Rosa’s pressed lips and creased forehead make countenance precise. Folding the note is a distracting action, but her tense facial expression remains the relevant observation.",
+      "contrast_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "hints": {
+        "attention": "Focus on the observed facial expression, not the surrounding action.",
+        "axis": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+        "contrast": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "countenance-demeanor_006",
+      "edge_id": "countenance__demeanor",
+      "domain": "sports_award",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best captures the outward impression Idris gave while accepting the award?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "countenance-demeanor_006_b1",
+          "text": "Idris shook hands respectfully, spoke modestly, and made space for teammates in the photograph.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.16,
+            "demeanor": 0.89
+          },
+          "decisive_clue": "respectful behaviour across gestures and speech",
+          "reason": "The first beat supplies the deciding evidence: respectful behaviour across gestures and speech.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M2"
+          }
+        },
+        {
+          "id": "countenance-demeanor_006_b2",
+          "text": "He kept the same courteous tone when the ceremony ran late.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.13,
+            "demeanor": 0.91
+          },
+          "decisive_clue": "respectful behaviour across gestures and speech",
+          "reason": "Time pressure does not erase his consistent outward manner.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Respectful behaviour across gestures and speech — the later detail does not change that distinction.",
+      "feedback_deep": "Countenance means a person’s face, particularly the expression it displays. Demeanor means a person’s overall outward manner, bearing, and behaviour. Here, respectful behaviour across gestures and speech; time pressure does not erase his consistent outward manner.",
+      "contrast_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "hints": {
+        "attention": "Focus on conduct rather than incidental details.",
+        "axis": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+        "contrast": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "countenance-demeanor_007",
+      "edge_id": "countenance__demeanor",
+      "domain": "train_platform",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best captures the outward impression Hana gave on the platform?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "countenance-demeanor_007_b1",
+          "text": "Hana’s jaw dropped and her eyebrows rose when she saw who was stepping off the train.",
+          "best_word": "countenance",
+          "fit": {
+            "countenance": 0.91,
+            "demeanor": 0.2
+          },
+          "decisive_clue": "surprise shown through jaw and eyebrows",
+          "reason": "The first beat supplies the deciding evidence: surprise shown through jaw and eyebrows.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "demeanor": "M3"
+          }
+        },
+        {
+          "id": "countenance-demeanor_007_b2",
+          "text": "The startled expression stayed on her face for several seconds.",
+          "best_word": "countenance",
+          "fit": {
+            "countenance": 0.93,
+            "demeanor": 0.17
+          },
+          "decisive_clue": "surprise shown through jaw and eyebrows",
+          "reason": "The startled expression remains on her face, so the evidence continues to concern facial expression.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "demeanor": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Surprise shown through the jaw and eyebrows distinguishes countenance here.",
+      "feedback_deep": "Countenance means a person’s face, particularly the expression it displays. Demeanor means a person’s overall outward manner, bearing, and behaviour. Hana’s surprise is shown through her jaw, eyebrows, and continuing startled expression, so the decisive evidence is facial rather than behavioural.",
+      "contrast_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "hints": {
+        "attention": "Focus on facial reaction rather than incidental details.",
+        "axis": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+        "contrast": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "countenance-demeanor_008",
+      "edge_id": "countenance__demeanor",
+      "domain": "neighbour_dispute",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best captures the outward impression Pavel gave at the meeting?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "countenance-demeanor_008_b1",
+          "text": "Pavel listened without interrupting, kept his voice low, and waited for his turn to speak.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.23,
+            "demeanor": 0.85
+          },
+          "decisive_clue": "consistent composure in listening and speaking",
+          "reason": "The first beat supplies the deciding evidence: consistent composure in listening and speaking.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M1"
+          }
+        },
+        {
+          "id": "countenance-demeanor_008_b2",
+          "text": "He remained just as controlled when someone disagreed.",
+          "best_word": "demeanor",
+          "fit": {
+            "countenance": 0.2,
+            "demeanor": 0.87
+          },
+          "decisive_clue": "consistent composure in listening and speaking",
+          "reason": "His conduct across the exchange shows his outward bearing.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "countenance": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Consistent composure in listening and speaking is what distinguishes demeanor here.",
+      "feedback_deep": "Countenance means a person’s face, particularly the expression it displays. Demeanor means a person’s overall outward manner, bearing, and behaviour. Here, consistent composure in listening and speaking; his conduct across the exchange shows his outward bearing.",
+      "contrast_rule": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+      "hints": {
+        "attention": "Focus on conduct rather than incidental details.",
+        "axis": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner.",
+        "contrast": "Countenance points to what the face shows; demeanor points to overall conduct, posture, and manner."
+      },
+      "qa": "pass"
+    }
+  ]
+}

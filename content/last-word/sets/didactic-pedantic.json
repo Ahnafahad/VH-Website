@@ -1,0 +1,555 @@
+{
+  "schema_version": 1,
+  "set_id": "didactic-pedantic",
+  "title": "didactic / pedantic",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[106]",
+    "source_pair_id": 436,
+    "qa": {
+      "pass": 7,
+      "revised": 0,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "didactic",
+      "sense": "written or spoken to teach a moral lesson, sometimes preachily",
+      "connotation": "instructive, sometimes preachy",
+      "register": "standard formal",
+      "misconceptions": [
+        "Mistaking every correction for moral teaching.",
+        "Mistaking any teaching for needless nitpicking."
+      ]
+    },
+    {
+      "word": "pedantic",
+      "sense": "excessively focused on minor details, technicalities, or strict rules",
+      "connotation": "critical of needless fussiness",
+      "register": "standard formal",
+      "misconceptions": [
+        "Mistaking every correction for moral teaching.",
+        "Mistaking any teaching for needless nitpicking."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "purpose_of_instruction",
+      "description": "Moral teaching versus excessive attention to technical niceties."
+    }
+  ],
+  "edges": [
+    {
+      "id": "didactic__pedantic",
+      "a": "didactic",
+      "b": "pedantic",
+      "boundary_rule": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules.",
+      "clues_a": [
+        "explicit moral advice",
+        "lesson on good conduct"
+      ],
+      "clues_b": [
+        "obsession with punctuation",
+        "insistence on minor rules"
+      ],
+      "irrelevant_clues": [
+        "speaker age",
+        "formal clothing",
+        "length alone"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking every correction for moral teaching.",
+        "M2": "Mistaking any teaching for needless nitpicking.",
+        "M3": "Confusing formal language with a moral lesson."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "didactic-pedantic_001",
+      "edge_id": "didactic__pedantic",
+      "domain": "school_assembly",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amina's assembly talk?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "didactic-pedantic_001_b1",
+          "text": "She turns a story about a lost wallet into a lecture on why honesty matters.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.93,
+            "pedantic": 0.14
+          },
+          "decisive_clue": "she openly teaches a moral about honesty",
+          "reason": "She openly teaches a moral about honesty; this favors didactic rather than pedantic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        },
+        {
+          "id": "didactic-pedantic_001_b2",
+          "text": "Her slides use large orange letters.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.93,
+            "pedantic": 0.14
+          },
+          "decisive_clue": "slide color does not change her moral purpose",
+          "reason": "Slide color does not change her moral purpose; this favors didactic rather than pedantic.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Slide color does not change her moral purpose points to didactic, not pedantic.",
+      "feedback_deep": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules. Here, Amina's situation ultimately hinges on this clue: slide color does not change her moral purpose. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Didactic preaches a lesson; pedantic polices details.",
+      "hints": {
+        "attention": "Notice whether the speaker teaches conduct or dwells on technicalities.",
+        "axis": "Moral teaching versus excessive attention to technical niceties.",
+        "contrast": "Didactic preaches a lesson; pedantic polices details."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "didactic-pedantic_003",
+      "edge_id": "didactic__pedantic",
+      "domain": "children_s_story",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Celia's story?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "didactic-pedantic_003_b1",
+          "text": "A selfish character loses friends, and the narrator tells readers to share generously.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.91,
+            "pedantic": 0.1
+          },
+          "decisive_clue": "the narrator directly urges generous behavior",
+          "reason": "The narrator directly urges generous behavior; this favors didactic rather than pedantic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        },
+        {
+          "id": "didactic-pedantic_003_b2",
+          "text": "The ending repeats that kindness matters more than getting every toy.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.91,
+            "pedantic": 0.1
+          },
+          "decisive_clue": "the stated lesson about kindness is reinforced",
+          "reason": "The stated lesson about kindness is reinforced; this favors didactic rather than pedantic.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The stated lesson about kindness is reinforced points to didactic, not pedantic.",
+      "feedback_deep": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules. Here, Celia's situation ultimately hinges on this clue: the stated lesson about kindness is reinforced. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Didactic preaches a lesson; pedantic polices details.",
+      "hints": {
+        "attention": "Notice whether the speaker teaches conduct or dwells on technicalities.",
+        "axis": "Moral teaching versus excessive attention to technical niceties.",
+        "contrast": "Didactic preaches a lesson; pedantic polices details."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "didactic-pedantic_005",
+      "edge_id": "didactic__pedantic",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Emiko's comments on a review?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "didactic-pedantic_005_b1",
+          "text": "She spends the discussion correcting tiny differences between two acceptable citation styles.",
+          "best_word": "pedantic",
+          "fit": {
+            "didactic": 0.18,
+            "pedantic": 0.95
+          },
+          "decisive_clue": "she fusses over minor formatting conventions",
+          "reason": "She fusses over minor formatting conventions; this favors pedantic rather than didactic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "didactic": "M1"
+          }
+        },
+        {
+          "id": "didactic-pedantic_005_b2",
+          "text": "Her comments fill an elegant notebook with a purple cover.",
+          "best_word": "pedantic",
+          "fit": {
+            "didactic": 0.18,
+            "pedantic": 0.95
+          },
+          "decisive_clue": "the notebook cover does not change her fussy focus",
+          "reason": "The notebook cover does not change her fussy focus; this favors pedantic rather than didactic.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "didactic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The notebook cover does not change her fussy focus points to pedantic, not didactic.",
+      "feedback_deep": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules. Here, Emiko's situation ultimately hinges on this clue: the notebook cover does not change her fussy focus. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Didactic preaches a lesson; pedantic polices details.",
+      "hints": {
+        "attention": "Notice whether the speaker teaches conduct or dwells on technicalities.",
+        "axis": "Moral teaching versus excessive attention to technical niceties.",
+        "contrast": "Didactic preaches a lesson; pedantic polices details."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "didactic-pedantic_006",
+      "edge_id": "didactic__pedantic",
+      "domain": "sports_team",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Faris's speech?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "didactic-pedantic_006_b1",
+          "text": "After a dispute, he tells the whole team that fairness matters more than winning.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.91,
+            "pedantic": 0.1
+          },
+          "decisive_clue": "he teaches a moral about fair play",
+          "reason": "He teaches a moral about fair play; this favors didactic rather than pedantic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        },
+        {
+          "id": "didactic-pedantic_006_b2",
+          "text": "He gives the speech beside the field rather than in the changing room.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.91,
+            "pedantic": 0.1
+          },
+          "decisive_clue": "venue does not change the moral instruction",
+          "reason": "Venue does not change the moral instruction; this favors didactic rather than pedantic.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Venue does not change the moral instruction points to didactic, not pedantic.",
+      "feedback_deep": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules. Here, Faris's situation ultimately hinges on this clue: venue does not change the moral instruction. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Didactic preaches a lesson; pedantic polices details.",
+      "hints": {
+        "attention": "Notice whether the speaker teaches conduct or dwells on technicalities.",
+        "axis": "Moral teaching versus excessive attention to technical niceties.",
+        "contrast": "Didactic preaches a lesson; pedantic polices details."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "didactic-pedantic_008",
+      "edge_id": "didactic__pedantic",
+      "domain": "shopping_complaint",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hassan's complaint?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "didactic-pedantic_008_b1",
+          "text": "He insists the store rewrite a receipt because one label lacks a capital letter.",
+          "best_word": "pedantic",
+          "fit": {
+            "didactic": 0.18,
+            "pedantic": 0.95
+          },
+          "decisive_clue": "the issue is minor capitalization",
+          "reason": "The issue is minor capitalization; this favors pedantic rather than didactic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "didactic": "M1"
+          }
+        },
+        {
+          "id": "didactic-pedantic_008_b2",
+          "text": "Even after the total and refund are confirmed correct, he keeps arguing about that letter.",
+          "best_word": "pedantic",
+          "fit": {
+            "didactic": 0.18,
+            "pedantic": 0.95
+          },
+          "decisive_clue": "he persists over trivia despite the meaningful facts being right",
+          "reason": "He persists over trivia despite the meaningful facts being right; this favors pedantic rather than didactic.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "didactic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He persists over trivia despite the meaningful facts being right points to pedantic, not didactic.",
+      "feedback_deep": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules. Here, Hassan's situation ultimately hinges on this clue: he persists over trivia despite the meaningful facts being right. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Didactic preaches a lesson; pedantic polices details.",
+      "hints": {
+        "attention": "Notice whether the speaker teaches conduct or dwells on technicalities.",
+        "axis": "Moral teaching versus excessive attention to technical niceties.",
+        "contrast": "Didactic preaches a lesson; pedantic polices details."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "didactic-pedantic_009",
+      "edge_id": "didactic__pedantic",
+      "domain": "neighbour_chat",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ines's message to neighbours?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "didactic-pedantic_009_b1",
+          "text": "She recounts a shared mistake to lecture everyone about keeping promises.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.91,
+            "pedantic": 0.1
+          },
+          "decisive_clue": "she turns the incident into a moral lesson",
+          "reason": "She turns the incident into a moral lesson; this favors didactic rather than pedantic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        },
+        {
+          "id": "didactic-pedantic_009_b2",
+          "text": "The message appears in the evening instead of the morning.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.91,
+            "pedantic": 0.1
+          },
+          "decisive_clue": "posting time is irrelevant to its moral purpose",
+          "reason": "Posting time is irrelevant to its moral purpose; this favors didactic rather than pedantic.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Posting time is irrelevant to its moral purpose points to didactic, not pedantic.",
+      "feedback_deep": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules. Here, Ines's situation ultimately hinges on this clue: posting time is irrelevant to its moral purpose. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Didactic preaches a lesson; pedantic polices details.",
+      "hints": {
+        "attention": "Notice whether the speaker teaches conduct or dwells on technicalities.",
+        "axis": "Moral teaching versus excessive attention to technical niceties.",
+        "contrast": "Didactic preaches a lesson; pedantic polices details."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "didactic-pedantic_010",
+      "edge_id": "didactic__pedantic",
+      "domain": "holiday_card",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Jamal's comments on a holiday card?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "didactic-pedantic_010_b1",
+          "text": "He tells the group that small mistakes show a lack of respect and lectures them about care.",
+          "best_word": "didactic",
+          "fit": {
+            "didactic": 0.93,
+            "pedantic": 0.14
+          },
+          "decisive_clue": "he frames the issue as a moral failing",
+          "reason": "He frames the issue as a moral failing; this favors didactic rather than pedantic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pedantic": "M2"
+          }
+        },
+        {
+          "id": "didactic-pedantic_010_b2",
+          "text": "His entire complaint turns out to concern one optional comma in the greeting, with no issue about anyone's conduct.",
+          "best_word": "pedantic",
+          "fit": {
+            "didactic": 0.14,
+            "pedantic": 0.93
+          },
+          "decisive_clue": "the supposed lesson is really a fuss over punctuation",
+          "reason": "The supposed lesson is really a fuss over punctuation; this favors pedantic rather than didactic.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "didactic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The supposed lesson is really a fuss over punctuation points to pedantic, not didactic.",
+      "feedback_deep": "Didactic language pushes a lesson about how to behave; pedantic language fusses over small formal details or rules. Here, Jamal's situation ultimately hinges on this clue: the supposed lesson is really a fuss over punctuation. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Didactic preaches a lesson; pedantic polices details.",
+      "hints": {
+        "attention": "Notice whether the speaker teaches conduct or dwells on technicalities.",
+        "axis": "Moral teaching versus excessive attention to technical niceties.",
+        "contrast": "Didactic preaches a lesson; pedantic polices details."
+      },
+      "qa": "pass"
+    }
+  ]
+}

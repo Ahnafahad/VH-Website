@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "imperial-imperious",
+  "title": "imperial / imperious",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[3]",
+    "source_pair_id": 4,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "imperial",
+      "sense": "Pertaining to a realm that rules multiple territories or to its central sovereign authority.",
+      "connotation": "political or descriptive",
+      "register": "formal or historical",
+      "misconceptions": [
+        "A haughty order need not come from a ruler."
+      ]
+    },
+    {
+      "word": "imperious",
+      "sense": "Overbearingly commanding and expecting immediate obedience.",
+      "connotation": "negative",
+      "register": "formal or literary",
+      "misconceptions": [
+        "An official decree need not be delivered arrogantly."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "source_of_rule_vs_manner",
+      "description": "Connection to extensive sovereign rule versus domineering manner of speaking or acting."
+    }
+  ],
+  "edges": [
+    {
+      "id": "imperial__imperious",
+      "a": "imperial",
+      "b": "imperious",
+      "boundary_rule": "Imperial identifies the source or reach of authority across ruled territories; imperious identifies a bossy, arrogant manner.",
+      "clues_a": [
+        "government of conquered provinces",
+        "distant lands under one crown",
+        "laws issued from a central throne"
+      ],
+      "clues_b": [
+        "arrogant demands",
+        "order delivered without consultation",
+        "assumed right to obedience"
+      ],
+      "irrelevant_clues": [
+        "volume of paper",
+        "ornate clothing",
+        "speaker’s height"
+      ],
+      "misconceptions": {
+        "M1": "Mistakes political reach or source of authority for a domineering manner.",
+        "M2": "Treats any arrogant order as belonging to an extensive sovereign realm.",
+        "M3": "Assumes clothing or rank alone determines the adjective."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "imperial-imperious_001",
+      "edge_id": "imperial__imperious",
+      "domain": "school_theater",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the order in Noor’s school-play script?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "imperial-imperious_001_b1",
+          "text": "The order comes from the central throne and sets taxes for distant provinces under the same crown.",
+          "best_word": "imperial",
+          "fit": {
+            "imperial": 0.91,
+            "imperious": 0.24
+          },
+          "decisive_clue": "a central sovereign rules multiple provinces through the order",
+          "reason": "The first detail establishes a central sovereign rules multiple provinces through the order; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperious": "M1"
+          }
+        },
+        {
+          "id": "imperial-imperious_001_b2",
+          "text": "It carries the royal seal and applies equally to every region governed from that court.",
+          "best_word": "imperial",
+          "fit": {
+            "imperial": 0.93,
+            "imperious": 0.18
+          },
+          "decisive_clue": "the same decree reaches all territories under one crown",
+          "reason": "The new detail confirms the same decree reaches all territories under one crown and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The order governs faraway provinces from one central court.",
+      "feedback_deep": "Imperial means connected with a far-reaching ruling realm. Imperious means arrogantly commanding. Here, the adjective concerns the order’s governing origin and reach, not the tone of its words.",
+      "contrast_rule": "Imperial is about where rule comes from; imperious is how someone commands.",
+      "hints": {
+        "attention": "Look at whose authority the document represents.",
+        "axis": "Connection to extensive sovereign rule versus domineering manner of speaking or acting.",
+        "contrast": "Imperial is about where rule comes from; imperious is how someone commands."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "imperial-imperious_002",
+      "edge_id": "imperial__imperious",
+      "domain": "office_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Zara’s tone when assigning work?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "imperial-imperious_002_b1",
+          "text": "Zara taps the table and says, “Drop everything. You will finish my task before yours. No questions.”",
+          "best_word": "imperious",
+          "fit": {
+            "imperial": 0.24,
+            "imperious": 0.91
+          },
+          "decisive_clue": "she demands obedience with an arrogant tone",
+          "reason": "The first detail establishes she demands obedience with an arrogant tone; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperial": "M2"
+          }
+        },
+        {
+          "id": "imperial-imperious_002_b2",
+          "text": "She is only a team member, but she continues issuing commands as though nobody may challenge her.",
+          "best_word": "imperious",
+          "fit": {
+            "imperial": 0.18,
+            "imperious": 0.93
+          },
+          "decisive_clue": "she claims authority over colleagues despite being their equal",
+          "reason": "The new detail confirms she claims authority over colleagues despite being their equal and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperial": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her expectation of unquestioned obedience defines the tone.",
+      "feedback_deep": "Imperial means connected with a far-reaching ruling realm. Imperious means arrogantly commanding. Here, this is a manner of speaking, not an institution ruling several territories.",
+      "contrast_rule": "Imperial is about where rule comes from; imperious is how someone commands.",
+      "hints": {
+        "attention": "Think about her manner, not her official rank.",
+        "axis": "Connection to extensive sovereign rule versus domineering manner of speaking or acting.",
+        "contrast": "Imperial is about where rule comes from; imperious is how someone commands."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "imperial-imperious_003",
+      "edge_id": "imperial__imperious",
+      "domain": "school_geography_game",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the government in Anika’s map game?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "imperial-imperious_003_b1",
+          "text": "Anika’s game has one capital controlling several faraway territories with appointed governors and shared laws.",
+          "best_word": "imperial",
+          "fit": {
+            "imperial": 0.91,
+            "imperious": 0.24
+          },
+          "decisive_clue": "a central authority governs multiple distant territories",
+          "reason": "The first detail establishes a central authority governs multiple distant territories; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperious": "M1"
+          }
+        },
+        {
+          "id": "imperial-imperious_003_b2",
+          "text": "Players can win by managing roads between the capital and those territories.",
+          "best_word": "imperial",
+          "fit": {
+            "imperial": 0.93,
+            "imperious": 0.18
+          },
+          "decisive_clue": "road-building rules do not change the political structure",
+          "reason": "The deciding fact remains a central authority governs multiple distant territories; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "A capital governing distant territories is the key detail, not the roads.",
+      "feedback_deep": "Imperial means connected with a far-reaching ruling realm. Imperious means arrogantly commanding. Here, the game depicts far-reaching central rule, not a pushy attitude.",
+      "contrast_rule": "Imperial is about where rule comes from; imperious is how someone commands.",
+      "hints": {
+        "attention": "What is the structure of government in the game?",
+        "axis": "Connection to extensive sovereign rule versus domineering manner of speaking or acting.",
+        "contrast": "Imperial is about where rule comes from; imperious is how someone commands."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "imperial-imperious_004",
+      "edge_id": "imperial__imperious",
+      "domain": "family_gathering",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Matteo’s requests at the dinner table?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "imperial-imperious_004_b1",
+          "text": "Matteo points at the chairs and says, “You sit there. Serve me now. Don’t make me ask twice.”",
+          "best_word": "imperious",
+          "fit": {
+            "imperial": 0.24,
+            "imperious": 0.91
+          },
+          "decisive_clue": "a demanding manner assumes unquestioned compliance",
+          "reason": "The first detail establishes a demanding manner assumes unquestioned compliance; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperial": "M2"
+          }
+        },
+        {
+          "id": "imperial-imperious_004_b2",
+          "text": "He is wearing an elegant jacket, but his requests still leave no room for anyone else to speak.",
+          "best_word": "imperious",
+          "fit": {
+            "imperial": 0.18,
+            "imperious": 0.93
+          },
+          "decisive_clue": "elegant clothing does not change his domineering requests",
+          "reason": "The deciding fact remains a demanding manner assumes unquestioned compliance; the added detail does not change that.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperial": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The commands matter; a fine jacket says nothing about their manner.",
+      "feedback_deep": "Imperial means connected with a far-reaching ruling realm. Imperious means arrogantly commanding. Here, clothes are irrelevant; the manner of speaking carries the meaning.",
+      "contrast_rule": "Imperial is about where rule comes from; imperious is how someone commands.",
+      "hints": {
+        "attention": "Pay attention to how he speaks.",
+        "axis": "Connection to extensive sovereign rule versus domineering manner of speaking or acting.",
+        "contrast": "Imperial is about where rule comes from; imperious is how someone commands."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "imperial-imperious_005",
+      "edge_id": "imperial__imperious",
+      "domain": "fantasy_novel_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the symbol in Esra’s fantasy-novel map?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "imperial-imperious_005_b1",
+          "text": "Esra draws one crown stamped on documents sent from the capital to govern six conquered lands.",
+          "best_word": "imperial",
+          "fit": {
+            "imperial": 0.91,
+            "imperious": 0.24
+          },
+          "decisive_clue": "a central throne’s symbol is used across conquered territories",
+          "reason": "The first detail establishes a central throne’s symbol is used across conquered territories; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperious": "M1"
+          }
+        },
+        {
+          "id": "imperial-imperious_005_b2",
+          "text": "The symbol also appears on tax receipts issued in each territory.",
+          "best_word": "imperial",
+          "fit": {
+            "imperial": 0.93,
+            "imperious": 0.18
+          },
+          "decisive_clue": "the mark represents the same ruling authority on multiple official documents",
+          "reason": "Viewed in its fuller context, the mark represents the same ruling authority on multiple official documents; the original distinction still decides it.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The emblem belongs to an authority governing several lands.",
+      "feedback_deep": "Imperial means connected with a far-reaching ruling realm. Imperious means arrogantly commanding. Here, the symbol is associated with the extent and administration of sovereign rule.",
+      "contrast_rule": "Imperial is about where rule comes from; imperious is how someone commands.",
+      "hints": {
+        "attention": "What does the symbol stand for?",
+        "axis": "Connection to extensive sovereign rule versus domineering manner of speaking or acting.",
+        "contrast": "Imperial is about where rule comes from; imperious is how someone commands."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "imperial-imperious_006",
+      "edge_id": "imperial__imperious",
+      "domain": "sports_equipment_store",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Salma’s manner toward the sales assistant?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "imperial-imperious_006_b1",
+          "text": "Salma snaps, “Bring me that pair now, and stop explaining the sizes. I have spoken.”",
+          "best_word": "imperious",
+          "fit": {
+            "imperial": 0.24,
+            "imperious": 0.91
+          },
+          "decisive_clue": "an arrogant demand expects immediate obedience",
+          "reason": "The first detail establishes an arrogant demand expects immediate obedience; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imperial": "M2"
+          }
+        },
+        {
+          "id": "imperial-imperious_006_b2",
+          "text": "Even after being shown the store’s policy, she expects the assistant to obey her personal instructions without discussion.",
+          "best_word": "imperious",
+          "fit": {
+            "imperial": 0.18,
+            "imperious": 0.93
+          },
+          "decisive_clue": "the same demanding attitude persists despite an explanation",
+          "reason": "The deciding fact remains an arrogant demand expects immediate obedience; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imperial": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her attitude demands obedience, not explanation.",
+      "feedback_deep": "Imperial means connected with a far-reaching ruling realm. Imperious means arrogantly commanding. Here, no far-reaching government is involved; the issue is one customer’s overbearing conduct.",
+      "contrast_rule": "Imperial is about where rule comes from; imperious is how someone commands.",
+      "hints": {
+        "attention": "Consider whether the adjective describes a person’s manner.",
+        "axis": "Connection to extensive sovereign rule versus domineering manner of speaking or acting.",
+        "contrast": "Imperial is about where rule comes from; imperious is how someone commands."
+      },
+      "qa": "pass"
+    }
+  ]
+}

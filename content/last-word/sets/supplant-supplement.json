@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "supplant-supplement",
+  "title": "supplant / supplement",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[190]",
+    "source_pair_id": 863,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "supplant",
+      "sense": "To take over the established role or place of something or someone, displacing it.",
+      "connotation": "Neutral, sometimes competitive.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Thinking any addition automatically displaces what was there."
+      ]
+    },
+    {
+      "word": "supplement",
+      "sense": "To add an extra resource or element while what was there remains in use.",
+      "connotation": "Usually constructive.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Thinking popularity alone proves an old option has been replaced."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "displacement_vs_addition",
+      "description": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role."
+    }
+  ],
+  "edges": [
+    {
+      "id": "supplant__supplement",
+      "a": "supplant",
+      "b": "supplement",
+      "boundary_rule": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+      "clues_a": [
+        "earlier option stops being used",
+        "new service takes over the old role",
+        "original loses its established place"
+      ],
+      "clues_b": [
+        "original remains in use",
+        "new addition fills a gap",
+        "both resources work together"
+      ],
+      "irrelevant_clues": [
+        "whether the new item looks modern",
+        "whether an addition is cheaper",
+        "whether the change was announced publicly"
+      ],
+      "misconceptions": {
+        "M1": "Thinking any addition automatically displaces what was there.",
+        "M2": "Thinking popularity alone proves an old option has been replaced.",
+        "M3": "Missing whether the original is still performing its job."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "supplant-supplement_001",
+      "edge_id": "supplant__supplement",
+      "domain": "shop_loyalty_system",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Keiko’s new loyalty app did?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "supplant-supplement_001_b1",
+          "text": "Keiko introduced a loyalty app, and customers stopped bringing the old paper stamp cards.",
+          "best_word": "supplant",
+          "fit": {
+            "supplant": 0.91,
+            "supplement": 0.22
+          },
+          "decisive_clue": "the app took over the established card role",
+          "reason": "The app took over the established card role. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplement": "M3"
+          }
+        },
+        {
+          "id": "supplant-supplement_001_b2",
+          "text": "The shop eventually stopped printing paper cards altogether.",
+          "best_word": "supplant",
+          "fit": {
+            "supplant": 0.91,
+            "supplement": 0.22
+          },
+          "decisive_clue": "the app took over the established card role",
+          "reason": "The new detail does not overturn the original clue: the app took over the established card role. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplement": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The paper cards lost their role rather than gaining an extra helper.",
+      "feedback_deep": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role. The new app takes the place of the older method.",
+      "contrast_rule": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+      "hints": {
+        "attention": "Track whether the original option still does its job.",
+        "axis": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+        "contrast": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "supplant-supplement_002",
+      "edge_id": "supplant__supplement",
+      "domain": "tutorial_accessibility",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Anil’s subtitles did for his tutorial?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "supplant-supplement_002_b1",
+          "text": "Anil added subtitles to his cooking video so viewers could read the instructions while hearing the narration.",
+          "best_word": "supplement",
+          "fit": {
+            "supplant": 0.22,
+            "supplement": 0.91
+          },
+          "decisive_clue": "subtitles add another way to use the original narration",
+          "reason": "Subtitles add another way to use the original narration. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplant": "M1"
+          }
+        },
+        {
+          "id": "supplant-supplement_002_b2",
+          "text": "The audio track stays available, and the captions include measurements that are hard to hear.",
+          "best_word": "supplement",
+          "fit": {
+            "supplant": 0.22,
+            "supplement": 0.91
+          },
+          "decisive_clue": "subtitles add another way to use the original narration",
+          "reason": "The new detail does not overturn the original clue: subtitles add another way to use the original narration. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplant": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Captions help viewers while the original narration remains in place.",
+      "feedback_deep": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role. The original teaching method has not been displaced.",
+      "contrast_rule": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+      "hints": {
+        "attention": "Track whether the original option still does its job.",
+        "axis": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+        "contrast": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "supplant-supplement_003",
+      "edge_id": "supplant__supplement",
+      "domain": "club_calendar",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes the role of Sana’s digital timetable?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "supplant-supplement_003_b1",
+          "text": "Sana put a digital timetable alongside the club’s familiar wall calendar for members to consult.",
+          "best_word": "supplement",
+          "fit": {
+            "supplant": 0.22,
+            "supplement": 0.91
+          },
+          "decisive_clue": "the two calendars initially operate side by side",
+          "reason": "The two calendars initially operate side by side. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplant": "M2"
+          }
+        },
+        {
+          "id": "supplant-supplement_003_b2",
+          "text": "After a trial, the club removed the wall calendar and used only Sana’s timetable for all schedules.",
+          "best_word": "supplant",
+          "fit": {
+            "supplant": 0.91,
+            "supplement": 0.22
+          },
+          "decisive_clue": "the new timetable now occupies the old calendar’s role alone",
+          "reason": "The new timetable now occupies the old calendar’s role alone. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "supplement": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The removal of the wall calendar turns an addition into a replacement.",
+      "feedback_deep": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role. The same timetable first helped the older one and then took over its job.",
+      "contrast_rule": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+      "hints": {
+        "attention": "Track whether the original option still does its job.",
+        "axis": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+        "contrast": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "supplant-supplement_004",
+      "edge_id": "supplant__supplement",
+      "domain": "language-learning_aid",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Leila’s audio examples for her vocabulary book?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "supplant-supplement_004_b1",
+          "text": "Leila recorded pronunciation examples to accompany the vocabulary book her class still uses.",
+          "best_word": "supplement",
+          "fit": {
+            "supplant": 0.22,
+            "supplement": 0.91
+          },
+          "decisive_clue": "recordings accompany a continuing book",
+          "reason": "Recordings accompany a continuing book. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplant": "M3"
+          }
+        },
+        {
+          "id": "supplant-supplement_004_b2",
+          "text": "Students turn to the recordings for sound and the book for spelling and meaning.",
+          "best_word": "supplement",
+          "fit": {
+            "supplant": 0.22,
+            "supplement": 0.91
+          },
+          "decisive_clue": "each resource covers a different part of the same task",
+          "reason": "Each resource covers a different part of the same task. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Sound recordings fill a gap without displacing the vocabulary book.",
+      "feedback_deep": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role. The distinction rests on continued use of the printed source.",
+      "contrast_rule": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+      "hints": {
+        "attention": "Track whether the original option still does its job.",
+        "axis": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+        "contrast": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "supplant-supplement_005",
+      "edge_id": "supplant__supplement",
+      "domain": "appointment_booking",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Rafi’s booking website did?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "supplant-supplement_005_b1",
+          "text": "Rafi’s website became the clinic’s only way to arrange appointments after staff stopped using the paper register.",
+          "best_word": "supplant",
+          "fit": {
+            "supplant": 0.91,
+            "supplement": 0.22
+          },
+          "decisive_clue": "the new system displaced the previous register",
+          "reason": "The new system displaced the previous register. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplement": "M1"
+          }
+        },
+        {
+          "id": "supplant-supplement_005_b2",
+          "text": "The website’s home page uses the same colours as the old paper forms.",
+          "best_word": "supplant",
+          "fit": {
+            "supplant": 0.91,
+            "supplement": 0.22
+          },
+          "decisive_clue": "the new system displaced the previous register",
+          "reason": "The new detail does not overturn the original clue: the new system displaced the previous register. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplement": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Matching colours do not restore the discontinued paper register.",
+      "feedback_deep": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role. The decisive point is that only the website now performs the booking function.",
+      "contrast_rule": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+      "hints": {
+        "attention": "Track whether the original option still does its job.",
+        "axis": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+        "contrast": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "supplant-supplement_006",
+      "edge_id": "supplant__supplement",
+      "domain": "novel_study_guide",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dina’s glossary for her reading group?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "supplant-supplement_006_b1",
+          "text": "Dina adds a short glossary to help readers follow the unfamiliar words in a novel.",
+          "best_word": "supplement",
+          "fit": {
+            "supplant": 0.22,
+            "supplement": 0.91
+          },
+          "decisive_clue": "glossary helps readers use the original novel",
+          "reason": "Glossary helps readers use the original novel. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplant": "M2"
+          }
+        },
+        {
+          "id": "supplant-supplement_006_b2",
+          "text": "Members continue reading the entire novel; the glossary appears only beside difficult pages.",
+          "best_word": "supplement",
+          "fit": {
+            "supplant": 0.22,
+            "supplement": 0.91
+          },
+          "decisive_clue": "original book remains central and added notes target a gap",
+          "reason": "Original book remains central and added notes target a gap. Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "supplant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The glossary assists the reading rather than taking the book’s place.",
+      "feedback_deep": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role. It supports comprehension while the original text remains the main resource.",
+      "contrast_rule": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+      "hints": {
+        "attention": "Track whether the original option still does its job.",
+        "axis": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role.",
+        "contrast": "Supplant means the new thing takes over an old role; supplement means it adds help while the old thing retains its role."
+      },
+      "qa": "pass"
+    }
+  ]
+}

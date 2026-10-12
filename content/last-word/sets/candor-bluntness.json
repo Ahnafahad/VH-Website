@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "set_id": "candor-bluntness",
+  "title": "candor / bluntness",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[160]",
+    "source_pair_id": 676,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "candor",
+      "sense": "Complete openness about a difficult truth, without requiring an abrasive manner.",
+      "connotation": "positive",
+      "register": "formal",
+      "misconceptions": [
+        "Any unwelcome truth is automatically bluntness."
+      ]
+    },
+    {
+      "word": "bluntness",
+      "sense": "A way of speaking so abruptly or sharply that it risks hurting feelings.",
+      "connotation": "often negative",
+      "register": "general",
+      "misconceptions": [
+        "Polite language means someone cannot be candid."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "decisive_boundary",
+      "description": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it."
+    }
+  ],
+  "edges": [
+    {
+      "id": "candor__bluntness",
+      "a": "candor",
+      "b": "bluntness",
+      "boundary_rule": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it.",
+      "clues_a": [
+        "shares uncomfortable details",
+        "acknowledges own responsibility"
+      ],
+      "clues_b": [
+        "cutting words",
+        "unsoftened personal judgment"
+      ],
+      "irrelevant_clues": [
+        "whether the message is popular",
+        "whether the speaker is young"
+      ],
+      "misconceptions": {
+        "M1": "Any unwelcome truth is automatically bluntness.",
+        "M2": "Polite language means someone cannot be candid.",
+        "M3": "A truthful insult is best judged only by its factual content."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "candor-bluntness_001",
+      "edge_id": "candor__bluntness",
+      "domain": "student_council",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Aisha’s response about the missing funds?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "candor-bluntness_001_b1",
+          "text": "Aisha told the group exactly how much money was missing and admitted she had forgotten to record two payments.",
+          "best_word": "candor",
+          "fit": {
+            "candor": 0.91,
+            "bluntness": 0.26
+          },
+          "decisive_clue": "disclosed uncomfortable facts and her own omission",
+          "reason": "She openly supplies facts that could embarrass her.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bluntness": "M1"
+          }
+        },
+        {
+          "id": "candor-bluntness_001_b2",
+          "text": "She made the explanation at a crowded meeting, though she could have sent it privately.",
+          "best_word": "candor",
+          "fit": {
+            "candor": 0.95,
+            "bluntness": 0.26
+          },
+          "decisive_clue": "disclosed uncomfortable facts and her own omission; a larger audience changes nothing",
+          "reason": "The audience does not show that her words were cutting.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "bluntness": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Aisha disclosed the gap and her own mistake; speaking before a crowd did not make her wording abrasive.",
+      "feedback_deep": "Candor concerns openness, particularly when the facts are uncomfortable. Bluntness concerns the sharpness of expression. A public admission can be candid without being cruel.",
+      "contrast_rule": "Candor reveals the truth; bluntness can make the truth sting.",
+      "hints": {
+        "attention": "Notice what she reveals, not how many people listen.",
+        "axis": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it.",
+        "contrast": "Candor reveals the truth; bluntness can make the truth sting."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "candor-bluntness_002",
+      "edge_id": "candor__bluntness",
+      "domain": "music_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Mateo’s feedback to his singing partner?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "candor-bluntness_002_b1",
+          "text": "Mateo said the high notes were slipping and offered to practice the difficult section together.",
+          "best_word": "candor",
+          "fit": {
+            "candor": 0.9,
+            "bluntness": 0.29
+          },
+          "decisive_clue": "named a specific problem constructively",
+          "reason": "He is open about a weakness while remaining considerate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bluntness": "M1"
+          }
+        },
+        {
+          "id": "candor-bluntness_002_b2",
+          "text": "His exact opening was, “Your voice ruins the song; everyone can hear it.”",
+          "best_word": "bluntness",
+          "fit": {
+            "candor": 0.29,
+            "bluntness": 0.94
+          },
+          "decisive_clue": "the actual wording attacks the person",
+          "reason": "The revealed phrasing makes the sharp delivery more defining than his initial constructive summary.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "candor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The exact words turned useful criticism into a cutting personal judgment.",
+      "feedback_deep": "Candor requires truthfulness and openness, not rudeness. Bluntness is marked by unsoftened, potentially insensitive phrasing; the quoted attack makes that the stronger label.",
+      "contrast_rule": "Candor reveals the truth; bluntness can make the truth sting.",
+      "hints": {
+        "attention": "Pay attention to the words he actually chose.",
+        "axis": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it.",
+        "contrast": "Candor reveals the truth; bluntness can make the truth sting."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "candor-bluntness_003",
+      "edge_id": "candor__bluntness",
+      "domain": "family_budgeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya’s explanation to her brother?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "candor-bluntness_003_b1",
+          "text": "Priya explained that their planned holiday would cost more than they could afford, using the actual household bills.",
+          "best_word": "candor",
+          "fit": {
+            "candor": 0.91,
+            "bluntness": 0.26
+          },
+          "decisive_clue": "used household bills to disclose an unwelcome affordability limit",
+          "reason": "She gave a clear financial assessment instead of letting her brother believe otherwise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bluntness": "M1"
+          }
+        },
+        {
+          "id": "candor-bluntness_003_b2",
+          "text": "She also explained which charges were estimates and which amounts came directly from receipts.",
+          "best_word": "candor",
+          "fit": {
+            "candor": 0.95,
+            "bluntness": 0.26
+          },
+          "decisive_clue": "separated estimates from receipts when discussing affordability",
+          "reason": "The added precision strengthens her openness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "bluntness": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Priya makes an unwelcome budget limit clear and distinguishes estimates from confirmed figures.",
+      "feedback_deep": "Candor is openness about difficult facts, including unpopular financial limits. Distinguishing estimates from receipts makes Priya’s explanation more transparent without introducing harsh language.",
+      "contrast_rule": "Candor reveals the truth; bluntness can make the truth sting.",
+      "hints": {
+        "attention": "Watch which facts she is willing to disclose.",
+        "axis": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it.",
+        "contrast": "Candor reveals the truth; bluntness can make the truth sting."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "candor-bluntness_004",
+      "edge_id": "candor__bluntness",
+      "domain": "online_shopping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Jin’s comment on a friend’s product listing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "candor-bluntness_004_b1",
+          "text": "Jin typed, “This looks cheap, and your photos make it worse.”",
+          "best_word": "bluntness",
+          "fit": {
+            "candor": 0.26,
+            "bluntness": 0.91
+          },
+          "decisive_clue": "dismissive wording about the friend’s work",
+          "reason": "The assessment is delivered in a needlessly sharp manner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "candor": "M3"
+          }
+        },
+        {
+          "id": "candor-bluntness_004_b2",
+          "text": "Jin later inspected the photos closely and found that the lighting really was poor.",
+          "best_word": "bluntness",
+          "fit": {
+            "candor": 0.26,
+            "bluntness": 0.95
+          },
+          "decisive_clue": "dismissive wording remains despite factual support",
+          "reason": "Accuracy does not undo the abrasive way Jin spoke.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "candor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Even if the photos needed work, “looks cheap” remained needlessly cutting.",
+      "feedback_deep": "Truthfulness can coexist with bluntness. The question here is how Jin spoke: his dismissive phrasing risks offense regardless of whether the criticism is accurate.",
+      "contrast_rule": "Candor reveals the truth; bluntness can make the truth sting.",
+      "hints": {
+        "attention": "Separate accuracy from the manner of delivery.",
+        "axis": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it.",
+        "contrast": "Candor reveals the truth; bluntness can make the truth sting."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "candor-bluntness_005",
+      "edge_id": "candor__bluntness",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Noura’s comments after the match?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "candor-bluntness_005_b1",
+          "text": "Noura told her teammate, “You were useless out there.”",
+          "best_word": "bluntness",
+          "fit": {
+            "candor": 0.26,
+            "bluntness": 0.91
+          },
+          "decisive_clue": "a sweeping personal put-down",
+          "reason": "Her words target the person rather than explaining a problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "candor": "M3"
+          }
+        },
+        {
+          "id": "candor-bluntness_005_b2",
+          "text": "She later explained that she was worried about the next match and wanted the teammate to improve.",
+          "best_word": "bluntness",
+          "fit": {
+            "candor": 0.26,
+            "bluntness": 0.95
+          },
+          "decisive_clue": "the original put-down remains despite helpful intentions",
+          "reason": "A well-meant purpose does not soften what she actually said.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "candor": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Her desire to help does not erase the sting of “useless.”",
+      "feedback_deep": "Bluntness describes the delivery, not necessarily a malicious motive. A speaker can intend to help while using words that sound dismissive or hurtful.",
+      "contrast_rule": "Candor reveals the truth; bluntness can make the truth sting.",
+      "hints": {
+        "attention": "Judge the wording separately from the speaker’s goal.",
+        "axis": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it.",
+        "contrast": "Candor reveals the truth; bluntness can make the truth sting."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "candor-bluntness_006",
+      "edge_id": "candor__bluntness",
+      "domain": "part-time_job",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Leo’s reply to his manager?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "candor-bluntness_006_b1",
+          "text": "Leo told his manager, “I cannot say whether this will work; I have not tested it yet.”",
+          "best_word": "candor",
+          "fit": {
+            "candor": 0.91,
+            "bluntness": 0.26
+          },
+          "decisive_clue": "admitted uncertainty instead of claiming confidence",
+          "reason": "He openly identifies what he does not yet know.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bluntness": "M1"
+          }
+        },
+        {
+          "id": "candor-bluntness_006_b2",
+          "text": "He spoke briefly because his manager had another meeting in five minutes.",
+          "best_word": "candor",
+          "fit": {
+            "candor": 0.95,
+            "bluntness": 0.26
+          },
+          "decisive_clue": "admitted uncertainty without insulting anyone",
+          "reason": "A short conversation does not make his words cutting.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "bluntness": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Leo acknowledges uncertainty rather than pretending to know; speaking briefly does not make his wording abrasive.",
+      "feedback_deep": "Candor is direct openness, especially about uncomfortable facts. Bluntness describes a sharp, insensitive manner. Brevity alone does not make a statement rude.",
+      "contrast_rule": "Candor reveals the truth; bluntness can make the truth sting.",
+      "hints": {
+        "attention": "Look at what Leo owns up to, not the length of his reply.",
+        "axis": "Candor is openness about the truth; bluntness draws attention to a sharp or insensitive way of delivering it.",
+        "contrast": "Candor reveals the truth; bluntness can make the truth sting."
+      },
+      "qa": "pass"
+    }
+  ]
+}

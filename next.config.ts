@@ -3,6 +3,13 @@ import type { NextConfig } from "next";
 const withPWA = require("next-pwa");
 
 const nextConfig: NextConfig = {
+  // Last Word reads its content files at runtime; serverless bundles only ship files they are told about.
+  outputFileTracingIncludes: {
+    '/last-word': ['./content/last-word/sets/**'],
+    '/admin/last-word': ['./content/last-word/sets/**'],
+    '/api/last-word/progress': ['./content/last-word/sets/**'],
+    '/api/last-word/content': ['./content/last-word/sets/**'],
+  },
   async headers() {
     return [
       {

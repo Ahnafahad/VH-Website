@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "set_id": "bucolic-idyllic",
+  "title": "bucolic / idyllic",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[125]",
+    "source_pair_id": 493,
+    "qa": {
+      "pass": 7,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "bucolic",
+      "sense": "Characteristically and pleasantly rural, evoking a peaceful countryside setting.",
+      "connotation": "warm; literary",
+      "register": "literary or descriptive",
+      "misconceptions": [
+        "Every attractive setting must be rural to be idyllic."
+      ]
+    },
+    {
+      "word": "idyllic",
+      "sense": "Beautifully peaceful or nearly perfect, in any location.",
+      "connotation": "strongly positive; often romanticized",
+      "register": "standard to literary",
+      "misconceptions": [
+        "Every calm rural setting is automatically perfect."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "rural_character",
+      "description": "Whether the scene evokes life in the countryside."
+    },
+    {
+      "id": "ideal_quality",
+      "description": "Whether the scene is judged almost perfectly serene and satisfying."
+    }
+  ],
+  "edges": [
+    {
+      "id": "bucolic__idyllic",
+      "a": "bucolic",
+      "b": "idyllic",
+      "boundary_rule": "Bucolic points to the pleasant character of rural life; idyllic judges a scene or experience nearly perfect, whether or not it is rural.",
+      "clues_a": [
+        "fields and quiet farm lanes",
+        "animals grazing beside cottages",
+        "a village surrounded by farmland"
+      ],
+      "clues_b": [
+        "remarkably peaceful trouble-free experience",
+        "harmonious scene with nothing to spoil it",
+        "perfectly pleasant setting even in a city"
+      ],
+      "irrelevant_clues": [
+        "price of accommodation",
+        "weather forecast alone",
+        "name of the place"
+      ],
+      "misconceptions": {
+        "M1": "Every attractive setting must be rural to be idyllic.",
+        "M2": "Every calm rural setting is automatically perfect.",
+        "M3": "Rural details alone tell us everything about how good an experience feels."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "bucolic-idyllic_001",
+      "edge_id": "bucolic__idyllic",
+      "domain": "village_walk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Alina’s walk?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_001_b1",
+          "text": "Alina followed a narrow lane past grazing sheep, vegetable plots, and small farmhouses.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "charming walk through farms and grazing fields",
+          "reason": "The scene is defined by appealing country features.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_001_b2",
+          "text": "A tractor occasionally rattled past, leaving dust on her shoes.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "rural atmosphere persists despite dust and tractor noise",
+          "reason": "The dusty tractor makes the countryside feel lived-in rather than flawlessly perfect.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The dusty tractor makes the countryside feel lived-in rather than flawlessly perfect.",
+      "feedback_deep": "The scene is defined by appealing country features. The dusty tractor makes the countryside feel lived-in rather than flawlessly perfect. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "Which details establish the character of the setting?",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "bucolic-idyllic_002",
+      "edge_id": "bucolic__idyllic",
+      "domain": "rooftop_evening",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Basil’s evening?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_002_b1",
+          "text": "Basil spent the evening on a city rooftop with soft music, a cool breeze, and no interruptions.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "nearly perfect peaceful time on a city rooftop",
+          "reason": "Its beauty and harmony, not countryside features, make it special.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_002_b2",
+          "text": "The lights below twinkled as his closest friends relaxed together.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "nearly perfect peaceful time on a city rooftop",
+          "reason": "The city lights strengthen the pleasant urban mood without introducing rural life.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The city lights strengthen the pleasant urban mood without introducing rural life.",
+      "feedback_deep": "Its beauty and harmony, not countryside features, make it special. The city lights strengthen the pleasant urban mood without introducing rural life. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "Does the scene need fields to feel perfect?",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "bucolic-idyllic_003",
+      "edge_id": "bucolic__idyllic",
+      "domain": "farm_cottage",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Cora’s description of the cottage?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_003_b1",
+          "text": "Cora describes a cottage among hayfields, with chickens pecking by the gate.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "cottage framed by farm life and country scenery",
+          "reason": "The description evokes the pleasant countryside.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_003_b2",
+          "text": "She also mentions the muddy path and the early roar of farm machinery.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "cottage framed by farm life and country scenery",
+          "reason": "Mud and machinery show everyday rural realities; they do not remove its country character.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Mud and machinery show everyday rural realities; they do not remove its country character.",
+      "feedback_deep": "The description evokes the pleasant countryside. Mud and machinery show everyday rural realities; they do not remove its country character. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "Are these imperfections relevant to the rural quality?",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "bucolic-idyllic_004",
+      "edge_id": "bucolic__idyllic",
+      "domain": "quiet_apartment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dimitri’s weekend?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_004_b1",
+          "text": "Dimitri read beside an open window in his quiet city apartment, with no errands and no interruptions.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "an unusually restful, satisfying urban weekend",
+          "reason": "The experience feels entirely satisfying.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_004_b2",
+          "text": "He read, cooked, and slept peacefully, without a single demand on his time.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "complete freedom from demands made the weekend nearly perfect",
+          "reason": "The absence of interruptions clarifies the near-perfect calm rather than a country-life atmosphere.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The absence of interruptions clarifies the near-perfect calm rather than a country-life atmosphere.",
+      "feedback_deep": "The experience feels entirely satisfying. The absence of interruptions clarifies the near-perfect calm rather than a country-life atmosphere. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "Judge the quality of the experience, not its address.",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "bucolic-idyllic_005",
+      "edge_id": "bucolic__idyllic",
+      "domain": "country_market",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Elif’s market scene?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_005_b1",
+          "text": "Elif sketched a village market beside fields where farmers sold eggs and vegetables.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "village market embedded in farming landscape",
+          "reason": "Her scene draws its character from everyday rural surroundings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_005_b2",
+          "text": "Her drawing includes a donkey cart and a row of old barns.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "donkey cart and barns emphasize country life",
+          "reason": "The added details make the rustic theme unmistakable without implying everything is perfect.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The added details make the rustic theme unmistakable without implying everything is perfect.",
+      "feedback_deep": "Her scene draws its character from everyday rural surroundings. The added details make the rustic theme unmistakable without implying everything is perfect. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "What gives the scene its distinctive character?",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "bucolic-idyllic_006",
+      "edge_id": "bucolic__idyllic",
+      "domain": "seaside_picnic",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Femi’s picnic?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_006_b1",
+          "text": "Femi enjoyed a picnic on a quiet beach with clear skies and gentle waves.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "beautifully calm picnic by the sea",
+          "reason": "The scene has an exceptionally harmonious quality.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_006_b2",
+          "text": "The food was delicious, the company welcome, and nothing disturbed the afternoon.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "every part of the afternoon worked out pleasantly",
+          "reason": "The lack of anything to spoil the day makes near-perfection the clearer idea.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The lack of anything to spoil the day makes near-perfection the clearer idea.",
+      "feedback_deep": "The scene has an exceptionally harmonious quality. The lack of anything to spoil the day makes near-perfection the clearer idea. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "What judgment is being made about the whole experience?",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "bucolic-idyllic_007",
+      "edge_id": "bucolic__idyllic",
+      "domain": "orchard_bicycle_ride",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Gauri’s route?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_007_b1",
+          "text": "Gauri rode between orchards and open grazing land, passing wooden fences and quiet barns.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "route lined with orchards and grazing land",
+          "reason": "The journey takes place amid appealing agricultural scenery.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_007_b2",
+          "text": "The route continued past an orchard pond and hay-filled barns beneath a wide evening sky.",
+          "best_word": "bucolic",
+          "fit": {
+            "bucolic": 0.91,
+            "idyllic": 0.19
+          },
+          "decisive_clue": "orchards, barns, and farm scenery continue to define the route",
+          "reason": "The added details reinforce the route’s pleasant countryside character without claiming it is nearly perfect.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "idyllic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The route remains bucolic because its pleasant countryside character is reinforced by orchards, barns, and farm scenery.",
+      "feedback_deep": "The journey takes place amid appealing agricultural scenery. The later details reinforce that countryside character without claiming the route is nearly perfect. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "What features describe the route itself?",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "bucolic-idyllic_008",
+      "edge_id": "bucolic__idyllic",
+      "domain": "botanical_greenhouse",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Haruto’s visit?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "bucolic-idyllic_008_b1",
+          "text": "Haruto wandered through a city greenhouse filled with flowers, quiet paths, and gentle light.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "exceptionally beautiful, peaceful greenhouse experience",
+          "reason": "The scene seems almost perfectly enjoyable without being a farming landscape.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        },
+        {
+          "id": "bucolic-idyllic_008_b2",
+          "text": "He found every corner beautiful and wished the afternoon could last longer.",
+          "best_word": "idyllic",
+          "fit": {
+            "bucolic": 0.19,
+            "idyllic": 0.91
+          },
+          "decisive_clue": "exceptionally beautiful, peaceful greenhouse experience",
+          "reason": "His wish to remain adds to the same perfect-day impression, not the country-life sense.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "bucolic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "His wish to remain adds to the same perfect-day impression, not the country-life sense.",
+      "feedback_deep": "The scene seems almost perfectly enjoyable without being a farming landscape. His wish to remain adds to the same perfect-day impression, not the country-life sense. Bucolic paints country life; idyllic paints near-perfection.",
+      "contrast_rule": "Bucolic paints country life; idyllic paints near-perfection.",
+      "hints": {
+        "attention": "Is the praise about rural life or an almost flawless visit?",
+        "axis": "Whether the scene evokes life in the countryside.",
+        "contrast": "Bucolic paints country life; idyllic paints near-perfection."
+      },
+      "qa": "pass"
+    }
+  ]
+}

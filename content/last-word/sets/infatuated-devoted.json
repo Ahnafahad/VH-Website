@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "infatuated-devoted",
+  "title": "infatuated / devoted",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[69]",
+    "source_pair_id": 313,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "infatuated",
+      "sense": "intense, often unreasoning attraction that clouds judgment",
+      "connotation": "often cautionary",
+      "register": "standard",
+      "misconceptions": [
+        "Intense attraction alone does not show sustained commitment."
+      ]
+    },
+    {
+      "word": "devoted",
+      "sense": "deep and sustained loyalty and commitment",
+      "connotation": "positive",
+      "register": "standard",
+      "misconceptions": [
+        "Reliable care need not depend on constant excitement."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "intensity_vs_commitment",
+      "description": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care."
+    }
+  ],
+  "edges": [
+    {
+      "id": "infatuated__devoted",
+      "a": "infatuated",
+      "b": "devoted",
+      "boundary_rule": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care.",
+      "clues_a": [
+        "idealizing someone barely known",
+        "neglecting duties for a crush",
+        "ignoring obvious warning signs"
+      ],
+      "clues_b": [
+        "helping through unglamorous difficulty",
+        "staying reliable over years",
+        "supporting without reward"
+      ],
+      "irrelevant_clues": [
+        "the number of photos",
+        "how others describe the couple",
+        "whether they live nearby"
+      ],
+      "misconceptions": {
+        "M1": "Intense attraction alone does not show sustained commitment.",
+        "M2": "Reliable care need not depend on constant excitement.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "infatuated-devoted_001",
+      "edge_id": "infatuated__devoted",
+      "domain": "school_concert",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nadia’s behavior?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infatuated-devoted_001_b1",
+          "text": "Nadia decided a singer she met for one minute was perfect and spent all weekend replaying their brief hello.",
+          "best_word": "infatuated",
+          "fit": {
+            "infatuated": 0.93,
+            "devoted": 0.2
+          },
+          "decisive_clue": "idealizing someone after a fleeting encounter",
+          "reason": "A tiny encounter triggers unrealistic preoccupation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "devoted": "M1"
+          }
+        },
+        {
+          "id": "infatuated-devoted_001_b2",
+          "text": "She ignored repeated reminders about a deadline just to refresh the singer’s public page.",
+          "best_word": "infatuated",
+          "fit": {
+            "infatuated": 0.95,
+            "devoted": 0.15
+          },
+          "decisive_clue": "fixation that overrides responsibilities",
+          "reason": "Her neglected duties show attraction overwhelming judgment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "devoted": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is fixation that overrides responsibilities; her neglected duties show attraction overwhelming judgment.",
+      "feedback_deep": "Infatuated concerns intense, often unreasoning attraction that clouds judgment; devoted concerns deep and sustained loyalty and commitment. Her neglected duties show attraction overwhelming judgment.",
+      "contrast_rule": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty.",
+      "hints": {
+        "attention": "Compare how well she knows the person with how strongly she reacts.",
+        "axis": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care.",
+        "contrast": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infatuated-devoted_002",
+      "edge_id": "infatuated__devoted",
+      "domain": "caregiving",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Felipe’s behavior?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "infatuated-devoted_002_b1",
+          "text": "Felipe visited his partner every evening during a lengthy recovery, doing the dull chores without being asked.",
+          "best_word": "devoted",
+          "fit": {
+            "infatuated": 0.2,
+            "devoted": 0.93
+          },
+          "decisive_clue": "steady practical care through hardship",
+          "reason": "His behavior shows dependable commitment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infatuated": "M2"
+          }
+        },
+        {
+          "id": "infatuated-devoted_002_b2",
+          "text": "They had already been together for eleven years.",
+          "best_word": "devoted",
+          "fit": {
+            "infatuated": 0.15,
+            "devoted": 0.95
+          },
+          "decisive_clue": "steady practical care through hardship",
+          "reason": "The relationship’s duration supports the same loyalty, not passing excitement.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infatuated": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is steady practical care through hardship; the relationship’s duration supports the same loyalty, not passing excitement.",
+      "feedback_deep": "Infatuated concerns intense, often unreasoning attraction that clouds judgment; devoted concerns deep and sustained loyalty and commitment. The relationship’s duration supports the same loyalty, not passing excitement.",
+      "contrast_rule": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty.",
+      "hints": {
+        "attention": "Notice what he keeps doing when it is inconvenient.",
+        "axis": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care.",
+        "contrast": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infatuated-devoted_003",
+      "edge_id": "infatuated__devoted",
+      "domain": "friend_gathering",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Jisoo’s behavior?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "infatuated-devoted_003_b1",
+          "text": "Jisoo defended someone she adored who repeatedly belittled her friends, claiming the insults showed unusual confidence.",
+          "best_word": "infatuated",
+          "fit": {
+            "infatuated": 0.93,
+            "devoted": 0.2
+          },
+          "decisive_clue": "explaining away hurtful conduct because of intense attraction",
+          "reason": "Her attraction leads her to excuse behavior she would otherwise question.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "devoted": "M1"
+          }
+        },
+        {
+          "id": "infatuated-devoted_003_b2",
+          "text": "She made these excuses even when the comments had upset her closest friend.",
+          "best_word": "infatuated",
+          "fit": {
+            "infatuated": 0.95,
+            "devoted": 0.15
+          },
+          "decisive_clue": "explaining away hurtful conduct because of intense attraction",
+          "reason": "The social harm does not change how attraction has distorted her judgment.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "devoted": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Explaining away hurtful conduct because of intense attraction; the later detail does not change the boundary.",
+      "feedback_deep": "Infatuated concerns intense, often unreasoning attraction that clouds judgment; devoted concerns deep and sustained loyalty and commitment. The social harm does not change how attraction has distorted her judgment.",
+      "contrast_rule": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty.",
+      "hints": {
+        "attention": "How does she interpret behavior that hurts her friends?",
+        "axis": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care.",
+        "contrast": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infatuated-devoted_004",
+      "edge_id": "infatuated__devoted",
+      "domain": "community_reading_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mariam’s behavior?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infatuated-devoted_004_b1",
+          "text": "Mariam kept organizing the local reading club for years, even when almost nobody attended.",
+          "best_word": "devoted",
+          "fit": {
+            "infatuated": 0.2,
+            "devoted": 0.93
+          },
+          "decisive_clue": "years of support for a worthwhile cause despite low attendance",
+          "reason": "Her sustained work shows loyalty to a cause despite little recognition.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infatuated": "M2"
+          }
+        },
+        {
+          "id": "infatuated-devoted_004_b2",
+          "text": "She continued after the other organizers quit, without asking for pay or praise.",
+          "best_word": "devoted",
+          "fit": {
+            "infatuated": 0.15,
+            "devoted": 0.95
+          },
+          "decisive_clue": "continuing an unglamorous commitment without reward",
+          "reason": "Continuing after others quit confirms long-term commitment rather than fleeting excitement.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infatuated": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is continuing an unglamorous commitment without reward; continuing after others quit confirms long-term commitment rather than fleeting excitement.",
+      "feedback_deep": "Infatuated concerns intense, often unreasoning attraction that clouds judgment; devoted concerns deep and sustained loyalty and commitment. Continuing after others quit confirms long-term commitment rather than fleeting excitement.",
+      "contrast_rule": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty.",
+      "hints": {
+        "attention": "What keeps her organizing meetings when the excitement is gone?",
+        "axis": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care.",
+        "contrast": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infatuated-devoted_005",
+      "edge_id": "infatuated__devoted",
+      "domain": "pet_adoption",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Otto’s behavior?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "infatuated-devoted_005_b1",
+          "text": "Otto kept caring for his elderly dog when daily walks became slow and costly treatment was needed.",
+          "best_word": "devoted",
+          "fit": {
+            "infatuated": 0.2,
+            "devoted": 0.93
+          },
+          "decisive_clue": "continuing care despite reduced enjoyment and greater costs",
+          "reason": "He remains committed when the relationship is difficult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "infatuated": "M2"
+          }
+        },
+        {
+          "id": "infatuated-devoted_005_b2",
+          "text": "The dog no longer enjoyed the games they once played.",
+          "best_word": "devoted",
+          "fit": {
+            "infatuated": 0.15,
+            "devoted": 0.95
+          },
+          "decisive_clue": "continuing care despite reduced enjoyment and greater costs",
+          "reason": "Loss of playful excitement makes the reliable care more revealing.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "infatuated": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is continuing care despite reduced enjoyment and greater costs; loss of playful excitement makes the reliable care more revealing.",
+      "feedback_deep": "Infatuated concerns intense, often unreasoning attraction that clouds judgment; devoted concerns deep and sustained loyalty and commitment. Loss of playful excitement makes the reliable care more revealing.",
+      "contrast_rule": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty.",
+      "hints": {
+        "attention": "What happens after the exciting part fades?",
+        "axis": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care.",
+        "contrast": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "infatuated-devoted_006",
+      "edge_id": "infatuated__devoted",
+      "domain": "new_classmate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Aisha’s behavior?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "infatuated-devoted_006_b1",
+          "text": "Aisha spent all her savings on gifts for a crush who had never answered a single message.",
+          "best_word": "infatuated",
+          "fit": {
+            "infatuated": 0.93,
+            "devoted": 0.2
+          },
+          "decisive_clue": "lavish sacrifices for an unreciprocated crush",
+          "reason": "Her intense attraction drives disproportionate spending despite no response.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "devoted": "M1"
+          }
+        },
+        {
+          "id": "infatuated-devoted_006_b2",
+          "text": "She interpreted each unanswered message as proof the person was simply too extraordinary to respond.",
+          "best_word": "infatuated",
+          "fit": {
+            "infatuated": 0.95,
+            "devoted": 0.15
+          },
+          "decisive_clue": "treating continued silence as proof of special qualities",
+          "reason": "Reading silence as superiority shows that attraction is distorting her judgment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "devoted": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is treating continued silence as proof of special qualities; reading silence as superiority shows that attraction is distorting her judgment.",
+      "feedback_deep": "Infatuated concerns intense, often unreasoning attraction that clouds judgment; devoted concerns deep and sustained loyalty and commitment. Reading silence as superiority shows that attraction is distorting her judgment.",
+      "contrast_rule": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty.",
+      "hints": {
+        "attention": "How does she explain the complete lack of a reply?",
+        "axis": "Infatuated means carried away by intense attraction; devoted means showing durable loyalty and care.",
+        "contrast": "Infatuated: idealizing someone barely known; devoted: helping through unglamorous difficulty."
+      },
+      "qa": "pass"
+    }
+  ]
+}

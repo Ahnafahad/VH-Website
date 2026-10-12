@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "set_id": "insolent-indolent",
+  "title": "insolent / indolent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[48]",
+    "source_pair_id": 264,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "insolent",
+      "sense": "Boldly disrespectful, particularly to someone owed courtesy.",
+      "connotation": "disapproving, confrontational",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with indolent when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "indolent",
+      "sense": "Habitually avoiding work or effort.",
+      "connotation": "disapproving, passive",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with insolent when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "disrespect_versus_inactivity",
+      "description": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort."
+    }
+  ],
+  "edges": [
+    {
+      "id": "insolent__indolent",
+      "a": "insolent",
+      "b": "indolent",
+      "boundary_rule": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "clues_a": [
+        "Rudely defiant.",
+        "Boldly disrespectful, particularly to someone owed courtesy."
+      ],
+      "clues_b": [
+        "Habitually unwilling to work.",
+        "Habitually avoiding work or effort."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating insolent as though it always means indolent.",
+        "M2": "Treating indolent as though it always means insolent.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "insolent-indolent_001",
+      "edge_id": "insolent__indolent",
+      "domain": "basketball_game",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Bina’s response to the referee?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "insolent-indolent_001_b1",
+          "text": "Bina rolled her eyes at the referee and shouted, “Learn the rules before you whistle!”",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.87,
+            "indolent": 0.32
+          },
+          "decisive_clue": "she openly mocked the referee’s authority",
+          "reason": "This establishes that she openly mocked the referee’s authority.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        },
+        {
+          "id": "insolent-indolent_001_b2",
+          "text": "She made the remark loudly enough for the spectators on both sides to hear.",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.93,
+            "indolent": 0.32
+          },
+          "decisive_clue": "she openly mocked the referee’s authority",
+          "reason": "The audience intensifies the insult; the decisive point is her manner, not a reluctance to work.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She openly mocked the referee’s authority; that detail favors insolent.",
+      "feedback_deep": "The audience intensifies the insult; the decisive point is her manner, not a reluctance to work. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Examine how she addresses the referee.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insolent-indolent_002",
+      "edge_id": "insolent__indolent",
+      "domain": "family_chores",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Carlos’s approach to his chores?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "insolent-indolent_002_b1",
+          "text": "Carlos left his assigned chores undone every weekend while he spent hours watching videos.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.87
+          },
+          "decisive_clue": "he repeatedly avoided routine tasks despite available time",
+          "reason": "This establishes that he repeatedly avoided routine tasks despite available time.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        },
+        {
+          "id": "insolent-indolent_002_b2",
+          "text": "He had free afternoons both days and never offered to help.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.93
+          },
+          "decisive_clue": "he repeatedly avoided routine tasks despite available time",
+          "reason": "Having enough time removes a competing explanation for his persistent lack of effort.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He repeatedly avoided routine tasks despite available time; that detail favors indolent.",
+      "feedback_deep": "Having enough time removes a competing explanation for his persistent lack of effort. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Notice whether he avoids tasks as a habit.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insolent-indolent_003",
+      "edge_id": "insolent__indolent",
+      "domain": "university_seminar",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Dana’s reply to her lecturer?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "insolent-indolent_003_b1",
+          "text": "Dana replied to the lecturer’s request with “Do it yourself if it matters so much.”",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.87,
+            "indolent": 0.32
+          },
+          "decisive_clue": "her reply dismisses the lecturer with open disrespect",
+          "reason": "This establishes that her reply dismisses the lecturer with open disrespect.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        },
+        {
+          "id": "insolent-indolent_003_b2",
+          "text": "She finished the message with an exaggerated salute.",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.93,
+            "indolent": 0.32
+          },
+          "decisive_clue": "her reply dismisses the lecturer with open disrespect",
+          "reason": "The salute adds mockery, but the original wording already reveals the attitude.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her reply dismisses the lecturer with open disrespect; that detail favors insolent.",
+      "feedback_deep": "The salute adds mockery, but the original wording already reveals the attitude. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Pay attention to her manner of replying.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insolent-indolent_004",
+      "edge_id": "insolent__indolent",
+      "domain": "fitness_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Eli’s training habits?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "insolent-indolent_004_b1",
+          "text": "Eli regularly skipped his assigned drills and lay in the shade while his teammates practised.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.87
+          },
+          "decisive_clue": "he habitually avoids the work of practice",
+          "reason": "This establishes that he habitually avoids the work of practice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        },
+        {
+          "id": "insolent-indolent_004_b2",
+          "text": "He brought a cushion to training and settled down before warmups.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.93
+          },
+          "decisive_clue": "he habitually avoids the work of practice",
+          "reason": "The cushion reveals preparation for inactivity rather than inability to train.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He habitually avoids the work of practice; that detail favors indolent.",
+      "feedback_deep": "The cushion reveals preparation for inactivity rather than inability to train. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Look for a pattern of effort avoidance.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insolent-indolent_005",
+      "edge_id": "insolent__indolent",
+      "domain": "office_reports",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Farah’s attitude toward her paperwork?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "insolent-indolent_005_b1",
+          "text": "Farah left basic weekly reports untouched for months though her schedule had plenty of free time.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.87
+          },
+          "decisive_clue": "she persistently neglects simple work without a pressing reason",
+          "reason": "This establishes that she persistently neglects simple work without a pressing reason.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        },
+        {
+          "id": "insolent-indolent_005_b2",
+          "text": "She said the filing software’s opening screen had an ugly colour.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.93
+          },
+          "decisive_clue": "she persistently neglects simple work without a pressing reason",
+          "reason": "Her view of the colour is a distraction; it does not explain months of avoidance.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "She persistently neglects simple work without a pressing reason; that detail favors indolent.",
+      "feedback_deep": "Her view of the colour is a distraction; it does not explain months of avoidance. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Separate an excuse from a repeated pattern.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insolent-indolent_006",
+      "edge_id": "insolent__indolent",
+      "domain": "museum_volunteers",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Gustavo’s reply to his supervisor?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "insolent-indolent_006_b1",
+          "text": "Gustavo interrupted his supervisor and said her instructions were too foolish to follow.",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.87,
+            "indolent": 0.32
+          },
+          "decisive_clue": "he spoke to his supervisor with deliberate contempt",
+          "reason": "This establishes that he spoke to his supervisor with deliberate contempt.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        },
+        {
+          "id": "insolent-indolent_006_b2",
+          "text": "He used a mocking nickname she had asked him not to use.",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.93,
+            "indolent": 0.32
+          },
+          "decisive_clue": "he spoke to his supervisor with deliberate contempt",
+          "reason": "The unwanted nickname adds a second signal of disrespect, not laziness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He spoke to his supervisor with deliberate contempt; that detail favors insolent.",
+      "feedback_deep": "The unwanted nickname adds a second signal of disrespect, not laziness. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Listen to the tone of the reply.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insolent-indolent_007",
+      "edge_id": "insolent__indolent",
+      "domain": "online_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hana’s message to the club president?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "insolent-indolent_007_b1",
+          "text": "Hana wrote to the president, “Your rules aren’t worth the paper they’re printed on.”",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.87,
+            "indolent": 0.32
+          },
+          "decisive_clue": "her message openly ridicules the president’s rules",
+          "reason": "This establishes that her message openly ridicules the president’s rules.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        },
+        {
+          "id": "insolent-indolent_007_b2",
+          "text": "She copied the full committee into the message.",
+          "best_word": "insolent",
+          "fit": {
+            "insolent": 0.93,
+            "indolent": 0.32
+          },
+          "decisive_clue": "her message openly ridicules the president’s rules",
+          "reason": "The wider audience does not create the contempt; the wording already does.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her message openly ridicules the president’s rules; that detail favors insolent.",
+      "feedback_deep": "The wider audience does not create the contempt; the wording already does. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Focus on what the message communicates.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insolent-indolent_008",
+      "edge_id": "insolent__indolent",
+      "domain": "family_travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ibrahim’s behaviour when his family packed?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "insolent-indolent_008_b1",
+          "text": "On every family trip, Ibrahim stayed on the sofa while everyone else packed and loaded bags.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.87
+          },
+          "decisive_clue": "he repeatedly avoids shared packing work",
+          "reason": "This establishes that he repeatedly avoids shared packing work.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        },
+        {
+          "id": "insolent-indolent_008_b2",
+          "text": "This time he promised to help after one episode, then started another.",
+          "best_word": "indolent",
+          "fit": {
+            "insolent": 0.32,
+            "indolent": 0.93
+          },
+          "decisive_clue": "he repeatedly avoids shared packing work",
+          "reason": "The latest delay illustrates the same habitual refusal to contribute.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He repeatedly avoids shared packing work; that detail favors indolent.",
+      "feedback_deep": "The latest delay illustrates the same habitual refusal to contribute. Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+      "contrast_rule": "Insolent talks back; indolent holds back from work.",
+      "hints": {
+        "attention": "Compare this trip with his repeated behaviour.",
+        "axis": "Insolent describes a disrespectful manner; indolent describes persistent avoidance of effort.",
+        "contrast": "Insolent talks back; indolent holds back from work."
+      },
+      "qa": "pass"
+    }
+  ]
+}

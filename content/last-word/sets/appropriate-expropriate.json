@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "appropriate-expropriate",
+  "title": "appropriate / expropriate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[20]",
+    "source_pair_id": 79,
+    "qa": {
+      "pass": 9,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "appropriate",
+      "sense": "Take something for one’s own use without permission, or officially set resources aside for a specified use.",
+      "connotation": "sometimes disapproving; administrative for budgets",
+      "register": "formal",
+      "misconceptions": [
+        "Missing an authorised allocation of funds as an appropriate use.",
+        "Confusing a public compulsory transfer with personal unauthorised taking."
+      ]
+    },
+    {
+      "word": "expropriate",
+      "sense": "Officially take private property from its owner, typically by government authority for public use.",
+      "connotation": "legal and political; often contentious",
+      "register": "formal",
+      "misconceptions": [
+        "Calling any taking of property an official dispossession.",
+        "Confusing a public compulsory transfer with personal unauthorised taking."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "personal_taking_vs_official_dispossession",
+      "description": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner."
+    }
+  ],
+  "edges": [
+    {
+      "id": "appropriate__expropriate",
+      "a": "appropriate",
+      "b": "expropriate",
+      "boundary_rule": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+      "clues_a": [
+        "unauthorised personal taking",
+        "allocation for a budget purpose"
+      ],
+      "clues_b": [
+        "government order transfers ownership",
+        "private owner formally dispossessed for public use"
+      ],
+      "irrelevant_clues": [
+        "item price",
+        "owner’s surprise"
+      ],
+      "misconceptions": {
+        "M1": "Calling any taking of property an official dispossession.",
+        "M2": "Missing an authorised allocation of funds as an appropriate use.",
+        "M3": "Confusing a public compulsory transfer with personal unauthorised taking."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "appropriate-expropriate_001",
+      "edge_id": "appropriate__expropriate",
+      "domain": "office_supply_cupboard",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Nabil did with the notebooks?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_001_b1",
+          "text": "Nabil took the department’s notebooks home for his personal projects without asking.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "took office supplies for personal use",
+          "reason": "Took office supplies for personal use. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_001_b2",
+          "text": "He later wrote his name inside them, though the office still owned them.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "labelling them did not create authority or transfer title",
+          "reason": "Labelling them did not create authority or transfer title. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Labelling them did not create authority or transfer title makes appropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, labelling them did not create authority or transfer title; that is why appropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on whether there was an official property seizure.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_002",
+      "edge_id": "appropriate__expropriate",
+      "domain": "town_road_extension",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the council did to Marta’s yard?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_002_b1",
+          "text": "The council issued a compulsory acquisition order transferring part of Marta’s private yard to the city for a road.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "formal public acquisition of private land",
+          "reason": "Formal public acquisition of private land. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_002_b2",
+          "text": "She protested, but the legal transfer of title went ahead.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "owner’s protest does not change the legal seizure",
+          "reason": "Owner’s protest does not change the legal seizure. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Owner’s protest does not change the legal seizure makes expropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, owner’s protest does not change the legal seizure; that is why expropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on who exercised the power to take ownership.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_003",
+      "edge_id": "appropriate__expropriate",
+      "domain": "university_club_budget",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the student council did with club funds?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_003_b1",
+          "text": "The student council voted to set aside five hundred dollars for the debate tournament.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "officially allocated money for a purpose",
+          "reason": "Officially allocated money for a purpose. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_003_b2",
+          "text": "The amount remained in its budget and was labelled for travel costs.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "budget label reinforces allocation, not seizure",
+          "reason": "Budget label reinforces allocation, not seizure. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Budget label reinforces allocation, not seizure makes appropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, budget label reinforces allocation, not seizure; that is why appropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on money allocated versus an owner dispossessed.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_004",
+      "edge_id": "appropriate__expropriate",
+      "domain": "riverside_housing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the city did to Benita’s cottage?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_004_b1",
+          "text": "The city used a compulsory purchase law to take title to Benita’s cottage for a flood barrier.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "compulsory official transfer of private ownership",
+          "reason": "Compulsory official transfer of private ownership. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_004_b2",
+          "text": "Compensation was offered, but she could not refuse the transfer.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "payment does not make acquisition voluntary",
+          "reason": "Payment does not make acquisition voluntary. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Payment does not make acquisition voluntary makes expropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, payment does not make acquisition voluntary; that is why expropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on whether the owner could refuse the official taking.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_005",
+      "edge_id": "appropriate__expropriate",
+      "domain": "school_art_contest",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Leo did with his classmate’s design?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_005_b1",
+          "text": "Leo copied his classmate’s poster concept and submitted it as his own without permission.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "claimed another person’s idea for himself",
+          "reason": "Claimed another person’s idea for himself. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_005_b2",
+          "text": "He changed the colour scheme, but the original idea was still someone else’s.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "cosmetic changes do not make official dispossession",
+          "reason": "Cosmetic changes do not make official dispossession. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Cosmetic changes do not make official dispossession makes appropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, cosmetic changes do not make official dispossession; that is why appropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on permission to use the idea.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_006",
+      "edge_id": "appropriate__expropriate",
+      "domain": "city_subway_project",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what officials did to Siti’s shop?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_006_b1",
+          "text": "Officials transferred ownership of Siti’s privately owned shop to the city under compulsory acquisition law.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "official law forced transfer of shop ownership",
+          "reason": "Official law forced transfer of shop ownership. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_006_b2",
+          "text": "The cleared site was designated for a public station entrance.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "public transport purpose reinforces formal taking",
+          "reason": "Public transport purpose reinforces formal taking. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Public transport purpose reinforces formal taking makes expropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, public transport purpose reinforces formal taking; that is why expropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on legal transfer of private title.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_007",
+      "edge_id": "appropriate__expropriate",
+      "domain": "charity_office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Grace did with donated equipment?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_007_b1",
+          "text": "Grace carried the charity’s tablet home and kept it for herself without approval.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "privately took a charity-owned tablet",
+          "reason": "Privately took a charity-owned tablet. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_007_b2",
+          "text": "She used it only on weekends, but never asked the charity’s permission.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "limited use does not authorize taking ownership",
+          "reason": "Limited use does not authorize taking ownership. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Limited use does not authorize taking ownership makes appropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, limited use does not authorize taking ownership; that is why appropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on a private misuse or a compulsory state taking.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_008",
+      "edge_id": "appropriate__expropriate",
+      "domain": "wartime_logistics",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the military command did to the merchant vessels?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_008_b1",
+          "text": "Under emergency wartime decrees, the naval command formally seized privately owned merchant ships from civilian shipping companies to serve as troop transports.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.22,
+            "expropriate": 0.94
+          },
+          "decisive_clue": "state authority legally dispossessing private owners of commercial vessels for public defense",
+          "reason": "State authority legally dispossessing private owners of commercial vessels for public defense. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_008_b2",
+          "text": "The civilian shipping lines were promised post-war compensation, but ownership was permanently transferred to the state.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.95
+          },
+          "decisive_clue": "permanent title transfer by government authority confirms formal dispossession",
+          "reason": "Permanent title transfer by government authority confirms formal dispossession. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Permanent title transfer by government authority confirms formal dispossession makes expropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, permanent title transfer by government authority confirms formal dispossession; that is why expropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on whether sovereign authority formally dispossessed private owners.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "appropriate-expropriate_009",
+      "edge_id": "appropriate__expropriate",
+      "domain": "sports_association",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes what Elena did with membership fees?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_009_b1",
+          "text": "Elena passed a formal motion reserving part of the fees for new sports equipment.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "formally earmarked existing funds",
+          "reason": "Formally earmarked existing funds. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_009_b2",
+          "text": "The money stayed with the association; her motion simply specified its use.",
+          "best_word": "appropriate",
+          "fit": {
+            "appropriate": 0.93,
+            "expropriate": 0.18
+          },
+          "decisive_clue": "allocation was not a seizure of anyone’s property",
+          "reason": "Allocation was not a seizure of anyone’s property. Take something for one’s own use without permission, or officially set resources aside for a specified use..",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Allocation was not a seizure of anyone’s property makes appropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, allocation was not a seizure of anyone’s property; that is why appropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on allocation rather than confiscation.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "appropriate-expropriate_010",
+      "edge_id": "appropriate__expropriate",
+      "domain": "airport_runway_extension",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the airport authority did to Omar’s field?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "appropriate-expropriate_010_b1",
+          "text": "The public airport authority issued a lawful compulsory order and took title to Omar’s privately owned field.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "authority officially seized private ownership",
+          "reason": "Authority officially seized private ownership. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M1"
+          }
+        },
+        {
+          "id": "appropriate-expropriate_010_b2",
+          "text": "The land was assigned to a runway extension despite his objection.",
+          "best_word": "expropriate",
+          "fit": {
+            "appropriate": 0.18,
+            "expropriate": 0.93
+          },
+          "decisive_clue": "public runway use confirms official property taking",
+          "reason": "Public runway use confirms official property taking. Officially take private property from its owner, typically by government authority for public use..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appropriate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Public runway use confirms official property taking makes expropriate the better fit.",
+      "feedback_deep": "Appropriate means take something for one’s own use without permission, or officially set resources aside for a specified use; expropriate means officially take private property from its owner, typically by government authority for public use. Here, public runway use confirms official property taking; that is why expropriate wins even after the new detail.",
+      "contrast_rule": "Appropriate takes for use; expropriate officially takes ownership.",
+      "hints": {
+        "attention": "Focus on formal transfer of legal ownership.",
+        "axis": "Appropriate means take or allocate for use; expropriate specifically means an authority formally takes private property from its owner.",
+        "contrast": "Appropriate takes for use; expropriate officially takes ownership."
+      },
+      "qa": "pass"
+    }
+  ]
+}

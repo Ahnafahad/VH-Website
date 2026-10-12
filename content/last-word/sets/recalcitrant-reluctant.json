@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "recalcitrant-reluctant",
+  "title": "recalcitrant / reluctant",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[13]",
+    "source_pair_id": 39,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "recalcitrant",
+      "sense": "Stubbornly resisting instructions, cooperation, or attempts to change.",
+      "connotation": "critical",
+      "register": "formal",
+      "misconceptions": [
+        "Feeling uncertain does not amount to defiance."
+      ]
+    },
+    {
+      "word": "reluctant",
+      "sense": "Hesitant or unwilling, without necessarily defying a request.",
+      "connotation": "often sympathetic or neutral",
+      "register": "general",
+      "misconceptions": [
+        "Quietly delaying a choice is not necessarily fighting directions."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "defiance_vs_hesitation",
+      "description": "Defiant noncooperation versus hesitation without entrenched resistance."
+    }
+  ],
+  "edges": [
+    {
+      "id": "recalcitrant__reluctant",
+      "a": "recalcitrant",
+      "b": "reluctant",
+      "boundary_rule": "Recalcitrant describes persistent defiance of direction; reluctant describes unwillingness or hesitation that need not become defiance.",
+      "clues_a": [
+        "repeated refusal after direct instruction",
+        "digging in under pressure",
+        "open defiance"
+      ],
+      "clues_b": [
+        "hesitation before agreement",
+        "uneasiness without resistance",
+        "unwilling but cooperative"
+      ],
+      "irrelevant_clues": [
+        "whether the task is difficult",
+        "how old the person is",
+        "how long the explanation is"
+      ],
+      "misconceptions": {
+        "M1": "Treats hesitation or discomfort as active defiance.",
+        "M2": "Treats repeated rejection of an instruction as mere nervousness.",
+        "M3": "Confuses eventual cooperation with ongoing opposition to authority."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "recalcitrant-reluctant_001",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "school_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Noor’s response to joining the school play?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_001_b1",
+          "text": "Noor looks at the audition sheet several times and says she worries about forgetting lines, but eventually signs up.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.24,
+            "reluctant": 0.91
+          },
+          "decisive_clue": "uneasiness ends in voluntary participation",
+          "reason": "The first detail establishes uneasiness ends in voluntary participation; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M2"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_001_b2",
+          "text": "She asks for a small role at first and attends practice as promised.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.18,
+            "reluctant": 0.93
+          },
+          "decisive_clue": "continued cooperation despite preference for a small role",
+          "reason": "The new detail confirms continued cooperation despite preference for a small role and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She joins and practices despite her worry; she does not defy instructions.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, worry before joining is hesitancy; she does not dig in against directions.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Look at what happens after the initial hesitation.",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "recalcitrant-reluctant_002",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "team_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Idris’s response to the coach’s instruction?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_002_b1",
+          "text": "The coach asks Idris three times to put his phone away; Idris keeps scrolling and says, “You cannot make me.”",
+          "best_word": "recalcitrant",
+          "fit": {
+            "recalcitrant": 0.91,
+            "reluctant": 0.24
+          },
+          "decisive_clue": "open defiance continues despite repeated direct instructions",
+          "reason": "The first detail establishes open defiance continues despite repeated direct instructions; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reluctant": "M1"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_002_b2",
+          "text": "Even when the rest of the group starts the drill, he keeps the phone out and ignores the coach.",
+          "best_word": "recalcitrant",
+          "fit": {
+            "recalcitrant": 0.93,
+            "reluctant": 0.18
+          },
+          "decisive_clue": "the same defiance persists when practice begins",
+          "reason": "The deciding fact remains open defiance continues despite repeated direct instructions; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reluctant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The repeated instructions and his refusal to comply decide the word.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, this is resistance to being told what to do, not merely uncertainty about a task.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Does he hesitate, or challenge the instruction itself?",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "recalcitrant-reluctant_003",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "friendship_outing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Yara’s response to the hiking invitation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_003_b1",
+          "text": "Yara pauses, asks whether the trail is steep, and says she would prefer something easier.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.24,
+            "reluctant": 0.91
+          },
+          "decisive_clue": "initial doubts and preference for an easier trip",
+          "reason": "The first detail establishes initial doubts and preference for an easier trip; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M2"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_003_b2",
+          "text": "After hearing the route is gentle, she agrees to come and packs her shoes.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.18,
+            "reluctant": 0.93
+          },
+          "decisive_clue": "new information resolves her doubts without a struggle",
+          "reason": "Viewed in its fuller context, new information resolves her doubts without a struggle; the original distinction still decides it.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A few practical doubts give way to agreement, not a battle over authority.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, her response expresses hesitation that can be settled by reassurance.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Can new information overcome the initial response?",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "recalcitrant-reluctant_004",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "apartment_chores",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Pavel’s response to the agreed cleaning schedule?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_004_b1",
+          "text": "Pavel has agreed to wash the dishes, but when reminded, he crosses his name off the list and walks away.",
+          "best_word": "recalcitrant",
+          "fit": {
+            "recalcitrant": 0.91,
+            "reluctant": 0.24
+          },
+          "decisive_clue": "a person rejects an agreed responsibility despite a reminder",
+          "reason": "The first detail establishes a person rejects an agreed responsibility despite a reminder; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reluctant": "M1"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_004_b2",
+          "text": "After two house meetings asking him to follow the arrangement, he writes, “I won’t do it,” across the schedule.",
+          "best_word": "recalcitrant",
+          "fit": {
+            "recalcitrant": 0.93,
+            "reluctant": 0.18
+          },
+          "decisive_clue": "he keeps opposing repeated attempts to enforce the same agreement",
+          "reason": "The new detail confirms he keeps opposing repeated attempts to enforce the same agreement and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reluctant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Repeated resistance to the same agreed duty is the deciding fact.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, persistent noncooperation despite direct requests goes beyond ordinary hesitation.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Look at his response when asked again.",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "recalcitrant-reluctant_005",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "volunteer_shift",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Sofia’s response to her assigned duty at the community stall?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_005_b1",
+          "text": "Sofia hesitates at her assigned entrance desk, says she feels nervous greeting strangers, but agrees to try.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.24,
+            "reluctant": 0.91
+          },
+          "decisive_clue": "anxiety about the assigned task but initial agreement",
+          "reason": "The first detail establishes anxiety about the assigned task but initial agreement; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M2"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_005_b2",
+          "text": "When asked three times to staff that same desk, she pushes its sign away and says, “I won’t follow your orders.”",
+          "best_word": "recalcitrant",
+          "fit": {
+            "recalcitrant": 0.93,
+            "reluctant": 0.18
+          },
+          "decisive_clue": "active refusal of repeated instructions about that same task",
+          "reason": "The new evidence establishes active refusal of repeated instructions about that same task, so the other word now fits the same subject better.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reluctant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Repeatedly rejecting the assigned duty turns initial hesitation into defiance.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, the new evidence changes the picture from hesitation to direct resistance to instructions.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Does she merely fear the task, or oppose the instruction itself?",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "recalcitrant-reluctant_006",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "customer_service",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kenji’s response to the store’s return procedure?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_006_b1",
+          "text": "Kenji is asked to complete the same short return form as everyone else; he repeatedly pushes it back unsigned.",
+          "best_word": "recalcitrant",
+          "fit": {
+            "recalcitrant": 0.91,
+            "reluctant": 0.24
+          },
+          "decisive_clue": "repeated active opposition to the required procedure",
+          "reason": "The first detail establishes repeated active opposition to the required procedure; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reluctant": "M1"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_006_b2",
+          "text": "The manager explains the procedure, but Kenji folds the form and insists the staff must make an exception for him.",
+          "best_word": "recalcitrant",
+          "fit": {
+            "recalcitrant": 0.93,
+            "reluctant": 0.18
+          },
+          "decisive_clue": "he persists after the reason for the procedure is explained",
+          "reason": "The deciding fact remains repeated active opposition to the required procedure; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reluctant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He resists the required process repeatedly, even after an explanation.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, the pattern is confrontation with a clear instruction, not merely nerves about paperwork.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Is he anxious about the form or actively resisting it?",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "recalcitrant-reluctant_007",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "train_station",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Aiko’s response to asking a traveler for directions?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_007_b1",
+          "text": "Aiko rehearses her question twice, then timidly asks the traveler which stairs lead to platform four.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.24,
+            "reluctant": 0.91
+          },
+          "decisive_clue": "nervous hesitation before asking for help",
+          "reason": "The first detail establishes nervous hesitation before asking for help; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M2"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_007_b2",
+          "text": "She thanks the traveler for answering, though she still sounds nervous as she finishes her question.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.18,
+            "reluctant": 0.93
+          },
+          "decisive_clue": "she completes the same request despite the nerves",
+          "reason": "The deciding fact remains nervous hesitation before asking for help; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "She asks for help despite her nerves; no instruction is resisted.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, a hesitant approach is not an act of defying anyone’s directions.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Does she go through with her request?",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "recalcitrant-reluctant_008",
+      "edge_id": "recalcitrant__reluctant",
+      "domain": "community_cooking_class",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Musa’s response to tasting an unfamiliar dish?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "recalcitrant-reluctant_008_b1",
+          "text": "Musa draws back when offered a bite, asks what the dish contains, and then tries a small spoonful.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.24,
+            "reluctant": 0.91
+          },
+          "decisive_clue": "initial unease followed by voluntary sampling",
+          "reason": "The first detail establishes initial unease followed by voluntary sampling; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M2"
+          }
+        },
+        {
+          "id": "recalcitrant-reluctant_008_b2",
+          "text": "He hesitates again before a second taste, but accepts it without anyone ordering him to.",
+          "best_word": "reluctant",
+          "fit": {
+            "recalcitrant": 0.18,
+            "reluctant": 0.93
+          },
+          "decisive_clue": "he remains cautious yet cooperative on a second tasting",
+          "reason": "The new detail confirms he remains cautious yet cooperative on a second tasting and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "recalcitrant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He tastes the dish despite caution; there is no defiant opposition.",
+      "feedback_deep": "Recalcitrant means defiantly resistant to direction. Reluctant means hesitant or unwilling. Here, the hesitation is about his own uncertainty, not entrenched resistance to authority.",
+      "contrast_rule": "Reluctance hesitates; recalcitrance digs in against direction.",
+      "hints": {
+        "attention": "Is his uncertainty stopping him from cooperating?",
+        "axis": "Defiant noncooperation versus hesitation without entrenched resistance.",
+        "contrast": "Reluctance hesitates; recalcitrance digs in against direction."
+      },
+      "qa": "pass"
+    }
+  ]
+}

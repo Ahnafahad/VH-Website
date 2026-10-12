@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "frugal-parsimonious",
+  "title": "frugal / parsimonious",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[155]",
+    "source_pair_id": 653,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "frugal",
+      "sense": "Avoiding waste and using money and resources carefully while meeting real needs.",
+      "connotation": "Usually approving.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Treating every refusal to spend money as sensible thrift."
+      ]
+    },
+    {
+      "word": "parsimonious",
+      "sense": "Excessively unwilling to spend or give, even when spending is reasonable or necessary.",
+      "connotation": "Disapproving.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming an economical decision must be stingy when the person can afford more."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "reasonableness_of_restraint",
+      "description": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable."
+    }
+  ],
+  "edges": [
+    {
+      "id": "frugal__parsimonious",
+      "a": "frugal",
+      "b": "parsimonious",
+      "boundary_rule": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+      "clues_a": [
+        "avoids avoidable purchases",
+        "preserves value without sacrificing essentials",
+        "spends when a real need arises"
+      ],
+      "clues_b": [
+        "withholds small necessary expenses",
+        "lets others suffer to save trivial sums",
+        "refuses ordinary fairness despite having the means"
+      ],
+      "irrelevant_clues": [
+        "whether an object is expensive-looking",
+        "whether the person has a large income",
+        "whether the savings are counted precisely"
+      ],
+      "misconceptions": {
+        "M1": "Treating every refusal to spend money as sensible thrift.",
+        "M2": "Assuming an economical decision must be stingy when the person can afford more.",
+        "M3": "Ignoring harm or unmet needs when deciding if restraint is excessive."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "frugal-parsimonious_001",
+      "edge_id": "frugal__parsimonious",
+      "domain": "shoe_repair",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Lin’s decision about her shoes?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "frugal-parsimonious_001_b1",
+          "text": "Lin gets the soles of her comfortable shoes repaired instead of paying for a new pair.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.91,
+            "parsimonious": 0.22
+          },
+          "decisive_clue": "repairs safely extend the life of useful shoes",
+          "reason": "Repairs safely extend the life of useful shoes. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M3"
+          }
+        },
+        {
+          "id": "frugal-parsimonious_001_b2",
+          "text": "She pays for strong replacement soles rather than choosing a cheap repair that would soon fail.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.91,
+            "parsimonious": 0.22
+          },
+          "decisive_clue": "repairs safely extend the life of useful shoes",
+          "reason": "The new detail does not overturn the original clue: repairs safely extend the life of useful shoes. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A sensible repair that lasts is thrift, not refusal to meet a need.",
+      "feedback_deep": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable. Lin avoids waste while paying for necessary quality.",
+      "contrast_rule": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+      "hints": {
+        "attention": "Check what the saved money costs the person or others.",
+        "axis": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+        "contrast": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "frugal-parsimonious_002",
+      "edge_id": "frugal__parsimonious",
+      "domain": "winter_heating",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Pavel’s decision about heating?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "frugal-parsimonious_002_b1",
+          "text": "Pavel has enough money for heating but refuses to switch it on even while his family shivers indoors.",
+          "best_word": "parsimonious",
+          "fit": {
+            "frugal": 0.22,
+            "parsimonious": 0.91
+          },
+          "decisive_clue": "withholds a basic need to avoid an affordable expense",
+          "reason": "Withholds a basic need to avoid an affordable expense. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M1"
+          }
+        },
+        {
+          "id": "frugal-parsimonious_002_b2",
+          "text": "He lowers the thermostat setting still further to save a tiny amount.",
+          "best_word": "parsimonious",
+          "fit": {
+            "frugal": 0.22,
+            "parsimonious": 0.91
+          },
+          "decisive_clue": "withholds a basic need to avoid an affordable expense",
+          "reason": "The new detail does not overturn the original clue: withholds a basic need to avoid an affordable expense. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The unmet need for warmth, not the size of his bill, makes his refusal excessive.",
+      "feedback_deep": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable. His behavior imposes discomfort to preserve a small amount of money.",
+      "contrast_rule": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+      "hints": {
+        "attention": "Check what the saved money costs the person or others.",
+        "axis": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+        "contrast": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "frugal-parsimonious_003",
+      "edge_id": "frugal__parsimonious",
+      "domain": "raincoat_repair",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Hana’s decision about her son’s raincoat?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "frugal-parsimonious_003_b1",
+          "text": "Hana sews a torn sleeve on her son’s raincoat instead of buying a new one.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.91,
+            "parsimonious": 0.22
+          },
+          "decisive_clue": "repairing an apparently serviceable garment saves waste",
+          "reason": "Repairing an apparently serviceable garment saves waste. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M2"
+          }
+        },
+        {
+          "id": "frugal-parsimonious_003_b2",
+          "text": "The lining has fallen apart and he gets soaked every day, but she refuses a new coat despite having the money.",
+          "best_word": "parsimonious",
+          "fit": {
+            "frugal": 0.22,
+            "parsimonious": 0.91
+          },
+          "decisive_clue": "the garment no longer protects her son yet she withholds a necessary purchase",
+          "reason": "The garment no longer protects her son yet she withholds a necessary purchase. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The coat fails its basic purpose; continuing to refuse a new one is excessive.",
+      "feedback_deep": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable. The newly revealed harm changes a seemingly sensible repair into an unreasonable refusal to spend.",
+      "contrast_rule": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+      "hints": {
+        "attention": "Check what the saved money costs the person or others.",
+        "axis": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+        "contrast": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "frugal-parsimonious_004",
+      "edge_id": "frugal__parsimonious",
+      "domain": "shared_meal_costs",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amira’s approach to her grocery budget?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "frugal-parsimonious_004_b1",
+          "text": "Amira buys seasonal vegetables, compares prices, and cooks enough to avoid throwing food away.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.91,
+            "parsimonious": 0.22
+          },
+          "decisive_clue": "she limits waste while still buying food",
+          "reason": "She limits waste while still buying food. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M3"
+          }
+        },
+        {
+          "id": "frugal-parsimonious_004_b2",
+          "text": "When a guest needs a different meal for health reasons, she buys the extra ingredients.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.91,
+            "parsimonious": 0.22
+          },
+          "decisive_clue": "she meets a real need rather than guarding every cent",
+          "reason": "She meets a real need rather than guarding every cent. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Buying needed ingredients shows her budget does not override people’s needs.",
+      "feedback_deep": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable. The method avoids waste but allows sensible exceptions.",
+      "contrast_rule": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+      "hints": {
+        "attention": "Check what the saved money costs the person or others.",
+        "axis": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+        "contrast": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "frugal-parsimonious_005",
+      "edge_id": "frugal__parsimonious",
+      "domain": "phone-data_budgeting",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Jun’s approach to mobile data?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "frugal-parsimonious_005_b1",
+          "text": "Jun downloads maps over home Wi-Fi so he does not pay for unnecessary mobile data.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.91,
+            "parsimonious": 0.22
+          },
+          "decisive_clue": "uses a free existing connection to avoid an unnecessary fee",
+          "reason": "Uses a free existing connection to avoid an unnecessary fee. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M1"
+          }
+        },
+        {
+          "id": "frugal-parsimonious_005_b2",
+          "text": "The downloaded maps are in an old-fashioned font, but they work perfectly.",
+          "best_word": "frugal",
+          "fit": {
+            "frugal": 0.91,
+            "parsimonious": 0.22
+          },
+          "decisive_clue": "uses a free existing connection to avoid an unnecessary fee",
+          "reason": "The new detail does not overturn the original clue: uses a free existing connection to avoid an unnecessary fee. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "parsimonious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The maps’ appearance does not change Jun’s sensible use of resources.",
+      "feedback_deep": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable. His economy is based on a working alternative, not the typography on its screen.",
+      "contrast_rule": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+      "hints": {
+        "attention": "Check what the saved money costs the person or others.",
+        "axis": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+        "contrast": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "frugal-parsimonious_006",
+      "edge_id": "frugal__parsimonious",
+      "domain": "tiny_household_debt",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Khalid’s demand about shared sugar?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "frugal-parsimonious_006_b1",
+          "text": "Khalid insists that his housemate repay three cents for a spoonful of sugar, though money is not tight.",
+          "best_word": "parsimonious",
+          "fit": {
+            "frugal": 0.22,
+            "parsimonious": 0.91
+          },
+          "decisive_clue": "demands a negligible repayment without financial need",
+          "reason": "Demands a negligible repayment without financial need. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M2"
+          }
+        },
+        {
+          "id": "frugal-parsimonious_006_b2",
+          "text": "He sends repeated reminders about those same three cents after being offered a fresh bag of sugar.",
+          "best_word": "parsimonious",
+          "fit": {
+            "frugal": 0.22,
+            "parsimonious": 0.91
+          },
+          "decisive_clue": "continues pursuing a trivial sum even after generous compensation",
+          "reason": "Continues pursuing a trivial sum even after generous compensation. Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "frugal": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Persistent demands over three cents show unwillingness far beyond sensible saving.",
+      "feedback_deep": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable. His refusal to let a negligible expense go is out of proportion to the amount.",
+      "contrast_rule": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+      "hints": {
+        "attention": "Check what the saved money costs the person or others.",
+        "axis": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable.",
+        "contrast": "Frugal restraint saves resources without neglecting needs; parsimonious restraint withholds resources even when doing so is unreasonable."
+      },
+      "qa": "pass"
+    }
+  ]
+}

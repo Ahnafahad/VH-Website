@@ -1,0 +1,941 @@
+{
+  "schema_version": 1,
+  "set_id": "purportedly-reportedly",
+  "title": "purportedly / reportedly",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[166]",
+    "source_pair_id": 698,
+    "qa": {
+      "pass": 12,
+      "revised": 0,
+      "rejected": 8
+    }
+  },
+  "words": [
+    {
+      "word": "purportedly",
+      "sense": "claimed but lacking verification or seen as dubious",
+      "connotation": "negative or skeptical",
+      "register": "formal/journalistic",
+      "misconceptions": [
+        "treating it as purely neutral without skepticism"
+      ]
+    },
+    {
+      "word": "reportedly",
+      "sense": "according to official or public reports",
+      "connotation": "neutral/journalistic",
+      "register": "formal/journalistic",
+      "misconceptions": [
+        "assuming it implies doubt like purportedly"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "skepticism_level",
+      "description": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)"
+    },
+    {
+      "id": "source_nature",
+      "description": "Purportedly focuses on the claim itself (often questionable), Reportedly focuses on the existence of reports"
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "purportedly": [
+        "The manuscript purportedly contained secrets.",
+        "The device was purportedly broken by the user.",
+        "They purportedly met in secret.",
+        "His purportedly stolen car was found in his garage.",
+        "The purportedly healthy drink contained high sugar.",
+        "She purportedly finished the work in an hour."
+      ],
+      "reportedly": [
+        "The train reportedly arrived on time.",
+        "The company reportedly lost millions.",
+        "Heavy rain reportedly delayed the event.",
+        "The building was reportedly sold last week.",
+        "The minister reportedly resigned today.",
+        "They reportedly moved to the city."
+      ]
+    },
+    "counter": {
+      "purportedly": [
+        "The scientist confirmed the data, purportedly.",
+        "The sun rose this morning, purportedly.",
+        "He opened the door, purportedly.",
+        "The report was signed by the CEO, purportedly.",
+        "The store opened at nine, purportedly.",
+        "They arrived home, purportedly."
+      ],
+      "reportedly": [
+        "His reportedly guilty expression made us suspicious.",
+        "She was reportedly lying about her past.",
+        "The reportedly false statement was a cover-up.",
+        "Their reportedly secret meeting was loud.",
+        "The purportedly broken phone was reportedly fixed.",
+        "The reportedly fake painting hung there."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "purportedly__reportedly",
+      "a": "purportedly",
+      "b": "reportedly",
+      "boundary_rule": "Use 'purportedly' to cast doubt on a claim; use 'reportedly' to neutrally cite a source.",
+      "clues_a": [
+        "contextual doubt",
+        "lack of verification",
+        "writer distancing from claim"
+      ],
+      "clues_b": [
+        "factual statement",
+        "reliable source",
+        "neutral reporting"
+      ],
+      "irrelevant_clues": [
+        "the formality of the sentence",
+        "the length of the sentence"
+      ],
+      "misconceptions": {
+        "M1": "Assuming both words are always interchangeable.",
+        "M2": "Thinking 'purportedly' just means 'according to someone'.",
+        "M3": "Thinking 'reportedly' must imply the information is true."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "purportedly-reportedly_001",
+      "edge_id": "purportedly__reportedly",
+      "domain": "news",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The witness's account of the accident is ___ true.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_001_b1",
+          "text": "The police say the witness claims to have seen the crash. The account is ___ true.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.5,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "Police statement",
+          "reason": "It is a neutral report of information.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_001_b2",
+          "text": "The police confirm they have video proof that matches the witness's story exactly. The account is ___ true.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.2,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "Video proof",
+          "reason": "The evidence strengthens the report, it doesn't add skepticism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Reportedly remains best because the evidence confirms the reporting.",
+      "feedback_deep": "The evidence confirms the account, which keeps the tone as neutral reporting. Purportedly would introduce unwarranted skepticism.",
+      "contrast_rule": "Reportedly cites, purportedly doubts.",
+      "hints": {
+        "attention": "Does the new evidence make the claim more doubtful or more established?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Reportedly cites, purportedly doubts."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_002",
+      "edge_id": "purportedly__reportedly",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "The politician's donation is ___ large.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_002_b1",
+          "text": "The news media says the politician donated millions to charity. The donation is ___ large.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.4,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "News media reports",
+          "reason": "Neutral citation of news.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_002_b2",
+          "text": "Tax records show the politician never made any such donation, and the news was based on a fake statement. The donation is ___ large.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.9,
+            "reportedly": 0.3
+          },
+          "decisive_clue": "Tax records prove fake",
+          "reason": "The claim is now dubious.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M3"
+          }
+        }
+      ],
+      "feedback_short": "It flips to purportedly because the new evidence proves the donation claim is fake.",
+      "feedback_deep": "Initially, the reports are neutral. Once tax records contradict the claim, 'purportedly' captures the skepticism required for a false assertion.",
+      "contrast_rule": "Flip to purportedly if the claim is exposed as false.",
+      "hints": {
+        "attention": "Does the new evidence make the politician's claim look true or false?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Flip to purportedly if the claim is exposed as false."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_003",
+      "edge_id": "purportedly__reportedly",
+      "domain": "science",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "The cure is ___ effective.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_003_b1",
+          "text": "Early laboratory studies show the new cure stops the virus. The cure is ___ effective.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.6,
+            "reportedly": 0.8
+          },
+          "decisive_clue": "Laboratory studies",
+          "reason": "Neutral reporting of findings.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M2"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_003_b2",
+          "text": "The lab studies are preliminary and have not been replicated in real-world human trials. The cure is ___ effective.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.8,
+            "reportedly": 0.5
+          },
+          "decisive_clue": "Not replicated",
+          "reason": "The claim now lacks verification.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M1"
+          }
+        }
+      ],
+      "feedback_short": "It narrows to purportedly due to lack of verification.",
+      "feedback_deep": "The shift from early studies to the lack of replication makes the claim questionable, forcing the use of 'purportedly'.",
+      "contrast_rule": "Use purportedly for unverified scientific claims.",
+      "hints": {
+        "attention": "Does the lack of replication suggest doubt?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Use purportedly for unverified scientific claims."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_005",
+      "edge_id": "purportedly__reportedly",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "The athlete's injury is ___ severe.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_005_b1",
+          "text": "The trainer says the athlete will be out for a year. The injury is ___ severe.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.4,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "Trainer's statement",
+          "reason": "Official trainer reporting.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_005_b2",
+          "text": "The team released a video showing the athlete running and training normally. The injury is ___ severe.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.9,
+            "reportedly": 0.3
+          },
+          "decisive_clue": "Video evidence",
+          "reason": "The trainer's claim is now doubtful.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The video reframes the injury claim, making it purportedly dubious.",
+      "feedback_deep": "Once video evidence contradicts the trainer, 'purportedly' is used to express skepticism about the severity of the injury.",
+      "contrast_rule": "Skepticism reframes reporting.",
+      "hints": {
+        "attention": "Does the athlete's activity match the injury claim?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Skepticism reframes reporting."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_006",
+      "edge_id": "purportedly__reportedly",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "The resort is ___ luxurious.",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_006_b1",
+          "text": "The website describes the resort as 5-star, but reviews are mixed. The resort is ___ luxurious.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.8,
+            "reportedly": 0.4
+          },
+          "decisive_clue": "Mixed reviews",
+          "reason": "The claim on the website is already in doubt.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_006_b2",
+          "text": "An official government inspection confirmed the hotel meets every 5-star standard perfectly. The resort is ___ luxurious.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.2,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "Government inspection confirmed",
+          "reason": "The luxurious nature is now verified and confirmed by an official report.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M3"
+          }
+        }
+      ],
+      "feedback_short": "It flips to reportedly because the luxurious status is now verified by an official source.",
+      "feedback_deep": "The initial doubt (purportedly) is resolved by the government inspection (reportedly).",
+      "contrast_rule": "Official reports verify, marketing claims purportedly doubt.",
+      "hints": {
+        "attention": "Does an official report exist?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Official reports verify, marketing claims purportedly doubt."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_007",
+      "edge_id": "purportedly__reportedly",
+      "domain": "business",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "The merger is ___ profitable.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_007_b1",
+          "text": "The CEO stated in an interview that the merger will bring profits. The merger is ___ profitable.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.5,
+            "reportedly": 0.8
+          },
+          "decisive_clue": "CEO stated",
+          "reason": "Neutral reporting of executive statements.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M2"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_007_b2",
+          "text": "Financial reports indicate that the synergies promised will likely result in a 20% gain. The merger is ___ profitable.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.3,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "Financial reports",
+          "reason": "Evidence supports the reporting of potential profits.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        }
+      ],
+      "feedback_short": "It stays reportedly, the reporting remains neutral and supported by financial reports.",
+      "feedback_deep": "The financial reports serve as a reliable basis for the reporting, thus keeping 'reportedly' as the correct choice.",
+      "contrast_rule": "Reportedly remains neutral.",
+      "hints": {
+        "attention": "Does the evidence support a neutral claim?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Reportedly remains neutral."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_010",
+      "edge_id": "purportedly__reportedly",
+      "domain": "public_situation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "corrupt",
+      "frame": "The crowd size is ___ large.",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_010_b1",
+          "text": "Organizers say thousands attended the rally. The crowd size is ___ large.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.5,
+            "reportedly": 0.8
+          },
+          "decisive_clue": "Organizers say",
+          "reason": "Neutral report of the statement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_010_b2",
+          "text": "Independent count shows only fifty people attended the event. The crowd size is ___ large.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.9,
+            "reportedly": 0.2
+          },
+          "decisive_clue": "Independent count",
+          "reason": "The organizer's claim is now blatantly false and doubtful.",
+          "shift_type": "corrupt",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M3"
+          }
+        }
+      ],
+      "feedback_short": "It flips to purportedly because the count proves the organizer's claim is false.",
+      "feedback_deep": "The initial statement is a claim being reported. Once contradicted, it becomes a dubious claim ('purportedly').",
+      "contrast_rule": "False claims are purportedly.",
+      "hints": {
+        "attention": "Is the original claim verified or contradicted?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "False claims are purportedly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_012",
+      "edge_id": "purportedly__reportedly",
+      "domain": "technology",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "precision",
+      "frame": "The feature is ___ useful.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_012_b1",
+          "text": "The company's press release claims the feature helps users finish work faster. The feature is ___ useful.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.5,
+            "reportedly": 0.8
+          },
+          "decisive_clue": "Press release",
+          "reason": "Neutral reporting of company claim.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_012_b2",
+          "text": "Independent testers find that the feature is actually quite buggy and slow. The feature is ___ useful.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.9,
+            "reportedly": 0.3
+          },
+          "decisive_clue": "Independent testers",
+          "reason": "The company's claim is now proven dubious.",
+          "shift_type": "precision",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Precision check: the company claim is now dubiously 'purportedly'.",
+      "feedback_deep": "The shift from a press release to contradictory testing data requires 'purportedly' for accuracy.",
+      "contrast_rule": "Use purportedly when tests contradict claims.",
+      "hints": {
+        "attention": "Do testers agree with the claim?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Use purportedly when tests contradict claims."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_013",
+      "edge_id": "purportedly__reportedly",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The mountain is ___ dangerous.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_013_b1",
+          "text": "Local stories describe the climbing route as very treacherous. The mountain is ___ dangerous.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.4,
+            "reportedly": 0.8
+          },
+          "decisive_clue": "Local stories",
+          "reason": "Neutral report of local narratives.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M2"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_013_b2",
+          "text": "The mountaineering guide books also advise against climbing the route due to frequent rockfalls. The mountain is ___ dangerous.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.2,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "Guide books",
+          "reason": "The danger is reported in multiple reliable sources.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        }
+      ],
+      "feedback_short": "It stays reportedly, the danger is widely cited.",
+      "feedback_deep": "Both the local stories and the guidebooks report the same danger, so 'reportedly' is fitting.",
+      "contrast_rule": "Reportedly is for cited facts.",
+      "hints": {
+        "attention": "Is the information supported by multiple sources?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Reportedly is for cited facts."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_016",
+      "edge_id": "purportedly__reportedly",
+      "domain": "news",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "rehabilitate",
+      "frame": "The scandal is ___ deep.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_016_b1",
+          "text": "Rumors suggest the senator is involved in a secret bribery scheme. The scandal is ___ deep.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.8,
+            "reportedly": 0.5
+          },
+          "decisive_clue": "Rumors suggest",
+          "reason": "The involvement is suspect.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_016_b2",
+          "text": "The FBI cleared the senator of all charges and found no evidence of bribery. The scandal is ___ deep.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.9,
+            "reportedly": 0.2
+          },
+          "decisive_clue": "FBI cleared",
+          "reason": "The scandal is now definitively false, making the initial claim dubious.",
+          "shift_type": "rehabilitate",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M3"
+          }
+        }
+      ],
+      "feedback_short": "It stays purportedly because the claim was never verified.",
+      "feedback_deep": "The claim was initially doubtful and is now proven false. 'Purportedly' highlights the false nature of the initial rumor.",
+      "contrast_rule": "Unverified claims are purportedly false.",
+      "hints": {
+        "attention": "Does the FBI evidence make the rumor look true or false?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Unverified claims are purportedly false."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_019",
+      "edge_id": "purportedly__reportedly",
+      "domain": "short_dialogue",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "The concert is ___ sold out.",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_019_b1",
+          "text": "Fan: 'I heard the concert is sold out.' Reporter: 'Yes, it is ___ sold out.'",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.4,
+            "reportedly": 0.8
+          },
+          "decisive_clue": "Reporter citing info",
+          "reason": "Neutral report of the status.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M2"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_019_b2",
+          "text": "Fan: 'Wait, are all the tickets gone?' Reporter: 'Yes, the venue officials have confirmed it is ___ sold out.'",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.2,
+            "reportedly": 0.9
+          },
+          "decisive_clue": "Venue officials confirmed",
+          "reason": "Confirmed report.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 1,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        }
+      ],
+      "feedback_short": "It stays reportedly, the concert status is officially confirmed.",
+      "feedback_deep": "The status is a simple fact reported by venue officials, keeping 'reportedly' as the correct term.",
+      "contrast_rule": "Official confirmation supports reportedly.",
+      "hints": {
+        "attention": "Does the venue official confirm the status?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Official confirmation supports reportedly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "purportedly-reportedly_020",
+      "edge_id": "purportedly__reportedly",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "The policy is ___ popular.",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "purportedly-reportedly_020_b1",
+          "text": "The government says their new law is loved by the public. The policy is ___ popular.",
+          "best_word": "reportedly",
+          "fit": {
+            "purportedly": 0.5,
+            "reportedly": 0.8
+          },
+          "decisive_clue": "Government says",
+          "reason": "Neutral report of statement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "purportedly": "M1"
+          }
+        },
+        {
+          "id": "purportedly-reportedly_020_b2",
+          "text": "Every major poll from different universities shows 90% disapproval. The policy is ___ popular.",
+          "best_word": "purportedly",
+          "fit": {
+            "purportedly": 0.9,
+            "reportedly": 0.3
+          },
+          "decisive_clue": "Every major poll",
+          "reason": "The government's claim is now proven blatantly false and dubious.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 1,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 1
+          },
+          "misconception_by_wrong_choice": {
+            "reportedly": "M2"
+          }
+        }
+      ],
+      "feedback_short": "It narrows to purportedly as polls refute the government's claim.",
+      "feedback_deep": "The government's claim is refuted by multiple polls, forcing 'purportedly' to capture the skepticism.",
+      "contrast_rule": "Polls refute government claims, making them purportedly false.",
+      "hints": {
+        "attention": "Do polls agree with the government's claim?",
+        "axis": "High for purportedly (implies doubt), Low/Neutral for reportedly (states source attribution)",
+        "contrast": "Polls refute government claims, making them purportedly false."
+      },
+      "qa": "pass"
+    }
+  ]
+}

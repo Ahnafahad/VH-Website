@@ -2,10 +2,10 @@
   "schema_version": 1,
   "set_id": "inherent-innate",
   "title": "inherent / innate",
-  "status": "audited",
+  "status": "approved",
   "source": {
     "format": "pipeline",
-    "path": "docs/last-word/content-pipeline/sets-audited/367.json",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[84]",
     "source_pair_id": 367,
     "qa": {
       "pass": 14,

@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "culminate-terminate",
+  "title": "culminate / terminate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[7]",
+    "source_pair_id": 24,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "culminate",
+      "sense": "Reach a final or highest point as the outcome of a developing process.",
+      "connotation": "often consequential",
+      "register": "formal",
+      "misconceptions": [
+        "Any ending is not necessarily the result of a buildup."
+      ]
+    },
+    {
+      "word": "terminate",
+      "sense": "Bring something to an end without implying a high point or developed outcome.",
+      "connotation": "often formal or neutral",
+      "register": "formal",
+      "misconceptions": [
+        "An expected finale is different from an abrupt stop."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "developed_outcome_vs_stoppage",
+      "description": "Result of a buildup versus cessation alone."
+    }
+  ],
+  "edges": [
+    {
+      "id": "culminate__terminate",
+      "a": "culminate",
+      "b": "terminate",
+      "boundary_rule": "Culminate marks the developed outcome or peak of a process; terminate means simply bring it to an end.",
+      "clues_a": [
+        "long preparation leads to finale",
+        "a sequence leads to its outcome",
+        "effort reaches a high point"
+      ],
+      "clues_b": [
+        "stoppage without payoff",
+        "service discontinued",
+        "activity cut short"
+      ],
+      "irrelevant_clues": [
+        "size of the audience",
+        "whether the ending is happy",
+        "time of day"
+      ],
+      "misconceptions": {
+        "M1": "Assumes every stopping point is the payoff of a developing process.",
+        "M2": "Overlooks that a planned finale can be a meaningful culmination.",
+        "M3": "Confuses an intended ending with an interruption that actually occurred."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "culminate-terminate_001",
+      "edge_id": "culminate__terminate",
+      "domain": "school_orchestra",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the ending of Noura’s concert project?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "culminate-terminate_001_b1",
+          "text": "After four months of rehearsals and small performances, Noura’s orchestra finally plays its full program before a packed hall.",
+          "best_word": "culminate",
+          "fit": {
+            "culminate": 0.91,
+            "terminate": 0.24
+          },
+          "decisive_clue": "months of work reach a prepared final performance",
+          "reason": "The first detail establishes months of work reach a prepared final performance; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terminate": "M1"
+          }
+        },
+        {
+          "id": "culminate-terminate_001_b2",
+          "text": "The final performance brings together every piece the group practiced during those months.",
+          "best_word": "culminate",
+          "fit": {
+            "culminate": 0.93,
+            "terminate": 0.18
+          },
+          "decisive_clue": "the finale draws together the entire earlier process",
+          "reason": "The new detail confirms the finale draws together the entire earlier process and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terminate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The performance is the payoff for months of preparation.",
+      "feedback_deep": "Culminate means reach the result of a buildup. Terminate means end or stop something. Here, the concert is the intended endpoint of accumulated rehearsal rather than a mere stoppage.",
+      "contrast_rule": "Culminate is where buildup leads; terminate is where activity stops.",
+      "hints": {
+        "attention": "Was the end prepared for over time?",
+        "axis": "Result of a buildup versus cessation alone.",
+        "contrast": "Culminate is where buildup leads; terminate is where activity stops."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "culminate-terminate_002",
+      "edge_id": "culminate__terminate",
+      "domain": "cafe_employment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the end of Elias’s weekend shift?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "culminate-terminate_002_b1",
+          "text": "Elias’s manager cuts the shift short when a pipe bursts, and the café closes immediately.",
+          "best_word": "terminate",
+          "fit": {
+            "culminate": 0.24,
+            "terminate": 0.91
+          },
+          "decisive_clue": "the shift is stopped unexpectedly by a burst pipe",
+          "reason": "The first detail establishes the shift is stopped unexpectedly by a burst pipe; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "culminate": "M2"
+          }
+        },
+        {
+          "id": "culminate-terminate_002_b2",
+          "text": "The shift had been scheduled for another three hours; no final event was planned.",
+          "best_word": "terminate",
+          "fit": {
+            "culminate": 0.18,
+            "terminate": 0.93
+          },
+          "decisive_clue": "there was no planned outcome to the interrupted shift",
+          "reason": "The deciding fact remains the shift is stopped unexpectedly by a burst pipe; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "culminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A burst pipe stopped the shift; nothing was building toward that moment.",
+      "feedback_deep": "Culminate means reach the result of a buildup. Terminate means end or stop something. Here, an unexpected closure is a cessation, not the achieved point of a developing sequence.",
+      "contrast_rule": "Culminate is where buildup leads; terminate is where activity stops.",
+      "hints": {
+        "attention": "Did the interruption complete a process?",
+        "axis": "Result of a buildup versus cessation alone.",
+        "contrast": "Culminate is where buildup leads; terminate is where activity stops."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "culminate-terminate_003",
+      "edge_id": "culminate__terminate",
+      "domain": "charity_fundraiser",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the outcome of Amara’s donation drive?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "culminate-terminate_003_b1",
+          "text": "Amara spends weeks gathering donations and organizing volunteers; the drive ends with the community center receiving its new computers.",
+          "best_word": "culminate",
+          "fit": {
+            "culminate": 0.91,
+            "terminate": 0.24
+          },
+          "decisive_clue": "weeks of work lead to a concrete planned result",
+          "reason": "The first detail establishes weeks of work lead to a concrete planned result; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terminate": "M1"
+          }
+        },
+        {
+          "id": "culminate-terminate_003_b2",
+          "text": "The handover is the milestone printed on the schedule from the first day.",
+          "best_word": "culminate",
+          "fit": {
+            "culminate": 0.93,
+            "terminate": 0.18
+          },
+          "decisive_clue": "the handover is revealed as the intended payoff all along",
+          "reason": "Viewed in its fuller context, the handover is revealed as the intended payoff all along; the original distinction still decides it.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terminate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The final handover fulfills the work that led up to it.",
+      "feedback_deep": "Culminate means reach the result of a buildup. Terminate means end or stop something. Here, a meaningful goal has been reached after organized preparation, not simply called off.",
+      "contrast_rule": "Culminate is where buildup leads; terminate is where activity stops.",
+      "hints": {
+        "attention": "Was the last moment the goal or just the stop?",
+        "axis": "Result of a buildup versus cessation alone.",
+        "contrast": "Culminate is where buildup leads; terminate is where activity stops."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "culminate-terminate_004",
+      "edge_id": "culminate__terminate",
+      "domain": "school_internet",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the ending of Paolo’s online class session?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "culminate-terminate_004_b1",
+          "text": "Paolo’s session stops fifteen minutes in when the connection fails and the call closes.",
+          "best_word": "terminate",
+          "fit": {
+            "culminate": 0.24,
+            "terminate": 0.91
+          },
+          "decisive_clue": "the session stopped because the connection failed",
+          "reason": "The first detail establishes the session stopped because the connection failed; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "culminate": "M2"
+          }
+        },
+        {
+          "id": "culminate-terminate_004_b2",
+          "text": "He had already prepared a closing activity, but nobody reached it.",
+          "best_word": "terminate",
+          "fit": {
+            "culminate": 0.18,
+            "terminate": 0.93
+          },
+          "decisive_clue": "the planned conclusion never happened despite its existence",
+          "reason": "The deciding fact remains the session stopped because the connection failed; the added detail does not change that.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "culminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A planned finale cannot change the fact that the call broke off early.",
+      "feedback_deep": "Culminate means reach the result of a buildup. Terminate means end or stop something. Here, having a planned ending does not make the actual interruption a developed final result.",
+      "contrast_rule": "Culminate is where buildup leads; terminate is where activity stops.",
+      "hints": {
+        "attention": "Compare the planned ending with what actually happened.",
+        "axis": "Result of a buildup versus cessation alone.",
+        "contrast": "Culminate is where buildup leads; terminate is where activity stops."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "culminate-terminate_005",
+      "edge_id": "culminate__terminate",
+      "domain": "sports_training",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes the ending of Jun’s running program?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "culminate-terminate_005_b1",
+          "text": "Jun trains for ten weeks, adds distance each week, and finishes by completing the race he had set as his goal.",
+          "best_word": "culminate",
+          "fit": {
+            "culminate": 0.91,
+            "terminate": 0.24
+          },
+          "decisive_clue": "gradual training leads to the target race",
+          "reason": "The first detail establishes gradual training leads to the target race; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "terminate": "M1"
+          }
+        },
+        {
+          "id": "culminate-terminate_005_b2",
+          "text": "He crosses the line slower than the fastest runners, but he reaches his long-planned target.",
+          "best_word": "culminate",
+          "fit": {
+            "culminate": 0.93,
+            "terminate": 0.18
+          },
+          "decisive_clue": "the achieved target remains the result despite an ordinary finishing time",
+          "reason": "The deciding fact remains gradual training leads to the target race; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "terminate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Reaching the planned race completes the buildup; finishing speed is irrelevant.",
+      "feedback_deep": "Culminate means reach the result of a buildup. Terminate means end or stop something. Here, an ending can be the payoff of a long process even without first place.",
+      "contrast_rule": "Culminate is where buildup leads; terminate is where activity stops.",
+      "hints": {
+        "attention": "What made this final race meaningful?",
+        "axis": "Result of a buildup versus cessation alone.",
+        "contrast": "Culminate is where buildup leads; terminate is where activity stops."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "culminate-terminate_006",
+      "edge_id": "culminate__terminate",
+      "domain": "local_bus_service",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what happened to Dalia’s bus service?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "culminate-terminate_006_b1",
+          "text": "Dalia’s regular bus route stops running after the operator cancels it for lack of passengers.",
+          "best_word": "terminate",
+          "fit": {
+            "culminate": 0.24,
+            "terminate": 0.91
+          },
+          "decisive_clue": "an operating service is discontinued",
+          "reason": "The first detail establishes an operating service is discontinued; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "culminate": "M2"
+          }
+        },
+        {
+          "id": "culminate-terminate_006_b2",
+          "text": "The final departure happens on a rainy Tuesday with no celebration or special milestone.",
+          "best_word": "terminate",
+          "fit": {
+            "culminate": 0.18,
+            "terminate": 0.93
+          },
+          "decisive_clue": "the last departure simply marks the service ending",
+          "reason": "The new detail confirms the last departure simply marks the service ending and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "culminate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The route was discontinued; its last journey was not a developed outcome.",
+      "feedback_deep": "Culminate means reach the result of a buildup. Terminate means end or stop something. Here, a service can cease after many years without that ending being a climax or payoff.",
+      "contrast_rule": "Culminate is where buildup leads; terminate is where activity stops.",
+      "hints": {
+        "attention": "Does duration alone create a culminating moment?",
+        "axis": "Result of a buildup versus cessation alone.",
+        "contrast": "Culminate is where buildup leads; terminate is where activity stops."
+      },
+      "qa": "pass"
+    }
+  ]
+}

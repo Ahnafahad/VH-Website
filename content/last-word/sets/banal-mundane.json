@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "banal-mundane",
+  "title": "banal / mundane",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[104]",
+    "source_pair_id": 426,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "banal",
+      "sense": "So overused and predictable that it lacks interest or originality.",
+      "connotation": "critical; dismissive of unoriginality",
+      "register": "formal",
+      "misconceptions": [
+        "Assuming an overused expression is fresh because its setting is unusual.",
+        "Confusing lack of excitement with evidence of a worn-out formula."
+      ]
+    },
+    {
+      "word": "mundane",
+      "sense": "Ordinary or part of everyday life, without necessarily being unoriginal.",
+      "connotation": "neutral or mildly weary",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming anything everyday is stale or unoriginal.",
+        "Confusing lack of excitement with evidence of a worn-out formula."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "stale_repetition_vs_ordinary_life",
+      "description": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life."
+    }
+  ],
+  "edges": [
+    {
+      "id": "banal__mundane",
+      "a": "banal",
+      "b": "mundane",
+      "boundary_rule": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life.",
+      "clues_a": [
+        "stock phrases repeated too often",
+        "copying tired formulas",
+        "predictable recycled content"
+      ],
+      "clues_b": [
+        "routine practical tasks",
+        "ordinary logistics",
+        "daily necessities"
+      ],
+      "irrelevant_clues": [
+        "bright colours",
+        "good presentation",
+        "whether someone likes the task"
+      ],
+      "misconceptions": {
+        "M1": "Assuming anything everyday is stale or unoriginal.",
+        "M2": "Assuming an overused expression is fresh because its setting is unusual.",
+        "M3": "Confusing lack of excitement with evidence of a worn-out formula."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "banal-mundane_001",
+      "edge_id": "banal__mundane",
+      "domain": "birthday_toast",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amira’s birthday toast?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "banal-mundane_001_b1",
+          "text": "Amira began with “Another year older, another year wiser,” then added “Time flies when you’re having fun.”",
+          "best_word": "banal",
+          "fit": {
+            "banal": 0.92,
+            "mundane": 0.19
+          },
+          "decisive_clue": "a collection of tired birthday sayings",
+          "reason": "A collection of tired birthday sayings. So overused and predictable that it lacks interest or originality.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M1"
+          }
+        },
+        {
+          "id": "banal-mundane_001_b2",
+          "text": "She delivered the toast on a rooftop beside a homemade cake.",
+          "best_word": "banal",
+          "fit": {
+            "banal": 0.92,
+            "mundane": 0.19
+          },
+          "decisive_clue": "tired sayings stay overused despite a rooftop celebration",
+          "reason": "Tired sayings stay overused despite a rooftop celebration. So overused and predictable that it lacks interest or originality.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Tired sayings stay overused despite a rooftop celebration.",
+      "feedback_deep": "Banal means so overused and predictable that it lacks interest or originality; mundane means ordinary or part of everyday life, without necessarily being unoriginal. Here, a collection of tired birthday sayings. The new detail does not change the deciding fact: tired sayings stay overused despite a rooftop celebration. Thus banal remains the stronger choice.",
+      "contrast_rule": "Banal is worn out by repetition; mundane is simply everyday.",
+      "hints": {
+        "attention": "Focus on where the expressions come from.",
+        "axis": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life.",
+        "contrast": "Banal is worn out by repetition; mundane is simply everyday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "banal-mundane_002",
+      "edge_id": "banal__mundane",
+      "domain": "supermarket_errand",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Diego’s shopping trip?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "banal-mundane_002_b1",
+          "text": "Diego went to buy rice, soap, and batteries, comparing prices before heading home.",
+          "best_word": "mundane",
+          "fit": {
+            "banal": 0.19,
+            "mundane": 0.92
+          },
+          "decisive_clue": "buying everyday necessities",
+          "reason": "Buying everyday necessities. Ordinary or part of everyday life, without necessarily being unoriginal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "banal": "M1"
+          }
+        },
+        {
+          "id": "banal-mundane_002_b2",
+          "text": "The supermarket played lively music while he checked the shelves.",
+          "best_word": "mundane",
+          "fit": {
+            "banal": 0.19,
+            "mundane": 0.92
+          },
+          "decisive_clue": "buying necessities stays ordinary despite lively background music",
+          "reason": "Buying necessities stays ordinary despite lively background music. Ordinary or part of everyday life, without necessarily being unoriginal.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "banal": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Buying necessities stays ordinary despite lively background music.",
+      "feedback_deep": "Banal means so overused and predictable that it lacks interest or originality; mundane means ordinary or part of everyday life, without necessarily being unoriginal. Here, buying everyday necessities. The new detail does not change the deciding fact: buying necessities stays ordinary despite lively background music. Thus mundane remains the stronger choice.",
+      "contrast_rule": "Banal is worn out by repetition; mundane is simply everyday.",
+      "hints": {
+        "attention": "Focus on what he actually went there to do.",
+        "axis": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life.",
+        "contrast": "Banal is worn out by repetition; mundane is simply everyday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "banal-mundane_003",
+      "edge_id": "banal__mundane",
+      "domain": "school_assembly_speech",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Noor’s assembly speech?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "banal-mundane_003_b1",
+          "text": "Noor read out the updated bus timetable and explained where students should collect late slips.",
+          "best_word": "mundane",
+          "fit": {
+            "banal": 0.19,
+            "mundane": 0.92
+          },
+          "decisive_clue": "routine information about school logistics",
+          "reason": "Routine information about school logistics. Ordinary or part of everyday life, without necessarily being unoriginal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "banal": "M1"
+          }
+        },
+        {
+          "id": "banal-mundane_003_b2",
+          "text": "The whole speech had been copied from the previous year, right down to its outdated catchphrases and examples.",
+          "best_word": "banal",
+          "fit": {
+            "banal": 0.92,
+            "mundane": 0.19
+          },
+          "decisive_clue": "recycled wording and old examples make the speech stale rather than merely routine",
+          "reason": "Recycled wording and old examples make the speech stale rather than merely routine. So overused and predictable that it lacks interest or originality.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Recycled wording and old examples make the speech stale rather than merely routine.",
+      "feedback_deep": "Banal means so overused and predictable that it lacks interest or originality; mundane means ordinary or part of everyday life, without necessarily being unoriginal. At first, routine information about school logistics, but new evidence shows recycled wording and old examples make the speech stale rather than merely routine. The later evidence makes banal the better answer.",
+      "contrast_rule": "Banal is worn out by repetition; mundane is simply everyday.",
+      "hints": {
+        "attention": "Focus on whether the words are newly chosen or recycled.",
+        "axis": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life.",
+        "contrast": "Banal is worn out by repetition; mundane is simply everyday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "banal-mundane_004",
+      "edge_id": "banal__mundane",
+      "domain": "online_photo_caption",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Yuki’s photo caption?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "banal-mundane_004_b1",
+          "text": "Yuki posted “Live, laugh, love” under a picture and called it her inspiring thought for the day.",
+          "best_word": "banal",
+          "fit": {
+            "banal": 0.92,
+            "mundane": 0.19
+          },
+          "decisive_clue": "a familiar ready-made slogan presented as a fresh thought",
+          "reason": "A familiar ready-made slogan presented as a fresh thought. So overused and predictable that it lacks interest or originality.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M1"
+          }
+        },
+        {
+          "id": "banal-mundane_004_b2",
+          "text": "She had seen the same line under dozens of posts that morning.",
+          "best_word": "banal",
+          "fit": {
+            "banal": 0.92,
+            "mundane": 0.19
+          },
+          "decisive_clue": "the identical line appearing repeatedly confirms its worn-out quality",
+          "reason": "The identical line appearing repeatedly confirms its worn-out quality. So overused and predictable that it lacks interest or originality.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "mundane": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The identical line appearing repeatedly confirms its worn-out quality.",
+      "feedback_deep": "Banal means so overused and predictable that it lacks interest or originality; mundane means ordinary or part of everyday life, without necessarily being unoriginal. Here, a familiar ready-made slogan presented as a fresh thought. The added evidence clarifies that fact: the identical line appearing repeatedly confirms its worn-out quality. Thus banal remains the stronger choice.",
+      "contrast_rule": "Banal is worn out by repetition; mundane is simply everyday.",
+      "hints": {
+        "attention": "Focus on how often this thought has already appeared.",
+        "axis": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life.",
+        "contrast": "Banal is worn out by repetition; mundane is simply everyday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "banal-mundane_005",
+      "edge_id": "banal__mundane",
+      "domain": "laundry_afternoon",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Sana’s afternoon chores?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "banal-mundane_005_b1",
+          "text": "Sana sorted socks, folded sheets, and put clean towels in the cupboard.",
+          "best_word": "mundane",
+          "fit": {
+            "banal": 0.19,
+            "mundane": 0.92
+          },
+          "decisive_clue": "routine household tasks, not recycled expressions",
+          "reason": "Routine household tasks, not recycled expressions. Ordinary or part of everyday life, without necessarily being unoriginal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "banal": "M1"
+          }
+        },
+        {
+          "id": "banal-mundane_005_b2",
+          "text": "Her friends called the afternoon boring, but she enjoyed finishing the work.",
+          "best_word": "mundane",
+          "fit": {
+            "banal": 0.19,
+            "mundane": 0.92
+          },
+          "decisive_clue": "routine chores remain everyday tasks regardless of whether Sana enjoys them",
+          "reason": "Routine chores remain everyday tasks regardless of whether Sana enjoys them. Ordinary or part of everyday life, without necessarily being unoriginal.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "banal": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Routine chores remain everyday tasks regardless of whether Sana enjoys them.",
+      "feedback_deep": "Banal means so overused and predictable that it lacks interest or originality; mundane means ordinary or part of everyday life, without necessarily being unoriginal. Here, routine household tasks, not recycled expressions. The apparent distraction does not change the deciding fact: routine chores remain everyday tasks regardless of whether Sana enjoys them. Thus mundane remains the stronger choice.",
+      "contrast_rule": "Banal is worn out by repetition; mundane is simply everyday.",
+      "hints": {
+        "attention": "Focus on the nature of the tasks rather than her enjoyment.",
+        "axis": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life.",
+        "contrast": "Banal is worn out by repetition; mundane is simply everyday."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "banal-mundane_006",
+      "edge_id": "banal__mundane",
+      "domain": "bus-pass_reminder",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ravi’s phone reminder?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "banal-mundane_006_b1",
+          "text": "Ravi’s reminder said to renew his monthly bus pass before Friday.",
+          "best_word": "mundane",
+          "fit": {
+            "banal": 0.19,
+            "mundane": 0.92
+          },
+          "decisive_clue": "a practical everyday reminder",
+          "reason": "A practical everyday reminder. Ordinary or part of everyday life, without necessarily being unoriginal.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "banal": "M1"
+          }
+        },
+        {
+          "id": "banal-mundane_006_b2",
+          "text": "He kept it plain so he would notice the deadline among the more colourful notifications.",
+          "best_word": "mundane",
+          "fit": {
+            "banal": 0.19,
+            "mundane": 0.92
+          },
+          "decisive_clue": "deliberately plain wording serves an ordinary purpose without being a tired cliche",
+          "reason": "Deliberately plain wording serves an ordinary purpose without being a tired cliche. Ordinary or part of everyday life, without necessarily being unoriginal.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "banal": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Deliberately plain wording serves an ordinary purpose without being a tired cliche.",
+      "feedback_deep": "Banal means so overused and predictable that it lacks interest or originality; mundane means ordinary or part of everyday life, without necessarily being unoriginal. Here, a practical everyday reminder. The added context helps interpret that fact: deliberately plain wording serves an ordinary purpose without being a tired cliche. Thus mundane remains the stronger choice.",
+      "contrast_rule": "Banal is worn out by repetition; mundane is simply everyday.",
+      "hints": {
+        "attention": "Focus on why the note is plain.",
+        "axis": "Banal describes something made dull by stale repetition; mundane describes something simply ordinary in everyday life.",
+        "contrast": "Banal is worn out by repetition; mundane is simply everyday."
+      },
+      "qa": "pass"
+    }
+  ]
+}

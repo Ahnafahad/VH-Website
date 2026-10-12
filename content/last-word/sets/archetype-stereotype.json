@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "archetype-stereotype",
+  "title": "archetype / stereotype",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[145]",
+    "source_pair_id": 604,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "archetype",
+      "sense": "An exemplary or original model of a person or thing that others seem to copy.",
+      "connotation": "admiring or descriptive",
+      "register": "formal or literary",
+      "misconceptions": [
+        "A typical example need not be a sweeping belief."
+      ]
+    },
+    {
+      "word": "stereotype",
+      "sense": "A rigid, oversimplified belief imposed on a group.",
+      "connotation": "often critical",
+      "register": "general",
+      "misconceptions": [
+        "A claim about everyone is not an exemplary individual."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "individual_model_vs_group_assumption",
+      "description": "Exemplary individual or original pattern versus oversimplified group-level belief."
+    }
+  ],
+  "edges": [
+    {
+      "id": "archetype__stereotype",
+      "a": "archetype",
+      "b": "stereotype",
+      "boundary_rule": "An archetype is an exemplary instance or model, whereas a stereotype is a rigid generalization about members of a group.",
+      "clues_a": [
+        "one model people emulate",
+        "an individual embodying a familiar pattern",
+        "a design that becomes the template"
+      ],
+      "clues_b": [
+        "blanket claim about a group",
+        "one trait attributed to all members",
+        "unchanged assumption despite exceptions"
+      ],
+      "irrelevant_clues": [
+        "how attractive the picture is",
+        "how many people saw the message",
+        "the length of the description"
+      ],
+      "misconceptions": {
+        "M1": "Mistakes an exemplary person or original pattern for a claim about a whole group.",
+        "M2": "Treats a blanket generalization as if it were a representative individual.",
+        "M3": "Assumes a flattering group generalization cannot be fixed or misleading."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "archetype-stereotype_001",
+      "edge_id": "archetype__stereotype",
+      "domain": "school_mentoring",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amina’s portrayal of the club mentor?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "archetype-stereotype_001_b1",
+          "text": "Amina shows one mentor welcoming newcomers, sharing credit, and guiding others; new volunteers copy the character’s habits.",
+          "best_word": "archetype",
+          "fit": {
+            "archetype": 0.91,
+            "stereotype": 0.24
+          },
+          "decisive_clue": "one exemplary mentor serves as a model",
+          "reason": "The first detail establishes one exemplary mentor serves as a model; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "id": "archetype-stereotype_001_b2",
+          "text": "The same character appears on every training poster as the example future mentors should follow.",
+          "best_word": "archetype",
+          "fit": {
+            "archetype": 0.93,
+            "stereotype": 0.18
+          },
+          "decisive_clue": "the single mentor is the pattern others copy",
+          "reason": "The new detail confirms the single mentor is the pattern others copy and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The character is a model others follow, not a blanket claim about mentors.",
+      "feedback_deep": "Archetype means an exemplary model or typical original. Stereotype means a fixed oversimplification about a group. Here, the portrayed mentor provides a concrete ideal, not a claim that all mentors behave identically.",
+      "contrast_rule": "A model represents a kind; a stereotype makes a rigid claim about a group.",
+      "hints": {
+        "attention": "Notice whether this is one model or a claim about everyone.",
+        "axis": "Exemplary individual or original pattern versus oversimplified group-level belief.",
+        "contrast": "A model represents a kind; a stereotype makes a rigid claim about a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archetype-stereotype_002",
+      "edge_id": "archetype__stereotype",
+      "domain": "online_shopping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Felix’s comment about bargain hunters?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "archetype-stereotype_002_b1",
+          "text": "Felix writes, “Every discount shopper buys things they never need,” without asking anyone about their purchases.",
+          "best_word": "stereotype",
+          "fit": {
+            "archetype": 0.24,
+            "stereotype": 0.91
+          },
+          "decisive_clue": "a blanket claim about all discount shoppers",
+          "reason": "The first detail establishes a blanket claim about all discount shoppers; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "archetype": "M2"
+          }
+        },
+        {
+          "id": "archetype-stereotype_002_b2",
+          "text": "His comment spreads through several shopping chats, but its claim still covers every bargain hunter.",
+          "best_word": "stereotype",
+          "fit": {
+            "archetype": 0.18,
+            "stereotype": 0.93
+          },
+          "decisive_clue": "the original blanket claim persists despite wider circulation",
+          "reason": "The deciding fact remains a blanket claim about all discount shoppers; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "archetype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Circulation changes nothing: the comment still assigns one habit to a whole group.",
+      "feedback_deep": "Archetype means an exemplary model or typical original. Stereotype means a fixed oversimplification about a group. Here, popularity does not make a fixed judgment about an entire group into an exemplary instance.",
+      "contrast_rule": "A model represents a kind; a stereotype makes a rigid claim about a group.",
+      "hints": {
+        "attention": "Look at the scope of the claim, not its audience.",
+        "axis": "Exemplary individual or original pattern versus oversimplified group-level belief.",
+        "contrast": "A model represents a kind; a stereotype makes a rigid claim about a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archetype-stereotype_003",
+      "edge_id": "archetype__stereotype",
+      "domain": "community_sports",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kavi’s assumption about reserve players?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "archetype-stereotype_003_b1",
+          "text": "After one substitute misses a shot, Kavi says everyone on the bench lacks courage.",
+          "best_word": "stereotype",
+          "fit": {
+            "archetype": 0.24,
+            "stereotype": 0.91
+          },
+          "decisive_clue": "one incident became a judgment about an entire group",
+          "reason": "The first detail establishes one incident became a judgment about an entire group; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "archetype": "M2"
+          }
+        },
+        {
+          "id": "archetype-stereotype_003_b2",
+          "text": "He keeps the same view even after watching a substitute take the deciding penalty.",
+          "best_word": "stereotype",
+          "fit": {
+            "archetype": 0.18,
+            "stereotype": 0.93
+          },
+          "decisive_clue": "evidence against the broad judgment did not alter it",
+          "reason": "The new detail confirms evidence against the broad judgment did not alter it and rules out the competing sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "archetype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "One missed shot becomes a rule for everyone, even after contrary evidence.",
+      "feedback_deep": "Archetype means an exemplary model or typical original. Stereotype means a fixed oversimplification about a group. Here, a single missed shot is being used to label all reserves, and a contrary example fails to loosen that belief.",
+      "contrast_rule": "A model represents a kind; a stereotype makes a rigid claim about a group.",
+      "hints": {
+        "attention": "Ask whether the claim describes one player or all reserves.",
+        "axis": "Exemplary individual or original pattern versus oversimplified group-level belief.",
+        "contrast": "A model represents a kind; a stereotype makes a rigid claim about a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archetype-stereotype_004",
+      "edge_id": "archetype__stereotype",
+      "domain": "family_storytelling",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Ines’s character in her family story?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "archetype-stereotype_004_b1",
+          "text": "Ines creates a wise aunt whose advice and patience make her the example that younger characters try to match.",
+          "best_word": "archetype",
+          "fit": {
+            "archetype": 0.91,
+            "stereotype": 0.24
+          },
+          "decisive_clue": "the aunt is a single exemplary character",
+          "reason": "The first detail establishes the aunt is a single exemplary character; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "id": "archetype-stereotype_004_b2",
+          "text": "The aunt wears a bright yellow coat in every chapter.",
+          "best_word": "archetype",
+          "fit": {
+            "archetype": 0.93,
+            "stereotype": 0.18
+          },
+          "decisive_clue": "the same exemplary character remains despite a distinctive coat",
+          "reason": "The deciding fact remains the aunt is a single exemplary character; the added detail does not change that.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Her role as an example matters; the coat does not change that role.",
+      "feedback_deep": "Archetype means an exemplary model or typical original. Stereotype means a fixed oversimplification about a group. Here, the coat is memorable, but it says nothing about assigning traits to everyone in a group.",
+      "contrast_rule": "A model represents a kind; a stereotype makes a rigid claim about a group.",
+      "hints": {
+        "attention": "Focus on what the other characters do because of her.",
+        "axis": "Exemplary individual or original pattern versus oversimplified group-level belief.",
+        "contrast": "A model represents a kind; a stereotype makes a rigid claim about a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archetype-stereotype_005",
+      "edge_id": "archetype__stereotype",
+      "domain": "book_illustration",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ravi’s picture of the ideal explorer?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "archetype-stereotype_005_b1",
+          "text": "Ravi draws one traveler who prepares carefully, helps companions, and stays calm when plans change.",
+          "best_word": "archetype",
+          "fit": {
+            "archetype": 0.91,
+            "stereotype": 0.24
+          },
+          "decisive_clue": "a single idealized traveler embodies a type",
+          "reason": "The first detail establishes a single idealized traveler embodies a type; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M1"
+          }
+        },
+        {
+          "id": "archetype-stereotype_005_b2",
+          "text": "For the book’s later chapters, every new explorer is designed by adapting Ravi’s original figure.",
+          "best_word": "archetype",
+          "fit": {
+            "archetype": 0.93,
+            "stereotype": 0.18
+          },
+          "decisive_clue": "the same drawing also becomes the template for later travelers",
+          "reason": "Viewed in its fuller context, the same drawing also becomes the template for later travelers; the original distinction still decides it.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "stereotype": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Later characters are built from this one model, rather than judged as a group.",
+      "feedback_deep": "Archetype means an exemplary model or typical original. Stereotype means a fixed oversimplification about a group. Here, the drawing is not about attributing one presumed trait to all real travelers; it offers a pattern for characters.",
+      "contrast_rule": "A model represents a kind; a stereotype makes a rigid claim about a group.",
+      "hints": {
+        "attention": "Consider how the picture is used later.",
+        "axis": "Exemplary individual or original pattern versus oversimplified group-level belief.",
+        "contrast": "A model represents a kind; a stereotype makes a rigid claim about a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "archetype-stereotype_006",
+      "edge_id": "archetype__stereotype",
+      "domain": "neighbourhood_gardening",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zoe’s claim about members of the garden club?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "archetype-stereotype_006_b1",
+          "text": "Zoe says everyone in the garden club cares more about awards than plants, though she has met only two members.",
+          "best_word": "stereotype",
+          "fit": {
+            "archetype": 0.24,
+            "stereotype": 0.91
+          },
+          "decisive_clue": "limited encounters support a sweeping group belief",
+          "reason": "The first detail establishes limited encounters support a sweeping group belief; that is the meaningful distinction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "archetype": "M2"
+          }
+        },
+        {
+          "id": "archetype-stereotype_006_b2",
+          "text": "She phrases the claim as a compliment about ambition, but still assigns the same motive to every member.",
+          "best_word": "stereotype",
+          "fit": {
+            "archetype": 0.18,
+            "stereotype": 0.93
+          },
+          "decisive_clue": "the claim still assigns the same motive to every member",
+          "reason": "The deciding fact remains limited encounters support a sweeping group belief; the added detail does not change that.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "archetype": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A compliment can still impose one untested motive on an entire group.",
+      "feedback_deep": "Archetype means an exemplary model or typical original. Stereotype means a fixed oversimplification about a group. Here, a flattering tone can still conceal an oversimplified assumption about a group.",
+      "contrast_rule": "A model represents a kind; a stereotype makes a rigid claim about a group.",
+      "hints": {
+        "attention": "Does positive wording make a generalization more accurate?",
+        "axis": "Exemplary individual or original pattern versus oversimplified group-level belief.",
+        "contrast": "A model represents a kind; a stereotype makes a rigid claim about a group."
+      },
+      "qa": "pass"
+    }
+  ]
+}

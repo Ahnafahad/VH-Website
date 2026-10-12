@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "impetus-incentive",
+  "title": "impetus / incentive",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[177]",
+    "source_pair_id": 793,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "impetus",
+      "sense": "A force or event that sets an action in motion or speeds its progress.",
+      "connotation": "neutral, dynamic",
+      "register": "formal",
+      "misconceptions": [
+        "Mistaking a conditional future benefit for a past catalyst.",
+        "Ignoring whether the motivating force is an event or something to gain."
+      ]
+    },
+    {
+      "word": "incentive",
+      "sense": "An offered or expected benefit that motivates a choice or effort.",
+      "connotation": "positive or pragmatic",
+      "register": "standard",
+      "misconceptions": [
+        "Treating any trigger that gets action started as a promised reward.",
+        "Ignoring whether the motivating force is an event or something to gain."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "catalytic_push_vs_promised_reward",
+      "description": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it."
+    }
+  ],
+  "edges": [
+    {
+      "id": "impetus__incentive",
+      "a": "impetus",
+      "b": "incentive",
+      "boundary_rule": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it.",
+      "clues_a": [
+        "triggering event",
+        "sudden urgency",
+        "previously delayed plan finally starts"
+      ],
+      "clues_b": [
+        "conditional prize",
+        "promised benefit",
+        "future reward for effort"
+      ],
+      "irrelevant_clues": [
+        "paper colour",
+        "public recognition unrelated to reward",
+        "how busy someone already is"
+      ],
+      "misconceptions": {
+        "M1": "Treating any trigger that gets action started as a promised reward.",
+        "M2": "Mistaking a conditional future benefit for a past catalyst.",
+        "M3": "Ignoring whether the motivating force is an event or something to gain."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "impetus-incentive_001",
+      "edge_id": "impetus__incentive",
+      "domain": "cycle-path_repairs",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the storm’s role in Beatriz’s repair campaign?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "impetus-incentive_001_b1",
+          "text": "After heavy rain washed away part of the cycle path, Beatriz finally started collecting signatures for repairs.",
+          "best_word": "impetus",
+          "fit": {
+            "impetus": 0.92,
+            "incentive": 0.19
+          },
+          "decisive_clue": "a damaging storm triggered action",
+          "reason": "A damaging storm triggered action. A force or event that sets an action in motion or speeds its progress.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incentive": "M1"
+          }
+        },
+        {
+          "id": "impetus-incentive_001_b2",
+          "text": "She had discussed the problem for months without acting before the storm.",
+          "best_word": "impetus",
+          "fit": {
+            "impetus": 0.92,
+            "incentive": 0.19
+          },
+          "decisive_clue": "months of delay show that the event supplied the push",
+          "reason": "Months of delay show that the event supplied the push. A force or event that sets an action in motion or speeds its progress.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incentive": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Months of delay show that the event supplied the push.",
+      "feedback_deep": "Impetus means a force or event that sets an action in motion or speeds its progress; incentive means an offered or expected benefit that motivates a choice or effort. Here, a damaging storm triggered action. The new detail does not change the deciding fact: months of delay show that the event supplied the push. Thus impetus remains the stronger choice.",
+      "contrast_rule": "Impetus sparks action; an incentive gives you something to gain.",
+      "hints": {
+        "attention": "Focus on what made her move from talking to acting.",
+        "axis": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it.",
+        "contrast": "Impetus sparks action; an incentive gives you something to gain."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "impetus-incentive_002",
+      "edge_id": "impetus__incentive",
+      "domain": "reading_challenge",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the concert ticket’s role in Zain’s reading?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "impetus-incentive_002_b1",
+          "text": "Zain signed up because anyone finishing ten books would receive a free concert ticket.",
+          "best_word": "incentive",
+          "fit": {
+            "impetus": 0.19,
+            "incentive": 0.92
+          },
+          "decisive_clue": "ticket offered as a future reward for completion",
+          "reason": "Ticket offered as a future reward for completion. An offered or expected benefit that motivates a choice or effort.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "impetus": "M1"
+          }
+        },
+        {
+          "id": "impetus-incentive_002_b2",
+          "text": "He never told his friends about the ticket.",
+          "best_word": "incentive",
+          "fit": {
+            "impetus": 0.19,
+            "incentive": 0.92
+          },
+          "decisive_clue": "keeping the offer secret does not change its conditional benefit",
+          "reason": "Keeping the offer secret does not change its conditional benefit. An offered or expected benefit that motivates a choice or effort.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "impetus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Keeping the offer secret does not change its conditional benefit.",
+      "feedback_deep": "Impetus means a force or event that sets an action in motion or speeds its progress; incentive means an offered or expected benefit that motivates a choice or effort. Here, ticket offered as a future reward for completion. The new detail does not change the deciding fact: keeping the offer secret does not change its conditional benefit. Thus incentive remains the stronger choice.",
+      "contrast_rule": "Impetus sparks action; an incentive gives you something to gain.",
+      "hints": {
+        "attention": "Focus on what he would receive after finishing.",
+        "axis": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it.",
+        "contrast": "Impetus sparks action; an incentive gives you something to gain."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "impetus-incentive_003",
+      "edge_id": "impetus__incentive",
+      "domain": "lost_computer_files",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the crash’s role in Rahul’s new habit?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "impetus-incentive_003_b1",
+          "text": "When Rahul’s laptop crashed and he lost his homework, he started making backups every evening.",
+          "best_word": "impetus",
+          "fit": {
+            "impetus": 0.92,
+            "incentive": 0.19
+          },
+          "decisive_clue": "data loss jolted a delayed plan into action",
+          "reason": "Data loss jolted a delayed plan into action. A force or event that sets an action in motion or speeds its progress.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incentive": "M1"
+          }
+        },
+        {
+          "id": "impetus-incentive_003_b2",
+          "text": "He had planned to do that for months but began only after the loss.",
+          "best_word": "impetus",
+          "fit": {
+            "impetus": 0.92,
+            "incentive": 0.19
+          },
+          "decisive_clue": "the contrast with months of inaction confirms a triggering event",
+          "reason": "The contrast with months of inaction confirms a triggering event. A force or event that sets an action in motion or speeds its progress.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incentive": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The contrast with months of inaction confirms a triggering event.",
+      "feedback_deep": "Impetus means a force or event that sets an action in motion or speeds its progress; incentive means an offered or expected benefit that motivates a choice or effort. Here, data loss jolted a delayed plan into action. The added evidence clarifies that fact: the contrast with months of inaction confirms a triggering event. Thus impetus remains the stronger choice.",
+      "contrast_rule": "Impetus sparks action; an incentive gives you something to gain.",
+      "hints": {
+        "attention": "Focus on what finally started the habit.",
+        "axis": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it.",
+        "contrast": "Impetus sparks action; an incentive gives you something to gain."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "impetus-incentive_004",
+      "edge_id": "impetus__incentive",
+      "domain": "caf_staff_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the extra day off offered to Aiko?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "impetus-incentive_004_b1",
+          "text": "Aiko’s manager promised her an extra paid day off if she trained two new coworkers.",
+          "best_word": "incentive",
+          "fit": {
+            "impetus": 0.19,
+            "incentive": 0.92
+          },
+          "decisive_clue": "a conditional future day off rewards completion",
+          "reason": "A conditional future day off rewards completion. An offered or expected benefit that motivates a choice or effort.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "impetus": "M1"
+          }
+        },
+        {
+          "id": "impetus-incentive_004_b2",
+          "text": "She would receive the day off only after both coworkers completed their training.",
+          "best_word": "incentive",
+          "fit": {
+            "impetus": 0.19,
+            "incentive": 0.92
+          },
+          "decisive_clue": "the completion condition makes it a prospective benefit",
+          "reason": "The completion condition makes it a prospective benefit. An offered or expected benefit that motivates a choice or effort.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "impetus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The completion condition makes it a prospective benefit.",
+      "feedback_deep": "Impetus means a force or event that sets an action in motion or speeds its progress; incentive means an offered or expected benefit that motivates a choice or effort. Here, a conditional future day off rewards completion. The added evidence clarifies that fact: the completion condition makes it a prospective benefit. Thus incentive remains the stronger choice.",
+      "contrast_rule": "Impetus sparks action; an incentive gives you something to gain.",
+      "hints": {
+        "attention": "Focus on what must happen before the benefit arrives.",
+        "axis": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it.",
+        "contrast": "Impetus sparks action; an incentive gives you something to gain."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "impetus-incentive_005",
+      "edge_id": "impetus__incentive",
+      "domain": "study-club_launch",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the invitation’s effect on Nico’s study club?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "impetus-incentive_005_b1",
+          "text": "Nico had talked about forming a study club for weeks, but a friend’s invitation finally got him to arrange the first meeting.",
+          "best_word": "impetus",
+          "fit": {
+            "impetus": 0.92,
+            "incentive": 0.19
+          },
+          "decisive_clue": "a friend’s invitation activated a stalled plan",
+          "reason": "A friend’s invitation activated a stalled plan. A force or event that sets an action in motion or speeds its progress.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "incentive": "M1"
+          }
+        },
+        {
+          "id": "impetus-incentive_005_b2",
+          "text": "He printed the invitations on blue paper.",
+          "best_word": "impetus",
+          "fit": {
+            "impetus": 0.92,
+            "incentive": 0.19
+          },
+          "decisive_clue": "the colour of the paper does not change what started the action",
+          "reason": "The colour of the paper does not change what started the action. A force or event that sets an action in motion or speeds its progress.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "incentive": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The colour of the paper does not change what started the action.",
+      "feedback_deep": "Impetus means a force or event that sets an action in motion or speeds its progress; incentive means an offered or expected benefit that motivates a choice or effort. Here, a friend’s invitation activated a stalled plan. The apparent distraction does not change the deciding fact: the colour of the paper does not change what started the action. Thus impetus remains the stronger choice.",
+      "contrast_rule": "Impetus sparks action; an incentive gives you something to gain.",
+      "hints": {
+        "attention": "Focus on the moment planning turned into doing.",
+        "axis": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it.",
+        "contrast": "Impetus sparks action; an incentive gives you something to gain."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "impetus-incentive_006",
+      "edge_id": "impetus__incentive",
+      "domain": "exam_practice_programme",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the free coaching offered to Priya?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "impetus-incentive_006_b1",
+          "text": "Priya’s school promised free exam coaching to students who completed every practice test.",
+          "best_word": "incentive",
+          "fit": {
+            "impetus": 0.19,
+            "incentive": 0.92
+          },
+          "decisive_clue": "free coaching promised in exchange for completed tests",
+          "reason": "Free coaching promised in exchange for completed tests. An offered or expected benefit that motivates a choice or effort.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "impetus": "M1"
+          }
+        },
+        {
+          "id": "impetus-incentive_006_b2",
+          "text": "Priya would have studied anyway, but the extra coaching made finishing the tests more attractive.",
+          "best_word": "incentive",
+          "fit": {
+            "impetus": 0.19,
+            "incentive": 0.92
+          },
+          "decisive_clue": "an offered benefit remains a motivator even if she already had another reason",
+          "reason": "An offered benefit remains a motivator even if she already had another reason. An offered or expected benefit that motivates a choice or effort.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "impetus": "M3"
+          }
+        }
+      ],
+      "feedback_short": "An offered benefit remains a motivator even if she already had another reason.",
+      "feedback_deep": "Impetus means a force or event that sets an action in motion or speeds its progress; incentive means an offered or expected benefit that motivates a choice or effort. Here, free coaching promised in exchange for completed tests. The added context helps interpret that fact: an offered benefit remains a motivator even if she already had another reason. Thus incentive remains the stronger choice.",
+      "contrast_rule": "Impetus sparks action; an incentive gives you something to gain.",
+      "hints": {
+        "attention": "Focus on what she gains by meeting the condition.",
+        "axis": "Impetus is the push that starts or accelerates action, whereas an incentive is a prospective benefit offered to encourage it.",
+        "contrast": "Impetus sparks action; an incentive gives you something to gain."
+      },
+      "qa": "pass"
+    }
+  ]
+}

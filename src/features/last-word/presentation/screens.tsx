@@ -33,7 +33,9 @@ export const edgeLabel = (edgeId: string) => edgeId.split('__').join(' ↔ ');
 
 /** The decisive clue highlighted in place when it is an exact excerpt, otherwise quoted after the text. */
 export function ClueText({ text, clue }: { text: string; clue: string }) {
-  const at = text.indexOf(clue);
+  // Case-insensitive: lower-casing keeps string length, so the index maps back onto the original text.
+  const at = text.toLowerCase().indexOf(clue.trim().replace(/[.,;:]+$/, '').toLowerCase());
+  clue = at < 0 ? clue : text.slice(at, at + clue.trim().replace(/[.,;:]+$/, '').length);
   if (at < 0) return <>{text} <span className="lw-clue-quote">Key detail: “{clue}”</span></>;
   return <>{text.slice(0, at)}<mark>{clue}</mark>{text.slice(at + clue.length)}</>;
 }

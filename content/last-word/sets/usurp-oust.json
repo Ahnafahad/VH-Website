@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "usurp-oust",
+  "title": "usurp / oust",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[4]",
+    "source_pair_id": 10,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "usurp",
+      "sense": "take another person’s office or authority without legal right",
+      "connotation": "negative",
+      "register": "formal",
+      "misconceptions": [
+        "Treating any removal from office as a seizure of that office."
+      ]
+    },
+    {
+      "word": "oust",
+      "sense": "remove a person from office without necessarily taking it",
+      "connotation": "neutral or negative",
+      "register": "standard",
+      "misconceptions": [
+        "Thinking a wrongful seizure is merely getting someone removed."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "wrongful_seizure_vs_removal",
+      "description": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role."
+    }
+  ],
+  "edges": [
+    {
+      "id": "usurp__oust",
+      "a": "usurp",
+      "b": "oust",
+      "boundary_rule": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+      "clues_a": [
+        "takes the office for oneself",
+        "uses a false claim of authority",
+        "occupies a role without appointment"
+      ],
+      "clues_b": [
+        "forces incumbent to step down",
+        "votes a chairperson out",
+        "removes a leader without replacement by actor"
+      ],
+      "irrelevant_clues": [
+        "popularity of decision",
+        "height of the office desk",
+        "news coverage"
+      ],
+      "misconceptions": {
+        "M1": "Confuses usurp with oust by overlooking the defining difference: Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+        "M2": "Assumes evidence for oust necessarily proves usurp; these are different tests.",
+        "M3": "Overweights a later superficial detail instead of retaining or appropriately updating the original boundary evidence."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "usurp-oust_001",
+      "edge_id": "usurp__oust",
+      "domain": "neighborhood_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Jaya’s action involving the club chair?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "usurp-oust_001_b1",
+          "text": "Jaya changed the club roster to name herself chair, though nobody had elected her.",
+          "best_word": "usurp",
+          "fit": {
+            "usurp": 0.93,
+            "oust": 0.16
+          },
+          "decisive_clue": "claimed another person’s chairmanship without election",
+          "reason": "Taking the chair herself without authority is the deciding feature.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "oust": "M1"
+          }
+        },
+        {
+          "id": "usurp-oust_001_b2",
+          "text": "She also hid the minutes recording the actual election.",
+          "best_word": "usurp",
+          "fit": {
+            "usurp": 0.93,
+            "oust": 0.16
+          },
+          "decisive_clue": "concealed the elected chair’s right to the post",
+          "reason": "Hiding the minutes reinforces the wrongful takeover rather than simply removing someone.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oust": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Concealed the elected chair’s right to the post; hiding the minutes reinforces the wrongful takeover rather than simply removing someone.",
+      "feedback_deep": "Usurp means take another person’s office or authority without legal right; oust means remove a person from office without necessarily taking it. Hiding the minutes reinforces the wrongful takeover rather than simply removing someone.",
+      "contrast_rule": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+      "hints": {
+        "attention": "Who gets the position after the action?",
+        "axis": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+        "contrast": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "usurp-oust_002",
+      "edge_id": "usurp__oust",
+      "domain": "chess_team",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s action against the chess captain?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "usurp-oust_002_b1",
+          "text": "Omar organized a successful vote to remove the captain after repeated missed practices.",
+          "best_word": "oust",
+          "fit": {
+            "usurp": 0.16,
+            "oust": 0.93
+          },
+          "decisive_clue": "arranged the captain’s removal through a vote",
+          "reason": "The action dislodged the incumbent but did not seize their authority.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "usurp": "M2"
+          }
+        },
+        {
+          "id": "usurp-oust_002_b2",
+          "text": "He then supported an election in which he was not a candidate.",
+          "best_word": "oust",
+          "fit": {
+            "usurp": 0.16,
+            "oust": 0.93
+          },
+          "decisive_clue": "did not take the vacated position himself",
+          "reason": "A separate election confirms Omar did not take the post.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "usurp": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Did not take the vacated position himself; a separate election confirms Omar did not take the post.",
+      "feedback_deep": "Usurp means take another person’s office or authority without legal right; oust means remove a person from office without necessarily taking it. A separate election confirms Omar did not take the post.",
+      "contrast_rule": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+      "hints": {
+        "attention": "Did he take the role or only bring about its vacancy?",
+        "axis": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+        "contrast": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "usurp-oust_003",
+      "edge_id": "usurp__oust",
+      "domain": "student_committee",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Camila’s claim to the committee presidency?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "usurp-oust_003_b1",
+          "text": "Camila used a former officer’s login to announce that she, not the elected president, now ran the committee.",
+          "best_word": "usurp",
+          "fit": {
+            "usurp": 0.93,
+            "oust": 0.16
+          },
+          "decisive_clue": "assumed an elected officer’s power without a right",
+          "reason": "The claim takes authority belonging to another person.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "oust": "M1"
+          }
+        },
+        {
+          "id": "usurp-oust_003_b2",
+          "text": "She repeated the announcement on a second school noticeboard.",
+          "best_word": "usurp",
+          "fit": {
+            "usurp": 0.93,
+            "oust": 0.16
+          },
+          "decisive_clue": "assumed an elected officer’s power without a right",
+          "reason": "Repetition does not change the unauthorized nature of the same claim.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oust": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Assumed an elected officer’s power without a right; repetition does not change the unauthorized nature of the same claim.",
+      "feedback_deep": "Usurp means take another person’s office or authority without legal right; oust means remove a person from office without necessarily taking it. Repetition does not change the unauthorized nature of the same claim.",
+      "contrast_rule": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+      "hints": {
+        "attention": "Ask whether the office was hers to claim.",
+        "axis": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+        "contrast": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "usurp-oust_004",
+      "edge_id": "usurp__oust",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Dev did about the club coach?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "usurp-oust_004_b1",
+          "text": "Dev presented complaints that persuaded the club board to remove its coach.",
+          "best_word": "oust",
+          "fit": {
+            "usurp": 0.16,
+            "oust": 0.93
+          },
+          "decisive_clue": "persuaded the board to remove the coach",
+          "reason": "Dev brought about a removal, not a takeover of the coach’s position.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "usurp": "M2"
+          }
+        },
+        {
+          "id": "usurp-oust_004_b2",
+          "text": "The board announced the decision during a crowded awards night.",
+          "best_word": "oust",
+          "fit": {
+            "usurp": 0.16,
+            "oust": 0.93
+          },
+          "decisive_clue": "persuaded the board to remove the coach",
+          "reason": "The public timing does not turn Dev into the new coach.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "usurp": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Persuaded the board to remove the coach; the public timing does not turn Dev into the new coach.",
+      "feedback_deep": "Usurp means take another person’s office or authority without legal right; oust means remove a person from office without necessarily taking it. The public timing does not turn Dev into the new coach.",
+      "contrast_rule": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+      "hints": {
+        "attention": "Look at what Dev actually caused.",
+        "axis": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+        "contrast": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "usurp-oust_005",
+      "edge_id": "usurp__oust",
+      "domain": "shared_apartment",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Noura’s action toward the house treasurer?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "usurp-oust_005_b1",
+          "text": "Noura convinced her flatmates to vote the treasurer out for missing payments.",
+          "best_word": "oust",
+          "fit": {
+            "usurp": 0.16,
+            "oust": 0.93
+          },
+          "decisive_clue": "organized the treasurer’s removal",
+          "reason": "The vote removes the incumbent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "usurp": "M2"
+          }
+        },
+        {
+          "id": "usurp-oust_005_b2",
+          "text": "Her written proposal called for a fresh vote to choose someone else.",
+          "best_word": "oust",
+          "fit": {
+            "usurp": 0.16,
+            "oust": 0.93
+          },
+          "decisive_clue": "called for a separate successor rather than taking the office",
+          "reason": "Her proposal shows the vacancy was not a claim to the treasurer’s authority.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "usurp": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Called for a separate successor rather than taking the office; this is what distinguishes the words.",
+      "feedback_deep": "Usurp means take another person’s office or authority without legal right; oust means remove a person from office without necessarily taking it. Her proposal shows the vacancy was not a claim to the treasurer’s authority.",
+      "contrast_rule": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+      "hints": {
+        "attention": "Who is supposed to fill the vacancy?",
+        "axis": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+        "contrast": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "usurp-oust_006",
+      "edge_id": "usurp__oust",
+      "domain": "charity_planning",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kenji’s action regarding the fundraiser leader?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "usurp-oust_006_b1",
+          "text": "Kenji printed badges naming himself fundraiser leader while another volunteer still held the elected role.",
+          "best_word": "usurp",
+          "fit": {
+            "usurp": 0.93,
+            "oust": 0.16
+          },
+          "decisive_clue": "asserted a role that rightfully belonged to another volunteer",
+          "reason": "He claimed another person’s authority without a legitimate transfer.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "oust": "M1"
+          }
+        },
+        {
+          "id": "usurp-oust_006_b2",
+          "text": "He handed out the badges before any vote or handover occurred.",
+          "best_word": "usurp",
+          "fit": {
+            "usurp": 0.93,
+            "oust": 0.16
+          },
+          "decisive_clue": "asserted a role that rightfully belonged to another volunteer",
+          "reason": "The timing confirms no appointment authorized his claim.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "oust": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Asserted a role that rightfully belonged to another volunteer; the timing confirms no appointment authorized his claim.",
+      "feedback_deep": "Usurp means take another person’s office or authority without legal right; oust means remove a person from office without necessarily taking it. The timing confirms no appointment authorized his claim.",
+      "contrast_rule": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+      "hints": {
+        "attention": "Whose authority is being claimed?",
+        "axis": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role.",
+        "contrast": "Usurp means take another person’s authority without the right to it; oust means force that person out without necessarily taking the role."
+      },
+      "qa": "pass"
+    }
+  ]
+}

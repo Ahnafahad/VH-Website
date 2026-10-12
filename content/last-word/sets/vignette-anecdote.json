@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "vignette-anecdote",
+  "title": "vignette / anecdote",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[195]",
+    "source_pair_id": 882,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "vignette",
+      "sense": "A brief, vivid literary snapshot of a moment or character without a developed sequence of events.",
+      "connotation": "descriptive, evocative",
+      "register": "literary",
+      "misconceptions": [
+        "Any brief passage about a person must be an anecdote."
+      ]
+    },
+    {
+      "word": "anecdote",
+      "sense": "A short account of something that actually happened, often with a small sequence and outcome.",
+      "connotation": "personal, narrative",
+      "register": "everyday / literary",
+      "misconceptions": [
+        "Any vividly told personal memory must be a vignette."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "narration_vs_portrayal",
+      "description": "Whether the passage chiefly depicts a moment or recounts an actual occurrence."
+    }
+  ],
+  "edges": [
+    {
+      "id": "vignette__anecdote",
+      "a": "vignette",
+      "b": "anecdote",
+      "boundary_rule": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event.",
+      "clues_a": [
+        "sensory portrait",
+        "single sustained moment",
+        "character captured without a plot"
+      ],
+      "clues_b": [
+        "dated memory",
+        "sequence of actions with an outcome",
+        "firsthand incident"
+      ],
+      "irrelevant_clues": [
+        "length of passage",
+        "whether the subject is humorous",
+        "where a story is shared"
+      ],
+      "misconceptions": {
+        "M1": "Any brief passage about a person must be an anecdote.",
+        "M2": "Any vividly told personal memory must be a vignette.",
+        "M3": "Length or humor, rather than incident versus portrait, decides the label."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "vignette-anecdote_001",
+      "edge_id": "vignette__anecdote",
+      "domain": "school_magazine",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mina’s piece about the school gate?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "vignette-anecdote_001_b1",
+          "text": "Mina describes the wet pavement, the guard’s steaming tea, and the silent students waiting in grey morning light.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.9,
+            "anecdote": 0.23
+          },
+          "decisive_clue": "describes one suspended moment",
+          "reason": "The situation shows describes one suspended moment, which points to vignette.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        },
+        {
+          "id": "vignette-anecdote_001_b2",
+          "text": "Her piece takes up only one short paragraph.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.91,
+            "anecdote": 0.22
+          },
+          "decisive_clue": "describes one suspended moment",
+          "reason": "The added detail does not change the original clue: describes one suspended moment.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Describes one suspended moment still decides; the added detail changes nothing.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, being short does not turn a descriptive snapshot into an account of an incident.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "Notice whether anything actually unfolds.",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vignette-anecdote_002",
+      "edge_id": "vignette__anecdote",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s account at dinner?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vignette-anecdote_002_b1",
+          "text": "Omar tells everyone about the time he accidentally carried a stranger’s suitcase home from the station.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.24,
+            "anecdote": 0.9
+          },
+          "decisive_clue": "recounts a particular past incident",
+          "reason": "The situation shows recounts a particular past incident, which points to anecdote.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        },
+        {
+          "id": "vignette-anecdote_002_b2",
+          "text": "He ends by describing how the stranger recognized it from a bright orange ribbon.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.21,
+            "anecdote": 0.94
+          },
+          "decisive_clue": "the suitcase mix-up has a specific outcome",
+          "reason": "A remembered mix-up with an ending is an incident, not merely a portrait.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The suitcase mix-up has a specific outcome: anecdote fits better.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, a remembered mix-up with an ending is an incident, not merely a portrait.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "Look for the beginning and outcome.",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vignette-anecdote_003",
+      "edge_id": "vignette__anecdote",
+      "domain": "online_journal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Alia’s post about her first shift?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "vignette-anecdote_003_b1",
+          "text": "Alia writes how she rang up the wrong order, apologized, and had to remake two drinks on Friday.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.24,
+            "anecdote": 0.9
+          },
+          "decisive_clue": "recounts a specific event from Friday",
+          "reason": "The situation shows recounts a specific event from Friday, which points to anecdote.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        },
+        {
+          "id": "vignette-anecdote_003_b2",
+          "text": "She includes a photograph of the empty café at closing time.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.21,
+            "anecdote": 0.94
+          },
+          "decisive_clue": "recounts a specific event from Friday",
+          "reason": "The added detail does not change the original clue: recounts a specific event from Friday.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Recounts a specific event from Friday still decides; the added detail changes nothing.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, the added photograph does not change the post’s account of a real incident.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "Which part supplies a sequence of events?",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vignette-anecdote_004",
+      "edge_id": "vignette__anecdote",
+      "domain": "travel_diary",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Kenji’s passage about a ferry deck?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vignette-anecdote_004_b1",
+          "text": "Kenji depicts one passenger holding a red umbrella as gulls circle above the water.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.9,
+            "anecdote": 0.24
+          },
+          "decisive_clue": "captures a visual moment",
+          "reason": "The situation shows captures a visual moment, which points to vignette.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        },
+        {
+          "id": "vignette-anecdote_004_b2",
+          "text": "The passage stays with that still figure until the page ends; it never follows a journey or mishap.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.94,
+            "anecdote": 0.21
+          },
+          "decisive_clue": "dwells on the figure without developing an event",
+          "reason": "The passage draws a picture in words rather than relating something that happened.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Dwells on the figure without developing an event: vignette fits better.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, the passage draws a picture in words rather than relating something that happened.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "Check whether a plot develops.",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vignette-anecdote_005",
+      "edge_id": "vignette__anecdote",
+      "domain": "friends_chat",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sofia’s story in the group chat?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "vignette-anecdote_005_b1",
+          "text": "Sofia recounts how her umbrella turned inside out and blew into a tree on her way home yesterday.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.23,
+            "anecdote": 0.9
+          },
+          "decisive_clue": "recounts something that happened yesterday",
+          "reason": "The situation shows recounts something that happened yesterday, which points to anecdote.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        },
+        {
+          "id": "vignette-anecdote_005_b2",
+          "text": "She adds three laughing emojis after the final sentence.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.22,
+            "anecdote": 0.91
+          },
+          "decisive_clue": "recounts something that happened yesterday",
+          "reason": "The added detail does not change the original clue: recounts something that happened yesterday.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Recounts something that happened yesterday still decides; the added detail changes nothing.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, emojis change the tone, not the fact that she tells a real incident.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "Ignore the emojis; track the event.",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vignette-anecdote_006",
+      "edge_id": "vignette__anecdote",
+      "domain": "graduation_booklet",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ravi’s paragraph about his grandfather?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vignette-anecdote_006_b1",
+          "text": "Ravi sketches his grandfather’s ink-stained hands, slow smile, and habit of checking every door twice.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.9,
+            "anecdote": 0.24
+          },
+          "decisive_clue": "portrays a person through details",
+          "reason": "The situation shows portrays a person through details, which points to vignette.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        },
+        {
+          "id": "vignette-anecdote_006_b2",
+          "text": "The booklet uses this paragraph to show what kind of person his grandfather is, without telling a particular adventure.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.94,
+            "anecdote": 0.21
+          },
+          "decisive_clue": "uses details to reveal character, not recount an incident",
+          "reason": "Its purpose is character portrayal, not a remembered sequence of events.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Uses details to reveal character, not recount an incident: vignette fits better.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, its purpose is character portrayal, not a remembered sequence of events.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "Ask whether the passage characterizes or narrates.",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vignette-anecdote_007",
+      "edge_id": "vignette__anecdote",
+      "domain": "neighbourhood_noticeboard",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zara’s writing about the corner shop?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "vignette-anecdote_007_b1",
+          "text": "Zara writes of the bell above the door, dusty sweet jars, and the owner’s patient smile at dusk.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.9,
+            "anecdote": 0.23
+          },
+          "decisive_clue": "depicts an atmospheric moment",
+          "reason": "The situation shows depicts an atmospheric moment, which points to vignette.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        },
+        {
+          "id": "vignette-anecdote_007_b2",
+          "text": "She wrote it for a neighbourhood page that usually posts news.",
+          "best_word": "vignette",
+          "fit": {
+            "vignette": 0.91,
+            "anecdote": 0.22
+          },
+          "decisive_clue": "depicts an atmospheric moment",
+          "reason": "The added detail does not change the original clue: depicts an atmospheric moment.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "anecdote": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Depicts an atmospheric moment still decides; the added detail changes nothing.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, publication in a news-oriented space does not give this portrait a sequence of events.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "The posting venue is not decisive.",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "vignette-anecdote_008",
+      "edge_id": "vignette__anecdote",
+      "domain": "basketball_practice",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Diego’s account after practice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "vignette-anecdote_008_b1",
+          "text": "Diego tells how his shoelace caught the bench just before his first shot at Saturday’s game.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.24,
+            "anecdote": 0.9
+          },
+          "decisive_clue": "retells one actual game incident",
+          "reason": "The situation shows retells one actual game incident, which points to anecdote.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        },
+        {
+          "id": "vignette-anecdote_008_b2",
+          "text": "He recalls tumbling sideways while the referee stopped play and everyone helped him up.",
+          "best_word": "anecdote",
+          "fit": {
+            "vignette": 0.21,
+            "anecdote": 0.94
+          },
+          "decisive_clue": "shows the mishap unfolding and ending",
+          "reason": "A particular mishap, told from occurrence to result, is a brief narrative.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vignette": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Shows the mishap unfolding and ending: anecdote fits better.",
+      "feedback_deep": "A vignette presents a revealing snapshot without a developed incident; an anecdote recounts an actual event. Here, a particular mishap, told from occurrence to result, is a brief narrative.",
+      "contrast_rule": "A vignette lingers; an anecdote tells what happened.",
+      "hints": {
+        "attention": "Look for the event rather than vividness.",
+        "axis": "Whether the passage chiefly depicts a moment or recounts an actual occurrence.",
+        "contrast": "A vignette lingers; an anecdote tells what happened."
+      },
+      "qa": "pass"
+    }
+  ]
+}

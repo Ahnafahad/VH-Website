@@ -7,7 +7,7 @@ The game plays every JSON file in `content/last-word/sets/` whose `status` is `a
 1. **Pipeline output** (`set_id`, `edge`, `anchors`, `chains`, `qa` …, the shape in `docs/last-word/content-pipeline/prompts/generate.md`):
 
    ```sh
-   npm run last-word:import-content -- path/to/folder-or-file.json
+   npm run last-word:import-content -- path/to/folder-or-file.json   # a question bank { "sets": [...] } works too
    ```
 
    This converts each file to the runtime format and writes `content/last-word/sets/<set_id>.json`. Sets with a critic `qa` block arrive as `audited`; without one, as `draft`. Anything under `drafts-unaudited/` is refused. Re-importing never changes a set's existing status.
@@ -25,7 +25,7 @@ The game plays every JSON file in `content/last-word/sets/` whose `status` is `a
 3. Read the set (preview it in the game at `/last-word?preview=<set_id>` while signed in as staff, or on the editorial page `/admin/last-word`), then promote it:
 
    ```sh
-   npm run last-word:set-status -- <set_id> approved
+   npm run last-word:set-status -- <set_id> approved      # or: all-audited approved
    ```
 
 4. Commit the JSON and deploy. Players see it on the next visit.

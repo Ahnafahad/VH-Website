@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "preclude-exclude",
+  "title": "preclude / exclude",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[148]",
+    "source_pair_id": 616,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "preclude",
+      "sense": "make an action or outcome impossible in advance",
+      "connotation": "preventive",
+      "register": "formal",
+      "misconceptions": [
+        "Not being selected for a group is always prevention of an event"
+      ]
+    },
+    {
+      "word": "exclude",
+      "sense": "leave someone or something outside a defined group",
+      "connotation": "selective",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "An obstacle preventing an event always removes someone from membership"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "blocking_outcome_vs_group_omission",
+      "description": "Blocking an outcome before it can happen differs from leaving a person or item outside a group."
+    }
+  ],
+  "edges": [
+    {
+      "id": "preclude__exclude",
+      "a": "preclude",
+      "b": "exclude",
+      "boundary_rule": "preclude makes an event impossible; exclude leaves someone or something out of a group.",
+      "clues_a": [
+        "flood makes visit impossible",
+        "date clash prevents attendance",
+        "rule blocks an event from happening"
+      ],
+      "clues_b": [
+        "name deliberately omitted from roster",
+        "one item left out of selection",
+        "person barred from member list"
+      ],
+      "irrelevant_clues": [
+        "personal disappointment",
+        "number of pages",
+        "colour of the form"
+      ],
+      "misconceptions": {
+        "M1": "Assumes every prevention is group exclusion",
+        "M2": "Assumes removing an item from a set is preventing an event",
+        "M3": "Confuses a rejected invitation with an impossible event"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "preclude-exclude_001",
+      "edge_id": "preclude__exclude",
+      "domain": "school_trip",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the exam schedule did to Zahra’s trip?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preclude-exclude_001_b1",
+          "text": "Zahra’s final exam was fixed for the exact time of the trip, so she could not go.",
+          "best_word": "preclude",
+          "fit": {
+            "preclude": 0.91,
+            "exclude": 0.17
+          },
+          "decisive_clue": "clashing schedules made the trip impossible",
+          "reason": "The issue is preventing the planned activity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "exclude": "M1"
+          }
+        },
+        {
+          "id": "preclude-exclude_001_b2",
+          "text": "She had already packed her bag the evening before.",
+          "best_word": "preclude",
+          "fit": {
+            "preclude": 0.91,
+            "exclude": 0.17
+          },
+          "decisive_clue": "timing still made attendance impossible",
+          "reason": "Packing does not alter the scheduling barrier.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "exclude": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: timing still made attendance impossible.",
+      "feedback_deep": "preclude means to prevent a possibility or event from occurring; exclude means to omit or keep someone or something out of a group. The issue is preventing the planned activity. Packing does not alter the scheduling barrier.",
+      "contrast_rule": "preclude makes an event impossible; exclude leaves someone or something out of a group.",
+      "hints": {
+        "attention": "Ask what the timetable prevented.",
+        "axis": "Blocking an outcome before it can happen differs from leaving a person or item outside a group.",
+        "contrast": "preclude makes an event impossible; exclude leaves someone or something out of a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preclude-exclude_002",
+      "edge_id": "preclude__exclude",
+      "domain": "volunteer_roster",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what the coordinator did with Theo’s name?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preclude-exclude_002_b1",
+          "text": "The coordinator deliberately left Theo off the volunteer list while including the other applicants.",
+          "best_word": "exclude",
+          "fit": {
+            "preclude": 0.2,
+            "exclude": 0.93
+          },
+          "decisive_clue": "name omitted from a defined group",
+          "reason": "This is non-inclusion in a roster.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "preclude": "M2"
+          }
+        },
+        {
+          "id": "preclude-exclude_002_b2",
+          "text": "The list was printed on yellow paper.",
+          "best_word": "exclude",
+          "fit": {
+            "preclude": 0.2,
+            "exclude": 0.93
+          },
+          "decisive_clue": "name still omitted from the roster",
+          "reason": "Paper colour does not change membership.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "preclude": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Key evidence: name still omitted from the roster.",
+      "feedback_deep": "preclude means to prevent a possibility or event from occurring; exclude means to omit or keep someone or something out of a group. This is non-inclusion in a roster. Paper colour does not change membership.",
+      "contrast_rule": "preclude makes an event impossible; exclude leaves someone or something out of a group.",
+      "hints": {
+        "attention": "Look at the membership list.",
+        "axis": "Blocking an outcome before it can happen differs from leaving a person or item outside a group.",
+        "contrast": "preclude makes an event impossible; exclude leaves someone or something out of a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preclude-exclude_003",
+      "edge_id": "preclude__exclude",
+      "domain": "family_reunion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the storm did to Amara’s family visit?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preclude-exclude_003_b1",
+          "text": "Flooded roads made it impossible for Amara to reach her family’s gathering that weekend.",
+          "best_word": "preclude",
+          "fit": {
+            "preclude": 0.95,
+            "exclude": 0.23
+          },
+          "decisive_clue": "flooding prevented the visit",
+          "reason": "The roads blocked an event from taking place.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "exclude": "M1"
+          }
+        },
+        {
+          "id": "preclude-exclude_003_b2",
+          "text": "Even the alternate road was underwater, leaving no workable route.",
+          "best_word": "preclude",
+          "fit": {
+            "preclude": 0.95,
+            "exclude": 0.23
+          },
+          "decisive_clue": "no possible route to the planned visit",
+          "reason": "The extra information confirms prevention.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "exclude": "M1"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: no possible route to the planned visit.",
+      "feedback_deep": "preclude means to prevent a possibility or event from occurring; exclude means to omit or keep someone or something out of a group. The roads blocked an event from taking place. The extra information confirms prevention.",
+      "contrast_rule": "preclude makes an event impossible; exclude leaves someone or something out of a group.",
+      "hints": {
+        "attention": "Check whether there is any way to travel.",
+        "axis": "Blocking an outcome before it can happen differs from leaving a person or item outside a group.",
+        "contrast": "preclude makes an event impossible; exclude leaves someone or something out of a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preclude-exclude_004",
+      "edge_id": "preclude__exclude",
+      "domain": "online_photo_album",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Mateo handled one photograph?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "preclude-exclude_004_b1",
+          "text": "Mateo left a blurry photograph out of the ten pictures selected for the family album.",
+          "best_word": "exclude",
+          "fit": {
+            "preclude": 0.15,
+            "exclude": 0.89
+          },
+          "decisive_clue": "item removed from a selected set",
+          "reason": "The issue is omission from a collection.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "preclude": "M2"
+          }
+        },
+        {
+          "id": "preclude-exclude_004_b2",
+          "text": "He selected nine sharp photographs but not the blurry one.",
+          "best_word": "exclude",
+          "fit": {
+            "preclude": 0.15,
+            "exclude": 0.89
+          },
+          "decisive_clue": "photograph not included in chosen set",
+          "reason": "The count confirms which item was left out.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "preclude": "M2"
+          }
+        }
+      ],
+      "feedback_short": "New confirmation: photograph not included in chosen set.",
+      "feedback_deep": "preclude means to prevent a possibility or event from occurring; exclude means to omit or keep someone or something out of a group. The issue is omission from a collection. The count confirms which item was left out.",
+      "contrast_rule": "preclude makes an event impossible; exclude leaves someone or something out of a group.",
+      "hints": {
+        "attention": "Focus on what made the final collection.",
+        "axis": "Blocking an outcome before it can happen differs from leaving a person or item outside a group.",
+        "contrast": "preclude makes an event impossible; exclude leaves someone or something out of a group."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "preclude-exclude_009",
+      "edge_id": "preclude__exclude",
+      "domain": "travel_booking",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes what the passport delay did to Nika’s departure?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "preclude-exclude_009_b1",
+          "text": "Nika’s passport was not ready before the flight, making the journey impossible on that date.",
+          "best_word": "preclude",
+          "fit": {
+            "preclude": 0.91,
+            "exclude": 0.17
+          },
+          "decisive_clue": "missing document prevented departure",
+          "reason": "The obstacle blocks the event before it can happen.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "exclude": "M1"
+          }
+        },
+        {
+          "id": "preclude-exclude_009_b2",
+          "text": "The airline never removed her from its passenger list; she simply could not travel without the document.",
+          "best_word": "preclude",
+          "fit": {
+            "preclude": 0.91,
+            "exclude": 0.17
+          },
+          "decisive_clue": "departure blocked without being removed from a group",
+          "reason": "The booking status clarifies that the problem is impossibility, not omission from the passenger list.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "exclude": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The clarification points to: departure blocked without being removed from a group.",
+      "feedback_deep": "preclude means to prevent a possibility or event from occurring; exclude means to omit or keep someone or something out of a group. The obstacle blocks the event before it can happen. The booking status clarifies that the problem is impossibility, not omission from the passenger list.",
+      "contrast_rule": "preclude makes an event impossible; exclude leaves someone or something out of a group.",
+      "hints": {
+        "attention": "Distinguish the booking from the ability to board.",
+        "axis": "Blocking an outcome before it can happen differs from leaving a person or item outside a group.",
+        "contrast": "preclude makes an event impossible; exclude leaves someone or something out of a group."
+      },
+      "qa": "pass"
+    }
+  ]
+}

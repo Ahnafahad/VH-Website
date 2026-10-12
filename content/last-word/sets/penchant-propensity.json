@@ -1,0 +1,626 @@
+{
+  "schema_version": 1,
+  "set_id": "penchant-propensity",
+  "title": "penchant / propensity",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[72]",
+    "source_pair_id": 316,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "penchant",
+      "sense": "A strong and recurring liking for a particular activity or thing.",
+      "connotation": "neutral, often affectionate",
+      "register": "general or educated",
+      "misconceptions": [
+        "Equates frequent behaviour with enjoyment.",
+        "Assumes a preference is an uncontrollable tendency."
+      ]
+    },
+    {
+      "word": "propensity",
+      "sense": "A recurring disposition or tendency to behave in a certain way, whether liked or not.",
+      "connotation": "neutral, sometimes cautionary",
+      "register": "general or educated",
+      "misconceptions": [
+        "Equates frequent behaviour with enjoyment.",
+        "Assumes a preference is an uncontrollable tendency."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "semantic_basis",
+      "description": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+    }
+  ],
+  "edges": [
+    {
+      "id": "penchant__propensity",
+      "a": "penchant",
+      "b": "propensity",
+      "boundary_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "clues_a": [
+        "chooses it for pleasure",
+        "returns to it voluntarily",
+        "seeks chances to do it"
+      ],
+      "clues_b": [
+        "occurs despite resistance",
+        "happens reflexively",
+        "follows a repeated pattern"
+      ],
+      "irrelevant_clues": [
+        "age",
+        "popularity",
+        "number of observers"
+      ],
+      "misconceptions": {
+        "M1": "Equates frequent behaviour with enjoyment.",
+        "M2": "Assumes a preference is an uncontrollable tendency.",
+        "M3": "Ignores whether the subject wants the repeated behaviour."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "penchant-propensity_001",
+      "edge_id": "penchant__propensity",
+      "domain": "cafe_visit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rina’s habit of trying unusual drinks?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "penchant-propensity_001_b1",
+          "text": "Rina looks for unfamiliar drinks on every menu and smiles when she finds one to order.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.87,
+            "propensity": 0.2
+          },
+          "decisive_clue": "deliberately seeks unfamiliar drinks she enjoys",
+          "reason": "The first beat supplies the deciding evidence: deliberately seeks unfamiliar drinks she enjoys.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M3"
+          }
+        },
+        {
+          "id": "penchant-propensity_001_b2",
+          "text": "She keeps a list of favourites to try again.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.89,
+            "propensity": 0.17
+          },
+          "decisive_clue": "deliberately seeks unfamiliar drinks she enjoys",
+          "reason": "Choosing and repeating an activity for pleasure points to a liking.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Deliberately seeks unfamiliar drinks she enjoys is what distinguishes penchant here.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, deliberately seeks unfamiliar drinks she enjoys; choosing and repeating an activity for pleasure points to a liking.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on choice rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "penchant-propensity_002",
+      "edge_id": "penchant__propensity",
+      "domain": "class_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Sami’s habit of interrupting?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "penchant-propensity_002_b1",
+          "text": "Sami blurts out answers before classmates finish, then apologizes for doing it again.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.23,
+            "propensity": 0.89
+          },
+          "decisive_clue": "interrupts repeatedly despite trying to stop",
+          "reason": "The first beat supplies the deciding evidence: interrupts repeatedly despite trying to stop.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M1"
+          }
+        },
+        {
+          "id": "penchant-propensity_002_b2",
+          "text": "He tries keeping a pencil in his hand as a reminder to pause.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.2,
+            "propensity": 0.91
+          },
+          "decisive_clue": "interrupts repeatedly despite trying to stop",
+          "reason": "The habit persists even though he does not seem to welcome it.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Interrupts repeatedly despite trying to stop is what distinguishes propensity here.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, interrupts repeatedly despite trying to stop; the habit persists even though he does not seem to welcome it.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on control rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "penchant-propensity_003",
+      "edge_id": "penchant__propensity",
+      "domain": "family_cooking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Laila’s habit of making elaborate breakfasts?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "penchant-propensity_003_b1",
+          "text": "Laila gets up early on Sundays because she loves experimenting with new pancake toppings.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.91,
+            "propensity": 0.16
+          },
+          "decisive_clue": "enjoys voluntarily experimenting with breakfast",
+          "reason": "The first beat supplies the deciding evidence: enjoys voluntarily experimenting with breakfast.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M2"
+          }
+        },
+        {
+          "id": "penchant-propensity_003_b2",
+          "text": "She photographs the results but never posts them online.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.93,
+            "propensity": 0.13
+          },
+          "decisive_clue": "enjoys voluntarily experimenting with breakfast",
+          "reason": "Posting photographs is irrelevant to the enjoyment shown from the start.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Enjoys voluntarily experimenting with breakfast — the later detail does not change that distinction.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, enjoys voluntarily experimenting with breakfast; posting photographs is irrelevant to the enjoyment shown from the start.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on pleasure rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "penchant-propensity_004",
+      "edge_id": "penchant__propensity",
+      "domain": "team_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Theo’s response to close matches?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "penchant-propensity_004_b1",
+          "text": "Theo tends to rush passes whenever the score is tied, although he wishes he could slow down.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.2,
+            "propensity": 0.85
+          },
+          "decisive_clue": "rushes under pressure despite wishing otherwise",
+          "reason": "The first beat supplies the deciding evidence: rushes under pressure despite wishing otherwise.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M3"
+          }
+        },
+        {
+          "id": "penchant-propensity_004_b2",
+          "text": "The coach has noticed it even in practice games.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.17,
+            "propensity": 0.87
+          },
+          "decisive_clue": "rushes under pressure despite wishing otherwise",
+          "reason": "A repeated involuntary response is not evidence of liking it.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Rushes under pressure despite wishing otherwise is what distinguishes propensity here.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, rushes under pressure despite wishing otherwise; a repeated involuntary response is not evidence of liking it.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on unwanted repetition rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "penchant-propensity_005",
+      "edge_id": "penchant__propensity",
+      "domain": "travel_diary",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Noor’s interest in collecting train tickets?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "penchant-propensity_005_b1",
+          "text": "Noor always chooses the train when she can and proudly keeps each ticket in an album.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.87,
+            "propensity": 0.23
+          },
+          "decisive_clue": "actively chooses and treasures train journeys and tickets",
+          "reason": "The first beat supplies the deciding evidence: actively chooses and treasures train journeys and tickets.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M1"
+          }
+        },
+        {
+          "id": "penchant-propensity_005_b2",
+          "text": "The album is now too thick for its original cover.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.89,
+            "propensity": 0.2
+          },
+          "decisive_clue": "actively chooses and treasures train journeys and tickets",
+          "reason": "The album’s size does not change why she collects the tickets.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Actively chooses and treasures train journeys and tickets — the later detail does not change that distinction.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, actively chooses and treasures train journeys and tickets; the album’s size does not change why she collects the tickets.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on preference rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "penchant-propensity_006",
+      "edge_id": "penchant__propensity",
+      "domain": "group_messaging",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Diego’s habit of replying too quickly?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "penchant-propensity_006_b1",
+          "text": "Diego sends replies before reading the full message and later has to correct them.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.16,
+            "propensity": 0.89
+          },
+          "decisive_clue": "repeats premature replies despite corrections",
+          "reason": "The first beat supplies the deciding evidence: repeats premature replies despite corrections.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M2"
+          }
+        },
+        {
+          "id": "penchant-propensity_006_b2",
+          "text": "He has enabled a delay feature, but still often presses send too soon.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.13,
+            "propensity": 0.91
+          },
+          "decisive_clue": "repeats premature replies despite corrections",
+          "reason": "A technical safeguard has not changed the unwanted pattern.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Repeats premature replies despite corrections — the later detail does not change that distinction.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, repeats premature replies despite corrections; a technical safeguard has not changed the unwanted pattern.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on pattern rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "penchant-propensity_007",
+      "edge_id": "penchant__propensity",
+      "domain": "neighbourhood_walks",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amara’s interest in evening walks?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "penchant-propensity_007_b1",
+          "text": "Amara rearranges her evenings so she can explore a new quiet street on foot.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.91,
+            "propensity": 0.2
+          },
+          "decisive_clue": "makes time for walks because she likes exploring",
+          "reason": "The first beat supplies the deciding evidence: makes time for walks because she likes exploring.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M3"
+          }
+        },
+        {
+          "id": "penchant-propensity_007_b2",
+          "text": "Even in fine weather, she sometimes walks alone.",
+          "best_word": "penchant",
+          "fit": {
+            "penchant": 0.93,
+            "propensity": 0.17
+          },
+          "decisive_clue": "makes time for walks because she likes exploring",
+          "reason": "Whether company joins her is separate from her preference.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "propensity": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Makes time for walks because she likes exploring is what distinguishes penchant here.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, makes time for walks because she likes exploring; whether company joins her is separate from her preference.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on motivation rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "penchant-propensity_008",
+      "edge_id": "penchant__propensity",
+      "domain": "part-time_retail",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Pavel’s reaction to minor criticism?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "penchant-propensity_008_b1",
+          "text": "Pavel often expects the worst after small customer complaints, even when everything is resolved.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.23,
+            "propensity": 0.85
+          },
+          "decisive_clue": "falls into unwanted worry after minor criticism",
+          "reason": "The first beat supplies the deciding evidence: falls into unwanted worry after minor criticism.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M1"
+          }
+        },
+        {
+          "id": "penchant-propensity_008_b2",
+          "text": "He has asked friends for ways to stop thinking that way.",
+          "best_word": "propensity",
+          "fit": {
+            "penchant": 0.2,
+            "propensity": 0.87
+          },
+          "decisive_clue": "falls into unwanted worry after minor criticism",
+          "reason": "Seeking ways to stop makes this a tendency, not a valued pastime.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "penchant": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Falls into unwanted worry after minor criticism — the later detail does not change that distinction.",
+      "feedback_deep": "Penchant means a strong and recurring liking for a particular activity or thing. Propensity means a recurring disposition or tendency to behave in a certain way, whether liked or not. Here, falls into unwanted worry after minor criticism; seeking ways to stop makes this a tendency, not a valued pastime.",
+      "contrast_rule": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+      "hints": {
+        "attention": "Focus on disposition rather than incidental details.",
+        "axis": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it.",
+        "contrast": "A penchant is something a person likes doing; a propensity is something a person tends to do, with or without liking it."
+      },
+      "qa": "pass"
+    }
+  ]
+}

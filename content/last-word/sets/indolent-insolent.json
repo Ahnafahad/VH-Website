@@ -1,0 +1,630 @@
+{
+  "schema_version": 1,
+  "set_id": "indolent-insolent",
+  "title": "indolent / insolent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[50]",
+    "source_pair_id": 271,
+    "qa": {
+      "pass": 5,
+      "revised": 3,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "indolent",
+      "sense": "Habitually lazy and unwilling to exert effort without good reason",
+      "connotation": "critical",
+      "register": "formal/literary",
+      "misconceptions": [
+        "Avoiding work is the same as insulting someone",
+        "Effort avoidance and disrespect are interchangeable"
+      ]
+    },
+    {
+      "word": "insolent",
+      "sense": "Brazenly rude or disrespectful, especially to another person",
+      "connotation": "critical",
+      "register": "standard/formal",
+      "misconceptions": [
+        "A rude comment proves a person is lazy",
+        "Effort avoidance and disrespect are interchangeable"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "effort_avoidance",
+      "description": "Whether the scene turns on effort avoidance."
+    },
+    {
+      "id": "disrespect_in_response",
+      "description": "Whether the scene turns on disrespect in response."
+    }
+  ],
+  "edges": [
+    {
+      "id": "indolent__insolent",
+      "a": "indolent",
+      "b": "insolent",
+      "boundary_rule": "Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "clues_a": [
+        "avoids easy tasks",
+        "habitual inactivity",
+        "makes no effort"
+      ],
+      "clues_b": [
+        "mocking reply",
+        "disrespectful taunt",
+        "rude defiance"
+      ],
+      "irrelevant_clues": [
+        "the time of day",
+        "whether a shirt is new",
+        "the room’s temperature"
+      ],
+      "misconceptions": {
+        "M1": "Avoiding work is the same as insulting someone",
+        "M2": "A rude comment proves a person is lazy",
+        "M3": "Effort avoidance and disrespect are interchangeable"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "indolent-insolent_001",
+      "edge_id": "indolent__insolent",
+      "domain": "home_chores",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Yara’s response when asked to help?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "indolent-insolent_001_b1",
+          "text": "When asked to dry the dishes, Yara shrugged and said she was far too tired to get up from the sofa.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.92,
+            "insolent": 0.28
+          },
+          "decisive_clue": "feigned exhaustion to avoid simple effort",
+          "reason": "The detail about feigned exhaustion to avoid simple effort supports indolent more strongly than insolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M3"
+          }
+        },
+        {
+          "id": "indolent-insolent_001_b2",
+          "text": "When reminded again, she sneered, “Do it yourself, since you seem so desperate to feel useful.”",
+          "best_word": "insolent",
+          "fit": {
+            "indolent": 0.2,
+            "insolent": 0.96
+          },
+          "decisive_clue": "openly insulting reply",
+          "reason": "The detail about openly insulting reply supports insolent more strongly than indolent.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Openly insulting reply makes insolent the better description.",
+      "feedback_deep": "Initially, feigned exhaustion to avoid simple effort points toward indolent. The new detail, openly insulting reply, instead makes insolent the stronger choice. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "indolent-insolent_002",
+      "edge_id": "indolent__insolent",
+      "domain": "school_project",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Diego’s approach to the shared assignment?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "indolent-insolent_002_b1",
+          "text": "Diego repeatedly left his easy tasks undone and spent work periods scrolling aimlessly.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.96,
+            "insolent": 0.36
+          },
+          "decisive_clue": "repeated avoidance of easy work",
+          "reason": "The detail about repeated avoidance of easy work supports indolent more strongly than insolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M1"
+          }
+        },
+        {
+          "id": "indolent-insolent_002_b2",
+          "text": "He was perfectly capable of doing them, but made no attempt even when offered help.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.88,
+            "insolent": 0.24
+          },
+          "decisive_clue": "able but unwilling to make effort",
+          "reason": "The detail about able but unwilling to make effort supports indolent more strongly than insolent.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Able but unwilling to make effort leaves indolent the better fit.",
+      "feedback_deep": "The first clue is repeated avoidance of easy work. The later clue is able but unwilling to make effort; that strengthens or preserves the same classification. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "indolent-insolent_003",
+      "edge_id": "indolent__insolent",
+      "domain": "bus_stop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amina’s reply to an older passenger?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "indolent-insolent_003_b1",
+          "text": "Amina snapped, “Your question is stupid; stop bothering me,” when asked whether the bus had passed.",
+          "best_word": "insolent",
+          "fit": {
+            "indolent": 0.2,
+            "insolent": 0.88
+          },
+          "decisive_clue": "direct personal insult",
+          "reason": "The detail about direct personal insult supports insolent more strongly than indolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M2"
+          }
+        },
+        {
+          "id": "indolent-insolent_003_b2",
+          "text": "She rolled her eyes and repeated the insult when asked to speak politely.",
+          "best_word": "insolent",
+          "fit": {
+            "indolent": 0.28,
+            "insolent": 0.91
+          },
+          "decisive_clue": "deliberate disrespect continued",
+          "reason": "The detail about deliberate disrespect continued supports insolent more strongly than indolent.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Deliberate disrespect continued leaves insolent the better fit.",
+      "feedback_deep": "The first clue is direct personal insult. The later clue is deliberate disrespect continued; that strengthens or preserves the same classification. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "indolent-insolent_004",
+      "edge_id": "indolent__insolent",
+      "domain": "football_drills",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Pavel’s attitude to warm-up drills?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "indolent-insolent_004_b1",
+          "text": "Pavel skipped every basic drill even though he was rested and had no injury.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.91,
+            "insolent": 0.24
+          },
+          "decisive_clue": "avoids activity without reason",
+          "reason": "The detail about avoids activity without reason supports indolent more strongly than insolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M3"
+          }
+        },
+        {
+          "id": "indolent-insolent_004_b2",
+          "text": "He refused to try the easy exercises and lay on the grass until practice ended.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.93,
+            "insolent": 0.32
+          },
+          "decisive_clue": "continues refusing minimal effort",
+          "reason": "The detail about continues refusing minimal effort supports indolent more strongly than insolent.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Continues refusing minimal effort makes indolent an even clearer fit.",
+      "feedback_deep": "The first clue is avoids activity without reason. The later clue is continues refusing minimal effort; that strengthens or preserves the same classification. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "indolent-insolent_005",
+      "edge_id": "indolent__insolent",
+      "domain": "library_desk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Nour’s response to the librarian?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "indolent-insolent_005_b1",
+          "text": "When the librarian asked Nour to shelve a small stack of returns, Nour slouched in the chair and claimed moving them was too much bother.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.92,
+            "insolent": 0.28
+          },
+          "decisive_clue": "unwillingness to exert basic effort",
+          "reason": "The detail about unwillingness to exert basic effort supports indolent more strongly than insolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M1"
+          }
+        },
+        {
+          "id": "indolent-insolent_005_b2",
+          "text": "When asked again to start, Nour laughed at the librarian and said, “Maybe learn to do your own job.”",
+          "best_word": "insolent",
+          "fit": {
+            "indolent": 0.22,
+            "insolent": 0.96
+          },
+          "decisive_clue": "mocked librarian directly",
+          "reason": "The detail about mocked librarian directly supports insolent more strongly than indolent.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Mocked librarian directly makes insolent the better description.",
+      "feedback_deep": "Initially, unwillingness to exert basic effort points toward indolent. The new detail, mocked librarian directly, instead makes insolent the stronger choice. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "indolent-insolent_007",
+      "edge_id": "indolent__insolent",
+      "domain": "summer_job",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Laila’s behaviour when the manager asks for help?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "indolent-insolent_007_b1",
+          "text": "When the manager asked her to sweep the front aisle, Laila groaned and said she was far too comfortable sitting down.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.91,
+            "insolent": 0.31
+          },
+          "decisive_clue": "sluggish refusal to exert minimal effort",
+          "reason": "The detail about sluggish refusal to exert minimal effort supports indolent more strongly than insolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M3"
+          }
+        },
+        {
+          "id": "indolent-insolent_007_b2",
+          "text": "She then looked up and snapped, “You must be too foolish to clean your own shop,” directly to the manager.",
+          "best_word": "insolent",
+          "fit": {
+            "indolent": 0.22,
+            "insolent": 0.95
+          },
+          "decisive_clue": "brazen insult to manager",
+          "reason": "The detail about brazen insult to manager supports insolent more strongly than indolent.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "indolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Brazen insult to manager makes insolent the better description.",
+      "feedback_deep": "Initially, sluggish refusal to exert minimal effort points toward indolent. The new detail, brazen insult to manager, instead makes insolent the stronger choice. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "indolent-insolent_009",
+      "edge_id": "indolent__insolent",
+      "domain": "shopping_errand",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Farah’s approach to a simple errand?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "indolent-insolent_009_b1",
+          "text": "Farah kept postponing a five-minute shopping trip for no reason, despite having an empty afternoon.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.93,
+            "insolent": 0.24
+          },
+          "decisive_clue": "avoided minor effort",
+          "reason": "The detail about avoided minor effort supports indolent more strongly than insolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M2"
+          }
+        },
+        {
+          "id": "indolent-insolent_009_b2",
+          "text": "She made the same excuse for several days while doing almost nothing else.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.96,
+            "insolent": 0.32
+          },
+          "decisive_clue": "habitual postponement without barrier",
+          "reason": "The detail about habitual postponement without barrier supports indolent more strongly than insolent.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Habitual postponement without barrier leaves indolent the better fit.",
+      "feedback_deep": "The first clue is avoided minor effort. The later clue is habitual postponement without barrier; that strengthens or preserves the same classification. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "indolent-insolent_010",
+      "edge_id": "indolent__insolent",
+      "domain": "neighbourhood_clean-up",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Owen’s approach to the clean-up?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "indolent-insolent_010_b1",
+          "text": "Owen comes to every clean-up but sits idle, refusing simple jobs without any excuse.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.96,
+            "insolent": 0.28
+          },
+          "decisive_clue": "habitual avoidance of easy work",
+          "reason": "The detail about habitual avoidance of easy work supports indolent more strongly than insolent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M3"
+          }
+        },
+        {
+          "id": "indolent-insolent_010_b2",
+          "text": "He has gloves and a bin bag, yet makes no effort to pick up litter.",
+          "best_word": "indolent",
+          "fit": {
+            "indolent": 0.88,
+            "insolent": 0.36
+          },
+          "decisive_clue": "has equipment but refuses to act",
+          "reason": "The detail about has equipment but refuses to act supports indolent more strongly than insolent.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insolent": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Has equipment but refuses to act makes indolent an even clearer fit.",
+      "feedback_deep": "The first clue is habitual avoidance of easy work. The later clue is has equipment but refuses to act; that strengthens or preserves the same classification. Indolent behaviour avoids effort out of laziness; insolent behaviour openly disrespects someone.",
+      "contrast_rule": "Indolent avoids work; insolent shows disrespect.",
+      "hints": {
+        "attention": "Focus on whether the action concerns effort or treatment of another person.",
+        "axis": "Whether the scene turns on effort avoidance.",
+        "contrast": "Indolent avoids work; insolent shows disrespect."
+      },
+      "qa": "pass"
+    }
+  ]
+}

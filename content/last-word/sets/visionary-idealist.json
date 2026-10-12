@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "visionary-idealist",
+  "title": "visionary / idealist",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[196]",
+    "source_pair_id": 886,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "visionary",
+      "sense": "A person who imagines far-reaching future possibilities and may foresee practical ways to create them.",
+      "connotation": "Often admiring.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Calling any principled person a predictor of future possibilities."
+      ]
+    },
+    {
+      "word": "idealist",
+      "sense": "A person guided strongly by principles of how life ought to be, even when practical obstacles arise.",
+      "connotation": "Admiring or gently critical of impracticality.",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Assuming a bold invention is necessarily a moral ideal."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "future_possibilities_vs_values",
+      "description": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult."
+    }
+  ],
+  "edges": [
+    {
+      "id": "visionary__idealist",
+      "a": "visionary",
+      "b": "idealist",
+      "boundary_rule": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+      "clues_a": [
+        "imagines a new workable approach",
+        "foresees a future possibility",
+        "designs a route toward innovation"
+      ],
+      "clues_b": [
+        "defends a principle at personal cost",
+        "puts ideals above convenience",
+        "refuses to compromise a moral standard"
+      ],
+      "irrelevant_clues": [
+        "whether the speaker is young",
+        "how popular the proposal is initially",
+        "whether the presentation uses drawings"
+      ],
+      "misconceptions": {
+        "M1": "Calling any principled person a predictor of future possibilities.",
+        "M2": "Assuming a bold invention is necessarily a moral ideal.",
+        "M3": "Confusing practical difficulty with a lack of future insight."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "visionary-idealist_001",
+      "edge_id": "visionary__idealist",
+      "domain": "future_transit_service",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ada?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "visionary-idealist_001_b1",
+          "text": "Ada designs a phone map showing live bus arrivals years before her town considers putting such information online.",
+          "best_word": "visionary",
+          "fit": {
+            "visionary": 0.91,
+            "idealist": 0.22
+          },
+          "decisive_clue": "imagines a transformative service before it exists locally",
+          "reason": "Imagines a transformative service before it exists locally. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "idealist": "M3"
+          }
+        },
+        {
+          "id": "visionary-idealist_001_b2",
+          "text": "She builds a simple trial version using the routes she can observe.",
+          "best_word": "visionary",
+          "fit": {
+            "visionary": 0.91,
+            "idealist": 0.22
+          },
+          "decisive_clue": "imagines a transformative service before it exists locally",
+          "reason": "The new detail does not overturn the original clue: imagines a transformative service before it exists locally. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "idealist": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ada sees a new possibility and tests how it could work.",
+      "feedback_deep": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult. The defining evidence is her forward-looking invention, not a refusal to compromise a principle.",
+      "contrast_rule": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+      "hints": {
+        "attention": "Ask whether the person is charting a new future or upholding a principle.",
+        "axis": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+        "contrast": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "visionary-idealist_002",
+      "edge_id": "visionary__idealist",
+      "domain": "team_playing_time",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hugo?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "visionary-idealist_002_b1",
+          "text": "Hugo insists every player should get equal game time, even when this weakens his team’s chance of winning.",
+          "best_word": "idealist",
+          "fit": {
+            "visionary": 0.22,
+            "idealist": 0.91
+          },
+          "decisive_clue": "values equal treatment above immediate advantage",
+          "reason": "Values equal treatment above immediate advantage. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "visionary": "M1"
+          }
+        },
+        {
+          "id": "visionary-idealist_002_b2",
+          "text": "He follows the same rule during the final match when his team is behind.",
+          "best_word": "idealist",
+          "fit": {
+            "visionary": 0.22,
+            "idealist": 0.91
+          },
+          "decisive_clue": "values equal treatment above immediate advantage",
+          "reason": "The new detail does not overturn the original clue: values equal treatment above immediate advantage. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "visionary": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Hugo protects a principle even when it costs his team a possible win.",
+      "feedback_deep": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult. The scene emphasizes his value commitment rather than an innovative future plan.",
+      "contrast_rule": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+      "hints": {
+        "attention": "Ask whether the person is charting a new future or upholding a principle.",
+        "axis": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+        "contrast": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "visionary-idealist_003",
+      "edge_id": "visionary__idealist",
+      "domain": "rooftop_garden_proposal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Priya?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "visionary-idealist_003_b1",
+          "text": "Priya imagines apartment roofs growing food with reused rainwater long before anyone in her block attempts it.",
+          "best_word": "visionary",
+          "fit": {
+            "visionary": 0.91,
+            "idealist": 0.22
+          },
+          "decisive_clue": "envisions a new use for ordinary rooftops",
+          "reason": "She imagines a far-reaching new use for rooftops and a practical way to support it. A visionary sees transformative future possibilities and ways toward them; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "idealist": "M2"
+          }
+        },
+        {
+          "id": "visionary-idealist_003_b2",
+          "text": "She draws a budgeted plan for volunteers to test one building first.",
+          "best_word": "visionary",
+          "fit": {
+            "visionary": 0.91,
+            "idealist": 0.22
+          },
+          "decisive_clue": "connects the future possibility to a practical trial",
+          "reason": "The budgeted trial makes her route toward the new future more concrete. A visionary sees transformative future possibilities and ways toward them; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "idealist": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Priya combines a far-reaching idea with a practical plan to test it.",
+      "feedback_deep": "A visionary sees transformative future possibilities and ways toward them; an idealist follows cherished principles even when reality makes them difficult. Priya's rooftop concept and budgeted trial show future-focused invention, not a moral commitment.",
+      "contrast_rule": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+      "hints": {
+        "attention": "Ask whether the person is charting a new future or upholding a principle.",
+        "axis": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+        "contrast": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "visionary-idealist_004",
+      "edge_id": "visionary__idealist",
+      "domain": "free_library_access",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Sam?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "visionary-idealist_004_b1",
+          "text": "Sam argues that everyone should borrow books free, even if membership charges would help the club pay its bills.",
+          "best_word": "idealist",
+          "fit": {
+            "visionary": 0.22,
+            "idealist": 0.91
+          },
+          "decisive_clue": "puts access for everyone ahead of financial convenience",
+          "reason": "Puts access for everyone ahead of financial convenience. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "visionary": "M3"
+          }
+        },
+        {
+          "id": "visionary-idealist_004_b2",
+          "text": "When the club faces a shortfall, Sam still refuses to exclude those who cannot pay.",
+          "best_word": "idealist",
+          "fit": {
+            "visionary": 0.22,
+            "idealist": 0.91
+          },
+          "decisive_clue": "maintains the value despite an apparent practical cost",
+          "reason": "Maintains the value despite an apparent practical cost. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "visionary": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Sam maintains equal access despite financial pressure.",
+      "feedback_deep": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult. This is a principle about how people ought to be treated.",
+      "contrast_rule": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+      "hints": {
+        "attention": "Ask whether the person is charting a new future or upholding a principle.",
+        "axis": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+        "contrast": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "visionary-idealist_005",
+      "edge_id": "visionary__idealist",
+      "domain": "small-apartment_classroom",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Zoe?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "visionary-idealist_005_b1",
+          "text": "Zoe sketches folding desks that could turn cramped apartments into evening classrooms when space is scarce.",
+          "best_word": "visionary",
+          "fit": {
+            "visionary": 0.91,
+            "idealist": 0.22
+          },
+          "decisive_clue": "imagines an unfamiliar practical use for small spaces",
+          "reason": "Imagines an unfamiliar practical use for small spaces. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "idealist": "M1"
+          }
+        },
+        {
+          "id": "visionary-idealist_005_b2",
+          "text": "Her first prototype looks awkward, but she keeps refining the design for homes with little room.",
+          "best_word": "visionary",
+          "fit": {
+            "visionary": 0.91,
+            "idealist": 0.22
+          },
+          "decisive_clue": "imagines an unfamiliar practical use for small spaces",
+          "reason": "The new detail does not overturn the original clue: imagines an unfamiliar practical use for small spaces. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "idealist": "M2"
+          }
+        }
+      ],
+      "feedback_short": "An awkward prototype does not negate the original future-facing concept.",
+      "feedback_deep": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult. The important fact is Zoe’s novel plan for how space could work differently.",
+      "contrast_rule": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+      "hints": {
+        "attention": "Ask whether the person is charting a new future or upholding a principle.",
+        "axis": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+        "contrast": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "visionary-idealist_006",
+      "edge_id": "visionary__idealist",
+      "domain": "fair_hiring_procedure",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Luka?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "visionary-idealist_006_b1",
+          "text": "Luka refuses to skip applications from less familiar candidates even when filling a vacancy quickly would be easier.",
+          "best_word": "idealist",
+          "fit": {
+            "visionary": 0.22,
+            "idealist": 0.91
+          },
+          "decisive_clue": "insists on fair consideration rather than expediency",
+          "reason": "Insists on fair consideration rather than expediency. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "visionary": "M2"
+          }
+        },
+        {
+          "id": "visionary-idealist_006_b2",
+          "text": "He reviews every application by the same criteria despite pressure to pick a friend immediately.",
+          "best_word": "idealist",
+          "fit": {
+            "visionary": 0.22,
+            "idealist": 0.91
+          },
+          "decisive_clue": "applies the fairness principle at a practical cost",
+          "reason": "Applies the fairness principle at a practical cost. A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "visionary": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Luka resists favoritism even under time pressure.",
+      "feedback_deep": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult. The defining clue is commitment to fairness, not a bold new vision of the future.",
+      "contrast_rule": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+      "hints": {
+        "attention": "Ask whether the person is charting a new future or upholding a principle.",
+        "axis": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult.",
+        "contrast": "A visionary sees a transformative future and ways toward it; an idealist follows cherished principles even when reality makes them difficult."
+      },
+      "qa": "pass"
+    }
+  ]
+}

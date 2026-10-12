@@ -1,0 +1,768 @@
+{
+  "schema_version": 1,
+  "set_id": "malfeasance-malpractice",
+  "title": "malfeasance / malpractice",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[31]",
+    "source_pair_id": 138,
+    "qa": {
+      "pass": 8,
+      "revised": 2,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "malfeasance",
+      "sense": "Wrongdoing or illegal action by a person exercising public office or entrusted authority",
+      "connotation": "severely critical/legal",
+      "register": "formal/legal",
+      "misconceptions": [
+        "Any professional error is malfeasance",
+        "Public-office abuse and negligent expert service are interchangeable"
+      ]
+    },
+    {
+      "word": "malpractice",
+      "sense": "Improper or negligent conduct in a professional service role",
+      "connotation": "critical/legal",
+      "register": "formal/legal",
+      "misconceptions": [
+        "Any intentional wrongdoing is malpractice",
+        "Public-office abuse and negligent expert service are interchangeable"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "capacity_of_actor",
+      "description": "Whether the scene turns on capacity of actor."
+    },
+    {
+      "id": "kind_of_breach",
+      "description": "Whether the scene turns on kind of breach."
+    }
+  ],
+  "edges": [
+    {
+      "id": "malfeasance__malpractice",
+      "a": "malfeasance",
+      "b": "malpractice",
+      "boundary_rule": "Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "clues_a": [
+        "misuse of entrusted public funds",
+        "abuse of official powers",
+        "dishonesty in office"
+      ],
+      "clues_b": [
+        "failure of professional care",
+        "neglect of expert duty",
+        "substandard professional service"
+      ],
+      "irrelevant_clues": [
+        "whether a form was printed",
+        "whether the room was busy",
+        "how old the building is"
+      ],
+      "misconceptions": {
+        "M1": "Any professional error is malfeasance",
+        "M2": "Any intentional wrongdoing is malpractice",
+        "M3": "Public-office abuse and negligent expert service are interchangeable"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "malfeasance-malpractice_001",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "town_hall",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zara’s conduct as an elected council member?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_001_b1",
+          "text": "Zara used her council authority to send public repair money to her own account.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.93,
+            "malpractice": 0.32
+          },
+          "decisive_clue": "misuse of public office",
+          "reason": "The detail about misuse of public office supports malfeasance more strongly than malpractice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M3"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_001_b2",
+          "text": "Investigators found she had personally approved the transfer after being told it violated council rules.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.96,
+            "malpractice": 0.2
+          },
+          "decisive_clue": "knowingly authorized diversion",
+          "reason": "The detail about knowingly authorized diversion supports malfeasance more strongly than malpractice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Knowingly authorized diversion leaves malfeasance the better fit.",
+      "feedback_deep": "The first clue is misuse of public office. The later clue is knowingly authorized diversion; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_002",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "dental_clinic",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Noah’s professional conduct?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_002_b1",
+          "text": "Noah, a dentist, repeatedly skipped required checks before treating patients.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.36,
+            "malpractice": 0.96
+          },
+          "decisive_clue": "breach of dental care standards",
+          "reason": "The detail about breach of dental care standards supports malpractice more strongly than malfeasance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M1"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_002_b2",
+          "text": "Records showed that his rushed care caused avoidable injuries.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.24,
+            "malpractice": 0.88
+          },
+          "decisive_clue": "harm linked to negligent practice",
+          "reason": "The detail about harm linked to negligent practice supports malpractice more strongly than malfeasance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Harm linked to negligent practice leaves malpractice the better fit.",
+      "feedback_deep": "The first clue is breach of dental care standards. The later clue is harm linked to negligent practice; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_003",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "school_administration",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Imani’s conduct as a school board treasurer?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_003_b1",
+          "text": "Imani secretly changed official spending records to conceal purchases for herself.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.88,
+            "malpractice": 0.2
+          },
+          "decisive_clue": "dishonest use of entrusted finance role",
+          "reason": "The detail about dishonest use of entrusted finance role supports malfeasance more strongly than malpractice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M2"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_003_b2",
+          "text": "The records belonged to the school board budget she had sworn to manage for others.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.91,
+            "malpractice": 0.28
+          },
+          "decisive_clue": "abuse of a public trust",
+          "reason": "The detail about abuse of a public trust supports malfeasance more strongly than malpractice.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Abuse of a public trust makes malfeasance an even clearer fit.",
+      "feedback_deep": "The first clue is dishonest use of entrusted finance role. The later clue is abuse of a public trust; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_004",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "legal_office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mateusz’s conduct with his clients?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_004_b1",
+          "text": "Mateusz, a lawyer, missed filing deadlines because he failed to check his case calendar.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.24,
+            "malpractice": 0.91
+          },
+          "decisive_clue": "failure of lawyer’s professional diligence",
+          "reason": "The detail about failure of lawyer’s professional diligence supports malpractice more strongly than malfeasance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M3"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_004_b2",
+          "text": "He overlooked the same deadlines even after clients sent reminders.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.32,
+            "malpractice": 0.93
+          },
+          "decisive_clue": "repeated carelessness",
+          "reason": "The detail about repeated carelessness supports malpractice more strongly than malfeasance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Repeated carelessness makes malpractice an even clearer fit.",
+      "feedback_deep": "The first clue is failure of lawyer’s professional diligence. The later clue is repeated carelessness; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_005",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "public_housing_desk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amina’s wrongdoing as a housing official?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_005_b1",
+          "text": "Amina took money to move certain applications to the front of the public housing list.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.93,
+            "malpractice": 0.28
+          },
+          "decisive_clue": "official bribery and preference",
+          "reason": "The detail about official bribery and preference supports malfeasance more strongly than malpractice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M1"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_005_b2",
+          "text": "The applicants she favoured had no entitlement to bypass the queue.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.96,
+            "malpractice": 0.36
+          },
+          "decisive_clue": "improper exercise of public authority",
+          "reason": "The detail about improper exercise of public authority supports malfeasance more strongly than malpractice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Improper exercise of public authority leaves malfeasance the better fit.",
+      "feedback_deep": "The first clue is official bribery and preference. The later clue is improper exercise of public authority; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_006",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "accounting_service",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Luis’s handling of a client’s accounts?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_006_b1",
+          "text": "Luis, an accountant, neglected basic checks and filed figures containing obvious errors.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.32,
+            "malpractice": 0.96
+          },
+          "decisive_clue": "negligent accounting work",
+          "reason": "The detail about negligent accounting work supports malpractice more strongly than malfeasance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M2"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_006_b2",
+          "text": "The final report was printed on expensive paper with a gold cover.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.2,
+            "malpractice": 0.88
+          },
+          "decisive_clue": "presentation does not fix deficient care",
+          "reason": "The detail about presentation does not fix deficient care supports malpractice more strongly than malfeasance.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Negligent accounting work still matters; presentation does not fix deficient care does not change the answer.",
+      "feedback_deep": "The first clue is negligent accounting work. The later clue is presentation does not fix deficient care; that does not touch the decisive difference. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_007",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "local_election_office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Yuna’s behaviour while supervising the vote count?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_007_b1",
+          "text": "Yuna secretly discarded valid ballots to favour a candidate.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.88,
+            "malpractice": 0.36
+          },
+          "decisive_clue": "intentional abuse of election role",
+          "reason": "The detail about intentional abuse of election role supports malfeasance more strongly than malpractice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M3"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_007_b2",
+          "text": "She did so using access granted only to official election staff.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.91,
+            "malpractice": 0.24
+          },
+          "decisive_clue": "privileged official access",
+          "reason": "The detail about privileged official access supports malfeasance more strongly than malpractice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Privileged official access leaves malfeasance the better fit.",
+      "feedback_deep": "The first clue is intentional abuse of election role. The later clue is privileged official access; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_008",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "therapy_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Faris’s conduct with clients?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_008_b1",
+          "text": "Faris, a licensed therapist, routinely ignored required confidentiality safeguards.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.2,
+            "malpractice": 0.91
+          },
+          "decisive_clue": "professional duty violated",
+          "reason": "The detail about professional duty violated supports malpractice more strongly than malfeasance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M1"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_008_b2",
+          "text": "His failure to protect sensitive clinical notes directly breached the professional licensing standard of care owed to his patients.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.22,
+            "malpractice": 0.95
+          },
+          "decisive_clue": "breach of clinical standard of care",
+          "reason": "The detail about breach of clinical standard of care supports malpractice more strongly than malfeasance.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Breach of clinical standard of care leaves malpractice the better fit.",
+      "feedback_deep": "The first clue is professional duty violated. The later clue is breach of clinical standard of care; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "malfeasance-malpractice_009",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "community_grant_office",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sofia’s actions as a grant administrator?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_009_b1",
+          "text": "Sofia issued public grants to a business she secretly owned.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.93,
+            "malpractice": 0.24
+          },
+          "decisive_clue": "public grant abuse for private benefit",
+          "reason": "The detail about public grant abuse for private benefit supports malfeasance more strongly than malpractice.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M2"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_009_b2",
+          "text": "She hid her financial interest from the committee that trusted her to review applications fairly.",
+          "best_word": "malfeasance",
+          "fit": {
+            "malfeasance": 0.96,
+            "malpractice": 0.32
+          },
+          "decisive_clue": "concealed conflict of interest",
+          "reason": "The detail about concealed conflict of interest supports malfeasance more strongly than malpractice.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malpractice": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Concealed conflict of interest leaves malfeasance the better fit.",
+      "feedback_deep": "The first clue is public grant abuse for private benefit. The later clue is concealed conflict of interest; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "malfeasance-malpractice_010",
+      "edge_id": "malfeasance__malpractice",
+      "domain": "architecture_consultation",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dev’s work on a client’s building plan?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "malfeasance-malpractice_010_b1",
+          "text": "Dev, a licensed architect, ignored the required safety review before approving a design.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.28,
+            "malpractice": 0.96
+          },
+          "decisive_clue": "professional review failure",
+          "reason": "The detail about professional review failure supports malpractice more strongly than malfeasance.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M3"
+          }
+        },
+        {
+          "id": "malfeasance-malpractice_010_b2",
+          "text": "His omission violated mandatory structural engineering codes, compromising the foundation drawings prepared for his private client.",
+          "best_word": "malpractice",
+          "fit": {
+            "malfeasance": 0.22,
+            "malpractice": 0.95
+          },
+          "decisive_clue": "substandard technical design execution",
+          "reason": "The detail about substandard technical design execution supports malpractice more strongly than malfeasance.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "malfeasance": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Substandard technical design execution makes malpractice an even clearer fit.",
+      "feedback_deep": "The first clue is professional review failure. The later clue is substandard technical design execution; that strengthens or preserves the same classification. Malfeasance abuses official authority or public trust; malpractice breaches standards of professional care or skill.",
+      "contrast_rule": "Malfeasance betrays entrusted authority; malpractice breaches professional care.",
+      "hints": {
+        "attention": "Check the person’s authority and the duty that was breached.",
+        "axis": "Whether the scene turns on capacity of actor.",
+        "contrast": "Malfeasance betrays entrusted authority; malpractice breaches professional care."
+      },
+      "qa": "revised"
+    }
+  ]
+}

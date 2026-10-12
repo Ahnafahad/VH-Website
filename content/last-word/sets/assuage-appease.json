@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "set_id": "assuage-appease",
+  "title": "assuage / appease",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[113]",
+    "source_pair_id": 456,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "assuage",
+      "sense": "Lessen distress, fear, worry, or physical discomfort.",
+      "connotation": "comforting, reassuring",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with appease when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "appease",
+      "sense": "Calm someone angry by giving in to a demand.",
+      "connotation": "conciliatory; sometimes compromising",
+      "register": "standard",
+      "misconceptions": [
+        "Confused with assuage when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "relief_versus_concession",
+      "description": "Assuage reduces distress; appease settles someone’s anger by conceding something."
+    }
+  ],
+  "edges": [
+    {
+      "id": "assuage__appease",
+      "a": "assuage",
+      "b": "appease",
+      "boundary_rule": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "clues_a": [
+        "Relieves a painful feeling.",
+        "Lessen distress, fear, worry, or physical discomfort."
+      ],
+      "clues_b": [
+        "Satisfies an angry party through concession.",
+        "Calm someone angry by giving in to a demand."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating assuage as though it always means appease.",
+        "M2": "Treating appease as though it always means assuage.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "assuage-appease_001",
+      "edge_id": "assuage__appease",
+      "domain": "rail_travel",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Amina’s message did for her worried friend?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "assuage-appease_001_b1",
+          "text": "Amina texted her friend that the lost train ticket had been found, and his hands stopped shaking.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.87,
+            "appease": 0.32
+          },
+          "decisive_clue": "his fear eased when he learned the ticket was safe",
+          "reason": "This establishes that his fear eased when he learned the ticket was safe.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        },
+        {
+          "id": "assuage-appease_001_b2",
+          "text": "The message included a photograph of the ticket with his name visible.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.93,
+            "appease": 0.32
+          },
+          "decisive_clue": "his fear eased when he learned the ticket was safe",
+          "reason": "The photo reinforces reassurance; nobody has been given a concession to stop angry demands.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        }
+      ],
+      "feedback_short": "His fear eased when he learned the ticket was safe; that detail favors assuage.",
+      "feedback_deep": "The photo reinforces reassurance; nobody has been given a concession to stop angry demands. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Notice what feeling the message changes.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "assuage-appease_002",
+      "edge_id": "assuage__appease",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Theo responded to his coach?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "assuage-appease_002_b1",
+          "text": "Theo agreed to attend an extra practice after his coach angrily demanded it.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.87
+          },
+          "decisive_clue": "he gave in to an angry demand",
+          "reason": "This establishes that he gave in to an angry demand.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        },
+        {
+          "id": "assuage-appease_002_b2",
+          "text": "He also surrendered the Saturday morning he had planned to keep free.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.93
+          },
+          "decisive_clue": "he gave in to an angry demand",
+          "reason": "Losing his free morning makes the concession more substantial; this is not simply relief from fear.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He gave in to an angry demand; that detail favors appease.",
+      "feedback_deep": "Losing his free morning makes the concession more substantial; this is not simply relief from fear. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Look at what Theo gives up and why.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "assuage-appease_003",
+      "edge_id": "assuage__appease",
+      "domain": "classroom",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Mei’s explanation did for her partner?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "assuage-appease_003_b1",
+          "text": "Mei explained that their group could repeat the presentation, and her partner finally stopped panicking.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.87,
+            "appease": 0.32
+          },
+          "decisive_clue": "her explanation eased a frightened partner’s distress",
+          "reason": "This establishes that her explanation eased a frightened partner’s distress.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        },
+        {
+          "id": "assuage-appease_003_b2",
+          "text": "She delivered the explanation through a voice message after class.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.93,
+            "appease": 0.32
+          },
+          "decisive_clue": "her explanation eased a frightened partner’s distress",
+          "reason": "Sending it by voice message does not change the fact that it relieved anxiety.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her explanation eased a frightened partner’s distress; that detail favors assuage.",
+      "feedback_deep": "Sending it by voice message does not change the fact that it relieved anxiety. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Focus on the partner’s feeling, not the format.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "assuage-appease_004",
+      "edge_id": "assuage__appease",
+      "domain": "family_evening",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Luis’s response to his sister?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "assuage-appease_004_b1",
+          "text": "Luis handed over the television remote when his sister shouted that he had taken her turn.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.87
+          },
+          "decisive_clue": "he yielded control in response to her anger",
+          "reason": "This establishes that he yielded control in response to her anger.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        },
+        {
+          "id": "assuage-appease_004_b2",
+          "text": "He let her choose the programme he had been waiting to watch.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.93
+          },
+          "decisive_clue": "he yielded control in response to her anger",
+          "reason": "Letting her choose reveals how much ground he yielded rather than merely offering emotional reassurance.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        }
+      ],
+      "feedback_short": "He yielded control in response to her anger; that detail favors appease.",
+      "feedback_deep": "Letting her choose reveals how much ground he yielded rather than merely offering emotional reassurance. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Identify the role of the remote in his response.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "assuage-appease_005",
+      "edge_id": "assuage__appease",
+      "domain": "online_community",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Priya’s decision about her post?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "assuage-appease_005_b1",
+          "text": "Priya deleted her review when furious subscribers demanded that she remove it.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.87
+          },
+          "decisive_clue": "she removed the post to satisfy an angry group",
+          "reason": "This establishes that she removed the post to satisfy an angry group.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        },
+        {
+          "id": "assuage-appease_005_b2",
+          "text": "The review had gathered thousands of likes before she took it down.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.93
+          },
+          "decisive_clue": "she removed the post to satisfy an angry group",
+          "reason": "Popularity may feel important, but the decisive fact remains yielding to a hostile demand.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        }
+      ],
+      "feedback_short": "She removed the post to satisfy an angry group; that detail favors appease.",
+      "feedback_deep": "Popularity may feel important, but the decisive fact remains yielding to a hostile demand. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Separate popularity from the reason for deletion.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "assuage-appease_006",
+      "edge_id": "assuage__appease",
+      "domain": "workplace",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Noah’s explanation did for his teammate?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "assuage-appease_006_b1",
+          "text": "Noah showed his anxious teammate a verified pay schedule; she stopped fearing that her wages were missing.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.87,
+            "appease": 0.32
+          },
+          "decisive_clue": "he reduced worry about missing wages",
+          "reason": "This establishes that he reduced worry about missing wages.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        },
+        {
+          "id": "assuage-appease_006_b2",
+          "text": "He explained it in a rushed whisper while their office was busy.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.93,
+            "appease": 0.32
+          },
+          "decisive_clue": "he reduced worry about missing wages",
+          "reason": "His rushed delivery does not change the relief supplied by accurate information.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        }
+      ],
+      "feedback_short": "He reduced worry about missing wages; that detail favors assuage.",
+      "feedback_deep": "His rushed delivery does not change the relief supplied by accurate information. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Look at the worry before and after the explanation.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "assuage-appease_007",
+      "edge_id": "assuage__appease",
+      "domain": "shopping",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Zara’s handling of the complaint?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "assuage-appease_007_b1",
+          "text": "Zara refunded an angry shopper who demanded his money back and threatened to call her manager.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.87
+          },
+          "decisive_clue": "she conceded the demanded refund to settle anger",
+          "reason": "This establishes that she conceded the demanded refund to settle anger.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        },
+        {
+          "id": "assuage-appease_007_b2",
+          "text": "Her refund was immediate, even though the store usually required three days.",
+          "best_word": "appease",
+          "fit": {
+            "assuage": 0.32,
+            "appease": 0.93
+          },
+          "decisive_clue": "she conceded the demanded refund to settle anger",
+          "reason": "The unusually rapid timing reinforces that she accommodated the demand.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "assuage": "M2"
+          }
+        }
+      ],
+      "feedback_short": "She conceded the demanded refund to settle anger; that detail favors appease.",
+      "feedback_deep": "The unusually rapid timing reinforces that she accommodated the demand. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Notice whether this is comfort or concession.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "assuage-appease_008",
+      "edge_id": "assuage__appease",
+      "domain": "neighbours",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kenji’s response to his neighbour?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "assuage-appease_008_b1",
+          "text": "Kenji listened after his neighbour described a frightening break-in; the neighbour gradually began speaking steadily.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.87,
+            "appease": 0.32
+          },
+          "decisive_clue": "his listening eased the neighbour’s fear",
+          "reason": "This establishes that his listening eased the neighbour’s fear.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        },
+        {
+          "id": "assuage-appease_008_b2",
+          "text": "Their conversation lasted beside the apartment building’s main entrance.",
+          "best_word": "assuage",
+          "fit": {
+            "assuage": 0.93,
+            "appease": 0.32
+          },
+          "decisive_clue": "his listening eased the neighbour’s fear",
+          "reason": "Where they stood changes neither the emotion nor the help given.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "appease": "M1"
+          }
+        }
+      ],
+      "feedback_short": "His listening eased the neighbour’s fear; that detail favors assuage.",
+      "feedback_deep": "Where they stood changes neither the emotion nor the help given. Assuage reduces distress; appease settles someone’s anger by conceding something.",
+      "contrast_rule": "Assuage eases distress; appease gives ground to anger.",
+      "hints": {
+        "attention": "Look at the emotion his response softened.",
+        "axis": "Assuage reduces distress; appease settles someone’s anger by conceding something.",
+        "contrast": "Assuage eases distress; appease gives ground to anger."
+      },
+      "qa": "pass"
+    }
+  ]
+}

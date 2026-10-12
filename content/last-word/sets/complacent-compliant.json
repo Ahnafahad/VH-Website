@@ -1,0 +1,756 @@
+{
+  "schema_version": 1,
+  "set_id": "complacent-compliant",
+  "title": "complacent / compliant",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[49]",
+    "source_pair_id": 269,
+    "qa": {
+      "pass": 8,
+      "revised": 2,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "complacent",
+      "sense": "satisfied inaction",
+      "connotation": "unfavorably self-satisfied",
+      "register": "fairly formal",
+      "misconceptions": [
+        "Mistaking satisfied neglect for simple rule-following"
+      ]
+    },
+    {
+      "word": "compliant",
+      "sense": "willing obedience",
+      "connotation": "cooperative or obedient",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Mistaking obedience for contentment"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "motivation",
+      "description": "Overconfidence about success versus willingness to follow authority"
+    }
+  ],
+  "edges": [
+    {
+      "id": "complacent__compliant",
+      "a": "complacent",
+      "b": "compliant",
+      "boundary_rule": "Complacent means confidence in existing success stops improvement or vigilance; compliant means obeying an instruction or rule, whether satisfied or not.",
+      "clues_a": [
+        "past success treated as proof nothing can go wrong"
+      ],
+      "clues_b": [
+        "follows explicit instruction even when questioning it"
+      ],
+      "irrelevant_clues": [
+        "neatness, politeness, past high marks"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking satisfied neglect for simple rule-following",
+        "M2": "Mistaking obedience for contentment",
+        "M3": "Assuming good results remove the need for checking"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "complacent-compliant_001",
+      "edge_id": "complacent__compliant",
+      "domain": "exam_preparation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Amina's approach to the situation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "complacent-compliant_001_b1",
+          "text": "After one excellent mock exam, Amina stopped revising, certain she had already secured admission.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.92,
+            "compliant": 0.2
+          },
+          "decisive_clue": "stopped studying because one success felt sufficient",
+          "reason": "The clue 'stopped studying because one success felt sufficient' points to satisfied inaction, not willing obedience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        },
+        {
+          "id": "complacent-compliant_001_b2",
+          "text": "She still kept every revision notebook arranged neatly on her desk.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.95,
+            "compliant": 0.16
+          },
+          "decisive_clue": "tidy notebooks do not mean she resumed preparing",
+          "reason": "The detail 'tidy notebooks do not mean she resumed preparing' leaves satisfied inaction as the better fit, not willing obedience.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Tidy notebooks do not mean she resumed preparing; complacent still fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"stopped studying because one success felt sufficient\"; the next is \"tidy notebooks do not mean she resumed preparing\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Look at why the studying stopped.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "complacent-compliant_002",
+      "edge_id": "complacent__compliant",
+      "domain": "school_club_signup",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Mateo's approach to the situation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "complacent-compliant_002_b1",
+          "text": "Mateo kept last year's signup method after a successful event, without checking whether it needed changes.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.92,
+            "compliant": 0.2
+          },
+          "decisive_clue": "used a familiar method without checking improvements",
+          "reason": "The clue 'used a familiar method without checking improvements' points to satisfied inaction, not willing obedience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        },
+        {
+          "id": "complacent-compliant_002_b2",
+          "text": "When the faculty adviser handed him a revised signup protocol with mandatory changes, he immediately followed every new rule.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.16,
+            "compliant": 0.95
+          },
+          "decisive_clue": "strictly followed the adviser's mandatory new protocol",
+          "reason": "The new clue 'strictly followed the adviser's mandatory new protocol' shifts the interpretation to willing obedience, rather than satisfied inaction.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Strictly followed the adviser's mandatory new protocol; now compliant fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"used a familiar method without checking improvements\"; the next is \"strictly followed the adviser's mandatory new protocol\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Ask whether keeping or changing the method was his own satisfaction or following an authority's rule.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "complacent-compliant_003",
+      "edge_id": "complacent__compliant",
+      "domain": "library_desk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mei's approach to the situation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "complacent-compliant_003_b1",
+          "text": "Mei returned all borrowed books at the times printed on their loan slips.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.2,
+            "compliant": 0.92
+          },
+          "decisive_clue": "followed written borrowing requirements",
+          "reason": "The clue 'followed written borrowing requirements' points to willing obedience, not satisfied inaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        },
+        {
+          "id": "complacent-compliant_003_b2",
+          "text": "Even when she disagreed with a new deadline, she observed it because the library required it.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.16,
+            "compliant": 0.95
+          },
+          "decisive_clue": "obeyed a rule despite disagreeing with it",
+          "reason": "The detail 'obeyed a rule despite disagreeing with it' leaves willing obedience as the better fit, not satisfied inaction.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Obeyed a rule despite disagreeing with it; compliant still fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"followed written borrowing requirements\"; the next is \"obeyed a rule despite disagreeing with it\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Notice what makes her return the books.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "complacent-compliant_004",
+      "edge_id": "complacent__compliant",
+      "domain": "football_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Kwame's approach to the situation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "complacent-compliant_004_b1",
+          "text": "Kwame ran every drill exactly as his coach instructed during practice.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.2,
+            "compliant": 0.92
+          },
+          "decisive_clue": "carried out instructions from his coach",
+          "reason": "The clue 'carried out instructions from his coach' points to willing obedience, not satisfied inaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        },
+        {
+          "id": "complacent-compliant_004_b2",
+          "text": "He thought some drills were repetitive but completed them as directed.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.16,
+            "compliant": 0.95
+          },
+          "decisive_clue": "personal disagreement did not stop obedience",
+          "reason": "The detail 'personal disagreement did not stop obedience' leaves willing obedience as the better fit, not satisfied inaction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Personal disagreement did not stop obedience; compliant still fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"carried out instructions from his coach\"; the next is \"personal disagreement did not stop obedience\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Check for an authority giving instructions.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "complacent-compliant_005",
+      "edge_id": "complacent__compliant",
+      "domain": "family_shopping_list",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Rosa's approach to the situation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "complacent-compliant_005_b1",
+          "text": "Rosa checked each item off the family shopping list exactly as her parents requested.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.2,
+            "compliant": 0.92
+          },
+          "decisive_clue": "followed the list as requested",
+          "reason": "The clue 'followed the list as requested' points to willing obedience, not satisfied inaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        },
+        {
+          "id": "complacent-compliant_005_b2",
+          "text": "After several easy trips, she stopped checking quantities at all, sure the old list could never be wrong.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.95,
+            "compliant": 0.16
+          },
+          "decisive_clue": "past success led her to stop checking for problems",
+          "reason": "The new clue 'past success led her to stop checking for problems' shifts the interpretation to satisfied inaction, rather than willing obedience.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Past success led her to stop checking for problems; now complacent fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"followed the list as requested\"; the next is \"past success led her to stop checking for problems\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Does she still pay attention to whether the list works?",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "complacent-compliant_006",
+      "edge_id": "complacent__compliant",
+      "domain": "online_store",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Yuki's approach to the situation?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "complacent-compliant_006_b1",
+          "text": "Strong early reviews convinced Yuki that her online store needed no more improvement, so she stopped reading complaints.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.92,
+            "compliant": 0.2
+          },
+          "decisive_clue": "assumed early praise made improvements unnecessary",
+          "reason": "The clue 'assumed early praise made improvements unnecessary' points to satisfied inaction, not willing obedience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        },
+        {
+          "id": "complacent-compliant_006_b2",
+          "text": "She continued to answer messages politely within an hour.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.95,
+            "compliant": 0.16
+          },
+          "decisive_clue": "polite replies do not undo her refusal to examine problems",
+          "reason": "The detail 'polite replies do not undo her refusal to examine problems' leaves satisfied inaction as the better fit, not willing obedience.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Polite replies do not undo her refusal to examine problems; complacent still fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"assumed early praise made improvements unnecessary\"; the next is \"polite replies do not undo her refusal to examine problems\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Separate good manners from self-satisfied inaction.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "complacent-compliant_007",
+      "edge_id": "complacent__compliant",
+      "domain": "after-school_workshop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Daria's approach to the situation?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "complacent-compliant_007_b1",
+          "text": "Daria followed the workshop's instructions to clean and return every tool before leaving.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.2,
+            "compliant": 0.92
+          },
+          "decisive_clue": "followed established tool-return rules",
+          "reason": "The clue 'followed established tool-return rules' points to willing obedience, not satisfied inaction.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        },
+        {
+          "id": "complacent-compliant_007_b2",
+          "text": "When friends offered a quicker shortcut, she kept using the required return procedure.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.16,
+            "compliant": 0.95
+          },
+          "decisive_clue": "stayed with the procedure even when a shortcut appeared",
+          "reason": "The detail 'stayed with the procedure even when a shortcut appeared' leaves willing obedience as the better fit, not satisfied inaction.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Stayed with the procedure even when a shortcut appeared; compliant still fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"followed established tool-return rules\"; the next is \"stayed with the procedure even when a shortcut appeared\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Focus on what determined her method.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "complacent-compliant_008",
+      "edge_id": "complacent__compliant",
+      "domain": "household_budget",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hassan's approach to the situation?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "complacent-compliant_008_b1",
+          "text": "One month without overspending made Hassan stop checking the household budget, convinced it was perfect.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.92,
+            "compliant": 0.2
+          },
+          "decisive_clue": "treated short success as proof of perfection",
+          "reason": "The clue 'treated short success as proof of perfection' points to satisfied inaction, not willing obedience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        },
+        {
+          "id": "complacent-compliant_008_b2",
+          "text": "When a forgotten bill arrived, he still insisted that no adjustment could possibly be needed.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.95,
+            "compliant": 0.16
+          },
+          "decisive_clue": "ignored a clear warning because he trusted the old plan",
+          "reason": "The detail 'ignored a clear warning because he trusted the old plan' leaves satisfied inaction as the better fit, not willing obedience.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ignored a clear warning because he trusted the old plan; complacent still fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"treated short success as proof of perfection\"; the next is \"ignored a clear warning because he trusted the old plan\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "What does he do when evidence of a problem appears?",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "complacent-compliant_009",
+      "edge_id": "complacent__compliant",
+      "domain": "train_journey",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Noor's approach to the situation?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "complacent-compliant_009_b1",
+          "text": "After several smooth trips, Noor strolled toward the familiar boarding platform without bothering to check the updated schedule board.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.92,
+            "compliant": 0.2
+          },
+          "decisive_clue": "relied on familiar past success without checking updates",
+          "reason": "The clue 'relied on familiar past success without checking updates' points to satisfied inaction, not willing obedience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        },
+        {
+          "id": "complacent-compliant_009_b2",
+          "text": "When station staff announced an emergency diversion and ordered passengers into line, she obediently joined the queue and followed their exact instructions.",
+          "best_word": "compliant",
+          "fit": {
+            "complacent": 0.16,
+            "compliant": 0.95
+          },
+          "decisive_clue": "strictly obeyed staff orders during the diversion",
+          "reason": "The new clue 'strictly obeyed staff orders during the diversion' shifts the interpretation to willing obedience, rather than satisfied inaction.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "complacent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Strictly obeyed staff orders during the diversion; now compliant fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"relied on familiar past success without checking updates\"; the next is \"strictly obeyed staff orders during the diversion\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Notice how she responds once authority steps in with instructions.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "complacent-compliant_010",
+      "edge_id": "complacent__compliant",
+      "domain": "hotel_housekeeping",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Salma's approach to the situation?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "complacent-compliant_010_b1",
+          "text": "Salma dismissed every suggestion to improve her room-checking routine because last month's scores were high.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.92,
+            "compliant": 0.2
+          },
+          "decisive_clue": "considered earlier scores sufficient",
+          "reason": "The clue 'considered earlier scores sufficient' points to satisfied inaction, not willing obedience.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        },
+        {
+          "id": "complacent-compliant_010_b2",
+          "text": "She wasn't obeying management: she herself insisted those scores proved that no hidden problem could exist.",
+          "best_word": "complacent",
+          "fit": {
+            "complacent": 0.95,
+            "compliant": 0.16
+          },
+          "decisive_clue": "self-satisfaction, not obedience, explained her refusal to change",
+          "reason": "The detail 'self-satisfaction, not obedience, explained her refusal to change' leaves satisfied inaction as the better fit, not willing obedience.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "compliant": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Self-satisfaction, not obedience, explained her refusal to change; complacent still fits best.",
+      "feedback_deep": "complacent means so satisfied that needed improvement or vigilance stops; compliant means ready to follow rules or an authority. The first clue is \"considered earlier scores sufficient\"; the next is \"self-satisfaction, not obedience, explained her refusal to change\". Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "contrast_rule": "Complacency rests on satisfaction; compliance rests on following a requirement.",
+      "hints": {
+        "attention": "Identify where her confidence comes from.",
+        "axis": "Overconfidence about success versus willingness to follow authority",
+        "contrast": "Complacency rests on satisfaction; compliance rests on following a requirement."
+      },
+      "qa": "pass"
+    }
+  ]
+}

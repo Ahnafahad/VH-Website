@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "insinuate-imply",
+  "title": "insinuate / imply",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[158]",
+    "source_pair_id": 670,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "insinuate",
+      "sense": "indirectly suggest an unpleasant accusation or criticism",
+      "connotation": "negative",
+      "register": "standard to formal",
+      "misconceptions": [
+        "An indirect suggestion is not automatically an attack."
+      ]
+    },
+    {
+      "word": "imply",
+      "sense": "communicate a neutral or other meaning without saying it outright",
+      "connotation": "neutral",
+      "register": "standard",
+      "misconceptions": [
+        "An indirect accusation carries a negative charge beyond a neutral inference."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "negative_charge_of_suggestion",
+      "description": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly."
+    }
+  ],
+  "edges": [
+    {
+      "id": "insinuate__imply",
+      "a": "insinuate",
+      "b": "imply",
+      "boundary_rule": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly.",
+      "clues_a": [
+        "unstated accusation of cheating",
+        "indirect slur on honesty",
+        "a suspicious remark about motives"
+      ],
+      "clues_b": [
+        "unstated timing information",
+        "indirect invitation",
+        "a gentle unspoken request"
+      ],
+      "irrelevant_clues": [
+        "the speaker’s volume",
+        "the number of listeners",
+        "whether the message is short"
+      ],
+      "misconceptions": {
+        "M1": "An indirect suggestion is not automatically an attack.",
+        "M2": "An indirect accusation carries a negative charge beyond a neutral inference.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "insinuate-imply_001",
+      "edge_id": "insinuate__imply",
+      "domain": "team_budget",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Nabil communicated?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "insinuate-imply_001_b1",
+          "text": "Nabil looked at a missing receipt and remarked that some people were oddly comfortable handling club money alone.",
+          "best_word": "insinuate",
+          "fit": {
+            "insinuate": 0.93,
+            "imply": 0.2
+          },
+          "decisive_clue": "indirect suspicion of dishonest handling of money",
+          "reason": "The statement casts doubt on someone’s integrity without an open accusation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imply": "M1"
+          }
+        },
+        {
+          "id": "insinuate-imply_001_b2",
+          "text": "He made the remark while staring at the treasurer who had last handled the cash box.",
+          "best_word": "insinuate",
+          "fit": {
+            "insinuate": 0.95,
+            "imply": 0.15
+          },
+          "decisive_clue": "indirect suspicion directed at a particular person",
+          "reason": "His attention to the treasurer sharpens the negative suggestion.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imply": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is indirect suspicion directed at a particular person; his attention to the treasurer sharpens the negative suggestion.",
+      "feedback_deep": "Insinuate concerns indirectly suggest an unpleasant accusation or criticism; imply concerns communicate a neutral or other meaning without saying it outright. His attention to the treasurer sharpens the negative suggestion.",
+      "contrast_rule": "Insinuate: unstated accusation of cheating; imply: unstated timing information.",
+      "hints": {
+        "attention": "What accusation is left unstated?",
+        "axis": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly.",
+        "contrast": "Insinuate: unstated accusation of cheating; imply: unstated timing information."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insinuate-imply_002",
+      "edge_id": "insinuate__imply",
+      "domain": "birthday_invitation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Tessa communicated?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "insinuate-imply_002_b1",
+          "text": "Tessa told her cousin that Saturday’s dinner table had one empty chair and asked whether he was free.",
+          "best_word": "imply",
+          "fit": {
+            "insinuate": 0.2,
+            "imply": 0.93
+          },
+          "decisive_clue": "an unstated invitation conveyed by an empty seat",
+          "reason": "The remark indirectly invites him to dinner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insinuate": "M2"
+          }
+        },
+        {
+          "id": "insinuate-imply_002_b2",
+          "text": "She also mentioned there would be homemade noodles.",
+          "best_word": "imply",
+          "fit": {
+            "insinuate": 0.15,
+            "imply": 0.95
+          },
+          "decisive_clue": "an unstated invitation conveyed by an empty seat",
+          "reason": "The menu does not turn the invitation into an accusation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insinuate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is an unstated invitation conveyed by an empty seat; the menu does not turn the invitation into an accusation.",
+      "feedback_deep": "Insinuate concerns indirectly suggest an unpleasant accusation or criticism; imply concerns communicate a neutral or other meaning without saying it outright. The menu does not turn the invitation into an accusation.",
+      "contrast_rule": "Insinuate: unstated accusation of cheating; imply: unstated timing information.",
+      "hints": {
+        "attention": "What unstated message does the remark carry?",
+        "axis": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly.",
+        "contrast": "Insinuate: unstated accusation of cheating; imply: unstated timing information."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insinuate-imply_003",
+      "edge_id": "insinuate__imply",
+      "domain": "exam_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Aziz communicated?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "insinuate-imply_003_b1",
+          "text": "Aziz said the highest score was surprising and wondered whether one student had received private access to the answer sheets.",
+          "best_word": "insinuate",
+          "fit": {
+            "insinuate": 0.95,
+            "imply": 0.15
+          },
+          "decisive_clue": "a veiled suspicion of improper access to answer sheets",
+          "reason": "By wondering aloud about private access, he indirectly casts suspicion on the student's result.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imply": "M1"
+          }
+        },
+        {
+          "id": "insinuate-imply_003_b2",
+          "text": "He delivered the remark in a friendly voice.",
+          "best_word": "insinuate",
+          "fit": {
+            "insinuate": 0.95,
+            "imply": 0.15
+          },
+          "decisive_clue": "the same veiled suspicion of improper advantage",
+          "reason": "A friendly tone does not remove the accusation embedded in the remark.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imply": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is a veiled suspicion of improper access; a friendly tone does not remove the accusation embedded in the remark.",
+      "feedback_deep": "Insinuate indirectly suggests an unpleasant accusation or criticism; imply communicates a meaning indirectly without necessarily making an accusation. Wondering aloud about private access casts suspicion on the student's result, and a friendly tone does not remove that accusation.",
+      "contrast_rule": "Insinuate: an indirect accusation of cheating; imply: an indirect neutral meaning such as timing or readiness.",
+      "hints": {
+        "attention": "Listen for the indirect suspicion rather than the speaker's tone.",
+        "axis": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly.",
+        "contrast": "Insinuate: an indirect accusation of cheating; imply: an indirect neutral meaning such as timing or readiness."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "insinuate-imply_004",
+      "edge_id": "insinuate__imply",
+      "domain": "shop_closing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Greta communicated?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "insinuate-imply_004_b1",
+          "text": "Greta said the shop lights would be turned off in ten minutes while a customer browsed.",
+          "best_word": "imply",
+          "fit": {
+            "insinuate": 0.2,
+            "imply": 0.93
+          },
+          "decisive_clue": "a closing-time message conveyed without a direct command",
+          "reason": "Her words indirectly ask the customer to finish.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insinuate": "M2"
+          }
+        },
+        {
+          "id": "insinuate-imply_004_b2",
+          "text": "She placed a shopping basket by the checkout as she spoke.",
+          "best_word": "imply",
+          "fit": {
+            "insinuate": 0.15,
+            "imply": 0.95
+          },
+          "decisive_clue": "a closing-time message supported by checkout preparation",
+          "reason": "The basket reinforces the practical message; no one’s character is attacked.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insinuate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is a closing-time message supported by checkout preparation; the basket reinforces the practical message; no one’s character is attacked.",
+      "feedback_deep": "Insinuate concerns indirectly suggest an unpleasant accusation or criticism; imply concerns communicate a neutral or other meaning without saying it outright. The basket reinforces the practical message; no one’s character is attacked.",
+      "contrast_rule": "Insinuate: unstated accusation of cheating; imply: unstated timing information.",
+      "hints": {
+        "attention": "What action is she encouraging without directly requesting it?",
+        "axis": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly.",
+        "contrast": "Insinuate: unstated accusation of cheating; imply: unstated timing information."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insinuate-imply_005",
+      "edge_id": "insinuate__imply",
+      "domain": "flatmate_chores",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Kim communicated?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "insinuate-imply_005_b1",
+          "text": "Kim looked at the clean kitchen and said, “Someone finally remembered we all live here.”",
+          "best_word": "insinuate",
+          "fit": {
+            "insinuate": 0.93,
+            "imply": 0.2
+          },
+          "decisive_clue": "an indirect criticism of a flatmate’s past neglect",
+          "reason": "The praise is pointed enough to suggest blame.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imply": "M1"
+          }
+        },
+        {
+          "id": "insinuate-imply_005_b2",
+          "text": "She was speaking to the flatmate who had skipped cleaning all week.",
+          "best_word": "insinuate",
+          "fit": {
+            "insinuate": 0.95,
+            "imply": 0.15
+          },
+          "decisive_clue": "an indirect criticism of a flatmate’s past neglect",
+          "reason": "Addressing the responsible flatmate reinforces the critical meaning.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imply": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is an indirect criticism of a flatmate’s past neglect; addressing the responsible flatmate reinforces the critical meaning.",
+      "feedback_deep": "Insinuate concerns indirectly suggest an unpleasant accusation or criticism; imply concerns communicate a neutral or other meaning without saying it outright. Addressing the responsible flatmate reinforces the critical meaning.",
+      "contrast_rule": "Insinuate: unstated accusation of cheating; imply: unstated timing information.",
+      "hints": {
+        "attention": "Does the sentence quietly criticize someone?",
+        "axis": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly.",
+        "contrast": "Insinuate: unstated accusation of cheating; imply: unstated timing information."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "insinuate-imply_006",
+      "edge_id": "insinuate__imply",
+      "domain": "travel_plans",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Lucia communicated?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "insinuate-imply_006_b1",
+          "text": "Lucia said her suitcase was already packed when her friends discussed leaving early.",
+          "best_word": "imply",
+          "fit": {
+            "insinuate": 0.2,
+            "imply": 0.93
+          },
+          "decisive_clue": "an indirect signal that she is ready to leave",
+          "reason": "She conveys readiness without declaring it directly.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "insinuate": "M2"
+          }
+        },
+        {
+          "id": "insinuate-imply_006_b2",
+          "text": "She held up her train ticket while speaking.",
+          "best_word": "imply",
+          "fit": {
+            "insinuate": 0.15,
+            "imply": 0.95
+          },
+          "decisive_clue": "an indirect signal that she is ready to leave",
+          "reason": "Showing a ticket confirms that neutral message, not a criticism.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "insinuate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is an indirect signal that she is ready to leave; showing a ticket confirms that neutral message, not a criticism.",
+      "feedback_deep": "Insinuate concerns indirectly suggest an unpleasant accusation or criticism; imply concerns communicate a neutral or other meaning without saying it outright. Showing a ticket confirms that neutral message, not a criticism.",
+      "contrast_rule": "Insinuate: unstated accusation of cheating; imply: unstated timing information.",
+      "hints": {
+        "attention": "What does the packing detail communicate?",
+        "axis": "To insinuate is to suggest something unpleasant or accusatory indirectly; to imply is simply to communicate something indirectly.",
+        "contrast": "Insinuate: unstated accusation of cheating; imply: unstated timing information."
+      },
+      "qa": "pass"
+    }
+  ]
+}

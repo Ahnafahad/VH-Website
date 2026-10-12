@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "improvident-imprudent",
+  "title": "improvident / imprudent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[178]",
+    "source_pair_id": 795,
+    "qa": {
+      "pass": 7,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "improvident",
+      "sense": "Neglecting future needs, especially through careless use of money or resources.",
+      "connotation": "disapproving",
+      "register": "formal",
+      "misconceptions": [
+        "Every risky choice is improvident."
+      ]
+    },
+    {
+      "word": "imprudent",
+      "sense": "Showing poor judgment or taking an unwise risk in general.",
+      "connotation": "disapproving",
+      "register": "standard / formal",
+      "misconceptions": [
+        "Bad saving habits are merely generic imprudence, with no distinctive future-needs issue."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "future_provision_vs_broad_risk",
+      "description": "Whether bad judgment specifically neglects future necessities."
+    }
+  ],
+  "edges": [
+    {
+      "id": "improvident__imprudent",
+      "a": "improvident",
+      "b": "imprudent",
+      "boundary_rule": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason.",
+      "clues_a": [
+        "uses savings earmarked for future needs",
+        "no reserves for predictable expense",
+        "spends supplies needed later"
+      ],
+      "clues_b": [
+        "immediate safety risk",
+        "careless disclosure",
+        "rash decision despite warning"
+      ],
+      "irrelevant_clues": [
+        "price tag alone",
+        "how loudly someone acts",
+        "another person’s opinion"
+      ],
+      "misconceptions": {
+        "M1": "Every risky choice is improvident.",
+        "M2": "Bad saving habits are merely generic imprudence, with no distinctive future-needs issue.",
+        "M3": "A high price automatically proves a failure to plan for the future."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "improvident-imprudent_001",
+      "edge_id": "improvident__imprudent",
+      "domain": "home_budgeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Nadia’s budgeting choice?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "improvident-imprudent_001_b1",
+          "text": "Nadia spends the money she had set aside for next month’s rent on a weekend trip.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.9,
+            "imprudent": 0.24
+          },
+          "decisive_clue": "uses money reserved for a future bill",
+          "reason": "The situation shows uses money reserved for a future bill, which points to improvident.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        },
+        {
+          "id": "improvident-imprudent_001_b2",
+          "text": "Her rent payment is due in twelve days, and she has no other savings.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.94,
+            "imprudent": 0.21
+          },
+          "decisive_clue": "leaves a predictable essential bill unfunded",
+          "reason": "The failure is not just a questionable purchase; it leaves a known future need uncovered.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Leaves a predictable essential bill unfunded: improvident fits better.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, the failure is not just a questionable purchase; it leaves a known future need uncovered.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "Ask what will happen when the bill arrives.",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "improvident-imprudent_002",
+      "edge_id": "improvident__imprudent",
+      "domain": "school_corridor",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Tariq’s decision by the stairs?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "improvident-imprudent_002_b1",
+          "text": "Tariq slides down a wet stair rail even after seeing someone nearly fall.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.23,
+            "imprudent": 0.9
+          },
+          "decisive_clue": "takes an immediate safety risk despite warning",
+          "reason": "The situation shows takes an immediate safety risk despite warning, which points to imprudent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        },
+        {
+          "id": "improvident-imprudent_002_b2",
+          "text": "He takes the risk a few minutes before his first lesson.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.22,
+            "imprudent": 0.91
+          },
+          "decisive_clue": "takes an immediate safety risk despite warning",
+          "reason": "The added detail does not change the original clue: takes an immediate safety risk despite warning.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Takes an immediate safety risk despite warning still decides; the added timing changes nothing.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, the timing of his lesson is incidental; the unwise physical risk is the relevant fact.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "Focus on the physical hazard rather than the time of day.",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "improvident-imprudent_003",
+      "edge_id": "improvident__imprudent",
+      "domain": "festival_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Lucia’s use of supplies?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "improvident-imprudent_003_b1",
+          "text": "Lucia gives away all the cups for a celebration although another group needs them the next morning.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.9,
+            "imprudent": 0.24
+          },
+          "decisive_clue": "ignores the next group’s predictable supply need",
+          "reason": "The situation shows ignores the next group’s predictable supply need, which points to improvident.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        },
+        {
+          "id": "improvident-imprudent_003_b2",
+          "text": "She knew the next group had no time to buy replacements.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.94,
+            "imprudent": 0.21
+          },
+          "decisive_clue": "uses up resources despite knowing they will be needed later",
+          "reason": "Her generosity now fails to account for a definite later need.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Uses up resources despite knowing they will be needed later: improvident fits better.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, her generosity now fails to account for a definite later need.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "Which future need has been left unmet?",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "improvident-imprudent_004",
+      "edge_id": "improvident__imprudent",
+      "domain": "online_account",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Arjun’s post?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "improvident-imprudent_004_b1",
+          "text": "Arjun publishes his home entry code on a public page so friends can collect a parcel.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.24,
+            "imprudent": 0.9
+          },
+          "decisive_clue": "exposes a security code to strangers",
+          "reason": "The situation shows exposes a security code to strangers, which points to imprudent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        },
+        {
+          "id": "improvident-imprudent_004_b2",
+          "text": "The message uses a colourful background and a cheerful greeting.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.21,
+            "imprudent": 0.94
+          },
+          "decisive_clue": "exposes a security code to strangers",
+          "reason": "The added detail does not change the original clue: exposes a security code to strangers.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Exposes a security code to strangers still decides; the added detail changes nothing.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, friendly presentation does nothing to reduce the serious risk of sharing the code.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "What matters more than its appearance?",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "improvident-imprudent_005",
+      "edge_id": "improvident__imprudent",
+      "domain": "shopping_trip",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hana’s purchase?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "improvident-imprudent_005_b1",
+          "text": "Hana empties her emergency savings to buy an extra television while her car still needs repairs.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.9,
+            "imprudent": 0.23
+          },
+          "decisive_clue": "spends emergency reserves while a known cost remains",
+          "reason": "The situation shows spends emergency reserves while a known cost remains, which points to improvident.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        },
+        {
+          "id": "improvident-imprudent_005_b2",
+          "text": "The television comes with free delivery and a two-year warranty.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.91,
+            "imprudent": 0.22
+          },
+          "decisive_clue": "spends emergency reserves while a known cost remains",
+          "reason": "The added detail does not change the original clue: spends emergency reserves while a known cost remains.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Spends emergency reserves while a known cost remains still decides; the added detail changes nothing.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, a warranty does not replace the savings needed for the repair.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "Think about the money she will need later.",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "improvident-imprudent_006",
+      "edge_id": "improvident__imprudent",
+      "domain": "work_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Benedict’s remark to a customer?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "improvident-imprudent_006_b1",
+          "text": "Benedict promises a refund without first checking whether he is allowed to give one.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.24,
+            "imprudent": 0.9
+          },
+          "decisive_clue": "makes an unsupported promise",
+          "reason": "The situation shows makes an unsupported promise, which points to imprudent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        },
+        {
+          "id": "improvident-imprudent_006_b2",
+          "text": "His manager had specifically warned staff not to make promises on the company’s behalf.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.21,
+            "imprudent": 0.94
+          },
+          "decisive_clue": "ignores an explicit warning before committing the company",
+          "reason": "The error is a rash promise, not an inability to save for later needs.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Ignores an explicit warning before committing the company: imprudent fits better.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, the error is a rash promise, not an inability to save for later needs.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "Check the judgment behind his promise.",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "improvident-imprudent_007",
+      "edge_id": "improvident__imprudent",
+      "domain": "camping_trip",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Fatima’s packing decision?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "improvident-imprudent_007_b1",
+          "text": "Fatima uses all the drinking water on the first afternoon despite knowing the campsite has no tap.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.9,
+            "imprudent": 0.23
+          },
+          "decisive_clue": "uses a limited resource needed for later days",
+          "reason": "The situation shows uses a limited resource needed for later days, which points to improvident.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        },
+        {
+          "id": "improvident-imprudent_007_b2",
+          "text": "She drinks the water from a bright blue bottle.",
+          "best_word": "improvident",
+          "fit": {
+            "improvident": 0.91,
+            "imprudent": 0.22
+          },
+          "decisive_clue": "uses a limited resource needed for later days",
+          "reason": "The added detail does not change the original clue: uses a limited resource needed for later days.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "imprudent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Uses a limited resource needed for later days still decides; the added detail changes nothing.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, neat packing cannot undo the absence of water for the remaining trip.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "What did she fail to reserve?",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "improvident-imprudent_008",
+      "edge_id": "improvident__imprudent",
+      "domain": "cycling_practice",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mateo’s choice on his bike?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "improvident-imprudent_008_b1",
+          "text": "Mateo rides through a busy crossing while looking down to change his music.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.24,
+            "imprudent": 0.9
+          },
+          "decisive_clue": "ignores an immediate traffic hazard",
+          "reason": "The situation shows ignores an immediate traffic hazard, which points to imprudent.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        },
+        {
+          "id": "improvident-imprudent_008_b2",
+          "text": "He had seen the crossing signal change but continued without looking up.",
+          "best_word": "imprudent",
+          "fit": {
+            "improvident": 0.21,
+            "imprudent": 0.94
+          },
+          "decisive_clue": "continues despite the crossing signal and divided attention",
+          "reason": "His decision is dangerous now; its defining problem is not provision for future necessities.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "improvident": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Continues despite the crossing signal and divided attention: imprudent fits better.",
+      "feedback_deep": "Improvident choices fail to provide for later needs; imprudent choices can be unwise for any reason. Here, his decision is dangerous now; its defining problem is not provision for future necessities.",
+      "contrast_rule": "Improvident forgets tomorrow; imprudent misjudges the risk.",
+      "hints": {
+        "attention": "Look for an immediate hazard.",
+        "axis": "Whether bad judgment specifically neglects future necessities.",
+        "contrast": "Improvident forgets tomorrow; imprudent misjudges the risk."
+      },
+      "qa": "pass"
+    }
+  ]
+}

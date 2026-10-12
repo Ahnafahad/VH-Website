@@ -1,0 +1,549 @@
+{
+  "schema_version": 1,
+  "set_id": "nebulous-ambiguous",
+  "title": "nebulous / ambiguous",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[79]",
+    "source_pair_id": 333,
+    "qa": {
+      "pass": 7,
+      "revised": 0,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "nebulous",
+      "sense": "indefinitely formed",
+      "connotation": "negative, hazy",
+      "register": "formal",
+      "misconceptions": [
+        "Calling unformed content a choice among meanings"
+      ]
+    },
+    {
+      "word": "ambiguous",
+      "sense": "multiple interpretations",
+      "connotation": "neutral to negative",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Calling two clear interpretations mere lack of detail"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "source_of_uncertainty",
+      "description": "Unformed content versus alternative specific readings"
+    }
+  ],
+  "edges": [
+    {
+      "id": "nebulous__ambiguous",
+      "a": "nebulous",
+      "b": "ambiguous",
+      "boundary_rule": "Nebulous describes an idea too vague or unformed to pin down; ambiguous describes wording or evidence that supports more than one distinct interpretation.",
+      "clues_a": [
+        "no specific time, method or content"
+      ],
+      "clues_b": [
+        "two clear possible meanings of the same words"
+      ],
+      "irrelevant_clues": [
+        "long sentences, polished slides, confident delivery"
+      ],
+      "misconceptions": {
+        "M1": "Calling unformed content a choice among meanings",
+        "M2": "Calling two clear interpretations mere lack of detail",
+        "M3": "Assuming polished language guarantees precision"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "nebulous-ambiguous_001",
+      "edge_id": "nebulous__ambiguous",
+      "domain": "small_business_proposal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Nabil communicates?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "nebulous-ambiguous_001_b1",
+          "text": "Nabil's proposal promised to 'do something exciting with food someday' but identified no product or customers.",
+          "best_word": "nebulous",
+          "fit": {
+            "nebulous": 0.92,
+            "ambiguous": 0.2
+          },
+          "decisive_clue": "proposal lacked any concrete product or plan",
+          "reason": "The clue 'proposal lacked any concrete product or plan' points to indefinitely formed, not multiple interpretations.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "nebulous-ambiguous_001_b2",
+          "text": "He made attractive slides yet still offered no actual business plan.",
+          "best_word": "nebulous",
+          "fit": {
+            "nebulous": 0.95,
+            "ambiguous": 0.16
+          },
+          "decisive_clue": "polished slides supplied no missing substance",
+          "reason": "The detail 'polished slides supplied no missing substance' leaves indefinitely formed as the better fit, not multiple interpretations.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Polished slides supplied no missing substance; nebulous still fits best.",
+      "feedback_deep": "nebulous means vague, shapeless or insufficiently developed; ambiguous means capable of being understood in two or more ways. The first clue is \"proposal lacked any concrete product or plan\"; the next is \"polished slides supplied no missing substance\". Nebulous has no firm outline; ambiguous has competing readings.",
+      "contrast_rule": "Nebulous has no firm outline; ambiguous has competing readings.",
+      "hints": {
+        "attention": "Is the idea unfinished or readable in two specific ways?",
+        "axis": "Unformed content versus alternative specific readings",
+        "contrast": "Nebulous has no firm outline; ambiguous has competing readings."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nebulous-ambiguous_002",
+      "edge_id": "nebulous__ambiguous",
+      "domain": "party_invitation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes what Leila communicates?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "nebulous-ambiguous_002_b1",
+          "text": "Leila's invitation simply said, 'Come around sometime,' without a day or meeting place.",
+          "best_word": "nebulous",
+          "fit": {
+            "nebulous": 0.92,
+            "ambiguous": 0.2
+          },
+          "decisive_clue": "no definite time or meeting place",
+          "reason": "The clue 'no definite time or meeting place' points to indefinitely formed, not multiple interpretations.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "nebulous-ambiguous_002_b2",
+          "text": "She updated it to 'Meet me at the bank at six,' leaving unclear whether she meant the riverbank or the bank branch.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.16,
+            "ambiguous": 0.95
+          },
+          "decisive_clue": "updated wording now had two concrete possible locations",
+          "reason": "The new clue 'updated wording now had two concrete possible locations' shifts the interpretation to multiple interpretations, rather than indefinitely formed.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Updated wording now had two concrete possible locations; now ambiguous fits best.",
+      "feedback_deep": "nebulous means vague, shapeless or insufficiently developed; ambiguous means capable of being understood in two or more ways. The first clue is \"no definite time or meeting place\"; the next is \"updated wording now had two concrete possible locations\". Nebulous has no firm outline; ambiguous has competing readings.",
+      "contrast_rule": "Nebulous has no firm outline; ambiguous has competing readings.",
+      "hints": {
+        "attention": "Has a general lack of detail become a choice between meanings?",
+        "axis": "Unformed content versus alternative specific readings",
+        "contrast": "Nebulous has no firm outline; ambiguous has competing readings."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nebulous-ambiguous_003",
+      "edge_id": "nebulous__ambiguous",
+      "domain": "directions_to_a_friend",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Oscar communicates?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nebulous-ambiguous_003_b1",
+          "text": "Oscar's message said, 'Wait by the bank,' in a neighborhood with a river and a bank branch.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.2,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "bank could name two locations",
+          "reason": "The clue 'bank could name two locations' points to multiple interpretations, not indefinitely formed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        },
+        {
+          "id": "nebulous-ambiguous_003_b2",
+          "text": "Both locations fit the exact wording, and he provided no clue about which one.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.16,
+            "ambiguous": 0.95
+          },
+          "decisive_clue": "both interpretations remained plausible",
+          "reason": "The detail 'both interpretations remained plausible' leaves multiple interpretations as the better fit, not indefinitely formed.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Both interpretations remained plausible; ambiguous still fits best.",
+      "feedback_deep": "nebulous means vague, shapeless or insufficiently developed; ambiguous means capable of being understood in two or more ways. The first clue is \"bank could name two locations\"; the next is \"both interpretations remained plausible\". Nebulous has no firm outline; ambiguous has competing readings.",
+      "contrast_rule": "Nebulous has no firm outline; ambiguous has competing readings.",
+      "hints": {
+        "attention": "Can you name two meanings of the same sentence?",
+        "axis": "Unformed content versus alternative specific readings",
+        "contrast": "Nebulous has no firm outline; ambiguous has competing readings."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nebulous-ambiguous_004",
+      "edge_id": "nebulous__ambiguous",
+      "domain": "text_about_books",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Tara communicates?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nebulous-ambiguous_004_b1",
+          "text": "Tara texted, 'Bring her book,' which could mean the book she owns or one intended for her.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.2,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "possessive could have two readings",
+          "reason": "The clue 'possessive could have two readings' points to multiple interpretations, not indefinitely formed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        },
+        {
+          "id": "nebulous-ambiguous_004_b2",
+          "text": "The next message said 'the blue one' but still didn't resolve who owned it.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.16,
+            "ambiguous": 0.95
+          },
+          "decisive_clue": "color narrowed the object but not the disputed relationship",
+          "reason": "The detail 'color narrowed the object but not the disputed relationship' leaves multiple interpretations as the better fit, not indefinitely formed.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Color narrowed the object but not the disputed relationship; ambiguous still fits best.",
+      "feedback_deep": "nebulous means vague, shapeless or insufficiently developed; ambiguous means capable of being understood in two or more ways. The first clue is \"possessive could have two readings\"; the next is \"color narrowed the object but not the disputed relationship\". Nebulous has no firm outline; ambiguous has competing readings.",
+      "contrast_rule": "Nebulous has no firm outline; ambiguous has competing readings.",
+      "hints": {
+        "attention": "Which relationship does the phrase leave open?",
+        "axis": "Unformed content versus alternative specific readings",
+        "contrast": "Nebulous has no firm outline; ambiguous has competing readings."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nebulous-ambiguous_005",
+      "edge_id": "nebulous__ambiguous",
+      "domain": "club_meeting_notice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes what Mateusz communicates?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "nebulous-ambiguous_005_b1",
+          "text": "Mateusz's notice said, 'Meet after lunch,' which might mean immediately afterward or later that afternoon.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.2,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "after lunch allowed two time readings",
+          "reason": "The clue 'after lunch allowed two time readings' points to multiple interpretations, not indefinitely formed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        },
+        {
+          "id": "nebulous-ambiguous_005_b2",
+          "text": "He then admitted he hadn't chosen any day, room, agenda or even the purpose of the meeting.",
+          "best_word": "nebulous",
+          "fit": {
+            "nebulous": 0.95,
+            "ambiguous": 0.16
+          },
+          "decisive_clue": "the whole meeting plan was not formed at all",
+          "reason": "The new clue 'the whole meeting plan was not formed at all' shifts the interpretation to indefinitely formed, rather than multiple interpretations.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The whole meeting plan was not formed at all; now nebulous fits best.",
+      "feedback_deep": "nebulous means vague, shapeless or insufficiently developed; ambiguous means capable of being understood in two or more ways. The first clue is \"after lunch allowed two time readings\"; the next is \"the whole meeting plan was not formed at all\". Nebulous has no firm outline; ambiguous has competing readings.",
+      "contrast_rule": "Nebulous has no firm outline; ambiguous has competing readings.",
+      "hints": {
+        "attention": "Is the remaining problem a double meaning or no actual plan?",
+        "axis": "Unformed content versus alternative specific readings",
+        "contrast": "Nebulous has no firm outline; ambiguous has competing readings."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nebulous-ambiguous_007",
+      "edge_id": "nebulous__ambiguous",
+      "domain": "online_clothing_listing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Yuna communicates?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nebulous-ambiguous_007_b1",
+          "text": "Yuna's listing described a 'light jacket,' without saying whether it was pale-colored or lightweight.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.2,
+            "ambiguous": 0.92
+          },
+          "decisive_clue": "light had two distinct senses",
+          "reason": "The clue 'light had two distinct senses' points to multiple interpretations, not indefinitely formed.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        },
+        {
+          "id": "nebulous-ambiguous_007_b2",
+          "text": "She added the brand and price, but the descriptive phrase could still mean either thing.",
+          "best_word": "ambiguous",
+          "fit": {
+            "nebulous": 0.16,
+            "ambiguous": 0.95
+          },
+          "decisive_clue": "extra details did not settle the intended sense",
+          "reason": "The detail 'extra details did not settle the intended sense' leaves multiple interpretations as the better fit, not indefinitely formed.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "nebulous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Extra details did not settle the intended sense; ambiguous still fits best.",
+      "feedback_deep": "nebulous means vague, shapeless or insufficiently developed; ambiguous means capable of being understood in two or more ways. The first clue is \"light had two distinct senses\"; the next is \"extra details did not settle the intended sense\". Nebulous has no firm outline; ambiguous has competing readings.",
+      "contrast_rule": "Nebulous has no firm outline; ambiguous has competing readings.",
+      "hints": {
+        "attention": "Which single word supports two interpretations?",
+        "axis": "Unformed content versus alternative specific readings",
+        "contrast": "Nebulous has no firm outline; ambiguous has competing readings."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "nebulous-ambiguous_008",
+      "edge_id": "nebulous__ambiguous",
+      "domain": "holiday_planning",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what Bilal communicates?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "nebulous-ambiguous_008_b1",
+          "text": "Bilal proposed going 'somewhere north at some point soon' without naming a town or date.",
+          "best_word": "nebulous",
+          "fit": {
+            "nebulous": 0.92,
+            "ambiguous": 0.2
+          },
+          "decisive_clue": "destination and date were unformed",
+          "reason": "The clue 'destination and date were unformed' points to indefinitely formed, not multiple interpretations.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        },
+        {
+          "id": "nebulous-ambiguous_008_b2",
+          "text": "He wrote three pages about the adventure but still made no decisions about its destination or timing.",
+          "best_word": "nebulous",
+          "fit": {
+            "nebulous": 0.95,
+            "ambiguous": 0.16
+          },
+          "decisive_clue": "more words provided no concrete choices",
+          "reason": "The detail 'more words provided no concrete choices' leaves indefinitely formed as the better fit, not multiple interpretations.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ambiguous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "More words provided no concrete choices; nebulous still fits best.",
+      "feedback_deep": "nebulous means vague, shapeless or insufficiently developed; ambiguous means capable of being understood in two or more ways. The first clue is \"destination and date were unformed\"; the next is \"more words provided no concrete choices\". Nebulous has no firm outline; ambiguous has competing readings.",
+      "contrast_rule": "Nebulous has no firm outline; ambiguous has competing readings.",
+      "hints": {
+        "attention": "Is there a fully formed itinerary to interpret?",
+        "axis": "Unformed content versus alternative specific readings",
+        "contrast": "Nebulous has no firm outline; ambiguous has competing readings."
+      },
+      "qa": "pass"
+    }
+  ]
+}

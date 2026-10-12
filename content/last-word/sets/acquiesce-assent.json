@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "acquiesce-assent",
+  "title": "acquiesce / assent",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[114]",
+    "source_pair_id": 461,
+    "qa": {
+      "pass": 4,
+      "revised": 1,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "acquiesce",
+      "sense": "go along without protesting",
+      "connotation": "reserved or resigned",
+      "register": "formal",
+      "misconceptions": [
+        "Requires wholehearted approval."
+      ]
+    },
+    {
+      "word": "assent",
+      "sense": "express explicit agreement",
+      "connotation": "affirming",
+      "register": "formal",
+      "misconceptions": [
+        "Simply failing to object."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "mode_of_agreement",
+      "description": "Acquiescing means allowing a decision to go ahead without objection, often reluctantly; assenting means explicitly expressing agreement or approval."
+    }
+  ],
+  "edges": [
+    {
+      "id": "acquiesce__assent",
+      "a": "acquiesce",
+      "b": "assent",
+      "boundary_rule": "Acquiescing means allowing a decision to go ahead without objection, often reluctantly; assenting means explicitly expressing agreement or approval.",
+      "clues_a": [
+        "does not object",
+        "goes along reluctantly",
+        "silent acceptance"
+      ],
+      "clues_b": [
+        "says yes",
+        "expressly approves",
+        "signs in agreement"
+      ],
+      "irrelevant_clues": [
+        "room temperature",
+        "number attending",
+        "personal excitement"
+      ],
+      "misconceptions": {
+        "M1": "Treating silence as explicit approval.",
+        "M2": "Treating stated agreement as mere compliance.",
+        "M3": "Confusing willingness with the way agreement is expressed."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "acquiesce-assent_002",
+      "edge_id": "acquiesce__assent",
+      "domain": "school_committee",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Tariq's reaction to the timetable?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "acquiesce-assent_002_b1",
+          "text": "Tariq initially stays quiet while the revised timetable goes ahead.",
+          "best_word": "acquiesce",
+          "fit": {
+            "acquiesce": 0.91,
+            "assent": 0.28
+          },
+          "decisive_clue": "silent acceptance",
+          "reason": "Initially he merely lets it happen.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "assent": "M3"
+          }
+        },
+        {
+          "id": "acquiesce-assent_002_b2",
+          "text": "At the vote, he raises his hand and says he supports the new hours.",
+          "best_word": "assent",
+          "fit": {
+            "acquiesce": 0.24,
+            "assent": 0.94
+          },
+          "decisive_clue": "open declaration of support",
+          "reason": "His explicit vote and statement express approval.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acquiesce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "His explicit vote and statement express approval.",
+      "feedback_deep": "To acquiesce is to go along without protesting, sometimes despite reservations. To assent is to signal or state one’s agreement. His explicit vote and statement express approval.",
+      "contrast_rule": "Acquiesce lets it happen; assent says yes.",
+      "hints": {
+        "attention": "Pay attention to what he does at the vote.",
+        "axis": "Acquiescing means allowing a decision to go ahead without objection, often reluctantly; assenting means explicitly expressing agreement or approval.",
+        "contrast": "Acquiesce lets it happen; assent says yes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "acquiesce-assent_003",
+      "edge_id": "acquiesce__assent",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mei's response to the seating plan?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "acquiesce-assent_003_b1",
+          "text": "Mei thinks the seating plan is inconvenient but does not challenge it.",
+          "best_word": "acquiesce",
+          "fit": {
+            "acquiesce": 0.91,
+            "assent": 0.28
+          },
+          "decisive_clue": "private objection with no protest",
+          "reason": "Her private reservations distinguish silence from approval.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "assent": "M1"
+          }
+        },
+        {
+          "id": "acquiesce-assent_003_b2",
+          "text": "She moves to her assigned seat without adding any comment.",
+          "best_word": "acquiesce",
+          "fit": {
+            "acquiesce": 0.94,
+            "assent": 0.24
+          },
+          "decisive_clue": "continued compliance without endorsement",
+          "reason": "Taking the seat confirms cooperation but not a voiced agreement.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "assent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Taking the seat confirms cooperation but not a voiced agreement.",
+      "feedback_deep": "To acquiesce is to go along without protesting, sometimes despite reservations. To assent is to signal or state one’s agreement. Taking the seat confirms cooperation but not a voiced agreement.",
+      "contrast_rule": "Acquiesce lets it happen; assent says yes.",
+      "hints": {
+        "attention": "Does the second action communicate approval?",
+        "axis": "Acquiescing means allowing a decision to go ahead without objection, often reluctantly; assenting means explicitly expressing agreement or approval.",
+        "contrast": "Acquiesce lets it happen; assent says yes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "acquiesce-assent_005",
+      "edge_id": "acquiesce__assent",
+      "domain": "music_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Aisha's reply to the concert order?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "acquiesce-assent_005_b1",
+          "text": "Aisha tells the group, “Yes, this order works for me.”",
+          "best_word": "assent",
+          "fit": {
+            "acquiesce": 0.28,
+            "assent": 0.91
+          },
+          "decisive_clue": "clear spoken yes",
+          "reason": "She plainly expresses agreement.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acquiesce": "M3"
+          }
+        },
+        {
+          "id": "acquiesce-assent_005_b2",
+          "text": "When asked again, she repeats, “Yes, I still approve this order.”",
+          "best_word": "assent",
+          "fit": {
+            "acquiesce": 0.24,
+            "assent": 0.94
+          },
+          "decisive_clue": "repeated explicit approval",
+          "reason": "She continues to state her agreement openly.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acquiesce": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her repeated spoken approval continues to express assent.",
+      "feedback_deep": "To acquiesce is to go along without protesting, sometimes despite reservations. To assent is to signal or state one’s agreement. Aisha repeatedly states her approval, so her response remains assent.",
+      "contrast_rule": "Acquiesce lets it happen; assent says yes.",
+      "hints": {
+        "attention": "Look for whether she continues to voice approval.",
+        "axis": "Acquiescing means allowing a decision to go ahead without objection, often reluctantly; assenting means explicitly expressing agreement or approval.",
+        "contrast": "Acquiesce lets it happen; assent says yes."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "acquiesce-assent_009",
+      "edge_id": "acquiesce__assent",
+      "domain": "train-seat_swap",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Noura's response to a seat request?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "acquiesce-assent_009_b1",
+          "text": "Noura moves seats without protesting, though she would rather stay where she was.",
+          "best_word": "acquiesce",
+          "fit": {
+            "acquiesce": 0.91,
+            "assent": 0.28
+          },
+          "decisive_clue": "nonprotesting acceptance",
+          "reason": "Her move was compliant, not an expressed yes.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "assent": "M1"
+          }
+        },
+        {
+          "id": "acquiesce-assent_009_b2",
+          "text": "She explains that she did it to avoid an argument, not because she liked the idea.",
+          "best_word": "acquiesce",
+          "fit": {
+            "acquiesce": 0.94,
+            "assent": 0.24
+          },
+          "decisive_clue": "motive is avoiding conflict",
+          "reason": "The motive clarifies why she went along without changing the nature of her response.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "assent": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The motive clarifies why she went along without changing the nature of her response.",
+      "feedback_deep": "To acquiesce is to go along without protesting, sometimes despite reservations. To assent is to signal or state one’s agreement. The motive clarifies why she went along without changing the nature of her response.",
+      "contrast_rule": "Acquiesce lets it happen; assent says yes.",
+      "hints": {
+        "attention": "Ask why she did not object.",
+        "axis": "Acquiescing means allowing a decision to go ahead without objection, often reluctantly; assenting means explicitly expressing agreement or approval.",
+        "contrast": "Acquiesce lets it happen; assent says yes."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "acquiesce-assent_010",
+      "edge_id": "acquiesce__assent",
+      "domain": "community_garden",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Hugo's decision on a garden plan?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "acquiesce-assent_010_b1",
+          "text": "Hugo signs a form explicitly approving the revised planting plan.",
+          "best_word": "assent",
+          "fit": {
+            "acquiesce": 0.28,
+            "assent": 0.91
+          },
+          "decisive_clue": "signed express approval",
+          "reason": "The signature communicates a clear yes.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acquiesce": "M2"
+          }
+        },
+        {
+          "id": "acquiesce-assent_010_b2",
+          "text": "Although it begins raining, he says his approval still stands.",
+          "best_word": "assent",
+          "fit": {
+            "acquiesce": 0.24,
+            "assent": 0.94
+          },
+          "decisive_clue": "weather is unrelated to agreement",
+          "reason": "Rain does not reduce explicit assent to passive acceptance.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acquiesce": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Rain does not reduce explicit assent to passive acceptance.",
+      "feedback_deep": "To acquiesce is to go along without protesting, sometimes despite reservations. To assent is to signal or state one’s agreement. Rain does not reduce explicit assent to passive acceptance.",
+      "contrast_rule": "Acquiesce lets it happen; assent says yes.",
+      "hints": {
+        "attention": "Do not let the weather distract from his signature.",
+        "axis": "Acquiescing means allowing a decision to go ahead without objection, often reluctantly; assenting means explicitly expressing agreement or approval.",
+        "contrast": "Acquiesce lets it happen; assent says yes."
+      },
+      "qa": "pass"
+    }
+  ]
+}

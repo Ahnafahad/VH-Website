@@ -1,0 +1,621 @@
+{
+  "schema_version": 1,
+  "set_id": "ameliorate-alleviate",
+  "title": "ameliorate / alleviate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[127]",
+    "source_pair_id": 500,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "ameliorate",
+      "sense": "Improve harmful or unsatisfactory conditions.",
+      "connotation": "constructive, improvement-focused",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with alleviate when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "alleviate",
+      "sense": "Ease discomfort or severity without removing its cause.",
+      "connotation": "relieving, compassionate",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with ameliorate when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "conditions_versus_symptoms",
+      "description": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem."
+    }
+  ],
+  "edges": [
+    {
+      "id": "ameliorate__alleviate",
+      "a": "ameliorate",
+      "b": "alleviate",
+      "boundary_rule": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "clues_a": [
+        "Makes a bad situation better.",
+        "Improve harmful or unsatisfactory conditions."
+      ],
+      "clues_b": [
+        "Lessens an immediate burden or symptom.",
+        "Ease discomfort or severity without removing its cause."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating ameliorate as though it always means alleviate.",
+        "M2": "Treating alleviate as though it always means ameliorate.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "ameliorate-alleviate_001",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "apartment_living",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Farah’s change to the laundry system?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_001_b1",
+          "text": "Farah replaced the confusing booking sheet with time slots, cutting residents’ weekly waits in half.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.87,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "the faulty booking conditions were improved",
+          "reason": "This establishes that the faulty booking conditions were improved.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_001_b2",
+          "text": "Residents could now reserve slots on their phones rather than queue outside.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.93,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "the faulty booking conditions were improved",
+          "reason": "The phone option shows a practical repair to the system, not merely temporary comfort while waiting.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The faulty booking conditions were improved; that detail favors ameliorate.",
+      "feedback_deep": "The phone option shows a practical repair to the system, not merely temporary comfort while waiting. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "Ask whether the process itself got better.",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ameliorate-alleviate_002",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "football_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Omar’s use of the cold cloth?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_002_b1",
+          "text": "Omar held a cold cloth against his sore ankle, and the ache eased for an hour.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.87
+          },
+          "decisive_clue": "pain fell temporarily while the injury remained",
+          "reason": "This establishes that pain fell temporarily while the injury remained.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_002_b2",
+          "text": "The ankle still hurt whenever he tried to run the next morning.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.93
+          },
+          "decisive_clue": "pain fell temporarily while the injury remained",
+          "reason": "The continuing injury confirms that the cloth eased symptoms rather than fixing the problem.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Pain fell temporarily while the injury remained; that detail favors alleviate.",
+      "feedback_deep": "The continuing injury confirms that the cloth eased symptoms rather than fixing the problem. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "Compare the pain with the condition causing it.",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ameliorate-alleviate_003",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "school_cafeteria",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Jin’s adjustment to the lunch queue?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_003_b1",
+          "text": "Jin changed the queue layout so pupils stopped spending half their break waiting.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.87,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "the queue arrangement itself worked better",
+          "reason": "This establishes that the queue arrangement itself worked better.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_003_b2",
+          "text": "The new arrangement worked even when the cafeteria was busiest.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.93,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "the queue arrangement itself worked better",
+          "reason": "Busy days test the durability of the fix; the improvement concerns the underlying process.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The queue arrangement itself worked better; that detail favors ameliorate.",
+      "feedback_deep": "Busy days test the durability of the fix; the improvement concerns the underlying process. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "Is this a revised system or just short-lived relief?",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ameliorate-alleviate_004",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "bus_stop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Sofia’s action for stranded passengers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_004_b1",
+          "text": "Sofia distributed drinking water to people stuck beside a bus that had broken down.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.87
+          },
+          "decisive_clue": "water eased discomfort without repairing the stalled bus",
+          "reason": "This establishes that water eased discomfort without repairing the stalled bus.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_004_b2",
+          "text": "The bus remained out of service, although passengers were no longer thirsty.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.93
+          },
+          "decisive_clue": "water eased discomfort without repairing the stalled bus",
+          "reason": "The second beat separates relief for people from any improvement to their transport problem.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Water eased discomfort without repairing the stalled bus; that detail favors alleviate.",
+      "feedback_deep": "The second beat separates relief for people from any improvement to their transport problem. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "Ask which problem the water actually solved.",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ameliorate-alleviate_005",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "home_renovation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes David’s use of earplugs?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_005_b1",
+          "text": "David wore earplugs so the drilling upstairs no longer gave him a pounding headache.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.87
+          },
+          "decisive_clue": "earplugs eased the noise-related headache",
+          "reason": "This establishes that earplugs eased the noise-related headache.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_005_b2",
+          "text": "The pair came in an expensive silver case.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.93
+          },
+          "decisive_clue": "earplugs eased the noise-related headache",
+          "reason": "Price and packaging cannot turn symptom relief into a repair of the drilling problem.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Earplugs eased the noise-related headache; that detail favors alleviate.",
+      "feedback_deep": "Price and packaging cannot turn symptom relief into a repair of the drilling problem. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "Ignore the packaging and follow what changed.",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ameliorate-alleviate_006",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "household_finances",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Salma’s new payment arrangement?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_006_b1",
+          "text": "Salma negotiated a billing date after payday, ending her household’s repeated late-payment fees.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.87,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "the payment arrangement fixed a recurring timing problem",
+          "reason": "This establishes that the payment arrangement fixed a recurring timing problem.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_006_b2",
+          "text": "Her family could now set aside the right amount before each deadline.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.93,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "the payment arrangement fixed a recurring timing problem",
+          "reason": "Budgeting became manageable because the conditions changed, not because one painful bill was temporarily softened.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The payment arrangement fixed a recurring timing problem; that detail favors ameliorate.",
+      "feedback_deep": "Budgeting became manageable because the conditions changed, not because one painful bill was temporarily softened. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "Look for a lasting adjustment to the situation.",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ameliorate-alleviate_007",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "daycare_pickup",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Inez’s new collection schedule?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_007_b1",
+          "text": "Inez staggered pickup times at the busy daycare, so parents no longer blocked its entrance.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.87,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "a scheduling change corrected recurring congestion",
+          "reason": "This establishes that a scheduling change corrected recurring congestion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_007_b2",
+          "text": "The arrangement also gave staff room to greet each family.",
+          "best_word": "ameliorate",
+          "fit": {
+            "ameliorate": 0.93,
+            "alleviate": 0.32
+          },
+          "decisive_clue": "a scheduling change corrected recurring congestion",
+          "reason": "The added benefit points to a better operation rather than a brief easing of an unchanged jam.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "alleviate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A scheduling change corrected recurring congestion; that detail favors ameliorate.",
+      "feedback_deep": "The added benefit points to a better operation rather than a brief easing of an unchanged jam. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "What changed in how collection works?",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "ameliorate-alleviate_008",
+      "edge_id": "ameliorate__alleviate",
+      "domain": "wedding_reception",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Hugo’s provision of cushions?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "ameliorate-alleviate_008_b1",
+          "text": "Hugo put cushions on hard chairs so older guests could sit without aching throughout the meal.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.87
+          },
+          "decisive_clue": "cushions eased discomfort from hard seating",
+          "reason": "This establishes that cushions eased discomfort from hard seating.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        },
+        {
+          "id": "ameliorate-alleviate_008_b2",
+          "text": "The chairs themselves remained unchanged when the reception ended.",
+          "best_word": "alleviate",
+          "fit": {
+            "ameliorate": 0.32,
+            "alleviate": 0.93
+          },
+          "decisive_clue": "cushions eased discomfort from hard seating",
+          "reason": "The original chairs were not improved; the cushions reduced a painful effect.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "ameliorate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Cushions eased discomfort from hard seating; that detail favors alleviate.",
+      "feedback_deep": "The original chairs were not improved; the cushions reduced a painful effect. Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+      "contrast_rule": "Ameliorate improves conditions; alleviate eases their burden.",
+      "hints": {
+        "attention": "Identify whether the discomfort or its source changed.",
+        "axis": "Ameliorate improves the conditions of a problem; alleviate reduces its painful effects without fixing the underlying problem.",
+        "contrast": "Ameliorate improves conditions; alleviate eases their burden."
+      },
+      "qa": "pass"
+    }
+  ]
+}

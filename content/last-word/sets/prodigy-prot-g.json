@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "set_id": "prodigy-prot-g",
+  "title": "prodigy / protégé",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[146]",
+    "source_pair_id": 609,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "prodigy",
+      "sense": "Young person with extraordinary ability far beyond their age",
+      "connotation": "admiring",
+      "register": "neutral",
+      "misconceptions": [
+        "Assuming every gifted child has a mentor.",
+        "Assuming mentoring proves exceptional natural talent."
+      ]
+    },
+    {
+      "word": "protégé",
+      "sense": "Person receiving guidance and backing from a mentor",
+      "connotation": "relational",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Assuming every gifted child has a mentor.",
+        "Treating an award as evidence of an ongoing mentor relationship."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "extraordinary_youthful_skill_vs_mentorship",
+      "description": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor."
+    }
+  ],
+  "edges": [
+    {
+      "id": "prodigy__protege",
+      "a": "prodigy",
+      "b": "protégé",
+      "boundary_rule": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor.",
+      "clues_a": [
+        "outperforms experienced adults while young",
+        "learns with exceptional speed"
+      ],
+      "clues_b": [
+        "receives active guidance",
+        "benefits from sponsor introductions"
+      ],
+      "irrelevant_clues": [
+        "winning a prize",
+        "being young"
+      ],
+      "misconceptions": {
+        "M1": "Assuming every gifted child has a mentor.",
+        "M2": "Assuming mentoring proves exceptional natural talent.",
+        "M3": "Treating an award as evidence of an ongoing mentor relationship."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "prodigy-prot-g_001",
+      "edge_id": "prodigy__protege",
+      "domain": "piano_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Aya as a pianist?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "prodigy-prot-g_001_b1",
+          "text": "At twelve, Aya plays a difficult concert piece flawlessly after hearing it just once.",
+          "best_word": "prodigy",
+          "fit": {
+            "prodigy": 0.91,
+            "protégé": 0.26
+          },
+          "decisive_clue": "extraordinary skill demonstrated at twelve",
+          "reason": "The initial evidence is extraordinary skill demonstrated at twelve; it best supports prodigy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "protégé": "M1"
+          }
+        },
+        {
+          "id": "prodigy-prot-g_001_b2",
+          "text": "Experienced musicians ask her to demonstrate how she learned it so quickly.",
+          "best_word": "prodigy",
+          "fit": {
+            "prodigy": 0.93,
+            "protégé": 0.21
+          },
+          "decisive_clue": "exceptional performance at an unusually young age",
+          "reason": "The reaction adds context to the extraordinary ability already shown.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "protégé": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The reaction adds context to the extraordinary ability already shown.",
+      "feedback_deep": "Prodigy means exceptionally gifted young person; protégé means mentee under the care of an established supporter. The reaction adds context to the extraordinary ability already shown.",
+      "contrast_rule": "A prodigy amazes through youthful skill; a protégé grows under a mentor.",
+      "hints": {
+        "attention": "Compare her skill with what her age suggests.",
+        "axis": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor.",
+        "contrast": "A prodigy amazes through youthful skill; a protégé grows under a mentor."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "prodigy-prot-g_002",
+      "edge_id": "prodigy__protege",
+      "domain": "journalism_internship",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Esra's role with the editor?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "prodigy-prot-g_002_b1",
+          "text": "A senior editor takes Esra under her wing, edits her articles weekly, and recommends her for assignments.",
+          "best_word": "protégé",
+          "fit": {
+            "protégé": 0.91,
+            "prodigy": 0.26
+          },
+          "decisive_clue": "ongoing guidance from an experienced supporter",
+          "reason": "The initial evidence is ongoing guidance from an experienced supporter; it best supports protégé.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "prodigy": "M1"
+          }
+        },
+        {
+          "id": "prodigy-prot-g_002_b2",
+          "text": "Esra writes most of her notes on her phone.",
+          "best_word": "protégé",
+          "fit": {
+            "protégé": 0.93,
+            "prodigy": 0.21
+          },
+          "decisive_clue": "ongoing guidance from an experienced supporter",
+          "reason": "Her note-taking tool does not change the mentor's sustained support.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "prodigy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Her note-taking tool does not change the mentor's sustained support.",
+      "feedback_deep": "Prodigy means exceptionally gifted young person; protégé means mentee under the care of an established supporter. Her note-taking tool does not change the mentor's sustained support.",
+      "contrast_rule": "A prodigy amazes through youthful skill; a protégé grows under a mentor.",
+      "hints": {
+        "attention": "Who is helping develop her career?",
+        "axis": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor.",
+        "contrast": "A prodigy amazes through youthful skill; a protégé grows under a mentor."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "prodigy-prot-g_003",
+      "edge_id": "prodigy__protege",
+      "domain": "school_chess",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo as a chess player?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "prodigy-prot-g_003_b1",
+          "text": "At eleven, Mateo wins a tournament against seasoned adult club champions.",
+          "best_word": "prodigy",
+          "fit": {
+            "prodigy": 0.91,
+            "protégé": 0.26
+          },
+          "decisive_clue": "youthful ability surpasses experienced adults",
+          "reason": "The initial evidence is youthful ability surpasses experienced adults; it best supports prodigy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "protégé": "M1"
+          }
+        },
+        {
+          "id": "prodigy-prot-g_003_b2",
+          "text": "He wears a borrowed jacket for the final match.",
+          "best_word": "prodigy",
+          "fit": {
+            "prodigy": 0.93,
+            "protégé": 0.21
+          },
+          "decisive_clue": "youthful ability surpasses experienced adults",
+          "reason": "His clothing changes nothing about the exceptional age-to-skill gap.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "protégé": "M2"
+          }
+        }
+      ],
+      "feedback_short": "His clothing changes nothing about the exceptional age-to-skill gap.",
+      "feedback_deep": "Prodigy means exceptionally gifted young person; protégé means mentee under the care of an established supporter. His clothing changes nothing about the exceptional age-to-skill gap.",
+      "contrast_rule": "A prodigy amazes through youthful skill; a protégé grows under a mentor.",
+      "hints": {
+        "attention": "Look beyond the tournament outfit.",
+        "axis": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor.",
+        "contrast": "A prodigy amazes through youthful skill; a protégé grows under a mentor."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "prodigy-prot-g_004",
+      "edge_id": "prodigy__protege",
+      "domain": "football_academy",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Kwame's relationship with the head coach?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "prodigy-prot-g_004_b1",
+          "text": "The head coach chooses Kwame for private coaching and introduces him to professional scouts.",
+          "best_word": "protégé",
+          "fit": {
+            "protégé": 0.91,
+            "prodigy": 0.26
+          },
+          "decisive_clue": "specific mentor provides coaching and access",
+          "reason": "The initial evidence is specific mentor provides coaching and access; it best supports protégé.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "prodigy": "M1"
+          }
+        },
+        {
+          "id": "prodigy-prot-g_004_b2",
+          "text": "Kwame later scores the winning goal in a local match.",
+          "best_word": "protégé",
+          "fit": {
+            "protégé": 0.93,
+            "prodigy": 0.21
+          },
+          "decisive_clue": "specific mentor provides coaching and access",
+          "reason": "One successful goal does not establish extraordinary age-level talent; the guidance still defines the relationship.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "prodigy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "One successful goal does not establish extraordinary age-level talent; the guidance still defines the relationship.",
+      "feedback_deep": "Prodigy means exceptionally gifted young person; protégé means mentee under the care of an established supporter. One successful goal does not establish extraordinary age-level talent; the guidance still defines the relationship.",
+      "contrast_rule": "A prodigy amazes through youthful skill; a protégé grows under a mentor.",
+      "hints": {
+        "attention": "Look at the coach's involvement.",
+        "axis": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor.",
+        "contrast": "A prodigy amazes through youthful skill; a protégé grows under a mentor."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "prodigy-prot-g_005",
+      "edge_id": "prodigy__protege",
+      "domain": "bakery_apprenticeship",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Linh's connection to the bakery owner?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "prodigy-prot-g_005_b1",
+          "text": "The owner trains Linh personally and promises to help her open a shop one day.",
+          "best_word": "protégé",
+          "fit": {
+            "protégé": 0.91,
+            "prodigy": 0.26
+          },
+          "decisive_clue": "personal instruction and career sponsorship",
+          "reason": "The initial evidence is personal instruction and career sponsorship; it best supports protégé.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "prodigy": "M1"
+          }
+        },
+        {
+          "id": "prodigy-prot-g_005_b2",
+          "text": "She also shares trusted suppliers' contact details with Linh.",
+          "best_word": "protégé",
+          "fit": {
+            "protégé": 0.93,
+            "prodigy": 0.21
+          },
+          "decisive_clue": "continued mentoring and business introductions",
+          "reason": "Supplier access extends the established sponsorship.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "prodigy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Supplier access extends the established sponsorship.",
+      "feedback_deep": "Prodigy means exceptionally gifted young person; protégé means mentee under the care of an established supporter. Supplier access extends the established sponsorship.",
+      "contrast_rule": "A prodigy amazes through youthful skill; a protégé grows under a mentor.",
+      "hints": {
+        "attention": "Who opens doors for her?",
+        "axis": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor.",
+        "contrast": "A prodigy amazes through youthful skill; a protégé grows under a mentor."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "prodigy-prot-g_006",
+      "edge_id": "prodigy__protege",
+      "domain": "language_club",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Rohan as a language learner?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "prodigy-prot-g_006_b1",
+          "text": "At ten, Rohan holds fluent conversations in six languages he picked up through ordinary family and online exchanges.",
+          "best_word": "prodigy",
+          "fit": {
+            "prodigy": 0.91,
+            "protégé": 0.26
+          },
+          "decisive_clue": "unusual mastery across languages at ten",
+          "reason": "The initial evidence is unusual mastery across languages at ten; it best supports prodigy.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "protégé": "M1"
+          }
+        },
+        {
+          "id": "prodigy-prot-g_006_b2",
+          "text": "He moves easily between them while helping visiting students find their classrooms.",
+          "best_word": "prodigy",
+          "fit": {
+            "prodigy": 0.93,
+            "protégé": 0.21
+          },
+          "decisive_clue": "young age combined with extraordinary breadth",
+          "reason": "The practical switching demonstrates the same remarkable ability.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "protégé": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The practical switching demonstrates the same remarkable ability.",
+      "feedback_deep": "Prodigy means exceptionally gifted young person; protégé means mentee under the care of an established supporter. The practical switching demonstrates the same remarkable ability.",
+      "contrast_rule": "A prodigy amazes through youthful skill; a protégé grows under a mentor.",
+      "hints": {
+        "attention": "Compare breadth of ability with age.",
+        "axis": "Prodigy identifies exceptional ability at a young age; protégé identifies a person selected for ongoing guidance or support by a mentor.",
+        "contrast": "A prodigy amazes through youthful skill; a protégé grows under a mentor."
+      },
+      "qa": "pass"
+    }
+  ]
+}

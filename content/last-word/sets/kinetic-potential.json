@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "kinetic-potential",
+  "title": "kinetic / potential",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[132]",
+    "source_pair_id": 519,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "kinetic",
+      "sense": "relating to energy of actual movement",
+      "connotation": "active motion",
+      "register": "formal",
+      "misconceptions": [
+        "Thinking a raised object must already be in motion.",
+        "Treating tension in a still object as movement."
+      ]
+    },
+    {
+      "word": "potential",
+      "sense": "relating to energy stored by position, height, tension or condition",
+      "connotation": "stored capacity to act",
+      "register": "general",
+      "misconceptions": [
+        "Assuming motion is the same as stored energy."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "current_motion_versus_storage",
+      "description": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement."
+    }
+  ],
+  "edges": [
+    {
+      "id": "kinetic__potential",
+      "a": "kinetic",
+      "b": "potential",
+      "boundary_rule": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement.",
+      "clues_a": [
+        "rolling or swinging now",
+        "motion produces an effect"
+      ],
+      "clues_b": [
+        "held high without moving",
+        "stretched under tension",
+        "compressed and waiting"
+      ],
+      "irrelevant_clues": [
+        "object colour",
+        "owner",
+        "distance from spectators"
+      ],
+      "misconceptions": {
+        "M1": "Thinking a raised object must already be in motion.",
+        "M2": "Assuming motion is the same as stored energy.",
+        "M3": "Treating tension in a still object as movement."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "kinetic-potential_001",
+      "edge_id": "kinetic__potential",
+      "domain": "skateboard_practice",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes the energy of Jun's skateboard?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "kinetic-potential_001_b1",
+          "text": "Jun’s board rolls down the path; its moving wheels carry it past the bench.",
+          "best_word": "kinetic",
+          "fit": {
+            "kinetic": 0.89,
+            "potential": 0.22
+          },
+          "decisive_clue": "the skateboard is actually moving",
+          "reason": "The skateboard is actually moving is the evidence for kinetic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "potential": "M2"
+          }
+        },
+        {
+          "id": "kinetic-potential_001_b2",
+          "text": "It reaches the top of a ramp and pauses for an instant, high above the path before rolling back.",
+          "best_word": "potential",
+          "fit": {
+            "kinetic": 0.22,
+            "potential": 0.92
+          },
+          "decisive_clue": "it pauses while elevated above the path",
+          "reason": "At the paused high point, stored energy due to height is more relevant than motion.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "kinetic": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: it pauses while elevated above the path.",
+      "feedback_deep": "At first, the skateboard’s rolling makes kinetic the best word. At the high turning point it is momentarily still, with energy stored through its elevated position, so potential is now better.",
+      "contrast_rule": "Kinetic is energy in motion; potential is energy in storage.",
+      "hints": {
+        "attention": "Look for movement happening now or energy held in reserve.",
+        "axis": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement.",
+        "contrast": "Kinetic is energy in motion; potential is energy in storage."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "kinetic-potential_002",
+      "edge_id": "kinetic__potential",
+      "domain": "playground_swing",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes the energy of Mira's swing?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "kinetic-potential_002_b1",
+          "text": "Mira’s swing is momentarily still at the top of its arc, above its lowest resting position.",
+          "best_word": "potential",
+          "fit": {
+            "kinetic": 0.25,
+            "potential": 0.9
+          },
+          "decisive_clue": "the swing is elevated and momentarily still",
+          "reason": "The swing is elevated and momentarily still is the evidence for potential.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "kinetic": "M3"
+          }
+        },
+        {
+          "id": "kinetic-potential_002_b2",
+          "text": "A moment later, the same swing sweeps through the lowest point, moving quickly past the ground.",
+          "best_word": "kinetic",
+          "fit": {
+            "kinetic": 0.93,
+            "potential": 0.25
+          },
+          "decisive_clue": "the same swing is now moving quickly",
+          "reason": "At the lowest point, its current motion is decisive rather than its earlier height.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 5,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "potential": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the same swing is now moving quickly.",
+      "feedback_deep": "At the top, the still elevated swing has potential energy. As it moves rapidly through the bottom of the arc, kinetic energy is the clearer description of the energy in motion.",
+      "contrast_rule": "Kinetic is energy in motion; potential is energy in storage.",
+      "hints": {
+        "attention": "Look for movement happening now or energy held in reserve.",
+        "axis": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement.",
+        "contrast": "Kinetic is energy in motion; potential is energy in storage."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "kinetic-potential_003",
+      "edge_id": "kinetic__potential",
+      "domain": "bicycle_ride",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the energy of Yusuf's bicycle?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "kinetic-potential_003_b1",
+          "text": "Yusuf pedals across the courtyard, and the bicycle moves steadily beneath him.",
+          "best_word": "kinetic",
+          "fit": {
+            "kinetic": 0.88,
+            "potential": 0.19
+          },
+          "decisive_clue": "the bicycle is travelling across the courtyard",
+          "reason": "The bicycle is travelling across the courtyard is the evidence for kinetic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "potential": "M2"
+          }
+        },
+        {
+          "id": "kinetic-potential_003_b2",
+          "text": "Its tires spin even after he stops pushing the pedals for a moment.",
+          "best_word": "kinetic",
+          "fit": {
+            "kinetic": 0.91,
+            "potential": 0.19
+          },
+          "decisive_clue": "spinning tires show motion continues without pedalling",
+          "reason": "The added detail confirms actual motion is present, which is the relevant condition.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "potential": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: spinning tires show motion continues without pedalling.",
+      "feedback_deep": "Kinetic energy comes from motion, not from the source of the motion. Yusuf’s bicycle continues to move even when he briefly stops pedalling.",
+      "contrast_rule": "Kinetic is energy in motion; potential is energy in storage.",
+      "hints": {
+        "attention": "Look for movement happening now or energy held in reserve.",
+        "axis": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement.",
+        "contrast": "Kinetic is energy in motion; potential is energy in storage."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "kinetic-potential_004",
+      "edge_id": "kinetic__potential",
+      "domain": "rubber-band_craft",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the energy of Elena's rubber band?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "kinetic-potential_004_b1",
+          "text": "Elena pulls a rubber band between two fingers and holds it motionless under tension.",
+          "best_word": "potential",
+          "fit": {
+            "kinetic": 0.22,
+            "potential": 0.89
+          },
+          "decisive_clue": "the still band holds tension",
+          "reason": "The still band holds tension is the evidence for potential.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "kinetic": "M3"
+          }
+        },
+        {
+          "id": "kinetic-potential_004_b2",
+          "text": "It remains stretched while she waits to release one end.",
+          "best_word": "potential",
+          "fit": {
+            "kinetic": 0.22,
+            "potential": 0.92
+          },
+          "decisive_clue": "the stretched band remains under tension without moving",
+          "reason": "Waiting does not turn stored tension into actual movement.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "kinetic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the still band holds tension.",
+      "feedback_deep": "Potential energy may be stored in a stretched elastic object. Elena is holding it still; motion would begin when she lets it go.",
+      "contrast_rule": "Kinetic is energy in motion; potential is energy in storage.",
+      "hints": {
+        "attention": "Look for movement happening now or energy held in reserve.",
+        "axis": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement.",
+        "contrast": "Kinetic is energy in motion; potential is energy in storage."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "kinetic-potential_005",
+      "edge_id": "kinetic__potential",
+      "domain": "rolling_suitcase",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the energy of Kofi's suitcase?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "kinetic-potential_005_b1",
+          "text": "Kofi lets the suitcase glide on its wheels along the station floor.",
+          "best_word": "kinetic",
+          "fit": {
+            "kinetic": 0.9,
+            "potential": 0.25
+          },
+          "decisive_clue": "the suitcase is rolling now",
+          "reason": "The suitcase is rolling now is the evidence for kinetic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "potential": "M2"
+          }
+        },
+        {
+          "id": "kinetic-potential_005_b2",
+          "text": "The suitcase has a bright yellow strap around its handle.",
+          "best_word": "kinetic",
+          "fit": {
+            "kinetic": 0.93,
+            "potential": 0.25
+          },
+          "decisive_clue": "its visible movement remains the deciding fact",
+          "reason": "Strap colour does not alter whether the suitcase is moving.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 3,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "potential": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: the suitcase is rolling now.",
+      "feedback_deep": "Kinetic energy is present because of the suitcase’s motion. The bright strap is unrelated to the difference between moving energy and stored energy.",
+      "contrast_rule": "Kinetic is energy in motion; potential is energy in storage.",
+      "hints": {
+        "attention": "Look for movement happening now or energy held in reserve.",
+        "axis": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement.",
+        "contrast": "Kinetic is energy in motion; potential is energy in storage."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "kinetic-potential_006",
+      "edge_id": "kinetic__potential",
+      "domain": "toy_spring_at_home",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the energy of Ana's toy spring?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "kinetic-potential_006_b1",
+          "text": "Ana squeezes the toy spring into a short shape and holds it still between her hands.",
+          "best_word": "potential",
+          "fit": {
+            "kinetic": 0.19,
+            "potential": 0.88
+          },
+          "decisive_clue": "the spring is compressed and held still",
+          "reason": "The spring is compressed and held still is the evidence for potential.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "kinetic": "M3"
+          }
+        },
+        {
+          "id": "kinetic-potential_006_b2",
+          "text": "She keeps the ends together so it cannot expand yet.",
+          "best_word": "potential",
+          "fit": {
+            "kinetic": 0.19,
+            "potential": 0.91
+          },
+          "decisive_clue": "its compressed condition stores the ability to expand",
+          "reason": "Preventing expansion confirms the energy is stored in its deformation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "kinetic": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The deciding clue: its compressed condition stores the ability to expand.",
+      "feedback_deep": "Potential energy is stored by an object’s condition. Ana’s spring holds energy through compression; it is not currently springing outward.",
+      "contrast_rule": "Kinetic is energy in motion; potential is energy in storage.",
+      "hints": {
+        "attention": "Look for movement happening now or energy held in reserve.",
+        "axis": "Kinetic energy belongs to something currently moving, whereas potential energy is stored because of position or condition before movement.",
+        "contrast": "Kinetic is energy in motion; potential is energy in storage."
+      },
+      "qa": "pass"
+    }
+  ]
+}

@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "pristine-immaculate",
+  "title": "pristine / immaculate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[39]",
+    "source_pair_id": 166,
+    "qa": {
+      "pass": 9,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "pristine",
+      "sense": "In perfect original condition, clean and unspoiled.",
+      "connotation": "admiring; untouched quality",
+      "register": "literary or formal",
+      "misconceptions": [
+        "Assuming old objects cannot be spotlessly clean.",
+        "Ignoring changes to original material or condition."
+      ]
+    },
+    {
+      "word": "immaculate",
+      "sense": "Spotlessly clean, though it may be old or frequently used.",
+      "connotation": "admiring; fastidious cleanliness",
+      "register": "standard",
+      "misconceptions": [
+        "Assuming spotless means unused.",
+        "Ignoring changes to original material or condition."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "original_condition_vs_cleanliness",
+      "description": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use."
+    }
+  ],
+  "edges": [
+    {
+      "id": "pristine__immaculate",
+      "a": "pristine",
+      "b": "immaculate",
+      "boundary_rule": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+      "clues_a": [
+        "untouched original condition",
+        "no wear or alteration"
+      ],
+      "clues_b": [
+        "no dirt or stains",
+        "clean despite heavy use"
+      ],
+      "irrelevant_clues": [
+        "high price",
+        "attractive colour"
+      ],
+      "misconceptions": {
+        "M1": "Assuming spotless means unused.",
+        "M2": "Assuming old objects cannot be spotlessly clean.",
+        "M3": "Ignoring changes to original material or condition."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "pristine-immaculate_001",
+      "edge_id": "pristine__immaculate",
+      "domain": "secondhand_bookstore",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Farah’s rare paperback?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_001_b1",
+          "text": "Farah found a forty-year-old book still sealed in its original wrapper, without a bent page.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "original wrapper and unworn pages",
+          "reason": "Original wrapper and unworn pages. Original condition without wear.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_001_b2",
+          "text": "Its cover design was out of fashion, but the book had never been opened.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "outdated style does not spoil original condition",
+          "reason": "Outdated style does not spoil original condition. Original condition without wear.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Outdated style does not spoil original condition makes pristine the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, outdated style does not spoil original condition; that is why pristine wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on whether its original state survives.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_002",
+      "edge_id": "pristine__immaculate",
+      "domain": "restaurant_kitchen",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Diego’s kitchen after dinner service?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_002_b1",
+          "text": "Diego scrubbed the heavily used counters until not a spot or smear remained.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "used kitchen made entirely spotless",
+          "reason": "Used kitchen made entirely spotless. Spotlessness even after use.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_002_b2",
+          "text": "The sink was twenty years old, but every surface gleamed.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "old fixtures can still be perfectly clean",
+          "reason": "Old fixtures can still be perfectly clean. Spotlessness even after use.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Old fixtures can still be perfectly clean makes immaculate the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, old fixtures can still be perfectly clean; that is why immaculate wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on cleanliness rather than how new it is.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_003",
+      "edge_id": "pristine__immaculate",
+      "domain": "museum_display",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mei’s preserved concert poster?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_003_b1",
+          "text": "Mei kept the poster flat in its original sleeve; its colours and edges were exactly as printed.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "original print has no damage",
+          "reason": "Original print has no damage. Original condition without wear.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_003_b2",
+          "text": "She had not repaired or retouched a single corner.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "no restoration reinforces untouched condition",
+          "reason": "No restoration reinforces untouched condition. Original condition without wear.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "No restoration reinforces untouched condition makes pristine the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, no restoration reinforces untouched condition; that is why pristine wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on whether its original state was altered.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_004",
+      "edge_id": "pristine__immaculate",
+      "domain": "football_changing_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Ahmed’s boots after he cleaned them?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_004_b1",
+          "text": "Ahmed brushed every grain of dirt off his battered boots until they shone.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "spotless but visibly worn boots",
+          "reason": "Spotless but visibly worn boots. Spotlessness even after use.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_004_b2",
+          "text": "He also polished the laces; the scuffed leather was still plainly old.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "extra polishing changes cleanliness, not wear",
+          "reason": "Extra polishing changes cleanliness, not wear. Spotlessness even after use.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Extra polishing changes cleanliness, not wear makes immaculate the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, extra polishing changes cleanliness, not wear; that is why immaculate wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on dirt versus signs of use.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_005",
+      "edge_id": "pristine__immaculate",
+      "domain": "gift_shop",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Elena’s antique vase?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_005_b1",
+          "text": "Elena’s vase had never left its padded box; its glaze was flawless and completely original.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "untouched original glaze",
+          "reason": "Untouched original glaze. Original condition without wear.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_005_b2",
+          "text": "Its pattern looked strange to her guests, but there was no chip or repair.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "unpopular pattern does not affect preservation",
+          "reason": "Unpopular pattern does not affect preservation. Original condition without wear.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Unpopular pattern does not affect preservation makes pristine the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, unpopular pattern does not affect preservation; that is why pristine wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on originality rather than taste.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_006",
+      "edge_id": "pristine__immaculate",
+      "domain": "hotel_housekeeping",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Noor’s guest room?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_006_b1",
+          "text": "Noor made the beds, washed the windows, and removed every visible trace of dust.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "spotless room despite age",
+          "reason": "Spotless room despite age. Spotlessness even after use.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_006_b2",
+          "text": "The carpet was worn from years of guests, yet not a stain remained.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "old carpet makes original newness unlikely",
+          "reason": "Old carpet makes original newness unlikely. Spotlessness even after use.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Old carpet makes original newness unlikely makes immaculate the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, old carpet makes original newness unlikely; that is why immaculate wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on whether use prevents a spotless result.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_007",
+      "edge_id": "pristine__immaculate",
+      "domain": "new_phone_purchase",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Omar’s phone on delivery?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_007_b1",
+          "text": "Omar opened the factory-sealed carton and found an unmarked phone, exactly as manufactured.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "factory-sealed original device",
+          "reason": "Factory-sealed original device. Original condition without wear.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_007_b2",
+          "text": "A wiped, smudge-free screen was not the whole point: no one had used or modified the device.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "untouched condition matters beyond a clean screen",
+          "reason": "Untouched condition matters beyond a clean screen. Original condition without wear.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Untouched condition matters beyond a clean screen makes pristine the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, untouched condition matters beyond a clean screen; that is why pristine wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on why the device is exceptional.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "pristine-immaculate_008",
+      "edge_id": "pristine__immaculate",
+      "domain": "family_dining_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Anika’s dining table after her party?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_008_b1",
+          "text": "Anika cleaned the table so thoroughly that no crumbs, rings, or fingerprints remained.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "no remaining dirt from the party",
+          "reason": "No remaining dirt from the party. Spotlessness even after use.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_008_b2",
+          "text": "There were old scratches beneath the polish, but no trace of the party.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "scratches show wear despite perfect cleaning",
+          "reason": "Scratches show wear despite perfect cleaning. Spotlessness even after use.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Scratches show wear despite perfect cleaning makes immaculate the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, scratches show wear despite perfect cleaning; that is why immaculate wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on cleaning versus original condition.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_009",
+      "edge_id": "pristine__immaculate",
+      "domain": "craft_stall",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sora’s unopened sewing kit?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_009_b1",
+          "text": "Sora’s kit still had the maker’s seal and every tool sat in its original slot.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "unopened and unaltered contents",
+          "reason": "Unopened and unaltered contents. Original condition without wear.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_009_b2",
+          "text": "The box was dusty outside, but nothing within had been touched or damaged.",
+          "best_word": "pristine",
+          "fit": {
+            "pristine": 0.93,
+            "immaculate": 0.18
+          },
+          "decisive_clue": "dust on packaging does not harm contents",
+          "reason": "Dust on packaging does not harm contents. Original condition without wear.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "immaculate": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Dust on packaging does not harm contents makes pristine the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, dust on packaging does not harm contents; that is why pristine wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on the kit rather than its dusty wrapping.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pristine-immaculate_010",
+      "edge_id": "pristine__immaculate",
+      "domain": "bus_depot",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Pavel’s bus interior after his shift?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pristine-immaculate_010_b1",
+          "text": "Pavel vacuumed the seats and wiped every rail until the cabin was completely free of dirt.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "spotless cabin after heavy use",
+          "reason": "Spotless cabin after heavy use. Spotlessness even after use.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M1"
+          }
+        },
+        {
+          "id": "pristine-immaculate_010_b2",
+          "text": "Thousands had ridden it before, and the upholstery was faded.",
+          "best_word": "immaculate",
+          "fit": {
+            "pristine": 0.18,
+            "immaculate": 0.93
+          },
+          "decisive_clue": "faded upholstery still shows wear",
+          "reason": "Faded upholstery still shows wear. Spotlessness even after use.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pristine": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Faded upholstery still shows wear makes immaculate the better fit.",
+      "feedback_deep": "Pristine means in perfect original condition, clean and unspoiled; immaculate means spotlessly clean, though it may be old or frequently used. Here, faded upholstery still shows wear; that is why immaculate wins even after the new detail.",
+      "contrast_rule": "Pristine is unspoiled; immaculate is spotless.",
+      "hints": {
+        "attention": "Focus on cleanliness despite repeated use.",
+        "axis": "Pristine emphasizes original, unspoiled condition; immaculate emphasizes spotless cleanliness regardless of age or use.",
+        "contrast": "Pristine is unspoiled; immaculate is spotless."
+      },
+      "qa": "pass"
+    }
+  ]
+}

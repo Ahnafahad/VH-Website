@@ -1,0 +1,762 @@
+{
+  "schema_version": 1,
+  "set_id": "expedite-facilitate",
+  "title": "expedite / facilitate",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[144]",
+    "source_pair_id": 595,
+    "qa": {
+      "pass": 10,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "expedite",
+      "sense": "make a process proceed more quickly than normal",
+      "connotation": "efficient, often official",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming easier means faster.",
+        "Assuming faster means simpler."
+      ]
+    },
+    {
+      "word": "facilitate",
+      "sense": "make a process easier to complete by reducing obstacles",
+      "connotation": "helpful, supportive",
+      "register": "standard formal",
+      "misconceptions": [
+        "Assuming easier means faster.",
+        "Assuming faster means simpler."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "speed_versus_ease",
+      "description": "Faster completion versus easier completion."
+    }
+  ],
+  "edges": [
+    {
+      "id": "expedite__facilitate",
+      "a": "expedite",
+      "b": "facilitate",
+      "boundary_rule": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration.",
+      "clues_a": [
+        "moves deadline earlier",
+        "priority processing"
+      ],
+      "clues_b": [
+        "clearer steps",
+        "access or support"
+      ],
+      "irrelevant_clues": [
+        "friendly personality",
+        "decorations",
+        "number of participants alone"
+      ],
+      "misconceptions": {
+        "M1": "Assuming easier means faster.",
+        "M2": "Assuming faster means simpler.",
+        "M3": "Treating any useful help as speeding up."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "expedite-facilitate_001",
+      "edge_id": "expedite__facilitate",
+      "domain": "school_registration",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Akira did for registration?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "expedite-facilitate_001_b1",
+          "text": "She arranged priority processing, cutting the wait from five days to one.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.93,
+            "facilitate": 0.14
+          },
+          "decisive_clue": "priority processing reduced the wait",
+          "reason": "Priority processing reduced the wait; this favors expedite rather than facilitate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        },
+        {
+          "id": "expedite-facilitate_001_b2",
+          "text": "The registration desk was freshly painted that morning.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.93,
+            "facilitate": 0.14
+          },
+          "decisive_clue": "the paint does not affect processing time",
+          "reason": "The paint does not affect processing time; this favors expedite rather than facilitate.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The paint does not affect processing time points to expedite, not facilitate.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Akira's situation ultimately hinges on this clue: the paint does not affect processing time. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_002",
+      "edge_id": "expedite__facilitate",
+      "domain": "office_onboarding",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Bella's help with onboarding?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "expedite-facilitate_002_b1",
+          "text": "She pays for an express check so the paperwork finishes two days earlier.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.95,
+            "facilitate": 0.18
+          },
+          "decisive_clue": "the express check shortens the deadline",
+          "reason": "The express check shortens the deadline; this favors expedite rather than facilitate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        },
+        {
+          "id": "expedite-facilitate_002_b2",
+          "text": "For the remaining forms, she instead prepares a step-by-step guide; these take the usual time but are easier to complete.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.18,
+            "facilitate": 0.95
+          },
+          "decisive_clue": "the new guide eases completion without shortening it",
+          "reason": "The new guide eases completion without shortening it; this favors facilitate rather than expedite.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The new guide eases completion without shortening it points to facilitate, not expedite.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Bella's situation ultimately hinges on this clue: the new guide eases completion without shortening it. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_003",
+      "edge_id": "expedite__facilitate",
+      "domain": "parcel_shipment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Carlos's action on his parcel?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "expedite-facilitate_003_b1",
+          "text": "He switches to overnight shipping to get it delivered sooner.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.91,
+            "facilitate": 0.1
+          },
+          "decisive_clue": "overnight shipping cuts delivery time",
+          "reason": "Overnight shipping cuts delivery time; this favors expedite rather than facilitate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        },
+        {
+          "id": "expedite-facilitate_003_b2",
+          "text": "The delivery date moves forward from Friday to Wednesday.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.91,
+            "facilitate": 0.1
+          },
+          "decisive_clue": "the earlier arrival confirms a time reduction",
+          "reason": "The earlier arrival confirms a time reduction; this favors expedite rather than facilitate.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The earlier arrival confirms a time reduction points to expedite, not facilitate.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Carlos's situation ultimately hinges on this clue: the earlier arrival confirms a time reduction. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_004",
+      "edge_id": "expedite__facilitate",
+      "domain": "family_paperwork",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Dina's help with an application?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "expedite-facilitate_004_b1",
+          "text": "She sorts the forms by topic so her aunt can fill them out without confusion.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.14,
+            "facilitate": 0.93
+          },
+          "decisive_clue": "organizing forms reduces confusion",
+          "reason": "Organizing forms reduces confusion; this favors facilitate rather than expedite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        },
+        {
+          "id": "expedite-facilitate_004_b2",
+          "text": "She also secures a same-day review slot, replacing the usual two-week wait.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.93,
+            "facilitate": 0.14
+          },
+          "decisive_clue": "same-day review replaces a two-week wait",
+          "reason": "Same-day review replaces a two-week wait; this favors expedite rather than facilitate.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Same-day review replaces a two-week wait points to expedite, not facilitate.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Dina's situation ultimately hinges on this clue: same-day review replaces a two-week wait. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_005",
+      "edge_id": "expedite__facilitate",
+      "domain": "sports_event",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ethan's help organizing the race?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "expedite-facilitate_005_b1",
+          "text": "He creates clear signs and a route map; setup still takes the same three hours.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.18,
+            "facilitate": 0.95
+          },
+          "decisive_clue": "clear signs ease setup without saving time",
+          "reason": "Clear signs ease setup without saving time; this favors facilitate rather than expedite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        },
+        {
+          "id": "expedite-facilitate_005_b2",
+          "text": "He prints everything on weatherproof paper before the race.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.18,
+            "facilitate": 0.95
+          },
+          "decisive_clue": "durable paper does not establish faster completion",
+          "reason": "Durable paper does not establish faster completion; this favors facilitate rather than expedite.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Durable paper does not establish faster completion points to facilitate, not expedite.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Ethan's situation ultimately hinges on this clue: durable paper does not establish faster completion. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_006",
+      "edge_id": "expedite__facilitate",
+      "domain": "travel_check-in",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Fatima's change to check-in?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "expedite-facilitate_006_b1",
+          "text": "She obtains permission for her group to use the express lane and finish sooner.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.91,
+            "facilitate": 0.1
+          },
+          "decisive_clue": "express-lane access reduces waiting",
+          "reason": "Express-lane access reduces waiting; this favors expedite rather than facilitate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        },
+        {
+          "id": "expedite-facilitate_006_b2",
+          "text": "She carries a bright suitcase that attracts compliments.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.91,
+            "facilitate": 0.1
+          },
+          "decisive_clue": "suitcase appearance does not affect the shorter wait",
+          "reason": "Suitcase appearance does not affect the shorter wait; this favors expedite rather than facilitate.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Suitcase appearance does not affect the shorter wait points to expedite, not facilitate.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Fatima's situation ultimately hinges on this clue: suitcase appearance does not affect the shorter wait. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_007",
+      "edge_id": "expedite__facilitate",
+      "domain": "online_fundraiser",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Gopal's change to donations?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "expedite-facilitate_007_b1",
+          "text": "His payment link sends contributions to the charity a day earlier than before.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.93,
+            "facilitate": 0.14
+          },
+          "decisive_clue": "contributions arrive a day sooner",
+          "reason": "Contributions arrive a day sooner; this favors expedite rather than facilitate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        },
+        {
+          "id": "expedite-facilitate_007_b2",
+          "text": "He then replaces the old process with an accessible form that takes the same time but is much simpler to use.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.14,
+            "facilitate": 0.93
+          },
+          "decisive_clue": "the revised form removes difficulty rather than time",
+          "reason": "The revised form removes difficulty rather than time; this favors facilitate rather than expedite.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The revised form removes difficulty rather than time points to facilitate, not expedite.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Gopal's situation ultimately hinges on this clue: the revised form removes difficulty rather than time. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_008",
+      "edge_id": "expedite__facilitate",
+      "domain": "shopping_returns",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Huda's assistance with a return?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "expedite-facilitate_008_b1",
+          "text": "She explains every field on the return form; the store still applies its standard timeline.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.18,
+            "facilitate": 0.95
+          },
+          "decisive_clue": "instructions make forms easier, not quicker",
+          "reason": "Instructions make forms easier, not quicker; this favors facilitate rather than expedite.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        },
+        {
+          "id": "expedite-facilitate_008_b2",
+          "text": "Her example answers help the customer avoid confusing the address and order-number boxes.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.18,
+            "facilitate": 0.95
+          },
+          "decisive_clue": "example answers remove a specific obstacle",
+          "reason": "Example answers remove a specific obstacle; this favors facilitate rather than expedite.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 1,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 4
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Example answers remove a specific obstacle points to facilitate, not expedite.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Huda's situation ultimately hinges on this clue: example answers remove a specific obstacle. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_009",
+      "edge_id": "expedite__facilitate",
+      "domain": "neighbourhood_repair",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Ivan's help with a repair permit?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "expedite-facilitate_009_b1",
+          "text": "He asks for an early inspection appointment, advancing the repair permit by a week.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.91,
+            "facilitate": 0.1
+          },
+          "decisive_clue": "earlier inspection advances approval",
+          "reason": "Earlier inspection advances approval; this favors expedite rather than facilitate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        },
+        {
+          "id": "expedite-facilitate_009_b2",
+          "text": "He wears his old work boots to the appointment.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.91,
+            "facilitate": 0.1
+          },
+          "decisive_clue": "his footwear does not affect approval speed",
+          "reason": "His footwear does not affect approval speed; this favors expedite rather than facilitate.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "His footwear does not affect approval speed points to expedite, not facilitate.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Ivan's situation ultimately hinges on this clue: his footwear does not affect approval speed. The earlier information remains true but does not settle the distinction.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "expedite-facilitate_010",
+      "edge_id": "expedite__facilitate",
+      "domain": "community_workshop",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Jade's contribution to the workshop booking?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "expedite-facilitate_010_b1",
+          "text": "After Jade steps in, the approval notice arrives much earlier than expected.",
+          "best_word": "expedite",
+          "fit": {
+            "expedite": 0.93,
+            "facilitate": 0.14
+          },
+          "decisive_clue": "approval appears to have been accelerated",
+          "reason": "Approval appears to have been accelerated; this favors expedite rather than facilitate.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facilitate": "M2"
+          }
+        },
+        {
+          "id": "expedite-facilitate_010_b2",
+          "text": "The office had simply finished its backlog; Jade only translated the confusing application instructions for everyone.",
+          "best_word": "facilitate",
+          "fit": {
+            "expedite": 0.14,
+            "facilitate": 0.93
+          },
+          "decisive_clue": "her own contribution was clarification, not faster approval",
+          "reason": "Her own contribution was clarification, not faster approval; this favors facilitate rather than expedite.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "expedite": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her own contribution was clarification, not faster approval points to facilitate, not expedite.",
+      "feedback_deep": "Expedite changes how soon a task gets done; facilitate removes obstacles or makes the task easier, even without shortening its duration. Here, Jade's situation ultimately hinges on this clue: her own contribution was clarification, not faster approval. The earlier information was revised by a more decisive fact about the same subject.",
+      "contrast_rule": "Expedite saves time; facilitate removes friction.",
+      "hints": {
+        "attention": "Look for evidence of a shorter wait or an easier procedure.",
+        "axis": "Faster completion versus easier completion.",
+        "contrast": "Expedite saves time; facilitate removes friction."
+      },
+      "qa": "pass"
+    }
+  ]
+}

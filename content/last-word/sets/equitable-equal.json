@@ -1,0 +1,552 @@
+{
+  "schema_version": 1,
+  "set_id": "equitable-equal",
+  "title": "equitable / equal",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[25]",
+    "source_pair_id": 123,
+    "qa": {
+      "pass": 7,
+      "revised": 0,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "equitable",
+      "sense": "Fair in relation to people’s needs, contributions, or circumstances.",
+      "connotation": "fair-minded, approving",
+      "register": "formal",
+      "misconceptions": [
+        "Confused with equal when the defining clue is overlooked."
+      ]
+    },
+    {
+      "word": "equal",
+      "sense": "The same in quantity or treatment, regardless of fairness.",
+      "connotation": "neutral, quantitative",
+      "register": "standard",
+      "misconceptions": [
+        "Confused with equitable when the defining clue is overlooked."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "fairness_versus_sameness",
+      "description": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount."
+    }
+  ],
+  "edges": [
+    {
+      "id": "equitable__equal",
+      "a": "equitable",
+      "b": "equal",
+      "boundary_rule": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "clues_a": [
+        "Fairly apportioned.",
+        "Fair in relation to people’s needs, contributions, or circumstances."
+      ],
+      "clues_b": [
+        "Identical in amount or treatment.",
+        "The same in quantity or treatment, regardless of fairness."
+      ],
+      "irrelevant_clues": [
+        "format, colour, or popularity unless they establish the boundary",
+        "location or timing that does not change the decisive feature"
+      ],
+      "misconceptions": {
+        "M1": "Treating equitable as though it always means equal.",
+        "M2": "Treating equal as though it always means equitable.",
+        "M3": "Overvaluing a distracting detail instead of the decisive semantic distinction."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "equitable-equal_001",
+      "edge_id": "equitable__equal",
+      "domain": "volunteer_project",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Mariam’s distribution of tips?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "equitable-equal_001_b1",
+          "text": "Mariam distributed tips according to hours worked, so longer shifts received larger shares.",
+          "best_word": "equitable",
+          "fit": {
+            "equitable": 0.87,
+            "equal": 0.32
+          },
+          "decisive_clue": "shares reflected each volunteer’s actual contribution",
+          "reason": "This establishes that shares reflected each volunteer’s actual contribution.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equal": "M1"
+          }
+        },
+        {
+          "id": "equitable-equal_001_b2",
+          "text": "She counted the setup time that customers had not seen.",
+          "best_word": "equitable",
+          "fit": {
+            "equitable": 0.93,
+            "equal": 0.32
+          },
+          "decisive_clue": "shares reflected each volunteer’s actual contribution",
+          "reason": "Counting unseen preparation supports a fair allocation rather than identical payouts.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equal": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Shares reflected each volunteer’s actual contribution; that detail favors equitable.",
+      "feedback_deep": "Counting unseen preparation supports a fair allocation rather than identical payouts. Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "contrast_rule": "Equitable asks what is fair; equal asks what is the same.",
+      "hints": {
+        "attention": "Consider whether contributions affect the shares.",
+        "axis": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+        "contrast": "Equitable asks what is fair; equal asks what is the same."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "equitable-equal_002",
+      "edge_id": "equitable__equal",
+      "domain": "music_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Leo’s equipment allocation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "equitable-equal_002_b1",
+          "text": "Leo issued one microphone to each member of the quartet, although only the lead singer needed amplification.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.87
+          },
+          "decisive_clue": "everyone received the same number of microphones",
+          "reason": "This establishes that everyone received the same number of microphones.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        },
+        {
+          "id": "equitable-equal_002_b2",
+          "text": "All four microphones were the same model and condition.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.93
+          },
+          "decisive_clue": "everyone received the same number of microphones",
+          "reason": "Matching models reinforces sameness, not whether the arrangement met each musician’s needs.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Everyone received the same number of microphones; that detail favors equal.",
+      "feedback_deep": "Matching models reinforces sameness, not whether the arrangement met each musician’s needs. Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "contrast_rule": "Equitable asks what is fair; equal asks what is the same.",
+      "hints": {
+        "attention": "Count what each member received.",
+        "axis": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+        "contrast": "Equitable asks what is fair; equal asks what is the same."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "equitable-equal_003",
+      "edge_id": "equitable__equal",
+      "domain": "workplace_roster",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nina’s distribution of days off?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "equitable-equal_003_b1",
+          "text": "Nina gave first choice of days off to workers who had covered the most emergency shifts.",
+          "best_word": "equitable",
+          "fit": {
+            "equitable": 0.87,
+            "equal": 0.32
+          },
+          "decisive_clue": "the priority reflected extra duties rather than identical treatment",
+          "reason": "This establishes that the priority reflected extra duties rather than identical treatment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equal": "M1"
+          }
+        },
+        {
+          "id": "equitable-equal_003_b2",
+          "text": "She based the order on recorded shifts rather than personal friendships.",
+          "best_word": "equitable",
+          "fit": {
+            "equitable": 0.93,
+            "equal": 0.32
+          },
+          "decisive_clue": "the priority reflected extra duties rather than identical treatment",
+          "reason": "Using records strengthens impartiality; a fair arrangement can give people different choices.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equal": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The priority reflected extra duties rather than identical treatment; that detail favors equitable.",
+      "feedback_deep": "Using records strengthens impartiality; a fair arrangement can give people different choices. Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "contrast_rule": "Equitable asks what is fair; equal asks what is the same.",
+      "hints": {
+        "attention": "Look at the basis for priority.",
+        "axis": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+        "contrast": "Equitable asks what is fair; equal asks what is the same."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "equitable-equal_004",
+      "edge_id": "equitable__equal",
+      "domain": "after-school_exam",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Arun’s extension rule?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "equitable-equal_004_b1",
+          "text": "Arun gave every exam candidate exactly ten extra minutes, regardless of how much time each had already received.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.87
+          },
+          "decisive_clue": "every candidate received ten additional minutes",
+          "reason": "This establishes that every candidate received ten additional minutes.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        },
+        {
+          "id": "equitable-equal_004_b2",
+          "text": "He announced the same deadline to the entire room.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.93
+          },
+          "decisive_clue": "every candidate received ten additional minutes",
+          "reason": "A uniform deadline confirms identical treatment but cannot by itself establish fairness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Every candidate received ten additional minutes; that detail favors equal.",
+      "feedback_deep": "A uniform deadline confirms identical treatment but cannot by itself establish fairness. Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "contrast_rule": "Equitable asks what is fair; equal asks what is the same.",
+      "hints": {
+        "attention": "Separate uniform amounts from differing circumstances.",
+        "axis": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+        "contrast": "Equitable asks what is fair; equal asks what is the same."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "equitable-equal_005",
+      "edge_id": "equitable__equal",
+      "domain": "restaurant_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Keiko’s bill split?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "equitable-equal_005_b1",
+          "text": "Keiko charged five friends identical shares, though three had ordered only drinks and two had eaten full meals.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.87
+          },
+          "decisive_clue": "each person was charged the same sum despite different orders",
+          "reason": "This establishes that each person was charged the same sum despite different orders.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        },
+        {
+          "id": "equitable-equal_005_b2",
+          "text": "She printed the figures neatly on a small chart.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.93
+          },
+          "decisive_clue": "each person was charged the same sum despite different orders",
+          "reason": "Neat presentation does not change the numerical sameness or establish fairness.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Each person was charged the same sum despite different orders; that detail favors equal.",
+      "feedback_deep": "Neat presentation does not change the numerical sameness or establish fairness. Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "contrast_rule": "Equitable asks what is fair; equal asks what is the same.",
+      "hints": {
+        "attention": "Ignore the chart’s appearance; compare the charges.",
+        "axis": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+        "contrast": "Equitable asks what is fair; equal asks what is the same."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "equitable-equal_007",
+      "edge_id": "equitable__equal",
+      "domain": "textbook_stall",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mika’s pricing decision?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "equitable-equal_007_b1",
+          "text": "Mika put a twelve-dollar price on every used textbook, even though some were damaged and others nearly new.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.87
+          },
+          "decisive_clue": "every book carried the same price regardless of condition",
+          "reason": "This establishes that every book carried the same price regardless of condition.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        },
+        {
+          "id": "equitable-equal_007_b2",
+          "text": "Every tag used the same typeface and paper.",
+          "best_word": "equal",
+          "fit": {
+            "equitable": 0.32,
+            "equal": 0.93
+          },
+          "decisive_clue": "every book carried the same price regardless of condition",
+          "reason": "Matching labels change no amounts and do not settle whether the pricing was fair.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "equitable": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Every book carried the same price regardless of condition; that detail favors equal.",
+      "feedback_deep": "Matching labels change no amounts and do not settle whether the pricing was fair. Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "contrast_rule": "Equitable asks what is fair; equal asks what is the same.",
+      "hints": {
+        "attention": "Focus on amounts rather than presentation.",
+        "axis": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+        "contrast": "Equitable asks what is fair; equal asks what is the same."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "equitable-equal_008",
+      "edge_id": "equitable__equal",
+      "domain": "travel_reimbursement",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Ayaan’s refund arrangement?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "equitable-equal_008_b1",
+          "text": "Ayaan reimbursed each volunteer’s actual bus fare, so people travelling farther got more money back.",
+          "best_word": "equitable",
+          "fit": {
+            "equitable": 0.87,
+            "equal": 0.32
+          },
+          "decisive_clue": "the refunds corresponded to expenses genuinely incurred",
+          "reason": "This establishes that the refunds corresponded to expenses genuinely incurred.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "equal": "M1"
+          }
+        },
+        {
+          "id": "equitable-equal_008_b2",
+          "text": "He required a ticket from every person before paying.",
+          "best_word": "equitable",
+          "fit": {
+            "equitable": 0.93,
+            "equal": 0.32
+          },
+          "decisive_clue": "the refunds corresponded to expenses genuinely incurred",
+          "reason": "Requiring evidence supports impartiality while allowing different amounts.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "equal": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The refunds corresponded to expenses genuinely incurred; that detail favors equitable.",
+      "feedback_deep": "Requiring evidence supports impartiality while allowing different amounts. Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+      "contrast_rule": "Equitable asks what is fair; equal asks what is the same.",
+      "hints": {
+        "attention": "Compare the amounts with the costs they cover.",
+        "axis": "Equitable adjusts for relevant circumstances to achieve fairness; equal means giving or having the same amount.",
+        "contrast": "Equitable asks what is fair; equal asks what is the same."
+      },
+      "qa": "pass"
+    }
+  ]
+}

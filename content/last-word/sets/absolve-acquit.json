@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "absolve-acquit",
+  "title": "absolve / acquit",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[33]",
+    "source_pair_id": 142,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "absolve",
+      "sense": "declare someone free of blame, guilt or responsibility; release from obligation",
+      "connotation": "exonerating or relieving",
+      "register": "formal",
+      "misconceptions": [
+        "Only a criminal court can release someone from blame"
+      ]
+    },
+    {
+      "word": "acquit",
+      "sense": "formally find someone not guilty of a criminal charge",
+      "connotation": "legal exoneration",
+      "register": "legal",
+      "misconceptions": [
+        "Anyone cleared by a manager or parent has been acquitted"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "release_from_responsibility_vs_criminal_verdict",
+      "description": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding."
+    }
+  ],
+  "edges": [
+    {
+      "id": "absolve__acquit",
+      "a": "absolve",
+      "b": "acquit",
+      "boundary_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "clues_a": [
+        "duty waived",
+        "blame explicitly lifted",
+        "responsibility removed"
+      ],
+      "clues_b": [
+        "criminal defendant found not guilty",
+        "verdict in criminal court",
+        "jury rejects a criminal charge"
+      ],
+      "irrelevant_clues": [
+        "relief expressed",
+        "length of hearing",
+        "seriousness of allegation"
+      ],
+      "misconceptions": {
+        "M1": "Any exoneration must be a criminal verdict",
+        "M2": "A court verdict is just an informal release from blame",
+        "M3": "The seriousness of an accusation alone decides which word fits"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "absolve-acquit_001",
+      "edge_id": "absolve__acquit",
+      "domain": "school_fundraiser",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes what the teacher did for Rina?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "absolve-acquit_001_b1",
+          "text": "After checking receipts, the teacher told Rina she bore no blame for the missing fundraiser money.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.9,
+            "acquit": 0.165
+          },
+          "decisive_clue": "authority cleared personal blame after review",
+          "reason": "No criminal charge or verdict is involved.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        },
+        {
+          "id": "absolve-acquit_001_b2",
+          "text": "The teacher also removed her name from the incident report.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.9,
+            "acquit": 0.165
+          },
+          "decisive_clue": "personal blame was expressly removed",
+          "reason": "Changing the report confirms that she was cleared of responsibility.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains personal blame was expressly removed.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. No criminal charge or verdict is involved. Changing the report confirms that she was cleared of responsibility.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Ask who judged the accusation and in what capacity.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "absolve-acquit_002",
+      "edge_id": "absolve__acquit",
+      "domain": "criminal_court",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the court's decision about Omar?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "absolve-acquit_002_b1",
+          "text": "The judge announced a not-guilty verdict after Omar stood trial on a theft charge.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.19,
+            "acquit": 0.92
+          },
+          "decisive_clue": "criminal proceeding ended in a not-guilty verdict",
+          "reason": "That is the specific legal act of finding a defendant not guilty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        },
+        {
+          "id": "absolve-acquit_002_b2",
+          "text": "The written judgment confirmed that the charge did not result in a conviction.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.19,
+            "acquit": 0.92
+          },
+          "decisive_clue": "formal verdict on a criminal charge",
+          "reason": "The court's legal decision, not the defendant's relief, determines the term.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains formal verdict on a criminal charge.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. That is the specific legal act of finding a defendant not guilty. The court's legal decision, not the defendant's relief, determines the term.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Identify the kind of judgment issued.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "absolve-acquit_003",
+      "edge_id": "absolve__acquit",
+      "domain": "household_duties",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Mei's father did for her?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "absolve-acquit_003_b1",
+          "text": "Mei's father formally released her from the promise to collect her sister after school that week.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.94,
+            "acquit": 0.215
+          },
+          "decisive_clue": "an existing obligation was lifted",
+          "reason": "The issue is release from an agreed duty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        },
+        {
+          "id": "absolve-acquit_003_b2",
+          "text": "He wrote the change on the family calendar in red ink.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.94,
+            "acquit": 0.215
+          },
+          "decisive_clue": "release from a duty despite the calendar colour",
+          "reason": "The colour does not make this a judgment on a criminal accusation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains release from a duty despite the calendar colour.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. The issue is release from an agreed duty. The colour does not make this a judgment on a criminal accusation.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Focus on the promise she no longer has to keep.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "absolve-acquit_004",
+      "edge_id": "absolve__acquit",
+      "domain": "shoplifting_trial",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the jury's decision about Javier?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "absolve-acquit_004_b1",
+          "text": "The jury returned a not-guilty verdict on the charge that Javier stole from a shop.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.14,
+            "acquit": 0.88
+          },
+          "decisive_clue": "jury decided a criminal charge with a not-guilty verdict",
+          "reason": "This is the legal finding, irrespective of outside opinions.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        },
+        {
+          "id": "absolve-acquit_004_b2",
+          "text": "Reporters waited outside the courtroom for several hours.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.14,
+            "acquit": 0.88
+          },
+          "decisive_clue": "criminal not-guilty verdict despite public attention",
+          "reason": "Coverage of the case does not change what the verdict does.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains criminal not-guilty verdict despite public attention.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. This is the legal finding, irrespective of outside opinions. Coverage of the case does not change what the verdict does.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Follow the legal outcome, not the audience.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "absolve-acquit_005",
+      "edge_id": "absolve__acquit",
+      "domain": "office_records",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the manager's decision about Leila?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "absolve-acquit_005_b1",
+          "text": "A manager cleared Leila of responsibility for losing customer files after discovering the shared system had failed.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.9,
+            "acquit": 0.165
+          },
+          "decisive_clue": "manager removed blame for a workplace loss",
+          "reason": "A workplace authority is not delivering a criminal verdict.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        },
+        {
+          "id": "absolve-acquit_005_b2",
+          "text": "There was an internal investigation, but no criminal charge against Leila or ruling by a court.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.9,
+            "acquit": 0.165
+          },
+          "decisive_clue": "workplace responsibility removed without criminal charges",
+          "reason": "The investigation's formality cannot substitute for a verdict.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains workplace responsibility removed without criminal charges.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. A workplace authority is not delivering a criminal verdict. The investigation's formality cannot substitute for a verdict.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Distinguish an internal review from a criminal case.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "absolve-acquit_006",
+      "edge_id": "absolve__acquit",
+      "domain": "traffic_charge",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the magistrate's decision about Benjamin?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "absolve-acquit_006_b1",
+          "text": "A magistrate found Benjamin not guilty of a criminal driving offence after hearing the witnesses.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.19,
+            "acquit": 0.92
+          },
+          "decisive_clue": "criminal charge resolved by a not-guilty finding",
+          "reason": "This is a judicial determination of guilt.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        },
+        {
+          "id": "absolve-acquit_006_b2",
+          "text": "The written order recorded the finding for that specific offence.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.19,
+            "acquit": 0.92
+          },
+          "decisive_clue": "formal judicial verdict on that charge",
+          "reason": "A recorded finding in a criminal prosecution confirms the legal sense.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains formal judicial verdict on that charge.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. This is a judicial determination of guilt. A recorded finding in a criminal prosecution confirms the legal sense.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Read what the magistrate ruled.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "absolve-acquit_007",
+      "edge_id": "absolve__acquit",
+      "domain": "community_garden",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what the committee did for Fatima?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "absolve-acquit_007_b1",
+          "text": "The garden committee released Fatima from her duty to manage the plot after she moved away.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.94,
+            "acquit": 0.215
+          },
+          "decisive_clue": "committee lifted her assigned responsibility",
+          "reason": "It is freedom from a continuing obligation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        },
+        {
+          "id": "absolve-acquit_007_b2",
+          "text": "They held the meeting in the same room where local elections are usually counted.",
+          "best_word": "absolve",
+          "fit": {
+            "absolve": 0.94,
+            "acquit": 0.215
+          },
+          "decisive_clue": "release from responsibility regardless of venue",
+          "reason": "A formal venue cannot turn a waived duty into a criminal verdict.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acquit": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The distraction does not matter: release from responsibility regardless of venue.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. It is freedom from a continuing obligation. A formal venue cannot turn a waived duty into a criminal verdict.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Focus on the duty, not the room.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "absolve-acquit_008",
+      "edge_id": "absolve__acquit",
+      "domain": "vandalism_case",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes the court's decision about Kenji?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "absolve-acquit_008_b1",
+          "text": "Following a criminal trial for damaging a wall, the court found Kenji not guilty.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.14,
+            "acquit": 0.88
+          },
+          "decisive_clue": "not-guilty ruling after a criminal trial",
+          "reason": "The action is an adjudication of a criminal charge.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        },
+        {
+          "id": "absolve-acquit_008_b2",
+          "text": "The judge explained that the prosecution had not proved Kenji was the person in the video.",
+          "best_word": "acquit",
+          "fit": {
+            "absolve": 0.14,
+            "acquit": 0.88
+          },
+          "decisive_clue": "not-guilty finding rather than forgiveness after guilt",
+          "reason": "Forgiving misconduct is not the same as rejecting a criminal charge.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "absolve": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains not-guilty finding rather than forgiveness after guilt.",
+      "feedback_deep": "Absolve means to clear blame or lift an obligation; acquit means to declare a criminal defendant not guilty. The action is an adjudication of a criminal charge. Forgiving misconduct is not the same as rejecting a criminal charge.",
+      "contrast_rule": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge.",
+      "hints": {
+        "attention": "Ask whether the court found guilt.",
+        "axis": "Clearing someone from responsibility or blame differs from a criminal court’s not-guilty finding.",
+        "contrast": "absolve clears blame or an obligation; acquit means find a defendant not guilty of a criminal charge."
+      },
+      "qa": "pass"
+    }
+  ]
+}

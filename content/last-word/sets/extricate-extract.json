@@ -1,0 +1,490 @@
+{
+  "schema_version": 1,
+  "set_id": "extricate-extract",
+  "title": "extricate / extract",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[140]",
+    "source_pair_id": 568,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 2
+    }
+  },
+  "words": [
+    {
+      "word": "extricate",
+      "sense": "Free a person or thing that is caught in a difficult, constricting, or dangerous predicament.",
+      "connotation": "neutral; often implies effort and difficulty",
+      "register": "standard to formal",
+      "misconceptions": [
+        "Every removal from any source counts as extrication."
+      ]
+    },
+    {
+      "word": "extract",
+      "sense": "Take out or obtain something from a source, place, or material.",
+      "connotation": "neutral; often technical or procedural",
+      "register": "standard",
+      "misconceptions": [
+        "A difficult rescue is merely an ordinary collection process."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "predicament",
+      "description": "Release from confinement or complication versus ordinary removal."
+    },
+    {
+      "id": "focus_of_action",
+      "description": "Liberating the trapped subject versus obtaining an item."
+    }
+  ],
+  "edges": [
+    {
+      "id": "extricate__extract",
+      "a": "extricate",
+      "b": "extract",
+      "boundary_rule": "Extricate centers on freeing something from a trap or difficult predicament; extract centers on taking something out of a source.",
+      "clues_a": [
+        "releases a trapped person safely",
+        "untangles something wedged tightly",
+        "gets out of an inescapable commitment"
+      ],
+      "clues_b": [
+        "takes an object from a container",
+        "obtains a component or substance",
+        "collects information from records"
+      ],
+      "irrelevant_clues": [
+        "tool used",
+        "speed of operation",
+        "color of removed object"
+      ],
+      "misconceptions": {
+        "M1": "Every removal from any source counts as extrication.",
+        "M2": "A difficult rescue is merely an ordinary collection process.",
+        "M3": "Using force or a tool alone determines the choice."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "extricate-extract_001",
+      "edge_id": "extricate__extract",
+      "domain": "playground_rescue",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes how Aya helped the child?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extricate-extract_001_b1",
+          "text": "Aya loosened the ropes around a child whose leg had become caught in a climbing net.",
+          "best_word": "extricate",
+          "fit": {
+            "extricate": 0.91,
+            "extract": 0.19
+          },
+          "decisive_clue": "released a child caught in a rope net",
+          "reason": "The child was physically trapped and needed freeing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extract": "M1"
+          }
+        },
+        {
+          "id": "extricate-extract_001_b2",
+          "text": "She carefully separated the knots until the child could step away.",
+          "best_word": "extricate",
+          "fit": {
+            "extricate": 0.91,
+            "extract": 0.19
+          },
+          "decisive_clue": "untied the ropes that prevented movement",
+          "reason": "The knots confirm that escape from entanglement, not obtaining an object, was the purpose.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extract": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The knots confirm that escape from entanglement, not obtaining an object, was the purpose.",
+      "feedback_deep": "The child was physically trapped and needed freeing. The knots confirm that escape from entanglement, not obtaining an object, was the purpose. Extricate frees what is stuck; extract takes something out.",
+      "contrast_rule": "Extricate frees what is stuck; extract takes something out.",
+      "hints": {
+        "attention": "Was the subject trapped?",
+        "axis": "Release from confinement or complication versus ordinary removal.",
+        "contrast": "Extricate frees what is stuck; extract takes something out."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extricate-extract_002",
+      "edge_id": "extricate__extract",
+      "domain": "juice_stand",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Bo did with the oranges?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "extricate-extract_002_b1",
+          "text": "Bo squeezed oranges through a press and collected their juice in a jug.",
+          "best_word": "extract",
+          "fit": {
+            "extricate": 0.19,
+            "extract": 0.91
+          },
+          "decisive_clue": "obtained juice from oranges",
+          "reason": "He removed a useful substance from its source.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extricate": "M2"
+          }
+        },
+        {
+          "id": "extricate-extract_002_b2",
+          "text": "He strained the liquid to catch the seeds.",
+          "best_word": "extract",
+          "fit": {
+            "extricate": 0.19,
+            "extract": 0.91
+          },
+          "decisive_clue": "obtained juice from oranges",
+          "reason": "Filtering the juice afterward does not change the original removal process.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 4,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extricate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Filtering the juice afterward does not change the original removal process.",
+      "feedback_deep": "He removed a useful substance from its source. Filtering the juice afterward does not change the original removal process. Extricate frees what is stuck; extract takes something out.",
+      "contrast_rule": "Extricate frees what is stuck; extract takes something out.",
+      "hints": {
+        "attention": "Was anything being freed from danger?",
+        "axis": "Release from confinement or complication versus ordinary removal.",
+        "contrast": "Extricate frees what is stuck; extract takes something out."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extricate-extract_003",
+      "edge_id": "extricate__extract",
+      "domain": "volunteer_rota",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "reframe",
+      "frame": "Which word best describes how Chloe dealt with her commitment?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "extricate-extract_003_b1",
+          "text": "Chloe found replacements for two of five overlapping volunteer shifts that were stopping her from studying.",
+          "best_word": "extricate",
+          "fit": {
+            "extricate": 0.91,
+            "extract": 0.19
+          },
+          "decisive_clue": "trapped by incompatible work promises",
+          "reason": "She was caught in a binding practical difficulty.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extract": "M1"
+          }
+        },
+        {
+          "id": "extricate-extract_003_b2",
+          "text": "She arranged the remaining swaps and gained release from the full schedule without leaving the charity short-staffed.",
+          "best_word": "extricate",
+          "fit": {
+            "extricate": 0.91,
+            "extract": 0.19
+          },
+          "decisive_clue": "negotiated release from the difficult commitments",
+          "reason": "Securing replacements explains how she freed herself from that predicament.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extract": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Securing replacements explains how she freed herself from that predicament.",
+      "feedback_deep": "She was caught in a binding practical difficulty. Securing replacements explains how she freed herself from that predicament. Extricate frees what is stuck; extract takes something out.",
+      "contrast_rule": "Extricate frees what is stuck; extract takes something out.",
+      "hints": {
+        "attention": "Think beyond physical traps.",
+        "axis": "Release from confinement or complication versus ordinary removal.",
+        "contrast": "Extricate frees what is stuck; extract takes something out."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extricate-extract_004",
+      "edge_id": "extricate__extract",
+      "domain": "school_archive",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes what Dev did with the spreadsheet?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extricate-extract_004_b1",
+          "text": "Dev copied the attendance totals from the school spreadsheet into a report.",
+          "best_word": "extract",
+          "fit": {
+            "extricate": 0.19,
+            "extract": 0.91
+          },
+          "decisive_clue": "retrieved information from a source document",
+          "reason": "His task was to obtain figures from recorded information.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extricate": "M2"
+          }
+        },
+        {
+          "id": "extricate-extract_004_b2",
+          "text": "He used the totals for a chart showing weekly attendance.",
+          "best_word": "extract",
+          "fit": {
+            "extricate": 0.19,
+            "extract": 0.91
+          },
+          "decisive_clue": "retrieved information from a source document",
+          "reason": "Putting the figures in a chart changes their presentation, not the retrieval itself.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extricate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Putting the figures in a chart changes their presentation, not the retrieval itself.",
+      "feedback_deep": "His task was to obtain figures from recorded information. Putting the figures in a chart changes their presentation, not the retrieval itself. Extricate frees what is stuck; extract takes something out.",
+      "contrast_rule": "Extricate frees what is stuck; extract takes something out.",
+      "hints": {
+        "attention": "What did he take from the source?",
+        "axis": "Release from confinement or complication versus ordinary removal.",
+        "contrast": "Extricate frees what is stuck; extract takes something out."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extricate-extract_006",
+      "edge_id": "extricate__extract",
+      "domain": "dentist_visit",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes what Farid’s dentist did?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "extricate-extract_006_b1",
+          "text": "Farid’s dentist removed a damaged tooth after numbing the area.",
+          "best_word": "extract",
+          "fit": {
+            "extricate": 0.19,
+            "extract": 0.91
+          },
+          "decisive_clue": "removed a tooth from its socket",
+          "reason": "The procedure took a tooth out of the mouth.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extricate": "M2"
+          }
+        },
+        {
+          "id": "extricate-extract_006_b2",
+          "text": "The tooth was then placed in a small tray.",
+          "best_word": "extract",
+          "fit": {
+            "extricate": 0.19,
+            "extract": 0.91
+          },
+          "decisive_clue": "removed a tooth from its socket",
+          "reason": "The tray is incidental to the removal; the tooth was not being rescued from a predicament.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "extricate": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The tray is incidental to the removal; the tooth was not being rescued from a predicament.",
+      "feedback_deep": "The procedure took a tooth out of the mouth. The tray is incidental to the removal; the tooth was not being rescued from a predicament. Extricate frees what is stuck; extract takes something out.",
+      "contrast_rule": "Extricate frees what is stuck; extract takes something out.",
+      "hints": {
+        "attention": "What is taken out?",
+        "axis": "Release from confinement or complication versus ordinary removal.",
+        "contrast": "Extricate frees what is stuck; extract takes something out."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "extricate-extract_007",
+      "edge_id": "extricate__extract",
+      "domain": "crowded_elevator",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which word best describes how Greta got her scarf back?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "extricate-extract_007_b1",
+          "text": "Greta pulled at her scarf after it caught in the elevator door, loosening one trapped corner.",
+          "best_word": "extricate",
+          "fit": {
+            "extricate": 0.91,
+            "extract": 0.19
+          },
+          "decisive_clue": "freed a scarf trapped in a closing door",
+          "reason": "The fabric was caught in a hazardous moving barrier.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extract": "M1"
+          }
+        },
+        {
+          "id": "extricate-extract_007_b2",
+          "text": "She pressed the open button and eased the fabric free before the doors shut again.",
+          "best_word": "extricate",
+          "fit": {
+            "extricate": 0.91,
+            "extract": 0.19
+          },
+          "decisive_clue": "freed a scarf trapped in a closing door",
+          "reason": "Pressing the button is the method, while freeing the trapped scarf is still the key.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "extract": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Pressing the button is the method, while freeing the trapped scarf is still the key.",
+      "feedback_deep": "The fabric was caught in a hazardous moving barrier. Pressing the button is the method, while freeing the trapped scarf is still the key. Extricate frees what is stuck; extract takes something out.",
+      "contrast_rule": "Extricate frees what is stuck; extract takes something out.",
+      "hints": {
+        "attention": "Why could the scarf not move?",
+        "axis": "Release from confinement or complication versus ordinary removal.",
+        "contrast": "Extricate frees what is stuck; extract takes something out."
+      },
+      "qa": "pass"
+    }
+  ]
+}

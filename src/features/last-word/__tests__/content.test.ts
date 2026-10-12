@@ -26,14 +26,15 @@ describe('repository content', () => {
     for (const { set } of repo.sets) for (const beat of set.chains.flatMap(chain => chain.beats)) expect(classifyAnswer(beat, beat.best_word)).toBe('best');
   });
 
-  it('players never see audited, unapproved pipeline sets', () => {
-    const visible = selectPlayable(repo).map(set => set.set_id);
-    expect(visible).toContain('confident-arrogant');
-    expect(visible).not.toContain('scrupulous-meticulous');
+  it('players never see draft or audited sets', () => {
+    const hidden = repo.sets.map(item => ({ ...item, set: { ...item.set, status: item.set.set_id === 'confident-arrogant' ? 'audited' as const : item.set.status } }));
+    const visible = selectPlayable({ ...repo, sets: hidden }).map(set => set.set_id);
+    expect(visible).toContain('persistent-obstinate');
+    expect(visible).not.toContain('confident-arrogant');
   });
 
   it('chains with errors are withheld, the rest of the set still plays', () => {
-    const playable = selectPlayable(repo, ['audited']).find(set => set.set_id === 'mortify-horrify')!;
+    const playable = selectPlayable(repo).find(set => set.set_id === 'mortify-horrify')!;
     expect(playable.chains.map(chain => chain.id)).not.toContain('mortify-horrify_017');
     expect(playable.chains).toHaveLength(19);
   });

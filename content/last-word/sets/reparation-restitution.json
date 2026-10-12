@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "reparation-restitution",
+  "title": "reparation / restitution",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[35]",
+    "source_pair_id": 148,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 3
+    }
+  },
+  "words": [
+    {
+      "word": "reparation",
+      "sense": "compensation or action making amends for harm caused",
+      "connotation": "restorative, moral",
+      "register": "formal",
+      "misconceptions": [
+        "Every effort to make amends must return an identifiable item"
+      ]
+    },
+    {
+      "word": "restitution",
+      "sense": "return or equivalent repayment of what was wrongfully taken",
+      "connotation": "restorative, legal",
+      "register": "formal",
+      "misconceptions": [
+        "An apology or general payment for distress always returns a specific loss"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "making_amends_vs_returning_loss",
+      "description": "Making amends for wider harm differs from returning what someone wrongfully took."
+    }
+  ],
+  "edges": [
+    {
+      "id": "reparation__restitution",
+      "a": "reparation",
+      "b": "restitution",
+      "boundary_rule": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent.",
+      "clues_a": [
+        "funds for damage or injury",
+        "public steps to repair wrongful harm",
+        "support offered to affected people"
+      ],
+      "clues_b": [
+        "stolen money returned",
+        "wrongfully taken item restored",
+        "equivalent value of taken property repaid"
+      ],
+      "irrelevant_clues": [
+        "public ceremony",
+        "personal shame",
+        "time taken to pay"
+      ],
+      "misconceptions": {
+        "M1": "All compensation is returning a stolen possession",
+        "M2": "Returning stolen property necessarily compensates every kind of injury",
+        "M3": "The publicity or emotional response determines the kind of remedy"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "reparation-restitution_001",
+      "edge_id": "reparation__restitution",
+      "domain": "school_lockers",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ayla's action after the theft?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "reparation-restitution_001_b1",
+          "text": "Ayla returned the calculator she had taken from her classmate's locker without permission.",
+          "best_word": "restitution",
+          "fit": {
+            "reparation": 0.165,
+            "restitution": 0.9
+          },
+          "decisive_clue": "exact object taken was returned to its owner",
+          "reason": "The purpose is to restore possession of a specific item.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reparation": "M2"
+          }
+        },
+        {
+          "id": "reparation-restitution_001_b2",
+          "text": "She also returned its original case, which she had kept with it.",
+          "best_word": "restitution",
+          "fit": {
+            "reparation": 0.165,
+            "restitution": 0.9
+          },
+          "decisive_clue": "remaining taken property was also restored",
+          "reason": "The remedy continues to replace what belonged to someone else.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reparation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains remaining taken property was also restored.",
+      "feedback_deep": "Reparation means payment or action intended to repair injury or wrongdoing; restitution means restoring property or money to its rightful owner. The purpose is to restore possession of a specific item. The remedy continues to replace what belonged to someone else.",
+      "contrast_rule": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent.",
+      "hints": {
+        "attention": "Check what was taken and what was given back.",
+        "axis": "Making amends for wider harm differs from returning what someone wrongfully took.",
+        "contrast": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "reparation-restitution_002",
+      "edge_id": "reparation__restitution",
+      "domain": "damaged_fence",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Bilal's payment to his neighbour?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "reparation-restitution_002_b1",
+          "text": "After damaging his neighbour's fence with a football, Bilal paid for the broken boards and the repair work.",
+          "best_word": "reparation",
+          "fit": {
+            "reparation": 0.92,
+            "restitution": 0.19
+          },
+          "decisive_clue": "payment made amends for damage inflicted",
+          "reason": "He compensates harm rather than returning an item he stole.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "restitution": "M1"
+          }
+        },
+        {
+          "id": "reparation-restitution_002_b2",
+          "text": "He also helped repaint the repaired section so the fence matched.",
+          "best_word": "reparation",
+          "fit": {
+            "reparation": 0.92,
+            "restitution": 0.19
+          },
+          "decisive_clue": "additional work repaired the damage done",
+          "reason": "The effort addresses resulting harm, not wrongful possession.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "restitution": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains additional work repaired the damage done.",
+      "feedback_deep": "Reparation means payment or action intended to repair injury or wrongdoing; restitution means restoring property or money to its rightful owner. He compensates harm rather than returning an item he stole. The effort addresses resulting harm, not wrongful possession.",
+      "contrast_rule": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent.",
+      "hints": {
+        "attention": "Distinguish damage from something taken away.",
+        "axis": "Making amends for wider harm differs from returning what someone wrongfully took.",
+        "contrast": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "reparation-restitution_003",
+      "edge_id": "reparation__restitution",
+      "domain": "borrowed_savings",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Chloe's payment to her cousin?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "reparation-restitution_003_b1",
+          "text": "Chloe repaid the exact amount of savings she had taken from her cousin's wallet without permission.",
+          "best_word": "restitution",
+          "fit": {
+            "reparation": 0.215,
+            "restitution": 0.94
+          },
+          "decisive_clue": "specific wrongfully taken amount was paid back",
+          "reason": "The money is restored to its owner.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reparation": "M2"
+          }
+        },
+        {
+          "id": "reparation-restitution_003_b2",
+          "text": "She handed it back in a purple envelope.",
+          "best_word": "restitution",
+          "fit": {
+            "reparation": 0.215,
+            "restitution": 0.94
+          },
+          "decisive_clue": "return of taken money regardless of envelope",
+          "reason": "Packaging does not turn replacement of a particular loss into a broader remedy.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reparation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains return of taken money regardless of envelope.",
+      "feedback_deep": "Reparation means payment or action intended to repair injury or wrongdoing; restitution means restoring property or money to its rightful owner. The money is restored to its owner. Packaging does not turn replacement of a particular loss into a broader remedy.",
+      "contrast_rule": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent.",
+      "hints": {
+        "attention": "Trace the money to its owner.",
+        "axis": "Making amends for wider harm differs from returning what someone wrongfully took.",
+        "contrast": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "reparation-restitution_007",
+      "edge_id": "reparation__restitution",
+      "domain": "missing_headphones",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Gina's response after taking the headphones?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "reparation-restitution_007_b1",
+          "text": "Gina bought identical headphones to replace a pair she had taken and then lost from her roommate.",
+          "best_word": "restitution",
+          "fit": {
+            "reparation": 0.215,
+            "restitution": 0.94
+          },
+          "decisive_clue": "provided an equivalent for wrongfully taken property",
+          "reason": "Replacement restores the particular material loss.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "reparation": "M2"
+          }
+        },
+        {
+          "id": "reparation-restitution_007_b2",
+          "text": "The new pair arrived in a bright yellow box.",
+          "best_word": "restitution",
+          "fit": {
+            "reparation": 0.215,
+            "restitution": 0.94
+          },
+          "decisive_clue": "equivalent property restored regardless of packaging",
+          "reason": "Box colour has no relation to the nature of the remedy.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "reparation": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The distraction does not matter: equivalent property restored regardless of packaging.",
+      "feedback_deep": "Reparation means payment or action intended to repair injury or wrongdoing; restitution means restoring property or money to its rightful owner. Replacement restores the particular material loss. Box colour has no relation to the nature of the remedy.",
+      "contrast_rule": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent.",
+      "hints": {
+        "attention": "Ask whether a specific taken item is being replaced.",
+        "axis": "Making amends for wider harm differs from returning what someone wrongfully took.",
+        "contrast": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "reparation-restitution_008",
+      "edge_id": "reparation__restitution",
+      "domain": "community_mural",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Hana's effort after defacing a mural?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "reparation-restitution_008_b1",
+          "text": "Hana paid to clean the mural she had painted over and funded materials to restore the damaged artwork.",
+          "best_word": "reparation",
+          "fit": {
+            "reparation": 0.88,
+            "restitution": 0.14
+          },
+          "decisive_clue": "paid to remedy physical harm she caused",
+          "reason": "The action repairs damage, not a taking of another's possession.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "restitution": "M1"
+          }
+        },
+        {
+          "id": "reparation-restitution_008_b2",
+          "text": "The receipt listed paint removal, replacement supplies and the artists' hours repairing the same wall.",
+          "best_word": "reparation",
+          "fit": {
+            "reparation": 0.88,
+            "restitution": 0.14
+          },
+          "decisive_clue": "costs addressed damage rather than stolen property",
+          "reason": "The clarification identifies compensation for harm.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 3,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "restitution": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The decisive evidence remains costs addressed damage rather than stolen property.",
+      "feedback_deep": "Reparation means payment or action intended to repair injury or wrongdoing; restitution means restoring property or money to its rightful owner. The action repairs damage, not a taking of another's possession. The clarification identifies compensation for harm.",
+      "contrast_rule": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent.",
+      "hints": {
+        "attention": "Separate damage to an item from taking it.",
+        "axis": "Making amends for wider harm differs from returning what someone wrongfully took.",
+        "contrast": "reparation compensates for harm done; restitution returns what was wrongfully taken or its equivalent."
+      },
+      "qa": "pass"
+    }
+  ]
+}

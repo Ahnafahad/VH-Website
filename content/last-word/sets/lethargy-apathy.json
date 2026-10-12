@@ -1,0 +1,756 @@
+{
+  "schema_version": 1,
+  "set_id": "lethargy-apathy",
+  "title": "lethargy / apathy",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[51]",
+    "source_pair_id": 273,
+    "qa": {
+      "pass": 8,
+      "revised": 2,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "lethargy",
+      "sense": "low-energy state",
+      "connotation": "negative or clinical-sounding",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Mistaking exhaustion for indifference"
+      ]
+    },
+    {
+      "word": "apathy",
+      "sense": "indifference state",
+      "connotation": "negative, detached",
+      "register": "neutral to formal",
+      "misconceptions": [
+        "Mistaking indifference for exhaustion"
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "primary_deficit",
+      "description": "Insufficient energy versus insufficient interest"
+    }
+  ],
+  "edges": [
+    {
+      "id": "lethargy__apathy",
+      "a": "lethargy",
+      "b": "apathy",
+      "boundary_rule": "Lethargy is lack of energy that makes action difficult; apathy is lack of interest or concern even when action is possible.",
+      "clues_a": [
+        "wants to act but is exhausted"
+      ],
+      "clues_b": [
+        "has energy but does not care"
+      ],
+      "irrelevant_clues": [
+        "silence, sitting down, declining an invitation"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking exhaustion for indifference",
+        "M2": "Mistaking indifference for exhaustion",
+        "M3": "Judging only from outward inactivity"
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "lethargy-apathy_001",
+      "edge_id": "lethargy__apathy",
+      "domain": "morning_class",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which noun best describes what Sofia is experiencing?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "lethargy-apathy_001_b1",
+          "text": "After being ill, Sofia could barely stay awake or carry her bag into class.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.92,
+            "apathy": 0.2
+          },
+          "decisive_clue": "struggled physically after illness",
+          "reason": "The clue 'struggled physically after illness' points to low-energy state, not indifference state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        },
+        {
+          "id": "lethargy-apathy_001_b2",
+          "text": "She wanted to answer questions, but keeping her eyes open took effort.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.95,
+            "apathy": 0.16
+          },
+          "decisive_clue": "wanted to participate but lacked energy",
+          "reason": "The detail 'wanted to participate but lacked energy' leaves low-energy state as the better fit, not indifference state.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Wanted to participate but lacked energy; lethargy still fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"struggled physically after illness\"; the next is \"wanted to participate but lacked energy\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Separate her willingness from her ability.",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_002",
+      "edge_id": "lethargy__apathy",
+      "domain": "community_festival",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which noun best describes what Marek is experiencing?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "lethargy-apathy_002_b1",
+          "text": "After an early work shift, Marek moved so slowly that he struggled to help arrange festival chairs.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.92,
+            "apathy": 0.2
+          },
+          "decisive_clue": "too drained to arrange chairs",
+          "reason": "The clue 'too drained to arrange chairs' points to low-energy state, not indifference state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        },
+        {
+          "id": "lethargy-apathy_002_b2",
+          "text": "After a refreshing rest, he had energy to play games but still said the festival's success meant nothing to him.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.16,
+            "apathy": 0.95
+          },
+          "decisive_clue": "restored energy exposed a lack of concern",
+          "reason": "The new clue 'restored energy exposed a lack of concern' shifts the interpretation to indifference state, rather than low-energy state.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Restored energy exposed a lack of concern; now apathy fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"too drained to arrange chairs\"; the next is \"restored energy exposed a lack of concern\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "What remains once his energy returns?",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_003",
+      "edge_id": "lethargy__apathy",
+      "domain": "student_election",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which noun best describes what Priya is experiencing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "lethargy-apathy_003_b1",
+          "text": "Priya refused to vote for class representative, saying she didn't care who won.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.2,
+            "apathy": 0.92
+          },
+          "decisive_clue": "expressed indifference toward the election",
+          "reason": "The clue 'expressed indifference toward the election' points to indifference state, not low-energy state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        },
+        {
+          "id": "lethargy-apathy_003_b2",
+          "text": "She spent the afternoon energetically playing badminton; the election simply meant nothing to her.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.16,
+            "apathy": 0.95
+          },
+          "decisive_clue": "had energy for other things but no interest in voting",
+          "reason": "The detail 'had energy for other things but no interest in voting' leaves indifference state as the better fit, not low-energy state.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Had energy for other things but no interest in voting; apathy still fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"expressed indifference toward the election\"; the next is \"had energy for other things but no interest in voting\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Does she lack energy generally, or concern about one issue?",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_004",
+      "edge_id": "lethargy__apathy",
+      "domain": "birthday_surprise",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which noun best describes what Owen is experiencing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "lethargy-apathy_004_b1",
+          "text": "Owen ignored the group chat planning a friend's surprise party because he said celebrations did not matter.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.2,
+            "apathy": 0.92
+          },
+          "decisive_clue": "was unconcerned about the celebration",
+          "reason": "The clue 'was unconcerned about the celebration' points to indifference state, not low-energy state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        },
+        {
+          "id": "lethargy-apathy_004_b2",
+          "text": "He replied quickly to other messages but remained uninterested in the plans.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.16,
+            "apathy": 0.95
+          },
+          "decisive_clue": "active messaging showed his indifference was selective",
+          "reason": "The detail 'active messaging showed his indifference was selective' leaves indifference state as the better fit, not low-energy state.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Active messaging showed his indifference was selective; apathy still fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"was unconcerned about the celebration\"; the next is \"active messaging showed his indifference was selective\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Notice whether using the phone is difficult for him.",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_005",
+      "edge_id": "lethargy__apathy",
+      "domain": "basketball_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which noun best describes what Fatima is experiencing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "lethargy-apathy_005_b1",
+          "text": "Fatima sat out practice and shrugged, saying she didn't care whether the team won or lost.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.18,
+            "apathy": 0.94
+          },
+          "decisive_clue": "expressed complete unconcern about the team's outcome",
+          "reason": "The clue 'expressed complete unconcern about the team's outcome' points to indifference state, not low-energy state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        },
+        {
+          "id": "lethargy-apathy_005_b2",
+          "text": "In reality, she cared deeply about the game, but days of nursing a sick parent had left her too physically drained to move.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.96,
+            "apathy": 0.14
+          },
+          "decisive_clue": "deep concern revealed physical exhaustion as the true obstacle",
+          "reason": "The new clue 'deep concern revealed physical exhaustion as the true obstacle' shifts the interpretation to low-energy state, rather than indifference state.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Deep concern revealed physical exhaustion as the true obstacle; now lethargy fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"expressed complete unconcern about the team's outcome\"; the next is \"deep concern revealed physical exhaustion as the true obstacle\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Does she lack concern, or was the apparent disinterest masking profound physical exhaustion?",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "lethargy-apathy_006",
+      "edge_id": "lethargy__apathy",
+      "domain": "family_road_trip",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which noun best describes what Ethan is experiencing?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "lethargy-apathy_006_b1",
+          "text": "After a sleepless drive, Ethan felt so sluggish that even opening his suitcase seemed difficult.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.92,
+            "apathy": 0.2
+          },
+          "decisive_clue": "fatigue made an easy action difficult",
+          "reason": "The clue 'fatigue made an easy action difficult' points to low-energy state, not indifference state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        },
+        {
+          "id": "lethargy-apathy_006_b2",
+          "text": "A friend offered tickets to his favorite show, but he was still too exhausted to stand up.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.95,
+            "apathy": 0.16
+          },
+          "decisive_clue": "an attractive invitation did not restore energy",
+          "reason": "The detail 'an attractive invitation did not restore energy' leaves low-energy state as the better fit, not indifference state.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "An attractive invitation did not restore energy; lethargy still fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"fatigue made an easy action difficult\"; the next is \"an attractive invitation did not restore energy\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Do not confuse a tempting offer with available energy.",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_007",
+      "edge_id": "lethargy__apathy",
+      "domain": "shared_apartment_chores",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which noun best describes what Lucia is experiencing?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "lethargy-apathy_007_b1",
+          "text": "Lucia shrugged when her roommates asked her to help tidy the kitchen, saying its mess didn't bother her.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.2,
+            "apathy": 0.92
+          },
+          "decisive_clue": "did not care about the shared mess",
+          "reason": "The clue 'did not care about the shared mess' points to indifference state, not low-energy state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        },
+        {
+          "id": "lethargy-apathy_007_b2",
+          "text": "She eagerly spent the same hour reorganizing her own bookshelf.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.16,
+            "apathy": 0.95
+          },
+          "decisive_clue": "energy for a personal task highlighted selective indifference",
+          "reason": "The detail 'energy for a personal task highlighted selective indifference' leaves indifference state as the better fit, not low-energy state.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Energy for a personal task highlighted selective indifference; apathy still fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"did not care about the shared mess\"; the next is \"energy for a personal task highlighted selective indifference\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Compare her energy with her concern for the kitchen.",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_008",
+      "edge_id": "lethargy__apathy",
+      "domain": "picnic_preparations",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which noun best describes what Arjun is experiencing?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "lethargy-apathy_008_b1",
+          "text": "Arjun wanted to pack food for the picnic but moved slowly and kept losing focus after three late nights.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.92,
+            "apathy": 0.2
+          },
+          "decisive_clue": "tried to help despite severe tiredness",
+          "reason": "The clue 'tried to help despite severe tiredness' points to low-energy state, not indifference state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        },
+        {
+          "id": "lethargy-apathy_008_b2",
+          "text": "He repeatedly reached for the bags and had to sit back down because he felt spent.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.95,
+            "apathy": 0.16
+          },
+          "decisive_clue": "repeated attempts show willingness blocked by exhaustion",
+          "reason": "The detail 'repeated attempts show willingness blocked by exhaustion' leaves low-energy state as the better fit, not indifference state.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Repeated attempts show willingness blocked by exhaustion; lethargy still fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"tried to help despite severe tiredness\"; the next is \"repeated attempts show willingness blocked by exhaustion\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Notice the repeated effort despite difficulty.",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_009",
+      "edge_id": "lethargy__apathy",
+      "domain": "airport_lost_luggage",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which noun best describes what Jo is experiencing?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "lethargy-apathy_009_b1",
+          "text": "After an overnight flight, Jo was too exhausted to finish the form for a missing suitcase.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.92,
+            "apathy": 0.2
+          },
+          "decisive_clue": "too fatigued to finish a form",
+          "reason": "The clue 'too fatigued to finish a form' points to low-energy state, not indifference state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        },
+        {
+          "id": "lethargy-apathy_009_b2",
+          "text": "After sleeping well, Jo could concentrate again but decided the suitcase wasn't worth pursuing.",
+          "best_word": "apathy",
+          "fit": {
+            "lethargy": 0.16,
+            "apathy": 0.95
+          },
+          "decisive_clue": "recovered energy but no longer cared about the suitcase",
+          "reason": "The new clue 'recovered energy but no longer cared about the suitcase' shifts the interpretation to indifference state, rather than low-energy state.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "lethargy": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Recovered energy but no longer cared about the suitcase; now apathy fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"too fatigued to finish a form\"; the next is \"recovered energy but no longer cared about the suitcase\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Does the barrier stay physical after rest?",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "lethargy-apathy_010",
+      "edge_id": "lethargy__apathy",
+      "domain": "bicycle_repair_class",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which noun best describes what Camila is experiencing?",
+      "difficulty": 5,
+      "beats": [
+        {
+          "id": "lethargy-apathy_010_b1",
+          "text": "Camila kept dropping a small screw during bicycle repair class because she was too tired to concentrate.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.92,
+            "apathy": 0.2
+          },
+          "decisive_clue": "exhaustion affected coordination and concentration",
+          "reason": "The clue 'exhaustion affected coordination and concentration' points to low-energy state, not indifference state.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        },
+        {
+          "id": "lethargy-apathy_010_b2",
+          "text": "She was eager to finish the repair; her heavy, unresponsive hands, not disinterest, were holding her back.",
+          "best_word": "lethargy",
+          "fit": {
+            "lethargy": 0.95,
+            "apathy": 0.16
+          },
+          "decisive_clue": "desire to finish confirms an energy problem",
+          "reason": "The detail 'desire to finish confirms an energy problem' leaves low-energy state as the better fit, not indifference state.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "apathy": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Desire to finish confirms an energy problem; lethargy still fits best.",
+      "feedback_deep": "lethargy means physical or mental sluggishness that impairs action; apathy means lack of interest, concern, or feeling. The first clue is \"exhaustion affected coordination and concentration\"; the next is \"desire to finish confirms an energy problem\". Lethargy removes energy; apathy removes concern.",
+      "contrast_rule": "Lethargy removes energy; apathy removes concern.",
+      "hints": {
+        "attention": "Ask whether her motivation or energy is missing.",
+        "axis": "Insufficient energy versus insufficient interest",
+        "contrast": "Lethargy removes energy; apathy removes concern."
+      },
+      "qa": "revised"
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "schema_version": 1,
+  "set_id": "pivotal-vital",
+  "title": "pivotal / vital",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[137]",
+    "source_pair_id": 557,
+    "qa": {
+      "pass": 5,
+      "revised": 0,
+      "rejected": 1
+    }
+  },
+  "words": [
+    {
+      "word": "pivotal",
+      "sense": "crucial turning point in how events unfold",
+      "connotation": "positive or neutral",
+      "register": "standard to formal",
+      "misconceptions": [
+        "A turning point changes the course even if it is not needed continuously."
+      ]
+    },
+    {
+      "word": "vital",
+      "sense": "absolutely necessary requirement for success or survival",
+      "connotation": "strongly important",
+      "register": "standard",
+      "misconceptions": [
+        "A continuing necessity need not redirect events at a particular moment."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "turning_point_vs_necessity",
+      "description": "Pivotal marks a deciding turn in what happens next; vital marks something indispensable for success or survival."
+    }
+  ],
+  "edges": [
+    {
+      "id": "pivotal__vital",
+      "a": "pivotal",
+      "b": "vital",
+      "boundary_rule": "Pivotal marks a deciding turn in what happens next; vital marks something indispensable for success or survival.",
+      "clues_a": [
+        "a single decision reversed the result",
+        "one moment changed the plan",
+        "a conversation redirected the project"
+      ],
+      "clues_b": [
+        "a constant indispensable supply",
+        "essential instructions",
+        "necessary support throughout"
+      ],
+      "irrelevant_clues": [
+        "a memorable date",
+        "whether the object is attractive",
+        "public attention received"
+      ],
+      "misconceptions": {
+        "M1": "A turning point changes the course even if it is not needed continuously.",
+        "M2": "A continuing necessity need not redirect events at a particular moment.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "pivotal-vital_001",
+      "edge_id": "pivotal__vital",
+      "domain": "tournament_final",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Sasha’s last-second goal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pivotal-vital_001_b1",
+          "text": "Sasha scored with seconds remaining, changing a tied match into a win.",
+          "best_word": "pivotal",
+          "fit": {
+            "pivotal": 0.93,
+            "vital": 0.3
+          },
+          "decisive_clue": "a single goal changes the outcome",
+          "reason": "A distinct moment turns the result.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vital": "M1"
+          }
+        },
+        {
+          "id": "pivotal-vital_001_b2",
+          "text": "Without that goal, the championship would have gone to the other team on points.",
+          "best_word": "pivotal",
+          "fit": {
+            "pivotal": 0.95,
+            "vital": 0.21
+          },
+          "decisive_clue": "a single goal changes the championship outcome",
+          "reason": "The scoring rule confirms that one moment determined the result.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vital": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is a single goal changes the championship outcome; the scoring rule confirms that one moment determined the result.",
+      "feedback_deep": "Pivotal concerns crucial turning point in how events unfold; vital concerns absolutely necessary requirement for success or survival. The scoring rule confirms that one moment determined the result.",
+      "contrast_rule": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply.",
+      "hints": {
+        "attention": "Look for the point where the direction of events changed.",
+        "axis": "Pivotal marks a deciding turn in what happens next; vital marks something indispensable for success or survival.",
+        "contrast": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pivotal-vital_002",
+      "edge_id": "pivotal__vital",
+      "domain": "desert_bus_trip",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes the water Ethan brought?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "pivotal-vital_002_b1",
+          "text": "Ethan brought the only drinking water for the long journey; nobody could safely complete it without that supply.",
+          "best_word": "vital",
+          "fit": {
+            "pivotal": 0.3,
+            "vital": 0.93
+          },
+          "decisive_clue": "water indispensable for finishing the journey safely",
+          "reason": "The supply is necessary throughout.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pivotal": "M2"
+          }
+        },
+        {
+          "id": "pivotal-vital_002_b2",
+          "text": "The bottles were stored under his seat.",
+          "best_word": "vital",
+          "fit": {
+            "pivotal": 0.21,
+            "vital": 0.95
+          },
+          "decisive_clue": "water indispensable for finishing the journey safely",
+          "reason": "Storage location does not change that ongoing necessity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pivotal": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is water indispensable for finishing the journey safely; storage location does not change that ongoing necessity.",
+      "feedback_deep": "Pivotal concerns crucial turning point in how events unfold; vital concerns absolutely necessary requirement for success or survival. Storage location does not change that ongoing necessity.",
+      "contrast_rule": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply.",
+      "hints": {
+        "attention": "Would the trip be possible without it?",
+        "axis": "Pivotal marks a deciding turn in what happens next; vital marks something indispensable for success or survival.",
+        "contrast": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pivotal-vital_003",
+      "edge_id": "pivotal__vital",
+      "domain": "after-school_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes the key Leila holds?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "pivotal-vital_003_b1",
+          "text": "Leila kept the club’s only entrance key; without it, nobody could enter for scheduled meetings.",
+          "best_word": "vital",
+          "fit": {
+            "pivotal": 0.3,
+            "vital": 0.93
+          },
+          "decisive_clue": "the only means of entering for meetings",
+          "reason": "Access depends on the key.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "pivotal": "M2"
+          }
+        },
+        {
+          "id": "pivotal-vital_003_b2",
+          "text": "She attached a red ribbon to the key ring.",
+          "best_word": "vital",
+          "fit": {
+            "pivotal": 0.21,
+            "vital": 0.95
+          },
+          "decisive_clue": "the only means of entering for meetings",
+          "reason": "The ribbon is irrelevant to the key’s necessary function.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "pivotal": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is the only means of entering for meetings; the ribbon is irrelevant to the key’s necessary function.",
+      "feedback_deep": "Pivotal concerns crucial turning point in how events unfold; vital concerns absolutely necessary requirement for success or survival. The ribbon is irrelevant to the key’s necessary function.",
+      "contrast_rule": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply.",
+      "hints": {
+        "attention": "What happens if this item is missing?",
+        "axis": "Pivotal marks a deciding turn in what happens next; vital marks something indispensable for success or survival.",
+        "contrast": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pivotal-vital_004",
+      "edge_id": "pivotal__vital",
+      "domain": "family_move",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dario’s decision to take the job?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "pivotal-vital_004_b1",
+          "text": "Dario’s decision to accept a job in another town led his family to relocate.",
+          "best_word": "pivotal",
+          "fit": {
+            "pivotal": 0.93,
+            "vital": 0.3
+          },
+          "decisive_clue": "one decision redirects the family’s plans",
+          "reason": "The decision alters the family’s course.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vital": "M1"
+          }
+        },
+        {
+          "id": "pivotal-vital_004_b2",
+          "text": "That decision also changed which school his children would attend the following year.",
+          "best_word": "pivotal",
+          "fit": {
+            "pivotal": 0.95,
+            "vital": 0.21
+          },
+          "decisive_clue": "one decision changes several subsequent choices",
+          "reason": "New consequences show the extent of the turning point.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vital": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is one decision changes several subsequent choices; new consequences show the extent of the turning point.",
+      "feedback_deep": "Pivotal concerns crucial turning point in how events unfold; vital concerns absolutely necessary requirement for success or survival. New consequences show the extent of the turning point.",
+      "contrast_rule": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply.",
+      "hints": {
+        "attention": "Which moment sets a different path in motion?",
+        "axis": "Pivotal marks a deciding turn in what happens next; vital marks something indispensable for success or survival.",
+        "contrast": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "pivotal-vital_005",
+      "edge_id": "pivotal__vital",
+      "domain": "theatre_rehearsal",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mina’s remark about the ending?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "pivotal-vital_005_b1",
+          "text": "Mina told the director one overlooked line that changed the ending from tragic to hopeful.",
+          "best_word": "pivotal",
+          "fit": {
+            "pivotal": 0.93,
+            "vital": 0.3
+          },
+          "decisive_clue": "one observation changes the direction of the ending",
+          "reason": "A brief intervention produces a major shift.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "vital": "M1"
+          }
+        },
+        {
+          "id": "pivotal-vital_005_b2",
+          "text": "They discussed that line for less than a minute.",
+          "best_word": "pivotal",
+          "fit": {
+            "pivotal": 0.95,
+            "vital": 0.21
+          },
+          "decisive_clue": "one observation changes the direction of the ending",
+          "reason": "How quickly they discussed it does not undo its decisive effect.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "vital": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is one observation changes the direction of the ending; how quickly they discussed it does not undo its decisive effect.",
+      "feedback_deep": "Pivotal concerns crucial turning point in how events unfold; vital concerns absolutely necessary requirement for success or survival. How quickly they discussed it does not undo its decisive effect.",
+      "contrast_rule": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply.",
+      "hints": {
+        "attention": "Does importance come from duration or from what changed?",
+        "axis": "Pivotal marks a deciding turn in what happens next; vital marks something indispensable for success or survival.",
+        "contrast": "Pivotal: a single decision reversed the result; vital: a constant indispensable supply."
+      },
+      "qa": "pass"
+    }
+  ]
+}

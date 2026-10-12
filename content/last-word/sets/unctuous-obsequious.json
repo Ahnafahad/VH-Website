@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "unctuous-obsequious",
+  "title": "unctuous / obsequious",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[163]",
+    "source_pair_id": 691,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "unctuous",
+      "sense": "sugary, insincere flattery and slick manner",
+      "connotation": "strongly negative",
+      "register": "formal",
+      "misconceptions": [
+        "Flattering someone smoothly need not mean obeying their every command."
+      ]
+    },
+    {
+      "word": "obsequious",
+      "sense": "exaggerated submission and eagerness to obey",
+      "connotation": "strongly negative",
+      "register": "formal",
+      "misconceptions": [
+        "Constantly obeying someone need not involve sugary compliments."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "flattery_vs_submission",
+      "description": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey."
+    }
+  ],
+  "edges": [
+    {
+      "id": "unctuous__obsequious",
+      "a": "unctuous",
+      "b": "obsequious",
+      "boundary_rule": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey.",
+      "clues_a": [
+        "lavish artificial praise",
+        "syrupy promises",
+        "overpolished compliments"
+      ],
+      "clues_b": [
+        "obeying every whim",
+        "repeated bows to rank",
+        "yielding judgment to authority"
+      ],
+      "irrelevant_clues": [
+        "polite clothing",
+        "the length of a meeting",
+        "whether the speaker is smiling"
+      ],
+      "misconceptions": {
+        "M1": "Flattering someone smoothly need not mean obeying their every command.",
+        "M2": "Constantly obeying someone need not involve sugary compliments.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "unctuous-obsequious_001",
+      "edge_id": "unctuous__obsequious",
+      "domain": "shop_counter",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mariam’s behavior?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "unctuous-obsequious_001_b1",
+          "text": "Mariam greeted each visitor with an elaborate speech about their exceptional taste, even before learning what they wanted.",
+          "best_word": "unctuous",
+          "fit": {
+            "unctuous": 0.93,
+            "obsequious": 0.2
+          },
+          "decisive_clue": "lavish praise offered before knowing anything about a person",
+          "reason": "The rehearsed, excessive compliments sound insincere.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsequious": "M1"
+          }
+        },
+        {
+          "id": "unctuous-obsequious_001_b2",
+          "text": "Her voice remained soft while she delivered the same speech again.",
+          "best_word": "unctuous",
+          "fit": {
+            "unctuous": 0.95,
+            "obsequious": 0.15
+          },
+          "decisive_clue": "lavish praise offered before knowing anything about a person",
+          "reason": "A gentle voice does not change the artificial flattery.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsequious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is lavish praise offered before knowing anything about a person; a gentle voice does not change the artificial flattery.",
+      "feedback_deep": "Unctuous concerns sugary, insincere flattery and slick manner; obsequious concerns exaggerated submission and eagerness to obey. A gentle voice does not change the artificial flattery.",
+      "contrast_rule": "Unctuous: lavish artificial praise; obsequious: obeying every whim.",
+      "hints": {
+        "attention": "Listen to the content and sincerity of her praise.",
+        "axis": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey.",
+        "contrast": "Unctuous: lavish artificial praise; obsequious: obeying every whim."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "unctuous-obsequious_002",
+      "edge_id": "unctuous__obsequious",
+      "domain": "office_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Jun’s behavior?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "unctuous-obsequious_002_b1",
+          "text": "Jun agreed to every instruction his manager gave, even when it contradicted yesterday’s orders.",
+          "best_word": "obsequious",
+          "fit": {
+            "unctuous": 0.2,
+            "obsequious": 0.93
+          },
+          "decisive_clue": "unquestioning obedience to a superior",
+          "reason": "He submits regardless of the instructions’ merits.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "unctuous": "M2"
+          }
+        },
+        {
+          "id": "unctuous-obsequious_002_b2",
+          "text": "He immediately erased his own careful proposal whenever the manager frowned.",
+          "best_word": "obsequious",
+          "fit": {
+            "unctuous": 0.15,
+            "obsequious": 0.95
+          },
+          "decisive_clue": "unquestioning obedience at the expense of his own judgment",
+          "reason": "Discarding his work reinforces how completely he defers to authority.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "unctuous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is unquestioning obedience at the expense of his own judgment; discarding his work reinforces how completely he defers to authority.",
+      "feedback_deep": "Unctuous concerns sugary, insincere flattery and slick manner; obsequious concerns exaggerated submission and eagerness to obey. Discarding his work reinforces how completely he defers to authority.",
+      "contrast_rule": "Unctuous: lavish artificial praise; obsequious: obeying every whim.",
+      "hints": {
+        "attention": "Look at what happens to his independent judgment.",
+        "axis": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey.",
+        "contrast": "Unctuous: lavish artificial praise; obsequious: obeying every whim."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "unctuous-obsequious_003",
+      "edge_id": "unctuous__obsequious",
+      "domain": "school_fundraiser",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Isabel’s behavior?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "unctuous-obsequious_003_b1",
+          "text": "Isabel whispered that each donor had uniquely brilliant judgment, then immediately asked them to double their gift.",
+          "best_word": "unctuous",
+          "fit": {
+            "unctuous": 0.93,
+            "obsequious": 0.2
+          },
+          "decisive_clue": "calculated, overdone compliments designed to win bigger donations",
+          "reason": "The praise is polished and clearly serves her request for more money.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsequious": "M1"
+          }
+        },
+        {
+          "id": "unctuous-obsequious_003_b2",
+          "text": "She delivered each plea while wearing a plain blue jacket.",
+          "best_word": "unctuous",
+          "fit": {
+            "unctuous": 0.95,
+            "obsequious": 0.15
+          },
+          "decisive_clue": "calculated, overdone compliments designed to win bigger donations",
+          "reason": "Clothing has no bearing on the flattering words used to solicit more money.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsequious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Calculated, overdone compliments designed to win bigger donations; the later detail does not change the boundary.",
+      "feedback_deep": "Unctuous concerns sugary, insincere flattery and slick manner; obsequious concerns exaggerated submission and eagerness to obey. Clothing has no bearing on the flattering words used to solicit more money.",
+      "contrast_rule": "Unctuous: lavish artificial praise; obsequious: obeying every whim.",
+      "hints": {
+        "attention": "Does the praise feel earned or mechanically sweet?",
+        "axis": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey.",
+        "contrast": "Unctuous: lavish artificial praise; obsequious: obeying every whim."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "unctuous-obsequious_004",
+      "edge_id": "unctuous__obsequious",
+      "domain": "restaurant_shift",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Bashir’s behavior?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "unctuous-obsequious_004_b1",
+          "text": "Bashir dropped his own schedule whenever the supervisor asked, even volunteering to complete the supervisor’s personal errands.",
+          "best_word": "obsequious",
+          "fit": {
+            "unctuous": 0.2,
+            "obsequious": 0.93
+          },
+          "decisive_clue": "excessive willingness to comply with a superior’s wishes",
+          "reason": "He goes beyond reasonable workplace cooperation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "unctuous": "M2"
+          }
+        },
+        {
+          "id": "unctuous-obsequious_004_b2",
+          "text": "He still spoke in a perfectly ordinary tone.",
+          "best_word": "obsequious",
+          "fit": {
+            "unctuous": 0.15,
+            "obsequious": 0.95
+          },
+          "decisive_clue": "excessive willingness to comply with a superior’s wishes",
+          "reason": "The lack of sugary speech does not erase his submission.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "unctuous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is excessive willingness to comply with a superior’s wishes; the lack of sugary speech does not erase his submission.",
+      "feedback_deep": "Unctuous concerns sugary, insincere flattery and slick manner; obsequious concerns exaggerated submission and eagerness to obey. The lack of sugary speech does not erase his submission.",
+      "contrast_rule": "Unctuous: lavish artificial praise; obsequious: obeying every whim.",
+      "hints": {
+        "attention": "Focus on obedience rather than smooth words.",
+        "axis": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey.",
+        "contrast": "Unctuous: lavish artificial praise; obsequious: obeying every whim."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "unctuous-obsequious_005",
+      "edge_id": "unctuous__obsequious",
+      "domain": "sports_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hana’s behavior?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "unctuous-obsequious_005_b1",
+          "text": "Hana repeatedly bowed her head and accepted the captain’s every preference without question.",
+          "best_word": "obsequious",
+          "fit": {
+            "unctuous": 0.2,
+            "obsequious": 0.93
+          },
+          "decisive_clue": "excessive deference to the captain",
+          "reason": "The conduct shows yielding to authority.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "unctuous": "M2"
+          }
+        },
+        {
+          "id": "unctuous-obsequious_005_b2",
+          "text": "She even let the captain choose her own training times and equipment.",
+          "best_word": "obsequious",
+          "fit": {
+            "unctuous": 0.15,
+            "obsequious": 0.95
+          },
+          "decisive_clue": "excessive surrender of personal decisions to the captain",
+          "reason": "Letting someone else control personal choices deepens the submissiveness.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "unctuous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is excessive surrender of personal decisions to the captain; letting someone else control personal choices deepens the submissiveness.",
+      "feedback_deep": "Unctuous concerns sugary, insincere flattery and slick manner; obsequious concerns exaggerated submission and eagerness to obey. Letting someone else control personal choices deepens the submissiveness.",
+      "contrast_rule": "Unctuous: lavish artificial praise; obsequious: obeying every whim.",
+      "hints": {
+        "attention": "Who makes the decisions here?",
+        "axis": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey.",
+        "contrast": "Unctuous: lavish artificial praise; obsequious: obeying every whim."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "unctuous-obsequious_006",
+      "edge_id": "unctuous__obsequious",
+      "domain": "family_dinner",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Mateo’s behavior?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "unctuous-obsequious_006_b1",
+          "text": "Mateo praised his aunt’s plain rice as the finest meal ever cooked, repeating glowing compliments between every bite.",
+          "best_word": "unctuous",
+          "fit": {
+            "unctuous": 0.93,
+            "obsequious": 0.2
+          },
+          "decisive_clue": "overblown compliments unrelated to the ordinary meal",
+          "reason": "The performance of praise is implausibly extravagant.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "obsequious": "M1"
+          }
+        },
+        {
+          "id": "unctuous-obsequious_006_b2",
+          "text": "He quietly asked for a second helping.",
+          "best_word": "unctuous",
+          "fit": {
+            "unctuous": 0.95,
+            "obsequious": 0.15
+          },
+          "decisive_clue": "overblown compliments unrelated to the ordinary meal",
+          "reason": "Eating more does not make his wildly exaggerated praise sincere.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "obsequious": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is overblown compliments unrelated to the ordinary meal; eating more does not make his wildly exaggerated praise sincere.",
+      "feedback_deep": "Unctuous concerns sugary, insincere flattery and slick manner; obsequious concerns exaggerated submission and eagerness to obey. Eating more does not make his wildly exaggerated praise sincere.",
+      "contrast_rule": "Unctuous: lavish artificial praise; obsequious: obeying every whim.",
+      "hints": {
+        "attention": "Separate enthusiasm for food from the way he flatters the cook.",
+        "axis": "Unctuous behavior is slick, insincere flattery; obsequious behavior is excessive deference and willingness to obey.",
+        "contrast": "Unctuous: lavish artificial praise; obsequious: obeying every whim."
+      },
+      "qa": "pass"
+    }
+  ]
+}

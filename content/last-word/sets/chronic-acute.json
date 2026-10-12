@@ -1,0 +1,623 @@
+{
+  "schema_version": 1,
+  "set_id": "chronic-acute",
+  "title": "chronic / acute",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[143]",
+    "source_pair_id": 581,
+    "qa": {
+      "pass": 8,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "chronic",
+      "sense": "Long-lasting or repeatedly recurring illness or problem",
+      "connotation": "clinical or concerned",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Mistaking severity for duration.",
+        "Thinking a recurring problem is new each time it returns."
+      ]
+    },
+    {
+      "word": "acute",
+      "sense": "Sudden-onset and often short-lived illness or problem",
+      "connotation": "clinical or urgent",
+      "register": "neutral-to-formal",
+      "misconceptions": [
+        "Mistaking severity for duration.",
+        "Assuming every sudden problem lasts a long time."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "duration_recurrence_vs_abrupt_episode",
+      "description": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration."
+    }
+  ],
+  "edges": [
+    {
+      "id": "chronic__acute",
+      "a": "chronic",
+      "b": "acute",
+      "boundary_rule": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+      "clues_a": [
+        "many months",
+        "keeps returning"
+      ],
+      "clues_b": [
+        "began suddenly",
+        "intense short episode"
+      ],
+      "irrelevant_clues": [
+        "one bad afternoon",
+        "how loudly someone complained"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking severity for duration.",
+        "M2": "Thinking a recurring problem is new each time it returns.",
+        "M3": "Assuming every sudden problem lasts a long time."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "chronic-acute_001",
+      "edge_id": "chronic__acute",
+      "domain": "school_infirmary",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Omar's stomach pain?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "chronic-acute_001_b1",
+          "text": "Omar's stomach starts hurting sharply within seconds after lunch, but the pain disappears by evening.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.91,
+            "chronic": 0.26
+          },
+          "decisive_clue": "abrupt intense episode lasting hours",
+          "reason": "The initial evidence is abrupt intense episode lasting hours; it best supports acute.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_001_b2",
+          "text": "He misses an afternoon club meeting because of it.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.93,
+            "chronic": 0.21
+          },
+          "decisive_clue": "abrupt intense episode lasting hours",
+          "reason": "Missing the meeting shows impact but not a longer duration.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Missing the meeting shows impact but not a longer duration.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. Missing the meeting shows impact but not a longer duration.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "When did it start and finish?",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chronic-acute_002",
+      "edge_id": "chronic__acute",
+      "domain": "football_training",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Akira's knee trouble?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "chronic-acute_002_b1",
+          "text": "Akira's knee has hurt on and off for eight months, interfering with weekly practices.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.91,
+            "acute": 0.26
+          },
+          "decisive_clue": "recurring pain over eight months",
+          "reason": "The initial evidence is recurring pain over eight months; it best supports chronic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_002_b2",
+          "text": "The discomfort returns even after several periods of rest.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.93,
+            "acute": 0.21
+          },
+          "decisive_clue": "repeated return despite breaks",
+          "reason": "The recurrence reinforces a long-standing condition rather than one brief episode.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The recurrence reinforces a long-standing condition rather than one brief episode.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. The recurrence reinforces a long-standing condition rather than one brief episode.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "Check the timeline of symptoms.",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chronic-acute_003",
+      "edge_id": "chronic__acute",
+      "domain": "commuter_train",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Elena's train problem?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "chronic-acute_003_b1",
+          "text": "The train's brakes fail without warning, halting the service for two hours until repairs finish.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.91,
+            "chronic": 0.26
+          },
+          "decisive_clue": "sudden serious disruption resolved promptly",
+          "reason": "The initial evidence is sudden serious disruption resolved promptly; it best supports acute.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_003_b2",
+          "text": "Hundreds of passengers complain online about the delay.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.93,
+            "chronic": 0.21
+          },
+          "decisive_clue": "sudden serious disruption resolved promptly",
+          "reason": "Complaint volume does not convert a brief unexpected breakdown into a recurring problem.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Complaint volume does not convert a brief unexpected breakdown into a recurring problem.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. Complaint volume does not convert a brief unexpected breakdown into a recurring problem.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "Separate severity from duration.",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chronic-acute_004",
+      "edge_id": "chronic__acute",
+      "domain": "study_routine",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Fatima's sleep difficulty?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "chronic-acute_004_b1",
+          "text": "Fatima has struggled to fall asleep almost every night since the start of the school year.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.91,
+            "acute": 0.26
+          },
+          "decisive_clue": "persistent difficulty across months",
+          "reason": "The initial evidence is persistent difficulty across months; it best supports chronic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_004_b2",
+          "text": "She changes the colour of her bedroom curtains.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.93,
+            "acute": 0.21
+          },
+          "decisive_clue": "persistent difficulty across months",
+          "reason": "Curtain colour does not erase months of difficulty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Curtain colour does not erase months of difficulty.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. Curtain colour does not erase months of difficulty.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "How long has this continued?",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chronic-acute_005",
+      "edge_id": "chronic__acute",
+      "domain": "apartment_maintenance",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Leo's building's plumbing trouble?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "chronic-acute_005_b1",
+          "text": "The same leak reappears every few weeks despite repeated repairs.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.91,
+            "acute": 0.26
+          },
+          "decisive_clue": "same problem repeatedly returns",
+          "reason": "The initial evidence is same problem repeatedly returns; it best supports chronic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_005_b2",
+          "text": "It has been happening across three different seasons.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.93,
+            "acute": 0.21
+          },
+          "decisive_clue": "recurrence over an extended period",
+          "reason": "The wider time span confirms the persistent pattern.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The wider time span confirms the persistent pattern.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. The wider time span confirms the persistent pattern.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "Does the issue end for good?",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chronic-acute_006",
+      "edge_id": "chronic__acute",
+      "domain": "restaurant_kitchen",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Tariq's staffing crisis?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "chronic-acute_006_b1",
+          "text": "Three cooks call in sick just before dinner, leaving Tariq suddenly short-handed for one evening.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.91,
+            "chronic": 0.26
+          },
+          "decisive_clue": "abrupt staffing problem confined to one shift",
+          "reason": "The initial evidence is abrupt staffing problem confined to one shift; it best supports acute.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_006_b2",
+          "text": "Extra staff arrive before closing, and the restaurant runs normally the next day.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.93,
+            "chronic": 0.21
+          },
+          "decisive_clue": "short-lived emergency with a clear end",
+          "reason": "The return to normal supports an isolated episode rather than a long-term shortage.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The return to normal supports an isolated episode rather than a long-term shortage.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. The return to normal supports an isolated episode rather than a long-term shortage.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "Look for the end point.",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chronic-acute_007",
+      "edge_id": "chronic__acute",
+      "domain": "family_internet",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Zoe's internet outage?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "chronic-acute_007_b1",
+          "text": "Zoe's home internet cuts out unexpectedly in the middle of an important video call.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.91,
+            "chronic": 0.26
+          },
+          "decisive_clue": "unexpected interruption of service",
+          "reason": "The initial evidence is unexpected interruption of service; it best supports acute.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_007_b2",
+          "text": "The provider restores it within forty minutes, and there are no further interruptions that month.",
+          "best_word": "acute",
+          "fit": {
+            "acute": 0.93,
+            "chronic": 0.21
+          },
+          "decisive_clue": "abrupt isolated outage quickly resolved",
+          "reason": "The short isolated disruption makes this an immediate episode, not an ongoing pattern.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "chronic": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The short isolated disruption makes this an immediate episode, not an ongoing pattern.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. The short isolated disruption makes this an immediate episode, not an ongoing pattern.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "Look at onset and whether it recurs.",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "chronic-acute_008",
+      "edge_id": "chronic__acute",
+      "domain": "office_supplies",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Nisha's supply shortage?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "chronic-acute_008_b1",
+          "text": "Nisha's office runs short of paper every Monday and has done so for nearly a year.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.91,
+            "acute": 0.26
+          },
+          "decisive_clue": "regular shortages sustained over a year",
+          "reason": "The initial evidence is regular shortages sustained over a year; it best supports chronic.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M1"
+          }
+        },
+        {
+          "id": "chronic-acute_008_b2",
+          "text": "Even after the purchasing schedule changes, the weekly shortage continues.",
+          "best_word": "chronic",
+          "fit": {
+            "chronic": 0.93,
+            "acute": 0.21
+          },
+          "decisive_clue": "persistent recurrence despite attempted fixes",
+          "reason": "The failed correction shows the issue is entrenched, not a single sudden disruption.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "acute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The failed correction shows the issue is entrenched, not a single sudden disruption.",
+      "feedback_deep": "Chronic means persistent or repeatedly returning; acute means abrupt, often intense, and relatively brief. The failed correction shows the issue is entrenched, not a single sudden disruption.",
+      "contrast_rule": "Chronic keeps coming back; acute strikes abruptly.",
+      "hints": {
+        "attention": "Look at repetition, not one difficult day.",
+        "axis": "Chronic describes a continuing or repeatedly returning condition; acute highlights an abrupt episode, usually limited in duration.",
+        "contrast": "Chronic keeps coming back; acute strikes abruptly."
+      },
+      "qa": "pass"
+    }
+  ]
+}

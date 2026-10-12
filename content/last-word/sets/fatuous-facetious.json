@@ -1,0 +1,761 @@
+{
+  "schema_version": 1,
+  "set_id": "fatuous-facetious",
+  "title": "fatuous / facetious",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[78]",
+    "source_pair_id": 330,
+    "qa": {
+      "pass": 4,
+      "revised": 6,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "fatuous",
+      "sense": "Smugly or pointlessly foolish, without recognising the poor judgment involved.",
+      "connotation": "strongly disapproving",
+      "register": "formal",
+      "misconceptions": [
+        "Mistaking any joke for innocent fun even when badly timed.",
+        "Ignoring whether the speaker actually believes the claim."
+      ]
+    },
+    {
+      "word": "facetious",
+      "sense": "Deliberately joking about something that calls for seriousness.",
+      "connotation": "often mildly disapproving",
+      "register": "standard",
+      "misconceptions": [
+        "Mistaking sincere foolishness for deliberate humour.",
+        "Ignoring whether the speaker actually believes the claim."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "unwitting_foolishness_vs_ill_timed_joke",
+      "description": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment."
+    }
+  ],
+  "edges": [
+    {
+      "id": "fatuous__facetious",
+      "a": "fatuous",
+      "b": "facetious",
+      "boundary_rule": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+      "clues_a": [
+        "earnestly foolish claim",
+        "smug lack of judgment"
+      ],
+      "clues_b": [
+        "deliberate joke",
+        "serious setting"
+      ],
+      "irrelevant_clues": [
+        "loudness",
+        "audience size"
+      ],
+      "misconceptions": {
+        "M1": "Mistaking sincere foolishness for deliberate humour.",
+        "M2": "Mistaking any joke for innocent fun even when badly timed.",
+        "M3": "Ignoring whether the speaker actually believes the claim."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "fatuous-facetious_001",
+      "edge_id": "fatuous__facetious",
+      "domain": "student_council_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Zahra’s suggestion about the budget?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_001_b1",
+          "text": "Zahra confidently insisted the club could buy anything it wanted because money always appears when needed.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "confident foolishness presented as fact",
+          "reason": "Confident foolishness presented as fact. Smugly or pointlessly foolish, without recognising the poor judgment involved..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_001_b2",
+          "text": "She repeated the claim earnestly when asked how bills would be paid.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "serious repetition confirms she is not joking",
+          "reason": "Serious repetition confirms she is not joking. Smugly or pointlessly foolish, without recognising the poor judgment involved..",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Serious repetition confirms she is not joking makes fatuous the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, serious repetition confirms she is not joking; that is why fatuous wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on whether she believes the claim.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fatuous-facetious_002",
+      "edge_id": "fatuous__facetious",
+      "domain": "hospital_waiting_room",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Lucas’s comment during the urgent briefing?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_002_b1",
+          "text": "Lucas announced that whoever waited longest in the emergency room deserved a gold medal and a victory parade.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "knowing joke during a worrying moment",
+          "reason": "Knowing joke during a worrying moment. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_002_b2",
+          "text": "He was trying to lighten the mood despite the family’s obvious worry.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "good intentions do not remove poor timing",
+          "reason": "Good intentions do not remove poor timing. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Good intentions do not remove poor timing makes facetious the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, good intentions do not remove poor timing; that is why facetious wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on whether he intended a joke.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "fatuous-facetious_003",
+      "edge_id": "fatuous__facetious",
+      "domain": "school_safety_drill",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Noura’s remark about the alarm?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_003_b1",
+          "text": "During the serious drill, Noura grinned and announced that everyone should use the alarm as a dance beat.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "playful-sounding suggestion in a serious drill",
+          "reason": "Playful-sounding suggestion in a serious drill. Deliberately joking about something that calls for seriousness..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_003_b2",
+          "text": "When challenged, she soberly insisted that dancing was a genuinely effective way to handle an evacuation.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "earnest belief in an absurd safety proposal",
+          "reason": "Earnest belief in an absurd safety proposal. Smugly or pointlessly foolish, without recognising the poor judgment involved..",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Earnest belief in an absurd safety proposal makes fatuous the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, earnest belief in an absurd safety proposal; that is why fatuous wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on whether she truly means it.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fatuous-facetious_004",
+      "edge_id": "fatuous__facetious",
+      "domain": "family_finance_talk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Arjun’s plan for paying his bills?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_004_b1",
+          "text": "Arjun declared that he could never run out of cash if he simply stopped checking his balance.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "smug belief in a nonsensical plan",
+          "reason": "Smug belief in a nonsensical plan. Smugly or pointlessly foolish, without recognising the poor judgment involved..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_004_b2",
+          "text": "He spoke proudly and dismissed every explanation of how spending works.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "proud refusal to examine it confirms bad judgment",
+          "reason": "Proud refusal to examine it confirms bad judgment. Smugly or pointlessly foolish, without recognising the poor judgment involved..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Proud refusal to examine it confirms bad judgment makes fatuous the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, proud refusal to examine it confirms bad judgment; that is why fatuous wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on whether the plan is a joke.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fatuous-facetious_005",
+      "edge_id": "fatuous__facetious",
+      "domain": "office_resignation_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Ines’s farewell remark?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_005_b1",
+          "text": "During a tense discussion of layoffs, Ines quipped that the broken printer deserved a redundancy package too.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "deliberate joke in a tense discussion",
+          "reason": "Deliberate joke in a tense discussion. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_005_b2",
+          "text": "Several coworkers laughed out loud, but the managers winced at her ill-timed levity.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "laughter does not make her statement serious",
+          "reason": "Laughter does not make her statement serious. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Laughter does not make her statement serious makes facetious the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, laughter does not make her statement serious; that is why facetious wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on intention rather than audience response.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "fatuous-facetious_006",
+      "edge_id": "fatuous__facetious",
+      "domain": "sports_injury_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Tariq’s advice to the injured player?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_006_b1",
+          "text": "Tariq confidently claimed sprained ankles heal faster if you ignore the pain and keep jumping on them.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "smugly offering foolish advice",
+          "reason": "Smugly offering foolish advice. Smugly or pointlessly foolish, without recognising the poor judgment involved.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_006_b2",
+          "text": "He beamed with pride, insisting he had pioneered a revolutionary physical therapy method of his own.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "he explicitly treats the foolish idea as real",
+          "reason": "He explicitly treats the foolish idea as real. Smugly or pointlessly foolish, without recognising the poor judgment involved.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "He explicitly treats the foolish idea as real makes fatuous the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, he explicitly treats the foolish idea as real; that is why fatuous wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on belief versus comic intent.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "fatuous-facetious_007",
+      "edge_id": "fatuous__facetious",
+      "domain": "lost_luggage_desk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Yuna’s response to the complaint?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_007_b1",
+          "text": "Yuna told the anxious traveller that lost suitcases reappear much faster if you close your eyes and wish really hard.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "confident claim of a foolish remedy",
+          "reason": "Confident claim of a foolish remedy. Smugly or pointlessly foolish, without recognising the poor judgment involved.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_007_b2",
+          "text": "Seeing the traveller’s fury, she smirked and admitted she was only trying to crack a lighthearted joke during the chaos.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "deliberately humorous remark in a serious situation",
+          "reason": "Deliberately humorous remark in a serious situation. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Deliberately humorous remark in a serious situation makes facetious the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, deliberately humorous remark in a serious situation; that is why facetious wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on whether the strange remark was sincere.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "fatuous-facetious_008",
+      "edge_id": "fatuous__facetious",
+      "domain": "neighbourhood_flood_meeting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Ben’s proposal for avoiding future leaks?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_008_b1",
+          "text": "Ben said proudly that leaving every window open in storms would keep rain outside.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "confidently proposed an absurd method",
+          "reason": "Confidently proposed an absurd method. Smugly or pointlessly foolish, without recognising the poor judgment involved..",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_008_b2",
+          "text": "He offered to teach the method to neighbours because he genuinely believed it.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "genuine belief rules out an ill-timed joke",
+          "reason": "Genuine belief rules out an ill-timed joke. Smugly or pointlessly foolish, without recognising the poor judgment involved..",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Genuine belief rules out an ill-timed joke makes fatuous the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, genuine belief rules out an ill-timed joke; that is why fatuous wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on whether he thinks his proposal works.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "fatuous-facetious_009",
+      "edge_id": "fatuous__facetious",
+      "domain": "online_support_chat",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Fatima’s reply to a user who lost important files?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_009_b1",
+          "text": "Fatima told the panicked customer that hard drives recover deleted files if you whisper polite compliments to the monitor.",
+          "best_word": "fatuous",
+          "fit": {
+            "fatuous": 0.93,
+            "facetious": 0.18
+          },
+          "decisive_clue": "apparently serious foolish advice",
+          "reason": "Apparently serious foolish advice. Smugly or pointlessly foolish, without recognising the poor judgment involved.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "facetious": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_009_b2",
+          "text": "When the customer grew outraged, Fatima typed a laughing emoji and apologised for making light of an urgent data crisis.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "acknowledged that her reply was deliberate humour",
+          "reason": "Acknowledged that her reply was deliberate humour. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Acknowledged that her reply was deliberate humour makes facetious the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, acknowledged that her reply was deliberate humour; that is why facetious wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on what she meant the words to do.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "fatuous-facetious_010",
+      "edge_id": "fatuous__facetious",
+      "domain": "train_delay_announcement",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Mateo’s remark to stranded passengers?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "fatuous-facetious_010_b1",
+          "text": "Mateo announced over the train speakers that the engine had paused simply to give everyone time to admire the lovely countryside.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "intentional joke during a stressful delay",
+          "reason": "Intentional joke during a stressful delay. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M1"
+          }
+        },
+        {
+          "id": "fatuous-facetious_010_b2",
+          "text": "His completely deadpan voice startled passengers, but his fellow conductor shook his head at Mateo’s habit of cracking jokes during major delays.",
+          "best_word": "facetious",
+          "fit": {
+            "fatuous": 0.18,
+            "facetious": 0.93
+          },
+          "decisive_clue": "deadpan delivery concealed an intentional joke",
+          "reason": "Deadpan delivery concealed an intentional joke. Deliberately joking about something that calls for seriousness.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 4,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "fatuous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Deadpan delivery concealed an intentional joke makes facetious the better fit.",
+      "feedback_deep": "Fatuous means smugly or pointlessly foolish, without recognising the poor judgment involved; facetious means deliberately joking about something that calls for seriousness. Here, deadpan delivery concealed an intentional joke; that is why facetious wins even after the new detail.",
+      "contrast_rule": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time.",
+      "hints": {
+        "attention": "Focus on whether the straight face concealed a joke.",
+        "axis": "Fatuous describes foolishness taken seriously or without insight; facetious describes an intentional joke made at an unsuitable serious moment.",
+        "contrast": "Fatuous believes the nonsense; facetious knowingly jokes at the wrong time."
+      },
+      "qa": "revised"
+    }
+  ]
+}

@@ -1,0 +1,624 @@
+{
+  "schema_version": 1,
+  "set_id": "abstract-abstruse",
+  "title": "abstract / abstruse",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[89]",
+    "source_pair_id": 379,
+    "qa": {
+      "pass": 7,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "abstract",
+      "sense": "Concerned with general concepts or ideas rather than particular physical things.",
+      "connotation": "neutral / academic",
+      "register": "standard / academic",
+      "misconceptions": [
+        "Anything about ideas must be difficult to understand."
+      ]
+    },
+    {
+      "word": "abstruse",
+      "sense": "Hard to understand because of technical complexity or obscurity.",
+      "connotation": "often critical",
+      "register": "formal",
+      "misconceptions": [
+        "Anything difficult to read is abstract."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "concept_vs_difficulty",
+      "description": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend."
+    }
+  ],
+  "edges": [
+    {
+      "id": "abstract__abstruse",
+      "a": "abstract",
+      "b": "abstruse",
+      "boundary_rule": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend.",
+      "clues_a": [
+        "general principle",
+        "intangible concept",
+        "theoretical discussion without physical instances"
+      ],
+      "clues_b": [
+        "tangled technical account",
+        "opaque specialist wording",
+        "reasoning difficult to follow"
+      ],
+      "irrelevant_clues": [
+        "size of print",
+        "colour of the page",
+        "whether the author is respected"
+      ],
+      "misconceptions": {
+        "M1": "Anything about ideas must be difficult to understand.",
+        "M2": "Anything difficult to read is abstract.",
+        "M3": "Presentation or author prestige determines conceptual versus difficult."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "abstract-abstruse_001",
+      "edge_id": "abstract__abstruse",
+      "domain": "class_discussion",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amira’s explanation of fairness?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abstract-abstruse_001_b1",
+          "text": "Amira explains fairness as a principle about how people should be treated, rather than as a particular object.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.9,
+            "abstruse": 0.24
+          },
+          "decisive_clue": "discusses a general principle rather than a thing",
+          "reason": "The situation shows discusses a general principle rather than a thing, which points to abstract.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        },
+        {
+          "id": "abstract-abstruse_001_b2",
+          "text": "Her classmates follow her explanation on the first try.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.94,
+            "abstruse": 0.21
+          },
+          "decisive_clue": "a nonphysical idea can be easy to understand",
+          "reason": "The topic is conceptual, and its clarity rules out difficulty as the defining feature.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        }
+      ],
+      "feedback_short": "A nonphysical idea can be easy to understand: abstract fits better.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, the topic is conceptual, and its clarity rules out difficulty as the defining feature.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Is the idea hard, or simply not physical?",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "abstract-abstruse_002",
+      "edge_id": "abstract__abstruse",
+      "domain": "rental_contract",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes the paragraph Felix is reading?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abstract-abstruse_002_b1",
+          "text": "Felix rereads a rental clause full of nested exceptions and cross-references but cannot work out what it requires.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.24,
+            "abstruse": 0.9
+          },
+          "decisive_clue": "dense clause is difficult to follow",
+          "reason": "The situation shows dense clause is difficult to follow, which points to abstruse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        },
+        {
+          "id": "abstract-abstruse_002_b2",
+          "text": "Even after he traces its three footnotes, the sentence still allows several competing readings.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.21,
+            "abstruse": 0.94
+          },
+          "decisive_clue": "cross-references and exceptions obstruct comprehension",
+          "reason": "The feature is an unusually hard-to-understand explanation, not merely a conceptual topic.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Cross-references and exceptions obstruct comprehension: abstruse fits better.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, the feature is an unusually hard-to-understand explanation, not merely a conceptual topic.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Notice what makes the paragraph hard.",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "abstract-abstruse_003",
+      "edge_id": "abstract__abstruse",
+      "domain": "friendship_talk",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Rina’s idea of trust?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abstract-abstruse_003_b1",
+          "text": "Rina talks about trust as a quality between people that cannot be weighed or touched.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.9,
+            "abstruse": 0.23
+          },
+          "decisive_clue": "trust is described as an intangible quality",
+          "reason": "The situation shows trust is described as an intangible quality, which points to abstract.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        },
+        {
+          "id": "abstract-abstruse_003_b2",
+          "text": "She expresses the idea in a single clear sentence that her friend immediately grasps.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.92,
+            "abstruse": 0.21
+          },
+          "decisive_clue": "trust is described as an intangible quality",
+          "reason": "The added detail does not change the original clue: trust is described as an intangible quality.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Trust is described as an intangible quality still decides; the added detail changes nothing.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, expressing an idea concisely does not make it any less nonphysical or conceptual.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Think about the thing being discussed.",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abstract-abstruse_004",
+      "edge_id": "abstract__abstruse",
+      "domain": "online_tutorial",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Pedro’s tutorial explanation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abstract-abstruse_004_b1",
+          "text": "Pedro’s explanation jumps through unexplained symbols and complex exceptions, leaving readers unable to follow his steps.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.24,
+            "abstruse": 0.9
+          },
+          "decisive_clue": "unexplained complexities obstruct understanding",
+          "reason": "The situation shows unexplained complexities obstruct understanding, which points to abstruse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        },
+        {
+          "id": "abstract-abstruse_004_b2",
+          "text": "It assumes readers know six terms that never appear in the introduction.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.21,
+            "abstruse": 0.94
+          },
+          "decisive_clue": "uses undefined specialist terms essential to following the explanation",
+          "reason": "Dense unexplained material makes an explanation hard to comprehend.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Uses undefined specialist terms essential to following the explanation: abstruse fits better.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, dense unexplained material makes an explanation hard to comprehend.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Look at the obstacles for a reader.",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "abstract-abstruse_005",
+      "edge_id": "abstract__abstruse",
+      "domain": "class_poster",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Nour’s poster about responsibility?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abstract-abstruse_005_b1",
+          "text": "Nour’s poster discusses responsibility as an idea shared across different situations, without focusing on any single task.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.9,
+            "abstruse": 0.24
+          },
+          "decisive_clue": "discusses a general idea instead of one concrete task",
+          "reason": "The situation shows discusses a general idea instead of one concrete task, which points to abstract.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        },
+        {
+          "id": "abstract-abstruse_005_b2",
+          "text": "She writes the title in large gold letters.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.94,
+            "abstruse": 0.21
+          },
+          "decisive_clue": "discusses a general idea instead of one concrete task",
+          "reason": "The added detail does not change the original clue: discusses a general idea instead of one concrete task.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Discusses a general idea instead of one concrete task still decides; the added detail changes nothing.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, gold letters are irrelevant to the conceptual nature of the poster.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Ignore the title design.",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "abstract-abstruse_006",
+      "edge_id": "abstract__abstruse",
+      "domain": "book_club",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Haruto’s essay?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abstract-abstruse_006_b1",
+          "text": "Haruto’s essay buries its argument in elaborate terminology and sentences his book club cannot untangle.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.23,
+            "abstruse": 0.9
+          },
+          "decisive_clue": "complicated writing prevents comprehension",
+          "reason": "The situation shows complicated writing prevents comprehension, which points to abstruse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        },
+        {
+          "id": "abstract-abstruse_006_b2",
+          "text": "The essay is only two pages long.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.22,
+            "abstruse": 0.91
+          },
+          "decisive_clue": "complicated writing prevents comprehension",
+          "reason": "The added detail does not change the original clue: complicated writing prevents comprehension.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Complicated writing prevents comprehension still decides; the added detail changes nothing.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, short length does not make the complex argument easier to understand.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Length and difficulty are different.",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "abstract-abstruse_007",
+      "edge_id": "abstract__abstruse",
+      "domain": "volunteer_training",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Esme’s approach to leadership?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abstract-abstruse_007_b1",
+          "text": "Esme explains leadership through general values such as responsibility and honesty, not through a list of equipment or tasks.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.9,
+            "abstruse": 0.24
+          },
+          "decisive_clue": "focuses on principles rather than specific objects",
+          "reason": "The situation shows focuses on principles rather than specific objects, which points to abstract.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        },
+        {
+          "id": "abstract-abstruse_007_b2",
+          "text": "Her listeners easily connect those values with experiences of their own.",
+          "best_word": "abstract",
+          "fit": {
+            "abstract": 0.94,
+            "abstruse": 0.21
+          },
+          "decisive_clue": "general principles remain intelligible and usable",
+          "reason": "Conceptual discussion need not be complicated.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstruse": "M2"
+          }
+        }
+      ],
+      "feedback_short": "General principles remain intelligible and usable: abstract fits better.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, conceptual discussion need not be complicated.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Check whether the ideas can be followed.",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "abstract-abstruse_008",
+      "edge_id": "abstract__abstruse",
+      "domain": "board_game_instructions",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Dawit’s explanation of the game rules?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abstract-abstruse_008_b1",
+          "text": "Dawit’s explanation ties five exceptions together so tightly that no one can tell which move is permitted.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.24,
+            "abstruse": 0.9
+          },
+          "decisive_clue": "rules are difficult to understand because of complexity",
+          "reason": "The situation shows rules are difficult to understand because of complexity, which points to abstruse.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        },
+        {
+          "id": "abstract-abstruse_008_b2",
+          "text": "His second sentence refers back to four conditions hidden inside the first.",
+          "best_word": "abstruse",
+          "fit": {
+            "abstract": 0.21,
+            "abstruse": 0.94
+          },
+          "decisive_clue": "interlocking conditions make the meaning elusive",
+          "reason": "The issue is not that rules are nonphysical; the explanation is difficult to decode.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "abstract": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Interlocking conditions make the meaning elusive: abstruse fits better.",
+      "feedback_deep": "Abstract means conceptual rather than physical; abstruse means difficult to comprehend. Here, the issue is not that rules are nonphysical; the explanation is difficult to decode.",
+      "contrast_rule": "Abstract is about ideas; abstruse is hard to understand.",
+      "hints": {
+        "attention": "Find the cause of confusion.",
+        "axis": "Whether something concerns ideas rather than physical examples, or is intrinsically hard to comprehend.",
+        "contrast": "Abstract is about ideas; abstruse is hard to understand."
+      },
+      "qa": "pass"
+    }
+  ]
+}

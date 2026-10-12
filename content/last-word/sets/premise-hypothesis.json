@@ -1,0 +1,488 @@
+{
+  "schema_version": 1,
+  "set_id": "premise-hypothesis",
+  "title": "premise / hypothesis",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[77]",
+    "source_pair_id": 327,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "premise",
+      "sense": "a statement used as an accepted starting point for reasoning",
+      "connotation": "logical foundation",
+      "register": "standard academic",
+      "misconceptions": [
+        "Assuming premise and hypothesis mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for hypothesis."
+      ]
+    },
+    {
+      "word": "hypothesis",
+      "sense": "a proposed explanation kept open to checking or testing",
+      "connotation": "provisional explanation",
+      "register": "standard academic",
+      "misconceptions": [
+        "Assuming premise and hypothesis mean the same thing whenever both appear relevant.",
+        "Ignoring the defining evidence needed for premise."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "reasoning_role",
+      "description": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked."
+    }
+  ],
+  "edges": [
+    {
+      "id": "premise__hypothesis",
+      "a": "premise",
+      "b": "hypothesis",
+      "boundary_rule": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked.",
+      "clues_a": [
+        "taken as given for an argument",
+        "conclusion built on assumption",
+        "starting condition of reasoning"
+      ],
+      "clues_b": [
+        "explanation submitted for checking",
+        "proposed cause compared with evidence",
+        "prediction tested against observations"
+      ],
+      "irrelevant_clues": [
+        "sentence length",
+        "speaker status",
+        "writing format"
+      ],
+      "misconceptions": {
+        "M1": "Assuming premise and hypothesis mean the same thing whenever both appear relevant.",
+        "M2": "Ignoring the defining evidence needed for hypothesis.",
+        "M3": "Ignoring the defining evidence needed for premise."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "premise-hypothesis_001",
+      "edge_id": "premise__hypothesis",
+      "domain": "family_scheduling",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Tarek’s statement about the bus?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "premise-hypothesis_001_b1",
+          "text": "Tarek said, ‘The bus leaves at seven, so we should be at the stop by six fifty,’ without checking that first claim.",
+          "best_word": "premise",
+          "fit": {
+            "premise": 0.92,
+            "hypothesis": 0.3
+          },
+          "decisive_clue": "bus time treated as given for departure decision",
+          "reason": "Bus time treated as given for departure decision is the strongest evidence for premise here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothesis": "M2"
+          }
+        },
+        {
+          "id": "premise-hypothesis_001_b2",
+          "text": "He wrote the sentence in green marker on the kitchen calendar.",
+          "best_word": "premise",
+          "fit": {
+            "premise": 0.94,
+            "hypothesis": 0.26
+          },
+          "decisive_clue": "bus time treated as given for departure decision; green marker on the calendar does not change that",
+          "reason": "The timing assertion remains a starting assumption for his conclusion.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothesis": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Bus time treated as given for departure decision still decides; the later detail does not change that.",
+      "feedback_deep": "Premise means a statement used as an accepted starting point for reasoning; hypothesis means a proposed explanation kept open to checking or testing. The timing assertion remains a starting assumption for his conclusion.",
+      "contrast_rule": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking.",
+      "hints": {
+        "attention": "Look at what the bus statement is used to justify.",
+        "axis": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked.",
+        "contrast": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "premise-hypothesis_002",
+      "edge_id": "premise__hypothesis",
+      "domain": "school_fair",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which word best describes Mira’s explanation for poor attendance?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "premise-hypothesis_002_b1",
+          "text": "Mira suggested that rain had kept families away and asked to compare attendance on wet and dry days.",
+          "best_word": "hypothesis",
+          "fit": {
+            "hypothesis": 0.92,
+            "premise": 0.3
+          },
+          "decisive_clue": "proposed rain explanation was to be tested",
+          "reason": "Proposed rain explanation was to be tested is the strongest evidence for hypothesis here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "premise": "M3"
+          }
+        },
+        {
+          "id": "premise-hypothesis_002_b2",
+          "text": "At the planning meeting, she stopped investigating that claim and used it as the given reason for ordering fewer chairs.",
+          "best_word": "premise",
+          "fit": {
+            "premise": 0.94,
+            "hypothesis": 0.26
+          },
+          "decisive_clue": "same claim became an accepted basis for a seating decision",
+          "reason": "Its role changed from an explanation to investigate to an assumption supporting a conclusion.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothesis": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Same claim became an accepted basis for a seating decision makes premise the better choice.",
+      "feedback_deep": "Premise means a statement used as an accepted starting point for reasoning; hypothesis means a proposed explanation kept open to checking or testing. Its role changed from an explanation to investigate to an assumption supporting a conclusion.",
+      "contrast_rule": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking.",
+      "hints": {
+        "attention": "Look at how the statement is used at each stage.",
+        "axis": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked.",
+        "contrast": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "premise-hypothesis_003",
+      "edge_id": "premise__hypothesis",
+      "domain": "phone_troubleshooting",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Yusuf’s idea about his alarm?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "premise-hypothesis_003_b1",
+          "text": "Yusuf suspects the alarm failed because his phone was on silent; he plans to try both settings tomorrow.",
+          "best_word": "hypothesis",
+          "fit": {
+            "hypothesis": 0.92,
+            "premise": 0.3
+          },
+          "decisive_clue": "suspected cause with a planned comparison",
+          "reason": "Suspected cause with a planned comparison is the strongest evidence for hypothesis here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "premise": "M1"
+          }
+        },
+        {
+          "id": "premise-hypothesis_003_b2",
+          "text": "He also records the precise time at which the alarm fails in each trial.",
+          "best_word": "hypothesis",
+          "fit": {
+            "hypothesis": 0.94,
+            "premise": 0.26
+          },
+          "decisive_clue": "suspected cause with a planned comparison; further evidence: recorded trial outcomes to check the suspected cause",
+          "reason": "The added measurements make the proposed explanation even more clearly testable.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "premise": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Recorded trial outcomes to check the suspected cause confirms the earlier clue: suspected cause with a planned comparison.",
+      "feedback_deep": "Premise means a statement used as an accepted starting point for reasoning; hypothesis means a proposed explanation kept open to checking or testing. The added measurements make the proposed explanation even more clearly testable.",
+      "contrast_rule": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking.",
+      "hints": {
+        "attention": "Look for an experiment rather than an argument.",
+        "axis": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked.",
+        "contrast": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "premise-hypothesis_004",
+      "edge_id": "premise__hypothesis",
+      "domain": "group_assignment",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Chioma’s statement about the timetable?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "premise-hypothesis_004_b1",
+          "text": "Chioma assumed each of four speakers had ten minutes and calculated that the talk would last forty minutes.",
+          "best_word": "premise",
+          "fit": {
+            "premise": 0.92,
+            "hypothesis": 0.3
+          },
+          "decisive_clue": "ten minutes per speaker used to infer total duration",
+          "reason": "Ten minutes per speaker used to infer total duration is the strongest evidence for premise here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothesis": "M2"
+          }
+        },
+        {
+          "id": "premise-hypothesis_004_b2",
+          "text": "She noted that the schedule could change but kept that assumption for today’s calculation.",
+          "best_word": "premise",
+          "fit": {
+            "premise": 0.94,
+            "hypothesis": 0.26
+          },
+          "decisive_clue": "ten minutes per speaker used to infer total duration; admission of uncertainty without abandoning the calculation does not change that",
+          "reason": "A premise need not be unquestionably true; it only needs to be accepted for the argument at hand.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothesis": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Ten minutes per speaker used to infer total duration still decides; the later detail does not change that.",
+      "feedback_deep": "Premise means a statement used as an accepted starting point for reasoning; hypothesis means a proposed explanation kept open to checking or testing. A premise need not be unquestionably true; it only needs to be accepted for the argument at hand.",
+      "contrast_rule": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking.",
+      "hints": {
+        "attention": "What role does the ten-minute claim play?",
+        "axis": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked.",
+        "contrast": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "premise-hypothesis_005",
+      "edge_id": "premise__hypothesis",
+      "domain": "train_journey",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "Which word best describes Anika’s claim about the journey time?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "premise-hypothesis_005_b1",
+          "text": "Anika took the thirty-minute journey time as given and concluded she could leave home after eight.",
+          "best_word": "premise",
+          "fit": {
+            "premise": 0.92,
+            "hypothesis": 0.3
+          },
+          "decisive_clue": "thirty-minute time assumed for a conclusion",
+          "reason": "Thirty-minute time assumed for a conclusion is the strongest evidence for premise here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "hypothesis": "M2"
+          }
+        },
+        {
+          "id": "premise-hypothesis_005_b2",
+          "text": "Noticing the schedule was old, she withdrew her travel conclusion and decided to time several rides to check the thirty-minute claim.",
+          "best_word": "hypothesis",
+          "fit": {
+            "hypothesis": 0.94,
+            "premise": 0.26
+          },
+          "decisive_clue": "the same thirty-minute claim is now awaiting repeated checks",
+          "reason": "The assertion is no longer a basis for planning; it has become a claim to investigate.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "premise": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The same thirty-minute claim is now awaiting repeated checks makes hypothesis the better choice.",
+      "feedback_deep": "Premise means a statement used as an accepted starting point for reasoning; hypothesis means a proposed explanation kept open to checking or testing. The assertion is no longer a basis for planning; it has become a claim to investigate.",
+      "contrast_rule": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking.",
+      "hints": {
+        "attention": "Notice whether the claim is accepted or checked.",
+        "axis": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked.",
+        "contrast": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "premise-hypothesis_006",
+      "edge_id": "premise__hypothesis",
+      "domain": "customer_support",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which word best describes Farah’s explanation for an unsent message?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "premise-hypothesis_006_b1",
+          "text": "Farah thought a missing internet connection caused the unsent message and planned to try again on and off Wi-Fi.",
+          "best_word": "hypothesis",
+          "fit": {
+            "hypothesis": 0.92,
+            "premise": 0.3
+          },
+          "decisive_clue": "proposed cause paired with a comparison test",
+          "reason": "Proposed cause paired with a comparison test is the strongest evidence for hypothesis here.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "premise": "M1"
+          }
+        },
+        {
+          "id": "premise-hypothesis_006_b2",
+          "text": "She wrote her explanation beneath the heading ‘Possible causes to check’, not in her final report.",
+          "best_word": "hypothesis",
+          "fit": {
+            "hypothesis": 0.94,
+            "premise": 0.26
+          },
+          "decisive_clue": "her note preserves the claim as provisional",
+          "reason": "Its written placement reinforces that it remains an explanation for testing, not a settled basis for reasoning.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "premise": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Her note preserves the claim as provisional makes hypothesis the better choice.",
+      "feedback_deep": "Premise means a statement used as an accepted starting point for reasoning; hypothesis means a proposed explanation kept open to checking or testing. Its written placement reinforces that it remains an explanation for testing, not a settled basis for reasoning.",
+      "contrast_rule": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking.",
+      "hints": {
+        "attention": "Does the statement remain open to testing?",
+        "axis": "A premise is used as a starting assumption to reach a conclusion; a hypothesis is proposed as an explanation to be checked.",
+        "contrast": "Premise: taken as given for an argument; hypothesis: explanation submitted for checking."
+      },
+      "qa": "pass"
+    }
+  ]
+}

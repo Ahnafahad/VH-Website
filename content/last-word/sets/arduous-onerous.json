@@ -1,0 +1,486 @@
+{
+  "schema_version": 1,
+  "set_id": "arduous-onerous",
+  "title": "arduous / onerous",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[138]",
+    "source_pair_id": 562,
+    "qa": {
+      "pass": 6,
+      "revised": 0,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "arduous",
+      "sense": "difficult because it demands sustained effort",
+      "connotation": "neutral to negative",
+      "register": "standard to formal",
+      "misconceptions": [
+        "A task may be taxing without anyone unfairly imposing duties."
+      ]
+    },
+    {
+      "word": "onerous",
+      "sense": "burdensome because an obligation or demand weighs heavily",
+      "connotation": "negative",
+      "register": "formal",
+      "misconceptions": [
+        "A duty can be oppressive even when it requires little physical effort."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "effort_vs_imposed_burden",
+      "description": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone."
+    }
+  ],
+  "edges": [
+    {
+      "id": "arduous__onerous",
+      "a": "arduous",
+      "b": "onerous",
+      "boundary_rule": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone.",
+      "clues_a": [
+        "hours of exhausting effort",
+        "sustained mental concentration",
+        "physically demanding journey"
+      ],
+      "clues_b": [
+        "excessive required duties",
+        "disproportionate conditions",
+        "compulsory administrative load"
+      ],
+      "irrelevant_clues": [
+        "whether the work is indoors",
+        "the color of the paperwork",
+        "the name of the organization"
+      ],
+      "misconceptions": {
+        "M1": "A task may be taxing without anyone unfairly imposing duties.",
+        "M2": "A duty can be oppressive even when it requires little physical effort.",
+        "M3": "Do not stick with an old answer after decisive evidence changes, or let surface distractions override the boundary."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "arduous-onerous_001",
+      "edge_id": "arduous__onerous",
+      "domain": "rental_agreement",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Layla’s task or obligation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "arduous-onerous_001_b1",
+          "text": "Layla had to submit thirty separate forms every month or lose the room she was renting.",
+          "best_word": "onerous",
+          "fit": {
+            "arduous": 0.2,
+            "onerous": 0.93
+          },
+          "decisive_clue": "an excessive compulsory paperwork obligation",
+          "reason": "Disproportionate required duties weigh on the renter.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "arduous": "M2"
+          }
+        },
+        {
+          "id": "arduous-onerous_001_b2",
+          "text": "The landlord accepted them through a convenient website.",
+          "best_word": "onerous",
+          "fit": {
+            "arduous": 0.15,
+            "onerous": 0.95
+          },
+          "decisive_clue": "an excessive compulsory paperwork obligation",
+          "reason": "Online submission does not remove the thirty-form monthly obligation.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "arduous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is an excessive compulsory paperwork obligation; online submission does not remove the thirty-form monthly obligation.",
+      "feedback_deep": "Arduous concerns difficult because it demands sustained effort; onerous concerns burdensome because an obligation or demand weighs heavily. Online submission does not remove the thirty-form monthly obligation.",
+      "contrast_rule": "Arduous: hours of exhausting effort; onerous: excessive required duties.",
+      "hints": {
+        "attention": "Is the defining problem effort or a condition imposed on her?",
+        "axis": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone.",
+        "contrast": "Arduous: hours of exhausting effort; onerous: excessive required duties."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "arduous-onerous_002",
+      "edge_id": "arduous__onerous",
+      "domain": "mountain_trek",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Hugo’s task or obligation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "arduous-onerous_002_b1",
+          "text": "Hugo climbed a steep trail for nine hours, stopping repeatedly to catch his breath.",
+          "best_word": "arduous",
+          "fit": {
+            "arduous": 0.93,
+            "onerous": 0.2
+          },
+          "decisive_clue": "sustained exhausting physical effort",
+          "reason": "The description emphasizes prolonged exertion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "onerous": "M1"
+          }
+        },
+        {
+          "id": "arduous-onerous_002_b2",
+          "text": "He carried on through the final rocky section after his legs began shaking.",
+          "best_word": "arduous",
+          "fit": {
+            "arduous": 0.95,
+            "onerous": 0.15
+          },
+          "decisive_clue": "sustained exhausting physical effort",
+          "reason": "The later strain confirms the difficulty of the climb rather than an unfair obligation.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "onerous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is sustained exhausting physical effort; the later strain confirms the difficulty of the climb rather than an unfair obligation.",
+      "feedback_deep": "Arduous concerns difficult because it demands sustained effort; onerous concerns burdensome because an obligation or demand weighs heavily. The later strain confirms the difficulty of the climb rather than an unfair obligation.",
+      "contrast_rule": "Arduous: hours of exhausting effort; onerous: excessive required duties.",
+      "hints": {
+        "attention": "Focus on how much exertion the activity demands.",
+        "axis": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone.",
+        "contrast": "Arduous: hours of exhausting effort; onerous: excessive required duties."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "arduous-onerous_003",
+      "edge_id": "arduous__onerous",
+      "domain": "community_service",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which word best describes Zara’s task or obligation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "arduous-onerous_003_b1",
+          "text": "Zara was required to supervise every club event alone, even after the committee doubled its schedule.",
+          "best_word": "onerous",
+          "fit": {
+            "arduous": 0.2,
+            "onerous": 0.93
+          },
+          "decisive_clue": "a disproportionate duty imposed on one person",
+          "reason": "She has been assigned a particularly heavy obligation.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "arduous": "M2"
+          }
+        },
+        {
+          "id": "arduous-onerous_003_b2",
+          "text": "The club gave that same unpaid duty an impressive title on paper.",
+          "best_word": "onerous",
+          "fit": {
+            "arduous": 0.15,
+            "onerous": 0.95
+          },
+          "decisive_clue": "a disproportionate duty imposed on one person",
+          "reason": "The impressive title does not reduce the compulsory workload imposed on her.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "arduous": "M3"
+          }
+        }
+      ],
+      "feedback_short": "The key is a disproportionate duty imposed on one person; the impressive title does not reduce the compulsory workload imposed on her.",
+      "feedback_deep": "Arduous concerns difficult because it demands sustained effort; onerous concerns burdensome because an obligation or demand weighs heavily. The impressive title does not reduce the compulsory workload imposed on her.",
+      "contrast_rule": "Arduous: hours of exhausting effort; onerous: excessive required duties.",
+      "hints": {
+        "attention": "Which detail tells you whether this is a burdensome duty?",
+        "axis": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone.",
+        "contrast": "Arduous: hours of exhausting effort; onerous: excessive required duties."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "arduous-onerous_004",
+      "edge_id": "arduous__onerous",
+      "domain": "exam_preparation",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Sanjay’s task or obligation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "arduous-onerous_004_b1",
+          "text": "Sanjay spent six weeks solving difficult practice problems each evening, often restarting when he got stuck.",
+          "best_word": "arduous",
+          "fit": {
+            "arduous": 0.93,
+            "onerous": 0.2
+          },
+          "decisive_clue": "weeks of demanding, sustained work",
+          "reason": "Persistence and concentration are required over time.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "onerous": "M1"
+          }
+        },
+        {
+          "id": "arduous-onerous_004_b2",
+          "text": "He chose the course because he enjoyed challenges.",
+          "best_word": "arduous",
+          "fit": {
+            "arduous": 0.95,
+            "onerous": 0.15
+          },
+          "decisive_clue": "weeks of demanding, sustained work",
+          "reason": "Choosing the task does not lessen the intense work involved.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "onerous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is weeks of demanding, sustained work; choosing the task does not lessen the intense work involved.",
+      "feedback_deep": "Arduous concerns difficult because it demands sustained effort; onerous concerns burdensome because an obligation or demand weighs heavily. Choosing the task does not lessen the intense work involved.",
+      "contrast_rule": "Arduous: hours of exhausting effort; onerous: excessive required duties.",
+      "hints": {
+        "attention": "Distinguish hard effort from a duty someone places on you.",
+        "axis": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone.",
+        "contrast": "Arduous: hours of exhausting effort; onerous: excessive required duties."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "arduous-onerous_005",
+      "edge_id": "arduous__onerous",
+      "domain": "dressmaking",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which word best describes Amina’s task or obligation?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "arduous-onerous_005_b1",
+          "text": "Amina spent fourteen hours sewing tiny beads onto a dress, undoing dozens when the pattern slipped.",
+          "best_word": "arduous",
+          "fit": {
+            "arduous": 0.93,
+            "onerous": 0.2
+          },
+          "decisive_clue": "many hours of painstaking handwork requiring concentration",
+          "reason": "The task requires sustained, painstaking effort.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "onerous": "M1"
+          }
+        },
+        {
+          "id": "arduous-onerous_005_b2",
+          "text": "She inspected every row of stitches and carefully corrected dozens of tiny mistakes.",
+          "best_word": "arduous",
+          "fit": {
+            "arduous": 0.95,
+            "onerous": 0.15
+          },
+          "decisive_clue": "many hours of painstaking handwork requiring concentration",
+          "reason": "Correcting small mistakes confirms how demanding the fine work is.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "onerous": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The key is many hours of painstaking handwork requiring concentration; correcting small mistakes confirms how demanding the fine work is.",
+      "feedback_deep": "Arduous concerns difficult because it demands sustained effort; onerous concerns burdensome because an obligation or demand weighs heavily. Correcting small mistakes confirms how demanding the fine work is.",
+      "contrast_rule": "Arduous: hours of exhausting effort; onerous: excessive required duties.",
+      "hints": {
+        "attention": "Think about how much sustained effort the sewing requires.",
+        "axis": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone.",
+        "contrast": "Arduous: hours of exhausting effort; onerous: excessive required duties."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "arduous-onerous_006",
+      "edge_id": "arduous__onerous",
+      "domain": "school_committee",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which word best describes Emil’s task or obligation?",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "arduous-onerous_006_b1",
+          "text": "Emil was ordered to prepare detailed daily reports for a two-person club that met once a month.",
+          "best_word": "onerous",
+          "fit": {
+            "arduous": 0.2,
+            "onerous": 0.93
+          },
+          "decisive_clue": "mandatory reporting far beyond the club’s needs",
+          "reason": "The obligation is disproportionate to the activity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 3,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "arduous": "M2"
+          }
+        },
+        {
+          "id": "arduous-onerous_006_b2",
+          "text": "His reports had to follow a neat one-page template.",
+          "best_word": "onerous",
+          "fit": {
+            "arduous": 0.15,
+            "onerous": 0.95
+          },
+          "decisive_clue": "mandatory reporting far beyond the club’s needs",
+          "reason": "A tidy template does not justify the unnecessary daily duty.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 3,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "arduous": "M2"
+          }
+        }
+      ],
+      "feedback_short": "The key is mandatory reporting far beyond the club’s needs; a tidy template does not justify the unnecessary daily duty.",
+      "feedback_deep": "Arduous concerns difficult because it demands sustained effort; onerous concerns burdensome because an obligation or demand weighs heavily. A tidy template does not justify the unnecessary daily duty.",
+      "contrast_rule": "Arduous: hours of exhausting effort; onerous: excessive required duties.",
+      "hints": {
+        "attention": "Ask whether the reporting requirement is reasonable in scale.",
+        "axis": "Arduous describes how much sustained effort something takes; onerous describes how heavily a demand or obligation burdens someone.",
+        "contrast": "Arduous: hours of exhausting effort; onerous: excessive required duties."
+      },
+      "qa": "pass"
+    }
+  ]
+}

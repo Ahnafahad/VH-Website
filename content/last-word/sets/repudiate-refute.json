@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "set_id": "repudiate-refute",
+  "title": "repudiate / refute",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[112]",
+    "source_pair_id": 453,
+    "qa": {
+      "pass": 5,
+      "revised": 1,
+      "rejected": 0
+    }
+  },
+  "words": [
+    {
+      "word": "repudiate",
+      "sense": "Firmly refuse to accept a claim, accusation, idea, or association.",
+      "connotation": "firm or disapproving",
+      "register": "formal",
+      "misconceptions": [
+        "A strong denial automatically proves a claim wrong."
+      ]
+    },
+    {
+      "word": "refute",
+      "sense": "Demonstrate that a claim is wrong through evidence or reasoning.",
+      "connotation": "analytical",
+      "register": "formal",
+      "misconceptions": [
+        "Proof and refusal are interchangeable acts."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "decisive_boundary",
+      "description": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning."
+    }
+  ],
+  "edges": [
+    {
+      "id": "repudiate__refute",
+      "a": "repudiate",
+      "b": "refute",
+      "boundary_rule": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning.",
+      "clues_a": [
+        "unequivocal refusal",
+        "withdraws endorsement"
+      ],
+      "clues_b": [
+        "contradictory records",
+        "clear counterexample"
+      ],
+      "irrelevant_clues": [
+        "volume of reply",
+        "whether the claim is embarrassing"
+      ],
+      "misconceptions": {
+        "M1": "A strong denial automatically proves a claim wrong.",
+        "M2": "Proof and refusal are interchangeable acts.",
+        "M3": "Being publicly opposed to an idea is evidence against its truth."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "repudiate-refute_001",
+      "edge_id": "repudiate__refute",
+      "domain": "student_magazine",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "Which verb best describes Amina’s response to the rumor?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repudiate-refute_001_b1",
+          "text": "Amina said, “I will not accept that accusation, and I want my name removed from it.”",
+          "best_word": "repudiate",
+          "fit": {
+            "repudiate": 0.91,
+            "refute": 0.26
+          },
+          "decisive_clue": "firmly refused an accusation",
+          "reason": "She makes her rejection unmistakable without disproving it.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        },
+        {
+          "id": "repudiate-refute_001_b2",
+          "text": "She repeated the same statement when asked in front of the whole class.",
+          "best_word": "repudiate",
+          "fit": {
+            "repudiate": 0.95,
+            "refute": 0.26
+          },
+          "decisive_clue": "firm refusal without supporting proof",
+          "reason": "A larger audience does not turn the statement into a demonstration.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Amina rejects the accusation firmly; repeating it publicly supplies no proof.",
+      "feedback_deep": "To repudiate is to reject something emphatically. To refute it requires evidence or reasoning that shows the accusation is false.",
+      "contrast_rule": "Repudiate says no; refute shows why no.",
+      "hints": {
+        "attention": "Ask whether she simply denies it or demonstrates its error.",
+        "axis": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning.",
+        "contrast": "Repudiate says no; refute shows why no."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "repudiate-refute_002",
+      "edge_id": "repudiate__refute",
+      "domain": "delivery_complaint",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "Which verb best describes Jorge’s reply to the complaint?",
+      "difficulty": 4,
+      "beats": [
+        {
+          "id": "repudiate-refute_002_b1",
+          "text": "Jorge answered, “I do not accept your claim that I collected the missing parcel at noon.”",
+          "best_word": "repudiate",
+          "fit": {
+            "repudiate": 0.9,
+            "refute": 0.29
+          },
+          "decisive_clue": "firmly rejected the allegation",
+          "reason": "The response is a denial without evidence.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        },
+        {
+          "id": "repudiate-refute_002_b2",
+          "text": "He attached the signed delivery receipt showing the named customer collected that parcel at noon, not Jorge.",
+          "best_word": "refute",
+          "fit": {
+            "repudiate": 0.29,
+            "refute": 0.94
+          },
+          "decisive_clue": "signed receipt disproves the alleged noon collection",
+          "reason": "The supporting record demonstrates that Jorge did not collect the parcel at noon.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "repudiate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Jorge first rejects the allegation; the signed receipt then demonstrates that he did not collect the parcel at noon.",
+      "feedback_deep": "Repudiation means refusing an allegation. Refutation goes further: evidence shows why the specific allegation is untrue. The receipt provides that decisive support.",
+      "contrast_rule": "Repudiate says no; refute shows why no.",
+      "hints": {
+        "attention": "What does the attached record establish?",
+        "axis": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning.",
+        "contrast": "Repudiate says no; refute shows why no."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "repudiate-refute_003",
+      "edge_id": "repudiate__refute",
+      "domain": "math_homework",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "Which verb best describes Sora’s response to the proposed answer?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repudiate-refute_003_b1",
+          "text": "Sora checked the total and showed that adding 14, 18, and 12 gives 44, not 54.",
+          "best_word": "refute",
+          "fit": {
+            "repudiate": 0.26,
+            "refute": 0.91
+          },
+          "decisive_clue": "arithmetic directly contradicts the stated total",
+          "reason": "The calculation demonstrates the answer is wrong.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "repudiate": "M1"
+          }
+        },
+        {
+          "id": "repudiate-refute_003_b2",
+          "text": "She wrote the addition vertically so every classmate could check each column.",
+          "best_word": "refute",
+          "fit": {
+            "repudiate": 0.26,
+            "refute": 0.95
+          },
+          "decisive_clue": "checkable calculation establishes the contradiction",
+          "reason": "Making the proof easy to inspect strengthens it.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "repudiate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "A checkable addition demonstrates the error; it does more than express disagreement.",
+      "feedback_deep": "To refute is to establish falsity by sound reasons or evidence. Showing the calculation is exactly such a demonstration.",
+      "contrast_rule": "Repudiate says no; refute shows why no.",
+      "hints": {
+        "attention": "Consider what her arithmetic proves.",
+        "axis": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning.",
+        "contrast": "Repudiate says no; refute shows why no."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "repudiate-refute_004",
+      "edge_id": "repudiate__refute",
+      "domain": "brand_endorsement",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "false_shift",
+      "frame": "Which verb best describes Ben’s statement about an advertisement?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repudiate-refute_004_b1",
+          "text": "Ben announced that he wanted nothing to do with the advertisement and forbade it from using his name.",
+          "best_word": "repudiate",
+          "fit": {
+            "repudiate": 0.91,
+            "refute": 0.26
+          },
+          "decisive_clue": "public refusal of association",
+          "reason": "He distances himself from the promotion rather than testing any factual claim.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        },
+        {
+          "id": "repudiate-refute_004_b2",
+          "text": "The advertisement had received thousands of views before he responded.",
+          "best_word": "repudiate",
+          "fit": {
+            "repudiate": 0.95,
+            "refute": 0.26
+          },
+          "decisive_clue": "refusal of association remains despite popularity",
+          "reason": "Audience size is not proof about the claim.",
+          "shift_type": "false_shift",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Ben rejects his association with the advertisement; its popularity is beside the point.",
+      "feedback_deep": "Repudiate can mean disowning an association. Refute concerns disproving a proposition. A widely viewed advertisement can still be publicly disowned.",
+      "contrast_rule": "Repudiate says no; refute shows why no.",
+      "hints": {
+        "attention": "Look at what Ben is refusing to be part of.",
+        "axis": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning.",
+        "contrast": "Repudiate says no; refute shows why no."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "repudiate-refute_005",
+      "edge_id": "repudiate__refute",
+      "domain": "community_newsletter",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "reframe",
+      "frame": "Which verb best describes Fatima’s response to the survey claim?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repudiate-refute_005_b1",
+          "text": "Fatima produced the original responses: the article said eight people objected, but all eight had marked “agree.”",
+          "best_word": "refute",
+          "fit": {
+            "repudiate": 0.26,
+            "refute": 0.91
+          },
+          "decisive_clue": "primary responses contradict the published assertion",
+          "reason": "She supplies verifiable evidence of an error.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "repudiate": "M1"
+          }
+        },
+        {
+          "id": "repudiate-refute_005_b2",
+          "text": "She showed the original forms to the editor rather than asking readers simply to trust her.",
+          "best_word": "refute",
+          "fit": {
+            "repudiate": 0.26,
+            "refute": 0.95
+          },
+          "decisive_clue": "the underlying records remain available for checking",
+          "reason": "Access to the source reinforces the evidence-based demonstration.",
+          "shift_type": "reframe",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "repudiate": "M1"
+          }
+        }
+      ],
+      "feedback_short": "The original forms show the reported result was wrong, not merely unpopular.",
+      "feedback_deep": "Refutation involves giving reasons or evidence that establish an error. Fatima’s original forms directly undercut the article’s numerical claim.",
+      "contrast_rule": "Repudiate says no; refute shows why no.",
+      "hints": {
+        "attention": "Check whether her reply contains verifiable material.",
+        "axis": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning.",
+        "contrast": "Repudiate says no; refute shows why no."
+      },
+      "qa": "pass"
+    },
+    {
+      "id": "repudiate-refute_006",
+      "edge_id": "repudiate__refute",
+      "domain": "friendship_group",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "stay",
+      "frame": "Which verb best describes Pavel’s response to the proposal?",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "repudiate-refute_006_b1",
+          "text": "Pavel said, “I will not support excluding Maya from the trip, and I want no part of that plan.”",
+          "best_word": "repudiate",
+          "fit": {
+            "repudiate": 0.91,
+            "refute": 0.26
+          },
+          "decisive_clue": "firmly rejected a proposed course of action",
+          "reason": "He refuses to accept or endorse the exclusion.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 1,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        },
+        {
+          "id": "repudiate-refute_006_b2",
+          "text": "He made the declaration after hearing everyone’s opinions.",
+          "best_word": "repudiate",
+          "fit": {
+            "repudiate": 0.95,
+            "refute": 0.26
+          },
+          "decisive_clue": "firm rejection remains even after discussion",
+          "reason": "Listening beforehand does not amount to proving a claim false.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 4,
+            "context_length": 2,
+            "implicitness": 3,
+            "ambiguity": 2,
+            "cultural_specificity": 1,
+            "processing_pressure": 3
+          },
+          "misconception_by_wrong_choice": {
+            "refute": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Pavel refuses to endorse the plan; listening to others does not constitute disproof.",
+      "feedback_deep": "Repudiate applies naturally to refusing an idea or association. Refute requires a claim capable of being proved false and an argument or evidence against it.",
+      "contrast_rule": "Repudiate says no; refute shows why no.",
+      "hints": {
+        "attention": "Does his response reject a proposal or prove a statement wrong?",
+        "axis": "To repudiate is to reject something firmly; to refute is to establish that it is false with proof or reasoning.",
+        "contrast": "Repudiate says no; refute shows why no."
+      },
+      "qa": "pass"
+    }
+  ]
+}

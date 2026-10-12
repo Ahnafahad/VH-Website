@@ -1,0 +1,1143 @@
+{
+  "schema_version": 1,
+  "set_id": "abash-abase",
+  "title": "abash / abase",
+  "status": "approved",
+  "source": {
+    "format": "pipeline",
+    "path": "../../last-word-content/output/last-word-question-bank.json#sets[55]",
+    "source_pair_id": 283,
+    "qa": {
+      "pass": 0,
+      "revised": 15,
+      "rejected": 5
+    }
+  },
+  "words": [
+    {
+      "word": "abash",
+      "sense": "To cause a person to feel sudden embarrassment or awkwardness.",
+      "connotation": "Negative (emotional discomfort).",
+      "register": "Formal/Literary.",
+      "misconceptions": [
+        "Confusing it with 'to lower in rank' (abase)."
+      ]
+    },
+    {
+      "word": "abase",
+      "sense": "To lower in status, dignity, or prestige.",
+      "connotation": "Negative (moral/structural degradation).",
+      "register": "Formal.",
+      "misconceptions": [
+        "Thinking it just means 'to make feel ashamed' (abash)."
+      ]
+    }
+  ],
+  "semantic_axes": [
+    {
+      "id": "emotional_impact_vs_structural_change",
+      "description": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase)."
+    },
+    {
+      "id": "intent_and_nature",
+      "description": "Whether the action targets feelings through social exposure (abash) or targets the subject's standing through active degradation (abase)."
+    }
+  ],
+  "anchors": {
+    "positive": {
+      "abash": [
+        "The singer was abashed when she forgot her lyrics in front of the packed stadium.",
+        "His awkward attempt at a joke only served to abash him further.",
+        "She didn't let the mistake abash her; she just kept playing.",
+        "The unexpected praise seemed to abash the humble winner.",
+        "The crowd's laughter began to abash the nervous speaker.",
+        "He looked at the floor, clearly abashed by his error."
+      ],
+      "abase": [
+        "The tyrant forced the prisoners to abase themselves by crawling to his throne.",
+        "He refused to abase his principles for the sake of promotion.",
+        "Such treatment was clearly designed to abase her in front of her staff.",
+        "He felt he had to abase himself to beg for their forgiveness.",
+        "The system was set up to abase anyone who dared to challenge the leaders.",
+        "She knew his goal was to abase her reputation permanently."
+      ]
+    },
+    "counter": {
+      "abash": [
+        "The tyrant forced the prisoners to abash themselves (wrong verb).",
+        "He refused to abash his principles (wrong verb).",
+        "Such treatment was designed to abash her reputation permanently (wrong meaning).",
+        "The system was set up to abash those who challenged him (too weak).",
+        "She knew his goal was to abash her standing (incorrect usage).",
+        "He had to abash himself to ask for money (incorrect usage)."
+      ],
+      "abase": [
+        "The singer was abased when she forgot her lyrics (too strong/wrong).",
+        "The criticism abased him, making him blush (emotional, not status).",
+        "She was abased by her own awkward comment (emotional, not status).",
+        "The unexpected praise abased the winner (wrong meaning).",
+        "He was abased by the laughter of his friends (embarrassed, not degraded).",
+        "He felt abased, hiding his face in his hands (emotional, not structural)."
+      ]
+    }
+  },
+  "edges": [
+    {
+      "id": "abash__abase",
+      "a": "abash",
+      "b": "abase",
+      "boundary_rule": "Use abash for feelings of shame and self-consciousness caused by social exposure; use abase for active, often intentional efforts to strip someone of their dignity, standing, or rank.",
+      "clues_a": [
+        "public reaction, laughing, awkward silence, blushing, stumbling, feeling 'small' in front of others"
+      ],
+      "clues_b": [
+        "forced submission, removing rank, treating as inferior, demanding servility, actively demeaning character"
+      ],
+      "irrelevant_clues": [
+        "whether the action was intentional (both can be); whether it was public (both often are)."
+      ],
+      "misconceptions": {
+        "M1": "Assuming any act that makes someone feel bad is abase.",
+        "M2": "Assuming social embarrassment is a form of status reduction.",
+        "M3": "Ignoring the power dynamic (abase requires one, abash is often peer-based)."
+      }
+    }
+  ],
+  "chains": [
+    {
+      "id": "abash-abase_001",
+      "edge_id": "abash__abase",
+      "domain": "classroom",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the professor sought to do to the student: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abash-abase_001_b1",
+          "text": "The professor pointed out an elementary calculation error before the packed lecture hall, prompting titters from classmates that made the student blush furiously.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.93,
+            "abase": 0.07
+          },
+          "decisive_clue": "prompting titters from classmates that made the student blush furiously",
+          "reason": "Publicly highlighting a silly error to trigger blushing and peer mockery creates acute social self-consciousness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_001_b2",
+          "text": "Rather than moving on, the professor spent five minutes mimicking the student's flustered stammer, leaving them tongue-tied and squirming in their seat.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.91,
+            "abase": 0.09
+          },
+          "decisive_clue": "mimicking the student's flustered stammer, leaving them tongue-tied and squirming in their seat",
+          "reason": "Prolonging interpersonal mockery and physical awkwardness reinforces acute social embarrassment without altering academic rank or standing.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Publicly mocking a student's mistake to cause blushing and awkward stammering is to abash them.",
+      "feedback_deep": "The professor's behavior targets the student's immediate emotional composure through social exposure and classroom ridicule. Because the student suffers acute self-consciousness rather than a loss of formal rank or structural degradation, abash is the precise choice.",
+      "contrast_rule": "Social embarrassment and awkward exposure = abash; structural reduction in status or dignity = abase.",
+      "hints": {
+        "attention": "Does the professor's mockery cause temporary social awkwardness or a formal loss of rank?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Social embarrassment and awkward exposure = abash; structural reduction in status or dignity = abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_002",
+      "edge_id": "abash__abase",
+      "domain": "politics",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the warlord sought to do to the captured rival: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_002_b1",
+          "text": "The victorious warlord commanded the captured rival general to kneel upon the flagstones and press his forehead against the floor before the assembly.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.08,
+            "abase": 0.92
+          },
+          "decisive_clue": "commanded the captured rival general to kneel upon the flagstones and press his forehead against the floor",
+          "reason": "Compelling physical prostration demands servile submission, deliberately stripping away military prestige and personal dignity.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        },
+        {
+          "id": "abash-abase_002_b2",
+          "text": "The warlord then compelled the general to sign a televised decree formally surrendering his hereditary titles and renouncing all claims of nobility.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.05,
+            "abase": 0.95
+          },
+          "decisive_clue": "sign a televised decree formally surrendering his hereditary titles and renouncing all claims of nobility",
+          "reason": "Formally stripping hereditary rank and noble standing permanently demotes the general's social and political stature.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Enforcing prostration and stripping noble titles is to abase a defeated rival.",
+      "feedback_deep": "The warlord actively destroys the general's political status and inherent dignity through performative submission and formal revocation of rank. This structural degradation goes far beyond momentary emotional awkwardness.",
+      "contrast_rule": "Enforcing servility and dismantling rank = abase; provoking social awkwardness = abash.",
+      "hints": {
+        "attention": "Does the action force servile submission and dismantle the rival's status?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Enforcing servility and dismantling rank = abase; provoking social awkwardness = abash."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_003",
+      "edge_id": "abash__abase",
+      "domain": "office",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the manager sought to do to the new employee: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abash-abase_003_b1",
+          "text": "During the department briefing, the manager snickered loudly as the new hire fumbled with the projector cables, highlighting the awkward clumsiness to everyone.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.92,
+            "abase": 0.08
+          },
+          "decisive_clue": "snickered loudly as the new hire fumbled with the projector cables, highlighting the awkward clumsiness",
+          "reason": "Mocking minor technical clumsiness in front of colleagues induces immediate social discomfort and self-consciousness.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_003_b2",
+          "text": "The manager continued to call across the open office floor, asking if the recruit needed preschool instructions, making the newcomer blush and stare downward.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.94,
+            "abase": 0.06
+          },
+          "decisive_clue": "making the newcomer blush and stare downward",
+          "reason": "Blushing and averting eyes under teasing attention are classic hallmarks of social shame and self-conscious exposure.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Publicly teasing a new hire to induce blushing and self-consciousness is to abash them.",
+      "feedback_deep": "The manager's behavior aims at emotional discomfort and public foolishness among peers. Because the worker's official title and professional rank remain intact, the act is one of abashment rather than abasement.",
+      "contrast_rule": "Social self-consciousness and foolishness = abash; lowering in station or rank = abase.",
+      "hints": {
+        "attention": "Look for physiological signs of awkward exposure like blushing and averted eyes.",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Social self-consciousness and foolishness = abash; lowering in station or rank = abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_004",
+      "edge_id": "abash__abase",
+      "domain": "history",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the conqueror sought to do to the captive king: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_004_b1",
+          "text": "The conqueror stripped the captive monarch of his gold crown and purple robes, leaving him in rough burlap before his assembled court.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.09,
+            "abase": 0.91
+          },
+          "decisive_clue": "stripped the captive monarch of his gold crown and purple robes, leaving him in rough burlap",
+          "reason": "Depriving a sovereign of royal regalia and substituting peasant burlap actively dismantles his royal dignity and prestige.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        },
+        {
+          "id": "abash-abase_004_b2",
+          "text": "The conqueror then ordered the dethroned ruler to scrub the banquet hall stones on his knees while former vassals feasted above him.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.06,
+            "abase": 0.94
+          },
+          "decisive_clue": "ordered the dethroned ruler to scrub the banquet hall stones on his knees while former vassals feasted",
+          "reason": "Compelling menial, servile labor beneath former subordinates permanently degrades the ruler's stature and status.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Stripping a monarch of royal garments and forcing him into menial labor is to abase him.",
+      "feedback_deep": "The conqueror's actions systematically demolish the king's royal status and reduce him to servile degradation. This permanent structural humiliation defines abase.",
+      "contrast_rule": "Destroying royal stature through forced servitude = abase; causing momentary embarrassment = abash.",
+      "hints": {
+        "attention": "Does the punishment strip rank and force the subject into servile labor?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Destroying royal stature through forced servitude = abase; causing momentary embarrassment = abash."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_005",
+      "edge_id": "abash__abase",
+      "domain": "social",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What Maya sought to do to her dinner companion: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abash-abase_005_b1",
+          "text": "Across the crowded dining table, Maya loudly recounted an awkward romantic misadventure from her companion's youth, causing them to flush and drop their fork.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.93,
+            "abase": 0.07
+          },
+          "decisive_clue": "loudly recounted an awkward romantic misadventure from her companion's youth, causing them to flush and drop their fork",
+          "reason": "Exposing a private social blunder to an audience triggers immediate flushing and self-conscious discomfort.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_005_b2",
+          "text": "Seeing her companion's discomfort, Maya drew everyone's focus to the crimson cheeks, teasing relentlessly until the companion covered their face with both hands.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.95,
+            "abase": 0.05
+          },
+          "decisive_clue": "drew everyone's focus to the crimson cheeks, teasing relentlessly until the companion covered their face with both hands",
+          "reason": "Covering one's face in response to persistent teasing over crimson cheeks is the definitive physical posture of social shame.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Spotlighting a companion's crimson cheeks until they hide their face is to abash them.",
+      "feedback_deep": "Maya's teasing produces acute self-consciousness and social exposure without altering her friend's standing or human dignity. Emotional discomfort without structural degradation is abash.",
+      "contrast_rule": "Social exposure and flushed cheeks = abash; moral or structural degradation = abase.",
+      "hints": {
+        "attention": "Notice that the discomfort is emotional and peer-based rather than hierarchical demotion.",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Social exposure and flushed cheeks = abash; moral or structural degradation = abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_006",
+      "edge_id": "abash__abase",
+      "domain": "workplace",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "stay",
+      "frame": "What the engineering director sought to do to the junior intern: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_006_b1",
+          "text": "In the all-hands project briefing, the director declared that the intern possessed inferior breeding and had no right to offer technical suggestions.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.12,
+            "abase": 0.88
+          },
+          "decisive_clue": "declared that the intern possessed inferior breeding and had no right to offer technical suggestions",
+          "reason": "Deeming someone of 'inferior breeding' actively degrades their inherent human character and standing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M2"
+          }
+        },
+        {
+          "id": "abash-abase_006_b2",
+          "text": "The director then stripped the intern of all engineering credentials and ordered them to scrub executive restrooms on hands and knees to teach them their station.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.05,
+            "abase": 0.95
+          },
+          "decisive_clue": "stripped the intern of all engineering credentials and ordered them to scrub executive restrooms on hands and knees",
+          "reason": "Revoking professional credentials and assigning servile sanitation tasks intentionally lowers status and strips dignity.",
+          "shift_type": "stay",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M2"
+          }
+        }
+      ],
+      "feedback_short": "Revoking professional credentials to enforce servile janitorial labor is to abase an intern.",
+      "feedback_deep": "The director does not simply embarrass the intern over a minor blunder; he attacks their inherent worth, revokes their technical status, and imposes servile tasks. This intentional reduction in dignity is abase.",
+      "contrast_rule": "Revoking standing to enforce servility = abase; pointing out a faux pas = abash.",
+      "hints": {
+        "attention": "Does the manager actively degrade the intern's position and human dignity?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Revoking standing to enforce servility = abase; pointing out a faux pas = abash."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_007",
+      "edge_id": "abash__abase",
+      "domain": "relationships",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "What Julian sought to do to his partner at the anniversary gala: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_007_b1",
+          "text": "Julian chuckled loudly across the ballroom about his partner's clumsy waltz steps, causing heads to turn and leaving his partner flushing with sudden discomfort.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.92,
+            "abase": 0.08
+          },
+          "decisive_clue": "chuckled loudly across the ballroom about his partner's clumsy waltz steps, causing heads to turn and leaving his partner flushing with sudden discomfort",
+          "reason": "Calling out awkward ballroom dancing in front of guests creates acute social self-consciousness and blushing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_007_b2",
+          "text": "Later, Julian commanded his partner to kneel on the floor and kiss his signet ring before the guests to atone for embarrassing him.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.07,
+            "abase": 0.93
+          },
+          "decisive_clue": "commanded his partner to kneel on the floor and kiss his signet ring before the guests",
+          "reason": "Demanding that a partner kneel and kiss a ring shifts the situation into forced submission and profound status degradation.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Shifting from teasing over awkward dancing to demanding ritual kneeling flips the action from abash to abase.",
+      "feedback_deep": "Beat 1 inflicts emotional awkwardness through social exposure (abash). Beat 2 introduces performative servitude and forced submission (abase), actively stripping away the partner's equality and human dignity.",
+      "contrast_rule": "Social self-consciousness flips to forced servile submission = abash to abase.",
+      "hints": {
+        "attention": "Notice how the behavior transitions from light ballroom teasing to demanded physical submission.",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Social self-consciousness flips to forced servile submission = abash to abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_008",
+      "edge_id": "abash__abase",
+      "domain": "sport",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "What the head coach sought to do to the varsity striker: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_008_b1",
+          "text": "In front of twenty thousand spectators, the coach loudly mimicked the striker's clumsy stumble on the pitch, leaving the athlete blushing and mortified.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.91,
+            "abase": 0.09
+          },
+          "decisive_clue": "loudly mimicked the striker's clumsy stumble on the pitch, leaving the athlete blushing and mortified",
+          "reason": "Mimicking an athletic misstep in front of a stadium audience induces acute social awkwardness and blushing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_008_b2",
+          "text": "The coach then stripped the senior starter of his varsity captaincy and ordered him to clean the youth academy players' muddy cleats for the remainder of the season.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.08,
+            "abase": 0.92
+          },
+          "decisive_clue": "stripped the senior starter of his varsity captaincy and ordered him to clean the youth academy players' muddy cleats",
+          "reason": "Formally removing team rank and compelling subservient menial chores for junior players deliberately degrades the athlete's standing.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Moving from public mockery on the pitch to stripping captaincy and assigning boot cleaning is a shift from abash to abase.",
+      "feedback_deep": "The coach initially targets the striker's personal composure through public ridicule (abash). He then strips his official athletic rank and imposes menial subservience (abase), fundamentally lowering his status on the team.",
+      "contrast_rule": "Emotional embarrassment flips to formal demotion and servile chores = abash to abase.",
+      "hints": {
+        "attention": "Does the action move from mocking performance to stripping official rank?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Emotional embarrassment flips to formal demotion and servile chores = abash to abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_009",
+      "edge_id": "abash__abase",
+      "domain": "travel",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "What the border inspector sought to do to the arriving passenger: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_009_b1",
+          "text": "The border inspector held up the traveler's awkward passport photograph for the entire queue to see, laughing loudly until the passenger blushed and averted their eyes.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.93,
+            "abase": 0.07
+          },
+          "decisive_clue": "held up the traveler's awkward passport photograph for the entire queue to see, laughing loudly until the passenger blushed and averted their eyes",
+          "reason": "Displaying an unflattering photograph to strangers to provoke laughter and blushing is an act of social embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_009_b2",
+          "text": "The inspector then scattered the traveler's documents across the dirty floor and commanded the traveler to crawl on hands and knees to retrieve them.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.06,
+            "abase": 0.94
+          },
+          "decisive_clue": "commanded the traveler to crawl on hands and knees to retrieve them",
+          "reason": "Forcing an adult to crawl across a dirty floor strips away basic human dignity through demanded physical servility.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Shifting from laughing at an unflattering photo to commanding someone to crawl on the floor flips from abash to abase.",
+      "feedback_deep": "The inspector begins with petty public mockery that elicits blushing (abash). However, forcing the passenger into a crawling posture to retrieve papers is a deliberate degradation of fundamental human dignity (abase).",
+      "contrast_rule": "Social mockery flips to forced physical degradation = abash to abase.",
+      "hints": {
+        "attention": "Look for the transition from visual mockery to demanded physical debasement.",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Social mockery flips to forced physical degradation = abash to abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_010",
+      "edge_id": "abash__abase",
+      "domain": "household",
+      "characters": [],
+      "purpose": "transfer",
+      "chain_type": "flip",
+      "frame": "What the elder sister sought to do to her younger sibling: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_010_b1",
+          "text": "The elder sister mocked her sibling's mismatched party attire before their gathered friends, leaving the younger sister red-faced, tongue-tied, and staring at the floor.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.94,
+            "abase": 0.06
+          },
+          "decisive_clue": "mocked her sibling's mismatched party attire before their gathered friends, leaving the younger sister red-faced, tongue-tied, and staring at the floor",
+          "reason": "Teasing over clothing choices in front of peers induces acute social self-consciousness and flushed cheeks.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_010_b2",
+          "text": "The elder sister then ordered the sibling to kneel and scrub her muddy boots, declaring that a younger sister existed solely for domestic servitude.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.07,
+            "abase": 0.93
+          },
+          "decisive_clue": "ordered the sibling to kneel and scrub her muddy boots, declaring that a younger sister existed solely for domestic servitude",
+          "reason": "Demanding kneeling and declaring the sibling fit only for domestic servitude imposes a degraded, inferior status.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Moving from wardrobe mockery to demanding kneeling and declaring domestic servitude is a flip from abash to abase.",
+      "feedback_deep": "The interaction starts with playful or cruel social teasing that causes red-faced awkwardness (abash). It then crosses into enforcing an inferior household caste through demanded kneeling and servitude (abase).",
+      "contrast_rule": "Flustered teasing flips to forced domestic servility = abash to abase.",
+      "hints": {
+        "attention": "Does the demand move from clothing critique to forced servile posture?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Flustered teasing flips to forced domestic servility = abash to abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_011",
+      "edge_id": "abash__abase",
+      "domain": "professional",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What the board of directors sought to do to the chief executive: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_011_b1",
+          "text": "During the annual shareholder assembly, the board chairman exposed a glaring typo in the executive's financial chart, prompting quiet chuckles that left the chief executive flustered and blushing.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.92,
+            "abase": 0.08
+          },
+          "decisive_clue": "exposed a glaring typo in the executive's financial chart, prompting quiet chuckles that left the chief executive flustered and blushing",
+          "reason": "Publicly pointing out an embarrassing presentation error prompts social self-consciousness and visible blushing.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_011_b2",
+          "text": "The directors then stripped the chief executive of all voting power and forced him to sit on a low stool in the corner while junior managers occupied the boardroom table.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.08,
+            "abase": 0.92
+          },
+          "decisive_clue": "stripped the chief executive of all voting power and forced him to sit on a low stool in the corner",
+          "reason": "Revoking executive voting authority and forcing physical relegation to a corner stool strips institutional rank and dignity.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Shifting from revealing a presentation typo to stripping corporate authority and forcing stool-sitting is a flip from abash to abase.",
+      "feedback_deep": "The initial move inflicts professional awkwardness through peer scrutiny (abash). The subsequent move systematically strips executive authority and imposes physical humiliation to reduce corporate standing (abase).",
+      "contrast_rule": "Presentation embarrassment flips to structural stripping of executive rank = abash to abase.",
+      "hints": {
+        "attention": "Look for the transition from slide errors to formal loss of executive status.",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Presentation embarrassment flips to structural stripping of executive rank = abash to abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_012",
+      "edge_id": "abash__abase",
+      "domain": "theatre",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "flip",
+      "frame": "What the stage director sought to do to the lead performer: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_012_b1",
+          "text": "In front of the entire rehearsal company, the director repeatedly mocked the lead actor's trembling voice, leaving the performer blushing and stammering on stage.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.93,
+            "abase": 0.07
+          },
+          "decisive_clue": "mocked the lead actor's trembling voice, leaving the performer blushing and stammering on stage",
+          "reason": "Critiquing delivery before peers to provoke blushing and stammering produces acute social embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_012_b2",
+          "text": "The director then stripped the performer of the starring role, demoting them to backstage janitor and forbidding them from speaking to other cast members.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.06,
+            "abase": 0.94
+          },
+          "decisive_clue": "stripped the performer of the starring role, demoting them to backstage janitor and forbidding them from speaking",
+          "reason": "Revoking a starring credit to reassign an artist to silent janitorial work directly degrades professional rank and dignity.",
+          "shift_type": "flip",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Moving from mocking vocal delivery to formal demotion to silent janitor flips the action from abash to abase.",
+      "feedback_deep": "The director first produces performance-related shame and awkward self-consciousness (abash). He then strips theatrical rank and reduces the performer's professional stature to menial silence (abase).",
+      "contrast_rule": "Acting critique flips to professional demotion = abash to abase.",
+      "hints": {
+        "attention": "Does the action shift from artistic critique to formal demotion in role?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Acting critique flips to professional demotion = abash to abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_013",
+      "edge_id": "abash__abase",
+      "domain": "literature",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "What the literary reviewer sought to do to the debut author: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abash-abase_013_b1",
+          "text": "At the crowded book launch, the reviewer read aloud a convoluted paragraph of purple prose, prompting quiet titters that left the debut author blushing crimson.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.91,
+            "abase": 0.09
+          },
+          "decisive_clue": "read aloud a convoluted paragraph of purple prose, prompting quiet titters that left the debut author blushing crimson",
+          "reason": "Publicly reading an author's clumsy prose to trigger audience titters and crimson blushing induces sharp social embarrassment.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_013_b2",
+          "text": "When the author tried to explain the metaphor, the reviewer interrupted to mimic the author's nervous voice, keeping the focus entirely on exposing personal social awkwardness.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.94,
+            "abase": 0.06
+          },
+          "decisive_clue": "mimic the author's nervous voice, keeping the focus entirely on exposing personal social awkwardness",
+          "reason": "Mimicking nervous speech to sustain interpersonal awkwardness tests the narrow boundary of social humiliation without affecting professional standing.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Publicly exposing clumsy prose and nervous speech to provoke blushing is to abash an author.",
+      "feedback_deep": "The reviewer's cruelty is limited strictly to social exposure and awkward self-consciousness. Because the author's literary standing is not structurally stripped, the action narrows precisely to abash.",
+      "contrast_rule": "Cruel exposure of personal awkwardness = abash; dismantling structural rank = abase.",
+      "hints": {
+        "attention": "Does the attack focus on interpersonal awkwardness rather than stripping official rank?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Cruel exposure of personal awkwardness = abash; dismantling structural rank = abase."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_014",
+      "edge_id": "abash__abase",
+      "domain": "corporate",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "What the chief executive sought to do to the personal assistant: ___",
+      "difficulty": 3,
+      "beats": [
+        {
+          "id": "abash-abase_014_b1",
+          "text": "During the executive council meeting, the chief executive ordered the personal assistant to stand in the hallway corner for four hours while junior interns sat at the conference table.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.14,
+            "abase": 0.86
+          },
+          "decisive_clue": "ordered the personal assistant to stand in the hallway corner for four hours while junior interns sat",
+          "reason": "Singling out an assistant for physical exclusion while junior peers sit emphasizes inferior rank and demeans professional status.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        },
+        {
+          "id": "abash-abase_014_b2",
+          "text": "When the session adjourned, the executive commanded the assistant to kneel before departing partners and hand-wipe the mud from their boots.",
+          "best_word": "abase",
+          "fit": {
+            "abash": 0.05,
+            "abase": 0.95
+          },
+          "decisive_clue": "commanded the assistant to kneel before departing partners and hand-wipe the mud from their boots",
+          "reason": "Enforcing physical kneeling to wipe boots narrows the action to undeniable servility and deliberate status destruction.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 3,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 2,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abash": "M3"
+          }
+        }
+      ],
+      "feedback_short": "Demanding forced exclusion and physical kneeling to wipe boots is to abase an assistant.",
+      "feedback_deep": "The executive's behavior targets status and dignity rather than emotional self-consciousness. Demanding servile physical postures and menial deference squarely establishes abase.",
+      "contrast_rule": "Enforcing menial kneeling and inferior standing = abase; causing social awkwardness = abash.",
+      "hints": {
+        "attention": "Look for explicit demands for servile submission and physical degradation.",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Enforcing menial kneeling and inferior standing = abase; causing social awkwardness = abash."
+      },
+      "qa": "revised"
+    },
+    {
+      "id": "abash-abase_015",
+      "edge_id": "abash__abase",
+      "domain": "social",
+      "characters": [],
+      "purpose": "practice",
+      "chain_type": "narrow",
+      "frame": "What the roast host sought to do to the honored guest: ___",
+      "difficulty": 2,
+      "beats": [
+        {
+          "id": "abash-abase_015_b1",
+          "text": "At the formal charity gala, the host made a sharp joke about the guest's loud singing in the shower, making the guest turn bright red and stare into his water glass.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.93,
+            "abase": 0.07
+          },
+          "decisive_clue": "made a sharp joke about the guest's loud singing in the shower, making the guest turn bright red and stare into his water glass",
+          "reason": "Joking about private domestic habits before an audience causes immediate social self-consciousness and flushed cheeks.",
+          "shift_type": "initial",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        },
+        {
+          "id": "abash-abase_015_b2",
+          "text": "The host then played an audio recording of the screeching high notes over the banquet speakers, prolonging the awkward self-consciousness while the guest covered his burning ears.",
+          "best_word": "abash",
+          "fit": {
+            "abash": 0.95,
+            "abase": 0.05
+          },
+          "decisive_clue": "played an audio recording of the screeching high notes over the banquet speakers, prolonging the awkward self-consciousness while the guest covered his burning ears",
+          "reason": "Amplifying private awkwardness to provoke burning ears narrows the situation strictly to heightened social embarrassment.",
+          "shift_type": "narrow",
+          "difficulty": {
+            "lexical_difficulty": 2,
+            "semantic_distance": 2,
+            "context_length": 2,
+            "implicitness": 2,
+            "ambiguity": 1,
+            "cultural_specificity": 1,
+            "processing_pressure": 2
+          },
+          "misconception_by_wrong_choice": {
+            "abase": "M1"
+          }
+        }
+      ],
+      "feedback_short": "Broadcasting private off-key singing to make a guest cover burning ears is to abash them.",
+      "feedback_deep": "The roast prolongs acute social awkwardness and personal self-consciousness. Because the guest's moral character, social standing, and dignity remain unstripped, the action is firmly abash.",
+      "contrast_rule": "Acute social exposure and burning ears = abash; moral or structural debasement = abase.",
+      "hints": {
+        "attention": "Does the teasing target personal awkwardness without degrading structural dignity?",
+        "axis": "Whether the effect is a passing feeling of shame (abash) or a lasting reduction in dignity/status (abase).",
+        "contrast": "Acute social exposure and burning ears = abash; moral or structural debasement = abase."
+      },
+      "qa": "revised"
+    }
+  ]
+}
