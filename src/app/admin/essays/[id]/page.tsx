@@ -10,6 +10,7 @@ import {
 import { ScoreHistogram } from '@/components/essays/EssayCharts';
 import { buildMarkedPdf, downloadBlob, type MarkedScript } from '@/lib/essays/render-client';
 import type { EssayHistogramBin, EssayPageDTO, EssaySection } from '@/lib/essays/types';
+import { essayMax, type EssayPrompt } from '@/lib/essays/prompts';
 
 interface ScriptRow {
   id: number;
@@ -35,7 +36,7 @@ interface ScriptRow {
 
 interface Data {
   series: {
-    id: number; title: string; prompt: string; essayDate: string | null; essayCount: number; sections: EssaySection[];
+    id: number; title: string; prompt: string; essayDate: string | null; essayCount: number; essays: EssayPrompt[]; sections: EssaySection[];
     totalMarks: number; product: string; batch: string | null; deadline: string; status: string; publishedAt: string | null;
   };
   scripts: ScriptRow[];
@@ -102,7 +103,7 @@ export default function SeriesScriptsPage({ params }: { params: Promise<{ id: st
   const toggleReference = async (row: ScriptRow) => {
     let label: string | null = null;
     if (!row.isReference) {
-      label = window.prompt('Label for this reference script (e.g. "Strong 16/20"):', `${row.total}/${s.totalMarks}`);
+      label = window.prompt('Label for this reference script (e.g. "Strong 16/20"):', `${row.total}/${essayMax(s.essays, row.essayIndex)}`);
       if (label === null) return;
     }
     const res = await fetch(`/api/admin/essays/scripts/${row.id}/reference`, {
@@ -128,7 +129,7 @@ export default function SeriesScriptsPage({ params }: { params: Promise<{ id: st
         marks: x.marks,
         sectionComments: x.sectionComments,
         total: x.total,
-        totalMarks: s.totalMarks,
+        totalMarks: essayMax(s.essays, x.essayIndex),
         overallFeedback: x.overallFeedback,
         gradedBy: x.gradedBy,
         pages: x.pages,
@@ -185,7 +186,7 @@ export default function SeriesScriptsPage({ params }: { params: Promise<{ id: st
           ['Checked', `${done} / ${data.scripts.length}`],
           ['To mark', `${counts.submitted}`],
           ['Missing', `${data.missing.length} / ${data.audienceSize}`],
-          ['Average', data.stats.average === null ? '—' : `${data.stats.average} / ${s.totalMarks}`],
+          ['Average', data.stats.average === null ? '—' : s.essays.every(e => e.max === s.essays[0].max) ? `${data.stats.average} / ${s.essays[0].max}` : `${data.stats.average}`],
           ['High · Low', data.stats.highest === null ? '—' : `${data.stats.highest} · ${data.stats.lowest}`],
         ].map(([k, v]) => (
           <div key={k} style={tile}>
@@ -261,7 +262,7 @@ export default function SeriesScriptsPage({ params }: { params: Promise<{ id: st
                     {row.lockedBy && <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: T_XS, color: WARN, marginTop: 4 }}><Lock size={10} aria-hidden /> {row.lockedBy.name}</div>}
                     {row.status === 'rejected' && row.rejectReason && <div style={{ fontSize: T_XS, color: MUTED, marginTop: 4, maxWidth: 220 }}>{row.rejectReason}</div>}
                   </td>
-                  <td style={td}>{row.total === null ? '—' : `${row.total} / ${s.totalMarks}`}</td>
+                  <td style={td}>{row.total === null ? '—' : `${row.total} / ${essayMax(s.essays, row.essayIndex)}`}</td>
                   <td style={td}>{row.markedPages}/{row.pageCount} marked</td>
                   <td style={td}>{row.gradedBy ?? '—'}</td>
                   <td style={td}>

@@ -8,7 +8,7 @@ import {
   T_SM, T_XS, Toast, WARN, WARN_BG, fmtDhaka,
 } from '@/components/admin/lms/lms-shared';
 import SeriesEditor, { type SeriesFormValue } from '@/components/admin/essays/SeriesEditor';
-import type { EssaySection } from '@/lib/essays/types';
+import type { EssayPrompt } from '@/lib/essays/prompts';
 
 interface SeriesRow {
   id: number;
@@ -16,6 +16,7 @@ interface SeriesRow {
   essayDate: string | null;
   essayCount: number;
   totalMarks: number;
+  essays: EssayPrompt[];
   product: string;
   batch: string | null;
   deadline: string;
@@ -56,7 +57,7 @@ export default function EssaysAdminPage() {
   const openEdit = async (id: number) => {
     const res = await fetch(`/api/admin/essays/series/${id}`);
     if (!res.ok) return;
-    const { series } = (await res.json()) as { series: SeriesFormValue & { sections: EssaySection[] } };
+    const { series } = (await res.json()) as { series: SeriesFormValue };
     setEditing(series);
     setEditorOpen(true);
   };
@@ -117,7 +118,7 @@ export default function EssaysAdminPage() {
                       <StatePill s={s} />
                     </div>
                     <p style={{ margin: '4px 0 0', fontSize: T_SM, color: MUTED }}>
-                      {PRODUCT_LABEL[s.product] ?? s.product} · {s.batch ?? 'All batches'} · {s.essayCount} essay{s.essayCount > 1 ? 's' : ''} × {s.totalMarks} marks · deadline {fmtDhaka(new Date(s.deadline).getTime())}
+                      {PRODUCT_LABEL[s.product] ?? s.product} · {s.batch ?? 'All batches'} · {s.essayCount} essay{s.essayCount > 1 ? 's' : ''} ({s.essays.map(e => e.max).join(' + ')}) · {s.totalMarks} marks · deadline {fmtDhaka(new Date(s.deadline).getTime())}
                     </p>
                   </div>
                   <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>

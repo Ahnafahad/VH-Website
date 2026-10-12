@@ -100,7 +100,7 @@ export default function EssaysHubPage() {
                       <div className="flex flex-wrap gap-1.5 mt-3">
                         {s.slots.map(slot => (
                           <span key={slot.essayIndex} className={`rounded-md border px-2 py-0.5 text-[11px] font-bold uppercase tracking-wide ${STATUS[slot.status].cls}`}>
-                            {s.essayCount > 1 ? `Essay ${slot.essayIndex}: ` : ''}{STATUS[slot.status].label}
+                            {s.essayCount > 1 ? `Essay ${slot.essayIndex}: ` : ''}{STATUS[slot.status].label}{slot.total !== null ? ` ${slot.total}/${slot.max}` : ` · out of ${slot.max}`}
                           </span>
                         ))}
                       </div>

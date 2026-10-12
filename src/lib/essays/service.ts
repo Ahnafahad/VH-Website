@@ -43,12 +43,11 @@ import {
   completeTotal,
   computeStats,
   isReadyToPublish,
-  normalizeSections,
   parseSections,
-  sectionsTotal,
   type MarksMap,
 } from './stats';
-import type { EssayPageDTO, EssaySection, EssaySeriesStudentEntry, EssaySlotStatus } from './types';
+import { parseEssays, seriesMax as essaysTotal, validateEssays, type EssayPrompt } from './prompts';
+import type { EssayPageDTO, EssaySeriesStudentEntry, EssaySlotStatus } from './types';
 
 const ENTITY = 'essay_submission';
 const MAX_PAGES = 30;
@@ -105,8 +104,7 @@ export interface SeriesInput {
   title: string;
   prompt: string;
   essayDate: string | null;
-  essayCount: number;
-  sections: EssaySection[];
+  essays: EssayPrompt[];
   product: UserProduct;
   batch: string | null;
   deadline: Date;
@@ -118,15 +116,13 @@ export function parseSeriesInput(raw: unknown): SeriesInput {
   if (!title || title.length > 120) throw new ApiException('Series name is required (max 120 characters)', 400);
   const prompt = typeof o.prompt === 'string' ? o.prompt.slice(0, 5000) : '';
   const essayDate = typeof o.essayDate === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(o.essayDate) ? o.essayDate : null;
-  const essayCount = typeof o.essayCount === 'number' && Number.isInteger(o.essayCount) && o.essayCount >= 1 && o.essayCount <= 10 ? o.essayCount : null;
-  if (!essayCount) throw new ApiException('Number of essays must be between 1 and 10', 400);
-  const sections = normalizeSections(o.sections);
-  if (!sections) throw new ApiException('Add at least one section, each with a name and a maximum mark (half marks allowed)', 400);
+  const checked = validateEssays(o.essays);
+  if ('error' in checked) throw new ApiException(checked.error, 400);
   if (!isAudienceProduct(o.product)) throw new ApiException('Choose a programme (IBA / FBS / FBS Detailed)', 400);
   const batch = typeof o.batch === 'string' && o.batch.trim() ? o.batch.trim() : null;
   const deadline = typeof o.deadline === 'string' ? new Date(o.deadline) : null;
   if (!deadline || Number.isNaN(deadline.getTime())) throw new ApiException('A valid submission deadline is required', 400);
-  return { title, prompt, essayDate, essayCount, sections, product: o.product, batch, deadline };
+  return { title, prompt, essayDate, essays: checked.essays, product: o.product, batch, deadline };
 }
 
 export async function listSeriesForStaff() {
@@ -150,6 +146,7 @@ export async function listSeriesForStaff() {
       essayDate: s.essayDate,
       essayCount: s.essayCount,
       totalMarks: s.totalMarks,
+      essays: parseEssays(s),
       product: s.product,
       batch: s.batch,
       deadline: s.deadline.toISOString(),
@@ -160,6 +157,22 @@ export async function listSeriesForStaff() {
   });
 }
 
+/** essay_series columns derived from the essay list. `sections` is legacy — new writes clear it. */
+function essayColumns(essays: EssayPrompt[]) {
+  return { essays: JSON.stringify(essays), essayCount: essays.length, totalMarks: essaysTotal(essays), sections: '[]' };
+}
+
+/** An edit may not drop an essay that has submissions, nor cut its maximum below a mark already given. */
+export function assertEssaysFit(essays: EssayPrompt[], used: { essayIndex: number; topMark: number | null }[]) {
+  for (const u of used) {
+    const essay = essays[u.essayIndex - 1];
+    if (!essay) throw new ApiException(`Essay ${u.essayIndex} already has submissions, so it can't be removed`, 409, 'ESSAY_HAS_SUBMISSIONS');
+    if (u.topMark !== null && essay.max < Number(u.topMark)) {
+      throw new ApiException(`Essay ${u.essayIndex}: a script has already been given ${u.topMark}, so the maximum can't go below that`, 409, 'MAX_BELOW_MARK');
+    }
+  }
+}
+
 export async function createSeries(input: SeriesInput, actorId: number) {
   const [row] = await db
     .insert(essaySeries)
@@ -167,9 +180,7 @@ export async function createSeries(input: SeriesInput, actorId: number) {
       title: input.title,
       prompt: input.prompt,
       essayDate: input.essayDate,
-      essayCount: input.essayCount,
-      sections: JSON.stringify(input.sections),
-      totalMarks: sectionsTotal(input.sections),
+      ...essayColumns(input.essays),
       product: input.product,
       batch: input.batch,
       deadline: input.deadline,
@@ -181,33 +192,20 @@ export async function createSeries(input: SeriesInput, actorId: number) {
 
 export async function updateSeries(id: number, input: SeriesInput) {
   const existing = await getSeriesOr404(id);
-  const graded = await db
-    .select({ n: sql<number>`count(*)` })
-    .from(essaySubmissions)
-    .where(and(eq(essaySubmissions.seriesId, id), eq(essaySubmissions.status, 'graded')))
-    .get();
-  const prevSections = parseSections(existing.sections);
-  const sectionsChanged = JSON.stringify(prevSections) !== JSON.stringify(input.sections);
-  if (Number(graded?.n ?? 0) > 0 && sectionsChanged) {
-    throw new ApiException('Sections cannot change once scripts have been graded', 409, 'SECTIONS_LOCKED');
-  }
-  const submitted = await db
-    .select({ maxIdx: sql<number>`max(${essaySubmissions.essayIndex})` })
+  // Per essay number: anyone submitted it, and the highest mark given so far.
+  const used = await db
+    .select({ essayIndex: essaySubmissions.essayIndex, topMark: sql<number | null>`max(${essaySubmissions.total})` })
     .from(essaySubmissions)
     .where(eq(essaySubmissions.seriesId, id))
-    .get();
-  if (Number(submitted?.maxIdx ?? 0) > input.essayCount) {
-    throw new ApiException('Students have already submitted more essays than that', 409);
-  }
+    .groupBy(essaySubmissions.essayIndex);
+  assertEssaysFit(input.essays, used);
   await db
     .update(essaySeries)
     .set({
       title: input.title,
       prompt: input.prompt,
       essayDate: input.essayDate,
-      essayCount: input.essayCount,
-      sections: JSON.stringify(input.sections),
-      totalMarks: sectionsTotal(input.sections),
+      ...essayColumns(input.essays),
       product: input.product,
       batch: input.batch,
       deadline: input.deadline,
@@ -241,9 +239,8 @@ export async function duplicateSeries(id: number, actorId: number) {
       title,
       prompt: '',
       essayDate: null,
-      essayCount: s.essayCount,
-      sections: s.sections,
-      totalMarks: s.totalMarks,
+      // Same marking scheme; new questions each time.
+      ...essayColumns(parseEssays(s).map(e => ({ prompt: '', max: e.max }))),
       product: s.product,
       batch: s.batch,
       deadline: new Date(Date.now() + 7 * 86_400_000),
@@ -260,6 +257,7 @@ export function seriesDetailDTO(s: EssaySeries) {
     prompt: s.prompt,
     essayDate: s.essayDate,
     essayCount: s.essayCount,
+    essays: parseEssays(s),
     sections: parseSections(s.sections),
     totalMarks: s.totalMarks,
     product: s.product,
@@ -341,10 +339,11 @@ export async function listSeriesForStudent(user: UserWithProducts): Promise<Essa
 
   return seriesRows.map(s => {
     const mine = subs.filter(x => x.seriesId === s.id);
-    const slots = Array.from({ length: s.essayCount }, (_, i) => {
+    const essays = parseEssays(s);
+    const slots = essays.map((e, i) => {
       const sub = mine.find(x => x.essayIndex === i + 1);
       const status = slotStatus(sub, s, now);
-      return { essayIndex: i + 1, status, total: status === 'graded' ? sub!.total : null };
+      return { essayIndex: i + 1, status, total: status === 'graded' ? sub!.total : null, prompt: e.prompt, max: e.max };
     });
     const graded = slots.filter(x => x.status === 'graded');
     return {
@@ -357,7 +356,7 @@ export async function listSeriesForStudent(user: UserWithProducts): Promise<Essa
       published: !!s.publishedAt,
       slots,
       seriesTotal: graded.length ? graded.reduce((a, b) => a + (b.total ?? 0), 0) : null,
-      seriesMax: seriesMax(s),
+      seriesMax: essaysTotal(essays),
     };
   });
 }
@@ -408,6 +407,7 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
   const s = await requireVisibleSeries(user, seriesId);
   const now = new Date();
   const sections = parseSections(s.sections);
+  const prompts = parseEssays(s);
   const mine = await db
     .select()
     .from(essaySubmissions)
@@ -416,7 +416,7 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
   const pageMap = await pagesFor(mine.map(x => x.id), true);
   const graders = await userNames(visibleGraded.map(x => x.gradedBy));
 
-  const essays = Array.from({ length: s.essayCount }, (_, i) => {
+  const essays = prompts.map((e, i) => {
     const sub = mine.find(x => x.essayIndex === i + 1);
     const status = slotStatus(sub, s, now);
     const result = status === 'graded' && sub
@@ -431,6 +431,8 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
       : null;
     return {
       essayIndex: i + 1,
+      prompt: e.prompt,
+      max: e.max,
       status,
       submittedAt: sub?.submittedAt.toISOString() ?? null,
       attempt: sub?.attempt ?? 0,
@@ -444,7 +446,7 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
   let stats = null;
   if (visibleGraded.length > 0) {
     const pool = await classSeriesTotals(seriesId);
-    const max = seriesMax(s);
+    const max = essaysTotal(prompts);
     const st = computeStats([...pool.values()], max);
     stats = {
       myTotal: visibleGraded.reduce((a, b) => a + (b.total ?? 0), 0),
@@ -465,6 +467,7 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
       essayCount: s.essayCount,
       sections,
       totalMarks: s.totalMarks,
+      seriesMax: essaysTotal(prompts),
       deadline: s.deadline.toISOString(),
       published: !!s.publishedAt,
       deadlinePassed: s.deadline.getTime() <= now.getTime(),

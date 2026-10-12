@@ -11,6 +11,8 @@ import type { EssayHistogramBin, EssayPageDTO, EssaySection, EssaySlotStatus } f
 
 interface EssayEntry {
   essayIndex: number;
+  prompt: string;
+  max: number;
   status: EssaySlotStatus;
   submittedAt: string | null;
   attempt: number;
@@ -35,6 +37,7 @@ interface Detail {
     essayCount: number;
     sections: EssaySection[];
     totalMarks: number;
+    seriesMax: number;
     deadline: string;
     published: boolean;
     deadlinePassed: boolean;
@@ -71,7 +74,7 @@ export default function EssaySeriesPage({ params }: { params: Promise<{ seriesId
               <h1 className="font-serif text-3xl sm:text-4xl font-semibold text-exam-ink mt-3 mb-2">{data.series.title}</h1>
               <p className="text-sm text-exam-ink-muted">
                 {data.series.essayDate && <>Written {new Date(`${data.series.essayDate}T00:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })} · </>}
-                {data.series.deadlinePassed ? 'Submissions closed ' : 'Submit by '}{fmtDate(data.series.deadline)}
+                {data.series.deadlinePassed ? 'Submissions closed ' : 'Submit by '}{fmtDate(data.series.deadline)} · out of {data.series.seriesMax}
               </p>
               {data.series.prompt && (
                 <blockquote className="mt-5 border-l-2 border-exam-gold pl-4 text-exam-ink whitespace-pre-wrap">{data.series.prompt}</blockquote>
@@ -142,7 +145,7 @@ function EssayBlock({ detail, essay, justSubmitted, onSubmitted }: { detail: Det
         marks: essay.result.marks,
         sectionComments: essay.result.sectionComments,
         total: essay.result.total,
-        totalMarks: s.totalMarks,
+        totalMarks: essay.max,
         overallFeedback: essay.result.overallFeedback,
         gradedBy: essay.result.gradedBy,
         pages: essay.pages,
@@ -155,7 +158,11 @@ function EssayBlock({ detail, essay, justSubmitted, onSubmitted }: { detail: Det
 
   return (
     <section>
-      <h2 className="font-serif text-2xl font-semibold mb-4">{heading}</h2>
+      <h2 className="font-serif text-2xl font-semibold mb-1">{heading}</h2>
+      <p className="text-sm text-exam-ink-muted mb-4">Out of {essay.max}</p>
+      {essay.prompt && (
+        <blockquote className="mb-5 border-l-2 border-exam-gold pl-4 text-exam-ink whitespace-pre-wrap">{essay.prompt}</blockquote>
+      )}
 
       {justSubmitted && (
         <div className="mb-4 flex items-start gap-3 rounded-xl border border-exam-success/40 bg-exam-success/10 p-4">
@@ -198,7 +205,7 @@ function EssayBlock({ detail, essay, justSubmitted, onSubmitted }: { detail: Det
         <div className="space-y-6">
           <div className="rounded-2xl border border-exam-border bg-exam-surface p-5">
             <div className="flex flex-wrap items-baseline justify-between gap-3">
-              <p className="font-mono text-3xl font-bold text-exam-gold">{essay.result.total}<span className="text-base text-exam-ink-muted">/{s.totalMarks}</span></p>
+              <p className="font-mono text-3xl font-bold text-exam-gold">{essay.result.total}<span className="text-base text-exam-ink-muted">/{essay.max}</span></p>
               <p className="text-xs text-exam-ink-faint">{essay.result.gradedBy ? `Marked by ${essay.result.gradedBy}` : ''}</p>
             </div>
             <div className="mt-4 divide-y divide-exam-border">
