@@ -1,22 +1,22 @@
 'use client';
 
 /**
- * Right-hand panel of the marking page: section marks (typed or quick-tap),
- * per-section comments, overall feedback, staff-only note, the grade /
+ * Right-hand panel of the marking page: the essay's prompt, its one mark
+ * (typed or quick-tap), overall feedback, staff-only note, the grade /
  * save / reject actions, this page's comment pins, the collapsible
- * grading-standard panel (series average + histogram + section averages +
- * reference scripts) and the script's history.
+ * grading-standard panel (this essay's average + histogram + reference
+ * scripts) and the script's history.
  */
 
 import { useState } from 'react';
 import { BookMarked, ChevronDown, ChevronRight, Lock, Star } from 'lucide-react';
 import {
-  BG, BORDER, BORDER_FIELD, INFO, INFO_BG, INK_SOFT, MUTED, OK, OK_BG, R_MD, R_PILL, RED, SLATE, SURFACE, SURFACE_ALT, T_BASE, T_SM, T_XS, WARN, WARN_BG,
+  BG, BORDER, BORDER_FIELD, INFO, INFO_BG, INK_SOFT, MUTED, OK, OK_BG, R_MD, R_PILL, RED, SLATE, SURFACE, T_BASE, T_SM, T_XS, WARN, WARN_BG,
 } from '@/components/admin/lms/tokens';
 import { DangerBtn, GhostBtn, PrimaryBtn, fmtDhaka } from '@/components/admin/lms/lms-shared';
 import { ScoreHistogram } from '@/components/essays/EssayCharts';
 import { numberedComments, type EssayAnnotation } from '@/lib/essays/annotations';
-import { completeTotal } from '@/lib/essays/stats';
+import type { EssayPrompt } from '@/lib/essays/prompts';
 import type { BankComment, MarksDraft, ScriptDetail, SeriesInfo, SeriesStats } from './marking-types';
 
 function Section({ title, open, onToggle, children, right }: { title: string; open: boolean; onToggle: () => void; children: React.ReactNode; right?: React.ReactNode }) {
@@ -43,7 +43,7 @@ const HISTORY_LABEL: Record<string, string> = {
 
 export default function MarkingSidePanel({
   series, detail, draft, onDraft, readOnly, saving, onSaveDraft, onGrade, onReject, notify, onNotify,
-  stats, pageItems, onOpenComment, bank, onToggleReference, references, onOpenReference, draftDirty,
+  stats, essays, pageItems, onOpenComment, bank, onToggleReference, references, onOpenReference, draftDirty,
 }: {
   series: SeriesInfo;
   detail: ScriptDetail;
@@ -56,7 +56,9 @@ export default function MarkingSidePanel({
   onReject: () => void;
   notify: boolean;
   onNotify: (v: boolean) => void;
-  stats: SeriesStats | null;
+  /** Stats for this script's essay only. */
+  stats: SeriesStats['byEssay'][number] | null;
+  essays: EssayPrompt[];
   pageItems: EssayAnnotation[];
   onOpenComment: (id: string) => void;
   bank: BankComment[];
@@ -66,13 +68,14 @@ export default function MarkingSidePanel({
   draftDirty: boolean;
 }) {
   const [open, setOpen] = useState({ marks: true, feedback: true, comments: true, standard: true, history: false });
-  const [sectionNotes, setSectionNotes] = useState<Record<string, boolean>>({});
-  const total = completeTotal(draft.marks, series.sections);
-  const runningTotal = series.sections.reduce((a, s) => a + (draft.marks[s.key] ?? 0), 0);
+  const total = draft.mark;
+  const max = detail.max;
   const graded = detail.status === 'graded';
   const comments = numberedComments(pageItems);
 
-  const setMark = (key: string, v: number | null) => onDraft({ ...draft, marks: { ...draft.marks, [key]: v } });
+  const setMark = (v: number | null) => onDraft({ ...draft, mark: v });
+  const whole = total === null ? null : Math.floor(total);
+  const half = total !== null && total % 1 !== 0;
 
   const statusChip = {
     submitted: ['To mark', WARN, WARN_BG],
@@ -98,70 +101,47 @@ export default function MarkingSidePanel({
         )}
       </div>
 
-      <Section title="Marks" open={open.marks} onToggle={() => setOpen(o => ({ ...o, marks: !o.marks }))}
-        right={<span style={{ fontSize: T_SM, color: total === null ? MUTED : RED }}>{total ?? runningTotal} / {series.totalMarks}</span>}>
-        <div style={{ display: 'grid', gap: 12 }}>
-          {series.sections.map(sec => {
-            const v = draft.marks[sec.key];
-            const whole = v === null || v === undefined ? null : Math.floor(v);
-            const half = v !== null && v !== undefined && v % 1 !== 0;
-            return (
-              <div key={sec.key}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <label htmlFor={`mk-${sec.key}`} style={{ flex: 1, fontSize: T_SM, fontWeight: 600, color: SLATE }}>{sec.name}</label>
-                  <input
-                    id={`mk-${sec.key}`}
-                    type="number" inputMode="decimal" min={0} max={sec.max} step={0.5}
-                    disabled={readOnly}
-                    value={v ?? ''}
-                    onChange={e => {
-                      const raw = e.target.value;
-                      if (raw === '') { setMark(sec.key, null); return; }
-                      const n = Math.round(Number(raw) * 2) / 2;
-                      if (Number.isFinite(n)) setMark(sec.key, Math.min(sec.max, Math.max(0, n)));
-                    }}
-                    style={{ ...input, width: 64, textAlign: 'right', fontWeight: 700 }}
-                  />
-                  <span style={{ fontSize: T_SM, color: MUTED, width: 34 }}>/ {sec.max}</span>
-                </div>
-                {sec.max <= 20 && !readOnly && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
-                    {Array.from({ length: sec.max + 1 }, (_, i) => i).filter(i => i <= sec.max).map(i => (
-                      <button key={i} type="button" onClick={() => setMark(sec.key, half && i + 0.5 <= sec.max ? i + 0.5 : i)}
-                        style={{ minWidth: 30, height: 30, borderRadius: R_MD, border: `1px solid ${whole === i ? RED : BORDER}`, background: whole === i ? `${RED}14` : SURFACE, color: whole === i ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
-                        {i}
-                      </button>
-                    ))}
-                    <button type="button" disabled={v === null || v === undefined || (!half && (v ?? 0) + 0.5 > sec.max)}
-                      onClick={() => v !== null && v !== undefined && setMark(sec.key, half ? Math.floor(v) : v + 0.5)}
-                      style={{ minWidth: 30, height: 30, borderRadius: R_MD, border: `1px solid ${half ? RED : BORDER}`, background: half ? `${RED}14` : SURFACE, color: half ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
-                      +½
-                    </button>
-                  </div>
-                )}
-                {(sectionNotes[sec.key] || draft.sectionComments[sec.key]) ? (
-                  <textarea
-                    aria-label={`${sec.name} comment`}
-                    disabled={readOnly}
-                    rows={2}
-                    placeholder={`Comment on ${sec.name.toLowerCase()}`}
-                    value={draft.sectionComments[sec.key] ?? ''}
-                    onChange={e => onDraft({ ...draft, sectionComments: { ...draft.sectionComments, [sec.key]: e.target.value } })}
-                    style={{ ...input, marginTop: 6, resize: 'vertical' }}
-                  />
-                ) : !readOnly && (
-                  <button type="button" onClick={() => setSectionNotes(n => ({ ...n, [sec.key]: true }))} style={{ marginTop: 4, border: 'none', background: 'transparent', padding: 0, fontSize: T_XS, color: INFO, cursor: 'pointer' }}>
-                    + comment on {sec.name.toLowerCase()}
-                  </button>
-                )}
-              </div>
-            );
-          })}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 10px', background: SURFACE_ALT, borderRadius: R_MD }}>
-            <span style={{ fontSize: T_SM, fontWeight: 700, color: SLATE }}>Total</span>
-            <span style={{ fontSize: 18, fontWeight: 800, color: RED }}>{total ?? '—'} <span style={{ fontSize: T_SM, color: MUTED }}>/ {series.totalMarks}</span></span>
-          </div>
+      {detail.prompt && (
+        <div style={{ padding: '0 14px 12px' }}>
+          <p style={{ margin: '0 0 2px', fontSize: T_XS, color: MUTED }}>Prompt</p>
+          <p style={{ margin: 0, fontSize: T_SM, color: SLATE, whiteSpace: 'pre-wrap' }}>{detail.prompt}</p>
         </div>
+      )}
+
+      <Section title="Mark" open={open.marks} onToggle={() => setOpen(o => ({ ...o, marks: !o.marks }))}
+        right={<span style={{ fontSize: T_SM, color: total === null ? MUTED : RED }}>{total ?? '—'} / {max}</span>}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <label htmlFor="mk-mark" style={{ flex: 1, fontSize: T_SM, fontWeight: 600, color: SLATE }}>Mark (out of {max})</label>
+          <input
+            id="mk-mark"
+            type="number" inputMode="decimal" min={0} max={max} step="any"
+            disabled={readOnly}
+            value={total ?? ''}
+            onChange={e => {
+              const raw = e.target.value;
+              if (raw === '') { setMark(null); return; }
+              const n = Math.round(Number(raw) * 100) / 100;
+              if (Number.isFinite(n)) setMark(Math.min(max, Math.max(0, n)));
+            }}
+            style={{ ...input, width: 76, textAlign: 'right', fontWeight: 700 }}
+          />
+          <span style={{ fontSize: T_SM, color: MUTED, width: 34 }}>/ {max}</span>
+        </div>
+        {max <= 20 && !readOnly && (
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
+            {Array.from({ length: Math.floor(max) + 1 }, (_, i) => i).map(i => (
+              <button key={i} type="button" onClick={() => setMark(half && i + 0.5 <= max ? i + 0.5 : i)}
+                style={{ minWidth: 30, height: 30, borderRadius: R_MD, border: `1px solid ${whole === i ? RED : BORDER}`, background: whole === i ? `${RED}14` : SURFACE, color: whole === i ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
+                {i}
+              </button>
+            ))}
+            <button type="button" disabled={total === null || (!half && total + 0.5 > max)}
+              onClick={() => total !== null && setMark(half ? Math.floor(total) : total + 0.5)}
+              style={{ minWidth: 30, height: 30, borderRadius: R_MD, border: `1px solid ${half ? RED : BORDER}`, background: half ? `${RED}14` : SURFACE, color: half ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
+              +½
+            </button>
+          </div>
+        )}
       </Section>
 
       <Section title="Feedback" open={open.feedback} onToggle={() => setOpen(o => ({ ...o, feedback: !o.feedback }))}>
@@ -207,7 +187,7 @@ export default function MarkingSidePanel({
               <Star size={13} aria-hidden fill={detail.isReference ? 'currentColor' : 'none'} /> {detail.isReference ? `Reference: ${detail.referenceLabel ?? 'pinned'} (unpin)` : 'Pin as reference script'}
             </GhostBtn>
           )}
-          {!graded && total === null && <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>Enter a mark for every section to grade.</p>}
+          {!graded && total === null && <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>Enter a mark to grade.</p>}
         </div>
       )}
 
@@ -244,14 +224,6 @@ export default function MarkingSidePanel({
             </div>
             <p style={{ margin: '0 0 4px', fontSize: T_XS, color: MUTED }}>{stats.count} graded · this script{total !== null ? ` (${total})` : ''} highlighted</p>
             <ScoreHistogram bins={stats.histogram} highlight={total} tone="light" height={150} />
-            <div style={{ marginTop: 8, display: 'grid', gap: 6 }}>
-              {stats.sectionAverages.map(sa => (
-                <div key={sa.key} style={{ display: 'flex', justifyContent: 'space-between', fontSize: T_XS, color: SLATE }}>
-                  <span>{sa.name}</span>
-                  <span>avg {sa.average ?? '—'} / {sa.max}{draft.marks[sa.key] !== null && draft.marks[sa.key] !== undefined ? ` · here ${draft.marks[sa.key]}` : ''}</span>
-                </div>
-              ))}
-            </div>
           </>
         )}
         <div style={{ marginTop: 12 }}>
@@ -260,7 +232,7 @@ export default function MarkingSidePanel({
             <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>None pinned. Pin a graded script as a reference to compare side by side.</p>
           ) : references.filter(r => r.id !== detail.id).map(r => (
             <button key={r.id} type="button" onClick={() => onOpenReference(r.id)} style={{ display: 'block', width: '100%', textAlign: 'left', border: `1px solid ${BORDER}`, background: INFO_BG, color: INFO, borderRadius: R_MD, padding: '6px 8px', marginBottom: 4, fontSize: T_XS, cursor: 'pointer' }}>
-              {r.label ?? 'Reference'} — {r.name}{series.essayCount > 1 ? ` (essay ${r.essayIndex})` : ''} · {r.total}/{series.totalMarks}
+              {r.label ?? 'Reference'} — {r.name}{series.essayCount > 1 ? ` (essay ${r.essayIndex})` : ''} · {r.total}/{essays[r.essayIndex - 1]?.max ?? '—'}
             </button>
           ))}
         </div>

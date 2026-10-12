@@ -2,14 +2,10 @@
  * Pure scoring helpers for Essays — no DB, unit-tested.
  */
 
+import type { EssayPrompt } from './prompts';
 import type { EssayHistogramBin, EssaySection, EssayStats } from './types';
 
 export const LOCK_MINUTES = 10;
-
-/** Marks are entered in half-mark steps. */
-export function isValidMark(v: unknown, max: number): v is number {
-  return typeof v === 'number' && Number.isFinite(v) && v >= 0 && v <= max && Math.round(v * 2) === v * 2;
-}
 
 export function parseSections(json: string): EssaySection[] {
   try {
@@ -46,32 +42,8 @@ export function sectionsTotal(sections: EssaySection[]): number {
   return sections.reduce((sum, s) => sum + s.max, 0);
 }
 
+/** LEGACY per-section marks (pre-2026-10-12) — only read, never written. */
 export type MarksMap = Record<string, number | null>;
-
-/** Keeps only known section keys; values must be valid marks or null. Returns null when any value is invalid. */
-export function cleanMarks(raw: unknown, sections: EssaySection[]): MarksMap | null {
-  if (!raw || typeof raw !== 'object') return null;
-  const src = raw as Record<string, unknown>;
-  const out: MarksMap = {};
-  for (const s of sections) {
-    const v = src[s.key];
-    if (v === null || v === undefined || v === '') { out[s.key] = null; continue; }
-    if (!isValidMark(v, s.max)) return null;
-    out[s.key] = v;
-  }
-  return out;
-}
-
-/** Sum of marks when every section has a mark, else null. */
-export function completeTotal(marks: MarksMap, sections: EssaySection[]): number | null {
-  let total = 0;
-  for (const s of sections) {
-    const v = marks[s.key];
-    if (typeof v !== 'number') return null;
-    total += v;
-  }
-  return total;
-}
 
 export function binWidthFor(max: number): number {
   if (max <= 0) return 1;
@@ -105,6 +77,17 @@ export function computeStats(values: number[], max: number): EssayStats {
     lowest: Math.min(...values),
     histogram: histogram(values, max),
   };
+}
+
+export type EssayIndexStats = EssayStats & { essayIndex: number; max: number };
+
+/** Stats per essay number, each on that essay's own scale (essays can have different maxima). */
+export function statsByEssay(graded: { essayIndex: number; total: number | null }[], essays: EssayPrompt[]): EssayIndexStats[] {
+  return essays.map((e, i) => ({
+    essayIndex: i + 1,
+    max: e.max,
+    ...computeStats(graded.filter(g => g.essayIndex === i + 1).map(g => g.total ?? 0), e.max),
+  }));
 }
 
 /**

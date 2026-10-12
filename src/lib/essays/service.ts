@@ -39,15 +39,15 @@ import { canSeeSeries, isEssayAdmin } from './access';
 import { notifyStudents } from '@/lib/notifications/notify-students';
 import {
   LOCK_MINUTES,
-  cleanMarks,
-  completeTotal,
   computeStats,
   isReadyToPublish,
   normalizeSections,
   parseSections,
   sectionsTotal,
+  statsByEssay,
   type MarksMap,
 } from './stats';
+import { essayMax, parseEssays, seriesMax as essaysTotal, validateMark } from './prompts';
 import type { EssayPageDTO, EssaySection, EssaySeriesStudentEntry, EssaySlotStatus } from './types';
 
 const ENTITY = 'essay_submission';
@@ -585,7 +585,6 @@ export async function getStudentOverview(user: UserWithProducts) {
       seriesId: essaySubmissions.seriesId,
       userId: essaySubmissions.userId,
       total: essaySubmissions.total,
-      marks: essaySubmissions.marks,
     })
     .from(essaySubmissions)
     .where(and(inArray(essaySubmissions.seriesId, ids), eq(essaySubmissions.status, 'graded')));
@@ -596,15 +595,8 @@ export async function getStudentOverview(user: UserWithProducts) {
       const perUser = new Map<number, number>();
       for (const r of rows) perUser.set(r.userId, (perUser.get(r.userId) ?? 0) + (r.total ?? 0));
       const mineRows = rows.filter(r => r.userId === user.id);
-      const max = seriesMax(s);
+      const max = essaysTotal(parseEssays(s));
       const st = computeStats([...perUser.values()], max);
-      const sections = parseSections(s.sections);
-      // Section score as % of that section's max, averaged across the student's essays.
-      const sectionPct: Record<string, number> = {};
-      for (const sec of sections) {
-        const vals = mineRows.map(r => parseJsonObject<MarksMap>(r.marks, {})[sec.key]).filter((v): v is number => typeof v === 'number');
-        if (vals.length) sectionPct[sec.name] = Math.round((vals.reduce((a, b) => a + b, 0) / vals.length / sec.max) * 1000) / 10;
-      }
       const myTotal = mineRows.length ? mineRows.reduce((a, b) => a + (b.total ?? 0), 0) : null;
       return {
         id: s.id,
@@ -615,7 +607,7 @@ export async function getStudentOverview(user: UserWithProducts) {
         myPct: myTotal === null ? null : Math.round((myTotal / max) * 1000) / 10,
         classAvgPct: st.average === null ? null : Math.round((st.average / max) * 1000) / 10,
         highestPct: st.highest === null ? null : Math.round((st.highest / max) * 1000) / 10,
-        sectionPct,
+        sectionPct: {} as Record<string, number>, // LEGACY key (no sections any more); remove with the page's "By section" chart.
       };
     }),
   };
@@ -639,7 +631,7 @@ export async function getPageForViewer(user: UserWithProducts, pageId: number, s
 export async function getSeriesScripts(seriesId: number, viewer: UserWithProducts) {
   await tryAutoPublish(seriesId);
   const s = await getSeriesOr404(seriesId);
-  const sections = parseSections(s.sections);
+  const essays = parseEssays(s);
   const subs = await db
     .select({
       sub: essaySubmissions,
@@ -677,6 +669,7 @@ export async function getSeriesScripts(seriesId: number, viewer: UserWithProduct
       attempt: sub.attempt,
       submittedAt: sub.submittedAt.toISOString(),
       total: sub.total,
+      max: essayMax(essays, sub.essayIndex),
       pageCount: Number(pc?.n ?? 0),
       markedPages: Number(pc?.marked ?? 0),
       gradedBy: sub.gradedBy ? names.get(sub.gradedBy) ?? null : null,
@@ -710,19 +703,20 @@ export async function getSeriesScripts(seriesId: number, viewer: UserWithProduct
     .filter(m => m.missingEssays.length > 0)
     .sort((a, b) => a.name.localeCompare(b.name));
 
-  const gradedSubs = subs.filter(x => x.sub.status === 'graded');
-  const essayStats = computeStats(gradedSubs.map(x => x.sub.total ?? 0), s.totalMarks);
-  const sectionAverages = sections.map(sec => {
-    const vals = gradedSubs.map(x => parseJsonObject<MarksMap>(x.sub.marks, {})[sec.key]).filter((v): v is number => typeof v === 'number');
-    return { key: sec.key, name: sec.name, max: sec.max, average: vals.length ? Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100 : null };
-  });
-
+  const graded = subs.filter(x => x.sub.status === 'graded').map(x => x.sub);
   return {
     series: seriesDetailDTO(s),
+    essays,
     scripts,
     missing,
     audienceSize: uniqueAudience.size,
-    stats: { ...essayStats, sectionAverages },
+    stats: {
+      // Pooled across essays; the histogram uses the largest essay maximum so every mark fits.
+      // ponytail: mixed maxima share one scale here — byEssay is the per-essay view.
+      ...computeStats(graded.map(x => x.total ?? 0), Math.max(...essays.map(e => e.max))),
+      byEssay: statsByEssay(graded, essays),
+      sectionAverages: [] as never[], // LEGACY key, kept so older pages don't crash; remove with them.
+    },
     viewer: { id: viewer.id, isAdmin: isEssayAdmin(viewer) },
   };
 }
@@ -744,6 +738,7 @@ export async function getScriptForStaff(submissionId: number) {
     .limit(50);
   const names = await userNames([sub.gradedBy, sub.lockedBy, sub.rejectedBy, sub.assignedTo, ...history.map(h => h.actorUserId)]);
   const live = isLockLive(sub);
+  const essays = parseEssays(s);
 
   return {
     id: sub.id,
@@ -753,8 +748,8 @@ export async function getScriptForStaff(submissionId: number) {
     attempt: sub.attempt,
     submittedAt: sub.submittedAt.toISOString(),
     student,
-    marks: parseJsonObject<MarksMap>(sub.marks, {}),
-    sectionComments: parseJsonObject<Record<string, string>>(sub.sectionComments, {}),
+    prompt: essays[sub.essayIndex - 1]?.prompt ?? '',
+    max: essayMax(essays, sub.essayIndex),
     total: sub.total,
     overallFeedback: sub.overallFeedback,
     privateNote: sub.privateNote,
@@ -845,8 +840,7 @@ export async function saveMarks(
   submissionId: number,
   user: UserWithProducts,
   body: {
-    marks?: unknown;
-    sectionComments?: unknown;
+    mark?: unknown;
     overallFeedback?: unknown;
     privateNote?: unknown;
     action?: unknown;
@@ -856,24 +850,23 @@ export async function saveMarks(
   const sub = await getSubmissionOr404(submissionId);
   const s = await getSeriesOr404(sub.seriesId);
   if (sub.status === 'rejected') throw new ApiException('This script was rejected — wait for the student to resubmit', 409);
-  const sections = parseSections(s.sections);
+  const max = essayMax(parseEssays(s), sub.essayIndex);
   const action = body.action === 'grade' ? 'grade' : 'save';
 
-  const marks = body.marks === undefined ? parseJsonObject<MarksMap>(sub.marks, {}) : cleanMarks(body.marks, sections);
-  if (!marks) throw new ApiException('A mark is out of range (half marks allowed)', 400);
-  const sectionComments: Record<string, string> = {};
-  const rawSc = (body.sectionComments ?? parseJsonObject<Record<string, unknown>>(sub.sectionComments, {})) as Record<string, unknown>;
-  for (const sec of sections) {
-    const v = rawSc?.[sec.key];
-    if (typeof v === 'string' && v.trim()) sectionComments[sec.key] = v.slice(0, 1000);
+  // One mark per essay. Omitted = keep; null/'' = clear (drafts only).
+  let total = sub.total;
+  if (body.mark === null || body.mark === '') total = null;
+  else if (body.mark !== undefined) {
+    const v = validateMark(body.mark, max);
+    if ('error' in v) throw new ApiException(v.error, 400);
+    total = v.mark;
   }
   const overallFeedback = typeof body.overallFeedback === 'string' ? body.overallFeedback.slice(0, 5000) : sub.overallFeedback;
   const privateNote = typeof body.privateNote === 'string' ? body.privateNote.slice(0, 5000) : sub.privateNote;
-  const total = completeTotal(marks, sections);
 
   const becomingGraded = action === 'grade' && sub.status !== 'graded';
   if ((action === 'grade' || sub.status === 'graded') && total === null) {
-    throw new ApiException('Enter a mark for every section first', 400, 'INCOMPLETE');
+    throw new ApiException('Enter a mark first', 400, 'INCOMPLETE');
   }
 
   await acquireLock(submissionId, user);
@@ -881,8 +874,8 @@ export async function saveMarks(
   await db
     .update(essaySubmissions)
     .set({
-      marks: JSON.stringify(marks),
-      sectionComments: JSON.stringify(sectionComments),
+      marks: '{}',
+      sectionComments: '{}',
       overallFeedback,
       privateNote,
       total,
@@ -891,12 +884,10 @@ export async function saveMarks(
     })
     .where(eq(essaySubmissions.id, submissionId));
 
-  const prevMarks = parseJsonObject<MarksMap>(sub.marks, {});
-  const marksChanged = JSON.stringify(prevMarks) !== JSON.stringify(marks);
   if (becomingGraded) {
-    await recordAudit({ actorUserId: user.id, action: 'essay.graded', entityType: ENTITY, entityId: submissionId, after: { marks, total } });
-  } else if (sub.status === 'graded' && marksChanged) {
-    await recordAudit({ actorUserId: user.id, action: 'essay.marks_changed', entityType: ENTITY, entityId: submissionId, before: { marks: prevMarks, total: sub.total }, after: { marks, total } });
+    await recordAudit({ actorUserId: user.id, action: 'essay.graded', entityType: ENTITY, entityId: submissionId, after: { total } });
+  } else if (sub.status === 'graded' && total !== sub.total) {
+    await recordAudit({ actorUserId: user.id, action: 'essay.marks_changed', entityType: ENTITY, entityId: submissionId, before: { total: sub.total }, after: { total } });
   }
 
   let published = false;
@@ -922,7 +913,7 @@ export async function saveMarks(
         kicker: 'VH Essays',
         subject: `Your ${s.title} marks were updated`,
         heading: `${s.title} — marks updated`,
-        message: `Your teacher updated the marking on your ${s.title} essay. Your total is now ${total} / ${s.totalMarks}.`,
+        message: `Your teacher updated the marking on your ${s.title} essay. Your mark is now ${total} / ${max}.`,
         path: `/essays/${s.id}`,
         ctaLabel: 'View my results',
       }).catch(err => console.error('[essays] notify failed', err)),
@@ -1047,7 +1038,7 @@ function csvCell(v: unknown): string {
 
 export async function exportSeriesCsv(seriesId: number): Promise<{ filename: string; csv: string }> {
   const s = await getSeriesOr404(seriesId);
-  const sections = parseSections(s.sections);
+  const essays = parseEssays(s);
   const rows = await db
     .select({ sub: essaySubmissions, name: users.name, email: users.email, studentId: users.studentId })
     .from(essaySubmissions)
@@ -1055,17 +1046,22 @@ export async function exportSeriesCsv(seriesId: number): Promise<{ filename: str
     .where(eq(essaySubmissions.seriesId, seriesId))
     .orderBy(asc(users.name), asc(essaySubmissions.essayIndex));
   const names = await userNames(rows.map(r => r.sub.gradedBy));
-  const header = ['Student', 'Email', 'Student ID', 'Essay', 'Status', ...sections.map(x => `${x.name} (/${x.max})`), `Total (/${s.totalMarks})`, 'Graded by', 'Graded at', 'Reject reason'];
+  // One row per student: a mark column per essay, then the series total (sum of graded essays).
+  const header = ['Student', 'Email', 'Student ID', ...essays.map((e, i) => `Essay ${i + 1} (/${e.max})`), `Total (/${essaysTotal(essays)})`, 'Graded by', 'Not graded'];
   const lines = [header.map(csvCell).join(',')];
-  for (const { sub, name, email, studentId } of rows) {
-    const marks = parseJsonObject<MarksMap>(sub.marks, {});
+  const byStudent = new Map<number, typeof rows>();
+  for (const r of rows) byStudent.set(r.sub.userId, [...(byStudent.get(r.sub.userId) ?? []), r]);
+  for (const mine of byStudent.values()) {
+    const { name, email, studentId } = mine[0];
+    const graded = mine.filter(r => r.sub.status === 'graded');
     lines.push([
-      name, email, studentId ?? '', sub.essayIndex, sub.status,
-      ...sections.map(x => marks[x.key] ?? ''),
-      sub.total ?? '',
-      sub.gradedBy ? names.get(sub.gradedBy) ?? '' : '',
-      sub.gradedAt?.toISOString() ?? '',
-      sub.status === 'rejected' ? sub.rejectReason ?? '' : '',
+      name, email, studentId ?? '',
+      ...essays.map((_, i) => graded.find(r => r.sub.essayIndex === i + 1)?.sub.total ?? ''),
+      graded.length ? graded.reduce((a, r) => a + (r.sub.total ?? 0), 0) : '',
+      [...new Set(graded.map(r => (r.sub.gradedBy ? names.get(r.sub.gradedBy) ?? '' : '')).filter(Boolean))].join('; '),
+      mine.filter(r => r.sub.status !== 'graded')
+        .map(r => `Essay ${r.sub.essayIndex}: ${r.sub.status === 'rejected' ? `rejected (${r.sub.rejectReason ?? ''})` : 'not marked yet'}`)
+        .join('; '),
     ].map(csvCell).join(','));
   }
   const filename = `${s.title.replace(/[^\w\- ]+/g, '').trim().replace(/\s+/g, '-') || 'essay-series'}-marks.csv`;
@@ -1083,15 +1079,15 @@ export async function getSeriesExportBundle(seriesId: number) {
     .orderBy(asc(users.name), asc(essaySubmissions.essayIndex));
   const pageMap = await pagesFor(rows.map(r => r.sub.id), true);
   const names = await userNames(rows.map(r => r.sub.gradedBy));
+  const essays = parseEssays(s);
   return {
     series: seriesDetailDTO(s),
     scripts: rows.map(({ sub, name }) => ({
       id: sub.id,
       studentName: name,
       essayIndex: sub.essayIndex,
-      marks: parseJsonObject<MarksMap>(sub.marks, {}),
-      sectionComments: parseJsonObject<Record<string, string>>(sub.sectionComments, {}),
       total: sub.total,
+      max: essayMax(essays, sub.essayIndex),
       overallFeedback: sub.overallFeedback,
       gradedBy: sub.gradedBy ? names.get(sub.gradedBy) ?? null : null,
       pages: pageMap.get(sub.id) ?? [],
@@ -1113,10 +1109,10 @@ export async function getAnalytics(viewer: UserWithProducts) {
   const series = await Promise.all(seriesRows.map(async s => {
     const mine = subs.filter(x => x.sub.seriesId === s.id);
     const graded = mine.filter(x => x.sub.status === 'graded');
-    const sections = parseSections(s.sections);
+    const essays = parseEssays(s);
     const perUser = new Map<number, number>();
     for (const g of graded) perUser.set(g.sub.userId, (perUser.get(g.sub.userId) ?? 0) + (g.sub.total ?? 0));
-    const max = seriesMax(s);
+    const max = essaysTotal(essays);
     const audience = isAudienceProduct(s.product)
       ? await resolveAudience(db, { mode: 'batchProduct', product: s.product, batch: s.batch })
       : [];
@@ -1141,19 +1137,17 @@ export async function getAnalytics(viewer: UserWithProducts) {
         rejected: mine.filter(x => x.sub.status === 'rejected').length,
       },
       stats: computeStats([...perUser.values()], max),
-      sectionAverages: sections.map(sec => {
-        const vals = graded.map(g => parseJsonObject<MarksMap>(g.sub.marks, {})[sec.key]).filter((v): v is number => typeof v === 'number');
-        return { name: sec.name, max: sec.max, average: vals.length ? Math.round((vals.reduce((a, b) => a + b, 0) / vals.length) * 100) / 100 : null };
-      }),
+      essayAverages: statsByEssay(graded.map(g => g.sub), essays).map(e => ({ essayIndex: e.essayIndex, max: e.max, average: e.average })),
       nonSubmitters: uniqueNon.map(a => ({ id: a.id, name: a.name, email: a.email })).sort((a, b) => a.name.localeCompare(b.name)),
       graders: isEssayAdmin(viewer)
         ? [...new Set(graded.map(g => g.sub.gradedBy).filter((v): v is number => v !== null))].map(gid => {
-            const theirs = graded.filter(g => g.sub.gradedBy === gid).map(g => g.sub.total ?? 0);
+            // Each script as a fraction of its own essay's max, so essays with different maxima compare fairly.
+            const theirs = graded.filter(g => g.sub.gradedBy === gid).map(g => (g.sub.total ?? 0) / essayMax(essays, g.sub.essayIndex));
             return {
               id: gid,
               name: graderNames.get(gid) ?? '—',
               count: theirs.length,
-              averagePct: Math.round((theirs.reduce((a, b) => a + b, 0) / theirs.length / s.totalMarks) * 1000) / 10,
+              averagePct: Math.round((theirs.reduce((a, b) => a + b, 0) / theirs.length) * 1000) / 10,
             };
           })
         : null,
@@ -1163,7 +1157,7 @@ export async function getAnalytics(viewer: UserWithProducts) {
   // Per-student trend: % of series max, per series.
   const students = new Map<number, { id: number; name: string; email: string; scores: Record<number, number> }>();
   for (const s of seriesRows) {
-    const max = seriesMax(s);
+    const max = essaysTotal(parseEssays(s));
     const totals = new Map<number, number>();
     for (const x of subs) {
       if (x.sub.seriesId !== s.id || x.sub.status !== 'graded') continue;

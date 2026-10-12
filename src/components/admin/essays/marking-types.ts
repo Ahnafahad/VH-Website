@@ -1,11 +1,11 @@
 import type { EssayAnnotation } from '@/lib/essays/annotations';
-import type { EssayHistogramBin, EssayPageDTO, EssaySection } from '@/lib/essays/types';
+import type { EssayIndexStats } from '@/lib/essays/stats';
+import type { EssayPageDTO } from '@/lib/essays/types';
 
 export interface SeriesInfo {
   id: number;
   title: string;
   essayCount: number;
-  sections: EssaySection[];
   totalMarks: number;
   deadline: string;
   publishedAt: string | null;
@@ -17,18 +17,16 @@ export interface ScriptListRow {
   essayIndex: number;
   status: 'submitted' | 'graded' | 'rejected';
   total: number | null;
+  /** This essay's maximum. */
+  max: number;
   pageCount: number;
   lockedBy: { id: number; name: string } | null;
   assignedTo: { id: number; name: string } | null;
 }
 
 export interface SeriesStats {
-  count: number;
-  average: number | null;
-  highest: number | null;
-  lowest: number | null;
-  histogram: EssayHistogramBin[];
-  sectionAverages: { key: string; name: string; max: number; average: number | null }[];
+  /** One entry per essay number (index 0 = essay 1), each on that essay's own scale. */
+  byEssay: EssayIndexStats[];
 }
 
 export interface ScriptDetail {
@@ -39,8 +37,11 @@ export interface ScriptDetail {
   attempt: number;
   submittedAt: string;
   student: { id: number; name: string; email: string; studentId: string | null; batch: string | null } | null;
-  marks: Record<string, number | null>;
-  sectionComments: Record<string, string>;
+  /** This essay's prompt ('' when the series prompt covers it). */
+  prompt: string;
+  /** This essay's maximum. */
+  max: number;
+  /** The mark for this essay. */
   total: number | null;
   overallFeedback: string;
   privateNote: string;
@@ -55,8 +56,7 @@ export interface ScriptDetail {
 }
 
 export interface MarksDraft {
-  marks: Record<string, number | null>;
-  sectionComments: Record<string, string>;
+  mark: number | null;
   overallFeedback: string;
   privateNote: string;
 }
