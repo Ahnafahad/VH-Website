@@ -10,7 +10,7 @@
  */
 
 import { drawAnnotations, numberedComments, type EssayAnnotation } from './annotations';
-import type { EssayPageDTO, EssaySection } from './types';
+import type { EssayPageDTO } from './types';
 
 export function loadImage(url: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
@@ -56,11 +56,14 @@ export async function renderMarkedPage(page: EssayPageDTO, maxEdge = 2000): Prom
 export interface MarkedScript {
   title: string; // e.g. 'Essay Series 3 — Essay 1'
   studentName: string;
-  sections: EssaySection[];
-  marks: Record<string, number | null>;
-  sectionComments: Record<string, string>;
+  /** The mark for this essay. */
   total: number | null;
+  /** This essay's maximum. */
   totalMarks: number;
+  /** LEGACY, ignored — still accepted so older callers compile. Remove once they stop passing them. */
+  sections?: unknown;
+  marks?: unknown;
+  sectionComments?: unknown;
   overallFeedback: string;
   gradedBy: string | null;
   pages: EssayPageDTO[];
@@ -114,12 +117,7 @@ function renderFeedbackPages(s: MarkedScript): HTMLCanvasElement[] {
   newPage();
   write(s.title, '700 44px Georgia, serif', '#1A0507', 6);
   write([s.studentName, s.gradedBy ? `marked by ${s.gradedBy}` : ''].filter(Boolean).join(' · '), '400 24px system-ui, sans-serif', '#6B7280', 28);
-  write(`Total: ${s.total ?? '—'} / ${s.totalMarks}`, '700 34px system-ui, sans-serif', '#760F13', 20);
-  for (const sec of s.sections) {
-    write(`${sec.name}: ${s.marks[sec.key] ?? '—'} / ${sec.max}`, '600 26px system-ui, sans-serif', '#111827', 4);
-    if (s.sectionComments[sec.key]) write(s.sectionComments[sec.key], '400 24px system-ui, sans-serif', '#374151', 8, 24);
-  }
-  y += 16;
+  write(`Mark: ${s.total ?? '—'} / ${s.totalMarks}`, '700 34px system-ui, sans-serif', '#760F13', 36);
   if (s.overallFeedback.trim()) {
     write('Overall feedback', '700 28px system-ui, sans-serif', '#1A0507', 6);
     write(s.overallFeedback, '400 24px system-ui, sans-serif', '#374151', 24);

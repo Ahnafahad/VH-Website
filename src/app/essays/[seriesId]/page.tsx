@@ -7,7 +7,7 @@ import EssayUploader from '@/components/essays/EssayUploader';
 import MarkedScriptViewer from '@/components/essays/MarkedScriptViewer';
 import { ScoreHistogram } from '@/components/essays/EssayCharts';
 import { buildMarkedPdf, downloadBlob } from '@/lib/essays/render-client';
-import type { EssayHistogramBin, EssayPageDTO, EssaySection, EssaySlotStatus } from '@/lib/essays/types';
+import type { EssayHistogramBin, EssayPageDTO, EssaySlotStatus } from '@/lib/essays/types';
 
 interface EssayEntry {
   essayIndex: number;
@@ -19,8 +19,6 @@ interface EssayEntry {
   rejectReason: string | null;
   pages: EssayPageDTO[];
   result: null | {
-    marks: Record<string, number | null>;
-    sectionComments: Record<string, string>;
     total: number | null;
     overallFeedback: string;
     gradedBy: string | null;
@@ -35,7 +33,6 @@ interface Detail {
     prompt: string;
     essayDate: string | null;
     essayCount: number;
-    sections: EssaySection[];
     totalMarks: number;
     seriesMax: number;
     deadline: string;
@@ -141,9 +138,6 @@ function EssayBlock({ detail, essay, justSubmitted, onSubmitted }: { detail: Det
       const blob = await buildMarkedPdf([{
         title: s.essayCount > 1 ? `${s.title} — Essay ${essay.essayIndex}` : s.title,
         studentName: '',
-        sections: s.sections,
-        marks: essay.result.marks,
-        sectionComments: essay.result.sectionComments,
         total: essay.result.total,
         totalMarks: essay.max,
         overallFeedback: essay.result.overallFeedback,
@@ -207,17 +201,6 @@ function EssayBlock({ detail, essay, justSubmitted, onSubmitted }: { detail: Det
             <div className="flex flex-wrap items-baseline justify-between gap-3">
               <p className="font-mono text-3xl font-bold text-exam-gold">{essay.result.total}<span className="text-base text-exam-ink-muted">/{essay.max}</span></p>
               <p className="text-xs text-exam-ink-faint">{essay.result.gradedBy ? `Marked by ${essay.result.gradedBy}` : ''}</p>
-            </div>
-            <div className="mt-4 divide-y divide-exam-border">
-              {s.sections.map(sec => (
-                <div key={sec.key} className="py-2.5">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-exam-ink">{sec.name}</span>
-                    <span className="font-mono text-exam-ink">{essay.result!.marks[sec.key] ?? '—'}<span className="text-exam-ink-faint">/{sec.max}</span></span>
-                  </div>
-                  {essay.result!.sectionComments[sec.key] && <p className="text-sm text-exam-ink-muted mt-1 whitespace-pre-wrap">{essay.result!.sectionComments[sec.key]}</p>}
-                </div>
-              ))}
             </div>
             {essay.result.overallFeedback && (
               <div className="mt-4 rounded-xl bg-exam-elevated p-4">

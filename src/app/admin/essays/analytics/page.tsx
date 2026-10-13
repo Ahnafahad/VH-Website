@@ -23,7 +23,7 @@ interface SeriesA {
   audienceSize: number;
   counts: { submitted: number; graded: number; rejected: number };
   stats: EssayStats;
-  sectionAverages: { name: string; max: number; average: number | null }[];
+  essayAverages: { essayIndex: number; max: number; average: number | null }[];
   nonSubmitters: { id: number; name: string; email: string }[];
   graders: { id: number; name: string; count: number; averagePct: number }[] | null;
 }
@@ -128,10 +128,10 @@ export default function EssayAnalyticsPage() {
                     <ScoreHistogram bins={s.stats.histogram} tone="light" height={200} />
                   </div>
                   <div>
-                    <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 700, color: SLATE }}>Section averages</p>
-                    {s.sectionAverages.map(sa => (
-                      <div key={sa.name} style={{ marginBottom: 10 }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: T_SM, color: SLATE }}><span>{sa.name}</span><span>{sa.average ?? '—'} / {sa.max}</span></div>
+                    <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 700, color: SLATE }}>Essay averages</p>
+                    {s.essayAverages.map(sa => (
+                      <div key={sa.essayIndex} style={{ marginBottom: 10 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: T_SM, color: SLATE }}><span>Essay {sa.essayIndex}</span><span>{sa.average ?? '—'} / {sa.max}</span></div>
                         <div style={{ height: 6, borderRadius: R_PILL, background: BG, marginTop: 4 }}>
                           <div style={{ width: `${sa.average === null ? 0 : (sa.average / sa.max) * 100}%`, height: '100%', borderRadius: R_PILL, background: RED }} />
                         </div>

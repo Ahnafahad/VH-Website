@@ -25,7 +25,7 @@ import { FieldTextarea, FormActions, GhostBtn, Modal, PrimaryBtn, SPIN_CSS, Toas
 import MarkedScriptViewer from '@/components/essays/MarkedScriptViewer';
 import { INK_COLORS, annotationBounds, scaleAnnotation, type EssayAnnotation } from '@/lib/essays/annotations';
 import { newId } from '@/lib/essays/image-prep';
-import { completeTotal } from '@/lib/essays/stats';
+import type { EssayPrompt } from '@/lib/essays/prompts';
 import MarkingCanvas, { TEXT_SCALES, type MarkingCanvasHandle, type ToolSettings } from './MarkingCanvas';
 import MarkingSidePanel from './MarkingSidePanel';
 import MarkingToolbar, { imageFilterCss, type ImageAdjust } from './MarkingToolbar';
@@ -61,7 +61,7 @@ interface EditorState {
 }
 
 function draftFrom(d: ScriptDetail): MarksDraft {
-  return { marks: { ...d.marks }, sectionComments: { ...d.sectionComments }, overallFeedback: d.overallFeedback, privateNote: d.privateNote };
+  return { mark: d.total, overallFeedback: d.overallFeedback, privateNote: d.privateNote };
 }
 
 async function api<T>(url: string, init?: RequestInit): Promise<{ ok: boolean; status: number; body: T & { error?: string } }> {
@@ -79,6 +79,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
   const [series, setSeries] = useState<SeriesInfo | null>(null);
   const [rows, setRows] = useState<ScriptListRow[]>([]);
   const [stats, setStats] = useState<SeriesStats | null>(null);
+  const [essays, setEssays] = useState<EssayPrompt[]>([]);
   const [viewer, setViewer] = useState<{ id: number; isAdmin: boolean } | null>(null);
   const [filter, setFilter] = useState<Filter>(initialScript ? 'all' : 'submitted');
   const [scriptId, setScriptId] = useState<number | null>(initialScript);
@@ -120,9 +121,10 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
 
   // ── Loading ────────────────────────────────────────────────────────────────
   const loadSeries = useCallback(async () => {
-    const r = await api<{ series: SeriesInfo; scripts: ScriptListRow[]; stats: SeriesStats; viewer: { id: number; isAdmin: boolean } }>(`/api/admin/essays/series/${seriesId}/scripts`);
+    const r = await api<{ series: SeriesInfo; essays: EssayPrompt[]; scripts: ScriptListRow[]; stats: SeriesStats; viewer: { id: number; isAdmin: boolean } }>(`/api/admin/essays/series/${seriesId}/scripts`);
     if (!r.ok) { setLoadError(r.body.error ?? 'Could not load this series'); return null; }
     setSeries(r.body.series);
+    setEssays(r.body.essays);
     setRows(r.body.scripts);
     setStats(r.body.stats);
     setViewer(r.body.viewer);
@@ -385,7 +387,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
     setDraftDirty(false);
     const fresh = await loadSeries();
     if (r.body.published) setToast('All scripts checked — results published to students');
-    else setToast(action === 'grade' ? `Graded · ${r.body.total} / ${series?.totalMarks}` : 'Saved');
+    else setToast(action === 'grade' ? `Graded · ${r.body.total} / ${detail.max}` : 'Saved');
     if (action === 'grade' && fresh) {
       const after = fresh.findIndex(x => x.id === detail.id);
       const ordered = [...fresh.slice(after + 1), ...fresh.slice(0, Math.max(0, after))];
@@ -434,7 +436,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
     if (!detail) return;
     let label: string | null = null;
     if (!detail.isReference) {
-      label = window.prompt('Label for this reference script (e.g. "Strong 16/20"):', `${detail.total}/${series?.totalMarks}`);
+      label = window.prompt('Label for this reference script (e.g. "Strong 16/20"):', `${detail.total}/${detail.max}`);
       if (label === null) return;
     }
     const r = await api(`/api/admin/essays/scripts/${detail.id}/reference`, {
@@ -554,7 +556,6 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
 
   const done = rows.filter(r => r.status !== 'submitted').length;
   const progressPct = rows.length ? (done / rows.length) * 100 : 0;
-  const draftTotal = draft && series ? completeTotal(draft.marks, series.sections) : null;
   const currentRow = rows.find(r => r.id === scriptId);
 
   const saveLabel = { saved: 'All changes saved', saving: 'Saving…', unsaved: 'Unsaved changes…', error: 'Save failed' }[saveState];
@@ -691,7 +692,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
                   </button>
                 ))}
                 <button type="button" onClick={undo} disabled={!canUndo} style={{ border: 'none', background: 'transparent', color: INK_SOFT, fontSize: T_XS, fontWeight: 700, cursor: 'pointer' }}>Undo</button>
-                <span style={{ fontWeight: 800, color: RED }}>{draftTotal ?? '—'}/{series?.totalMarks}</span>
+                <span style={{ fontWeight: 800, color: RED }}>{draft?.mark ?? '—'}/{detail?.max}</span>
                 <button type="button" onClick={() => setFocus(false)} aria-label="Exit focus mode" style={{ border: 'none', background: 'transparent', cursor: 'pointer', color: MUTED, display: 'flex' }}><X size={16} aria-hidden /></button>
               </div>
             )}
@@ -738,16 +739,9 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
               <div>
                 <div style={{ fontSize: T_XS, color: MUTED }}>Reference · {reference.referenceLabel ?? ''}</div>
-                <div style={{ fontSize: T_BASE, fontWeight: 700, color: SLATE }}>{reference.student?.name} · {reference.total}/{series?.totalMarks}</div>
+                <div style={{ fontSize: T_BASE, fontWeight: 700, color: SLATE }}>{reference.student?.name} · {reference.total}/{reference.max}</div>
               </div>
               <button type="button" style={navBtn} onClick={() => setReference(null)} aria-label="Close reference"><X size={14} aria-hidden /></button>
-            </div>
-            <div style={{ display: 'grid', gap: 4, marginBottom: 10 }}>
-              {series?.sections.map(sec => (
-                <div key={sec.key} style={{ display: 'flex', justifyContent: 'space-between', fontSize: T_XS, color: SLATE }}>
-                  <span>{sec.name}</span><span>{reference.marks[sec.key] ?? '—'} / {sec.max}</span>
-                </div>
-              ))}
             </div>
             <MarkedScriptViewer pages={reference.pages} tone="light" />
           </div>
@@ -769,7 +763,8 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
               onReject={() => setRejectOpen(true)}
               notify={notify}
               onNotify={setNotify}
-              stats={stats}
+              stats={stats?.byEssay[detail.essayIndex - 1] ?? null}
+              essays={essays}
               pageItems={pageItems}
               onOpenComment={id => {
                 const c = pageItems.find(a => a.id === id);

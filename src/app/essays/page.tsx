@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { SectionTrendChart, TrendChart } from '@/components/essays/EssayCharts';
+import { TrendChart } from '@/components/essays/EssayCharts';
 import type { EssaySeriesStudentEntry, EssaySlotStatus } from '@/lib/essays/types';
 
 interface OverviewSeries {
@@ -13,7 +13,6 @@ interface OverviewSeries {
   myPct: number | null;
   classAvgPct: number | null;
   highestPct: number | null;
-  sectionPct: Record<string, number>;
 }
 
 type PageState =
@@ -57,7 +56,6 @@ export default function EssaysHubPage() {
   }, []);
 
   const overview = state.kind === 'ready' ? state.overview : [];
-  const sectionNames = [...new Set(overview.flatMap(o => Object.keys(o.sectionPct)))];
 
   return (
     <main className="min-h-screen bg-exam-base text-exam-ink">
@@ -121,18 +119,6 @@ export default function EssaysHubPage() {
                 <TrendChart points={overview.map(o => ({ label: o.title.replace(/^Essay Series\s*/i, 'S'), mine: o.myPct, classAvg: o.classAvgPct }))} />
               </div>
             </div>
-            {sectionNames.length > 0 && (
-              <div>
-                <h3 className="font-serif text-lg font-semibold mb-1">By section</h3>
-                <p className="text-sm text-exam-ink-muted mb-4">How each marking section is going for you over time.</p>
-                <div className="rounded-xl border border-exam-border bg-exam-surface p-4">
-                  <SectionTrendChart
-                    sectionNames={sectionNames}
-                    rows={overview.map(o => ({ label: o.title.replace(/^Essay Series\s*/i, 'S'), ...Object.fromEntries(sectionNames.map(n => [n, o.sectionPct[n] ?? null])) }))}
-                  />
-                </div>
-              </div>
-            )}
             <div className="overflow-x-auto rounded-xl border border-exam-border">
               <table className="w-full text-sm">
                 <thead className="bg-exam-surface text-exam-ink-muted">

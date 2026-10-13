@@ -1,27 +1,23 @@
 import { describe, expect, it } from 'vitest';
-import { cleanMarks, completeTotal, computeStats, histogram, isReadyToPublish, isValidMark, normalizeSections } from '../stats';
+import { computeStats, histogram, isReadyToPublish, normalizeSections, statsByEssay } from '../stats';
 
-const sections = [
-  { key: 'content', name: 'Content', max: 10 },
-  { key: 'grammar', name: 'Grammar', max: 5 },
-];
-
-describe('marks', () => {
-  it('accepts half marks within range only', () => {
-    expect(isValidMark(4.5, 5)).toBe(true);
-    expect(isValidMark(5.5, 5)).toBe(false);
-    expect(isValidMark(-1, 5)).toBe(false);
-    expect(isValidMark(2.25, 5)).toBe(false);
+describe('statsByEssay', () => {
+  it('keeps each essay on its own scale', () => {
+    const essays = [{ prompt: '', max: 10 }, { prompt: '', max: 15 }];
+    const [e1, e2] = statsByEssay([
+      { essayIndex: 1, total: 8 },
+      { essayIndex: 1, total: 6 },
+      { essayIndex: 2, total: 15 },
+    ], essays);
+    expect(e1).toMatchObject({ essayIndex: 1, max: 10, count: 2, average: 7, highest: 8 });
+    expect(e1.histogram).toHaveLength(10);
+    expect(e2).toMatchObject({ essayIndex: 2, max: 15, count: 1, average: 15 });
+    expect(e2.histogram).toHaveLength(15);
+    expect(e2.histogram[14].count).toBe(1);
   });
 
-  it('cleans marks to known sections and rejects invalid values', () => {
-    expect(cleanMarks({ content: 7, grammar: null, extra: 3 }, sections)).toEqual({ content: 7, grammar: null });
-    expect(cleanMarks({ content: 11 }, sections)).toBeNull();
-  });
-
-  it('totals only when every section is marked', () => {
-    expect(completeTotal({ content: 7, grammar: null }, sections)).toBeNull();
-    expect(completeTotal({ content: 7, grammar: 3.5 }, sections)).toBe(10.5);
+  it('reports an essay with nothing graded as empty', () => {
+    expect(statsByEssay([], [{ prompt: '', max: 10 }])[0]).toMatchObject({ count: 0, average: null });
   });
 });
 

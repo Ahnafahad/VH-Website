@@ -9,7 +9,7 @@ import {
 } from '@/components/admin/lms/lms-shared';
 import { ScoreHistogram } from '@/components/essays/EssayCharts';
 import { buildMarkedPdf, downloadBlob, type MarkedScript } from '@/lib/essays/render-client';
-import type { EssayHistogramBin, EssayPageDTO, EssaySection } from '@/lib/essays/types';
+import type { EssayHistogramBin, EssayPageDTO } from '@/lib/essays/types';
 import { essayMax, type EssayPrompt } from '@/lib/essays/prompts';
 
 interface ScriptRow {
@@ -36,13 +36,13 @@ interface ScriptRow {
 
 interface Data {
   series: {
-    id: number; title: string; prompt: string; essayDate: string | null; essayCount: number; essays: EssayPrompt[]; sections: EssaySection[];
+    id: number; title: string; prompt: string; essayDate: string | null; essayCount: number; essays: EssayPrompt[];
     totalMarks: number; product: string; batch: string | null; deadline: string; status: string; publishedAt: string | null;
   };
   scripts: ScriptRow[];
   missing: { userId: number; name: string; email: string; missingEssays: number[] }[];
   audienceSize: number;
-  stats: { count: number; average: number | null; highest: number | null; lowest: number | null; histogram: EssayHistogramBin[]; sectionAverages: { key: string; name: string; max: number; average: number | null }[] };
+  stats: { count: number; average: number | null; highest: number | null; lowest: number | null; histogram: EssayHistogramBin[]; byEssay: { essayIndex: number; max: number; average: number | null }[] };
   viewer: { id: number; isAdmin: boolean };
 }
 
@@ -120,14 +120,10 @@ export default function SeriesScriptsPage({ params }: { params: Promise<{ id: st
       const j = await res.json();
       if (!res.ok) throw new Error(j.error ?? 'Could not load');
       const scriptsForPdf: MarkedScript[] = (j.scripts as {
-        studentName: string; essayIndex: number; marks: Record<string, number | null>; sectionComments: Record<string, string>;
-        total: number | null; overallFeedback: string; gradedBy: string | null; pages: EssayPageDTO[];
+        studentName: string; essayIndex: number; total: number | null; overallFeedback: string; gradedBy: string | null; pages: EssayPageDTO[];
       }[]).map(x => ({
         title: s.essayCount > 1 ? `${s.title} — Essay ${x.essayIndex}` : s.title,
         studentName: x.studentName,
-        sections: s.sections,
-        marks: x.marks,
-        sectionComments: x.sectionComments,
         total: x.total,
         totalMarks: essayMax(s.essays, x.essayIndex),
         overallFeedback: x.overallFeedback,
@@ -203,11 +199,11 @@ export default function SeriesScriptsPage({ params }: { params: Promise<{ id: st
             <ScoreHistogram bins={data.stats.histogram} tone="light" height={180} />
           </div>
           <div style={tile}>
-            <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 700, color: SLATE }}>Section averages</p>
-            {data.stats.sectionAverages.map(sec => (
-              <div key={sec.key} style={{ marginBottom: 10 }}>
+            <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 700, color: SLATE }}>Essay averages</p>
+            {data.stats.byEssay.map(sec => (
+              <div key={sec.essayIndex} style={{ marginBottom: 10 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: T_SM, color: SLATE }}>
-                  <span>{sec.name}</span><span>{sec.average ?? '—'} / {sec.max}</span>
+                  <span>Essay {sec.essayIndex}</span><span>{sec.average ?? '—'} / {sec.max}</span>
                 </div>
                 <div style={{ height: 6, borderRadius: R_PILL, background: BG, marginTop: 4 }}>
                   <div style={{ width: `${sec.average === null ? 0 : (sec.average / sec.max) * 100}%`, height: '100%', borderRadius: R_PILL, background: RED }} />

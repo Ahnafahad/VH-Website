@@ -1,7 +1,7 @@
 /**
- * GET   /api/admin/essays/scripts/[id] — one script: pages + markings, marks, notes, history.
- * PATCH /api/admin/essays/scripts/[id] — save marks/feedback.
- *   Body: { marks?, sectionComments?, overallFeedback?, privateNote?, action: 'save' | 'grade', notify?: boolean }
+ * GET   /api/admin/essays/scripts/[id] — one script: pages + markings, prompt, max, mark, notes, history.
+ * PATCH /api/admin/essays/scripts/[id] — save the mark/feedback.
+ *   Body: { mark?: number | null (0..this essay's max), overallFeedback?, privateNote?, action: 'save' | 'grade', notify?: boolean }
  */
 
 import { NextRequest } from 'next/server';
