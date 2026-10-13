@@ -9,7 +9,8 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { redirect, notFound } from 'next/navigation';
 import { isAdminRole, isStaffRole } from '@/lib/auth/roles';
-import TestDetailPage, { parseTab } from '@/components/admin/tests/TestDetailPage';
+import TestDetailPage from '@/components/admin/tests/TestDetailPage';
+import { parseTab } from '@/lib/tests/detail-tabs';
 
 interface PageProps {
   params: Promise<{ id: string }>;

@@ -30,6 +30,7 @@ import {
 } from '../lms/tokens';
 import { SPIN_CSS } from '../lms/lms-shared';
 import { PASS_PERCENT, UNSORTED, type Histogram } from '@/lib/tests/library';
+import { DETAIL_TABS, type DetailTab } from '@/lib/tests/detail-tabs';
 import {
   AnswerKeyEditor, AttemptsTable, Badge, C, SANS, SectionTitle, Spinner, TestSettings, Toast,
   WindowsManager, fmtDate, useToast, type AdminTest,
@@ -38,20 +39,7 @@ import TestAnalytics from './TestAnalytics';
 import TestMovePanel from './TestMovePanel';
 import { FONT_MONO } from './TestsAdminPage';
 
-export type DetailTab = 'overview' | 'windows' | 'attempts' | 'analytics' | 'settings' | 'answerKey';
-
-const TABS: { key: DetailTab; label: string; adminOnly?: boolean }[] = [
-  { key: 'overview',  label: 'Overview' },
-  { key: 'windows',   label: 'Windows' },
-  { key: 'attempts',  label: 'Attempts' },
-  { key: 'analytics', label: 'Analytics' },
-  { key: 'settings',  label: 'Settings' },
-  { key: 'answerKey', label: 'Answer key', adminOnly: true },
-];
-
-export function parseTab(raw: string | undefined | null): DetailTab {
-  return TABS.some(t => t.key === raw) ? (raw as DetailTab) : 'overview';
-}
+const TABS = DETAIL_TABS;
 
 function Stat({ value, label }: { value: string; label: string }) {
   return (
