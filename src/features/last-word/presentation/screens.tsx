@@ -130,15 +130,21 @@ export function RoundFeedback({ chain, records }: { chain: LastWordChain; record
     <section className="lw-feedback" aria-label="Feedback" data-correctness={last.correctness}>
       <span className="lw-eyebrow"><span />{perfect ? 'PERFECT READ' : last.correctness === 'best' ? 'PRECISELY READ' : last.correctness === 'defensible' ? 'A DEFENSIBLE READING' : 'NOTICE THE DETAIL'}</span>
       <h2 tabIndex={-1} data-autofocus>{verdict}</h2>
+      <div className="lw-pick-row" aria-label="Your reading">
+        {last.presentedWords.map(word => {
+          const best = word === last.bestWord;
+          const picked = word === last.selectedWord;
+          return <span key={word} className="lw-pick" data-best={best} data-picked={picked}>{word}<small>{best ? '✓ BEST FIT' : picked ? '✗ YOUR PICK' : ''}</small></span>;
+        })}
+      </div>
       <p className="lw-points" role="status" data-correctness={last.correctness}>
-        <span aria-hidden="true">{last.correctness === 'best' ? '✓' : last.correctness === 'defensible' ? '◐' : '✗'}</span> {verdictLabel(last.correctness)}{chain.purpose === 'tutorial' ? ' · guided practice, no points' : ` · +${records.reduce((sum, r) => sum + r.score, 0)} Lexicore pts this read`}
+        <span aria-hidden="true">{last.correctness === 'best' ? '✓' : last.correctness === 'defensible' ? '◐' : '✗'}</span> {verdictLabel(last.correctness)}{chain.purpose === 'tutorial' ? ' · guided, no points' : ` · +${records.reduce((sum, r) => sum + r.score, 0)} pts`}
       </p>
       <p className="lw-feedback-short">{chain.feedback_short}</p>
-      <p className="lw-feedback-clue"><ClueText text={beat.text} clue={beat.decisive_clue} /></p>
       <p className="lw-contrast">{chain.contrast_rule}</p>
-      {perfect && <ol className="lw-path" aria-label="Your path">{chain.beats.map(b => <li key={b.id}>{b.best_word}</li>)}</ol>}
       <details>
         <summary>Why?</summary>
+        <p className="lw-feedback-clue"><ClueText text={beat.text} clue={beat.decisive_clue} /></p>
         <p>{chain.feedback_deep}</p>
         {turn > 0 && (
           // §35/§36 counterfactual: what had to change for the other word to fit.

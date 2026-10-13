@@ -428,53 +428,61 @@ function Game({ sets }: { sets: LastWordSet[] }) {
             onContinue={continueFromRecap} onHome={() => { if (saved) setBaseline(saved); setNow(Date.now()); send({ type: 'HOME' }); }} onMap={() => setMapOpen(true)} />
         ) : current ? (
           <section className="lw-play" aria-label="Semantic chamber">
-            <div className="lw-scroll">
-              <div className="lw-context-shell">
-                <div className="lw-context-top">
-                  <span>{state.matches('paused') ? 'PAUSED' : judged ? 'THE TURNING POINT' : context.beat === 0 ? 'READ THE SITUATION' : 'NEW EVIDENCE'}</span>
-                  {current.chain.frame && <span className="lw-small">{current.chain.frame}</span>}
+            {state.matches('feedback') && roundRecords.length > 0 ? (
+              <motion.div key={`${beatKey}:sheet`} className="lw-scroll lw-sheet" initial={{ opacity: 0, y: reduced ? 0 : 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0.12 : 0.32, ease: [0.2, 0.7, 0.2, 1] }}>
+                <RoundFeedback chain={current.chain} records={roundRecords} />
+              </motion.div>
+            ) : (
+              <>
+                <div className="lw-scroll">
+                  <div className="lw-context-shell">
+                    <div className="lw-context-top">
+                      <span>{state.matches('paused') ? 'PAUSED' : judged ? 'THE TURNING POINT' : context.beat === 0 ? 'READ THE SITUATION' : 'NEW EVIDENCE'}</span>
+                      {current.chain.frame && <span className="lw-small">{current.chain.frame}</span>}
+                    </div>
+                    <h2 className="lw-sr-only" tabIndex={-1} data-autofocus>Beat {context.beat + 1} of {current.chain.beats.length}</h2>
+                    {context.beat > 0 && (
+                      <button type="button" className="lw-previous" data-open={earlierOpen} aria-expanded={earlierOpen} onClick={() => setEarlierOpen(open => !open)}>
+                        {current.chain.beats.slice(0, context.beat).map(b => b.text).join(' ')}
+                      </button>
+                    )}
+                    {/* Text settles before reading: one short fade/rise, then static (§41). */}
+                    <motion.p key={beatKey} className="lw-sentence" aria-live="polite"
+                      initial={{ opacity: 0, y: reduced ? 0 : 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0.12 : timing.context / 1000, ease: [0.2, 0.7, 0.2, 1] }}>
+                      {judged ? <ClueText text={current.beat.text} clue={current.beat.decisive_clue} /> : current.beat.text}
+                    </motion.p>
+                    {judged && state.matches('beatFeedback') && <p className="lw-beat-reason">{current.beat.reason}</p>}
+                    {hintText && reading && <p className="lw-hint" role="status"><Icon assets={assets} id="hint" fallback={Lightbulb} size={16} />{hintText}</p>}
+                  </div>
                 </div>
-                <h2 className="lw-sr-only" tabIndex={-1} data-autofocus>Beat {context.beat + 1} of {current.chain.beats.length}</h2>
-                {context.beat > 0 && (
-                  <button type="button" className="lw-previous" data-open={earlierOpen} aria-expanded={earlierOpen} onClick={() => setEarlierOpen(open => !open)}>
-                    {current.chain.beats.slice(0, context.beat).map(b => b.text).join(' ')}
-                  </button>
-                )}
-                {/* Text settles before reading: one short fade/rise, then static (§41). */}
-                <motion.p key={beatKey} className="lw-sentence" aria-live="polite"
-                  initial={{ opacity: 0, y: reduced ? 0 : 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0.12 : timing.context / 1000, ease: [0.2, 0.7, 0.2, 1] }}>
-                  {judged ? <ClueText text={current.beat.text} clue={current.beat.decisive_clue} /> : current.beat.text}
-                </motion.p>
-                {judged && state.matches('beatFeedback') && <p className="lw-beat-reason">{current.beat.reason}</p>}
-                {hintText && reading && <p className="lw-hint" role="status"><Icon assets={assets} id="hint" fallback={Lightbulb} size={16} />{hintText}</p>}
-              </div>
-              {state.matches('feedback') && roundRecords.length > 0 && <RoundFeedback chain={current.chain} records={roundRecords} />}
-            </div>
 
-            <div className="lw-word-field" data-locked={!reading} {...bind()}>
-              {tier !== 'lite' && (
-                <div className="lw-canvas" aria-hidden="true">
-                  <ChamberBoundary onUnavailable={onUnavailable}>
-                    <Chamber words={words} selected={context.selected} locked={!reading} best={judged ? current.beat.best_word : null}
-                      missed={Boolean(judged && lastRecord?.correctness === 'incorrect')} beat={context.beat} beatKey={beatKey}
-                      reduced={reduced} tier={tier} tilt={tilt} assets={assets} onUnavailable={onUnavailable} />
-                  </ChamberBoundary>
+                <div className="lw-word-field" data-locked={!reading} {...bind()}>
+                  {tier !== 'lite' && (
+                    <div className="lw-canvas" aria-hidden="true">
+                      <ChamberBoundary onUnavailable={onUnavailable}>
+                        <Chamber words={words} selected={context.selected} locked={!reading} best={judged ? current.beat.best_word : null}
+                          missed={Boolean(judged && lastRecord?.correctness === 'incorrect')} beat={context.beat} beatKey={beatKey}
+                          reduced={reduced} tier={tier} tilt={tilt} assets={assets} onUnavailable={onUnavailable} />
+                      </ChamberBoundary>
+                    </div>
+                  )}
+                  <div className="lw-choices" role="group" aria-label="Choose the word that fits now" style={{ gridTemplateColumns: `repeat(${words.length}, minmax(0, 1fr))` }}>
+                    {words.map((word, index) => {
+                      const chosen = context.selected === word;
+                      const stronger = judged && current.beat.best_word === word;
+                      return (
+                        <button key={word} className="lw-word" data-word={word} data-selected={chosen} data-stronger={stronger} aria-pressed={chosen} disabled={!reading} onClick={() => select(word)}>
+                          <span className="lw-word-index" aria-hidden="true">{index + 1}</span>
+                          <strong>{word}</strong>
+                          <span className="lw-word-status">{stronger ? 'BEST FIT' : chosen && !reading ? 'LOCKED' : ''}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              )}
-              <div className="lw-choices" role="group" aria-label="Choose the word that fits now" style={{ gridTemplateColumns: `repeat(${words.length}, minmax(0, 1fr))` }}>
-                {words.map((word, index) => {
-                  const chosen = context.selected === word;
-                  const stronger = judged && current.beat.best_word === word;
-                  return (
-                    <button key={word} className="lw-word" data-word={word} data-selected={chosen} data-stronger={stronger} aria-pressed={chosen} disabled={!reading} onClick={() => select(word)}>
-                      <span className="lw-word-index" aria-hidden="true">{index + 1}</span>
-                      <strong>{word}</strong>
-                      <span className="lw-word-status">{stronger ? 'BEST FIT' : chosen && !reading ? 'LOCKED' : ''}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+
+              </>
+            )}
 
             <div className="lw-bar">
               {state.matches('feedback') ? <button className="lw-text-button" onClick={finish}>Finish</button>

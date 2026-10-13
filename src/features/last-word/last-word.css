@@ -151,6 +151,14 @@
 .lw-action-status[data-correctness='incorrect'], .lw-points[data-correctness='incorrect'] { color: var(--lw-accent); font-weight: 600; }
 
 /* Feedback: information, not punishment (§40). */
+.lw-sheet { flex: 1 1 0; align-content: start; }
+.lw-pick-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 8px; }
+.lw-pick { display: grid; gap: 2px; justify-items: center; padding: 10px 6px; border: 1px solid var(--lw-line); border-radius: 12px; background: var(--lw-object); font: 700 1.25rem var(--lw-display); text-align: center; overflow-wrap: anywhere; }
+.lw-pick small { min-height: 1em; font: 700 .62rem var(--lw-font); letter-spacing: .1em; color: var(--lw-muted); }
+.lw-pick[data-best='true'] { border: 1px dashed var(--lw-gold); }
+.lw-pick[data-best='true'] small { color: var(--lw-gold); }
+.lw-pick[data-picked='true'][data-best='false'] { border-color: var(--lw-accent); }
+.lw-pick[data-picked='true'][data-best='false'] small { color: var(--lw-accent); }
 .lw-feedback { display: grid; gap: 8px; padding: 14px 16px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: var(--lw-surface); }
 .lw-feedback h2 { margin: 0; font: 700 1.4rem/1.1 var(--lw-display); }
 .lw-feedback h2::first-letter { text-transform: uppercase; }
