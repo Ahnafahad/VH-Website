@@ -7,12 +7,12 @@ import { uploadToR2 } from '@/lib/lms/upload-client';
 import { HTML_FILE_NAME_RE, HTML_MATERIAL_MAX_BYTES } from '@/lib/lms/html-material';
 import { trackFeature } from '@/lib/analytics/tracker';
 import {
-  SubjectBadge, Toast, ConfirmDialog, TabBar,
+  Toast, ConfirmDialog,
   FieldLabel, FieldInput, FieldSelect, PrimaryBtn, GhostBtn,
   IconBtn, EmptyState, PageHeader, FormActions,
   CourseSelect, SubjectSelect, DocTypeSelect, BatchSelect,
   getLastUsedBatch, setLastUsedBatch,
-  fmtDhaka, RED, SLATE, BORDER, MUTED, rowV, backdropV, modalV,
+  fmtDhaka, RED, SLATE, BORDER, MUTED, backdropV, modalV, titleCase,
   extractPdfHeading,
   SURFACE, SURFACE_ALT, OK, INFO, INFO_BG,
   R_SM, R_MD, R_LG, SHADOW_LG, FONT_HEADING, RED_HOVER, BEIGE,
@@ -28,6 +28,13 @@ import { getLastUsed, setLastUsed, type ExistingMaterial } from '@/lib/naming/pr
 import { classUsableName, cleanHeading } from '@/lib/naming/class-link';
 import type { ClassSession } from './ClassesClient';
 import { useAdminProduct } from '@/components/admin/AdminProductContext';
+import {
+  Drawer, MonthGroup, Toolbar, ToolbarSpacer, SearchBox, SortMenu, CountTabs, KIT_CSS,
+  MATERIAL_SORTS, MATERIAL_GROUPS, MATERIAL_SORT_LABELS, MATERIAL_GROUP_LABELS,
+  sortMaterials, groupByMonth, groupInOrder, initialOpenMonths, currentMonthKey, readPref, writePref,
+  suggestClassForFile,
+  type MaterialSort, type MaterialGroup,
+} from './kit';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -377,13 +384,19 @@ function UploadPdfTab({
             .lms-materials-file-input:hover { border-color: ${BEIGE}; }
             .lms-materials-file-input:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; }
           `}</style>
-          <input
-            type="file"
-            accept="application/pdf,text/html,.html,.htm"
-            className="lms-materials-file-input"
-            onChange={e => handleFileChange(e.target.files?.[0] ?? null)}
-            style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: T_BASE, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE, transition: 'border-color 0.14s' }}
-          />
+          <div
+            onDragOver={e => e.preventDefault()}
+            onDrop={e => { e.preventDefault(); handleFileChange(e.dataTransfer.files?.[0] ?? null); }}
+          >
+            <input
+              type="file"
+              accept="application/pdf,text/html,.html,.htm"
+              className="lms-materials-file-input"
+              onChange={e => handleFileChange(e.target.files?.[0] ?? null)}
+              style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: T_BASE, color: SLATE, border: `1px dashed ${BORDER}`, borderRadius: R_MD, background: SURFACE, transition: 'border-color 0.14s' }}
+            />
+            <p style={{ margin: '4px 0 0', fontSize: T_XS, color: MUTED }}>Choose a file, or drop one here.</p>
+          </div>
           {file && <p style={{ margin: '4px 0 0', fontSize: T_XS, color: MUTED }}>{file.name} — {fmtSize(file.size)}</p>}
         </div>
         {!selectedSession && <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
@@ -752,27 +765,41 @@ function EditMaterialDialog({
 
 // ─── Materials list ───────────────────────────────────────────────────────────
 
+const SORT_PREF_KEY = 'lms.materials.sort';
+const GROUP_PREF_KEY = 'lms.materials.group';
+
+type MaterialsTab = 'all' | 'unattached';
+
 function MaterialsList({
-  materials, sessions, onDeleted, onLinked, onEdited, onUpload,
+  materials, sessions, onDeleted, onLinked, onEdited, onAdd, onToast,
 }: {
   materials: Material[]; sessions: ClassSession[];
   onDeleted: (id: number) => void;
   onLinked: (materialId: number, classSessionId: number | null, renamed?: RenamedClass) => void;
   onEdited: (updated: Material) => void;
-  onUpload: () => void;
+  onAdd: () => void;
+  onToast: (m: string) => void;
 }) {
   const { product: adminProduct } = useAdminProduct();
   const [linkMaterial, setLinkMaterial] = useState<Material | null>(null);
   const [editMaterial, setEditMaterial] = useState<Material | null>(null);
   const [deleteId, setDeleteId] = useState<number | null>(null);
   const [deleting, setDeleting] = useState(false);
-  const [toast, setToast] = useState<string | null>(null);
-  const [filterCourse,  setFilterCourse]  = useState('all');
-  const [filterSubject, setFilterSubject] = useState('all');
-  const [filterDocType, setFilterDocType] = useState('all');
-  const [filterBatch,   setFilterBatch]   = useState('all');
+  const [tab, setTab] = useState<MaterialsTab>('all');
+  const [query, setQuery] = useState('');
+  const [sort, setSort] = useState<MaterialSort>('newest');
+  const [group, setGroup] = useState<MaterialGroup>('month');
+  const [openOverride, setOpenOverride] = useState<Record<string, boolean>>({});
+  const [attaching, setAttaching] = useState<number | null>(null);
 
-  const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
+  // Remembered choices are read after mount so server and first client render
+  // agree; storage can be blocked, which readPref tolerates.
+  useEffect(() => {
+    setSort(readPref(SORT_PREF_KEY, MATERIAL_SORTS, 'newest'));
+    setGroup(readPref(GROUP_PREF_KEY, MATERIAL_GROUPS, 'month'));
+  }, []);
+  const changeSort = (v: MaterialSort) => { setSort(v); writePref(SORT_PREF_KEY, v); };
+  const changeGroup = (v: MaterialGroup) => { setGroup(v); writePref(GROUP_PREF_KEY, v); };
 
   const handleDelete = async () => {
     if (!deleteId) return;
@@ -781,128 +808,214 @@ function MaterialsList({
       const res = await fetch(`/api/lms/admin/materials/${deleteId}`, { method: 'DELETE' });
       if (!res.ok) throw new Error('Failed');
       onDeleted(deleteId);
-      showToast('Deleted');
+      onToast('Deleted');
     } catch {
-      showToast('Delete failed');
+      onToast('Delete failed');
     } finally {
       setDeleting(false); setDeleteId(null);
     }
   };
 
-  const sessionMap = new Map(sessions.map(s => [s.id, s]));
+  const sessionMap = useMemo(() => new Map(sessions.map(s => [s.id, s])), [sessions]);
+  const mine = useMemo(() => materials.filter(m => m.product === adminProduct), [materials, adminProduct]);
+  const unattached = useMemo(() => mine.filter(m => m.classSessionId == null), [mine]);
+
+  // One suggestion per unattached file, from its file name (falling back to
+  // its title). Computed once per change, not per render of each row.
+  const suggestions = useMemo(() => {
+    const out = new Map<number, ClassSession>();
+    const pool = sessions.filter(s => s.status !== 'cancelled');
+    for (const m of unattached) {
+      const hit = (m.fileName && suggestClassForFile(m.fileName, adminProduct, pool))
+        || suggestClassForFile(m.title, adminProduct, pool);
+      if (hit) out.set(m.id, sessions.find(s => s.id === hit.id) as ClassSession);
+    }
+    return out;
+  }, [unattached, sessions, adminProduct]);
+
+  // One-tap attach: update the row immediately, roll back if the server says no.
+  const attach = async (m: Material, cls: ClassSession) => {
+    setAttaching(m.id);
+    onLinked(m.id, cls.id);
+    try {
+      const res = await fetch(`/api/lms/admin/materials/${m.id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ classSessionId: cls.id }),
+      });
+      if (!res.ok) throw new Error('Failed');
+      const body = await res.json() as { renamedClasses?: RenamedClass[] };
+      const renamed = body.renamedClasses?.find(r => r.id === cls.id);
+      if (renamed) onLinked(m.id, cls.id, renamed);
+      onToast(`Attached to ${renamed?.title ?? cls.title}`);
+    } catch {
+      onLinked(m.id, m.classSessionId);
+      onToast('Could not attach. Try again.');
+    } finally {
+      setAttaching(null);
+    }
+  };
 
   if (materials.length === 0) return (
     <EmptyState
       icon={FileText}
       message="No materials yet. Upload a PDF or HTML file, or add a link."
       action={
-        <PrimaryBtn onClick={onUpload} small>
-          <Upload size={13} aria-hidden />
-          Upload file
+        <PrimaryBtn onClick={onAdd} small>
+          <Plus size={13} aria-hidden />
+          Add material
         </PrimaryBtn>
       }
     />
   );
 
-  // Batch is free text on older rows, so filter options come from the data
-  // itself rather than the (currently single-entry) taxonomy list.
-  const batchOptions = Array.from(new Set(materials.map(m => m.batch).filter((b): b is string => !!b))).sort();
+  const q = query.trim().toLowerCase();
+  const pool = tab === 'unattached' ? unattached : mine;
+  const visible = pool.filter(m =>
+    !q || `${m.title} ${m.fileName ?? ''} ${m.topic ?? ''}`.toLowerCase().includes(q));
 
-  const sorted = [...materials].sort((a, b) => b.createdAt - a.createdAt);
-  const filtered = sorted.filter(m =>
-    m.product === adminProduct &&
-    (filterCourse  === 'all' || m.product === filterCourse) &&
-    (filterSubject === 'all' || m.subject === filterSubject) &&
-    (filterDocType === 'all' || m.docType === filterDocType) &&
-    (filterBatch   === 'all' || m.batch === filterBatch)
-  );
+  // Groups: months keep a fixed calendar order (items inside follow the sort);
+  // class and subject order the groups themselves.
+  type Bucket = { key: string; label: string; items: Material[]; thisMonth?: boolean };
+  let buckets: Bucket[];
+  if (group === 'none') {
+    buckets = [{ key: 'all', label: 'All files', items: sortMaterials(visible, sort) }];
+  } else if (group === 'month') {
+    const current = currentMonthKey();
+    buckets = groupByMonth(visible, m => m.createdAt, sort !== 'oldest')
+      .map(b => ({ ...b, items: sortMaterials(b.items, sort), thisMonth: b.key === current }));
+  } else if (group === 'subject') {
+    buckets = groupInOrder(sortMaterials(visible, sort), m => ({
+      key: m.subject, label: titleCase(m.subject.replace(/_/g, ' ')),
+    })).sort((a, b) => a.label.localeCompare(b.label));
+  } else {
+    buckets = groupInOrder(sortMaterials(visible, sort), m => {
+      const s = m.classSessionId != null ? sessionMap.get(m.classSessionId) : undefined;
+      return m.classSessionId == null
+        ? { key: 'none', label: 'Not attached' }
+        : { key: String(m.classSessionId), label: s?.title ?? `Class #${m.classSessionId}` };
+    }).sort((a, b) => {
+      if (a.key === 'none') return -1;
+      if (b.key === 'none') return 1;
+      return (sessionMap.get(Number(b.key))?.scheduledAt ?? 0) - (sessionMap.get(Number(a.key))?.scheduledAt ?? 0);
+    });
+  }
+  const defaultOpen = group === 'month' ? initialOpenMonths(buckets.map(b => b.key)) : null;
+  const isOpen = (b: Bucket) => openOverride[`${group}:${b.key}`] ?? (q ? true : defaultOpen ? defaultOpen.has(b.key) : true);
+
+  const renderRow = (m: Material, i: number) => {
+    const cls = m.classSessionId != null ? sessionMap.get(m.classSessionId) : undefined;
+    const suggestion = m.classSessionId == null ? suggestions.get(m.id) : undefined;
+    return (
+      <div
+        key={m.id}
+        className="kit-row"
+        style={{
+          display: 'flex', alignItems: 'center', gap: 12, padding: '8px 14px', minHeight: 52, flexWrap: 'wrap',
+          borderTop: i === 0 ? 0 : `1px solid ${BORDER}`,
+        }}
+      >
+        <span style={{ width: 40, flexShrink: 0, fontSize: T_XS, color: MUTED, fontFamily: 'var(--font-mono), ui-monospace, monospace', textTransform: 'uppercase' }}>
+          {m.type === 'link' ? <LinkIcon size={14} aria-label="Link" style={{ color: INFO }} /> : m.type}
+        </span>
+        <div style={{ flex: '1 1 220px', minWidth: 0 }}>
+          <div style={{ fontSize: T_BASE, fontWeight: 600, color: SLATE, overflowWrap: 'anywhere' }}>{m.title}</div>
+          <div style={{ fontSize: T_XS, color: MUTED, marginTop: 2 }}>
+            {[
+              fmtSize(m.fileSize) || null,
+              fmtDhaka(m.createdAt, { day: '2-digit', month: 'short' }),
+              docTypeLabel(m.docType) ? `${docTypeLabel(m.docType)}${m.number ? ` ${m.number}` : ''}` : null,
+              m.batch ? `Batch ${m.batch}` : null,
+              cls ? cls.title : (m.classSessionId ? `Class #${m.classSessionId}` : null),
+            ].filter(Boolean).join(' · ')}
+          </div>
+        </div>
+        {m.classSessionId == null && (
+          <span style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            {suggestion ? (
+              <>
+                <span className="kit-hide-sm" style={{
+                  fontSize: T_SM, color: INFO, background: INFO_BG, borderRadius: R_SM, padding: '3px 8px',
+                }}>
+                  Looks like <b>{suggestion.title}</b>
+                </span>
+                <GhostBtn small onClick={() => void attach(m, suggestion)} disabled={attaching === m.id}>
+                  Attach
+                </GhostBtn>
+              </>
+            ) : (
+              <GhostBtn small onClick={() => setLinkMaterial(m)}>Attach to class</GhostBtn>
+            )}
+          </span>
+        )}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, justifyContent: 'flex-end' }}>
+          <IconBtn icon={ExternalLink} label={`Open ${m.title}`} href={m.type === 'html' ? `/dashboard/materials/${m.id}` : m.blobUrl} />
+          <IconBtn icon={Pencil} label={`Edit details of ${m.title}`} onClick={() => setEditMaterial(m)} />
+          <IconBtn icon={Paperclip} label={`Link ${m.title} to class`} onClick={() => setLinkMaterial(m)} />
+          {/* Wider gap + divider before Delete so it isn't a mis-tap target
+              next to the other (non-destructive) actions on a phone. */}
+          <div aria-hidden style={{ width: 1, height: 24, background: BORDER, margin: '0 4px' }} />
+          <IconBtn icon={Trash2} label={`Delete ${m.title}`} danger onClick={() => setDeleteId(m.id)} />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 10, marginBottom: 16 }}>
-        <div>
-          <FieldLabel>Course</FieldLabel>
-          <FieldSelect value={filterCourse} onChange={e => setFilterCourse(e.target.value)}>
-            <option value="all">All</option>
-            {COURSES.map(c => <option key={c.key} value={c.key}>{c.label}</option>)}
-          </FieldSelect>
-        </div>
-        <div>
-          <FieldLabel>Subject</FieldLabel>
-          <FieldSelect value={filterSubject} onChange={e => setFilterSubject(e.target.value)}>
-            <option value="all">All</option>
-            {SUBJECTS.map(s => <option key={s.key} value={s.key}>{s.label}</option>)}
-          </FieldSelect>
-        </div>
-        <div>
-          <FieldLabel>Doc Type</FieldLabel>
-          <FieldSelect value={filterDocType} onChange={e => setFilterDocType(e.target.value)}>
-            <option value="all">All</option>
-            {DOC_TYPES.map(d => <option key={d.key} value={d.key}>{d.label}</option>)}
-          </FieldSelect>
-        </div>
-        <div>
-          <FieldLabel>Batch</FieldLabel>
-          <FieldSelect value={filterBatch} onChange={e => setFilterBatch(e.target.value)}>
-            <option value="all">All</option>
-            {batchOptions.map(b => <option key={b} value={b}>{b}</option>)}
-          </FieldSelect>
-        </div>
+      <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
+        <Toolbar>
+          <CountTabs
+            label="Materials view"
+            value={tab}
+            onChange={setTab}
+            tabs={[
+              { id: 'all', label: 'All', count: mine.length },
+              { id: 'unattached', label: 'Not attached', count: unattached.length, alert: true },
+            ]}
+          />
+          <ToolbarSpacer />
+          <SearchBox value={query} onChange={setQuery} placeholder="Search files" label="Search files" />
+          <SortMenu
+            label="Sort"
+            value={sort}
+            onChange={changeSort}
+            options={MATERIAL_SORTS.map(v => ({ value: v, label: MATERIAL_SORT_LABELS[v] }))}
+          />
+          <SortMenu
+            label="Group"
+            value={group}
+            onChange={changeGroup}
+            options={MATERIAL_GROUPS.map(v => ({ value: v, label: MATERIAL_GROUP_LABELS[v] }))}
+          />
+          <PrimaryBtn onClick={onAdd} small>
+            <Plus size={13} aria-hidden />
+            Add material
+          </PrimaryBtn>
+        </Toolbar>
+
+        {visible.length === 0 ? (
+          <div style={{ padding: 16 }}>
+            <EmptyState
+              icon={FileText}
+              message={tab === 'unattached' && !q ? 'Every file is attached to a class.' : 'No materials match.'}
+            />
+          </div>
+        ) : group === 'none' ? (
+          buckets[0].items.map(renderRow)
+        ) : buckets.map(b => (
+          <MonthGroup
+            key={b.key}
+            label={b.label}
+            open={isOpen(b)}
+            onToggle={() => setOpenOverride(o => ({ ...o, [`${group}:${b.key}`]: !isOpen(b) }))}
+            thisMonth={b.thisMonth}
+            summary={`${b.items.length} ${b.items.length === 1 ? 'file' : 'files'}`}
+          >
+            {b.items.map(renderRow)}
+          </MonthGroup>
+        ))}
       </div>
-      {filtered.length === 0 ? (
-        <EmptyState icon={FileText} message="No materials match these filters." />
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {filtered.map((m, i) => (
-            <motion.div
-              key={m.id}
-              custom={i} variants={rowV} initial="hidden" animate="visible"
-              style={{
-                background: SURFACE, border: `1px solid ${BORDER}`,
-                borderRadius: R_LG, padding: '12px 16px',
-                display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap',
-              }}
-            >
-              <div style={{
-                width: 36, height: 36, borderRadius: R_MD, flexShrink: 0,
-                background: m.type !== 'link' ? `${RED}14` : INFO_BG,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                {m.type !== 'link'
-                  ? <FileText size={16} style={{ color: RED }} aria-hidden />
-                  : <LinkIcon size={16} style={{ color: INFO }} aria-hidden />}
-              </div>
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginBottom: 3 }}>
-                  <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{m.title}</p>
-                  <SubjectBadge subject={m.subject} />
-                  {docTypeLabel(m.docType) && (
-                    <span style={{ fontSize: T_XS, color: MUTED }}>
-                      {docTypeLabel(m.docType)}{m.number ? ` ${m.number}` : ''}
-                    </span>
-                  )}
-                  {m.batch && <span style={{ fontSize: T_XS, color: MUTED }}>Batch {m.batch}</span>}
-                </div>
-                <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
-                  {m.topic ? `${m.topic} · ` : ''}
-                  {fmtDhaka(m.createdAt, { dateStyle: 'medium' })}
-                  {m.fileSize ? ` · ${fmtSize(m.fileSize)}` : ''}
-                  {m.classSessionId ? ` · ${sessionMap.get(m.classSessionId)?.title ?? 'Class #' + m.classSessionId}` : ''}
-                </p>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                <IconBtn icon={ExternalLink} label="Open" href={m.type === 'html' ? `/dashboard/materials/${m.id}` : m.blobUrl} />
-                <IconBtn icon={Pencil} label="Edit details" onClick={() => setEditMaterial(m)} />
-                <IconBtn icon={Paperclip} label="Link to class" onClick={() => setLinkMaterial(m)} />
-                {/* Wider gap + divider before Delete so it isn't a mis-tap target
-                    next to the other (non-destructive) actions on a phone. */}
-                <div aria-hidden style={{ width: 1, height: 24, background: BORDER, margin: '0 4px' }} />
-                <IconBtn icon={Trash2} label="Delete" danger onClick={() => setDeleteId(m.id)} />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
       <ConfirmDialog
         open={!!deleteId} title="Delete this material?"
         message="Uploaded files will also be removed from storage."
@@ -925,23 +1038,55 @@ function MaterialsList({
           onSaved={onEdited}
         />
       )}
-      <Toast message={toast} />
     </>
+  );
+}
+
+// ─── Add-material drawer (replaces the List / Upload / Add link tabs) ─────────
+
+type AddMode = 'file' | 'link';
+
+function AddMaterialDrawer({
+  open, onClose, sessions, materials, onAdded,
+}: {
+  open: boolean; onClose: () => void;
+  sessions: ClassSession[]; materials: Material[];
+  onAdded: (m: Material) => void;
+}) {
+  const [mode, setMode] = useState<AddMode>('file');
+  return (
+    <Drawer open={open} onClose={onClose} title="Add material">
+      <div style={{ marginBottom: 14, borderBottom: `1px solid ${BORDER}` }}>
+        <CountTabs
+          label="Material source"
+          value={mode}
+          onChange={setMode}
+          tabs={[{ id: 'file', label: 'Upload file' }, { id: 'link', label: 'Paste link' }]}
+        />
+      </div>
+      {mode === 'file'
+        ? <UploadPdfTab sessions={sessions} initialMaterials={materials} onUploaded={onAdded} />
+        : <AddLinkTab sessions={sessions} onAdded={onAdded} />}
+    </Drawer>
   );
 }
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
 export default function MaterialsClient({ initialMaterials, sessions: initialSessions }: Props) {
-  const [tab, setTab] = useState<'list' | 'upload' | 'link'>('list');
+  const [drawerOpen, setDrawerOpen] = useState(false);
   const [materials, setMaterials] = useState(initialMaterials);
+  const [toast, setToast] = useState<string | null>(null);
   // Sessions are state (not just a prop) so a class renamed via the "Link to
   // class" flow updates its label in the list immediately.
   const [sessions, setSessions] = useState(initialSessions);
 
+  const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
+
   const handleAdded = (m: Material) => {
     setMaterials(prev => [m, ...prev]);
-    setTab('list');
+    setDrawerOpen(false);
+    showToast('Material added');
   };
 
   const handleDeleted = (id: number) => {
@@ -963,37 +1108,28 @@ export default function MaterialsClient({ initialMaterials, sessions: initialSes
 
   return (
     <>
-      <style>{SPIN_CSS}</style>
+      <style>{SPIN_CSS + KIT_CSS}</style>
       <PageHeader
         title="Materials"
-        subtitle={`${materials.length} material${materials.length !== 1 ? 's' : ''} — PDFs, HTML files and links for students`}
-        action={
-          <div style={{ display: 'flex', gap: 8 }}>
-            <PrimaryBtn onClick={() => setTab('upload')} disabled={tab === 'upload'}>
-              <Upload size={14} aria-hidden />
-              Upload file
-            </PrimaryBtn>
-            <GhostBtn onClick={() => setTab('link')} disabled={tab === 'link'}>
-              <Plus size={14} aria-hidden />
-              Add Link
-            </GhostBtn>
-          </div>
-        }
+        subtitle={`${materials.length} material${materials.length !== 1 ? 's' : ''}: PDFs, HTML files and links for students`}
       />
-      <TabBar
-        tabs={[
-          { id: 'list',   label: `All Materials (${materials.length})` },
-          { id: 'upload', label: 'Upload file' },
-          { id: 'link',   label: 'Add Link' },
-        ]}
-        active={tab}
-        onChange={(id) => setTab(id as 'list' | 'upload' | 'link')}
+      <MaterialsList
+        materials={materials}
+        sessions={sessions}
+        onDeleted={handleDeleted}
+        onLinked={handleLinked}
+        onEdited={handleEdited}
+        onAdd={() => setDrawerOpen(true)}
+        onToast={showToast}
       />
-      <AnimatePresence mode="wait">
-        {tab === 'list'   && <MaterialsList key="list" materials={materials} sessions={sessions} onDeleted={handleDeleted} onLinked={handleLinked} onEdited={handleEdited} onUpload={() => setTab('upload')} />}
-        {tab === 'upload' && <UploadPdfTab key="upload" sessions={sessions} initialMaterials={initialMaterials} onUploaded={handleAdded} />}
-        {tab === 'link'   && <AddLinkTab   key="link"   sessions={sessions} onAdded={handleAdded} />}
-      </AnimatePresence>
+      <AddMaterialDrawer
+        open={drawerOpen}
+        onClose={() => setDrawerOpen(false)}
+        sessions={sessions}
+        materials={materials}
+        onAdded={handleAdded}
+      />
+      <Toast message={toast} />
     </>
   );
 }

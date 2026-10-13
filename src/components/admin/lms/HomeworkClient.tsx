@@ -1,22 +1,26 @@
 'use client';
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, Trash2, Edit2, Plus, AlertCircle, Clock, ChevronDown, ChevronUp, FileText, CheckCircle, Loader2, Upload, Link2, X as XIcon } from 'lucide-react';
+import { BookOpen, Trash2, Edit2, Plus, AlertCircle, Clock, FileText, CheckCircle, Loader2, Upload, X as XIcon } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import {
-  SubjectBadge, Toast, ConfirmDialog, Modal,
+  Toast, ConfirmDialog, Modal,
   FieldLabel, FieldInput, FieldTextarea, FieldSelect, PrimaryBtn, GhostBtn,
   IconBtn, EmptyState, PageHeader, FormActions,
-  fmtDhaka, dhakaLocalToISO, epochToDhakaLocal,
-  SPIN_CSS, RED, SLATE, BORDER, MUTED, BG, rowV,
-  RED_HOVER, INK_SOFT, SURFACE, SURFACE_ALT,
+  fmtDhaka, dhakaLocalToISO, epochToDhakaLocal, titleCase,
+  SPIN_CSS, RED, SLATE, BORDER, MUTED, BG,
+  RED_HOVER, SURFACE, SURFACE_ALT,
   OK, OK_BG, WARN, WARN_BG, INFO,
   R_SM, R_MD, R_LG, R_PILL,
-  SHADOW_SM, FONT_HEADING, T_XS, T_SM, T_BASE,
+  FONT_HEADING, T_XS, T_SM, T_BASE,
 } from './lms-shared';
 import type { ClassSession } from './ClassesClient';
 import { useAdminProduct } from '@/components/admin/AdminProductContext';
+import {
+  Drawer, MonthGroup, Toolbar, ToolbarSpacer, SearchBox, FilterChip, CountTabs, KIT_CSS,
+  groupByMonth, initialOpenMonths, currentMonthKey, homeworkStatus, submissionShape,
+  type HomeworkStatus, type SubmissionShape,
+} from './kit';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -34,6 +38,10 @@ export interface Assignment {
   dueAt: number;
   createdBy: number;
   createdAt: number;
+  // Added by GET /api/lms/admin/assignments (absent on POST/PATCH rows).
+  submittedCount?: number;
+  reviewedCount?: number;
+  scopeCount?: number;
 }
 
 export interface MaterialOption {
@@ -532,7 +540,13 @@ interface SubmissionsData {
 // endpoint to act on a 'pending' (not-yet-submitted) row, so those are shown
 // for context (dim, non-interactive) but excluded from the N/M count.
 
-function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onClose: () => void }) {
+function SubmissionsPanel({ assignmentId, onClose, embedded = false, onCounts }: {
+  assignmentId: number; onClose: () => void;
+  /** Rendered inside a Drawer: drop the card chrome, the Close button and the own scroll area. */
+  embedded?: boolean;
+  /** Reports reviewed / submitted totals whenever they change. */
+  onCounts?: (reviewed: number, submitted: number) => void;
+}) {
   const [data, setData] = useState<SubmissionsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -609,8 +623,16 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
   const pendingTotal = data ? data.submissions.filter(s => s.status === 'pending').length : 0;
   const allMarked = submittedTotal > 0 && reviewedTotal === submittedTotal;
 
+  const onCountsRef = useRef(onCounts);
+  onCountsRef.current = onCounts;
+  React.useEffect(() => {
+    if (data) onCountsRef.current?.(reviewedTotal, submittedTotal);
+  }, [data, reviewedTotal, submittedTotal]);
+
   return (
-    <div style={{
+    <div style={embedded ? {
+      background: BG, margin: -16, minHeight: 'calc(100% + 32px)',
+    } : {
       background: BG, border: `1px solid ${BORDER}`,
       borderRadius: R_LG, marginTop: 8, maxHeight: '70vh', overflowY: 'auto',
     }}>
@@ -619,14 +641,16 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
         padding: '14px 16px 10px', borderBottom: `1px solid ${BORDER}`,
         borderTopLeftRadius: R_LG, borderTopRightRadius: R_LG,
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
-          <p style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: T_BASE, fontWeight: 700, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-            {data?.assignment.title ?? 'Submissions'}
-          </p>
-          <button onClick={onClose} className="hw-link" style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: T_SM, flexShrink: 0, minHeight: 44, padding: '0 4px' }}>
-            Close
-          </button>
-        </div>
+        {!embedded && (
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+            <p style={{ margin: 0, fontFamily: FONT_HEADING, fontSize: T_BASE, fontWeight: 700, color: SLATE, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+              {data?.assignment.title ?? 'Submissions'}
+            </p>
+            <button onClick={onClose} className="hw-link" style={{ background: 'none', border: 'none', cursor: 'pointer', color: MUTED, fontSize: T_SM, flexShrink: 0, minHeight: 44, padding: '0 4px' }}>
+              Close
+            </button>
+          </div>
+        )}
         {submittedTotal > 0 && (
           <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ fontSize: T_SM, fontWeight: 700, color: allMarked ? OK : SLATE, whiteSpace: 'nowrap' }}>
@@ -756,6 +780,45 @@ function SubmissionsPanel({ assignmentId, onClose }: { assignmentId: number; onC
 
 // ─── Main component ───────────────────────────────────────────────────────────
 
+const STATUS_TABS: { id: HomeworkStatus; label: string }[] = [
+  { id: 'review', label: 'To review' },
+  { id: 'open', label: 'Open' },
+  { id: 'closed', label: 'Closed' },
+];
+
+function SubmissionBar({ shape }: { shape: SubmissionShape }) {
+  const t = Math.max(shape.total, 1);
+  return (
+    <span
+      role="img"
+      aria-label={`${shape.reviewed} reviewed, ${shape.waiting} waiting, ${shape.missing} missing`}
+      style={{
+        display: 'flex', height: 6, width: 110, flexShrink: 0, borderRadius: 3,
+        overflow: 'hidden', background: SURFACE_ALT, boxShadow: `inset 0 0 0 1px ${BORDER}`,
+      }}
+    >
+      <i style={{ display: 'block', height: '100%', width: `${(shape.reviewed / t) * 100}%`, background: OK }} />
+      <i style={{ display: 'block', height: '100%', width: `${(shape.waiting / t) * 100}%`, background: INFO }} />
+    </span>
+  );
+}
+
+function BarLegend() {
+  const swatch = (bg: string, bordered?: boolean) => (
+    <i aria-hidden style={{
+      display: 'inline-block', width: 22, height: 6, borderRadius: 3, background: bg,
+      boxShadow: bordered ? `inset 0 0 0 1px ${BORDER}` : undefined,
+    }} />
+  );
+  return (
+    <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', fontSize: T_SM, color: MUTED, padding: '8px 14px', borderTop: `1px solid ${BORDER}` }}>
+      <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center' }}>{swatch(OK)} reviewed</span>
+      <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center' }}>{swatch(INFO)} submitted, waiting</span>
+      <span style={{ display: 'inline-flex', gap: 5, alignItems: 'center' }}>{swatch(SURFACE_ALT, true)} missing</span>
+    </div>
+  );
+}
+
 export default function HomeworkClient({ initialAssignments, sessions, allMaterials, batches }: Props) {
   const { product } = useAdminProduct();
   const [assignments, setAssignments] = useState(initialAssignments);
@@ -765,19 +828,34 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
   const [deleting, setDeleting] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [subjectFilter, setSubjectFilter] = useState('all');
-  const [expandedSubmissions, setExpandedSubmissions] = useState<number | null>(null);
+  const [statusTab, setStatusTab] = useState<HomeworkStatus>('review');
+  const [query, setQuery] = useState('');
+  const [openOverride, setOpenOverride] = useState<Record<string, boolean>>({});
+  const [reviewing, setReviewing] = useState<number | null>(null);
 
   const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
 
-  const filtered = assignments.filter(a =>
-    a.product === product &&
-    (subjectFilter === 'all' || a.subject === subjectFilter),
-  );
+  const inProduct = assignments.filter(a => a.product === product);
+  const subjectsPresent = Array.from(new Set(inProduct.map(a => a.subject))).sort();
+  const q = query.trim().toLowerCase();
+  const now = Date.now();
+  const scoped = inProduct.filter(a =>
+    (subjectFilter === 'all' || a.subject === subjectFilter) &&
+    (!q || a.title.toLowerCase().includes(q)));
+  const counts: Record<HomeworkStatus, number> = { review: 0, open: 0, closed: 0 };
+  for (const a of scoped) counts[homeworkStatus(a, now)]++;
+  const visible = scoped.filter(a => homeworkStatus(a, now) === statusTab);
+  const months = groupByMonth(visible, a => a.dueAt);
+  const defaultOpen = initialOpenMonths(months.map(m => m.key));
+  const isOpen = (key: string) => openOverride[`${statusTab}:${key}`] ?? (q || statusTab === 'review' ? true : defaultOpen.has(key));
+  const thisMonth = currentMonthKey();
+  const reviewingAssignment = reviewing != null ? assignments.find(a => a.id === reviewing) ?? null : null;
 
   const handleSaved = (saved: Assignment) => {
     setAssignments(prev => {
       const idx = prev.findIndex(a => a.id === saved.id);
-      return idx >= 0 ? prev.map(a => a.id === saved.id ? saved : a) : [saved, ...prev];
+      // POST/PATCH rows carry no submission counts: keep the ones we have.
+      return idx >= 0 ? prev.map(a => a.id === saved.id ? { ...a, ...saved } : a) : [saved, ...prev];
     });
     showToast(editing ? 'Assignment updated' : 'Assignment created');
     setEditing(null);
@@ -798,100 +876,129 @@ export default function HomeworkClient({ initialAssignments, sessions, allMateri
     }
   };
 
+  // The drawer reports live counts as rows are marked, so the list behind it
+  // (and its tab counts) stay right without a refetch.
+  const handleCounts = useCallback((id: number, reviewed: number, submitted: number) => {
+    setAssignments(prev => prev.map(a =>
+      a.id === id && (a.reviewedCount !== reviewed || a.submittedCount !== submitted)
+        ? { ...a, reviewedCount: reviewed, submittedCount: submitted }
+        : a));
+  }, []);
+
   const sessionMap = new Map(sessions.map(s => [s.id, s]));
 
   return (
     <>
-      <style>{SPIN_CSS}</style>
+      <style>{SPIN_CSS + KIT_CSS}</style>
       <style>{HW_LOCAL_STYLES}</style>
       <PageHeader
         title="Homework"
-        subtitle={`${assignments.length} assignment${assignments.length !== 1 ? 's' : ''}`}
-        action={
-          <PrimaryBtn onClick={() => { setEditing(null); setModalOpen(true); }} small>
-            <Plus size={13} aria-hidden />
-            New Assignment
-          </PrimaryBtn>
-        }
+        subtitle={`${inProduct.length} assignment${inProduct.length !== 1 ? 's' : ''}`}
       />
 
-      {/* Subject filter */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 20, flexWrap: 'wrap' }}>
-        {['all', ...SUBJECTS].map(s => (
-          <button key={s} onClick={() => setSubjectFilter(s)} className="hw-pill" style={{
-            padding: '5px 12px', borderRadius: R_PILL, fontSize: T_SM, cursor: 'pointer',
-            fontWeight: subjectFilter === s ? 600 : 400,
-            border: `1.5px solid ${subjectFilter === s ? RED : BORDER}`,
-            background: subjectFilter === s ? `${RED}0D` : SURFACE,
-            color: subjectFilter === s ? RED : MUTED,
-          }}>
-            {s === 'all' ? 'All' : s.charAt(0).toUpperCase() + s.slice(1)}
-          </button>
-        ))}
-      </div>
-
-      {/* List */}
-      {filtered.length === 0 ? (
-        <EmptyState icon={BookOpen} message="No assignments match the filter." />
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {filtered.map((a, i) => (
-            <motion.div
-              key={a.id}
-              custom={i} variants={rowV} initial="hidden" animate="visible"
-              style={{
-                background: SURFACE, border: `1px solid ${BORDER}`,
-                borderRadius: R_LG, padding: '14px 16px', boxShadow: SHADOW_SM,
-              }}
-            >
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5, flexWrap: 'wrap' }}>
-                    <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{a.title}</p>
-                    <SubjectBadge subject={a.subject} />
-                    <DueChip epochMs={a.dueAt} />
-                    {a.batch && (
-                      <span style={{ fontSize: T_XS, color: MUTED, background: BG, border: `1px solid ${BORDER}`, padding: '2px 7px', borderRadius: R_PILL }}>
-                        Batch {a.batch}
-                      </span>
-                    )}
-                  </div>
-                  <p style={{ margin: '0 0 4px', fontSize: T_SM, color: INK_SOFT, lineHeight: 1.4,
-                    display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical' as const, overflow: 'hidden' }}>
-                    {a.description}
-                  </p>
-                  <p style={{ margin: 0, fontSize: T_XS, color: MUTED }}>
-                    Due {fmtDhaka(a.dueAt)}
-                    {a.classSessionId ? ` · ${sessionMap.get(a.classSessionId)?.title ?? 'Class #' + a.classSessionId}` : ''}
-                  </p>
-                </div>
-                <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
-                  <button
-                    onClick={() => setExpandedSubmissions(expandedSubmissions === a.id ? null : a.id)}
-                    title="View submissions"
-                    className="hw-pill"
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: 4,
-                      padding: '4px 8px', borderRadius: R_SM, fontSize: T_XS, fontWeight: 500,
-                      border: `1px solid ${expandedSubmissions === a.id ? RED : BORDER}`,
-                      background: expandedSubmissions === a.id ? `${RED}0D` : SURFACE,
-                      color: expandedSubmissions === a.id ? RED : MUTED, cursor: 'pointer',
-                    }}
-                  >
-                    {expandedSubmissions === a.id ? <ChevronUp size={11} aria-hidden /> : <ChevronDown size={11} aria-hidden />}
-                    Submissions
-                  </button>
-                  <IconBtn icon={Edit2} label="Edit" onClick={() => { setEditing(a); setModalOpen(true); }} />
-                  <IconBtn icon={Trash2} label="Delete" danger onClick={() => setDeleteId(a.id)} />
-                </div>
-              </div>
-              {expandedSubmissions === a.id && (
-                <SubmissionsPanel assignmentId={a.id} onClose={() => setExpandedSubmissions(null)} />
-              )}
-            </motion.div>
+      <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
+        <Toolbar>
+          <CountTabs
+            label="Homework status"
+            value={statusTab}
+            onChange={setStatusTab}
+            tabs={STATUS_TABS.map(t => ({ ...t, count: counts[t.id], alert: t.id === 'review' }))}
+          />
+          <ToolbarSpacer />
+          <SearchBox value={query} onChange={setQuery} placeholder="Search homework" label="Search homework" />
+          <PrimaryBtn onClick={() => { setEditing(null); setModalOpen(true); }} small>
+            <Plus size={13} aria-hidden />
+            Post homework
+          </PrimaryBtn>
+        </Toolbar>
+        <div role="group" aria-label="Subject" style={{ display: 'flex', gap: 6, flexWrap: 'wrap', padding: '8px 14px', borderBottom: `1px solid ${BORDER}` }}>
+          <FilterChip pressed={subjectFilter === 'all'} onClick={() => setSubjectFilter('all')}>All</FilterChip>
+          {subjectsPresent.map(s => (
+            <FilterChip key={s} pressed={subjectFilter === s} onClick={() => setSubjectFilter(s)}>
+              {titleCase(s.replace(/_/g, ' '))}
+            </FilterChip>
           ))}
         </div>
-      )}
+
+        {months.length === 0 ? (
+          <div style={{ padding: 16 }}>
+            <EmptyState
+              icon={BookOpen}
+              message={statusTab === 'review' && !q && subjectFilter === 'all' ? 'Nothing is waiting for review.' : 'Nothing here.'}
+            />
+          </div>
+        ) : months.map(m => (
+          <MonthGroup
+            key={m.key}
+            label={m.label}
+            open={isOpen(m.key)}
+            onToggle={() => setOpenOverride(o => ({ ...o, [`${statusTab}:${m.key}`]: !isOpen(m.key) }))}
+            thisMonth={m.key === thisMonth}
+            summary={`${m.items.length} set`}
+          >
+            {m.items.map((a, i) => {
+              const shape = submissionShape(a);
+              const cls = a.classSessionId != null ? sessionMap.get(a.classSessionId) : undefined;
+              return (
+                <div
+                  key={a.id}
+                  className="kit-row"
+                  style={{
+                    display: 'flex', alignItems: 'center', gap: 12, padding: '8px 14px', minHeight: 52, flexWrap: 'wrap',
+                    borderTop: i === 0 ? 0 : `1px solid ${BORDER}`,
+                  }}
+                >
+                  <span style={{ width: 54, flexShrink: 0, fontSize: T_SM, color: MUTED, fontFamily: 'var(--font-mono), ui-monospace, monospace' }}>
+                    {fmtDhaka(a.dueAt, { day: '2-digit', month: 'short' })}
+                  </span>
+                  <div style={{ flex: '1 1 200px', minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{a.title}</span>
+                      {statusTab === 'open' && <DueChip epochMs={a.dueAt} />}
+                    </div>
+                    <div style={{ fontSize: T_XS, color: MUTED, marginTop: 2 }}>
+                      {titleCase(a.subject.replace(/_/g, ' '))} · due {fmtDhaka(a.dueAt, { day: '2-digit', month: 'short', hour: 'numeric', minute: '2-digit' })}
+                      {a.batch ? ` · Batch ${a.batch}` : ''}
+                      {cls ? ` · ${cls.title}` : (a.classSessionId ? ` · Class #${a.classSessionId}` : '')}
+                    </div>
+                  </div>
+                  <SubmissionBar shape={shape} />
+                  <span className="kit-hide-sm" style={{ width: 150, fontSize: T_XS, color: MUTED, fontFamily: 'var(--font-mono), ui-monospace, monospace' }}>
+                    {shape.reviewed}/{shape.reviewed + shape.waiting} reviewed
+                    {shape.missing > 0 ? ` · ${shape.missing} missing` : ''}
+                  </span>
+                  {shape.waiting > 0 ? (
+                    <PrimaryBtn small onClick={() => setReviewing(a.id)}>Review {shape.waiting}</PrimaryBtn>
+                  ) : (
+                    <GhostBtn small onClick={() => setReviewing(a.id)}>Open</GhostBtn>
+                  )}
+                  <div style={{ display: 'flex', gap: 6, flexShrink: 0 }}>
+                    <IconBtn icon={Edit2} label={`Edit ${a.title}`} onClick={() => { setEditing(a); setModalOpen(true); }} />
+                    <IconBtn icon={Trash2} label={`Delete ${a.title}`} danger onClick={() => setDeleteId(a.id)} />
+                  </div>
+                </div>
+              );
+            })}
+          </MonthGroup>
+        ))}
+        <BarLegend />
+      </div>
+
+      <Drawer
+        open={reviewingAssignment != null}
+        onClose={() => setReviewing(null)}
+        title={reviewingAssignment?.title ?? 'Submissions'}
+        width={560}
+      >
+        {reviewingAssignment && (
+          <SubmissionsPanel
+            assignmentId={reviewingAssignment.id}
+            onClose={() => setReviewing(null)}
+            embedded
+            onCounts={(reviewed, submitted) => handleCounts(reviewingAssignment.id, reviewed, submitted)}
+          />
+        )}
+      </Drawer>
 
       <AssignmentModal
         open={modalOpen}

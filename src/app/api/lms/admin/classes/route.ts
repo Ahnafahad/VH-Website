@@ -4,9 +4,9 @@
  */
 
 import { NextRequest } from 'next/server';
-import { and, eq, gte, lte } from 'drizzle-orm';
+import { and, count, eq, gte, isNotNull, lte } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { classSessions, users } from '@/lib/db/schema';
+import { classSessions, users, materials, assignments, classAttendance } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
@@ -54,7 +54,38 @@ export async function GET(req: NextRequest) {
     // so a from/to/status filter never skews a series' sequence.
     const displayNumbers = await getDisplayClassNumbers();
 
-    return rows.map((s) => serializeSession(s, displayNumbers.get(s.id) ?? null));
+    // Per-class counts: one grouped query per table (never per row), merged
+    // into maps keyed by class id. Recordings are one row per class, so a plain
+    // select is already "grouped".
+    const [matCounts, hwCounts, attCounts, recRows] = await Promise.all([
+      db.select({ id: materials.classSessionId, n: count() })
+        .from(materials)
+        .where(isNotNull(materials.classSessionId))
+        .groupBy(materials.classSessionId),
+      db.select({ id: assignments.classSessionId, n: count() })
+        .from(assignments)
+        .where(isNotNull(assignments.classSessionId))
+        .groupBy(assignments.classSessionId),
+      db.select({ id: classAttendance.sessionId, n: count() })
+        .from(classAttendance)
+        .groupBy(classAttendance.sessionId),
+      db.select({ id: recordings.classSessionId, status: recordings.status })
+        .from(recordings),
+    ]);
+    const toMap = (r: { id: number | null; n: number }[]) =>
+      new Map(r.filter((x) => x.id != null).map((x) => [x.id as number, x.n]));
+    const matMap = toMap(matCounts);
+    const hwMap = toMap(hwCounts);
+    const attMap = toMap(attCounts);
+    const recMap = new Map(recRows.map((r) => [r.id, r.status]));
+
+    return rows.map((s) => ({
+      ...serializeSession(s, displayNumbers.get(s.id) ?? null),
+      materialCount: matMap.get(s.id) ?? 0,
+      homeworkCount: hwMap.get(s.id) ?? 0,
+      attendanceCount: attMap.get(s.id) ?? 0,
+      recordingStatus: recMap.get(s.id) ?? null,
+    }));
   });
 }
 
