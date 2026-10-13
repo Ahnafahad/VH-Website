@@ -1,6 +1,6 @@
 /**
  * PATCH  /api/lms/admin/materials/[id] — update material metadata
- * DELETE /api/lms/admin/materials/[id] — delete from DB + R2 (if PDF key)
+ * DELETE /api/lms/admin/materials/[id] — delete from DB + R2 (if PDF/HTML key)
  */
 
 import { NextRequest } from 'next/server';
@@ -140,9 +140,9 @@ export async function DELETE(
       .get();
     if (!existing) throw new ApiException('Material not found', 404);
 
-    // Delete from R2 if this is a PDF stored as an R2 key (not an http URL).
+    // Delete from R2 if this is a PDF/HTML file stored as an R2 key (not an http URL).
     // Best-effort — DB deletion must not fail on storage error.
-    if (existing.type === 'pdf' && existing.blobUrl && !existing.blobUrl.startsWith('http')) {
+    if ((existing.type === 'pdf' || existing.type === 'html') && existing.blobUrl && !existing.blobUrl.startsWith('http')) {
       try {
         await r2Delete(existing.blobUrl);
       } catch (storageErr) {

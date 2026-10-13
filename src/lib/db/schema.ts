@@ -1478,12 +1478,12 @@ export const recordingWatchProgress = sqliteTable('recording_watch_progress', {
 
 // ─── Materials ────────────────────────────────────────────────────────────────
 // PDFs (Vercel Blob) or links, scoped to subject/product/batch.
-// type: 'pdf' | 'link'
+// type: 'pdf' | 'html' | 'link'
 
 export const materials = sqliteTable('materials', {
   id:             integer('id').primaryKey({ autoIncrement: true }),
   title:          text('title').notNull(),
-  // 'pdf' | 'link'
+  // 'pdf' | 'html' | 'link'
   type:           text('type').notNull(),
   blobUrl:        text('blob_url').notNull(),
   fileName:       text('file_name'),
@@ -1738,7 +1738,7 @@ export type NewSessionMaterial       = typeof sessionMaterials.$inferInsert;
 export type LmsSubject               = 'english' | 'math' | 'analytical' | 'accounting' | 'economics' | 'business_studies';
 export type ClassSessionStatus       = 'draft' | 'scheduled' | 'live' | 'completed' | 'cancelled';
 export type RecordingStatus          = 'pending' | 'processing' | 'available' | 'failed' | 'expired';
-export type MaterialType             = 'pdf' | 'link';
+export type MaterialType             = 'pdf' | 'html' | 'link';
 export type AssignmentSubmissionStatus = 'submitted' | 'reviewed';
 export type BookingSlotStatus        = 'open' | 'booked' | 'cancelled';
 export type SessionRequestStatus     = 'pending' | 'approved' | 'declined' | 'scheduled';

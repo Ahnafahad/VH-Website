@@ -274,13 +274,13 @@ export default function ClassDetailStudentClient({
               {materials.map((mat) => (
                 <Link
                   key={mat.id}
-                  href={mat.type === 'pdf' ? `/dashboard/materials/${mat.id}` : mat.blobUrl}
-                  target={mat.type === 'pdf' ? undefined : '_blank'}
-                  rel={mat.type === 'pdf' ? undefined : 'noopener noreferrer'}
+                  href={mat.type === 'pdf' || mat.type === 'html' ? `/dashboard/materials/${mat.id}` : mat.blobUrl}
+                  target={mat.type === 'pdf' || mat.type === 'html' ? undefined : '_blank'}
+                  rel={mat.type === 'pdf' || mat.type === 'html' ? undefined : 'noopener noreferrer'}
                   className="flex items-center gap-2.5 py-3 min-h-[44px] transition-opacity hover:opacity-80"
                   style={{ borderBottom: `1px solid ${HAIRLINE}` }}
                 >
-                  {mat.type === 'pdf' ? (
+                  {mat.type === 'pdf' || mat.type === 'html' ? (
                     <FileText className="w-3.5 h-3.5 flex-shrink-0" style={{ color: INK_40 }} strokeWidth={1.5} />
                   ) : (
                     <Link2 className="w-3.5 h-3.5 flex-shrink-0" style={{ color: INK_40 }} strokeWidth={1.5} />
@@ -289,7 +289,7 @@ export default function ClassDetailStudentClient({
                     {mat.fileName ?? mat.title}
                   </span>
                   <span className="text-xs flex-shrink-0" style={{ color: TAN }}>
-                    {mat.type === 'pdf' ? 'Open PDF' : 'Open link'}
+                    {mat.type === 'pdf' ? 'Open PDF' : mat.type === 'html' ? 'Open' : 'Open link'}
                   </span>
                 </Link>
               ))}

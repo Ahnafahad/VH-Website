@@ -4,6 +4,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FileText, Link as LinkIcon, Trash2, Upload, ExternalLink, Plus, Paperclip, Pencil } from 'lucide-react';
 import { uploadToR2 } from '@/lib/lms/upload-client';
+import { HTML_FILE_NAME_RE, HTML_MATERIAL_MAX_BYTES } from '@/lib/lms/html-material';
 import { trackFeature } from '@/lib/analytics/tracker';
 import {
   SubjectBadge, Toast, ConfirmDialog, TabBar,
@@ -139,7 +140,9 @@ function ProvenanceTag({ provenance }: { provenance: Provenance }) {
   );
 }
 
-// ─── Upload PDF flow ──────────────────────────────────────────────────────────
+// ─── Upload file flow (PDF or HTML) ───────────────────────────────────────────
+
+const isHtmlFile = (f: File) => f.type === 'text/html' || HTML_FILE_NAME_RE.test(f.name);
 
 type SuggestibleField = 'course' | 'subject' | 'docType' | 'number' | 'topic';
 
@@ -241,7 +244,8 @@ function UploadPdfTab({
       } else {
         // Last resort: read the PDF's own first-page heading. Async, and may
         // fail (CSP / CDN / scanned PDF) — degrade silently to no suggestion.
-        extractPdfHeading(f).then(raw => {
+        // HTML files have no PDF heading to read.
+        if (!isHtmlFile(f)) extractPdfHeading(f).then(raw => {
           const clean = cleanHeading(raw);
           if (!clean || topicTouchedRef.current) return;
           setTopicRaw(prev => (prev.trim() ? prev : clean));
@@ -283,12 +287,16 @@ function UploadPdfTab({
   }, [autoTitle, titleManual]);
 
   const handleUpload = async () => {
-    if (!file) { setError('Choose a PDF file to upload'); return; }
+    if (!file) { setError('Choose a PDF or HTML file to upload'); return; }
+    const html = isHtmlFile(file);
+    if (!html && file.type !== 'application/pdf') { setError('Only PDF or HTML files can be uploaded'); return; }
+    if (html && file.size > HTML_MATERIAL_MAX_BYTES) { setError('HTML files must be under 10 MB'); return; }
     setError('');
     try {
       setStage('uploading');
       const { key } = await uploadToR2({
-        file,
+        // Some browsers/OSes report an empty type for .html — pin it so the presign matches.
+        file: html && file.type !== 'text/html' ? new File([file], file.name, { type: 'text/html' }) : file,
         endpoint: '/api/lms/admin/materials/upload',
         onProgress: pct => setProgress(pct),
       });
@@ -298,7 +306,7 @@ function UploadPdfTab({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           title: title.trim() || autoTitle,
-          type: 'pdf',
+          type: html ? 'html' : 'pdf',
           blobUrl: key,
           fileName: file.name,
           fileSize: file.size,
@@ -364,14 +372,14 @@ function UploadPdfTab({
           </p>
         </div>
         <div>
-          <FieldLabel>PDF File *</FieldLabel>
+          <FieldLabel>PDF or HTML File *</FieldLabel>
           <style>{`
             .lms-materials-file-input:hover { border-color: ${BEIGE}; }
             .lms-materials-file-input:focus-visible { outline: 2px solid ${RED}; outline-offset: 2px; }
           `}</style>
           <input
             type="file"
-            accept="application/pdf"
+            accept="application/pdf,text/html,.html,.htm"
             className="lms-materials-file-input"
             onChange={e => handleFileChange(e.target.files?.[0] ?? null)}
             style={{ width: '100%', minHeight: 44, padding: '10px 12px', fontSize: T_BASE, color: SLATE, border: `1px solid ${BORDER}`, borderRadius: R_MD, background: SURFACE, transition: 'border-color 0.14s' }}
@@ -432,7 +440,7 @@ function UploadPdfTab({
             loading={stage === 'uploading' || stage === 'saving'}
           >
             <Upload size={14} aria-hidden />
-            Upload PDF
+            Upload file
           </PrimaryBtn>
         </div>
       </div>
@@ -786,11 +794,11 @@ function MaterialsList({
   if (materials.length === 0) return (
     <EmptyState
       icon={FileText}
-      message="No materials yet. Upload a PDF or add a link."
+      message="No materials yet. Upload a PDF or HTML file, or add a link."
       action={
         <PrimaryBtn onClick={onUpload} small>
           <Upload size={13} aria-hidden />
-          Upload PDF
+          Upload file
         </PrimaryBtn>
       }
     />
@@ -857,10 +865,10 @@ function MaterialsList({
             >
               <div style={{
                 width: 36, height: 36, borderRadius: R_MD, flexShrink: 0,
-                background: m.type === 'pdf' ? `${RED}14` : INFO_BG,
+                background: m.type !== 'link' ? `${RED}14` : INFO_BG,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                {m.type === 'pdf'
+                {m.type !== 'link'
                   ? <FileText size={16} style={{ color: RED }} aria-hidden />
                   : <LinkIcon size={16} style={{ color: INFO }} aria-hidden />}
               </div>
@@ -883,7 +891,7 @@ function MaterialsList({
                 </p>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, flexWrap: 'wrap', justifyContent: 'flex-end' }}>
-                <IconBtn icon={ExternalLink} label="Open" href={m.blobUrl} />
+                <IconBtn icon={ExternalLink} label="Open" href={m.type === 'html' ? `/dashboard/materials/${m.id}` : m.blobUrl} />
                 <IconBtn icon={Pencil} label="Edit details" onClick={() => setEditMaterial(m)} />
                 <IconBtn icon={Paperclip} label="Link to class" onClick={() => setLinkMaterial(m)} />
                 {/* Wider gap + divider before Delete so it isn't a mis-tap target
@@ -897,7 +905,7 @@ function MaterialsList({
       )}
       <ConfirmDialog
         open={!!deleteId} title="Delete this material?"
-        message="PDF files will also be removed from storage."
+        message="Uploaded files will also be removed from storage."
         confirmLabel="Delete" destructive loading={deleting}
         onConfirm={handleDelete}
         onCancel={() => setDeleteId(null)}
@@ -958,12 +966,12 @@ export default function MaterialsClient({ initialMaterials, sessions: initialSes
       <style>{SPIN_CSS}</style>
       <PageHeader
         title="Materials"
-        subtitle={`${materials.length} material${materials.length !== 1 ? 's' : ''} — PDFs and links for students`}
+        subtitle={`${materials.length} material${materials.length !== 1 ? 's' : ''} — PDFs, HTML files and links for students`}
         action={
           <div style={{ display: 'flex', gap: 8 }}>
             <PrimaryBtn onClick={() => setTab('upload')} disabled={tab === 'upload'}>
               <Upload size={14} aria-hidden />
-              Upload PDF
+              Upload file
             </PrimaryBtn>
             <GhostBtn onClick={() => setTab('link')} disabled={tab === 'link'}>
               <Plus size={14} aria-hidden />
@@ -975,7 +983,7 @@ export default function MaterialsClient({ initialMaterials, sessions: initialSes
       <TabBar
         tabs={[
           { id: 'list',   label: `All Materials (${materials.length})` },
-          { id: 'upload', label: 'Upload PDF' },
+          { id: 'upload', label: 'Upload file' },
           { id: 'link',   label: 'Add Link' },
         ]}
         active={tab}

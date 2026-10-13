@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     const { title, type, blobUrl, fileName, fileSize, subject, product, batch, classSessionId, docType, number, topic } = body;
 
     if (!title || typeof title !== 'string') throw new ApiException('title is required', 400);
-    if (!type || !['pdf', 'link'].includes(type)) throw new ApiException("type must be 'pdf' or 'link'", 400);
+    if (!type || !['pdf', 'html', 'link'].includes(type)) throw new ApiException("type must be 'pdf', 'html' or 'link'", 400);
     if (!blobUrl || typeof blobUrl !== 'string') throw new ApiException('blobUrl is required', 400);
     const sessionId: number | null = classSessionId ? Number(classSessionId) : null;
     if (sessionId !== null && (!Number.isInteger(sessionId) || sessionId <= 0)) {

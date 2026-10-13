@@ -154,7 +154,7 @@ export async function getSubjectData(
       fileSize: m.fileSize,
       createdAt: m.createdAt.getTime(),
     };
-    if (m.type === 'pdf') lectureSheets.push(entry);
+    if (m.type === 'pdf' || m.type === 'html') lectureSheets.push(entry);
     else otherMaterials.push(entry);
   }
 

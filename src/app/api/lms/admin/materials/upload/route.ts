@@ -1,6 +1,6 @@
 /**
  * POST /api/lms/admin/materials/upload
- * Returns a presigned R2 PUT URL for a PDF file upload.
+ * Returns a presigned R2 PUT URL for a PDF or HTML file upload.
  * The client uploads directly to R2, then POSTs the key to /api/lms/admin/materials.
  *
  * Body: { fileName: string; contentType: string }
@@ -11,6 +11,7 @@ import { NextRequest } from 'next/server';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { r2PresignPut } from '@/lib/storage/r2';
+import { HTML_FILE_NAME_RE } from '@/lib/lms/html-material';
 
 export async function POST(req: NextRequest) {
   return safeApiHandler(async () => {
@@ -22,8 +23,11 @@ export async function POST(req: NextRequest) {
     if (!fileName || typeof fileName !== 'string') {
       throw new ApiException('fileName is required', 400);
     }
-    if (contentType !== 'application/pdf') {
-      throw new ApiException('Only PDF files are allowed for materials', 400);
+    if (contentType !== 'application/pdf' && contentType !== 'text/html') {
+      throw new ApiException('Only PDF or HTML files are allowed for materials', 400);
+    }
+    if (contentType === 'text/html' && !HTML_FILE_NAME_RE.test(fileName)) {
+      throw new ApiException('HTML files must end in .html or .htm', 400);
     }
 
     // Sanitise filename: keep extension, strip path separators and unusual chars

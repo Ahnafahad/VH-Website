@@ -15,6 +15,7 @@ import { materials, materialHighlights, materialDrawings } from '@/lib/db/schema
 import { canAccessLmsContent } from '@/lib/lms/access';
 import { getGatedSolutionMaterialIds } from '@/lib/lms/homework-access';
 import MaterialViewer from '@/components/lms/MaterialViewer';
+import HtmlMaterialViewer from '@/components/lms/HtmlMaterialViewer';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import type { ScaledPosition } from 'react-pdf-highlighter-extended';
 
@@ -115,6 +116,12 @@ export default async function MaterialViewerPage({ params }: PageProps) {
   const gatedIds = await getGatedSolutionMaterialIds(user, [material.id]);
   if (gatedIds.has(material.id)) {
     return <MaterialUnavailable message="This is a homework solution — submit that assignment to unlock it." />;
+  }
+
+  // HTML materials render in a sandboxed iframe fed by /api/lms/materials/[id]/html
+  // (which re-checks scope). No highlights/drawings — those are PDF-only.
+  if (material.type === 'html') {
+    return <HtmlMaterialViewer materialId={material.id} title={material.title} />;
   }
 
   // Only the PDF viewer makes sense; link-type materials should open externally

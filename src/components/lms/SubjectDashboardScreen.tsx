@@ -125,7 +125,7 @@ function HomeworkRow({ a }: { a: SubjectAssignment }) {
 }
 
 function MaterialRow({ id, title, type, blobUrl, fileSize }: { id: number; title: string; type: string; blobUrl: string; fileSize: number | null }) {
-  const isPdf = type === 'pdf';
+  const isPdf = type === 'pdf' || type === 'html'; // both open in the in-app viewer
   const content = (
     <>
       {isPdf ? (
