@@ -33,6 +33,12 @@ export interface BatchListResponse {
   defaultBatch:   string | null;
 }
 
+/** One of a student's last classes: attended in person, attended online, or absent. */
+export type AttendanceTick = 'present' | 'online' | 'absent';
+
+/** One of a student's last due homeworks: handed in and reviewed, handed in and waiting, or not handed in. */
+export type HomeworkState = 'reviewed' | 'waiting' | 'missing';
+
 /** One row in the summary table for a selected batch. No rank here (summary only). */
 export interface StudentSummary {
   id:               number;
@@ -56,6 +62,14 @@ export interface StudentSummary {
   /** homework already past due that applies to the student, and how many they handed in */
   homeworkSubmitted: number;
   homeworkDue:       number;
+  /** raw users.whatsapp (free text) for the click-to-send link; null if none */
+  whatsapp:          string | null;
+  /** last 8 applicable completed classes, oldest first */
+  recentAttendance:  AttendanceTick[];
+  /** last 6 past-due homeworks that apply to the student, oldest first */
+  recentHomework:    HomeworkState[];
+  /** last 6 submitted test percentages (0-100, rounded), oldest first */
+  recentMarks:       number[];
 }
 
 export interface StudentSummaryLastTest {

@@ -26,6 +26,7 @@ import { staleRegistrationCutoff } from '@/lib/registrations/enrolment';
 import ClassCloseoutPrompt, { type CloseoutSession } from '@/components/admin/ClassCloseoutPrompt';
 import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
 import { Suspense } from 'react';
+import AtRiskStrip from '@/components/admin/students/AtRiskStrip';
 import Link from 'next/link';
 import {
   Users,
@@ -42,11 +43,10 @@ import {
   CalendarClock,
   Settings,
   UserCheck,
-  AlertTriangle,
 } from 'lucide-react';
 import {
   RED, RED_DARK, SLATE, BORDER, MUTED, SURFACE, SURFACE_SHELL, INK_SOFT,
-  BEIGE, WARN, WARN_BG, T_XS, T_SM, T_BASE, T_MD, T_XL, T_2XL, R_MD, R_LG,
+  BEIGE, WARN, T_XS, T_SM, T_BASE, T_MD, T_XL, T_2XL, R_MD, R_LG,
   FONT_HEADING,
 } from '@/components/admin/lms/tokens';
 
@@ -305,37 +305,7 @@ async function AtRiskSection() {
   const atRiskStudents = await getAtRiskStudents().catch(() => [] as AtRiskStudent[]);
   if (!atRiskStudents.length) return null;
 
-  return (
-    <section aria-labelledby="admin-at-risk-heading" style={{ marginBottom: 28 }}>
-      <h2
-        id="admin-at-risk-heading"
-        style={{ display: 'flex', alignItems: 'center', gap: 6, margin: '0 0 10px', fontSize: T_MD, color: WARN }}
-      >
-        <AlertTriangle size={15} aria-hidden /> At-risk students ({atRiskStudents.length})
-      </h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        {atRiskStudents.map((s) => (
-          <Link
-            key={s.id}
-            href={`/admin/students/${s.id}`}
-            className="vh-atrisk-row"
-            style={{
-              display: 'block', textDecoration: 'none',
-              border: `1px solid ${WARN}4D`, borderRadius: R_MD,
-              background: WARN_BG, padding: '10px 14px',
-            }}
-          >
-            <p style={{ margin: '0 0 4px', fontSize: T_BASE, fontWeight: 700, color: INK_SOFT }}>
-              {s.name}{s.batch ? ` · ${s.batch}` : ''}
-            </p>
-            <ul style={{ margin: 0, paddingLeft: 16, fontSize: T_SM, color: WARN }}>
-              {s.reasons.map(r => <li key={r.code}>{r.message}</li>)}
-            </ul>
-          </Link>
-        ))}
-      </div>
-    </section>
-  );
+  return <AtRiskStrip students={atRiskStudents} />;
 }
 
 // --- Data health ---------------------------------------------------------------
@@ -457,10 +427,8 @@ export default async function AdminOverviewPage() {
         .vh-primary-action:hover { transform: translateY(-1px); border-color: ${BEIGE} !important; }
         .vh-quick-card { transition: background-color 0.12s; }
         .vh-quick-card:hover { background-color: ${SURFACE_SHELL}; }
-        .vh-atrisk-row { transition: border-color 0.12s; }
-        .vh-atrisk-row:hover { border-color: ${WARN}; }
         @media (prefers-reduced-motion: reduce) {
-          .vh-stat-col, .vh-primary-action, .vh-quick-card, .vh-atrisk-row { transition-duration: .01ms; }
+          .vh-stat-col, .vh-primary-action, .vh-quick-card { transition-duration: .01ms; }
         }
       `}</style>
 

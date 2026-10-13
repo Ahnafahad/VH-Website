@@ -13,6 +13,7 @@ import { getTestResults } from '@/lib/tests/service';
 import { getLexicoreBreakdown } from './lexicore-breakdown';
 import { getStudentMetricsForUser } from './student-metrics';
 import { computeAtRiskFlag } from './at-risk-pure';
+import { buildAttendanceTicks, buildHomeworkStates, lastMarks } from './progress-pure';
 import type {
   BatchListResponse, BatchOption, BatchSummaryResponse, StudentSummary,
   StudentSummaryLastTest, StudentDetailResponse, StudentProfile,
@@ -82,7 +83,7 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
   const now = new Date();
   const batchCondition = or(isNull(classSessions.batch), eq(classSessions.batch, batch));
   const applicableSessions = productSet.size > 0
-    ? await db.select({ id: classSessions.id, product: classSessions.product })
+    ? await db.select({ id: classSessions.id, product: classSessions.product, scheduledAt: classSessions.scheduledAt })
         .from(classSessions)
         .where(and(
           inArray(classSessions.product, Array.from(productSet)),
@@ -92,7 +93,7 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
         ))
     : [];
 
-  const sessionsByProduct = new Map<string, { id: number; product: string }[]>();
+  const sessionsByProduct = new Map<string, { id: number; product: string; scheduledAt: Date }[]>();
   for (const s of applicableSessions) {
     const list = sessionsByProduct.get(s.product) ?? [];
     list.push(s);
@@ -101,19 +102,20 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
 
   const sessionIds = applicableSessions.map(s => s.id);
   const attendanceRows = sessionIds.length
-    ? await db.select({ userId: classAttendance.userId, sessionId: classAttendance.sessionId })
+    ? await db.select({ userId: classAttendance.userId, sessionId: classAttendance.sessionId, mode: classAttendance.mode })
         .from(classAttendance)
         .where(and(inArray(classAttendance.sessionId, sessionIds), inArray(classAttendance.userId, userIds)))
     : [];
-  const attendedByUser = new Map<number, Set<number>>();
+  // sessionId -> 'online' | 'offline' per student
+  const attendedByUser = new Map<number, Map<number, string>>();
   for (const row of attendanceRows) {
-    if (!attendedByUser.has(row.userId)) attendedByUser.set(row.userId, new Set());
-    attendedByUser.get(row.userId)!.add(row.sessionId);
+    if (!attendedByUser.has(row.userId)) attendedByUser.set(row.userId, new Map());
+    attendedByUser.get(row.userId)!.set(row.sessionId, row.mode);
   }
 
   // Homework already past due for any product in this batch (batch NULL = every batch).
   const dueHomework = productSet.size > 0
-    ? await db.select({ id: assignments.id, product: assignments.product })
+    ? await db.select({ id: assignments.id, product: assignments.product, dueAt: assignments.dueAt })
         .from(assignments)
         .where(and(
           inArray(assignments.product, Array.from(productSet)),
@@ -121,24 +123,29 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
           or(isNull(assignments.batch), eq(assignments.batch, batch)),
         ))
     : [];
-  const homeworkByProduct = new Map<string, number[]>();
+  const homeworkByProduct = new Map<string, { id: number; dueAt: Date }[]>();
   for (const h of dueHomework) {
     const list = homeworkByProduct.get(h.product) ?? [];
-    list.push(h.id);
+    list.push({ id: h.id, dueAt: h.dueAt });
     homeworkByProduct.set(h.product, list);
   }
   const submissionRows = dueHomework.length
-    ? await db.select({ userId: assignmentSubmissions.userId, assignmentId: assignmentSubmissions.assignmentId })
+    ? await db.select({
+          userId: assignmentSubmissions.userId,
+          assignmentId: assignmentSubmissions.assignmentId,
+          status: assignmentSubmissions.status,
+        })
         .from(assignmentSubmissions)
         .where(and(
           inArray(assignmentSubmissions.assignmentId, dueHomework.map(h => h.id)),
           inArray(assignmentSubmissions.userId, userIds),
         ))
     : [];
-  const submittedByUser = new Map<number, Set<number>>();
+  // assignmentId -> 'submitted' | 'reviewed' per student
+  const submittedByUser = new Map<number, Map<number, string>>();
   for (const r of submissionRows) {
-    if (!submittedByUser.has(r.userId)) submittedByUser.set(r.userId, new Set());
-    submittedByUser.get(r.userId)!.add(r.assignmentId);
+    if (!submittedByUser.has(r.userId)) submittedByUser.set(r.userId, new Map());
+    submittedByUser.get(r.userId)!.set(r.assignmentId, r.status);
   }
 
   // Last submitted test per user.
@@ -160,8 +167,8 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
   const students: StudentSummary[] = studentRows.map(u => {
     const products = productsByUser.get(u.id) ?? [];
     const userSessions = products.flatMap(p => sessionsByProduct.get(p) ?? []);
-    const attendedSet = attendedByUser.get(u.id) ?? new Set<number>();
-    const attendedSessions = userSessions.filter(s => attendedSet.has(s.id)).length;
+    const attendedModes = attendedByUser.get(u.id) ?? new Map<number, string>();
+    const attendedSessions = userSessions.filter(s => attendedModes.has(s.id)).length;
     const totalSessions = userSessions.length;
     const attendancePercent = totalSessions > 0
       ? round2((attendedSessions / totalSessions) * 100)
@@ -197,8 +204,9 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
       trend = delta >= 5 ? 'up' : delta <= -5 ? 'down' : 'flat';
     }
 
-    const dueIds = new Set(products.flatMap(p => homeworkByProduct.get(p) ?? []));
-    const handedIn = submittedByUser.get(u.id) ?? new Set<number>();
+    const dueList = products.flatMap(p => homeworkByProduct.get(p) ?? []);
+    const dueIds = new Set(dueList.map(h => h.id));
+    const handedIn = submittedByUser.get(u.id) ?? new Map<number, string>();
     const homeworkSubmitted = [...dueIds].filter(id => handedIn.has(id)).length;
 
     const progress = progressByUser.get(u.id);
@@ -219,6 +227,10 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
       trend,
       homeworkSubmitted,
       homeworkDue: dueIds.size,
+      whatsapp: u.whatsapp,
+      recentAttendance: buildAttendanceTicks(userSessions, attendedModes),
+      recentHomework: buildHomeworkStates(dueList, handedIn),
+      recentMarks: lastMarks(pcts),
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
 
