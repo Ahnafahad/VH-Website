@@ -751,7 +751,7 @@ export function WindowsManager({
         <p style={{ fontSize: T_BASE, color: C.textMuted, fontFamily: SANS, margin: 0 }}>No windows yet.</p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {test.windows.map(w => (
+          {[...test.windows].sort((a, b) => a.opensAt - b.opensAt || a.mode.localeCompare(b.mode)).map(w => (
             <div key={w.id} style={{
               background: C.surface, border: `1px solid ${C.border}`,
               borderRadius: R_MD, padding: '10px 14px',
