@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import AdminProductToggle from './AdminProductToggle';
-import { INSTRUCTOR_NAV_SECTIONS, NAV_SECTIONS } from './admin-nav';
+import { INSTRUCTOR_NAV_SECTIONS, navSectionsFor } from './admin-nav';
 import { motion, Variants } from 'framer-motion';
 import {
   BEIGE,
@@ -64,7 +64,8 @@ const navItemVariants: Variants = {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function isActive(href: string, pathname: string, also: string[] = []): boolean {
-  if (href === '/admin') return pathname === '/admin';
+  href = href.split('?')[0];
+  if (href === '/admin' || href === '/admin/super') return pathname === href;
   return [href, ...also].some(h => pathname === h || pathname.startsWith(h + '/'));
 }
 
@@ -316,7 +317,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
       className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 z-40"
       style={{
         background:   SURFACE_SHELL,
-        borderRight:  `1px solid ${BORDER}`,
+        borderRight:  role === 'super_admin' ? '1px solid #B8895B66' : `1px solid ${BORDER}`,
         colorScheme:  'light',
       }}
     >
@@ -341,6 +342,9 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
           />
         </Link>
         <AdminProductToggle variant="light" />
+        {role === 'super_admin' && (
+          <span style={{ alignSelf: 'flex-start', padding: '3px 9px', borderRadius: 999, background: '#1A0507', color: '#D4B094', border: '1px solid #B8895B', fontSize: 9.5, fontWeight: 700, letterSpacing: '0.16em' }}>SUPER ADMIN</span>
+        )}
       </div>
 
       {/* ── Navigation ────────────────────────────────────────────────────── */}
@@ -348,7 +352,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
         style={{ flex: 1, padding: '10px 8px', overflowY: 'auto' }}
         aria-label="Admin navigation"
       >
-        {NAV_SECTIONS.map((section, si) => (
+        {navSectionsFor(role).map((section, si) => (
           <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 6 : 0 }}>
             {/* Section header */}
             {section.label && (
@@ -357,7 +361,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                   margin:        si === 0 ? '8px 12px 4px' : '12px 12px 4px',
                   fontSize:      10,
                   fontWeight:    600,
-                  color:         MUTED,
+                  color:         section.label === 'SUPER ADMIN' ? '#B8895B' : MUTED,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   lineHeight:    1,

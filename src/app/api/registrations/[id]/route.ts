@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db, registrations } from '@/lib/db';
 import { eq } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
-import { isAdminEmail } from '@/lib/db-access-control';
+import { isAdminEmail, getUserByEmail } from '@/lib/db-access-control';
+import { recordAudit } from '@/lib/audit-log';
 
 export async function PATCH(
   request: NextRequest,
@@ -30,8 +31,18 @@ export async function PATCH(
     if (email)                updateSet.email  = email.trim().toLowerCase();
     if (phone)                updateSet.phone  = phone.trim();
 
+    const before = await db.select().from(registrations).where(eq(registrations.id, numId)).get();
     const [updated] = await db.update(registrations).set(updateSet).where(eq(registrations.id, numId)).returning();
     if (!updated) throw new ApiException('Registration not found', 404);
+
+    getUserByEmail(auth.email).then(a => recordAudit({
+      actorUserId: a?.id ?? null,
+      action:      status !== undefined && status !== before?.status ? 'registration.status' : 'registration.update',
+      entityType:  'registration',
+      entityId:    numId,
+      before:      { status: before?.status, notes: before?.notes },
+      after:       { status: updated.status, notes: updated.notes },
+    })).catch(() => {});
 
     return NextResponse.json({ success: true, registration: updated });
   } catch (error) {

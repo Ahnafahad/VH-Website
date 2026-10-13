@@ -1,10 +1,14 @@
 import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import AdminSidebar from '@/components/admin/AdminSidebar';
 import AdminMobileHeader from '@/components/admin/AdminMobileHeader';
 import AdminMotionConfig from '@/components/admin/AdminMotionConfig';
 import { AdminProductProvider } from '@/components/admin/AdminProductContext';
+import { getUserByEmail } from '@/lib/db-access-control';
+import InstructorPageGuard from '@/components/admin/super/security/InstructorPageGuard';
+import { getInstructorHidden, isPathHidden, hiddenPrefixes, INSTRUCTOR_HOME } from '@/lib/super/security/permissions';
 
 export default async function AdminLayout({
   children,
@@ -21,6 +25,16 @@ export default async function AdminLayout({
   const role = session.user.role;
   if (role !== 'admin' && role !== 'super_admin' && role !== 'instructor') {
     redirect('/vocab');
+  }
+
+  // Super-admin-configured page hiding for instructors (page-level only; see /admin/super/permissions).
+  let hiddenForInstructor: string[] = [];
+  if (role === 'instructor') {
+    const pathname = (await headers()).get('x-pathname') ?? '';
+    const me = await getUserByEmail(session.user.email);
+    const hidden = me ? await getInstructorHidden(me.id) : [];
+    if (pathname && pathname !== INSTRUCTOR_HOME && isPathHidden(pathname, hidden)) redirect(INSTRUCTOR_HOME);
+    hiddenForInstructor = hiddenPrefixes(hidden);
   }
 
   const adminName  = session.user.name  ?? 'Admin';
@@ -77,6 +91,7 @@ export default async function AdminLayout({
               <strong>Read-only access.</strong> You can view everything here, but any change you try to save will be rejected.
             </p>
           )}
+          {hiddenForInstructor.length > 0 && <InstructorPageGuard prefixes={hiddenForInstructor} home={INSTRUCTOR_HOME} />}
           {children}
         </div>
       </main>

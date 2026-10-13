@@ -8,6 +8,7 @@ import { eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { lmsAnnouncements } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
+import { recordAudit } from '@/lib/audit-log';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { encodeTargetUserIds, parseTargetUserIds, resolveTargetUsers } from '@/lib/lms/announcement-targets';
@@ -80,7 +81,7 @@ export async function DELETE(
   { params }: { params: Promise<{ id: string }> },
 ) {
   return safeApiHandler(async () => {
-    await requireStaff();
+    const staff = await requireStaff();
     const { id } = await params;
     const announcementId = parseInt(id, 10);
     if (isNaN(announcementId)) throw new ApiException('Invalid id', 400);
@@ -95,6 +96,8 @@ export async function DELETE(
     await db
       .delete(lmsAnnouncements)
       .where(eq(lmsAnnouncements.id, announcementId));
+
+    recordAudit({ actorUserId: staff.id, action: 'announcement.delete', entityType: 'announcement', entityId: announcementId, before: { title: existing.title, subject: existing.subject, product: existing.product, batch: existing.batch } }).catch(() => {});
 
     return { deleted: true };
   });

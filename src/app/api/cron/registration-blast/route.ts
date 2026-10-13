@@ -10,6 +10,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@libsql/client';
 import { Resend } from 'resend';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -139,7 +140,7 @@ function fixEmail(email: string): string {
   return email;
 }
 
-export async function GET(req: NextRequest) {
+async function cronGetHandler(req: NextRequest) {
   // Validate cron secret
   if (!CRON_SECRET) {
     console.error('[registration-blast] CRON_SECRET is not configured');
@@ -230,3 +231,5 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }
+
+export const GET = withCronLog('registration-blast', cronGetHandler);

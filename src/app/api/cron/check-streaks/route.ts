@@ -14,10 +14,11 @@ import { eq, and, gt, lt, ne } from 'drizzle-orm';
 import { db, users, vocabUserProgress } from '@/lib/db';
 import { sendStreakLost } from '@/lib/email';
 import { dhakaYesterdayStart } from '@/lib/vocab/dhaka-time';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
-export async function GET(req: NextRequest) {
+async function cronGetHandler(req: NextRequest) {
   // Validate cron secret
   if (!CRON_SECRET) {
     console.error('[check-streaks] CRON_SECRET is not configured');
@@ -106,3 +107,5 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }
+
+export const GET = withCronLog('check-streaks', cronGetHandler);

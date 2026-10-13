@@ -3,6 +3,9 @@
 import { usePathname } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import ViewAsBanner from '@/components/admin/super/ViewAsBanner';
+import CommsBanner from '@/components/CommsBanner';
+import MaintenanceGate from '@/components/MaintenanceGate';
 
 export default function MainSiteShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -17,9 +20,11 @@ export default function MainSiteShell({ children }: { children: React.ReactNode 
 
   return (
     <>
+      <ViewAsBanner />
       {!hideChrome && <Header />}
-      {children}
+      <MaintenanceGate>{children}</MaintenanceGate>
       {!hideChrome && <Footer />}
+      {!hideChrome && <CommsBanner />}
     </>
   );
 }

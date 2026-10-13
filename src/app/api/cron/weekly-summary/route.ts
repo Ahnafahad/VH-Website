@@ -13,6 +13,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { eq, gte, and, ne, desc } from 'drizzle-orm';
 import { db, users, vocabUserProgress, vocabUserWordRecords, vocabWeeklyLeaderboard } from '@/lib/db';
 import { sendWeeklySummary } from '@/lib/email';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -44,7 +45,7 @@ async function batchSettled<T, R>(
   return results;
 }
 
-export async function GET(req: NextRequest) {
+async function cronGetHandler(req: NextRequest) {
   // Validate cron secret
   if (!CRON_SECRET) {
     console.error('[weekly-summary] CRON_SECRET is not configured');
@@ -162,3 +163,5 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }
+
+export const GET = withCronLog('weekly-summary', cronGetHandler);

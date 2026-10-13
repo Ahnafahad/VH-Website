@@ -8,6 +8,9 @@ import type { UserProduct } from '@/lib/db/schema';
 import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
 import { assignStudentIdIfEligible } from '@/lib/students/assign-student-id';
 import { isSegmentKey, segmentCondition } from '@/lib/admin/user-segments';
+import { recordAudit } from '@/lib/audit-log';
+import { isRootEmail } from '@/lib/super/guard';
+import { rootLockViolation, ROOT_PROTECTED_MESSAGE } from '@/lib/super/security/root-lock';
 
 // GET — list users
 export async function GET(request: NextRequest) {
@@ -127,6 +130,13 @@ export async function POST(request: NextRequest) {
     }
 
     clearAccessControlCache(normalEmail);
+    recordAudit({
+      actorUserId: adminUser?.id ?? null,
+      action:      'user.create',
+      entityType:  'user',
+      entityId:    newUser.id,
+      after:       { email: newUser.email, role: newUser.role, batch: newUser.batch, products: Array.isArray(products) ? products : [] },
+    }).catch(() => {});
     const productList = products && Array.isArray(products) ? products : [];
     await grantFullVocabAccessIfEligible(newUser.id, newUser.batch, productList);
     const assignedStudentId = await assignStudentIdIfEligible(newUser.id, newUser.batch, productList);
@@ -155,6 +165,10 @@ export async function PATCH(request: NextRequest) {
       throw new ApiException('Only super admins can modify super admin accounts', 403);
     }
 
+    if (rootLockViolation(isRootEmail(existing.email), { role: updates.role, status: updates.status, email: updates.email, readOnly: updates.readOnly })) {
+      throw new ApiException(ROOT_PROTECTED_MESSAGE, 403);
+    }
+
     if (updates.role !== undefined) {
       if (existing.id === adminUser?.id) {
         throw new ApiException('You cannot change your own role', 403);
@@ -180,6 +194,20 @@ export async function PATCH(request: NextRequest) {
 
     const [updated] = await db.update(users).set(updateSet).where(eq(users.id, userId)).returning();
 
+    const changedKeys = Object.keys(updateSet).filter(k => k !== 'updatedAt');
+    if (changedKeys.length > 0) {
+      const ex = existing as Record<string, unknown>;
+      const up = updated as Record<string, unknown>;
+      recordAudit({
+        actorUserId: adminUser?.id ?? null,
+        action:      'user.update',
+        entityType:  'user',
+        entityId:    userId,
+        before:      Object.fromEntries(changedKeys.map(k => [k, ex[k]])),
+        after:       Object.fromEntries(changedKeys.map(k => [k, up[k]])),
+      }).catch(() => {});
+    }
+
     // Sync products if provided
     if (newProducts !== undefined && Array.isArray(newProducts)) {
       const current = await db
@@ -194,6 +222,16 @@ export async function PATCH(request: NextRequest) {
       }
       for (const p of currentSet) {
         if (!newSet.has(p)) await revokeProduct(userId, p);
+      }
+      if (newSet.size !== currentSet.size || [...currentSet].some(p => !newSet.has(p))) {
+        recordAudit({
+          actorUserId: adminUser?.id ?? null,
+          action:      'access.change',
+          entityType:  'user',
+          entityId:    userId,
+          before:      { products: [...currentSet] },
+          after:       { products: [...newSet] },
+        }).catch(() => {});
       }
     }
 
@@ -228,9 +266,17 @@ export async function DELETE(request: NextRequest) {
     const existing = await db.select().from(users).where(eq(users.id, userId)).get();
     if (!existing) throw new ApiException('User not found', 404);
     if (existing.role === 'super_admin') throw new ApiException('Cannot delete super admin accounts', 403);
+    if (rootLockViolation(isRootEmail(existing.email), { delete: true })) throw new ApiException(ROOT_PROTECTED_MESSAGE, 403);
 
     await db.delete(users).where(eq(users.id, userId));
     clearAccessControlCache(existing.email);
+    getUserByEmail(auth.email).then(a => recordAudit({
+      actorUserId: a?.id ?? null,
+      action:      'user.delete',
+      entityType:  'user',
+      entityId:    userId,
+      before:      { email: existing.email, name: existing.name, role: existing.role, batch: existing.batch },
+    })).catch(() => {});
 
     return NextResponse.json({ success: true, message: 'User deleted' });
   } catch (error) {

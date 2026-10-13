@@ -9,6 +9,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -111,7 +112,7 @@ function sleep(ms: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-export async function GET(req: NextRequest) {
+async function cronGetHandler(req: NextRequest) {
   if (!CRON_SECRET) {
     return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
   }
@@ -159,3 +160,5 @@ export async function GET(req: NextRequest) {
 
   return NextResponse.json({ sent, failed, total: REMAINING_RECIPIENTS.length, errors });
 }
+
+export const GET = withCronLog('orientation-blast', cronGetHandler);

@@ -17,13 +17,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { sql } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { vocabUserWordRecords } from '@/lib/db/schema';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
 const GRACE_SECONDS = 7 * 86_400;
 const DECAY_FACTOR  = 0.98;
 
-export async function GET(req: NextRequest) {
+async function cronGetHandler(req: NextRequest) {
   if (!CRON_SECRET) {
     console.error('[vocab-decay] CRON_SECRET is not configured');
     return NextResponse.json({ error: 'Server misconfiguration' }, { status: 500 });
@@ -60,3 +61,5 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }
+
+export const GET = withCronLog('decay', cronGetHandler);

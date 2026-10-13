@@ -7,6 +7,7 @@ import {
   PutObjectCommand,
   GetObjectCommand,
   DeleteObjectCommand,
+  ListObjectsV2Command,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import type { Readable } from 'stream';
@@ -149,4 +150,11 @@ export async function r2GetBytes(key: string): Promise<{ body: Uint8Array; conte
   if (!res.Body) throw new Error(`R2 object has no body: ${key}`);
   const body = await res.Body.transformToByteArray();
   return { body, contentType: res.ContentType ?? 'application/octet-stream' };
+}
+
+/** One page (<=1000) of an object listing — used by the super-admin storage monitor. */
+export async function r2ListPage(token?: string): Promise<{ count: number; bytes: number; next?: string }> {
+  const res = await getClient().send(new ListObjectsV2Command({ Bucket: getBucket(), ContinuationToken: token }));
+  const items = res.Contents ?? [];
+  return { count: items.length, bytes: items.reduce((n, o) => n + (o.Size ?? 0), 0), next: res.IsTruncated ? res.NextContinuationToken : undefined };
 }

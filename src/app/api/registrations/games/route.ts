@@ -2,12 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { db, users, freeSignups } from '@/lib/db';
 import { eq, desc } from 'drizzle-orm';
 import { validateAuth, createErrorResponse, ApiException } from '@/lib/api-utils';
+import { getFlag } from '@/lib/super/flags';
 import { isAdminEmail } from '@/lib/db-access-control';
 import { sendFreeSignupNotification } from '@/lib/email';
 
 // POST — public free signup submission (games + free resources access)
 export async function POST(request: NextRequest) {
   try {
+    if (!(await getFlag('registration_open', true))) throw new ApiException('Registration is closed right now. Please check back soon.', 403, 'REGISTRATION_CLOSED');
     const data = await request.json();
     const { name, email, whatsapp } = data;
 

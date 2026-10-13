@@ -23,6 +23,21 @@ import {
   NotebookPen,
   Printer,
   Scale,
+  Crown,
+  ShieldCheck,
+  UserCog,
+  GraduationCap,
+  FlaskConical,
+  ToggleRight,
+  Server,
+  ScanSearch,
+  Terminal,
+  ScrollText,
+  KeyRound,
+  Hourglass,
+  Radio,
+  Wallet,
+  LayoutGrid,
 } from 'lucide-react';
 
 // Single source of truth for the admin navigation: the desktop sidebar and the mobile menu both
@@ -128,3 +143,39 @@ export const NAV_SECTIONS: NavSection[] = [
     ],
   },
 ];
+
+// Super-admin-only section, prepended for role === 'super_admin'. Every page behind these links
+// is gated server-side by requireSuperAdminPage()/requireSuperAdmin() — hiding the nav is cosmetic.
+export const SUPER_NAV_SECTIONS: NavSection[] = [
+  {
+    label: 'SUPER ADMIN',
+    items: [
+      { href: '/admin/super',            label: 'Command Center',   icon: Crown },
+      { href: '/admin/super/staff',      label: 'Staff manager',    icon: UserCog },
+      { href: '/admin/super/students',   label: 'Student control',  icon: GraduationCap },
+      { href: '/admin/super/tests',      label: 'Tests & grading',  icon: FlaskConical },
+      { href: '/admin/super/switches',   label: 'Feature switches', icon: ToggleRight },
+      { href: '/admin/super/broadcast',  label: 'Comms',            icon: Radio },
+      { href: '/admin/super/finance',    label: 'Finance',          icon: Wallet },
+      { href: '/admin/super/ops',        label: 'Operations',       icon: Server },
+      { href: '/admin/super/integrity',  label: 'Data integrity',   icon: ScanSearch },
+      { href: '/admin/super/sql',        label: 'SQL console',      icon: Terminal },
+      { href: '/admin/super/audit',      label: 'Audit log',        icon: ScrollText },
+      { href: '/admin/super/security',   label: 'Security',         icon: ShieldCheck },
+      { href: '/admin/super/permissions',label: 'Permissions',      icon: KeyRound },
+      { href: '/admin/super/approvals',  label: 'Approvals & danger', icon: Hourglass },
+    ],
+  },
+];
+
+/** Sections to render for a staff role. Super admins get their own section first, and the
+ *  classic Overview link carries ?classic=1 so /admin stops redirecting them to the Command Center. */
+export function navSectionsFor(role: 'super_admin' | 'admin' | 'instructor'): NavSection[] {
+  if (role === 'instructor') return INSTRUCTOR_NAV_SECTIONS;
+  if (role !== 'super_admin') return NAV_SECTIONS;
+  const classic = NAV_SECTIONS.map(sec => ({
+    ...sec,
+    items: sec.items.map(i => (i.href === '/admin' ? { ...i, href: '/admin?classic=1', label: 'Classic overview', icon: LayoutGrid } : i)),
+  }));
+  return [...SUPER_NAV_SECTIONS, ...classic];
+}

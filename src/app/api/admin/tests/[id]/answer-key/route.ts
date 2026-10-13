@@ -15,6 +15,7 @@ import { requireUser } from '@/lib/tests/route-helpers';
 import { scoreAttemptById } from '@/lib/tests/service';
 import { isAdminRole } from '@/lib/auth/roles';
 import { recordAudit } from '@/lib/audit-log';
+import { snapshotTest } from '@/lib/super/content/versions';
 
 async function requireAdmin() {
   const user = await requireUser();
@@ -67,6 +68,8 @@ export async function PATCH(
 
     const test = await db.select().from(tests).where(eq(tests.id, id)).get();
     if (!test) throw new ApiException('Test not found', 404);
+    // Version history is best-effort: a snapshot failure must never block the key edit.
+    await snapshotTest(id, 'Answer key edit', admin.id).catch((e) => console.error('[answer-key] snapshot failed', e));
 
     // Only touch questions that belong to this test
     const owned = await db

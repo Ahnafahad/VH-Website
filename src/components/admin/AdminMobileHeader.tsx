@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
 import { useState } from 'react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { INSTRUCTOR_NAV_SECTIONS, NAV_SECTIONS } from './admin-nav';
+import { INSTRUCTOR_NAV_SECTIONS, navSectionsFor } from './admin-nav';
 import AdminProductToggle from './AdminProductToggle';
 import {
   BEIGE,
@@ -81,7 +81,8 @@ const drawerItemVariants: Variants = {
 // ─── Helpers ─────────────────────────────────────────────────────────────────
 
 function isActive(href: string, pathname: string, also: string[] = []): boolean {
-  if (href === '/admin') return pathname === '/admin';
+  href = href.split('?')[0];
+  if (href === '/admin' || href === '/admin/super') return pathname === href;
   return [href, ...also].some(h => pathname === h || pathname.startsWith(h + '/'));
 }
 
@@ -609,6 +610,9 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
 
               <div style={{ padding: '12px 16px 0' }}>
                 <AdminProductToggle variant="light" />
+                {role === 'super_admin' && (
+                  <span style={{ alignSelf: 'flex-start', padding: '3px 9px', borderRadius: 999, background: '#1A0507', color: '#D4B094', border: '1px solid #B8895B', fontSize: 9.5, fontWeight: 700, letterSpacing: '0.16em' }}>SUPER ADMIN</span>
+                )}
               </div>
 
               {/* Drawer nav items */}
@@ -618,7 +622,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
               >
                 {(() => {
                   let itemIndex = 0;
-                  return NAV_SECTIONS.map((section) => (
+                  return navSectionsFor(role).map((section) => (
                     <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 4 : 0 }}>
                       {/* Section header */}
                       {section.label && (
@@ -627,7 +631,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                             margin:        '10px 12px 4px',
                             fontSize:      10,
                             fontWeight:    600,
-                            color:         MUTED,
+                            color:         section.label === 'SUPER ADMIN' ? '#B8895B' : MUTED,
                             letterSpacing: '0.1em',
                             textTransform: 'uppercase',
                             lineHeight:    1,

@@ -1,0 +1,30 @@
+/** Names only. Never return values or prefixes. */
+export const ENV_VARS: { name: string; required: boolean; note: string }[] = [
+  { name: 'TURSO_DATABASE_URL', required: true, note: 'Database' },
+  { name: 'TURSO_AUTH_TOKEN', required: true, note: 'Database' },
+  { name: 'NEXTAUTH_URL', required: true, note: 'Auth' },
+  { name: 'NEXTAUTH_SECRET', required: true, note: 'Auth' },
+  { name: 'GOOGLE_CLIENT_ID', required: true, note: 'Google sign-in' },
+  { name: 'GOOGLE_CLIENT_SECRET', required: true, note: 'Google sign-in' },
+  { name: 'CRON_SECRET', required: true, note: 'Cron auth' },
+  { name: 'RESEND_API_KEY', required: true, note: 'Email' },
+  { name: 'R2_ACCOUNT_ID', required: true, note: 'Recordings storage' },
+  { name: 'R2_ACCESS_KEY_ID', required: true, note: 'Recordings storage' },
+  { name: 'R2_SECRET_ACCESS_KEY', required: true, note: 'Recordings storage' },
+  { name: 'R2_BUCKET', required: true, note: 'Recordings storage' },
+  { name: 'GOOGLE_GEMINI_API_KEY', required: true, note: 'AI' },
+  { name: 'DEEPSEEK_API_KEY', required: true, note: 'AI' },
+  { name: 'NEXT_PUBLIC_VAPID_PUBLIC_KEY', required: true, note: 'Push notifications' },
+  { name: 'VAPID_PRIVATE_KEY', required: true, note: 'Push notifications' },
+  { name: 'RECALL_API_KEY', required: false, note: 'Meeting recording' },
+  { name: 'SKRIBBY_API_KEY', required: false, note: 'Essays' },
+  { name: 'SKRIBBY_WEBHOOK_SECRET', required: false, note: 'Essays' },
+  { name: 'VERCEL_TOKEN', required: false, note: 'Ops: Deploys tab' },
+  { name: 'VERCEL_PROJECT_ID', required: false, note: 'Ops: Deploys tab' },
+  { name: 'VERCEL_TEAM_ID', required: false, note: 'Ops: Deploys tab (team projects)' },
+  { name: 'TURSO_PLATFORM_TOKEN', required: false, note: 'Ops: DB size' },
+  { name: 'TURSO_ORG', required: false, note: 'Ops: DB size' },
+  { name: 'TURSO_DB_NAME', required: false, note: 'Ops: DB size' },
+];
+
+export const envHealth = () => ENV_VARS.map(v => ({ ...v, set: !!process.env[v.name] }));

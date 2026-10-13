@@ -8,6 +8,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { generateSessionsFromSchedules } from '@/lib/lms/schedule-generator';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -32,5 +33,5 @@ async function handler(req: NextRequest): Promise<NextResponse> {
   }
 }
 
-export const GET = handler;
-export const POST = handler;
+export const GET = withCronLog('lms-generate-sessions', handler);
+export const POST = withCronLog('lms-generate-sessions', handler);

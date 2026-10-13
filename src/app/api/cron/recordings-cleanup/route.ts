@@ -20,6 +20,7 @@ import { db } from '@/lib/db';
 import { recordings, classSessions, recordingAccessGrants } from '@/lib/db/schema';
 import { countSubsequentCompletedClasses } from '@/lib/lms/recording-expiry-db';
 import { isRecordingWatchable } from '@/lib/lms/recording-expiry';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -92,5 +93,5 @@ async function handler(req: NextRequest) {
   }
 }
 
-export const GET  = handler;
-export const POST = handler;
+export const GET = withCronLog('recordings-cleanup', handler);
+export const POST = withCronLog('recordings-cleanup', handler);

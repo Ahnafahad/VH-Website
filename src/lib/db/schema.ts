@@ -84,6 +84,8 @@ export const users = sqliteTable('users', {
   isTeaching:        integer('is_teaching', { mode: 'boolean' }).default(false),
   // Read-only staff: can open every admin page but every write request is rejected (src/middleware.ts).
   readOnly:          integer('read_only', { mode: 'boolean' }).notNull().default(false),
+  // Super admin "force sign-out": any JWT issued before this instant is rejected (lib/auth.ts jwt callback).
+  sessionsInvalidatedAt: integer('sessions_invalidated_at', { mode: 'timestamp' }),
   // ── Avatars ────────────────────────────────────────────────────────────────
   // Exclusivity is enforced by a UNIQUE INDEX on this column (SQLite allows many
   // NULLs under a unique index), so two students can never hold the same character.
@@ -2118,3 +2120,71 @@ export const printRequestItems = sqliteTable('print_request_items', {
 export type PrintRequest     = typeof printRequests.$inferSelect;
 export type PrintRequestItem = typeof printRequestItems.$inferSelect;
 export type PrintRequestStatus = 'requested' | 'printed' | 'collected' | 'rejected' | 'cancelled';
+
+// ══════════════════════════════════════════════════════════════════════════════
+// SUPER ADMIN — tables backing /admin/super. Applied by scripts/apply-super-admin-schema.mjs
+// (idempotent SQL, not drizzle-kit push — see db-schema-change skill, journal desync).
+// ══════════════════════════════════════════════════════════════════════════════
+
+// Two-step destructive actions: proposed now, executed after executeAfter unless cancelled.
+export const superPendingActions = sqliteTable('super_pending_actions', {
+  id:           integer('id').primaryKey({ autoIncrement: true }),
+  action:       text('action').notNull(),          // e.g. 'user.delete' | 'table.wipe'
+  payload:      text('payload').notNull(),         // JSON
+  summary:      text('summary').notNull(),         // human-readable, shown in the queue
+  status:       text('status').notNull().default('pending'), // pending|executed|cancelled|failed
+  requestedBy:  integer('requested_by').references(() => users.id, { onDelete: 'set null' }),
+  executeAfter: integer('execute_after', { mode: 'timestamp' }).notNull(),
+  resolvedAt:   integer('resolved_at', { mode: 'timestamp' }),
+  result:       text('result'),
+  createdAt:    integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_super_pending_status').on(t.status, t.executeAfter)]);
+
+// Sign-in / sign-out / forced-sign-out / impersonation events.
+export const authEvents = sqliteTable('auth_events', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  userId:    integer('user_id').references(() => users.id, { onDelete: 'set null' }),
+  email:     text('email'),
+  type:      text('type').notNull(),               // signin|signin_denied|signout|force_signout|impersonate_start|impersonate_end
+  ip:        text('ip'),
+  userAgent: text('user_agent'),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_auth_events_user').on(t.userId, t.createdAt), index('idx_auth_events_created').on(t.createdAt)]);
+
+// Scheduled / sent broadcasts (push + email + in-app banner) to a segment.
+export const broadcasts = sqliteTable('broadcasts', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  title:       text('title').notNull(),
+  body:        text('body').notNull(),
+  channels:    text('channels').notNull(),         // JSON array: ['push','email','banner']
+  segment:     text('segment').notNull(),          // JSON audience filter for resolveAudience
+  scheduledAt: integer('scheduled_at', { mode: 'timestamp' }),
+  status:      text('status').notNull().default('draft'), // draft|scheduled|sending|sent|cancelled|failed
+  sentCount:   integer('sent_count').notNull().default(0),
+  createdBy:   integer('created_by').references(() => users.id, { onDelete: 'set null' }),
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  sentAt:      integer('sent_at', { mode: 'timestamp' }),
+}, (t) => [index('idx_broadcasts_status').on(t.status, t.scheduledAt)]);
+
+// Snapshot of a test (sections/questions/key) taken before an import or key change, for rollback.
+export const testVersions = sqliteTable('test_versions', {
+  id:        integer('id').primaryKey({ autoIncrement: true }),
+  testId:    integer('test_id').notNull().references(() => tests.id, { onDelete: 'cascade' }),
+  snapshot:  text('snapshot').notNull(),           // JSON
+  reason:    text('reason').notNull(),
+  createdBy: integer('created_by').references(() => users.id, { onDelete: 'set null' }),
+  createdAt: integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_test_versions_test').on(t.testId, t.createdAt)]);
+
+// Fee ledger rows for registrations (paid / pending / refunded). Offline + bKash, recorded by hand.
+export const registrationPayments = sqliteTable('registration_payments', {
+  id:             integer('id').primaryKey({ autoIncrement: true }),
+  registrationId: integer('registration_id').notNull().references(() => registrations.id, { onDelete: 'cascade' }),
+  amount:         integer('amount').notNull(),     // whole BDT; negative = refund
+  method:         text('method').notNull(),        // cash|bkash|bank|other
+  status:         text('status').notNull().default('paid'), // paid|pending|refunded
+  note:           text('note'),
+  followUpAt:     integer('follow_up_at', { mode: 'timestamp' }),
+  recordedBy:     integer('recorded_by').references(() => users.id, { onDelete: 'set null' }),
+  createdAt:      integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_reg_payments_reg').on(t.registrationId)]);

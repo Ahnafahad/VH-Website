@@ -13,6 +13,7 @@ import { db } from '@/lib/db';
 import { recordings, recordingAccessGrants } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
+import { recordAudit } from '@/lib/audit-log';
 
 function toGrantJson(grant: typeof recordingAccessGrants.$inferSelect) {
   return {
@@ -81,6 +82,7 @@ export async function POST(
         .values(toInsert.map((userId) => ({ recordingId, userId, expiresAt, grantedBy: staff.id })))
         .returning();
 
+      recordAudit({ actorUserId: staff.id, action: 'recording.grant', entityType: 'recording', entityId: recordingId, after: { userIds: inserted.map(g => g.userId), expiresAt: expiresAt.toISOString() } }).catch(() => {});
       return inserted.map(toGrantJson);
     }
 
@@ -100,6 +102,7 @@ export async function POST(
       })
       .returning();
 
+    recordAudit({ actorUserId: staff.id, action: 'recording.grant', entityType: 'recording', entityId: recordingId, after: { userId, wholeBatch: userId === null, expiresAt: expiresAt.toISOString() } }).catch(() => {});
     return toGrantJson(grant);
   });
 }

@@ -16,6 +16,8 @@ import type { UserProduct } from '@/lib/db/schema';
 import { grantFullVocabAccessIfEligible } from '@/lib/vocab/full-access-batches';
 import { assignStudentIdIfEligible } from '@/lib/students/assign-student-id';
 import { recordAudit } from '@/lib/audit-log';
+import { isRootEmail } from '@/lib/super/guard';
+import { rootLockViolation, ROOT_PROTECTED_MESSAGE } from '@/lib/super/security/root-lock';
 
 // ─── Auth helper (inline, avoids validateAuth which checks isEmailAuthorized) ──
 
@@ -104,6 +106,10 @@ export async function PATCH(
       throw new ApiException('Only super admins can modify super admin accounts', 403);
     }
 
+    if (rootLockViolation(isRootEmail(existing.email), { role: updates['role'], status: updates['status'], email: updates['email'], readOnly: updates['readOnly'] })) {
+      throw new ApiException(ROOT_PROTECTED_MESSAGE, 403);
+    }
+
     if (updates['role'] !== undefined) {
       if (existing.id === adminUser?.id) {
         throw new ApiException('You cannot change your own role', 403);
@@ -135,6 +141,20 @@ export async function PATCH(
       }).catch(() => {});
     }
 
+    const otherKeys = allowed.filter(k => k !== 'role' && updates[k] !== undefined);
+    if (otherKeys.length > 0) {
+      const ex = existing as Record<string, unknown>;
+      const up = updated as Record<string, unknown>;
+      recordAudit({
+        actorUserId: adminUser?.id ?? null,
+        action:      'user.update',
+        entityType:  'user',
+        entityId:    userId,
+        before:      Object.fromEntries(otherKeys.map(k => [k, ex[k]])),
+        after:       Object.fromEntries(otherKeys.map(k => [k, up[k]])),
+      }).catch(() => {});
+    }
+
     // Sync products if provided
     if (newProducts !== undefined && Array.isArray(newProducts)) {
       const current = await db
@@ -149,6 +169,16 @@ export async function PATCH(
       }
       for (const p of currentSet) {
         if (!newSet.has(p)) await revokeProduct(userId, p);
+      }
+      if (newSet.size !== currentSet.size || [...currentSet].some(p => !newSet.has(p))) {
+        recordAudit({
+          actorUserId: adminUser?.id ?? null,
+          action:      'access.change',
+          entityType:  'user',
+          entityId:    userId,
+          before:      { products: [...currentSet] },
+          after:       { products: [...newSet] },
+        }).catch(() => {});
       }
     }
 

@@ -21,6 +21,7 @@ import {
 import { eq, and, gte, lt, ne, or, isNull, isNotNull, inArray, desc, sql } from 'drizzle-orm';
 import { formatDhaka } from '@/lib/lms/time';
 import { isOperationalAdmin } from '@/lib/lms/operations';
+import { moneyHiddenFrom } from '@/lib/super/finance/money-gate';
 import { segmentCondition } from '@/lib/admin/user-segments';
 import ClassCloseoutPrompt, { type CloseoutSession } from '@/components/admin/ClassCloseoutPrompt';
 import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
@@ -406,20 +407,24 @@ function DataHealthSection({ items }: { items: HealthItem[] }) {
   );
 }
 
-export default async function AdminOverviewPage() {
+export default async function AdminOverviewPage({ searchParams }: { searchParams: Promise<{ classic?: string }> }) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.email) redirect('/auth/signin');
   const role = session.user.role;
   if (role !== 'admin' && role !== 'super_admin' && role !== 'instructor') {
     redirect('/vocab');
   }
+  // Super admins land on their Command Center; ?classic=1 opens the regular overview.
+  if (role === 'super_admin' && !(await searchParams).classic) redirect('/admin/super');
 
+  // Super admin can restrict operational money to themselves (Super Admin > Finance > Controls).
+  const moneyOk = isOperationalAdmin(role) && !(await moneyHiddenFrom(role));
   const teachingUsers = await fetchTeachingUsers();
   const [stats, closeoutSessions, instructorLoad, dataHealth] = await Promise.all([
     fetchStats(),
     fetchCloseoutSessions(),
     fetchInstructorLoad(teachingUsers),
-    role !== 'instructor' ? fetchDataHealth(isOperationalAdmin(role)) : Promise.resolve([] as HealthItem[]),
+    role !== 'instructor' ? fetchDataHealth(moneyOk) : Promise.resolve([] as HealthItem[]),
   ]);
   const adminName = session.user.name ?? 'Admin';
 
@@ -611,7 +616,7 @@ export default async function AdminOverviewPage() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
         {sections.map((section) => {
           const links = QUICK_LINKS.filter((l) => l.section === section &&
-            (l.href !== '/admin/operational' || isOperationalAdmin(role)));
+            (l.href !== '/admin/operational' || moneyOk));
           return (
             <div key={section}>
               {/* Section label */}

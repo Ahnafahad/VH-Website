@@ -13,6 +13,9 @@ import {
 } from '@/lib/db-access-control'
 import { getUserByEmail as getConfigUser } from '@/lib/generated-access-control'
 import { db, users } from '@/lib/db'
+import { isStaffRole } from '@/lib/auth/roles'
+import { logAuthEvent } from '@/lib/super/security/auth-events'
+import { resolveViewAs } from '@/lib/super/security/impersonation'
 
 // ── Dev-only login shortcut ──────────────────────────────────────────────
 // Lets local development sign in as the super-admin without the Google OAuth
@@ -116,10 +119,14 @@ export const authOptions: NextAuthOptions = {
       // already verified in its authorize(); we still run it through the same
       // gmail-authorized / auto-provision path below.
       const isDevLogin = IS_DEV && account?.provider === 'dev-login'
-      if (account?.provider !== 'google' && account?.provider !== 'google-native' && !isDevLogin) return false
       const email = user.email?.toLowerCase() || ''
+      if (account?.provider !== 'google' && account?.provider !== 'google-native' && !isDevLogin) {
+        await logAuthEvent('signin_denied', { email })
+        return false
+      }
       if (!email.endsWith('@gmail.com')) {
         console.log(`Sign-in rejected (non-gmail): ${email}`)
+        await logAuthEvent('signin_denied', { email })
         return false
       }
       if (await isEmailAuthorized(email)) {
@@ -142,6 +149,7 @@ export const authOptions: NextAuthOptions = {
         return true
       } catch (e) {
         console.error(`Auto-provision failed for ${email}:`, e)
+        await logAuthEvent('signin_denied', { email })
         return false
       }
     },
@@ -161,6 +169,24 @@ export const authOptions: NextAuthOptions = {
           session.user.accessTypes = access.accessTypes
           session.user.mockAccess  = access.mockAccess
         }
+        // Super-admin "view as": overlay the target's identity. Writes are blocked in middleware.ts.
+        const viewAs = await resolveViewAs(session.user.email)
+        if (viewAs) {
+          const t = viewAs.target
+          const tAccess = computeAccessFromProducts(t)
+          session.user.impersonatedBy = session.user.email
+          session.user.email       = t.email
+          session.user.name        = t.name
+          session.user.image       = null
+          session.user.role        = t.role as 'admin' | 'instructor' | 'student'
+          session.user.isAdmin     = isStaffRole(t.role)
+          session.user.readOnly    = true
+          session.user.studentId   = t.studentId ?? undefined
+          session.user.class       = t.class     ?? undefined
+          session.user.batch       = t.batch     ?? undefined
+          session.user.accessTypes = tAccess.accessTypes
+          session.user.mockAccess  = tAccess.mockAccess
+        }
       }
       return session
     },
@@ -170,6 +196,11 @@ export const authOptions: NextAuthOptions = {
       if (!user?.email && token.email) {
         const current = await getUserByEmail(token.email)
         token.readOnly = !!current?.readOnly
+        // Force sign-out: reuses the cached lookup above. Throwing makes NextAuth treat the session as signed out.
+        const invalidatedAt = current?.sessionsInvalidatedAt
+        if (invalidatedAt && typeof token.iat === 'number' && token.iat < Math.floor(invalidatedAt.getTime() / 1000)) {
+          throw new Error('Session revoked')
+        }
       }
       if (user?.email) {
         const userInfo = await getUserByEmail(user.email)
@@ -187,6 +218,18 @@ export const authOptions: NextAuthOptions = {
         }
       }
       return token
+    },
+  },
+  events: {
+    async signIn({ user }) {
+      if (!user.email) return
+      const u = await getUserByEmail(user.email).catch(() => null)
+      await logAuthEvent('signin', { userId: u?.id, email: user.email })
+    },
+    async signOut({ token }) {
+      if (!token?.email) return
+      const u = await getUserByEmail(token.email).catch(() => null)
+      await logAuthEvent('signout', { userId: u?.id, email: token.email })
     },
   },
   pages: {
