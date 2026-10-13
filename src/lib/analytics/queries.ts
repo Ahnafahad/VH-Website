@@ -28,9 +28,19 @@ import {
   classSessions,
   assignmentSubmissions,
   recordingWatchProgress,
+  lastWordSessions,
+  lastWordDecisions,
+  lastWordEdgeMastery,
+  lastWordReviews,
+  vocabGameSessions,
+  accountingScores,
 } from '@/lib/db';
-import { sql, eq, and, gte, desc, count } from 'drizzle-orm';
+import { sql, eq, and, gte, lte, desc, count } from 'drizzle-orm';
 import { dhakaDayStart, dhakaYesterdayStart } from '@/lib/vocab/dhaka-time';
+import {
+  DAY_MS, WEEK_MS, TREND_WEEKS, lookbackDays, rankGames, shapeGame, shapeSets, masterySplit, summariseLastWord, weeklyBuckets,
+  type GameDef, type GamePeriod, type PlayRow,
+} from './games';
 
 // ─── Range helpers ────────────────────────────────────────────────────────────
 
@@ -1160,4 +1170,112 @@ export async function getFunnel(range: Range) {
       signupsOverTime: [],
     };
   }
+}
+
+// ─── Games (Statistics > Games) ───────────────────────────────────────────────
+// Shaping lives in ./games (pure, unit-tested). These functions only fetch rows.
+
+const GAME_DEFS = {
+  lastWord: { id: 'last-word', label: 'Last Word', quality: 'exact', source: 'last_word_sessions (a row is saved after every round, so unfinished sessions count as plays)' },
+  daily:    { id: 'daily-vocab', label: 'Daily vocab game', quality: 'exact', source: 'vocab_game_sessions (one row per player per daily round)' },
+  flash:    { id: 'flashcards', label: 'Flashcards', quality: 'estimated', source: 'Feature tracker event flashcard_start. The session table keeps one row per theme, so it cannot count repeat plays. Blocked or offline browsers are missed.' },
+  quiz:     { id: 'vocab-quiz', label: 'Vocab quiz', quality: 'exact', source: 'vocab_quiz_sessions (one row per quiz started)' },
+  zap:      { id: 'zap', label: 'Zap', quality: 'exact', source: 'math_sessions (one row per game started)' },
+  fbs:      { id: 'fbs-accounting', label: 'FBS accounting', quality: 'exact', source: 'accounting_scores (finished rounds only; the game is staff-only for now)' },
+} as const satisfies Record<string, GameDef>;
+
+async function rowsOrNull<T>(p: Promise<T[]>): Promise<T[] | null> {
+  try { return await p; } catch { return null; }
+}
+
+export async function getGames(period: GamePeriod) {
+  const now = Date.now();
+  const since = new Date(now - lookbackDays(period) * DAY_MS);
+
+  const [lw, daily, flash, quiz, zap, fbs] = await Promise.all([
+    rowsOrNull(db.select({ u: lastWordSessions.userId, at: lastWordSessions.startedAt })
+      .from(lastWordSessions).where(gte(lastWordSessions.startedAt, since))),
+    rowsOrNull(db.select({ u: vocabGameSessions.userId, at: vocabGameSessions.startedAt, s: vocabGameSessions.status })
+      .from(vocabGameSessions).where(gte(vocabGameSessions.startedAt, since))),
+    rowsOrNull(db.select({ u: analyticsEvents.userId, a: analyticsEvents.anonId, at: analyticsEvents.createdAt })
+      .from(analyticsEvents)
+      .where(and(eq(analyticsEvents.type, 'feature'), eq(analyticsEvents.name, 'flashcard_start'), gte(analyticsEvents.createdAt, since)))),
+    rowsOrNull(db.select({ u: vocabQuizSessions.userId, at: vocabQuizSessions.startedAt, s: vocabQuizSessions.status })
+      .from(vocabQuizSessions).where(gte(vocabQuizSessions.startedAt, since))),
+    rowsOrNull(db.select({ u: mathSessions.userId, at: mathSessions.startedAt, s: mathSessions.status })
+      .from(mathSessions).where(gte(mathSessions.startedAt, since))),
+    rowsOrNull(db.select({ e: accountingScores.playerEmail, at: accountingScores.playedAt })
+      .from(accountingScores).where(gte(accountingScores.playedAt, since))),
+  ]);
+
+  const t = (d: Date | null) => (d ? d.getTime() : 0);
+  const unreadable = (def: GameDef): GameDef => ({ ...def, quality: 'none', source: 'Could not read this source just now.' });
+  const stat = (def: GameDef, rows: PlayRow[] | null) =>
+    shapeGame(rows ? def : unreadable(def), rows ?? [], now, period);
+
+  const games = rankGames([
+    stat(GAME_DEFS.lastWord, lw && lw.map(r => ({ key: String(r.u), at: t(r.at) }))),
+    stat(GAME_DEFS.daily, daily && daily.map(r => ({ key: String(r.u), at: t(r.at), done: r.s !== 'in_progress' }))),
+    stat(GAME_DEFS.flash, flash && flash.map(r => ({ key: r.u != null ? String(r.u) : `anon:${r.a}`, at: t(r.at) }))),
+    stat(GAME_DEFS.quiz, quiz && quiz.map(r => ({ key: String(r.u), at: t(r.at), done: r.s === 'complete' }))),
+    stat(GAME_DEFS.zap, zap && zap.map(r => ({ key: String(r.u), at: t(r.at), done: r.s === 'complete' }))),
+    stat(GAME_DEFS.fbs, fbs && fbs.map(r => ({ key: r.e, at: t(r.at) }))),
+  ]);
+
+  return { period, games };
+}
+
+export async function getLastWordDeepDive(period: GamePeriod) {
+  const now = Date.now();
+  const since = new Date(now - period * DAY_MS);
+  const trendSince = new Date(now - TREND_WEEKS * WEEK_MS);
+
+  const [sessionTotals, decisionTotals, bySet, statusRows, due, trend] = await Promise.all([
+    rowsOrNull(db.select({
+      sessions: sql<number>`count(*)`,
+      players:  sql<number>`count(distinct ${lastWordSessions.userId})`,
+    }).from(lastWordSessions).where(gte(lastWordSessions.startedAt, since))),
+    rowsOrNull(db.select({
+      decisions: sql<number>`count(*)`,
+      best:      sql<number>`coalesce(sum(case when ${lastWordDecisions.correctness} = 'best' then 1 else 0 end), 0)`,
+    }).from(lastWordDecisions).where(gte(lastWordDecisions.occurredAt, since))),
+    rowsOrNull(db.select({
+      setId:     lastWordDecisions.setId,
+      sessions:  sql<number>`count(distinct ${lastWordDecisions.sessionId})`,
+      decisions: sql<number>`count(*)`,
+      best:      sql<number>`coalesce(sum(case when ${lastWordDecisions.correctness} = 'best' then 1 else 0 end), 0)`,
+    }).from(lastWordDecisions).where(gte(lastWordDecisions.occurredAt, since)).groupBy(lastWordDecisions.setId)),
+    rowsOrNull(db.select({
+      status: sql<string>`coalesce(json_extract(${lastWordEdgeMastery.data}, '$.status'), 'Unseen')`,
+      n:      sql<number>`count(*)`,
+    }).from(lastWordEdgeMastery).groupBy(sql`json_extract(${lastWordEdgeMastery.data}, '$.status')`)),
+    rowsOrNull(db.select({
+      n:       sql<number>`count(*)`,
+      players: sql<number>`count(distinct ${lastWordReviews.userId})`,
+    }).from(lastWordReviews).where(lte(lastWordReviews.dueAt, new Date(now)))),
+    rowsOrNull(db.select({ at: lastWordSessions.startedAt }).from(lastWordSessions).where(gte(lastWordSessions.startedAt, trendSince))),
+  ]);
+
+  const s = sessionTotals?.[0];
+  const d = decisionTotals?.[0];
+  const summary = summariseLastWord({
+    sessions: Number(s?.sessions ?? 0),
+    players: Number(s?.players ?? 0),
+    decisions: Number(d?.decisions ?? 0),
+    best: Number(d?.best ?? 0),
+  });
+  const counts: Record<string, number> = {};
+  for (const r of statusRows ?? []) counts[r.status] = (counts[r.status] ?? 0) + Number(r.n);
+
+  return {
+    period,
+    available: !!(sessionTotals && decisionTotals),
+    summary,
+    sets: shapeSets((bySet ?? []).map(r => ({
+      setId: r.setId, sessions: Number(r.sessions), decisions: Number(r.decisions), best: Number(r.best),
+    }))),
+    mastery: masterySplit(counts),
+    sessionsPerWeek: weeklyBuckets((trend ?? []).map(r => (r.at ? r.at.getTime() : 0)), now),
+    reviewsDue: { count: Number(due?.[0]?.n ?? 0), players: Number(due?.[0]?.players ?? 0) },
+  };
 }

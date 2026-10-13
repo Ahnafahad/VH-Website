@@ -8,6 +8,8 @@ import LexicorePanel  from './LexicorePanel';
 import MathPanel      from './MathPanel';
 import FunnelPanel    from './FunnelPanel';
 import LmsPanel       from './LmsPanel';
+import GamesPanel, { type GamesData } from './GamesPanel';
+import type { GamePeriod } from '@/lib/analytics/games';
 import {
   BG, BORDER, FONT_HEADING, MUTED, RED, RED_DARK, RED_HOVER, R_LG, R_MD, R_SM,
   SHADOW_SM, SLATE, SURFACE, SURFACE_ALT, T_BASE, T_XL,
@@ -15,7 +17,7 @@ import {
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Section = 'overview' | 'behavior' | 'lms' | 'vocab' | 'lexicore' | 'math' | 'funnel';
+type Section = 'overview' | 'behavior' | 'lms' | 'games' | 'vocab' | 'lexicore' | 'math' | 'funnel';
 type Range   = '7d' | '30d' | '90d' | 'all';
 
 interface Tab {
@@ -27,6 +29,7 @@ const TABS: Tab[] = [
   { id: 'overview',  label: 'Overview'           },
   { id: 'behavior',  label: 'Behavior & Flow'    },
   { id: 'lms',       label: 'LMS'                },
+  { id: 'games',     label: 'Games'              },
   { id: 'lexicore',  label: 'LexiCore'           },
   { id: 'vocab',     label: 'Vocab (Words)'      },
   { id: 'math',      label: 'Zap'                },
@@ -67,15 +70,16 @@ function Skeleton() {
 export default function AnalyticsDashboard() {
   const [activeTab, setActiveTab] = useState<Section>('overview');
   const [range,     setRange]     = useState<Range>('7d');
+  const [gameDays,  setGameDays]  = useState<GamePeriod>(30);
   const [data,      setData]      = useState<Record<string, unknown> | null>(null);
   const [loading,   setLoading]   = useState(true);
   const [error,     setError]     = useState<string | null>(null);
 
-  const fetchData = useCallback(async (section: Section, r: Range) => {
+  const fetchData = useCallback(async (section: Section, r: Range, days: GamePeriod) => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/admin/analytics?section=${section}&range=${r}`);
+      const res = await fetch(`/api/admin/analytics?section=${section}&range=${r}${section === 'games' ? `&days=${days}` : ''}`);
       if (!res.ok) {
         const body = await res.json().catch(() => ({})) as { error?: string };
         throw new Error(body?.error ?? `HTTP ${res.status}`);
@@ -91,11 +95,16 @@ export default function AnalyticsDashboard() {
   }, []);
 
   useEffect(() => {
-    void fetchData(activeTab, range);
-  }, [activeTab, range, fetchData]);
+    void fetchData(activeTab, range, gameDays);
+  }, [activeTab, range, gameDays, fetchData]);
 
   function handleTabChange(tab: Section) {
     setActiveTab(tab);
+    setData(null);
+  }
+
+  function handleGameDaysChange(d: GamePeriod) {
+    setGameDays(d);
     setData(null);
   }
 
@@ -131,6 +140,7 @@ export default function AnalyticsDashboard() {
       case 'overview':  return <OverviewPanel data={d} />;
       case 'behavior':  return <BehaviorPanel data={d} />;
       case 'lms':       return <LmsPanel      data={d} />;
+      case 'games':     return <GamesPanel    data={d as GamesData} onPeriodChange={handleGameDaysChange} />;
       case 'vocab':     return <VocabPanel    data={d} />;
       case 'lexicore':  return <LexicorePanel data={d} />;
       case 'math':      return <MathPanel     data={d} />;
@@ -177,8 +187,8 @@ export default function AnalyticsDashboard() {
           </p>
         </div>
 
-        {/* Range segmented control */}
-        <div
+        {/* Range segmented control (Games has its own 7/30/90 period inside its tab) */}
+        {activeTab !== 'games' && <div
           style={{
             display:      'flex',
             alignItems:   'center',
@@ -214,7 +224,7 @@ export default function AnalyticsDashboard() {
               {r.label}
             </button>
           ))}
-        </div>
+        </div>}
       </div>
 
       {/* ── Tabs ────────────────────────────────────────────────────────────── */}
