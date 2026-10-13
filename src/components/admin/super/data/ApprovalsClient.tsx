@@ -111,7 +111,7 @@ export default function ApprovalsClient() {
             <ul style={{ margin: 0, paddingLeft: 18, fontSize: T_SM, color: MUTED }}>{preview.lines.map((l, i) => <li key={i}>{l}</li>)}</ul>
             {preview.refusal
               ? <p style={{ margin: '10px 0 0' }}><SuperBadge tone="bad">Refused: {preview.refusal}</SuperBadge></p>
-              : <div style={{ marginTop: 12 }}><DangerBtn onClick={() => setConfirmOpen(true)}>Propose (waits 15 min, then runs at the next daily 09:00 Dhaka sweep)</DangerBtn></div>}
+              : <div style={{ marginTop: 12 }}><DangerBtn onClick={() => setConfirmOpen(true)}>Propose (waits 15 min, then runs while this page is open, otherwise at the daily 9am Dhaka sweep)</DangerBtn></div>}
           </div>
         )}
       </SuperCard>

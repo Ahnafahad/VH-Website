@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { z } from 'zod';
 import { db } from '@/lib/db';
 import { broadcasts } from '@/lib/db/schema';
@@ -6,7 +6,7 @@ import { ApiException, createErrorResponse } from '@/lib/api-utils';
 import { requireSuperAdmin } from '@/lib/super/guard';
 import { recordAudit } from '@/lib/audit-log';
 import { channelsSchema, resolveSegment, segmentSchema, type Segment } from '@/lib/super/comms/segment';
-import { claimAndSend, listBroadcasts } from '@/lib/super/comms/send';
+import { claimAndSend, listBroadcasts, runDueBroadcasts } from '@/lib/super/comms/send';
 
 export const maxDuration = 300; // send-now emails are throttled in small batches
 
@@ -21,7 +21,11 @@ const createBody = z.object({
 export async function GET() {
   try {
     await requireSuperAdmin();
-    return NextResponse.json({ broadcasts: await listBroadcasts() });
+    const list = await listBroadcasts();
+    // Hobby crons are daily: also send due scheduled broadcasts when the super admin opens this page (after the response,
+    // so the page doesn't wait on email throttling). Atomic claim in runDueBroadcasts prevents double-sends with the cron.
+    after(() => runDueBroadcasts().catch(e => console.error('[broadcasts] lazy run failed', e)));
+    return NextResponse.json({ broadcasts: list });
   } catch (error) {
     return createErrorResponse(error);
   }

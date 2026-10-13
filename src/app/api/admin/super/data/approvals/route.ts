@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { desc, eq } from 'drizzle-orm';
 import { ZodError } from 'zod';
 import { ApiException, createErrorResponse } from '@/lib/api-utils';
 import { db, users, superPendingActions } from '@/lib/db';
 import { requireSuperAdmin } from '@/lib/super/guard';
-import { proposeAction } from '@/lib/super/approvals';
+import { proposeAction, runDueActions } from '@/lib/super/approvals';
 import { DANGER_DELAY_MINUTES, parseDangerPayload, previewDanger } from '@/lib/super/data/danger-actions';
 
 export const dynamic = 'force-dynamic';
@@ -19,6 +19,9 @@ export async function GET() {
       result: superPendingActions.result, createdAt: superPendingActions.createdAt,
     }).from(superPendingActions).leftJoin(users, eq(superPendingActions.requestedBy, users.id))
       .orderBy(desc(superPendingActions.id)).limit(100);
+    // Hobby crons are daily, so due actions also run whenever a super admin has this page open (the client polls every 30s).
+    // Claim-once in runDueActions makes this safe alongside the cron. Runs after the response so the page never waits on it.
+    after(() => runDueActions().catch(e => console.error('[approvals] lazy run failed', e)));
     return NextResponse.json({ success: true, me: actor.id, rows, serverNow: Date.now() });
   } catch (error) {
     return createErrorResponse(error);
