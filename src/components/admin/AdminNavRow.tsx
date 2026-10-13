@@ -8,12 +8,13 @@ export const MONO = 'ui-monospace, "SF Mono", Menlo, monospace';
 
 /** Contents-page row: label, dotted leader, live count. Active = bold + 2px maroon tick. */
 export default function AdminNavRow({
-  item, active, badges, minHeight = 32, onNavigate,
+  item, active, badges, minHeight = 32, indent = 10, onNavigate,
 }: {
   item:        NavItem;
   active:      boolean;
   badges:      NavBadges | null;
   minHeight?:  number;
+  indent?:     number; // left padding; the sidebar indents items under their group title
   onNavigate?: () => void;
 }) {
   const count = item.badge ? badges?.[item.badge] ?? 0 : 0;
@@ -31,7 +32,7 @@ export default function AdminNavRow({
       className="admin-nav-row"
       style={{
         position: 'relative', display: 'flex', alignItems: 'baseline', minHeight,
-        padding: '6px 8px 6px 10px', borderRadius: 6, textDecoration: 'none',
+        padding: `6px 8px 6px ${indent}px`, borderRadius: 6, textDecoration: 'none',
         fontSize: T_BASE, fontWeight: active ? 600 : 400, color: active ? INK_SOFT : MUTED,
       }}
     >
@@ -43,11 +44,10 @@ export default function AdminNavRow({
         aria-hidden
         style={{ flex: 1, margin: '0 6px', borderBottom: `1px dotted ${active ? RED : BORDER}`, transform: 'translateY(-3px)' }}
       />
-      {count > 0 && (
-        <span style={{ fontFamily: MONO, fontSize: T_XS, fontWeight: 600, color: RED }}>
-          {count}{stale > 0 && <span aria-label={`${stale} older than 14 days`}> !</span>}
-        </span>
-      )}
+      {/* Count slot is always rendered so every dotted leader ends at the same x. */}
+      <span style={{ minWidth: 26, flexShrink: 0, textAlign: 'right', fontFamily: MONO, fontSize: T_XS, fontWeight: 600, color: RED }}>
+        {count > 0 ? <>{count}{stale > 0 && <span aria-label={`${stale} older than 14 days`}> !</span>}</> : null}
+      </span>
     </Link>
   );
 }

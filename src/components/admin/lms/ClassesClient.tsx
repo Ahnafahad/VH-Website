@@ -99,6 +99,18 @@ const INTERACTIVE_CSS = `
 .lms-cc-row:hover { box-shadow: ${SHADOW_SM}; border-color: ${RED_HOVER}44; }
 `;
 
+function InstructorBadge({ name }: { name: string }) {
+  return (
+    <span style={{
+      display: 'inline-flex', alignItems: 'center', padding: '2px 8px', borderRadius: R_PILL,
+      fontSize: T_XS, fontWeight: 600, letterSpacing: '0.01em', lineHeight: 1.6,
+      background: SURFACE_ALT, color: INK_SOFT, border: `1px solid ${BORDER}`,
+    }}>
+      {name}
+    </span>
+  );
+}
+
 function isTaxonomySubject(s: string): s is SubjectKey {
   return SUBJECT_TAXONOMY.some(o => o.key === s);
 }
@@ -1288,12 +1300,13 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
                       >
                         {s.title}
                       </Link>
+                      <SubjectBadge subject={s.subject} />
                       {(s.status === 'live' || s.status === 'cancelled' || s.status === 'draft') && <StatusBadge status={s.status} />}
+                      {s.instructorId != null && <InstructorBadge name={instructorNames.get(s.instructorId) ?? 'Unknown'} />}
                     </div>
                     <div style={{ fontSize: T_XS, color: MUTED, marginTop: 2 }}>
                       {fmtDhaka(s.scheduledAt, { hour: 'numeric', minute: '2-digit' })} · {s.durationMinutes} min
                       {s.displayClassNumber != null ? ` · Class ${s.displayClassNumber}` : ''}
-                      {s.instructorId != null ? ` · ${instructorNames.get(s.instructorId) ?? 'Unknown'}` : ''}
                       {s.batch ? ` · Batch ${s.batch}` : ''}
                       {` · ${s.attendanceCount ?? 0} attended`}
                     </div>

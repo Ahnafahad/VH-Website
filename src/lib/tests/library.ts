@@ -24,6 +24,30 @@ export function normalizeCategory(raw: string | null | undefined): string | null
   return c;
 }
 
+/**
+ * Suggested category from a test's title, used by the "Sort unsorted" button.
+ * "Week N ..." tests are the vocabulary quizzes; everything else is named after its
+ * subject. Returns null when nothing matches, so the test stays Unsorted.
+ */
+const CATEGORY_RULES: [RegExp, string][] = [
+  [/^\s*week\s*\d+/i, 'Vocabulary Quizzes'],
+  [/vocab/i, 'Vocabulary Quizzes'],
+  [/english|reading|comprehension|grammar/i, 'English Tests'],
+  [/analytical|logic|puzzle/i, 'Analytical Tests'],
+  [/math|algebra|geometry/i, 'Maths Tests'],
+  [/accounting/i, 'Accounting Tests'],
+  [/business/i, 'Business Studies Tests'],
+  [/economics/i, 'Economics Tests'],
+  [/finance/i, 'Finance Tests'],
+  [/diagnostic/i, 'Diagnostics'],
+  [/mock/i, 'Mock Tests'],
+];
+
+export function inferCategory(title: string): string | null {
+  for (const [re, category] of CATEGORY_RULES) if (re.test(title)) return category;
+  return null;
+}
+
 export interface CategoryGroup<T> {
   /** Category name, or null for Unsorted. */
   category: string | null;

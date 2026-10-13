@@ -44,7 +44,7 @@ import {
   WARN,
 } from '../lms/tokens';
 import { SPIN_CSS } from '../lms/lms-shared';
-import { CATEGORY_MAX_LENGTH, groupByCategory, normalizeCategory, pickWindow, UNSORTED } from '@/lib/tests/library';
+import { CATEGORY_MAX_LENGTH, groupByCategory, inferCategory, normalizeCategory, pickWindow, UNSORTED } from '@/lib/tests/library';
 import {
   Badge, C, SANS, Spinner, Toast, fmtDate, useToast,
   type AdminTest, type AdminWindow,
@@ -244,6 +244,37 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
     }
   }
 
+  // One-click sort of every Unsorted test in this product by title ("Week N" => Vocabulary Quizzes, else by subject).
+  const sortable = bucketTests.filter(t => t.category === null && inferCategory(t.title) !== null);
+  async function sortUnsorted() {
+    const byCat = new Map<string, number[]>();
+    for (const t of sortable) {
+      const c = inferCategory(t.title) as string;
+      byCat.set(c, [...(byCat.get(c) ?? []), t.id]);
+    }
+    if (byCat.size === 0) return;
+    setMoving(true);
+    const previous = tests;
+    try {
+      for (const [category, ids] of byCat) {
+        const res = await fetch('/api/admin/tests/category', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ids, category }),
+        });
+        if (!res.ok) throw new Error('sort failed');
+        setTests(ts => (ts ?? []).map(t => (ids.includes(t.id) ? { ...t, category } : t)));
+        setGroupOpen(keyOf(category), true);
+      }
+      showToast('success', `Sorted ${sortable.length} test${sortable.length === 1 ? '' : 's'} into ${byCat.size} categor${byCat.size === 1 ? 'y' : 'ies'}.`);
+    } catch {
+      setTests(previous);
+      showToast('error', 'Could not sort every test. Reload to see what changed.');
+    } finally {
+      setMoving(false);
+    }
+  }
+
   async function renameCategory(from: string) {
     const to = normalizeCategory(renameTo);
     setRenaming(null);
@@ -315,6 +346,15 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
             Sorted into categories you choose. Open a test for its windows, attempts, analytics and settings.
           </p>
         </div>
+        {sortable.length > 0 && (
+          <button
+            type="button" onClick={sortUnsorted} disabled={moving}
+            className="lms-btn"
+            style={{ ...smallBtn, display: 'inline-flex', alignItems: 'center', gap: 6, background: RED, border: `1px solid ${RED}`, color: SURFACE }}
+          >
+            Sort {sortable.length} unsorted
+          </button>
+        )}
         <button
           type="button" onClick={() => setNewCatOpen(o => !o)} aria-expanded={newCatOpen}
           className="lms-btn lms-btn-ghost"

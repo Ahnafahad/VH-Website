@@ -137,7 +137,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
                 aria-controls={`nav-group-${g.id}`}
                 onClick={() => persist({ ...open, [g.id]: !expanded })}
                 style={{
-                  display: 'flex', alignItems: 'center', gap: 6, width: '100%', minHeight: 32, padding: '12px 8px 3px',
+                  display: 'flex', alignItems: 'center', gap: 6, width: '100%', minHeight: 32, padding: '12px 8px 3px 10px',
                   border: 0, background: 'none', cursor: 'pointer', fontFamily: FONT_HEADING, fontStyle: 'italic', fontSize: T_MD, color: MUTED,
                 }}
               >
@@ -146,7 +146,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
               </button>
               <div id={`nav-group-${g.id}`} hidden={!expanded}>
                 {g.items.map(item => (
-                  <AdminNavRow key={item.href} item={item} active={isActive(item, pathname)} badges={badges} />
+                  <AdminNavRow key={item.href} item={item} active={isActive(item, pathname)} badges={badges} indent={29} />
                 ))}
               </div>
             </div>

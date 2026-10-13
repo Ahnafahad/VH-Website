@@ -6,8 +6,7 @@ import {
   groupByCategory,
   markingRuleLabel,
   pickWindow,
-  normalizeCategory,
-} from '../library';
+  normalizeCategory, inferCategory } from '../library';
 
 describe('normalizeCategory', () => {
   it('trims, collapses whitespace, and maps empty/Unsorted to null', () => {
@@ -118,5 +117,26 @@ describe('pickWindow', () => {
 
   it('returns null when the mode has no windows', () => {
     expect(pickWindow([w('online', 1, 'open')], 'offline')).toBeNull();
+  });
+});
+
+describe('inferCategory', () => {
+  it('puts every "Week N" test in Vocabulary Quizzes, whatever the topic words say', () => {
+    expect(inferCategory('Week 1 — Power, Hierarchy & Legitimacy + Dissent, Ideology & Conspiracy')).toBe('Vocabulary Quizzes');
+    expect(inferCategory('Week 13 — Illness, Action & Exceptional Figures + Limits, Measurement & Conflict')).toBe('Vocabulary Quizzes');
+    expect(inferCategory('Week 5 — Moral Failure, Guilt & Rebuke + Virtue, Resolve & Arrogance')).toBe('Vocabulary Quizzes');
+  });
+  it('names the rest after their subject', () => {
+    expect(inferCategory('IBA Vocabulary Diagnostic — 60 Questions')).toBe('Vocabulary Quizzes');
+    expect(inferCategory('English Test 2')).toBe('English Tests');
+    expect(inferCategory('IBA Mathematics Diagnostic Test')).toBe('Maths Tests');
+    expect(inferCategory('BTH Topical Exam Maths 2')).toBe('Maths Tests');
+    expect(inferCategory('Accounting Test 1')).toBe('Accounting Tests');
+    expect(inferCategory('Business Studies Test 1')).toBe('Business Studies Tests');
+    expect(inferCategory('FBS Diagnostic — Assessment 1')).toBe('Diagnostics');
+    expect(inferCategory('IBA Mock Test 4')).toBe('Mock Tests');
+  });
+  it('returns null when nothing matches', () => {
+    expect(inferCategory('Untitled paper')).toBeNull();
   });
 });
