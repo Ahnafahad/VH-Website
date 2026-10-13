@@ -28,7 +28,7 @@ export function expensesCsv(entries: FinancialEntryRecord[]): string {
       'Product', 'Batch', 'Class', 'Location', 'Tags', 'Reimbursement', 'Reimbursed on', 'Receipt'],
     ...entries.map(e => [
       e.date, e.payee, e.description, e.category, minorToDecimal(e.amountMinor),
-      e.paidBy === null ? 'Organization' : (e.paidByName ?? 'Unknown'), e.paymentMethod, e.referenceNo,
+      e.paidBy === null ? 'Organization' : `${e.paidByName ?? 'Unknown'}${e.paidByRole ? ` (${roleLabel(e.paidByRole)})` : ''}`, e.paymentMethod, e.referenceNo,
       e.product, e.batch, e.classLabel, e.location, e.tags.join('; '),
       e.paidBy === null ? 'Not applicable' : e.reimbursedAt ? 'Reimbursed' : 'To reimburse',
       e.reimbursedAt, e.receiptKey ? 'Yes' : 'No',
@@ -55,8 +55,13 @@ export function shiftMonth(month: string, delta: number): string {
 export const needsReimbursement = (e: Pick<FinancialEntryRecord, 'paidBy' | 'reimbursedAt'>) =>
   e.paidBy !== null && !e.reimbursedAt;
 
+export const roleLabel = (role: string | null | undefined) =>
+  role === 'super_admin' ? 'Super admin' : role === 'admin' ? 'Admin' : role === 'instructor' ? 'Instructor' : 'Staff';
+
 export interface ExpenseFilter {
   month?: string;
+  /** Only expenses a person paid out of pocket (paidBy not null). */
+  byPeople?: boolean;
   category?: string;
   unreimbursed?: boolean;
   q?: string;
@@ -66,6 +71,7 @@ export function filterEntries(entries: FinancialEntryRecord[], f: ExpenseFilter)
   const q = f.q?.trim().toLowerCase();
   return entries.filter(e =>
     (!f.month || e.date.startsWith(f.month)) &&
+    (!f.byPeople || e.paidBy !== null) &&
     (!f.category || e.category === f.category) &&
     (!f.unreimbursed || needsReimbursement(e)) &&
     (!q || [e.payee, e.description, e.referenceNo].some(v => v?.toLowerCase().includes(q))));
@@ -132,4 +138,34 @@ export function groupByDay(shown: FinancialEntryRecord[], monthEntries: Financia
     groups.set(e.date, group);
   }
   return [...groups.values()];
+}
+
+// ── Paid by people ───────────────────────────────────────────────────────────
+
+export interface PersonGroup {
+  personId: number;
+  name: string;
+  role: string | null;
+  total: number;
+  owed: number;
+  owedCount: number;
+  reimbursed: number;
+  entries: FinancialEntryRecord[];
+}
+
+/** Person-paid expenses grouped by payer: most owed first, then name. Organisation-paid rows are ignored. */
+export function groupByPerson(entries: FinancialEntryRecord[]): PersonGroup[] {
+  const groups = new Map<number, PersonGroup>();
+  for (const e of entries) {
+    if (e.paidBy === null) continue;
+    const g = groups.get(e.paidBy) ?? {
+      personId: e.paidBy, name: e.paidByName ?? 'Unknown', role: e.paidByRole, total: 0, owed: 0, owedCount: 0, reimbursed: 0, entries: [],
+    };
+    g.total += e.amountMinor;
+    if (needsReimbursement(e)) { g.owed += e.amountMinor; g.owedCount++; } else g.reimbursed += e.amountMinor;
+    g.entries.push(e);
+    groups.set(e.paidBy, g);
+  }
+  for (const g of groups.values()) g.entries.sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id);
+  return [...groups.values()].sort((a, b) => b.owed - a.owed || a.name.localeCompare(b.name));
 }

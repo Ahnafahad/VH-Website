@@ -1,11 +1,13 @@
-import { and, desc, eq, inArray, lte } from 'drizzle-orm';
+import { and, desc, eq, inArray, isNotNull, isNull, lte } from 'drizzle-orm';
 import { z } from 'zod';
 import { db } from '@/lib/db';
 import { classSessions, operationalEntries, operationalExtraClasses, users } from '@/lib/db/schema';
 import { ApiException } from '@/lib/api-utils';
+import { isStaffRole } from '@/lib/auth/roles';
+import { dhakaToday } from './expense-report';
 import {
   buildInstructorReport, expenseEntryInput, extraClassInput, financialEntryInput, operationalSections,
-  isOperationalAdmin, type FinancialEntryRecord, type OperationalSection,
+  reimburseInput, type FinancialEntryRecord, type OperationalSection,
 } from './operations';
 
 export function parseOperationalSection(value: string): OperationalSection {
@@ -61,8 +63,8 @@ export async function readOperationalSection(section: OperationalSection) {
   const entries = await listEntries(kind);
   if (kind === 'income') return { entries };
   const [payers, classes] = await Promise.all([
-    db.select({ id: users.id, name: users.name }).from(users)
-      .where(inArray(users.role, ['admin', 'super_admin'])).orderBy(users.name),
+    db.select({ id: users.id, name: users.name, role: users.role }).from(users)
+      .where(inArray(users.role, ['admin', 'super_admin', 'instructor'])).orderBy(users.name),
     db.select({ id: classSessions.id, title: classSessions.title, scheduledAt: classSessions.scheduledAt })
       .from(classSessions).orderBy(desc(classSessions.scheduledAt)).limit(120),
   ]);
@@ -74,15 +76,15 @@ const classLabel = (title: string, at: Date) =>
 
 async function listEntries(kind: 'expense' | 'income'): Promise<FinancialEntryRecord[]> {
   const rows = await db.select({
-    entry: operationalEntries, paidByName: users.name, classTitle: classSessions.title, classAt: classSessions.scheduledAt,
+    entry: operationalEntries, paidByName: users.name, paidByRole: users.role, classTitle: classSessions.title, classAt: classSessions.scheduledAt,
   }).from(operationalEntries)
     .leftJoin(users, eq(operationalEntries.paidBy, users.id))
     .leftJoin(classSessions, eq(operationalEntries.classSessionId, classSessions.id))
     .where(eq(operationalEntries.kind, kind))
     .orderBy(desc(operationalEntries.date), desc(operationalEntries.id));
-  return rows.map(({ entry, paidByName, classTitle, classAt }) => ({
+  return rows.map(({ entry, paidByName, paidByRole, classTitle, classAt }) => ({
     id: entry.id, date: entry.date, amountMinor: entry.amountMinor, category: entry.category,
-    description: entry.description, paidBy: entry.paidBy, paidByName, reimbursedAt: entry.reimbursedAt,
+    description: entry.description, paidBy: entry.paidBy, paidByName, paidByRole, reimbursedAt: entry.reimbursedAt,
     payee: entry.payee, paymentMethod: entry.paymentMethod, referenceNo: entry.referenceNo,
     receiptKey: entry.receiptKey, product: entry.product, batch: entry.batch,
     classSessionId: entry.classSessionId, classLabel: classTitle && classAt ? classLabel(classTitle, classAt) : null,
@@ -135,7 +137,7 @@ export async function saveOperationalRecord(
     const input = parseInput(expenseEntryInput, body);
     if (input.paidBy !== null) {
       const payer = await db.select({ role: users.role }).from(users).where(eq(users.id, input.paidBy)).get();
-      if (!payer || !isOperationalAdmin(payer.role)) throw new ApiException('Select an admin as the payer', 400);
+      if (!payer || !isStaffRole(payer.role)) throw new ApiException('Select a staff member as the payer', 400);
     }
     if (input.classSessionId !== null) {
       const linked = await db.select({ id: classSessions.id }).from(classSessions)
@@ -154,4 +156,16 @@ export async function saveOperationalRecord(
       .where(and(eq(operationalEntries.id, id), eq(operationalEntries.kind, kind))).returning();
   if (!saved) throw new ApiException('Entry not found', 404);
   return { id: saved.id };
+}
+
+/** Marks person-paid, still-outstanding expenses as reimbursed today, all or nothing. */
+export async function reimburseExpenses(body: unknown, adminId: number) {
+  const { ids } = parseInput(reimburseInput, body);
+  const updated = await db.transaction(async tx => (await tx.update(operationalEntries)
+    .set({ reimbursedAt: dhakaToday(), updatedAt: new Date(), updatedBy: adminId })
+    .where(and(
+      inArray(operationalEntries.id, ids), eq(operationalEntries.kind, 'expense'),
+      isNotNull(operationalEntries.paidBy), isNull(operationalEntries.reimbursedAt),
+    )).returning({ id: operationalEntries.id })).length);
+  return { updated };
 }

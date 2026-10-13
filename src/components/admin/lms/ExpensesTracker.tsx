@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
-import { ChevronLeft, ChevronRight, Download, Paperclip, Plus, Search, X } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight, Download, Paperclip, Plus, Search, X } from 'lucide-react';
 import {
   ConfirmDialog, FieldInput, FieldSelect, Modal, Toast, useDialogBehaviour,
   RED, SLATE, MUTED, BORDER, BORDER_FIELD, SURFACE, SURFACE_ALT, BG, OK, OK_BG, WARN, WARN_BG, INFO, INFO_BG,
@@ -12,12 +12,13 @@ import {
   expenseCategories, expenseProducts, paymentMethods, type FinancialEntryRecord,
 } from '@/lib/lms/operations';
 import {
-  categoryTotals, dhakaToday, filterEntries, groupByDay, monthKpis, needsReimbursement, shiftMonth, sumMinor,
+  categoryTotals, dhakaToday, filterEntries, groupByDay, groupByPerson, monthKpis, needsReimbursement, roleLabel, shiftMonth, sumMinor,
+  type PersonGroup,
 } from '@/lib/lms/expense-report';
 
 interface TrackerData {
   entries: FinancialEntryRecord[];
-  payers: { id: number; name: string }[];
+  payers: { id: number; name: string; role: string }[];
   classes: { id: number; label: string }[];
 }
 
@@ -33,6 +34,8 @@ const monthLabel = (month: string) => new Date(`${month}-01T00:00:00Z`).toLocale
 });
 const voucherNo = (id: number) => `V-${String(id).padStart(4, '0')}`;
 const isLink = (ref: string) => ref.startsWith('https://');
+const payerText = (e: Pick<FinancialEntryRecord, 'paidBy' | 'paidByName' | 'paidByRole'>) =>
+  e.paidBy === null ? 'Organization' : `${e.paidByName ?? 'Unknown'}${e.paidByRole ? `, ${roleLabel(e.paidByRole)}` : ''}`;
 const fileNameOf = (ref: string) => ref.replace(/^expense-receipts\/\d+-/, '');
 
 async function request<T>(url: string, init?: RequestInit): Promise<T> {
@@ -93,6 +96,9 @@ export default function ExpensesTracker() {
   const [category, setCategory] = useState('');
   const [owedOnly, setOwedOnly] = useState(false);
   const [query, setQuery] = useState('');
+  const [view, setView] = useState<'all' | 'people'>('all');
+  const [collapsed, setCollapsed] = useState<Set<number>>(new Set());
+  const [confirmPerson, setConfirmPerson] = useState<number | null>(null);
   const [openId, setOpenId] = useState<number | null>(null);
   const [form, setForm] = useState<{ editing: FinancialEntryRecord | null } | null>(null);
   const [deleting, setDeleting] = useState<FinancialEntryRecord | null>(null);
@@ -116,24 +122,31 @@ export default function ExpensesTracker() {
   const kpis = useMemo(() => monthKpis(entries, month), [entries, month]);
   const bars = useMemo(() => categoryTotals(monthEntries), [monthEntries]);
   const days = useMemo(() => groupByDay(shown, monthEntries), [shown, monthEntries]);
+  const people = useMemo(() => groupByPerson(filterEntries(monthEntries, { byPeople: true, q: query })), [monthEntries, query]);
   const open = entries.find(e => e.id === openId) ?? null;
 
   const exportHref = `/api/lms/admin/operational/export?${new URLSearchParams({
-    month, ...(category ? { category } : {}), ...(owedOnly ? { unreimbursed: '1' } : {}), ...(query.trim() ? { q: query.trim() } : {}),
+    month, ...(view === 'people' ? { people: '1' } : {
+      ...(category ? { category } : {}), ...(owedOnly ? { unreimbursed: '1' } : {}),
+    }), ...(query.trim() ? { q: query.trim() } : {}),
   })}`;
 
-  async function markReimbursed(entry: FinancialEntryRecord) {
+  async function reimburse(ids: number[]) {
     setSaving(true);
     try {
-      // PATCH replaces the whole record, so send every field back unchanged.
-      await request(`/api/lms/admin/operational/expenses/${entry.id}`, {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formBody(formFrom(entry)), reimbursedAt: dhakaToday() }),
+      const { updated } = await request<{ updated: number }>('/api/lms/admin/operational/reimburse', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ids }),
       });
-      say('Marked as reimbursed.');
+      setConfirmPerson(null);
+      say(updated === 1 ? 'Marked as reimbursed.' : `Marked ${updated} expenses as reimbursed.`);
       await load();
     } catch (err) { say(err instanceof Error ? err.message : 'Could not save.'); } finally { setSaving(false); }
   }
+  const toggleCollapsed = (id: number) => setCollapsed(prev => {
+    const next = new Set(prev);
+    if (!next.delete(id)) next.add(id);
+    return next;
+  });
 
   async function confirmDelete() {
     if (!deleting) return;
@@ -204,6 +217,18 @@ export default function ExpensesTracker() {
         .exp tr.day td { background: ${BG}; font-family: ${FONT_HEADING}; font-style: italic; font-size: 14px; color: ${MUTED}; padding-block: 6px; }
         .exp tr.day td.num { font-style: normal; font-family: inherit; font-size: 12px; }
         .exp td .sub { font-size: 12px; color: ${MUTED}; margin-top: 2px; }
+        .exp-tabs { display: flex; gap: 4px; border-bottom: 1px solid ${BORDER}; margin-bottom: 16px; }
+        .exp-tab { border: 0; border-bottom: 2px solid transparent; background: none; padding: 10px 14px; font-size: 14px; color: ${MUTED}; min-height: 40px; margin-bottom: -1px; }
+        .exp-tab[aria-selected="true"] { color: ${SLATE}; font-weight: 700; border-bottom-color: ${RED}; }
+        .exp-person { border: 1px solid ${BORDER}; border-radius: ${R_MD}px; background: ${SURFACE}; margin-bottom: 12px; }
+        .exp-person-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; padding: 10px 14px; }
+        .exp-person-toggle { display: flex; align-items: center; gap: 8px; flex: 1 1 220px; min-width: 0; border: 0; background: none; padding: 4px 0; text-align: left; color: ${SLATE}; font-size: 15px; }
+        .exp-person-toggle svg { transition: transform .15s; flex-shrink: 0; }
+        .exp-person-toggle[aria-expanded="false"] svg { transform: rotate(-90deg); }
+        .exp-person-nums { display: flex; flex-wrap: wrap; gap: 4px 20px; font-size: 12px; color: ${MUTED}; }
+        .exp-person-nums b { display: block; font-size: 15px; color: ${SLATE}; font-variant-numeric: tabular-nums; }
+        .exp-person .exp-wrap { border: 0; border-top: 1px solid ${BORDER}; border-radius: 0; }
+        .exp-person table { min-width: 640px; }
         .exp-stamp { display: inline-block; border: 1.5px solid; border-radius: 4px; padding: 1px 7px; font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; white-space: nowrap; }
         .exp-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 400px; max-width: 100vw; background: ${SURFACE}; border-left: 1px solid ${BORDER}; box-shadow: ${SHADOW_LG}; overflow-y: auto; padding: 18px; box-sizing: border-box; }
         .exp-drawer dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 10px; margin: 14px 0; font-size: 13px; }
@@ -240,6 +265,10 @@ export default function ExpensesTracker() {
       {!data && !error && <p role="status" style={{ color: MUTED }}>Loading…</p>}
 
       {data && <>
+        <div className="exp-tabs" role="tablist" aria-label="Expense views">
+          <button type="button" role="tab" className="exp-tab" aria-selected={view === 'all'} onClick={() => setView('all')}>All expenses</button>
+          <button type="button" role="tab" className="exp-tab" aria-selected={view === 'people'} onClick={() => setView('people')}>Paid by people</button>
+        </div>
         <div className="exp-bar">
           <div className="exp-month" role="group" aria-label="Month">
             <button type="button" className="exp-btn" aria-label="Previous month" onClick={() => step(-1)}><ChevronLeft size={14} aria-hidden /></button>
@@ -255,6 +284,7 @@ export default function ExpensesTracker() {
           <button type="button" className="exp-btn primary" onClick={() => { setOpenId(null); setForm({ editing: null }); }}><Plus size={14} aria-hidden /> New expense</button>
         </div>
 
+        {view === 'all' && <>
         <div className="exp-kpi" aria-label={`Summary for ${monthLabel(month)}`}>
           <div><b>{money(kpis.spent)}</b><span>Spent in {monthLabel(month)}</span></div>
           <div><b style={{ color: kpis.toReimburse > 0 ? WARN : SLATE }}>{money(kpis.toReimburse)}</b>
@@ -303,7 +333,7 @@ export default function ExpensesTracker() {
                       {entry.receiptKey && <span className="sub"><Paperclip size={11} aria-hidden /> Receipt attached</span>}
                     </td>
                     <td>{entry.category}</td>
-                    <td>{entry.paidBy === null ? 'Organization' : entry.paidByName ?? 'Unknown'}</td>
+                    <td>{entry.paidBy === null ? 'Organization' : <>{entry.paidByName ?? 'Unknown'}<div className="sub">{roleLabel(entry.paidByRole)}</div></>}</td>
                     <td>{entry.paymentMethod ?? '—'}</td>
                     <td className="num"><b>{money(entry.amountMinor)}</b></td>
                     <td className="num" style={{ color: MUTED }}>{money(monthToDate)}</td>
@@ -318,10 +348,15 @@ export default function ExpensesTracker() {
             </tr></tfoot>}
           </table>
         </div>
+        </>}
+
+        {view === 'people' && <PeopleView people={people} month={month} emptyMonth={monthEntries.every(e => e.paidBy === null)}
+          collapsed={collapsed} onToggle={toggleCollapsed} confirmPerson={confirmPerson} onConfirmPerson={setConfirmPerson}
+          saving={saving} onOpen={rowOpen} onReimburse={ids => void reimburse(ids)} />}
       </>}
 
       {open && <Drawer entry={open} saving={saving} onClose={() => setOpenId(null)} onViewReceipt={viewReceipt}
-        onReimburse={() => void markReimbursed(open)}
+        onReimburse={() => void reimburse([open.id])}
         onEdit={() => { setOpenId(null); setForm({ editing: open }); }} onDelete={() => setDeleting(open)} />}
 
       {form && data && <ExpenseForm data={data} editing={form.editing} nextVoucherId={Math.max(0, ...entries.map(e => e.id)) + 1}
@@ -355,7 +390,7 @@ function Drawer({ entry, saving, onClose, onViewReceipt, onReimburse, onEdit, on
         <dt>Date</dt><dd>{dayLabel(entry.date)}</dd>
         <dt>Item</dt><dd>{entry.description || '—'}</dd>
         <dt>Category</dt><dd>{entry.category}</dd>
-        <dt>Paid by</dt><dd>{entry.paidBy === null ? 'Organization (paid directly)' : `${entry.paidByName ?? 'Unknown'} (own pocket)`}</dd>
+        <dt>Paid by</dt><dd>{entry.paidBy === null ? 'Organization (paid directly)' : `${payerText(entry)} (own pocket)`}</dd>
         {entry.paidBy !== null && <><dt>Reimbursed</dt><dd>{entry.reimbursedAt ?? 'Not yet'}</dd></>}
         <dt>Method</dt><dd>{entry.paymentMethod ?? '—'}</dd>
         <dt>Reference</dt><dd style={{ fontVariantNumeric: 'tabular-nums' }}>{entry.referenceNo ?? '—'}</dd>
@@ -378,6 +413,74 @@ function Drawer({ entry, saving, onClose, onViewReceipt, onReimburse, onEdit, on
   </>;
 }
 
+function PeopleView({ people, month, emptyMonth, collapsed, onToggle, confirmPerson, onConfirmPerson, saving, onOpen, onReimburse }: {
+  people: PersonGroup[]; month: string; emptyMonth: boolean; collapsed: Set<number>; onToggle: (id: number) => void;
+  confirmPerson: number | null; onConfirmPerson: (id: number | null) => void; saving: boolean;
+  onOpen: (id: number) => void; onReimburse: (ids: number[]) => void;
+}) {
+  if (people.length === 0) {
+    return <p className="exp-panel" style={{ color: MUTED, fontSize: 13 }}>
+      {emptyMonth ? `Nobody paid out of pocket in ${monthLabel(month)}.` : 'No person-paid expenses match this search.'}</p>;
+  }
+  return <>
+    <div className="exp-kpi" aria-label={`People summary for ${monthLabel(month)}`}>
+      <div><b>{money(people.reduce((n, p) => n + p.total, 0))}</b><span>Paid by people in {monthLabel(month)}</span></div>
+      <div><b style={{ color: WARN }}>{money(people.reduce((n, p) => n + p.owed, 0))}</b><span>Still to reimburse</span></div>
+      <div><b>{money(people.reduce((n, p) => n + p.reimbursed, 0))}</b><span>Reimbursed</span></div>
+    </div>
+    {people.map(p => {
+      const isOpen = !collapsed.has(p.personId);
+      const owedIds = p.entries.filter(needsReimbursement).map(e => e.id);
+      return (
+        <section key={p.personId} className="exp-person" aria-label={p.name}>
+          <div className="exp-person-head">
+            <button type="button" className="exp-person-toggle" aria-expanded={isOpen} aria-controls={`exp-person-${p.personId}`} onClick={() => onToggle(p.personId)}>
+              <ChevronDown size={16} aria-hidden />
+              <span><b>{p.name}</b> <span style={{ color: MUTED, fontSize: 12 }}>{roleLabel(p.role)} · {p.entries.length} {p.entries.length === 1 ? 'expense' : 'expenses'}</span></span>
+            </button>
+            <div className="exp-person-nums">
+              <span><b>{money(p.total)}</b>Total paid</span>
+              <span><b style={{ color: p.owed > 0 ? WARN : SLATE }}>{money(p.owed)}</b>To reimburse</span>
+              <span><b>{money(p.reimbursed)}</b>Reimbursed</span>
+            </div>
+            {owedIds.length > 0 && (confirmPerson === p.personId ? (
+              <span style={{ display: 'inline-flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }} role="group" aria-label={`Confirm reimbursing ${p.name}`}>
+                <span style={{ fontSize: 13 }}>Reimburse {owedIds.length} {owedIds.length === 1 ? 'expense' : 'expenses'}, {money(p.owed)}?</span>
+                <button type="button" className="exp-btn primary" disabled={saving} onClick={() => onReimburse(owedIds)}>Confirm</button>
+                <button type="button" className="exp-btn" disabled={saving} onClick={() => onConfirmPerson(null)}>Cancel</button>
+              </span>
+            ) : <button type="button" className="exp-btn" disabled={saving} onClick={() => onConfirmPerson(p.personId)}>Mark all reimbursed</button>)}
+          </div>
+          {isOpen && <div id={`exp-person-${p.personId}`} className="exp-wrap" tabIndex={0} role="region" aria-label={`Expenses paid by ${p.name}`}>
+            <table>
+              <thead><tr>
+                <th scope="col">Date</th><th scope="col">Payee and item</th><th scope="col">Category</th>
+                <th scope="col" className="num">Amount</th><th scope="col">Status</th><th scope="col" aria-label="Action" />
+              </tr></thead>
+              <tbody>
+                {p.entries.map(e => (
+                  <tr key={e.id} className="entry" tabIndex={0} onClick={() => onOpen(e.id)} onKeyDown={ev => { if (ev.key === 'Enter' && ev.target === ev.currentTarget) onOpen(e.id); }}>
+                    <td style={{ whiteSpace: 'nowrap', fontVariantNumeric: 'tabular-nums' }}>{shortDate(e.date)}</td>
+                    <td style={{ minWidth: 200 }}>
+                      <b>{e.payee || e.description || e.category}</b>
+                      {e.payee && e.description && <div className="sub">{e.description}</div>}
+                    </td>
+                    <td>{e.category}</td>
+                    <td className="num"><b>{money(e.amountMinor)}</b></td>
+                    <td><Stamp entry={e} />{e.reimbursedAt && <div className="sub">{e.reimbursedAt}</div>}</td>
+                    <td>{needsReimbursement(e) && <button type="button" className="exp-btn" disabled={saving}
+                      onClick={ev => { ev.stopPropagation(); onReimburse([e.id]); }}>Mark reimbursed</button>}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>}
+        </section>
+      );
+    })}
+  </>;
+}
+
 const RECEIPT_MIME = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'];
 const MAX_RECEIPT_BYTES = 10 * 1024 * 1024;
 
@@ -395,7 +498,8 @@ function ExpenseForm({ data, editing, nextVoucherId, onClose, onSaved, onViewRec
   const set = <K extends keyof FormState>(key: K) => (value: FormState[K]) => setF(prev => ({ ...prev, [key]: value }));
   const text = (key: keyof FormState) => ({ value: f[key], onChange: (e: { target: { value: string } }) => set(key)(e.target.value) });
 
-  const payerName = data.payers.find(p => String(p.id) === f.paidBy)?.name ?? editing?.paidByName ?? 'Unknown';
+  const picked = data.payers.find(p => String(p.id) === f.paidBy);
+  const payerName = picked ? `${picked.name}, ${roleLabel(picked.role)}` : editing ? payerText(editing) : 'Unknown';
   const amountMinor = Math.round((Number(f.amount.replace(/[,\s৳]/g, '')) || 0) * 100);
   const stampEntry: Payer = { paidBy: f.paidBy ? 1 : null, reimbursedAt: f.reimbursedAt || null };
   const classLabel = data.classes.find(c => String(c.id) === f.classSessionId)?.label ?? (f.classSessionId ? editing?.classLabel : null);
@@ -435,9 +539,10 @@ function ExpenseForm({ data, editing, nextVoucherId, onClose, onSaved, onViewRec
               <label className="sf"><span className="sf-l">Date</span>
                 <FieldInput type="date" required style={{ width: 150 }} {...text('date')} /></label>{' '}
               <label className="sf"><span className="sf-l">Paid by</span>
-                <FieldSelect required={false} value={f.paidBy} onChange={e => set('paidBy')(e.target.value)} style={{ width: 200 }}>
+                <FieldSelect required={false} value={f.paidBy} onChange={e => set('paidBy')(e.target.value)} style={{ width: 240 }}>
                   <option value="">Organization (paid directly)</option>
-                  {data.payers.map(p => <option key={p.id} value={p.id}>{p.name} (own pocket)</option>)}
+                  {editing?.paidBy && !data.payers.some(p => p.id === editing.paidBy) && <option value={editing.paidBy}>{payerText(editing)} (own pocket)</option>}
+                  {data.payers.map(p => <option key={p.id} value={p.id}>{p.name}, {roleLabel(p.role)} (own pocket)</option>)}
                 </FieldSelect></label>{' '}
               <span className="sw">paid ৳</span>
               <label className="sf"><span className="sf-l">Amount (BDT)</span>
