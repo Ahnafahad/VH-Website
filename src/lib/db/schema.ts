@@ -1013,6 +1013,8 @@ export const tests = sqliteTable('tests', {
   resultsPublishedAt: integer('results_published_at', { mode: 'timestamp' }),
   sourceFile:      text('source_file'),                      // original .tex filename
   syllabus:        text('syllabus'),                         // LMS: topics covered by this test
+  // Admin library grouping, chosen by staff. NULL = "Unsorted".
+  category:        text('category'),
   createdBy:       integer('created_by').references(() => users.id),
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:       integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),

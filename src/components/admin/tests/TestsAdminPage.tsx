@@ -1,1398 +1,164 @@
 'use client';
 
 /**
- * TestsAdminPage — full admin UI for the Online Tests module.
- * Sections:
- *   1. Test list (GET /api/admin/tests)
- *   2. Expandable detail per test:
- *      a. Test Settings     (admin-only: publish/archive, products, results)
- *      b. Windows Manager   (admin + instructor)
- *      c. Attempts Table    (admin + instructor)
- *      d. Answer Key Editor (admin-only)
+ * TestsAdminPage — the Tests library at /admin/tests.
+ * One collapsible row per category (staff-defined, "Unsorted" for tests without
+ * one); each expands to dense, hairline-ruled test rows carrying the detail
+ * inline. Move tests with "Move to…" or tick several and move them together.
+ * Everything per-test (windows, attempts, analytics, settings, answer key) lives
+ * on /admin/tests/[id] (TestDetailPage).
  */
 
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
 import {
-  useCallback,
-  useEffect,
-  useReducer,
-  useRef,
-  useState,
-} from 'react';
-import {
-  AlertTriangle,
-  CheckCircle,
   ChevronDown,
-  ChevronUp,
+  ChevronRight,
   ClipboardList,
-  Clock,
-  Edit2,
-  Eye,
+  FolderPlus,
   Info,
-  Loader2,
-  Plus,
+  Pencil,
   RefreshCw,
-  RotateCcw,
-  ShieldOff,
-  Trash2,
-  X,
   ZapOff,
 } from 'lucide-react';
 import { useAdminProduct } from '@/components/admin/AdminProductContext';
-import { BUCKET_LABELS, type TestBucket, type AttemptStatus, type TestMode } from '@/lib/tests/types';
+import { BUCKET_LABELS, type TestBucket } from '@/lib/tests/types';
 import {
-  BG,
   BORDER,
   BORDER_FIELD,
   FONT_HEADING,
-  INFO,
-  INFO_BG,
   INK_SOFT,
   MUTED,
   OK,
-  OK_BG,
-  RED,
-  RED_DARK,
   R_LG,
-  R_MD,
-  R_PILL,
   R_SM,
-  SHADOW_LG,
-  SPIN_CSS,
+  RED,
   SLATE,
   SURFACE,
   SURFACE_ALT,
   T_BASE,
-  T_MD,
+  T_LG,
   T_SM,
+  T_XL,
   T_XS,
   WARN,
-  WARN_BG,
-  ConfirmDialog,
-} from '../lms/lms-shared';
-import TestAnalytics from './TestAnalytics';
+} from '../lms/tokens';
+import { SPIN_CSS } from '../lms/lms-shared';
+import { CATEGORY_MAX_LENGTH, groupByCategory, normalizeCategory, pickWindow, UNSORTED } from '@/lib/tests/library';
+import {
+  Badge, C, SANS, Spinner, Toast, fmtDate, useToast,
+  type AdminTest, type AdminWindow,
+} from './TestPanels';
+import TestMovePanel from './TestMovePanel';
 
-// ─── Design tokens (light admin palette, matching existing admin pages) ────────
+export const FONT_MONO = "var(--font-math-mono), ui-monospace, 'SFMono-Regular', Menlo, monospace";
 
-export const C = {
-  bg:         SURFACE,
-  surface:    SURFACE_ALT,
-  border:     BORDER,
-  red:        RED,
-  redLight:   `${RED}0F`,
-  redMid:     `${RED}1F`,
-  text:       SLATE,
-  textSec:    INK_SOFT,
-  textMuted:  MUTED,
-  success:    OK,
-  successBg:  OK_BG,
-  successBdr: `${OK}40`,
-  warn:       WARN,
-  warnBg:     WARN_BG,
-  warnBdr:    `${WARN}40`,
-  danger:     RED_DARK,
-  dangerBg:   `${RED}14`,
-  dangerBdr:  `${RED}40`,
-  infoBg:     INFO_BG,
-  infoBdr:    `${INFO}40`,
-  infoText:   INFO,
-  gold:       WARN,
-  goldBg:     WARN_BG,
-} as const;
+const UNSORTED_KEY = '\u0000unsorted';
+const keyOf = (category: string | null) => category ?? UNSORTED_KEY;
 
-export const SANS = 'system-ui, -apple-system, sans-serif';
-
-// ─── API response types ────────────────────────────────────────────────────────
-
-interface AdminWindow {
-  id: number;
-  mode: TestMode;
-  opensAt: number;
-  closesAt: number;
-  durationMinutes: number | null;
-  classSessionId: number | null;
-  status: 'scheduled' | 'open' | 'closed';
-  state: 'upcoming' | 'open' | 'closed';
+/** "Oct 14, 14:00–15:30" (end shows its own date when the window crosses midnight). */
+function fmtWindow(w: AdminWindow | null): string {
+  if (!w) return 'None';
+  const d = (ms: number) => new Date(ms).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  const t = (ms: number) => new Date(ms).toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: false });
+  const sameDay = d(w.opensAt) === d(w.closesAt);
+  return `${d(w.opensAt)}, ${t(w.opensAt)}–${sameDay ? '' : `${d(w.closesAt)} `}${t(w.closesAt)}`;
 }
 
-interface AdminTest {
-  id: number;
-  slug: string;
-  title: string;
-  bucket: TestBucket;
-  status: 'draft' | 'published' | 'archived';
-  totalQuestions: number;
-  totalMarks: number;
-  allowedProducts: string[] | null;
-  resultsPublishedAt: number | null;
-  syllabus: string | null;
-  createdAt: number;
-  windows: AdminWindow[];
-  attemptCounts: { inProgress: number; submitted: number; banned: number };
-}
+const WINDOW_STATE_WORD: Record<AdminWindow['state'], string> = { open: 'open', upcoming: 'next', closed: 'ended' };
 
-interface AdminAttempt {
-  id: number;
-  user: { name: string | null; email: string; studentId: string | null };
-  mode: TestMode;
-  status: AttemptStatus;
-  startedAt: number;
-  submittedAt: number | null;
-  tabLeaveCount: number;
-  resetCount: number;
-  totalScore: number | null;
-  totalCorrect: number | null;
-  totalWrong: number | null;
-  totalUnattempted: number | null;
-}
-
-/** Minimal shape for the class-session picker on a window (rec #5 test<->class link). */
-interface ClassSessionOption {
-  id: number;
-  title: string;
-  scheduledAt: number;
-}
-
-interface AnswerKeyQuestion {
-  id: number;
-  number: number;
-  sectionTitle: string;
-  sectionOrder: number;
-  correctKey: string | null;
-}
-
-// ─── Toast ────────────────────────────────────────────────────────────────────
-
-type ToastType = 'success' | 'error' | 'info' | 'warn';
-
-interface ToastState { type: ToastType; message: string }
-
-function useToast() {
-  const [toast, setToast] = useState<ToastState | null>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const show = useCallback((type: ToastType, message: string) => {
-    if (timerRef.current) clearTimeout(timerRef.current);
-    setToast({ type, message });
-    timerRef.current = setTimeout(() => setToast(null), 5000);
-  }, []);
-
-  return { toast, show };
-}
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
-
-function fmtDate(ms: number): string {
-  return new Date(ms).toLocaleString(undefined, {
-    year: 'numeric', month: 'short', day: 'numeric',
-    hour: '2-digit', minute: '2-digit',
-  });
-}
-
-/** Convert local datetime-local string "YYYY-MM-DDTHH:mm" to epoch ms */
-function localToMs(local: string): number {
-  return new Date(local).getTime();
-}
-
-/** Convert epoch ms to datetime-local string "YYYY-MM-DDTHH:mm" */
-function msToLocal(ms: number): string {
-  const d = new Date(ms);
-  const pad = (n: number) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-}
-
-const STATUS_STYLES: Record<string, { bg: string; color: string; label: string }> = {
-  draft:      { bg: C.surface,    color: C.textSec,  label: 'Draft'      },
-  published:  { bg: C.successBg,  color: C.success,  label: 'Published'  },
-  archived:   { bg: C.goldBg,     color: C.gold,     label: 'Archived'   },
-  in_progress:{ bg: C.warnBg,     color: C.warn,     label: 'In progress'},
-  submitted:  { bg: C.successBg,  color: C.success,  label: 'Submitted'  },
-  banned:     { bg: C.dangerBg,   color: C.danger,   label: 'Banned'     },
-  upcoming:   { bg: C.infoBg,     color: C.infoText, label: 'Upcoming'   },
-  open:       { bg: C.successBg,  color: C.success,  label: 'Open'       },
-  closed:     { bg: C.surface,    color: C.textSec,  label: 'Closed'     },
-  scheduled:  { bg: C.infoBg,     color: C.infoText, label: 'Scheduled'  },
+const TH: React.CSSProperties = {
+  padding: '8px 10px', textAlign: 'left', fontSize: T_XS, fontWeight: 700, color: MUTED,
+  textTransform: 'uppercase', letterSpacing: '0.06em', whiteSpace: 'nowrap',
+  borderBottom: `1px solid ${BORDER}`,
 };
+const THN: React.CSSProperties = { ...TH, textAlign: 'right' };
+const TD: React.CSSProperties = { padding: '10px', verticalAlign: 'top', borderBottom: `1px solid ${BORDER}`, fontSize: T_SM };
+const TDN: React.CSSProperties = { ...TD, textAlign: 'right', fontFamily: FONT_MONO, whiteSpace: 'nowrap' };
 
-function Badge({ value }: { value: string }) {
-  const s = STATUS_STYLES[value] ?? { bg: C.surface, color: C.textSec, label: value };
-  return (
-    <span style={{
-      display: 'inline-flex', alignItems: 'center',
-      padding: '2px 8px', borderRadius: R_PILL, fontSize: T_XS, fontWeight: 600,
-      background: s.bg, color: s.color, letterSpacing: '0.02em',
-      whiteSpace: 'nowrap',
-    }}>{s.label}</span>
-  );
+function KeyState({ keyed, total }: { keyed: number; total: number }) {
+  const [label, color] = total === 0
+    ? ['No questions', MUTED]
+    : keyed >= total ? ['Complete', OK]
+    : keyed === 0 ? ['Missing', RED]
+    : [`${keyed}/${total} keyed`, WARN];
+  return <span style={{ color, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</span>;
 }
 
-function BucketBadge({ bucket }: { bucket: TestBucket }) {
-  return (
-    <span style={{
-      display: 'inline-flex', alignItems: 'center',
-      padding: '2px 8px', borderRadius: R_PILL, fontSize: T_XS, fontWeight: 700,
-      background: bucket === 'iba' ? `${RED}1A` : `${INFO}1A`,
-      color: bucket === 'iba' ? C.red : C.infoText,
-      letterSpacing: '0.03em',
-    }}>{BUCKET_LABELS[bucket]}</span>
-  );
-}
+const dash = (v: number | null | undefined, suffix = '') => (v == null ? '–' : `${v}${suffix}`);
 
-export function Btn({
-  children, onClick, disabled, variant = 'primary', size = 'md', danger,
-}: {
-  children: React.ReactNode;
-  onClick?: () => void;
-  disabled?: boolean;
-  variant?: 'primary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md';
-  danger?: boolean;
-}) {
-  const base: React.CSSProperties = {
-    display: 'inline-flex', alignItems: 'center', gap: 6,
-    border: 'none', borderRadius: R_SM, cursor: disabled ? 'not-allowed' : 'pointer',
-    fontFamily: SANS, fontWeight: 600, opacity: disabled ? 0.6 : 1,
-    transition: 'background 0.15s',
-    padding: size === 'sm' ? '5px 10px' : '8px 14px',
-    fontSize: size === 'sm' ? T_SM : T_BASE,
-  };
-  if (variant === 'primary') {
-    return (
-      <button onClick={onClick} disabled={disabled} style={{
-        ...base,
-        background: danger ? C.danger : C.red,
-        color: SURFACE,
-      }}>{children}</button>
-    );
-  }
-  if (variant === 'outline') {
-    return (
-      <button onClick={onClick} disabled={disabled} style={{
-        ...base,
-        background: 'transparent',
-        border: `1px solid ${danger ? C.danger : C.border}`,
-        color: danger ? C.danger : C.text,
-      }}>{children}</button>
-    );
-  }
-  // ghost
-  return (
-    <button onClick={onClick} disabled={disabled} style={{
-      ...base,
-      background: 'transparent',
-      color: danger ? C.danger : C.textSec,
-    }}>{children}</button>
-  );
-}
-
-export function Spinner({ size = 16 }: { size?: number }) {
-  return (
-    <>
-      <Loader2 size={size} style={{ animation: 'spin 1s linear infinite' }} />
-      <style>{`@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}`}</style>
-    </>
-  );
-}
-
-export function SectionTitle({ children }: { children: React.ReactNode }) {
-  return (
-    <h3 style={{
-      margin: 0, fontSize: T_SM, fontWeight: 700, color: C.textMuted,
-      textTransform: 'uppercase', letterSpacing: '0.07em',
-      fontFamily: SANS, paddingBottom: 10,
-      borderBottom: `1px solid ${C.border}`, marginBottom: 14,
-    }}>{children}</h3>
-  );
-}
-
-// ─── Toast component ──────────────────────────────────────────────────────────
-
-function Toast({ toast, onClose }: { toast: ToastState; onClose: () => void }) {
-  const s = {
-    success: { bg: C.successBg, color: C.success, border: C.successBdr },
-    error:   { bg: C.dangerBg,  color: C.danger,  border: C.dangerBdr  },
-    warn:    { bg: C.warnBg,    color: C.warn,    border: C.warnBdr    },
-    info:    { bg: C.infoBg,    color: C.infoText,border: C.infoBdr    },
-  }[toast.type];
-
-  return (
-    <div style={{
-      position: 'fixed', top: 20, left: '50%', transform: 'translateX(-50%)',
-      zIndex: 9999, display: 'flex', alignItems: 'center', gap: 8,
-      padding: '10px 16px', borderRadius: R_MD, fontSize: T_BASE, fontFamily: SANS,
-      fontWeight: 500, boxShadow: SHADOW_LG,
-      maxWidth: 'min(520px, calc(100vw - 32px))',
-      background: s.bg, color: s.color, border: `1px solid ${s.border}`,
-    }}>
-      {toast.type === 'success' && <CheckCircle size={15} />}
-      {toast.type === 'error'   && <AlertTriangle size={15} />}
-      {toast.type === 'warn'    && <AlertTriangle size={15} />}
-      {toast.type === 'info'    && <Info size={15} />}
-      <span style={{ flex: 1 }}>{toast.message}</span>
-      <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'inherit', padding: 2 }}>
-        <X size={14} />
-      </button>
-    </div>
-  );
-}
-
-// ─── Section A: Test Settings (admin-only) ────────────────────────────────────
-
-const PRODUCTS = ['iba', 'fbs', 'fbs_detailed'] as const;
-type Product = typeof PRODUCTS[number];
-
-function TestSettings({
-  test, isAdmin, onRefresh, showToast,
+function TestTableRow({
+  test, selected, onSelect, moving, onToggleMove,
 }: {
   test: AdminTest;
-  isAdmin: boolean;
-  onRefresh: () => void;
-  showToast: (type: ToastType, msg: string) => void;
+  selected: boolean;
+  onSelect: (checked: boolean) => void;
+  moving: boolean;
+  onToggleMove: () => void;
 }) {
-  const [saving, setSaving] = useState(false);
-  const [status, setStatus] = useState(test.status);
-  const [resultsPublished, setResultsPublished] = useState(test.resultsPublishedAt !== null);
-  const [productsNull, setProductsNull] = useState(test.allowedProducts === null);
-  const [selectedProducts, setSelectedProducts] = useState<Product[]>(
-    (test.allowedProducts as Product[] | null) ?? []
-  );
-  const [syllabus, setSyllabus] = useState(test.syllabus ?? '');
-  const [confirmDeleteTest, setConfirmDeleteTest] = useState(false);
-
-  async function patch(body: Record<string, unknown>) {
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/admin/tests/${test.id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) {
-        const d = await res.json() as { error?: string };
-        showToast('error', d.error ?? 'Failed to save');
-      } else {
-        showToast('success', 'Settings saved.');
-        onRefresh();
-      }
-    } catch {
-      showToast('error', 'Network error.');
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  async function deleteTest() {
-    setConfirmDeleteTest(false);
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/admin/tests/${test.id}`, { method: 'DELETE' });
-      if (!res.ok) {
-        const d = await res.json() as { error?: string };
-        showToast('error', d.error ?? 'Failed to delete test');
-      } else {
-        showToast('success', 'Test deleted.');
-        onRefresh();
-      }
-    } catch {
-      showToast('error', 'Network error.');
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  function toggleProduct(p: Product) {
-    setSelectedProducts(prev =>
-      prev.includes(p) ? prev.filter(x => x !== p) : [...prev, p]
-    );
-  }
+  const s = test.stats;
+  const offline = pickWindow(test.windows, 'offline');
+  const online = pickWindow(test.windows, 'online');
+  const live = test.windows.some(w => w.state === 'open');
+  const products = test.allowedProducts?.length ? test.allowedProducts.join(', ') : 'all products';
+  const link: React.CSSProperties = { color: SLATE, fontWeight: 700, fontFamily: FONT_HEADING, fontSize: T_BASE, textDecoration: 'none' };
+  const action: React.CSSProperties = {
+    display: 'inline-flex', alignItems: 'center', padding: '5px 8px', borderRadius: R_SM,
+    border: `1px solid ${BORDER}`, background: SURFACE, color: SLATE, fontSize: T_SM, fontWeight: 600,
+    fontFamily: SANS, cursor: 'pointer', textDecoration: 'none', whiteSpace: 'nowrap',
+  };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-      <SectionTitle>Test Settings</SectionTitle>
-
-      {/* Status */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, alignItems: 'center' }}>
-        <span style={{ fontSize: T_BASE, color: C.text, fontWeight: 600, fontFamily: SANS, marginRight: 4 }}>Status:</span>
-        {(['draft', 'published', 'archived'] as const).map(s => (
-          <button
-            key={s}
-            onClick={() => setStatus(s)}
-            style={{
-              padding: '5px 12px', borderRadius: R_SM, fontSize: T_SM, fontWeight: 600,
-              fontFamily: SANS, cursor: 'pointer',
-              background: status === s ? (s === 'published' ? C.successBg : s === 'archived' ? C.goldBg : C.surface) : 'transparent',
-              color: status === s ? (s === 'published' ? C.success : s === 'archived' ? C.gold : C.text) : C.textSec,
-              border: `1px solid ${status === s ? (s === 'published' ? C.successBdr : s === 'archived' ? C.warnBdr : C.border) : C.border}`,
-            }}
-          >
-            {s.charAt(0).toUpperCase() + s.slice(1)}
+    <tr style={{ background: selected ? SURFACE_ALT : undefined }}>
+      <td style={{ ...TD, width: 36 }}>
+        <input
+          type="checkbox" checked={selected} onChange={e => onSelect(e.target.checked)}
+          aria-label={`Select ${test.title}`} style={{ width: 18, height: 18, accentColor: RED, cursor: 'pointer' }}
+        />
+      </td>
+      <td style={{ ...TD, minWidth: 220 }}>
+        <Link href={`/admin/tests/${test.id}`} className="lms-testlink" style={link}>{test.title}</Link>
+        <div style={{ marginTop: 3, color: MUTED, fontSize: T_XS }}>
+          {BUCKET_LABELS[test.bucket]} · {products}
+          {test.batches.length > 0 ? ` · batch ${test.batches.join(', ')}` : ''}
+          {' · '}{test.totalQuestions} Qs, {test.totalMarks} marks
+        </div>
+      </td>
+      <td style={TD}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, alignItems: 'flex-start' }}>
+          <Badge value={test.status} />
+          {live && <Badge value="open" />}
+        </div>
+      </td>
+      <td style={{ ...TD, minWidth: 210, fontFamily: FONT_MONO, fontSize: T_XS, lineHeight: 1.6 }}>
+        <div><span style={{ color: MUTED }}>Offline </span>{fmtWindow(offline)}{offline ? ` (${WINDOW_STATE_WORD[offline.state]})` : ''}</div>
+        <div><span style={{ color: MUTED }}>Online&nbsp; </span>{fmtWindow(online)}{online ? ` (${WINDOW_STATE_WORD[online.state]})` : ''}</div>
+      </td>
+      <td style={TDN}>
+        {test.attemptCounts.submitted}
+        {test.attemptCounts.inProgress > 0 && <span style={{ color: MUTED }}> +{test.attemptCounts.inProgress} live</span>}
+      </td>
+      <td style={TDN}>{dash(s?.averagePct, '%')}</td>
+      <td style={TDN}>{dash(s?.medianScore)}</td>
+      <td style={TDN}>{dash(s?.topScore)}</td>
+      <td style={TDN}>{dash(s?.passRate, '%')}</td>
+      <td style={{ ...TD, whiteSpace: 'nowrap', color: INK_SOFT }}>{test.markingRule ?? '–'}</td>
+      <td style={{ ...TD, whiteSpace: 'nowrap', fontFamily: FONT_MONO, fontSize: T_XS }}>
+        {test.lastAttemptAt ? fmtDate(test.lastAttemptAt) : '–'}
+      </td>
+      <td style={TD}><KeyState keyed={test.answerKey.keyed} total={test.answerKey.total} /></td>
+      <td style={{ ...TD, whiteSpace: 'nowrap' }}>
+        <div style={{ display: 'flex', gap: 6 }}>
+          <Link href={`/admin/tests/${test.id}`} className="lms-btn lms-btn-ghost" style={action}>Open page</Link>
+          <button type="button" className="lms-btn lms-btn-ghost" aria-expanded={moving} onClick={onToggleMove} style={action}>
+            Move to…
           </button>
-        ))}
-        <Btn
-          size="sm" onClick={() => patch({ status })}
-          disabled={saving || status === test.status}
-        >
-          {saving ? <Spinner size={12} /> : null}
-          Save Status
-        </Btn>
-      </div>
-
-      {/* Publish results */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: T_BASE, fontFamily: SANS, color: C.text }}>
-          <input
-            type="checkbox"
-            checked={resultsPublished}
-            onChange={e => setResultsPublished(e.target.checked)}
-            style={{ width: 15, height: 15, cursor: 'pointer' }}
-          />
-          <span>Force-publish results</span>
-        </label>
-        <span style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS }}>
-          (normally auto-releases when all windows close)
-        </span>
-        <Btn
-          size="sm" onClick={() => patch({ publishResults: resultsPublished })}
-          disabled={saving || resultsPublished === (test.resultsPublishedAt !== null)}
-        >
-          {saving ? <Spinner size={12} /> : null}
-          Save
-        </Btn>
-      </div>
-
-      {/* Allowed products */}
-      <div>
-        <div style={{ fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 8 }}>
-          Access control
+          <Link href={`/admin/tests/${test.id}?tab=windows`} className="lms-btn lms-btn-ghost" style={action}>Edit windows</Link>
         </div>
-        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer', fontSize: T_BASE, fontFamily: SANS, color: C.text, marginBottom: 8 }}>
-          <input
-            type="checkbox"
-            checked={productsNull}
-            onChange={e => setProductsNull(e.target.checked)}
-            style={{ width: 15, height: 15, cursor: 'pointer' }}
-          />
-          <span>Everyone (all logged-in users — <code style={{ fontSize: T_XS, background: C.surface, padding: '1px 5px', borderRadius: 3 }}>null</code>)</span>
-        </label>
-        {!productsNull && (
-          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 10 }}>
-            {PRODUCTS.map(p => (
-              <button
-                key={p}
-                onClick={() => toggleProduct(p)}
-                style={{
-                  padding: '5px 12px', borderRadius: R_SM, fontSize: T_SM, fontWeight: 600,
-                  fontFamily: SANS, cursor: 'pointer',
-                  background: selectedProducts.includes(p) ? C.redLight : 'transparent',
-                  color: selectedProducts.includes(p) ? C.red : C.textSec,
-                  border: `1px solid ${selectedProducts.includes(p) ? C.red : C.border}`,
-                }}
-              >{p}</button>
-            ))}
-          </div>
-        )}
-        <Btn
-          size="sm"
-          onClick={() => patch({ allowedProducts: productsNull ? null : selectedProducts })}
-          disabled={saving}
-        >
-          {saving ? <Spinner size={12} /> : null}
-          Save Access
-        </Btn>
-        {!productsNull && selectedProducts.length === 0 && (
-          <p style={{ fontSize: T_SM, color: C.warn, fontFamily: SANS, margin: '6px 0 0' }}>
-            Warning: no products selected — no student will see this test.
-          </p>
-        )}
-      </div>
-
-      {/* Syllabus */}
-      <div>
-        <div style={{ fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 6 }}>
-          Syllabus
-        </div>
-        <textarea
-          value={syllabus}
-          onChange={e => setSyllabus(e.target.value)}
-          placeholder="Topics covered — shown to students on their dashboard before the test"
-          rows={4}
-          style={{
-            width: '100%', padding: '8px 10px', borderRadius: R_SM,
-            border: `1px solid ${BORDER_FIELD}`, fontSize: T_BASE, fontFamily: SANS,
-            color: C.text, resize: 'vertical', minHeight: 80,
-            boxSizing: 'border-box', background: SURFACE,
-          }}
-        />
-        <div style={{ marginTop: 8 }}>
-          <Btn
-            size="sm"
-            onClick={() => patch({ syllabus: syllabus.trim() || null })}
-            disabled={saving || (syllabus.trim() || null) === (test.syllabus ?? null)}
-          >
-            {saving ? <Spinner size={12} /> : null}
-            Save Syllabus
-          </Btn>
-        </div>
-      </div>
-
-      {isAdmin && test.status !== 'published' && (
-        <div>
-          <div style={{ fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS, marginBottom: 6 }}>
-            Delete this test
-          </div>
-          <p style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS, margin: '0 0 8px' }}>
-            Permanently removes this {test.status} test with its windows and questions. Refused if any student has attempted it.
-          </p>
-          <Btn size="sm" variant="outline" danger onClick={() => setConfirmDeleteTest(true)} disabled={saving}>
-            <Trash2 size={12} /> Delete test
-          </Btn>
-        </div>
-      )}
-      {confirmDeleteTest && (
-        <ConfirmDialog
-          open
-          title="Delete Test"
-          message={`Permanently delete "${test.title}" with all its windows and questions? This cannot be undone.`}
-          confirmLabel="Delete"
-          destructive
-          onConfirm={deleteTest}
-          onCancel={() => setConfirmDeleteTest(false)}
-        />
-      )}
-    </div>
+      </td>
+    </tr>
   );
 }
-
-// ─── Section B: Windows Manager ───────────────────────────────────────────────
-
-interface WindowFormState {
-  mode: TestMode;
-  opensAt: string;
-  closesAt: string;
-  durationMinutes: string;
-  classSessionId: string; // '' = unlinked
-}
-
-function blankForm(): WindowFormState {
-  return { mode: 'online', opensAt: '', closesAt: '', durationMinutes: '', classSessionId: '' };
-}
-
-function WindowsManager({
-  test, onRefresh, showToast,
-}: {
-  test: AdminTest;
-  onRefresh: () => void;
-  showToast: (type: ToastType, msg: string) => void;
-}) {
-  const [showCreate, setShowCreate] = useState(false);
-  const [editingId, setEditingId] = useState<number | null>(null);
-  const [form, setForm] = useState<WindowFormState>(blankForm());
-  const [saving, setSaving] = useState(false);
-  const [deletingId, setDeletingId] = useState<number | null>(null);
-  const [confirmDelete, setConfirmDelete] = useState<number | null>(null);
-  const [classSessions, setClassSessions] = useState<ClassSessionOption[]>([]);
-
-  // Loaded once per open test — used by the "Class session" picker so an
-  // admin can set the explicit test<->class link (rec #5).
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch('/api/lms/admin/classes');
-        if (!res.ok) return;
-        const rows = await res.json() as { id: number; title: string; scheduledAt: number }[];
-        if (!cancelled) setClassSessions(rows.map(r => ({ id: r.id, title: r.title, scheduledAt: r.scheduledAt })));
-      } catch {
-        // Non-critical — the picker just stays empty; opensAt/closesAt/mode still work.
-      }
-    })();
-    return () => { cancelled = true; };
-  }, []);
-
-  function startCreate() {
-    setEditingId(null);
-    setForm(blankForm());
-    setShowCreate(true);
-  }
-
-  function startEdit(w: AdminWindow) {
-    setShowCreate(false);
-    setEditingId(w.id);
-    setForm({
-      mode: w.mode,
-      opensAt: msToLocal(w.opensAt),
-      closesAt: msToLocal(w.closesAt),
-      durationMinutes: w.durationMinutes != null ? String(w.durationMinutes) : '',
-      classSessionId: w.classSessionId != null ? String(w.classSessionId) : '',
-    });
-  }
-
-  function cancelForm() {
-    setShowCreate(false);
-    setEditingId(null);
-    setForm(blankForm());
-  }
-
-  async function submitForm(e: React.FormEvent) {
-    e.preventDefault();
-    if (!form.opensAt || !form.closesAt) {
-      showToast('error', 'opensAt and closesAt are required.');
-      return;
-    }
-    if (form.mode === 'online' && !form.durationMinutes) {
-      showToast('error', 'Online windows require a duration.');
-      return;
-    }
-    const opensMs  = localToMs(form.opensAt);
-    const closesMs = localToMs(form.closesAt);
-    if (closesMs <= opensMs) {
-      showToast('error', 'Close time must be after open time.');
-      return;
-    }
-
-    const body: Record<string, unknown> = {
-      opensAt: opensMs,
-      closesAt: closesMs,
-      classSessionId: form.classSessionId ? parseInt(form.classSessionId, 10) : null,
-      ...(form.mode === 'online' ? { durationMinutes: parseInt(form.durationMinutes, 10) } : {}),
-    };
-
-    setSaving(true);
-    try {
-      if (editingId !== null) {
-        // PATCH existing
-        const res = await fetch(`/api/admin/tests/windows/${editingId}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(body),
-        });
-        if (!res.ok) {
-          const d = await res.json() as { error?: string };
-          showToast('error', d.error ?? 'Failed to update window.');
-          return;
-        }
-        showToast('success', 'Window rescheduled.');
-      } else {
-        // POST new
-        const res = await fetch(`/api/admin/tests/${test.id}/windows`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ mode: form.mode, ...body }),
-        });
-        if (!res.ok) {
-          const d = await res.json() as { error?: string };
-          showToast('error', d.error ?? 'Failed to create window.');
-          return;
-        }
-        showToast('success', 'Window created.');
-      }
-      cancelForm();
-      onRefresh();
-    } catch {
-      showToast('error', 'Network error.');
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  async function patchStatus(windowId: number, status: 'open' | 'closed') {
-    setSaving(true);
-    try {
-      const res = await fetch(`/api/admin/tests/windows/${windowId}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ status }),
-      });
-      if (!res.ok) {
-        const d = await res.json() as { error?: string };
-        showToast('error', d.error ?? 'Failed.');
-      } else {
-        showToast('success', status === 'open' ? 'Window opened.' : 'Window closed.');
-        onRefresh();
-      }
-    } catch {
-      showToast('error', 'Network error.');
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  async function deleteWindow(windowId: number) {
-    setDeletingId(windowId);
-    try {
-      const res = await fetch(`/api/admin/tests/windows/${windowId}`, { method: 'DELETE' });
-      if (res.status === 409) {
-        showToast('warn', 'Window has attempts — close it instead of deleting.');
-      } else if (!res.ok) {
-        const d = await res.json() as { error?: string };
-        showToast('error', d.error ?? 'Failed to delete.');
-      } else {
-        showToast('success', 'Window deleted.');
-        onRefresh();
-      }
-    } catch {
-      showToast('error', 'Network error.');
-    } finally {
-      setDeletingId(null);
-      setConfirmDelete(null);
-    }
-  }
-
-  const inputStyle: React.CSSProperties = {
-    padding: '8px 10px', borderRadius: R_SM, border: `1px solid ${BORDER_FIELD}`,
-    fontSize: T_BASE, fontFamily: SANS, color: C.text, background: SURFACE,
-    width: '100%', boxSizing: 'border-box',
-  };
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <SectionTitle>Windows</SectionTitle>
-
-      {/* Window list */}
-      {test.windows.length === 0 ? (
-        <p style={{ fontSize: T_BASE, color: C.textMuted, fontFamily: SANS, margin: 0 }}>No windows yet.</p>
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {test.windows.map(w => (
-            <div key={w.id} style={{
-              background: C.surface, border: `1px solid ${C.border}`,
-              borderRadius: R_MD, padding: '10px 14px',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-                <span style={{ fontSize: T_SM, fontWeight: 700, fontFamily: SANS, color: C.textSec, textTransform: 'uppercase' }}>
-                  {w.mode}
-                </span>
-                <Badge value={w.status} />
-                <Badge value={w.state} />
-                {w.durationMinutes && (
-                  <span style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS }}>
-                    {w.durationMinutes} min
-                  </span>
-                )}
-                <span style={{ fontSize: T_SM, color: C.textMuted, fontFamily: SANS, marginLeft: 'auto' }}>
-                  {fmtDate(w.opensAt)} → {fmtDate(w.closesAt)}
-                </span>
-              </div>
-              {w.classSessionId != null && (
-                <p style={{ margin: '6px 0 0', fontSize: T_XS, color: C.infoText, fontFamily: SANS }}>
-                  Linked class: {classSessions.find(c => c.id === w.classSessionId)?.title ?? `#${w.classSessionId}`}
-                </p>
-              )}
-              <div style={{ display: 'flex', gap: 6, marginTop: 8, flexWrap: 'wrap' }}>
-                {w.state !== 'open' && w.status !== 'closed' && (
-                  <Btn size="sm" variant="outline" onClick={() => patchStatus(w.id, 'open')} disabled={saving}>
-                    Activate Now
-                  </Btn>
-                )}
-                {w.status === 'open' && (
-                  <Btn size="sm" variant="outline" danger onClick={() => patchStatus(w.id, 'closed')} disabled={saving}>
-                    Close Now
-                  </Btn>
-                )}
-                {editingId !== w.id && (
-                  <Btn size="sm" variant="ghost" onClick={() => startEdit(w)}>
-                    <Edit2 size={12} /> Edit
-                  </Btn>
-                )}
-                <Btn size="sm" variant="ghost" danger onClick={() => setConfirmDelete(w.id)}
-                  disabled={deletingId === w.id}>
-                  {deletingId === w.id ? <Spinner size={12} /> : <Trash2 size={12} />}
-                  Delete
-                </Btn>
-              </div>
-              {/* Inline edit form */}
-              {editingId === w.id && (
-                <form onSubmit={submitForm} style={{ marginTop: 12 }}>
-                  <WindowFormFields form={form} setForm={setForm} inputStyle={inputStyle} isEdit classSessions={classSessions} />
-                  <div style={{ display: 'flex', gap: 8, marginTop: 10 }}>
-                    <Btn size="sm" onClick={() => {}} disabled={saving}>
-                      {saving ? <Spinner size={12} /> : null} Save
-                    </Btn>
-                    <Btn size="sm" variant="outline" onClick={cancelForm}>Cancel</Btn>
-                  </div>
-                </form>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Create form */}
-      {showCreate && (
-        <form onSubmit={submitForm} style={{
-          background: C.surface, border: `1px solid ${C.border}`, borderRadius: R_MD, padding: 14,
-        }}>
-          <p style={{ margin: '0 0 12px', fontSize: T_BASE, fontWeight: 600, color: C.text, fontFamily: SANS }}>New Window</p>
-          <WindowFormFields form={form} setForm={setForm} inputStyle={inputStyle} isEdit={false} classSessions={classSessions} />
-          <div style={{ display: 'flex', gap: 8, marginTop: 12 }}>
-            <Btn size="sm" onClick={() => {}} disabled={saving}>
-              {saving ? <Spinner size={12} /> : null} Create Window
-            </Btn>
-            <Btn size="sm" variant="outline" onClick={cancelForm}>Cancel</Btn>
-          </div>
-        </form>
-      )}
-
-      {!showCreate && editingId === null && (
-        <div>
-          <Btn size="sm" variant="outline" onClick={startCreate}>
-            <Plus size={13} /> Add Window
-          </Btn>
-        </div>
-      )}
-
-      {/* Confirm delete dialog */}
-      {confirmDelete !== null && (
-        <ConfirmDialog
-          open
-          title="Delete Window"
-          message="This will permanently delete the window. If any student has started an attempt through this window, the deletion will fail with an error — close it instead."
-          confirmLabel="Delete"
-          destructive
-          onConfirm={() => deleteWindow(confirmDelete)}
-          onCancel={() => setConfirmDelete(null)}
-        />
-      )}
-    </div>
-  );
-}
-
-function WindowFormFields({
-  form, setForm, inputStyle, isEdit, classSessions,
-}: {
-  form: WindowFormState;
-  setForm: React.Dispatch<React.SetStateAction<WindowFormState>>;
-  inputStyle: React.CSSProperties;
-  isEdit: boolean;
-  classSessions: ClassSessionOption[];
-}) {
-  return (
-    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 10 }}>
-      {!isEdit && (
-        <div>
-          <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Mode</label>
-          <select
-            value={form.mode}
-            onChange={e => setForm(prev => ({ ...prev, mode: e.target.value as TestMode }))}
-            style={inputStyle}
-          >
-            <option value="online">Online</option>
-            <option value="offline">Offline</option>
-          </select>
-        </div>
-      )}
-      <div>
-        <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Opens At</label>
-        <input type="datetime-local" value={form.opensAt}
-          onChange={e => setForm(prev => ({ ...prev, opensAt: e.target.value }))}
-          style={inputStyle} />
-      </div>
-      <div>
-        <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>Closes At</label>
-        <input type="datetime-local" value={form.closesAt}
-          onChange={e => setForm(prev => ({ ...prev, closesAt: e.target.value }))}
-          style={inputStyle} />
-      </div>
-      {(form.mode === 'online' || isEdit) && (
-        <div>
-          <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>
-            Duration (minutes){form.mode === 'online' ? ' *' : ' (online only)'}
-          </label>
-          <input type="number" min={1} value={form.durationMinutes}
-            onChange={e => setForm(prev => ({ ...prev, durationMinutes: e.target.value }))}
-            placeholder="e.g. 90"
-            style={inputStyle} />
-        </div>
-      )}
-      <div>
-        <label style={{ display: 'block', fontSize: T_XS, fontWeight: 600, color: C.textSec, fontFamily: SANS, marginBottom: 4 }}>
-          Class session (optional)
-        </label>
-        <select
-          value={form.classSessionId}
-          onChange={e => setForm(prev => ({ ...prev, classSessionId: e.target.value }))}
-          style={inputStyle}
-        >
-          <option value="">Not linked (attendance falls back to date match)</option>
-          {classSessions.map(c => (
-            <option key={c.id} value={c.id}>{c.title} — {fmtDate(c.scheduledAt)}</option>
-          ))}
-        </select>
-      </div>
-    </div>
-  );
-}
-
-// ─── Section C: Attempts Table ────────────────────────────────────────────────
-
-function AttemptsTable({
-  testId, showToast,
-}: {
-  testId: number;
-  showToast: (type: ToastType, msg: string) => void;
-}) {
-  const [attempts, setAttempts] = useState<AdminAttempt[] | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [actionId, setActionId] = useState<number | null>(null);
-  const [confirmReset, setConfirmReset] = useState<number | null>(null);
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/admin/tests/${testId}/attempts`);
-      const d = await res.json() as { attempts?: AdminAttempt[] };
-      setAttempts(d.attempts ?? []);
-    } catch {
-      showToast('error', 'Failed to load attempts.');
-    } finally {
-      setLoading(false);
-    }
-  }, [testId, showToast]);
-
-  useEffect(() => { load(); }, [load]);
-
-  async function doAction(attemptId: number, action: 'reset' | 'unban') {
-    setActionId(attemptId);
-    try {
-      const res = await fetch(`/api/admin/tests/attempts/${attemptId}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ action }),
-      });
-      if (!res.ok) {
-        const d = await res.json() as { error?: string };
-        showToast('error', d.error ?? 'Action failed.');
-      } else {
-        showToast('success', action === 'reset' ? 'Attempt reset.' : 'Student unbanned.');
-        await load();
-      }
-    } catch {
-      showToast('error', 'Network error.');
-    } finally {
-      setActionId(null);
-    }
-  }
-
-  if (loading && !attempts) {
-    return (
-      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: C.textSec, fontSize: T_BASE, fontFamily: SANS }}>
-        <Spinner /> Loading attempts…
-      </div>
-    );
-  }
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <SectionTitle>Attempts</SectionTitle>
-        <button onClick={load} disabled={loading} style={{
-          marginLeft: 'auto', background: 'none', border: 'none',
-          cursor: loading ? 'not-allowed' : 'pointer', color: C.textSec, padding: 4,
-        }}>
-          <RefreshCw size={14} style={loading ? { animation: 'spin 1s linear infinite' } : {}} />
-        </button>
-      </div>
-
-      {!attempts || attempts.length === 0 ? (
-        <p style={{ fontSize: T_BASE, color: C.textMuted, fontFamily: SANS, margin: 0 }}>No attempts yet.</p>
-      ) : (
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: T_SM, fontFamily: SANS }}>
-            <thead>
-              <tr style={{ borderBottom: `1px solid ${C.border}` }}>
-                {['Student', 'ID', 'Mode', 'Status', 'Started', 'Submitted', 'Leaves', 'Resets', 'Score', 'Actions'].map(h => (
-                  <th key={h} style={{
-                    padding: '6px 10px', textAlign: 'left', fontSize: T_XS,
-                    fontWeight: 700, color: C.textMuted, textTransform: 'uppercase',
-                    letterSpacing: '0.05em', whiteSpace: 'nowrap',
-                  }}>{h}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {attempts.map(a => (
-                <tr key={a.id} style={{ borderBottom: `1px solid ${C.border}` }}>
-                  <td style={{ padding: '8px 10px', color: C.text }}>
-                    <div style={{ fontWeight: 600 }}>{a.user.name ?? '—'}</div>
-                    <div style={{ color: C.textMuted, fontSize: T_XS }}>{a.user.email}</div>
-                  </td>
-                  <td style={{ padding: '8px 10px', color: C.textSec }}>{a.user.studentId ?? '—'}</td>
-                  <td style={{ padding: '8px 10px', color: C.textSec, textTransform: 'capitalize' }}>{a.mode}</td>
-                  <td style={{ padding: '8px 10px' }}><Badge value={a.status} /></td>
-                  <td style={{ padding: '8px 10px', color: C.textSec, whiteSpace: 'nowrap' }}>{fmtDate(a.startedAt)}</td>
-                  <td style={{ padding: '8px 10px', color: C.textSec, whiteSpace: 'nowrap' }}>
-                    {a.submittedAt ? fmtDate(a.submittedAt) : '—'}
-                  </td>
-                  <td style={{ padding: '8px 10px', color: C.textSec, textAlign: 'center' }}>{a.tabLeaveCount}</td>
-                  <td style={{ padding: '8px 10px', color: C.textSec, textAlign: 'center' }}>{a.resetCount}</td>
-                  <td style={{ padding: '8px 10px', color: C.text, textAlign: 'center' }}>
-                    {a.totalScore != null ? a.totalScore.toFixed(2) : '—'}
-                  </td>
-                  <td style={{ padding: '8px 10px' }}>
-                    <div style={{ display: 'flex', gap: 4, flexWrap: 'nowrap' }}>
-                      {a.status === 'submitted' && (
-                        <a
-                          href={`/admin/tests/${testId}/attempts/${a.id}`}
-                          target="_blank" rel="noopener noreferrer"
-                          style={{
-                            display: 'inline-flex', alignItems: 'center', gap: 4,
-                            fontSize: T_SM, fontWeight: 600, color: C.textSec,
-                            textDecoration: 'none', padding: '5px 10px',
-                          }}
-                        >
-                          <Eye size={11} /> View Result
-                        </a>
-                      )}
-                      <Btn
-                        size="sm" variant="ghost"
-                        onClick={() => setConfirmReset(a.id)}
-                        disabled={actionId === a.id}
-                      >
-                        {actionId === a.id ? <Spinner size={11} /> : <RotateCcw size={11} />}
-                        Reset
-                      </Btn>
-                      {a.status === 'banned' && (
-                        <Btn
-                          size="sm" variant="ghost"
-                          onClick={() => doAction(a.id, 'unban')}
-                          disabled={actionId === a.id}
-                        >
-                          {actionId === a.id ? <Spinner size={11} /> : <ShieldOff size={11} />}
-                          Unban
-                        </Btn>
-                      )}
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
-
-      {confirmReset !== null && (
-        <ConfirmDialog
-          open
-          title="Reset Attempt"
-          message="This wipes the student's answers and score so they can start the test fresh. Their violation counters are also cleared. This cannot be undone."
-          confirmLabel="Reset Attempt"
-          destructive
-          onConfirm={() => { doAction(confirmReset, 'reset'); setConfirmReset(null); }}
-          onCancel={() => setConfirmReset(null)}
-        />
-      )}
-    </div>
-  );
-}
-
-// ─── Section D: Answer Key Editor ─────────────────────────────────────────────
-
-/** Parses bulk paste like "1.D 2.C 3-A, 4 B" → { qNumber: key } */
-function parseBulkPaste(raw: string): Record<number, string> {
-  const out: Record<number, string> = {};
-  // Match patterns: <number>[. , - ]?<optional space><key letter A-E>
-  const re = /(\d+)\s*[.\-,]?\s*([A-Ea-e])/g;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(raw)) !== null) {
-    const num = parseInt(m[1], 10);
-    const key = m[2].toUpperCase();
-    out[num] = key;
-  }
-  return out;
-}
-
-function AnswerKeyEditor({
-  testId, showToast,
-}: {
-  testId: number;
-  showToast: (type: ToastType, msg: string) => void;
-}) {
-  const [questions, setQuestions] = useState<AnswerKeyQuestion[] | null>(null);
-  const [keys, setKeys] = useState<Record<number, string | null>>({});
-  const [loading, setLoading] = useState(false);
-  const [saving, setSaving] = useState(false);
-  const [bulkText, setBulkText] = useState('');
-
-  const load = useCallback(async () => {
-    setLoading(true);
-    try {
-      const res = await fetch(`/api/admin/tests/${testId}/answer-key`);
-      const d = await res.json() as { questions?: AnswerKeyQuestion[] };
-      const qs = d.questions ?? [];
-      setQuestions(qs);
-      const init: Record<number, string | null> = {};
-      for (const q of qs) init[q.id] = q.correctKey;
-      setKeys(init);
-    } catch {
-      showToast('error', 'Failed to load answer key.');
-    } finally {
-      setLoading(false);
-    }
-  }, [testId, showToast]);
-
-  useEffect(() => { load(); }, [load]);
-
-  async function saveKeys() {
-    setSaving(true);
-    try {
-      const body: Record<string, string | null> = {};
-      for (const [id, k] of Object.entries(keys)) body[id] = k;
-      const res = await fetch(`/api/admin/tests/${testId}/answer-key`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ keys: body }),
-      });
-      if (!res.ok) {
-        const d = await res.json() as { error?: string };
-        showToast('error', d.error ?? 'Failed to save.');
-      } else {
-        const d = await res.json() as { rescored?: number; updated?: number };
-        showToast('success', `Saved ${d.updated ?? 0} keys. Re-scored ${d.rescored ?? 0} attempts.`);
-        await load();
-      }
-    } catch {
-      showToast('error', 'Network error.');
-    } finally {
-      setSaving(false);
-    }
-  }
-
-  function applyBulkPaste() {
-    if (!questions) return;
-    const parsed = parseBulkPaste(bulkText);
-    if (Object.keys(parsed).length === 0) {
-      showToast('warn', 'Could not parse any answers. Format: "1.D 2.C 3.A"');
-      return;
-    }
-    const byNumber: Record<number, number> = {};
-    for (const q of questions) byNumber[q.number] = q.id;
-    const next = { ...keys };
-    let matched = 0;
-    for (const [num, key] of Object.entries(parsed)) {
-      const qid = byNumber[Number(num)];
-      if (qid !== undefined) { next[qid] = key; matched++; }
-    }
-    setKeys(next);
-    showToast('info', `Filled ${matched} answers from paste (${Object.keys(parsed).length} parsed).`);
-    setBulkText('');
-  }
-
-  if (loading) {
-    return (
-      <div style={{ padding: '20px 0', display: 'flex', alignItems: 'center', gap: 8, color: C.textSec, fontSize: T_BASE, fontFamily: SANS }}>
-        <Spinner /> Loading answer key…
-      </div>
-    );
-  }
-
-  // Group by section
-  const sections: Record<string, AnswerKeyQuestion[]> = {};
-  if (questions) {
-    for (const q of questions) {
-      if (!sections[q.sectionTitle]) sections[q.sectionTitle] = [];
-      sections[q.sectionTitle].push(q);
-    }
-  }
-
-  const selectStyle: React.CSSProperties = {
-    padding: '4px 6px', borderRadius: 5, border: `1px solid ${BORDER_FIELD}`,
-    fontSize: T_SM, fontFamily: SANS, color: C.text, background: SURFACE,
-    width: 52,
-  };
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-      <SectionTitle>Answer Key (admin only)</SectionTitle>
-
-      {/* Bulk paste */}
-      <div style={{
-        background: C.surface, border: `1px solid ${C.border}`,
-        borderRadius: R_MD, padding: 14,
-      }}>
-        <p style={{ margin: '0 0 8px', fontSize: T_SM, fontWeight: 600, color: C.text, fontFamily: SANS }}>
-          Bulk Paste
-        </p>
-        <p style={{ margin: '0 0 8px', fontSize: T_SM, color: C.textMuted, fontFamily: SANS }}>
-          Paste answer keys in any liberal format, e.g. <code>1.D 2.C 3-A, 4 B</code>
-        </p>
-        <div style={{ display: 'flex', gap: 8, alignItems: 'flex-start' }}>
-          <textarea
-            value={bulkText}
-            onChange={e => setBulkText(e.target.value)}
-            placeholder="1.D 2.C 3.A 4.B ..."
-            rows={3}
-            style={{
-              flex: 1, padding: '8px 10px', borderRadius: R_SM, border: `1px solid ${BORDER_FIELD}`,
-              fontSize: T_BASE, fontFamily: SANS, resize: 'vertical', minHeight: 60,
-            }}
-          />
-          <Btn size="sm" variant="outline" onClick={applyBulkPaste} disabled={!bulkText.trim()}>
-            Fill Grid
-          </Btn>
-        </div>
-      </div>
-
-      {/* Per-section grid */}
-      {Object.entries(sections).map(([title, qs]) => (
-        <div key={title}>
-          <p style={{ margin: '0 0 10px', fontSize: T_SM, fontWeight: 700, color: C.textSec, fontFamily: SANS, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-            {title}
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(110px, 1fr))', gap: 8 }}>
-            {qs.map(q => (
-              <div key={q.id} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ fontSize: T_SM, color: C.textSec, fontFamily: SANS, minWidth: 20 }}>#{q.number}</span>
-                <select
-                  value={keys[q.id] ?? ''}
-                  onChange={e => setKeys(prev => ({ ...prev, [q.id]: e.target.value || null }))}
-                  style={selectStyle}
-                >
-                  <option value="">—</option>
-                  {['A','B','C','D','E'].map(k => (
-                    <option key={k} value={k}>{k}</option>
-                  ))}
-                </select>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-
-      {questions && questions.length > 0 && (
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center', paddingTop: 4 }}>
-          <Btn onClick={saveKeys} disabled={saving}>
-            {saving ? <Spinner size={14} /> : null}
-            Save Answer Key
-          </Btn>
-          <Btn variant="outline" onClick={load} disabled={loading}>
-            Reset
-          </Btn>
-        </div>
-      )}
-
-      {questions && questions.length === 0 && (
-        <p style={{ fontSize: T_BASE, color: C.textMuted, fontFamily: SANS, margin: 0 }}>
-          No questions found for this test.
-        </p>
-      )}
-    </div>
-  );
-}
-
-// ─── Test Row (expandable) ────────────────────────────────────────────────────
-
-type TabKey = 'settings' | 'windows' | 'attempts' | 'answerKey' | 'analytics';
-
-function TestRow({
-  test, isAdmin, onRefresh, showToast,
-}: {
-  test: AdminTest;
-  isAdmin: boolean;
-  onRefresh: () => void;
-  showToast: (type: ToastType, msg: string) => void;
-}) {
-  const [open, setOpen] = useState(false);
-  const [tab, setTab] = useState<TabKey>('windows');
-
-  const tabs: { key: TabKey; label: string; adminOnly?: boolean }[] = [
-    { key: 'windows',   label: 'Windows'    },
-    { key: 'attempts',  label: 'Attempts'   },
-    { key: 'analytics', label: 'Analytics'  },
-    { key: 'settings',  label: 'Settings'   },
-    { key: 'answerKey', label: 'Answer Key', adminOnly: true },
-  ];
-
-  const total = test.attemptCounts.inProgress + test.attemptCounts.submitted + test.attemptCounts.banned;
-
-  return (
-    <div style={{
-      border: `1px solid ${C.border}`, borderRadius: R_LG,
-      background: SURFACE, overflow: 'hidden',
-    }}>
-      {/* Header row */}
-      <button
-        onClick={() => setOpen(o => !o)}
-        style={{
-          width: '100%', display: 'flex', alignItems: 'center', gap: 10,
-          padding: '14px 18px', background: 'none', border: 'none',
-          cursor: 'pointer', textAlign: 'left',
-        }}
-      >
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
-            <BucketBadge bucket={test.bucket} />
-            <Badge value={test.status} />
-            <span style={{ fontSize: T_MD, fontWeight: 700, color: C.text, fontFamily: FONT_HEADING }}>
-              {test.title}
-            </span>
-          </div>
-          <div style={{ marginTop: 4, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <span style={{ fontSize: T_XS, color: C.textMuted, fontFamily: SANS }}>
-              {test.totalQuestions} Qs · {test.totalMarks} marks
-            </span>
-            <span style={{ fontSize: T_XS, color: C.textMuted, fontFamily: SANS }}>
-              {test.windows.length} window{test.windows.length !== 1 ? 's' : ''}
-            </span>
-            {total > 0 && (
-              <span style={{ fontSize: T_XS, color: C.textMuted, fontFamily: SANS }}>
-                {test.attemptCounts.inProgress} in-progress · {test.attemptCounts.submitted} submitted
-                {test.attemptCounts.banned > 0 ? ` · ${test.attemptCounts.banned} banned` : ''}
-              </span>
-            )}
-          </div>
-        </div>
-        {open ? <ChevronUp size={16} style={{ color: C.textMuted, flexShrink: 0 }} /> : <ChevronDown size={16} style={{ color: C.textMuted, flexShrink: 0 }} />}
-      </button>
-
-      {/* Expanded detail */}
-      {open && (
-        <div style={{ borderTop: `1px solid ${C.border}` }}>
-          {/* Tab bar */}
-          <div style={{
-            display: 'flex', gap: 0, borderBottom: `1px solid ${C.border}`,
-            padding: '0 18px', overflowX: 'auto',
-          }}>
-            {tabs.filter(t => !t.adminOnly || isAdmin).map(t => (
-              <button
-                key={t.key}
-                onClick={() => setTab(t.key)}
-                style={{
-                  padding: '10px 14px', background: 'none', border: 'none',
-                  cursor: 'pointer', fontSize: T_BASE, fontFamily: SANS, fontWeight: tab === t.key ? 600 : 400,
-                  color: tab === t.key ? C.red : C.textSec,
-                  borderBottom: tab === t.key ? `2px solid ${C.red}` : '2px solid transparent',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Tab content */}
-          <div style={{ padding: '18px 18px 22px' }}>
-            {tab === 'windows' && (
-              <WindowsManager test={test} onRefresh={onRefresh} showToast={showToast} />
-            )}
-            {tab === 'attempts' && (
-              <AttemptsTable testId={test.id} showToast={showToast} />
-            )}
-            {tab === 'analytics' && (
-              <TestAnalytics testId={test.id} />
-            )}
-            {tab === 'settings' && (
-              <TestSettings test={test} isAdmin={isAdmin} onRefresh={onRefresh} showToast={showToast} />
-            )}
-            {tab === 'answerKey' && isAdmin && (
-              <AnswerKeyEditor testId={test.id} showToast={showToast} />
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-// ─── Main page ────────────────────────────────────────────────────────────────
 
 export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
   const [tests, setTests] = useState<AdminTest[] | null>(null);
@@ -1404,6 +170,15 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
 
   const [filter, setFilter] = useState<'all' | 'draft' | 'published' | 'archived'>('all');
   const [search, setSearch] = useState('');
+  const [open, setOpen] = useState<Record<string, boolean>>({});
+  const [selected, setSelected] = useState<Set<number>>(new Set());
+  const [moveFor, setMoveFor] = useState<number | 'bulk' | null>(null);
+  const [moving, setMoving] = useState(false);
+  const [extraCats, setExtraCats] = useState<string[]>([]);
+  const [newCatOpen, setNewCatOpen] = useState(false);
+  const [newCat, setNewCat] = useState('');
+  const [renaming, setRenaming] = useState<string | null>(null);
+  const [renameTo, setRenameTo] = useState('');
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -1420,69 +195,173 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
 
   useEffect(() => { load(); }, [load]);
 
-  const bucketTests = (tests ?? []).filter(t => t.bucket === bucket);
-  const filtered = bucketTests.filter(t => {
+  const bucketTests = useMemo(() => (tests ?? []).filter(t => t.bucket === bucket), [tests, bucket]);
+  const q = search.trim().toLowerCase();
+  const filtered = useMemo(() => bucketTests.filter(t => {
     if (filter !== 'all' && t.status !== filter) return false;
-    if (search.trim()) {
-      const q = search.toLowerCase();
-      return t.title.toLowerCase().includes(q) || t.slug.toLowerCase().includes(q);
-    }
+    if (q) return t.title.toLowerCase().includes(q) || t.slug.toLowerCase().includes(q) || (t.category ?? '').toLowerCase().includes(q);
     return true;
-  });
+  }), [bucketTests, filter, q]);
+
+  // Every category name in play for this product (feeds the Move to… chooser).
+  const allCategories = useMemo(
+    () => groupByCategory(bucketTests, extraCats).filter(g => g.category !== null).map(g => g.category as string),
+    [bucketTests, extraCats],
+  );
+  const filtering = q !== '' || filter !== 'all';
+  // While filtering, hide empty groups; otherwise show every category (including new, empty ones).
+  const groups = useMemo(
+    () => groupByCategory(filtered, filtering ? [] : extraCats).filter(g => !filtering || g.tests.length > 0),
+    [filtered, filtering, extraCats],
+  );
+
+  const firstOpenKey = groups.find(g => g.tests.length > 0);
+  const isOpen = (key: string, count: number) =>
+    key in open ? open[key] : filtering ? count > 0 : firstOpenKey !== undefined && keyOf(firstOpenKey.category) === key;
+  const setGroupOpen = (key: string, value: boolean) => setOpen(o => ({ ...o, [key]: value }));
+
+  async function moveTests(ids: number[], category: string | null) {
+    const cat = normalizeCategory(category);
+    setMoving(true);
+    const previous = tests;
+    setTests(ts => (ts ?? []).map(t => (ids.includes(t.id) ? { ...t, category: cat } : t)));
+    try {
+      const res = await fetch('/api/admin/tests/category', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ids, category: cat }),
+      });
+      if (!res.ok) throw new Error('move failed');
+      showToast('success', `Moved ${ids.length} test${ids.length === 1 ? '' : 's'} to ${cat ?? UNSORTED}.`);
+      if (cat) { setGroupOpen(keyOf(cat), true); setExtraCats(x => x.filter(c => c !== cat)); }
+      setSelected(new Set());
+      setMoveFor(null);
+    } catch {
+      setTests(previous);
+      showToast('error', 'Could not move tests. Nothing was changed.');
+    } finally {
+      setMoving(false);
+    }
+  }
+
+  async function renameCategory(from: string) {
+    const to = normalizeCategory(renameTo);
+    setRenaming(null);
+    if (to === from) return;
+    setMoving(true);
+    try {
+      const res = await fetch('/api/admin/tests/category', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ fromCategory: from, toCategory: to }),
+      });
+      if (!res.ok) throw new Error('rename failed');
+      setExtraCats(x => x.filter(c => c !== from));
+      showToast('success', to ? `Renamed to ${to}.` : `Moved all tests from ${from} to ${UNSORTED}.`);
+      await load();
+    } catch {
+      showToast('error', 'Could not rename the category.');
+    } finally {
+      setMoving(false);
+    }
+  }
+
+  function addCategory(e: React.FormEvent) {
+    e.preventDefault();
+    const name = normalizeCategory(newCat);
+    if (!name) return;
+    if (!allCategories.includes(name)) setExtraCats(x => [...x, name]);
+    setGroupOpen(keyOf(name), true);
+    setNewCat('');
+    setNewCatOpen(false);
+    showToast('info', `${name} created. Use Move to… on tests to fill it; empty categories are not kept after a reload.`);
+  }
+
+  function toggleSelect(id: number, on: boolean) {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (on) next.add(id); else next.delete(id);
+      return next;
+    });
+  }
+
+  const selectedIds = [...selected];
+  const field: React.CSSProperties = {
+    padding: '7px 12px', borderRadius: R_SM, border: `1px solid ${BORDER_FIELD}`,
+    fontSize: T_BASE, fontFamily: SANS, color: C.text, background: SURFACE,
+  };
+  const smallBtn: React.CSSProperties = {
+    padding: '6px 12px', borderRadius: R_SM, fontSize: T_SM, fontWeight: 600,
+    fontFamily: SANS, cursor: 'pointer',
+  };
 
   return (
-    <div style={{ fontFamily: SANS, color: C.text, maxWidth: 960, margin: '0 auto' }}>
-      {/* Toast */}
+    <div style={{ fontFamily: SANS, color: C.text, maxWidth: 1280, margin: '0 auto', minWidth: 0 }}>
       {toast && <Toast toast={toast} onClose={() => {}} />}
 
       {/* Page header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 24 }}>
-        <div style={{ flex: 1 }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
+        <div style={{ flex: '1 1 260px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
             <ClipboardList size={20} style={{ color: C.red }} />
-            <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, fontFamily: FONT_HEADING, letterSpacing: '-0.025em' }}>
-              Online Tests
+            <h1 style={{ margin: 0, fontSize: T_XL, fontWeight: 700, fontFamily: FONT_HEADING, letterSpacing: '-0.025em' }}>
+              Tests and marks
             </h1>
+            <span style={{ fontSize: T_XS, fontWeight: 700, color: MUTED, border: `1px solid ${BORDER}`, borderRadius: R_SM, padding: '2px 6px' }}>
+              {BUCKET_LABELS[bucket]}
+            </span>
           </div>
           <p style={{ margin: 0, fontSize: T_BASE, color: C.textSec }}>
-            Manage tests, sitting windows, student attempts{isAdmin ? ', and answer keys' : ''}.
+            Sorted into categories you choose. Open a test for its windows, attempts, analytics and settings.
           </p>
         </div>
         <button
-          onClick={load}
-          disabled={loading}
-          aria-label="Refresh"
+          type="button" onClick={() => setNewCatOpen(o => !o)} aria-expanded={newCatOpen}
+          className="lms-btn lms-btn-ghost"
+          style={{ ...smallBtn, display: 'inline-flex', alignItems: 'center', gap: 6, background: 'transparent', border: `1px solid ${C.border}`, color: C.text }}
+        >
+          <FolderPlus size={14} /> New category
+        </button>
+        <button
+          type="button" onClick={load} disabled={loading} aria-label="Refresh" className="lms-iconbtn"
           style={{
             background: 'transparent', border: `1px solid ${C.border}`, borderRadius: R_SM,
             padding: 8, cursor: loading ? 'not-allowed' : 'pointer', color: C.textSec,
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            minWidth: 36, minHeight: 36,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', minWidth: 36, minHeight: 36,
           }}
         >
           <RefreshCw size={15} style={loading ? { animation: 'spin 1s linear infinite' } : {}} />
         </button>
       </div>
 
-      {/* Filters */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap', alignItems: 'center' }}>
+      {newCatOpen && (
+        <form onSubmit={addCategory} style={{ display: 'flex', gap: 8, marginBottom: 14, flexWrap: 'wrap' }}>
+          <input
+            className="lms-field" autoFocus value={newCat} onChange={e => setNewCat(e.target.value)}
+            maxLength={CATEGORY_MAX_LENGTH} placeholder="Category name, e.g. Vocabulary Quizzes"
+            aria-label="New category name" style={{ ...field, flex: '1 1 260px', minWidth: 0 }}
+          />
+          <button
+            type="submit" disabled={!normalizeCategory(newCat)} className="lms-btn lms-btn-primary"
+            style={{ ...smallBtn, border: 'none', background: C.red, color: SURFACE, opacity: normalizeCategory(newCat) ? 1 : 0.6 }}
+          >
+            Add category
+          </button>
+        </form>
+      )}
+
+      {/* Search + status filter */}
+      <div style={{ display: 'flex', gap: 8, marginBottom: 14, flexWrap: 'wrap', alignItems: 'center' }}>
         <input
-          type="text"
-          placeholder="Search by title or slug…"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          style={{
-            padding: '7px 12px', borderRadius: R_SM, border: `1px solid ${BORDER_FIELD}`,
-            fontSize: T_BASE, fontFamily: SANS, color: C.text, background: SURFACE,
-            flex: '1 1 220px', minWidth: 0,
-          }}
+          type="search" className="lms-field" placeholder="Search by title, slug or category…"
+          aria-label="Search tests" value={search} onChange={e => setSearch(e.target.value)}
+          style={{ ...field, flex: '1 1 240px', minWidth: 0 }}
         />
         {(['all', 'draft', 'published', 'archived'] as const).map(f => (
           <button
-            key={f}
-            onClick={() => setFilter(f)}
+            key={f} type="button" onClick={() => setFilter(f)} aria-pressed={filter === f} className="lms-btn lms-btn-ghost"
             style={{
-              padding: '6px 12px', borderRadius: R_SM, fontSize: T_SM, fontWeight: 600,
-              fontFamily: SANS, cursor: 'pointer',
+              ...smallBtn,
               background: filter === f ? C.redLight : 'transparent',
               color: filter === f ? C.red : C.textSec,
               border: `1px solid ${filter === f ? C.red : C.border}`,
@@ -1493,54 +372,197 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
         ))}
       </div>
 
-      {/* Loading */}
+      {/* Bulk bar */}
+      {selectedIds.length > 0 && (
+        <div style={{
+          position: 'sticky', top: 0, marginBottom: 12, padding: '10px 12px', borderRadius: R_SM,
+          background: SLATE, color: SURFACE, display: 'flex', flexDirection: 'column', gap: 10,
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+            <b style={{ fontSize: T_BASE }}>{selectedIds.length} selected</b>
+            <span style={{ flex: 1 }} />
+            <button
+              type="button" aria-expanded={moveFor === 'bulk'} onClick={() => setMoveFor(m => (m === 'bulk' ? null : 'bulk'))}
+              className="lms-btn" style={{ ...smallBtn, background: SURFACE, color: SLATE, border: `1px solid ${SURFACE}` }}
+            >
+              Move to…
+            </button>
+            <button
+              type="button" onClick={() => { setSelected(new Set()); setMoveFor(null); }} className="lms-btn"
+              style={{ ...smallBtn, background: 'transparent', color: SURFACE, border: `1px solid ${SURFACE}` }}
+            >
+              Clear
+            </button>
+          </div>
+          {moveFor === 'bulk' && (
+            <TestMovePanel
+              categories={allCategories} count={selectedIds.length} busy={moving}
+              onMove={c => moveTests(selectedIds, c)} onClose={() => setMoveFor(null)}
+            />
+          )}
+        </div>
+      )}
+
       {loading && !tests && (
-        <div style={{ padding: '48px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, color: C.textSec, fontSize: T_MD }}>
+        <div style={{ padding: '48px 0', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, color: C.textSec, fontSize: T_BASE }}>
           <Spinner /> Loading tests…
         </div>
       )}
 
-      {/* Empty */}
       {!loading && tests && tests.length === 0 && (
-        <div style={{
-          padding: '48px 0', textAlign: 'center',
-          border: `1px dashed ${C.border}`, borderRadius: R_LG,
-          background: BG,
-        }}>
+        <div style={{ padding: '48px 0', textAlign: 'center', border: `1px dashed ${C.border}`, borderRadius: R_LG, background: SURFACE_ALT }}>
           <ZapOff size={28} style={{ color: C.textMuted, marginBottom: 8 }} />
-          <p style={{ margin: 0, fontSize: T_MD, color: C.textSec }}>No tests found.</p>
+          <p style={{ margin: 0, fontSize: T_BASE, color: C.textSec }}>No tests found.</p>
           <p style={{ margin: '4px 0 0', fontSize: T_SM, color: C.textMuted }}>
             Import a test via <code>scripts/import-test.mjs</code> to get started.
           </p>
         </div>
       )}
 
-      {/* Test list */}
-      {filtered.length > 0 && (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          {filtered.map(t => (
-            <TestRow
-              key={t.id}
-              test={t}
-              isAdmin={isAdmin}
-              onRefresh={load}
-              showToast={showToast}
-            />
-          ))}
+      {/* Category accordion */}
+      {tests && tests.length > 0 && (
+        <div style={{ border: `1px solid ${BORDER}`, borderRadius: R_LG, background: SURFACE, overflow: 'hidden' }}>
+          {groups.map((g, gi) => {
+            const key = keyOf(g.category);
+            const expanded = isOpen(key, g.tests.length);
+            const panelId = `tests-cat-${gi}`;
+            const allSelected = g.tests.length > 0 && g.tests.every(t => selected.has(t.id));
+            return (
+              <section key={key} style={{ borderTop: gi === 0 ? 'none' : `1px solid ${BORDER}` }}>
+                <div style={{ display: 'flex', alignItems: 'center', background: SURFACE_ALT }}>
+                  {renaming === g.category && g.category !== null ? (
+                    <form
+                      onSubmit={e => { e.preventDefault(); renameCategory(g.category as string); }}
+                      style={{ display: 'flex', gap: 6, padding: '6px 12px', flex: 1, flexWrap: 'wrap' }}
+                    >
+                      <input
+                        className="lms-field" autoFocus value={renameTo} onChange={e => setRenameTo(e.target.value)}
+                        maxLength={CATEGORY_MAX_LENGTH} aria-label={`Rename ${g.category}`}
+                        style={{ ...field, flex: '1 1 200px', minWidth: 0 }}
+                      />
+                      <button type="submit" className="lms-btn lms-btn-primary" style={{ ...smallBtn, border: 'none', background: C.red, color: SURFACE }}>Save</button>
+                      <button type="button" className="lms-btn lms-btn-ghost" onClick={() => setRenaming(null)} style={{ ...smallBtn, background: 'transparent', border: `1px solid ${C.border}`, color: C.text }}>Cancel</button>
+                    </form>
+                  ) : (
+                    <>
+                      <button
+                        type="button" aria-expanded={expanded} aria-controls={panelId}
+                        onClick={() => setGroupOpen(key, !expanded)}
+                        className="lms-tab"
+                        style={{
+                          flex: 1, minWidth: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 14px',
+                          minHeight: 44, background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', color: SLATE,
+                        }}
+                      >
+                        {expanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
+                        <span style={{
+                          fontFamily: FONT_HEADING, fontStyle: g.category === null ? 'normal' : 'italic',
+                          fontSize: T_LG, fontWeight: 500, color: g.category === null ? INK_SOFT : SLATE,
+                        }}>
+                          {g.label}
+                        </span>
+                        <span style={{ fontFamily: FONT_MONO, fontSize: T_XS, color: g.category === null && g.tests.length > 0 ? RED : MUTED }}>
+                          {g.tests.length} {g.tests.length === 1 ? 'test' : 'tests'}
+                        </span>
+                      </button>
+                      {g.category !== null && (
+                        <button
+                          type="button" className="lms-iconbtn" aria-label={`Rename category ${g.category}`}
+                          onClick={() => { setRenaming(g.category); setRenameTo(g.category ?? ''); }}
+                          style={{ background: 'transparent', border: '1px solid transparent', borderRadius: R_SM, padding: 8, marginRight: 8, cursor: 'pointer', color: INK_SOFT, display: 'flex' }}
+                        >
+                          <Pencil size={14} />
+                        </button>
+                      )}
+                    </>
+                  )}
+                </div>
+
+                {expanded && (
+                  <div id={panelId}>
+                    {g.tests.length === 0 ? (
+                      <p style={{ margin: 0, padding: '14px 16px', fontSize: T_SM, color: MUTED }}>
+                        {g.category === null ? 'Every test has a category.' : 'No tests here yet. Use Move to… on a test, or tick several and move them together.'}
+                      </p>
+                    ) : (
+                      <div style={{ overflowX: 'auto', maxWidth: '100%' }}>
+                        <table style={{ width: '100%', minWidth: 1240, borderCollapse: 'collapse' }}>
+                          <thead>
+                            <tr>
+                              <th style={{ ...TH, width: 36 }}>
+                                <input
+                                  type="checkbox" checked={allSelected} aria-label={`Select all in ${g.label}`}
+                                  onChange={e => setSelected(prev => {
+                                    const next = new Set(prev);
+                                    g.tests.forEach(t => (e.target.checked ? next.add(t.id) : next.delete(t.id)));
+                                    return next;
+                                  })}
+                                  style={{ width: 18, height: 18, accentColor: RED, cursor: 'pointer' }}
+                                />
+                              </th>
+                              <th style={TH}>Test</th>
+                              <th style={TH}>Status</th>
+                              <th style={TH}>Windows</th>
+                              <th style={THN}>Attempts</th>
+                              <th style={THN}>Avg</th>
+                              <th style={THN}>Median</th>
+                              <th style={THN}>Top</th>
+                              <th style={THN}>Pass</th>
+                              <th style={TH}>Marking</th>
+                              <th style={TH}>Last attempt</th>
+                              <th style={TH}>Answer key</th>
+                              <th style={TH}><span style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}>Actions</span></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {g.tests.flatMap(t => {
+                              const rows = [
+                                <TestTableRow
+                                  key={t.id} test={t} selected={selected.has(t.id)}
+                                  onSelect={on => toggleSelect(t.id, on)}
+                                  moving={moveFor === t.id}
+                                  onToggleMove={() => setMoveFor(m => (m === t.id ? null : t.id))}
+                                />,
+                              ];
+                              if (moveFor === t.id) {
+                                rows.push(
+                                  <tr key={`${t.id}-move`}>
+                                    <td colSpan={13} style={{ padding: 10, borderBottom: `1px solid ${BORDER}` }}>
+                                      <div style={{ maxWidth: 560 }}>
+                                        <TestMovePanel
+                                          categories={allCategories} current={t.category} count={1} busy={moving}
+                                          onMove={c => moveTests([t.id], c)} onClose={() => setMoveFor(null)}
+                                        />
+                                      </div>
+                                    </td>
+                                  </tr>,
+                                );
+                              }
+                              return rows;
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </section>
+            );
+          })}
         </div>
       )}
 
-      {/* Filtered empty */}
       {!loading && tests && tests.length > 0 && filtered.length === 0 && (
         <p style={{ fontSize: T_BASE, color: C.textMuted, textAlign: 'center', padding: '32px 0' }}>
-          {bucketTests.length === 0 ? `No ${BUCKET_LABELS[bucket]} tests yet — switch IBA/FBS in the sidebar to see the others.` : 'No tests match your filter.'}
+          {bucketTests.length === 0
+            ? `No ${BUCKET_LABELS[bucket]} tests yet. Switch IBA/FBS in the sidebar to see the others.`
+            : 'No tests match your filter.'}
         </p>
       )}
 
-      {/* Instructor note */}
       {!isAdmin && (
         <div style={{
-          marginTop: 24, padding: '10px 14px', borderRadius: R_MD,
+          marginTop: 24, padding: '10px 14px', borderRadius: R_LG,
           background: C.infoBg, border: `1px solid ${C.infoBdr}`,
           display: 'flex', alignItems: 'flex-start', gap: 8,
         }}>
@@ -1552,7 +574,7 @@ export default function TestsAdminPage({ isAdmin }: { isAdmin: boolean }) {
       )}
 
       <style>{SPIN_CSS}</style>
-      <style>{`* { box-sizing: border-box; }`}</style>
+      <style>{`.lms-testlink:hover{text-decoration:underline !important}.lms-testlink:focus-visible{outline:2px solid ${RED};outline-offset:2px}`}</style>
     </div>
   );
 }

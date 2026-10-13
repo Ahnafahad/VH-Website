@@ -8,19 +8,90 @@
 
 import { NextRequest } from 'next/server';
 import { z } from 'zod';
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { tests, testAttempts } from '@/lib/db/schema';
+import { tests, testAttempts, testWindows } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
-import { requireUser } from '@/lib/tests/route-helpers';
+import { requireUser, requireStaff } from '@/lib/tests/route-helpers';
 import { isAdminRole, isStaffRole } from '@/lib/auth/roles';
+import { effectiveWindowState } from '@/lib/tests/windows';
+import { loadTestSummaryExtras } from '@/lib/tests/summaries';
+import { buildHistogram, normalizeCategory, CATEGORY_MAX_LENGTH } from '@/lib/tests/library';
 
 const bodySchema = z.object({
   status: z.enum(['draft', 'published', 'archived']).optional(),
   allowedProducts: z.array(z.string()).nullable().optional(),
   publishResults: z.boolean().optional(),
   syllabus: z.string().nullable().optional(),
+  // Library category; null / blank / "Unsorted" clears it.
+  category: z.string().max(CATEGORY_MAX_LENGTH).nullable().optional(),
 });
+
+/**
+ * GET /api/admin/tests/[id]
+ * Staff: one test with windows, attempt counts, score stats and the score histogram
+ * (feeds the per-test page /admin/tests/[id]).
+ */
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  return safeApiHandler(async () => {
+    await requireStaff();
+    const id = parseInt((await params).id, 10);
+    if (Number.isNaN(id)) throw new ApiException('Invalid test id', 400);
+
+    const t = await db.select().from(tests).where(eq(tests.id, id)).get();
+    if (!t) throw new ApiException('Test not found', 404);
+
+    const now = new Date();
+    const [windows, counts, extras] = await Promise.all([
+      db.select().from(testWindows).where(eq(testWindows.testId, id)),
+      db.select({
+        status: testAttempts.status,
+        count: sql<number>`count(*)`.mapWith(Number),
+      }).from(testAttempts).where(eq(testAttempts.testId, id)).groupBy(testAttempts.status),
+      loadTestSummaryExtras([t]),
+    ]);
+    const { scores, ...summary } = extras.get(id)!;
+
+    return {
+      test: {
+        ...summary,
+        id: t.id,
+        slug: t.slug,
+        title: t.title,
+        bucket: t.bucket,
+        status: t.status,
+        category: t.category ?? null,
+        totalQuestions: t.totalQuestions,
+        totalMarks: t.totalMarks,
+        allowedProducts: t.allowedProducts ? JSON.parse(t.allowedProducts) : null,
+        resultsPublishedAt: t.resultsPublishedAt?.getTime() ?? null,
+        syllabus: t.syllabus ?? null,
+        createdAt: t.createdAt.getTime(),
+        windows: windows
+          .sort((a, b) => a.opensAt.getTime() - b.opensAt.getTime())
+          .map(w => ({
+            id: w.id,
+            mode: w.mode,
+            opensAt: w.opensAt.getTime(),
+            closesAt: w.closesAt.getTime(),
+            durationMinutes: w.durationMinutes,
+            classSessionId: w.classSessionId,
+            status: w.status,
+            state: effectiveWindowState(w, now),
+          })),
+        attemptCounts: {
+          inProgress: counts.find(c => c.status === 'in_progress')?.count ?? 0,
+          submitted: counts.find(c => c.status === 'submitted')?.count ?? 0,
+          banned: counts.find(c => c.status === 'banned')?.count ?? 0,
+        },
+      },
+      histogram: buildHistogram(scores, t.totalMarks),
+    };
+  }, 'admin/tests/[id]');
+}
 
 export async function PATCH(
   req: NextRequest,
@@ -35,7 +106,7 @@ export async function PATCH(
     const id = parseInt((await params).id, 10);
     const parsed = bodySchema.safeParse(await req.json());
     if (!parsed.success) throw new ApiException('Invalid body', 400);
-    const { status, allowedProducts, publishResults, syllabus } = parsed.data;
+    const { status, allowedProducts, publishResults, syllabus, category } = parsed.data;
 
     const test = await db.select().from(tests).where(eq(tests.id, id)).get();
     if (!test) throw new ApiException('Test not found', 404);
@@ -49,6 +120,7 @@ export async function PATCH(
         ? { resultsPublishedAt: publishResults ? new Date() : null }
         : {}),
       ...(syllabus !== undefined ? { syllabus } : {}),
+      ...(category !== undefined ? { category: normalizeCategory(category) } : {}),
       updatedAt: new Date(),
     }).where(eq(tests.id, id));
 
