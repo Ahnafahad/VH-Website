@@ -20,7 +20,7 @@
 @media (orientation: portrait) { .lw-game::before { background-image: var(--lw-backdrop-portrait); } }
 
 /* Header / footer */
-.lw-header, .lw-round-header, .lw-context-top, .lw-bar, .lw-strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lw-header, .lw-round-header, .lw-context-top, .lw-bar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .lw-header-note, .lw-eyebrow, .lw-small, .lw-context-top, .lw-word-index, .lw-word-status { font-size: .72rem; letter-spacing: .14em; color: var(--lw-muted); }
 .lw-eyebrow { display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; font-weight: 600; }
 .lw-eyebrow > span { width: 18px; height: 1px; background: var(--lw-accent); }
@@ -74,11 +74,6 @@
 
 /* Play: a fixed column. Strip, scrolling situation, tiles and the docked action bar always fit the screen. */
 .lw-play { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; width: min(880px, 100%); margin: 0 auto; }
-.lw-strip { flex: none; min-height: 40px; justify-content: flex-start; gap: 10px; }
-.lw-strip .lw-text-button { min-height: 40px; }
-.lw-strip .lw-eyebrow { white-space: nowrap; letter-spacing: .08em; }
-.lw-strip .lw-eyebrow > span { display: none; }
-.lw-strip .lw-icon-button { width: 40px; height: 40px; }
 .lw-scroll { flex: 0 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 10px; scrollbar-width: none; }
 .lw-round-header .lw-small { text-transform: none; letter-spacing: 0; font-style: italic; }
 .lw-context-shell { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 8px; padding: 12px 16px 14px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: color-mix(in srgb, var(--lw-surface) 92%, transparent); }
@@ -121,11 +116,16 @@
 /* The bar is part of the column, so Lock / Continue is always on screen and never needs a scroll. */
 .lw-bar { flex: none; flex-wrap: nowrap; margin-top: auto; padding-top: 4px; }
 .lw-bar .lw-action-status { flex: 1; min-width: 0; font-size: .82rem; line-height: 1.35; text-wrap: balance; }
-.lw-bar .lw-primary { flex: none; }
+.lw-bar .lw-primary { flex: 1; }
+.lw-bar .lw-action-status ~ .lw-primary { flex: none; }
+.lw-hint-button { flex: none; color: var(--lw-gold); }
+/* Header while playing: the role and beat dots replace the wordmark. */
+.lw-progress { display: grid; gap: 5px; margin-right: auto; min-width: 0; }
+.lw-progress .lw-eyebrow { white-space: nowrap; letter-spacing: .1em; font-size: .68rem; }
+.lw-progress .lw-eyebrow > span { width: 12px; }
 .lw-bar-wide { gap: 8px; }
 .lw-bar-wide .lw-primary { flex: 1; }
 .lw-bar-wide .lw-secondary { flex: none; padding: 0 14px; }
-.lw-top-tools { display: inline-flex; align-items: center; gap: 2px; margin-left: auto; }
 
 /* Points: a running session total in the header, with the latest gain popping beside it. */
 .lw-score { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 10px; border: 1px solid var(--lw-line); border-radius: 999px; font-size: .78rem; letter-spacing: .06em; color: var(--lw-muted); white-space: nowrap; }
@@ -194,7 +194,7 @@
 @keyframes lw-pulse { 50% { opacity: .45; } }
 
 @media (max-width: 560px) {
-  .lw-header-note { display: none; }
+  .lw-header-note, .lw-word-index { display: none; }
   .lw-primary, .lw-secondary { padding: 0 18px; }
 }
 @media (max-height: 700px) { .lw-summary-symbol { display: none; } }
