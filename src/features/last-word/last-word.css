@@ -15,7 +15,9 @@
 .lw-game [data-autofocus]:focus { outline: none; }
 .lw-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* Layer 0: the backdrop image is the Lite chamber; Full/Standard draw their tiles in 3D on top. */
+/* Layer 0: the backdrop image is the Lite chamber; Full/Standard draw the 3D chamber shell and the tiles on top. The old blurred glows are static gradients now (same look, no per-frame blur cost). */
+.lw-backdrop-canvas { position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .7; }
+.lw-game::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: radial-gradient(60vmax 60vmax at 100% 100%, color-mix(in srgb, var(--lw-accent) 14%, transparent), transparent 70%), radial-gradient(60vmax 60vmax at 0% 0%, #F5F5F50d, transparent 70%); }
 .lw-game::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--lw-backdrop) center / cover no-repeat; opacity: .55; }
 @media (orientation: portrait) { .lw-game::before { background-image: var(--lw-backdrop-portrait); } }
 
@@ -120,8 +122,11 @@
 .lw-bar .lw-action-status ~ .lw-primary { flex: none; }
 .lw-hint-button { flex: none; color: var(--lw-gold); }
 /* Header while playing: the role and beat dots replace the wordmark. */
-.lw-progress { display: grid; gap: 5px; margin-right: auto; min-width: 0; }
-.lw-progress .lw-eyebrow { white-space: nowrap; letter-spacing: .1em; font-size: .68rem; }
+.lw-progress { display: grid; gap: 4px; margin-right: auto; min-width: 0; }
+.lw-progress-row { display: flex; align-items: center; gap: 10px; }
+.lw-progress .lw-logotype { font-size: .8rem; line-height: 1; }
+.lw-progress .lw-logotype img { height: 14px; }
+.lw-progress .lw-eyebrow { white-space: nowrap; letter-spacing: .1em; font-size: .62rem; }
 .lw-progress .lw-eyebrow > span { width: 12px; }
 .lw-bar-wide { gap: 8px; }
 .lw-bar-wide .lw-primary { flex: 1; }

@@ -25,6 +25,7 @@ import { detectTier, timing, type PresentationTier } from './presentation/tokens
 import './last-word.css';
 
 const Chamber = dynamic(() => import('./presentation/SemanticChamber'), { ssr: false });
+const Backdrop = dynamic(() => import('./presentation/SemanticChamber').then(m => m.ChamberBackdrop), { ssr: false });
 class ChamberBoundary extends Component<{ children: ReactNode; onUnavailable: () => void }, { failed: boolean }> {
   state = { failed: false };
   static getDerivedStateFromError() { return { failed: true }; }
@@ -369,14 +370,18 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     <MotionConfig reducedMotion={reduced ? 'always' : 'never'}>
       <main ref={root} className="lw-game" data-tier={tier} data-reduced={reduced} data-phase={phase}
         style={{ ['--lw-backdrop' as string]: backdrop ? `url(${backdrop})` : 'none', ['--lw-backdrop-portrait' as string]: backdropPortrait ? `url(${backdropPortrait})` : 'none', ['--lw-tile' as string]: liteTile ? `url(${liteTile})` : 'none' }}>
+        {tier !== 'lite' && !mapOpen && <div className="lw-backdrop-canvas" aria-hidden="true"><ChamberBoundary onUnavailable={onUnavailable}><Backdrop tier={tier} assets={assets} /></ChamberBoundary></div>}
         <header className="lw-header">
           <Link href="/vocab/games" className="lw-back" aria-label="Back to games"><ArrowLeft size={18} /></Link>
           {playing && current ? (
             <span className="lw-progress">
-              {ROLE_LABEL[current.round.role] && <span className="lw-eyebrow">{ROLE_LABEL[current.round.role]}</span>}
-              <ol className="lw-beat-dots" aria-label={`Beat ${context.beat + 1} of ${current.chain.beats.length}`}>
-                {current.chain.beats.map((b, i) => <li key={b.id} data-active={i <= context.beat} aria-current={i === context.beat ? 'step' : undefined} />)}
-              </ol>
+              <span className="lw-logotype">{assetUrl(assets, 'icon.wordmark') ? <img src={assetUrl(assets, 'icon.wordmark')!} alt="Last Word" height={14} /> : <>LAST<span>WORD</span></>}</span>
+              <span className="lw-progress-row">
+                <ol className="lw-beat-dots" aria-label={`Beat ${context.beat + 1} of ${current.chain.beats.length}`}>
+                  {current.chain.beats.map((b, i) => <li key={b.id} data-active={i <= context.beat} aria-current={i === context.beat ? 'step' : undefined} />)}
+                </ol>
+                {ROLE_LABEL[current.round.role] && <span className="lw-eyebrow">{ROLE_LABEL[current.round.role]}</span>}
+              </span>
             </span>
           ) : (
             <>
@@ -430,7 +435,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
           <section className="lw-play" aria-label="Semantic chamber">
             {state.matches('feedback') && roundRecords.length > 0 ? (
               <motion.div key={`${beatKey}:sheet`} className="lw-scroll lw-sheet" initial={{ opacity: 0, y: reduced ? 0 : 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0.12 : 0.32, ease: [0.2, 0.7, 0.2, 1] }}>
-                <RoundFeedback chain={current.chain} records={roundRecords} />
+                <RoundFeedback chain={current.chain} records={roundRecords} assets={assets} />
               </motion.div>
             ) : (
               <>
@@ -488,10 +493,10 @@ function Game({ sets }: { sets: LastWordSet[] }) {
               {state.matches('feedback') ? <button className="lw-text-button" onClick={finish}>Finish</button>
                 : (judged || state.matches('paused')) && <p role="status" className="lw-action-status" data-correctness={judged ? lastRecord?.correctness : undefined}>{statusText}</p>}
               {reading && current.round.hintsAllowed && context.hintLevel < 3 && (
-                <button className="lw-icon-button lw-hint-button" aria-label={context.hintLevel ? 'Another hint' : 'Hint'} onClick={() => { cue('hint'); send({ type: 'HINT' }); }}><Lightbulb size={20} /></button>
+                <button className="lw-icon-button lw-hint-button" aria-label={context.hintLevel ? 'Another hint' : 'Hint'} onClick={() => { cue('hint'); send({ type: 'HINT' }); }}><Icon assets={assets} id="hint" fallback={Lightbulb} size={20} /></button>
               )}
               {state.matches('paused') ? <button className="lw-primary" onClick={() => send({ type: 'RESUME', now: Date.now() })}>Resume</button>
-                : reading ? <button className="lw-primary" disabled={!context.selected} onClick={lock}><Lock size={16} aria-hidden="true" />{context.beat === current.chain.beats.length - 1 ? 'Have the last word' : 'Lock this reading'}</button>
+                : reading ? <button className="lw-primary" disabled={!context.selected} onClick={lock}><Icon assets={assets} id="lock" fallback={Lock} size={16} />{context.beat === current.chain.beats.length - 1 ? 'Have the last word' : 'Lock this reading'}</button>
                   : <button className="lw-primary" onClick={next}>Continue<ArrowRight size={18} aria-hidden="true" /></button>}
             </div>
           </section>

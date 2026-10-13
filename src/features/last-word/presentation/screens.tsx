@@ -119,7 +119,7 @@ export function CardScreen({ card, sets, onNext }: { card: Card; sets: LastWordS
 
 // ------------------------------------------------------------------ round feedback (§22.5, §35, §40)
 
-export function RoundFeedback({ chain, records }: { chain: LastWordChain; records: DecisionRecord[] }) {
+export function RoundFeedback({ chain, records, assets }: { chain: LastWordChain; records: DecisionRecord[]; assets: AssetUrls }) {
   const last = records.at(-1)!;
   const beat = chain.beats.find(b => b.id === last.beatId)!;
   const perfect = records.length === chain.beats.length && records.every(r => r.correctness === 'best');
@@ -128,7 +128,7 @@ export function RoundFeedback({ chain, records }: { chain: LastWordChain; record
   const turn = chain.beats.findIndex((b, i) => i > 0 && b.best_word !== chain.beats[i - 1].best_word);
   return (
     <section className="lw-feedback" aria-label="Feedback" data-correctness={last.correctness}>
-      <span className="lw-eyebrow"><span />{perfect ? 'PERFECT READ' : last.correctness === 'best' ? 'PRECISELY READ' : last.correctness === 'defensible' ? 'A DEFENSIBLE READING' : 'NOTICE THE DETAIL'}</span>
+      <span className="lw-eyebrow">{perfect ? <Icon assets={assets} id="perfect-read" fallback={Check} size={16} /> : held ? <Icon assets={assets} id="hold" fallback={Check} size={16} /> : <span />}{perfect ? 'PERFECT READ' : last.correctness === 'best' ? 'PRECISELY READ' : last.correctness === 'defensible' ? 'A DEFENSIBLE READING' : 'NOTICE THE DETAIL'}</span>
       <h2 tabIndex={-1} data-autofocus>{verdict}</h2>
       <div className="lw-pick-row" aria-label="Your reading">
         {last.presentedWords.map(word => {

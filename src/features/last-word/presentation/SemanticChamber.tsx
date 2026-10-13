@@ -166,6 +166,26 @@ function Fulcrum({ props }: { props: ChamberProps }) {
   );
 }
 
+/** Evidence strata: one text-free glass pane per earlier beat, stacked above the tiles and receding, so the beats read as layers of evidence under the word choice. */
+function EvidencePanes({ props }: { props: ChamberProps }) {
+  const viewport = useThree(state => state.viewport);
+  const panes = Math.min(props.beat, 4);
+  const top = tileHeight(viewport.width, viewport.height, props.words.length) / 2;
+  // Thin, wide strips (not slabs): one per earlier beat, stacked just above the tiles.
+  const wide = (viewport.width * 0.46) / 1.6;
+  return (
+    <group position={[0, top + 0.16, -0.8]}>
+      {Array.from({ length: panes }, (_, i) => (
+        <group key={i} position={[0, i * 0.16, -i * 0.3]} scale={[wide, 0.26, 1]}>
+          <Model url={assetUrl(props.assets, 'model.evidence-pane')} fallback={<mesh><planeGeometry args={[1.6, 0.9]} /><meshStandardMaterial color="#20262A" transparent opacity={0.3} /></mesh>}>
+            {scene => <Clone object={scene} />}
+          </Model>
+        </group>
+      ))}
+    </group>
+  );
+}
+
 function Chamber(props: ChamberProps) {
   const env = props.tier === 'full' ? assetUrl(props.assets, 'envmap.chamber') : null;
   return (
@@ -181,6 +201,7 @@ function Chamber(props: ChamberProps) {
           <Lightformer form="rect" intensity={0.6} position={[4, -3, 2]} scale={[1, 3, 1]} color="#E63946" />
         </Environment>
       )}
+      {!props.reduced && <EvidencePanes props={props} />}
       {props.words.map((word, index) => <WordTile key={word} index={index} props={props} />)}
       <Fulcrum props={props} />
       {props.tier === 'full' && !props.reduced && props.locked && <Sparkles count={14} scale={[8, 2, 1]} size={1.2} speed={0.12} opacity={0.25} color={props.best ? GOLD : IVORY} />}
@@ -201,6 +222,24 @@ export default function SemanticChamber(props: ChamberProps) {
       }}
     >
       <Chamber {...props} />
+    </Canvas>
+  );
+}
+
+/**
+ * Layer 0 (§17.1): the chamber shell as a full-screen, static backdrop behind the page. It renders on
+ * demand only (one frame per resize), so the second context costs almost nothing. No shell file → the
+ * backdrop image is used instead (CSS).
+ */
+export function ChamberBackdrop({ tier, assets }: { tier: ChamberProps['tier']; assets: AssetUrls }) {
+  const shell = assetUrl(assets, tier === 'full' ? 'model.chamber-shell.full' : 'model.chamber-shell.standard');
+  if (!shell) return null;
+  return (
+    <Canvas camera={{ position: [0, 0, 10], fov: 28 }} dpr={1} frameloop="demand" gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}>
+      <ambientLight intensity={0.2} />
+      <directionalLight position={[-5, 5, 6]} intensity={1.6} color={IVORY} />
+      <directionalLight position={[5, -4, 2]} intensity={0.5} color={CRIMSON} />
+      <Model url={shell} fallback={null}>{scene => <Clone object={scene} />}</Model>
     </Canvas>
   );
 }
