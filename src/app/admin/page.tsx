@@ -22,6 +22,7 @@ import { eq, and, gte, lt, ne, or, isNull, isNotNull, inArray, desc, sql } from 
 import { formatDhaka } from '@/lib/lms/time';
 import { isOperationalAdmin } from '@/lib/lms/operations';
 import { segmentCondition } from '@/lib/admin/user-segments';
+import { staleRegistrationCutoff } from '@/lib/registrations/enrolment';
 import ClassCloseoutPrompt, { type CloseoutSession } from '@/components/admin/ClassCloseoutPrompt';
 import { getAtRiskStudents, type AtRiskStudent } from '@/lib/students/at-risk';
 import { Suspense } from 'react';
@@ -354,7 +355,7 @@ async function fetchDataHealth(includeMoney: boolean): Promise<HealthItem[]> {
     countUsers('batch_without_access'),
     countUsers('enrolled_never_logged_in'),
     db.select({ n: sql<number>`count(*)` }).from(registrations)
-      .where(and(eq(registrations.status, 'pending'), lt(registrations.createdAt, new Date(Date.now() - 14 * 86400000)))).get()
+      .where(and(eq(registrations.status, 'pending'), lt(registrations.createdAt, staleRegistrationCutoff()))).get()
       .then(r => Number(r?.n ?? 0)).catch(() => 0),
     includeMoney
       ? db.select({ n: sql<number>`coalesce(sum(${operationalEntries.amountMinor}), 0)` }).from(operationalEntries)
