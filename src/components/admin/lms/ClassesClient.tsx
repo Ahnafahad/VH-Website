@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Plus, Edit2, Trash2, Calendar, Zap, RefreshCw, ChevronRight, ExternalLink,
-  CheckCircle, FileText, Upload, X as XIcon, BookMarked, ChevronDown, AlertCircle,
+  CheckCircle, FileText, Upload, X as XIcon, BookMarked, ChevronDown
 } from 'lucide-react';
 import {
   SubjectBadge, StatusBadge, Toast, ConfirmDialog, Modal, TabBar, Toggle,
@@ -25,6 +25,10 @@ import { formatClassName, formatMaterialName } from '@/lib/naming/format-name';
 import { suggestMaterialFields, type MaterialSuggestion } from '@/lib/naming/suggest';
 import { SUBJECTS as SUBJECT_TAXONOMY, COURSES, DOC_TYPES, BATCHES, CourseKey, SubjectKey, BatchKey } from '@/lib/naming/taxonomy';
 import { useAdminProduct } from '@/components/admin/AdminProductContext';
+import {
+  MonthGroup, StatusMarks, MarksLegend, Toolbar, ToolbarSpacer, SearchBox, SortMenu, FilterChip,
+  KIT_CSS, groupByMonth, initialOpenMonths, currentMonthKey, classMarks,
+} from './kit';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -48,6 +52,12 @@ export interface ClassSession {
   displayClassNumber: number | null;
   createdBy: number;
   createdAt: number;
+  // Per-class counts added by GET /api/lms/admin/classes (absent on rows
+  // returned by POST/PATCH, hence optional).
+  materialCount?: number;
+  homeworkCount?: number;
+  attendanceCount?: number;
+  recordingStatus?: string | null;
 }
 
 export interface ClassSchedule {
@@ -76,7 +86,6 @@ export interface TeachingUser {
 }
 
 const DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-const SUBJECTS = ['english', 'math', 'analytical', 'accounting', 'economics', 'business_studies', 'tbd'];
 const STATUSES = ['draft', 'scheduled', 'live', 'completed', 'cancelled'];
 
 // Hover/focus-visible states for the custom (non-shared) interactive elements
@@ -1141,27 +1150,7 @@ function CompletedClassModal({
   );
 }
 
-// ─── Sessions tab ─────────────────────────────────────────────────────────────
-
-function InstructorBadge({ name }: { name: string }) {
-  return (
-    <span style={{
-      display:       'inline-flex',
-      alignItems:    'center',
-      padding:       '2px 8px',
-      borderRadius:  R_PILL,
-      fontSize:      T_XS,
-      fontWeight:    600,
-      letterSpacing: '0.01em',
-      lineHeight:    1.6,
-      background:    SURFACE_ALT,
-      color:         INK_SOFT,
-      border:        `1px solid ${BORDER}`,
-    }}>
-      {name}
-    </span>
-  );
-}
+// ─── Sessions tab (ledger: months fold, this month open, four margin marks) ───
 
 function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; teachingUsers: TeachingUser[] }) {
   const { product }     = useAdminProduct();
@@ -1174,21 +1163,33 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
   const [toast,             setToast]             = useState<string | null>(null);
   const [statusFilter,      setStatusFilter]      = useState('all');
   const [subjectFilter,     setSubjectFilter]     = useState('all');
+  const [query,             setQuery]             = useState('');
+  const [openOverride,      setOpenOverride]      = useState<Record<string, boolean>>({});
   const [localSessions,     setLocalSessions]     = useState(sessions);
 
   const showToast = (m: string) => { setToast(m); setTimeout(() => setToast(null), 3000); };
 
-  const filtered = localSessions.filter(s => {
-    if (s.product !== product) return false;
+  const inProduct = localSessions.filter(s => s.product === product);
+  const subjectsPresent = Array.from(new Set(inProduct.map(s => s.subject))).sort();
+  const q = query.trim().toLowerCase();
+
+  const filtered = inProduct.filter(s => {
     if (statusFilter  !== 'all' && s.status  !== statusFilter)  return false;
     if (subjectFilter !== 'all' && s.subject !== subjectFilter) return false;
+    if (q && !`${s.title} ${s.topic ?? ''}`.toLowerCase().includes(q)) return false;
     return true;
   });
+
+  const months = groupByMonth(filtered, s => s.scheduledAt);
+  const defaultOpen = initialOpenMonths(months.map(m => m.key));
+  const isOpen = (key: string) => openOverride[key] ?? (q ? true : defaultOpen.has(key));
+  const thisMonth = currentMonthKey();
 
   const handleSaved = (saved: ClassSession) => {
     setLocalSessions(prev => {
       const idx = prev.findIndex(s => s.id === saved.id);
-      return idx >= 0 ? prev.map(s => s.id === saved.id ? saved : s) : [saved, ...prev];
+      // A saved row from POST/PATCH carries no counts: keep the ones we have.
+      return idx >= 0 ? prev.map(s => s.id === saved.id ? { ...s, ...saved } : s) : [saved, ...prev];
     });
     showToast(editing ? 'Session updated' : 'Session created');
     setEditing(null);
@@ -1218,104 +1219,109 @@ function SessionsTab({ sessions, teachingUsers }: { sessions: ClassSession[]; te
 
   return (
     <>
-      <style>{SPIN_CSS + INTERACTIVE_CSS}</style>
-      {/* Toolbar */}
-      <div style={{ display: 'flex', gap: 8, marginBottom: 16, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-          {/* Status filter chips */}
-          {['all', ...STATUSES].map(s => (
-            <button
-              key={s}
-              onClick={() => setStatusFilter(s)}
-              className={statusFilter === s ? 'lms-cc-focus' : 'lms-cc-bordered lms-cc-focus'}
-              style={{
-                padding: '8px 12px', borderRadius: R_PILL, fontSize: T_SM, cursor: 'pointer',
-                fontWeight: statusFilter === s ? 600 : 400,
-                border: `1.5px solid ${statusFilter === s ? RED : BORDER}`,
-                background: statusFilter === s ? `${RED}0D` : SURFACE,
-                color: statusFilter === s ? RED : MUTED,
-              }}>{s === 'all' ? 'All' : s.charAt(0).toUpperCase() + s.slice(1)}</button>
-          ))}
-          {/* Subject filter */}
-          <select
-            value={subjectFilter}
-            onChange={e => setSubjectFilter(e.target.value)}
-            className="lms-cc-bordered lms-cc-focus"
-            style={{
-              padding: '8px 28px 8px 10px', borderRadius: R_PILL, fontSize: T_SM, cursor: 'pointer',
-              border: `1.5px solid ${BORDER}`, background: SURFACE, color: MUTED, outline: 'none',
-            }}>
-            <option value="all">All subjects</option>
-            {SUBJECTS.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
-          </select>
-        </div>
-        <div style={{ display: 'flex', gap: 8, flexShrink: 0, flexWrap: 'wrap' }}>
+      <style>{SPIN_CSS + INTERACTIVE_CSS + KIT_CSS}</style>
+      <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, overflow: 'hidden' }}>
+        <Toolbar>
+          <div role="group" aria-label="Subject" style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+            <FilterChip pressed={subjectFilter === 'all'} onClick={() => setSubjectFilter('all')}>All</FilterChip>
+            {subjectsPresent.map(s => (
+              <FilterChip key={s} pressed={subjectFilter === s} onClick={() => setSubjectFilter(s)}>
+                {s === 'tbd' ? 'Not set' : titleCase(s.replace(/_/g, ' '))}
+              </FilterChip>
+            ))}
+          </div>
+          <SortMenu
+            label="Status"
+            value={statusFilter}
+            onChange={setStatusFilter}
+            options={[{ value: 'all', label: 'All' }, ...STATUSES.map(s => ({ value: s, label: s.charAt(0).toUpperCase() + s.slice(1) }))]}
+          />
+          <ToolbarSpacer />
+          <SearchBox value={query} onChange={setQuery} placeholder="Search classes" label="Search classes" />
           <GhostBtn onClick={() => setCompletedOpen(true)} small>
             <CheckCircle size={13} aria-hidden />
-            Log Completed Class
+            Log completed class
           </GhostBtn>
           <PrimaryBtn onClick={() => { setEditing(null); setModalOpen(true); }} small>
             <Plus size={13} aria-hidden />
-            New Session
+            Schedule class
           </PrimaryBtn>
-        </div>
-      </div>
+        </Toolbar>
+        <MarksLegend />
 
-      {/* List */}
-      {filtered.length === 0 ? (
-        <EmptyState icon={Calendar} message="No sessions match the selected filters." />
-      ) : (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {filtered.map((s, i) => (
-            <motion.div
-              key={s.id}
-              custom={i} variants={rowV} initial="hidden" animate="visible"
-              className="lms-cc-row"
-              style={{
-                background: SURFACE, border: `1px solid ${BORDER}`,
-                borderRadius: R_LG, padding: '12px 16px',
-                display: 'flex', alignItems: 'center', gap: 16,
-                opacity: s.status === 'cancelled' ? 0.55 : 1,
-                transition: 'box-shadow 120ms ease, border-color 120ms ease',
-              }}
+        {months.length === 0 ? (
+          <div style={{ padding: 16 }}>
+            <EmptyState icon={Calendar} message="No sessions match the selected filters." />
+          </div>
+        ) : months.map(m => {
+          const marked = m.items.map(s => classMarks(s));
+          const complete = marked.filter(k => k.complete).length;
+          return (
+            <MonthGroup
+              key={m.key}
+              label={m.label}
+              open={isOpen(m.key)}
+              onToggle={() => setOpenOverride(o => ({ ...o, [m.key]: !isOpen(m.key) }))}
+              thisMonth={m.key === thisMonth}
+              strip={marked.map(k => (k.complete ? 'done' : 'todo'))}
+              summary={`${m.items.length} ${m.items.length === 1 ? 'class' : 'classes'} · ${complete} complete`}
             >
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
-                  <p style={{ margin: 0, fontSize: T_BASE, fontWeight: 600, color: SLATE }}>{s.title}</p>
-                  <SubjectBadge subject={s.subject} />
-                  <StatusBadge status={s.status} />
-                  {s.instructorId != null && (
-                    <InstructorBadge name={instructorNames.get(s.instructorId) ?? 'Unknown'} />
-                  )}
-                  {s.batch && <span style={{ fontSize: T_XS, color: MUTED }}>Batch {s.batch}</span>}
-                </div>
-                <p style={{ margin: 0, fontSize: T_SM, color: MUTED }}>
-                  {fmtDhaka(s.scheduledAt)} · {s.durationMinutes} min
-                  {s.displayClassNumber != null ? ` · Class ${s.displayClassNumber}` : ''}
-                </p>
-              </div>
-              <div style={{ display: 'flex', gap: 8, flexShrink: 0, alignItems: 'center' }}>
-                <Link
-                  href={`/admin/classes/${s.id}`}
-                  title="View detail"
-                  className="lms-cc-icon lms-cc-focus"
+              {m.items.map((s, i) => (
+                <div
+                  key={s.id}
+                  className="kit-row"
                   style={{
-                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                    width: 40, height: 40, borderRadius: R_SM, border: `1px solid ${BORDER}`,
-                    background: SURFACE, color: MUTED, flexShrink: 0,
-                    textDecoration: 'none',
+                    display: 'flex', alignItems: 'center', gap: 12, padding: '8px 14px', minHeight: 52,
+                    borderTop: i === 0 ? 0 : `1px solid ${BORDER}`,
+                    opacity: s.status === 'cancelled' ? 0.55 : 1,
                   }}
-                  aria-label="View class detail"
                 >
-                  <ExternalLink size={13} aria-hidden />
-                </Link>
-                <IconBtn icon={Edit2} label="Edit" onClick={() => { setEditing(s); setModalOpen(true); }} />
-                <IconBtn icon={Trash2} label="Delete" danger onClick={() => setDeleteId(s.id)} />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      )}
+                  <span style={{ width: 54, flexShrink: 0, fontSize: T_SM, color: MUTED, fontFamily: 'var(--font-mono), ui-monospace, monospace' }}>
+                    {fmtDhaka(s.scheduledAt, { day: '2-digit', month: 'short' })}
+                  </span>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                      <Link
+                        href={`/admin/classes/${s.id}`}
+                        className="lms-cc-text lms-cc-focus"
+                        style={{ fontSize: T_BASE, fontWeight: 600, color: SLATE, textDecoration: 'none' }}
+                      >
+                        {s.title}
+                      </Link>
+                      {(s.status === 'live' || s.status === 'cancelled' || s.status === 'draft') && <StatusBadge status={s.status} />}
+                    </div>
+                    <div style={{ fontSize: T_XS, color: MUTED, marginTop: 2 }}>
+                      {fmtDhaka(s.scheduledAt, { hour: 'numeric', minute: '2-digit' })} · {s.durationMinutes} min
+                      {s.displayClassNumber != null ? ` · Class ${s.displayClassNumber}` : ''}
+                      {s.instructorId != null ? ` · ${instructorNames.get(s.instructorId) ?? 'Unknown'}` : ''}
+                      {s.batch ? ` · Batch ${s.batch}` : ''}
+                      {` · ${s.attendanceCount ?? 0} attended`}
+                    </div>
+                  </div>
+                  <StatusMarks marks={classMarks(s)} />
+                  <div style={{ display: 'flex', gap: 6, flexShrink: 0, alignItems: 'center' }}>
+                    <Link
+                      href={`/admin/classes/${s.id}`}
+                      title="View detail"
+                      className="lms-cc-icon lms-cc-focus"
+                      style={{
+                        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                        width: 40, height: 40, borderRadius: R_SM, border: `1px solid ${BORDER}`,
+                        background: SURFACE, color: MUTED, flexShrink: 0, textDecoration: 'none',
+                      }}
+                      aria-label={`View detail for ${s.title}`}
+                    >
+                      <ExternalLink size={13} aria-hidden />
+                    </Link>
+                    <IconBtn icon={Edit2} label={`Edit ${s.title}`} onClick={() => { setEditing(s); setModalOpen(true); }} />
+                    <IconBtn icon={Trash2} label={`Delete ${s.title}`} danger onClick={() => setDeleteId(s.id)} />
+                  </div>
+                </div>
+              ))}
+            </MonthGroup>
+          );
+        })}
+      </div>
 
       <SessionModal
         open={modalOpen}
