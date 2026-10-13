@@ -76,3 +76,22 @@ describe('operational API input', () => {
     expect(mocks.save).not.toHaveBeenCalled();
   });
 });
+
+describe('expense export and receipts', () => {
+  it('blocks non-admins from the CSV export and receipt routes', async () => {
+    const { GET: exportCsv } = await import('@/app/api/lms/admin/operational/export/route');
+    const receipts = await import('@/app/api/lms/admin/operational/receipts/route');
+    mocks.requireUser.mockResolvedValue({ id: 7, role: 'instructor' });
+    expect((await exportCsv(request())).status).toBe(403);
+    expect((await receipts.GET(request())).status).toBe(403);
+    expect((await receipts.POST(request('POST', { fileName: 'a.pdf', contentType: 'application/pdf' }))).status).toBe(403);
+  });
+
+  it('rejects a bad month and receipt keys outside the receipt folder', async () => {
+    const { GET: exportCsv } = await import('@/app/api/lms/admin/operational/export/route');
+    const receipts = await import('@/app/api/lms/admin/operational/receipts/route');
+    expect((await exportCsv(new NextRequest('http://localhost/api/lms/admin/operational/export?month=2026-13'))).status).toBe(400);
+    expect((await receipts.GET(new NextRequest('http://localhost/x?key=materials/other.pdf'))).status).toBe(400);
+    expect((await receipts.POST(request('POST', { fileName: 'a.exe', contentType: 'application/x-msdownload' }))).status).toBe(400);
+  });
+});

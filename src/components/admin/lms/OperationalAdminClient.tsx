@@ -3,9 +3,9 @@
 import { useEffect, useState, type FormEvent, type InputHTMLAttributes } from 'react';
 import {
   ConfirmDialog, FieldInput, FieldLabel, FieldSelect, FieldTextarea, PageHeader,
-  RED, SLATE, MUTED, BORDER, SURFACE, BEIGE, R_MD,
+  RED, SLATE, MUTED, BORDER, SURFACE, BEIGE, R_MD, SPIN_CSS,
 } from './lms-shared';
-import { expenseCategories } from '@/lib/lms/operations';
+import ExpensesTracker from './ExpensesTracker';
 import type {
   OperationalSection, InstructorReport, FinancialEntryRecord, ExtraClassRecord,
 } from '@/lib/lms/operations';
@@ -22,7 +22,6 @@ interface SectionData {
   entries?: FinancialEntryRecord[];
   classes?: ExtraClassRecord[];
   instructors?: { id: number; name: string }[];
-  payers?: { id: number; name: string }[];
 }
 
 const money = (minor: number) => new Intl.NumberFormat('en-BD', {
@@ -58,6 +57,8 @@ export default function OperationalAdminClient() {
   const [deleting, setDeleting] = useState<{ id: number; label: string } | null>(null);
 
   useEffect(() => {
+    // The expenses tracker loads its own data.
+    if (section === 'expenses') { setLoading(false); return; }
     const controller = new AbortController();
     setLoading(true);
     setError('');
@@ -82,10 +83,6 @@ export default function OperationalAdminClient() {
         startsAt: new Date(`${text('startsAt')}:00+06:00`).toISOString(),
         endsAt: new Date(`${text('endsAt')}:00+06:00`).toISOString(),
         roomNumber: text('roomNumber'), status: text('status'), notes: text('notes'),
-      } : section === 'expenses' ? {
-        date: text('date'), amount: text('amount'), category: text('category'), description: text('description'),
-        paidBy: text('paidBy') ? Number(text('paidBy')) : null,
-        reimbursedAt: text('paidBy') && text('reimbursedAt') ? text('reimbursedAt') : null,
       } : {
         date: text('date'), amount: text('amount'), category: text('category'), description: text('description'),
       };
@@ -131,31 +128,6 @@ export default function OperationalAdminClient() {
     setEditing(record); setEditorOpen(true); setError(''); setNotice('');
   };
   const report = data?.report;
-  const owed = new Map<string, number>();
-  if (section === 'expenses') {
-    for (const e of data?.entries ?? []) {
-      if (e.paidBy !== null && !e.reimbursedAt) owed.set(e.paidByName ?? 'Unknown', (owed.get(e.paidByName ?? 'Unknown') ?? 0) + e.amountMinor);
-    }
-  }
-  async function markReimbursed(entry: FinancialEntryRecord) {
-    setSaving(true); setError(''); setNotice('');
-    try {
-      const response = await fetch(`/api/lms/admin/operational/expenses/${entry.id}`, {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          date: entry.date, amount: (entry.amountMinor / 100).toFixed(2), category: entry.category,
-          description: entry.description, paidBy: entry.paidBy, reimbursedAt: today(),
-        }),
-      });
-      const result = await response.json();
-      if (!response.ok) throw new Error(response.status < 500 ? result.error : 'Could not save this entry. Please retry.');
-      setNotice('Marked as reimbursed.');
-      setData(await loadSection('expenses'));
-    } catch (err) {
-      setError(err instanceof Error ? err.message : 'Could not save this entry.');
-    } finally { setSaving(false); }
-  }
-
   return (
     <div className="ops-admin">
       <style>{`
@@ -182,6 +154,7 @@ export default function OperationalAdminClient() {
         .ops-error { color: ${RED}; padding: 12px 0; }
         @media (max-width: 640px) { .ops-fields { grid-template-columns: 1fr; } .ops-panel { padding: 14px; } }
       `}</style>
+      <style>{SPIN_CSS}</style>
       <PageHeader title="Operational Admin" subtitle="Instructor history, expenses, other income, and extra classes." />
       <nav className="ops-tabs" aria-label="Operational Admin sections">
         {SECTIONS.map(item => <button key={item.key} type="button" aria-pressed={section === item.key} disabled={saving}
@@ -192,6 +165,7 @@ export default function OperationalAdminClient() {
           {item.label}
         </button>)}
       </nav>
+      {section === 'expenses' ? <ExpensesTracker /> : <>
       <div className="ops-toolbar">
         <h2>{SECTIONS.find(item => item.key === section)?.label}</h2>
         {section !== 'instructors' && data && <button type="button" className="ops-primary" disabled={saving}
@@ -225,22 +199,7 @@ export default function OperationalAdminClient() {
             </> : <>
               <InputField label="Date" name="date" type="date" defaultValue={financial?.date ?? today()} required />
               <InputField label="Amount (BDT)" name="amount" type="number" step="0.01" min="0.01" max="9999999999.99" defaultValue={financial ? (financial.amountMinor / 100).toFixed(2) : ''} required />
-              {section === 'expenses' ? <>
-                <div><FieldLabel htmlFor="ops-category">Category</FieldLabel>
-                  <FieldSelect id="ops-category" name="category" defaultValue={financial?.category ?? ''} required>
-                    <option value="">Select a category</option>
-                    {financial && !(expenseCategories as readonly string[]).includes(financial.category) && <option value={financial.category}>{financial.category} (legacy)</option>}
-                    {expenseCategories.map(c => <option key={c} value={c}>{c}</option>)}
-                  </FieldSelect>
-                </div>
-                <div><FieldLabel htmlFor="ops-paidBy">Paid by</FieldLabel>
-                  <FieldSelect id="ops-paidBy" name="paidBy" defaultValue={financial?.paidBy ?? ''}>
-                    <option value="">Organization (paid directly)</option>
-                    {(data.payers ?? []).map(p => <option key={p.id} value={p.id}>{p.name} (own pocket)</option>)}
-                  </FieldSelect>
-                </div>
-                <InputField label="Reimbursed from treasury on (leave blank if not yet)" name="reimbursedAt" type="date" defaultValue={financial?.reimbursedAt ?? ''} />
-              </> : <InputField label="Source" name="category" defaultValue={financial?.category ?? ''} maxLength={120} required />}
+              <InputField label="Source" name="category" defaultValue={financial?.category ?? ''} maxLength={120} required />
               <div><FieldLabel htmlFor="ops-description">Description</FieldLabel><FieldTextarea id="ops-description" name="description" maxLength={2000} defaultValue={financial?.description ?? ''} /></div>
             </>}
           </div>
@@ -262,14 +221,12 @@ export default function OperationalAdminClient() {
         </div>}
       </>}
 
-      {data?.entries && (data.entries.length === 0 ? <p className="ops-hint">No {section === 'expenses' ? 'expenses' : 'other income'} recorded yet.</p> : <>
+      {data?.entries && (data.entries.length === 0 ? <p className="ops-hint">No other income recorded yet.</p> : <>
         <p className="ops-hint">Total: {money(data.entries.reduce((sum, entry) => sum + entry.amountMinor, 0))}</p>
-        {section === 'expenses' && <p className="ops-hint" role="status">{owed.size === 0 ? 'Nothing owed from the treasury.' : `Owed from treasury: ${[...owed].map(([name, minor]) => `${name} ${money(minor)}`).join(' · ')}`}</p>}
-        <div className="ops-table-wrap" tabIndex={0} role="region" aria-label={section === 'expenses' ? 'Expenses' : 'Other income'}>
-          <table><thead><tr><th scope="col">Date</th><th scope="col">{section === 'expenses' ? 'Category' : 'Source'}</th>{section === 'expenses' && <><th scope="col">Paid by</th><th scope="col">Treasury</th></>}<th scope="col">Description</th><th scope="col" className="ops-number">Amount (BDT)</th><th scope="col">Actions</th></tr></thead>
+        <div className="ops-table-wrap" tabIndex={0} role="region" aria-label="Other income">
+          <table><thead><tr><th scope="col">Date</th><th scope="col">Source</th><th scope="col">Description</th><th scope="col" className="ops-number">Amount (BDT)</th><th scope="col">Actions</th></tr></thead>
             <tbody>{data.entries.map(entry => <tr key={entry.id}>
-              <td style={{ whiteSpace: 'nowrap' }}>{entry.date}</td><td>{entry.category}</td>{section === 'expenses' && <><td>{entry.paidBy === null ? 'Organization' : entry.paidByName}</td>
-                <td>{entry.paidBy === null ? '—' : entry.reimbursedAt ? `Reimbursed ${entry.reimbursedAt}` : <button type="button" disabled={saving} aria-label={`Mark ${entry.category} on ${entry.date} reimbursed`} onClick={() => markReimbursed(entry)}>Mark reimbursed</button>}</td></>}<td className="ops-notes">{entry.description || '—'}</td><td className="ops-number">{money(entry.amountMinor)}</td>
+              <td style={{ whiteSpace: 'nowrap' }}>{entry.date}</td><td>{entry.category}</td><td className="ops-notes">{entry.description || '—'}</td><td className="ops-number">{money(entry.amountMinor)}</td>
               <td><button type="button" disabled={saving} aria-label={`Edit ${entry.category} on ${entry.date}`} onClick={() => edit(entry)}>Edit</button>{' '}
                 <button type="button" disabled={saving} aria-label={`Delete ${entry.category} on ${entry.date}`} onClick={() => setDeleting({ id: entry.id, label: `${entry.category} on ${entry.date}` })}>Delete</button></td>
             </tr>)}</tbody></table>
@@ -290,6 +247,7 @@ export default function OperationalAdminClient() {
                 <button type="button" disabled={saving} aria-label={`Delete ${record.subject} extra class`} onClick={() => setDeleting({ id: record.id, label: `${record.subject} extra class` })}>Delete</button></td>
             </tr>)}</tbody></table>
         </div>}
+      </>}
       </>}
     </div>
   );

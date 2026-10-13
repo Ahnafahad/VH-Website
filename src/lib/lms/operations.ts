@@ -31,10 +31,30 @@ export const expenseCategories = [
 
 // paidBy null = the organization paid directly; otherwise an admin fronted it and may later be
 // reimbursed from the treasury (reimbursedAt = settlement date).
+export const paymentMethods = ['Cash', 'bKash', 'Nagad', 'Rocket', 'Card', 'Bank transfer', 'Cheque', 'Other'] as const;
+export const expenseProducts = ['IBA', 'FBS', 'All'] as const;
+export const RECEIPT_PREFIX = 'expense-receipts/';
+
+// Optional free text: blank or missing becomes null so the nullable columns stay clean.
+const optText = (max: number) => z.string().trim().max(max).nullish().transform(v => v || null);
+
 export const expenseEntryInput = financialEntryInput.extend({
   category: z.enum(expenseCategories, { message: 'Select a category' }),
   paidBy: z.number().int().positive().nullable(),
   reimbursedAt: date.nullable(),
+  payee: optText(160),
+  paymentMethod: z.enum(paymentMethods).nullish().transform(v => v ?? null),
+  referenceNo: optText(120),
+  // Either a key we issued for an R2 upload, or an https link the admin pasted.
+  receiptKey: z.string().trim().max(500).nullish().transform(v => v || null)
+    .refine(v => v === null || /^https:\/\/\S+$/.test(v) || (v.startsWith(RECEIPT_PREFIX) && !v.includes('..')),
+      'Receipt must be an uploaded file or an https link'),
+  product: z.enum(expenseProducts).nullish().transform(v => v ?? null),
+  batch: optText(40),
+  classSessionId: z.number().int().positive().nullish().transform(v => v ?? null),
+  location: optText(120),
+  tags: z.array(z.string().trim().min(1).max(30).regex(/^[^,]+$/, 'Tags cannot contain commas')).max(10)
+    .nullish().transform(v => (v && v.length ? v.join(',') : null)),
 }).refine(value => value.paidBy !== null || value.reimbursedAt === null, {
   message: 'Only an expense paid by a person can be reimbursed', path: ['reimbursedAt'],
 });
@@ -103,6 +123,17 @@ export interface FinancialEntryRecord {
   paidBy: number | null;
   paidByName: string | null;
   reimbursedAt: string | null;
+  payee: string | null;
+  paymentMethod: string | null;
+  referenceNo: string | null;
+  receiptKey: string | null;
+  product: string | null;
+  batch: string | null;
+  classSessionId: number | null;
+  classLabel: string | null;
+  location: string | null;
+  tags: string[];
+  updatedAt: string;
 }
 
 export interface ExtraClassRecord {
