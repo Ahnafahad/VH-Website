@@ -113,14 +113,15 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
             gap:          12,
           }}
         >
-          <Image
-            src="/lexicore-logo.png"
-            alt="LexiCore"
-            height={30}
-            width={0}
-            sizes="100vw"
-            style={{ height: 30, width: 'auto', filter: 'brightness(0) invert(1) opacity(0.85)' }}
-          />
+          <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
+            <Image
+              src="/bth_compact_square_maroon.png"
+              alt="Beyond the Horizons"
+              width={30}
+              height={30}
+              style={{ height: 30, width: 30, borderRadius: 8, objectFit: 'cover' }}
+            />
+          </Link>
           <AdminProductToggle variant="dark" />
         </div>
 
@@ -329,15 +330,16 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
           gap:            12,
         }}
       >
-        {/* LexiCore logo */}
-        <Image
-          src="/lexicore-logo.png"
-          alt="LexiCore"
-          height={30}
-          width={0}
-          sizes="100vw"
-          style={{ height: 30, width: 'auto' }}
-        />
+        {/* BTH logo — links to the main site */}
+        <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
+          <Image
+            src="/bth_compact_square.png"
+            alt="Beyond the Horizons"
+            width={30}
+            height={30}
+            style={{ height: 30, width: 30, borderRadius: 8, objectFit: 'cover' }}
+          />
+        </Link>
         <AdminProductToggle variant="light" />
       </div>
 

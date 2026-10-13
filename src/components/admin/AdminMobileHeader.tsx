@@ -164,14 +164,15 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
               alignItems:'center',
             }}
           >
-            <Image
-              src="/lexicore-logo.png"
-              alt="LexiCore"
-              height={28}
-              width={0}
-              sizes="100vw"
-              style={{ height: 28, width: 'auto', filter: 'brightness(0) invert(1) opacity(0.85)' }}
-            />
+            <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
+              <Image
+                src="/bth_compact_square_maroon.png"
+                alt="Beyond the Horizons"
+                width={28}
+                height={28}
+                style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
+              />
+            </Link>
           </div>
 
           <div
@@ -247,14 +248,15 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                     justifyContent:'space-between',
                   }}
                 >
-                  <Image
-                    src="/lexicore-logo.png"
-                    alt="LexiCore"
-                    height={28}
-                    width={0}
-                    sizes="100vw"
-                    style={{ height: 28, width: 'auto', filter: 'brightness(0) invert(1) opacity(0.85)' }}
-                  />
+                  <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
+                    <Image
+                      src="/bth_compact_square_maroon.png"
+                      alt="Beyond the Horizons"
+                      width={28}
+                      height={28}
+                      style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
+                    />
+                  </Link>
                   <motion.button
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setOpen(false)}
@@ -483,14 +485,15 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
             alignItems:'center',
           }}
         >
-          <Image
-            src="/lexicore-logo.png"
-            alt="LexiCore"
-            height={28}
-            width={0}
-            sizes="100vw"
-            style={{ height: 28, width: 'auto' }}
-          />
+          <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
+            <Image
+              src="/bth_compact_square.png"
+              alt="Beyond the Horizons"
+              width={28}
+              height={28}
+              style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
+            />
+          </Link>
         </div>
 
         {/* Admin initials avatar */}
@@ -573,14 +576,15 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Image
-                    src="/lexicore-logo.png"
-                    alt="LexiCore"
-                    height={28}
-                    width={0}
-                    sizes="100vw"
-                    style={{ height: 28, width: 'auto' }}
-                  />
+                  <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
+                    <Image
+                      src="/bth_compact_square.png"
+                      alt="Beyond the Horizons"
+                      width={28}
+                      height={28}
+                      style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
+                    />
+                  </Link>
                 </div>
 
                 {/* Close button */}
