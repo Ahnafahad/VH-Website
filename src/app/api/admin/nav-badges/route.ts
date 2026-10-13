@@ -6,7 +6,7 @@
 
 import { NextResponse } from 'next/server';
 import { unstable_cache } from 'next/cache';
-import { and, count, eq, gte, lt } from 'drizzle-orm';
+import { and, count, eq, gte, inArray, lt } from 'drizzle-orm';
 import { validateAuth, ApiException, createErrorResponse } from '@/lib/api-utils';
 import { getUserByEmail } from '@/lib/db-access-control';
 import { isStaffRole } from '@/lib/auth/roles';
@@ -30,7 +30,7 @@ const loadBadges = unstable_cache(
       n(db.select({ c: count() }).from(assignmentSubmissions).where(eq(assignmentSubmissions.status, 'submitted'))),
       n(db.select({ c: count() }).from(registrations).where(eq(registrations.status, 'pending'))),
       n(db.select({ c: count() }).from(registrations).where(and(
-        eq(registrations.status, 'pending'), lt(registrations.createdAt, new Date(now - 14 * DAY_MS)),
+        inArray(registrations.status, ['pending', 'contacted']), lt(registrations.createdAt, new Date(now - 14 * DAY_MS)),
       ))),
       n(db.select({ c: count() }).from(essaySubmissions).where(and(
         eq(essaySubmissions.status, 'submitted'), eq(essaySubmissions.isReference, false),

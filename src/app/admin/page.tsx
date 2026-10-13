@@ -323,7 +323,7 @@ async function fetchDataHealth(includeMoney: boolean): Promise<HealthItem[]> {
     countUsers('batch_without_access'),
     countUsers('enrolled_never_logged_in'),
     db.select({ n: sql<number>`count(*)` }).from(registrations)
-      .where(and(eq(registrations.status, 'pending'), lt(registrations.createdAt, staleRegistrationCutoff()))).get()
+      .where(and(inArray(registrations.status, ['pending', 'contacted']), lt(registrations.createdAt, staleRegistrationCutoff()))).get()
       .then(r => Number(r?.n ?? 0)).catch(() => 0),
     includeMoney
       ? db.select({ n: sql<number>`coalesce(sum(${operationalEntries.amountMinor}), 0)` }).from(operationalEntries)

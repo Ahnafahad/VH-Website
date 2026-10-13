@@ -14,7 +14,7 @@ const DAY_MS = 86_400_000;
 /** A pending registration older than this is "waiting too long". Same rule as the Overview data-health card. */
 export const STALE_REGISTRATION_DAYS = 14;
 
-/** Registrations created before this instant and still pending are stale (Overview data-health query). */
+/** Registrations created before this instant and still pending or contacted are stale (Overview data-health query). */
 export function staleRegistrationCutoff(now: number = Date.now()): Date {
   return new Date(now - STALE_REGISTRATION_DAYS * DAY_MS);
 }
@@ -26,7 +26,7 @@ export function ageDays(createdAtMs: number, now: number = Date.now()): number {
 
 /** Same rule as the Overview card: status is exactly 'pending' and created before the cutoff. */
 export function isStale(status: string, createdAtMs: number, now: number = Date.now()): boolean {
-  return status === 'pending' && createdAtMs < staleRegistrationCutoff(now).getTime();
+  return (status === 'pending' || status === 'contacted') && createdAtMs < staleRegistrationCutoff(now).getTime();
 }
 
 // ─── Status transitions ───────────────────────────────────────────────────────

@@ -12,7 +12,7 @@ describe('age / stale flag', () => {
     expect(ageDays(daysAgo(19), NOW)).toBe(19);
     expect(ageDays(NOW + 5000, NOW)).toBe(0);
   });
-  it('matches the Overview rule: pending and older than 14 days', () => {
+  it('flags pending and contacted older than 14 days (same rule as the Overview card)', () => {
     expect(STALE_REGISTRATION_DAYS).toBe(14);
     expect(staleRegistrationCutoff(NOW).getTime()).toBe(daysAgo(14));
     expect(isStale('pending', daysAgo(15), NOW)).toBe(true);
