@@ -38,3 +38,9 @@ export function buildStatusMessage({ studentName, metrics, atRisk }: WhatsAppMes
 
   return lines.join('\n');
 }
+
+/** Short check-in draft for the at-risk strip. The admin still reads and sends it in WhatsApp. */
+export function buildCheckInMessage(studentName: string): string {
+  const first = studentName.trim().split(/\s+/)[0] || 'there';
+  return `Hi ${first}, this is VH. I wanted to check in about your recent test results. Do you have a few minutes to talk?`;
+}

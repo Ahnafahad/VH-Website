@@ -74,3 +74,46 @@ export function computeAtRiskFlag(metrics: StudentMetrics): AtRiskResult {
 
   return { atRisk: reasons.length > 0, reasons };
 }
+
+// ─── Display helpers (no change to the rule above) ────────────────────────────
+
+/** The last three scores and ranks behind the flag, oldest first, for the sparkline. */
+export interface AtRiskTrend {
+  scores: number[]; // percentages, 1 decimal
+  ranks:  number[];
+}
+
+export function atRiskTrend(metrics: StudentMetrics): AtRiskTrend {
+  const round1 = (n: number) => Math.round(n * 10) / 10;
+  return {
+    scores: metrics.marksTrend.slice(-MIN_ATTEMPTS_FOR_TREND).map(p => round1(p.percentage)),
+    ranks:  metrics.rankTrend.slice(-MIN_ATTEMPTS_FOR_TREND).map(p => p.rank),
+  };
+}
+
+const SHORT_REASON: Record<AtRiskReason['code'], string> = {
+  marks_decline: 'Marks fell on the last two tests',
+  rank_decline:  'Rank fell two tests in a row',
+};
+
+/** One short line for a row, e.g. "Marks fell on the last two tests". */
+export function shortReason(reasons: { code: string }[]): string {
+  const lines = reasons
+    .map(r => SHORT_REASON[r.code as AtRiskReason['code']])
+    .filter((l): l is string => Boolean(l));
+  return lines.join(' · ');
+}
+
+/**
+ * Series for the sparkline, where a higher value always means better. Marks
+ * decline draws the scores; rank-only decline draws the ranks upside down
+ * (rank 1 is best) so a falling line still reads as getting worse.
+ */
+export function sparkSeries(
+  trend: AtRiskTrend,
+  reasons: { code: string }[],
+): { kind: 'marks' | 'rank'; values: number[] } {
+  const hasMarks = reasons.some(r => r.code === 'marks_decline');
+  if (hasMarks || trend.ranks.length === 0) return { kind: 'marks', values: trend.scores };
+  return { kind: 'rank', values: trend.ranks.map(r => -r) };
+}

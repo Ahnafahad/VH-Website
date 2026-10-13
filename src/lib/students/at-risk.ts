@@ -9,7 +9,7 @@ import { db } from '@/lib/db';
 import { users, tests, testAttempts } from '@/lib/db/schema';
 import { and, eq, inArray } from 'drizzle-orm';
 import { getStudentMetricsForUser } from './student-metrics';
-import { computeAtRiskFlag, MIN_ATTEMPTS_FOR_TREND } from './at-risk-pure';
+import { computeAtRiskFlag, atRiskTrend, MIN_ATTEMPTS_FOR_TREND } from './at-risk-pure';
 import type { AtRiskReason } from './at-risk-pure';
 
 export { computeAtRiskFlag, MIN_ATTEMPTS_FOR_TREND } from './at-risk-pure';
@@ -21,6 +21,12 @@ export interface AtRiskStudent {
   email:   string;
   batch:   string | null;
   reasons: AtRiskReason[];
+  /** last three test percentages, oldest first (sparkline) */
+  scores:  number[];
+  /** last three ranks, oldest first */
+  ranks:   number[];
+  /** raw users.whatsapp for the click-to-send Message action; null if none */
+  whatsapp: string | null;
 }
 
 /**
@@ -46,7 +52,7 @@ export async function getAtRiskStudents(): Promise<AtRiskStudent[]> {
   if (candidateIds.length === 0) return [];
 
   const candidates = await db
-    .select({ id: users.id, name: users.name, email: users.email, batch: users.batch })
+    .select({ id: users.id, name: users.name, email: users.email, batch: users.batch, whatsapp: users.whatsapp })
     .from(users)
     .where(and(eq(users.role, 'student'), eq(users.status, 'active'), inArray(users.id, candidateIds)));
   if (candidates.length === 0) return [];
@@ -58,7 +64,13 @@ export async function getAtRiskStudents(): Promise<AtRiskStudent[]> {
     const full = fullMetrics[i];
     if (!full) return;
     const flag = computeAtRiskFlag(full.testMetrics);
-    if (flag.atRisk) flagged.push({ id: u.id, name: u.name, email: u.email, batch: u.batch, reasons: flag.reasons });
+    if (flag.atRisk) {
+      const trend = atRiskTrend(full.testMetrics);
+      flagged.push({
+        id: u.id, name: u.name, email: u.email, batch: u.batch, reasons: flag.reasons,
+        scores: trend.scores, ranks: trend.ranks, whatsapp: u.whatsapp,
+      });
+    }
   });
 
   return flagged;
