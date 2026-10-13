@@ -13,10 +13,11 @@ import { desc, sql } from 'drizzle-orm';
 import { db, users, vocabUserProgress, vocabHallOfFame } from '@/lib/db';
 import { eq, ne } from 'drizzle-orm';
 import { checkBadges } from '@/lib/vocab/badges/checker';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
-export async function GET(req: NextRequest) {
+async function cronGetHandler(req: NextRequest) {
   // Validate cron secret (Vercel sets Authorization: Bearer <CRON_SECRET>)
   if (!CRON_SECRET) {
     console.error('[weekly-reset] CRON_SECRET env var is not set — refusing to run');
@@ -104,3 +105,5 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
 }
+
+export const GET = withCronLog('weekly-reset', cronGetHandler);

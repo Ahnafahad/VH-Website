@@ -9,7 +9,7 @@ import { useDrag } from '@use-gesture/react';
 import { useSpring } from '@react-spring/three';
 import { motion, MotionConfig, useReducedMotion } from 'motion/react';
 import { Howl } from 'howler';
-import { ArrowLeft, ArrowRight, Lightbulb, Lock, Pause, Settings2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Lightbulb, Lock, Settings2 } from 'lucide-react';
 import { assetUrl, loadAvailableAssets, type AssetUrls } from './assets/runtime';
 import type { LastWordSet } from './content/schema';
 import { updateMastery, verdictLabel } from './core/learning';
@@ -37,8 +37,7 @@ class ChamberBoundary extends Component<{ children: ReactNode; onUnavailable: ()
 const VERDICT_GLYPH = { best: '✓', defensible: '◐', incorrect: '✗' } as const;
 
 const ROLE_LABEL: Record<string, string> = {
-  tutorial: 'LEARN THE FEEL', diagnostic: 'PROVE WHAT YOU KNOW', probe: 'ONE HARDER READ', review: 'REVIEW · FRESH CONTEXT',
-  warmup: 'WARM-UP', remedial: 'A FRESH LOOK', practice: 'FOLLOW THE MEANING', shift: 'FOLLOW THE MEANING', transfer: 'NEW TERRITORY',
+  tutorial: 'LEARN THE FEEL', review: 'REVISION', remedial: 'ANOTHER LOOK',
 };
 
 /** Loads the content bank (a cached static file) and adds any staff preview set before the game starts. */
@@ -85,7 +84,9 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   const [resumable, setResumable] = useState<Checkpoint | null>(null);
   const [capped, setCapped] = useState(false);
   const [coarse, setCoarse] = useState(false);
+  const [earlierOpen, setEarlierOpen] = useState(false);
   const savedCount = useRef(0);
+  const savedBySegment = useRef(new Map<string, number>());
   const saveQueue = useRef<Promise<unknown>>(Promise.resolve());
   const [now, setNow] = useState(0);
   const repository = useRef<LastWordPersistence | null>(null);
@@ -108,13 +109,16 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   const sessionPoints = context.records.reduce((sum, r) => sum + r.score, 0);
 
   // ---------------------------------------------------------------- setup
+  useEffect(() => setEarlierOpen(false), [beatKey]);
   useEffect(() => {
     // App feel: a downward swipe in the game must not pull-to-refresh the page.
     const root = document.documentElement;
     const previous = root.style.overscrollBehaviorY;
+    const overflow = document.body.style.overflow;
     root.style.overscrollBehaviorY = 'contain';
+    document.body.style.overflow = 'hidden';
     setCoarse(window.matchMedia('(pointer: coarse)').matches);
-    return () => { root.style.overscrollBehaviorY = previous; };
+    return () => { root.style.overscrollBehaviorY = previous; document.body.style.overflow = overflow; };
   }, []);
   useEffect(() => {
     setCapability(detectTier());
@@ -182,15 +186,32 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   useEffect(() => { music.current?.volume(state.matches('feedback') ? 0.12 : 0.35); }, [phase]);
 
   // ---------------------------------------------------------------- saving, checkpoints, resume
-  /** Saves the session as it stands. Saves are serialized, and a session may grow between saves (the server accepts a longer list with the same start). */
-  const persist = useCallback((sessionId: string, startedAt: number, completedAt: number, records: DecisionRecord[]) => {
+  /**
+   * Saves the stream as it stands, one submission per saved segment (see SEGMENT_ROUNDS). Saves are serialized, and a segment may grow
+   * between saves (the server accepts a longer list with the same start). `startedAt` belongs to the original, un-suffixed session.
+   */
+  const persist = useCallback((startedAt: number, completedAt: number, records: DecisionRecord[]) => {
     const repo = repository.current;
     if (!repo || !records.length) return Promise.resolve(null);
-    const run = saveQueue.current.then(() => repo.saveSession(submissionFor(sessionId, startedAt, completedAt, records)));
+    const segments = new Map<string, DecisionRecord[]>();
+    for (const record of records) segments.set(record.sessionId, [...(segments.get(record.sessionId) ?? []), record]);
+    const run = saveQueue.current.then(async () => {
+      let snapshot: LearningSnapshot | null = null;
+      let index = 0;
+      for (const [id, group] of segments) {
+        const last = ++index === segments.size;
+        // A finished segment is saved once; the current one is always sent (the server answers an identical resend with the same state).
+        if (!last && (savedBySegment.current.get(id) ?? 0) >= group.length) continue;
+        const first = group[0];
+        snapshot = await repo.saveSession(submissionFor(id, id.includes('~') ? Math.max(0, first.occurredAt - first.reactionTimeMs) : startedAt, last ? Math.max(completedAt, group.at(-1)!.occurredAt) : group.at(-1)!.occurredAt, group));
+        savedBySegment.current.set(id, group.length);
+        if (snapshot.lastSave?.capped) setCapped(true);
+      }
+      return snapshot;
+    });
     saveQueue.current = run.catch(() => undefined);
     return run.then(snapshot => {
-      if (snapshot.lastSave?.capped) setCapped(true);
-      if (snapshot.tutorialDone) { setServerTutorialDone(true); useLastWordSettings.getState().update({ tutorialDone: true }); }
+      if (snapshot?.tutorialDone) { setServerTutorialDone(true); useLastWordSettings.getState().update({ tutorialDone: true }); }
       return snapshot;
     });
   }, []);
@@ -203,7 +224,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     if (Date.now() - found.savedAt > MAX_RESUME_MS) {
       const last = found.records.at(-1);
       // Cleared only once saved; if the save fails the checkpoint stays and is retried next visit.
-      void persist(found.sessionId, found.startedAt, last?.occurredAt ?? found.startedAt, found.records).then(() => clearCheckpoint(localStorage)).catch(() => undefined);
+      void persist(found.startedAt, last?.occurredAt ?? found.startedAt, found.records).then(() => clearCheckpoint(localStorage)).catch(() => undefined);
       return;
     }
     setResumable(found);
@@ -220,7 +241,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   useEffect(() => {
     if ((phase !== 'feedback' && phase !== 'card') || context.records.length <= savedCount.current) return;
     const count = context.records.length;
-    void persist(context.sessionId, context.startedAt, Date.now(), context.records)
+    void persist(context.startedAt, Date.now(), context.records)
       .then((snapshot: LearningSnapshot | null) => { if (snapshot) { savedCount.current = count; setSaved(snapshot); } })
       .catch(() => setStorage('Your last round has not saved yet. It will retry.'));
   }, [phase, context.records.length]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -229,6 +250,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     if (!resumable) return;
     cue('reveal');
     savedCount.current = 0;
+    savedBySegment.current.clear();
     setSaved(null);
     send({ type: 'RESTORE', checkpoint: resumable, baseline, now: Date.now() });
     setResumable(null);
@@ -238,7 +260,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     const found = resumable;
     setResumable(null);
     const last = found.records.at(-1);
-    void persist(found.sessionId, found.startedAt, last?.occurredAt ?? found.startedAt, found.records)
+    void persist(found.startedAt, last?.occurredAt ?? found.startedAt, found.records)
       .then(snapshot => { if (snapshot) setBaseline(snapshot); clearCheckpoint(localStorage); })
       .catch(() => { setStorage('Save failed. Your session is kept on this device.'); setResumable(found); });
   };
@@ -259,7 +281,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     if (!context.records.length || !context.completedAt) return;
     let cancelled = false;
     setStorage('Saving your distinctions…');
-    persist(context.sessionId, context.startedAt, context.completedAt, context.records).then(snapshot => {
+    persist(context.startedAt, context.completedAt, context.records).then(snapshot => {
       if (cancelled || !snapshot) return;
       setSaved(snapshot);
       savedCount.current = context.records.length;
@@ -289,15 +311,16 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   };
   const next = () => { cue('ui-tap'); send({ type: 'NEXT', now: Date.now() }); };
   const finish = () => send({ type: 'FINISH', now: Date.now() });
-  const start = (mode: Mode) => {
+  const start = (mode: Mode, from: MasterySnapshot = baseline) => {
     setNow(Date.now());
     setSaved(null);
     setCapped(false);
     savedCount.current = 0;
+    savedBySegment.current.clear();
     clearCheckpoint(localStorage);
     setResumable(null);
     cue('reveal');
-    send({ type: 'START', mode, now: Date.now(), sessionId: crypto.randomUUID(), baseline, tutorialDone: settings.tutorialDone || serverTutorialDone });
+    send({ type: 'START', mode, now: Date.now(), sessionId: crypto.randomUUID(), baseline: from, tutorialDone: settings.tutorialDone || serverTutorialDone });
   };
   const bind = useDrag(({ active, movement: [x], last, canceled }) => {
     tiltApi.start({ tilt: reduced || !active ? 0 : Math.max(-1, Math.min(1, x / 120)) });
@@ -333,20 +356,40 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   const liteTile = assetUrl(assets, 'texture.tile-surface.lite');
   const hints = current && (current.beat.hints ?? current.chain.hints);
   const hintText = hints && [null, hints.attention, hints.axis, hints.contrast][context.hintLevel];
-  const skipped = context.steps.filter(s => s.kind === 'diagnosis' && s.result.outcome === 'A').length;
   const corrected = context.steps.filter(s => s.kind === 'contrast').length;
+
+  const inGame = !state.matches('home') && !state.matches('recap');
+  const playing = inGame && !mapOpen && !state.matches('card');
+  const continueFromRecap = () => { const base = saved ?? projected; setBaseline(base); start('journey', base); };
+  const statusText = state.matches('paused') ? 'Paused. Take your time.'
+    : judged && lastRecord ? `${VERDICT_GLYPH[lastRecord.correctness]} ${verdictLabel(lastRecord.correctness)} · ${current?.chain.purpose === 'tutorial' ? 'guided, no points' : lastRecord.score === 0 && lastRecord.correctness !== 'incorrect' ? 'too quick to count' : `+${lastRecord.score} pts`}${lastRecord.correctness === 'best' ? '' : ` · ${current?.beat.best_word} fits better`}`
+      : context.selected ? `${context.selected} · you can still change it`
+        : coarse && !settings.coachSeen ? 'Tap a word or swipe it, then lock' : 'Tap a word, swipe, or use ← →';
 
   return (
     <MotionConfig reducedMotion={reduced ? 'always' : 'never'}>
       <main ref={root} className="lw-game" data-tier={tier} data-reduced={reduced} data-phase={phase}
         style={{ ['--lw-backdrop' as string]: backdrop ? `url(${backdrop})` : 'none', ['--lw-backdrop-portrait' as string]: backdropPortrait ? `url(${backdropPortrait})` : 'none', ['--lw-tile' as string]: liteTile ? `url(${liteTile})` : 'none' }}>
-        <div className="lw-atmosphere" aria-hidden="true"><div /><div /></div>
         {tier !== 'lite' && !mapOpen && <div className="lw-backdrop-canvas" aria-hidden="true"><ChamberBoundary onUnavailable={onUnavailable}><Backdrop tier={tier} assets={assets} /></ChamberBoundary></div>}
         <header className="lw-header">
           <Link href="/vocab/games" className="lw-back" aria-label="Back to games"><ArrowLeft size={18} /></Link>
-          <span className="lw-logotype">{assetUrl(assets, 'icon.wordmark') ? <img src={assetUrl(assets, 'icon.wordmark')!} alt="Last Word" height={18} /> : <>LAST<span>WORD</span></>}</span>
-          <span className="lw-header-note">A GAME OF MEANING</span>
-          {!state.matches('home') && !state.matches('recap') && context.records.length > 0 && (
+          {playing && current ? (
+            <span className="lw-progress">
+              <span className="lw-logotype">{assetUrl(assets, 'icon.wordmark') ? <img src={assetUrl(assets, 'icon.wordmark')!} alt="Last Word" height={14} /> : <>LAST<span>WORD</span></>}</span>
+              <span className="lw-progress-row">
+                <ol className="lw-beat-dots" aria-label={`Beat ${context.beat + 1} of ${current.chain.beats.length}`}>
+                  {current.chain.beats.map((b, i) => <li key={b.id} data-active={i <= context.beat} aria-current={i === context.beat ? 'step' : undefined} />)}
+                </ol>
+                {ROLE_LABEL[current.round.role] && <span className="lw-eyebrow">{ROLE_LABEL[current.round.role]}</span>}
+              </span>
+            </span>
+          ) : (
+            <>
+              <span className="lw-logotype">{assetUrl(assets, 'icon.wordmark') ? <img src={assetUrl(assets, 'icon.wordmark')!} alt="Last Word" height={18} /> : <>LAST<span>WORD</span></>}</span>
+              <span className="lw-header-note">A GAME OF MEANING</span>
+            </>
+          )}
+          {inGame && context.records.length > 0 && (
             <span className="lw-score" role="status" aria-label={`Session points: ${sessionPoints}`}>
               {lastRecord && judged && lastRecord.score > 0 && (
                 <motion.i key={lastRecord.id} className="lw-score-gain" initial={{ opacity: 0, y: reduced ? 0 : 8, scale: 0.85 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: reduced ? 0 : 0.28, ease: [0.2, 0.7, 0.2, 1] }}>+{lastRecord.score}</motion.i>
@@ -369,6 +412,8 @@ function Game({ sets }: { sets: LastWordSet[] }) {
             <label><input type="checkbox" checked={settings.music} onChange={e => settings.update({ music: e.target.checked })} /> Ambient music</label>
             <label><input type="checkbox" checked={settings.haptics} onChange={e => settings.update({ haptics: e.target.checked })} /> Haptics</label>
             <p>Self-paced: no timers. You can change your mind until you lock.</p>
+            {reading && <button onClick={() => { setSettingsOpen(false); send({ type: 'PAUSE', now: Date.now() }); }}>Pause</button>}
+            {inGame && <button onClick={() => { setSettingsOpen(false); finish(); }}>Finish session</button>}
             <button onClick={() => setSettingsOpen(false)}>Done</button>
           </section>
         )}
@@ -378,105 +423,84 @@ function Game({ sets }: { sets: LastWordSet[] }) {
         ) : state.matches('home') ? (
           sets.length ? <Home assets={assets} ready={ready} due={due} hasProgress={hasProgress} onStart={start} onMap={() => setMapOpen(true)}
               resume={resumable ? { choices: resumable.records.length, points: resumable.records.reduce((sum, r) => sum + r.score, 0) } : null} onResume={resume} onStopAndSave={stopAndSave} />
-            : <section className="lw-summary"><h1 tabIndex={-1} data-autofocus>No distinctions are published yet.</h1><p>Check back soon.</p></section>
+            : <section className="lw-summary"><div className="lw-summary-body"><h1 tabIndex={-1} data-autofocus>No distinctions are published yet.</h1><p>Check back soon.</p></div></section>
         ) : state.matches('card') && step && step.kind !== 'round' ? (
-          <CardScreen card={step} sets={sets} onNext={next} onFinish={finish} />
+          <CardScreen card={step} sets={sets} onNext={next} />
         ) : state.matches('recap') ? (
-          <Recap before={baseline} after={saved ?? projected} records={context.records} skipped={skipped} corrected={corrected} now={context.completedAt ?? now} capped={capped}
-            points={saved?.sessions.find(item => item.id === context.sessionId)?.score ?? sessionPoints}
+          <Recap before={baseline} after={saved ?? projected} records={context.records} corrected={corrected} now={context.completedAt ?? now} capped={capped}
+            points={sessionPoints}
             assets={assets} saveStatus={storage} onRetry={storage.startsWith('Save failed') ? () => setSaveAttempt(n => n + 1) : undefined}
-            onHome={() => { if (saved) setBaseline(saved); setNow(Date.now()); send({ type: 'HOME' }); }} onMap={() => setMapOpen(true)} />
+            onContinue={continueFromRecap} onHome={() => { if (saved) setBaseline(saved); setNow(Date.now()); send({ type: 'HOME' }); }} onMap={() => setMapOpen(true)} />
         ) : current ? (
           <section className="lw-play" aria-label="Semantic chamber">
-            <div className="lw-round-header">
-              <span className="lw-eyebrow"><span />{ROLE_LABEL[current.round.role]}</span>
-              <span className="lw-small">{current.chain.frame ?? ''}</span>
-              {reading && (
-                <span className="lw-top-tools">
-                  {current.round.hintsAllowed && context.hintLevel < 3 && (
-                    <button className="lw-text-button" onClick={() => { cue('hint'); send({ type: 'HINT' }); }}>{context.hintLevel ? 'Another hint' : 'Hint'}</button>
-                  )}
-                  <button className="lw-icon-button" aria-label="Pause" onClick={() => send({ type: 'PAUSE', now: Date.now() })}><Pause size={16} /></button>
-                </span>
-              )}
-            </div>
-
-            <div className="lw-context-shell" {...bind()}>
-              <div className="lw-context-top">
-                <span>{state.matches('paused') ? 'PAUSED' : judged ? 'THE TURNING POINT' : context.beat === 0 ? 'READ THE SITUATION' : 'NEW EVIDENCE'}</span>
-                <ol className="lw-beat-dots" aria-label={`Beat ${context.beat + 1} of ${current.chain.beats.length}`}>
-                  {current.chain.beats.map((b, i) => <li key={b.id} data-active={i <= context.beat} aria-current={i === context.beat ? 'step' : undefined} />)}
-                </ol>
-              </div>
-              <h2 className="lw-sr-only" tabIndex={-1} data-autofocus>Beat {context.beat + 1} of {current.chain.beats.length}</h2>
-              {current.chain.beats.slice(0, context.beat).map(b => <p key={b.id} className="lw-previous">{b.text}</p>)}
-              {/* Text settles before reading: one short fade/rise, then static (§41). */}
-              <motion.p key={beatKey} className="lw-sentence" aria-live="polite"
-                initial={{ opacity: 0, y: reduced ? 0 : 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0.12 : timing.context / 1000, ease: [0.2, 0.7, 0.2, 1] }}>
-                {judged ? <ClueText text={current.beat.text} clue={current.beat.decisive_clue} /> : current.beat.text}
-              </motion.p>
-              {judged && state.matches('beatFeedback') && <p className="lw-beat-reason">{current.beat.reason}</p>}
-              {hintText && reading && <p className="lw-hint" role="status"><Icon assets={assets} id="hint" fallback={Lightbulb} size={16} />{hintText}</p>}
-            </div>
-
-            <div className="lw-word-field" data-locked={!reading} {...bind()}>
-              {tier !== 'lite' && (
-                <div className="lw-canvas" aria-hidden="true">
-                  <ChamberBoundary onUnavailable={onUnavailable}>
-                    <Chamber words={words} selected={context.selected} locked={!reading} best={judged ? current.beat.best_word : null}
-                      missed={Boolean(judged && lastRecord?.correctness === 'incorrect')} beat={context.beat} beatKey={beatKey}
-                      reduced={reduced} tier={tier} tilt={tilt} assets={assets} onUnavailable={onUnavailable} />
-                  </ChamberBoundary>
-                </div>
-              )}
-              <div className="lw-choices" role="group" aria-label="Choose the word that fits now" style={{ gridTemplateColumns: `repeat(${words.length}, minmax(0, 1fr))` }}>
-                {words.map((word, index) => {
-                  const chosen = context.selected === word;
-                  const stronger = judged && current.beat.best_word === word;
-                  return (
-                    <button key={word} className="lw-word" data-word={word} data-selected={chosen} data-stronger={stronger} aria-pressed={chosen} disabled={!reading} onClick={() => select(word)}>
-                      <span className="lw-word-index" aria-hidden="true">{index + 1}</span>
-                      <strong>{word}</strong>
-                      <span className="lw-word-status">{stronger ? 'BEST FIT' : chosen ? (reading ? 'SELECTED · REVERSIBLE' : 'LOCKED') : ''}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {coarse && reading && !settings.coachSeen && context.beat === 0 && words.length > 1 && (
-              <p className="lw-coach" role="note">Tip: swipe the word card left or right to switch words, then lock your choice.</p>
-            )}
-
-            {current.round.askConfidence && reading && (
-              <fieldset className="lw-confidence">
-                <legend>How sure are you? <span>(optional)</span></legend>
-                {(['guessing', 'pretty-sure', 'certain'] as const).map(value => (
-                  <label key={value}><input type="radio" name="confidence" checked={context.confidence === value} onChange={() => send({ type: 'CONFIDENCE', confidence: value })} />{value === 'pretty-sure' ? 'Pretty sure' : value === 'certain' ? 'Certain' : 'Guessing'}</label>
-                ))}
-              </fieldset>
-            )}
-
             {state.matches('feedback') && roundRecords.length > 0 ? (
-              <RoundFeedback chain={current.chain} records={roundRecords} onNext={next} onFinish={finish} nextLabel="Continue" />
+              <motion.div key={`${beatKey}:sheet`} className="lw-scroll lw-sheet" initial={{ opacity: 0, y: reduced ? 0 : 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0.12 : 0.32, ease: [0.2, 0.7, 0.2, 1] }}>
+                <RoundFeedback chain={current.chain} records={roundRecords} assets={assets} />
+              </motion.div>
             ) : (
-              <div className="lw-action-row">
-                <p role="status" className="lw-action-status" data-correctness={judged ? lastRecord?.correctness : undefined}>
-                  {state.matches('paused') ? 'Paused. Take your time.' : judged && lastRecord ? `${VERDICT_GLYPH[lastRecord.correctness]} ${verdictLabel(lastRecord.correctness)} · ${current.chain.purpose === 'tutorial' ? 'guided, no points' : lastRecord.score === 0 && lastRecord.correctness !== 'incorrect' ? 'too quick to count, read the context first' : `+${lastRecord.score} pts`}${lastRecord.correctness === 'best' ? '' : ` · ${current.beat.best_word} fits better`}` : context.selected ? `${context.selected} · you can still change it` : 'Tap a word, swipe, or use ← →'}
-                </p>
-                {state.matches('paused') ? <button className="lw-primary" onClick={() => send({ type: 'RESUME', now: Date.now() })}>Resume</button>
-                  : reading ? <button className="lw-primary" disabled={!context.selected} onClick={lock}><Lock size={16} aria-hidden="true" />{context.beat === current.chain.beats.length - 1 ? 'Have the last word' : 'Lock this reading'}</button>
-                    : <button className="lw-primary" onClick={next}>Continue<ArrowRight size={18} aria-hidden="true" /></button>}
-              </div>
+              <>
+                <div className="lw-scroll">
+                  <div className="lw-context-shell">
+                    <div className="lw-context-top">
+                      <span>{state.matches('paused') ? 'PAUSED' : judged ? 'THE TURNING POINT' : context.beat === 0 ? 'READ THE SITUATION' : 'NEW EVIDENCE'}</span>
+                      {current.chain.frame && <span className="lw-small">{current.chain.frame}</span>}
+                    </div>
+                    <h2 className="lw-sr-only" tabIndex={-1} data-autofocus>Beat {context.beat + 1} of {current.chain.beats.length}</h2>
+                    {context.beat > 0 && (
+                      <button type="button" className="lw-previous" data-open={earlierOpen} aria-expanded={earlierOpen} onClick={() => setEarlierOpen(open => !open)}>
+                        {current.chain.beats.slice(0, context.beat).map(b => b.text).join(' ')}
+                      </button>
+                    )}
+                    {/* Text settles before reading: one short fade/rise, then static (§41). */}
+                    <motion.p key={beatKey} className="lw-sentence" aria-live="polite"
+                      initial={{ opacity: 0, y: reduced ? 0 : 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduced ? 0.12 : timing.context / 1000, ease: [0.2, 0.7, 0.2, 1] }}>
+                      {judged ? <ClueText text={current.beat.text} clue={current.beat.decisive_clue} /> : current.beat.text}
+                    </motion.p>
+                    {judged && state.matches('beatFeedback') && <p className="lw-beat-reason">{current.beat.reason}</p>}
+                    {hintText && reading && <p className="lw-hint" role="status"><Icon assets={assets} id="hint" fallback={Lightbulb} size={16} />{hintText}</p>}
+                  </div>
+                </div>
+
+                <div className="lw-word-field" data-locked={!reading} {...bind()}>
+                  {tier !== 'lite' && (
+                    <div className="lw-canvas" aria-hidden="true">
+                      <ChamberBoundary onUnavailable={onUnavailable}>
+                        <Chamber words={words} selected={context.selected} locked={!reading} best={judged ? current.beat.best_word : null}
+                          missed={Boolean(judged && lastRecord?.correctness === 'incorrect')} beat={context.beat} beatKey={beatKey}
+                          reduced={reduced} tier={tier} tilt={tilt} assets={assets} onUnavailable={onUnavailable} />
+                      </ChamberBoundary>
+                    </div>
+                  )}
+                  <div className="lw-choices" role="group" aria-label="Choose the word that fits now" style={{ gridTemplateColumns: `repeat(${words.length}, minmax(0, 1fr))` }}>
+                    {words.map((word, index) => {
+                      const chosen = context.selected === word;
+                      const stronger = judged && current.beat.best_word === word;
+                      return (
+                        <button key={word} className="lw-word" data-word={word} data-selected={chosen} data-stronger={stronger} aria-pressed={chosen} disabled={!reading} onClick={() => select(word)}>
+                          <span className="lw-word-index" aria-hidden="true">{index + 1}</span>
+                          <strong>{word}</strong>
+                          <span className="lw-word-status">{stronger ? 'BEST FIT' : chosen && !reading ? 'LOCKED' : ''}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+              </>
             )}
-            <p className="lw-controls">← → or A / D to move · 1–{words.length} to choose · Enter to lock · swipe to switch</p>
+
+            <div className="lw-bar">
+              {state.matches('feedback') ? <button className="lw-text-button" onClick={finish}>Finish</button>
+                : (judged || state.matches('paused')) && <p role="status" className="lw-action-status" data-correctness={judged ? lastRecord?.correctness : undefined}>{statusText}</p>}
+              {reading && current.round.hintsAllowed && context.hintLevel < 3 && (
+                <button className="lw-icon-button lw-hint-button" aria-label={context.hintLevel ? 'Another hint' : 'Hint'} onClick={() => { cue('hint'); send({ type: 'HINT' }); }}><Icon assets={assets} id="hint" fallback={Lightbulb} size={20} /></button>
+              )}
+              {state.matches('paused') ? <button className="lw-primary" onClick={() => send({ type: 'RESUME', now: Date.now() })}>Resume</button>
+                : reading ? <button className="lw-primary" disabled={!context.selected} onClick={lock}><Icon assets={assets} id="lock" fallback={Lock} size={16} />{context.beat === current.chain.beats.length - 1 ? 'Have the last word' : 'Lock this reading'}</button>
+                  : <button className="lw-primary" onClick={next}>Continue<ArrowRight size={18} aria-hidden="true" /></button>}
+            </div>
           </section>
         ) : null}
-
-        <footer className="lw-footer">
-          <span>{tier === 'lite' ? 'LITE CHAMBER' : tier === 'standard' ? 'STANDARD CHAMBER' : 'FULL CHAMBER'}{reduced ? ' · REDUCED MOTION' : ''}</span>
-          {!state.matches('home') && !state.matches('recap') && <button className="lw-text-button" onClick={finish}>End session</button>}
-        </footer>
       </main>
     </MotionConfig>
   );

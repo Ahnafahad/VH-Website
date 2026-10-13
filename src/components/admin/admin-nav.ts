@@ -16,16 +16,46 @@ export interface NavItem {
 }
 
 export interface NavGroup {
-  id:    'run' | 'content' | 'students' | 'insights' | 'admin';
+  id:    'super' | 'run' | 'content' | 'students' | 'insights' | 'admin';
   label: string;
   items: readonly NavItem[];
 }
 
 const ALL: readonly AdminRole[] = ['super_admin', 'admin', 'instructor'];
 const ADMINS: readonly AdminRole[] = ['super_admin', 'admin'];
+const SUPER: readonly AdminRole[] = ['super_admin'];
 
 /** Pinned above the groups, admins only. */
 export const OVERVIEW_ITEM: NavItem = { href: '/admin', label: 'Overview', roles: ADMINS };
+
+/** Super-admin area. Every page behind these links is gated server-side by requireSuperAdminPage() /
+ *  requireSuperAdmin(); hiding the links here is cosmetic. Rendered first, only for super_admin. */
+export const SUPER_GROUP: NavGroup = {
+  id: 'super', label: 'Super admin',
+  items: [
+    { href: '/admin/super',             label: 'Command Center',     roles: SUPER },
+    { href: '/admin/super/staff',       label: 'Staff manager',      roles: SUPER },
+    { href: '/admin/super/students',    label: 'Student control',    roles: SUPER },
+    { href: '/admin/super/tests',       label: 'Tests & grading',    roles: SUPER },
+    { href: '/admin/super/switches',    label: 'Feature switches',   roles: SUPER },
+    { href: '/admin/super/broadcast',   label: 'Comms',              roles: SUPER },
+    { href: '/admin/super/finance',     label: 'Finance',            roles: SUPER },
+    { href: '/admin/super/ops',         label: 'Operations',         roles: SUPER },
+    { href: '/admin/super/integrity',   label: 'Data integrity',     roles: SUPER },
+    { href: '/admin/super/sql',         label: 'SQL console',        roles: SUPER },
+    { href: '/admin/super/audit',       label: 'Audit log',          roles: SUPER },
+    { href: '/admin/super/security',    label: 'Security',           roles: SUPER },
+    { href: '/admin/super/permissions', label: 'Permissions',        roles: SUPER },
+    { href: '/admin/super/approvals',   label: 'Approvals & danger', roles: SUPER },
+  ],
+};
+
+/** /admin redirects super admins to the Command Center, so their Overview link carries ?classic=1. */
+export function overviewFor(role: AdminRole): NavItem {
+  return role === 'super_admin'
+    ? { ...OVERVIEW_ITEM, href: '/admin?classic=1', label: 'Classic overview' }
+    : OVERVIEW_ITEM;
+}
 
 export const NAV_GROUPS: readonly NavGroup[] = [
   {
@@ -83,14 +113,16 @@ export const NAV_GROUPS: readonly NavGroup[] = [
 
 /** Groups with only the items this role may see; empty groups are dropped. */
 export function navForRole(role: AdminRole, groups: readonly NavGroup[] = NAV_GROUPS): NavGroup[] {
-  return groups
+  const all = role === 'super_admin' && groups === NAV_GROUPS ? [SUPER_GROUP, ...groups] : groups;
+  return all
     .map(g => ({ ...g, items: g.items.filter(i => i.roles.includes(role)) }))
     .filter(g => g.items.length > 0);
 }
 
 export function isActive(item: Pick<NavItem, 'href' | 'also'>, pathname: string): boolean {
-  if (item.href === '/admin') return pathname === '/admin';
-  return [item.href, ...(item.also ?? [])].some(h => pathname === h || pathname.startsWith(h + '/'));
+  const href = item.href.split('?')[0];
+  if (href === '/admin' || href === '/admin/super') return pathname === href;
+  return [href, ...(item.also ?? [])].some(h => pathname === h || pathname.startsWith(h + '/'));
 }
 
 /** The group holding the current page (auto-opened in the sidebar), or undefined. */

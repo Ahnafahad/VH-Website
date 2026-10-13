@@ -9,6 +9,7 @@ vi.mock('@/lib/auth', () => ({ authOptions: {} }));
 vi.mock('@/lib/db-access-control', () => ({ isEmailAuthorized: vi.fn() }));
 vi.mock('@/lib/vocab/error-log', () => ({ logVocabErrorSafe: vi.fn() }));
 vi.mock('@/lib/db', () => ({ db: {} }));
+vi.mock('@/lib/super/finance/money-gate', () => ({ assertMoneyAccess: vi.fn() }));
 vi.mock('@/lib/lms/operations-store', async importOriginal => {
   const actual = await importOriginal<typeof import('../operations-store')>();
   return { ...actual, readOperationalSection: mocks.read, saveOperationalRecord: mocks.save };

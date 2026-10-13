@@ -36,6 +36,7 @@ beforeEach(async () => {
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       email TEXT NOT NULL UNIQUE,
       name TEXT NOT NULL,
+      sessions_invalidated_at INTEGER,
       role TEXT NOT NULL,
       status TEXT NOT NULL,
       student_id TEXT UNIQUE,

@@ -13,6 +13,8 @@ declare module "next-auth" {
       role?: 'super_admin' | 'admin' | 'instructor' | 'student'
       isAdmin?: boolean
       readOnly?: boolean
+      /** Set (to the real super admin's email) while a super admin is viewing as another user. */
+      impersonatedBy?: string
       permissions?: string[]
       studentId?: string
       class?: string

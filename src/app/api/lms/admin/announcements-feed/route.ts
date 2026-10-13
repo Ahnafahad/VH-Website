@@ -8,6 +8,7 @@ import { desc } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { lmsAnnouncements } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
+import { recordAudit } from '@/lib/audit-log';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { LMS_SUBJECTS } from '@/lib/lms/constants';
 import { notifyStudentsForContent } from '@/lib/notifications/push';
@@ -60,6 +61,8 @@ export async function POST(req: NextRequest) {
         createdBy: staff.id,
       })
       .returning();
+
+    recordAudit({ actorUserId: staff.id, action: 'announcement.create', entityType: 'announcement', entityId: created.id, after: { title: created.title, subject: created.subject, product: created.product, batch: created.batch } }).catch(() => {});
 
     // Fire-and-forget push to students who can see this announcement. Swallow
     // all errors — a push failure must never turn a successful create into a 500.

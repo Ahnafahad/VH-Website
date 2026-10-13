@@ -9,7 +9,7 @@ import { CalendarCheck, CalendarDays, Ellipsis, FileText, LogOut, Users } from '
 import AdminProductToggle from './AdminProductToggle';
 import AdminNavRow, { NAV_ROW_CSS } from './AdminNavRow';
 import { useNavBadges } from './useNavBadges';
-import { BOTTOM_TABS, isActive, isTabActive, navForRole, OVERVIEW_ITEM, type AdminRole } from './admin-nav';
+import { BOTTOM_TABS, isActive, isTabActive, navForRole, OVERVIEW_ITEM, overviewFor, type AdminRole } from './admin-nav';
 import { useDialogBehaviour } from './lms/lms-shared';
 import {
   BG, BORDER, FONT_HEADING, MUTED, RED, SHADOW_LG, SURFACE, SURFACE_SHELL, T_SM, T_XS, Z_MODAL, Z_MODAL_BACKDROP,
@@ -99,7 +99,7 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
             }}
           >
             {showOverview && (
-              <AdminNavRow item={OVERVIEW_ITEM} active={isActive(OVERVIEW_ITEM, pathname)} badges={badges} minHeight={44} onNavigate={() => setMore(false)} />
+              <AdminNavRow item={overviewFor(role)} active={isActive(overviewFor(role), pathname)} badges={badges} minHeight={44} onNavigate={() => setMore(false)} />
             )}
             {groups.map(g => (
               <section key={g.id} aria-label={g.label}>

@@ -39,6 +39,7 @@ import {
   sendLmsRecordingPublished,
   sendLmsRecordingExpiring,
 } from '@/lib/email';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -474,5 +475,5 @@ async function handler(req: NextRequest) {
   return NextResponse.json(results);
 }
 
-export const GET  = handler;
-export const POST = handler;
+export const GET = withCronLog('lms-reminders', handler);
+export const POST = withCronLog('lms-reminders', handler);

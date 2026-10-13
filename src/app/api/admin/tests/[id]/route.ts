@@ -17,6 +17,7 @@ import { isAdminRole, isStaffRole } from '@/lib/auth/roles';
 import { effectiveWindowState } from '@/lib/tests/windows';
 import { loadTestSummaryExtras } from '@/lib/tests/summaries';
 import { buildHistogram, normalizeCategory, CATEGORY_MAX_LENGTH } from '@/lib/tests/library';
+import { recordAudit } from '@/lib/audit-log';
 
 const bodySchema = z.object({
   status: z.enum(['draft', 'published', 'archived']).optional(),
@@ -124,6 +125,15 @@ export async function PATCH(
       updatedAt: new Date(),
     }).where(eq(tests.id, id));
 
+    recordAudit({
+      actorUserId: user.id,
+      action:      'test.update',
+      entityType:  'test',
+      entityId:    id,
+      before:      { status: test.status, allowedProducts: test.allowedProducts, resultsPublishedAt: test.resultsPublishedAt?.getTime() ?? null },
+      after:       { status: status ?? test.status, allowedProducts: allowedProducts === undefined ? test.allowedProducts : allowedProducts, resultsPublishedAt: publishResults === undefined ? (test.resultsPublishedAt?.getTime() ?? null) : (publishResults ? Date.now() : null) },
+    }).catch(() => {});
+
     return { updated: true };
   });
 }
@@ -154,6 +164,7 @@ export async function DELETE(
     }
 
     await db.delete(tests).where(eq(tests.id, id));
+    recordAudit({ actorUserId: user.id, action: 'test.delete', entityType: 'test', entityId: id, before: { slug: test.slug, title: test.title, status: test.status } }).catch(() => {});
     return { deleted: true };
   });
 }

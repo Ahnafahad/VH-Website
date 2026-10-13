@@ -11,6 +11,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { sendDeadlineReminders, sweepAutoPublish } from '@/lib/essays/service';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 async function run(req: NextRequest) {
   const secret = process.env.CRON_SECRET;
@@ -23,5 +24,5 @@ async function run(req: NextRequest) {
   return NextResponse.json({ published, reminders });
 }
 
-export const GET = run;
-export const POST = run;
+export const GET = withCronLog('essays', run);
+export const POST = withCronLog('essays', run);

@@ -6,6 +6,8 @@ import { isAdminEmail, getUserByEmail, clearAccessControlCache } from '@/lib/db-
 import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { recordAudit } from '@/lib/audit-log';
+import { isRootEmail } from '@/lib/super/guard';
+import { rootLockViolation, ROOT_PROTECTED_MESSAGE } from '@/lib/super/security/root-lock';
 
 // ─── Auth helper ──────────────────────────────────────────────────────────────
 
@@ -47,6 +49,10 @@ export async function POST(
     if (body.action === 'suspend')     newStatus = 'inactive';
     else if (body.action === 'reactivate') newStatus = 'active';
     else newStatus = existing.status === 'active' ? 'inactive' : 'active';
+
+    if (rootLockViolation(isRootEmail(existing.email), { status: newStatus })) {
+      throw new ApiException(ROOT_PROTECTED_MESSAGE, 403);
+    }
 
     const [updated] = await db
       .update(users)

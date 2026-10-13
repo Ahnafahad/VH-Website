@@ -11,6 +11,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { withCronLog } from '@/lib/super/ops/cron-log';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -228,7 +229,7 @@ const SEED_RECIPIENTS = [
 // Route handler
 // ---------------------------------------------------------------------------
 
-export async function GET(req: NextRequest) {
+async function cronGetHandler(req: NextRequest) {
   // Auth check
   const secret = process.env.CRON_SECRET;
   if (secret) {
@@ -277,3 +278,5 @@ export async function GET(req: NextRequest) {
     results,
   });
 }
+
+export const GET = withCronLog('email-warmup', cronGetHandler);

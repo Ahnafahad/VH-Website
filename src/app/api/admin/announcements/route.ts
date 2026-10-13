@@ -21,6 +21,8 @@ import { authOptions } from '@/lib/auth';
 import { db } from '@/lib/db';
 import { sendAdminAnnouncement } from '@/lib/email';
 import { isAdminRole } from '@/lib/auth/roles';
+import { recordAudit } from '@/lib/audit-log';
+import { getUserByEmail } from '@/lib/db-access-control';
 import { resolveAudience, isAudienceProduct, type AudienceSelection } from '@/lib/audience/resolve';
 
 // ─── Zod schema ───────────────────────────────────────────────────────────────
@@ -162,6 +164,13 @@ export async function POST(req: NextRequest) {
     body,
     adminName: auth.adminName,
   });
+
+  getUserByEmail(auth.email).then(a => recordAudit({
+    actorUserId: a?.id ?? null,
+    action:      'announcement.email',
+    entityType:  'announcement',
+    after:       { subject, recipients: recipientEmails.length, sent: result.success, failed: result.failed },
+  })).catch(() => {});
 
   return NextResponse.json({
     success:  result.success,

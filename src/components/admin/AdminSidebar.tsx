@@ -10,9 +10,9 @@ import AdminProductToggle from './AdminProductToggle';
 import AdminJumpPalette from './AdminJumpPalette';
 import AdminNavRow, { MONO, NAV_ROW_CSS } from './AdminNavRow';
 import { useNavBadges } from './useNavBadges';
-import { groupForPath, isActive, navForRole, OVERVIEW_ITEM, type AdminRole } from './admin-nav';
+import { groupForPath, isActive, navForRole, OVERVIEW_ITEM, overviewFor, type AdminRole } from './admin-nav';
 import {
-  BG, BORDER, BORDER_FIELD, FONT_HEADING, INK_SOFT, MUTED, OK, R_MD, RED, SURFACE, SURFACE_SHELL, T_BASE, T_MD, T_SM, T_XS,
+  BEIGE, BG, BORDER, BORDER_FIELD, FONT_HEADING, INK_SOFT, MUTED, OK, R_MD, R_PILL, RED, SLATE, SURFACE, SURFACE_SHELL, T_BASE, T_MD, T_SM, T_XS,
 } from './lms/tokens';
 
 interface AdminSidebarProps {
@@ -88,6 +88,9 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
           />
         </Link>
         <AdminProductToggle variant="light" />
+        {role === 'super_admin' && (
+          <span style={{ alignSelf: 'flex-start', padding: '3px 9px', borderRadius: R_PILL, background: SLATE, color: BEIGE, border: `1px solid ${BEIGE}`, fontSize: T_XS, fontWeight: 700, letterSpacing: '0.16em' }}>SUPER ADMIN</span>
+        )}
         <button
           onClick={() => setPalette(true)}
           className="admin-nav-btn"
@@ -122,7 +125,7 @@ export default function AdminSidebar({ adminName, adminEmail, role }: AdminSideb
 
       <nav style={{ flex: 1, padding: '0 8px 8px', overflowY: 'auto' }} aria-label="Admin navigation">
         {showOverview && (
-          <AdminNavRow item={OVERVIEW_ITEM} active={isActive(OVERVIEW_ITEM, pathname)} badges={badges} />
+          <AdminNavRow item={overviewFor(role)} active={isActive(overviewFor(role), pathname)} badges={badges} />
         )}
         {groups.map(g => {
           const expanded = !!open[g.id];

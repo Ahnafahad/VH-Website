@@ -66,7 +66,7 @@ beforeEach(async () => {
   holder.db = db;
   await client.executeMultiple(`
     CREATE TABLE users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, name TEXT NOT NULL, role TEXT NOT NULL,
+      sessions_invalidated_at INTEGER, id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT NOT NULL UNIQUE, name TEXT NOT NULL, role TEXT NOT NULL,
       status TEXT NOT NULL, student_id TEXT UNIQUE, batch TEXT, class TEXT, notes TEXT, whatsapp TEXT,
       is_teaching INTEGER, read_only INTEGER NOT NULL DEFAULT 0, avatar_character_id INTEGER, avatar_custom_request TEXT, avatar_request_status TEXT,
       onboarding_skips INTEGER NOT NULL, onboarded_at INTEGER, push_subscription TEXT,

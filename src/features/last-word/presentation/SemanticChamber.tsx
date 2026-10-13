@@ -82,11 +82,15 @@ function ProceduralTile({ width, glow, color, tier }: { width: number; glow: num
   );
 }
 
+/** Tile width fits inside the DOM button it sits behind; its height follows the 1 : 1.4 tile proportion. */
+const tileWidth = (viewportWidth: number, viewportHeight: number, count: number) => Math.min((viewportWidth / count) * 0.5, (viewportHeight * 0.56) / 1.4);
+const tileHeight = (viewportWidth: number, viewportHeight: number, count: number) => tileWidth(viewportWidth, viewportHeight, count) * 1.4;
+
 function WordTile({ index, props }: { index: number; props: ChamberProps }) {
   const viewport = useThree(state => state.viewport);
   const slot = viewport.width / props.words.length;
   // Fit inside the DOM button it sits behind; selected tiles come forward (z) so they need headroom.
-  const width = Math.min(slot * 0.6, (viewport.height * 0.66) / 1.4);
+  const width = tileWidth(viewport.width, viewport.height, props.words.length);
   const homeX = (index - (props.words.length - 1) / 2) * slot;
   const word = props.words[index];
   const chosen = word === props.selected;
@@ -145,15 +149,16 @@ function LockRing({ width, props }: { width: number; props: ChamberProps }) {
   );
 }
 
-/** The Fulcrum: tilts toward the current selection (never the answer) and releases on every new beat. */
+/** The Fulcrum: a straight line seated just under the tiles. It leans toward the current selection (never the answer) and recentres on every new beat. */
 function Fulcrum({ props }: { props: ChamberProps }) {
   const viewport = useThree(state => state.viewport);
   const index = props.selected ? props.words.indexOf(props.selected) : -1;
   const lean = index < 0 ? 0 : (index - (props.words.length - 1) / 2) / Math.max(1, props.words.length - 1);
-  const { rz } = useSpring({ rz: props.reduced ? 0 : -lean * 0.08, config: springs.settle, immediate: props.reduced });
+  const slot = viewport.width / props.words.length;
+  const { x } = useSpring({ x: props.reduced ? 0 : lean * slot * 0.12, config: springs.settle, immediate: props.reduced });
   const length = viewport.width * 0.8;
   return (
-    <animated.group position={[0, -viewport.height * 0.42, 0.2]} rotation-z={rz} scale={[length / 3, 1, 1]}>
+    <animated.group position-x={x} position-y={-tileHeight(viewport.width, viewport.height, props.words.length) / 2 - 0.14} position-z={0.2} scale={[length / 3, 1, 1]}>
       <Model url={assetUrl(props.assets, 'model.fulcrum')} fallback={<mesh><boxGeometry args={[3, 0.01, 0.01]} /><meshBasicMaterial color={IVORY} /></mesh>}>
         {scene => <Clone object={scene} />}
       </Model>
@@ -161,14 +166,17 @@ function Fulcrum({ props }: { props: ChamberProps }) {
   );
 }
 
-/** Evidence strata: one text-free glass pane per earlier beat, receding behind the field. */
+/** Evidence strata: one text-free glass pane per earlier beat, stacked above the tiles and receding, so the beats read as layers of evidence under the word choice. */
 function EvidencePanes({ props }: { props: ChamberProps }) {
   const viewport = useThree(state => state.viewport);
   const panes = Math.min(props.beat, 4);
+  const top = tileHeight(viewport.width, viewport.height, props.words.length) / 2;
+  // Thin, wide strips (not slabs): one per earlier beat, stacked just above the tiles.
+  const wide = (viewport.width * 0.46) / 1.6;
   return (
-    <group position={[0, viewport.height * 0.18, -1.2]}>
+    <group position={[0, top + 0.16, -0.8]}>
       {Array.from({ length: panes }, (_, i) => (
-        <group key={i} position={[0, i * 0.12, -i * 0.5]} scale={(viewport.width * 0.55) / 1.6}>
+        <group key={i} position={[0, i * 0.16, -i * 0.3]} scale={[wide, 0.26, 1]}>
           <Model url={assetUrl(props.assets, 'model.evidence-pane')} fallback={<mesh><planeGeometry args={[1.6, 0.9]} /><meshStandardMaterial color="#20262A" transparent opacity={0.3} /></mesh>}>
             {scene => <Clone object={scene} />}
           </Model>

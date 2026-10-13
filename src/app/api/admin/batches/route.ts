@@ -11,15 +11,17 @@ import { batches } from '@/lib/db/schema';
 import { safeApiHandler, validateAuth, ApiException } from '@/lib/api-utils';
 import { getUserByEmail } from '@/lib/db-access-control';
 import { isAdminRole, isStaffRole } from '@/lib/auth/roles';
+import { recordAudit } from '@/lib/audit-log';
 
 const VALID_PRODUCTS = ['iba', 'fbs', 'fbs_detailed'] as const;
 
-async function requireAdmin(): Promise<void> {
+async function requireAdmin(): Promise<number> {
   const auth = await validateAuth();
   const user = await getUserByEmail(auth.email);
   if (!user || !isAdminRole(user.role)) {
     throw new ApiException('Admin access required', 403);
   }
+  return user.id;
 }
 
 async function requireStaff(): Promise<void> {
@@ -40,7 +42,7 @@ export async function GET() {
 
 export async function POST(req: NextRequest) {
   return safeApiHandler(async () => {
-    await requireAdmin();
+    const actorId = await requireAdmin();
 
     const body = await req.json();
     const { name, product, status } = body as { name?: string; product?: string; status?: string };
@@ -62,6 +64,8 @@ export async function POST(req: NextRequest) {
       product,
       status: status ?? 'active',
     }).returning();
+
+    recordAudit({ actorUserId: actorId, action: 'batch.create', entityType: 'batch', entityId: created.id, after: { name: created.name, product: created.product, status: created.status } }).catch(() => {});
 
     return { batch: created };
   });

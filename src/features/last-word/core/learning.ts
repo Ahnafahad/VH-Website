@@ -51,15 +51,27 @@ export function evaluateDecision(input: DecisionInput, set: LastWordSet, streak 
   return { ...input, edgeId: chain.edge_id, bestWord: beat.best_word, semanticFit: beat.fit[input.selectedWord], correctness, changedSelection, misconceptionTag: correctness === 'best' ? null : beat.misconception_by_wrong_choice[input.selectedWord], contentDifficulty: beat.difficulty ?? null, score, evidenceWeight, streak: nextStreak, kind };
 }
 
+/** Days until a pair returns after clean, unassisted successes. Completing new pairs comes first, so a right answer goes far out. */
+export const REVIEW_LADDER_DAYS = [7, 21, 60, 120];
+const DAY_MS = 86400000;
+
 export function scheduleReview(previous: ReviewSchedule | undefined, decision: DecisionRecord): ReviewSchedule {
-  const success = decision.correctness === 'best' && !decision.hintLevel;
-  const delayed = previous !== undefined && previous.dueAt <= decision.occurredAt && previous.intervalDays > 0 && previous.previousScenarioId !== decision.scenarioId;
-  const successfulReviews = success ? (previous?.successfulReviews ?? 0) + (delayed ? 1 : 0) : 0;
-  const intervals = [1, 3, 7, 21, 60];
-  const intervalDays = success ? intervals[Math.min(successfulReviews, intervals.length - 1)] : 0;
-  // Repeated decisions within one session must not push a scheduled review away.
-  const dueAt = success && previous && !delayed && previous.intervalDays > 0 ? previous.dueAt : decision.occurredAt + (intervalDays ? intervalDays * 86400000 : 10 * 60000);
-  return { edgeId: decision.edgeId, dueAt, intervalDays, successfulReviews, previousScenarioId: decision.scenarioId };
+  // Later beats of a chain that already had a miss cannot undo it.
+  const missedEarlier = previous?.previousScenarioId === decision.scenarioId && previous.intervalDays === 0;
+  const done = (intervalDays: number, successfulReviews: number, dueAt: number): ReviewSchedule =>
+    ({ edgeId: decision.edgeId, dueAt, intervalDays, successfulReviews, previousScenarioId: decision.scenarioId });
+  if (decision.correctness === 'incorrect' || missedEarlier) return done(0, 0, decision.occurredAt + DAY_MS);
+  if (decision.correctness === 'best' && !decision.hintLevel) {
+    const delayed = previous !== undefined && previous.dueAt <= decision.occurredAt && previous.intervalDays > 0 && previous.previousScenarioId !== decision.scenarioId;
+    const successfulReviews = (previous?.successfulReviews ?? 0) + (delayed ? 1 : 0);
+    const intervalDays = REVIEW_LADDER_DAYS[Math.min(successfulReviews, REVIEW_LADDER_DAYS.length - 1)];
+    // Repeated decisions within one session must not push a scheduled review away.
+    const dueAt = previous && !delayed && previous.intervalDays > 0 ? previous.dueAt : decision.occurredAt + intervalDays * DAY_MS;
+    return done(intervalDays, successfulReviews, dueAt);
+  }
+  // Partly right or hinted: shaky, so the gap halves (LexiCore's "unsure").
+  const intervalDays = Math.max(1, Math.floor((previous?.intervalDays ?? 0) / 2));
+  return done(intervalDays, previous?.successfulReviews ?? 0, decision.occurredAt + intervalDays * DAY_MS);
 }
 
 export function edgeStatus(edge: Pick<EdgeMastery, 'evidence' | 'observations' | 'bestCount' | 'kinds' | 'sessionIds' | 'retentionScore'>): EdgeMastery['status'] {

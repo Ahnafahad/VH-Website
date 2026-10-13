@@ -40,6 +40,8 @@ export async function POST(
 
     // unban
     if (attempt.status !== 'banned') throw new ApiException('Attempt is not banned', 409);
+    // A banned attempt that was already submitted is a Super Admin "void" — restore it there, not here.
+    if (attempt.submittedAt) throw new ApiException('Voided attempts are restored from Super Admin > Tests', 409);
     await db.update(testAttempts).set({
       status: 'in_progress',
       bannedAt: null,
