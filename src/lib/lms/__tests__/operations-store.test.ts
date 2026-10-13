@@ -40,7 +40,11 @@ describe('operational storage writes (mocked database)', () => {
     const body = payloads[section];
     await expect(saveOperationalRecord(section, body, 7)).resolves.toEqual({ id: 9 });
     expect(mocks.insert).toHaveBeenCalledWith(operationalEntries);
-    expect(mocks.values).toHaveBeenCalledWith({ kind, date: entry.date, amountMinor: 12345, category: body.category, description: entry.description, paidBy: null, reimbursedAt: null, createdBy: 7 });
+    const expenseOnly = section === 'expenses' ? {
+      payee: null, paymentMethod: null, referenceNo: null, receiptKey: null, product: null, batch: null,
+      classSessionId: null, location: null, tags: null, updatedBy: 7,
+    } : {};
+    expect(mocks.values).toHaveBeenCalledWith({ kind, date: entry.date, amountMinor: 12345, category: body.category, description: entry.description, paidBy: null, reimbursedAt: null, ...expenseOnly, createdBy: 7 });
   });
 
   it.each([['expenses', 'expense'], ['income', 'income']] as const)('scopes %s edits to both ID and record kind', async (section, kind) => {
@@ -49,6 +53,23 @@ describe('operational storage writes (mocked database)', () => {
     const condition = mocks.where.mock.calls[0][0];
     expect(new SQLiteSyncDialect().sqlToQuery(condition).params).toEqual([9, kind]);
     expect(mocks.set.mock.calls[0][0]).not.toHaveProperty('createdBy');
+  });
+
+  it('saves the tracker detail fields and records who last edited', async () => {
+    await saveOperationalRecord('expenses', {
+      ...expense, payee: 'Dhaka Print', paymentMethod: 'bKash', referenceNo: 'TXN-1', receiptKey: 'expense-receipts/1-a.pdf',
+      product: 'IBA', batch: '2026-27', classSessionId: 5, location: 'Mirpur', tags: ['mock', 'print'],
+    }, 7);
+    expect(mocks.values).toHaveBeenCalledWith(expect.objectContaining({
+      payee: 'Dhaka Print', paymentMethod: 'bKash', referenceNo: 'TXN-1', receiptKey: 'expense-receipts/1-a.pdf',
+      product: 'IBA', batch: '2026-27', classSessionId: 5, location: 'Mirpur', tags: 'mock,print', updatedBy: 7,
+    }));
+  });
+
+  it('rejects a link to a class that does not exist', async () => {
+    mocks.get.mockResolvedValueOnce(undefined);
+    await expect(saveOperationalRecord('expenses', { ...expense, classSessionId: 99 }, 7)).rejects.toMatchObject({ status: 400 });
+    expect(mocks.insert).not.toHaveBeenCalled();
   });
 
   it('reports a missing record instead of silently succeeding', async () => {

@@ -1959,6 +1959,17 @@ export const operationalEntries = sqliteTable('operational_entries', {
   // Treasury settlement date (YYYY-MM-DD) for expenses a person fronted; null = not yet reimbursed.
   reimbursedAt: text('reimbursed_at'),
   description: text('description').notNull().default(''),
+  // Expense tracker detail. All nullable; income rows leave them null.
+  payee:          text('payee'),
+  paymentMethod:  text('payment_method'),
+  referenceNo:    text('reference_no'),
+  receiptKey:     text('receipt_key'), // R2 key (expense-receipts/...) or an https link
+  product:        text('product'),     // 'IBA' | 'FBS' | 'All'
+  batch:          text('batch'),
+  classSessionId: integer('class_session_id'),
+  location:       text('location'),
+  tags:           text('tags'),        // comma-separated
+  updatedBy:      integer('updated_by'),
   createdBy:   integer('created_by').notNull().references(() => users.id),
   createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:   integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),

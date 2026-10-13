@@ -5,7 +5,7 @@ import { classSessions, operationalEntries, operationalExtraClasses, users } fro
 import { ApiException } from '@/lib/api-utils';
 import {
   buildInstructorReport, expenseEntryInput, extraClassInput, financialEntryInput, operationalSections,
-  isOperationalAdmin, type OperationalSection,
+  isOperationalAdmin, type FinancialEntryRecord, type OperationalSection,
 } from './operations';
 
 export function parseOperationalSection(value: string): OperationalSection {
@@ -58,14 +58,41 @@ export async function readOperationalSection(section: OperationalSection) {
     };
   }
   const kind = section === 'expenses' ? 'expense' : 'income';
-  const rows = await db.select({ entry: operationalEntries, paidByName: users.name }).from(operationalEntries)
-    .leftJoin(users, eq(operationalEntries.paidBy, users.id)).where(eq(operationalEntries.kind, kind))
-    .orderBy(desc(operationalEntries.date), desc(operationalEntries.id));
-  const entries = rows.map(({ entry, paidByName }) => ({ ...entry, paidByName }));
+  const entries = await listEntries(kind);
   if (kind === 'income') return { entries };
-  const payers = await db.select({ id: users.id, name: users.name }).from(users)
-    .where(inArray(users.role, ['admin', 'super_admin'])).orderBy(users.name);
-  return { entries, payers };
+  const [payers, classes] = await Promise.all([
+    db.select({ id: users.id, name: users.name }).from(users)
+      .where(inArray(users.role, ['admin', 'super_admin'])).orderBy(users.name),
+    db.select({ id: classSessions.id, title: classSessions.title, scheduledAt: classSessions.scheduledAt })
+      .from(classSessions).orderBy(desc(classSessions.scheduledAt)).limit(120),
+  ]);
+  return { entries, payers, classes: classes.map(c => ({ id: c.id, label: classLabel(c.title, c.scheduledAt) })) };
+}
+
+const classLabel = (title: string, at: Date) =>
+  `${title} (${new Date(at.getTime() + 6 * 60 * 60 * 1000).toISOString().slice(0, 10)})`;
+
+async function listEntries(kind: 'expense' | 'income'): Promise<FinancialEntryRecord[]> {
+  const rows = await db.select({
+    entry: operationalEntries, paidByName: users.name, classTitle: classSessions.title, classAt: classSessions.scheduledAt,
+  }).from(operationalEntries)
+    .leftJoin(users, eq(operationalEntries.paidBy, users.id))
+    .leftJoin(classSessions, eq(operationalEntries.classSessionId, classSessions.id))
+    .where(eq(operationalEntries.kind, kind))
+    .orderBy(desc(operationalEntries.date), desc(operationalEntries.id));
+  return rows.map(({ entry, paidByName, classTitle, classAt }) => ({
+    id: entry.id, date: entry.date, amountMinor: entry.amountMinor, category: entry.category,
+    description: entry.description, paidBy: entry.paidBy, paidByName, reimbursedAt: entry.reimbursedAt,
+    payee: entry.payee, paymentMethod: entry.paymentMethod, referenceNo: entry.referenceNo,
+    receiptKey: entry.receiptKey, product: entry.product, batch: entry.batch,
+    classSessionId: entry.classSessionId, classLabel: classTitle && classAt ? classLabel(classTitle, classAt) : null,
+    location: entry.location, tags: entry.tags ? entry.tags.split(',') : [],
+    updatedAt: entry.updatedAt.toISOString(),
+  }));
+}
+
+export async function listExpenseEntries() {
+  return listEntries('expense');
 }
 
 export async function deleteOperationalRecord(section: OperationalSection, id: number) {
@@ -110,8 +137,13 @@ export async function saveOperationalRecord(
       const payer = await db.select({ role: users.role }).from(users).where(eq(users.id, input.paidBy)).get();
       if (!payer || !isOperationalAdmin(payer.role)) throw new ApiException('Select an admin as the payer', 400);
     }
-    values = { ...base, date: input.date, amountMinor: input.amount, category: input.category,
-      description: input.description, paidBy: input.paidBy, reimbursedAt: input.reimbursedAt };
+    if (input.classSessionId !== null) {
+      const linked = await db.select({ id: classSessions.id }).from(classSessions)
+        .where(eq(classSessions.id, input.classSessionId)).get();
+      if (!linked) throw new ApiException('Linked class not found', 400);
+    }
+    const { amount, ...rest } = input;
+    values = { ...base, ...rest, amountMinor: amount, updatedBy: adminId };
   } else {
     const input = parseInput(financialEntryInput, body);
     values = { ...base, date: input.date, amountMinor: input.amount, category: input.category, description: input.description };
