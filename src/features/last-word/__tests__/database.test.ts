@@ -119,6 +119,91 @@ describe('DatabaseLastWordPersistence', () => {
   });
 });
 
+describe('saving a session as it is played', () => {
+  async function newUser(email: string) {
+    const created = await client.execute({ sql: "INSERT INTO users (email, name, role, status) VALUES (?, 'X', 'student', 'active') RETURNING id", args: [email] });
+    const id = Number(created.rows[0].id);
+    await client.execute({ sql: 'INSERT INTO vocab_user_progress (user_id) VALUES (?)', args: [id] });
+    return id;
+  }
+  const total = async (id: number) => Number((await client.execute({ sql: 'SELECT total_points AS t FROM vocab_user_progress WHERE user_id = ?', args: [id] })).rows[0].t);
+  /** One chain's decisions at `start`, ids namespaced by the session. */
+  const chainDecisions = (sessionId: string, chainId: string, start: number, offset = 0) => {
+    const chain = po.chains.find(c => c.id === chainId)!;
+    return chain.beats.map((beat, i) => ({
+      id: `${sessionId}-${chainId}-${i}`, sessionId, setId: po.set_id, scenarioId: chain.id, beatId: beat.id, presentedWords: ['persistent', 'obstinate'],
+      selectedWord: beat.best_word, previousSelection: i ? chain.beats[i - 1].best_word : null, reactionTimeMs: 3000, hintLevel: 0 as const, confidence: null,
+      reviewIntervalDays: 0, occurredAt: start + offset + (i + 1) * 4000,
+    }));
+  };
+
+  it('extends a saved session round by round, paying only the new decisions each time', async () => {
+    const id = await newUser('ext@example.com');
+    const store = new DatabaseLastWordPersistence(db, id, sets);
+    const start = 50 * 86_400_000;
+    const round1 = chainDecisions('x1', 'po_flip', start);
+    const round2 = chainDecisions('x1', 'po_hold', start, 60_000);
+    const submit = (decisions: typeof round1) => ({ id: 'x1', startedAt: start, completedAt: start + 120_000, decisions });
+
+    const first = await store.saveSession(submit(round1));
+    const afterRound1 = await total(id);
+    expect(afterRound1).toBe(first.lastSave!.awarded);
+    expect(afterRound1).toBeGreaterThan(0);
+
+    const second = await store.saveSession(submit([...round1, ...round2]));
+    expect(second.sessions).toHaveLength(1); // still one session, not two
+    expect(await total(id)).toBe(afterRound1 + second.lastSave!.awarded);
+    expect(second.sessions[0].decisionCount).toBe(round1.length + round2.length);
+    expect((await client.execute({ sql: 'SELECT count(*) AS n FROM last_word_decisions WHERE user_id = ?', args: [id] })).rows[0].n).toBe(round1.length + round2.length);
+
+    await store.saveSession(submit([...round1, ...round2])); // identical retry: nothing more is paid
+    expect(await total(id)).toBe(afterRound1 + second.lastSave!.awarded);
+
+    const tampered = [{ ...round1[0], selectedWord: 'obstinate' }, ...round1.slice(1), ...round2];
+    await expect(store.saveSession(submit(tampered))).rejects.toThrow(/cannot be replaced/);
+  });
+
+  it('caps Lexicore points per Dhaka day and reports it', async () => {
+    const id = await newUser('cap@example.com');
+    const day = 60 * 86_400_000;
+    const seeded = await client.execute({ sql: "INSERT INTO last_word_sessions (user_id, client_id, started_at, completed_at, score, decision_count, submission) VALUES (?, 'seed', ?, ?, 515, 1, '{}') RETURNING id", args: [id, day, day] });
+    await client.execute({ sql: `INSERT INTO last_word_decisions (user_id, session_id, client_id, set_id, edge_id, scenario_id, beat_id, presented_words, selected_word, best_word, semantic_fit, correctness, reaction_time_ms, changed_selection, hint_level, content_difficulty, review_interval_days, score, evidence_weight, occurred_at, data)
+      VALUES (?, ?, 'seed-0', 's', 'e', 'sc', 'b', '[]', 'a', 'a', 1, 'best', 3000, 0, 0, 'null', 0, 515, 1, ?, '{}')`, args: [id, Number(seeded.rows[0].id), day] });
+    const store = new DatabaseLastWordPersistence(db, id, sets);
+    const result = await store.saveSession({ id: 'cap1', startedAt: day + 1000, completedAt: day + 60_000, decisions: chainDecisions('cap1', 'po_flip', day + 1000) });
+    expect(result.lastSave).toEqual({ awarded: 5, capped: true }); // 520 − 515
+    expect(await total(id)).toBe(5);
+    expect(result.pointsToday).toBe(0); // the seeded day is long past, so today's total is untouched
+    expect(result.dailyCap).toBe(520);
+  });
+
+  it('refuses decisions dated before the player’s latest saved play', async () => {
+    const id = await newUser('back@example.com');
+    const store = new DatabaseLastWordPersistence(db, id, sets);
+    await store.saveSession({ id: 'late', startedAt: 90 * 86_400_000, completedAt: 90 * 86_400_000 + 60_000, decisions: chainDecisions('late', 'po_flip', 90 * 86_400_000) });
+    await expect(store.saveSession({ id: 'early', startedAt: 80 * 86_400_000, completedAt: 80 * 86_400_000 + 60_000, decisions: chainDecisions('early', 'po_flip', 80 * 86_400_000) }))
+      .rejects.toThrow(/older than your latest/);
+  });
+
+  it('remembers on the account that the tutorial has been played', async () => {
+    const id = await newUser('tut@example.com');
+    const store = new DatabaseLastWordPersistence(db, id, sets);
+    expect((await store.load()).tutorialDone).toBe(false);
+    const set = sets.find(item => item.chains.some(chain => chain.purpose === 'tutorial'))!;
+    const chain = set.chains.find(item => item.purpose === 'tutorial')!;
+    const start = 120 * 86_400_000;
+    const decisions = chain.beats.map((beat, i) => ({
+      id: `t-${i}`, sessionId: 't1', setId: set.set_id, scenarioId: chain.id, beatId: beat.id, presentedWords: set.words.map(w => w.word),
+      selectedWord: beat.best_word, previousSelection: i ? chain.beats[i - 1].best_word : null, reactionTimeMs: 3000, hintLevel: 0 as const, confidence: null,
+      reviewIntervalDays: 0, occurredAt: start + (i + 1) * 4000,
+    }));
+    const saved = await store.saveSession({ id: 't1', startedAt: start, completedAt: start + 60_000, decisions });
+    expect(saved.tutorialDone).toBe(true);
+    expect(saved.lastSave!.awarded).toBe(0); // guided practice pays nothing
+    expect((await new DatabaseLastWordPersistence(db, id, sets).load()).tutorialDone).toBe(true);
+  });
+});
+
 describe('content QA flags (§45)', () => {
   const beat = po.chains[0].beats[0];
   const row = (selectedWord: string, learnerStrong = false) => {

@@ -16,5 +16,6 @@ export function detectTier(): PresentationTier {
   const gl = canvas.getContext('webgl2');
   if (!gl) return 'lite';
   gl.getExtension('WEBGL_lose_context')?.loseContext();
-  return navigator.hardwareConcurrency >= 8 && window.devicePixelRatio <= 2.5 ? 'full' : 'standard';
+  // The 3D chamber is the game's identity: every device that can run WebGL2 gets it. Players can still pick Standard/Lite in settings.
+  return 'full';
 }

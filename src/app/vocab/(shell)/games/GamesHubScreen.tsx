@@ -275,10 +275,15 @@ function LastWordCard({ summary, onPlay }: { summary: LastWordSummaryResponse | 
         </p>
 
         {started && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: '0.75rem' }}>
-            <Sparkles size={13} color="var(--color-lx-accent-gold)" />
-            <span style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
-              {summary.practiced} of {summary.distinctions} distinctions practiced · {summary.reliable} reliable
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: '0.75rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <Sparkles size={13} color="var(--color-lx-accent-gold)" />
+              <span style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
+                {summary.practiced} of {summary.distinctions} distinctions practiced · {summary.reliable} reliable
+              </span>
+            </div>
+            <span style={{ fontFamily: SANS, fontSize: '0.74rem', color: 'var(--color-lx-text-secondary)', paddingLeft: 19 }}>
+              <AnimatedNumber value={summary.pointsToday} /> of {summary.dailyCap} points earned today
             </span>
           </div>
         )}

@@ -25,7 +25,11 @@ export class BrowserLastWordPersistence implements LastWordPersistence {
     const submissions = this.submissions();
     const existing = submissions.find(item => item.id === submission.id);
     if (existing) {
-      if (JSON.stringify(existing) !== JSON.stringify(submission)) throw new PersistenceValidationError('A saved session cannot be replaced.');
+      // A session may grow as it is played; the saved decisions must be an unchanged prefix.
+      const extension = existing.startedAt === submission.startedAt && existing.decisions.length <= submission.decisions.length
+        && existing.decisions.every((decision, i) => JSON.stringify(decision) === JSON.stringify(submission.decisions[i]));
+      if (!extension) throw new PersistenceValidationError('A saved session cannot be replaced.');
+      this.storage.setItem(this.key, JSON.stringify(submissions.map(item => (item.id === submission.id ? submission : item))));
       return this.load();
     }
     const snapshot = applySubmission(await this.load(), submission, this.sets).snapshot;

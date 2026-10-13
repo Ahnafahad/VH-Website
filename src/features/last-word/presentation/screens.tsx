@@ -54,9 +54,11 @@ function Summary({ symbol, eyebrow, title, children }: { symbol: ReactNode; eyeb
 
 // ------------------------------------------------------------------ home
 
-export function Home({ assets, ready, due, hasProgress, onStart, onMap }: {
+export function Home({ assets, ready, due, hasProgress, onStart, onMap, resume, onResume, onStopAndSave }: {
   assets: AssetUrls; ready: boolean; due: number; hasProgress: boolean;
   onStart: (mode: 'journey' | 'quick' | 'review') => void; onMap: () => void;
+  /** An unfinished session found on this device. */
+  resume?: { choices: number; points: number } | null; onResume?: () => void; onStopAndSave?: () => void;
 }) {
   const sculpture = assetUrl(assets, 'image.launch-sculpture');
   return (
@@ -67,7 +69,14 @@ export function Home({ assets, ready, due, hasProgress, onStart, onMap }: {
       {sculpture
         ? <img className="lw-launch-image" src={sculpture} alt="" width={600} height={400} />
         : <div className="lw-launch-sculpture" aria-hidden="true"><div className="lw-orbit" /><span className="lw-mini-tile">persistent</span><i>↔</i><span className="lw-mini-tile">obstinate</span></div>}
-      <button className="lw-primary" disabled={!ready} onClick={() => onStart('journey')}>
+      {resume && (
+        <div className="lw-resume" role="group" aria-label="Unfinished session">
+          <p><strong>Pick up where you left off</strong><span>{resume.choices} choice{resume.choices === 1 ? '' : 's'} so far · {resume.points} pts</span></p>
+          <button className="lw-primary" onClick={onResume}><Play size={18} aria-hidden="true" />Resume</button>
+          <button className="lw-text-button" onClick={onStopAndSave}>Save and stop</button>
+        </div>
+      )}
+      <button className={resume ? 'lw-secondary' : 'lw-primary'} disabled={!ready} onClick={() => onStart('journey')}>
         <Icon assets={assets} id="continue" fallback={Play} size={18} />{hasProgress ? 'Continue' : 'Enter the chamber'}<ArrowRight size={18} aria-hidden="true" />
       </button>
       <div className="lw-home-actions">
@@ -75,7 +84,7 @@ export function Home({ assets, ready, due, hasProgress, onStart, onMap }: {
         <button className="lw-secondary" disabled={!ready || !due} onClick={() => onStart('review')}><Icon assets={assets} id="review" fallback={RotateCcw} size={18} />Review{due ? ` · ${due} due` : ''}</button>
         <button className="lw-secondary" disabled={!ready} onClick={onMap}><Icon assets={assets} id="mastery-map" fallback={Network} size={18} />Mastery Map</button>
       </div>
-      <p className="lw-small">Your pace. No countdown. Sound and haptics are optional.</p>
+      <p className="lw-small">About 3 minutes a round. Your pace, no countdown. Progress saves as you play.</p>
     </section>
   );
 }
@@ -148,7 +157,7 @@ export function RoundFeedback({ chain, records, onNext, onFinish, nextLabel }: {
       <span className="lw-eyebrow"><span />{perfect ? 'PERFECT READ' : last.correctness === 'best' ? 'PRECISELY READ' : last.correctness === 'defensible' ? 'A DEFENSIBLE READING' : 'NOTICE THE DETAIL'}</span>
       <h2 tabIndex={-1} data-autofocus>{verdict}</h2>
       <p className="lw-points" role="status" data-correctness={last.correctness}>
-        {verdictLabel(last.correctness)}{chain.purpose === 'tutorial' ? ' · guided practice, no points' : ` · +${records.reduce((sum, r) => sum + r.score, 0)} Lexicore pts this read`}
+        <span aria-hidden="true">{last.correctness === 'best' ? '✓' : last.correctness === 'defensible' ? '◐' : '✗'}</span> {verdictLabel(last.correctness)}{chain.purpose === 'tutorial' ? ' · guided practice, no points' : ` · +${records.reduce((sum, r) => sum + r.score, 0)} Lexicore pts this read`}
       </p>
       <p className="lw-feedback-short">{chain.feedback_short}</p>
       <p className="lw-feedback-clue"><ClueText text={beat.text} clue={beat.decisive_clue} /></p>
@@ -175,8 +184,8 @@ export function RoundFeedback({ chain, records, onNext, onFinish, nextLabel }: {
 
 const WHY: Record<string, string> = { shift: 'a context flip', hold: 'a false shift you held through', transfer: 'a new-domain transfer example', retention: 'a delayed recall', standard: 'a standard context' };
 
-export function Recap({ before, after, records, skipped, corrected, now, assets, saveStatus, onRetry, onHome, onMap }: {
-  before: MasterySnapshot; after: MasterySnapshot; records: DecisionRecord[]; skipped: number; corrected: number; now: number;
+export function Recap({ before, after, records, skipped, corrected, now, points, capped, assets, saveStatus, onRetry, onHome, onMap }: {
+  before: MasterySnapshot; after: MasterySnapshot; records: DecisionRecord[]; skipped: number; corrected: number; now: number; points: number; capped: boolean;
   assets: AssetUrls; saveStatus: string; onRetry?: () => void; onHome: () => void; onMap: () => void;
 }) {
   const touched = [...new Set(records.map(r => r.edgeId))].filter(id => after.edges[id]);
@@ -200,7 +209,8 @@ export function Recap({ before, after, records, skipped, corrected, now, assets,
         })}
       </div>
       <ul className="lw-recap-lines">
-        {records.some(r => r.score > 0) && <li>You earned {records.reduce((sum, r) => sum + r.score, 0)} Lexicore points from {records.filter(r => r.score > 0).length} of {records.length} choices.</li>}
+        {points > 0 && <li>You earned {points} Lexicore points from {records.filter(r => r.score > 0).length} of {records.length} choices.</li>}
+        {capped && <li>You reached today’s Last Word limit, so the rest of this session’s points were not added.</li>}
         {skipped > 0 && <li>{skipped} distinction{skipped > 1 ? 's' : ''} skipped because you already knew {skipped > 1 ? 'them' : 'it'}.</li>}
         {corrected > 0 && <li>{corrected} misconception{corrected > 1 ? 's' : ''} corrected.</li>}
         <li>{days === null ? 'No review scheduled yet.' : days === 0 ? 'Next review: later today.' : days === 1 ? 'Next review: tomorrow.' : `Next review: in ${days} days.`}</li>

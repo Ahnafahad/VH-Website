@@ -10,15 +10,20 @@ export function classifyAnswer(beat: LastWordBeat, selectedWord: string): Correc
 /** Human verdict for a judged choice. 'defensible' is partly right: it earns partial points but is not the best fit. */
 export const verdictLabel = (correctness: Correctness) => (correctness === 'best' ? 'Correct' : correctness === 'defensible' ? 'Partly right' : 'Wrong');
 
+/** A choice answered faster than anyone can read the beat earns nothing (blocks scripted play and accidental taps). */
+export const MIN_READ_MS = 700;
+
 /** Context that changes what a judged choice pays, known to both client and server. */
 export interface PointsContext {
+  /** Answered before it could have been read. */
+  tooFast?: boolean;
   /** Guided tutorial play is exposure, not evidence, so it pays nothing. */
   tutorial?: boolean;
   /** The user already answered this scenario in an earlier session: ¼ points, rounded up (the Word Hunt catch-up rule). */
   repeated?: boolean;
 }
 export function decisionPoints(correctness: Correctness, fit: number, hinted: boolean, bonus: boolean, context: PointsContext = {}): number {
-  if (context.tutorial) return 0;
+  if (context.tutorial || context.tooFast) return 0;
   const raw = correctness === 'best' ? POINTS_LAST_WORD_CORRECT + (bonus ? POINTS_LONG_GAP_BONUS : 0) : correctness === 'defensible' ? (fit >= 0.7 ? 8 : 5) : 0;
   const assisted = hinted ? Math.round(raw * 0.75) : raw;
   return context.repeated ? Math.ceil(assisted / 4) : assisted;
@@ -39,7 +44,7 @@ export function evaluateDecision(input: DecisionInput, set: LastWordSet, streak 
   const correctHold = correctness === 'best' && input.previousSelection === input.selectedWord && beat.shift_type === 'false_shift';
   const nextStreak = correctness === 'best' && !input.hintLevel ? streak + 1 : 0;
   // `score` is the Lexicore points this choice earns. Speed never pays (Lexicore has no speed points, and it would reward rushing).
-  const score = decisionPoints(correctness, beat.fit[input.selectedWord], input.hintLevel > 0, correctSwitch || correctHold, points);
+  const score = decisionPoints(correctness, beat.fit[input.selectedWord], input.hintLevel > 0, correctSwitch || correctHold, { ...points, tooFast: input.reactionTimeMs < MIN_READ_MS });
   const kind: EvidenceKind = input.reviewIntervalDays >= 7 ? 'retention' : chain.purpose === 'transfer' || chain.purpose === 'probe' ? 'transfer' : correctHold ? 'hold' : index > 0 && chain.beats[index - 1].best_word !== beat.best_word ? 'shift' : chain.difficulty <= 1 ? 'anchor' : 'standard';
   const weights: Record<EvidenceKind, number> = { anchor: 0.5, standard: 1, shift: 1.4, hold: 1.5, transfer: 1.8, retention: 2 };
   const evidenceWeight = correctness === 'incorrect' ? (input.confidence === 'certain' ? -1.5 : -1) : correctness === 'defensible' ? 0.2 : input.hintLevel ? 0.35 : weights[kind];

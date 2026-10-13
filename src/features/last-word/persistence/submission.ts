@@ -55,12 +55,23 @@ export function parseSubmission(value: unknown): SessionSubmission {
 /** This boundary never accepts client-derived scores, points, fits, mastery, or review intervals. */
 /** sets is the content the session was played against. 
 eplay skips decisions whose content has since been withdrawn (stored guest history) instead of rejecting them. */
-export function applySubmission(snapshot: LearningSnapshot, value: unknown, sets: LastWordSet[], { replay = false } = {}): { snapshot: LearningSnapshot; decisions: DecisionRecord[]; submission: SessionSubmission } {
+export interface ApplyOptions {
+  replay?: boolean;
+  /** Decisions of this same session that were saved earlier: seeds beat ordering when a session is extended. */
+  prior?: Pick<SessionSubmission['decisions'][number], 'setId' | 'scenarioId' | 'beatId' | 'selectedWord'>[];
+  /** Review intervals already computed for this session's earlier decisions, keyed by edge (they must not drift as the session saves). */
+  edgeIntervals?: Record<string, number>;
+}
+export function applySubmission(snapshot: LearningSnapshot, value: unknown, sets: LastWordSet[], { replay = false, prior = [], edgeIntervals = {} }: ApplyOptions = {}): { snapshot: LearningSnapshot; decisions: DecisionRecord[]; submission: SessionSubmission } {
   const submission = parseSubmission(value);
   let mastery = snapshot;
   let streak = 0;
   const decisions: DecisionRecord[] = [];
   const previousByScenario = new Map<string, { index: number; word: string }>();
+  for (const earlier of prior) {
+    const index = sets.find(item => item.set_id === earlier.setId)?.chains.find(item => item.id === earlier.scenarioId)?.beats.findIndex(beat => beat.id === earlier.beatId) ?? -1;
+    if (index >= 0) previousByScenario.set(`${earlier.setId}/${earlier.scenarioId}`, { index, word: earlier.selectedWord });
+  }
   for (const input of submission.decisions) {
     const set = sets.find(item => item.set_id === input.setId);
     const chain = set?.chains.find(item => item.id === input.scenarioId);
@@ -75,7 +86,7 @@ export function applySubmission(snapshot: LearningSnapshot, value: unknown, sets
     const previous = previousByScenario.get(scenarioKey);
     if (beatIndex !== (previous ? previous.index + 1 : 0)) throw new PersistenceValidationError('Scenario beats must be submitted in order.');
     const lastVerified = snapshot.edges[chain.edge_id]?.lastVerified;
-    const reviewIntervalDays = lastVerified === undefined ? 0 : Math.max(0, (submission.startedAt - lastVerified) / 86_400_000);
+    const reviewIntervalDays = edgeIntervals[chain.edge_id] ?? (lastVerified === undefined ? 0 : Math.max(0, (submission.startedAt - lastVerified) / 86_400_000));
     // Same rule the client applies from its baseline: an earlier session's answer to this scenario makes this a repeat.
     const answeredIn = mastery.edges[chain.edge_id]?.scenarioSessions[chain.id];
     const record = evaluateDecision({ ...input, previousSelection: previous?.word ?? null, reviewIntervalDays }, set, streak,

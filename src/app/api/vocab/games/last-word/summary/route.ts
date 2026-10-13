@@ -19,6 +19,9 @@ export interface LastWordSummaryResponse {
   reliable: number;
   due: number;
   sessions: number;
+  /** Lexicore points earned from Last Word today, and the daily cap. */
+  pointsToday: number;
+  dailyCap: number;
 }
 
 export async function GET() {
@@ -37,6 +40,8 @@ export async function GET() {
       reliable: edges.filter(e => ['Reliable', 'Fluent', 'Mastered'].includes(status(e.edgeId) ?? '')).length,
       due: dueEdges(sets, snapshot, Date.now()).length,
       sessions: snapshot.sessions.length,
+      pointsToday: snapshot.pointsToday ?? 0,
+      dailyCap: snapshot.dailyCap ?? 0,
     };
   });
 }

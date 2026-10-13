@@ -13,11 +13,12 @@ import { ArrowLeft, ArrowRight, Lightbulb, Lock, Pause, Settings2 } from 'lucide
 import { assetUrl, loadAvailableAssets, type AssetUrls } from './assets/runtime';
 import type { LastWordSet } from './content/schema';
 import { updateMastery, verdictLabel } from './core/learning';
-import { emptyMastery, type MasterySnapshot } from './core/types';
+import { emptyMastery, type DecisionRecord, type MasterySnapshot } from './core/types';
+import { checkpointPhase, clearCheckpoint, makeCheckpoint, MAX_RESUME_MS, readCheckpoint, submissionFor, writeCheckpoint, type Checkpoint } from './game/checkpoint';
 import { currentRound, currentStep, lastWordMachine } from './game/machine';
 import { dueEdges, type Mode } from './game/session';
 import { useLastWordSettings } from './game/store';
-import { BrowserLastWordPersistence, HttpLastWordPersistence, type LastWordPersistence } from './persistence';
+import { BrowserLastWordPersistence, HttpLastWordPersistence, type LastWordPersistence, type LearningSnapshot } from './persistence';
 import { createFeedback, type Cue, type Feedback } from './presentation/audio';
 import { CardScreen, ClueText, Home, Icon, MasteryMap, Recap, RoundFeedback } from './presentation/screens';
 import { detectTier, timing, type PresentationTier } from './presentation/tokens';
@@ -31,6 +32,9 @@ class ChamberBoundary extends Component<{ children: ReactNode; onUnavailable: ()
   componentDidCatch() { this.props.onUnavailable(); }
   render() { return this.state.failed ? null : this.props.children; }
 }
+
+/** Right and wrong are never colour alone. */
+const VERDICT_GLYPH = { best: '✓', defensible: '◐', incorrect: '✗' } as const;
 
 const ROLE_LABEL: Record<string, string> = {
   tutorial: 'LEARN THE FEEL', diagnostic: 'PROVE WHAT YOU KNOW', probe: 'ONE HARDER READ', review: 'REVIEW · FRESH CONTEXT',
@@ -52,6 +56,7 @@ export default function LastWordGame({ preview = NO_PREVIEW }: { preview?: LastW
     return (
       <main className="lw-game" data-tier="lite" data-phase="loading">
         <section className="lw-summary" role="status">
+          {!failed && <div className="lw-skeleton" aria-hidden="true"><i /><i /><b /></div>}
           <p>{failed ? 'The chamber could not load. Check your connection and refresh.' : 'Opening the chamber…'}</p>
         </section>
       </main>
@@ -62,7 +67,8 @@ export default function LastWordGame({ preview = NO_PREVIEW }: { preview?: LastW
 
 function Game({ sets }: { sets: LastWordSet[] }) {
   const [state, send] = useMachine(lastWordMachine, { input: { sets } });
-  const { status: authStatus } = useSession();
+  const { status: authStatus, data: authSession } = useSession();
+  const owner = authSession?.user?.email?.toLowerCase() ?? null;
   const settings = useLastWordSettings();
   const systemReduced = useReducedMotion();
   const [assets, setAssets] = useState<AssetUrls>(new Map());
@@ -71,10 +77,16 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [mapOpen, setMapOpen] = useState(false);
   const [baseline, setBaseline] = useState<MasterySnapshot>(emptyMastery);
-  const [saved, setSaved] = useState<MasterySnapshot | null>(null);
+  const [saved, setSaved] = useState<LearningSnapshot | null>(null);
   const [storage, setStorage] = useState('Loading progress…');
   const [ready, setReady] = useState(false);
   const [saveAttempt, setSaveAttempt] = useState(0);
+  const [serverTutorialDone, setServerTutorialDone] = useState(false);
+  const [resumable, setResumable] = useState<Checkpoint | null>(null);
+  const [capped, setCapped] = useState(false);
+  const [coarse, setCoarse] = useState(false);
+  const savedCount = useRef(0);
+  const saveQueue = useRef<Promise<unknown>>(Promise.resolve());
   const [now, setNow] = useState(0);
   const repository = useRef<LastWordPersistence | null>(null);
   const feedback = useRef<Feedback | null>(null);
@@ -93,8 +105,17 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   const lastRecord = context.records.at(-1);
   const judged = (state.matches('feedback') || state.matches('beatFeedback')) && lastRecord?.beatId === current?.beat.id;
   const beatKey = current ? `${current.chain.id}:${context.beat}` : phase;
+  const sessionPoints = context.records.reduce((sum, r) => sum + r.score, 0);
 
   // ---------------------------------------------------------------- setup
+  useEffect(() => {
+    // App feel: a downward swipe in the game must not pull-to-refresh the page.
+    const root = document.documentElement;
+    const previous = root.style.overscrollBehaviorY;
+    root.style.overscrollBehaviorY = 'contain';
+    setCoarse(window.matchMedia('(pointer: coarse)').matches);
+    return () => { root.style.overscrollBehaviorY = previous; };
+  }, []);
   useEffect(() => {
     setCapability(detectTier());
     setNow(Date.now());
@@ -121,6 +142,8 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     repository.current.load().then(snapshot => {
       if (cancelled) return;
       setBaseline(snapshot);
+      // The tutorial is remembered on the account, so it never reappears on another device or after clearing the browser.
+      if (snapshot.tutorialDone) { setServerTutorialDone(true); useLastWordSettings.getState().update({ tutorialDone: true }); }
       setStorage(authStatus === 'authenticated' ? 'Progress saves to your account.' : 'Progress stays on this browser. Sign in to keep it everywhere.');
     }).catch(() => {
       if (!cancelled) setStorage('Progress could not load. You can still play; saving can be retried.');
@@ -158,6 +181,68 @@ function Game({ sets }: { sets: LastWordSet[] }) {
   }, [settings.music, assets, mapOpen]);
   useEffect(() => { music.current?.volume(state.matches('feedback') ? 0.12 : 0.35); }, [phase]);
 
+  // ---------------------------------------------------------------- saving, checkpoints, resume
+  /** Saves the session as it stands. Saves are serialized, and a session may grow between saves (the server accepts a longer list with the same start). */
+  const persist = useCallback((sessionId: string, startedAt: number, completedAt: number, records: DecisionRecord[]) => {
+    const repo = repository.current;
+    if (!repo || !records.length) return Promise.resolve(null);
+    const run = saveQueue.current.then(() => repo.saveSession(submissionFor(sessionId, startedAt, completedAt, records)));
+    saveQueue.current = run.catch(() => undefined);
+    return run.then(snapshot => {
+      if (snapshot.lastSave?.capped) setCapped(true);
+      if (snapshot.tutorialDone) { setServerTutorialDone(true); useLastWordSettings.getState().update({ tutorialDone: true }); }
+      return snapshot;
+    });
+  }, []);
+
+  // An unfinished session from an earlier visit: offer to resume it, or save it as it stands if it is too old to resume.
+  useEffect(() => {
+    if (!ready || !owner) return;
+    const found = readCheckpoint(localStorage, owner);
+    if (!found) return;
+    if (Date.now() - found.savedAt > MAX_RESUME_MS) {
+      const last = found.records.at(-1);
+      // Cleared only once saved; if the save fails the checkpoint stays and is retried next visit.
+      void persist(found.sessionId, found.startedAt, last?.occurredAt ?? found.startedAt, found.records).then(() => clearCheckpoint(localStorage)).catch(() => undefined);
+      return;
+    }
+    setResumable(found);
+  }, [ready, owner, persist]);
+
+  // After every choice (and every screen), keep the in-progress session on this device.
+  useEffect(() => {
+    const stable = checkpointPhase(phase);
+    if (!owner || !stable || !context.records.length) return; // nothing to lose before the first choice
+    writeCheckpoint(localStorage, makeCheckpoint(context, stable, owner, Date.now()));
+  }, [phase, context.records.length, context.beat, context.steps.length]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // A finished round is saved to the account as soon as it is judged, so interruptions never cost earned points.
+  useEffect(() => {
+    if ((phase !== 'feedback' && phase !== 'card') || context.records.length <= savedCount.current) return;
+    const count = context.records.length;
+    void persist(context.sessionId, context.startedAt, Date.now(), context.records)
+      .then((snapshot: LearningSnapshot | null) => { if (snapshot) { savedCount.current = count; setSaved(snapshot); } })
+      .catch(() => setStorage('Your last round has not saved yet. It will retry.'));
+  }, [phase, context.records.length]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const resume = () => {
+    if (!resumable) return;
+    cue('reveal');
+    savedCount.current = 0;
+    setSaved(null);
+    send({ type: 'RESTORE', checkpoint: resumable, baseline, now: Date.now() });
+    setResumable(null);
+  };
+  const stopAndSave = () => {
+    if (!resumable) return;
+    const found = resumable;
+    setResumable(null);
+    const last = found.records.at(-1);
+    void persist(found.sessionId, found.startedAt, last?.occurredAt ?? found.startedAt, found.records)
+      .then(snapshot => { if (snapshot) setBaseline(snapshot); clearCheckpoint(localStorage); })
+      .catch(() => { setStorage('Save failed. Your session is kept on this device.'); setResumable(found); });
+  };
+
   // ---------------------------------------------------------------- progress
   const projected = useMemo(
     () => {
@@ -174,11 +259,11 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     if (!context.records.length || !context.completedAt) return;
     let cancelled = false;
     setStorage('Saving your distinctions…');
-    const decisions = context.records.map(({ id, sessionId, setId, scenarioId, beatId, presentedWords, selectedWord, previousSelection, reactionTimeMs, hintLevel, confidence, reviewIntervalDays, occurredAt }) =>
-      ({ id, sessionId, setId, scenarioId, beatId, presentedWords, selectedWord, previousSelection, reactionTimeMs, hintLevel, confidence, reviewIntervalDays, occurredAt }));
-    repository.current.saveSession({ id: context.sessionId, startedAt: context.startedAt, completedAt: context.completedAt, decisions }).then(snapshot => {
-      if (cancelled) return;
+    persist(context.sessionId, context.startedAt, context.completedAt, context.records).then(snapshot => {
+      if (cancelled || !snapshot) return;
       setSaved(snapshot);
+      savedCount.current = context.records.length;
+      clearCheckpoint(localStorage);
       setStorage(authStatus === 'authenticated' ? 'Saved to your account.' : 'Saved on this browser.');
     }).catch(() => { if (!cancelled) setStorage('Save failed. Your results are still here.'); });
     return () => { cancelled = true; };
@@ -195,14 +280,24 @@ function Game({ sets }: { sets: LastWordSet[] }) {
     if (!context.selected) return select(direction > 0 ? words[words.length - 1] : words[0]);
     select(words[Math.max(0, Math.min(words.length - 1, words.indexOf(context.selected) + direction))]);
   };
-  const lock = () => { if (reading && context.selected) { cue('lock'); send({ type: 'LOCK', now: Date.now() }); } };
+  const lock = () => {
+    if (reading && context.selected) {
+      cue('lock');
+      if (!settings.coachSeen) settings.update({ coachSeen: true });
+      send({ type: 'LOCK', now: Date.now() });
+    }
+  };
   const next = () => { cue('ui-tap'); send({ type: 'NEXT', now: Date.now() }); };
   const finish = () => send({ type: 'FINISH', now: Date.now() });
   const start = (mode: Mode) => {
     setNow(Date.now());
     setSaved(null);
+    setCapped(false);
+    savedCount.current = 0;
+    clearCheckpoint(localStorage);
+    setResumable(null);
     cue('reveal');
-    send({ type: 'START', mode, now: Date.now(), sessionId: crypto.randomUUID(), baseline, tutorialDone: settings.tutorialDone });
+    send({ type: 'START', mode, now: Date.now(), sessionId: crypto.randomUUID(), baseline, tutorialDone: settings.tutorialDone || serverTutorialDone });
   };
   const bind = useDrag(({ active, movement: [x], last, canceled }) => {
     tiltApi.start({ tilt: reduced || !active ? 0 : Math.max(-1, Math.min(1, x / 120)) });
@@ -232,7 +327,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
 
   const onUnavailable = useCallback(() => setWebglFailed(true), []);
   const due = dueEdges(sets, baseline, now).length;
-  const hasProgress = Object.keys(baseline.edges).length > 0 || settings.tutorialDone;
+  const hasProgress = Object.keys(baseline.edges).length > 0 || settings.tutorialDone || serverTutorialDone;
   const backdrop = assetUrl(assets, 'image.chamber-backdrop.landscape');
   const backdropPortrait = assetUrl(assets, 'image.chamber-backdrop.portrait');
   const liteTile = assetUrl(assets, 'texture.tile-surface.lite');
@@ -251,6 +346,14 @@ function Game({ sets }: { sets: LastWordSet[] }) {
           <Link href="/vocab/games" className="lw-back" aria-label="Back to games"><ArrowLeft size={18} /></Link>
           <span className="lw-logotype">{assetUrl(assets, 'icon.wordmark') ? <img src={assetUrl(assets, 'icon.wordmark')!} alt="Last Word" height={18} /> : <>LAST<span>WORD</span></>}</span>
           <span className="lw-header-note">A GAME OF MEANING</span>
+          {!state.matches('home') && !state.matches('recap') && context.records.length > 0 && (
+            <span className="lw-score" role="status" aria-label={`Session points: ${sessionPoints}`}>
+              {lastRecord && judged && lastRecord.score > 0 && (
+                <motion.i key={lastRecord.id} className="lw-score-gain" initial={{ opacity: 0, y: reduced ? 0 : 8, scale: 0.85 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: reduced ? 0 : 0.28, ease: [0.2, 0.7, 0.2, 1] }}>+{lastRecord.score}</motion.i>
+              )}
+              <b>{sessionPoints}</b> pts
+            </span>
+          )}
           <button className="lw-icon-button" aria-label="Game settings" aria-expanded={settingsOpen} onClick={() => setSettingsOpen(!settingsOpen)}><Settings2 size={19} /></button>
         </header>
 
@@ -273,12 +376,14 @@ function Game({ sets }: { sets: LastWordSet[] }) {
         {mapOpen ? (
           <MasteryMap sets={sets} mastery={saved ?? projected} now={now} assets={assets} onClose={() => setMapOpen(false)} />
         ) : state.matches('home') ? (
-          sets.length ? <Home assets={assets} ready={ready} due={due} hasProgress={hasProgress} onStart={start} onMap={() => setMapOpen(true)} />
+          sets.length ? <Home assets={assets} ready={ready} due={due} hasProgress={hasProgress} onStart={start} onMap={() => setMapOpen(true)}
+              resume={resumable ? { choices: resumable.records.length, points: resumable.records.reduce((sum, r) => sum + r.score, 0) } : null} onResume={resume} onStopAndSave={stopAndSave} />
             : <section className="lw-summary"><h1 tabIndex={-1} data-autofocus>No distinctions are published yet.</h1><p>Check back soon.</p></section>
         ) : state.matches('card') && step && step.kind !== 'round' ? (
           <CardScreen card={step} sets={sets} onNext={next} onFinish={finish} />
         ) : state.matches('recap') ? (
-          <Recap before={baseline} after={saved ?? projected} records={context.records} skipped={skipped} corrected={corrected} now={context.completedAt ?? now}
+          <Recap before={baseline} after={saved ?? projected} records={context.records} skipped={skipped} corrected={corrected} now={context.completedAt ?? now} capped={capped}
+            points={saved?.sessions.find(item => item.id === context.sessionId)?.score ?? sessionPoints}
             assets={assets} saveStatus={storage} onRetry={storage.startsWith('Save failed') ? () => setSaveAttempt(n => n + 1) : undefined}
             onHome={() => { if (saved) setBaseline(saved); setNow(Date.now()); send({ type: 'HOME' }); }} onMap={() => setMapOpen(true)} />
         ) : current ? (
@@ -286,6 +391,14 @@ function Game({ sets }: { sets: LastWordSet[] }) {
             <div className="lw-round-header">
               <span className="lw-eyebrow"><span />{ROLE_LABEL[current.round.role]}</span>
               <span className="lw-small">{current.chain.frame ?? ''}</span>
+              {reading && (
+                <span className="lw-top-tools">
+                  {current.round.hintsAllowed && context.hintLevel < 3 && (
+                    <button className="lw-text-button" onClick={() => { cue('hint'); send({ type: 'HINT' }); }}>{context.hintLevel ? 'Another hint' : 'Hint'}</button>
+                  )}
+                  <button className="lw-icon-button" aria-label="Pause" onClick={() => send({ type: 'PAUSE', now: Date.now() })}><Pause size={16} /></button>
+                </span>
+              )}
             </div>
 
             <div className="lw-context-shell" {...bind()}>
@@ -331,6 +444,10 @@ function Game({ sets }: { sets: LastWordSet[] }) {
               </div>
             </div>
 
+            {coarse && reading && !settings.coachSeen && context.beat === 0 && words.length > 1 && (
+              <p className="lw-coach" role="note">Tip: swipe the word card left or right to switch words, then lock your choice.</p>
+            )}
+
             {current.round.askConfidence && reading && (
               <fieldset className="lw-confidence">
                 <legend>How sure are you? <span>(optional)</span></legend>
@@ -345,12 +462,8 @@ function Game({ sets }: { sets: LastWordSet[] }) {
             ) : (
               <div className="lw-action-row">
                 <p role="status" className="lw-action-status" data-correctness={judged ? lastRecord?.correctness : undefined}>
-                  {state.matches('paused') ? 'Paused. Take your time.' : judged && lastRecord ? `${verdictLabel(lastRecord.correctness)} · ${current.chain.purpose === 'tutorial' ? 'guided, no points' : `+${lastRecord.score} pts`}${lastRecord.correctness === 'best' ? '' : ` · ${current.beat.best_word} fits better`}` : context.selected ? `${context.selected} · you can still change it` : 'Tap a word, swipe, or use ← →'}
+                  {state.matches('paused') ? 'Paused. Take your time.' : judged && lastRecord ? `${VERDICT_GLYPH[lastRecord.correctness]} ${verdictLabel(lastRecord.correctness)} · ${current.chain.purpose === 'tutorial' ? 'guided, no points' : lastRecord.score === 0 && lastRecord.correctness !== 'incorrect' ? 'too quick to count, read the context first' : `+${lastRecord.score} pts`}${lastRecord.correctness === 'best' ? '' : ` · ${current.beat.best_word} fits better`}` : context.selected ? `${context.selected} · you can still change it` : 'Tap a word, swipe, or use ← →'}
                 </p>
-                {reading && current.round.hintsAllowed && context.hintLevel < 3 && (
-                  <button className="lw-text-button" onClick={() => { cue('hint'); send({ type: 'HINT' }); }}>{context.hintLevel ? 'Another hint' : 'Hint'}</button>
-                )}
-                {reading && <button className="lw-icon-button" aria-label="Pause" onClick={() => send({ type: 'PAUSE', now: Date.now() })}><Pause size={16} /></button>}
                 {state.matches('paused') ? <button className="lw-primary" onClick={() => send({ type: 'RESUME', now: Date.now() })}>Resume</button>
                   : reading ? <button className="lw-primary" disabled={!context.selected} onClick={lock}><Lock size={16} aria-hidden="true" />{context.beat === current.chain.beats.length - 1 ? 'Have the last word' : 'Lock this reading'}</button>
                     : <button className="lw-primary" onClick={next}>Continue<ArrowRight size={18} aria-hidden="true" /></button>}

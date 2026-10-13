@@ -11,11 +11,13 @@ type Settings = {
   haptics: boolean;
   music: boolean;
   tutorialDone: boolean;
+  /** The swipe tip has been shown once. */
+  coachSeen: boolean;
 };
 
 export const useLastWordSettings = create<Settings & { update: (patch: Partial<Settings>) => void }>()(
   persist((set) => ({
-    tier: 'auto', reducedMotion: false, sound: false, haptics: false, music: false, tutorialDone: false,
+    tier: 'auto', reducedMotion: false, sound: false, haptics: false, music: false, tutorialDone: false, coachSeen: false,
     update: (patch) => set(patch),
   }), { name: 'last-word-settings-v2' }),
 );

@@ -88,6 +88,18 @@ const pwaConfig = withPWA({
         cacheableResponse: { statuses: [0] },
       },
     },
+    // Last Word's content bank is a static, versioned file: serve it from cache and refresh in the background,
+    // so the game opens on a slow or dropped connection. Must come before the generic API rule below.
+    {
+      urlPattern: ({ url, sameOrigin }: { url: URL; sameOrigin: boolean }) =>
+        sameOrigin && url.pathname === "/api/last-word/content",
+      handler: "StaleWhileRevalidate",
+      options: {
+        cacheName: "last-word-content",
+        cacheableResponse: { statuses: [200] },
+        expiration: { maxEntries: 2, maxAgeSeconds: 7 * 24 * 60 * 60 },
+      },
+    },
     // API routes — always fresh. NB: workbox matches regexes against the FULL
     // request href (https://host/api/...), so a ^\/api\/ regex never matched —
     // use a same-origin pathname callback instead.

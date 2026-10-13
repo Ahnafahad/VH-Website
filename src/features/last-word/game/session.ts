@@ -40,8 +40,13 @@ export interface PlanState {
 const DAY = 86_400_000;
 const strong = (edge?: EdgeMastery) => edge?.status === 'Fluent' || edge?.status === 'Mastered';
 const SHIFT_TYPES = new Set(['flip', 'false_shift', 'corrupt', 'rehabilitate', 'reframe']);
-/** Rounds a journey aims for before it stops adding new distinctions (§23: 4–7 minutes). */
-export const JOURNEY_ROUNDS = 6;
+/**
+ * Rounds a journey aims for before it stops adding new distinctions. The spec's 4–7 minutes (§23) was cut to a
+ * 2–3 minute default for phones: a new distinction is two cold reads plus two learning rounds.
+ */
+export const JOURNEY_ROUNDS = 4;
+/** Learning rounds per distinction (§23 had four): one practice, then one hard shift. */
+export const LEARNING_ROUNDS = 2;
 
 export const TUTORIAL_MESSAGES = {
   flip: 'One detail can change the word.',
@@ -68,7 +73,7 @@ export const dueEdges = (sets: LastWordSet[], baseline: MasterySnapshot, now: nu
 export function planGoals(sets: LastWordSet[], baseline: MasterySnapshot, mode: Mode, now: number, tutorialDone: boolean): Goal[] {
   const edges = indexEdges(sets);
   const due = dueEdges(sets, baseline, now);
-  if (mode === 'review') return due.slice(0, 6).map(e => ({ kind: 'review', edgeId: e.edgeId }));
+  if (mode === 'review') return due.slice(0, JOURNEY_ROUNDS).map(e => ({ kind: 'review', edgeId: e.edgeId }));
   if (mode === 'quick') {
     // Mixed practice: seen-but-not-strong first, then anything, five rounds across distinct edges where possible.
     const order = [...edges].sort((a, b) => rank(baseline.edges[a.edgeId]) - rank(baseline.edges[b.edgeId]));
@@ -168,11 +173,11 @@ function stepForGoal(state: PlanState, goal: Goal, g: number): Step | null {
   // Weak word meanings: show clear anchor examples once before contrast practice (§32).
   if (outcome === 'C' && edge.set.anchors && !card('anchors')) return { kind: 'anchors', goal: g, edgeId: edge.edgeId, setId: edge.setId };
 
-  // Four learning rounds: two practice, one hard shift, one transfer (§23). A role the bank cannot fill falls back.
+  // Learning rounds: practice first, then a hard shift, then (if ever extended) transfer. A role the bank cannot fill falls back.
   const learning = played.filter(r => r.role === 'practice' || r.role === 'shift' || r.role === 'transfer');
-  if (learning.length >= 4) return null;
+  if (learning.length >= LEARNING_ROUNDS) return null;
   const has = (role: RoundRole) => learning.some(r => r.role === role);
-  const preferred: RoundRole = learning.filter(r => r.role === 'practice').length < 2 ? 'practice' : !has('shift') ? 'shift' : !has('transfer') ? 'transfer' : 'practice';
+  const preferred: RoundRole = !has('practice') ? 'practice' : !has('shift') ? 'shift' : !has('transfer') ? 'transfer' : 'practice';
   for (const role of [preferred, 'practice', 'shift', 'transfer'] as const) {
     const next = pick(role);
     if (next) return next;

@@ -2,6 +2,7 @@ import { assign, setup } from 'xstate';
 import type { LastWordSet } from '../content/schema';
 import { evaluateDecision } from '../core/learning';
 import type { Confidence, DecisionRecord, MasterySnapshot } from '../core/types';
+import type { Checkpoint } from './checkpoint';
 import { nextStep, planGoals, reviewIntervalDays, type Goal, type Mode, type Round, type Step } from './session';
 
 /**
@@ -31,6 +32,7 @@ export type GameEvent =
   | { type: 'CONFIDENCE'; confidence: Confidence }
   | { type: 'HINT' }
   | { type: 'LOCK' | 'NEXT' | 'PAUSE' | 'RESUME' | 'FINISH'; now: number }
+  | { type: 'RESTORE'; checkpoint: Checkpoint; baseline: MasterySnapshot; now: number }
   | { type: 'HOME' };
 
 export const currentStep = (context: GameContext): Step | undefined => context.steps.at(-1);
@@ -98,6 +100,15 @@ export const lastWordMachine = setup({
       return { records: [...context.records, record] };
     }),
     nextBeat: assign(({ context, event }) => ({ beat: context.beat + 1, confidence: null, hintLevel: 0 as const, openedAt: nowOf(event) })),
+    // Re-enters a saved session exactly where it stopped. The timer restarts so time away never counts as reading time.
+    restore: assign(({ event }) => {
+      if (event.type !== 'RESTORE') return {};
+      const { checkpoint: c } = event;
+      return {
+        mode: c.mode, sessionId: c.sessionId, startedAt: c.startedAt, completedAt: null, goals: c.goals, steps: c.steps, beat: c.beat, selected: null,
+        confidence: c.confidence, hintLevel: c.hintLevel, openedAt: event.now, pausedAt: null, records: c.records, baseline: event.baseline,
+      };
+    }),
     pause: assign(({ event }) => ({ pausedAt: nowOf(event) })),
     resume: assign(({ context, event }) => ({ openedAt: context.openedAt + (nowOf(event) - (context.pausedAt ?? nowOf(event))), pausedAt: null })),
     finish: assign(({ event }) => ({ completedAt: nowOf(event) })),
@@ -111,7 +122,17 @@ export const lastWordMachine = setup({
     goals: [], steps: [], beat: 0, selected: null, confidence: null, hintLevel: 0, openedAt: 0, pausedAt: null, records: [],
   }),
   states: {
-    home: { on: { START: { target: 'routing', actions: ['start', 'advance'] } } },
+    home: {
+      on: {
+        START: { target: 'routing', actions: ['start', 'advance'] },
+        RESTORE: [
+          { guard: ({ event }) => event.type === 'RESTORE' && event.checkpoint.phase === 'reading', target: 'reading', actions: 'restore' },
+          { guard: ({ event }) => event.type === 'RESTORE' && event.checkpoint.phase === 'beatFeedback', target: 'beatFeedback', actions: 'restore' },
+          { guard: ({ event }) => event.type === 'RESTORE' && event.checkpoint.phase === 'feedback', target: 'feedback', actions: 'restore' },
+          { guard: ({ event }) => event.type === 'RESTORE' && event.checkpoint.phase === 'card', target: 'card', actions: 'restore' },
+        ],
+      },
+    },
     routing: { always: [{ guard: 'done', target: 'recap' }, { guard: 'isRound', target: 'reading' }, { target: 'card' }] },
     reading: {
       on: {

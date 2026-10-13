@@ -2,9 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { createActor } from 'xstate';
 import { readContent, selectPlayable } from '../content/load';
 import type { LastWordSet } from '../content/schema';
-import { classifyAnswer, decisionPoints, diagnosticOutcome, edgeStatus, evaluateDecision, scheduleReview, updateMastery, verdictLabel } from '../core/learning';
+import { MIN_READ_MS, classifyAnswer, decisionPoints, diagnosticOutcome, edgeStatus, evaluateDecision, scheduleReview, updateMastery, verdictLabel } from '../core/learning';
 import { isEligible, type SelectionCandidate } from '../core/selection';
 import { emptyMastery, type Confidence, type DecisionInput, type DecisionRecord, type MasterySnapshot } from '../core/types';
+import { checkpointPhase, clearCheckpoint, makeCheckpoint, readCheckpoint, submissionFor, writeCheckpoint } from '../game/checkpoint';
 import { currentRound, lastWordMachine, type GameContext } from '../game/machine';
 import { planGoals, TUTORIAL_MESSAGES, type Mode, type Round } from '../game/session';
 import { applySubmission } from '../persistence/submission';
@@ -59,11 +60,13 @@ describe('correctness and scoring (§8, §9)', () => {
 
   it('never pays for speed or streaks, discounts hints, and pays a wrong choice nothing', () => {
     const b = flip.beats[0];
-    const fast = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: 0 }, 12);
+    const fast = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: MIN_READ_MS }, 12);
     expect(fast.score).toBe(15);
+    // Answered before the beat could be read: no points (blocks scripted play and accidental taps).
+    expect(decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: MIN_READ_MS - 1 }).score).toBe(0);
     expect(decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: 90_000 }).score).toBe(15);
     const wrong = Object.keys(b.fit).find(w => w !== b.best_word)!;
-    const missed = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: wrong, reactionTimeMs: 0 });
+    const missed = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: wrong, reactionTimeMs: 3000 });
     expect(missed.score).toBeLessThanOrEqual(8);
     if (missed.correctness === 'incorrect') expect(missed.score).toBe(0);
     const hinted = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: 8000, hintLevel: 2 });
@@ -215,6 +218,55 @@ function play(sets: LastWordSet[], { mode = 'journey' as Mode, baseline = emptyM
   const ctx = actor.getSnapshot().context;
   return { ctx, states, rounds: ctx.steps.filter((s): s is Round => s.kind === 'round'), cards: ctx.steps.filter(s => s.kind !== 'round') };
 }
+
+describe('resuming an interrupted session', () => {
+  it('re-enters a saved session exactly where it stopped, and can be finished', () => {
+    const actor = createActor(lastWordMachine, { input: { sets: all } }).start();
+    let now = 100 * DAY;
+    actor.send({ type: 'START', mode: 'journey', now, sessionId: 'resume-1', baseline: emptyMastery(), tutorialDone: true });
+    // Play until a few choices are made and the game is waiting on a stable screen.
+    for (let i = 0; i < 40 && actor.getSnapshot().context.records.length < 3; i++) {
+      const s = actor.getSnapshot();
+      now += 3000;
+      if (s.matches('reading')) { actor.send({ type: 'SELECT', word: bestWord(s.context) }); actor.send({ type: 'LOCK', now }); } else actor.send({ type: 'NEXT', now });
+    }
+    const before = actor.getSnapshot();
+    const phase = checkpointPhase(String(before.value));
+    expect(phase).not.toBeNull();
+    const saved = JSON.parse(JSON.stringify(makeCheckpoint(before.context, phase!, 'a@example.com', now)));
+
+    const resumed = createActor(lastWordMachine, { input: { sets: all } }).start();
+    resumed.send({ type: 'RESTORE', checkpoint: saved, baseline: emptyMastery(), now: now + 60_000 });
+    const after = resumed.getSnapshot();
+    expect(String(after.value)).toBe(phase);
+    expect(after.context.records.map(r => r.id)).toEqual(before.context.records.map(r => r.id));
+    expect(after.context.sessionId).toBe('resume-1');
+    expect(after.context.selected).toBeNull();
+
+    // It carries on and finishes with a coherent, ordered record list.
+    for (let i = 0; i < 400 && !resumed.getSnapshot().matches('recap'); i++) {
+      const s = resumed.getSnapshot();
+      now += 3000;
+      if (s.matches('reading')) { resumed.send({ type: 'SELECT', word: bestWord(s.context) }); resumed.send({ type: 'LOCK', now: now + 60_000 }); } else resumed.send({ type: 'NEXT', now: now + 60_000 });
+    }
+    const done = resumed.getSnapshot();
+    expect(done.matches('recap')).toBe(true);
+    expect(done.context.records.length).toBeGreaterThan(before.context.records.length);
+    const submission = submissionFor(done.context.sessionId, done.context.startedAt, done.context.completedAt!, done.context.records);
+    expect(applySubmission(emptyLearningSnapshot(), submission, all).decisions).toHaveLength(done.context.records.length);
+  });
+
+  it('only resumes the same user’s fresh checkpoint', () => {
+    const store = new Map<string, string>();
+    const storage = { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => void store.set(k, v), removeItem: (k: string) => void store.delete(k) };
+    const { ctx } = play(all);
+    writeCheckpoint(storage, makeCheckpoint({ ...ctx, completedAt: null }, 'reading', 'a@example.com', 1));
+    expect(readCheckpoint(storage, 'a@example.com')?.sessionId).toBe(ctx.sessionId);
+    expect(readCheckpoint(storage, 'b@example.com')).toBeNull();
+    clearCheckpoint(storage);
+    expect(readCheckpoint(storage, 'a@example.com')).toBeNull();
+  });
+});
 
 describe('session flow', () => {
   it('a first visit starts with the tutorial, then the spec’s three tutorial lessons', () => {
