@@ -5,27 +5,23 @@
   --lw-ink: #F5F5F5; --lw-muted: #B0B0B0; --lw-accent: #E63946; --lw-gold: #F4A828;
   --lw-radius: 18px; --lw-font: var(--font-lexi-ui, system-ui), system-ui, sans-serif; --lw-display: var(--font-lexi-word, Georgia), Georgia, serif;
   --lw-ease: cubic-bezier(.2, .7, .2, 1);
-  position: relative; min-height: 100dvh; display: flex; flex-direction: column; gap: 20px;
-  padding: max(16px, env(safe-area-inset-top)) clamp(16px, 4vw, 48px) max(20px, env(safe-area-inset-bottom));
-  overflow-x: hidden; overflow-x: clip; isolation: isolate; background: var(--lw-bg); color: var(--lw-ink); font-family: var(--lw-font);
+  position: fixed; inset: 0; display: flex; flex-direction: column; gap: 10px;
+  padding: max(8px, env(safe-area-inset-top)) clamp(14px, 4vw, 48px) max(10px, env(safe-area-inset-bottom));
+  overflow: hidden; isolation: isolate; background: var(--lw-bg); color: var(--lw-ink); font-family: var(--lw-font);
 }
+@media (min-width: 768px) { .lw-game { left: 220px; } } /* the LexiCore desktop sidebar stays visible */
 .lw-game *, .lw-game *::before, .lw-game *::after { box-sizing: border-box; }
 .lw-game :focus-visible { outline: 2px solid var(--lw-accent); outline-offset: 3px; }
 .lw-game [data-autofocus]:focus { outline: none; }
 .lw-sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 
-/* Layer 0: atmosphere. The backdrop image is the Lite chamber; Full/Standard render the shell in 3D. */
-.lw-atmosphere { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
-.lw-atmosphere div { position: absolute; width: 60vmax; height: 60vmax; border-radius: 50%; filter: blur(100px); opacity: .1; }
-.lw-atmosphere div:first-child { background: var(--lw-accent); bottom: -40vmax; right: -25vmax; }
-.lw-atmosphere div:last-child { background: #F5F5F5; top: -40vmax; left: -25vmax; opacity: .05; }
-.lw-backdrop-canvas { position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .7; }
+/* Layer 0: the backdrop image is the Lite chamber; Full/Standard draw their tiles in 3D on top. */
 .lw-game::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--lw-backdrop) center / cover no-repeat; opacity: .55; }
 @media (orientation: portrait) { .lw-game::before { background-image: var(--lw-backdrop-portrait); } }
 
 /* Header / footer */
-.lw-header, .lw-footer, .lw-round-header, .lw-context-top, .lw-action-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.lw-header-note, .lw-eyebrow, .lw-small, .lw-controls, .lw-footer, .lw-context-top, .lw-word-index, .lw-word-status { font-size: .72rem; letter-spacing: .14em; color: var(--lw-muted); }
+.lw-header, .lw-round-header, .lw-context-top, .lw-bar, .lw-strip { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lw-header-note, .lw-eyebrow, .lw-small, .lw-context-top, .lw-word-index, .lw-word-status { font-size: .72rem; letter-spacing: .14em; color: var(--lw-muted); }
 .lw-eyebrow { display: inline-flex; align-items: center; gap: 8px; text-transform: uppercase; font-weight: 600; }
 .lw-eyebrow > span { width: 18px; height: 1px; background: var(--lw-accent); }
 .lw-logotype { font-family: var(--lw-display); font-weight: 700; font-style: italic; letter-spacing: .12em; color: var(--lw-ink); }
@@ -33,10 +29,10 @@
 .lw-logotype img { display: block; height: 18px; width: auto; }
 .lw-header-note { margin-right: auto; }
 .lw-back, .lw-icon-button { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--lw-line); background: transparent; color: var(--lw-ink); cursor: pointer; }
-.lw-footer { margin-top: auto; }
+.lw-header { flex: none; min-height: 44px; }
 .lw-icon { display: inline-block; flex: none; background: currentColor; mask: center / contain no-repeat; -webkit-mask: center / contain no-repeat; }
 
-.lw-settings { position: absolute; top: 72px; right: clamp(16px, 4vw, 48px); z-index: 5; display: grid; gap: 10px; width: min(320px, calc(100% - 32px)); padding: 18px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: var(--lw-surface); box-shadow: 0 24px 60px #000a; }
+.lw-settings { position: absolute; top: calc(max(8px, env(safe-area-inset-top)) + 52px); right: clamp(16px, 4vw, 48px); z-index: 5; display: grid; gap: 10px; width: min(320px, calc(100% - 32px)); padding: 18px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: var(--lw-surface); box-shadow: 0 24px 60px #000a; }
 .lw-settings label { display: flex; align-items: center; gap: 8px; min-height: 44px; }
 .lw-settings select, .lw-settings button { margin-left: auto; min-height: 44px; padding: 6px 10px; border-radius: 8px; border: 1px solid var(--lw-line); background: var(--lw-object); color: var(--lw-ink); }
 .lw-settings p { margin: 0; color: var(--lw-muted); font-size: .85rem; }
@@ -49,87 +45,98 @@
 .lw-primary:disabled, .lw-secondary:disabled { opacity: .38; cursor: not-allowed; }
 .lw-text-button { min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--lw-muted); font: inherit; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
-/* Home and summary screens */
-.lw-launch, .lw-summary { display: grid; justify-items: center; gap: 18px; width: min(720px, 100%); margin: auto; text-align: center; }
-.lw-launch h1, .lw-summary h1 { margin: 0; font: 700 italic clamp(2.1rem, 6.5vw, 3.8rem)/1.04 var(--lw-display); letter-spacing: -.01em; }
+/* Home and summary screens: a scrolling body with the main action docked below it, centred when short. */
+.lw-launch, .lw-summary-body { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; display: flex; flex-direction: column; align-items: center; gap: 14px; width: min(720px, 100%); margin: 0 auto; text-align: center; scrollbar-width: none; }
+.lw-launch::-webkit-scrollbar, .lw-summary-body::-webkit-scrollbar, .lw-scroll::-webkit-scrollbar { display: none; }
+.lw-launch > :first-child, .lw-summary-body > :first-child, .lw-summary > :first-child:not(.lw-summary-body) { margin-top: auto; }
+.lw-launch > :last-child, .lw-summary-body > :last-child, .lw-summary > :last-child:not(.lw-bar) { margin-bottom: auto; }
+.lw-summary { flex: 1; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; width: min(720px, 100%); margin: 0 auto; text-align: center; }
+.lw-summary-body { width: 100%; }
+.lw-summary > .lw-bar { width: 100%; }
+.lw-launch h1, .lw-summary h1 { margin: 0; font: 700 italic clamp(1.8rem, 8vw, 3.4rem)/1.05 var(--lw-display); letter-spacing: -.01em; }
 .lw-launch em, .lw-summary em { font-style: italic; color: var(--lw-accent); }
 .lw-launch p, .lw-summary p { margin: 0; max-width: 52ch; color: var(--lw-muted); line-height: 1.6; }
-.lw-launch-image { width: min(480px, 90%); height: auto; }
-.lw-launch-sculpture { position: relative; display: flex; align-items: center; gap: 14px; padding: 28px; }
+.lw-launch-image { width: auto; max-width: min(480px, 90%); max-height: 22dvh; object-fit: contain; flex: none; }
+.lw-launch-sculpture { position: relative; display: flex; align-items: center; gap: 14px; padding: 20px; flex: none; }
 .lw-orbit { position: absolute; inset: 0; border: 1px solid var(--lw-line); border-radius: 50%; opacity: .5; }
 .lw-mini-tile { padding: 12px 18px; border: 1px solid var(--lw-line); border-radius: 12px; background: var(--lw-object); font: 700 1.15rem var(--lw-display); letter-spacing: .02em; }
-.lw-home-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.lw-home-actions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; width: min(420px, 100%); }
+.lw-home-actions .lw-secondary { padding: 0 8px; font-size: .82rem; white-space: nowrap; }
 .lw-intro-words { display: flex; gap: clamp(24px, 8vw, 80px); padding: 12px 0; }
-.lw-summary-symbol { display: grid; place-items: center; width: 64px; height: 64px; border: 1px solid var(--lw-line); border-radius: 50%; color: var(--lw-accent); }
-.lw-contrast-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; width: 100%; text-align: left; }
-.lw-contrast-cards div { padding: 18px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: var(--lw-surface); }
-.lw-contrast-cards strong { font: 700 1.5rem var(--lw-display); }
+.lw-summary-symbol { display: grid; place-items: center; flex: none; width: 56px; height: 56px; border: 1px solid var(--lw-line); border-radius: 50%; color: var(--lw-accent); }
+.lw-contrast-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; width: 100%; text-align: left; }
+.lw-contrast-cards div { padding: 14px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: var(--lw-surface); }
+.lw-contrast-cards strong { font: 700 1.3rem var(--lw-display); }
+.lw-contrast-cards p { font-size: .88rem; line-height: 1.45; }
 .lw-contrast-cards ul { margin: 8px 0 0; padding-left: 18px; color: var(--lw-muted); line-height: 1.5; }
 .lw-contrast { color: var(--lw-gold) !important; }
 .lw-recap-lines { margin: 0; padding: 0; list-style: none; color: var(--lw-muted); line-height: 1.7; }
 
-/* Play: layer 3 context card. Text sits on a calm surface, never on particles (§41). */
-.lw-play { display: grid; gap: 16px; width: min(880px, 100%); margin: 0 auto; }
+/* Play: a fixed column. Strip, scrolling situation, tiles and the docked action bar always fit the screen. */
+.lw-play { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 8px; width: min(880px, 100%); margin: 0 auto; }
+.lw-strip { flex: none; min-height: 40px; justify-content: flex-start; gap: 10px; }
+.lw-strip .lw-text-button { min-height: 40px; }
+.lw-strip .lw-eyebrow { white-space: nowrap; letter-spacing: .08em; }
+.lw-strip .lw-eyebrow > span { display: none; }
+.lw-strip .lw-icon-button { width: 40px; height: 40px; }
+.lw-scroll { flex: 0 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; touch-action: pan-y; display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; gap: 10px; scrollbar-width: none; }
 .lw-round-header .lw-small { text-transform: none; letter-spacing: 0; font-style: italic; }
-.lw-context-shell { position: relative; z-index: 2; display: grid; gap: 12px; padding: clamp(18px, 3vw, 30px); border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: color-mix(in srgb, var(--lw-surface) 92%, transparent); box-shadow: 0 30px 80px #0008, inset 0 1px 0 #ffffff12; touch-action: pan-y; }
-.lw-beat-dots { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.lw-context-shell { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; gap: 8px; padding: 12px 16px 14px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: color-mix(in srgb, var(--lw-surface) 92%, transparent); }
+.lw-context-top { flex-wrap: wrap; justify-content: flex-start; gap: 2px 12px; }
+.lw-context-top > .lw-small { min-width: 0; text-transform: none; letter-spacing: 0; font-style: italic; }
+.lw-beat-dots { flex: none; display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .lw-beat-dots > * { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--lw-muted); }
 .lw-beat-dots > [data-active='true'] { background: var(--lw-ink); border-color: var(--lw-ink); }
 .lw-beat-dots > [aria-current] { width: 20px; border-radius: 4px; }
-.lw-previous { margin: 0; color: var(--lw-muted); font-size: .95rem; line-height: 1.5; opacity: .75; }
-.lw-sentence { margin: 0; max-width: 62ch; font-size: clamp(1.12rem, 2.4vw, 1.45rem); line-height: 1.55; }
+.lw-previous { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; margin: 0; padding: 0; border: 0; background: none; font: inherit; font-size: .85rem; line-height: 1.45; text-align: left; color: var(--lw-muted); opacity: .8; cursor: pointer; }
+.lw-previous[data-open='true'] { -webkit-line-clamp: unset; display: block; }
+.lw-sentence { margin: 0; max-width: 62ch; font-size: clamp(1.02rem, 4.2vw, 1.4rem); line-height: 1.5; }
 .lw-sentence mark, .lw-feedback-clue mark { padding: 0 .1em; border-bottom: 2px solid var(--lw-gold); background: color-mix(in srgb, var(--lw-gold) 12%, transparent); color: inherit; }
 .lw-clue-quote { display: block; margin-top: 6px; color: var(--lw-gold); font-size: .9em; }
 .lw-beat-reason { margin: 0; color: var(--lw-muted); }
 .lw-hint { display: flex; align-items: center; gap: 8px; margin: 0; padding: 10px 12px; border-radius: 10px; background: var(--lw-object); color: var(--lw-ink); font-size: .95rem; }
 
 /* Layer 2: word objects. In Full/Standard the 3D tile renders behind a transparent DOM button. */
-.lw-word-field { position: relative; min-height: clamp(190px, 36vh, 320px); display: grid; align-items: center; touch-action: pan-y; }
+.lw-word-field { position: relative; flex: 1 1 0; min-height: 116px; max-height: 210px; touch-action: pan-y; }
 .lw-canvas { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
-.lw-choices { position: relative; z-index: 1; display: grid; gap: clamp(12px, 3vw, 28px); }
-.lw-word { position: relative; display: grid; place-items: center; align-content: center; gap: 6px; min-height: clamp(130px, 24vh, 200px); padding: 14px; border: 1px solid var(--lw-line); border-radius: 14px; background: var(--lw-tile, none) center / 100% 100% no-repeat, linear-gradient(160deg, #262626, #141414); color: var(--lw-ink); cursor: pointer; transition: transform 200ms var(--lw-ease), border-color 200ms, box-shadow 200ms; }
+.lw-choices { position: relative; z-index: 1; display: grid; height: 100%; gap: clamp(10px, 3vw, 28px); }
+.lw-word { position: relative; display: grid; place-items: center; align-content: center; gap: 4px; min-height: 0; height: 100%; padding: 8px; border: 1px solid var(--lw-line); border-radius: 14px; background: var(--lw-tile, none) center / 100% 100% no-repeat, linear-gradient(160deg, #262626, #141414); color: var(--lw-ink); cursor: pointer; transition: transform 200ms var(--lw-ease), border-color 200ms, box-shadow 200ms; }
 .lw-game[data-tier='lite'] .lw-word[style], .lw-game[data-tier='lite'] .lw-word { background-color: transparent; }
 .lw-game[data-tier='lite'] .lw-word { border-color: transparent; transform: perspective(700px) rotateY(var(--lw-ry, 0deg)); box-shadow: 0 20px 40px #0009; }
 .lw-game[data-tier='lite'] .lw-word:first-child { --lw-ry: 6deg; }
 .lw-game[data-tier='lite'] .lw-word:last-child { --lw-ry: -6deg; }
-.lw-game:not([data-tier='lite']) .lw-word { background: none; border-color: transparent; padding-inline: 18%; }
-.lw-game:not([data-tier='lite']) .lw-word strong { font-size: clamp(1.1rem, 2.6vw, 1.9rem); }
+.lw-game:not([data-tier='lite']) .lw-word { background: none; border-color: transparent; padding-inline: 12%; }
+.lw-game:not([data-tier='lite']) .lw-word strong { font-size: clamp(1.1rem, 5vw, 1.9rem); }
 /* 3D tiers: the tile's rim light shows selection; the DOM keeps the status text and focus ring. */
 .lw-game:not([data-tier='lite']) .lw-word[data-selected='true'], .lw-game:not([data-tier='lite']) .lw-word[data-stronger='true'] { outline: none; }
 .lw-word strong { font: 700 clamp(1.25rem, 4vw, 2.2rem)/1 var(--lw-display); letter-spacing: -.01em; overflow-wrap: anywhere; text-shadow: 0 2px 12px #000; }
 .lw-word-index { position: absolute; top: 10px; left: 12px; }
-.lw-word-status { min-height: 1em; font-size: .72rem; text-align: center; text-wrap: balance; }
+.lw-word-status { min-height: 0; font-size: .7rem; text-align: center; text-wrap: balance; }
 .lw-word[data-selected='true'] { outline: 2px solid var(--lw-accent); outline-offset: -2px; }
 .lw-game[data-tier='lite'] .lw-word[data-selected='true'] { transform: perspective(700px) translateZ(30px) translateY(-6px); box-shadow: 0 0 0 1px var(--lw-accent), 0 24px 60px color-mix(in srgb, var(--lw-accent) 30%, transparent); }
 .lw-word[data-stronger='true'] { outline: 2px dashed var(--lw-gold); outline-offset: -2px; }
 .lw-word[data-stronger='true'] .lw-word-status { color: var(--lw-gold); }
 .lw-word:disabled { cursor: default; }
 
-.lw-confidence { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0; padding: 0; border: 0; color: var(--lw-muted); }
-.lw-confidence legend { padding: 0; margin-bottom: 4px; font-size: .9rem; }
-.lw-confidence label { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
-/* Mobile-first action bar: the main control sits at the bottom of the screen in thumb reach, above the safe area. */
-.lw-play > .lw-action-row {
-  position: sticky; bottom: 0; z-index: 6; flex-wrap: nowrap;
-  margin: 0 calc(-1 * clamp(16px, 4vw, 48px)); padding: 14px clamp(16px, 4vw, 48px) max(14px, env(safe-area-inset-bottom));
-  background: linear-gradient(to top, var(--lw-bg) 72%, transparent);
-}
-.lw-play > .lw-action-row .lw-action-status { min-width: 0; font-size: .85rem; line-height: 1.35; text-wrap: balance; }
-.lw-play > .lw-action-row .lw-primary { flex: none; }
-.lw-action-row { flex-wrap: wrap; }
-.lw-top-tools { display: inline-flex; align-items: center; gap: 4px; margin-left: auto; }
+/* The bar is part of the column, so Lock / Continue is always on screen and never needs a scroll. */
+.lw-bar { flex: none; flex-wrap: nowrap; margin-top: auto; padding-top: 4px; }
+.lw-bar .lw-action-status { flex: 1; min-width: 0; font-size: .82rem; line-height: 1.35; text-wrap: balance; }
+.lw-bar .lw-primary { flex: none; }
+.lw-bar-wide { gap: 8px; }
+.lw-bar-wide .lw-primary { flex: 1; }
+.lw-bar-wide .lw-secondary { flex: none; padding: 0 14px; }
+.lw-top-tools { display: inline-flex; align-items: center; gap: 2px; margin-left: auto; }
 
 /* Points: a running session total in the header, with the latest gain popping beside it. */
-.lw-score { display: inline-flex; align-items: baseline; gap: 6px; padding: 8px 12px; border: 1px solid var(--lw-line); border-radius: 999px; font-size: .78rem; letter-spacing: .06em; color: var(--lw-muted); white-space: nowrap; }
+.lw-score { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 10px; border: 1px solid var(--lw-line); border-radius: 999px; font-size: .78rem; letter-spacing: .06em; color: var(--lw-muted); white-space: nowrap; }
 .lw-score b { color: var(--lw-gold); font-size: 1rem; font-variant-numeric: tabular-nums; }
 .lw-score-gain { font-style: normal; font-weight: 700; color: var(--lw-gold); }
 .lw-points { display: flex; gap: 8px; align-items: center; }
 
-/* Resume card, swipe tip, loading skeleton. */
+/* Resume card, loading skeleton. */
 .lw-resume { display: grid; gap: 8px; width: min(420px, 100%); padding: 16px; border: 1px solid var(--lw-gold); border-radius: var(--lw-radius); background: color-mix(in srgb, var(--lw-gold) 8%, var(--lw-surface)); }
 .lw-resume p { margin: 0; display: grid; gap: 2px; }
 .lw-resume span { color: var(--lw-muted); font-size: .85rem; }
-.lw-coach { margin: 0; text-align: center; font-size: .85rem; color: var(--lw-muted); }
 .lw-skeleton { display: grid; grid-auto-flow: column; gap: 12px; width: min(420px, 100%); height: 120px; }
 .lw-skeleton i, .lw-skeleton b { border-radius: 14px; background: linear-gradient(100deg, var(--lw-surface) 30%, var(--lw-object) 50%, var(--lw-surface) 70%) 0 0 / 200% 100%; animation: lw-shimmer 1.4s linear infinite; }
 .lw-skeleton b { grid-column: 1 / -1; height: 14px; align-self: end; }
@@ -138,19 +145,17 @@
 /* App feel: no text selection or tap flash on game controls, no double-tap zoom, no pull-to-refresh bounce. */
 .lw-game { overscroll-behavior-y: contain; -webkit-tap-highlight-color: transparent; }
 .lw-word, .lw-primary, .lw-secondary, .lw-text-button, .lw-icon-button { -webkit-user-select: none; user-select: none; touch-action: manipulation; }
-.lw-context-shell, .lw-word-field { touch-action: pan-y; }
 .lw-action-status { margin: 0 auto 0 0; color: var(--lw-muted); }
 .lw-action-status[data-correctness='best'], .lw-points[data-correctness='best'] { color: var(--lw-gold); font-weight: 600; }
 .lw-action-status[data-correctness='defensible'], .lw-points[data-correctness='defensible'] { color: var(--lw-ink); font-weight: 600; }
 .lw-action-status[data-correctness='incorrect'], .lw-points[data-correctness='incorrect'] { color: var(--lw-accent); font-weight: 600; }
-.lw-controls { margin: 0; text-align: center; letter-spacing: .04em; }
 
 /* Feedback: information, not punishment (§40). */
-.lw-feedback { display: grid; gap: 10px; padding: 20px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: var(--lw-surface); }
-.lw-feedback h2 { margin: 0; font: 700 1.7rem/1.1 var(--lw-display); }
+.lw-feedback { display: grid; gap: 8px; padding: 14px 16px; border: 1px solid var(--lw-line); border-radius: var(--lw-radius); background: var(--lw-surface); }
+.lw-feedback h2 { margin: 0; font: 700 1.4rem/1.1 var(--lw-display); }
 .lw-feedback h2::first-letter { text-transform: uppercase; }
 .lw-feedback p { margin: 0; line-height: 1.55; }
-.lw-feedback-short { font-size: 1.05rem; }
+.lw-feedback-short { font-size: 1rem; }
 .lw-feedback-clue { color: var(--lw-muted); }
 .lw-feedback details { color: var(--lw-muted); }
 .lw-feedback summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--lw-ink); }
@@ -169,7 +174,8 @@
 .lw-mastery-row small { display: block; margin-top: 2px; color: var(--lw-muted); }
 
 /* Mastery map */
-.lw-map { display: grid; gap: 14px; width: min(880px, 100%); margin: 0 auto; }
+.lw-map { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; align-content: start; display: grid; gap: 14px; width: min(880px, 100%); margin: 0 auto; scrollbar-width: none; }
+.lw-map .lw-round-header { position: sticky; top: 0; z-index: 2; background: var(--lw-bg); }
 .lw-map h1 { margin: 0; font: 700 italic 2.2rem var(--lw-display); }
 .lw-map-graph { width: min(560px, 100%); justify-self: center; overflow: visible; }
 .lw-map-graph line { stroke: var(--lw-line); stroke-width: .4; stroke-dasharray: 1 1.4; }
@@ -188,9 +194,10 @@
 @keyframes lw-pulse { 50% { opacity: .45; } }
 
 @media (max-width: 560px) {
-  .lw-header-note, .lw-controls { display: none; }
-  .lw-word { min-height: 120px; padding: 10px; }
+  .lw-header-note { display: none; }
   .lw-primary, .lw-secondary { padding: 0 18px; }
 }
+@media (max-height: 700px) { .lw-summary-symbol { display: none; } }
+@media (max-height: 640px) { .lw-lede { display: none; } .lw-launch-image { max-height: 16dvh; } }
 @media (prefers-reduced-motion: reduce) { .lw-game * { transition: none !important; animation: none !important; } }
 .lw-game[data-reduced='true'] * { transition: none !important; animation: none !important; }

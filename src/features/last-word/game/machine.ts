@@ -3,7 +3,7 @@ import type { LastWordSet } from '../content/schema';
 import { evaluateDecision } from '../core/learning';
 import type { Confidence, DecisionRecord, MasterySnapshot } from '../core/types';
 import type { Checkpoint } from './checkpoint';
-import { nextStep, planGoals, reviewIntervalDays, type Goal, type Mode, type Round, type Step } from './session';
+import { nextStep, planGoals, reviewIntervalDays, SEGMENT_ROUNDS, type Goal, type Mode, type Round, type Step } from './session';
 
 /**
  * Game flow. The machine owns phase, beat, selection and committed decisions; the planner (session.ts)
@@ -29,7 +29,6 @@ export interface GameContext {
 export type GameEvent =
   | { type: 'START'; mode: Mode; now: number; sessionId: string; baseline: MasterySnapshot; tutorialDone: boolean }
   | { type: 'SELECT'; word: string }
-  | { type: 'CONFIDENCE'; confidence: Confidence }
   | { type: 'HINT' }
   | { type: 'LOCK' | 'NEXT' | 'PAUSE' | 'RESUME' | 'FINISH'; now: number }
   | { type: 'RESTORE'; checkpoint: Checkpoint; baseline: MasterySnapshot; now: number }
@@ -53,18 +52,9 @@ export const lastWordMachine = setup({
     isRound: ({ context }) => currentStep(context)?.kind === 'round',
     selected: ({ context }) => context.selected !== null,
     validWord: ({ context, event }) => event.type === 'SELECT' && Boolean(currentRound(context)?.round.words.includes(event.word)),
-    asksConfidence: ({ context }) => Boolean(currentRound(context)?.round.askConfidence),
     canHint: ({ context }) => Boolean(currentRound(context)?.round.hintsAllowed) && context.hintLevel < 3,
     moreBeats: ({ context }) => { const r = currentRound(context); return Boolean(r && context.beat + 1 < r.chain.beats.length); },
     tutorial: ({ context }) => roleOf(context) === 'tutorial',
-    // The cold read must not teach before the diagnosis (§14), so its choices are judged and paid but revealed afterwards.
-    coldRead: ({ context }) => roleOf(context) === 'diagnostic' || roleOf(context) === 'probe',
-    coldReadMore: ({ context }) => { const r = currentRound(context); return Boolean(r && (r.round.role === 'diagnostic' || r.round.role === 'probe') && context.beat + 1 < r.chain.beats.length); },
-    // §14 D: a confident misconception is corrected immediately, even during the cold read.
-    confidentMiss: ({ context }) => {
-      const last = context.records.at(-1);
-      return (roleOf(context) === 'diagnostic' || roleOf(context) === 'probe') && last?.confidence === 'certain' && last.correctness === 'incorrect';
-    },
   },
   actions: {
     start: assign(({ event, context }) => {
@@ -78,10 +68,13 @@ export const lastWordMachine = setup({
       const now = nowOf(event);
       const next = nextStep({ sets: context.sets, baseline: context.baseline, mode: context.mode, now, sessionId: context.sessionId, goals: context.goals, steps: context.steps, records: context.records });
       if (!next) return { completedAt: now };
-      return { steps: [...context.steps, next.step], goals: next.goals, beat: 0, selected: null, confidence: null, hintLevel: 0 as const, openedAt: now };
+      // A long stream is saved as a chain of sessions ("<id>~<time>"), each well under the server's per-session limits.
+      const segmentFull = next.step.kind === 'round' && next.step.role !== 'tutorial'
+        && new Set(context.records.filter(r => r.sessionId === context.sessionId).map(r => r.scenarioId)).size >= SEGMENT_ROUNDS;
+      const sessionId = segmentFull ? `${context.sessionId.split('~')[0]}~${now}` : context.sessionId;
+      return { sessionId, steps: [...context.steps, next.step], goals: next.goals, beat: 0, selected: null, confidence: null, hintLevel: 0 as const, openedAt: now };
     }),
     select: assign(({ event }) => (event.type === 'SELECT' ? { selected: event.word } : {})),
-    confidence: assign(({ event }) => (event.type === 'CONFIDENCE' ? { confidence: event.confidence } : {})),
     hint: assign(({ context }) => ({ hintLevel: Math.min(3, context.hintLevel + 1) as 1 | 2 | 3 })),
     commit: assign(({ context, event }) => {
       const current = currentRound(context);
@@ -137,7 +130,6 @@ export const lastWordMachine = setup({
     reading: {
       on: {
         SELECT: { guard: 'validWord', actions: 'select' },
-        CONFIDENCE: { guard: 'asksConfidence', actions: 'confidence' },
         HINT: { guard: 'canHint', actions: 'hint' },
         LOCK: { guard: 'selected', target: 'judging', actions: 'commit' },
         PAUSE: { target: 'paused', actions: 'pause' },
@@ -147,9 +139,6 @@ export const lastWordMachine = setup({
     judging: {
       always: [
         { guard: 'tutorial', target: 'beatFeedback' },
-        { guard: 'confidentMiss', target: 'feedback' },
-        { guard: 'coldReadMore', target: 'reading', actions: 'nextBeat' },
-        { guard: 'coldRead', target: 'routing', actions: 'advance' },
         // Every other beat is judged (correct / wrong, with points) before the next one opens; NEXT in beatFeedback moves on.
         { guard: 'moreBeats', target: 'beatFeedback' },
         { target: 'feedback' },
@@ -159,6 +148,6 @@ export const lastWordMachine = setup({
     beatFeedback: { on: { NEXT: [{ guard: 'moreBeats', target: 'reading', actions: 'nextBeat' }, { target: 'routing', actions: 'advance' }] } },
     feedback: { on: { NEXT: { target: 'routing', actions: 'advance' }, FINISH: { target: 'recap', actions: 'finish' } } },
     card: { on: { NEXT: { target: 'routing', actions: 'advance' }, FINISH: { target: 'recap', actions: 'finish' } } },
-    recap: { on: { HOME: { target: 'home', actions: 'reset' } } },
+    recap: { on: { HOME: { target: 'home', actions: 'reset' }, START: { target: 'routing', actions: ['start', 'advance'] } } },
   },
 });

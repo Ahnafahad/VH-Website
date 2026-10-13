@@ -1,12 +1,11 @@
 import type { LastWordChain, LastWordSet } from '../content/schema';
-import { diagnosticOutcome, type DiagnosticResult } from '../core/learning';
 import { isEligible, type SelectionCandidate } from '../core/selection';
 import type { DecisionRecord, EdgeMastery, MasterySnapshot } from '../core/types';
 
 /**
- * Adaptive session planner (§23, §32). Pure: given content, the learner's stored mastery and what has
- * happened so far this session, it returns the next step. The XState machine calls it between rounds;
- * nothing here depends on rendering or animation.
+ * Session planner (§23, §32). Pure: given content, the learner's stored mastery and what has happened so far
+ * this session, it returns the next step. A session is one endless stream of single situations drawn from
+ * different pairs; the learner ends it with Finish. The XState machine calls it between rounds.
  */
 export type Mode = 'journey' | 'quick' | 'review';
 export type RoundRole = 'tutorial' | 'review' | 'warmup' | 'diagnostic' | 'probe' | 'practice' | 'shift' | 'transfer' | 'remedial';
@@ -15,21 +14,13 @@ export interface Round {
   setId: string; chainId: string; edgeId: string;
   /** Display order of the words for this round (shuffled so position never predicts the answer). */
   words: string[];
-  askConfidence: boolean; hintsAllowed: boolean;
+  hintsAllowed: boolean;
 }
 export type Card =
-  | { kind: 'intro'; goal: number; edgeId: string; setId: string }
-  | { kind: 'diagnosis'; goal: number; edgeId: string; result: DiagnosticResult }
   | { kind: 'contrast'; goal: number; edgeId: string; setId: string }
-  | { kind: 'anchors'; goal: number; edgeId: string; setId: string }
   | { kind: 'message'; goal: number; text: string };
 export type Step = Round | Card;
-export type Goal =
-  | { kind: 'tutorial' }
-  | { kind: 'review'; edgeId: string }
-  | { kind: 'warmup'; edgeId: string }
-  | { kind: 'learn'; edgeId: string }
-  | { kind: 'mixed'; edgeId: string };
+export type Goal = { kind: 'tutorial' };
 
 export interface EdgeContent { edgeId: string; setId: string; set: LastWordSet; chains: { set: LastWordSet; chain: LastWordChain }[] }
 export interface PlanState {
@@ -38,15 +29,14 @@ export interface PlanState {
 }
 
 const DAY = 86_400_000;
-const strong = (edge?: EdgeMastery) => edge?.status === 'Fluent' || edge?.status === 'Mastered';
 const SHIFT_TYPES = new Set(['flip', 'false_shift', 'corrupt', 'rehabilitate', 'reframe']);
-/**
- * Rounds a journey aims for before it stops adding new distinctions. The spec's 4–7 minutes (§23) was cut to a
- * 2–3 minute default for phones: a new distinction is two cold reads plus two learning rounds.
- */
-export const JOURNEY_ROUNDS = 4;
-/** Learning rounds per distinction (§23 had four): one practice, then one hard shift. */
-export const LEARNING_ROUNDS = 2;
+/** A missed pair comes back after this many other situations, at most {@link MAX_RETRIES} times a session. */
+export const RETRY_GAP = 3;
+export const MAX_RETRIES = 2;
+/** One situation in this many is a revision of a pair already learned (new pairs come first). */
+export const REVISION_EVERY = 10;
+/** The stream is saved in segments of this many situations: the server caps one saved session at 100 decisions and one day. */
+export const SEGMENT_ROUNDS = 12;
 
 export const TUTORIAL_MESSAGES = {
   flip: 'One detail can change the word.',
@@ -70,118 +60,87 @@ export const dueEdges = (sets: LastWordSet[], baseline: MasterySnapshot, now: nu
   indexEdges(sets).filter(e => baseline.reviews[e.edgeId] && baseline.reviews[e.edgeId].dueAt <= now)
     .sort((a, b) => baseline.reviews[a.edgeId].dueAt - baseline.reviews[b.edgeId].dueAt);
 
-export function planGoals(sets: LastWordSet[], baseline: MasterySnapshot, mode: Mode, now: number, tutorialDone: boolean): Goal[] {
-  const edges = indexEdges(sets);
-  const due = dueEdges(sets, baseline, now);
-  if (mode === 'review') return due.slice(0, JOURNEY_ROUNDS).map(e => ({ kind: 'review', edgeId: e.edgeId }));
-  if (mode === 'quick') {
-    // Mixed practice: seen-but-not-strong first, then anything, five rounds across distinct edges where possible.
-    const order = [...edges].sort((a, b) => rank(baseline.edges[a.edgeId]) - rank(baseline.edges[b.edgeId]));
-    return Array.from({ length: Math.min(5, order.length * 2) }, (_, i) => ({ kind: 'mixed' as const, edgeId: order[i % order.length].edgeId }));
-  }
-  const goals: Goal[] = [];
-  if (!tutorialDone && sets.some(set => set.chains.some(chain => chain.purpose === 'tutorial'))) goals.push({ kind: 'tutorial' });
-  for (const e of due.slice(0, 2)) goals.push({ kind: 'review', edgeId: e.edgeId });
-  const warm = edges.find(e => strong(baseline.edges[e.edgeId]) && !due.includes(e));
-  if (warm) goals.push({ kind: 'warmup', edgeId: warm.edgeId });
-  const target = nextTarget(edges, baseline, goals);
-  if (target) goals.push({ kind: 'learn', edgeId: target });
-  return goals;
+/** Only the tutorial is planned up front; everything after it is chosen one situation at a time. */
+export function planGoals(sets: LastWordSet[], _baseline: MasterySnapshot, mode: Mode, _now: number, tutorialDone: boolean): Goal[] {
+  const hasTutorial = sets.some(set => set.chains.some(chain => chain.purpose === 'tutorial'));
+  return mode === 'journey' && !tutorialDone && hasTutorial ? [{ kind: 'tutorial' }] : [];
 }
 
-/** In-progress edges with misconceptions first, then other in-progress edges, then unseen ones, in content order. */
-function nextTarget(edges: EdgeContent[], baseline: MasterySnapshot, goals: Goal[]): string | undefined {
-  const taken = new Set(goals.filter(g => g.kind === 'learn').map(g => (g as { edgeId: string }).edgeId));
-  const open = edges.filter(e => !taken.has(e.edgeId) && !strong(baseline.edges[e.edgeId]));
-  const weight = (e: EdgeContent) => {
-    const m = baseline.edges[e.edgeId];
-    if (!m) return 2;
-    return Object.keys(m.misconceptions).length ? 0 : 1;
-  };
-  return open.sort((a, b) => weight(a) - weight(b))[0]?.edgeId;
-}
-
+const strong = (edge?: EdgeMastery) => edge?.status === 'Fluent' || edge?.status === 'Mastered';
 const rank = (edge?: EdgeMastery) => (!edge ? 2 : strong(edge) ? 3 : edge.status === 'Reliable' ? 1 : 0);
 
-/** Returns the next step and the (possibly extended) goal list, or null when the session is complete. */
+const rounds = (steps: Step[]) => steps.filter((s): s is Round => s.kind === 'round');
+const missed = (state: PlanState, round: Round) => state.records.some(r => r.scenarioId === round.chainId && r.correctness === 'incorrect');
+
+/** Returns the next step, or null when the stream has nothing left to show. */
 export function nextStep(state: PlanState): { step: Step; goals: Goal[] } | null {
-  const goals = [...state.goals];
-  for (let g = 0; g < goals.length; g++) {
-    const step = stepForGoal(state, goals[g], g);
-    if (step) return { step, goals };
-    // A journey keeps learning while it is short; it ends at a goal boundary, never mid-remediation.
-    if (g === goals.length - 1 && state.mode === 'journey' && rounds(state.steps).length < JOURNEY_ROUNDS) {
-      const target = nextTarget(indexEdges(state.sets), state.baseline, goals);
-      if (target) goals.push({ kind: 'learn', edgeId: target });
-    }
-  }
-  return null;
+  const step = planStep(state);
+  return step ? { step, goals: state.goals } : null;
 }
 
-const rounds = (steps: Step[]) => steps.filter((s): s is Round => s.kind === 'round');
-const recordsFor = (state: PlanState, list: Round[]) => state.records.filter(r => list.some(round => round.chainId === r.scenarioId));
+function planStep(state: PlanState): Step | null {
+  const tutorial = tutorialStep(state);
+  if (tutorial) return tutorial;
 
-function stepForGoal(state: PlanState, goal: Goal, g: number): Step | null {
-  const mine = state.steps.filter(s => s.goal === g);
-  const played = rounds(mine);
-  const card = (kind: Card['kind']) => mine.find(s => s.kind === kind) as Card | undefined;
+  const played = rounds(state.steps).filter(r => r.role !== 'tutorial');
+  const last = played.at(-1);
+  // A miss shows the boundary at once (once per pair per session), then the pair returns after a few other situations.
+  if (last && state.steps.at(-1) === last && missed(state, last) && !state.steps.some(s => s.kind === 'contrast' && s.edgeId === last.edgeId)) {
+    return { kind: 'contrast', goal: 1, edgeId: last.edgeId, setId: last.setId };
+  }
 
-  if (goal.kind === 'tutorial') {
-    const tutorial = state.sets.flatMap(set => set.chains.filter(chain => chain.purpose === 'tutorial').map(chain => ({ set, chain })));
-    for (const { set, chain } of tutorial) {
-      if (!played.some(r => r.chainId === chain.id)) return round(state, g, 'tutorial', set, chain);
-      const flips = new Set(chain.beats.map(b => b.best_word)).size > 1;
-      const text = flips ? TUTORIAL_MESSAGES.flip : TUTORIAL_MESSAGES.hold;
-      if (!mine.some(s => s.kind === 'message' && s.text === text)) return { kind: 'message', goal: g, text };
+  const edges = indexEdges(state.sets);
+  const playedEdges = new Set(played.map(r => r.edgeId));
+  const fresh = (e: EdgeContent) => !playedEdges.has(e.edgeId);
+  const review = (e: EdgeContent) => state.baseline.reviews[e.edgeId];
+
+  // Retries: pairs whose latest situation was missed, with room under the cap. `ready` ones have waited long enough.
+  const retries = edges.flatMap(e => {
+    const mine = played.filter(r => r.edgeId === e.edgeId);
+    const latest = mine.at(-1);
+    if (!latest || !missed(state, latest) || mine.filter(r => r.role === 'remedial').length >= MAX_RETRIES) return [];
+    return [{ e, since: played.length - 1 - played.lastIndexOf(latest) }];
+  }).sort((a, b) => b.since - a.since);
+  const ready = retries.filter(r => r.since >= RETRY_GAP).map(r => r.e);
+  const waiting = retries.map(r => r.e);
+
+  const dueNow = dueEdges(state.sets, state.baseline, state.now).filter(fresh);
+  const dueMissed = dueNow.filter(e => review(e).intervalDays === 0);
+  const dueRevision = dueNow.filter(e => review(e).intervalDays > 0);
+  const unseen = edges.filter(e => fresh(e) && !state.baseline.edges[e.edgeId]);
+
+  const pick = (list: EdgeContent[], role: RoundRole, allowSame = false) => {
+    for (const e of list) {
+      if (!allowSame && e.edgeId === last?.edgeId) continue;
+      const next = chooseRound(state, 1, role, e);
+      if (next) return next;
     }
-    if (!mine.some(s => s.kind === 'message' && s.text === TUTORIAL_MESSAGES.end)) return { kind: 'message', goal: g, text: TUTORIAL_MESSAGES.end };
     return null;
+  };
+
+  if (state.mode === 'review') return pick(ready, 'remedial') ?? pick(dueNow, 'review') ?? pick(waiting, 'remedial', true);
+  if (state.mode === 'quick') {
+    const seen = edges.filter(e => fresh(e) && state.baseline.edges[e.edgeId]).sort((a, b) => rank(state.baseline.edges[a.edgeId]) - rank(state.baseline.edges[b.edgeId]));
+    return pick(ready, 'remedial') ?? pick(seen, 'practice') ?? pick(waiting, 'remedial', true);
   }
+  // Journey: wrong answers first, then everything new; learned pairs are revised only one situation in ten, or once nothing new is left.
+  const revisionSlot = played.length > 0 && played.length % REVISION_EVERY === REVISION_EVERY - 1;
+  return pick(ready, 'remedial') ?? pick(dueMissed, 'remedial') ?? (revisionSlot ? pick(dueRevision, 'review') : null)
+    ?? pick(unseen, 'practice') ?? pick(dueRevision, 'review') ?? pick(waiting, 'remedial', true);
+}
 
-  const edge = indexEdges(state.sets).find(e => e.edgeId === goal.edgeId);
-  if (!edge) return null;
-  const pick = (role: RoundRole) => chooseRound(state, g, role, edge);
-
-  if (goal.kind === 'review') return played.length ? null : pick('review');
-  if (goal.kind === 'warmup' || goal.kind === 'mixed') return played.length ? null : pick(goal.kind === 'warmup' ? 'warmup' : 'practice');
-
-  // learn
-  let outcome: DiagnosticResult['outcome'] | 'seen' = 'seen';
-  if (!state.baseline.edges[edge.edgeId]) {
-    if (!card('intro')) return { kind: 'intro', goal: g, edgeId: edge.edgeId, setId: edge.setId };
-    const cold = played.filter(r => r.role === 'diagnostic');
-    const probe = played.filter(r => r.role === 'probe');
-    const coldRecords = recordsFor(state, cold);
-    const confidentMiss = coldRecords.some(r => r.correctness === 'incorrect' && r.confidence === 'certain');
-    if (cold.length < 2 && !confidentMiss) { const next = pick('diagnostic'); if (next) return next; }
-    const perfectCold = cold.length >= 2 && coldRecords.every(r => r.correctness === 'best' && !r.hintLevel);
-    if (perfectCold && !probe.length) { const next = pick('probe'); if (next) return next; }
-    const diagnosis = card('diagnosis');
-    if (!diagnosis) return { kind: 'diagnosis', goal: g, edgeId: edge.edgeId, result: diagnosticOutcome(coldRecords, recordsFor(state, probe)) };
-    outcome = (diagnosis as Extract<Card, { kind: 'diagnosis' }>).result.outcome;
-    if (outcome === 'A') return null;
+function tutorialStep(state: PlanState): Step | null {
+  if (!state.goals.some(g => g.kind === 'tutorial')) return null;
+  const mine = state.steps.filter(s => s.goal === 0);
+  const played = rounds(mine);
+  const tutorial = state.sets.flatMap(set => set.chains.filter(chain => chain.purpose === 'tutorial').map(chain => ({ set, chain })));
+  for (const { set, chain } of tutorial) {
+    if (!played.some(r => r.chainId === chain.id)) return round(state, 0, 'tutorial', set, chain);
+    const flips = new Set(chain.beats.map(b => b.best_word)).size > 1;
+    const text = flips ? TUTORIAL_MESSAGES.flip : TUTORIAL_MESSAGES.hold;
+    if (!mine.some(s => s.kind === 'message' && s.text === text)) return { kind: 'message', goal: 0, text };
   }
-
-  // Remediation (§14 D, §16): contrast first, then a fresh context aimed at the misconception.
-  const misses = recordsFor(state, played.filter(r => r.role !== 'diagnostic' && r.role !== 'probe')).filter(r => r.correctness === 'incorrect');
-  // C = both cold reads missed: already a repeated miss on this boundary.
-  const needsContrast = outcome === 'D' || outcome === 'C' || misses.length >= 2;
-  if (needsContrast && !card('contrast')) return { kind: 'contrast', goal: g, edgeId: edge.edgeId, setId: edge.setId };
-  const remedial = played.filter(r => r.role === 'remedial').length;
-  if (needsContrast && remedial < (misses.length >= 3 ? 2 : 1)) { const next = pick('remedial'); if (next) return next; }
-
-  // Weak word meanings: show clear anchor examples once before contrast practice (§32).
-  if (outcome === 'C' && edge.set.anchors && !card('anchors')) return { kind: 'anchors', goal: g, edgeId: edge.edgeId, setId: edge.setId };
-
-  // Learning rounds: practice first, then a hard shift, then (if ever extended) transfer. A role the bank cannot fill falls back.
-  const learning = played.filter(r => r.role === 'practice' || r.role === 'shift' || r.role === 'transfer');
-  if (learning.length >= LEARNING_ROUNDS) return null;
-  const has = (role: RoundRole) => learning.some(r => r.role === role);
-  const preferred: RoundRole = !has('practice') ? 'practice' : !has('shift') ? 'shift' : !has('transfer') ? 'transfer' : 'practice';
-  for (const role of [preferred, 'practice', 'shift', 'transfer'] as const) {
-    const next = pick(role);
-    if (next) return next;
-  }
+  if (!mine.some(s => s.kind === 'message' && s.text === TUTORIAL_MESSAGES.end)) return { kind: 'message', goal: 0, text: TUTORIAL_MESSAGES.end };
   return null;
 }
 
@@ -211,8 +170,7 @@ function chooseRound(state: PlanState, g: number, role: RoundRole, edge: EdgeCon
 }
 
 function round(state: PlanState, g: number, role: RoundRole, set: LastWordSet, chain: LastWordChain, words = orders(state.sessionId, chain.id, set)[0]): Round {
-  const diagnostic = role === 'diagnostic' || role === 'probe';
-  return { kind: 'round', goal: g, role, setId: set.set_id, chainId: chain.id, edgeId: chain.edge_id, words, askConfidence: diagnostic || role === 'review', hintsAllowed: !diagnostic && role !== 'tutorial' };
+  return { kind: 'round', goal: g, role, setId: set.set_id, chainId: chain.id, edgeId: chain.edge_id, words, hintsAllowed: role !== 'tutorial' };
 }
 
 /** A deterministic shuffle per session and chain, plus its reverse as the fallback order. */

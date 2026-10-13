@@ -41,13 +41,16 @@ export function ClueText({ text, clue }: { text: string; clue: string }) {
   return <>{text.slice(0, at)}<mark>{clue}</mark>{text.slice(at + clue.length)}</>;
 }
 
-function Summary({ symbol, eyebrow, title, children }: { symbol: ReactNode; eyebrow: string; title: string; children: ReactNode }) {
+function Summary({ symbol, eyebrow, title, children, action }: { symbol: ReactNode; eyebrow: string; title: string; children: ReactNode; action?: ReactNode }) {
   return (
     <section className="lw-summary">
-      <div className="lw-summary-symbol" aria-hidden="true">{symbol}</div>
-      <span className="lw-eyebrow"><span />{eyebrow}</span>
-      <h1 tabIndex={-1} data-autofocus>{title}</h1>
-      {children}
+      <div className="lw-summary-body">
+        <div className="lw-summary-symbol" aria-hidden="true">{symbol}</div>
+        <span className="lw-eyebrow"><span />{eyebrow}</span>
+        <h1 tabIndex={-1} data-autofocus>{title}</h1>
+        {children}
+      </div>
+      {action && <div className="lw-bar lw-bar-wide">{action}</div>}
     </section>
   );
 }
@@ -65,7 +68,7 @@ export function Home({ assets, ready, due, hasProgress, onStart, onMap, resume, 
     <section className="lw-launch">
       <span className="lw-eyebrow"><span />THE SEMANTIC CHAMBER</span>
       <h1 tabIndex={-1} data-autofocus>Meaning moves.<br /><em>Move with it.</em></h1>
-      <p>A situation unfolds one detail at a time. Find the word that fits <em>now</em>.</p>
+      <p className="lw-lede">A situation unfolds one detail at a time. Find the word that fits <em>now</em>.</p>
       {sculpture
         ? <img className="lw-launch-image" src={sculpture} alt="" width={600} height={400} />
         : <div className="lw-launch-sculpture" aria-hidden="true"><div className="lw-orbit" /><span className="lw-mini-tile">persistent</span><i>↔</i><span className="lw-mini-tile">obstinate</span></div>}
@@ -81,45 +84,27 @@ export function Home({ assets, ready, due, hasProgress, onStart, onMap, resume, 
       </button>
       <div className="lw-home-actions">
         <button className="lw-secondary" disabled={!ready || !hasProgress} onClick={() => onStart('quick')}><Icon assets={assets} id="quick-run" fallback={Zap} size={18} />Quick Run</button>
-        <button className="lw-secondary" disabled={!ready || !due} onClick={() => onStart('review')}><Icon assets={assets} id="review" fallback={RotateCcw} size={18} />Review{due ? ` · ${due} due` : ''}</button>
-        <button className="lw-secondary" disabled={!ready} onClick={onMap}><Icon assets={assets} id="mastery-map" fallback={Network} size={18} />Mastery Map</button>
+        <button className="lw-secondary" disabled={!ready || !due} onClick={() => onStart('review')}><Icon assets={assets} id="review" fallback={RotateCcw} size={18} />Review{due ? ` · ${due}` : ''}</button>
+        <button className="lw-secondary" disabled={!ready} onClick={onMap}><Icon assets={assets} id="mastery-map" fallback={Network} size={18} />Map</button>
       </div>
-      <p className="lw-small">About 3 minutes a round. Your pace, no countdown. Progress saves as you play.</p>
+      <p className="lw-small">Play as long as you like. Progress saves as you go.</p>
     </section>
   );
 }
 
 // ------------------------------------------------------------------ cards between rounds
 
-export function CardScreen({ card, sets, onNext, onFinish }: { card: Card; sets: LastWordSet[]; onNext: () => void; onFinish: () => void }) {
+export function CardScreen({ card, sets, onNext }: { card: Card; sets: LastWordSet[]; onNext: () => void }) {
   const set = 'setId' in card ? sets.find(s => s.set_id === card.setId) : undefined;
   const edge = 'edgeId' in card ? sets.flatMap(s => s.edges).find(e => e.id === card.edgeId) : undefined;
-  const next = (label: string) => <button className="lw-primary" onClick={onNext}>{label}<ArrowRight size={18} aria-hidden="true" /></button>;
+  const next = <button className="lw-primary" onClick={onNext}>Continue<ArrowRight size={18} aria-hidden="true" /></button>;
 
   if (card.kind === 'message') return (
-    <Summary symbol={<Check size={30} />} eyebrow="LEARN THE FEEL" title={card.text}>{next('Continue')}</Summary>
+    <Summary symbol={<Check size={30} />} eyebrow="LEARN THE FEEL" title={card.text} action={next}>{null}</Summary>
   );
-  if (card.kind === 'intro' && edge) return (
-    // §22.2: the words as spatially related objects, no definitions yet.
-    <Summary symbol={<Network size={30} />} eyebrow="A NEW DISTINCTION" title="Prove what you know">
-      <div className="lw-intro-words">{[edge.a, edge.b].map(word => <span key={word} className="lw-mini-tile">{word}</span>)}</div>
-      <p>Two short situations first. No teaching until you’ve shown what you already know.</p>
-      {next('Prove what you know')}
-    </Summary>
-  );
-  if (card.kind === 'diagnosis') {
-    const titles = { A: 'You already own this distinction.', B: 'The words are familiar.', C: 'Let’s sharpen the boundary.', D: 'One detail to reconsider.' };
-    return (
-      <Summary symbol={<CircleDot size={30} />} eyebrow={`YOUR COLD READ · ${edgeLabel(card.edgeId).toUpperCase()}`} title={titles[card.result.outcome]}>
-        <p>{card.result.message}</p>
-        {next(card.result.outcome === 'A' ? 'Move on' : 'Follow the meaning')}
-        <button className="lw-text-button" onClick={onFinish}>Finish with recap</button>
-      </Summary>
-    );
-  }
   if (card.kind === 'contrast' && edge && set) return (
     // §16: the 2-card contrast, from the content's own senses and boundary rule.
-    <Summary symbol={<Lightbulb size={30} />} eyebrow="THE BOUNDARY" title="Where one word stops and the other starts">
+    <Summary symbol={<Lightbulb size={30} />} eyebrow="THE BOUNDARY" title="Where one word stops and the other starts" action={next}>
       <div className="lw-contrast-cards">
         {[edge.a, edge.b].map(word => {
           const w = set.words.find(item => item.word === word)!;
@@ -127,25 +112,14 @@ export function CardScreen({ card, sets, onNext, onFinish }: { card: Card; sets:
         })}
       </div>
       <p className="lw-contrast">{edge.boundary_rule}</p>
-      {next('Try a fresh situation')}
     </Summary>
   );
-  if (card.kind === 'anchors' && edge && set?.anchors) return (
-    <Summary symbol={<Lightbulb size={30} />} eyebrow="CLEAR EXAMPLES" title="Start with the clear cases">
-      <div className="lw-contrast-cards">
-        {[edge.a, edge.b].map(word => (
-          <div key={word}><strong>{word}</strong><ul>{(set.anchors!.positive[word] ?? []).slice(0, 2).map(line => <li key={line}>{line}</li>)}</ul></div>
-        ))}
-      </div>
-      {next('Now the harder ones')}
-    </Summary>
-  );
-  return <Summary symbol={<Check size={30} />} eyebrow="" title="Continue">{next('Continue')}</Summary>;
+  return <Summary symbol={<Check size={30} />} eyebrow="" title="Continue" action={next}>{null}</Summary>;
 }
 
 // ------------------------------------------------------------------ round feedback (§22.5, §35, §40)
 
-export function RoundFeedback({ chain, records, onNext, onFinish, nextLabel }: { chain: LastWordChain; records: DecisionRecord[]; onNext: () => void; onFinish: () => void; nextLabel: string }) {
+export function RoundFeedback({ chain, records }: { chain: LastWordChain; records: DecisionRecord[] }) {
   const last = records.at(-1)!;
   const beat = chain.beats.find(b => b.id === last.beatId)!;
   const perfect = records.length === chain.beats.length && records.every(r => r.correctness === 'best');
@@ -172,10 +146,6 @@ export function RoundFeedback({ chain, records, onNext, onFinish, nextLabel }: {
         )}
         <ol>{records.map((r, i) => <li key={r.id}>Beat {i + 1}: you chose {r.selectedWord} ({verdictLabel(r.correctness)}, +{r.score} pts). {chain.beats.find(b => b.id === r.beatId)?.reason}</li>)}</ol>
       </details>
-      <div className="lw-action-row">
-        <button className="lw-text-button" onClick={onFinish}>End session</button>
-        <button className="lw-primary" onClick={onNext}>{nextLabel}<ArrowRight size={18} aria-hidden="true" /></button>
-      </div>
     </section>
   );
 }
@@ -184,16 +154,20 @@ export function RoundFeedback({ chain, records, onNext, onFinish, nextLabel }: {
 
 const WHY: Record<string, string> = { shift: 'a context flip', hold: 'a false shift you held through', transfer: 'a new-domain transfer example', retention: 'a delayed recall', standard: 'a standard context' };
 
-export function Recap({ before, after, records, skipped, corrected, now, points, capped, assets, saveStatus, onRetry, onHome, onMap }: {
-  before: MasterySnapshot; after: MasterySnapshot; records: DecisionRecord[]; skipped: number; corrected: number; now: number; points: number; capped: boolean;
-  assets: AssetUrls; saveStatus: string; onRetry?: () => void; onHome: () => void; onMap: () => void;
+export function Recap({ before, after, records, corrected, now, points, capped, assets, saveStatus, onRetry, onContinue, onHome, onMap }: {
+  before: MasterySnapshot; after: MasterySnapshot; records: DecisionRecord[]; corrected: number; now: number; points: number; capped: boolean;
+  assets: AssetUrls; saveStatus: string; onRetry?: () => void; onContinue: () => void; onHome: () => void; onMap: () => void;
 }) {
   const touched = [...new Set(records.map(r => r.edgeId))].filter(id => after.edges[id]);
   const reviews = Object.values(after.reviews).filter(r => r.intervalDays > 0).map(r => r.dueAt).sort((a, b) => a - b);
   const nextReview = reviews[0];
   const days = nextReview ? Math.max(0, Math.round((nextReview - now) / 86_400_000)) : null;
   return (
-    <Summary symbol={<Check size={30} />} eyebrow="TODAY YOU SHARPENED" title="A little more precise.">
+    <Summary symbol={<Check size={30} />} eyebrow="TODAY YOU SHARPENED" title="A little more precise." action={<>
+      <button className="lw-primary" onClick={onContinue}>Continue<ArrowRight size={18} aria-hidden="true" /></button>
+      <button className="lw-secondary" onClick={onHome}>Chamber</button>
+      <button className="lw-secondary" onClick={onMap} aria-label="Mastery Map"><Network size={18} aria-hidden="true" /></button>
+    </>}>
       <div className="lw-mastery-list">
         {touched.length === 0 && <p>The tutorial teaches the feel; distinctions start counting in your next session.</p>}
         {touched.map(id => {
@@ -211,16 +185,11 @@ export function Recap({ before, after, records, skipped, corrected, now, points,
       <ul className="lw-recap-lines">
         {points > 0 && <li>You earned {points} Lexicore points from {records.filter(r => r.score > 0).length} of {records.length} choices.</li>}
         {capped && <li>You reached today’s Last Word limit, so the rest of this session’s points were not added.</li>}
-        {skipped > 0 && <li>{skipped} distinction{skipped > 1 ? 's' : ''} skipped because you already knew {skipped > 1 ? 'them' : 'it'}.</li>}
         {corrected > 0 && <li>{corrected} misconception{corrected > 1 ? 's' : ''} corrected.</li>}
         <li>{days === null ? 'No review scheduled yet.' : days === 0 ? 'Next review: later today.' : days === 1 ? 'Next review: tomorrow.' : `Next review: in ${days} days.`}</li>
       </ul>
       <p role="status" className="lw-small">{saveStatus}</p>
       {onRetry && <button className="lw-text-button" onClick={onRetry}>Retry saving</button>}
-      <div className="lw-home-actions">
-        <button className="lw-primary" onClick={onHome}>Back to the chamber<ArrowRight size={18} aria-hidden="true" /></button>
-        <button className="lw-secondary" onClick={onMap}><Network size={18} aria-hidden="true" />Mastery Map</button>
-      </div>
     </Summary>
   );
 }
