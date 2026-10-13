@@ -7,6 +7,7 @@
  */
 
 import { NextRequest } from 'next/server';
+import { z } from 'zod';
 import { desc, eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { classSessions, materials, sessionMaterials } from '@/lib/db/schema';
@@ -17,6 +18,12 @@ import { resolveFileUrl } from '@/lib/storage/r2';
 import { DOC_TYPES } from '@/lib/naming/taxonomy';
 import { notifyStudentsForContent } from '@/lib/notifications/push';
 import { propagateMaterialNameToClasses } from '@/lib/naming/propagate';
+
+// Optional metadata added by the Today cockpit's one-step material add.
+const extraFieldsSchema = z.object({
+  instructions: z.string().trim().max(2000).nullish(),
+  addedByName: z.string().trim().max(120).nullish(),
+});
 
 // A linked class session's subject/product columns are free text and may
 // carry the literal placeholder 'tbd' (auto-generated recurring sessions
@@ -61,6 +68,8 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     const { title, type, blobUrl, fileName, fileSize, subject, product, batch, classSessionId, docType, number, topic } = body;
+    const extra = extraFieldsSchema.safeParse({ instructions: body.instructions, addedByName: body.addedByName });
+    if (!extra.success) throw new ApiException('instructions (max 2000) or addedByName (max 120) is invalid', 400);
 
     if (!title || typeof title !== 'string') throw new ApiException('title is required', 400);
     if (!type || !['pdf', 'html', 'link'].includes(type)) throw new ApiException("type must be 'pdf', 'html' or 'link'", 400);
@@ -124,6 +133,8 @@ export async function POST(req: NextRequest) {
         topic: topic ?? null,
         classSessionId: sessionId,
         uploadedBy: staff.id,
+        instructions: extra.data.instructions || null,
+        addedByName: extra.data.addedByName || null,
       })
       .returning();
 
@@ -172,6 +183,8 @@ async function serializeMaterial(m: typeof materials.$inferSelect) {
     topic: m.topic,
     classSessionId: m.classSessionId,
     uploadedBy: m.uploadedBy,
+    instructions: m.instructions,
+    addedByName: m.addedByName,
     createdAt: m.createdAt.getTime(),
   };
 }

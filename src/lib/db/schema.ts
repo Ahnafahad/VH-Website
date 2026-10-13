@@ -1443,6 +1443,14 @@ export const recordings = sqliteTable('recordings', {
   status:           text('status').notNull().default('pending'),
   source:           text('source').notNull().default('recall'),
   errorMessage:     text('error_message'),
+  // Live bot progress from the provider's status webhooks (all nullable; the
+  // Today cockpit's recorder strip reads these). botStatus is the raw provider
+  // status string; botJoinedAt/botRecordingAt are set on the first webhook that
+  // reports the bot inside the meeting / actively recording.
+  botStatus:        text('bot_status'),
+  botStatusAt:      integer('bot_status_at', { mode: 'timestamp' }),
+  botJoinedAt:      integer('bot_joined_at', { mode: 'timestamp' }),
+  botRecordingAt:   integer('bot_recording_at', { mode: 'timestamp' }),
   createdAt:        integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [
   unique().on(t.classSessionId),
@@ -1500,6 +1508,10 @@ export const materials = sqliteTable('materials', {
   topic:          text('topic'),
   classSessionId: integer('class_session_id').references(() => classSessions.id, { onDelete: 'set null' }),
   uploadedBy:     integer('uploaded_by').notNull().references(() => users.id),
+  // Free-text instructions for students, and an editable "Added by" display
+  // name (prefilled with the signed-in user's name in the Today cockpit).
+  instructions:   text('instructions'),
+  addedByName:    text('added_by_name'),
   createdAt:      integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [
   index('idx_materials_session').on(t.classSessionId),

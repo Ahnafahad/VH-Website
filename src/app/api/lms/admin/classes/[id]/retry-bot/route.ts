@@ -55,7 +55,7 @@ export async function POST(
     if (existingRecording) {
       await db
         .update(recordings)
-        .set({ status: 'pending', errorMessage: null })
+        .set({ status: 'pending', errorMessage: null, botStatus: null, botStatusAt: null, botJoinedAt: null, botRecordingAt: null })
         .where(eq(recordings.id, existingRecording.id));
     } else {
       await db.insert(recordings).values({

@@ -36,5 +36,5 @@ export default async function TodayPage() {
     // batch dropdown degrades to "All batches" only
   }
 
-  return <TodayClient initial={data} sessions={data.sessions} batches={batches} loadFailed={loadFailed} />;
+  return <TodayClient initial={data} batches={batches} loadFailed={loadFailed} adminName={session.user.name ?? ''} />;
 }

@@ -1,10 +1,11 @@
 /**
  * GET /api/lms/admin/today
  * Today's sessions (Dhaka day) with attendance counts, material counts,
- * assignment counts due within 48 hours, and per-session pending-review counts.
+ * posted homework, recorder state, assignment counts due within 48 hours, and
+ * per-session pending-review counts. All per-session counts are grouped queries.
  */
 
-import { and, count, eq, gte, lte } from 'drizzle-orm';
+import { and, count, eq, gte, inArray, lte } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import {
   classSessions,
@@ -12,11 +13,13 @@ import {
   materials,
   assignments,
   assignmentSubmissions,
+  sessionMaterials,
   users,
 } from '@/lib/db/schema';
 import { safeApiHandler } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { DHAKA_OFFSET_HOURS } from '@/lib/lms/constants';
+import { loadRecordings } from '@/lib/lms/recorder-info';
 
 const DHAKA_OFFSET_MS = DHAKA_OFFSET_HOURS * 60 * 60 * 1000;
 
@@ -60,32 +63,39 @@ export async function GET() {
 
     const sessionIds = todaySessions.map((s) => s.id);
 
-    // Parallelise: attendance counts per session + materials per session + assignments due in 48h
-    const [attendanceCounts, materialCounts, assignmentsDue48h, offlineSubs, pendingReviewSubs] =
+    // Grouped queries (one round trip per table, not one per session).
+    const [attendanceRows, junctionRows, legacyRows, linkedHomework, recordingMap, assignmentsDue48h, offlineSubs, pendingReviewSubs] =
       await Promise.all([
-        // Attendance counts
-        Promise.all(
-          sessionIds.map((sid) =>
-            db
-              .select({ count: count() })
-              .from(classAttendance)
-              .where(eq(classAttendance.sessionId, sid))
-              .get()
-              .then((r) => ({ sessionId: sid, count: r?.count ?? 0 })),
-          ),
-        ),
+        db
+          .select({ sessionId: classAttendance.sessionId, count: count() })
+          .from(classAttendance)
+          .where(inArray(classAttendance.sessionId, sessionIds))
+          .groupBy(classAttendance.sessionId),
 
-        // Material counts
-        Promise.all(
-          sessionIds.map((sid) =>
-            db
-              .select({ count: count() })
-              .from(materials)
-              .where(eq(materials.classSessionId, sid))
-              .get()
-              .then((r) => ({ sessionId: sid, count: r?.count ?? 0 })),
-          ),
-        ),
+        // Materials attached via the many-to-many junction...
+        db
+          .select({ sessionId: sessionMaterials.sessionId, materialId: sessionMaterials.materialId })
+          .from(sessionMaterials)
+          .where(inArray(sessionMaterials.sessionId, sessionIds)),
+
+        // ...plus any legacy single-class link (same union as the class detail page).
+        db
+          .select({ sessionId: materials.classSessionId, materialId: materials.id })
+          .from(materials)
+          .where(inArray(materials.classSessionId, sessionIds)),
+
+        // Homework posted against these exact sessions.
+        db
+          .select({
+            id: assignments.id,
+            title: assignments.title,
+            dueAt: assignments.dueAt,
+            classSessionId: assignments.classSessionId,
+          })
+          .from(assignments)
+          .where(inArray(assignments.classSessionId, sessionIds)),
+
+        loadRecordings(sessionIds),
 
         // Assignments due in the next 48 hours
         db
@@ -136,8 +146,14 @@ export async function GET() {
           .where(eq(assignmentSubmissions.status, 'submitted')),
       ]);
 
-    const attendanceMap = new Map(attendanceCounts.map((r) => [r.sessionId, r.count]));
-    const materialsMap = new Map(materialCounts.map((r) => [r.sessionId, r.count]));
+    const attendanceMap = new Map(attendanceRows.map((r) => [r.sessionId, r.count]));
+    const materialIdSets = new Map<number, Set<number>>();
+    for (const r of [...junctionRows, ...legacyRows]) {
+      if (r.sessionId === null) continue;
+      const set = materialIdSets.get(r.sessionId) ?? new Set<number>();
+      set.add(r.materialId);
+      materialIdSets.set(r.sessionId, set);
+    }
 
     // batch null = "all batches" on either side, so it matches any specific batch
     const batchMatches = (a: string | null, b: string | null) =>
@@ -167,8 +183,14 @@ export async function GET() {
         durationMinutes: s.durationMinutes,
         status: s.status,
         meetLink: s.meetLink,
+        description: s.description,
+        recallBotId: s.recallBotId,
+        recording: recordingMap.get(s.id) ?? null,
+        homework: linkedHomework
+          .filter((h) => h.classSessionId === s.id)
+          .map((h) => ({ id: h.id, title: h.title, dueAt: h.dueAt.getTime() })),
         attendanceCount: attendanceMap.get(s.id) ?? 0,
-        materialsCount: materialsMap.get(s.id) ?? 0,
+        materialsCount: materialIdSets.get(s.id)?.size ?? 0,
         pendingReviewCount: pendingReviewSubs.filter((p) => assignmentMatchesSession(p, s)).length,
         offlineShowcase: offlineSubs
           .filter((o) =>
