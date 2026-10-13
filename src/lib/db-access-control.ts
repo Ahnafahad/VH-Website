@@ -122,8 +122,11 @@ export async function hasProduct(email: string, product: UserProduct): Promise<b
 
 // ─── Admin product-grant helpers ──────────────────────────────────────────────
 
-export async function grantProduct(userId: number, product: UserProduct, grantedBy?: number) {
-  await db
+/** Either the shared client or a transaction handle (both expose insert/select/update). */
+export type DbExecutor = Pick<typeof db, 'insert' | 'select' | 'update'>;
+
+export async function grantProduct(userId: number, product: UserProduct, grantedBy?: number, exec: DbExecutor = db) {
+  await exec
     .insert(userAccess)
     .values({ userId, product, active: true, grantedBy })
     .onConflictDoUpdate({

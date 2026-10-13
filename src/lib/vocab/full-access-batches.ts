@@ -10,6 +10,7 @@
 import { db } from '@/lib/db';
 import { vocabUserProgress } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
+import type { DbExecutor } from '@/lib/db-access-control';
 
 const FULL_ACCESS_BATCHES: { product: string; batch: string }[] = [
   { product: 'iba', batch: '2026-27' },
@@ -25,10 +26,11 @@ export async function grantFullVocabAccessIfEligible(
   userId: number,
   batch: string | null,
   products: string[],
+  exec: DbExecutor = db,
 ): Promise<void> {
   if (!qualifiesForFullVocabAccess(batch, products)) return;
 
-  const existing = await db
+  const existing = await exec
     .select({ id: vocabUserProgress.id, phase: vocabUserProgress.phase })
     .from(vocabUserProgress)
     .where(eq(vocabUserProgress.userId, userId))
@@ -38,12 +40,12 @@ export async function grantFullVocabAccessIfEligible(
     if (existing.phase !== 1) {
       // Newly upgraded to full access — clear so the student is asked for a
       // fresh target date (covering the full word pool) on next login.
-      await db
+      await exec
         .update(vocabUserProgress)
         .set({ phase: 1, fullAccessDeadlineSetAt: null, updatedAt: new Date() })
         .where(eq(vocabUserProgress.userId, userId));
     }
   } else {
-    await db.insert(vocabUserProgress).values({ userId, phase: 1 });
+    await exec.insert(vocabUserProgress).values({ userId, phase: 1 });
   }
 }

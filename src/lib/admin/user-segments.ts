@@ -39,6 +39,8 @@ const CONDITIONS: Record<SegmentKey, SQL> = {
   enrolled_never_logged_in: sql`(${loginDays} = 0 AND (${users.role} = 'student' AND ${users.status} = 'active' AND EXISTS (
     SELECT 1 FROM user_access a JOIN batches b ON b.name = ${users.batch} AND b.product = a.product AND b.status = 'active'
     WHERE a.user_id = ${users.id} AND a.active = 1)))`,
+  // Same source as the old Registrations > Free Signups tab: the free_signups table.
+  free_signups: sql`EXISTS (SELECT 1 FROM free_signups f WHERE f.user_id = ${users.id} OR lower(f.email) = lower(${users.email}))`,
 };
 
 export function segmentCondition(key: SegmentKey): SQL {
@@ -63,6 +65,7 @@ export async function getSegmentCounts(): Promise<SegmentCounts> {
     logged_in_not_registered: countIf(CONDITIONS.logged_in_not_registered),
     batch_without_access:     countIf(CONDITIONS.batch_without_access),
     enrolled_never_logged_in: countIf(CONDITIONS.enrolled_never_logged_in),
+    free_signups:             countIf(CONDITIONS.free_signups),
   }).from(users).get();
   const out = { ...row } as Record<string, number>;
   for (const k of Object.keys(out)) out[k] = Number(out[k] ?? 0);

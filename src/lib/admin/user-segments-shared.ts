@@ -3,7 +3,7 @@
 export const SEGMENT_KEYS = [
   'enrolled', 'registered', 'logged_in', 'never_logged_in',
   'logged_in_once', 'logged_in_multiple', 'logged_in_not_registered',
-  'batch_without_access', 'enrolled_never_logged_in',
+  'batch_without_access', 'enrolled_never_logged_in', 'free_signups',
 ] as const;
 export type SegmentKey = typeof SEGMENT_KEYS[number];
 
@@ -17,6 +17,7 @@ export const SEGMENT_LABELS: Record<SegmentKey, { label: string; help: string }>
   logged_in_not_registered: { label: 'Logged in, not registered', help: 'Signed in but no phone number and no app use.' },
   batch_without_access:     { label: 'Batch, no access',       help: 'Students assigned to a batch who have no active product access, so they cannot see any content.' },
   enrolled_never_logged_in: { label: 'Enrolled, never logged in', help: 'Enrolled students who have never signed in.' },
+  free_signups:             { label: 'Free signups',           help: 'Signed up through the free games form (not a paid registration). Same list the old Free Signups tab showed.' },
 };
 
 export function isSegmentKey(value: string | null): value is SegmentKey {
