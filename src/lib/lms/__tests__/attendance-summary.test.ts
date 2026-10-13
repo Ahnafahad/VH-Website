@@ -29,12 +29,14 @@ beforeEach(async () => {
 describe('computeStudentAttendanceSummary', () => {
   it('a student with 3 expected completed classes, attended 2 -> 1 absence', async () => {
     const s1 = await seedSession({ date: new Date('2026-07-01') });
-    await seedSession({ date: new Date('2026-07-08') });
+    const s2 = await seedSession({ date: new Date('2026-07-08') });
     const s3 = await seedSession({ date: new Date('2026-07-15') });
 
     await ctx.db.insert(classAttendance).values([
       { sessionId: s1, userId: 42, joinedAt: new Date(), mode: 'offline', source: 'manual' },
       { sessionId: s3, userId: 42, joinedAt: new Date(), mode: 'online', source: 'pulled' },
+      // another student's row makes s2 a legacy 'taken' class, where a missing row = absent
+      { sessionId: s2, userId: 43, joinedAt: new Date(), mode: 'offline', source: 'manual' },
     ]);
 
     const [summary] = await computeStudentAttendanceSummary(

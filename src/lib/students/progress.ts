@@ -13,6 +13,7 @@ import { getTestResults } from '@/lib/tests/service';
 import { getLexicoreBreakdown } from './lexicore-breakdown';
 import { getStudentMetricsForUser } from './student-metrics';
 import { effectiveAttendanceMap, type AttendanceRowLite } from '@/lib/lms/attendance-effective';
+import { sessionIdsWithAttendanceRows } from '@/lib/lms/attendance-rows';
 import { computeAtRiskFlag } from './at-risk-pure';
 import { buildAttendanceTicks, buildHomeworkStates, lastMarks } from './progress-pure';
 import type {
@@ -107,7 +108,8 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
         .from(classAttendance)
         .where(and(inArray(classAttendance.sessionId, sessionIds), inArray(classAttendance.userId, userIds)))
     : [];
-  // Raw rows per student; effective presence (taken classes: no row = present) is resolved per student below.
+  const sessionsWithRows = await sessionIdsWithAttendanceRows(db, sessionIds);
+  // Raw rows per student; effective presence (only explicit absent = absent) is resolved per student below.
   const attendanceRowsByUser = new Map<number, AttendanceRowLite[]>();
   for (const row of attendanceRows) {
     if (!attendanceRowsByUser.has(row.userId)) attendanceRowsByUser.set(row.userId, []);
@@ -168,7 +170,7 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
   const students: StudentSummary[] = studentRows.map(u => {
     const products = productsByUser.get(u.id) ?? [];
     const userSessions = products.flatMap(p => sessionsByProduct.get(p) ?? []);
-    const attendedModes = effectiveAttendanceMap(userSessions, attendanceRowsByUser.get(u.id) ?? []);
+    const attendedModes = effectiveAttendanceMap(userSessions, attendanceRowsByUser.get(u.id) ?? [], sessionsWithRows);
     const attendedSessions = userSessions.filter(s => attendedModes.has(s.id)).length;
     const totalSessions = userSessions.length;
     const attendancePercent = totalSessions > 0
@@ -354,8 +356,9 @@ export async function getStudentDetail(userId: number): Promise<StudentDetailRes
     ? await db.select().from(classAttendance)
         .where(and(inArray(classAttendance.sessionId, sessionIds), eq(classAttendance.userId, userId)))
     : [];
-  // sessionId -> mode, effective (taken classes: no row = present, explicit absent = absent)
-  const attendanceBySession = effectiveAttendanceMap(applicableSessions, attendanceRows);
+  // sessionId -> mode, effective (only explicit absent = absent; legacy rows-only classes keep no row = absent)
+  const sessionsWithRows = await sessionIdsWithAttendanceRows(db, sessionIds);
+  const attendanceBySession = effectiveAttendanceMap(applicableSessions, attendanceRows, sessionsWithRows);
 
   const attended = applicableSessions.filter(s => attendanceBySession.has(s.id)).length;
   const total = applicableSessions.length;

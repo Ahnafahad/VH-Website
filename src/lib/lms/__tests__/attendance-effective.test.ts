@@ -7,14 +7,17 @@ const TAKEN = new Date('2026-10-01T10:00:00Z');
 
 describe('isEffectivelyPresent', () => {
   it.each([
-    // [takenAt, row, expected]
-    ['legacy, no row -> absent', null, undefined, false],
-    ['legacy, present row -> present', null, { status: 'present' }, true],
-    ['taken, no row -> present', TAKEN, undefined, true],
-    ['taken, present row -> present', TAKEN, { status: 'present' }, true],
-    ['taken, explicit absent -> absent', TAKEN, { status: 'absent' }, false],
-  ] as const)('%s', (_n, takenAt, row, expected) => {
-    expect(isEffectivelyPresent(takenAt, row)).toBe(expected);
+    // [name, takenAt, row, sessionHasRows, expected]
+    ['untaken, no rows at all, no row -> present (not marked)', null, undefined, false, true],
+    ['legacy (rows exist, no taken_at), no row -> absent', null, undefined, true, false],
+    ['legacy, present row -> present', null, { status: 'present' }, true, true],
+    ['untaken, explicit absent -> absent', null, { status: 'absent' }, true, false],
+    ['taken, no row -> present', TAKEN, undefined, true, true],
+    ['taken, no row, no rows at all -> present', TAKEN, undefined, false, true],
+    ['taken, present row -> present', TAKEN, { status: 'present' }, true, true],
+    ['taken, explicit absent -> absent', TAKEN, { status: 'absent' }, true, false],
+  ] as const)('%s', (_n, takenAt, row, hasRows, expected) => {
+    expect(isEffectivelyPresent(takenAt, row, hasRows)).toBe(expected);
   });
 });
 
@@ -28,24 +31,29 @@ describe('staffStateFromRow', () => {
 
 describe('effectiveAttendanceMap', () => {
   const sessions = [
-    { id: 1, attendanceTakenAt: null },   // legacy
-    { id: 2, attendanceTakenAt: TAKEN },  // taken
-    { id: 3, attendanceTakenAt: TAKEN },  // taken
-    { id: 4, attendanceTakenAt: TAKEN },  // taken
+    { id: 1, attendanceTakenAt: null },   // untaken, no rows at all
+    { id: 2, attendanceTakenAt: TAKEN },  // new flow, no row
+    { id: 3, attendanceTakenAt: TAKEN },  // new flow, online present
+    { id: 4, attendanceTakenAt: TAKEN },  // new flow, explicit absent
+    { id: 5, attendanceTakenAt: null },   // legacy with rows (other students)
+    { id: 6, attendanceTakenAt: null },   // legacy, this student has a row
   ];
-  it('applies legacy rule to untaken sessions and present-by-default to taken ones', () => {
-    const m = effectiveAttendanceMap(sessions, [
-      { sessionId: 3, mode: 'online', status: 'present' },
-      { sessionId: 4, mode: 'offline', status: 'absent' },
-    ]);
-    expect(m.has(1)).toBe(false);      // legacy, no row
+  it('covers the three session kinds and explicit absent', () => {
+    const m = effectiveAttendanceMap(
+      sessions,
+      [
+        { sessionId: 3, mode: 'online', status: 'present' },
+        { sessionId: 4, mode: 'offline', status: 'absent' },
+        { sessionId: 6, mode: 'online', status: 'present' },
+      ],
+      new Set([3, 4, 5, 6]),
+    );
+    expect(m.get(1)).toBe('offline');  // not marked -> present
     expect(m.get(2)).toBe('offline');  // taken, no row
     expect(m.get(3)).toBe('online');
     expect(m.has(4)).toBe(false);      // explicit absent
-  });
-  it('legacy numbers do not change: untaken sessions count rows only', () => {
-    const legacy = [{ id: 1, attendanceTakenAt: null }, { id: 2, attendanceTakenAt: null }];
-    expect([...effectiveAttendanceMap(legacy, [{ sessionId: 1, mode: 'offline', status: 'present' }]).keys()]).toEqual([1]);
+    expect(m.has(5)).toBe(false);      // legacy, no row for this student
+    expect(m.get(6)).toBe('online');
   });
 });
 

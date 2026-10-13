@@ -3,9 +3,9 @@
  * (attendance-cap.ts), how many remain, and how many times absent — one
  * entry per product the student holds active access to.
  *
- * Absence follows attendance-effective.ts: for classes where attendance was
- * taken, no row counts as present and only an explicit absent row is absent;
- * for legacy/untaken classes the absence of a row is an absence. It is
+ * Absence follows attendance-effective.ts: only an explicit absent row is
+ * absent (not marked = present), except old classes that have rows but no
+ * attendance_taken_at, where a missing row is an absence. It is
  * computed against the sessions the student was actually expected at: every
  * completed, past class_session for that product whose batch matches (or is
  * null = all batches) — same scoping convention as computeAttendanceStats,
@@ -19,6 +19,7 @@ import { classAttendance, classSessions } from '@/lib/db/schema';
 import type { UserProduct } from '@/lib/db/schema';
 import { ONLINE_ATTENDANCE_CAP, countOnlineAttendance } from './attendance-cap';
 import { effectiveAttendanceMap } from './attendance-effective';
+import { sessionIdsWithAttendanceRows } from './attendance-rows';
 
 type DrizzleClient = LibSQLDatabase<typeof schema>;
 
@@ -60,7 +61,8 @@ export async function computeStudentAttendanceSummary(
         .select({ sessionId: classAttendance.sessionId, mode: classAttendance.mode, status: classAttendance.status })
         .from(classAttendance)
         .where(and(eq(classAttendance.userId, user.id), inArray(classAttendance.sessionId, expectedIds)));
-      attendedCount = effectiveAttendanceMap(expected, attended).size;
+      const withRows = await sessionIdsWithAttendanceRows(db, expectedIds);
+      attendedCount = effectiveAttendanceMap(expected, attended, withRows).size;
     }
 
     const onlineUsed = await countOnlineAttendance(db, user.id, product);
