@@ -54,7 +54,7 @@ export default async function LastWordEditorialPage() {
                 <h2 style={{ ...h2, margin: 0 }}>{set.title}</h2>
                 <span style={pill(live ? OK_BG : WARN_BG, live ? OK : WARN)}>{set.status}{live ? ' · live' : ' · hidden'}</span>
                 <span style={{ color: MUTED, fontSize: T_SM }}>{set.set_id} · {set.source?.format ?? 'hand-authored'}{set.source?.qa ? ` · critic ${set.source.qa.pass} pass / ${set.source.qa.revised} revised / ${set.source.qa.rejected} rejected` : ''}</span>
-                <Link href={`/last-word?preview=${set.set_id}`} style={{ marginLeft: 'auto', color: RED, fontWeight: 600 }}>Preview in game →</Link>
+                <Link href={`/vocab/games/last-word?preview=${set.set_id}`} style={{ marginLeft: 'auto', color: RED, fontWeight: 600 }}>Preview in game →</Link>
               </div>
               <p style={{ margin: '8px 0', color: MUTED }}>
                 {set.words.map(w => w.word).join(' / ')} · {set.edges.length} distinction{set.edges.length > 1 ? 's' : ''} · {playableChains}/{set.chains.length} chains playable · {warnings} editorial warning{warnings === 1 ? '' : 's'}

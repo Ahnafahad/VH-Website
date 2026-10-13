@@ -110,6 +110,9 @@
 .lw-confidence label { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; }
 .lw-action-row { flex-wrap: wrap; }
 .lw-action-status { margin: 0 auto 0 0; color: var(--lw-muted); }
+.lw-action-status[data-correctness='best'], .lw-points[data-correctness='best'] { color: var(--lw-gold); font-weight: 600; }
+.lw-action-status[data-correctness='defensible'], .lw-points[data-correctness='defensible'] { color: var(--lw-ink); font-weight: 600; }
+.lw-action-status[data-correctness='incorrect'], .lw-points[data-correctness='incorrect'] { color: var(--lw-accent); font-weight: 600; }
 .lw-controls { margin: 0; text-align: center; letter-spacing: .04em; }
 
 /* Feedback: information, not punishment (§40). */

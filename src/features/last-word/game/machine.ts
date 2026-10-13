@@ -55,7 +55,9 @@ export const lastWordMachine = setup({
     canHint: ({ context }) => Boolean(currentRound(context)?.round.hintsAllowed) && context.hintLevel < 3,
     moreBeats: ({ context }) => { const r = currentRound(context); return Boolean(r && context.beat + 1 < r.chain.beats.length); },
     tutorial: ({ context }) => roleOf(context) === 'tutorial',
-    diagnostic: ({ context }) => roleOf(context) === 'diagnostic' || roleOf(context) === 'probe',
+    // The cold read must not teach before the diagnosis (§14), so its choices are judged and paid but revealed afterwards.
+    coldRead: ({ context }) => roleOf(context) === 'diagnostic' || roleOf(context) === 'probe',
+    coldReadMore: ({ context }) => { const r = currentRound(context); return Boolean(r && (r.round.role === 'diagnostic' || r.round.role === 'probe') && context.beat + 1 < r.chain.beats.length); },
     // §14 D: a confident misconception is corrected immediately, even during the cold read.
     confidentMiss: ({ context }) => {
       const last = context.records.at(-1);
@@ -84,13 +86,15 @@ export const lastWordMachine = setup({
       if (event.type !== 'LOCK' || !current || !context.selected) return {};
       const { round, set, chain, beat } = current;
       const previous = context.beat > 0 ? context.records.findLast(r => r.scenarioId === chain.id) : undefined;
+      // Same rule the server applies in applySubmission, evaluated against the pre-session baseline.
+      const answeredIn = context.baseline.edges[chain.edge_id]?.scenarioSessions[chain.id];
       const record = evaluateDecision({
         id: `${context.sessionId}-${context.records.length}`, sessionId: context.sessionId,
         setId: set.set_id, scenarioId: chain.id, beatId: beat.id,
         presentedWords: round.words, selectedWord: context.selected, previousSelection: previous?.selectedWord ?? null,
         reactionTimeMs: Math.max(0, event.now - context.openedAt), hintLevel: context.hintLevel, confidence: context.confidence,
         reviewIntervalDays: reviewIntervalDays(context.baseline, chain.edge_id, event.now), occurredAt: event.now,
-      }, set, context.records.at(-1)?.streak ?? 0);
+      }, set, context.records.at(-1)?.streak ?? 0, { tutorial: chain.purpose === 'tutorial', repeated: answeredIn !== undefined && answeredIn !== context.sessionId });
       return { records: [...context.records, record] };
     }),
     nextBeat: assign(({ context, event }) => ({ beat: context.beat + 1, confidence: null, hintLevel: 0 as const, openedAt: nowOf(event) })),
@@ -123,8 +127,10 @@ export const lastWordMachine = setup({
       always: [
         { guard: 'tutorial', target: 'beatFeedback' },
         { guard: 'confidentMiss', target: 'feedback' },
-        { guard: 'moreBeats', target: 'reading', actions: 'nextBeat' },
-        { guard: 'diagnostic', target: 'routing', actions: 'advance' },
+        { guard: 'coldReadMore', target: 'reading', actions: 'nextBeat' },
+        { guard: 'coldRead', target: 'routing', actions: 'advance' },
+        // Every other beat is judged (correct / wrong, with points) before the next one opens; NEXT in beatFeedback moves on.
+        { guard: 'moreBeats', target: 'beatFeedback' },
         { target: 'feedback' },
       ],
     },

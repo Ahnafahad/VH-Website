@@ -11,7 +11,8 @@
  */
 
 import { sql, eq } from 'drizzle-orm';
-import { db, vocabUserProgress } from '@/lib/db';
+import type { db } from '@/lib/db';
+import { vocabUserProgress } from '@/lib/db/schema';
 
 /** Structural type satisfied by both the root `db` handle and a Drizzle tx. */
 type DbOrTx = Pick<typeof db, 'update'>;

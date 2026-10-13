@@ -5,6 +5,7 @@ import { ArrowRight, Check, Circle, CircleDot, Lightbulb, Network, Play, RotateC
 import { assetUrl, type AssetUrls } from '../assets/runtime';
 import type { LastWordChain, LastWordSet } from '../content/schema';
 import type { DecisionRecord, EdgeMastery, MasterySnapshot } from '../core/types';
+import { verdictLabel } from '../core/learning';
 import type { Card } from '../game/session';
 import { indexEdges } from '../game/session';
 
@@ -146,6 +147,9 @@ export function RoundFeedback({ chain, records, onNext, onFinish, nextLabel }: {
     <section className="lw-feedback" aria-label="Feedback" data-correctness={last.correctness}>
       <span className="lw-eyebrow"><span />{perfect ? 'PERFECT READ' : last.correctness === 'best' ? 'PRECISELY READ' : last.correctness === 'defensible' ? 'A DEFENSIBLE READING' : 'NOTICE THE DETAIL'}</span>
       <h2 tabIndex={-1} data-autofocus>{verdict}</h2>
+      <p className="lw-points" role="status" data-correctness={last.correctness}>
+        {verdictLabel(last.correctness)}{chain.purpose === 'tutorial' ? ' · guided practice, no points' : ` · +${records.reduce((sum, r) => sum + r.score, 0)} Lexicore pts this read`}
+      </p>
       <p className="lw-feedback-short">{chain.feedback_short}</p>
       <p className="lw-feedback-clue"><ClueText text={beat.text} clue={beat.decisive_clue} /></p>
       <p className="lw-contrast">{chain.contrast_rule}</p>
@@ -157,7 +161,7 @@ export function RoundFeedback({ chain, records, onNext, onFinish, nextLabel }: {
           // §35/§36 counterfactual: what had to change for the other word to fit.
           <p className="lw-counterfactual">Before “{chain.beats[turn].decisive_clue}”, <strong>{chain.beats[turn - 1].best_word}</strong> fit: {chain.beats[turn - 1].reason} After it, <strong>{chain.beats[turn].best_word}</strong>: {chain.beats[turn].reason}</p>
         )}
-        <ol>{records.map((r, i) => <li key={r.id}>Beat {i + 1}: you chose {r.selectedWord} ({r.correctness}). {chain.beats.find(b => b.id === r.beatId)?.reason}</li>)}</ol>
+        <ol>{records.map((r, i) => <li key={r.id}>Beat {i + 1}: you chose {r.selectedWord} ({verdictLabel(r.correctness)}, +{r.score} pts). {chain.beats.find(b => b.id === r.beatId)?.reason}</li>)}</ol>
       </details>
       <div className="lw-action-row">
         <button className="lw-text-button" onClick={onFinish}>End session</button>
@@ -196,6 +200,7 @@ export function Recap({ before, after, records, skipped, corrected, now, assets,
         })}
       </div>
       <ul className="lw-recap-lines">
+        {records.some(r => r.score > 0) && <li>You earned {records.reduce((sum, r) => sum + r.score, 0)} Lexicore points from {records.filter(r => r.score > 0).length} of {records.length} choices.</li>}
         {skipped > 0 && <li>{skipped} distinction{skipped > 1 ? 's' : ''} skipped because you already knew {skipped > 1 ? 'them' : 'it'}.</li>}
         {corrected > 0 && <li>{corrected} misconception{corrected > 1 ? 's' : ''} corrected.</li>}
         <li>{days === null ? 'No review scheduled yet.' : days === 0 ? 'Next review: later today.' : days === 1 ? 'Next review: tomorrow.' : `Next review: in ${days} days.`}</li>

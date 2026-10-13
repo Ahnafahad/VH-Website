@@ -2,13 +2,14 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Sparkles, Flame } from 'lucide-react';
+import { Sparkles, Flame, Scale } from 'lucide-react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import type { GameStateResponse } from '@/lib/vocab/game/types';
 import type { ChargeSummaryResponse } from '@/lib/vocab/word-charge/types';
+import type { LastWordSummaryResponse } from '@/app/api/vocab/games/last-word/summary/route';
 
 const SANS  = "'Sora', sans-serif";
 const SERIF = "'Cormorant Garamond', Georgia, serif";
@@ -191,6 +192,110 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
           }}
         >
           {cta}
+          <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </motion.button>
+      </div>
+    </motion.div>
+  );
+}
+
+// ─── Last Word card (first game in the hub) ───────────────────────────────────
+
+function LastWordCard({ summary, onPlay }: { summary: LastWordSummaryResponse | null; onPlay: () => void }) {
+  const fb = useVocabFeedback();
+  const started = !!summary && summary.sessions > 0;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ type: 'spring' as const, stiffness: 260, damping: 24 }}
+      style={{
+        padding: '1.375rem 1.5rem 1.5rem',
+        background: 'var(--color-lx-surface)',
+        border: '1px solid var(--color-lx-border)',
+        borderRadius: 18,
+        position: 'relative', overflow: 'hidden',
+      }}
+    >
+      <div aria-hidden style={{
+        position: 'absolute', top: '-45%', right: '-10%', width: '55%', height: '190%',
+        background: 'radial-gradient(ellipse, rgba(244,168,40,0.10) 0%, transparent 60%)',
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{ position: 'relative', zIndex: 1 }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span style={{
+              width: 34, height: 34, borderRadius: 10, flexShrink: 0,
+              background: 'rgba(244,168,40,0.12)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: 'var(--color-lx-accent-gold)',
+            }}>
+              <Scale size={18} aria-hidden />
+            </span>
+            <span style={{
+              fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+              letterSpacing: '0.16em', textTransform: 'uppercase',
+              color: 'var(--color-lx-text-muted)',
+            }}>
+              Meaning in context
+            </span>
+          </div>
+
+          {summary && summary.due > 0 && (
+            <span style={{
+              fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.04em',
+              color: 'var(--color-lx-accent-gold)',
+              background: 'rgba(244,168,40,0.12)',
+              border: '1px solid rgba(244,168,40,0.28)',
+              borderRadius: 20, padding: '0.3rem 0.7rem', whiteSpace: 'nowrap',
+            }}>
+              {summary.due} review{summary.due !== 1 ? 's' : ''} due
+            </span>
+          )}
+        </div>
+
+        <h2 style={{
+          fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
+          fontSize: '1.9rem', lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
+          marginTop: '0.75rem',
+        }}>
+          Last Word
+        </h2>
+
+        <p style={{
+          fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)',
+          marginTop: '0.375rem', lineHeight: 1.5,
+        }}>
+          Follow the context and pick the word that fits now. Every choice is judged and earns LexiCore points.
+        </p>
+
+        {started && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: '0.75rem' }}>
+            <Sparkles size={13} color="var(--color-lx-accent-gold)" />
+            <span style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
+              {summary.practiced} of {summary.distinctions} distinctions practiced · {summary.reliable} reliable
+            </span>
+          </div>
+        )}
+
+        <motion.button
+          whileTap={{ scale: 0.975 }}
+          onClick={() => { fb.play('tap'); onPlay(); }}
+          style={{
+            marginTop: '1.125rem', width: '100%', minHeight: '3.25rem',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+            background: 'var(--color-lx-accent-red)', color: '#fff',
+            border: 'none', borderRadius: '0.875rem',
+            fontFamily: SANS, fontSize: '0.9rem', fontWeight: 650,
+            cursor: 'pointer',
+          }}
+        >
+          {started ? 'Continue' : 'Play'}
           <svg width="15" height="15" viewBox="0 0 14 14" fill="none" aria-hidden="true">
             <path d="M3 7H11M11 7L7.5 3.5M11 7L7.5 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
@@ -427,6 +532,7 @@ export default function GamesHubScreen() {
   const [archive, setArchive] = useState<ArchiveEntry[] | null>(null);
   const [loadError, setLoadError] = useState(false);
   const [chargeSummary, setChargeSummary] = useState<ChargeSummaryResponse | null>(null);
+  const [lastWordSummary, setLastWordSummary] = useState<LastWordSummaryResponse | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -446,6 +552,12 @@ export default function GamesHubScreen() {
       .then(r => r.ok ? r.json() as Promise<ChargeSummaryResponse> : Promise.reject(r))
       .then(s => { if (!cancelled) setChargeSummary(s); })
       .catch(() => { /* graceful: summary unavailable, card still renders */ });
+
+    // Same for Last Word progress — the card works without it.
+    fetch('/api/vocab/games/last-word/summary')
+      .then(r => r.ok ? r.json() as Promise<LastWordSummaryResponse> : Promise.reject(r))
+      .then(s => { if (!cancelled) setLastWordSummary(s); })
+      .catch(() => { /* graceful */ });
 
     return () => { cancelled = true; };
   }, []);
@@ -479,7 +591,7 @@ export default function GamesHubScreen() {
           color: 'var(--color-lx-text-primary)', marginBottom: '1.5rem',
         }}
       >
-        Daily challenges
+        Word games
       </motion.h1>
 
       {loadError && (
@@ -491,6 +603,11 @@ export default function GamesHubScreen() {
           Couldn&apos;t load today&apos;s round. Check your connection and try again.
         </div>
       )}
+
+      {/* Last Word is the first game: it never waits on the Word Hunt state load. */}
+      <div style={{ marginBottom: '1.25rem' }}>
+        <LastWordCard summary={lastWordSummary} onPlay={() => navigate('/vocab/games/last-word')} />
+      </div>
 
       {!loadError && (
         <AnimatePresence mode="wait">

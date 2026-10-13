@@ -12,7 +12,7 @@ import { Howl } from 'howler';
 import { ArrowLeft, ArrowRight, Lightbulb, Lock, Pause, Settings2 } from 'lucide-react';
 import { assetUrl, loadAvailableAssets, type AssetUrls } from './assets/runtime';
 import type { LastWordSet } from './content/schema';
-import { updateMastery } from './core/learning';
+import { updateMastery, verdictLabel } from './core/learning';
 import { emptyMastery, type MasterySnapshot } from './core/types';
 import { currentRound, currentStep, lastWordMachine } from './game/machine';
 import { dueEdges, type Mode } from './game/session';
@@ -248,7 +248,7 @@ function Game({ sets }: { sets: LastWordSet[] }) {
         <div className="lw-atmosphere" aria-hidden="true"><div /><div /></div>
         {tier !== 'lite' && !mapOpen && <div className="lw-backdrop-canvas" aria-hidden="true"><ChamberBoundary onUnavailable={onUnavailable}><Backdrop tier={tier} assets={assets} /></ChamberBoundary></div>}
         <header className="lw-header">
-          <Link href="/vocab/home" className="lw-back" aria-label="Back to vocabulary"><ArrowLeft size={18} /></Link>
+          <Link href="/vocab/games" className="lw-back" aria-label="Back to games"><ArrowLeft size={18} /></Link>
           <span className="lw-logotype">{assetUrl(assets, 'icon.wordmark') ? <img src={assetUrl(assets, 'icon.wordmark')!} alt="Last Word" height={18} /> : <>LAST<span>WORD</span></>}</span>
           <span className="lw-header-note">A GAME OF MEANING</span>
           <button className="lw-icon-button" aria-label="Game settings" aria-expanded={settingsOpen} onClick={() => setSettingsOpen(!settingsOpen)}><Settings2 size={19} /></button>
@@ -344,8 +344,8 @@ function Game({ sets }: { sets: LastWordSet[] }) {
               <RoundFeedback chain={current.chain} records={roundRecords} onNext={next} onFinish={finish} nextLabel="Continue" />
             ) : (
               <div className="lw-action-row">
-                <p role="status" className="lw-action-status">
-                  {state.matches('paused') ? 'Paused. Take your time.' : judged ? (lastRecord?.correctness === 'best' ? 'Precisely read.' : `${current.beat.best_word} fits better here.`) : context.selected ? `${context.selected} · you can still change it` : 'Tap a word, swipe, or use ← →'}
+                <p role="status" className="lw-action-status" data-correctness={judged ? lastRecord?.correctness : undefined}>
+                  {state.matches('paused') ? 'Paused. Take your time.' : judged && lastRecord ? `${verdictLabel(lastRecord.correctness)} · ${current.chain.purpose === 'tutorial' ? 'guided, no points' : `+${lastRecord.score} pts`}${lastRecord.correctness === 'best' ? '' : ` · ${current.beat.best_word} fits better`}` : context.selected ? `${context.selected} · you can still change it` : 'Tap a word, swipe, or use ← →'}
                 </p>
                 {reading && current.round.hintsAllowed && context.hintLevel < 3 && (
                   <button className="lw-text-button" onClick={() => { cue('hint'); send({ type: 'HINT' }); }}>{context.hintLevel ? 'Another hint' : 'Hint'}</button>

@@ -22,7 +22,7 @@ The game plays every JSON file in `content/last-word/sets/` whose `status` is `a
    npm run last-word:validate-content -- --strict    # exit 1 on any chain error too (CI gate)
    ```
 
-3. Read the set (preview it in the game at `/last-word?preview=<set_id>` while signed in as staff, or on the editorial page `/admin/last-word`), then promote it:
+3. Read the set (preview it in the game at `/vocab/games/last-word?preview=<set_id>` while signed in as staff, or on the editorial page `/admin/last-word`), then promote it:
 
    ```sh
    npm run last-word:set-status -- <set_id> approved      # or: all-audited approved

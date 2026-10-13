@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { createActor } from 'xstate';
 import { readContent, selectPlayable } from '../content/load';
 import type { LastWordSet } from '../content/schema';
-import { classifyAnswer, diagnosticOutcome, edgeStatus, evaluateDecision, nuanceMultiplier, scheduleReview, updateMastery } from '../core/learning';
+import { classifyAnswer, decisionPoints, diagnosticOutcome, edgeStatus, evaluateDecision, scheduleReview, updateMastery, verdictLabel } from '../core/learning';
 import { isEligible, type SelectionCandidate } from '../core/selection';
 import { emptyMastery, type Confidence, type DecisionInput, type DecisionRecord, type MasterySnapshot } from '../core/types';
 import { currentRound, lastWordMachine, type GameContext } from '../game/machine';
@@ -42,8 +42,8 @@ describe('correctness and scoring (§8, §9)', () => {
     const after = flip.beats[b2].best_word;
     const switched = decide({ scenarioId: flip.id, beatId: flip.beats[b2].id, selectedWord: after, previousSelection: before, reactionTimeMs: 8000 });
     const plain = decide({ scenarioId: flip.id, beatId: flip.beats[0].id, selectedWord: before, reactionTimeMs: 8000 });
-    expect(plain.score).toBe(100);
-    expect(switched.score).toBe(135);
+    expect(plain.score).toBe(15);
+    expect(switched.score).toBe(20);
     expect(switched.kind).toBe('shift');
   });
 
@@ -52,21 +52,36 @@ describe('correctness and scoring (§8, §9)', () => {
     const i = hold.beats.findIndex(b => b.shift_type === 'false_shift');
     const word = hold.beats[i].best_word;
     const held = decide({ scenarioId: hold.id, beatId: hold.beats[i].id, selectedWord: word, previousSelection: word, reactionTimeMs: 8000 });
-    expect(held.score).toBe(125);
+    expect(held.score).toBe(20);
     expect(held.kind).toBe('hold');
     expect(held.evidenceWeight).toBe(1.5);
   });
 
-  it('pays speed only on accurate answers, discounts hints, and caps the streak multiplier', () => {
+  it('never pays for speed or streaks, discounts hints, and pays a wrong choice nothing', () => {
     const b = flip.beats[0];
-    expect(decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: 0 }).score).toBe(130);
+    const fast = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: 0 }, 12);
+    expect(fast.score).toBe(15);
+    expect(decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: 90_000 }).score).toBe(15);
     const wrong = Object.keys(b.fit).find(w => w !== b.best_word)!;
-    expect(decide({ scenarioId: flip.id, beatId: b.id, selectedWord: wrong, reactionTimeMs: 0 }).score).toBeLessThanOrEqual(55);
+    const missed = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: wrong, reactionTimeMs: 0 });
+    expect(missed.score).toBeLessThanOrEqual(8);
+    if (missed.correctness === 'incorrect') expect(missed.score).toBe(0);
     const hinted = decide({ scenarioId: flip.id, beatId: b.id, selectedWord: b.best_word, reactionTimeMs: 8000, hintLevel: 2 });
-    expect(hinted.score).toBe(75);
+    expect(hinted.score).toBe(11);
     expect(hinted.evidenceWeight).toBe(0.35);
     expect(hinted.streak).toBe(0);
-    expect([1, 2, 4, 7, 10, 40].map(nuanceMultiplier)).toEqual([1, 1.1, 1.25, 1.5, 1.75, 1.75]);
+  });
+
+  it('is anchored to the Lexicore economy: correct = quiz correct_usage, bonus = long-gap bonus, repeats ¼ rounded up, tutorial 0', () => {
+    expect(decisionPoints('best', 1, false, false)).toBe(15);
+    expect(decisionPoints('best', 1, false, true)).toBe(20);
+    expect(decisionPoints('defensible', 0.8, false, false)).toBe(8);
+    expect(decisionPoints('defensible', 0.5, false, false)).toBe(5);
+    expect(decisionPoints('incorrect', 0.1, false, false)).toBe(0);
+    expect(decisionPoints('best', 1, false, false, { repeated: true })).toBe(4);
+    expect(decisionPoints('incorrect', 0.1, false, false, { repeated: true })).toBe(0);
+    expect(decisionPoints('best', 1, false, true, { tutorial: true })).toBe(0);
+    expect(['best', 'defensible', 'incorrect'].map(c => verdictLabel(c as 'best'))).toEqual(['Correct', 'Partly right', 'Wrong']);
   });
 
   it('weights a confident wrong answer more heavily than a hesitant one, and counts long gaps as retention', () => {

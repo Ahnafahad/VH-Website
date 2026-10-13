@@ -27,7 +27,7 @@ export default function BottomNav() {
   // lower z-index) still paints over their controls — tapping "Continue" hit the
   // nav instead. The game has its own pause→exit and back-to-games controls, so
   // drop the nav here entirely.
-  if (pathname.startsWith('/vocab/games/word-charge')) return null;
+  if (pathname.startsWith('/vocab/games/word-charge') || pathname.startsWith('/vocab/games/last-word')) return null;
 
   return (
     <nav

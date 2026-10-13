@@ -1,6 +1,7 @@
 import { and, eq } from 'drizzle-orm';
 import type { LibSQLDatabase } from 'drizzle-orm/libsql';
 import * as schema from '@/lib/db/schema';
+import { awardPoints } from '@/lib/vocab/points';
 import type { LastWordSet } from '../content/schema';
 import type { EdgeMastery, NodeMastery, ReviewSchedule } from '../core/types';
 import { applySubmission, parseSubmission } from './submission';
@@ -76,6 +77,9 @@ export class DatabaseLastWordPersistence implements LastWordPersistence {
         data: JSON.stringify(record),
       })));
       const updatedAt = new Date(submission.completedAt);
+      // Lexicore points: summary.score is the server-computed sum of per-decision points, awarded once with the session
+      // (a replayed session returned early above). Same write path as quiz/flashcard/Word Hunt points.
+      await awardPoints(tx, this.userId, summary.score, updatedAt);
       for (const [word, node] of Object.entries(snapshot.nodes)) {
         const data = JSON.stringify(node);
         await tx.insert(nodes).values({ userId: this.userId, word, data, updatedAt }).onConflictDoUpdate({ target: [nodes.userId, nodes.word], set: { data, updatedAt } });

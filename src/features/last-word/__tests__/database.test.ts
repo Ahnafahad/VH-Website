@@ -93,6 +93,30 @@ describe('DatabaseLastWordPersistence', () => {
     const other = await client.execute("INSERT INTO users (email, name, role, status) VALUES ('t@example.com', 'T', 'student', 'active') RETURNING id");
     expect((await new DatabaseLastWordPersistence(db, Number(other.rows[0].id), sets).load()).sessions).toEqual([]);
   });
+
+  it('awards Lexicore points once per session, and a repeat of the same scenario pays a quarter', async () => {
+    const learner = await client.execute("INSERT INTO users (email, name, role, status) VALUES ('u@example.com', 'U', 'student', 'active') RETURNING id");
+    const learnerId = Number(learner.rows[0].id);
+    await client.execute({ sql: 'INSERT INTO vocab_user_progress (user_id) VALUES (?)', args: [learnerId] });
+    const total = async () => Number((await client.execute({ sql: 'SELECT total_points AS t, weekly_points AS w FROM vocab_user_progress WHERE user_id = ?', args: [learnerId] })).rows[0].t);
+    const store = new DatabaseLastWordPersistence(db, learnerId, sets);
+
+    const first = await store.saveSession(session('p1', 10 * 86_400_000));
+    const earned = first.sessions.at(-1)!.score;
+    expect(earned).toBeGreaterThan(0);
+    // Every choice is best-fit: 15 each, +5 at each beat where the best word changes and the player switched.
+    const beats = po.chains.find(c => c.id === 'po_flip')!.beats;
+    expect(earned).toBe(beats.length * 15 + 5 * beats.filter((b, i) => i > 0 && b.best_word !== beats[i - 1].best_word).length);
+    expect(await total()).toBe(earned);
+
+    await store.saveSession(session('p1', 10 * 86_400_000)); // replayed save: no double award
+    expect(await total()).toBe(earned);
+
+    const second = await store.saveSession(session('p2', 20 * 86_400_000)); // same scenario, later session
+    const repeat = second.sessions.at(-1)!.score;
+    expect(repeat).toBeLessThan(earned / 2);
+    expect(await total()).toBe(earned + repeat);
+  });
 });
 
 describe('content QA flags (§45)', () => {

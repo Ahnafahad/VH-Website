@@ -52,8 +52,9 @@ export function parseSubmission(value: unknown): SessionSubmission {
   return parsed.data;
 }
 
-/** This boundary never accepts client-derived scores, fits, mastery, or review intervals. */
-/** sets is the content the session was played against. eplay skips decisions whose content has since been withdrawn (stored guest history) instead of rejecting them. */
+/** This boundary never accepts client-derived scores, points, fits, mastery, or review intervals. */
+/** sets is the content the session was played against. 
+eplay skips decisions whose content has since been withdrawn (stored guest history) instead of rejecting them. */
 export function applySubmission(snapshot: LearningSnapshot, value: unknown, sets: LastWordSet[], { replay = false } = {}): { snapshot: LearningSnapshot; decisions: DecisionRecord[]; submission: SessionSubmission } {
   const submission = parseSubmission(value);
   let mastery = snapshot;
@@ -75,7 +76,10 @@ export function applySubmission(snapshot: LearningSnapshot, value: unknown, sets
     if (beatIndex !== (previous ? previous.index + 1 : 0)) throw new PersistenceValidationError('Scenario beats must be submitted in order.');
     const lastVerified = snapshot.edges[chain.edge_id]?.lastVerified;
     const reviewIntervalDays = lastVerified === undefined ? 0 : Math.max(0, (submission.startedAt - lastVerified) / 86_400_000);
-    const record = evaluateDecision({ ...input, previousSelection: previous?.word ?? null, reviewIntervalDays }, set, streak);
+    // Same rule the client applies from its baseline: an earlier session's answer to this scenario makes this a repeat.
+    const answeredIn = mastery.edges[chain.edge_id]?.scenarioSessions[chain.id];
+    const record = evaluateDecision({ ...input, previousSelection: previous?.word ?? null, reviewIntervalDays }, set, streak,
+      { tutorial: chain.purpose === 'tutorial', repeated: answeredIn !== undefined && answeredIn !== submission.id });
     streak = record.streak;
     // Tutorial is guided exposure, never independent mastery evidence.
     if (chain.purpose !== 'tutorial') mastery = { ...mastery, ...updateMastery(mastery, record) };

@@ -19,6 +19,14 @@ export const POINTS_FLASHCARD_WRONG = 2;
 /** Bonus points for completing a flashcard session */
 export const POINTS_SESSION_COMPLETE = 10;
 
+/**
+ * Last Word: a correct (best-fit) judgment. Anchored to the quiz `correct_usage`
+ * item (15) — the same skill, choosing the word that fits a context. As in the
+ * quiz, a wrong choice earns 0. Rarer reads (a context flip, or holding through a
+ * false shift) add POINTS_LONG_GAP_BONUS, the existing "harder correct answer" bonus.
+ */
+export const POINTS_LAST_WORD_CORRECT = 15;
+
 // ─── Quiz ────────────────────────────────────────────────────────────────────
 
 /** Number of questions in a study quiz */
