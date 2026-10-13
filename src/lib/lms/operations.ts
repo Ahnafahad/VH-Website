@@ -29,9 +29,12 @@ export const expenseCategories = [
   'Equipment & Furniture', 'Instructor Payment', 'Events', 'Miscellaneous',
 ] as const;
 
-// paidBy null = the organization paid directly; otherwise an admin fronted it and may later be
-// reimbursed from the treasury (reimbursedAt = settlement date).
+// paidBy null = the organization paid directly; otherwise a staff member (admin, super admin or
+// instructor) fronted it and may later be reimbursed from the treasury (reimbursedAt = settlement date).
 export const paymentMethods = ['Cash', 'bKash', 'Nagad', 'Rocket', 'Card', 'Bank transfer', 'Cheque', 'Other'] as const;
+// Bulk "mark reimbursed": the server only touches person-paid, still-outstanding expenses.
+export const reimburseInput = z.object({ ids: z.array(z.number().int().positive()).min(1).max(500) });
+
 export const expenseProducts = ['IBA', 'FBS', 'All'] as const;
 export const RECEIPT_PREFIX = 'expense-receipts/';
 
@@ -122,6 +125,7 @@ export interface FinancialEntryRecord {
   description: string;
   paidBy: number | null;
   paidByName: string | null;
+  paidByRole: string | null;
   reimbursedAt: string | null;
   payee: string | null;
   paymentMethod: string | null;

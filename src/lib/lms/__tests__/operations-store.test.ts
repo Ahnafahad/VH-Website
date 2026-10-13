@@ -5,13 +5,13 @@ const mocks = vi.hoisted(() => ({
   values: vi.fn(), set: vi.fn(), where: vi.fn(), returning: vi.fn(), get: vi.fn(),
   insert: vi.fn(), update: vi.fn(), select: vi.fn(), del: vi.fn(),
 }));
-vi.mock('@/lib/db', () => ({ db: { insert: mocks.insert, update: mocks.update, select: mocks.select, delete: mocks.del } }));
+vi.mock('@/lib/db', () => ({ db: { insert: mocks.insert, update: mocks.update, select: mocks.select, delete: mocks.del, transaction: (fn: (tx: { update: typeof mocks.update }) => unknown) => fn({ update: mocks.update }) } }));
 vi.mock('@/lib/auth', () => ({ authOptions: {} }));
 vi.mock('@/lib/db-access-control', () => ({ isEmailAuthorized: vi.fn() }));
 vi.mock('@/lib/vocab/error-log', () => ({ logVocabErrorSafe: vi.fn() }));
 
 import { operationalEntries, operationalExtraClasses } from '@/lib/db/schema';
-import { deleteOperationalRecord, saveOperationalRecord } from '../operations-store';
+import { deleteOperationalRecord, reimburseExpenses, saveOperationalRecord } from '../operations-store';
 
 const entry = { date: '2026-10-06', amount: '123.45', category: 'Travel', description: 'Bus fare' };
 const expense = { ...entry, category: 'Transport', paidBy: null, reimbursedAt: null };
@@ -64,6 +64,18 @@ describe('operational storage writes (mocked database)', () => {
       payee: 'Dhaka Print', paymentMethod: 'bKash', referenceNo: 'TXN-1', receiptKey: 'expense-receipts/1-a.pdf',
       product: 'IBA', batch: '2026-27', classSessionId: 5, location: 'Mirpur', tags: 'mock,print', updatedBy: 7,
     }));
+  });
+
+  it.each(['admin', 'super_admin', 'instructor'])('accepts a %s as the payer', async role => {
+    mocks.get.mockResolvedValueOnce({ role });
+    await expect(saveOperationalRecord('expenses', { ...expense, paidBy: 4 }, 7)).resolves.toEqual({ id: 9 });
+    expect(mocks.values).toHaveBeenCalledWith(expect.objectContaining({ paidBy: 4 }));
+  });
+
+  it.each(['student', undefined])('rejects %s or a missing user as the payer', async role => {
+    mocks.get.mockResolvedValueOnce(role ? { role } : undefined);
+    await expect(saveOperationalRecord('expenses', { ...expense, paidBy: 4 }, 7)).rejects.toMatchObject({ status: 400 });
+    expect(mocks.insert).not.toHaveBeenCalled();
   });
 
   it('rejects a link to a class that does not exist', async () => {
@@ -129,5 +141,20 @@ describe('operational deletes', () => {
 
   it('keeps the instructor report read-only', async () => {
     await expect(deleteOperationalRecord('instructors', 1)).rejects.toMatchObject({ status: 405 });
+  });
+});
+
+describe('reimburseExpenses', () => {
+  it('marks only person-paid outstanding rows in one transaction and reports the count', async () => {
+    mocks.returning.mockResolvedValue([{ id: 1 }, { id: 2 }]);
+    await expect(reimburseExpenses({ ids: [1, 2, 3] }, 7)).resolves.toEqual({ updated: 2 });
+    expect(mocks.set).toHaveBeenCalledWith(expect.objectContaining({ reimbursedAt: expect.stringMatching(/^\d{4}-\d{2}-\d{2}$/), updatedBy: 7 }));
+    const params = new SQLiteSyncDialect().sqlToQuery(mocks.where.mock.calls[0][0]).params;
+    expect(params).toEqual(expect.arrayContaining([1, 2, 3, 'expense']));
+  });
+
+  it.each([{}, { ids: [] }, { ids: [0] }, { ids: ['1'] }])('rejects invalid body %j before writing', async body => {
+    await expect(reimburseExpenses(body, 7)).rejects.toMatchObject({ status: 400 });
+    expect(mocks.update).not.toHaveBeenCalled();
   });
 });

@@ -1,13 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import {
-  categoryTotals, csvCell, expensesCsv, filterEntries, groupByDay, monthKpis, shiftMonth, toCsv,
+  categoryTotals, csvCell, expensesCsv, filterEntries, groupByDay, groupByPerson, monthKpis, roleLabel, shiftMonth, toCsv,
 } from '../expense-report';
 import { expenseEntryInput, type FinancialEntryRecord } from '../operations';
 
 let nextId = 1;
 const entry = (over: Partial<FinancialEntryRecord> = {}): FinancialEntryRecord => ({
   id: nextId++, date: '2026-10-05', amountMinor: 10000, category: 'Rent', description: '', paidBy: null,
-  paidByName: null, reimbursedAt: null, payee: null, paymentMethod: null, referenceNo: null, receiptKey: null,
+  paidByName: null, paidByRole: null, reimbursedAt: null, payee: null, paymentMethod: null, referenceNo: null, receiptKey: null,
   product: null, batch: null, classSessionId: null, classLabel: null, location: null, tags: [],
   updatedAt: '2026-10-05T00:00:00.000Z', ...over,
 });
@@ -96,5 +96,49 @@ describe('filter and grouping', () => {
     expect(groups.map(g => g.date)).toEqual(['2026-10-03']);
     expect(groups[0].total).toBe(600);
     expect(groups[0].rows.map(r => [r.entry.id, r.monthToDate])).toEqual([[3, 700], [2, 300]]);
+  });
+});
+
+describe('groupByPerson (Paid by people tab)', () => {
+  const paid = (paidBy: number, name: string, role: string, over: Partial<FinancialEntryRecord> = {}) =>
+    entry({ paidBy, paidByName: name, paidByRole: role, ...over });
+
+  it('returns nothing when only the organisation paid', () => {
+    expect(groupByPerson([entry(), entry()])).toEqual([]);
+    expect(groupByPerson([])).toEqual([]);
+  });
+
+  it('totals per person and splits reimbursed from outstanding', () => {
+    const groups = groupByPerson([
+      paid(1, 'Rahim', 'admin', { amountMinor: 5000 }),
+      paid(1, 'Rahim', 'admin', { amountMinor: 2500, reimbursedAt: '2026-10-09' }),
+      paid(2, 'Amina', 'instructor', { amountMinor: 9000 }),
+      entry({ amountMinor: 99999 }),
+    ]);
+    expect(groups.map(g => g.name)).toEqual(['Amina', 'Rahim']); // most owed first
+    const rahim = groups.find(g => g.personId === 1)!;
+    expect(rahim).toMatchObject({ total: 7500, owed: 5000, owedCount: 1, reimbursed: 2500, role: 'admin' });
+    expect(groups[0]).toMatchObject({ total: 9000, owed: 9000, reimbursed: 0, role: 'instructor' });
+  });
+
+  it('lists a person entries newest first and breaks owed ties by name', () => {
+    const groups = groupByPerson([
+      paid(2, 'Zed', 'admin', { date: '2026-10-01', reimbursedAt: '2026-10-02' }),
+      paid(1, 'Abe', 'super_admin', { date: '2026-10-01', reimbursedAt: '2026-10-02' }),
+      paid(1, 'Abe', 'super_admin', { date: '2026-10-07', reimbursedAt: '2026-10-08' }),
+    ]);
+    expect(groups.map(g => g.name)).toEqual(['Abe', 'Zed']);
+    expect(groups[0].entries.map(e => e.date)).toEqual(['2026-10-07', '2026-10-01']);
+  });
+
+  it('filterEntries byPeople keeps only person-paid rows', () => {
+    const rows = [entry(), paid(1, 'Rahim', 'admin')];
+    expect(filterEntries(rows, { byPeople: true })).toEqual([rows[1]]);
+  });
+
+  it('labels roles and carries them into the CSV', () => {
+    expect(roleLabel('instructor')).toBe('Instructor');
+    expect(roleLabel('super_admin')).toBe('Super admin');
+    expect(expensesCsv([paid(2, 'Amina', 'instructor')])).toContain('Amina (Instructor)');
   });
 });
