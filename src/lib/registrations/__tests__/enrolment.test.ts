@@ -19,8 +19,9 @@ describe('age / stale flag', () => {
     expect(isStale('pending', daysAgo(14), NOW)).toBe(false); // exactly 14 days is not yet over
     expect(isStale('pending', daysAgo(2), NOW)).toBe(false);
   });
-  it('does not flag contacted, enrolled or cancelled', () => {
-    for (const s of ['contacted', 'enrolled', 'cancelled']) expect(isStale(s, daysAgo(60), NOW)).toBe(false);
+  it('flags contacted too, but not enrolled or cancelled', () => {
+    expect(isStale('contacted', daysAgo(15), NOW)).toBe(true);
+    for (const s of ['enrolled', 'cancelled']) expect(isStale(s, daysAgo(60), NOW)).toBe(false);
   });
 });
 
