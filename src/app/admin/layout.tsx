@@ -51,12 +51,12 @@ export default async function AdminLayout({
         Responsive offsets are declared via an inline <style> block so they are
         guaranteed to be in the HTML, regardless of Tailwind CSS extraction.
 
-        Mobile (< 768 px): fixed top bar is 56 px tall → paddingTop: 56px
+        Mobile (< 768 px): fixed top bar and bottom bar are 56 px tall each
         Desktop (≥ 768 px): sidebar is 240 px wide → marginLeft: 240px, no top padding
       */}
       <style>{`
-        #admin-main { margin-left: 0; padding-top: 56px; }
-        @media (min-width: 768px) { #admin-main { margin-left: 240px; padding-top: 0; } }
+        #admin-main { margin-left: 0; padding-top: 56px; padding-bottom: calc(56px + env(safe-area-inset-bottom)); }
+        @media (min-width: 768px) { #admin-main { margin-left: 240px; padding-top: 0; padding-bottom: 0; } }
       `}</style>
       <main
         id="admin-main"

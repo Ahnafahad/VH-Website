@@ -1,549 +1,190 @@
 'use client';
 
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
+import { ChevronRight, LogOut, Search } from 'lucide-react';
 import AdminProductToggle from './AdminProductToggle';
-import { INSTRUCTOR_NAV_SECTIONS, NAV_SECTIONS } from './admin-nav';
-import { motion, Variants } from 'framer-motion';
+import AdminJumpPalette from './AdminJumpPalette';
+import AdminNavRow, { MONO, NAV_ROW_CSS } from './AdminNavRow';
+import { useNavBadges } from './useNavBadges';
+import { groupForPath, isActive, navForRole, OVERVIEW_ITEM, type AdminRole } from './admin-nav';
 import {
-  BEIGE,
-  BG,
-  BORDER,
-  INK_SOFT,
-  MUTED,
-  RED,
-  SLATE,
-  SURFACE,
-  SURFACE_SHELL,
-  T_BASE,
-  T_SM,
-  T_XS,
-} from './lms/lms-shared';
-import {
-  LogOut,
-} from 'lucide-react';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
+  BG, BORDER, BORDER_FIELD, FONT_HEADING, INK_SOFT, MUTED, OK, R_MD, RED, SURFACE, SURFACE_SHELL, T_BASE, T_MD, T_SM, T_XS,
+} from './lms/tokens';
 
 interface AdminSidebarProps {
   adminName:  string;
   adminEmail: string;
-  role:       'super_admin' | 'admin' | 'instructor';
+  role:       AdminRole;
 }
 
-// ─── Nav sections ─────────────────────────────────────────────────────────────
+const STORAGE_KEY = 'admin-nav-open';
+const DEFAULT_OPEN: Record<string, boolean> = { run: true, content: true };
 
-// ─── Motion variants ─────────────────────────────────────────────────────────
-
-const sidebarVariants: Variants = {
-  hidden:  { opacity: 0, x: -8 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: 'spring' as const,
-      stiffness: 320,
-      damping: 28,
-      staggerChildren: 0.045,
-      delayChildren: 0.05,
-    },
-  },
-};
-
-const navItemVariants: Variants = {
-  hidden:  { opacity: 0, x: -6 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
-  },
-};
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function isActive(href: string, pathname: string, also: string[] = []): boolean {
-  if (href === '/admin') return pathname === '/admin';
-  return [href, ...also].some(h => pathname === h || pathname.startsWith(h + '/'));
+function readOpen(): Record<string, boolean> {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? { ...DEFAULT_OPEN, ...JSON.parse(raw) } : DEFAULT_OPEN;
+  } catch { return DEFAULT_OPEN; }
 }
 
 function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .map(p => p[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
+  return name.split(' ').map(p => p[0]).join('').toUpperCase().slice(0, 2);
 }
-
-// ─── Component ────────────────────────────────────────────────────────────────
 
 export default function AdminSidebar({ adminName, adminEmail, role }: AdminSidebarProps) {
   const pathname = usePathname();
+  const badges   = useNavBadges();
+  const groups   = useMemo(() => navForRole(role), [role]);
+  const [open, setOpen]       = useState<Record<string, boolean>>(DEFAULT_OPEN);
+  const [palette, setPalette] = useState(false);
+  const [isMac, setIsMac]     = useState(false);
 
-  // ── Instructor shell (dark themed, classroom-scoped) ──────────────────────
-  if (role === 'instructor') {
-    const ink     = BG;
-    // Alpha variants derived from the shared BG token for dark-shell text and hover states.
-    const inkMid  = 'rgba(250,245,239,0.65)';
-    const inkDim  = 'rgba(250,245,239,0.35)';
-    const gold    = BEIGE;
-    const goldBg  = 'rgba(212,176,148,0.12)';
-    const hoverBg = 'rgba(250,245,239,0.06)';
+  const persist = useCallback((next: Record<string, boolean>) => {
+    setOpen(next);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(next)); } catch { /* storage blocked: folds last for this tab only */ }
+  }, []);
 
-    return (
-      <motion.aside
-        variants={sidebarVariants}
-        initial="hidden"
-        animate="visible"
-        className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 z-40"
-        style={{
-          background:  SLATE,
-          borderRight: '1px solid rgba(212,176,148,0.15)',
-        }}
-      >
-        {/* Logo */}
-        <div
-          style={{
-            padding:      '20px 20px 18px',
-            borderBottom: '1px solid rgba(212,176,148,0.15)',
-            display:      'flex',
-            flexDirection: 'column',
-            gap:          12,
-          }}
-        >
-          <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
-            <Image
-              src="/bth_compact_square_maroon.png"
-              alt="Beyond the Horizons"
-              width={30}
-              height={30}
-              style={{ height: 30, width: 30, borderRadius: 8, objectFit: 'cover' }}
-            />
-          </Link>
-          <AdminProductToggle variant="dark" />
-        </div>
+  // Restore remembered folds after mount (SSR and first client render must match).
+  useEffect(() => { setOpen(readOpen()); setIsMac(/Mac|iPhone|iPad/.test(navigator.platform)); }, []);
 
-        {/* Nav */}
-        <nav style={{ flex: 1, padding: '10px 8px', overflowY: 'auto' }} aria-label="Instructor navigation">
-          {INSTRUCTOR_NAV_SECTIONS.map((section, si) => (
-            <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 6 : 0 }}>
-              {section.label && (
-                <p
-                  style={{
-                    margin:        si === 0 ? '8px 12px 4px' : '12px 12px 4px',
-                    fontSize:      10,
-                    fontWeight:    600,
-                    color:         inkDim,
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    lineHeight:    1,
-                  }}
-                >
-                  {section.label}
-                </p>
-              )}
+  // The group holding the current page opens itself.
+  const currentId = groupForPath(groups, pathname)?.id;
+  useEffect(() => {
+    if (currentId) setOpen(o => (o[currentId] ? o : { ...o, [currentId]: true }));
+  }, [currentId]);
 
-              {section.items.map((item) => {
-                const active = isActive(item.href, pathname, item.also);
-                const Icon   = item.icon;
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setPalette(true); }
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, []);
 
-                return (
-                  <motion.div key={item.href} variants={navItemVariants}>
-                    <Link href={item.href} style={{ textDecoration: 'none' }}>
-                      <motion.div
-                        whileHover={active ? {} : {
-                          x: 2,
-                          backgroundColor: hoverBg,
-                          transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
-                        }}
-                        style={{
-                          position:        'relative',
-                          display:         'flex',
-                          alignItems:      'center',
-                          minHeight:       44,
-                          gap:             10,
-                          padding:         '9px 12px',
-                          cursor:          'pointer',
-                          marginBottom:    1,
-                          border:          '1px solid transparent',
-                          borderColor:     active ? 'rgba(212,176,148,0.28)' : 'transparent',
-                          borderRadius:    9,
-                          backgroundColor: active ? goldBg : 'transparent',
-                          transition:      'border-color 0.15s, background-color 0.15s',
-                        }}
-                      >
-                        {active && (
-                          <motion.span
-                            layoutId="instructor-nav-active"
-                            style={{
-                              position:      'absolute',
-                              inset:         0,
-                              background:    goldBg,
-                              pointerEvents: 'none',
-                              zIndex:        0,
-                            }}
-                            transition={{ type: 'spring' as const, stiffness: 380, damping: 30 }}
-                          />
-                        )}
+  const live = badges?.live;
+  const showOverview = OVERVIEW_ITEM.roles.includes(role);
 
-                        <Icon
-                          size={16}
-                          style={{
-                            flexShrink: 0,
-                            color:      active ? gold : inkMid,
-                            position:   'relative',
-                            zIndex:     1,
-                            transition: 'color 0.15s',
-                          }}
-                          aria-hidden
-                        />
-
-                        <span
-                          style={{
-                            fontSize:      T_BASE,
-                            fontWeight:    active ? 600 : 400,
-                            color:         active ? gold : inkMid,
-                            letterSpacing: '-0.01em',
-                            position:      'relative',
-                            zIndex:        1,
-                            transition:    'color 0.15s',
-                          }}
-                        >
-                          {item.label}
-                        </span>
-                      </motion.div>
-                    </Link>
-                  </motion.div>
-                );
-              })}
-            </div>
-          ))}
-        </nav>
-
-        {/* Footer */}
-        <div style={{ padding: '14px 16px', borderTop: '1px solid rgba(212,176,148,0.15)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-            <div
-              style={{
-                width:          32,
-                height:         32,
-                borderRadius:   '50%',
-                background:     gold,
-                color:          SLATE,
-                fontSize:       T_XS,
-                fontWeight:     700,
-                display:        'flex',
-                alignItems:     'center',
-                justifyContent: 'center',
-                flexShrink:     0,
-                letterSpacing:  '0.04em',
-              }}
-              aria-hidden
-            >
-              {getInitials(adminName || 'I')}
-            </div>
-
-            <div style={{ minWidth: 0 }}>
-              <p
-                style={{
-                  margin:       0,
-                  fontSize:     T_SM,
-                  fontWeight:   600,
-                  color:        ink,
-                  letterSpacing:'-0.01em',
-                  overflow:     'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace:   'nowrap',
-                }}
-              >
-                {adminName || 'Instructor'}
-              </p>
-              <p
-                style={{
-                  margin:       0,
-                  fontSize:     T_XS,
-                  color:        inkDim,
-                  overflow:     'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace:   'nowrap',
-                }}
-              >
-                {adminEmail}
-              </p>
-            </div>
-          </div>
-
-          <motion.button
-            onClick={() => signOut({ callbackUrl: '/auth/signin' })}
-            whileHover={{
-              backgroundColor: hoverBg,
-              transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
-            }}
-            whileTap={{ scale: 0.97 }}
-            style={{
-              width:         '100%',
-              display:       'flex',
-              alignItems:    'center',
-              gap:           8,
-              padding:       '8px 10px',
-              background:    'transparent',
-              border:        '1px solid rgba(250,245,239,0.15)',
-              borderRadius:  7,
-              cursor:        'pointer',
-              color:         inkMid,
-              fontSize:      T_SM,
-              fontWeight:    500,
-              letterSpacing: '-0.01em',
-            }}
-            aria-label="Sign out"
-          >
-            <LogOut size={13} aria-hidden />
-            Sign out
-          </motion.button>
-        </div>
-      </motion.aside>
-    );
-  }
-
-  // ── Admin / Super-admin shell (existing white theme) ──────────────────────
   return (
-    <motion.aside
-      variants={sidebarVariants}
-      initial="hidden"
-      animate="visible"
+    <aside
       className="hidden md:flex flex-col fixed left-0 top-0 h-full w-60 z-40"
-      style={{
-        background:   SURFACE_SHELL,
-        borderRight:  `1px solid ${BORDER}`,
-        colorScheme:  'light',
-      }}
+      style={{ background: SURFACE_SHELL, borderRight: `1px solid ${BORDER}`, colorScheme: 'light' }}
     >
-      {/* ── Logo area ─────────────────────────────────────────────────────── */}
-      <div
-        style={{
-          padding:        '20px 20px 18px',
-          borderBottom:   `1px solid ${BORDER}`,
-          display:        'flex',
-          flexDirection:  'column',
-          gap:            12,
-        }}
-      >
-        {/* BTH logo — links to the main site */}
-        <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
+      <style>{NAV_ROW_CSS}</style>
+      <style>{`
+        .admin-live-dot { animation: admin-live-pulse 2s ease-in-out infinite; }
+        @keyframes admin-live-pulse { 50% { opacity: .35; } }
+        @media (prefers-reduced-motion: reduce) { .admin-live-dot { animation: none; } }
+      `}</style>
+
+      <div style={{ padding: '16px 14px 10px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <Link href="/" aria-label="Beyond the Horizons, back to main site" style={{ display: 'flex', alignSelf: 'flex-start' }}>
           <Image
-            src="/bth_compact_square.png"
-            alt="Beyond the Horizons"
-            width={30}
-            height={30}
+            src="/bth_compact_square.png" alt="Beyond the Horizons" width={30} height={30}
             style={{ height: 30, width: 30, borderRadius: 8, objectFit: 'cover' }}
           />
         </Link>
         <AdminProductToggle variant="light" />
-      </div>
-
-      {/* ── Navigation ────────────────────────────────────────────────────── */}
-      <nav
-        style={{ flex: 1, padding: '10px 8px', overflowY: 'auto' }}
-        aria-label="Admin navigation"
-      >
-        {NAV_SECTIONS.map((section, si) => (
-          <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 6 : 0 }}>
-            {/* Section header */}
-            {section.label && (
-              <p
-                style={{
-                  margin:        si === 0 ? '8px 12px 4px' : '12px 12px 4px',
-                  fontSize:      10,
-                  fontWeight:    600,
-                  color:         MUTED,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  lineHeight:    1,
-                }}
-              >
-                {section.label}
-              </p>
-            )}
-
-            {section.items.map((item) => {
-              const active = isActive(item.href, pathname, item.also);
-              const Icon   = item.icon;
-
-              return (
-                <motion.div
-                  key={item.href}
-                  variants={navItemVariants}
-                >
-                  <Link href={item.href} style={{ textDecoration: 'none' }}>
-                    <motion.div
-                      whileHover={active ? {} : {
-                        x: 2,
-                        backgroundColor: 'rgba(0,0,0,0.03)',
-                        transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
-                      }}
-                      style={{
-                        position:        'relative',
-                        display:         'flex',
-                        alignItems:      'center',
-                        minHeight:       44,
-                        gap:             10,
-                        padding:         '9px 12px',
-                        cursor:          'pointer',
-                        marginBottom:    1,
-                        border:          '1px solid transparent',
-                        borderColor:     active ? 'rgba(118,15,19,0.18)' : 'transparent',
-                        borderRadius:    9,
-                        backgroundColor: active ? 'rgba(118,15,19,0.04)' : 'transparent',
-                        transition:      'border-color 0.15s, background-color 0.15s',
-                      }}
-                    >
-                      {/* Animated active bg indicator */}
-                      {active && (
-                        <motion.span
-                          layoutId="admin-nav-active"
-                          style={{
-                            position:      'absolute',
-                            inset:         0,
-                            background:    'rgba(118,15,19,0.04)',
-                            pointerEvents: 'none',
-                            zIndex:        0,
-                          }}
-                          transition={{ type: 'spring' as const, stiffness: 380, damping: 30 }}
-                        />
-                      )}
-
-                      <Icon
-                        size={16}
-                        style={{
-                          flexShrink: 0,
-                          color:      active ? RED : MUTED,
-                          position:   'relative',
-                          zIndex:     1,
-                          transition: 'color 0.15s',
-                        }}
-                        aria-hidden
-                      />
-
-                      <span
-                        style={{
-                          fontSize:      T_BASE,
-                          fontWeight:    active ? 600 : 400,
-                          color:         active ? RED : MUTED,
-                          letterSpacing: '-0.01em',
-                          position:      'relative',
-                          zIndex:        1,
-                          transition:    'color 0.15s, font-weight 0.15s',
-                        }}
-                      >
-                        {item.label}
-                      </span>
-                    </motion.div>
-                  </Link>
-                </motion.div>
-              );
-            })}
-          </div>
-        ))}
-      </nav>
-
-      {/* ── Bottom: admin info + sign out ─────────────────────────────────── */}
-      <div
-        style={{
-          padding:     '14px 16px',
-          borderTop:   `1px solid ${BORDER}`,
-        }}
-      >
-        {/* Admin name + email */}
-        <div
+        <button
+          onClick={() => setPalette(true)}
+          className="admin-nav-btn"
+          aria-label="Jump to page"
           style={{
-            display:      'flex',
-            alignItems:   'center',
-            gap:          10,
-            marginBottom: 10,
+            display: 'flex', alignItems: 'center', gap: 8, width: '100%', minHeight: 34, padding: '6px 10px',
+            border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, background: BG, color: MUTED, fontSize: T_SM, cursor: 'pointer',
           }}
         >
-          {/* Initials circle */}
+          <Search size={14} aria-hidden />
+          <span>Jump to page…</span>
+          <kbd style={{ marginLeft: 'auto', fontFamily: MONO, fontSize: 10, border: `1px solid ${BORDER}`, borderRadius: 4, padding: '0 5px' }}>
+            {isMac ? '⌘K' : 'Ctrl K'}
+          </kbd>
+        </button>
+        {live && (
+          <Link
+            href="/admin/today"
+            style={{ display: 'block', border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: '8px 10px', background: BG, textDecoration: 'none' }}
+          >
+            <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: T_XS, letterSpacing: '0.08em', textTransform: 'uppercase', color: OK, fontWeight: 600 }}>
+              <i aria-hidden className="admin-live-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: OK }} />
+              Live now
+            </span>
+            <span style={{ display: 'block', fontWeight: 600, fontSize: T_BASE, color: INK_SOFT, marginTop: 2 }}>{live.title}</span>
+            <span style={{ display: 'block', fontSize: T_SM, color: MUTED }}>
+              ends {new Date(live.endsAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}
+            </span>
+          </Link>
+        )}
+      </div>
+
+      <nav style={{ flex: 1, padding: '0 8px 8px', overflowY: 'auto' }} aria-label="Admin navigation">
+        {showOverview && (
+          <AdminNavRow item={OVERVIEW_ITEM} active={isActive(OVERVIEW_ITEM, pathname)} badges={badges} />
+        )}
+        {groups.map(g => {
+          const expanded = !!open[g.id];
+          return (
+            <div key={g.id}>
+              <button
+                className="admin-nav-btn"
+                aria-expanded={expanded}
+                aria-controls={`nav-group-${g.id}`}
+                onClick={() => persist({ ...open, [g.id]: !expanded })}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: 6, width: '100%', minHeight: 32, padding: '12px 8px 3px',
+                  border: 0, background: 'none', cursor: 'pointer', fontFamily: FONT_HEADING, fontStyle: 'italic', fontSize: T_MD, color: MUTED,
+                }}
+              >
+                <ChevronRight size={13} aria-hidden style={{ transform: expanded ? 'rotate(90deg)' : 'none', transition: 'transform .18s' }} />
+                {g.label}
+              </button>
+              <div id={`nav-group-${g.id}`} hidden={!expanded}>
+                {g.items.map(item => (
+                  <AdminNavRow key={item.href} item={item} active={isActive(item, pathname)} badges={badges} />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </nav>
+
+      <div style={{ padding: '12px 14px', borderTop: `1px solid ${BORDER}` }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
           <div
-            style={{
-              width:           32,
-              height:          32,
-              borderRadius:    '50%',
-              background:      RED,
-              color:           SURFACE,
-              fontSize:        T_XS,
-              fontWeight:      700,
-              display:         'flex',
-              alignItems:      'center',
-              justifyContent:  'center',
-              flexShrink:      0,
-              letterSpacing:   '0.04em',
-            }}
             aria-hidden
+            style={{
+              width: 32, height: 32, borderRadius: '50%', background: RED, color: SURFACE, fontSize: T_XS, fontWeight: 700,
+              display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, letterSpacing: '0.04em',
+            }}
           >
             {getInitials(adminName || 'A')}
           </div>
-
           <div style={{ minWidth: 0 }}>
-            <p
-              style={{
-                margin:        0,
-                fontSize:      T_SM,
-                fontWeight:    600,
-                color:         INK_SOFT,
-                letterSpacing: '-0.01em',
-                overflow:      'hidden',
-                textOverflow:  'ellipsis',
-                whiteSpace:    'nowrap',
-              }}
-            >
+            <p style={{ margin: 0, fontSize: T_SM, fontWeight: 600, color: INK_SOFT, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {adminName || 'Admin'}
             </p>
-            <p
-              style={{
-                margin:       0,
-                fontSize:     T_XS,
-                color:        MUTED,
-                overflow:     'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace:   'nowrap',
-              }}
-            >
+            <p style={{ margin: 0, fontSize: T_XS, color: MUTED, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {adminEmail}
             </p>
           </div>
         </div>
-
-        {/* Sign out button */}
-        <motion.button
+        <button
+          className="admin-nav-btn"
           onClick={() => signOut({ callbackUrl: '/auth/signin' })}
-          whileHover={{
-            backgroundColor: 'rgba(118,15,19,0.06)',
-            transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
-          }}
-          whileTap={{ scale: 0.97 }}
           style={{
-            width:          '100%',
-            display:        'flex',
-            alignItems:     'center',
-            gap:            8,
-            padding:        '8px 10px',
-            background:     'transparent',
-            border:         `1px solid ${BORDER}`,
-            borderRadius:   7,
-            cursor:         'pointer',
-            color:          MUTED,
-            fontSize:       T_SM,
-            fontWeight:     500,
-            letterSpacing:  '-0.01em',
+            width: '100%', display: 'flex', alignItems: 'center', gap: 8, minHeight: 36, padding: '8px 10px', background: 'transparent',
+            border: `1px solid ${BORDER}`, borderRadius: 7, cursor: 'pointer', color: MUTED, fontSize: T_SM, fontWeight: 500,
           }}
-          aria-label="Sign out"
         >
           <LogOut size={13} aria-hidden />
           Sign out
-        </motion.button>
+        </button>
       </div>
-    </motion.aside>
+
+      <AdminJumpPalette groups={groups} open={palette} onClose={() => setPalette(false)} />
+    </aside>
   );
 }
