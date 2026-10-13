@@ -58,7 +58,7 @@
     },
     {
       "path": "/api/cron/super-broadcasts",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 2 * * *"
     },
     {
       "path": "/api/cron/super-weekly-report",
@@ -66,7 +66,7 @@
     },
     {
       "path": "/api/cron/super-approvals",
-      "schedule": "*/5 * * * *"
+      "schedule": "0 3 * * *"
     }
   ]
 }

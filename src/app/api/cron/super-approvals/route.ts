@@ -1,5 +1,5 @@
 /**
- * GET /api/cron/super-approvals — every 5 minutes. Runs super-admin actions whose delay has elapsed.
+ * GET /api/cron/super-approvals — daily (Vercel Hobby allows daily crons only). Runs super-admin actions whose delay has elapsed.
  * Rows are claimed atomically (UPDATE ... WHERE status='pending'), so overlapping runs cannot double-execute.
  * Protected by CRON_SECRET (same pattern as lms-reminders).
  */

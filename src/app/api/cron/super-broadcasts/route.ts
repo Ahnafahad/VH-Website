@@ -1,5 +1,5 @@
 /**
- * GET /api/cron/super-broadcasts — every 5 minutes. Sends due scheduled broadcasts.
+ * GET /api/cron/super-broadcasts — daily (Vercel Hobby allows daily crons only). Sends due scheduled broadcasts.
  * Rows are claimed atomically (UPDATE ... WHERE status='scheduled'), so overlapping runs cannot double-send.
  * Protected by CRON_SECRET (same pattern as lms-reminders).
  */
