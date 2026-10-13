@@ -10,6 +10,7 @@ import { effectiveWindowState } from '@/lib/tests/windows';
 import { db } from '@/lib/db';
 import { tests, testWindows, testAttempts } from '@/lib/db/schema';
 import { inArray, sql } from 'drizzle-orm';
+import { loadTestSummaryExtras } from '@/lib/tests/summaries';
 
 export async function GET() {
   return safeApiHandler(async () => {
@@ -20,7 +21,7 @@ export async function GET() {
     if (rows.length === 0) return { tests: [] };
     const testIds = rows.map(t => t.id);
 
-    const [windows, counts] = await Promise.all([
+    const [windows, counts, extras] = await Promise.all([
       db.select().from(testWindows).where(inArray(testWindows.testId, testIds)),
       db.select({
         testId: testAttempts.testId,
@@ -29,10 +30,16 @@ export async function GET() {
       }).from(testAttempts)
         .where(inArray(testAttempts.testId, testIds))
         .groupBy(testAttempts.testId, testAttempts.status),
+      loadTestSummaryExtras(rows),
     ]);
 
     return {
-      tests: rows.map(t => ({
+      tests: rows.map(t => {
+        const { scores, ...summary } = extras.get(t.id)!;
+        void scores; // histogram input; only the per-test page needs it
+        return {
+        ...summary,
+        category: t.category ?? null,
         id: t.id,
         slug: t.slug,
         title: t.title,
@@ -62,7 +69,8 @@ export async function GET() {
           submitted: counts.find(c => c.testId === t.id && c.status === 'submitted')?.count ?? 0,
           banned: counts.find(c => c.testId === t.id && c.status === 'banned')?.count ?? 0,
         },
-      })),
+        };
+      }),
     };
   });
 }

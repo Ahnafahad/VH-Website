@@ -12,7 +12,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { Eye, ShieldAlert } from 'lucide-react';
-import { SANS, Spinner, SectionTitle } from './TestsAdminPage';
+import { SANS, Spinner, SectionTitle } from './TestPanels';
 import {
   BORDER,
   FONT_HEADING,
