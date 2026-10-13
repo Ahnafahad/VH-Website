@@ -1,130 +1,137 @@
-import type React from 'react';
-import {
-  LayoutDashboard,
-  BookOpen,
-  Users,
-  Trophy,
-  Megaphone,
-  Database,
-  BarChart3,
-  ClipboardList,
-  CalendarDays,
-  FileText,
-  BookMarked,
-  Rss,
-  CalendarCheck,
-  Settings,
-  CalendarClock,
-  UserCheck,
-  TriangleAlert,
-  LineChart,
-  Drama,
-  Route,
-  NotebookPen,
-  Printer,
-  Scale,
-} from 'lucide-react';
+// Single role-aware nav config. The desktop sidebar, the phone bottom bar and the More sheet all
+// render from this one list, so an item can never exist on one surface and be missing from another.
+// Pure data + pure functions only (no React), so the role/active/filter logic is unit-testable.
 
-// Single source of truth for the admin navigation: the desktop sidebar and the mobile menu both
-// render these lists, so an item can never exist on one and be missing from the other.
+export type AdminRole = 'super_admin' | 'admin' | 'instructor';
+
+/** Keys of the live-count payload from /api/admin/nav-badges. */
+export type BadgeKey = 'homework' | 'enrolments' | 'essays' | 'errors' | 'bookings';
 
 export interface NavItem {
-  href:  string;
+  href:   string;
+  label:  string;
+  roles:  readonly AdminRole[];
+  also?:  readonly string[]; // extra route prefixes that keep this item highlighted
+  badge?: BadgeKey;          // count slot; red only when > 0 (every badge here means "someone must act")
+}
+
+export interface NavGroup {
+  id:    'run' | 'content' | 'students' | 'insights' | 'admin';
   label: string;
-  icon:  React.ComponentType<import('lucide-react').LucideProps>;
-  also?: string[]; // extra route prefixes that keep this item highlighted
+  items: readonly NavItem[];
 }
 
-export interface NavSection {
-  label: string | null; // null = no section header (top-level)
-  items: NavItem[];
-}
+const ALL: readonly AdminRole[] = ['super_admin', 'admin', 'instructor'];
+const ADMINS: readonly AdminRole[] = ['super_admin', 'admin'];
 
-export const INSTRUCTOR_NAV_SECTIONS: NavSection[] = [
+/** Pinned above the groups, admins only. */
+export const OVERVIEW_ITEM: NavItem = { href: '/admin', label: 'Overview', roles: ADMINS };
+
+export const NAV_GROUPS: readonly NavGroup[] = [
   {
-    label: null,
+    id: 'run', label: 'Run',
     items: [
-      { href: '/admin/today', label: 'Today', icon: CalendarCheck },
+      { href: '/admin/today',    label: 'Today',    roles: ALL },
+      { href: '/admin/classes',  label: 'Classes',  roles: ALL },
+      { href: '/admin/bookings', label: 'Bookings', roles: ALL, badge: 'bookings' },
     ],
   },
   {
-    label: 'TEACHING',
+    id: 'content', label: 'Content',
     items: [
-      { href: '/admin/classes',            label: 'Classes',   icon: CalendarDays  },
-      { href: '/admin/materials',          label: 'Materials', icon: FileText      },
-      { href: '/admin/homework',           label: 'Homework',  icon: BookMarked    },
-      { href: '/admin/printdesk',          label: 'PrintDesk', icon: Printer       },
-      { href: '/admin/bookings',           label: 'Bookings',  icon: CalendarClock },
-      { href: '/admin/announcements-feed', label: 'Feed',      icon: Rss           },
+      { href: '/admin/materials',          label: 'Materials',     roles: ALL },
+      { href: '/admin/homework',           label: 'Homework',      roles: ALL, badge: 'homework' },
+      { href: '/admin/tests',              label: 'Tests & marks', roles: ALL },
+      { href: '/admin/essays',             label: 'Essays',        roles: ALL, badge: 'essays' },
+      { href: '/admin/printdesk',          label: 'PrintDesk',     roles: ALL },
+      { href: '/admin/announcements-feed', label: 'Feed',          roles: ALL },
+      { href: '/admin/words',              label: 'Word Bank',     roles: ADMINS },
     ],
   },
   {
-    label: 'MARKS & INSIGHTS',
+    id: 'students', label: 'Students',
     items: [
-      { href: '/admin/students',      label: 'Progress',      icon: LineChart },
-      { href: '/admin/tests',         label: 'Tests & marks', icon: ClipboardList },
-      { href: '/admin/essays',        label: 'Essays',        icon: NotebookPen },
-      { href: '/admin/last-word',     label: 'Last Word',     icon: Scale },
-      { href: '/admin/analytics',     label: 'LMS statistics', icon: BarChart3 },
-      { href: '/admin/practice', label: 'Practice & Diagnosis', icon: Route, also: ['/admin/marathon', '/admin/sprint', '/admin/redline', '/admin/diagnosis-fbs'] },
+      { href: '/admin/students',      label: 'Progress',    roles: ALL },
+      { href: '/admin/users',         label: 'Users',       roles: ADMINS },
+      // Label is "Enrolments"; the route stays /admin/registrations until the enrol agent moves it.
+      { href: '/admin/registrations', label: 'Enrolments',  roles: ADMINS, badge: 'enrolments' },
+      { href: '/admin/leaderboard',   label: 'Leaderboard', roles: ADMINS },
+      { href: '/admin/avatars',       label: 'Avatars',     roles: ADMINS },
     ],
   },
   {
-    label: 'SETTINGS',
+    id: 'insights', label: 'Insights',
     items: [
-      { href: '/admin/settings/google', label: 'Google Calendar', icon: Settings },
+      // Games is a tab inside Statistics, not a nav entry.
+      { href: '/admin/analytics', label: 'Statistics', roles: ALL },
+      {
+        href: '/admin/practice', label: 'Practice & diagnosis', roles: ALL,
+        also: ['/admin/marathon', '/admin/sprint', '/admin/redline', '/admin/diagnosis-fbs'],
+      },
+    ],
+  },
+  {
+    id: 'admin', label: 'Admin',
+    items: [
+      { href: '/admin/operational',     label: 'Operational',   roles: ADMINS },
+      { href: '/admin/announcements',   label: 'Announcements', roles: ADMINS },
+      { href: '/admin/errors',          label: 'Errors',        roles: ADMINS, badge: 'errors' },
+      { href: '/admin/settings/google', label: 'Settings',      roles: ALL },
     ],
   },
 ];
 
-export const NAV_SECTIONS: NavSection[] = [
-  {
-    label: null,
-    items: [
-      { href: '/admin', label: 'Overview', icon: LayoutDashboard },
-      { href: '/admin/operational', label: 'Operational Admin', icon: ClipboardList },
-    ],
-  },
-  {
-    label: 'TEACHING',
-    items: [
-      { href: '/admin/today',              label: 'Today',    icon: CalendarCheck },
-      { href: '/admin/classes',            label: 'Classes',  icon: CalendarDays  },
-      { href: '/admin/materials',          label: 'Materials',icon: FileText      },
-      { href: '/admin/homework',           label: 'Homework', icon: BookMarked    },
-      { href: '/admin/printdesk',          label: 'PrintDesk',icon: Printer       },
-      { href: '/admin/bookings',           label: 'Bookings', icon: CalendarClock },
-      { href: '/admin/announcements-feed', label: 'Feed',     icon: Rss           },
-    ],
-  },
-  {
-    label: 'MARKS & PRACTICE',
-    items: [
-      { href: '/admin/tests',       label: 'Tests & marks',icon: ClipboardList },
-      { href: '/admin/essays',      label: 'Essays',      icon: NotebookPen   },
-      { href: '/admin/analytics',   label: 'LMS statistics',icon: BarChart3 },
-      { href: '/admin/vocab',       label: 'Vocabulary',  icon: BookOpen      },
-      { href: '/admin/words',       label: 'Word Bank',   icon: Database      },
-      { href: '/admin/last-word',   label: 'Last Word',   icon: Scale         },
-      { href: '/admin/leaderboard', label: 'Leaderboard', icon: Trophy        },
-      { href: '/admin/practice', label: 'Practice & Diagnosis', icon: Route, also: ['/admin/marathon', '/admin/sprint', '/admin/redline', '/admin/diagnosis-fbs'] },
-    ],
-  },
-  {
-    label: 'STUDENTS & COMMS',
-    items: [
-      { href: '/admin/students',      label: 'Progress',       icon: LineChart },
-      { href: '/admin/users',         label: 'Users',          icon: Users     },
-      { href: '/admin/registrations', label: 'Registrations',  icon: UserCheck },
-      { href: '/admin/announcements', label: 'Announcements',  icon: Megaphone },
-      { href: '/admin/avatars',       label: 'Avatars',        icon: Drama    },
-    ],
-  },
-  {
-    label: 'SYSTEM',
-    items: [
-      { href: '/admin/errors',           label: 'Error Logs',     icon: TriangleAlert },
-      { href: '/admin/settings/google',  label: 'Google Calendar', icon: Settings  },
-    ],
-  },
+/** Groups with only the items this role may see; empty groups are dropped. */
+export function navForRole(role: AdminRole, groups: readonly NavGroup[] = NAV_GROUPS): NavGroup[] {
+  return groups
+    .map(g => ({ ...g, items: g.items.filter(i => i.roles.includes(role)) }))
+    .filter(g => g.items.length > 0);
+}
+
+export function isActive(item: Pick<NavItem, 'href' | 'also'>, pathname: string): boolean {
+  if (item.href === '/admin') return pathname === '/admin';
+  return [item.href, ...(item.also ?? [])].some(h => pathname === h || pathname.startsWith(h + '/'));
+}
+
+/** The group holding the current page (auto-opened in the sidebar), or undefined. */
+export function groupForPath(groups: readonly NavGroup[], pathname: string): NavGroup | undefined {
+  return groups.find(g => g.items.some(i => isActive(i, pathname)));
+}
+
+/** Case-insensitive substring match on label; empty query returns nothing. */
+export function filterItems(groups: readonly NavGroup[], query: string): NavItem[] {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+  return groups.flatMap(g => g.items).filter(i => i.label.toLowerCase().includes(q));
+}
+
+// Phone bottom bar: four everyday areas. "Students" and "Content" light up for any page in
+// their group (match = group id); Today and Classes match their own route.
+export interface BottomTab {
+  label:  string;
+  href:   string;
+  group?: NavGroup['id'];
+  badge?: BadgeKey;
+}
+
+export const BOTTOM_TABS: readonly BottomTab[] = [
+  { label: 'Today',    href: '/admin/today' },
+  { label: 'Classes',  href: '/admin/classes' },
+  { label: 'Students', href: '/admin/students', group: 'students' },
+  { label: 'Content',  href: '/admin/homework', group: 'content', badge: 'homework' },
 ];
+
+export function isTabActive(tab: BottomTab, groups: readonly NavGroup[], pathname: string): boolean {
+  if (tab.group) return !!groups.find(g => g.id === tab.group)?.items.some(i => isActive(i, pathname));
+  return pathname === tab.href || pathname.startsWith(tab.href + '/');
+}
+
+export interface NavBadges {
+  homework:        number;
+  enrolments:      number;
+  enrolmentsStale: number; // pending enrolments older than 14 days
+  essays:          number;
+  errors:          number;
+  bookings:        number;
+  live:            { title: string; subject: string; endsAt: number } | null; // endsAt: epoch ms
+}

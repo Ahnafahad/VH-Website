@@ -1,517 +1,81 @@
 'use client';
 
+import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { signOut } from 'next-auth/react';
-import { useState } from 'react';
-import { AnimatePresence, motion, Variants } from 'framer-motion';
-import { INSTRUCTOR_NAV_SECTIONS, NAV_SECTIONS } from './admin-nav';
+import { CalendarCheck, CalendarDays, Ellipsis, FileText, LogOut, Users } from 'lucide-react';
 import AdminProductToggle from './AdminProductToggle';
+import AdminNavRow, { NAV_ROW_CSS } from './AdminNavRow';
+import { useNavBadges } from './useNavBadges';
+import { BOTTOM_TABS, isActive, isTabActive, navForRole, OVERVIEW_ITEM, type AdminRole } from './admin-nav';
+import { useDialogBehaviour } from './lms/lms-shared';
 import {
-  BEIGE,
-  BG,
-  BORDER,
-  INK_SOFT,
-  MUTED,
-  RED,
-  R_SM,
-  SLATE,
-  SURFACE,
-  SURFACE_SHELL,
-  T_BASE,
-  T_SM,
-  T_XS,
-  useDialogBehaviour,
-} from './lms/lms-shared';
-import {
-  Menu,
-  X,
-  LogOut,
-} from 'lucide-react';
-
-// ─── Types ────────────────────────────────────────────────────────────────────
+  BG, BORDER, FONT_HEADING, MUTED, RED, SHADOW_LG, SURFACE, SURFACE_SHELL, T_SM, T_XS, Z_MODAL, Z_MODAL_BACKDROP,
+} from './lms/tokens';
 
 interface AdminMobileHeaderProps {
   adminName:  string;
   adminEmail: string;
-  role:       'super_admin' | 'admin' | 'instructor';
+  role:       AdminRole;
 }
 
-// ─── Motion variants ─────────────────────────────────────────────────────────
+const TAB_ICONS = {
+  Today: CalendarCheck, Classes: CalendarDays, Students: Users, Content: FileText,
+} as const;
 
-const backdropVariants: Variants = {
-  hidden:  { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { duration: 0.18 },
-  },
-  exit: {
-    opacity: 0,
-    transition: { duration: 0.16, delay: 0.05 },
-  },
-};
-
-const drawerVariants: Variants = {
-  hidden:  { x: -256 },
-  visible: {
-    x: 0,
-    transition: { type: 'spring' as const, stiffness: 350, damping: 25 },
-  },
-  exit: {
-    x: -256,
-    transition: { type: 'spring' as const, stiffness: 400, damping: 30 },
-  },
-};
-
-const drawerItemVariants: Variants = {
-  hidden:  { opacity: 0, x: -8 },
-  visible: (i: number) => ({
-    opacity: 1,
-    x: 0,
-    transition: {
-      type:      'spring' as const,
-      stiffness: 380,
-      damping:   28,
-      delay:     i * 0.04,
-    },
-  }),
-};
-
-// ─── Helpers ─────────────────────────────────────────────────────────────────
-
-function isActive(href: string, pathname: string, also: string[] = []): boolean {
-  if (href === '/admin') return pathname === '/admin';
-  return [href, ...also].some(h => pathname === h || pathname.startsWith(h + '/'));
-}
+const BAR_H = 56;
 
 function getInitials(name: string): string {
-  return name
-    .split(' ')
-    .map(p => p[0])
-    .join('')
-    .toUpperCase()
-    .slice(0, 2);
+  return name.split(' ').map(p => p[0]).join('').toUpperCase().slice(0, 2);
 }
 
-// ─── Component ────────────────────────────────────────────────────────────────
-
+/** Phone chrome: slim top bar, bottom bar (4 everyday areas + More) and the grouped More sheet. */
 export default function AdminMobileHeader({ adminName, adminEmail, role }: AdminMobileHeaderProps) {
-  const pathname        = usePathname();
-  const [open, setOpen] = useState(false);
-  // Escape-to-close + scroll lock, matching every other dismissible surface in
-  // the admin LMS. NOT attaching the returned ref to the drawer panel — doing
-  // so broke framer-motion's slide-in/out animation (the panel got stuck at
-  // its "hidden" x:-256 transform instead of animating to x:0), so this drawer
-  // gets Escape/scroll-lock but not the hook's focus-trap/auto-focus half.
-  useDialogBehaviour(open, () => setOpen(false));
+  const pathname = usePathname();
+  const badges   = useNavBadges();
+  const groups   = useMemo(() => navForRole(role), [role]);
+  const [more, setMore] = useState(false);
+  const sheetRef = useDialogBehaviour(more, () => setMore(false));
 
-  // ── Instructor shell ───────────────────────────────────────────────────────
-  if (role === 'instructor') {
-    const bg      = SLATE;
-    const gold    = BEIGE;
-    const ink     = BG;
-    // Alpha variants derived from the shared BG token for dark-shell text states.
-    const inkMid  = 'rgba(250,245,239,0.65)';
-    const inkDim  = 'rgba(250,245,239,0.35)';
-    const goldBg  = 'rgba(212,176,148,0.12)';
+  const moreActive = more || (!BOTTOM_TABS.some(t => isTabActive(t, groups, pathname)));
+  const showOverview = OVERVIEW_ITEM.roles.includes(role);
+  // The red dot on More says "something inside needs you" for items not reachable from a tab.
+  const moreCount = (badges?.bookings ?? 0) + (badges?.enrolments ?? 0) + (badges?.errors ?? 0);
 
-    return (
-      <>
-        <style>{`
-          #admin-mobile-header { display: flex; }
-          @media (min-width: 768px) { #admin-mobile-header { display: none !important; } }
-        `}</style>
-        <header
-          id="admin-mobile-header"
-          style={{
-            position:    'fixed',
-            top:         0,
-            left:        0,
-            right:       0,
-            height:      56,
-            background:  bg,
-            borderBottom:`1px solid rgba(212,176,148,0.15)`,
-            zIndex:      50,
-            alignItems:  'center',
-            padding:     '0 16px',
-          }}
-        >
-          <motion.button
-            whileTap={{ scale: 0.92 }}
-            onClick={() => setOpen(true)}
-            style={{
-              background:  'transparent',
-              border:      'none',
-              cursor:      'pointer',
-              padding:     6,
-              borderRadius:R_SM,
-              display:     'flex',
-              alignItems:  'center',
-              color:       ink,
-            }}
-            aria-label="Open navigation menu"
-          >
-            <Menu size={20} aria-hidden />
-          </motion.button>
-
-          <div
-            style={{
-              position:  'absolute',
-              left:      '50%',
-              transform: 'translateX(-50%)',
-              display:   'flex',
-              alignItems:'center',
-            }}
-          >
-            <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
-              <Image
-                src="/bth_compact_square_maroon.png"
-                alt="Beyond the Horizons"
-                width={28}
-                height={28}
-                style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
-              />
-            </Link>
-          </div>
-
-          <div
-            style={{
-              marginLeft:    'auto',
-              width:         32,
-              height:        32,
-              borderRadius:  '50%',
-              background:    gold,
-              color:         bg,
-              fontSize:      T_XS,
-              fontWeight:    700,
-              display:       'flex',
-              alignItems:    'center',
-              justifyContent:'center',
-              letterSpacing: '0.04em',
-              flexShrink:    0,
-            }}
-            aria-label={`Signed in as ${adminName}`}
-            title={adminName}
-          >
-            {getInitials(adminName || 'I')}
-          </div>
-        </header>
-
-        <AnimatePresence>
-          {open && (
-            <>
-              <motion.div
-                key="backdrop"
-                variants={backdropVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                onClick={() => setOpen(false)}
-                style={{
-                  position:   'fixed',
-                  inset:      0,
-                  background: 'rgba(0,0,0,0.45)',
-                  zIndex:     60,
-                }}
-                aria-hidden
-              />
-
-              <motion.div
-                key="drawer"
-                variants={drawerVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                style={{
-                  position:     'fixed',
-                  top:          0,
-                  left:         0,
-                  height:       '100%',
-                  width:        256,
-                  background:   bg,
-                  boxShadow:    '4px 0 24px rgba(0,0,0,0.35)',
-                  zIndex:       70,
-                  display:      'flex',
-                  flexDirection:'column',
-                }}
-                aria-label="Navigation drawer"
-                role="dialog"
-                aria-modal
-              >
-                <div
-                  style={{
-                    padding:       '16px 16px 14px',
-                    borderBottom:  '1px solid rgba(212,176,148,0.15)',
-                    display:       'flex',
-                    alignItems:    'center',
-                    justifyContent:'space-between',
-                  }}
-                >
-                  <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
-                    <Image
-                      src="/bth_compact_square_maroon.png"
-                      alt="Beyond the Horizons"
-                      width={28}
-                      height={28}
-                      style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
-                    />
-                  </Link>
-                  <motion.button
-                    whileTap={{ scale: 0.9 }}
-                    onClick={() => setOpen(false)}
-                    style={{
-                      background:   'transparent',
-                      border:       'none',
-                      cursor:       'pointer',
-                      padding:      4,
-                      borderRadius: R_SM,
-                      display:      'flex',
-                      alignItems:   'center',
-                      color:        inkMid,
-                    }}
-                    aria-label="Close navigation menu"
-                  >
-                    <X size={18} aria-hidden />
-                  </motion.button>
-                </div>
-
-                <div style={{ padding: '12px 16px 0' }}>
-                  <AdminProductToggle variant="dark" />
-                </div>
-
-                <nav style={{ flex: 1, padding: '8px 8px', overflowY: 'auto' }} aria-label="Instructor navigation">
-                  {(() => {
-                    let itemIndex = 0;
-                    return INSTRUCTOR_NAV_SECTIONS.map((section) => (
-                      <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 4 : 0 }}>
-                        {section.label && (
-                          <p
-                            style={{
-                              margin:        '10px 12px 4px',
-                              fontSize:      10,
-                              fontWeight:    600,
-                              color:         inkDim,
-                              letterSpacing: '0.1em',
-                              textTransform: 'uppercase',
-                              lineHeight:    1,
-                            }}
-                          >
-                            {section.label}
-                          </p>
-                        )}
-
-                        {section.items.map((item) => {
-                          const i      = itemIndex++;
-                          const active = isActive(item.href, pathname, item.also);
-                          const Icon   = item.icon;
-
-                          return (
-                            <motion.div
-                              key={item.href}
-                              custom={i}
-                              variants={drawerItemVariants}
-                              initial="hidden"
-                              animate="visible"
-                            >
-                              <Link
-                                href={item.href}
-                                style={{ textDecoration: 'none' }}
-                                onClick={() => setOpen(false)}
-                              >
-                                <div
-                                  style={{
-                                    position:        'relative',
-                                    display:         'flex',
-                                    alignItems:      'center',
-                                    minHeight:       44,
-                                    gap:             10,
-                                    padding:         '10px 12px',
-                                    border:          '1px solid transparent',
-                                    borderColor:     active ? 'rgba(212,176,148,0.28)' : 'transparent',
-                                    borderRadius:    9,
-                                    backgroundColor: active ? goldBg : 'transparent',
-                                    marginBottom:    2,
-                                    cursor:          'pointer',
-                                    transition:      'background-color 0.12s, border-color 0.12s',
-                                  }}
-                                >
-                                  <Icon
-                                    size={16}
-                                    style={{ flexShrink: 0, color: active ? gold : inkMid }}
-                                    aria-hidden
-                                  />
-                                  <span
-                                    style={{
-                                      fontSize:      T_BASE,
-                                      fontWeight:    active ? 600 : 400,
-                                      color:         active ? gold : inkMid,
-                                      letterSpacing: '-0.01em',
-                                    }}
-                                  >
-                                    {item.label}
-                                  </span>
-                                </div>
-                              </Link>
-                            </motion.div>
-                          );
-                        })}
-                      </div>
-                    ));
-                  })()}
-                </nav>
-
-                <div style={{ padding: '14px 16px', borderTop: '1px solid rgba(212,176,148,0.15)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
-                    <div
-                      style={{
-                        width:          32,
-                        height:         32,
-                        borderRadius:   '50%',
-                        background:     gold,
-                        color:          bg,
-                        fontSize:       T_XS,
-                        fontWeight:     700,
-                        display:        'flex',
-                        alignItems:     'center',
-                        justifyContent: 'center',
-                        flexShrink:     0,
-                        letterSpacing:  '0.04em',
-                      }}
-                      aria-hidden
-                    >
-                      {getInitials(adminName || 'I')}
-                    </div>
-                    <div style={{ minWidth: 0 }}>
-                      <p style={{ margin: 0, fontSize: T_SM, fontWeight: 600, color: ink, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {adminName || 'Instructor'}
-                      </p>
-                      <p style={{ margin: 0, fontSize: T_XS, color: inkDim, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        {adminEmail}
-                      </p>
-                    </div>
-                  </div>
-
-                  <motion.button
-                    whileTap={{ scale: 0.97 }}
-                    onClick={() => signOut({ callbackUrl: '/auth/signin' })}
-                    style={{
-                      width:         '100%',
-                      display:       'flex',
-                      alignItems:    'center',
-                      gap:           8,
-                      padding:       '8px 10px',
-                      background:    'transparent',
-                      border:        '1px solid rgba(250,245,239,0.15)',
-                      borderRadius:  7,
-                      cursor:        'pointer',
-                      color:         inkMid,
-                      fontSize:      T_SM,
-                      fontWeight:    500,
-                      letterSpacing: '-0.01em',
-                    }}
-                    aria-label="Sign out"
-                  >
-                    <LogOut size={13} aria-hidden />
-                    Sign out
-                  </motion.button>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </AnimatePresence>
-      </>
-    );
-  }
-
-  // ── Admin / Super-admin shell (existing white theme) ──────────────────────
   return (
     <>
-      {/* ── Fixed top bar — visible below md (768px), hidden at md+ ─────── */}
-      {/*
-        We use an inline <style> media query rather than relying solely on
-        Tailwind `md:hidden` to guarantee the bar disappears at the exact
-        breakpoint where the sidebar appears (768 px), regardless of Tailwind
-        CSS extraction order or build configuration.
-      */}
+      <style>{NAV_ROW_CSS}</style>
       <style>{`
-        #admin-mobile-header { display: flex; }
-        @media (min-width: 768px) { #admin-mobile-header { display: none !important; } }
+        #admin-mobile-header, #admin-bottom-bar { display: flex; }
+        @media (min-width: 768px) { #admin-mobile-header, #admin-bottom-bar { display: none !important; } }
+        #admin-bottom-bar a, #admin-bottom-bar button { text-decoration: none; }
+        @media (prefers-reduced-motion: no-preference) { #admin-more-sheet { animation: admin-sheet-in .22s ease-out; } }
+        @keyframes admin-sheet-in { from { transform: translateY(24px); opacity: 0; } }
       `}</style>
+
       <header
         id="admin-mobile-header"
+        className="z-40"
         style={{
-          position:    'fixed',
-          top:         0,
-          left:        0,
-          right:       0,
-          height:      56,
-          background:  SURFACE_SHELL,
-          borderBottom:`1px solid ${BORDER}`,
-          zIndex:      50,
-          alignItems:  'center',
-          padding:     '0 16px',
-          colorScheme: 'light',
+          position: 'fixed', top: 0, left: 0, right: 0, height: BAR_H, background: SURFACE_SHELL,
+          borderBottom: `1px solid ${BORDER}`, alignItems: 'center', gap: 12, padding: '0 16px', colorScheme: 'light',
         }}
       >
-        {/* Hamburger */}
-        <motion.button
-          whileTap={{ scale: 0.92 }}
-          onClick={() => setOpen(true)}
-          style={{
-            background:  'transparent',
-            border:      'none',
-            cursor:      'pointer',
-            padding:     6,
-            minWidth:    44,
-            minHeight:   44,
-            borderRadius:R_SM,
-            display:     'flex',
-            alignItems:  'center',
-            color:       INK_SOFT,
-          }}
-          aria-label="Open navigation menu"
-        >
-          <Menu size={20} aria-hidden />
-        </motion.button>
-
-        {/* Logo */}
-        <div
-          style={{
-            position:  'absolute',
-            left:      '50%',
-            transform: 'translateX(-50%)',
-            display:   'flex',
-            alignItems:'center',
-          }}
-        >
-          <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
-            <Image
-              src="/bth_compact_square.png"
-              alt="Beyond the Horizons"
-              width={28}
-              height={28}
-              style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
-            />
-          </Link>
+        <Link href="/" aria-label="Beyond the Horizons, back to main site" style={{ display: 'flex', flexShrink: 0 }}>
+          <Image
+            src="/bth_compact_square.png" alt="Beyond the Horizons" width={28} height={28}
+            style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
+          />
+        </Link>
+        <div style={{ flex: 1, maxWidth: 160, marginLeft: 'auto' }}>
+          <AdminProductToggle variant="light" />
         </div>
-
-        {/* Admin initials avatar */}
         <div
           style={{
-            marginLeft:    'auto',
-            width:         32,
-            height:        32,
-            borderRadius:  '50%',
-            background:    RED,
-            color:         SURFACE,
-            fontSize:      T_XS,
-            fontWeight:    700,
-            display:       'flex',
-            alignItems:    'center',
-            justifyContent:'center',
-            letterSpacing: '0.04em',
-            flexShrink:    0,
+            width: 32, height: 32, borderRadius: '50%', background: RED, color: SURFACE, fontSize: T_XS, fontWeight: 700,
+            display: 'flex', alignItems: 'center', justifyContent: 'center', letterSpacing: '0.04em', flexShrink: 0,
           }}
           aria-label={`Signed in as ${adminName}`}
           title={adminName}
@@ -520,279 +84,103 @@ export default function AdminMobileHeader({ adminName, adminEmail, role }: Admin
         </div>
       </header>
 
-      {/* ── Slide-in drawer ───────────────────────────────────────────────── */}
-      <AnimatePresence>
-        {open && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              key="backdrop"
-              variants={backdropVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              onClick={() => setOpen(false)}
+      {more && (
+        <>
+          <div
+            onClick={() => setMore(false)} aria-hidden
+            style={{ position: 'fixed', inset: 0, background: 'rgba(26,5,7,0.35)', zIndex: Z_MODAL_BACKDROP }}
+          />
+          <div
+            id="admin-more-sheet" ref={sheetRef} role="dialog" aria-modal="true" aria-label="All pages" tabIndex={-1}
+            style={{
+              position: 'fixed', left: 0, right: 0, bottom: BAR_H + 8, maxHeight: `calc(100dvh - ${BAR_H * 2 + 24}px)`, overflowY: 'auto',
+              background: SURFACE, borderTop: `1px solid ${BORDER}`, borderRadius: '18px 18px 0 0', padding: '14px 16px 8px',
+              boxShadow: SHADOW_LG, zIndex: Z_MODAL, colorScheme: 'light',
+            }}
+          >
+            {showOverview && (
+              <AdminNavRow item={OVERVIEW_ITEM} active={isActive(OVERVIEW_ITEM, pathname)} badges={badges} minHeight={44} onNavigate={() => setMore(false)} />
+            )}
+            {groups.map(g => (
+              <section key={g.id} aria-label={g.label}>
+                <h4 style={{ fontFamily: FONT_HEADING, fontStyle: 'italic', fontWeight: 500, color: MUTED, margin: '10px 0 2px 8px', fontSize: 14 }}>
+                  {g.label}
+                </h4>
+                {g.items.map(item => (
+                  <AdminNavRow
+                    key={item.href} item={item} active={isActive(item, pathname)} badges={badges}
+                    minHeight={44} onNavigate={() => setMore(false)}
+                  />
+                ))}
+              </section>
+            ))}
+            <button
+              className="admin-nav-btn"
+              onClick={() => signOut({ callbackUrl: '/auth/signin' })}
               style={{
-                position:   'fixed',
-                inset:      0,
-                background: 'rgba(0,0,0,0.22)',
-                zIndex:     60,
+                width: '100%', display: 'flex', alignItems: 'center', gap: 8, minHeight: 44, margin: '12px 0 4px', padding: '8px 10px',
+                background: 'transparent', border: `1px solid ${BORDER}`, borderRadius: 7, cursor: 'pointer', color: MUTED, fontSize: T_SM, fontWeight: 500,
               }}
-              aria-hidden
-            />
-
-            {/* Drawer panel */}
-            <motion.div
-              key="drawer"
-              variants={drawerVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              style={{
-                position:    'fixed',
-                top:         0,
-                left:        0,
-                height:      '100%',
-                width:       256,
-                background:  SURFACE_SHELL,
-                boxShadow:   '4px 0 24px rgba(0,0,0,0.10)',
-                zIndex:      70,
-                display:     'flex',
-                flexDirection:'column',
-                colorScheme: 'light',
-              }}
-              aria-label="Navigation drawer"
-              role="dialog"
-              aria-modal
             >
-              {/* Drawer header */}
-              <div
-                style={{
-                  padding:      '16px 16px 14px',
-                  borderBottom: `1px solid ${BORDER}`,
-                  display:      'flex',
-                  alignItems:   'center',
-                  justifyContent:'space-between',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Link href="/" aria-label="Beyond the Horizons — back to main site" style={{ display: 'flex', flexShrink: 0, alignSelf: 'flex-start' }}>
-                    <Image
-                      src="/bth_compact_square.png"
-                      alt="Beyond the Horizons"
-                      width={28}
-                      height={28}
-                      style={{ height: 28, width: 28, borderRadius: 8, objectFit: 'cover' }}
-                    />
-                  </Link>
-                </div>
+              <LogOut size={14} aria-hidden />
+              Sign out ({adminEmail})
+            </button>
+          </div>
+        </>
+      )}
 
-                {/* Close button */}
-                <motion.button
-                  whileTap={{ scale: 0.9 }}
-                  onClick={() => setOpen(false)}
-                  style={{
-                    background:   'transparent',
-                    border:       'none',
-                    cursor:       'pointer',
-                    padding:      4,
-                    borderRadius: R_SM,
-                    display:      'flex',
-                    alignItems:   'center',
-                    color:        MUTED,
-                  }}
-                  aria-label="Close navigation menu"
-                >
-                  <X size={18} aria-hidden />
-                </motion.button>
-              </div>
-
-              <div style={{ padding: '12px 16px 0' }}>
-                <AdminProductToggle variant="light" />
-              </div>
-
-              {/* Drawer nav items */}
-              <nav
-                style={{ flex: 1, padding: '8px 8px', overflowY: 'auto' }}
-                aria-label="Admin navigation"
-              >
-                {(() => {
-                  let itemIndex = 0;
-                  return NAV_SECTIONS.map((section) => (
-                    <div key={section.label ?? '__top__'} style={{ marginBottom: section.label ? 4 : 0 }}>
-                      {/* Section header */}
-                      {section.label && (
-                        <p
-                          style={{
-                            margin:        '10px 12px 4px',
-                            fontSize:      10,
-                            fontWeight:    600,
-                            color:         MUTED,
-                            letterSpacing: '0.1em',
-                            textTransform: 'uppercase',
-                            lineHeight:    1,
-                          }}
-                        >
-                          {section.label}
-                        </p>
-                      )}
-
-                      {section.items.map((item) => {
-                        const i      = itemIndex++;
-                        const active = isActive(item.href, pathname, item.also);
-                        const Icon   = item.icon;
-
-                        return (
-                          <motion.div
-                            key={item.href}
-                            custom={i}
-                            variants={drawerItemVariants}
-                            initial="hidden"
-                            animate="visible"
-                          >
-                            <Link
-                              href={item.href}
-                              style={{ textDecoration: 'none' }}
-                              onClick={() => setOpen(false)}
-                            >
-                              <div
-                                style={{
-                                  position:        'relative',
-                                  display:         'flex',
-                                  alignItems:      'center',
-                                  minHeight:       44,
-                                  gap:             10,
-                                  padding:         '10px 12px',
-                                  border:          '1px solid transparent',
-                                  borderColor:     active ? 'rgba(118,15,19,0.18)' : 'transparent',
-                                  borderRadius:    9,
-                                  backgroundColor: active ? 'rgba(118,15,19,0.04)' : 'transparent',
-                                  marginBottom:    2,
-                                  cursor:          'pointer',
-                                  transition:      'background-color 0.12s, border-color 0.12s',
-                                }}
-                              >
-                                <Icon
-                                  size={16}
-                                  style={{
-                                    flexShrink: 0,
-                                    color:      active ? RED : MUTED,
-                                  }}
-                                  aria-hidden
-                                />
-                                <span
-                                  style={{
-                                    fontSize:      T_BASE,
-                                    fontWeight:    active ? 600 : 400,
-                                    color:         active ? RED : INK_SOFT,
-                                    letterSpacing: '-0.01em',
-                                  }}
-                                >
-                                  {item.label}
-                                </span>
-                              </div>
-                            </Link>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
-                  ));
-                })()}
-              </nav>
-
-              {/* Drawer footer: admin info + sign out */}
-              <div
-                style={{
-                  padding:   '14px 16px',
-                  borderTop: `1px solid ${BORDER}`,
-                }}
-              >
-                {/* Admin info row */}
-                <div
-                  style={{
-                    display:      'flex',
-                    alignItems:   'center',
-                    gap:          10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <div
-                    style={{
-                      width:           32,
-                      height:          32,
-                      borderRadius:    '50%',
-                      background:      RED,
-                      color:           SURFACE,
-                      fontSize:        T_XS,
-                      fontWeight:      700,
-                      display:         'flex',
-                      alignItems:      'center',
-                      justifyContent:  'center',
-                      flexShrink:      0,
-                      letterSpacing:   '0.04em',
-                    }}
-                    aria-hidden
-                  >
-                    {getInitials(adminName || 'A')}
-                  </div>
-                  <div style={{ minWidth: 0 }}>
-                    <p
-                      style={{
-                        margin:       0,
-                        fontSize:     T_SM,
-                        fontWeight:   600,
-                        color:        INK_SOFT,
-                        overflow:     'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace:   'nowrap',
-                      }}
-                    >
-                      {adminName || 'Admin'}
-                    </p>
-                    <p
-                      style={{
-                        margin:       0,
-                        fontSize:     T_XS,
-                        color:        MUTED,
-                        overflow:     'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace:   'nowrap',
-                      }}
-                    >
-                      {adminEmail}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Sign out */}
-                <motion.button
-                  whileTap={{ scale: 0.97 }}
-                  onClick={() => signOut({ callbackUrl: '/auth/signin' })}
-                  style={{
-                    width:         '100%',
-                    display:       'flex',
-                    alignItems:    'center',
-                    gap:           8,
-                    padding:       '8px 10px',
-                    background:    'transparent',
-                    border:        `1px solid ${BORDER}`,
-                    borderRadius:  7,
-                    cursor:        'pointer',
-                    color:         MUTED,
-                    fontSize:      T_SM,
-                    fontWeight:    500,
-                    letterSpacing: '-0.01em',
-                  }}
-                  aria-label="Sign out"
-                >
-                  <LogOut size={13} aria-hidden />
-                  Sign out
-                </motion.button>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      <nav
+        id="admin-bottom-bar" aria-label="Main"
+        className="z-40"
+        style={{
+          position: 'fixed', left: 0, right: 0, bottom: 0, height: BAR_H, background: SURFACE, borderTop: `1px solid ${BORDER}`,
+          paddingBottom: 'env(safe-area-inset-bottom)', boxSizing: 'content-box', colorScheme: 'light',
+        }}
+      >
+        {BOTTOM_TABS.map(tab => {
+          const Icon   = TAB_ICONS[tab.label as keyof typeof TAB_ICONS];
+          const active = !more && isTabActive(tab, groups, pathname);
+          const count  = tab.badge ? badges?.[tab.badge] ?? 0 : 0;
+          return (
+            <Link
+              key={tab.label} href={tab.href} onClick={() => setMore(false)}
+              aria-current={active ? 'page' : undefined}
+              aria-label={count ? `${tab.label}, ${count} waiting` : tab.label}
+              style={tabStyle(active)}
+            >
+              {active && <span aria-hidden style={tickStyle} />}
+              <Icon size={20} aria-hidden />
+              {tab.label}
+              {count > 0 && <span aria-hidden style={badgeStyle}>{count}</span>}
+            </Link>
+          );
+        })}
+        <button
+          onClick={() => setMore(m => !m)}
+          aria-expanded={more}
+          aria-label={moreCount ? `More, ${moreCount} waiting` : 'More'}
+          style={{ ...tabStyle(moreActive), border: 0, background: 'none', cursor: 'pointer' }}
+        >
+          {moreActive && <span aria-hidden style={tickStyle} />}
+          <Ellipsis size={20} aria-hidden />
+          More
+          {moreCount > 0 && <span aria-hidden style={badgeStyle}>{moreCount}</span>}
+        </button>
+      </nav>
     </>
   );
 }
+
+function tabStyle(active: boolean): React.CSSProperties {
+  return {
+    flex: 1, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+    gap: 2, minHeight: 52, fontSize: T_XS, fontWeight: active ? 600 : 400, color: active ? RED : MUTED,
+  };
+}
+
+const tickStyle: React.CSSProperties = { position: 'absolute', top: 0, left: '30%', right: '30%', height: 2, background: RED };
+
+const badgeStyle: React.CSSProperties = {
+  position: 'absolute', top: 6, right: '24%', background: RED, color: BG, fontSize: 10, fontWeight: 600,
+  borderRadius: 999, minWidth: 16, padding: '0 4px', textAlign: 'center', lineHeight: '16px',
+};
