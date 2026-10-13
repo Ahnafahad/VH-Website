@@ -32,7 +32,6 @@ import {
   ClipboardList,
   CalendarDays,
   CalendarCheck,
-  BookOpen,
   Database,
   Trophy,
   Megaphone,
@@ -277,7 +276,6 @@ const QUICK_LINKS: QuickLink[] = [
   { label: 'Feed',        desc: 'LMS announcements for students',      href: '/admin/announcements-feed', icon: Rss,           section: 'CLASSROOM'       },
   // TESTS & GAMES
   { label: 'Tests',       desc: 'Mock test questions and results',     href: '/admin/tests',              icon: ClipboardList, section: 'TESTS & GAMES'   },
-  { label: 'Vocabulary',  desc: 'LexiCore units, themes, settings',   href: '/admin/vocab',              icon: BookOpen,      section: 'TESTS & GAMES'   },
   { label: 'Word Bank',   desc: 'Browse and edit all vocab words',     href: '/admin/words',              icon: Database,      section: 'TESTS & GAMES'   },
   { label: 'Leaderboard', desc: 'Weekly hall of fame management',      href: '/admin/leaderboard',        icon: Trophy,        section: 'TESTS & GAMES'   },
   // PEOPLE
