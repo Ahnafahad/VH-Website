@@ -35,17 +35,26 @@ beforeEach(async () => {
 });
 
 describe('summary (stats uses the same pure helper)', () => {
-  it('legacy class: no row = absent. Taken class: no row = present, explicit absent = absent', async () => {
-    const legacy = await seedSession(new Date('2026-07-01'), false);
-    const takenNoRow = await seedSession(new Date('2026-07-08'), true);
+  it('not marked = present; legacy rows-only class: no row = absent; explicit absent = absent', async () => {
+    await seedSession(new Date('2026-07-01'), false);                 // untaken, no rows -> present
+    const legacyRows = await seedSession(new Date('2026-07-05'), false); // legacy: others have rows
+    await mark(legacyRows, 99, 'present');
+    await seedSession(new Date('2026-07-08'), true);                  // new flow, no row -> present
     const takenAbsent = await seedSession(new Date('2026-07-15'), true);
     await mark(takenAbsent, 42, 'absent');
+    // future / cancelled never counted
+    await ctx.db.insert(classSessions).values({
+      title: 'Later', subject: 'english', product: 'iba', scheduledAt: new Date('2026-09-01'), durationMinutes: 60,
+      status: 'completed', createdBy: 1,
+    });
+    await ctx.db.insert(classSessions).values({
+      title: 'Cancelled', subject: 'english', product: 'iba', scheduledAt: new Date('2026-07-20'), durationMinutes: 60,
+      status: 'cancelled', createdBy: 1,
+    });
 
     const [sum] = await computeStudentAttendanceSummary(ctx.db, { id: 42, batch: null, products: ['iba'] }, NOW);
-    expect(sum.totalExpected).toBe(3);
-    expect(sum.absences).toBe(2); // legacy (no row) + explicit absent
-    expect(legacy).toBeGreaterThan(0);
-    expect(takenNoRow).toBeGreaterThan(0);
+    expect(sum.totalExpected).toBe(4);
+    expect(sum.absences).toBe(2); // legacy rows-only class + explicit absent
   });
 });
 

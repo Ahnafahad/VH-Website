@@ -14,7 +14,7 @@ export const metadata = { title: 'My Attendance — VH' };
 
 // Student-facing mirror of the manual attendance sheet's per-student figures:
 // online attendances used of the cap, how many remain, and how many times
-// absent (absence = the absence of a class_attendance row, computed against
+// absent (only an explicit absent mark; see attendance-effective.ts), computed against
 // the sessions the student was expected at — see attendance-summary.ts).
 export default async function StudentAttendancePage() {
   const session = await getServerSession(authOptions);

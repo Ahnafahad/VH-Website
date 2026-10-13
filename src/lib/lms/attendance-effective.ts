@@ -1,11 +1,19 @@
 /**
  * Effective attendance semantics (pure, no DB).
  *
- * Staff mark a student Present, Absent or leave them Not marked. Once a class
- * has had attendance taken (class_sessions.attendance_taken_at is set), a
- * student with NO row counts as PRESENT until explicitly marked absent. Sessions
- * where attendance was never taken (all legacy history, untaken classes) keep
- * the legacy rule exactly: row = present, no row = absent.
+ * Only completed, past classes are ever counted (callers filter that). Rule:
+ * a student is ABSENT only when an explicit "absent" row exists. Anyone not
+ * marked is PRESENT. One exception protects old history: before the Absent
+ * button existed, staff only stored rows for students who attended, so a
+ * class that has attendance rows but no attendance_taken_at is an old "taken"
+ * class where a missing row really meant absent. We keep that meaning.
+ *
+ *   attendance_taken_at set          -> no row = present, absent row = absent
+ *   no taken_at, has some row(s)     -> legacy: no row = absent
+ *   no taken_at, no rows at all      -> never marked: everyone present
+ *
+ * Callers pass `sessionsWithRows` (ids of sessions with at least one
+ * attendance row of any status), computed with one grouped query.
  */
 
 export type StaffAttendanceState = 'unmarked' | 'present' | 'absent';
@@ -17,9 +25,11 @@ export interface SessionTakenLite { id: number; attendanceTakenAt: Date | null }
 export function isEffectivelyPresent(
   attendanceTakenAt: Date | null | undefined,
   row: { status: string } | undefined | null,
+  sessionHasRows: boolean,
 ): boolean {
   if (row) return row.status !== 'absent';
-  return attendanceTakenAt != null;
+  if (attendanceTakenAt != null) return true;
+  return !sessionHasRows; // legacy taken class (rows only) => absent; never marked => present
 }
 
 /** What staff see: no row = Not marked; an explicit absent row = Absent. */
@@ -31,17 +41,18 @@ export function staffStateFromRow(row: { status: string } | undefined | null): S
 /**
  * One student's effective attendance: sessionId -> mode ('online' | 'offline')
  * for every session they are effectively present at. Implicit presence
- * (taken session, no row) counts as 'offline'.
+ * (no row) counts as 'offline'.
  */
 export function effectiveAttendanceMap(
   sessions: SessionTakenLite[],
   rows: AttendanceRowLite[],
+  sessionsWithRows: ReadonlySet<number>,
 ): Map<number, string> {
   const bySession = new Map(rows.map(r => [r.sessionId, r]));
   const out = new Map<number, string>();
   for (const s of sessions) {
     const row = bySession.get(s.id);
-    if (!isEffectivelyPresent(s.attendanceTakenAt, row)) continue;
+    if (!isEffectivelyPresent(s.attendanceTakenAt, row, sessionsWithRows.has(s.id))) continue;
     out.set(s.id, row && row.status !== 'absent' ? row.mode : 'offline');
   }
   return out;

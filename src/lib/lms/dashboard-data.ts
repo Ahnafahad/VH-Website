@@ -8,6 +8,7 @@
 
 import { db } from '@/lib/db';
 import { effectiveAttendanceMap } from '@/lib/lms/attendance-effective';
+import { sessionIdsWithAttendanceRows } from '@/lib/lms/attendance-rows';
 import {
   classSessions,
   classAttendance,
@@ -733,11 +734,13 @@ export async function getDashboardData(
 
   // Build classPulse
   const completedSet = new Set(completedSessionIds);
-  // Effective attendance: taken classes count a missing row as present.
+  // Effective attendance: only an explicit absent row is absent (see attendance-effective.ts).
+  const withRows = await sessionIdsWithAttendanceRows(db, completedSessionIds);
   const attendedSessionIds = new Set(
     effectiveAttendanceMap(
       completedSessionRows,
       myAttendanceRows.filter((r) => completedSet.has(r.sessionId)),
+      withRows,
     ).keys(),
   );
   const attendedCount = attendedSessionIds.size;

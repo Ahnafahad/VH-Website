@@ -15,6 +15,7 @@ import { requireStaff } from '@/lib/tests/route-helpers';
 import { computeAttendanceStats } from '@/lib/lms/attendance-stats';
 import { ONLINE_ATTENDANCE_CAP, countOnlineAttendanceBatch } from '@/lib/lms/attendance-cap';
 import { isEffectivelyPresent, staffStateFromRow } from '@/lib/lms/attendance-effective';
+import { sessionIdsWithAttendanceRows } from '@/lib/lms/attendance-rows';
 
 export async function GET(
   _req: NextRequest,
@@ -92,7 +93,7 @@ export async function GET(
     const pastSessionIds = pastSessions.map((s) => s.id);
 
     // ── Fetch all queries in parallel ──────────────────────────────────────────
-    const [attendanceRows, statsMap, onlineCountMap, lexPointRows, historyAttRows] = await Promise.all([
+    const [attendanceRows, statsMap, onlineCountMap, lexPointRows, historyAttRows, historyWithRows] = await Promise.all([
       db
         .select()
         .from(classAttendance)
@@ -128,6 +129,7 @@ export async function GET(
               ),
             )
         : Promise.resolve([] as { sessionId: number; userId: number; mode: string; status: string }[]),
+      sessionIdsWithAttendanceRows(db, pastSessionIds),
     ]);
 
     // ── Build lookup maps ──────────────────────────────────────────────────────
@@ -156,7 +158,7 @@ export async function GET(
 
         const history = sortedPastSessions.map((ps) => {
           const hrow = userHistAtt?.get(ps.id);
-          const present = isEffectivelyPresent(ps.attendanceTakenAt, hrow);
+          const present = isEffectivelyPresent(ps.attendanceTakenAt, hrow, historyWithRows.has(ps.id));
           return {
             sessionId: ps.id,
             title: ps.title,

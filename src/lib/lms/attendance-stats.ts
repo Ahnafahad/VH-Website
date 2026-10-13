@@ -8,6 +8,7 @@ import { and, eq, inArray, isNull, lte, or } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { classAttendance, classSessions } from '@/lib/db/schema';
 import { effectiveAttendanceMap } from './attendance-effective';
+import { sessionIdsWithAttendanceRows } from './attendance-rows';
 
 export interface StudentAttendanceStats {
   totalAbsences: number;
@@ -59,6 +60,8 @@ export async function computeAttendanceStats(
       ),
     );
 
+  const withRows = await sessionIdsWithAttendanceRows(db, sessionIds);
+
   const rowsByUser = new Map<number, typeof attendanceRows>();
   for (const row of attendanceRows) {
     if (!rowsByUser.has(row.userId)) rowsByUser.set(row.userId, []);
@@ -66,7 +69,7 @@ export async function computeAttendanceStats(
   }
 
   for (const userId of userIds) {
-    const attended = effectiveAttendanceMap(pastSessions, rowsByUser.get(userId) ?? []);
+    const attended = effectiveAttendanceMap(pastSessions, rowsByUser.get(userId) ?? [], withRows);
     const totalAbsences = pastSessions.filter((s) => !attended.has(s.id)).length;
     const absencesLast7Days = pastSessions.filter(
       (s) => last7Ids.has(s.id) && !attended.has(s.id),
