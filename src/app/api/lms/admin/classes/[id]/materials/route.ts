@@ -51,6 +51,8 @@ export async function GET(_req: NextRequest, { params }: RouteCtx) {
         subject: m.subject,
         product: m.product,
         batch: m.batch,
+        instructions: m.instructions,
+        addedByName: m.addedByName,
         createdAt: m.createdAt.getTime(),
       })),
     );

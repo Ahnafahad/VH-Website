@@ -22,6 +22,7 @@ import { classSessions, recordings } from '@/lib/db/schema';
 import { r2PutStream } from '@/lib/storage/r2';
 import { getRecordingProvider } from '@/lib/recording/skribby';
 import { sendRecordingFailedAlert } from '@/lib/email';
+import { recordBotProgress } from '@/lib/lms/recorder-progress';
 
 export const maxDuration = 300;
 
@@ -96,6 +97,10 @@ export async function POST(req: NextRequest) {
     console.warn('[webhook] Missing bot_id or new_status in payload', JSON.stringify(payload).slice(0, 500));
     return NextResponse.json({ ignored: true, reason: 'malformed_payload' });
   }
+
+  // Keep the Today cockpit's recorder strip current for every status, not just
+  // the terminal ones. Best-effort: never let it affect the webhook response.
+  await recordBotProgress(botId, newStatus).catch((e) => console.error('[webhook] recordBotProgress error:', e));
 
   const isDone = newStatus === 'finished';
   const isFailed = FAILURE_STATUSES.has(newStatus);
