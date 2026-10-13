@@ -12,6 +12,7 @@ import { and, eq, inArray, isNull, or, lte, desc } from 'drizzle-orm';
 import { getTestResults } from '@/lib/tests/service';
 import { getLexicoreBreakdown } from './lexicore-breakdown';
 import { getStudentMetricsForUser } from './student-metrics';
+import { effectiveAttendanceMap, type AttendanceRowLite } from '@/lib/lms/attendance-effective';
 import { computeAtRiskFlag } from './at-risk-pure';
 import { buildAttendanceTicks, buildHomeworkStates, lastMarks } from './progress-pure';
 import type {
@@ -83,7 +84,7 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
   const now = new Date();
   const batchCondition = or(isNull(classSessions.batch), eq(classSessions.batch, batch));
   const applicableSessions = productSet.size > 0
-    ? await db.select({ id: classSessions.id, product: classSessions.product, scheduledAt: classSessions.scheduledAt })
+    ? await db.select({ id: classSessions.id, product: classSessions.product, scheduledAt: classSessions.scheduledAt, attendanceTakenAt: classSessions.attendanceTakenAt })
         .from(classSessions)
         .where(and(
           inArray(classSessions.product, Array.from(productSet)),
@@ -93,7 +94,7 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
         ))
     : [];
 
-  const sessionsByProduct = new Map<string, { id: number; product: string; scheduledAt: Date }[]>();
+  const sessionsByProduct = new Map<string, { id: number; product: string; scheduledAt: Date; attendanceTakenAt: Date | null }[]>();
   for (const s of applicableSessions) {
     const list = sessionsByProduct.get(s.product) ?? [];
     list.push(s);
@@ -102,15 +103,15 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
 
   const sessionIds = applicableSessions.map(s => s.id);
   const attendanceRows = sessionIds.length
-    ? await db.select({ userId: classAttendance.userId, sessionId: classAttendance.sessionId, mode: classAttendance.mode })
+    ? await db.select({ userId: classAttendance.userId, sessionId: classAttendance.sessionId, mode: classAttendance.mode, status: classAttendance.status })
         .from(classAttendance)
         .where(and(inArray(classAttendance.sessionId, sessionIds), inArray(classAttendance.userId, userIds)))
     : [];
-  // sessionId -> 'online' | 'offline' per student
-  const attendedByUser = new Map<number, Map<number, string>>();
+  // Raw rows per student; effective presence (taken classes: no row = present) is resolved per student below.
+  const attendanceRowsByUser = new Map<number, AttendanceRowLite[]>();
   for (const row of attendanceRows) {
-    if (!attendedByUser.has(row.userId)) attendedByUser.set(row.userId, new Map());
-    attendedByUser.get(row.userId)!.set(row.sessionId, row.mode);
+    if (!attendanceRowsByUser.has(row.userId)) attendanceRowsByUser.set(row.userId, []);
+    attendanceRowsByUser.get(row.userId)!.push(row);
   }
 
   // Homework already past due for any product in this batch (batch NULL = every batch).
@@ -167,7 +168,7 @@ export async function getBatchSummaries(batch: string): Promise<BatchSummaryResp
   const students: StudentSummary[] = studentRows.map(u => {
     const products = productsByUser.get(u.id) ?? [];
     const userSessions = products.flatMap(p => sessionsByProduct.get(p) ?? []);
-    const attendedModes = attendedByUser.get(u.id) ?? new Map<number, string>();
+    const attendedModes = effectiveAttendanceMap(userSessions, attendanceRowsByUser.get(u.id) ?? []);
     const attendedSessions = userSessions.filter(s => attendedModes.has(s.id)).length;
     const totalSessions = userSessions.length;
     const attendancePercent = totalSessions > 0
@@ -353,7 +354,8 @@ export async function getStudentDetail(userId: number): Promise<StudentDetailRes
     ? await db.select().from(classAttendance)
         .where(and(inArray(classAttendance.sessionId, sessionIds), eq(classAttendance.userId, userId)))
     : [];
-  const attendanceBySession = new Map(attendanceRows.map(r => [r.sessionId, r]));
+  // sessionId -> mode, effective (taken classes: no row = present, explicit absent = absent)
+  const attendanceBySession = effectiveAttendanceMap(applicableSessions, attendanceRows);
 
   const attended = applicableSessions.filter(s => attendanceBySession.has(s.id)).length;
   const total = applicableSessions.length;
@@ -379,14 +381,14 @@ export async function getStudentDetail(userId: number): Promise<StudentDetailRes
     .sort((a, b) => b.scheduledAt.getTime() - a.scheduledAt.getTime())
     .slice(0, 15)
     .map(s => {
-      const att = attendanceBySession.get(s.id);
+      const attMode = attendanceBySession.get(s.id);
       return {
         sessionId: s.id,
         title: s.title,
         subject: s.subject,
         scheduledAt: s.scheduledAt.toISOString(),
-        attended: !!att,
-        mode: att ? att.mode : null,
+        attended: attMode !== undefined,
+        mode: attMode ?? null,
       };
     });
 

@@ -7,6 +7,7 @@
 import { and, eq, inArray, isNull, lte, or } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { classAttendance, classSessions } from '@/lib/db/schema';
+import { effectiveAttendanceMap } from './attendance-effective';
 
 export interface StudentAttendanceStats {
   totalAbsences: number;
@@ -28,7 +29,7 @@ export async function computeAttendanceStats(
       : or(isNull(classSessions.batch), eq(classSessions.batch, session.batch));
 
   const pastSessions = await db
-    .select({ id: classSessions.id, scheduledAt: classSessions.scheduledAt })
+    .select({ id: classSessions.id, scheduledAt: classSessions.scheduledAt, attendanceTakenAt: classSessions.attendanceTakenAt })
     .from(classSessions)
     .where(
       and(
@@ -49,7 +50,7 @@ export async function computeAttendanceStats(
   );
 
   const attendanceRows = await db
-    .select({ userId: classAttendance.userId, sessionId: classAttendance.sessionId })
+    .select({ userId: classAttendance.userId, sessionId: classAttendance.sessionId, mode: classAttendance.mode, status: classAttendance.status })
     .from(classAttendance)
     .where(
       and(
@@ -58,14 +59,14 @@ export async function computeAttendanceStats(
       ),
     );
 
-  const attendedByUser = new Map<number, Set<number>>();
+  const rowsByUser = new Map<number, typeof attendanceRows>();
   for (const row of attendanceRows) {
-    if (!attendedByUser.has(row.userId)) attendedByUser.set(row.userId, new Set());
-    attendedByUser.get(row.userId)!.add(row.sessionId);
+    if (!rowsByUser.has(row.userId)) rowsByUser.set(row.userId, []);
+    rowsByUser.get(row.userId)!.push(row);
   }
 
   for (const userId of userIds) {
-    const attended = attendedByUser.get(userId) ?? new Set<number>();
+    const attended = effectiveAttendanceMap(pastSessions, rowsByUser.get(userId) ?? []);
     const totalAbsences = pastSessions.filter((s) => !attended.has(s.id)).length;
     const absencesLast7Days = pastSessions.filter(
       (s) => last7Ids.has(s.id) && !attended.has(s.id),

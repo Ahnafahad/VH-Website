@@ -206,17 +206,22 @@ export function meetingPlatform(url: string | null | undefined): MeetingPlatform
 
 export type AttendanceState = 'none' | 'present' | 'online' | 'absent';
 
-export function attendanceFromRoster(r: { present: boolean; mode: 'online' | 'offline' }): AttendanceState {
-  if (!r.present) return 'none';
+/** Roster endpoint value (unmarked | present | absent) + mode -> cockpit tap state. */
+export function attendanceFromRoster(r: { state: 'unmarked' | 'present' | 'absent'; mode: 'online' | 'offline' }): AttendanceState {
+  if (r.state === 'unmarked') return 'none';
+  if (r.state === 'absent') return 'absent';
   return r.mode === 'online' ? 'online' : 'present';
 }
 
-export function attendanceRecord(state: AttendanceState): { present: boolean; mode: 'online' | 'offline' } {
-  return { present: state === 'present' || state === 'online', mode: state === 'online' ? 'online' : 'offline' };
+/** Cockpit tap state -> record sent to the attendance PUT. 'none' (Not marked) removes the row. */
+export function attendanceRecord(state: AttendanceState): { state: 'unmarked' | 'present' | 'absent'; mode: 'online' | 'offline' } {
+  if (state === 'none') return { state: 'unmarked', mode: 'offline' };
+  if (state === 'absent') return { state: 'absent', mode: 'offline' };
+  return { state: 'present', mode: state === 'online' ? 'online' : 'offline' };
 }
 
 /**
- * Tap order: (not marked) -> present -> online -> absent -> present ...
+ * Tap order: not marked -> present -> online -> absent -> not marked ...
  * Online is skipped when the student is at the online cap and was not already
  * online for this class (same hard block as the old attendance sheet).
  */
@@ -225,7 +230,7 @@ export function cycleAttendance(cur: AttendanceState, onlineBlocked: boolean): A
     case 'none': return 'present';
     case 'present': return onlineBlocked ? 'absent' : 'online';
     case 'online': return 'absent';
-    case 'absent': return 'present';
+    case 'absent': return 'none';
   }
 }
 

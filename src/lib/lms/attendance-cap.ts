@@ -29,6 +29,7 @@ export async function countOnlineAttendance(
     .where(and(
       eq(classAttendance.userId, userId),
       eq(classAttendance.mode, 'online'),
+      eq(classAttendance.status, 'present'),
       eq(classSessions.product, product),
     ))
     .get();
@@ -51,6 +52,7 @@ export async function countOnlineAttendanceBatch(
     .where(and(
       inArray(classAttendance.userId, userIds),
       eq(classAttendance.mode, 'online'),
+      eq(classAttendance.status, 'present'),
       eq(classSessions.product, product),
     ))
     .groupBy(classAttendance.userId);
@@ -79,12 +81,13 @@ export async function recordOnlineJoinAttendance(
   args: { sessionId: number; userId: number; product: string; joinedAt: Date },
 ): Promise<{ recorded: boolean }> {
   const existing = await db
-    .select({ mode: classAttendance.mode })
+    .select({ mode: classAttendance.mode, status: classAttendance.status })
     .from(classAttendance)
     .where(and(eq(classAttendance.sessionId, args.sessionId), eq(classAttendance.userId, args.userId)))
     .get();
 
-  const alreadyOnlineHere = existing?.mode === 'online';
+  // An explicit absent row is not 'online here': joining flips it to present and is new usage.
+  const alreadyOnlineHere = existing?.mode === 'online' && existing.status === 'present';
   if (!alreadyOnlineHere) {
     const count = await countOnlineAttendance(db, args.userId, args.product);
     if (count >= ONLINE_ATTENDANCE_CAP) return { recorded: false };
@@ -104,7 +107,7 @@ export async function recordOnlineJoinAttendance(
       // source moves to 'join' too: the row's current state now comes from the
       // student's join, not from whoever set it before. Leaving it 'manual' would
       // make back-sync treat a self-service row as an instructor's decision.
-      set: { mode: 'online', source: 'join' },
+      set: { mode: 'online', source: 'join', status: 'present' },
     });
 
   return { recorded: true };

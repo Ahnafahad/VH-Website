@@ -14,6 +14,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { computeAttendanceStats } from '@/lib/lms/attendance-stats';
 import { ONLINE_ATTENDANCE_CAP, countOnlineAttendanceBatch } from '@/lib/lms/attendance-cap';
+import { isEffectivelyPresent, staffStateFromRow } from '@/lib/lms/attendance-effective';
 
 export async function GET(
   _req: NextRequest,
@@ -75,6 +76,7 @@ export async function GET(
         id: classSessions.id,
         title: classSessions.title,
         scheduledAt: classSessions.scheduledAt,
+        attendanceTakenAt: classSessions.attendanceTakenAt,
       })
       .from(classSessions)
       .where(
@@ -116,6 +118,7 @@ export async function GET(
               sessionId: classAttendance.sessionId,
               userId: classAttendance.userId,
               mode: classAttendance.mode,
+              status: classAttendance.status,
             })
             .from(classAttendance)
             .where(
@@ -124,7 +127,7 @@ export async function GET(
                 inArray(classAttendance.userId, userIds),
               ),
             )
-        : Promise.resolve([] as { sessionId: number; userId: number; mode: string }[]),
+        : Promise.resolve([] as { sessionId: number; userId: number; mode: string; status: string }[]),
     ]);
 
     // ── Build lookup maps ──────────────────────────────────────────────────────
@@ -133,11 +136,11 @@ export async function GET(
     const lexPointsMap = new Map<number, number>();
     for (const row of lexPointRows) lexPointsMap.set(row.userId, row.totalPoints);
 
-    // historyAttMap: Map<userId, Map<sessionId, mode>>
-    const historyAttMap = new Map<number, Map<number, string>>();
+    // historyAttMap: Map<userId, Map<sessionId, row>>
+    const historyAttMap = new Map<number, Map<number, { mode: string; status: string }>>();
     for (const row of historyAttRows) {
       if (!historyAttMap.has(row.userId)) historyAttMap.set(row.userId, new Map());
-      historyAttMap.get(row.userId)!.set(row.sessionId, row.mode);
+      historyAttMap.get(row.userId)!.set(row.sessionId, row);
     }
 
     // Past sessions sorted most-recent-first (used per student below)
@@ -152,13 +155,14 @@ export async function GET(
         const userHistAtt = historyAttMap.get(s.id);
 
         const history = sortedPastSessions.map((ps) => {
-          const modeStr = userHistAtt?.get(ps.id) ?? null;
+          const hrow = userHistAtt?.get(ps.id);
+          const present = isEffectivelyPresent(ps.attendanceTakenAt, hrow);
           return {
             sessionId: ps.id,
             title: ps.title,
             scheduledAt: ps.scheduledAt.getTime(),
-            present: userHistAtt?.has(ps.id) ?? false,
-            mode: (modeStr ?? null) as 'online' | 'offline' | null,
+            present,
+            mode: (present ? (hrow?.mode ?? 'offline') : null) as 'online' | 'offline' | null,
           };
         });
 
@@ -168,7 +172,9 @@ export async function GET(
           userId: s.id,
           name: s.name,
           email: s.email,
-          present: !!att,
+          // Three staff states: unmarked (no row), present, absent (explicit row).
+          state: staffStateFromRow(att),
+          present: att?.status === 'present',
           mode: (att?.mode ?? 'offline') as 'online' | 'offline',
           source: (att?.source ?? null) as 'manual' | 'join' | 'pulled' | null,
           joinedAt: att?.joinedAt.getTime() ?? null,

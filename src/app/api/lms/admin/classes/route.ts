@@ -68,6 +68,8 @@ export async function GET(req: NextRequest) {
         .groupBy(assignments.classSessionId),
       db.select({ id: classAttendance.sessionId, n: count() })
         .from(classAttendance)
+        // Explicit present marks only (absent rows are not attendance).
+        .where(eq(classAttendance.status, 'present'))
         .groupBy(classAttendance.sessionId),
       db.select({ id: recordings.classSessionId, status: recordings.status })
         .from(recordings),

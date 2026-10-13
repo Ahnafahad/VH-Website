@@ -69,7 +69,7 @@ export async function GET() {
         db
           .select({ sessionId: classAttendance.sessionId, count: count() })
           .from(classAttendance)
-          .where(inArray(classAttendance.sessionId, sessionIds))
+          .where(and(inArray(classAttendance.sessionId, sessionIds), eq(classAttendance.status, 'present')))
           .groupBy(classAttendance.sessionId),
 
         // Materials attached via the many-to-many junction...

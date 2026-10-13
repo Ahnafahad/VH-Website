@@ -97,6 +97,7 @@ export default function AttendanceSection({
       <p style={mutedText} aria-live="polite">
         {c.present} present · {c.online} online · {c.absent} absent · {c.none} not marked
         {roster.unsaved > 0 ? ` · saving ${roster.unsaved}…` : ' · saved automatically'}
+        <br />Not marked counts as present until marked absent.
       </p>
 
       <div className="tdy-roster">

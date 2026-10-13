@@ -67,6 +67,7 @@ export async function createAttendanceFixtureSchema(client: ReturnType<typeof cr
       instructor_id INTEGER,
       topic TEXT,
       class_number INTEGER,
+      attendance_taken_at INTEGER,
       created_by INTEGER NOT NULL,
       created_at INTEGER NOT NULL
     );
@@ -77,6 +78,7 @@ export async function createAttendanceFixtureSchema(client: ReturnType<typeof cr
       joined_at INTEGER NOT NULL,
       mode TEXT NOT NULL,
       source TEXT NOT NULL,
+      status TEXT NOT NULL DEFAULT 'present',
       UNIQUE(session_id, user_id)
     );
     CREATE TABLE test_windows (

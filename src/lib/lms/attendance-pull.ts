@@ -32,6 +32,7 @@ import type { LibSQLDatabase } from 'drizzle-orm/libsql';
 import type * as schema from '@/lib/db/schema';
 import { classAttendance, classSessions, testWindows } from '@/lib/db/schema';
 import { DHAKA_OFFSET_HOURS } from './constants';
+import { inferredWriteBlocked } from './attendance-effective';
 
 type DrizzleClient = LibSQLDatabase<typeof schema>;
 
@@ -82,7 +83,7 @@ export async function resolveAttendanceSession(
 export interface PullResult {
   written: boolean;
   sessionId: number | null;
-  reason?: 'not-online' | 'no-match' | 'already-online';
+  reason?: 'not-online' | 'no-match' | 'already-online' | 'marked-absent';
 }
 
 /**
@@ -107,10 +108,15 @@ export async function pullAttendanceForSubmission(
   }
 
   const existing = await db
-    .select({ mode: classAttendance.mode })
+    .select({ mode: classAttendance.mode, status: classAttendance.status })
     .from(classAttendance)
     .where(and(eq(classAttendance.sessionId, sessionId), eq(classAttendance.userId, args.userId)))
     .get();
+
+  // A staff 'absent' mark is deliberate: an inferred row never overrides it.
+  if (inferredWriteBlocked(existing)) {
+    return { written: false, sessionId, reason: 'marked-absent' };
+  }
 
   if (existing?.mode === 'online') {
     return { written: false, sessionId, reason: 'already-online' };

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   deriveClockPhase, phaseLabel, pickActiveSessionId, classifyBotStatus, deriveRecorder,
-  shouldPollRecorder, cycleAttendance, attendanceCounts, attendanceRecord, classifyMaterialFile,
+  shouldPollRecorder, cycleAttendance, attendanceFromRoster, attendanceCounts, attendanceRecord, classifyMaterialFile,
   normaliseMaterialLink, meetingPlatform, defaultOpenSection,
 } from '../today-cockpit';
 
@@ -97,19 +97,23 @@ describe('recorder status', () => {
 });
 
 describe('attendance cycle', () => {
-  it('none -> present -> online -> absent -> present', () => {
+  it('none -> present -> online -> absent -> none', () => {
     expect(cycleAttendance('none', false)).toBe('present');
     expect(cycleAttendance('present', false)).toBe('online');
     expect(cycleAttendance('online', false)).toBe('absent');
-    expect(cycleAttendance('absent', false)).toBe('present');
+    expect(cycleAttendance('absent', false)).toBe('none');
   });
   it('skips online at the cap', () => {
     expect(cycleAttendance('present', true)).toBe('absent');
   });
   it('maps to server records and counts', () => {
-    expect(attendanceRecord('online')).toEqual({ present: true, mode: 'online' });
-    expect(attendanceRecord('present')).toEqual({ present: true, mode: 'offline' });
-    expect(attendanceRecord('absent').present).toBe(false);
+    expect(attendanceRecord('online')).toEqual({ state: 'present', mode: 'online' });
+    expect(attendanceRecord('present')).toEqual({ state: 'present', mode: 'offline' });
+    expect(attendanceRecord('absent').state).toBe('absent');
+    expect(attendanceRecord('none').state).toBe('unmarked');
+    expect(attendanceFromRoster({ state: 'absent', mode: 'offline' })).toBe('absent');
+    expect(attendanceFromRoster({ state: 'unmarked', mode: 'offline' })).toBe('none');
+    expect(attendanceFromRoster({ state: 'present', mode: 'online' })).toBe('online');
     expect(attendanceCounts(['present', 'online', 'absent', 'none', 'none']))
       .toMatchObject({ present: 1, online: 1, absent: 1, none: 2, here: 2, total: 5 });
   });

@@ -17,6 +17,7 @@ export interface RosterStudent {
   userId: number;
   name: string;
   email: string;
+  state: 'unmarked' | 'present' | 'absent';
   present: boolean;
   mode: 'online' | 'offline';
   source: 'manual' | 'join' | 'pulled' | null;
@@ -62,7 +63,7 @@ export function useRoster(sessionId: number | null, notify: (m: string) => void)
       const online = new Set<number>();
       for (const s of json.students) {
         m[s.userId] = attendanceFromRoster(s);
-        if (s.present && s.mode === 'online') online.add(s.userId);
+        if (s.state === 'present' && s.mode === 'online') online.add(s.userId);
       }
       serverOnline.current = online;
       setMarks(m);
@@ -149,9 +150,9 @@ export function useRoster(sessionId: number | null, notify: (m: string) => void)
     if (id == null || !students) return;
     const changed = students.filter(s => {
       const st = marksRef.current[s.userId] ?? 'none';
-      return st === 'none' || st === 'absent';
+      return st === 'none'; // never override an explicit absent
     });
-    if (changed.length === 0) { notifyRef.current('Everyone is already marked.'); return; }
+    if (changed.length === 0) { notifyRef.current('Nobody is left unmarked.'); return; }
     const previous = new Map(changed.map(s => [s.userId, marksRef.current[s.userId] ?? 'none'] as const));
     changed.forEach(s => {
       const t = timers.current.get(s.userId);
@@ -170,7 +171,7 @@ export function useRoster(sessionId: number | null, notify: (m: string) => void)
     try {
       await apiJson(`/api/lms/admin/classes/${id}/attendance`, {
         method: 'PUT',
-        json: { records: changed.map(s => ({ userId: s.userId, present: true, mode: 'offline' })) },
+        json: { records: changed.map(s => ({ userId: s.userId, state: 'present', mode: 'offline' })) },
       });
       changed.forEach(s => serverOnline.current.delete(s.userId));
       setRowSave(p => {
@@ -202,8 +203,7 @@ export function useRoster(sessionId: number | null, notify: (m: string) => void)
   const states = students ? students.map(s => marks[s.userId] ?? 'none') : [];
   const counts = attendanceCounts(states);
   const absentees = students ? students.filter(s => {
-    const st = marks[s.userId] ?? 'none';
-    return st === 'none' || st === 'absent';
+    return (marks[s.userId] ?? 'none') === 'absent'; // unmarked counts as present
   }) : [];
   const unsaved = Object.keys(rowSave).length;
 

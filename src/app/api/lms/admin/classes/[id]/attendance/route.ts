@@ -5,7 +5,8 @@
  */
 
 import { NextRequest } from 'next/server';
-import { and, eq, inArray } from 'drizzle-orm';
+import { and, eq, inArray, isNull } from 'drizzle-orm';
+import { z } from 'zod';
 import { db } from '@/lib/db';
 import {
   classAttendance,
@@ -18,6 +19,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireStaff } from '@/lib/tests/route-helpers';
 import { ONLINE_ATTENDANCE_CAP, countOnlineAttendance } from '@/lib/lms/attendance-cap';
 import { recordAudit } from '@/lib/audit-log';
+import { resolveAttendanceWrite, type AttendanceWrite } from '@/lib/lms/attendance-effective';
 
 export async function GET(
   _req: NextRequest,
@@ -47,7 +49,7 @@ export async function GET(
       })
       .from(classAttendance)
       .innerJoin(users, eq(classAttendance.userId, users.id))
-      .where(eq(classAttendance.sessionId, sessionId));
+      .where(and(eq(classAttendance.sessionId, sessionId), eq(classAttendance.status, 'present')));
 
     // Load recording for this session (if any)
     const recording = await db
@@ -99,29 +101,25 @@ export async function GET(
  * body: { records: { userId: number; present: boolean; mode: 'online' | 'offline' }[] }
  */
 
-interface AttendanceRecordInput {
-  userId: number;
-  present: boolean;
-  mode: 'online' | 'offline';
-}
+/**
+ * Each record carries a per-student `state` ('present' | 'absent' | 'unmarked'),
+ * or the legacy boolean `present` (true = present, false = unmarked/row removed).
+ */
+const recordsSchema = z.object({
+  records: z.array(
+    z.object({
+      userId: z.number().int(),
+      state: z.enum(['present', 'absent', 'unmarked']).optional(),
+      present: z.boolean().optional(),
+      mode: z.enum(['online', 'offline']).optional(),
+    }).refine((r) => r.state !== undefined || r.present !== undefined, { message: 'state or present is required' }),
+  ).max(1000),
+});
 
-function validateRecords(body: unknown): AttendanceRecordInput[] {
-  if (!body || typeof body !== 'object' || !Array.isArray((body as Record<string, unknown>).records)) {
-    throw new ApiException('records must be an array', 400);
-  }
-  const records = (body as { records: unknown[] }).records;
-
-  return records.map((r): AttendanceRecordInput => {
-    if (!r || typeof r !== 'object') throw new ApiException('Each record must be an object', 400);
-    const rec = r as Record<string, unknown>;
-    const userId = typeof rec.userId === 'number' ? rec.userId : NaN;
-    if (!Number.isInteger(userId)) throw new ApiException('Each record needs a valid userId', 400);
-    return {
-      userId,
-      present: rec.present === true,
-      mode: rec.mode === 'online' ? 'online' : 'offline',
-    };
-  });
+function validateRecords(body: unknown): AttendanceWrite[] {
+  const parsed = recordsSchema.safeParse(body);
+  if (!parsed.success) throw new ApiException('records must be an array of { userId, state, mode }', 400);
+  return parsed.data.records.map(resolveAttendanceWrite);
 }
 
 export async function PUT(
@@ -148,7 +146,10 @@ export async function PUT(
     // attendance taker. Only checked for records that would newly BECOME
     // online here; a row already online for this exact session is not new
     // usage, so re-saving it must never be blocked by its own count.
-    const onlineCandidates = records.filter((r) => r.present && r.mode === 'online');
+    const onlineCandidates = records.filter(
+      (r): r is Extract<AttendanceWrite, { action: 'upsert' }> =>
+        r.action === 'upsert' && r.status === 'present' && r.mode === 'online',
+    );
     if (onlineCandidates.length > 0) {
       const existingOnlineRows = await db
         .select({ userId: classAttendance.userId })
@@ -157,6 +158,7 @@ export async function PUT(
           eq(classAttendance.sessionId, sessionId),
           inArray(classAttendance.userId, onlineCandidates.map((r) => r.userId)),
           eq(classAttendance.mode, 'online'),
+          eq(classAttendance.status, 'present'),
         ));
       const alreadyOnline = new Set(existingOnlineRows.map((r) => r.userId));
       const newOnline = onlineCandidates.filter((r) => !alreadyOnline.has(r.userId));
@@ -182,6 +184,7 @@ export async function PUT(
         userId: classAttendance.userId,
         mode:   classAttendance.mode,
         source: classAttendance.source,
+        status: classAttendance.status,
       })
       .from(classAttendance)
       .where(eq(classAttendance.sessionId, sessionId));
@@ -189,13 +192,13 @@ export async function PUT(
     const before = await rosterSnapshot().catch(() => null);
 
     for (const rec of records) {
-      if (rec.present) {
+      if (rec.action === 'upsert') {
         await db
           .insert(classAttendance)
-          .values({ sessionId, userId: rec.userId, joinedAt: now, mode: rec.mode, source: 'manual' })
+          .values({ sessionId, userId: rec.userId, joinedAt: now, mode: rec.mode, source: 'manual', status: rec.status })
           .onConflictDoUpdate({
             target: [classAttendance.sessionId, classAttendance.userId],
-            set: { mode: rec.mode, source: 'manual' },
+            set: { mode: rec.mode, source: 'manual', status: rec.status },
           });
       } else {
         await db
@@ -207,6 +210,15 @@ export async function PUT(
             ),
           );
       }
+    }
+
+    // First save of any present/absent mark = attendance has been taken. Set once;
+    // from then on, students with no row count as present (attendance-effective.ts).
+    if (records.some((r) => r.action === 'upsert')) {
+      await db
+        .update(classSessions)
+        .set({ attendanceTakenAt: now })
+        .where(and(eq(classSessions.id, sessionId), isNull(classSessions.attendanceTakenAt)));
     }
 
     // Fire-and-forget: a logging failure must never fail the attendance save.

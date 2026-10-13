@@ -23,6 +23,7 @@ import type { LibSQLDatabase } from 'drizzle-orm/libsql';
 import type * as schema from '@/lib/db/schema';
 import { classAttendance, testAttempts } from '@/lib/db/schema';
 import { resolveAttendanceSession } from './attendance-pull';
+import { inferredWriteBlocked } from './attendance-effective';
 
 type DrizzleClient = LibSQLDatabase<typeof schema>;
 
@@ -38,7 +39,7 @@ export interface BackSyncSkipItem {
   attemptId: number;
   userId: number;
   sessionId: number | null;
-  reason: 'no-match' | 'already-online' | 'manual-protected';
+  reason: 'no-match' | 'already-online' | 'manual-protected' | 'marked-absent';
 }
 
 export interface BackSyncPlan {
@@ -71,13 +72,15 @@ export async function planAttendanceBackSync(db: DrizzleClient): Promise<BackSyn
     }
 
     const existing = await db
-      .select({ mode: classAttendance.mode, source: classAttendance.source })
+      .select({ mode: classAttendance.mode, source: classAttendance.source, status: classAttendance.status })
       .from(classAttendance)
       .where(and(eq(classAttendance.sessionId, sessionId), eq(classAttendance.userId, a.userId)))
       .get();
 
     if (!existing) {
       toWrite.push({ attemptId: a.id, userId: a.userId, sessionId, joinedAt: a.submittedAt, action: 'insert' });
+    } else if (inferredWriteBlocked(existing)) {
+      skipped.push({ attemptId: a.id, userId: a.userId, sessionId, reason: 'marked-absent' });
     } else if (existing.mode === 'online') {
       skipped.push({ attemptId: a.id, userId: a.userId, sessionId, reason: 'already-online' });
     } else if (existing.source === 'manual') {

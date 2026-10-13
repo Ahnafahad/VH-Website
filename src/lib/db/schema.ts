@@ -1404,6 +1404,9 @@ export const classSessions = sqliteTable('class_sessions', {
   instructorId:    integer('instructor_id').references(() => users.id),
   topic:           text('topic'),
   classNumber:     integer('class_number'),
+  // Set once, on the first attendance save. NULL = attendance never taken (legacy rule:
+  // no row = absent). NOT NULL = no row counts as present until marked absent.
+  attendanceTakenAt: integer('attendance_taken_at', { mode: 'timestamp' }),
   createdBy:       integer('created_by').notNull().references(() => users.id),
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [
@@ -1426,6 +1429,9 @@ export const classAttendance = sqliteTable('class_attendance', {
   // clicked Join on the class, 'pulled' = inferred from a test/quiz submission on the same
   // date. Instructors see 'pulled' rows flagged as inferred and can correct them.
   source:    text('source').notNull().default('manual'),
+  // 'present' | 'absent'. An explicit 'absent' row is a staff decision; no row = not marked.
+  // See src/lib/lms/attendance-effective.ts for how this counts.
+  status:    text('status').notNull().default('present'),
 }, (t) => [
   unique().on(t.sessionId, t.userId),
 ]);

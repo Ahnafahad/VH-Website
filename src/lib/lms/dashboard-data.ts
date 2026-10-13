@@ -7,6 +7,7 @@
  */
 
 import { db } from '@/lib/db';
+import { effectiveAttendanceMap } from '@/lib/lms/attendance-effective';
 import {
   classSessions,
   classAttendance,
@@ -611,6 +612,7 @@ export async function getDashboardData(
       title: classSessions.title,
       subject: classSessions.subject,
       scheduledAt: classSessions.scheduledAt,
+      attendanceTakenAt: classSessions.attendanceTakenAt,
     })
     .from(classSessions)
     .where(
@@ -641,10 +643,10 @@ export async function getDashboardData(
     // My attendance records — intersect with completed set in JS
     completedSessionIds.length > 0
       ? db
-          .select({ sessionId: classAttendance.sessionId })
+          .select({ sessionId: classAttendance.sessionId, mode: classAttendance.mode, status: classAttendance.status })
           .from(classAttendance)
           .where(eq(classAttendance.userId, user.id))
-      : Promise.resolve([] as Array<{ sessionId: number }>),
+      : Promise.resolve([] as Array<{ sessionId: number; mode: string; status: string }>),
 
     // Recordings for the top 5 sessions
     top5Ids.length > 0
@@ -731,8 +733,12 @@ export async function getDashboardData(
 
   // Build classPulse
   const completedSet = new Set(completedSessionIds);
+  // Effective attendance: taken classes count a missing row as present.
   const attendedSessionIds = new Set(
-    myAttendanceRows.map((r) => r.sessionId).filter((id) => completedSet.has(id)),
+    effectiveAttendanceMap(
+      completedSessionRows,
+      myAttendanceRows.filter((r) => completedSet.has(r.sessionId)),
+    ).keys(),
   );
   const attendedCount = attendedSessionIds.size;
   const completedCount = completedSessionRows.length;

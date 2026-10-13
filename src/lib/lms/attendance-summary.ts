@@ -3,7 +3,9 @@
  * (attendance-cap.ts), how many remain, and how many times absent — one
  * entry per product the student holds active access to.
  *
- * Absence is represented by the ABSENCE of a class_attendance row, so it is
+ * Absence follows attendance-effective.ts: for classes where attendance was
+ * taken, no row counts as present and only an explicit absent row is absent;
+ * for legacy/untaken classes the absence of a row is an absence. It is
  * computed against the sessions the student was actually expected at: every
  * completed, past class_session for that product whose batch matches (or is
  * null = all batches) — same scoping convention as computeAttendanceStats,
@@ -16,6 +18,7 @@ import type * as schema from '@/lib/db/schema';
 import { classAttendance, classSessions } from '@/lib/db/schema';
 import type { UserProduct } from '@/lib/db/schema';
 import { ONLINE_ATTENDANCE_CAP, countOnlineAttendance } from './attendance-cap';
+import { effectiveAttendanceMap } from './attendance-effective';
 
 type DrizzleClient = LibSQLDatabase<typeof schema>;
 
@@ -41,7 +44,7 @@ export async function computeStudentAttendanceSummary(
         : or(isNull(classSessions.batch), eq(classSessions.batch, user.batch));
 
     const expected = await db
-      .select({ id: classSessions.id })
+      .select({ id: classSessions.id, attendanceTakenAt: classSessions.attendanceTakenAt })
       .from(classSessions)
       .where(and(
         eq(classSessions.product, product),
@@ -54,10 +57,10 @@ export async function computeStudentAttendanceSummary(
     let attendedCount = 0;
     if (expectedIds.length > 0) {
       const attended = await db
-        .select({ sessionId: classAttendance.sessionId })
+        .select({ sessionId: classAttendance.sessionId, mode: classAttendance.mode, status: classAttendance.status })
         .from(classAttendance)
         .where(and(eq(classAttendance.userId, user.id), inArray(classAttendance.sessionId, expectedIds)));
-      attendedCount = new Set(attended.map((a) => a.sessionId)).size;
+      attendedCount = effectiveAttendanceMap(expected, attended).size;
     }
 
     const onlineUsed = await countOnlineAttendance(db, user.id, product);
