@@ -4,10 +4,10 @@ import { readContent, selectPlayable } from '../content/load';
 import type { LastWordSet } from '../content/schema';
 import { MIN_READ_MS, classifyAnswer, decisionPoints, diagnosticOutcome, edgeStatus, evaluateDecision, scheduleReview, updateMastery, verdictLabel } from '../core/learning';
 import { isEligible, type SelectionCandidate } from '../core/selection';
-import { emptyMastery, type Confidence, type DecisionInput, type DecisionRecord, type MasterySnapshot } from '../core/types';
+import { emptyMastery, type DecisionInput, type DecisionRecord, type MasterySnapshot } from '../core/types';
 import { checkpointPhase, clearCheckpoint, makeCheckpoint, readCheckpoint, submissionFor, writeCheckpoint } from '../game/checkpoint';
 import { currentRound, lastWordMachine, type GameContext } from '../game/machine';
-import { planGoals, TUTORIAL_MESSAGES, type Mode, type Round } from '../game/session';
+import { planGoals, REVISION_EVERY, TUTORIAL_MESSAGES, type Mode, type Round } from '../game/session';
 import { applySubmission } from '../persistence/submission';
 import { emptyLearningSnapshot } from '../persistence/types';
 
@@ -148,17 +148,27 @@ describe('mastery evidence (§12, §13)', () => {
 describe('review scheduling (§15)', () => {
   const flip = chain('po_flip');
   const at = (day: number, scenario = flip.id, word = flip.beats[0].best_word) => decide({ scenarioId: scenario, beatId: po.chains.find(c => c.id === scenario)!.beats[0].id, selectedWord: word, occurredAt: day * DAY });
-  it('expands 1 → 3 → 7 days on delayed successes with fresh contexts, and resets on failure', () => {
+  const wrongWord = Object.entries(flip.beats[0].fit).find(([w]) => w !== flip.beats[0].best_word)![0];
+  it('sends a right answer far out (7 → 21 → 60 days on delayed successes) and a wrong one to tomorrow', () => {
     let r = scheduleReview(undefined, at(0));
-    expect(r.intervalDays).toBe(1);
-    r = scheduleReview(r, at(1, 'po_hold', chain('po_hold').beats[0].best_word));
-    expect(r.intervalDays).toBe(3);
-    r = scheduleReview(r, at(4, 'po_probe', chain('po_probe').beats[0].best_word));
     expect(r.intervalDays).toBe(7);
-    const wrongWord = Object.entries(flip.beats[0].fit).find(([w]) => w !== flip.beats[0].best_word)![0];
-    r = scheduleReview(r, at(11, flip.id, wrongWord));
+    r = scheduleReview(r, at(7, 'po_hold', chain('po_hold').beats[0].best_word));
+    expect(r.intervalDays).toBe(21);
+    r = scheduleReview(r, at(28, 'po_probe', chain('po_probe').beats[0].best_word));
+    expect(r.intervalDays).toBe(60);
+    r = scheduleReview(r, at(100, flip.id, wrongWord));
     expect(r.intervalDays).toBe(0);
-    expect(r.dueAt - 11 * DAY).toBe(10 * 60_000);
+    expect(r.dueAt - 100 * DAY).toBe(DAY);
+  });
+  it('halves the gap for a partly right or hinted answer', () => {
+    const first = scheduleReview(undefined, at(0));
+    const hinted = scheduleReview(first, decide({ scenarioId: 'po_hold', beatId: chain('po_hold').beats[0].id, selectedWord: chain('po_hold').beats[0].best_word, hintLevel: 1, occurredAt: 7 * DAY }));
+    expect(hinted.intervalDays).toBe(3);
+  });
+  it('a later beat of a chain that already had a miss cannot undo it', () => {
+    const missed = scheduleReview(undefined, at(0, flip.id, wrongWord));
+    const after = scheduleReview(missed, at(0.001, flip.id, flip.beats[0].best_word));
+    expect(after.intervalDays).toBe(0);
   });
   it('does not push a due review away when the learner repeats it within the same session', () => {
     const first = scheduleReview(undefined, at(0));
@@ -201,17 +211,18 @@ type Chooser = (ctx: GameContext) => string;
 const bestWord: Chooser = ctx => currentRound(ctx)!.beat.best_word;
 const worstWord: Chooser = ctx => { const b = currentRound(ctx)!.beat; return Object.entries(b.fit).sort((x, y) => x[1] - y[1])[0][0]; };
 
-function play(sets: LastWordSet[], { mode = 'journey' as Mode, baseline = emptyMastery(), tutorialDone = true, choose = bestWord, confidence = null as Confidence, sessionId = 'session-1', now = 100 * DAY } = {}) {
+function play(sets: LastWordSet[], { mode = 'journey' as Mode, baseline = emptyMastery(), tutorialDone = true, choose = bestWord, limit = 400, sessionId = 'session-1', now = 100 * DAY } = {}) {
   const actor = createActor(lastWordMachine, { input: { sets } }).start();
   actor.send({ type: 'START', mode, now, sessionId, baseline, tutorialDone });
   const states: string[] = [];
-  for (let i = 0; i < 400 && !actor.getSnapshot().matches('recap'); i++) {
+  for (let i = 0; i < 20000 && !actor.getSnapshot().matches('recap'); i++) {
     const s = actor.getSnapshot();
     states.push(String(s.value));
     now += 3000;
-    if (s.matches('reading')) {
+    // The stream never ends on its own while pairs remain; the learner ends it with Finish.
+    if (s.matches('reading') && s.context.steps.filter(x => x.kind === 'round').length > limit) actor.send({ type: 'FINISH', now });
+    else if (s.matches('reading')) {
       actor.send({ type: 'SELECT', word: choose(s.context) });
-      if (confidence) actor.send({ type: 'CONFIDENCE', confidence });
       actor.send({ type: 'LOCK', now });
     } else actor.send({ type: 'NEXT', now });
   }
@@ -247,7 +258,8 @@ describe('resuming an interrupted session', () => {
     for (let i = 0; i < 400 && !resumed.getSnapshot().matches('recap'); i++) {
       const s = resumed.getSnapshot();
       now += 3000;
-      if (s.matches('reading')) { resumed.send({ type: 'SELECT', word: bestWord(s.context) }); resumed.send({ type: 'LOCK', now: now + 60_000 }); } else resumed.send({ type: 'NEXT', now: now + 60_000 });
+      if (s.matches('reading') && s.context.records.length >= before.context.records.length + 4) resumed.send({ type: 'FINISH', now: now + 60_000 });
+      else if (s.matches('reading')) { resumed.send({ type: 'SELECT', word: bestWord(s.context) }); resumed.send({ type: 'LOCK', now: now + 60_000 }); } else resumed.send({ type: 'NEXT', now: now + 60_000 });
     }
     const done = resumed.getSnapshot();
     expect(done.matches('recap')).toBe(true);
@@ -268,6 +280,8 @@ describe('resuming an interrupted session', () => {
   });
 });
 
+const seenBaseline = play(all, { sessionId: 'seed', limit: 20 }).ctx.records.reduce(updateMastery, emptyMastery() as MasterySnapshot);
+
 describe('session flow', () => {
   it('a first visit starts with the tutorial, then the spec’s three tutorial lessons', () => {
     const { rounds, cards } = play(players, { tutorialDone: false });
@@ -276,57 +290,63 @@ describe('session flow', () => {
     expect(messages).toEqual([TUTORIAL_MESSAGES.flip, TUTORIAL_MESSAGES.hold, TUTORIAL_MESSAGES.end]);
   });
 
-  it('a learner who already owns a distinction proves it and skips instruction (§5, §51)', () => {
-    const { rounds, cards } = play(all);
-    const first = rounds[0].edgeId;
-    const mine = rounds.filter(r => r.edgeId === first).map(r => r.role);
-    expect(mine.slice(0, 3)).toEqual(['diagnostic', 'diagnostic', 'probe']);
-    expect(mine).not.toContain('practice');
-    const diagnosis = cards.find(c => c.kind === 'diagnosis' && c.edgeId === first) as { result: { outcome: string } };
-    expect(diagnosis.result.outcome).toBe('A');
-    // The journey moves straight on to the next distinction instead of re-teaching.
-    expect(new Set(rounds.map(r => r.edgeId)).size).toBeGreaterThan(1);
+  it('plays one situation per pair and moves straight on: no pair twice in a row, no intro or diagnosis cards', () => {
+    const { rounds, cards } = play(all, { limit: 30 });
+    expect(rounds.length).toBe(31);
+    expect(new Set(rounds.map(r => r.edgeId)).size).toBe(rounds.length);
+    expect(cards).toEqual([]);
+    expect(rounds.every(r => r.role === 'practice')).toBe(true);
   });
 
-  it('the cold read shows no teaching until evidence is in', () => {
-    const { states, rounds } = play(all, { choose: worstWord });
-    expect(rounds.slice(0, 2).map(r => r.role)).toEqual(['diagnostic', 'diagnostic']);
-    // intro card, cold reads, then the diagnosis card: nothing is explained before it.
-    const diagnosisAt = states.indexOf('card', states.indexOf('card') + 1);
-    expect(diagnosisAt).toBeGreaterThan(0);
-    expect(states.slice(0, diagnosisAt)).not.toContain('feedback');
-  });
-
-  it('a struggling learner gets contrast practice and a fresh remedial context, not definitions on repeat', () => {
-    const { rounds, cards } = play(all, { choose: worstWord });
+  it('a miss shows the boundary at once, then the pair returns after a few others, at most twice', () => {
+    const { rounds, cards, ctx } = play(all, { choose: worstWord, limit: 40 });
     const first = rounds[0].edgeId;
-    expect((cards.find(c => c.kind === 'diagnosis') as { result: { outcome: string } }).result.outcome).toBe('C');
+    const at = (e: string) => rounds.flatMap((r, i) => (r.edgeId === e ? [i] : []));
     expect(cards.some(c => c.kind === 'contrast' && c.edgeId === first)).toBe(true);
-    expect(rounds.some(r => r.role === 'remedial')).toBe(true);
+    const contrast = ctx.steps.findIndex(s => s.kind === 'contrast' && s.edgeId === first);
+    expect(ctx.steps[contrast - 1]).toBe(rounds[0]);
+    const mine = at(first);
+    expect(mine.length).toBe(3);
+    expect(mine[1] - mine[0]).toBeGreaterThan(3);
+    expect(rounds[mine[1]].role).toBe('remedial');
+    for (const e of new Set(rounds.map(r => r.edgeId))) expect(at(e).length).toBeLessThanOrEqual(3);
     expect(new Set(rounds.map(r => r.chainId)).size).toBe(rounds.length);
   });
 
-  it('a confident misconception is corrected immediately (§14 D)', () => {
-    const { states, cards } = play(all, { choose: worstWord, confidence: 'certain' });
-    expect(states.indexOf('feedback')).toBeLessThan(states.indexOf('card', 2) === -1 ? Infinity : states.length);
-    expect((cards.find(c => c.kind === 'diagnosis') as { result: { outcome: string } }).result.outcome).toBe('D');
-    expect(cards.findIndex(c => c.kind === 'contrast')).toBeGreaterThan(cards.findIndex(c => c.kind === 'diagnosis'));
+  it('a right answer is not revised this session, and learned pairs come back one situation in ten', () => {
+    const first = play(all, { sessionId: 'a', limit: 1 });
+    const learned = first.ctx.records.reduce(updateMastery, emptyMastery() as MasterySnapshot);
+    const dueEdge = Object.keys(learned.reviews)[0];
+    const later = play(all, { baseline: learned, now: 100 * DAY + 30 * DAY, sessionId: 'b', limit: 12 });
+    const revisions = later.rounds.flatMap((r, i) => (r.role === 'review' ? [i] : []));
+    expect(revisions).toEqual([REVISION_EVERY - 1]);
+    expect(later.rounds[revisions[0]].edgeId).toBe(dueEdge);
+    expect(later.rounds.filter(r => r.edgeId === dueEdge).length).toBe(1);
+  });
+
+  it('a pair missed in an earlier session comes first next time', () => {
+    const first = play(all, { sessionId: 'a', choose: worstWord, limit: 1 });
+    const learned = first.ctx.records.reduce(updateMastery, emptyMastery() as MasterySnapshot);
+    const missedEdge = first.rounds[0].edgeId;
+    const later = play(all, { baseline: learned, now: 100 * DAY + 2 * DAY, sessionId: 'b', limit: 3 });
+    expect(later.rounds[0].edgeId).toBe(missedEdge);
+    expect(later.rounds[0].role).toBe('remedial');
   });
 
   it('review mode tests a due distinction in a context the learner has not seen (§15, §51)', () => {
-    const first = play(all, { sessionId: 'a' });
+    const first = play(all, { sessionId: 'a', limit: 1 });
     const learned = first.ctx.records.reduce(updateMastery, emptyMastery() as MasterySnapshot);
     const dueEdge = Object.keys(learned.reviews)[0];
     const later = play(all, { mode: 'review', baseline: learned, now: 100 * DAY + 30 * DAY, sessionId: 'b' });
     expect(later.rounds.length).toBeGreaterThan(0);
-    expect(later.rounds.every(r => r.role === 'review' && r.askConfidence)).toBe(true);
+    expect(later.rounds.every(r => r.role === 'review')).toBe(true);
     const seenBefore = new Set(first.rounds.map(r => r.chainId));
     expect(later.rounds.filter(r => r.edgeId === dueEdge).every(r => !seenBefore.has(r.chainId))).toBe(true);
   });
 
   it('never repeats a chain within a session and keeps the anti-pattern rules across many sessions', () => {
-    for (let s = 0; s < 25; s++) {
-      const { rounds } = play(all, { mode: 'quick', sessionId: `q${s}` });
+    for (let s = 0; s < 10; s++) {
+      const { rounds } = play(all, { mode: 'quick', sessionId: `q${s}`, baseline: seenBaseline, limit: 15 });
       const ids = rounds.map(r => r.chainId);
       expect(new Set(ids).size).toBe(ids.length);
       for (let i = 1; i < rounds.length; i++) {
@@ -337,18 +357,34 @@ describe('session flow', () => {
     }
   });
 
-  it('plans warm-up and due reviews ahead of new learning on Continue', () => {
-    const strong = { ...emptyMastery(), edges: { 'assure__ensure': { status: 'Fluent' } as never }, reviews: { 'persistent__obstinate': { edgeId: 'persistent__obstinate', dueAt: 0, intervalDays: 3, successfulReviews: 1, previousScenarioId: 'x' } } } as MasterySnapshot;
-    const goals = planGoals(players, strong, 'journey', DAY, true).map(g => g.kind);
-    expect(goals).toEqual(['review', 'warmup', 'learn']);
+  it('plans only the tutorial up front', () => {
+    expect(planGoals(players, emptyMastery(), 'journey', DAY, false).map(g => g.kind)).toEqual(['tutorial']);
+    expect(planGoals(players, emptyMastery(), 'journey', DAY, true)).toEqual([]);
   });
 
   it('a session the client plays is accepted by the server boundary with the same scores', () => {
-    const { ctx } = play(players, { tutorialDone: false });
+    const { ctx } = play(players, { tutorialDone: false, limit: 6 });
     const submission = { id: ctx.sessionId, startedAt: ctx.startedAt, completedAt: ctx.completedAt!, decisions: ctx.records.map(({ id, sessionId, setId, scenarioId, beatId, presentedWords, selectedWord, previousSelection, reactionTimeMs, hintLevel, confidence, reviewIntervalDays, occurredAt }) => ({ id, sessionId, setId, scenarioId, beatId, presentedWords, selectedWord, previousSelection, reactionTimeMs, hintLevel, confidence, reviewIntervalDays, occurredAt })) };
     const result = applySubmission(emptyLearningSnapshot(), submission, players);
     expect(result.decisions.map(d => d.score)).toEqual(ctx.records.map(r => r.score));
     // Tutorial play never counts as mastery evidence.
     expect(Object.keys(result.snapshot.edges)).not.toContain('confident__arrogant');
+  });
+
+  it('a long stream is saved in segments the server accepts, with the same scores as played', () => {
+    const { ctx } = play(all, { limit: 60 });
+    const segments = new Map<string, typeof ctx.records>();
+    for (const r of ctx.records) segments.set(r.sessionId, [...(segments.get(r.sessionId) ?? []), r]);
+    expect(segments.size).toBeGreaterThan(3);
+    let snapshot = emptyLearningSnapshot();
+    const scores: number[] = [];
+    for (const [id, group] of segments) {
+      expect(group.length).toBeLessThanOrEqual(100);
+      const first = group[0];
+      const result = applySubmission(snapshot, submissionFor(id, Math.max(0, first.occurredAt - first.reactionTimeMs), group.at(-1)!.occurredAt, group), all);
+      snapshot = result.snapshot;
+      scores.push(...result.decisions.map(d => d.score));
+    }
+    expect(scores).toEqual(ctx.records.map(r => r.score));
   });
 });

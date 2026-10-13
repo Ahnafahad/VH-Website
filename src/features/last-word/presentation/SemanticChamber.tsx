@@ -82,11 +82,15 @@ function ProceduralTile({ width, glow, color, tier }: { width: number; glow: num
   );
 }
 
+/** Tile width fits inside the DOM button it sits behind; its height follows the 1 : 1.4 tile proportion. */
+const tileWidth = (viewportWidth: number, viewportHeight: number, count: number) => Math.min((viewportWidth / count) * 0.5, (viewportHeight * 0.56) / 1.4);
+const tileHeight = (viewportWidth: number, viewportHeight: number, count: number) => tileWidth(viewportWidth, viewportHeight, count) * 1.4;
+
 function WordTile({ index, props }: { index: number; props: ChamberProps }) {
   const viewport = useThree(state => state.viewport);
   const slot = viewport.width / props.words.length;
   // Fit inside the DOM button it sits behind; selected tiles come forward (z) so they need headroom.
-  const width = Math.min(slot * 0.6, (viewport.height * 0.66) / 1.4);
+  const width = tileWidth(viewport.width, viewport.height, props.words.length);
   const homeX = (index - (props.words.length - 1) / 2) * slot;
   const word = props.words[index];
   const chosen = word === props.selected;
@@ -145,36 +149,20 @@ function LockRing({ width, props }: { width: number; props: ChamberProps }) {
   );
 }
 
-/** The Fulcrum: tilts toward the current selection (never the answer) and releases on every new beat. */
+/** The Fulcrum: a straight line seated just under the tiles. It leans toward the current selection (never the answer) and recentres on every new beat. */
 function Fulcrum({ props }: { props: ChamberProps }) {
   const viewport = useThree(state => state.viewport);
   const index = props.selected ? props.words.indexOf(props.selected) : -1;
   const lean = index < 0 ? 0 : (index - (props.words.length - 1) / 2) / Math.max(1, props.words.length - 1);
-  const { rz } = useSpring({ rz: props.reduced ? 0 : -lean * 0.08, config: springs.settle, immediate: props.reduced });
+  const slot = viewport.width / props.words.length;
+  const { x } = useSpring({ x: props.reduced ? 0 : lean * slot * 0.12, config: springs.settle, immediate: props.reduced });
   const length = viewport.width * 0.8;
   return (
-    <animated.group position={[0, -viewport.height * 0.42, 0.2]} rotation-z={rz} scale={[length / 3, 1, 1]}>
+    <animated.group position-x={x} position-y={-tileHeight(viewport.width, viewport.height, props.words.length) / 2 - 0.14} position-z={0.2} scale={[length / 3, 1, 1]}>
       <Model url={assetUrl(props.assets, 'model.fulcrum')} fallback={<mesh><boxGeometry args={[3, 0.01, 0.01]} /><meshBasicMaterial color={IVORY} /></mesh>}>
         {scene => <Clone object={scene} />}
       </Model>
     </animated.group>
-  );
-}
-
-/** Evidence strata: one text-free glass pane per earlier beat, receding behind the field. */
-function EvidencePanes({ props }: { props: ChamberProps }) {
-  const viewport = useThree(state => state.viewport);
-  const panes = Math.min(props.beat, 4);
-  return (
-    <group position={[0, viewport.height * 0.18, -1.2]}>
-      {Array.from({ length: panes }, (_, i) => (
-        <group key={i} position={[0, i * 0.12, -i * 0.5]} scale={(viewport.width * 0.55) / 1.6}>
-          <Model url={assetUrl(props.assets, 'model.evidence-pane')} fallback={<mesh><planeGeometry args={[1.6, 0.9]} /><meshStandardMaterial color="#20262A" transparent opacity={0.3} /></mesh>}>
-            {scene => <Clone object={scene} />}
-          </Model>
-        </group>
-      ))}
-    </group>
   );
 }
 
@@ -193,7 +181,6 @@ function Chamber(props: ChamberProps) {
           <Lightformer form="rect" intensity={0.6} position={[4, -3, 2]} scale={[1, 3, 1]} color="#E63946" />
         </Environment>
       )}
-      {!props.reduced && <EvidencePanes props={props} />}
       {props.words.map((word, index) => <WordTile key={word} index={index} props={props} />)}
       <Fulcrum props={props} />
       {props.tier === 'full' && !props.reduced && props.locked && <Sparkles count={14} scale={[8, 2, 1]} size={1.2} speed={0.12} opacity={0.25} color={props.best ? GOLD : IVORY} />}
@@ -214,24 +201,6 @@ export default function SemanticChamber(props: ChamberProps) {
       }}
     >
       <Chamber {...props} />
-    </Canvas>
-  );
-}
-
-/**
- * Layer 0 (§17.1): the chamber shell as a full-screen, static backdrop behind the page. It renders on
- * demand only (one frame per resize), so the second context costs almost nothing. No shell file → the
- * backdrop image is used instead (CSS).
- */
-export function ChamberBackdrop({ tier, assets }: { tier: ChamberProps['tier']; assets: AssetUrls }) {
-  const shell = assetUrl(assets, tier === 'full' ? 'model.chamber-shell.full' : 'model.chamber-shell.standard');
-  if (!shell) return null;
-  return (
-    <Canvas camera={{ position: [0, 0, 10], fov: 28 }} dpr={1} frameloop="demand" gl={{ antialias: false, alpha: true, powerPreference: 'low-power' }}>
-      <ambientLight intensity={0.2} />
-      <directionalLight position={[-5, 5, 6]} intensity={1.6} color={IVORY} />
-      <directionalLight position={[5, -4, 2]} intensity={0.5} color={CRIMSON} />
-      <Model url={shell} fallback={null}>{scene => <Clone object={scene} />}</Model>
     </Canvas>
   );
 }
