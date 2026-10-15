@@ -16,7 +16,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ArrowLeft, ChevronLeft, ChevronRight, CircleAlert, Loader2, Lock, PanelRightClose, PanelRightOpen, SkipForward, X } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, CircleAlert, ListFilter, Loader2, Lock, MessageSquare, PanelRightClose, PanelRightOpen, SkipForward, X } from 'lucide-react';
 import {
   BG, BORDER, BORDER_FIELD, INFO, INK_SOFT, MUTED, OK, R_LG, R_MD, R_PILL, RED, SHADOW_LG, SLATE, SURFACE, SURFACE_ALT, SURFACE_SHELL,
   T_BASE, T_SM, T_XS, WARN, WARN_BG, Z_MODAL_BACKDROP,
@@ -48,6 +48,8 @@ const REJECT_REASONS = ['Photo is blurry / unreadable', 'Pages are missing', 'Wr
 const HEARTBEAT_MS = 60_000;
 const IDLE_MS = 10 * 60_000;
 const UNDO_LIMIT = 100;
+const PHONE_PX = 640;
+const DOCK_PX = 1024; // wide enough to dock the 340px marks panel beside the page
 
 interface EditorState {
   kind: 'comment' | 'text';
@@ -109,6 +111,8 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [focus, setFocus] = useState(false);
   const [panelOpen, setPanelOpen] = useState(true);
+  const [vw, setVw] = useState(1280);
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [stylusOnly, setStylusOnly] = useState(false);
   const [editor, setEditor] = useState<EditorState | null>(null);
   const [rejectOpen, setRejectOpen] = useState(false);
@@ -118,6 +122,22 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
   const [references, setReferences] = useState<{ id: number; label: string | null; total: number | null; name: string; essayIndex: number }[]>([]);
   const [reference, setReference] = useState<ScriptDetail | null>(null);
   const canvasRef = useRef<MarkingCanvasHandle>(null);
+
+  // Phones and iPad portrait: page first, marks in a sheet/drawer behind a bottom bar.
+  const phone = vw < PHONE_PX;
+  const overlay = vw < DOCK_PX;
+  useEffect(() => {
+    let was = window.innerWidth < DOCK_PX;
+    setVw(window.innerWidth);
+    setPanelOpen(!was);
+    const on = () => {
+      const w = window.innerWidth;
+      setVw(w);
+      if ((w < DOCK_PX) !== was) { was = w < DOCK_PX; setPanelOpen(!was); }
+    };
+    window.addEventListener('resize', on);
+    return () => window.removeEventListener('resize', on);
+  }, []);
 
   // ── Loading ────────────────────────────────────────────────────────────────
   const loadSeries = useCallback(async () => {
@@ -338,6 +358,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
     if (id === null || id === scriptId) return;
     setPageIndex(atEnd ? Number.MAX_SAFE_INTEGER : 0);
     setZoom(1);
+    if (window.innerWidth < DOCK_PX) setPanelOpen(false);
     setScriptId(id);
   }, [scriptId]);
 
@@ -563,6 +584,53 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
 
   const navBtn = { height: 36, minWidth: 36, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 4, padding: '0 10px', borderRadius: R_MD, border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT, cursor: 'pointer', fontSize: T_SM, fontWeight: 600 } as const;
 
+  const selects = (
+    <>
+      <select aria-label="Filter scripts" value={filter} onChange={e => setFilter(e.target.value as Filter)} style={{ height: 36, flex: phone ? 1 : undefined, minWidth: 0, border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: '0 8px', fontSize: phone ? 16 : T_SM, color: SLATE, background: SURFACE }}>
+        {(Object.keys(FILTER_LABEL) as Filter[]).map(f => <option key={f} value={f}>{FILTER_LABEL[f]} ({rows.filter(r => matches(r, f)).length})</option>)}
+      </select>
+      <select aria-label="Jump to student" value={scriptId ?? ''} onChange={e => goScript(Number(e.target.value))} style={{ height: 36, flex: phone ? 1 : undefined, minWidth: 0, maxWidth: phone ? undefined : 200, border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: '0 8px', fontSize: phone ? 16 : T_SM, color: SLATE, background: SURFACE }}>
+        {rows.map(r => (
+          <option key={r.id} value={r.id}>
+            {r.status === 'graded' ? '✓ ' : r.status === 'rejected' ? '✗ ' : ''}{r.studentName}{series && series.essayCount > 1 ? ` (E${r.essayIndex})` : ''}
+          </option>
+        ))}
+      </select>
+    </>
+  );
+
+  const panelEl = series && detail && draft ? (
+    <MarkingSidePanel
+      series={series}
+      detail={detail}
+      draft={draft}
+      onDraft={updateDraft}
+      draftDirty={draftDirty}
+      readOnly={readOnly}
+      saving={saving}
+      onSaveDraft={() => saveMarks('save')}
+      onGrade={() => saveMarks('grade')}
+      onReject={() => setRejectOpen(true)}
+      notify={notify}
+      onNotify={setNotify}
+      stats={stats?.byEssay[detail.essayIndex - 1] ?? null}
+      essays={essays}
+      pageItems={pageItems}
+      onOpenComment={id => {
+        const c = pageItems.find(a => a.id === id);
+        if (c && c.t === 'comment') openEditor({ kind: 'comment', id, x: c.x, y: c.y, clientX: window.innerWidth / 2, clientY: window.innerHeight / 3 });
+      }}
+      bank={bank}
+      onToggleReference={toggleReference}
+      references={references}
+      onOpenReference={openReference}
+      compact={overlay}
+    />
+  ) : null;
+
+  const canMark = !readOnly && detail?.status !== 'rejected';
+  const isGraded = detail?.status === 'graded';
+
   return (
     <div style={{ position: 'fixed', inset: 0, zIndex: Z_MODAL_BACKDROP - 100, background: BG, display: 'flex', flexDirection: 'column' }}>
       <style>{SPIN_CSS}</style>
@@ -570,38 +638,40 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
       {/* ── Header ── */}
       {!focus && (
         <div style={{ flexShrink: 0, background: SURFACE, borderBottom: `1px solid ${BORDER}` }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '8px 12px', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: phone ? 8 : 10, padding: '8px 12px', flexWrap: phone ? 'nowrap' : 'wrap' }}>
             <button type="button" onClick={() => { void flushSaves.current().then(() => router.push(`/admin/essays/${seriesId}`)); }} style={navBtn} aria-label="Back to series">
               <ArrowLeft size={16} aria-hidden />
             </button>
-            <div style={{ minWidth: 0, flex: '1 1 220px' }}>
-              <div style={{ fontSize: T_XS, color: MUTED, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{series?.title ?? 'Loading…'}</div>
+            <div style={{ minWidth: 0, flex: phone ? '1 1 0' : '1 1 220px' }}>
+              <div style={{ fontSize: T_XS, color: MUTED, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                {phone ? `Page ${detail ? pageIndex + 1 : '–'}/${detail?.pages.length ?? '–'} · Script ${queuePos + 1}/${queue.length}` : series?.title ?? 'Loading…'}
+              </div>
               <div style={{ fontSize: 15, fontWeight: 700, color: SLATE, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 {detail?.student?.name ?? currentRow?.studentName ?? '—'}
                 {series && series.essayCount > 1 && detail ? <span style={{ fontWeight: 500, color: MUTED }}> · Essay {detail.essayIndex}</span> : null}
               </div>
             </div>
-            <span style={{ fontSize: T_SM, color: SLATE, whiteSpace: 'nowrap' }}>
-              Page <strong>{detail ? pageIndex + 1 : '–'}</strong> of {detail?.pages.length ?? '–'} · Script <strong>{queuePos + 1}</strong> of {queue.length}
-            </span>
-            <span style={{ fontSize: T_XS, fontWeight: 700, color: saveColor, whiteSpace: 'nowrap' }}>{readOnly ? '' : saveLabel}</span>
-            <select aria-label="Filter scripts" value={filter} onChange={e => setFilter(e.target.value as Filter)} style={{ height: 36, border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: '0 8px', fontSize: T_SM, color: SLATE, background: SURFACE }}>
-              {(Object.keys(FILTER_LABEL) as Filter[]).map(f => <option key={f} value={f}>{FILTER_LABEL[f]} ({rows.filter(r => matches(r, f)).length})</option>)}
-            </select>
-            <select aria-label="Jump to student" value={scriptId ?? ''} onChange={e => goScript(Number(e.target.value))} style={{ height: 36, maxWidth: 200, border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: '0 8px', fontSize: T_SM, color: SLATE, background: SURFACE }}>
-              {rows.map(r => (
-                <option key={r.id} value={r.id}>
-                  {r.status === 'graded' ? '✓ ' : r.status === 'rejected' ? '✗ ' : ''}{r.studentName}{series && series.essayCount > 1 ? ` (E${r.essayIndex})` : ''}
-                </option>
-              ))}
-            </select>
-            <button type="button" style={navBtn} onClick={() => { const n = nextUngraded(scriptId); if (n) goScript(n.id); else setToast('No other ungraded scripts'); }} title="Next ungraded (N)">
-              <SkipForward size={14} aria-hidden /> Next ungraded
+            {!phone && (
+              <span style={{ fontSize: T_SM, color: SLATE, whiteSpace: 'nowrap' }}>
+                Page <strong>{detail ? pageIndex + 1 : '–'}</strong> of {detail?.pages.length ?? '–'} · Script <strong>{queuePos + 1}</strong> of {queue.length}
+              </span>
+            )}
+            <span style={{ fontSize: T_XS, fontWeight: 700, color: saveColor, whiteSpace: 'nowrap' }}>{readOnly || (phone && saveState === 'saved') ? '' : saveLabel}</span>
+            {phone ? (
+              <button type="button" style={navBtn} onClick={() => setFiltersOpen(o => !o)} aria-label="Filter and jump to student" aria-expanded={filtersOpen}>
+                <ListFilter size={16} aria-hidden />
+              </button>
+            ) : selects}
+            <button type="button" style={navBtn} onClick={() => { const n = nextUngraded(scriptId); if (n) goScript(n.id); else setToast('No other ungraded scripts'); }} title="Next ungraded (N)" aria-label="Next ungraded script">
+              <SkipForward size={14} aria-hidden /> {!phone && 'Next ungraded'}
             </button>
-            <button type="button" style={navBtn} onClick={() => setPanelOpen(o => !o)} aria-label={panelOpen ? 'Hide panel' : 'Show panel'}>
-              {panelOpen ? <PanelRightClose size={16} aria-hidden /> : <PanelRightOpen size={16} aria-hidden />}
-            </button>
+            {!overlay && (
+              <button type="button" style={navBtn} onClick={() => setPanelOpen(o => !o)} aria-label={panelOpen ? 'Hide panel' : 'Show panel'}>
+                {panelOpen ? <PanelRightClose size={16} aria-hidden /> : <PanelRightOpen size={16} aria-hidden />}
+              </button>
+            )}
           </div>
+          {phone && filtersOpen && <div style={{ display: 'flex', gap: 8, padding: '0 12px 8px' }}>{selects}</div>}
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '0 12px 8px' }}>
             <div style={{ flex: 1, height: 5, borderRadius: R_PILL, background: SURFACE_ALT, overflow: 'hidden' }}>
               <div style={{ width: `${progressPct}%`, height: '100%', background: OK }} />
@@ -683,7 +753,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
             </button>
 
             {focus && (
-              <div style={{ position: 'absolute', top: 10, left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: 8, padding: '6px 10px', background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_PILL, boxShadow: SHADOW_LG, fontSize: T_SM, color: SLATE }}>
+              <div style={{ position: 'absolute', top: 10, left: '50%', transform: 'translateX(-50%)', maxWidth: 'calc(100% - 16px)', overflowX: 'auto', display: 'flex', alignItems: 'center', gap: 8, padding: '6px 10px', background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_PILL, boxShadow: SHADOW_LG, fontSize: T_SM, color: SLATE }}>
                 <strong>{detail?.student?.name}</strong>
                 <span style={{ color: MUTED }}>p{pageIndex + 1}/{detail?.pages.length}</span>
                 {(['pen', 'hl', 'eraser', 'comment', 'hand'] as const).map(t => (
@@ -709,12 +779,13 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
                 onDelete={() => { if (editor.id) changeItems(pageItems.filter(a => a.id !== editor.id)); setEditor(null); }}
                 onSaveToBank={saveToBank}
                 onRemoveFromBank={removeFromBank}
+                phone={phone}
               />
             )}
           </div>
 
           {/* Thumbnails for the current script */}
-          {!focus && detail && (
+          {!focus && !phone && detail && (
             <div style={{ flexShrink: 0, display: 'flex', gap: 8, padding: 8, overflowX: 'auto', background: SURFACE_SHELL, borderTop: `1px solid ${BORDER}` }}>
               {detail.pages.map((p, i) => {
                 const marked = (items[p.id] ?? []).length > 0;
@@ -735,7 +806,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
 
         {/* Reference script, side by side */}
         {!focus && reference && (
-          <div style={{ width: 'min(42vw, 560px)', flexShrink: 0, borderLeft: `1px solid ${BORDER}`, background: SURFACE, overflowY: 'auto', padding: 12 }}>
+          <div style={overlay ? { position: 'fixed', inset: 0, zIndex: 160, background: SURFACE, overflowY: 'auto', padding: 12 } : { width: 'min(42vw, 560px)', flexShrink: 0, borderLeft: `1px solid ${BORDER}`, background: SURFACE, overflowY: 'auto', padding: 12 }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 }}>
               <div>
                 <div style={{ fontSize: T_XS, color: MUTED }}>Reference · {reference.referenceLabel ?? ''}</div>
@@ -747,37 +818,69 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
           </div>
         )}
 
-        {/* Side panel */}
-        {!focus && panelOpen && series && detail && draft && (
-          <div style={{ width: 340, flexShrink: 0, borderLeft: `1px solid ${BORDER}`, background: SURFACE, overflowY: 'auto' }}>
-            <MarkingSidePanel
-              series={series}
-              detail={detail}
-              draft={draft}
-              onDraft={updateDraft}
-              draftDirty={draftDirty}
-              readOnly={readOnly}
-              saving={saving}
-              onSaveDraft={() => saveMarks('save')}
-              onGrade={() => saveMarks('grade')}
-              onReject={() => setRejectOpen(true)}
-              notify={notify}
-              onNotify={setNotify}
-              stats={stats?.byEssay[detail.essayIndex - 1] ?? null}
-              essays={essays}
-              pageItems={pageItems}
-              onOpenComment={id => {
-                const c = pageItems.find(a => a.id === id);
-                if (c && c.t === 'comment') openEditor({ kind: 'comment', id, x: c.x, y: c.y, clientX: window.innerWidth / 2, clientY: window.innerHeight / 3 });
-              }}
-              bank={bank}
-              onToggleReference={toggleReference}
-              references={references}
-              onOpenReference={openReference}
-            />
-          </div>
-        )}
+        {/* Side panel — docked on wide screens, sheet/drawer on phones and iPad portrait */}
+        {!focus && panelOpen && panelEl && (overlay ? (
+          <>
+            <div onClick={() => setPanelOpen(false)} style={{ position: 'fixed', inset: 0, zIndex: 149, background: 'rgba(15,23,42,0.45)' }} />
+            <div role="dialog" aria-label="Marks and feedback" style={{
+              position: 'fixed', zIndex: 150, background: SURFACE, boxShadow: SHADOW_LG, display: 'flex', flexDirection: 'column',
+              ...(phone
+                ? { left: 0, right: 0, bottom: 0, maxHeight: '88dvh', borderRadius: '16px 16px 0 0' }
+                : { top: 0, right: 0, bottom: 0, width: 'min(400px, 92vw)' }),
+            }}>
+              <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 8px 4px 14px', borderBottom: `1px solid ${BORDER}` }}>
+                <strong style={{ fontSize: T_BASE, color: SLATE }}>Marks &amp; feedback</strong>
+                <button type="button" onClick={() => setPanelOpen(false)} aria-label="Close panel" style={{ width: 44, height: 44, border: 'none', background: 'transparent', cursor: 'pointer', color: MUTED, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <X size={20} aria-hidden />
+                </button>
+              </div>
+              <div style={{ flex: 1, minHeight: 0, overflowY: 'auto', overscrollBehavior: 'contain', paddingBottom: 'env(safe-area-inset-bottom)' }}>{panelEl}</div>
+            </div>
+          </>
+        ) : (
+          <div style={{ width: 340, flexShrink: 0, borderLeft: `1px solid ${BORDER}`, background: SURFACE, overflowY: 'auto' }}>{panelEl}</div>
+        ))}
       </div>
+
+      {/* Bottom bar: the mark and the primary action stay under the thumb */}
+      {overlay && !focus && detail && draft && (
+        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '8px 12px', paddingBottom: 'calc(8px + env(safe-area-inset-bottom))', background: SURFACE, borderTop: `1px solid ${BORDER}` }}>
+          {canMark ? (
+            <>
+              <input
+                aria-label={`Mark out of ${detail.max}`}
+                type="number" inputMode="decimal" min={0} max={detail.max} step="any"
+                value={draft.mark ?? ''}
+                placeholder="–"
+                onChange={e => {
+                  const raw = e.target.value;
+                  if (raw === '') { updateDraft({ ...draft, mark: null }); return; }
+                  const n = Math.round(Number(raw) * 100) / 100;
+                  if (Number.isFinite(n)) updateDraft({ ...draft, mark: Math.min(detail.max, Math.max(0, n)) });
+                }}
+                style={{ width: 64, height: 44, boxSizing: 'border-box', textAlign: 'center', fontSize: 18, fontWeight: 800, color: RED, border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, background: SURFACE, fontFamily: 'inherit' }}
+              />
+              <span style={{ fontSize: T_SM, color: MUTED, whiteSpace: 'nowrap' }}>/ {detail.max}</span>
+              <button type="button" onClick={() => setPanelOpen(true)} aria-label="Feedback, reject and more" style={{ position: 'relative', width: 44, height: 44, flexShrink: 0, borderRadius: R_MD, border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <MessageSquare size={18} aria-hidden />
+                {draft.overallFeedback.trim() && <span style={{ position: 'absolute', top: 6, right: 6, width: 8, height: 8, borderRadius: R_PILL, background: RED }} />}
+              </button>
+              <button type="button" disabled={saving || draft.mark === null || (isGraded && !draftDirty)} onClick={() => { void saveMarks(isGraded ? 'save' : 'grade'); }}
+                style={{ flex: 1, minWidth: 0, height: 44, borderRadius: R_MD, border: 'none', fontSize: 15, fontWeight: 700, whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                  background: saving || draft.mark === null || (isGraded && !draftDirty) ? SURFACE_ALT : RED,
+                  color: saving || draft.mark === null || (isGraded && !draftDirty) ? MUTED : SURFACE,
+                  cursor: saving || draft.mark === null || (isGraded && !draftDirty) ? 'not-allowed' : 'pointer' }}>
+                {saving ? <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} aria-hidden /> : null}
+                {draft.mark === null ? 'Enter a mark' : isGraded ? (draftDirty ? 'Save changes' : 'Saved') : 'Grade → next'}
+              </button>
+            </>
+          ) : (
+            <button type="button" onClick={() => setPanelOpen(true)} style={{ flex: 1, height: 44, borderRadius: R_MD, border: `1px solid ${BORDER}`, background: SURFACE, color: INK_SOFT, fontSize: 15, fontWeight: 700, cursor: 'pointer' }}>
+              Details &amp; feedback
+            </button>
+          )}
+        </div>
+      )}
 
       <Modal open={rejectOpen} onClose={() => setRejectOpen(false)} title="Reject this script" width={460}>
         <p style={{ margin: '0 0 10px', fontSize: T_SM, color: MUTED }}>
@@ -802,7 +905,7 @@ export default function MarkingWorkspace({ seriesId }: { seriesId: number }) {
   );
 }
 
-function EditorPopover({ editor, readOnly, bank, isAdmin, onChange, onCommit, onCancel, onDelete, onSaveToBank, onRemoveFromBank }: {
+function EditorPopover({ editor, readOnly, bank, isAdmin, onChange, onCommit, onCancel, onDelete, onSaveToBank, onRemoveFromBank, phone }: {
   editor: EditorState;
   readOnly: boolean;
   bank: BankComment[];
@@ -813,6 +916,7 @@ function EditorPopover({ editor, readOnly, bank, isAdmin, onChange, onCommit, on
   onDelete: () => void;
   onSaveToBank: (shared: boolean) => void;
   onRemoveFromBank: (id: number) => void;
+  phone: boolean;
 }) {
   const W = 320;
   const left = Math.max(8, Math.min(editor.clientX - W / 2, (typeof window !== 'undefined' ? window.innerWidth : 1200) - W - 8));
@@ -822,7 +926,7 @@ function EditorPopover({ editor, readOnly, bank, isAdmin, onChange, onCommit, on
   const isComment = editor.kind === 'comment';
 
   return (
-    <div style={{ position: 'fixed', left, top, width: W, zIndex: Z_MODAL_BACKDROP - 1, background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, boxShadow: SHADOW_LG, padding: 12, display: 'grid', gap: 8 }}
+    <div style={{ position: 'fixed', ...(phone ? { left: 8, right: 8, top: 8, maxHeight: '70dvh', overflowY: 'auto' } : { left, top, width: W }), zIndex: Z_MODAL_BACKDROP - 1, background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: R_LG, boxShadow: SHADOW_LG, padding: 12, display: 'grid', gap: 8 }}
       onPointerDown={e => e.stopPropagation()}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <strong style={{ fontSize: T_SM, color: SLATE }}>{isComment ? (editor.id ? 'Comment' : 'New comment') : editor.id ? 'Edit text' : 'Write on the page'}</strong>
@@ -839,12 +943,12 @@ function EditorPopover({ editor, readOnly, bank, isAdmin, onChange, onCommit, on
             placeholder={isComment ? 'Type a comment — the student taps the pin to read it' : 'e.g. 8/10'}
             onChange={e => onChange({ ...editor, text: e.target.value })}
             onKeyDown={e => { if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) onCommit(); if (e.key === 'Escape') onCancel(); }}
-            style={{ width: '100%', boxSizing: 'border-box', border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: 8, fontSize: T_BASE, color: SLATE, fontFamily: 'inherit', resize: 'vertical' }}
+            style={{ width: '100%', boxSizing: 'border-box', border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: 8, fontSize: phone ? 16 : T_BASE, color: SLATE, fontFamily: 'inherit', resize: 'vertical' }}
           />
           <div style={{ display: 'flex', gap: 6 }}>
             {INK_COLORS.map(c => (
               <button key={c} type="button" aria-label={`Colour ${c}`} onClick={() => onChange({ ...editor, color: c })}
-                style={{ width: 22, height: 22, borderRadius: R_PILL, background: c, cursor: 'pointer', border: editor.color === c ? `3px solid ${SLATE}` : `2px solid ${SURFACE}`, boxShadow: `0 0 0 1px ${BORDER}` }} />
+                style={{ width: phone ? 32 : 22, height: phone ? 32 : 22, borderRadius: R_PILL, background: c, cursor: 'pointer', border: editor.color === c ? `3px solid ${SLATE}` : `2px solid ${SURFACE}`, boxShadow: `0 0 0 1px ${BORDER}` }} />
             ))}
           </div>
           {suggestions.length > 0 && (

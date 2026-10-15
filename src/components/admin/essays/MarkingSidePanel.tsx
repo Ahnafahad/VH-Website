@@ -22,7 +22,7 @@ import type { BankComment, MarksDraft, ScriptDetail, SeriesInfo, SeriesStats } f
 function Section({ title, open, onToggle, children, right }: { title: string; open: boolean; onToggle: () => void; children: React.ReactNode; right?: React.ReactNode }) {
   return (
     <div style={{ borderTop: `1px solid ${BORDER}` }}>
-      <button type="button" onClick={onToggle} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 6, padding: '10px 14px', border: 'none', background: 'transparent', cursor: 'pointer', fontSize: T_SM, fontWeight: 700, color: SLATE, textAlign: 'left' }}>
+      <button type="button" onClick={onToggle} style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 6, padding: '10px 14px', minHeight: 44, border: 'none', background: 'transparent', cursor: 'pointer', fontSize: T_SM, fontWeight: 700, color: SLATE, textAlign: 'left' }}>
         {open ? <ChevronDown size={14} aria-hidden /> : <ChevronRight size={14} aria-hidden />}
         <span style={{ flex: 1 }}>{title}</span>
         {right}
@@ -43,7 +43,7 @@ const HISTORY_LABEL: Record<string, string> = {
 
 export default function MarkingSidePanel({
   series, detail, draft, onDraft, readOnly, saving, onSaveDraft, onGrade, onReject, notify, onNotify,
-  stats, essays, pageItems, onOpenComment, bank, onToggleReference, references, onOpenReference, draftDirty,
+  stats, essays, pageItems, onOpenComment, bank, onToggleReference, references, onOpenReference, draftDirty, compact = false,
 }: {
   series: SeriesInfo;
   detail: ScriptDetail;
@@ -66,8 +66,10 @@ export default function MarkingSidePanel({
   references: { id: number; label: string | null; total: number | null; name: string; essayIndex: number }[];
   onOpenReference: (id: number) => void;
   draftDirty: boolean;
+  /** Phone / iPad-portrait sheet: 16px inputs (no iOS zoom), bigger tap targets, long sections start closed. */
+  compact?: boolean;
 }) {
-  const [open, setOpen] = useState({ marks: true, feedback: true, comments: true, standard: true, history: false });
+  const [open, setOpen] = useState({ marks: true, feedback: true, comments: true, standard: !compact, history: false });
   const total = draft.mark;
   const max = detail.max;
   const graded = detail.status === 'graded';
@@ -83,7 +85,7 @@ export default function MarkingSidePanel({
     rejected: ['Rejected', RED, `${RED}12`],
   }[detail.status];
 
-  const input = { width: '100%', boxSizing: 'border-box' as const, border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: '8px 10px', fontSize: T_BASE, color: SLATE, background: SURFACE, fontFamily: 'inherit' };
+  const input = { width: '100%', boxSizing: 'border-box' as const, border: `1px solid ${BORDER_FIELD}`, borderRadius: R_MD, padding: '8px 10px', fontSize: compact ? 16 : T_BASE, color: SLATE, background: SURFACE, fontFamily: 'inherit' };
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100%' }}>
@@ -131,13 +133,13 @@ export default function MarkingSidePanel({
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 6 }}>
             {Array.from({ length: Math.floor(max) + 1 }, (_, i) => i).map(i => (
               <button key={i} type="button" onClick={() => setMark(half && i + 0.5 <= max ? i + 0.5 : i)}
-                style={{ minWidth: 30, height: 30, borderRadius: R_MD, border: `1px solid ${whole === i ? RED : BORDER}`, background: whole === i ? `${RED}14` : SURFACE, color: whole === i ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
+                style={{ minWidth: compact ? 44 : 30, height: compact ? 44 : 30, borderRadius: R_MD, border: `1px solid ${whole === i ? RED : BORDER}`, background: whole === i ? `${RED}14` : SURFACE, color: whole === i ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
                 {i}
               </button>
             ))}
             <button type="button" disabled={total === null || (!half && total + 0.5 > max)}
               onClick={() => total !== null && setMark(half ? Math.floor(total) : total + 0.5)}
-              style={{ minWidth: 30, height: 30, borderRadius: R_MD, border: `1px solid ${half ? RED : BORDER}`, background: half ? `${RED}14` : SURFACE, color: half ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
+              style={{ minWidth: compact ? 44 : 30, height: compact ? 44 : 30, borderRadius: R_MD, border: `1px solid ${half ? RED : BORDER}`, background: half ? `${RED}14` : SURFACE, color: half ? RED : INK_SOFT, fontSize: T_SM, fontWeight: 700, cursor: 'pointer' }}>
               +½
             </button>
           </div>
