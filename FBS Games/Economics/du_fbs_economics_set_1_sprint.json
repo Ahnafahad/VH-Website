@@ -1,0 +1,390 @@
+{
+  "title": "Economics Set 1",
+  "subject": "economics",
+  "questions": [
+    {
+      "number": 1,
+      "stem": "What happens to the equilibrium price when there is an increase in demand, assuming supply remains constant?",
+      "options": [
+        {
+          "key": "A",
+          "text": "It decreases"
+        },
+        {
+          "key": "B",
+          "text": "It remains the same"
+        },
+        {
+          "key": "C",
+          "text": "It increases"
+        },
+        {
+          "key": "D",
+          "text": "It becomes zero"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 2,
+      "stem": "Which of the following is NOT a determinant of supply?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Technology"
+        },
+        {
+          "key": "B",
+          "text": "Cost of production"
+        },
+        {
+          "key": "C",
+          "text": "Income of consumers"
+        },
+        {
+          "key": "D",
+          "text": "Number of producers"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 3,
+      "stem": "GDP is the sum of:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Private consumption, investment, government spending, and net exports"
+        },
+        {
+          "key": "B",
+          "text": "Only exports and imports"
+        },
+        {
+          "key": "C",
+          "text": "Tax revenues and government spending"
+        },
+        {
+          "key": "D",
+          "text": "National income and depreciation"
+        }
+      ],
+      "correctKey": "A",
+      "explanation": null
+    },
+    {
+      "number": 4,
+      "stem": "Which policy tool is used to control inflation?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Increasing government expenditure"
+        },
+        {
+          "key": "B",
+          "text": "Reducing interest rates"
+        },
+        {
+          "key": "C",
+          "text": "Reducing money supply"
+        },
+        {
+          "key": "D",
+          "text": "Increasing tax rates on exports"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 5,
+      "stem": "A perfectly inelastic demand curve is represented by:",
+      "options": [
+        {
+          "key": "A",
+          "text": "A horizontal line"
+        },
+        {
+          "key": "B",
+          "text": "A vertical line"
+        },
+        {
+          "key": "C",
+          "text": "A downward-sloping curve"
+        },
+        {
+          "key": "D",
+          "text": "An upward-sloping curve"
+        }
+      ],
+      "correctKey": "B",
+      "explanation": null
+    },
+    {
+      "number": 6,
+      "stem": "Which market structure is characterized by many sellers and differentiated products?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perfect competition"
+        },
+        {
+          "key": "B",
+          "text": "Monopolistic competition"
+        },
+        {
+          "key": "C",
+          "text": "Oligopoly"
+        },
+        {
+          "key": "D",
+          "text": "Monopoly"
+        }
+      ],
+      "correctKey": "B",
+      "explanation": null
+    },
+    {
+      "number": 7,
+      "stem": "The theory of comparative advantage was introduced by:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Adam Smith"
+        },
+        {
+          "key": "B",
+          "text": "David Ricardo"
+        },
+        {
+          "key": "C",
+          "text": "John Maynard Keynes"
+        },
+        {
+          "key": "D",
+          "text": "Milton Friedman"
+        }
+      ],
+      "correctKey": "B",
+      "explanation": null
+    },
+    {
+      "number": 8,
+      "stem": "A tariff is:",
+      "options": [
+        {
+          "key": "A",
+          "text": "A tax on domestic goods"
+        },
+        {
+          "key": "B",
+          "text": "A subsidy for exports"
+        },
+        {
+          "key": "C",
+          "text": "A tax on imported goods"
+        },
+        {
+          "key": "D",
+          "text": "A quota on imports"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 9,
+      "stem": "Which of the following is correct in the case of Giffen Goods?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Both income effect and substitution effect are negative"
+        },
+        {
+          "key": "B",
+          "text": "Positive substitute effect is greater than negative income effect"
+        },
+        {
+          "key": "C",
+          "text": "Negative income effect is greater than positive substitution effect"
+        },
+        {
+          "key": "D",
+          "text": "Positive income effect is greater than negative substitution effect"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 10,
+      "stem": "The price elasticity of demand for a product will be greater when:",
+      "options": [
+        {
+          "key": "A",
+          "text": "The product is a necessity"
+        },
+        {
+          "key": "B",
+          "text": "There are fewer substitutes available"
+        },
+        {
+          "key": "C",
+          "text": "The product has many close substitutes"
+        },
+        {
+          "key": "D",
+          "text": "The time available for adjustment is short"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 11,
+      "stem": "Which market structure is characterized by a unique product with no close substitutes?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Perfect competition"
+        },
+        {
+          "key": "B",
+          "text": "Monopoly"
+        },
+        {
+          "key": "C",
+          "text": "Oligopoly"
+        },
+        {
+          "key": "D",
+          "text": "Monopolistic competition"
+        }
+      ],
+      "correctKey": "B",
+      "explanation": null
+    },
+    {
+      "number": 12,
+      "stem": "Which of the following is a feature of perfect competition?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Product differentiation"
+        },
+        {
+          "key": "B",
+          "text": "High barriers to entry"
+        },
+        {
+          "key": "C",
+          "text": "Price-taking behavior"
+        },
+        {
+          "key": "D",
+          "text": "Few sellers"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 13,
+      "stem": "Transfer payment is excluded in national income accounting because:",
+      "options": [
+        {
+          "key": "A",
+          "text": "It is not related to production"
+        },
+        {
+          "key": "B",
+          "text": "It is of negligible amount"
+        },
+        {
+          "key": "C",
+          "text": "It is a source of double counting"
+        },
+        {
+          "key": "D",
+          "text": "It was counted previously"
+        }
+      ],
+      "correctKey": "A",
+      "explanation": null
+    },
+    {
+      "number": 14,
+      "stem": "Which component is not part of Aggregate Demand (AD)?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Consumption (C)"
+        },
+        {
+          "key": "B",
+          "text": "Investment (I)"
+        },
+        {
+          "key": "C",
+          "text": "Savings (S)"
+        },
+        {
+          "key": "D",
+          "text": "Net exports (NX)"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    },
+    {
+      "number": 15,
+      "stem": "A decrease in the general price level is referred to as:",
+      "options": [
+        {
+          "key": "A",
+          "text": "Deflation"
+        },
+        {
+          "key": "B",
+          "text": "Inflation"
+        },
+        {
+          "key": "C",
+          "text": "Disinflation"
+        },
+        {
+          "key": "D",
+          "text": "Stagflation"
+        }
+      ],
+      "correctKey": "A",
+      "explanation": null
+    },
+    {
+      "number": 16,
+      "stem": "Which of the following is an example of fiscal policy?",
+      "options": [
+        {
+          "key": "A",
+          "text": "Changing the money supply"
+        },
+        {
+          "key": "B",
+          "text": "Increasing interest rates"
+        },
+        {
+          "key": "C",
+          "text": "Decreasing government spending"
+        },
+        {
+          "key": "D",
+          "text": "Adjusting exchange rates"
+        }
+      ],
+      "correctKey": "C",
+      "explanation": null
+    }
+  ]
+}
