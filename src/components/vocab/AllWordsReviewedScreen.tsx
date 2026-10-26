@@ -7,7 +7,7 @@
  * has status === 'complete' (all words reviewed).
  *
  * Design: ceremonial, editorial. Gold-dominant. Premium Celebration on mount.
- * CTAs: Practice Mode → /vocab/practice  |  View Profile → /vocab/profile
+ * CTAs: Review Card Decks (back to theme/letter lists) | Practice Mode → /vocab/practice  |  View Profile → /vocab/profile
  * Framer Motion: staggered entrance, scale 0.9 → 1, spring.
  */
 
@@ -51,11 +51,12 @@ interface Props {
   totalWords:     number;
   masteredWords:  number;
   totalPoints:    number;
+  onReviewDecks:  () => void;
 }
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function AllWordsReviewedScreen({ totalWords, masteredWords, totalPoints }: Props) {
+export default function AllWordsReviewedScreen({ totalWords, masteredWords, totalPoints, onReviewDecks }: Props) {
   const router          = useRouter();
   const firedRef        = useRef(false);
   const reducedMotion   = useReducedMotion();
@@ -413,6 +414,34 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             </span>
           </div>
         </motion.div>
+
+        {/* ── Re-review card decks (by theme / letter) ────────────────── */}
+        <motion.button
+          variants={itemV}
+          whileTap={{ scale: 0.97 }}
+          onClick={onReviewDecks}
+          style={{
+            width:         '100%',
+            display:       'flex',
+            alignItems:    'center',
+            justifyContent: 'center',
+            gap:           '8px',
+            padding:       '15px 24px',
+            borderRadius:  '14px',
+            background:    'linear-gradient(135deg, rgba(201,168,76,0.2) 0%, rgba(201,168,76,0.08) 100%)',
+            border:        '1px solid rgba(201,168,76,0.4)',
+            fontFamily:    "'Sora', sans-serif",
+            fontSize:      '14px',
+            fontWeight:    600,
+            color:         'var(--color-lx-accent-gold)',
+            cursor:        'pointer',
+            marginBottom:  '12px',
+            letterSpacing: '0.02em',
+          }}
+        >
+          Review Card Decks
+          <ArrowRight size={15} strokeWidth={2} />
+        </motion.button>
 
         {/* ── Primary CTA: Practice Mode ──────────────────────────────── */}
         <motion.button

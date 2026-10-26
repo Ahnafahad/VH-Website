@@ -219,6 +219,7 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
     data.units[0]?.id ?? null,
   );
   const [activeTab, setActiveTab] = useState<StudyTab>('theme');
+  const [browseDecks, setBrowseDecks] = useState(false);
 
   const reviewCount = reviewData.dueWords.length + reviewData.weakWords.length;
 
@@ -234,12 +235,13 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
   const allComplete = !filterNarrowed && allUnlockedThemes.length > 0 &&
     allUnlockedThemes.every(t => t.status === 'complete');
 
-  if (allComplete) {
+  if (allComplete && !browseDecks) {
     return (
       <AllWordsReviewedScreen
         totalWords={data.totalWords}
         masteredWords={data.masteredWords}
         totalPoints={data.totalPoints}
+        onReviewDecks={() => setBrowseDecks(true)}
       />
     );
   }
