@@ -26,6 +26,11 @@ export interface SprintTakingQuestion {
   explanation: string | null;
 }
 
+/** A question as shown on the results page review, with the viewer's own pick. */
+export interface SprintReviewQuestion extends SprintTakingQuestion {
+  selectedKey: string | null; // null = skipped
+}
+
 export interface SprintSubmitAnswer {
   questionId: number;
   selectedKey: string | null; // null = skipped

@@ -90,7 +90,7 @@ function SetCard({ set }: { set: SprintSetListEntry }) {
         <p className="text-xs text-exam-ink-faint mt-0.5">{set.questionCount} questions</p>
       </div>
       <span className="text-xs font-bold uppercase tracking-wide text-exam-ink-muted whitespace-nowrap">
-        {done ? `${set.attempt!.totalCorrect}/${set.attempt!.totalQuestions}` : 'Start'}
+        {done ? `${set.attempt!.totalCorrect}/${set.attempt!.totalQuestions} · Review` : 'Start'}
       </span>
     </Link>
   );

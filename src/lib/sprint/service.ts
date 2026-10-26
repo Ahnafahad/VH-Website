@@ -13,7 +13,7 @@ import { ApiException } from '@/lib/api-utils';
 import type {
   SprintOption, SprintSetListEntry, SprintTakingQuestion,
   SprintSubmitAnswer, SprintAttemptResult, SprintLeaderboardRow,
-  SprintLiveStats, SprintLiveQuestionStat,
+  SprintLiveStats, SprintLiveQuestionStat, SprintReviewQuestion,
 } from './types';
 
 // ─── Lookups ──────────────────────────────────────────────────────────────────
@@ -117,6 +117,20 @@ export async function submitAttempt(
   }
 
   return { totalCorrect, totalQuestions: questions.length, totalTimeMs };
+}
+
+// ─── Review (the viewer's own answers, after submitting) ────────────────────────
+
+export async function getAttemptReview(setId: number, userId: number): Promise<SprintReviewQuestion[] | null> {
+  const attempt = await getUserAttempt(setId, userId);
+  if (!attempt) return null;
+
+  const [questions, answers] = await Promise.all([
+    getSetQuestionsForTaking(setId),
+    db.select().from(sprintAnswers).where(eq(sprintAnswers.attemptId, attempt.id)),
+  ]);
+  const selectedByQuestion = new Map(answers.map(a => [a.questionId, a.selectedKey]));
+  return questions.map(q => ({ ...q, selectedKey: selectedByQuestion.get(q.id) ?? null }));
 }
 
 // ─── Leaderboard (per set, top 5 + viewer's own row) ───────────────────────────

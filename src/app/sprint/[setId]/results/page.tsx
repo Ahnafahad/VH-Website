@@ -2,7 +2,9 @@
 
 import { use, useEffect, useState } from 'react';
 import Link from 'next/link';
-import type { SprintLeaderboardRow } from '@/lib/sprint/types';
+import RichText from '@/components/workbook/RichText';
+import SprintOptionCard from '@/components/sprint/SprintOptionCard';
+import type { SprintLeaderboardRow, SprintReviewQuestion } from '@/lib/sprint/types';
 
 function formatTime(ms: number): string {
   const totalSeconds = Math.round(ms / 1000);
@@ -13,7 +15,7 @@ function formatTime(ms: number): string {
 
 type PageState =
   | { kind: 'loading' }
-  | { kind: 'ready'; leaderboard: SprintLeaderboardRow[] }
+  | { kind: 'ready'; leaderboard: SprintLeaderboardRow[]; review: SprintReviewQuestion[] | null }
   | { kind: 'error'; message: string };
 
 export default function SprintResultsPage({ params }: { params: Promise<{ setId: string }> }) {
@@ -29,8 +31,8 @@ export default function SprintResultsPage({ params }: { params: Promise<{ setId:
           if (!cancelled) setState({ kind: 'error', message: body.error ?? 'Could not load results.' });
           return;
         }
-        const body: { leaderboard: SprintLeaderboardRow[] } = await res.json();
-        if (!cancelled) setState({ kind: 'ready', leaderboard: body.leaderboard });
+        const body: { leaderboard: SprintLeaderboardRow[]; review: SprintReviewQuestion[] | null } = await res.json();
+        if (!cancelled) setState({ kind: 'ready', leaderboard: body.leaderboard, review: body.review });
       })
       .catch(() => { if (!cancelled) setState({ kind: 'error', message: 'Network error — check your connection.' }); });
     return () => { cancelled = true; };
@@ -82,6 +84,46 @@ export default function SprintResultsPage({ params }: { params: Promise<{ setId:
               ))}
             </div>
           </div>
+        )}
+        {state.kind === 'ready' && state.review && (
+          <section className="space-y-6 pt-4">
+            <h2 className="text-sm font-bold uppercase tracking-wide text-exam-ink-faint">Review your answers</h2>
+            {state.review.map(q => (
+              <div key={q.id} className="rounded-xl border border-exam-border bg-exam-surface p-4 space-y-4">
+                <div className="flex items-baseline justify-between gap-3">
+                  <p className="text-exam-gold text-xs font-bold uppercase tracking-widest">Question {q.number}</p>
+                  <p className={[
+                    'text-xs font-bold uppercase tracking-wide',
+                    q.selectedKey === null ? 'text-exam-ink-faint'
+                    : q.selectedKey === q.correctKey ? 'text-emerald-500' : 'text-red-400',
+                  ].join(' ')}>
+                    {q.selectedKey === null ? 'Skipped' : q.selectedKey === q.correctKey ? 'Correct' : 'Wrong'}
+                  </p>
+                </div>
+                <div className="text-base leading-relaxed text-exam-ink">
+                  <RichText content={q.stem} />
+                </div>
+                <div className="space-y-3">
+                  {q.options.map(opt => (
+                    <SprintOptionCard
+                      key={opt.key}
+                      optionKey={opt.key}
+                      text={opt.text}
+                      selected={q.selectedKey === opt.key}
+                      revealed
+                      isCorrectKey={opt.key === q.correctKey}
+                      onSelect={() => {}}
+                    />
+                  ))}
+                </div>
+                {q.explanation && (
+                  <div className="rounded-xl border border-exam-border bg-exam-elevated p-4 text-sm text-exam-ink-muted leading-relaxed">
+                    <RichText content={q.explanation} />
+                  </div>
+                )}
+              </div>
+            ))}
+          </section>
         )}
         <Link href="/sprint" className="inline-block text-exam-gold text-sm underline">Back to Sprint</Link>
       </div>
