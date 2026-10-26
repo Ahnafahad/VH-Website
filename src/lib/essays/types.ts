@@ -21,8 +21,9 @@ export interface EssaySeriesStudentEntry {
   essayCount: number;
   totalMarks: number;
   published: boolean;
+  isWorkbook: boolean;
   /** One entry per essay number (1..essayCount), each with its own prompt and maximum. */
-  slots: { essayIndex: number; status: EssaySlotStatus; total: number | null; prompt: string; max: number }[];
+  slots: { essayIndex: number; status: EssaySlotStatus; total: number | null; prompt: string; hint?: string; max: number }[];
   /** Series total across graded essays, only once results are visible. */
   seriesTotal: number | null;
   seriesMax: number;

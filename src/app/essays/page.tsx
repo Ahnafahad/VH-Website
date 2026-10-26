@@ -80,6 +80,16 @@ export default function EssaysHubPage() {
             ) : (
               <div className="grid sm:grid-cols-2 gap-3">
                 {state.series.map(s => {
+                  if (s.isWorkbook) {
+                    const done = s.slots.filter(x => x.status !== 'open').length;
+                    return (
+                      <Link key={s.id} href={`/essays/${s.id}`} className="rounded-xl border border-exam-gold/40 bg-exam-elevated p-4 hover:border-exam-gold transition-colors">
+                        <p className="font-semibold text-exam-ink">{s.title}</p>
+                        <p className="text-xs text-exam-ink-faint mt-0.5">Choose any of {s.essayCount} essay prompts and submit your handwritten essay</p>
+                        {done > 0 && <p className="text-xs font-bold uppercase tracking-wide text-exam-gold mt-3">{done} submitted</p>}
+                      </Link>
+                    );
+                  }
                   const open = new Date(s.deadline).getTime() > Date.now();
                   return (
                     <Link key={s.id} href={`/essays/${s.id}`} className="rounded-xl border border-exam-border bg-exam-elevated p-4 hover:border-exam-gold/50 transition-colors">

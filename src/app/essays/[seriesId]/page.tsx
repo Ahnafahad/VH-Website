@@ -12,6 +12,7 @@ import type { EssayHistogramBin, EssayPageDTO, EssaySlotStatus } from '@/lib/ess
 interface EssayEntry {
   essayIndex: number;
   prompt: string;
+  hint: string | null;
   max: number;
   status: EssaySlotStatus;
   submittedAt: string | null;
@@ -37,6 +38,7 @@ interface Detail {
     seriesMax: number;
     deadline: string;
     published: boolean;
+    isWorkbook: boolean;
     deadlinePassed: boolean;
   };
   essays: EssayEntry[];
@@ -51,6 +53,7 @@ export default function EssaySeriesPage({ params }: { params: Promise<{ seriesId
   const [data, setData] = useState<Detail | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [justSubmitted, setJustSubmitted] = useState<number | null>(null);
+  const [picked, setPicked] = useState<number | null>(null);
 
   const load = useCallback(async () => {
     const res = await fetch(`/api/essays/${seriesId}`);
@@ -69,10 +72,14 @@ export default function EssaySeriesPage({ params }: { params: Promise<{ seriesId
           {data && (
             <>
               <h1 className="font-serif text-3xl sm:text-4xl font-semibold text-exam-ink mt-3 mb-2">{data.series.title}</h1>
+              {data.series.isWorkbook ? (
+                <p className="text-sm text-exam-ink-muted">Pick any one of the {data.series.essayCount} essays below, write it by hand, then photograph and submit it.</p>
+              ) : (
               <p className="text-sm text-exam-ink-muted">
                 {data.series.essayDate && <>Written {new Date(`${data.series.essayDate}T00:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })} · </>}
                 {data.series.deadlinePassed ? 'Submissions closed ' : 'Submit by '}{fmtDate(data.series.deadline)} · out of {data.series.seriesMax}
               </p>
+              )}
               {data.series.prompt && (
                 <blockquote className="mt-5 border-l-2 border-exam-gold pl-4 text-exam-ink whitespace-pre-wrap">{data.series.prompt}</blockquote>
               )}
@@ -87,7 +94,12 @@ export default function EssaySeriesPage({ params }: { params: Promise<{ seriesId
 
         {data?.stats && <StatsCard stats={data.stats} />}
 
-        {data?.essays.map(e => (
+        {data?.series.isWorkbook && picked === null && <WorkbookPicker essays={data.essays} onPick={setPicked} />}
+        {data?.series.isWorkbook && picked !== null && (
+          <button onClick={() => setPicked(null)} className="text-exam-gold text-xs font-bold uppercase tracking-widest">← All essays</button>
+        )}
+
+        {data?.essays.filter(e => !data.series.isWorkbook || e.essayIndex === picked).map(e => (
           <EssayBlock
             key={e.essayIndex}
             detail={data}
@@ -98,6 +110,32 @@ export default function EssaySeriesPage({ params }: { params: Promise<{ seriesId
         ))}
       </div>
     </main>
+  );
+}
+
+const SLOT_LABEL: Partial<Record<EssaySlotStatus, string>> = {
+  submitted: 'Submitted', rejected: 'Resubmit', graded: 'Graded',
+};
+
+function WorkbookPicker({ essays, onPick }: { essays: EssayEntry[]; onPick: (i: number) => void }) {
+  return (
+    <section className="space-y-3">
+      {essays.map(e => (
+        <button
+          key={e.essayIndex}
+          onClick={() => onPick(e.essayIndex)}
+          className="w-full text-left rounded-xl border border-exam-border bg-exam-elevated p-4 hover:border-exam-gold/50 transition-colors flex items-start gap-4"
+        >
+          <span className="font-mono text-sm font-bold text-exam-gold pt-0.5">{String(e.essayIndex).padStart(2, '0')}</span>
+          <span className="flex-1 text-exam-ink">{e.prompt}</span>
+          {SLOT_LABEL[e.status] && (
+            <span className="text-[11px] font-bold uppercase tracking-wide text-exam-ink-muted whitespace-nowrap pt-1">
+              {SLOT_LABEL[e.status]}{e.status === 'graded' && e.result?.total != null ? ` ${e.result.total}/${e.max}` : ''}
+            </span>
+          )}
+        </button>
+      ))}
+    </section>
   );
 }
 
@@ -156,6 +194,9 @@ function EssayBlock({ detail, essay, justSubmitted, onSubmitted }: { detail: Det
       <p className="text-sm text-exam-ink-muted mb-4">Out of {essay.max}</p>
       {essay.prompt && (
         <blockquote className="mb-5 border-l-2 border-exam-gold pl-4 text-exam-ink whitespace-pre-wrap">{essay.prompt}</blockquote>
+      )}
+      {essay.hint && (
+        <p className="mb-5 text-sm text-exam-ink-muted"><span className="text-xs font-bold uppercase tracking-wide text-exam-ink-faint">When unsure </span>{essay.hint}</p>
       )}
 
       {justSubmitted && (

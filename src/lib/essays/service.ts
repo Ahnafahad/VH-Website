@@ -338,7 +338,7 @@ export async function listSeriesForStudent(user: UserWithProducts): Promise<Essa
     const slots = essays.map((e, i) => {
       const sub = mine.find(x => x.essayIndex === i + 1);
       const status = slotStatus(sub, s, now);
-      return { essayIndex: i + 1, status, total: status === 'graded' ? sub!.total : null, prompt: e.prompt, max: e.max };
+      return { essayIndex: i + 1, status, total: status === 'graded' ? sub!.total : null, prompt: e.prompt, hint: e.hint, max: e.max };
     });
     const graded = slots.filter(x => x.status === 'graded');
     return {
@@ -349,8 +349,9 @@ export async function listSeriesForStudent(user: UserWithProducts): Promise<Essa
       essayCount: s.essayCount,
       totalMarks: s.totalMarks,
       published: !!s.publishedAt,
+      isWorkbook: s.isWorkbook,
       slots,
-      seriesTotal: graded.length ? graded.reduce((a, b) => a + (b.total ?? 0), 0) : null,
+      seriesTotal: graded.length && !s.isWorkbook ? graded.reduce((a, b) => a + (b.total ?? 0), 0) : null,
       seriesMax: essaysTotal(essays),
     };
   });
@@ -424,6 +425,7 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
     return {
       essayIndex: i + 1,
       prompt: e.prompt,
+      hint: e.hint ?? null,
       max: e.max,
       status,
       submittedAt: sub?.submittedAt.toISOString() ?? null,
@@ -436,7 +438,7 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
   });
 
   let stats = null;
-  if (visibleGraded.length > 0) {
+  if (visibleGraded.length > 0 && !s.isWorkbook) {
     const pool = await classSeriesTotals(seriesId);
     const max = essaysTotal(prompts);
     const st = computeStats([...pool.values()], max);
@@ -461,6 +463,7 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
       seriesMax: essaysTotal(prompts),
       deadline: s.deadline.toISOString(),
       published: !!s.publishedAt,
+      isWorkbook: s.isWorkbook,
       deadlinePassed: s.deadline.getTime() <= now.getTime(),
     },
     essays,
@@ -571,7 +574,7 @@ export async function getStudentOverview(user: UserWithProducts) {
     .from(essaySeries)
     .where(and(eq(essaySeries.status, 'active'), ...lmsScopeConditions(user, essaySeries)))
     .orderBy(asc(essaySeries.deadline));
-  const published = seriesRows.filter(s => s.publishedAt);
+  const published = seriesRows.filter(s => s.publishedAt && !s.isWorkbook);
   if (published.length === 0) return { series: [] };
   const ids = published.map(s => s.id);
   const all = await db

@@ -11,9 +11,11 @@ export interface EssayPrompt {
   prompt: string;
   /** Maximum mark for this essay, > 0. */
   max: number;
+  /** Optional approach hint shown under the prompt (workbook essays). */
+  hint?: string;
 }
 
-export const MAX_ESSAYS = 10;
+export const MAX_ESSAYS = 30;
 export const MAX_MARK = 1000;
 
 /**
@@ -24,7 +26,11 @@ export function parseEssays(row: { essays?: string | null; essayCount: number; p
   try {
     const parsed: unknown = JSON.parse(row.essays || '[]');
     if (Array.isArray(parsed) && parsed.length > 0) {
-      return parsed.map((e: { prompt?: unknown; max?: unknown }) => ({ prompt: String(e.prompt ?? ''), max: Number(e.max) }));
+      return parsed.map((e: { prompt?: unknown; max?: unknown; hint?: unknown }) => ({
+        prompt: String(e.prompt ?? ''),
+        max: Number(e.max),
+        ...(e.hint ? { hint: String(e.hint) } : {}),
+      }));
     }
   } catch { /* fall through to legacy */ }
   return Array.from({ length: Math.max(1, row.essayCount) }, () => ({ prompt: '', max: row.totalMarks }));
@@ -40,7 +46,8 @@ export function validateEssays(raw: unknown): { essays: EssayPrompt[] } | { erro
     const prompt = String((item as { prompt?: unknown })?.prompt ?? '').trim();
     if (!Number.isFinite(max) || max <= 0 || max > MAX_MARK) return { error: `Essay ${i + 1}: the maximum mark must be between 1 and ${MAX_MARK}.` };
     if (prompt.length > 4000) return { error: `Essay ${i + 1}: the prompt is too long.` };
-    essays.push({ prompt, max });
+    const hint = String((item as { hint?: unknown })?.hint ?? '').trim();
+    essays.push(hint ? { prompt, max, hint } : { prompt, max });
   }
   return { essays };
 }

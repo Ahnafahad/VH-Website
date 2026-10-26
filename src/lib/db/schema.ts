@@ -2038,6 +2038,9 @@ export const essaySeries = sqliteTable('essay_series', {
   status:      text('status').notNull().default('active'),
   publishedAt: integer('published_at', { mode: 'timestamp' }),
   reminderSentAt: integer('reminder_sent_at', { mode: 'timestamp' }),
+  // Practice workbook: students pick any ONE essay to submit; results show as soon as graded,
+  // and the series is left out of class stats/progress (seeded published, far-future deadline).
+  isWorkbook:  integer('is_workbook', { mode: 'boolean' }).notNull().default(false),
   createdBy:   integer('created_by').references(() => users.id, { onDelete: 'set null' }),
   createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:   integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),

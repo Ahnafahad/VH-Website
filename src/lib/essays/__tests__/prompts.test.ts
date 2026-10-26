@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
-import { essayMax, parseEssays, seriesMax, validateEssays } from '../prompts';
+import { MAX_ESSAYS, essayMax, parseEssays, seriesMax, validateEssays } from '../prompts';
 
 vi.mock('@/lib/db', () => ({ db: {} }));
 vi.mock('@/lib/notifications/notify-students', () => ({ notifyStudents: vi.fn() }));
@@ -32,7 +32,7 @@ describe('validateEssays', () => {
   it('rejects empty lists and bad maxima', () => {
     expect(validateEssays([])).toHaveProperty('error');
     expect(validateEssays([{ prompt: 'x', max: 0 }])).toHaveProperty('error');
-    expect(validateEssays(Array.from({ length: 11 }, () => ({ prompt: '', max: 5 })))).toHaveProperty('error');
+    expect(validateEssays(Array.from({ length: MAX_ESSAYS + 1 }, () => ({ prompt: '', max: 5 })))).toHaveProperty('error');
   });
 });
 
