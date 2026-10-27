@@ -1,0 +1,1818 @@
+{
+  "slug": "iba-topical-exam-3-mathematics",
+  "title": "IBA Topical Exam 3 — Mathematics",
+  "bucket": "iba",
+  "description": "Chapters 2 & 4 — Lectures 2.1–2.2 and 4.1–4.3. 60 questions, 60 marks. Original exam duration: 90 minutes.",
+  "sections": [
+    {
+      "order": 1,
+      "title": "Mathematics",
+      "marksPerCorrect": 1,
+      "penaltyPerWrong": 0.25,
+      "thresholdPercent": null,
+      "groups": [],
+      "questions": [
+        {
+          "number": 1,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q01.png",
+          "explanation": null
+        },
+        {
+          "number": 2,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q02.png",
+          "explanation": null
+        },
+        {
+          "number": 3,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q03.png",
+          "explanation": null
+        },
+        {
+          "number": 4,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q04.png",
+          "explanation": null
+        },
+        {
+          "number": 5,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q05.png",
+          "explanation": null
+        },
+        {
+          "number": 6,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q06.png",
+          "explanation": null
+        },
+        {
+          "number": 7,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q07.png",
+          "explanation": null
+        },
+        {
+          "number": 8,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q08.png",
+          "explanation": null
+        },
+        {
+          "number": 9,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q09.png",
+          "explanation": null
+        },
+        {
+          "number": 10,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q10.png",
+          "explanation": null
+        },
+        {
+          "number": 11,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q11.png",
+          "explanation": null
+        },
+        {
+          "number": 12,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q12.png",
+          "explanation": null
+        },
+        {
+          "number": 13,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q13.png",
+          "explanation": null
+        },
+        {
+          "number": 14,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q14.png",
+          "explanation": null
+        },
+        {
+          "number": 15,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q15.png",
+          "explanation": null
+        },
+        {
+          "number": 16,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q16.png",
+          "explanation": null
+        },
+        {
+          "number": 17,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q17.png",
+          "explanation": null
+        },
+        {
+          "number": 18,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q18.png",
+          "explanation": null
+        },
+        {
+          "number": 19,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q19.png",
+          "explanation": null
+        },
+        {
+          "number": 20,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q20.png",
+          "explanation": null
+        },
+        {
+          "number": 21,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q21.png",
+          "explanation": null
+        },
+        {
+          "number": 22,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q22.png",
+          "explanation": null
+        },
+        {
+          "number": 23,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q23.png",
+          "explanation": null
+        },
+        {
+          "number": 24,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q24.png",
+          "explanation": null
+        },
+        {
+          "number": 25,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q25.png",
+          "explanation": null
+        },
+        {
+          "number": 26,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q26.png",
+          "explanation": null
+        },
+        {
+          "number": 27,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q27.png",
+          "explanation": null
+        },
+        {
+          "number": 28,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q28.png",
+          "explanation": null
+        },
+        {
+          "number": 29,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q29.png",
+          "explanation": null
+        },
+        {
+          "number": 30,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q30.png",
+          "explanation": null
+        },
+        {
+          "number": 31,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q31.png",
+          "explanation": null
+        },
+        {
+          "number": 32,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q32.png",
+          "explanation": null
+        },
+        {
+          "number": 33,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q33.png",
+          "explanation": null
+        },
+        {
+          "number": 34,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q34.png",
+          "explanation": null
+        },
+        {
+          "number": 35,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q35.png",
+          "explanation": null
+        },
+        {
+          "number": 36,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q36.png",
+          "explanation": null
+        },
+        {
+          "number": 37,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q37.png",
+          "explanation": null
+        },
+        {
+          "number": 38,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q38.png",
+          "explanation": null
+        },
+        {
+          "number": 39,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q39.png",
+          "explanation": null
+        },
+        {
+          "number": 40,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q40.png",
+          "explanation": null
+        },
+        {
+          "number": 41,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q41.png",
+          "explanation": null
+        },
+        {
+          "number": 42,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q42.png",
+          "explanation": null
+        },
+        {
+          "number": 43,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q43.png",
+          "explanation": null
+        },
+        {
+          "number": 44,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q44.png",
+          "explanation": null
+        },
+        {
+          "number": 45,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q45.png",
+          "explanation": null
+        },
+        {
+          "number": 46,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q46.png",
+          "explanation": null
+        },
+        {
+          "number": 47,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q47.png",
+          "explanation": null
+        },
+        {
+          "number": 48,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q48.png",
+          "explanation": null
+        },
+        {
+          "number": 49,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q49.png",
+          "explanation": null
+        },
+        {
+          "number": 50,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q50.png",
+          "explanation": null
+        },
+        {
+          "number": 51,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q51.png",
+          "explanation": null
+        },
+        {
+          "number": 52,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q52.png",
+          "explanation": null
+        },
+        {
+          "number": 53,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q53.png",
+          "explanation": null
+        },
+        {
+          "number": 54,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q54.png",
+          "explanation": null
+        },
+        {
+          "number": 55,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q55.png",
+          "explanation": null
+        },
+        {
+          "number": 56,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q56.png",
+          "explanation": null
+        },
+        {
+          "number": 57,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q57.png",
+          "explanation": null
+        },
+        {
+          "number": 58,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q58.png",
+          "explanation": null
+        },
+        {
+          "number": 59,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q59.png",
+          "explanation": null
+        },
+        {
+          "number": 60,
+          "group": null,
+          "stem": "Choose the correct answer to the question shown below.",
+          "options": [
+            {
+              "key": "A",
+              "text": "Option A in the image"
+            },
+            {
+              "key": "B",
+              "text": "Option B in the image"
+            },
+            {
+              "key": "C",
+              "text": "Option C in the image"
+            },
+            {
+              "key": "D",
+              "text": "Option D in the image"
+            },
+            {
+              "key": "E",
+              "text": "Option E in the image"
+            }
+          ],
+          "correctKey": null,
+          "imageUrl": "/tests/iba-topical-exam-3-mathematics/q60.png",
+          "explanation": null
+        }
+      ]
+    }
+  ]
+}
