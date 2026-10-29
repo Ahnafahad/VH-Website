@@ -7,6 +7,7 @@ import { getUserByEmail } from '@/lib/db-access-control';
 import type { Test, TestWindow, UserWithProducts } from '@/lib/db/schema';
 import { canAccessTest, isTestStaff } from './access';
 import { getPublishedTestBySlug } from './service';
+import { applyWindowOverrides } from './window-overrides';
 
 export async function requireUser(): Promise<UserWithProducts> {
   const { email } = await validateAuth();
@@ -32,5 +33,5 @@ export async function requireTestForUser(
   if (!canAccessTest(user, found.test)) {
     throw new ApiException('You do not have access to this test', 403, 'TEST_ACCESS_DENIED');
   }
-  return found;
+  return { test: found.test, windows: await applyWindowOverrides(user.id, found.windows) };
 }

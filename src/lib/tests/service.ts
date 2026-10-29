@@ -13,6 +13,7 @@ import { and, eq, inArray } from 'drizzle-orm';
 import { effectiveWindowState, resultsVisible, type EffectiveWindowState } from './windows';
 import { scoreAttempt, computeRanks, rankCohort, shouldRankByCohort, type AttemptScore } from './scoring';
 import { parseChosenSections } from './diagnostic';
+import { applyWindowOverrides } from './window-overrides';
 import { computeRadar, type RadarAxis } from './radar';
 import { getUserById } from '@/lib/db-access-control';
 
@@ -59,8 +60,10 @@ export async function getTestListForUser(userId: number): Promise<TestListEntry[
     ),
   ]);
 
+  const effectiveWindows = await applyWindowOverrides(userId, windows);
+
   return rows.map(t => {
-    const tWindows = windows.filter(w => w.testId === t.id);
+    const tWindows = effectiveWindows.filter(w => w.testId === t.id);
     const attempt = attempts.find(a => a.testId === t.id) ?? null;
     return {
       id: t.id,
