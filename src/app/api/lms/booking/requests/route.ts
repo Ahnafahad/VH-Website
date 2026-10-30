@@ -1,115 +1,30 @@
 /**
- * GET  /api/lms/booking/requests — my requests list
- * POST /api/lms/booking/requests — submit a new session request
+ * GET  /api/lms/booking/requests — my requests (with proposals / confirmed details)
+ * POST /api/lms/booking/requests — ask for a 1-on-1 session, offering a few times
+ *   body: { subject, topic, preferredMode, durationMinutes, notes?, preferredTimes: number[] (epoch ms) }
  */
 
 import { NextRequest } from 'next/server';
-import { and, desc, eq } from 'drizzle-orm';
-import { db } from '@/lib/db';
-import { sessionRequests } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
-import { LMS_SUBJECTS } from '@/lib/lms/constants';
-import { isLmsSubject, productForSubject } from '@/lib/lms/subject-constants';
 import { isStaffRole } from '@/lib/auth/roles';
+import { createRequest, listMine } from '@/lib/booking/service';
 
-const VALID_MODES = ['online', 'offline', 'either'] as const;
-
-function serialize(r: typeof sessionRequests.$inferSelect) {
-  return {
-    id:              r.id,
-    userId:          r.userId,
-    subject:         r.subject,
-    topic:           r.topic,
-    preferredMode:   r.preferredMode,
-    durationMinutes: r.durationMinutes,
-    notes:           r.notes,
-    status:          r.status,
-    resolvedSlotId:  r.resolvedSlotId,
-    staffNote:       r.staffNote,
-    createdAt:       r.createdAt.getTime(),
-  };
+async function requireLmsUser() {
+  const me = await requireUser();
+  if (!isStaffRole(me.role) && me.products.length === 0) {
+    throw new ApiException('LMS access required', 403, 'LMS_ACCESS_DENIED');
+  }
+  return me;
 }
 
 export async function GET(_req: NextRequest) {
-  return safeApiHandler(async () => {
-    const me = await requireUser();
-
-    const isStaff = isStaffRole(me.role);
-    if (!isStaff && me.products.length === 0) {
-      throw new ApiException('LMS access required', 403, 'LMS_ACCESS_DENIED');
-    }
-
-    const rows = await db
-      .select()
-      .from(sessionRequests)
-      .where(eq(sessionRequests.userId, me.id))
-      .orderBy(desc(sessionRequests.createdAt));
-
-    return rows.map(serialize);
-  });
+  return safeApiHandler(async () => listMine(await requireLmsUser()));
 }
 
 export async function POST(req: NextRequest) {
   return safeApiHandler(async () => {
-    const me = await requireUser();
-
-    const isStaff = isStaffRole(me.role);
-    if (!isStaff && me.products.length === 0) {
-      throw new ApiException('LMS access required', 403, 'LMS_ACCESS_DENIED');
-    }
-
-    const body = await req.json() as {
-      subject?: string;
-      topic?: string;
-      preferredMode?: string;
-      durationMinutes?: number;
-      notes?: string;
-    };
-
-    const { subject, topic, preferredMode, durationMinutes, notes } = body;
-
-    if (!subject || !(LMS_SUBJECTS as readonly string[]).includes(subject)) {
-      throw new ApiException(`subject must be one of: ${LMS_SUBJECTS.join(', ')}`, 400);
-    }
-    if (!topic || typeof topic !== 'string' || topic.trim().length === 0) {
-      throw new ApiException('topic is required', 400);
-    }
-    if (!preferredMode || !(VALID_MODES as readonly string[]).includes(preferredMode)) {
-      throw new ApiException('preferredMode must be online, offline, or either', 400);
-    }
-    if (
-      typeof durationMinutes !== 'number' ||
-      durationMinutes < 15 ||
-      durationMinutes > 120
-    ) {
-      throw new ApiException('durationMinutes must be between 15 and 120', 400);
-    }
-
-    // Infer product from the chosen subject when possible (e.g. 'accounting' →
-    // 'fbs') so multi-product students' requests land in the right product,
-    // rather than always defaulting to their first product.
-    const inferredProduct = isLmsSubject(subject) ? productForSubject(subject) : undefined;
-    const product =
-      inferredProduct && me.products.includes(inferredProduct)
-        ? inferredProduct
-        : (me.products[0] ?? 'iba');
-
-    const [created] = await db
-      .insert(sessionRequests)
-      .values({
-        userId:          me.id,
-        subject,
-        product,
-        batch:           me.batch ?? null,
-        topic:           topic.trim(),
-        preferredMode,
-        durationMinutes,
-        notes:           notes?.trim() ?? null,
-        status:          'pending',
-      })
-      .returning();
-
-    return serialize(created);
+    const me = await requireLmsUser();
+    return createRequest(me, await req.json());
   });
 }

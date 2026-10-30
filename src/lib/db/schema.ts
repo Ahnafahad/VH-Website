@@ -1,4 +1,4 @@
-import { integer, real, sqliteTable, text, unique, index } from 'drizzle-orm/sqlite-core';
+import { integer, real, sqliteTable, text, unique, uniqueIndex, index } from 'drizzle-orm/sqlite-core';
 import { sql } from 'drizzle-orm';
 
 // Last Word is a separate learning graph; curriculum source rows are never mutated.
@@ -1666,8 +1666,39 @@ export const sessionRequests = sqliteTable('session_requests', {
   resolvedSlotId:  integer('resolved_slot_id').references(() => bookingSlots.id, { onDelete: 'set null' }),
   staffNote:       text('staff_note'),
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  // ── Negotiation (src/lib/booking) ──────────────────────────────────────────
+  // status flow: pending → (proposed ⇄ pending) → scheduled | declined | cancelled
+  // JSON array of epoch-ms start times the student can do.
+  preferredTimes:  text('preferred_times').notNull().default('[]'),
+  // JSON array of { startAt, endAt? } (epoch ms) the instructor offered; endAt present = a range.
+  proposals:       text('proposals').notNull().default('[]'),
+  // Instructor who claimed the request (null until someone acts on it).
+  instructorId:    integer('instructor_id').references(() => users.id, { onDelete: 'set null' }),
+  // Final mode ('online' | 'offline') — needed because preferredMode can be 'either'.
+  mode:            text('mode'),
+  location:        text('location'),
+  // Set once both sides have agreed.
+  startAt:         integer('start_at', { mode: 'timestamp' }),
+  endAt:           integer('end_at',   { mode: 'timestamp' }),
+  meetLink:        text('meet_link'),
+  googleEventId:   text('google_event_id'),
+  updatedAt:       integer('updated_at', { mode: 'timestamp' }),
 }, (t) => [
   index('idx_sreq_user_status').on(t.userId, t.status),
+  index('idx_sreq_status_product').on(t.status, t.product),
+]);
+
+// ─── Instructor Products ──────────────────────────────────────────────────────
+// Which product(s) an instructor teaches — decides who is emailed about a
+// session request. An instructor tagged both 'iba' and 'fbs' has two rows.
+
+export const instructorProducts = sqliteTable('instructor_products', {
+  id:      integer('id').primaryKey({ autoIncrement: true }),
+  userId:  integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  // 'iba' | 'fbs'
+  product: text('product').notNull(),
+}, (t) => [
+  uniqueIndex('uq_instructor_products').on(t.userId, t.product),
 ]);
 
 // ─── LMS Announcements ────────────────────────────────────────────────────────
@@ -1763,7 +1794,8 @@ export type RecordingStatus          = 'pending' | 'processing' | 'available' | 
 export type MaterialType             = 'pdf' | 'html' | 'link';
 export type AssignmentSubmissionStatus = 'submitted' | 'reviewed';
 export type BookingSlotStatus        = 'open' | 'booked' | 'cancelled';
-export type SessionRequestStatus     = 'pending' | 'approved' | 'declined' | 'scheduled';
+export type SessionRequestStatus     = 'pending' | 'proposed' | 'approved' | 'declined' | 'scheduled' | 'cancelled';
+export type InstructorProduct        = typeof instructorProducts.$inferSelect;
 export type BookingMode              = 'online' | 'offline';
 export type SessionPreferredMode     = 'online' | 'offline' | 'either';
 

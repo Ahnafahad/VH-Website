@@ -145,6 +145,38 @@ export async function createMeetEvent(
   return { meetLink, eventId };
 }
 
+// ─── createInPersonEvent ─────────────────────────────────────────────────────
+
+/**
+ * Insert a plain Calendar event (no Meet) for an in-person session, on the
+ * host's calendar with the attendees invited. Returns the event id, or null
+ * if there is no host client. Throws plain Error on API failure.
+ */
+export async function createInPersonEvent(
+  input: MeetEventInput & { location?: string },
+): Promise<{ eventId: string } | null> {
+  const client = await getHostClient();
+  if (!client) return null;
+
+  const calendar = google.calendar({ version: 'v3', auth: client });
+
+  const res = await calendar.events.insert({
+    calendarId:  'primary',
+    sendUpdates: 'all',
+    requestBody: {
+      summary:     input.title,
+      description: input.description,
+      location:    input.location,
+      start: { dateTime: input.startISO, timeZone: 'Asia/Dhaka' },
+      end:   { dateTime: input.endISO,   timeZone: 'Asia/Dhaka' },
+      attendees: (input.attendeeEmails ?? []).map((email) => ({ email })),
+    },
+  });
+
+  if (!res.data.id) throw new Error('Google Calendar did not return an event id');
+  return { eventId: res.data.id };
+}
+
 // ─── updateMeetEvent ─────────────────────────────────────────────────────────
 
 export interface MeetEventPatch {
