@@ -62,6 +62,7 @@ export async function GET(
         bucket: test.bucket,
         totalQuestions: test.totalQuestions,
         totalMarks: test.totalMarks,
+        isMock: test.isMock,
       },
       attempt: {
         id: attempt.id,

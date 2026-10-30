@@ -13,9 +13,12 @@ interface Props {
   slug: string;
   bucket: string;
   initialPayload: AttemptPayload;
+  /** Where the post-submit button points. Defaults to /tests/{bucket}. */
+  exitHref?: string;
+  exitLabel?: string;
 }
 
-export default function OfflineExamScreen({ slug, bucket, initialPayload }: Props) {
+export default function OfflineExamScreen({ slug, bucket, initialPayload, exitHref, exitLabel }: Props) {
   const router = useRouter();
 
   const initAnswers = () => {
@@ -80,10 +83,10 @@ export default function OfflineExamScreen({ slug, bucket, initialPayload }: Prop
             Results will be available once the test window closes and all answers have been reviewed.
           </p>
           <button
-            onClick={() => router.push(`/tests/${bucket}`)}
+            onClick={() => router.push(exitHref ?? `/tests/${bucket}`)}
             className="px-6 py-3 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors"
           >
-            Back to Tests
+            {exitLabel ?? 'Back to Tests'}
           </button>
         </motion.div>
       </div>

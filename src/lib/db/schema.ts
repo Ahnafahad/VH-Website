@@ -1017,6 +1017,13 @@ export const tests = sqliteTable('tests', {
   syllabus:        text('syllabus'),                         // LMS: topics covered by this test
   // Admin library grouping, chosen by staff. NULL = "Unsorted".
   category:        text('category'),
+  // Mock exam (see lib/mocks): a normal test that is shown on /mocks, not /tests, and whose results
+  // stay hidden until resultsPublishedAt is set (scanned-OMR scores are the official ones).
+  isMock:          integer('is_mock', { mode: 'boolean' }).notNull().default(false),
+  mockBatch:       text('mock_batch'),                       // null = every batch; else users.batch must match
+  examCode:        text('exam_code'),                        // printed on paper + OMR, e.g. '9001'
+  essaySeriesId:   integer('essay_series_id'),               // Part 2 essays live in the essays module
+  solutionPdfKey:  text('solution_pdf_key'),                 // R2 key; released with the official results
   createdBy:       integer('created_by').references(() => users.id),
   createdAt:       integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:       integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
@@ -1144,6 +1151,9 @@ export const testAttempts = sqliteTable('test_attempts', {
   // restore the loser. Null once resolved — the row's own fields are always
   // the current best. Never set for non-staff or non-diagnostic attempts.
   bestSnapshot:     text('best_snapshot'),
+  // 'self' = answers the student entered/took themselves; 'omr' = overwritten from the scanned
+  // OMR sheet (the official source for mocks). Only mocks ever read this.
+  resultSource:     text('result_source').notNull().default('self'),
 }, (t) => [
   unique().on(t.testId, t.userId),
   index('idx_test_attempts_user').on(t.userId),

@@ -26,6 +26,7 @@ export interface TestListEntry {
   bucket: string;
   description: string | null;
   syllabus: string | null;
+  isMock: boolean;
   totalQuestions: number;
   totalMarks: number;
   windows: Array<{
@@ -72,6 +73,7 @@ export async function getTestListForUser(userId: number): Promise<TestListEntry[
       bucket: t.bucket,
       description: t.description,
       syllabus: t.syllabus,
+      isMock: t.isMock,
       totalQuestions: t.totalQuestions,
       totalMarks: t.totalMarks,
       windows: tWindows

@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'motion/react';
 import Link from 'next/link';
-import { BookOpenText, Calculator, ClipboardList, CalendarPlus, NotebookPen, PenLine, Printer, Route, Timer } from 'lucide-react';
+import { BookOpenText, Calculator, ClipboardCheck, ClipboardList, CalendarPlus, NotebookPen, PenLine, Printer, Route, Timer } from 'lucide-react';
 import type { LucideProps } from 'lucide-react';
 import type { DashboardGames } from '@/lib/lms/dashboard-data';
 import type { UserProduct } from '@/lib/db/schema';
@@ -14,6 +14,8 @@ interface Props {
   showRedline?: boolean;
   /** Student has a batch and an LMS product — PrintDesk is open to them. */
   showPrintDesk?: boolean;
+  /** Mock Exams are open to this student. */
+  showMocks?: boolean;
 }
 
 interface GameBlock {
@@ -92,15 +94,22 @@ const BLOCKS: GameBlock[] = [
     icon: PenLine,
     stat: () => 'Sentence correction levels →',
   },
+  {
+    name: 'Mocks',
+    href: '/mocks',
+    icon: ClipboardCheck,
+    stat: () => 'Full-length mock exams →',
+  },
 ];
 
-export default function GamesStrip({ games, products, showRedline = false, showPrintDesk = false }: Props) {
+export default function GamesStrip({ games, products, showRedline = false, showPrintDesk = false, showMocks = false }: Props) {
   const prefersReduced = useReducedMotion();
   const hasFbs = products.includes('fbs') || products.includes('fbs_detailed');
   const visibleBlocks = BLOCKS.filter(block => block.href !== '/games/fbs-accounting' || games.accounting !== null)
     .filter(block => block.href !== '/sprint' || hasFbs)
     .filter(block => block.href !== '/redline' || showRedline)
-    .filter(block => block.href !== '/printdesk' || showPrintDesk);
+    .filter(block => block.href !== '/printdesk' || showPrintDesk)
+    .filter(block => block.href !== '/mocks' || showMocks);
 
   return (
     <div>

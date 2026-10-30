@@ -30,9 +30,11 @@ export function attemptDeadline(attempt: TestAttempt, window: TestWindow): Date 
   return window.closesAt;
 }
 
-/** Results are visible once force-published, or once every window has closed. */
+/** Results are visible once force-published, or once every window has closed. Mocks are only
+ * ever visible once published — their scores aren't final until the OMR scans are imported. */
 export function resultsVisible(test: Test, windows: TestWindow[], now: Date = new Date()): boolean {
   if (test.resultsPublishedAt != null) return true;
+  if (test.isMock) return false;
   if (windows.length === 0) return false;
   return windows.every(w => effectiveWindowState(w, now) === 'closed');
 }

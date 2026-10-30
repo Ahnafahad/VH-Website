@@ -33,6 +33,8 @@ export interface TestListEntry {
   bucket: TestBucket;
   description: string | null;
   syllabus: string | null;
+  /** Mocks are listed on /mocks, not /tests. */
+  isMock?: boolean;
   totalQuestions: number;
   totalMarks: number;
   windows: TestListWindow[];
@@ -71,7 +73,7 @@ export interface TakingSection {
   questions: TakingQuestion[];
 }
 export interface AttemptPayload {
-  test: { slug: string; title: string; bucket: TestBucket; totalQuestions: number; totalMarks: number };
+  test: { slug: string; title: string; bucket: TestBucket; totalQuestions: number; totalMarks: number; isMock?: boolean };
   attempt: {
     id: number;
     mode: TestMode;

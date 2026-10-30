@@ -112,7 +112,8 @@ export async function createAttendanceFixtureSchema(client: ReturnType<typeof cr
       total_unattempted INTEGER,
       section_scores TEXT,
       chosen_sections TEXT,
-      best_snapshot TEXT
+      best_snapshot TEXT,
+      result_source TEXT NOT NULL DEFAULT 'self'
     );
   `);
 }

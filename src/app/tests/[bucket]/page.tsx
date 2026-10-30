@@ -187,7 +187,7 @@ export default function BucketListPage({ params }: PageProps) {
     fetch('/api/tests')
       .then(r => r.json())
       .then((data: { tests: TestListEntry[] }) => {
-        setTests(data.tests.filter(t => t.bucket === apiBucket));
+        setTests(data.tests.filter(t => t.bucket === apiBucket && !t.isMock));
         setLoading(false);
       })
       .catch(() => {

@@ -151,12 +151,16 @@ export default function TakePage({ params }: PageProps) {
   // state.kind === 'ready'
   const { payload } = state;
 
+  // Mocks send the student back to /mocks, not the tests list.
+  const exit = payload.test.isMock ? { exitHref: '/mocks', exitLabel: 'Back to Mocks' } : {};
+
   if (payload.attempt.mode === 'online') {
     return (
       <OnlineExamScreen
         slug={slug}
         bucket={bucketSlug}
         initialPayload={payload}
+        {...exit}
       />
     );
   }
@@ -166,6 +170,7 @@ export default function TakePage({ params }: PageProps) {
       slug={slug}
       bucket={bucketSlug}
       initialPayload={payload}
+      {...exit}
     />
   );
 }

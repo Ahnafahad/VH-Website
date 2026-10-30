@@ -72,6 +72,7 @@ export const NAV_GROUPS: readonly NavGroup[] = [
       { href: '/admin/materials',          label: 'Materials',     roles: ALL },
       { href: '/admin/homework',           label: 'Homework',      roles: ALL, badge: 'homework' },
       { href: '/admin/tests',              label: 'Tests & marks', roles: ALL },
+      { href: '/admin/mocks',              label: 'Mocks',         roles: ALL },
       { href: '/admin/essays',             label: 'Essays',        roles: ALL, badge: 'essays' },
       { href: '/admin/printdesk',          label: 'PrintDesk',     roles: ALL },
       { href: '/admin/announcements-feed', label: 'Feed',          roles: ALL },

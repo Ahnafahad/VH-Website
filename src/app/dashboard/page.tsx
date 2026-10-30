@@ -8,6 +8,7 @@ import type { UserProduct } from '@/lib/db/schema';
 import { canAccessRedline, isRedlineStaff } from '@/lib/redline/access';
 import { getConfig as getRedlineConfig } from '@/lib/redline/service';
 import { printDeskEligibility } from '@/lib/printdesk/service';
+import { canSeeMocks } from '@/lib/mocks/access';
 
 export const metadata = { title: 'Dashboard — VH' };
 
@@ -45,6 +46,7 @@ export default async function DashboardPage({ searchParams }: PageProps) {
       activeProduct={activeProduct}
       showRedline={showRedline}
       showPrintDesk={showPrintDesk}
+      showMocks={canSeeMocks(user)}
     />
   );
 }
