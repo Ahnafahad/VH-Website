@@ -7,7 +7,8 @@ import { eq, and, lt, desc } from 'drizzle-orm';
 import { db, mockRegistrations, users, vocabUserProgress } from '@/lib/db';
 import { ApiException } from '@/lib/api-utils';
 import { r2Delete, r2PresignGet } from '@/lib/storage/r2';
-import { sendStudentNotice } from '@/lib/email';
+import { sendHtmlEmail } from '@/lib/email';
+import { accessEmail, processingEmail, rejectedEmail } from './registration-emails';
 import { MOCK_ACCESS_DAYS, MOCK_FEE_BDT, accessUntil, paymentReference, normalizeBdPhone, type MockRegStatus } from './registration-pure';
 
 export { MOCK_ACCESS_DAYS, type MockRegStatus };
@@ -94,11 +95,9 @@ export async function submitPayment(email: string, input: { trxId?: string; scre
     submittedAt: new Date(), updatedAt: new Date(),
   }).where(eq(mockRegistrations.userId, u.id));
 
-  await sendStudentNotice(u.email, 'We received your mock registration', {
-    kicker: 'Mock registration', heading: 'Awaiting verification', name: u.name,
-    message: 'We have your payment details and will verify them shortly. You will get another email as soon as your registration is approved. You can check the status any time with the button below.',
-    ctaLabel: 'Track my registration', ctaUrl: MOCK_REGISTER_URL,
-  }).catch(() => {});
+  await sendHtmlEmail(u.email, processingEmail({
+    name: u.name, reference: paymentReference(u.name), trxId: trxId ?? r.trxId, statusUrl: MOCK_REGISTER_URL,
+  })).catch(() => {});
 }
 
 // ── Staff ────────────────────────────────────────────────────────────────────
@@ -133,11 +132,9 @@ export async function decideRegistration(id: number, action: 'approve' | 'reject
   if (action === 'reject') {
     await db.update(mockRegistrations).set({ status: 'rejected', note: note?.trim() || null, decidedAt: now, decidedBy: staffId, updatedAt: now })
       .where(eq(mockRegistrations.id, id));
-    await sendStudentNotice(row.email, 'About your mock registration', {
-      kicker: 'Mock registration', heading: 'We could not verify your payment', name: row.name,
-      message: `${note?.trim() || 'We could not match your payment.'}\n\nPlease check the details and submit again, or message us on WhatsApp ${MOCK_CONTACT_WHATSAPP}.`,
-      ctaLabel: 'Fix my registration', ctaUrl: MOCK_REGISTER_URL,
-    }).catch(() => {});
+    await sendHtmlEmail(row.email, rejectedEmail({
+      name: row.name, note: note?.trim() || 'We could not match your payment.', statusUrl: MOCK_REGISTER_URL,
+    })).catch(() => {});
     return;
   }
 
@@ -160,11 +157,10 @@ export async function decideRegistration(id: number, action: 'approve' | 'reject
   if (r.screenshotKey) await r2Delete(r.screenshotKey).catch(() => {});
 
   const untilText = until.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Dhaka' });
-  await sendStudentNotice(row.email, 'Your mock is confirmed', {
-    kicker: 'Mock registration', heading: 'Congratulations, you are in', name: row.name,
-    message: `Your mock registration is approved.\n\nYou now have access to LexiCore, our vocabulary app, for ${MOCK_ACCESS_DAYS} days (until ${untilText}). LexiCore turns the words you need for admission tests into short daily practice with spaced review.\n\nYou can also play Zap, our mental-math game.`,
-    ctaLabel: 'Open my registration', ctaUrl: MOCK_REGISTER_URL,
-  }).catch(() => {});
+  await sendHtmlEmail(row.email, accessEmail({
+    name: row.name, untilText, statusUrl: MOCK_REGISTER_URL,
+    lexicoreUrl: 'https://www.vh-beyondthehorizons.org/vocab/home', zapUrl: 'https://www.vh-beyondthehorizons.org/games/mental-math',
+  })).catch(() => {});
 }
 
 /** Daily sweep (vocab decay cron): end the 30-day LexiCore access we granted. */

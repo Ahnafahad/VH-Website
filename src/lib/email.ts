@@ -1256,3 +1256,26 @@ export async function sendStudentNotice(
   }
   return { success: 1, failed: 0, total: 1 };
 }
+
+/** Send a fully-built HTML email (with plain-text fallback) to one recipient. Never throws. */
+export async function sendHtmlEmail(
+  to: string,
+  mail: { subject: string; html: string; text: string },
+): Promise<boolean> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendHtmlEmail');
+    return false;
+  }
+  const result = await resend.emails.send({
+    from: 'Beyond the Horizons <noreply@vh-beyondthehorizons.org>',
+    to,
+    subject: mail.subject,
+    html: mail.html,
+    text: mail.text,
+  });
+  if (result.error) {
+    console.error('sendHtmlEmail failed:', result.error);
+    return false;
+  }
+  return true;
+}

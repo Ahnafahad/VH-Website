@@ -105,6 +105,7 @@ const Header = () => {
   // before the first background sample runs.
   const isLightPage =
     pathname?.startsWith('/registration') ||
+    pathname?.startsWith('/mock-register') ||
     pathname?.startsWith('/games/mental-math') ||
     false;
 
