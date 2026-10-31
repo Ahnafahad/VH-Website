@@ -16,7 +16,7 @@ const DDL = [
   'CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, student_id TEXT UNIQUE)',
   `CREATE TABLE tests (id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT, title TEXT, bucket TEXT, description TEXT, status TEXT DEFAULT 'published',
     allowed_products TEXT, is_diagnostic INTEGER DEFAULT 0, total_questions INTEGER DEFAULT 0, total_marks REAL DEFAULT 0, results_published_at INTEGER,
-    source_file TEXT, syllabus TEXT, is_mock INTEGER NOT NULL DEFAULT 0, mock_batch TEXT, exam_code TEXT, essay_series_id INTEGER, solution_pdf_key TEXT,
+    source_file TEXT, syllabus TEXT, category TEXT, is_mock INTEGER NOT NULL DEFAULT 0, mock_batch TEXT, exam_code TEXT, essay_series_id INTEGER, solution_pdf_key TEXT,
     created_by INTEGER, created_at INTEGER DEFAULT (unixepoch()), updated_at INTEGER DEFAULT (unixepoch()))`,
   `CREATE TABLE test_sections (id INTEGER PRIMARY KEY AUTOINCREMENT, test_id INTEGER, "order" INTEGER, title TEXT, total_questions INTEGER DEFAULT 0,
     total_marks REAL DEFAULT 0, marks_per_correct REAL DEFAULT 1, penalty_per_wrong REAL DEFAULT 0.25, threshold_percent REAL)`,

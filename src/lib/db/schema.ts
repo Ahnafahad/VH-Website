@@ -2264,3 +2264,26 @@ export const registrationPayments = sqliteTable('registration_payments', {
   recordedBy:     integer('recorded_by').references(() => users.id, { onDelete: 'set null' }),
   createdAt:      integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [index('idx_reg_payments_reg').on(t.registrationId)]);
+
+// ─── Mock registrations ───────────────────────────────────────────────────────
+// Public mock sign-up (link shared on announcements, never linked from the site): Google sign-in →
+// phone → bKash payment proof → staff approval. One row per user. Approval opens LexiCore full access
+// for 30 days (vocab phase 1) + Zap; `vocabGranted` marks rows whose phase we flipped so the daily
+// sweep only ever downgrades users we upgraded.
+export const mockRegistrations = sqliteTable('mock_registrations', {
+  id:            integer('id').primaryKey({ autoIncrement: true }),
+  userId:        integer('user_id').notNull().unique().references(() => users.id, { onDelete: 'cascade' }),
+  phone:         text('phone').notNull(),
+  trxId:         text('trx_id'),
+  screenshotKey: text('screenshot_key'),   // R2 key; deleted on approval
+  // 'registered' (phone only) | 'submitted' (awaiting verification) | 'approved' | 'rejected'
+  status:        text('status').notNull().default('registered'),
+  note:          text('note'),             // staff note shown to the student on rejection
+  vocabGranted:  integer('vocab_granted', { mode: 'boolean' }).notNull().default(false),
+  accessUntil:   integer('access_until', { mode: 'timestamp' }),
+  submittedAt:   integer('submitted_at', { mode: 'timestamp' }),
+  decidedAt:     integer('decided_at', { mode: 'timestamp' }),
+  decidedBy:     integer('decided_by').references(() => users.id, { onDelete: 'set null' }),
+  createdAt:     integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  updatedAt:     integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_mock_reg_status').on(t.status)]);

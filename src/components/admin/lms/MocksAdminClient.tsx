@@ -8,6 +8,7 @@ import {
   ConfirmDialog, Toast, fmtDhaka,
   RED, SLATE, BORDER, MUTED, BG, SURFACE, SURFACE_ALT, OK, OK_BG, WARN, WARN_BG, R_LG, R_MD, R_PILL, SHADOW_SM,
 } from './lms-shared';
+import MockRegistrationsPanel from './MockRegistrationsPanel';
 import { uploadToR2 } from '@/lib/lms/upload-client';
 import type { MockAdminEntry, MockAdminOverview } from '@/lib/mocks/types';
 
@@ -290,6 +291,7 @@ export default function MocksAdminClient() {
       {error && <p style={{ color: RED, fontSize: 13 }}>{error}</p>}
 
       <div style={{ display: 'grid', gap: 18 }}>
+        <MockRegistrationsPanel toast={setToast} />
         {data && data.mocks.length === 0 && (
           <EmptyState icon={ClipboardCheck} message="No mocks yet. Import the paper as a test, then turn it into a mock below." />
         )}

@@ -18,6 +18,7 @@ import { sql } from 'drizzle-orm';
 import { db } from '@/lib/db';
 import { vocabUserWordRecords } from '@/lib/db/schema';
 import { withCronLog } from '@/lib/super/ops/cron-log';
+import { expireMockVocabAccess } from '@/lib/mocks/registration';
 
 const CRON_SECRET = process.env.CRON_SECRET;
 
@@ -55,7 +56,9 @@ async function cronGetHandler(req: NextRequest) {
 
     const decayed = result.rowsAffected ?? 0;
     console.log(`[vocab-decay] Decayed ${decayed} word records`);
-    return NextResponse.json({ decayed });
+    // Piggybacks on this daily run: ends the 30-day LexiCore access granted by mock registrations.
+    const mockExpired = await expireMockVocabAccess();
+    return NextResponse.json({ decayed, mockExpired });
   } catch (err) {
     console.error('[vocab-decay]', err);
     return NextResponse.json({ error: 'Internal error' }, { status: 500 });
