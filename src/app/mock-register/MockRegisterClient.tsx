@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { signIn } from 'next-auth/react';
 import type { MyMockRegistration } from '@/lib/mocks/registration';
+import { MOCK_FEE_BDT } from '@/lib/mocks/registration-pure';
 
 const primaryBtn = 'inline-flex items-center justify-center px-5 py-3 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors disabled:opacity-50';
 const ghostBtn = 'inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-exam-elevated border border-exam-border text-exam-ink-muted hover:text-exam-ink text-sm transition-colors';
@@ -50,7 +51,7 @@ function Details() {
         Once every sheet is checked you get your score, rank, section-wise missed chances and the solutions.
       </p>
       <p className="text-exam-ink-muted text-sm leading-relaxed mt-3">
-        Registering also gives you 30 days of full access to LexiCore, our vocabulary app, and our mental-math game Zap.
+        Fee: <b className="text-exam-ink">{MOCK_FEE_BDT.toLocaleString('en-US')} BDT</b>, paid by bKash. Registering also gives you 30 days of full access to LexiCore, our vocabulary app, and our mental-math game Zap.
       </p>
     </section>
   );

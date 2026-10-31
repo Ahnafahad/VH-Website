@@ -3,7 +3,7 @@ import MockRegisterClient from './MockRegisterClient';
 
 // Shared by link on announcements only: not in the nav, sitemap or search results.
 export const metadata: Metadata = {
-  title: 'Mock Registration | Beyond the Horizons',
+  title: 'Mock Registration',
   robots: { index: false, follow: false },
 };
 
