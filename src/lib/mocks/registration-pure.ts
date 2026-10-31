@@ -1,6 +1,7 @@
 /** Pure helpers for mock registration (no DB/R2 imports, so they unit-test without a database). */
 
 export const MOCK_ACCESS_DAYS = 30;
+export const MOCK_FEE_BDT = 3500;
 
 export type MockRegStatus = 'registered' | 'submitted' | 'approved' | 'rejected';
 

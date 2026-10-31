@@ -8,7 +8,7 @@ import { db, mockRegistrations, users, vocabUserProgress } from '@/lib/db';
 import { ApiException } from '@/lib/api-utils';
 import { r2Delete, r2PresignGet } from '@/lib/storage/r2';
 import { sendStudentNotice } from '@/lib/email';
-import { MOCK_ACCESS_DAYS, accessUntil, paymentReference, normalizeBdPhone, type MockRegStatus } from './registration-pure';
+import { MOCK_ACCESS_DAYS, MOCK_FEE_BDT, accessUntil, paymentReference, normalizeBdPhone, type MockRegStatus } from './registration-pure';
 
 export { MOCK_ACCESS_DAYS, type MockRegStatus };
 
@@ -22,6 +22,7 @@ export interface MyMockRegistration {
   email: string;
   reference: string;
   bkashNumber: string;
+  fee: number;
   whatsapp: string;
   registration: null | {
     status: MockRegStatus;
@@ -49,7 +50,7 @@ export async function getMyRegistration(email: string): Promise<MyMockRegistrati
   const r = await db.select().from(mockRegistrations).where(eq(mockRegistrations.userId, u.id)).get();
   return {
     name: u.name, email: u.email, reference: paymentReference(u.name),
-    bkashNumber: MOCK_BKASH_NUMBER, whatsapp: MOCK_CONTACT_WHATSAPP,
+    bkashNumber: MOCK_BKASH_NUMBER, fee: MOCK_FEE_BDT, whatsapp: MOCK_CONTACT_WHATSAPP,
     registration: r ? {
       status: r.status as MockRegStatus, phone: r.phone, trxId: r.trxId,
       hasScreenshot: !!r.screenshotKey, note: r.note,

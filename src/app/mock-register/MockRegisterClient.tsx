@@ -128,6 +128,7 @@ function PaymentStep({ data, onDone }: { data: MyMockRegistration; onDone: () =>
         <h2 className="font-serif text-xl font-semibold text-exam-ink mb-1">Pay with bKash (Send Money)</h2>
         <p className="text-sm text-exam-ink-muted mb-4">Open bKash, choose Send Money, and use these exact details.</p>
         <div className="grid gap-2">
+          <CopyRow label="Amount (BDT)" value={data.fee.toLocaleString('en-US')} />
           <CopyRow label="bKash personal number" value={data.bkashNumber} />
           <CopyRow label="Reference" value={data.reference} />
         </div>
