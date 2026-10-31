@@ -72,6 +72,12 @@ export default async function CommandCenterPage() {
         </div>
       </SuperCard>
 
+      <SuperCard title="Class materials">
+        <a href="/api/admin/super/materials-zip" download style={{ fontSize: 13, color: RED, fontWeight: 600 }}>
+          Download all PDFs (.zip) →
+        </a>
+      </SuperCard>
+
       <SuperCard title="Latest activity" action={<Link href="/admin/super/audit" style={{ fontSize: 12, color: RED }}>Full audit log →</Link>}>
         {recent.length === 0 ? <p style={{ margin: 0, color: MUTED, fontSize: 13 }}>No audit events yet.</p> : (
           <SuperTable head={['When', 'Who', 'Action', 'Target']}>
