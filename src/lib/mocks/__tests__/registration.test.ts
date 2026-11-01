@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { accessUntil, formatSlotTime, MOCK_SCHEDULE, nextMock, normalizeBdPhone, paymentReference, slotDay } from '../registration-pure';
+import { accessUntil, formatSlotTime, mockExamCode, MOCK_SCHEDULE, nextMock, normalizeBdPhone, paymentReference, slotDay, slotRange } from '../registration-pure';
 
 describe('normalizeBdPhone', () => {
   it('accepts local, 880 and +880 forms', () => {
@@ -51,5 +51,12 @@ describe('mock schedule', () => {
     expect(nextMock(new Date('2026-11-02T09:00:00Z'))?.n).toBe(1);   // 15:00 Dhaka, mock 1 still running
     expect(nextMock(new Date('2026-11-02T10:30:00Z'))?.n).toBe(2);   // 16:30 Dhaka, mock 1 is over
     expect(nextMock(new Date('2026-12-01T00:00:00Z'))).toBeNull();
+  });
+  it('gives each slot its Dhaka start/end and the exam code printed on the paper', () => {
+    const { start, end } = slotRange(MOCK_SCHEDULE[0]);
+    expect(start.toISOString()).toBe('2026-11-02T08:00:00.000Z');
+    expect(end.toISOString()).toBe('2026-11-02T10:00:00.000Z');
+    expect(mockExamCode(1)).toBe('2601');
+    expect(mockExamCode(10)).toBe('2610');
   });
 });

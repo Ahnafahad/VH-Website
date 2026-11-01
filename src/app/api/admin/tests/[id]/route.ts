@@ -6,7 +6,8 @@
  * Body: { status?, allowedProducts?: string[] | null, publishResults?: boolean }
  */
 
-import { NextRequest } from 'next/server';
+import { NextRequest, after } from 'next/server';
+import { notifyMockPublished } from '@/lib/mocks/notify';
 import { z } from 'zod';
 import { eq, sql } from 'drizzle-orm';
 import { db } from '@/lib/db';
@@ -124,6 +125,11 @@ export async function PATCH(
       ...(category !== undefined ? { category: normalizeCategory(category) } : {}),
       updatedAt: new Date(),
     }).where(eq(tests.id, id));
+
+    // First publish of a mock's results: email everyone who sat it their final rank (once per mock).
+    if (publishResults === true && test.isMock && test.resultsPublishedAt == null) {
+      after(() => notifyMockPublished(id).catch(err => console.error('[mocks] rank email failed', err)));
+    }
 
     recordAudit({
       actorUserId: user.id,

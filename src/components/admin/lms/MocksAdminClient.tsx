@@ -170,7 +170,7 @@ function MockCard({ mock, series, reload, toast }: {
       </div>
 
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-        <Stat label="expected" value={mock.cohortSize} />
+        <Stat label="Mock Access" value={mock.cohortSize} />
         <Stat label="in progress" value={mock.attempts.inProgress} />
         <Stat label="submitted" value={mock.attempts.submitted} />
         <Stat label="scans imported" value={mock.attempts.scanned} />
@@ -187,7 +187,7 @@ function MockCard({ mock, series, reload, toast }: {
             {w.durationMinutes ? ` · ${w.durationMinutes} min` : ''}
           </div>
         ))}
-        <Link href="/admin/tests" style={{ fontSize: 12, color: RED }}>Add / change windows and view question analytics in Tests →</Link>
+        <Link href={`/admin/tests/${mock.id}`} style={{ fontSize: 12, color: RED }}>Open the test console: edit windows, answer keys, who has submitted, per-student results, analytics →</Link>
       </div>
 
       <div style={{ display: 'grid', gap: 12, gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))' }}>
@@ -234,7 +234,7 @@ function MockCard({ mock, series, reload, toast }: {
         open={publishAsk !== null}
         title={publishAsk === 'publish' ? 'Publish official results?' : 'Hide the results?'}
         message={publishAsk === 'publish'
-          ? 'Students will see their final score, rank, missed chances and the solutions PDF. Provisional entries stop being used.'
+          ? 'Students see their final score, rank, missed chances and the solutions PDF, and everyone who sat the mock gets an email with their rank (sent once). Make sure the answer keys and essay marks are in first.'
           : 'Students go back to seeing the provisional view only.'}
         confirmLabel={publishAsk === 'publish' ? 'Publish' : 'Hide'}
         destructive={publishAsk === 'unpublish'}

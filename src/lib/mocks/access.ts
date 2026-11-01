@@ -1,11 +1,12 @@
 /**
- * Who sees the Mocks entry point. Each mock then narrows by its own batch/product in
- * lib/tests/access.ts:canAccessTest — this only decides whether the dashboard tile shows.
+ * Who sees the Mocks entry point: staff and anyone holding the "Mock Access" product (plus FBS students, who sit
+ * the Pre-Mock). Each mock then narrows by its batch in lib/tests/access.ts:canAccessTest.
  */
 
 import type { UserWithProducts } from '@/lib/db/schema';
-import { isStaffRole } from '@/lib/auth/roles';
+import { isStaffRole, isUltimateTesterEmail } from '@/lib/auth/roles';
 
-export function canSeeMocks(user: Pick<UserWithProducts, 'role' | 'products'>): boolean {
-  return isStaffRole(user.role) || user.products.some(p => p === 'iba' || p === 'fbs' || p === 'fbs_detailed');
+export function canSeeMocks(user: Pick<UserWithProducts, 'role' | 'products' | 'mockAccess' | 'email'>): boolean {
+  return isStaffRole(user.role) || !!user.mockAccess || isUltimateTesterEmail(user.email)
+    || user.products.some(p => p === 'fbs' || p === 'fbs_detailed');
 }

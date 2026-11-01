@@ -358,11 +358,12 @@ function ApprovedStep({ data }: { data: MyMockRegistration }) {
       <p className="font-sans text-[10px] font-medium uppercase tracking-[0.28em] text-[#760F13]">Approved</p>
       <h3 className="mt-4 font-heading text-3xl font-light">You are in.</h3>
       <p className="mt-3 font-sans text-base leading-relaxed text-[#1A0507]/72">
-        Your payment is verified. LexiCore{until && <> is fully open until {until}</>} and Zap is open too. Your mock schedule is above.
+        Your payment is verified and Mock Access is on. LexiCore{until && <> is fully open until {until}</>} and Zap are open too.
       </p>
       <div className="mt-8 flex flex-wrap items-center gap-x-7 gap-y-4">
-        <Pill href="/vocab/home">Open LexiCore</Pill>
-        <Link href="/games/mental-math" className={textLink}>Play Zap</Link>
+        <Pill href="/mocks">Open my mocks</Pill>
+        <Link href="/vocab/home" className={textLink}>LexiCore</Link>
+        <Link href="/games/mental-math" className={textLink}>Zap</Link>
       </div>
     </div>
   );

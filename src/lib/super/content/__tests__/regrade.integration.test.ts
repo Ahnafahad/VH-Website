@@ -20,7 +20,8 @@ const DDL = [
   'CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT)',
   `CREATE TABLE tests (id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT, title TEXT, bucket TEXT, description TEXT, status TEXT DEFAULT 'published',
     allowed_products TEXT, category TEXT, is_diagnostic INTEGER DEFAULT 0, total_questions INTEGER DEFAULT 0, total_marks REAL DEFAULT 0, results_published_at INTEGER,
-    source_file TEXT, syllabus TEXT, created_by INTEGER, created_at INTEGER DEFAULT (unixepoch()), updated_at INTEGER DEFAULT (unixepoch()))`,
+    source_file TEXT, syllabus TEXT, is_mock INTEGER NOT NULL DEFAULT 0, mock_batch TEXT, exam_code TEXT, essay_series_id INTEGER, solution_pdf_key TEXT,
+    created_by INTEGER, created_at INTEGER DEFAULT (unixepoch()), updated_at INTEGER DEFAULT (unixepoch()))`,
   `CREATE TABLE test_sections (id INTEGER PRIMARY KEY AUTOINCREMENT, test_id INTEGER, "order" INTEGER, title TEXT, total_questions INTEGER DEFAULT 0,
     total_marks REAL DEFAULT 0, marks_per_correct REAL DEFAULT 1, penalty_per_wrong REAL DEFAULT 0.25, threshold_percent REAL)`,
   `CREATE TABLE test_question_groups (id INTEGER PRIMARY KEY AUTOINCREMENT, section_id INTEGER, "order" INTEGER, kind TEXT, title TEXT, content TEXT, shared_options TEXT)`,
@@ -30,7 +31,7 @@ const DDL = [
     class_session_id INTEGER, status TEXT DEFAULT 'scheduled', created_by INTEGER, created_at INTEGER DEFAULT (unixepoch()))`,
   `CREATE TABLE test_attempts (id INTEGER PRIMARY KEY AUTOINCREMENT, test_id INTEGER, user_id INTEGER, window_id INTEGER, mode TEXT, status TEXT DEFAULT 'in_progress',
     started_at INTEGER DEFAULT (unixepoch()), submitted_at INTEGER, banned_at INTEGER, tab_leave_count INTEGER DEFAULT 0, reset_count INTEGER DEFAULT 0, total_score REAL,
-    total_correct INTEGER, total_wrong INTEGER, total_unattempted INTEGER, section_scores TEXT, chosen_sections TEXT, best_snapshot TEXT)`,
+    total_correct INTEGER, total_wrong INTEGER, total_unattempted INTEGER, section_scores TEXT, chosen_sections TEXT, best_snapshot TEXT, result_source TEXT NOT NULL DEFAULT 'self')`,
   'CREATE TABLE test_answers (id INTEGER PRIMARY KEY AUTOINCREMENT, attempt_id INTEGER, question_id INTEGER, selected_key TEXT, flagged INTEGER DEFAULT 0, answered_at INTEGER DEFAULT (unixepoch()))',
   `CREATE TABLE test_versions (id INTEGER PRIMARY KEY AUTOINCREMENT, test_id INTEGER, snapshot TEXT, reason TEXT, created_by INTEGER, created_at INTEGER DEFAULT (unixepoch()))`,
 ];

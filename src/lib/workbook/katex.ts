@@ -10,6 +10,8 @@ export function renderMath(latex: string, display = false): string {
       macros: {
         '\\dfrac': '\\frac',
         '\\Tk': '\\text{Tk}',
+        // A dollar sign inside math without a raw `$` in the source (segmentContent would take it for a delimiter).
+        '\\usd': '\\text{\\$}',
       },
     });
   } catch {

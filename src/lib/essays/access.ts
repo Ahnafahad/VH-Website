@@ -24,5 +24,6 @@ export function isEssayAdmin(user: Pick<UserWithProducts, 'role'>): boolean {
 export function canSeeSeries(user: UserWithProducts, series: Pick<EssaySeries, 'product' | 'batch' | 'status'>): boolean {
   if (isEssayStaff(user)) return true;
   if (series.status !== 'active') return false;
+  if (series.product === 'mock') return !!user.mockAccess; // a mock's essays follow Mock Access
   return canAccessLmsContent(user, { product: series.product, batch: series.batch });
 }

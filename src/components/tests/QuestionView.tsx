@@ -127,9 +127,9 @@ export default function QuestionView({
                         className="absolute inset-x-0 top-0 h-px pointer-events-none"
                         style={{ background: 'linear-gradient(90deg, transparent, var(--color-exam-gold) 50%, transparent)', opacity: 0.25 }}
                       />
-                      <p className="text-exam-ink-muted text-sm leading-relaxed">
+                      <div className="text-exam-ink-muted text-sm leading-relaxed whitespace-pre-line">
                         <RichText content={group?.content ?? ''} />
-                      </p>
+                      </div>
                     </div>
                   </motion.div>
                 )}
@@ -170,7 +170,7 @@ export default function QuestionView({
         {/* Stem + image + options */}
         <div className="px-4 py-5 space-y-5">
           {/* Stem */}
-          <div className="text-exam-ink text-base leading-relaxed">
+          <div className="text-exam-ink text-base leading-relaxed whitespace-pre-line">
             <RichText content={question.stem} />
           </div>
 

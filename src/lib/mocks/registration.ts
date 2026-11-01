@@ -4,7 +4,8 @@
  */
 
 import { eq, and, lt, desc } from 'drizzle-orm';
-import { db, mockRegistrations, users, vocabUserProgress } from '@/lib/db';
+import { db, mockRegistrations, users, userAccess, vocabUserProgress } from '@/lib/db';
+import { clearAccessControlCache } from '@/lib/db-access-control';
 import { ApiException } from '@/lib/api-utils';
 import { r2Delete, r2PresignGet } from '@/lib/storage/r2';
 import { sendHtmlEmail } from '@/lib/email';
@@ -150,6 +151,10 @@ export async function decideRegistration(id: number, action: 'approve' | 'reject
       .where(eq(vocabUserProgress.userId, r.userId));
     grant = true;
   }
+  // Mock Access is what the 3,500 BDT pays for (re-activates a revoked grant: this is a paid approval).
+  await db.insert(userAccess).values({ userId: r.userId, product: 'mock', active: true, grantedBy: staffId })
+    .onConflictDoUpdate({ target: [userAccess.userId, userAccess.product], set: { active: true, grantedBy: staffId } });
+  clearAccessControlCache();
   await db.update(mockRegistrations).set({
     status: 'approved', note: null, vocabGranted: grant || r.vocabGranted, accessUntil: until,
     screenshotKey: null, decidedAt: now, decidedBy: staffId, updatedAt: now,
@@ -159,7 +164,7 @@ export async function decideRegistration(id: number, action: 'approve' | 'reject
   const untilText = until.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'Asia/Dhaka' });
   await sendHtmlEmail(row.email, accessEmail({
     name: row.name, untilText, statusUrl: MOCK_REGISTER_URL,
-    lexicoreUrl: 'https://www.vh-beyondthehorizons.org/vocab/home', zapUrl: 'https://www.vh-beyondthehorizons.org/games/mental-math',
+    mocksUrl: 'https://www.vh-beyondthehorizons.org/mocks', lexicoreUrl: 'https://www.vh-beyondthehorizons.org/vocab/home', zapUrl: 'https://www.vh-beyondthehorizons.org/games/mental-math',
   })).catch(() => {});
 }
 

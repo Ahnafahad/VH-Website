@@ -54,9 +54,15 @@ async function fetchUserWithProducts(email: string): Promise<UserWithProducts | 
     .from(userAccess)
     .where(and(eq(userAccess.userId, row.id), eq(userAccess.active, true)));
 
+  return withProducts(row, access.map(a => a.product));
+}
+
+/** `mock` (Mock Access) is split out of the LMS product list into its own flag. */
+function withProducts(row: typeof users.$inferSelect, products: string[]): UserWithProducts {
   return {
     ...row,
-    products: access.map(a => a.product as UserProduct),
+    products: products.filter(p => p !== 'mock') as UserProduct[],
+    mockAccess: products.includes('mock'),
   };
 }
 
@@ -89,7 +95,7 @@ export async function getUserById(id: number): Promise<UserWithProducts | null> 
     .select({ product: userAccess.product })
     .from(userAccess)
     .where(and(eq(userAccess.userId, row.id), eq(userAccess.active, true)));
-  return { ...row, products: access.map(a => a.product as UserProduct) };
+  return withProducts(row, access.map(a => a.product));
 }
 
 // ─── Product/access helpers ───────────────────────────────────────────────────
@@ -109,6 +115,7 @@ export function computeAccessFromProducts(user: UserWithProducts) {
       duFbs:       isAdmin || p.includes('fbs'),
       bupFbs:      isAdmin || p.includes('fbs'),
       fbsDetailed: isAdmin || p.includes('fbs_detailed'),
+      mocks:       isAdmin || !!user.mockAccess,
     },
   };
 }

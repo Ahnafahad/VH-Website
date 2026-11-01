@@ -195,7 +195,7 @@ function QuestionItem({
               </span>
             )}
           </div>
-          <div className="text-[var(--color-exam-ink)] text-sm leading-relaxed">
+          <div className="text-[var(--color-exam-ink)] text-sm leading-relaxed whitespace-pre-line">
             <RichText content={q.stem} />
           </div>
         </div>
@@ -274,7 +274,7 @@ function GroupHeader({ group }: { group: TakingGroup }) {
       </button>
       {open && (
         <div className="px-4 pb-4 text-[var(--color-exam-ink-muted)] text-sm leading-relaxed border-t border-[var(--color-exam-border)]" style={{ paddingTop: '12px' }}>
-          <RichText content={group.content} />
+          <div className="whitespace-pre-line"><RichText content={group.content} /></div>
         </div>
       )}
     </div>

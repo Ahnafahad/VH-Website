@@ -132,8 +132,8 @@ Track your registration: ${o.statusUrl}
   return { subject, html: shell({ title: subject, preheader: 'We have your payment details. Here is your mock schedule.', kicker: 'Mock registration', heading: 'Your registration is <em style="color:' + MAROON + ';">being processed</em>', body }), text };
 }
 
-export function accessEmail(o: { name: string; untilText: string; lexicoreUrl: string; zapUrl: string; statusUrl: string }): MockEmail {
-  const subject = 'You are in: LexiCore and Zap are open';
+export function accessEmail(o: { name: string; untilText: string; mocksUrl: string; lexicoreUrl: string; zapUrl: string; statusUrl: string }): MockEmail {
+  const subject = 'You are in: your mocks, LexiCore and Zap are open';
   const card = (title: string, blurb: string, href: string, cta: string, note?: string) =>
     `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 16px 0;border:1px solid ${INK};"><tr><td style="padding:22px 24px;">
       <p style="margin:0 0 6px 0;font-family:${SERIF};font-size:24px;color:${INK};">${title}</p>
@@ -143,7 +143,8 @@ export function accessEmail(o: { name: string; untilText: string; lexicoreUrl: s
     </td></tr></table>`;
   const body = [
     para(`Hi ${esc(o.name)},`),
-    para(`Your payment is verified and your mock registration is confirmed. Two things are now open on your account.`),
+    para(`Your payment is verified and your mock registration is confirmed. Three things are now open on your account.`),
+    card('Your mocks', `Mock Access is on. Sign in and open Mocks to see the routine, sit each mock in its window, upload your essays, and see your results and solutions.`, o.mocksUrl, 'Open Mocks'),
     card('LexiCore', 'Our vocabulary app. It turns the words that matter for admission tests into short daily practice, and brings each one back for review just before you would forget it.', o.lexicoreUrl, 'Open LexiCore', `Full access until ${esc(o.untilText)}`),
     card('Zap', 'Our mental-math game. Quick rounds that build the speed you need in the Mathematics section.', o.zapUrl, 'Play Zap'),
     para(`<span style="color:${CLAY};">LexiCore stays fully open for ${MOCK_ACCESS_DAYS} days. After that it returns to the free word set, and your progress is kept.</span>`),
@@ -151,7 +152,10 @@ export function accessEmail(o: { name: string; untilText: string; lexicoreUrl: s
   ].join('');
   const text = `Hi ${o.name},
 
-Your payment is verified and your mock registration is confirmed. Two things are now open on your account:
+Your payment is verified and your mock registration is confirmed. Three things are now open on your account:
+
+Your mocks: ${o.mocksUrl}
+Mock Access is on: see the routine, sit each mock, upload essays, see results.
 
 LexiCore (full access until ${o.untilText}): ${o.lexicoreUrl}
 Our vocabulary app: short daily practice with spaced review.
@@ -162,7 +166,7 @@ Our mental-math game.
 After ${MOCK_ACCESS_DAYS} days LexiCore returns to the free word set; your progress is kept.
 Your mock schedule is on your registration page: ${o.statusUrl}
 `;
-  return { subject, html: shell({ title: subject, preheader: `LexiCore (until ${o.untilText}) and Zap are now open on your account.`, kicker: 'Mock registration', heading: 'You are in. <em style="color:' + MAROON + ';">LexiCore and Zap are open.</em>', body }), text };
+  return { subject, html: shell({ title: subject, preheader: `Mock Access, LexiCore (until ${o.untilText}) and Zap are now open on your account.`, kicker: 'Mock registration', heading: 'You are in. <em style="color:' + MAROON + ';">Your mocks, LexiCore and Zap are open.</em>', body }), text };
 }
 
 export function rejectedEmail(o: { name: string; note: string; statusUrl: string }): MockEmail {
@@ -176,4 +180,34 @@ export function rejectedEmail(o: { name: string; note: string; statusUrl: string
   ].join('');
   const text = `Hi ${o.name},\n\nWe could not verify your payment yet.\n\n${o.note}\n\nCheck the details and submit again: ${o.statusUrl}\nOr WhatsApp us: +8801835200626\n`;
   return { subject, html: shell({ title: subject, preheader: 'We could not verify your payment yet.', kicker: 'Mock registration', heading: 'We could not verify <em style="color:' + MAROON + ';">your payment</em>', body }), text };
+}
+
+/** "Your final mock rank is published": sent to everyone who sat the mock when staff publish the results. */
+export function rankPublishedEmail(o: {
+  name: string; mockTitle: string; rank: number; outOf: number;
+  mcq: number; essay: number; total: number; maxTotal: number; resultsUrl: string;
+}): MockEmail {
+  const subject = `Your ${o.mockTitle} rank is published`;
+  const n = (x: number) => String(Math.round(x * 100) / 100);
+  const row = (k: string, v: string) =>
+    `<tr><td style="padding:10px 0;border-bottom:1px solid #E6D9CB;font-family:${SANS};font-size:14px;color:${CLAY};">${k}</td><td style="padding:10px 0;border-bottom:1px solid #E6D9CB;font-family:${SANS};font-size:14px;color:${INK};text-align:right;">${v}</td></tr>`;
+  const body = [
+    para(`Hi ${esc(o.name)},`),
+    para(`Your MCQs and essays for ${esc(o.mockTitle)} have been marked and the final results are published.`),
+    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0;border:1px solid ${INK};"><tr><td style="padding:26px 24px;">
+      <p style="margin:0 0 4px 0;font-family:${SANS};font-size:10px;letter-spacing:3px;text-transform:uppercase;color:${CLAY};">Your rank</p>
+      <p style="margin:0;font-family:${SERIF};font-size:54px;line-height:1;color:${MAROON};">${o.rank}<span style="font-size:20px;color:${CLAY};"> of ${o.outOf}</span></p>
+    </td></tr></table>`,
+    `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 28px 0;">
+      ${row('MCQs', `${n(o.mcq)}`)}${row('Essays', `${n(o.essay)}`)}${row('Total', `<b>${n(o.total)}</b> / ${n(o.maxTotal)}`)}
+    </table>`,
+    para(`Your result page has the section-by-section breakdown, your biggest missed chances, the leaderboard and the solutions.`),
+    `<p style="margin:0 0 32px 0;">${button(o.resultsUrl, 'See my result')}</p>`,
+  ].join('');
+  const text = `Hi ${o.name},\n\nThe final results for ${o.mockTitle} are published.\n\nYour rank: ${o.rank} of ${o.outOf}\nMCQs: ${n(o.mcq)}\nEssays: ${n(o.essay)}\nTotal: ${n(o.total)} / ${n(o.maxTotal)}\n\nSee your result: ${o.resultsUrl}\n`;
+  return {
+    subject,
+    html: shell({ title: subject, preheader: `You ranked ${o.rank} of ${o.outOf}. See your marks and solutions.`, kicker: 'Mock results', heading: 'Your final rank is <em style="color:' + MAROON + ';">published</em>', body }),
+    text,
+  };
 }

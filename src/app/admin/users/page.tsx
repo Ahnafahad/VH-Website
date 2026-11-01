@@ -56,7 +56,7 @@ async function fetchInitialUsers(): Promise<{ users: AdminUserRow[]; total: numb
       studentId:     u.studentId ?? null,
       batch:         u.batch ?? null,
       createdAt:     u.createdAt instanceof Date ? u.createdAt.toISOString() : String(u.createdAt),
-      products:      (productMap.get(u.id) ?? []) as ('iba' | 'fbs' | 'fbs_detailed')[],
+      products:      (productMap.get(u.id) ?? []) as ('iba' | 'fbs' | 'fbs_detailed' | 'mock')[],
       totalPoints:   prog?.totalPoints   ?? 0,
       streakDays:    prog?.streakDays    ?? 0,
       lastStudyDate: prog?.lastStudyDate instanceof Date

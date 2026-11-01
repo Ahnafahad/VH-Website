@@ -1,5 +1,6 @@
 'use client';
 
+import MockBanner from './MockBanner';
 import Link from 'next/link';
 import { Settings, Gauge, CalendarCheck } from 'lucide-react';
 import { useReducedMotion, motion, Variants } from 'motion/react';
@@ -100,6 +101,9 @@ export default function DashboardScreen({ data, userName, studentId, userId, pro
       >
         {/* pt-24 sm:pt-28 — clears fixed floating nav */}
         <div className="pt-0 sm:pt-4" />
+
+        {/* Mock Access holders: the next mock comes first */}
+        {showMocks && <MockBanner />}
 
         {/* Settings + Progress links — small, top-right */}
         <div className="flex justify-end items-center gap-1 mb-2">

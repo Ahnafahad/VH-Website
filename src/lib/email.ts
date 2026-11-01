@@ -1279,3 +1279,25 @@ export async function sendHtmlEmail(
   }
   return true;
 }
+
+/** Send many fully-built emails with Resend's batch API (100 per call). Returns how many were accepted. */
+export async function sendHtmlEmailBatch(
+  items: { to: string; mail: { subject: string; html: string; text: string } }[],
+): Promise<{ sent: number; failed: number }> {
+  if (!process.env.RESEND_API_KEY) {
+    console.warn('[email] RESEND_API_KEY not set — skipping sendHtmlEmailBatch');
+    return { sent: 0, failed: items.length };
+  }
+  let sent = 0;
+  let failed = 0;
+  for (let i = 0; i < items.length; i += 100) {
+    const chunk = items.slice(i, i + 100);
+    const result = await resend.batch.send(chunk.map(({ to, mail }) => ({
+      from: 'Beyond the Horizons <noreply@vh-beyondthehorizons.org>',
+      to, subject: mail.subject, html: mail.html, text: mail.text,
+    })));
+    if (result.error) { console.error('sendHtmlEmailBatch failed:', result.error); failed += chunk.length; }
+    else sent += chunk.length;
+  }
+  return { sent, failed };
+}

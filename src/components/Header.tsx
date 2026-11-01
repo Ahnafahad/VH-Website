@@ -26,6 +26,7 @@ import {
 } from 'motion/react';
 import LoginButton from './LoginButton';
 import { useSession } from 'next-auth/react';
+import { isUltimateTesterEmail } from '@/lib/auth/roles';
 
 const BASE_MAIN_LINKS = [
   { label: 'Home', href: '/' },
@@ -158,11 +159,14 @@ const Header = () => {
   const isStaff = role === 'admin' || role === 'super_admin';
 
   // Top-level links differ by auth state and role
-  const mainLinks = session
+  const roleLinks = session
     ? isAdmin
       ? role === 'instructor' ? INSTRUCTOR_MAIN_LINKS : ADMIN_MAIN_LINKS
       : STUDENT_MAIN_LINKS
     : BASE_MAIN_LINKS;
+  // Mock Access holders (and staff) get Mocks as the first thing in the nav.
+  const hasMocks = !!session && (!!session.user?.mockAccess?.mocks || isUltimateTesterEmail(session.user?.email));
+  const mainLinks = hasMocks ? [{ label: 'Mocks', href: '/mocks' }, ...roleLinks] : roleLinks;
 
   // "More" dropdown: contents differ by auth state and role
   const moreLinks = session

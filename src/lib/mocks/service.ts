@@ -12,7 +12,7 @@ import {
 } from '@/lib/db/schema';
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { canAccessTest, isTestStaff } from '@/lib/tests/access';
-import { effectiveWindowState } from '@/lib/tests/windows';
+import { effectiveWindowState, resultsVisible } from '@/lib/tests/windows';
 import { computeRanks, type AttemptScore } from '@/lib/tests/scoring';
 import { getPublishedTestBySlug, getTestResults } from '@/lib/tests/service';
 import { parseEssays } from '@/lib/essays/prompts';
@@ -26,6 +26,11 @@ import type {
 } from './types';
 
 const LEADERBOARD_SIZE = 10;
+
+/** Every window of the mock has closed (a mock with no windows has not "ended"). */
+function isMockEnded(windows: (typeof testWindows.$inferSelect)[], now: Date): boolean {
+  return windows.length > 0 && windows.every(w => effectiveWindowState(w, now) === 'closed');
+}
 
 function windowDTO(w: typeof testWindows.$inferSelect, now: Date): MockWindowDTO {
   return {
@@ -78,6 +83,7 @@ export async function getMockListForUser(user: UserWithProducts): Promise<MockLi
     const prompts = s ? parseEssays(s) : [];
     const gate = s && t.electiveCount != null ? await getEssayGate(user.id, s.id) : null;
     const mine = (i: number) => !gate || gate.allowed.has(i + 1);
+    const ended = isMockEnded(tWindows, now);
     return {
       slug: t.slug,
       bucket: t.bucket,
@@ -97,6 +103,9 @@ export async function getMockListForUser(user: UserWithProducts): Promise<MockLi
         submitted: subs.filter(x => x.seriesId === s.id && mine(x.essayIndex - 1)).length,
         maxMarks: prompts.reduce((n, p, i) => (mine(i) ? n + p.max : n), 0),
       } : null,
+      ended,
+      reviewHref: resultsVisible(t, tWindows, now) ? `/tests/${t.bucket}/${t.slug}/results` : null,
+      solutionUrl: ended || t.resultsPublishedAt ? await resolveFileUrl(t.solutionPdfKey) : null,
     };
   }));
 }
@@ -112,26 +121,32 @@ async function essayTotalsByUser(seriesId: number): Promise<Map<number, number>>
   return new Map(rows.map(r => [r.userId, r.total ?? 0]));
 }
 
-async function buildLeaderboard(test: Test, viewer: UserWithProducts, essayTotals: Map<number, number>) {
+interface UserRank { rank: number; percentile: number; mcq: number; essay: number; total: number }
+
+async function buildLeaderboard(test: Test, viewer: Pick<UserWithProducts, 'id'> | null, essayTotals: Map<number, number>) {
   const submitted = await db.select().from(testAttempts)
     .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.status, 'submitted')));
-  if (submitted.length === 0) return { rows: [] as MockLeaderboardRow[], byUser: new Map<number, { rank: number; percentile: number }>(), outOf: 0 };
+  if (submitted.length === 0) return { rows: [] as MockLeaderboardRow[], byUser: new Map<number, UserRank>(), outOf: 0 };
 
   const people = await db.select({ id: users.id, name: users.name, batch: users.batch })
     .from(users).where(inArray(users.id, submitted.map(a => a.userId)));
   const personById = new Map(people.map(p => [p.id, p]));
-  const batch = test.mockBatch ?? viewer.batch ?? null;
-  const cohort = submitted.filter(a => (personById.get(a.userId)?.batch ?? null) === batch || a.userId === viewer.id);
+  // One ranking for everyone who sat it; only a batch-scoped mock is ranked within its batch.
+  const batch = test.mockBatch ?? null;
+  const cohort = batch === null ? submitted : submitted.filter(a => (personById.get(a.userId)?.batch ?? null) === batch || a.userId === viewer?.id);
 
   const totalOf = (a: typeof cohort[number]) => Math.round(((a.totalScore ?? 0) + (essayTotals.get(a.userId) ?? 0)) * 100) / 100;
   const ranked = computeRanks(cohort.map(a => ({ attemptId: a.id, totalScore: totalOf(a) })));
   const attemptById = new Map(cohort.map(a => [a.id, a]));
 
-  const byUser = new Map<number, { rank: number; percentile: number }>();
+  const byUser = new Map<number, UserRank>();
   const rows: MockLeaderboardRow[] = [];
   for (const r of ranked) {
     const a = attemptById.get(r.attemptId)!;
-    byUser.set(a.userId, { rank: r.rank, percentile: r.percentile });
+    byUser.set(a.userId, {
+      rank: r.rank, percentile: r.percentile,
+      mcq: a.totalScore ?? 0, essay: essayTotals.get(a.userId) ?? 0, total: r.totalScore,
+    });
     if (rows.length < LEADERBOARD_SIZE) {
       rows.push({
         rank: r.rank, name: personById.get(a.userId)?.name ?? 'Student',
@@ -154,7 +169,11 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
 
   if (phase === 'locked') return { phase, title: test.title };
   if (phase === 'provisional') {
-    return { phase, title: test.title, examCode: test.examCode, mcq: mcqSummary(attempt!, test.totalMarks) };
+    return {
+      phase, title: test.title, examCode: test.examCode, mcq: mcqSummary(attempt!, test.totalMarks),
+      solutionUrl: await resolveFileUrl(test.solutionPdfKey),
+      reviewHref: `/tests/${test.bucket}/${test.slug}/results`,
+    };
   }
 
   const results = await getTestResults(test.id, user.id);
@@ -198,7 +217,7 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
     essayMax,
     combined: me ? Math.round((me.totalScore + myEssay) * 100) / 100 : null,
     maxTotal: (mcq?.maxScore ?? test.totalMarks) + essayMax,
-    me: me && myRank ? { ...myRank, outOf: board.outOf } : null,
+    me: me && myRank ? { rank: myRank.rank, percentile: myRank.percentile, outOf: board.outOf } : null,
     leaderboard: board.rows,
     missed: me && results ? computeMissedChances({
       sections: results.sections.map(s => ({
@@ -211,6 +230,16 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
     solutionUrl: await resolveFileUrl(test.solutionPdfKey),
     reviewHref: `/tests/${test.bucket.replace('_', '-')}/${test.slug}/results`,
   };
+}
+
+/** Everyone's combined (MCQ + essay) rank for a mock: used for the "your final rank is out" emails. */
+export async function getMockRanking(test: Test) {
+  const essayTotals = test.essaySeriesId ? await essayTotalsByUser(test.essaySeriesId) : new Map<number, number>();
+  const board = await buildLeaderboard(test, null, essayTotals);
+  const essays = test.essaySeriesId
+    ? parseEssays((await db.select().from(essaySeries).where(eq(essaySeries.id, test.essaySeriesId)).get())!)
+    : [];
+  return { byUser: board.byUser, outOf: board.outOf, maxTotal: test.totalMarks + essays.reduce((s, e) => s + e.max, 0) };
 }
 
 // ─── Staff: overview ──────────────────────────────────────────────────────────
@@ -237,10 +266,10 @@ export async function getMockAdminOverview(): Promise<MockAdminOverview> {
             .from(essaySubmissions).where(inArray(essaySubmissions.seriesId, seriesIds))
             .groupBy(essaySubmissions.seriesId, essaySubmissions.status)
         : Promise.resolve([]),
-      // expected sitters: active IBA students, narrowed per mock by batch below
+      // expected sitters: active Mock Access holders, narrowed per mock by batch below
       db.select({ userId: userAccess.userId, batch: users.batch })
         .from(userAccess).innerJoin(users, eq(users.id, userAccess.userId))
-        .where(and(eq(userAccess.product, 'iba'), eq(userAccess.active, true), eq(users.role, 'student'))),
+        .where(and(eq(userAccess.product, 'mock'), eq(userAccess.active, true), eq(users.role, 'student'))),
     ]);
 
     for (const t of mockRows) {

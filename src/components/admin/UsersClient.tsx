@@ -41,7 +41,7 @@ export interface AdminUserRow {
   studentId:     string | null;
   batch:         string | null;
   createdAt:     string;
-  products:      ('iba' | 'fbs' | 'fbs_detailed')[];
+  products:      ('iba' | 'fbs' | 'fbs_detailed' | 'mock')[];
   totalPoints:   number;
   streakDays:    number;
   lastStudyDate: string | null;
@@ -87,8 +87,8 @@ interface UsersClientProps {
 
 const PAGE_SIZE       = 50;
 const DEBOUNCE_MS     = 300;
-const PRODUCTS        = ['iba', 'fbs', 'fbs_detailed'] as const;
-const PRODUCT_LABELS  = { iba: 'IBA', fbs: 'FBS', fbs_detailed: 'FBS Detailed' } as const;
+const PRODUCTS        = ['iba', 'fbs', 'fbs_detailed', 'mock'] as const;
+const PRODUCT_LABELS  = { iba: 'IBA', fbs: 'FBS', fbs_detailed: 'FBS Detailed', mock: 'Mock Access' } as const;
 
 const selectFilterStyle: React.CSSProperties = {
   padding:      '6px 10px',
@@ -407,7 +407,7 @@ function UserDetailPanel({
         body:    JSON.stringify({ products: Array.from(products) }),
       });
       if (!res.ok) throw new Error('Failed');
-      onUpdate({ products: Array.from(products) as ('iba' | 'fbs' | 'fbs_detailed')[] });
+      onUpdate({ products: Array.from(products) as ('iba' | 'fbs' | 'fbs_detailed' | 'mock')[] });
       setProductsChanged(false);
       return true;
     } catch {
@@ -1285,7 +1285,7 @@ interface BulkEditState {
   applyStatus:   boolean; status:   string;
   applyRole:     boolean; role:     string;
   applyBatch:    boolean; batch:    string;
-  applyProducts: boolean; products: Set<'iba' | 'fbs' | 'fbs_detailed'>;
+  applyProducts: boolean; products: Set<'iba' | 'fbs' | 'fbs_detailed' | 'mock'>;
 }
 
 const bulkEditInitial: BulkEditState = {
@@ -1310,7 +1310,7 @@ function BulkEditModal({
     onClose();
   };
 
-  const toggleProduct = (p: 'iba' | 'fbs' | 'fbs_detailed') => {
+  const toggleProduct = (p: 'iba' | 'fbs' | 'fbs_detailed' | 'mock') => {
     setState(prev => {
       const next = new Set(prev.products);
       if (next.has(p)) next.delete(p); else next.add(p);

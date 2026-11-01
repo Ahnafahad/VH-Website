@@ -1,7 +1,7 @@
 /**
  * GET /api/mocks/[slug]/result
  * { phase: 'locked' | 'provisional' | 'official', ... } — see lib/mocks/state.ts.
- * Provisional = own answers scored, shown 10 min after the last window closes; official = staff
+ * Provisional = own answers scored, shown as soon as the last window closes; official = staff
  * published (OMR scans in, essays marked). Staff always get the official view.
  */
 

@@ -79,3 +79,12 @@ export function nextMock(now: Date): MockSlot | null {
     return new Date(`${s.date}T${end}:00+06:00`).getTime() > now.getTime();
   }) ?? null;
 }
+
+/** Start and end of a routine slot as instants (the slot's clock times are Dhaka, UTC+6). */
+export function slotRange(s: MockSlot): { start: Date; end: Date } {
+  const [from, to] = s.time.split('-');
+  return { start: new Date(`${s.date}T${from}:00+06:00`), end: new Date(`${s.date}T${to}:00+06:00`) };
+}
+
+/** Exam code printed on the paper for routine mock `n` (batch 26, e.g. Mock 1 = 2601). */
+export const mockExamCode = (n: number): string => `26${String(n).padStart(2, '0')}`;

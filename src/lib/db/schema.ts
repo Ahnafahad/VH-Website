@@ -372,6 +372,8 @@ export type MathSessionStatus   = 'in_progress' | 'complete' | 'abandoned';
 
 export interface UserWithProducts extends User {
   products: UserProduct[];
+  /** Holds the "Mock Access" product. Kept out of `products` so no LMS product switch/scope ever sees it. */
+  mockAccess?: boolean;
 }
 
 // ══════════════════════════════════════════════════════════════════════════════

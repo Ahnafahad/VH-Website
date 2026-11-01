@@ -30,10 +30,14 @@ export function isTestAllowedForProducts(test: Pick<Test, 'allowedProducts'>, pr
   }
 }
 
-export function canAccessTest(user: UserWithProducts, test: Test): boolean {
+export function canAccessTest(user: Pick<UserWithProducts, 'role' | 'email' | 'batch' | 'products' | 'mockAccess'>, test: Test): boolean {
   if (isTestStaff(user) || isUltimateTesterEmail(user.email)) return true;
   if (test.status !== 'published') return false;
-  // Mocks are batch-scoped (null mockBatch = every batch of the allowed products).
-  if (test.isMock && test.mockBatch && user.batch !== test.mockBatch) return false;
+  if (test.isMock) {
+    // A mock with a batch set is limited to that batch. One that names products (the FBS Pre-Mock) follows
+    // them; the rest are for Mock Access holders.
+    if (test.mockBatch && user.batch !== test.mockBatch) return false;
+    return test.allowedProducts ? isTestAllowedForProducts(test, user.products) : !!user.mockAccess;
+  }
   return isTestAllowedForProducts(test, user.products);
 }

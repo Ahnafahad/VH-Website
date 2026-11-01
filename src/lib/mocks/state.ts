@@ -2,27 +2,25 @@
  * Pure result-visibility rules for mock exams (no DB access — unit-testable).
  *
  *   locked      nothing to show yet
- *   provisional the student's own typed/online answers, scored — shown PROVISIONAL_DELAY_MS after
- *               the last window closes, flagged as "not every copy has been checked yet"
+ *   provisional the student's own typed/online answers, scored — shown the moment every window has
+ *               closed (a window staff closed early counts), flagged as "not every copy has been checked yet"
  *   official    staff published the results (scanned OMR scores are in, essays marked)
  */
 
 import type { Test, TestWindow, TestAttempt } from '@/lib/db/schema';
-
-export const PROVISIONAL_DELAY_MS = 10 * 60_000;
+import { effectiveWindowState } from '@/lib/tests/windows';
 
 export type MockPhase = 'locked' | 'provisional' | 'official';
 
 export function mockPhase(
-  // Elective mocks are sat and entered by the student alone, so nothing waits on scans: result at window close.
+  // Elective mocks are sat and entered by the student alone; either way the result shows the moment every window has closed.
   test: Pick<Test, 'resultsPublishedAt'> & { electiveCount?: number | null },
-  windows: Pick<TestWindow, 'closesAt'>[],
+  windows: Pick<TestWindow, 'status' | 'opensAt' | 'closesAt'>[],
   attempt: Pick<TestAttempt, 'status'> | null,
   now: Date = new Date(),
 ): MockPhase {
   if (test.resultsPublishedAt != null) return 'official';
   if (attempt?.status !== 'submitted' || windows.length === 0) return 'locked';
-  const lastClose = Math.max(...windows.map(w => w.closesAt.getTime()));
-  const delay = test.electiveCount != null ? 0 : PROVISIONAL_DELAY_MS;
-  return now.getTime() >= lastClose + delay ? 'provisional' : 'locked';
+  const allClosed = windows.every(w => effectiveWindowState(w as TestWindow, now) === 'closed');
+  return allClosed ? 'provisional' : 'locked';
 }

@@ -168,7 +168,7 @@ export default function MockResultsPage() {
   if (result.phase === 'locked') {
     return (
       <Shell title={result.title}>
-        <p className="text-exam-ink-muted">Your result isn’t available yet. Provisional scores appear about 10 minutes after the exam window closes; final results are published once every copy has been checked.</p>
+        <p className="text-exam-ink-muted">Your result isn’t available yet. Your MCQ score, answers and the answer key appear as soon as the mock’s windows close; your final rank is published once every copy and essay has been marked.</p>
       </Shell>
     );
   }
@@ -177,7 +177,7 @@ export default function MockResultsPage() {
     return (
       <Shell title={result.title}>
         <div className="rounded-2xl border border-exam-warning/40 bg-exam-warning/10 p-4 text-sm text-exam-ink mb-6">
-          <strong>Provisional.</strong> Not all copies have been checked yet. This is your own entry only — the scanned OMR sheet is the official result and may differ. Rank, the answer key and essays arrive with the final results.
+          <strong>Provisional.</strong> This is your own MCQ entry. Essay marks and your final rank arrive with the final results, and you will get an email when they are out.
         </div>
         <section className={`${card} mb-6`}>
           <p className={h2}>Part 1 · your entry</p>
@@ -187,6 +187,16 @@ export default function MockResultsPage() {
           <p className="text-exam-ink-muted text-sm mt-2">{result.mcq.correct} right · {result.mcq.wrong} wrong · {result.mcq.unattempted} skipped</p>
         </section>
         <Sections mcq={result.mcq} missed={null} />
+        <div className="mt-6 flex flex-wrap gap-3">
+          <Link href={result.reviewHref} className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors">
+            See your answers and the keys →
+          </Link>
+          {result.solutionUrl && (
+            <a href={result.solutionUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-elevated border border-exam-border text-exam-ink-muted hover:text-exam-ink text-sm transition-colors">
+              Solutions PDF
+            </a>
+          )}
+        </div>
       </Shell>
     );
   }

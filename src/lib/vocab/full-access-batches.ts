@@ -11,6 +11,7 @@ import { db } from '@/lib/db';
 import { vocabUserProgress } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import type { DbExecutor } from '@/lib/db-access-control';
+import { grantMockAccessIfEligible } from '@/lib/mocks/mock-access';
 
 const FULL_ACCESS_BATCHES: { product: string; batch: string }[] = [
   { product: 'iba', batch: '2026-27' },
@@ -28,6 +29,8 @@ export async function grantFullVocabAccessIfEligible(
   products: string[],
   exec: DbExecutor = db,
 ): Promise<void> {
+  // Same batch-grant choke point: Mock Access follows its own batch rule (lib/mocks/mock-access.ts).
+  await grantMockAccessIfEligible(userId, batch, products, exec);
   if (!qualifiesForFullVocabAccess(batch, products)) return;
 
   const existing = await exec

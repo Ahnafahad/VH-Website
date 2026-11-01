@@ -36,6 +36,12 @@ export interface MockListEntry {
   /** elective-subject paper: the student picks their subjects when they start */
   hasElectives: boolean;
   essay: MockEssayDTO | null;
+  /** Every window has closed. */
+  ended: boolean;
+  /** Question-by-question review (their answers vs the keys), once the windows have closed. */
+  reviewHref: string | null;
+  /** The solutions PDF, once uploaded AND the mock has ended. */
+  solutionUrl: string | null;
 }
 
 export interface MockSectionLine {
@@ -67,7 +73,7 @@ export interface MockLeaderboardRow { rank: number; name: string; mcq: number; e
 
 export type MockResult =
   | { phase: 'locked'; title: string }
-  | { phase: 'provisional'; title: string; examCode: string | null; mcq: MockMcqSummary }
+  | { phase: 'provisional'; title: string; examCode: string | null; mcq: MockMcqSummary; solutionUrl: string | null; reviewHref: string }
   | {
       phase: 'official';
       title: string;

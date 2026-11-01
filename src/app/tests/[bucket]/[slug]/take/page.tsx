@@ -151,8 +151,8 @@ export default function TakePage({ params }: PageProps) {
   // state.kind === 'ready'
   const { payload } = state;
 
-  // Mocks send the student back to /mocks, not the tests list.
-  const exit = payload.test.isMock ? { exitHref: '/mocks', exitLabel: 'Back to Mocks' } : {};
+  // Mocks continue to the essay screen after the MCQs (it sends the student on to /mocks if there is nothing to upload).
+  const exit = payload.test.isMock ? { exitHref: `/mocks/${slug}/essays`, exitLabel: 'Continue to essays' } : {};
 
   if (payload.attempt.mode === 'online') {
     return (

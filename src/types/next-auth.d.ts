@@ -29,6 +29,7 @@ declare module "next-auth" {
         duFbs: boolean
         bupFbs: boolean
         fbsDetailed: boolean
+        mocks?: boolean
       }
     }
   }
@@ -53,6 +54,7 @@ declare module "next-auth/jwt" {
       duFbs: boolean
       bupFbs: boolean
       fbsDetailed: boolean
+      mocks?: boolean
     }
   }
 }

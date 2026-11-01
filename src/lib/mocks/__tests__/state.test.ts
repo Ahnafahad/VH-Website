@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { mockPhase, PROVISIONAL_DELAY_MS } from '../state';
+import { mockPhase } from '../state';
 
 const closes = new Date('2026-11-10T10:00:00Z');
-const windows = [{ closesAt: closes }, { closesAt: new Date('2026-11-10T08:00:00Z') }];
+const win = (over: Record<string, unknown> = {}) => ({ status: 'scheduled', opensAt: new Date('2026-11-10T06:00:00Z'), closesAt: closes, ...over }) as Parameters<typeof mockPhase>[1][number];
+const windows = [win(), win({ closesAt: new Date('2026-11-10T08:00:00Z') })];
 const submitted = { status: 'submitted' };
 const unpublished = { resultsPublishedAt: null };
 
@@ -11,11 +12,14 @@ describe('mockPhase', () => {
     expect(mockPhase({ resultsPublishedAt: new Date() }, windows, null)).toBe('official');
   });
 
-  it('stays locked until 10 minutes after the LAST window closes', () => {
-    const justBefore = new Date(closes.getTime() + PROVISIONAL_DELAY_MS - 1);
-    const atDelay = new Date(closes.getTime() + PROVISIONAL_DELAY_MS);
-    expect(mockPhase(unpublished, windows, submitted, justBefore)).toBe('locked');
-    expect(mockPhase(unpublished, windows, submitted, atDelay)).toBe('provisional');
+  it('stays locked until the LAST window closes, then is provisional straight away', () => {
+    expect(mockPhase(unpublished, windows, submitted, new Date(closes.getTime() - 1))).toBe('locked');
+    expect(mockPhase(unpublished, windows, submitted, new Date(closes.getTime() + 1))).toBe('provisional');
+  });
+
+  it('counts a window staff closed early', () => {
+    const early = [win({ status: 'closed' }), win({ status: 'closed' })];
+    expect(mockPhase(unpublished, early, submitted, new Date('2026-11-10T07:00:00Z'))).toBe('provisional');
   });
 
   it('shows an elective mock result the moment its window closes', () => {
