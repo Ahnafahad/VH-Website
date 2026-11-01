@@ -7,5 +7,5 @@ import type { UserWithProducts } from '@/lib/db/schema';
 import { isStaffRole } from '@/lib/auth/roles';
 
 export function canSeeMocks(user: Pick<UserWithProducts, 'role' | 'products'>): boolean {
-  return isStaffRole(user.role) || user.products.includes('iba');
+  return isStaffRole(user.role) || user.products.some(p => p === 'iba' || p === 'fbs' || p === 'fbs_detailed');
 }
