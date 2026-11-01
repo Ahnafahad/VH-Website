@@ -36,6 +36,8 @@ import { resolveAudience, isAudienceProduct } from '@/lib/audience/resolve';
 import { lmsScopeConditions } from '@/lib/lms/access';
 import { parseAnnotations, parseStoredAnnotations, type EssayAnnotation } from './annotations';
 import { canSeeSeries, isEssayAdmin } from './access';
+import { getEssayGate, type EssayGate } from '@/lib/mocks/electives';
+import { isTestStaff } from '@/lib/tests/access';
 import { notifyStudents } from '@/lib/notifications/notify-students';
 import {
   LOCK_MINUTES,
@@ -318,6 +320,11 @@ function slotStatus(sub: EssaySubmission | undefined, s: EssaySeries, now: Date)
   return 'submitted';
 }
 
+/** Elective-subject mocks: which essays this student writes. null = all (not a gated series, or staff). */
+async function studentGate(user: UserWithProducts, seriesId: number): Promise<EssayGate | null> {
+  return isTestStaff(user) ? null : getEssayGate(user.id, seriesId);
+}
+
 export async function listSeriesForStudent(user: UserWithProducts): Promise<EssaySeriesStudentEntry[]> {
   await sweepAutoPublish();
   const seriesRows = await db
@@ -332,29 +339,30 @@ export async function listSeriesForStudent(user: UserWithProducts): Promise<Essa
     .where(and(eq(essaySubmissions.userId, user.id), inArray(essaySubmissions.seriesId, seriesRows.map(s => s.id))));
   const now = new Date();
 
-  return seriesRows.map(s => {
+  return Promise.all(seriesRows.map(async s => {
+    const gate = await studentGate(user, s.id);
     const mine = subs.filter(x => x.seriesId === s.id);
     const essays = parseEssays(s);
     const slots = essays.map((e, i) => {
       const sub = mine.find(x => x.essayIndex === i + 1);
       const status = slotStatus(sub, s, now);
       return { essayIndex: i + 1, status, total: status === 'graded' ? sub!.total : null, prompt: e.prompt, hint: e.hint, max: e.max };
-    });
+    }).filter(x => !gate || gate.allowed.has(x.essayIndex));
     const graded = slots.filter(x => x.status === 'graded');
     return {
       id: s.id,
       title: s.title,
       essayDate: s.essayDate,
       deadline: s.deadline.toISOString(),
-      essayCount: s.essayCount,
+      essayCount: gate ? slots.length : s.essayCount,
       totalMarks: s.totalMarks,
       published: !!s.publishedAt,
       isWorkbook: s.isWorkbook,
       slots,
       seriesTotal: graded.length && !s.isWorkbook ? graded.reduce((a, b) => a + (b.total ?? 0), 0) : null,
-      seriesMax: essaysTotal(essays),
+      seriesMax: gate ? slots.reduce((a, x) => a + x.max, 0) : essaysTotal(essays),
     };
-  });
+  }));
 }
 
 async function requireVisibleSeries(user: UserWithProducts, seriesId: number): Promise<EssaySeries> {
@@ -402,7 +410,12 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
   await tryAutoPublish(seriesId);
   const s = await requireVisibleSeries(user, seriesId);
   const now = new Date();
+  const gate = await studentGate(user, seriesId);
+  if (gate && !gate.answered) {
+    throw new ApiException('Enter your MCQ answers on the Mocks page first, so we know which subjects you sat.', 409, 'NEEDS_MCQ');
+  }
   const prompts = parseEssays(s);
+  const sat = gate ? prompts.filter((_, i) => gate.allowed.has(i + 1)) : prompts;
   const mine = await db
     .select()
     .from(essaySubmissions)
@@ -435,12 +448,12 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
       pages: (sub ? pageMap.get(sub.id) ?? [] : []).map(p => (result ? p : { ...p, annotations: [] })),
       result,
     };
-  });
+  }).filter(e => !gate || gate.allowed.has(e.essayIndex));
 
   let stats = null;
   if (visibleGraded.length > 0 && !s.isWorkbook) {
     const pool = await classSeriesTotals(seriesId);
-    const max = essaysTotal(prompts);
+    const max = essaysTotal(sat);
     const st = computeStats([...pool.values()], max);
     stats = {
       myTotal: visibleGraded.reduce((a, b) => a + (b.total ?? 0), 0),
@@ -458,9 +471,9 @@ export async function getStudentSeriesDetail(user: UserWithProducts, seriesId: n
       title: s.title,
       prompt: s.prompt,
       essayDate: s.essayDate,
-      essayCount: s.essayCount,
+      essayCount: gate ? sat.length : s.essayCount,
       totalMarks: s.totalMarks,
-      seriesMax: essaysTotal(prompts),
+      seriesMax: essaysTotal(sat),
       deadline: s.deadline.toISOString(),
       published: !!s.publishedAt,
       isWorkbook: s.isWorkbook,
@@ -485,6 +498,13 @@ export async function assertCanUpload(user: UserWithProducts, seriesId: number, 
   const s = await requireVisibleSeries(user, seriesId);
   if (!Number.isInteger(essayIndex) || essayIndex < 1 || essayIndex > s.essayCount) {
     throw new ApiException('Invalid essay number', 400);
+  }
+  const gate = await studentGate(user, seriesId);
+  if (gate && !gate.allowed.has(essayIndex)) {
+    throw new ApiException(
+      gate.answered ? 'That written part is not one of the subjects you sat' : 'Enter your MCQ answers first, so we know which subjects you sat',
+      403, 'NOT_YOUR_SUBJECT',
+    );
   }
   const existing = await db
     .select()
@@ -586,13 +606,15 @@ export async function getStudentOverview(user: UserWithProducts) {
     .from(essaySubmissions)
     .where(and(inArray(essaySubmissions.seriesId, ids), eq(essaySubmissions.status, 'graded')));
 
+  const gates = new Map(await Promise.all(published.map(async s => [s.id, await studentGate(user, s.id)] as const)));
   return {
     series: published.map(s => {
       const rows = all.filter(r => r.seriesId === s.id);
       const perUser = new Map<number, number>();
       for (const r of rows) perUser.set(r.userId, (perUser.get(r.userId) ?? 0) + (r.total ?? 0));
       const mineRows = rows.filter(r => r.userId === user.id);
-      const max = essaysTotal(parseEssays(s));
+      const gate = gates.get(s.id);
+      const max = essaysTotal(parseEssays(s).filter((_, i) => !gate || gate.allowed.has(i + 1)));
       const st = computeStats([...perUser.values()], max);
       const myTotal = mineRows.length ? mineRows.reduce((a, b) => a + (b.total ?? 0), 0) : null;
       return {

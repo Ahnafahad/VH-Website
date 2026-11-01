@@ -33,6 +33,8 @@ export interface MockListEntry {
   windows: MockWindowDTO[];
   attempt: { status: string; mode: string; submittedAt: number | null } | null;
   phase: MockPhase;
+  /** elective-subject paper: the student picks their subjects when they start */
+  hasElectives: boolean;
   essay: MockEssayDTO | null;
 }
 

@@ -35,6 +35,7 @@ export interface TestListEntry {
   syllabus: string | null;
   /** Mocks are listed on /mocks, not /tests. */
   isMock?: boolean;
+  electives?: { count: number; sections: Array<{ id: number; title: string }> } | null;
   totalQuestions: number;
   totalMarks: number;
   windows: TestListWindow[];

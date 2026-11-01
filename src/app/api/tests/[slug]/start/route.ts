@@ -10,12 +10,17 @@ import { NextRequest } from 'next/server';
 import { z } from 'zod';
 import { and, eq } from 'drizzle-orm';
 import { db } from '@/lib/db';
-import { testAttempts } from '@/lib/db/schema';
+import { testAttempts, testSections } from '@/lib/db/schema';
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { effectiveWindowState, attemptDeadline } from '@/lib/tests/windows';
+import { pickAttemptedSections } from '@/lib/tests/diagnostic';
 
-const bodySchema = z.object({ windowId: z.number().int().positive() });
+// electiveSectionIds: required (exactly test.electiveCount of them) for elective-subject mocks, ignored otherwise.
+const bodySchema = z.object({
+  windowId: z.number().int().positive(),
+  electiveSectionIds: z.array(z.number().int().positive()).optional(),
+});
 
 export async function POST(
   req: NextRequest,
@@ -63,6 +68,17 @@ export async function POST(
       };
     }
 
+    let chosenSections: string | undefined;
+    if (test.electiveCount != null) {
+      const sections = await db.select({ id: testSections.id, title: testSections.title })
+        .from(testSections).where(eq(testSections.testId, test.id));
+      const attempted = pickAttemptedSections(sections, parsed.data.electiveSectionIds ?? [], test.electiveCount);
+      if (!attempted) {
+        throw new ApiException(`Choose exactly ${test.electiveCount} subjects`, 400, 'INVALID_SELECTION');
+      }
+      chosenSections = JSON.stringify(attempted);
+    }
+
     const [created] = await db.insert(testAttempts).values({
       testId: test.id,
       userId: user.id,
@@ -70,6 +86,7 @@ export async function POST(
       mode: window.mode,
       status: 'in_progress',
       startedAt: new Date(),
+      ...(chosenSections ? { chosenSections } : {}),
     }).returning();
 
     return {

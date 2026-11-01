@@ -28,7 +28,7 @@ function MockCard({ mock }: { mock: MockListEntry }) {
   const open = mock.windows.find(w => w.state === 'open');
   const next = mock.windows.find(w => w.state === 'upcoming');
   const submitted = mock.attempt?.status === 'submitted';
-  const examHref = `/tests/${mock.bucket}/${mock.slug}`;
+  const examHref = `/tests/${mock.bucket.replace('_', '-')}/${mock.slug}`;
 
   return (
     <article className="rounded-2xl border border-exam-border bg-exam-surface p-5 sm:p-6">
@@ -66,9 +66,11 @@ function MockCard({ mock }: { mock: MockListEntry }) {
           <Link href={`/mocks/${mock.slug}/results`} className={primaryBtn}>View provisional result</Link>
         )}
         {mock.phase === 'locked' && submitted && (
-          <p className="text-exam-ink-muted text-sm">Answers submitted. Your result appears about 10 minutes after the exam window closes.</p>
+          <p className="text-exam-ink-muted text-sm">
+            Answers submitted. Your MCQ result appears {mock.hasElectives ? 'as soon as' : 'about 10 minutes after'} the exam window closes.
+          </p>
         )}
-        {!submitted && open && <Link href={examHref} className={primaryBtn}>Sit the mock</Link>}
+        {!submitted && open && <Link href={examHref} className={primaryBtn}>{mock.hasElectives ? 'Enter your MCQ answers' : 'Sit the mock'}</Link>}
         {!submitted && !open && next && (
           <p className="text-exam-ink-muted text-sm">Opens {fmt(next.opensAt)}</p>
         )}
@@ -80,17 +82,24 @@ function MockCard({ mock }: { mock: MockListEntry }) {
       {mock.essay && (
         <div className="mt-5 pt-4 border-t border-exam-border flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-exam-ink-muted">
-            <span className="text-exam-ink">Essays</span> · {mock.essay.submitted} of {mock.essay.essayCount} uploaded · due {fmt(mock.essay.deadline)}
+            <span className="text-exam-ink">{mock.hasElectives ? 'Written' : 'Essays'}</span>
+            {mock.hasElectives && !mock.attempt
+              ? ' · opens once you have entered your MCQ answers'
+              : <> · {mock.essay.submitted} of {mock.essay.essayCount} uploaded · due {fmt(mock.essay.deadline)}</>}
           </p>
           <Link href={`/essays/${mock.essay.seriesId}`} className={ghostBtn}>
-            {mock.essay.submitted > 0 ? 'View / re-upload essays' : 'Upload essays'}
+            {mock.hasElectives
+              ? (mock.attempt ? 'Upload written pages' : 'Enter MCQ answers first')
+              : (mock.essay.submitted > 0 ? 'View / re-upload essays' : 'Upload essays')}
           </Link>
         </div>
       )}
 
-      <p className="mt-4 text-xs text-exam-ink-faint">
-        Sat it on paper? Your scanned OMR sheet is the official result, whatever you enter here.
-      </p>
+      {!mock.hasElectives && (
+        <p className="mt-4 text-xs text-exam-ink-faint">
+          Sat it on paper? Your scanned OMR sheet is the official result, whatever you enter here.
+        </p>
+      )}
     </article>
   );
 }

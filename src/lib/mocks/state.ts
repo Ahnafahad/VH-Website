@@ -14,7 +14,8 @@ export const PROVISIONAL_DELAY_MS = 10 * 60_000;
 export type MockPhase = 'locked' | 'provisional' | 'official';
 
 export function mockPhase(
-  test: Pick<Test, 'resultsPublishedAt'>,
+  // Elective mocks are sat and entered by the student alone, so nothing waits on scans: result at window close.
+  test: Pick<Test, 'resultsPublishedAt'> & { electiveCount?: number | null },
   windows: Pick<TestWindow, 'closesAt'>[],
   attempt: Pick<TestAttempt, 'status'> | null,
   now: Date = new Date(),
@@ -22,5 +23,6 @@ export function mockPhase(
   if (test.resultsPublishedAt != null) return 'official';
   if (attempt?.status !== 'submitted' || windows.length === 0) return 'locked';
   const lastClose = Math.max(...windows.map(w => w.closesAt.getTime()));
-  return now.getTime() >= lastClose + PROVISIONAL_DELAY_MS ? 'provisional' : 'locked';
+  const delay = test.electiveCount != null ? 0 : PROVISIONAL_DELAY_MS;
+  return now.getTime() >= lastClose + delay ? 'provisional' : 'locked';
 }

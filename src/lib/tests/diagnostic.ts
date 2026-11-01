@@ -29,3 +29,28 @@ export function parseChosenSections(raw: string | null): number[] {
   }
   return [];
 }
+
+/** True when the taker picks electives: FBS diagnostics and elective-subject mocks (tests.electiveCount). */
+export function usesElectives(test: { isDiagnostic: boolean; electiveCount: number | null }): boolean {
+  return test.isDiagnostic || test.electiveCount != null;
+}
+
+/**
+ * Validates a student's pick of `count` distinct electives and returns the section ids they will attempt
+ * (every compulsory section + the picks), or null when the pick is invalid.
+ */
+export function pickAttemptedSections(
+  sections: { id: number; title: string }[],
+  chosen: number[],
+  count: number,
+): number[] | null {
+  const electiveIds = new Set(sections.filter(s => !isCompulsorySection(s.title)).map(s => s.id));
+  const distinct = new Set(chosen);
+  if (chosen.length !== count || distinct.size !== count || ![...distinct].every(id => electiveIds.has(id))) return null;
+  return [...sections.filter(s => isCompulsorySection(s.title)).map(s => s.id), ...chosen];
+}
+
+/** Mock written parts follow the paper: essay k of the linked series belongs to the test's k-th section. */
+export function essayIndexesForSections(orderedSectionIds: number[], attempted: number[]): number[] {
+  return orderedSectionIds.flatMap((id, i) => (attempted.includes(id) ? [i + 1] : []));
+}

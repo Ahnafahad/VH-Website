@@ -18,6 +18,7 @@ import { getPublishedTestBySlug, getTestResults } from '@/lib/tests/service';
 import { parseEssays } from '@/lib/essays/prompts';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import { computeMissedChances } from './missed-chances';
+import { getEssayGate } from './electives';
 import { mockPhase } from './state';
 import type {
   MockAdminEntry, MockAdminOverview, MockEssayLine, MockLeaderboardRow, MockListEntry,
@@ -37,7 +38,8 @@ function mcqSummary(a: { totalScore: number | null; totalCorrect: number | null;
   const sections = a.sectionScores ? (JSON.parse(a.sectionScores) as AttemptScore['sections']) : [];
   return {
     score: a.totalScore ?? 0,
-    maxScore,
+    // Elective mocks score only the sections the student sat, so their maximum is smaller than the paper's.
+    maxScore: sections.length ? sections.reduce((n, s) => n + s.maxScore, 0) : maxScore,
     correct: a.totalCorrect ?? 0,
     wrong: a.totalWrong ?? 0,
     unattempted: a.totalUnattempted ?? 0,
@@ -69,10 +71,13 @@ export async function getMockListForUser(user: UserWithProducts): Promise<MockLi
       : Promise.resolve([]),
   ]);
 
-  return rows.map(t => {
+  return Promise.all(rows.map(async t => {
     const tWindows = windows.filter(w => w.testId === t.id).sort((a, b) => a.opensAt.getTime() - b.opensAt.getTime());
     const attempt = attempts.find(a => a.testId === t.id) ?? null;
     const s = series.find(x => x.id === t.essaySeriesId);
+    const prompts = s ? parseEssays(s) : [];
+    const gate = s && t.electiveCount != null ? await getEssayGate(user.id, s.id) : null;
+    const mine = (i: number) => !gate || gate.allowed.has(i + 1);
     return {
       slug: t.slug,
       bucket: t.bucket,
@@ -83,16 +88,17 @@ export async function getMockListForUser(user: UserWithProducts): Promise<MockLi
       windows: tWindows.map(w => windowDTO(w, now)),
       attempt: attempt && { status: attempt.status, mode: attempt.mode, submittedAt: attempt.submittedAt?.getTime() ?? null },
       phase: mockPhase(t, tWindows, attempt, now),
+      hasElectives: t.electiveCount != null,
       essay: s ? {
         seriesId: s.id,
         title: s.title,
         deadline: s.deadline.getTime(),
-        essayCount: parseEssays(s).length,
-        submitted: subs.filter(x => x.seriesId === s.id).length,
-        maxMarks: s.totalMarks,
+        essayCount: prompts.filter((_, i) => mine(i)).length,
+        submitted: subs.filter(x => x.seriesId === s.id && mine(x.essayIndex - 1)).length,
+        maxMarks: prompts.reduce((n, p, i) => (mine(i) ? n + p.max : n), 0),
       } : null,
     };
-  });
+  }));
 }
 
 // ─── Student: result ──────────────────────────────────────────────────────────
@@ -155,21 +161,24 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
   const series = test.essaySeriesId
     ? await db.select().from(essaySeries).where(eq(essaySeries.id, test.essaySeriesId)).get() ?? null
     : null;
+  const gate = series && test.electiveCount != null ? await getEssayGate(user.id, series.id) : null;
   const prompts = series ? parseEssays(series) : [];
-  const essayMax = prompts.reduce((s, p) => s + p.max, 0);
+  const sat = (i: number) => !gate || gate.allowed.has(i + 1);
+  const essayMax = prompts.reduce((s, p, i) => (sat(i) ? s + p.max : s), 0);
   const essayTotals = series ? await essayTotalsByUser(series.id) : new Map<number, number>();
 
   let essays: MockEssayLine[] | null = null;
   if (series) {
     const mine = await db.select().from(essaySubmissions)
       .where(and(eq(essaySubmissions.seriesId, series.id), eq(essaySubmissions.userId, user.id)));
-    essays = prompts.map((p, i) => {
+    essays = prompts.flatMap((p, i) => {
+      if (!sat(i)) return [];
       const sub = mine.find(m => m.essayIndex === i + 1);
-      return {
+      return [{
         index: i + 1, max: p.max,
         total: sub?.status === 'graded' ? sub.total : null,
         status: sub ? (sub.status as MockEssayLine['status']) : 'not_submitted',
-      };
+      }];
     });
   }
 
@@ -177,17 +186,18 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
   const myEssay = essayTotals.get(user.id) ?? 0;
   const me = results?.me ?? null;
   const myRank = board.byUser.get(user.id);
+  const mcq = me && attempt ? mcqSummary(attempt, test.totalMarks) : null;
 
   return {
     phase: 'official',
     title: test.title,
     examCode: test.examCode,
-    mcq: me && attempt ? mcqSummary(attempt, test.totalMarks) : null,
+    mcq,
     essays,
     essayTotal: series ? myEssay : null,
     essayMax,
     combined: me ? Math.round((me.totalScore + myEssay) * 100) / 100 : null,
-    maxTotal: test.totalMarks + essayMax,
+    maxTotal: (mcq?.maxScore ?? test.totalMarks) + essayMax,
     me: me && myRank ? { ...myRank, outOf: board.outOf } : null,
     leaderboard: board.rows,
     missed: me && results ? computeMissedChances({
@@ -199,7 +209,7 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
       responses: me.responses,
     }) : null,
     solutionUrl: await resolveFileUrl(test.solutionPdfKey),
-    reviewHref: `/tests/${test.bucket}/${test.slug}/results`,
+    reviewHref: `/tests/${test.bucket.replace('_', '-')}/${test.slug}/results`,
   };
 }
 

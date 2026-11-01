@@ -12,7 +12,7 @@ import {
 import { and, eq, inArray } from 'drizzle-orm';
 import { effectiveWindowState, resultsVisible, type EffectiveWindowState } from './windows';
 import { scoreAttempt, computeRanks, rankCohort, shouldRankByCohort, type AttemptScore } from './scoring';
-import { parseChosenSections } from './diagnostic';
+import { isCompulsorySection, parseChosenSections, usesElectives } from './diagnostic';
 import { applyWindowOverrides } from './window-overrides';
 import { computeRadar, type RadarAxis } from './radar';
 import { getUserById } from '@/lib/db-access-control';
@@ -27,6 +27,8 @@ export interface TestListEntry {
   description: string | null;
   syllabus: string | null;
   isMock: boolean;
+  /** Elective-subject mock: the student picks `count` of `sections` before starting. */
+  electives: { count: number; sections: Array<{ id: number; title: string }> } | null;
   totalQuestions: number;
   totalMarks: number;
   windows: Array<{
@@ -63,6 +65,12 @@ export async function getTestListForUser(userId: number): Promise<TestListEntry[
 
   const effectiveWindows = await applyWindowOverrides(userId, windows);
 
+  const electiveTestIds = rows.filter(t => t.electiveCount != null).map(t => t.id);
+  const electiveSections = electiveTestIds.length
+    ? await db.select({ id: testSections.id, testId: testSections.testId, title: testSections.title })
+        .from(testSections).where(inArray(testSections.testId, electiveTestIds)).orderBy(testSections.order)
+    : [];
+
   return rows.map(t => {
     const tWindows = effectiveWindows.filter(w => w.testId === t.id);
     const attempt = attempts.find(a => a.testId === t.id) ?? null;
@@ -74,6 +82,14 @@ export async function getTestListForUser(userId: number): Promise<TestListEntry[
       description: t.description,
       syllabus: t.syllabus,
       isMock: t.isMock,
+      electives: t.electiveCount != null
+        ? {
+            count: t.electiveCount,
+            sections: electiveSections
+              .filter(s => s.testId === t.id && !isCompulsorySection(s.title))
+              .map(s => ({ id: s.id, title: s.title })),
+          }
+        : null,
       totalQuestions: t.totalQuestions,
       totalMarks: t.totalMarks,
       windows: tWindows
@@ -275,7 +291,7 @@ export async function getTestResults(testId: number, userId: number): Promise<Te
   // subject selection, restrict all returned content/breakdown to those 4
   // sections and recompute the marks denominator over the attempted sections.
   const mine = submitted.find(a => a.userId === userId) ?? null;
-  const chosenIds = test.isDiagnostic ? parseChosenSections(mine?.chosenSections ?? null) : [];
+  const chosenIds = usesElectives(test) ? parseChosenSections(mine?.chosenSections ?? null) : [];
   const restrictIds = chosenIds.length > 0 ? chosenIds : undefined;
 
   // Marks denominator: attempted-section marks for a diagnostic with a

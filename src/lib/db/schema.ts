@@ -1021,6 +1021,9 @@ export const tests = sqliteTable('tests', {
   // stay hidden until resultsPublishedAt is set (scanned-OMR scores are the official ones).
   isMock:          integer('is_mock', { mode: 'boolean' }).notNull().default(false),
   mockBatch:       text('mock_batch'),                       // null = every batch; else users.batch must match
+  // Elective-subject mocks (Pre-Mock): the sitter answers every "English" section plus exactly this many of
+  // the other sections, chosen at start (stored on the attempt as chosenSections). null = whole paper.
+  electiveCount:   integer('elective_count'),
   examCode:        text('exam_code'),                        // printed on paper + OMR, e.g. '9001'
   essaySeriesId:   integer('essay_series_id'),               // Part 2 essays live in the essays module
   solutionPdfKey:  text('solution_pdf_key'),                 // R2 key; released with the official results

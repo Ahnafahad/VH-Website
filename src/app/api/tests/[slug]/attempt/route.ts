@@ -12,7 +12,7 @@ import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireUser, requireTestForUser } from '@/lib/tests/route-helpers';
 import { getTestContent, getUserAttempt } from '@/lib/tests/service';
 import { attemptDeadline } from '@/lib/tests/windows';
-import { parseChosenSections } from '@/lib/tests/diagnostic';
+import { parseChosenSections, usesElectives } from '@/lib/tests/diagnostic';
 
 export async function GET(
   _req: NextRequest,
@@ -40,9 +40,9 @@ export async function GET(
       throw new ApiException('Time is up for this attempt', 409, 'TIME_UP');
     }
 
-    // Diagnostic: only send the 4 chosen sections (2 English + 2 electives).
+    // Elective tests: only send the chosen sections (compulsory English + the picked electives).
     let restrictIds: number[] | undefined;
-    if (test.isDiagnostic) {
+    if (usesElectives(test)) {
       const chosen = parseChosenSections(attempt.chosenSections);
       if (chosen.length === 0) {
         throw new ApiException('No subject selection', 409, 'NO_SELECTION');

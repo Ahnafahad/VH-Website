@@ -42,13 +42,14 @@ const containerVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 260, damping: 24 } },
 };
 
-type ErrorCode = 'WINDOW_NOT_OPEN' | 'ATTEMPT_BANNED' | 'ALREADY_SUBMITTED' | 'MODE_LOCKED' | 'UNKNOWN';
+type ErrorCode = 'WINDOW_NOT_OPEN' | 'ATTEMPT_BANNED' | 'ALREADY_SUBMITTED' | 'MODE_LOCKED' | 'INVALID_SELECTION' | 'UNKNOWN';
 
 const errorMessages: Record<ErrorCode, string> = {
   WINDOW_NOT_OPEN: 'This window is not currently open. Please wait until it opens.',
   ATTEMPT_BANNED: 'You have been banned from this test. Contact an admin to appeal.',
   ALREADY_SUBMITTED: 'You have already submitted this test.',
   MODE_LOCKED: 'You already started this test in a different mode.',
+  INVALID_SELECTION: 'Choose the subjects you answered, then try again.',
   UNKNOWN: 'Something went wrong. Please try again.',
 };
 
@@ -71,6 +72,8 @@ export default function TestDetailPage({ params }: PageProps) {
   const [rulesWindow, setRulesWindow] = useState<TestListWindow | null>(null);
   const [startLoading, setStartLoading] = useState(false);
   const [startError, setStartError] = useState<string | null>(null);
+  // Elective-subject mocks: the subjects the student sat, chosen before the first start.
+  const [pickedElectives, setPickedElectives] = useState<number[]>([]);
 
   useEffect(() => {
     fetch('/api/tests')
@@ -100,7 +103,7 @@ export default function TestDetailPage({ params }: PageProps) {
       const res = await fetch(`/api/tests/${slug}/start`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ windowId: rulesWindow.id }),
+        body: JSON.stringify({ windowId: rulesWindow.id, ...(test?.electives ? { electiveSectionIds: pickedElectives } : {}) }),
       });
       if (res.ok) {
         const data: StartResponse = await res.json();
@@ -118,7 +121,7 @@ export default function TestDetailPage({ params }: PageProps) {
     } finally {
       setStartLoading(false);
     }
-  }, [rulesWindow, slug, bucketSlug, router]);
+  }, [rulesWindow, slug, bucketSlug, router, test, pickedElectives]);
 
   // Show rules screen when a window is selected
   if (rulesWindow) {
@@ -155,6 +158,8 @@ export default function TestDetailPage({ params }: PageProps) {
   const hasInProgress = attempt?.status === 'in_progress';
   const hasSubmitted = attempt?.status === 'submitted';
   const isBanned = attempt?.status === 'banned';
+  const electives = !attempt && test.electives ? test.electives : null;
+  const electivesReady = !electives || pickedElectives.length === electives.count;
 
   return (
     <main className="min-h-screen bg-exam-base text-exam-ink">
@@ -221,6 +226,37 @@ export default function TestDetailPage({ params }: PageProps) {
           </div>
         )}
 
+        {electives && (
+          <div className="bg-exam-surface border border-exam-border rounded-xl p-5">
+            <h2 className="text-exam-ink-faint text-xs uppercase tracking-widest mb-2">Your subjects</h2>
+            <p className="text-exam-ink-muted text-sm mb-4">
+              General English and Advanced English are compulsory. Tick the {electives.count} other subjects you answered on paper
+              — you&apos;ll enter answers for exactly these, and upload your written pages for the same ones. You can&apos;t change this afterwards.
+            </p>
+            <div className="grid gap-2 sm:grid-cols-3">
+              {electives.sections.map(s => {
+                const on = pickedElectives.includes(s.id);
+                const full = !on && pickedElectives.length >= electives.count;
+                return (
+                  <button
+                    key={s.id}
+                    type="button"
+                    disabled={full}
+                    aria-pressed={on}
+                    onClick={() => setPickedElectives(p => (on ? p.filter(x => x !== s.id) : [...p, s.id]))}
+                    className={`px-4 py-3 rounded-xl border text-sm text-left transition-colors disabled:opacity-40 ${
+                      on ? 'border-exam-maroon bg-exam-maroon/15 text-exam-ink' : 'border-exam-border bg-exam-elevated text-exam-ink-muted hover:text-exam-ink'
+                    }`}
+                  >
+                    {on ? '✓ ' : ''}{s.title}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-exam-ink-faint text-xs mt-3">{pickedElectives.length} of {electives.count} chosen</p>
+          </div>
+        )}
+
         {/* Windows */}
         <div>
           <h2 className="text-exam-ink-faint text-xs uppercase tracking-widest mb-3">Exam Windows</h2>
@@ -232,7 +268,7 @@ export default function TestDetailPage({ params }: PageProps) {
               const badge = stateBadge[w.state];
               const mode = modeCopy[w.mode];
               const ModeIcon = mode.icon;
-              const canStart = w.state === 'open' && !hasSubmitted && !isBanned;
+              const canStart = w.state === 'open' && !hasSubmitted && !isBanned && electivesReady;
 
               return (
                 <div
