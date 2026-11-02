@@ -3,6 +3,10 @@ import type { NextConfig } from "next";
 const withPWA = require("next-pwa");
 
 const nextConfig: NextConfig = {
+  // Type-check runs as its own `tsc --noEmit` step in `npm run build`; doing it
+  // inside `next build` on top of webpack's heap OOM-killed the 8 GB Vercel builder.
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
   // Last Word reads its content files at runtime; serverless bundles only ship files they are told about.
   outputFileTracingIncludes: {
     '/last-word': ['./content/last-word/sets/**'],

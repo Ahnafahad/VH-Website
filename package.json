@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack --port 6960",
-    "build": "npm run generate:access-control && next build",
+    "build": "npm run generate:access-control && tsc --noEmit && next build",
     "build:next": "next build",
     "start": "next start",
     "lint": "next lint",
