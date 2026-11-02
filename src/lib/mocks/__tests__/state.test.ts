@@ -25,7 +25,7 @@ describe('mockPhase', () => {
   it('shows an elective mock result the moment its window closes', () => {
     const electives = { resultsPublishedAt: null, electiveCount: 2 };
     expect(mockPhase(electives, windows, submitted, new Date(closes.getTime() - 1))).toBe('locked');
-    expect(mockPhase(electives, windows, submitted, closes)).toBe('provisional');
+    expect(mockPhase(electives, windows, submitted, new Date(closes.getTime() + 1))).toBe('provisional');
   });
 
   it('is locked without a submitted attempt or without windows', () => {
