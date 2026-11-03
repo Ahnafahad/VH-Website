@@ -226,6 +226,7 @@ export default function MocksPage() {
     let cancelled = false;
     const load = () => fetch('/api/mocks')
       .then(async res => {
+        if (res.status === 401) { window.location.href = '/auth/signin?callbackUrl=/mocks'; return; }
         if (!res.ok) {
           const body = await res.json().catch(() => ({}));
           if (!cancelled) setState({ kind: 'error', message: body.error ?? 'Could not load mocks.' });
