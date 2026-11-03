@@ -14,6 +14,7 @@ import { and, eq, inArray, sql } from 'drizzle-orm';
 import { canAccessTest, isTestStaff } from '@/lib/tests/access';
 import { effectiveWindowState, resultsVisible } from '@/lib/tests/windows';
 import { applyWindowOverrides, applyEssayDeadlineOverrides } from '@/lib/tests/window-overrides';
+import { MOCK_TRIAL } from './trial';
 import { computeRanks, type AttemptScore } from '@/lib/tests/scoring';
 import { getPublishedTestBySlug, getTestResults } from '@/lib/tests/service';
 import { parseEssays } from '@/lib/essays/prompts';
@@ -137,7 +138,7 @@ async function buildLeaderboard(test: Test, viewer: Pick<UserWithProducts, 'id'>
     .from(users).where(inArray(users.id, submitted.map(a => a.userId)));
   const personById = new Map(people.map(p => [p.id, p]));
   // One ranking for everyone who sat it; only a batch-scoped mock is ranked within its batch.
-  const batch = test.mockBatch ?? null;
+  const batch = test.id === MOCK_TRIAL.testId ? null : test.mockBatch ?? null; // trial sitters rank with the cohort
   const cohort = batch === null ? submitted : submitted.filter(a => (personById.get(a.userId)?.batch ?? null) === batch || a.userId === viewer?.id);
 
   const totalOf = (a: typeof cohort[number]) => Math.round(((a.totalScore ?? 0) + (essayTotals.get(a.userId) ?? 0)) * 100) / 100;
@@ -166,7 +167,8 @@ async function buildLeaderboard(test: Test, viewer: Pick<UserWithProducts, 'id'>
 export async function getMockResult(user: UserWithProducts, slug: string): Promise<MockResult | null> {
   const found = await getPublishedTestBySlug(slug);
   if (!found || !found.test.isMock || !canAccessTest(user, found.test)) return null;
-  const { test, windows } = found;
+  const test = found.test;
+  const windows = await applyWindowOverrides(user.id, found.windows);
 
   const attempt = await db.select().from(testAttempts)
     .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.userId, user.id))).get() ?? null;

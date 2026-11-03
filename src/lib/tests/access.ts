@@ -8,6 +8,7 @@
 
 import type { Test, UserWithProducts } from '@/lib/db/schema';
 import { isStaffRole, isUltimateTesterEmail } from '@/lib/auth/roles';
+import { MOCK_TRIAL, inMockTrialAccess } from '@/lib/mocks/trial';
 
 export function isTestStaff(user: Pick<UserWithProducts, 'role'>): boolean {
   return isStaffRole(user.role);
@@ -34,6 +35,7 @@ export function canAccessTest(user: Pick<UserWithProducts, 'role' | 'email' | 'b
   if (isTestStaff(user) || isUltimateTesterEmail(user.email)) return true;
   if (test.status !== 'published') return false;
   if (test.isMock) {
+    if (test.id === MOCK_TRIAL.testId && inMockTrialAccess()) return true;
     // A mock with a batch set is limited to that batch. One that names products (the FBS Pre-Mock) follows
     // them; the rest are for Mock Access holders.
     if (test.mockBatch && user.batch !== test.mockBatch) return false;
