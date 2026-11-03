@@ -18,6 +18,7 @@
 import { after } from 'next/server';
 import { and, asc, desc, eq, inArray, isNull, lt, or, sql } from 'drizzle-orm';
 import { db } from '@/lib/db';
+import { applyEssayDeadlineOverrides } from '@/lib/tests/window-overrides';
 import {
   auditLog,
   essayCommentBank,
@@ -327,11 +328,11 @@ async function studentGate(user: UserWithProducts, seriesId: number): Promise<Es
 
 export async function listSeriesForStudent(user: UserWithProducts): Promise<EssaySeriesStudentEntry[]> {
   await sweepAutoPublish();
-  const seriesRows = await db
+  const seriesRows = await applyEssayDeadlineOverrides(user.id, await db
     .select()
     .from(essaySeries)
     .where(and(eq(essaySeries.status, 'active'), ...lmsScopeConditions(user, essaySeries)))
-    .orderBy(desc(essaySeries.deadline));
+    .orderBy(desc(essaySeries.deadline)));
   if (seriesRows.length === 0) return [];
   const subs = await db
     .select()
@@ -368,7 +369,7 @@ export async function listSeriesForStudent(user: UserWithProducts): Promise<Essa
 async function requireVisibleSeries(user: UserWithProducts, seriesId: number): Promise<EssaySeries> {
   const s = await getSeriesOr404(seriesId);
   if (!canSeeSeries(user, s)) throw new ApiException('Essay series not found', 404, 'NOT_FOUND');
-  return s;
+  return (await applyEssayDeadlineOverrides(user.id, [s]))[0];
 }
 
 async function pagesFor(submissionIds: number[], withAnnotations: boolean): Promise<Map<number, EssayPageDTO[]>> {

@@ -13,6 +13,7 @@ import {
 import { and, eq, inArray, sql } from 'drizzle-orm';
 import { canAccessTest, isTestStaff } from '@/lib/tests/access';
 import { effectiveWindowState, resultsVisible } from '@/lib/tests/windows';
+import { applyWindowOverrides, applyEssayDeadlineOverrides } from '@/lib/tests/window-overrides';
 import { computeRanks, type AttemptScore } from '@/lib/tests/scoring';
 import { getPublishedTestBySlug, getTestResults } from '@/lib/tests/service';
 import { parseEssays } from '@/lib/essays/prompts';
@@ -76,10 +77,14 @@ export async function getMockListForUser(user: UserWithProducts): Promise<MockLi
       : Promise.resolve([]),
   ]);
 
+  // Per-student extensions (staff-set in lms_settings) so the hub matches the test page.
+  const myWindows = await applyWindowOverrides(user.id, windows);
+  const mySeries = await applyEssayDeadlineOverrides(user.id, series);
+
   return Promise.all(rows.map(async t => {
-    const tWindows = windows.filter(w => w.testId === t.id).sort((a, b) => a.opensAt.getTime() - b.opensAt.getTime());
+    const tWindows = myWindows.filter(w => w.testId === t.id).sort((a, b) => a.opensAt.getTime() - b.opensAt.getTime());
     const attempt = attempts.find(a => a.testId === t.id) ?? null;
-    const s = series.find(x => x.id === t.essaySeriesId);
+    const s = mySeries.find(x => x.id === t.essaySeriesId);
     const prompts = s ? parseEssays(s) : [];
     const gate = s && t.electiveCount != null ? await getEssayGate(user.id, s.id) : null;
     const mine = (i: number) => !gate || gate.allowed.has(i + 1);
