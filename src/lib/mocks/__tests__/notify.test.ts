@@ -23,7 +23,7 @@ const DDL = [
   `CREATE TABLE test_attempts (id INTEGER PRIMARY KEY AUTOINCREMENT, test_id INTEGER, user_id INTEGER, window_id INTEGER, mode TEXT, status TEXT DEFAULT 'in_progress',
     started_at INTEGER DEFAULT (unixepoch()), submitted_at INTEGER, banned_at INTEGER, tab_leave_count INTEGER DEFAULT 0, reset_count INTEGER DEFAULT 0, total_score REAL,
     total_correct INTEGER, total_wrong INTEGER, total_unattempted INTEGER, section_scores TEXT, chosen_sections TEXT, best_snapshot TEXT,
-    result_source TEXT NOT NULL DEFAULT 'self', UNIQUE(test_id, user_id))`,
+    result_source TEXT NOT NULL DEFAULT 'self', omr_status TEXT, omr_image_key TEXT, omr_meta TEXT, UNIQUE(test_id, user_id))`,
   'CREATE TABLE lms_settings (key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at INTEGER NOT NULL DEFAULT (unixepoch()))',
 ];
 

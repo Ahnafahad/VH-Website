@@ -1159,6 +1159,11 @@ export const testAttempts = sqliteTable('test_attempts', {
   // 'self' = answers the student entered/took themselves; 'omr' = overwritten from the scanned
   // OMR sheet (the official source for mocks). Only mocks ever read this.
   resultSource:     text('result_source').notNull().default('self'),
+  // OMR review (station): null | 'accepted' | 'rejected' (rejected = excluded from the rank);
+  // R2 key of the marked sheet image; JSON audit trail.
+  omrStatus:        text('omr_status'),
+  omrImageKey:      text('omr_image_key'),
+  omrMeta:          text('omr_meta'),
 }, (t) => [
   unique().on(t.testId, t.userId),
   index('idx_test_attempts_user').on(t.userId),

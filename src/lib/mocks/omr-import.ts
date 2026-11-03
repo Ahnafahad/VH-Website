@@ -63,15 +63,10 @@ export function parseOmrFile(raw: unknown): OmrFile {
   return { examCode: o.examCode == null ? null : String(o.examCode).trim(), results };
 }
 
-export async function importOmr(testId: number, raw: unknown, apply: boolean): Promise<OmrReport> {
-  const file = parseOmrFile(raw);
+export type OmrContext = Awaited<ReturnType<typeof loadOmrContext>>;
 
-  const test = await db.select().from(tests).where(eq(tests.id, testId)).get();
-  if (!test) throw new OmrImportError('Test not found');
-  if (file.examCode && test.examCode && file.examCode !== test.examCode) {
-    throw new OmrImportError(`Exam code mismatch: file says ${file.examCode}, mock is ${test.examCode}`);
-  }
-
+/** Questions in test order (section order, then question order) + the offline window scans attach to. */
+export async function loadOmrContext(testId: number) {
   const sections = await db.select().from(testSections)
     .where(eq(testSections.testId, testId)).orderBy(asc(testSections.order));
   const questions = sections.length
@@ -85,6 +80,59 @@ export async function importOmr(testId: number, raw: unknown, apply: boolean): P
   const windows = await db.select().from(testWindows).where(eq(testWindows.testId, testId));
   const offline = windows.filter(w => w.mode === 'offline').sort((a, b) => b.closesAt.getTime() - a.closesAt.getTime())[0];
   if (!offline) throw new OmrImportError('Add an offline window to this mock first — scanned sheets attach to it');
+  return { sections, ordered, expectedLength, offline };
+}
+
+/** Score `answers` and create/overwrite the student's attempt in one transaction. `extra` = additional attempt columns. */
+export async function writeOmrAttempt(
+  ctx: Pick<OmrContext, 'sections' | 'ordered' | 'offline'>,
+  testId: number,
+  w: { userId: number; attemptId: number | null; answers: Map<number, string> },
+  extra: Partial<typeof testAttempts.$inferInsert> = {},
+) {
+  const { sections, ordered, offline } = ctx;
+  const score = scoreAttempt(sections, ordered, w.answers);
+  const scoreFields = {
+    status: 'submitted',
+    submittedAt: offline.closesAt,
+    totalScore: score.totalScore,
+    totalCorrect: score.totalCorrect,
+    totalWrong: score.totalWrong,
+    totalUnattempted: score.totalUnattempted,
+    sectionScores: JSON.stringify(score.sections),
+    resultSource: 'omr',
+    bestSnapshot: null,
+    ...extra,
+  };
+  await db.transaction(async tx => {
+    let attemptId = w.attemptId;
+    if (attemptId == null) {
+      const [created] = await tx.insert(testAttempts).values({
+        testId, userId: w.userId, windowId: offline.id, mode: 'offline', ...scoreFields,
+      }).returning({ id: testAttempts.id });
+      attemptId = created.id;
+    } else {
+      await tx.update(testAttempts).set(scoreFields).where(eq(testAttempts.id, attemptId));
+      await tx.delete(testAnswers).where(eq(testAnswers.attemptId, attemptId));
+    }
+    if (w.answers.size > 0) {
+      await tx.insert(testAnswers).values(
+        [...w.answers].map(([questionId, selectedKey]) => ({ attemptId: attemptId!, questionId, selectedKey })),
+      );
+    }
+  });
+}
+
+export async function importOmr(testId: number, raw: unknown, apply: boolean): Promise<OmrReport> {
+  const file = parseOmrFile(raw);
+
+  const test = await db.select().from(tests).where(eq(tests.id, testId)).get();
+  if (!test) throw new OmrImportError('Test not found');
+  if (file.examCode && test.examCode && file.examCode !== test.examCode) {
+    throw new OmrImportError(`Exam code mismatch: file says ${file.examCode}, mock is ${test.examCode}`);
+  }
+
+  const { sections, ordered, expectedLength, offline } = await loadOmrContext(testId);
 
   const report: OmrReport = {
     applied: apply, expectedLength, total: file.results.length, matched: 0, created: 0, overwritten: 0,
@@ -122,36 +170,6 @@ export async function importOmr(testId: number, raw: unknown, apply: boolean): P
 
   if (!apply) return report;
 
-  for (const w of work) {
-    const score = scoreAttempt(sections, ordered, w.answers);
-    const scoreFields = {
-      status: 'submitted',
-      submittedAt: offline.closesAt,
-      totalScore: score.totalScore,
-      totalCorrect: score.totalCorrect,
-      totalWrong: score.totalWrong,
-      totalUnattempted: score.totalUnattempted,
-      sectionScores: JSON.stringify(score.sections),
-      resultSource: 'omr',
-      bestSnapshot: null,
-    };
-    await db.transaction(async tx => {
-      let attemptId = w.attemptId;
-      if (attemptId == null) {
-        const [created] = await tx.insert(testAttempts).values({
-          testId, userId: w.userId, windowId: offline.id, mode: 'offline', ...scoreFields,
-        }).returning({ id: testAttempts.id });
-        attemptId = created.id;
-      } else {
-        await tx.update(testAttempts).set(scoreFields).where(eq(testAttempts.id, attemptId));
-        await tx.delete(testAnswers).where(eq(testAnswers.attemptId, attemptId));
-      }
-      if (w.answers.size > 0) {
-        await tx.insert(testAnswers).values(
-          [...w.answers].map(([questionId, selectedKey]) => ({ attemptId: attemptId!, questionId, selectedKey })),
-        );
-      }
-    });
-  }
+  for (const w of work) await writeOmrAttempt({ sections, ordered, offline }, testId, w);
   return report;
 }

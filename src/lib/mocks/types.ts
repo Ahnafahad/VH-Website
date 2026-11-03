@@ -69,7 +69,8 @@ export interface MockEssayLine {
   status: 'not_submitted' | 'submitted' | 'graded' | 'rejected';
 }
 
-export interface MockLeaderboardRow { rank: number; name: string; mcq: number; essay: number; total: number }
+/** online = the student's own entry (no scanned paper behind it) */
+export interface MockLeaderboardRow { rank: number; name: string; mcq: number; essay: number; total: number; online: boolean }
 
 export type MockResult =
   | { phase: 'locked'; title: string }
@@ -84,7 +85,10 @@ export type MockResult =
       essayMax: number;
       combined: number | null;
       maxTotal: number;
-      me: { rank: number; percentile: number; outOf: number } | null;
+      me: { rank: number; percentile: number; outOf: number; online: boolean } | null;
+      /** 'rejected' = paper rejected on review: results shown, no rank */
+      omrStatus: string | null;
+      hasOmrImage: boolean;
       leaderboard: MockLeaderboardRow[];
       missed: SectionMissed[] | null;
       solutionUrl: string | null;

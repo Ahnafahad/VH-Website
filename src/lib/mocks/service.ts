@@ -147,11 +147,13 @@ async function essayTotalsByUser(seriesId: number): Promise<Map<number, number>>
   return new Map(rows.map(r => [r.userId, r.total ?? 0]));
 }
 
-interface UserRank { rank: number; percentile: number; mcq: number; essay: number; total: number }
+interface UserRank { rank: number; percentile: number; mcq: number; essay: number; total: number; online: boolean }
 
 async function buildLeaderboard(test: Test, viewer: Pick<UserWithProducts, 'id'> | null, essayTotals: Map<number, number>) {
-  const submitted = await db.select().from(testAttempts)
-    .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.status, 'submitted')));
+  // A rejected OMR paper keeps its results but is not ranked.
+  const submitted = (await db.select().from(testAttempts)
+    .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.status, 'submitted'))))
+    .filter(a => a.omrStatus !== 'rejected');
   if (submitted.length === 0) return { rows: [] as MockLeaderboardRow[], byUser: new Map<number, UserRank>(), outOf: 0 };
 
   const people = await db.select({ id: users.id, name: users.name, batch: users.batch })
@@ -172,11 +174,13 @@ async function buildLeaderboard(test: Test, viewer: Pick<UserWithProducts, 'id'>
     byUser.set(a.userId, {
       rank: r.rank, percentile: r.percentile,
       mcq: a.totalScore ?? 0, essay: essayTotals.get(a.userId) ?? 0, total: r.totalScore,
+      online: a.resultSource !== 'omr',
     });
     if (rows.length < LEADERBOARD_SIZE) {
       rows.push({
         rank: r.rank, name: personById.get(a.userId)?.name ?? 'Student',
         mcq: a.totalScore ?? 0, essay: essayTotals.get(a.userId) ?? 0, total: r.totalScore,
+        online: a.resultSource !== 'omr',
       });
     }
   }
@@ -244,7 +248,9 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
     essayMax,
     combined: me ? Math.round((me.totalScore + myEssay) * 100) / 100 : null,
     maxTotal: (mcq?.maxScore ?? test.totalMarks) + essayMax,
-    me: me && myRank ? { rank: myRank.rank, percentile: myRank.percentile, outOf: board.outOf } : null,
+    me: me && myRank ? { rank: myRank.rank, percentile: myRank.percentile, outOf: board.outOf, online: myRank.online } : null,
+    omrStatus: attempt?.omrStatus ?? null,
+    hasOmrImage: !!attempt?.omrImageKey,
     leaderboard: board.rows,
     missed: me && results ? computeMissedChances({
       sections: results.sections.map(s => ({

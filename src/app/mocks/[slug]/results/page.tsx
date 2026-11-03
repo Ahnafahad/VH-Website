@@ -68,7 +68,17 @@ function Sections({ mcq, missed }: { mcq: MockMcqSummary; missed: SectionMissed[
   );
 }
 
-function Official({ r }: { r: OfficialResult }) {
+const onlineTag = <span className="ml-2 text-[10px] font-semibold uppercase tracking-wide text-exam-ink-faint border border-exam-border rounded px-1.5 py-0.5">Online</span>;
+
+function Official({ r, slug }: { r: OfficialResult; slug: string }) {
+  const [sheetError, setSheetError] = useState('');
+  const viewSheet = async () => {
+    setSheetError('');
+    const res = await fetch(`/api/mocks/${slug}/omr-sheet`).catch(() => null);
+    const body = await res?.json().catch(() => null);
+    if (body?.url) window.open(body.url, '_blank', 'noopener,noreferrer');
+    else setSheetError(body?.error ?? 'Could not load your OMR sheet.');
+  };
   return (
     <>
       <section className={card}>
@@ -80,9 +90,13 @@ function Official({ r }: { r: OfficialResult }) {
         ) : (
           <p className="text-exam-ink-muted">No answer sheet was recorded for you in this mock.</p>
         )}
+        {r.omrStatus === 'rejected' && (
+          <p className="text-exam-warning text-sm mt-2">Your paper was rejected, so you are not ranked.</p>
+        )}
         {r.me && (
           <p className="text-exam-ink-muted text-sm mt-2">
             Rank {r.me.rank} of {r.me.outOf} · ahead of {num(r.me.percentile)}% of your batch
+            {r.me.online && onlineTag}
           </p>
         )}
         {r.mcq && (
@@ -120,7 +134,7 @@ function Official({ r }: { r: OfficialResult }) {
             {r.leaderboard.map(row => (
               <li key={`${row.rank}-${row.name}`} className="flex items-baseline gap-3">
                 <span className="w-6 font-mono text-exam-ink-faint tabular-nums">{row.rank}</span>
-                <span className="flex-1">{row.name}</span>
+                <span className="flex-1">{row.name}{row.online && onlineTag}</span>
                 <span className="font-mono tabular-nums">{num(row.total)}</span>
               </li>
             ))}
@@ -134,12 +148,18 @@ function Official({ r }: { r: OfficialResult }) {
             Question-by-question review →
           </Link>
         )}
+        {r.hasOmrImage && (
+          <button type="button" onClick={viewSheet} className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-elevated border border-exam-border text-exam-ink-muted hover:text-exam-ink text-sm transition-colors">
+            View your OMR sheet
+          </button>
+        )}
         {r.solutionUrl && (
           <a href={r.solutionUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors">
             Solutions PDF
           </a>
         )}
       </div>
+      {sheetError && <p className="text-red-400 text-sm">{sheetError}</p>}
     </>
   );
 }
@@ -203,7 +223,7 @@ export default function MockResultsPage() {
 
   return (
     <Shell title={result.title}>
-      <div className="space-y-6"><Official r={result} /></div>
+      <div className="space-y-6"><Official r={result} slug={slug} /></div>
     </Shell>
   );
 }
