@@ -6,17 +6,18 @@
  * Calendar scope never enters the student login flow.
  */
 
-import { google } from 'googleapis';
-import { OAuth2Client } from 'google-auth-library';
+import { auth, calendar as googleCalendar } from '@googleapis/calendar';
 import { db } from '@/lib/db';
 import { googleCredentials } from '@/lib/db/schema';
 import { desc, eq } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
 
+type OAuth2Client = InstanceType<typeof auth.OAuth2>;
+
 // ─── Build OAuth2 client ────────────────────────────────────────────────────
 
 function buildOAuth2Client(): OAuth2Client {
-  return new google.auth.OAuth2(
+  return new auth.OAuth2(
     process.env.GOOGLE_CLIENT_ID!,
     process.env.GOOGLE_CLIENT_SECRET!,
     process.env.GOOGLE_CALENDAR_REDIRECT_URI!,
@@ -113,7 +114,7 @@ export async function createMeetEvent(
   const client = await getHostClient();
   if (!client) return null;
 
-  const calendar = google.calendar({ version: 'v3', auth: client });
+  const calendar = googleCalendar({ version: 'v3', auth: client });
 
   const res = await calendar.events.insert({
     calendarId:             'primary',
@@ -158,7 +159,7 @@ export async function createInPersonEvent(
   const client = await getHostClient();
   if (!client) return null;
 
-  const calendar = google.calendar({ version: 'v3', auth: client });
+  const calendar = googleCalendar({ version: 'v3', auth: client });
 
   const res = await calendar.events.insert({
     calendarId:  'primary',
@@ -198,7 +199,7 @@ export async function updateMeetEvent(
   const client = await getHostClient();
   if (!client) return;
 
-  const calendar = google.calendar({ version: 'v3', auth: client });
+  const calendar = googleCalendar({ version: 'v3', auth: client });
 
   const requestBody: Record<string, unknown> = {};
   if (patch.title       !== undefined) requestBody.summary     = patch.title;
@@ -226,7 +227,7 @@ export async function deleteMeetEvent(eventId: string): Promise<void> {
   const client = await getHostClient();
   if (!client) return;
 
-  const calendar = google.calendar({ version: 'v3', auth: client });
+  const calendar = googleCalendar({ version: 'v3', auth: client });
 
   try {
     await calendar.events.delete({

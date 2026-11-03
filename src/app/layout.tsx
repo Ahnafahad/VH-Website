@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Fraunces, Geist, JetBrains_Mono, Sora } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import MainSiteShell from "@/components/MainSiteShell";
 import AuthProvider from "@/components/AuthProvider";
@@ -8,40 +8,39 @@ import AvatarGate from "@/components/avatars/AvatarGate";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import { Analytics } from "@vercel/analytics/react";
 
-const fraunces = Fraunces({
+// Self-hosted latin variable fonts (from Google Fonts): fetching them from
+// Google at build time intermittently failed Vercel builds.
+const fraunces = localFont({
   variable: "--font-heading",
-  subsets: ["latin"],
   display: "swap",
-  axes: ["SOFT", "opsz"],
+  src: [{ path: "./fonts/fraunces.woff2", weight: "100 900", style: "normal" }],
 });
 
-const geist = Geist({
+const geist = localFont({
   variable: "--font-sans",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
+  src: [{ path: "./fonts/geist.woff2", weight: "100 900", style: "normal" }],
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const jetbrainsMono = localFont({
   variable: "--font-math-mono",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "700"],
+  src: [{ path: "./fonts/jetbrains-mono.woff2", weight: "100 800", style: "normal" }],
 });
 
-const lexiUi = Sora({
+const lexiUi = localFont({
   variable: "--font-lexi-ui",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  src: [{ path: "./fonts/sora.woff2", weight: "100 800", style: "normal" }],
 });
 
-const lexiWord = Cormorant_Garamond({
+const lexiWord = localFont({
   variable: "--font-lexi-word",
-  subsets: ["latin"],
   display: "swap",
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
+  src: [
+    { path: "./fonts/cormorant-garamond.woff2", weight: "300 700", style: "normal" },
+    { path: "./fonts/cormorant-garamond-italic.woff2", weight: "300 700", style: "italic" },
+  ],
 });
 
 const SITE_URL = "https://www.vh-beyondthehorizons.org";
