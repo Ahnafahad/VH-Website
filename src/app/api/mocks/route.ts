@@ -6,11 +6,12 @@
 
 import { safeApiHandler } from '@/lib/api-utils';
 import { requireUser } from '@/lib/tests/route-helpers';
-import { getMockListForUser } from '@/lib/mocks/service';
+import { getMockListForUser, ensureStudentId } from '@/lib/mocks/service';
 
 export async function GET() {
   return safeApiHandler(async () => {
     const user = await requireUser();
-    return { mocks: await getMockListForUser(user) };
+    const [mocks, studentId] = await Promise.all([getMockListForUser(user), ensureStudentId(user)]);
+    return { mocks, studentId };
   });
 }

@@ -14,7 +14,7 @@ import { and, eq, inArray, sql } from 'drizzle-orm';
 import { canAccessTest, isTestStaff } from '@/lib/tests/access';
 import { effectiveWindowState, resultsVisible } from '@/lib/tests/windows';
 import { applyWindowOverrides, applyEssayDeadlineOverrides } from '@/lib/tests/window-overrides';
-import { MOCK_TRIAL } from './trial';
+import { MOCK_TRIAL, inMockTrialAccess } from './trial';
 import { computeRanks, type AttemptScore } from '@/lib/tests/scoring';
 import { getPublishedTestBySlug, getTestResults } from '@/lib/tests/service';
 import { parseEssays } from '@/lib/essays/prompts';
@@ -58,6 +58,26 @@ function mcqSummary(a: { totalScore: number | null; totalCorrect: number | null;
 }
 
 // ─── Student: list ────────────────────────────────────────────────────────────
+
+/** Mock 1 trial walk-ins get a student ID to write on their OMR/essay sheets: '0' + 5 digits, last 5 unique
+ * across every ID (same rule as scripts/assign-iba-2026-student-ids.mjs) so OMR import matches them. */
+export async function ensureStudentId(user: UserWithProducts): Promise<string | null> {
+  if (user.studentId || isTestStaff(user) || !inMockTrialAccess()) return user.studentId ?? null;
+  const used = new Set((await db.select({ sid: users.studentId }).from(users))
+    .map(r => r.sid).filter((x): x is string => !!x && /^\d{5,6}$/.test(x)).map(x => Number(x) % 100000));
+  for (let i = 0; i < 20; i++) {
+    const n = Math.floor(Math.random() * 100000);
+    if (used.has(n)) continue;
+    const sid = '0' + String(n).padStart(5, '0');
+    try {
+      const [row] = await db.update(users).set({ studentId: sid })
+        .where(and(eq(users.id, user.id), sql`${users.studentId} IS NULL`)).returning({ sid: users.studentId });
+      if (row) return sid;
+      return (await db.select({ sid: users.studentId }).from(users).where(eq(users.id, user.id)).get())?.sid ?? null;
+    } catch { /* unique clash with a concurrent sign-up: try another */ }
+  }
+  return null;
+}
 
 export async function getMockListForUser(user: UserWithProducts): Promise<MockListEntry[]> {
   const now = new Date();

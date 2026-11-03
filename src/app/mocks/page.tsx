@@ -9,7 +9,7 @@ import {
 
 type PageState =
   | { kind: 'loading' }
-  | { kind: 'ready'; mocks: MockListEntry[] }
+  | { kind: 'ready'; mocks: MockListEntry[]; studentId: string | null }
   | { kind: 'error'; message: string };
 
 const DHAKA = 'Asia/Dhaka';
@@ -231,8 +231,8 @@ export default function MocksPage() {
           if (!cancelled) setState({ kind: 'error', message: body.error ?? 'Could not load mocks.' });
           return;
         }
-        const body: { mocks: MockListEntry[] } = await res.json();
-        if (!cancelled) setState({ kind: 'ready', mocks: body.mocks });
+        const body: { mocks: MockListEntry[]; studentId: string | null } = await res.json();
+        if (!cancelled) setState({ kind: 'ready', mocks: body.mocks, studentId: body.studentId });
       })
       .catch(() => { if (!cancelled) setState({ kind: 'error', message: 'Network error. Check your connection.' }); });
     void load();
@@ -275,6 +275,15 @@ export default function MocksPage() {
         {state.kind === 'error' && <p className="text-red-400">{state.message}</p>}
         {state.kind === 'ready' && (
           <>
+            {state.studentId && (
+              <section className="rounded-xl border border-exam-gold/40 bg-exam-gold/10 px-5 py-4 flex flex-wrap items-center justify-between gap-3">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest text-exam-gold">Your Student ID</p>
+                  <p className="text-exam-ink-muted text-sm">Write it in the Student ID box on your OMR sheet and essay booklet.</p>
+                </div>
+                <p className="font-mono text-3xl font-semibold tracking-widest text-exam-ink">{state.studentId}</p>
+              </section>
+            )}
             <section>
               <h2 className="text-xs font-bold uppercase tracking-widest text-exam-ink-faint mb-3">Mock routine</h2>
               <Routine slots={MOCK_SCHEDULE} mocks={mocks} now={now} selected={selected} onSelect={setPicked} />

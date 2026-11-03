@@ -53,7 +53,8 @@ export function parseOmrFile(raw: unknown): OmrFile {
   }
   const results = o.results.map((r, i): OmrRow => {
     const row = r as { studentId?: unknown; answers?: unknown };
-    const studentId = row?.studentId == null ? '' : String(row.studentId).trim();
+    // IDs are 6 digits; a numeric export drops the leading 0 of trial IDs (lib/mocks/service.ts:ensureStudentId)
+    const studentId = row?.studentId == null ? '' : String(row.studentId).trim().replace(/^\d{5}$/, d => '0' + d);
     if (!studentId || !Array.isArray(row.answers)) {
       throw new OmrImportError(`results[${i}] needs "studentId" and an "answers" array`);
     }
