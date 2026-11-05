@@ -6,7 +6,7 @@
 import { timingSafeEqual } from 'crypto';
 import { db } from '@/lib/db';
 import { tests, testAttempts, testAnswers, users } from '@/lib/db/schema';
-import { eq, isNotNull } from 'drizzle-orm';
+import { eq, inArray, isNotNull, or } from 'drizzle-orm';
 import { ApiException } from '@/lib/api-utils';
 import { scoreAttempt } from '@/lib/tests/scoring';
 import { r2PutStream } from '@/lib/storage/r2';
@@ -64,9 +64,10 @@ export async function buildBundle(testId: number) {
   const sectionTitle = new Map(ctx.sections.map(s => [s.id, s.title]));
   const noById = new Map(ctx.ordered.map((q, i) => [q.id, i]));
 
-  const students = await db.select({ userId: users.id, studentId: users.studentId, name: users.name })
-    .from(users).where(isNotNull(users.studentId));
   const attempts = await db.select().from(testAttempts).where(eq(testAttempts.testId, testId));
+  // Everyone with a student ID, plus anyone who entered answers without one (else their paper can't be matched).
+  const students = await db.select({ userId: users.id, studentId: users.studentId, name: users.name })
+    .from(users).where(or(isNotNull(users.studentId), inArray(users.id, [0, ...attempts.map(a => a.userId)])));
   const answerRows = await db
     .select({ attemptId: testAnswers.attemptId, questionId: testAnswers.questionId, key: testAnswers.selectedKey })
     .from(testAnswers).innerJoin(testAttempts, eq(testAttempts.id, testAnswers.attemptId))
