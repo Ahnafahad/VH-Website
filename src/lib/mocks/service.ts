@@ -7,7 +7,7 @@
 
 import { db } from '@/lib/db';
 import {
-  tests, testWindows, testAttempts, essaySeries, essaySubmissions, users, userAccess,
+  tests, testWindows, testAttempts, mockSolutions, essaySeries, essaySubmissions, users, userAccess,
   type Test, type UserWithProducts,
 } from '@/lib/db/schema';
 import { and, eq, inArray, sql } from 'drizzle-orm';
@@ -21,13 +21,20 @@ import { parseEssays } from '@/lib/essays/prompts';
 import { resolveFileUrl } from '@/lib/storage/r2';
 import { computeMissedChances } from './missed-chances';
 import { getEssayGate } from './electives';
-import { mockPhase } from './state';
+import { mockPhase, solutionsOpen } from './state';
 import type {
   MockAdminEntry, MockAdminOverview, MockEssayLine, MockLeaderboardRow, MockListEntry,
   MockMcqSummary, MockResult, MockWindowDTO,
 } from './types';
 
 const LEADERBOARD_SIZE = 10;
+
+/** Slugs that have a solution sheet loaded (id-only query: the JSON stays out of list pages). */
+async function slugsWithSolutions(): Promise<Set<string>> {
+  return new Set((await db.select({ s: mockSolutions.testSlug }).from(mockSolutions)).map(r => r.s));
+}
+
+const solutionsLink = (slug: string) => `/mocks/${slug}/solutions`;
 
 /** Every window of the mock has closed (a mock with no windows has not "ended"). */
 function isMockEnded(windows: (typeof testWindows.$inferSelect)[], now: Date): boolean {
@@ -100,6 +107,7 @@ export async function getMockListForUser(user: UserWithProducts): Promise<MockLi
 
   // Per-student extensions (staff-set in lms_settings) so the hub matches the test page.
   const myWindows = await applyWindowOverrides(user.id, windows);
+  const withSolutions = await slugsWithSolutions();
   const mySeries = await applyEssayDeadlineOverrides(user.id, series);
 
   return Promise.all(rows.map(async t => {
@@ -132,6 +140,7 @@ export async function getMockListForUser(user: UserWithProducts): Promise<MockLi
       ended,
       reviewHref: resultsVisible(t, tWindows, now) ? `/tests/${t.bucket}/${t.slug}/results` : null,
       solutionUrl: ended || t.resultsPublishedAt ? await resolveFileUrl(t.solutionPdfKey) : null,
+      solutionsHref: withSolutions.has(t.slug) && (isTestStaff(user) || solutionsOpen(t, tWindows, now)) ? solutionsLink(t.slug) : null,
     };
   }));
 }
@@ -197,12 +206,13 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
   const attempt = await db.select().from(testAttempts)
     .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.userId, user.id))).get() ?? null;
   const phase = isTestStaff(user) ? 'official' : mockPhase(test, windows, attempt, new Date());
+  const solutionsHref = (await slugsWithSolutions()).has(test.slug) && (isTestStaff(user) || solutionsOpen(test, windows)) ? solutionsLink(test.slug) : null;
 
   if (phase === 'locked') return { phase, title: test.title };
   if (phase === 'provisional') {
     return {
       phase, title: test.title, examCode: test.examCode, mcq: mcqSummary(attempt!, test.totalMarks),
-      solutionUrl: await resolveFileUrl(test.solutionPdfKey),
+      solutionUrl: await resolveFileUrl(test.solutionPdfKey), solutionsHref,
       reviewHref: `/tests/${test.bucket}/${test.slug}/results`,
     };
   }
@@ -260,7 +270,7 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
       analytics: results.questionAnalytics,
       responses: me.responses,
     }) : null,
-    solutionUrl: await resolveFileUrl(test.solutionPdfKey),
+    solutionUrl: await resolveFileUrl(test.solutionPdfKey), solutionsHref,
     reviewHref: `/tests/${test.bucket.replace('_', '-')}/${test.slug}/results`,
   };
 }

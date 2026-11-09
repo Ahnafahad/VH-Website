@@ -13,6 +13,7 @@ const nextConfig: NextConfig = {
     '/admin/last-word': ['./content/last-word/sets/**'],
     '/api/last-word/progress': ['./content/last-word/sets/**'],
     '/api/last-word/content': ['./content/last-word/sets/**'],
+    '/mocks/[slug]/solutions': ['./src/lib/mocks/solution-sheet/**'],
   },
   async headers() {
     return [

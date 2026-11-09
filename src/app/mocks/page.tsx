@@ -187,12 +187,13 @@ function Detail({ slot, mock, now }: { slot: MockSlot | null; mock: MockListEntr
             {mock.phase === 'official' ? 'Result and rank' : 'Your score'}
           </Link>
         )}
+        {mock.solutionsHref && <a href={mock.solutionsHref} className={primaryBtn}>Solutions</a>}
         {mock.solutionUrl && (
           <a href={mock.solutionUrl} target="_blank" rel="noreferrer" className={ghostBtn}>Solutions (PDF)</a>
         )}
       </div>
 
-      {mock.ended && !mock.solutionUrl && (
+      {mock.ended && !mock.solutionUrl && !mock.solutionsHref && (
         <p className="mt-4 text-xs text-exam-ink-faint">The solution sheet will appear here as soon as it is uploaded.</p>
       )}
 

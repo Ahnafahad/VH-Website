@@ -2297,3 +2297,12 @@ export const mockRegistrations = sqliteTable('mock_registrations', {
   createdAt:     integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
   updatedAt:     integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 }, (t) => [index('idx_mock_reg_status').on(t.status)]);
+
+// ─── Mock solutions ───────────────────────────────────────────────────────────
+// Student-facing solution sheet content, keyed by tests.slug so it can be loaded before the mock's test row
+// exists. JSON {mock, sections, stimuli, library, questions}. Lives in the DB only: the repo is public.
+export const mockSolutions = sqliteTable('mock_solutions', {
+  testSlug:  text('test_slug').primaryKey(),
+  data:      text('data').notNull(),
+  updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+});

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { mockPhase } from '../state';
+import { mockPhase, solutionsOpen } from '../state';
 
 const closes = new Date('2026-11-10T10:00:00Z');
 const win = (over: Record<string, unknown> = {}) => ({ status: 'scheduled', opensAt: new Date('2026-11-10T06:00:00Z'), closesAt: closes, ...over }) as Parameters<typeof mockPhase>[1][number];
@@ -39,5 +39,22 @@ describe('mockPhase', () => {
     expect(mockPhase(unpublished, windows, null, later)).toBe('locked');
     expect(mockPhase(unpublished, windows, { status: 'in_progress' }, later)).toBe('locked');
     expect(mockPhase(unpublished, [], submitted, later)).toBe('locked');
+  });
+});
+
+describe('solutionsOpen', () => {
+  it('opens on publish, whatever the windows', () => {
+    expect(solutionsOpen({ resultsPublishedAt: new Date() }, [])).toBe(true);
+  });
+  it('needs closed windows and 8pm Dhaka, with no attempt required', () => {
+    expect(solutionsOpen(unpublished, [], new Date('2026-11-10T15:00:00Z'))).toBe(false);
+    expect(solutionsOpen(unpublished, windows, new Date(closes.getTime() - 1))).toBe(false);
+    expect(solutionsOpen(unpublished, windows, new Date('2026-11-10T13:59:59Z'))).toBe(false);
+    expect(solutionsOpen(unpublished, windows, new Date('2026-11-10T14:00:00Z'))).toBe(true);
+  });
+  it('elective mocks open as soon as every window is closed', () => {
+    const t = { resultsPublishedAt: null, electiveCount: 2 };
+    expect(solutionsOpen(t, windows, new Date(closes.getTime() - 1))).toBe(false);
+    expect(solutionsOpen(t, windows, new Date(closes.getTime() + 1))).toBe(true);
   });
 });

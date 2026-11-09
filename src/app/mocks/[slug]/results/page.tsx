@@ -153,6 +153,11 @@ function Official({ r, slug }: { r: OfficialResult; slug: string }) {
             View your OMR sheet
           </button>
         )}
+        {r.solutionsHref && (
+          <a href={r.solutionsHref} className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors">
+            View solutions
+          </a>
+        )}
         {r.solutionUrl && (
           <a href={r.solutionUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors">
             Solutions PDF
@@ -211,6 +216,11 @@ export default function MockResultsPage() {
           <Link href={result.reviewHref} className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors">
             See your answers and the keys →
           </Link>
+          {result.solutionsHref && (
+            <a href={result.solutionsHref} className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-maroon hover:bg-exam-maroon-bright text-exam-ink text-sm font-medium transition-colors">
+              View solutions
+            </a>
+          )}
           {result.solutionUrl && (
             <a href={result.solutionUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-5 py-2.5 rounded-xl bg-exam-elevated border border-exam-border text-exam-ink-muted hover:text-exam-ink text-sm transition-colors">
               Solutions PDF

@@ -42,6 +42,8 @@ export interface MockListEntry {
   reviewHref: string | null;
   /** The solutions PDF, once uploaded AND the mock has ended. */
   solutionUrl: string | null;
+  /** The interactive solution sheet, once uploaded AND released (see solutionsOpen). */
+  solutionsHref: string | null;
 }
 
 export interface MockSectionLine {
@@ -74,7 +76,7 @@ export interface MockLeaderboardRow { rank: number; name: string; mcq: number; e
 
 export type MockResult =
   | { phase: 'locked'; title: string }
-  | { phase: 'provisional'; title: string; examCode: string | null; mcq: MockMcqSummary; solutionUrl: string | null; reviewHref: string }
+  | { phase: 'provisional'; title: string; examCode: string | null; mcq: MockMcqSummary; solutionUrl: string | null; solutionsHref: string | null; reviewHref: string }
   | {
       phase: 'official';
       title: string;
@@ -92,6 +94,7 @@ export type MockResult =
       leaderboard: MockLeaderboardRow[];
       missed: SectionMissed[] | null;
       solutionUrl: string | null;
+      solutionsHref: string | null;
       reviewHref: string;
     };
 

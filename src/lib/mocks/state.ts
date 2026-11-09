@@ -35,3 +35,18 @@ export function mockPhase(
   const examDay = Math.max(...windows.map(w => w.opensAt.getTime()));
   return now.getTime() >= resultsTimeFor(examDay) ? 'provisional' : 'locked';
 }
+
+/**
+ * Solution sheet release: same clock as mockPhase but the viewer needs no attempt (an absent student with
+ * access gets the solutions too). Staff bypass this at the call site.
+ */
+export function solutionsOpen(
+  test: Pick<Test, 'resultsPublishedAt'> & { electiveCount?: number | null },
+  windows: Pick<TestWindow, 'status' | 'opensAt' | 'closesAt'>[],
+  now: Date = new Date(),
+): boolean {
+  if (test.resultsPublishedAt != null) return true;
+  if (windows.length === 0 || !windows.every(w => effectiveWindowState(w as TestWindow, now) === 'closed')) return false;
+  if ((test.electiveCount ?? 0) > 0) return true;
+  return now.getTime() >= resultsTimeFor(Math.max(...windows.map(w => w.opensAt.getTime())));
+}
