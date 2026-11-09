@@ -12,14 +12,20 @@ describe('mockPhase', () => {
     expect(mockPhase({ resultsPublishedAt: new Date() }, windows, null)).toBe('official');
   });
 
-  it('stays locked until the LAST window closes, then is provisional straight away', () => {
-    expect(mockPhase(unpublished, windows, submitted, new Date(closes.getTime() - 1))).toBe('locked');
-    expect(mockPhase(unpublished, windows, submitted, new Date(closes.getTime() + 1))).toBe('provisional');
+  it('stays locked after the windows close until 8pm Dhaka (14:00Z) on the exam day', () => {
+    expect(mockPhase(unpublished, windows, submitted, new Date(closes.getTime() + 1))).toBe('locked');
+    expect(mockPhase(unpublished, windows, submitted, new Date('2026-11-10T13:59:59Z'))).toBe('locked');
+    expect(mockPhase(unpublished, windows, submitted, new Date('2026-11-10T14:00:00Z'))).toBe('provisional');
   });
 
-  it('counts a window staff closed early', () => {
+  it('is locked while a window is still open, even past 8pm', () => {
+    expect(mockPhase(unpublished, windows, submitted, new Date(closes.getTime() - 1))).toBe('locked');
+  });
+
+  it('counts a window staff closed early (still 8pm)', () => {
     const early = [win({ status: 'closed' }), win({ status: 'closed' })];
-    expect(mockPhase(unpublished, early, submitted, new Date('2026-11-10T07:00:00Z'))).toBe('provisional');
+    expect(mockPhase(unpublished, early, submitted, new Date('2026-11-10T07:00:00Z'))).toBe('locked');
+    expect(mockPhase(unpublished, early, submitted, new Date('2026-11-10T14:00:00Z'))).toBe('provisional');
   });
 
   it('shows an elective mock result the moment its window closes', () => {
