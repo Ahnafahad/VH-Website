@@ -102,21 +102,32 @@ export async function submitAttempt(
     return { questionId: q.id, selectedKey, isCorrect, timeSpentMs };
   });
 
-  try {
-    const [attempt] = await db.insert(sprintAttempts).values({
-      setId: set.id, userId,
-      totalCorrect, totalQuestions: questions.length, totalTimeMs,
-    }).returning();
-    await db.insert(sprintAnswers).values(answerRows.map(a => ({ ...a, attemptId: attempt.id })));
-  } catch (error) {
-    const msg = error instanceof Error ? error.message : String(error);
-    if (/UNIQUE constraint failed/i.test(msg)) {
-      throw new ApiException('You have already submitted this set', 409, 'ALREADY_SUBMITTED');
+  const totals = { totalCorrect, totalQuestions: questions.length, totalTimeMs };
+
+  // One row per (set, user) holds the BEST attempt: retakes overwrite it only
+  // when they score higher (or tie on score with a faster time).
+  let existing = await getUserAttempt(set.id, userId);
+  if (!existing) {
+    try {
+      const [attempt] = await db.insert(sprintAttempts).values({ setId: set.id, userId, ...totals }).returning();
+      await db.insert(sprintAnswers).values(answerRows.map(a => ({ ...a, attemptId: attempt.id })));
+      return { ...totals, isBest: true };
+    } catch (error) {
+      // Lost a double-submit race: fall through and compare against the winner.
+      if (!/UNIQUE constraint failed/i.test(error instanceof Error ? error.message : String(error))) throw error;
+      existing = await getUserAttempt(set.id, userId);
+      if (!existing) throw error;
     }
-    throw error;
   }
 
-  return { totalCorrect, totalQuestions: questions.length, totalTimeMs };
+  const isBest = totalCorrect > existing.totalCorrect
+    || (totalCorrect === existing.totalCorrect && totalTimeMs < existing.totalTimeMs);
+  if (isBest) {
+    await db.update(sprintAttempts).set({ ...totals, submittedAt: new Date() }).where(eq(sprintAttempts.id, existing.id));
+    await db.delete(sprintAnswers).where(eq(sprintAnswers.attemptId, existing.id));
+    await db.insert(sprintAnswers).values(answerRows.map(a => ({ ...a, attemptId: existing.id })));
+  }
+  return { ...totals, isBest };
 }
 
 // ─── Review (the viewer's own answers, after submitting) ────────────────────────

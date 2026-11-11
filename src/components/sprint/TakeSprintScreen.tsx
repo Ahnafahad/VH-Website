@@ -66,7 +66,6 @@ export default function TakeSprintScreen({ setId, title, questions }: TakeSprint
       });
       if (!res.ok) {
         const body = await res.json().catch(() => ({}));
-        if (body.code === 'ALREADY_SUBMITTED') { router.replace(`/sprint/${setId}/results`); return; }
         setError(body.error ?? 'Could not submit your attempt.');
         setSubmitting(false);
         return;

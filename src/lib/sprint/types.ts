@@ -41,6 +41,8 @@ export interface SprintAttemptResult {
   totalCorrect: number;
   totalQuestions: number;
   totalTimeMs: number;
+  /** true if this attempt became the user's stored best */
+  isBest?: boolean;
 }
 
 export interface SprintLeaderboardRow {

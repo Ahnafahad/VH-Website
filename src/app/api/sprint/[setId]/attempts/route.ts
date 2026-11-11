@@ -1,13 +1,13 @@
 /**
  * POST /api/sprint/[setId]/attempts
- * Submits the caller's one-and-only attempt for this set. Correctness and
+ * Submits an attempt (retakes allowed; only the best is stored). Correctness and
  * totals are recomputed server-side from the submitted answers — the client
  * only ever sends selections + per-question time.
  */
 
 import { safeApiHandler, ApiException } from '@/lib/api-utils';
 import { requireSprintAccess } from '@/lib/sprint/route-helpers';
-import { getActiveSet, getUserAttempt, submitAttempt } from '@/lib/sprint/service';
+import { getActiveSet, submitAttempt } from '@/lib/sprint/service';
 import type { SprintSubmitAnswer } from '@/lib/sprint/types';
 
 export async function POST(
@@ -21,9 +21,6 @@ export async function POST(
 
     const set = await getActiveSet(setId);
     if (!set) throw new ApiException('Set not found', 404, 'SET_NOT_FOUND');
-
-    const existing = await getUserAttempt(setId, user.id);
-    if (existing) throw new ApiException('You have already submitted this set', 409, 'ALREADY_SUBMITTED');
 
     const body = await req.json();
     const answers = body?.answers;

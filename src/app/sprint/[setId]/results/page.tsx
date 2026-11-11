@@ -53,6 +53,7 @@ export default function SprintResultsPage({ params }: { params: Promise<{ setId:
               {me.totalCorrect}/{me.totalQuestions} correct · {formatTime(me.totalTimeMs)}
             </h1>
           )}
+          {me && <p className="text-exam-ink-faint text-xs">Your best score</p>}
         </div>
       </div>
 
@@ -125,7 +126,15 @@ export default function SprintResultsPage({ params }: { params: Promise<{ setId:
             ))}
           </section>
         )}
-        <Link href="/sprint" className="inline-block text-exam-gold text-sm underline">Back to Sprint</Link>
+        <div className="flex items-center gap-5">
+          <Link
+            href={`/sprint/${setId}?retake=1`}
+            className="px-5 py-2.5 rounded-lg text-sm font-bold bg-exam-maroon-bright text-exam-ink hover:brightness-110 transition-[filter]"
+          >
+            Retake
+          </Link>
+          <Link href="/sprint" className="text-exam-gold text-sm underline">Back to Sprint</Link>
+        </div>
       </div>
     </main>
   );

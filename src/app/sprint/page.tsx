@@ -46,7 +46,7 @@ export default function SprintHubPage() {
           <p className="text-exam-gold text-xs font-bold uppercase tracking-widest mb-3">Sprint</p>
           <h1 className="font-serif text-3xl sm:text-4xl font-semibold text-exam-ink mb-2">In-Class Sprints</h1>
           <p className="text-exam-ink-muted text-base max-w-lg">
-            Quick rounds of MCQs with a stopwatch running — answer or skip, see the correct answer right away, then move on. One attempt per set.
+            Quick rounds of MCQs with a stopwatch running — answer or skip, see the correct answer right away, then move on. Retake any set as often as you like — your best score is kept.
           </p>
         </div>
       </div>

@@ -32,7 +32,8 @@ export default function SprintSetPage({ params }: { params: Promise<{ setId: str
           return;
         }
         const payload: TakePayload = await res.json();
-        if (payload.alreadyAttempted) { router.replace(`/sprint/${setId}/results`); return; }
+        const retake = new URLSearchParams(window.location.search).has('retake');
+        if (payload.alreadyAttempted && !retake) { router.replace(`/sprint/${setId}/results`); return; }
         if (!cancelled) setState({ kind: 'ready', payload });
       })
       .catch(() => { if (!cancelled) setState({ kind: 'error', message: 'Network error — check your connection.' }); });

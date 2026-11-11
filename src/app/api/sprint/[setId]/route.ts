@@ -20,15 +20,13 @@ export async function GET(
     const set = await getActiveSet(setId);
     if (!set) throw new ApiException('Set not found', 404, 'SET_NOT_FOUND');
 
+    // Questions are always returned (retakes allowed); the page decides whether
+    // to show them or send a first-look visitor with a past attempt to results.
     const attempt = await getUserAttempt(setId, user.id);
-    if (attempt) {
-      return { set: { id: set.id, subject: set.subject, title: set.title }, alreadyAttempted: true };
-    }
-
     const questions = await getSetQuestionsForTaking(setId);
     return {
       set: { id: set.id, subject: set.subject, title: set.title },
-      alreadyAttempted: false,
+      alreadyAttempted: !!attempt,
       questions,
     };
   });
