@@ -5,9 +5,9 @@
 
 import type { UserWithProducts } from '@/lib/db/schema';
 import { isStaffRole, isUltimateTesterEmail } from '@/lib/auth/roles';
-import { inMockTrialDay } from './trial';
+import { inMockTrialAccess } from './trial';
 
 export function canSeeMocks(user: Pick<UserWithProducts, 'role' | 'products' | 'mockAccess' | 'email'>): boolean {
-  return isStaffRole(user.role) || !!user.mockAccess || isUltimateTesterEmail(user.email) || inMockTrialDay()
+  return isStaffRole(user.role) || !!user.mockAccess || isUltimateTesterEmail(user.email) || inMockTrialAccess()
     || user.products.some(p => p === 'fbs' || p === 'fbs_detailed');
 }
