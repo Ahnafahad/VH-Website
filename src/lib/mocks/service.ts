@@ -23,7 +23,7 @@ import { computeMissedChances } from './missed-chances';
 import { getEssayGate } from './electives';
 import { mockPhase, solutionsOpen } from './state';
 import type {
-  MockAdminEntry, MockAdminOverview, MockEssayLine, MockLeaderboardRow, MockListEntry,
+  MockAdminEntry, MockAdminLeaderboard, MockAdminLeaderboardRow, MockAdminOverview, MockEssayLine, MockLeaderboardRow, MockListEntry,
   MockMcqSummary, MockResult, MockWindowDTO,
 } from './types';
 
@@ -163,9 +163,9 @@ async function buildLeaderboard(test: Test, viewer: Pick<UserWithProducts, 'id'>
   const submitted = (await db.select().from(testAttempts)
     .where(and(eq(testAttempts.testId, test.id), eq(testAttempts.status, 'submitted'))))
     .filter(a => a.omrStatus !== 'rejected');
-  if (submitted.length === 0) return { rows: [] as MockLeaderboardRow[], byUser: new Map<number, UserRank>(), outOf: 0 };
+  if (submitted.length === 0) return { rows: [] as MockLeaderboardRow[], all: [] as MockAdminLeaderboardRow[], byUser: new Map<number, UserRank>(), outOf: 0 };
 
-  const people = await db.select({ id: users.id, name: users.name, batch: users.batch })
+  const people = await db.select({ id: users.id, name: users.name, batch: users.batch, studentId: users.studentId })
     .from(users).where(inArray(users.id, submitted.map(a => a.userId)));
   const personById = new Map(people.map(p => [p.id, p]));
   // One ranking for everyone who sat it; only a batch-scoped mock is ranked within its batch.
@@ -177,23 +177,25 @@ async function buildLeaderboard(test: Test, viewer: Pick<UserWithProducts, 'id'>
   const attemptById = new Map(cohort.map(a => [a.id, a]));
 
   const byUser = new Map<number, UserRank>();
-  const rows: MockLeaderboardRow[] = [];
+  const all: MockAdminLeaderboardRow[] = [];
   for (const r of ranked) {
     const a = attemptById.get(r.attemptId)!;
+    const person = personById.get(a.userId);
     byUser.set(a.userId, {
       rank: r.rank, percentile: r.percentile,
       mcq: a.totalScore ?? 0, essay: essayTotals.get(a.userId) ?? 0, total: r.totalScore,
       online: a.resultSource !== 'omr',
     });
-    if (rows.length < LEADERBOARD_SIZE) {
-      rows.push({
-        rank: r.rank, name: personById.get(a.userId)?.name ?? 'Student',
-        mcq: a.totalScore ?? 0, essay: essayTotals.get(a.userId) ?? 0, total: r.totalScore,
-        online: a.resultSource !== 'omr',
-      });
-    }
+    all.push({
+      rank: r.rank, name: person?.name ?? 'Student', studentId: person?.studentId ?? null,
+      mcq: a.totalScore ?? 0, essay: essayTotals.get(a.userId) ?? 0, total: r.totalScore,
+      online: a.resultSource !== 'omr',
+    });
   }
-  return { rows, byUser, outOf: cohort.length };
+  // Students see the top 10 only; staff get every ranked row from `all`.
+  const rows: MockLeaderboardRow[] = all.slice(0, LEADERBOARD_SIZE)
+    .map(r => ({ rank: r.rank, name: r.name, mcq: r.mcq, essay: r.essay, total: r.total, online: r.online }));
+  return { rows, all, byUser, outOf: cohort.length };
 }
 
 /** Provisional/official result for the caller. Staff always get the official view (preview). */
@@ -273,6 +275,17 @@ export async function getMockResult(user: UserWithProducts, slug: string): Promi
     solutionUrl: await resolveFileUrl(test.solutionPdfKey), solutionsHref,
     reviewHref: `/tests/${test.bucket.replace('_', '-')}/${test.slug}/results`,
   };
+}
+
+/** Staff: the full combined (MCQ + essay) leaderboard for one mock. Null if it is not a mock. */
+export async function getMockAdminLeaderboard(testId: number): Promise<MockAdminLeaderboard | null> {
+  const test = await db.select().from(tests).where(eq(tests.id, testId)).get();
+  if (!test || !test.isMock) return null;
+  const essayTotals = test.essaySeriesId ? await essayTotalsByUser(test.essaySeriesId) : new Map<number, number>();
+  const board = await buildLeaderboard(test, null, essayTotals);
+  const rejected = await db.select({ id: testAttempts.id }).from(testAttempts)
+    .where(and(eq(testAttempts.testId, testId), eq(testAttempts.status, 'submitted'), eq(testAttempts.omrStatus, 'rejected')));
+  return { title: test.title, outOf: board.outOf, notRanked: rejected.length, rows: board.all };
 }
 
 /** Everyone's combined (MCQ + essay) rank for a mock: used for the "your final rank is out" emails. */

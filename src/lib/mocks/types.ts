@@ -74,6 +74,10 @@ export interface MockEssayLine {
 /** online = the student's own entry (no scanned paper behind it) */
 export interface MockLeaderboardRow { rank: number; name: string; mcq: number; essay: number; total: number; online: boolean }
 
+/** Staff view: a leaderboard row plus the student ID it is matched on. */
+export interface MockAdminLeaderboardRow extends MockLeaderboardRow { studentId: string | null }
+export interface MockAdminLeaderboard { title: string; outOf: number; notRanked: number; rows: MockAdminLeaderboardRow[] }
+
 export type MockResult =
   | { phase: 'locked'; title: string }
   | { phase: 'provisional'; title: string; examCode: string | null; mcq: MockMcqSummary; solutionUrl: string | null; solutionsHref: string | null; reviewHref: string }

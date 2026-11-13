@@ -10,7 +10,7 @@ import {
 } from './lms-shared';
 import MockRegistrationsPanel from './MockRegistrationsPanel';
 import { uploadToR2 } from '@/lib/lms/upload-client';
-import type { MockAdminEntry, MockAdminOverview } from '@/lib/mocks/types';
+import type { MockAdminEntry, MockAdminLeaderboard, MockAdminOverview } from '@/lib/mocks/types';
 
 interface OmrReport {
   applied: boolean; expectedLength: number; total: number; matched: number; created: number; overwritten: number;
@@ -97,6 +97,76 @@ function OmrImport({ mock, onDone, toast }: { mock: MockAdminEntry; onDone: () =
         message={`This overwrites the answers and scores of ${report?.overwritten ?? 0} students who already have an entry and creates ${report?.created ?? 0} new ones.`}
         onConfirm={() => run(true)} onCancel={() => setConfirm(false)}
       />
+    </div>
+  );
+}
+
+const num = (n: number) => (Number.isInteger(n) ? String(n) : n.toFixed(2).replace(/0$/, ''));
+const th: React.CSSProperties = {
+  textAlign: 'left', padding: '6px 8px', borderBottom: `1px solid ${BORDER}`, fontSize: 11, fontWeight: 700,
+  color: MUTED, textTransform: 'uppercase', letterSpacing: '0.05em', whiteSpace: 'nowrap',
+};
+const td: React.CSSProperties = {
+  padding: '6px 8px', borderBottom: `1px solid ${BORDER}`, fontSize: 13, color: SLATE,
+  fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
+};
+
+function Leaderboard({ mock, toast }: { mock: MockAdminEntry; toast: (m: string) => void }) {
+  const [open, setOpen] = useState(false);
+  const [board, setBoard] = useState<MockAdminLeaderboard | null>(null);
+  const [busy, setBusy] = useState(false);
+
+  const load = async () => {
+    setBusy(true);
+    try { setBoard(await api<MockAdminLeaderboard>(`/api/admin/mocks/${mock.id}/leaderboard`)); }
+    catch (e) { toast(e instanceof Error ? e.message : 'Could not load the leaderboard'); }
+    setBusy(false);
+  };
+
+  const toggle = () => {
+    if (!open && !board) void load();
+    setOpen(!open);
+  };
+
+  return (
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
+        <p style={{ ...sub, margin: 0 }}>Combined leaderboard</p>
+        <GhostBtn small onClick={toggle}>{open ? 'Hide' : 'View leaderboard'}</GhostBtn>
+        {open && <GhostBtn small disabled={busy} onClick={load}>Refresh</GhostBtn>}
+      </div>
+      {open && board && (
+        <div style={{ marginTop: 10 }}>
+          <p style={{ margin: '0 0 8px', fontSize: 12, color: MUTED }}>
+            {board.outOf} ranked (MCQ + marked essays)
+            {board.notRanked > 0 && ` · ${board.notRanked} rejected paper${board.notRanked === 1 ? '' : 's'} not ranked`}
+          </p>
+          {board.rows.length === 0 ? (
+            <p style={{ margin: 0, fontSize: 13, color: MUTED }}>No submitted results yet.</p>
+          ) : (
+            <div style={{ overflowX: 'auto' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr>{['Rank', 'Name', 'Student ID', 'MCQ', 'Essays', 'Total', 'Source'].map(h => <th key={h} style={th}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {board.rows.map(r => (
+                    <tr key={`${r.rank}-${r.studentId ?? r.name}`}>
+                      <td style={td}>{r.rank}</td>
+                      <td style={td}>{r.name}</td>
+                      <td style={td}>{r.studentId ?? '—'}</td>
+                      <td style={td}>{num(r.mcq)}</td>
+                      <td style={td}>{num(r.essay)}</td>
+                      <td style={{ ...td, fontWeight: 700 }}>{num(r.total)}</td>
+                      <td style={td}>{r.online ? 'Online' : 'Paper'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
@@ -219,6 +289,8 @@ function MockCard({ mock, series, reload, toast }: {
         <input type="file" accept="application/pdf" disabled={uploading} onChange={e => uploadSolution(e.target.files?.[0])} aria-label="Solutions PDF" />
         {uploading && <span style={{ fontSize: 12, color: MUTED }}> uploading…</span>}
       </div>
+
+      <Leaderboard mock={mock} toast={toast} />
 
       <div style={{ background: BG, border: `1px solid ${BORDER}`, borderRadius: R_MD, padding: 14 }}>
         <p style={sub}>Publish</p>

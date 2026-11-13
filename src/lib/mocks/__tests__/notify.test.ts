@@ -15,7 +15,7 @@ import * as schema from '@/lib/db/schema';
 import { notifyMockPublished } from '../notify';
 
 const DDL = [
-  'CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, email TEXT, batch TEXT)',
+  'CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT, email TEXT, batch TEXT, student_id TEXT)',
   `CREATE TABLE tests (id INTEGER PRIMARY KEY AUTOINCREMENT, slug TEXT, title TEXT, bucket TEXT, description TEXT, status TEXT DEFAULT 'published',
     allowed_products TEXT, is_diagnostic INTEGER DEFAULT 0, total_questions INTEGER DEFAULT 0, total_marks REAL DEFAULT 0, results_published_at INTEGER,
     source_file TEXT, syllabus TEXT, category TEXT, is_mock INTEGER NOT NULL DEFAULT 0, mock_batch TEXT, elective_count INTEGER, exam_code TEXT, essay_series_id INTEGER, solution_pdf_key TEXT,
