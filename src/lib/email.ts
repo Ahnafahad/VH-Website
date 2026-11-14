@@ -1301,3 +1301,29 @@ export async function sendHtmlEmailBatch(
   }
   return { sent, failed };
 }
+
+/**
+ * Schedules one email per recipient for `scheduledAt` (Resend holds them; nothing here needs to stay running).
+ * Resend's batch endpoint doesn't take a schedule, so these go one at a time, under its 2 requests/second limit.
+ * All-or-nothing per call: if any recipient fails, the ones already scheduled are cancelled so a retry can't double-send.
+ */
+export async function sendHtmlEmailScheduled(
+  items: { to: string; mail: { subject: string; html: string; text: string } }[],
+  scheduledAt: Date,
+): Promise<{ scheduled: number; failed: number; ids: string[]; error?: string }> {
+  if (!process.env.RESEND_API_KEY) return { scheduled: 0, failed: items.length, ids: [], error: 'RESEND_API_KEY not set' };
+  const ids: string[] = [];
+  for (const { to, mail } of items) {
+    const { data, error } = await resend.emails.send({
+      from: 'Beyond the Horizons <noreply@vh-beyondthehorizons.org>',
+      to, subject: mail.subject, html: mail.html, text: mail.text, scheduledAt: scheduledAt.toISOString(),
+    });
+    if (error || !data?.id) {
+      for (const id of ids) { await resend.emails.cancel(id).catch(() => {}); await new Promise(r => setTimeout(r, 600)); }
+      return { scheduled: 0, failed: items.length, ids: [], error: error?.message ?? 'no id returned' };
+    }
+    ids.push(data.id);
+    await new Promise(r => setTimeout(r, 600));
+  }
+  return { scheduled: ids.length, failed: 0, ids };
+}
