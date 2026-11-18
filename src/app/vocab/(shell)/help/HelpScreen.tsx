@@ -129,14 +129,10 @@ Stronger mastery ratings earn more points. Consistent daily activity earns strea
 Visit your Profile to see all badges, your progress toward each, and the dates you earned them.`,
   },
   {
-    title: 'How to unlock all 800 words',
-    content: `Your first 100 words are completely free.
+    title: 'Free plan and unlimited access',
+    content: `Every word is open to you. The free plan gives you 20 flashcards and 2 quizzes a day.
 
-To unlock all 800 words:
-
-• If you're a VH student (enrolled in IBA/BUP admission coaching) — it's free. Message us on Facebook or WhatsApp with your enrollment confirmation and we'll unlock your account within 24 hours.
-
-• If you found LexiCore on your own — full access isn't open to the public yet, but you can express your interest from the Home screen and we'll contact you first when it launches.`,
+For unlimited flashcards and quizzes until 5 December 2026, upgrade for ৳200. Pay by bKash and send us the Transaction ID from the upgrade page: /lexicore/upgrade`,
   },
 ];
 

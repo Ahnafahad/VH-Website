@@ -1,5 +1,5 @@
 import {
-  db, users, userAccess, vocabUserProgress, vocabUserWordRecords,
+  db, users, vocabUserProgress, vocabUserWordRecords,
   vocabFlashcardSessions, vocabThemes, vocabQuizSessions, vocabQuizAnswers, vocabWords,
   vocabSyllabuses, vocabUserSyllabuses, vocabWordAltDefinitions, vocabWordContrasts,
 } from '@/lib/db';
@@ -10,9 +10,9 @@ import { VocabCacheTag } from './cache-keys';
 import { dhakaWeekStart } from './dhaka-time';
 import { sortByBriefingPriority, computeRequiredPace, computeRepeatOffenders, isResumeStale, type BriefingKind } from './briefing';
 import type { WordPriorityInput } from './priority-score';
-import { isAdminRole } from '@/lib/auth/roles';
 import { getSyllabusCatalogVersion } from './syllabus-prompt';
 import { getUnlockedWordIds } from './access-check';
+import { isUnlimited } from './plan';
 import { toCardPrefs, type CardPrefs } from './card-prefs';
 import type { LivingCardWord } from '@/components/vocab/LivingFlashcard';
 
@@ -56,7 +56,7 @@ export interface HomeData {
   phase:            number;
   sessions:         SessionsData;
   masteryBreakdown: MasteryBreakdown;
-  hasPaidAccess:    boolean;       // true if user has any active product or is admin
+  hasPaidAccess:    boolean;       // LexiCore unlimited (src/lib/vocab/plan.ts isUnlimited)
   recommendation:   HomeRecommendation;
   /** ISO timestamp of the earliest future SRS review date, or null. Used to schedule local notifications. */
   nextDueIso:       string | null;
@@ -112,7 +112,6 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     flashcardSessions,
     completedQuizzes,
     allThemes,
-    accessRows,
     activeQuizRows,
     nextDueResult,
     wordRecords,
@@ -185,10 +184,6 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
       .orderBy(vocabThemes.order),
 
     // User paid access
-    db.select({ id: userAccess.id })
-      .from(userAccess)
-      .where(and(eq(userAccess.userId, user.id), eq(userAccess.active, true)))
-      .limit(1),
 
     db.select({
       id: vocabQuizSessions.id,
@@ -292,8 +287,7 @@ async function _getHomeData(email: string): Promise<HomeData | null> {
     practice: practiceSession,
   };
 
-  const isAdmin     = isAdminRole(user.role);
-  const hasPaidAccess = isAdmin || accessRows.length > 0;
+  const hasPaidAccess = await isUnlimited(user.id);
 
   const activeQuiz = activeQuizRows[0]
     && Number(activeQuizRows[0].answered ?? 0) > 0

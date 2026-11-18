@@ -86,6 +86,7 @@ export const NAV_GROUPS: readonly NavGroup[] = [
       { href: '/admin/users',         label: 'Users',       roles: ADMINS },
       // Label is "Enrolments"; the route stays /admin/registrations until the enrol agent moves it.
       { href: '/admin/registrations', label: 'Enrolments',  roles: ADMINS, badge: 'enrolments' },
+      { href: '/admin/lexicore-claims', label: 'LexiCore claims', roles: ADMINS },
       { href: '/admin/leaderboard',   label: 'Leaderboard', roles: ADMINS },
       { href: '/admin/avatars',       label: 'Avatars',     roles: ADMINS },
     ],

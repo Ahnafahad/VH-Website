@@ -13,7 +13,6 @@ import DeadlineBanner from '@/components/vocab/DeadlineBanner';
 import NewSyllabusesModal from '@/components/vocab/NewSyllabusesModal';
 import ReducedOnboardingModal from '@/components/vocab/ReducedOnboardingModal';
 import FullAccessDeadlineModal from '@/components/vocab/FullAccessDeadlineModal';
-import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { FREE_WORD_POOL, PAID_WORD_POOL } from '@/lib/vocab/constants';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import type { BriefingKind } from '@/lib/vocab/briefing';
@@ -788,7 +787,6 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
   const firstName              = data.userName.split(' ')[0];
   const deadlinePassed         = data.deadline ? new Date(data.deadline) < new Date() : false;
   const sessionRows            = buildSessions(data.sessions, router);
-  const [showUpgrade, setShowUpgrade] = useState(false);
   const [showDeadlinePrompt, setShowDeadlinePrompt] = useState(data.promptFullAccessDeadline);
   const [newSyllabusPrompt, setNewSyllabusPrompt] = useState(data.newSyllabusPrompt);
   const [reducedOnboarding, setReducedOnboarding] = useState(data.reducedOnboarding);
@@ -1029,7 +1027,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                   margin:     0,
                   lineHeight: 1.3,
                 }}>
-                  You&apos;ve unlocked 100 words
+                  Free plan: 20 cards + 2 quizzes a day
                 </p>
                 <p style={{
                   fontFamily:    "'Sora', sans-serif",
@@ -1038,13 +1036,13 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                   margin:        '2px 0 0',
                   letterSpacing: '0.02em',
                 }}>
-                  800 more await
+                  Unlimited for ৳200
                 </p>
               </div>
             </div>
             <motion.button
               whileTap={{ scale: 0.95 }}
-              onClick={() => { fb.play('tap'); setShowUpgrade(true); }}
+              onClick={() => { fb.play('tap'); navigate('/lexicore/upgrade'); }}
               style={{
                 display:       'flex',
                 alignItems:    'center',
@@ -1418,11 +1416,6 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
           hasPaidAccess={data.hasPaidAccess}
         />
       </div>
-
-      {/* ── Upgrade modal ──────────────────────────────────────── */}
-      <AnimatePresence>
-        {showUpgrade && <UpgradeModal onClose={() => setShowUpgrade(false)} />}
-      </AnimatePresence>
 
       {/* ── First-entry welcome, right after onboarding finishes ── */}
       <AnimatePresence>

@@ -1,10 +1,8 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { Sparkles, ChevronRight } from 'lucide-react';
-import AccessRequestSheet from './AccessRequestSheet';
 
 interface Props {
   /** How many additional words are currently blurred */
@@ -14,20 +12,13 @@ interface Props {
 }
 
 export default function UnlockAllWordsBanner({ lockedCount, unlockedCount }: Props) {
-  const [sheetOpen, setSheetOpen] = useState(false);
-  const [mounted,   setMounted]   = useState(false);
-
-  useEffect(() => { setMounted(true); }, []);
-
-  const open  = useCallback(() => setSheetOpen(true),  []);
-  const close = useCallback(() => setSheetOpen(false), []);
-
+  const router = useRouter();
   const total = lockedCount + unlockedCount;
 
   return (
     <>
       <motion.button
-        onClick={open}
+        onClick={() => router.push('/lexicore/upgrade')}
         whileTap={{ scale: 0.98 }}
         whileHover={{ scale: 1.01 }}
         transition={{ type: 'spring', stiffness: 380, damping: 28 }}
@@ -98,19 +89,6 @@ export default function UnlockAllWordsBanner({ lockedCount, unlockedCount }: Pro
         <ChevronRight size={16} strokeWidth={2} style={{ color: '#C9A84C', flexShrink: 0 }} />
       </motion.button>
 
-      {mounted && createPortal(
-        <AnimatePresence>
-          {sheetOpen && (
-            <AccessRequestSheet
-              key="unlock-sheet"
-              title="Unlock all words"
-              subtitle={`${lockedCount} more words waiting`}
-              onClose={close}
-            />
-          )}
-        </AnimatePresence>,
-        document.body,
-      )}
     </>
   );
 }

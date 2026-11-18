@@ -9,14 +9,12 @@
  * than the gate's content, so it got clipped by the card's `overflow:hidden`.
  * Rendering it as a normal-flow card sidesteps that entirely.
  *
- * Tapping opens a bottom sheet to request full access.
+ * Tapping goes to /lexicore/upgrade.
  */
 
-import { useState, useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
-import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
-import AccessRequestSheet from './AccessRequestSheet';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 interface Props {
@@ -25,14 +23,9 @@ interface Props {
 }
 
 export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
-  const [sheetOpen, setSheetOpen] = useState(false);
-  const [mounted,   setMounted]   = useState(false);
+  const router = useRouter();
   const shouldReduceMotion = useReducedMotion();
-
-  useEffect(() => { setMounted(true); }, []);
-
-  const openSheet  = useCallback(() => setSheetOpen(true), []);
-  const closeSheet = useCallback(() => setSheetOpen(false), []);
+  const openSheet = () => router.push('/lexicore/upgrade');
 
   return (
     <>
@@ -138,25 +131,12 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
               padding:       '7px 14px',
             }}
           >
-            Request Access
+            Upgrade
             <ChevronRight size={12} strokeWidth={2.2} />
           </div>
         </div>
       </motion.div>
 
-      {mounted && createPortal(
-        <AnimatePresence>
-          {sheetOpen && (
-            <AccessRequestSheet
-              key="access-sheet"
-              title="Request Full Access"
-              subtitle={`to unlock ${unitName}`}
-              onClose={closeSheet}
-            />
-          )}
-        </AnimatePresence>,
-        document.body,
-      )}
     </>
   );
 }

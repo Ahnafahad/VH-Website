@@ -1,6 +1,8 @@
 // Client-side only — module-level singleton cache for quiz generation prefetching.
 // Allows the AI call to start while the user is reading the QuizConfigSheet.
 
+import { limitKindOf, LimitError } from './limit';
+
 type QuizBody =
   | { type: 'study';    themeId:  number;    questionCount: number }
   | { type: 'practice'; themeIds: number[];  questionCount: number }
@@ -39,7 +41,9 @@ export function prefetchQuiz(body: QuizBody): void {
     headers: { 'Content-Type': 'application/json' },
     body:    JSON.stringify(body),
     signal:  AbortSignal.timeout(45000),
-  }).then(r => {
+  }).then(async r => {
+    const limit = await limitKindOf(r, 'quizzes');
+    if (limit) throw new LimitError(limit);
     if (!r.ok) throw new Error('generation failed');
     return r.json();
   });

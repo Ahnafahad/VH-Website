@@ -12,6 +12,8 @@ import { useBadgeQueue } from '@/lib/vocab/badges/queue';
 import { consumePrefetch } from '@/lib/vocab/quiz-prefetch';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
+import UpgradeModal from '@/components/vocab/UpgradeModal';
+import { limitKindOf, LimitError, type LimitKind } from '@/lib/vocab/limit';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
@@ -847,6 +849,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
   // Orchestration state
   const [phase,       setPhase]       = useState<QuizPhase>('generating');
+  const [limitKind,   setLimitKind]   = useState<LimitKind | null>(null);
   const [sessionId,   setSessionId]   = useState<number | null>(null);
   const [questions,   setQuestions]   = useState<QuizQuestion[]>([]);
   const [currentIdx,  setCurrentIdx]  = useState(0);
@@ -968,6 +971,8 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           });
           // eslint-disable-next-line no-console
           console.log('[LX-DEBUG] /api/vocab/quiz/generate response status =', res.status, res.ok);
+          const limit = await limitKindOf(res, 'quizzes');
+          if (limit) throw new LimitError(limit);
           if (!res.ok) {
             const errText = await res.text().catch(() => '<unreadable body>');
             // eslint-disable-next-line no-console
@@ -986,6 +991,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         console.log('[LX-DEBUG] setPhase("quiz") called — quiz should now render');
         trackRetention(RETENTION_EVENTS.learningSessionStarted, { sessionType, sessionId: data.sessionId, questions: data.questions.length });
       } catch (genErr) {
+        if (genErr instanceof LimitError) { setLimitKind(genErr.kind); return; }
         // Covers network errors, non-OK responses, and AbortError (45s timeout) —
         // all fall through to the same error phase with retry.
         // eslint-disable-next-line no-console
@@ -1221,6 +1227,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
   // ── Render ─────────────────────────────────────────────────────────────────
 
+  if (limitKind) return <UpgradeModal kind={limitKind} onClose={() => navigate('/vocab/home')} />;
   if (phase === 'generating') return <QuizLoading words={hintWords} />;
   if (phase === 'error')      return <div className="lx-page-enter"><QuizError onBack={() => navigate(exitHref)} /></div>;
   if (phase === 'summary' && summary) {

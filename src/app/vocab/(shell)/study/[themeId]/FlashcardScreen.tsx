@@ -16,6 +16,8 @@ import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import LivingFlashcard from '@/components/vocab/LivingFlashcard';
+import UpgradeModal from '@/components/vocab/UpgradeModal';
+import { limitKindOf } from '@/lib/vocab/limit';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -230,6 +232,7 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
   const [flipped,   setFlipped]   = useState(false);
   const [complete,  setComplete]  = useState(data.currentIndex >= data.words.length);
   const [direction, setDirection] = useState(1);
+  const [limitHit,  setLimitHit]  = useState(false);
 
   // Race fix: use a ref for the in-flight guard and a ref for the advance timer
   const submitting  = useRef(false);
@@ -335,13 +338,14 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ wordId: word.id, rating }),
-      }).catch(() => {});
+      }).then(async (res) => { if (await limitKindOf(res)) setLimitHit(true); }).catch(() => {});
     } else {
       fetch(`/api/vocab/flashcard/${data.themeId}/rate`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ wordId: word.id, rating, isLast }),
       }).then(async (res) => {
+        if (await limitKindOf(res)) { setLimitHit(true); return; }
         if (isLast && res.ok) {
           const d = await res.json() as { earnedBadges?: { id: string; name: string; description: string; category: 'short_term' | 'mid_term' | 'long_term' | 'ultimate' }[] };
           if (d.earnedBadges?.length) push(d.earnedBadges);
@@ -363,13 +367,16 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
 
   if (complete) {
     return (
-      <SessionComplete
-        themeName={data.themeName}
-        ratings={ratings}
-        words={data.words}
-        onReview={handleReview}
-        onNext={onTakeQuiz ?? (() => router.push(`/vocab/study/${data.themeId}/quiz`))}
-      />
+      <>
+        <SessionComplete
+          themeName={data.themeName}
+          ratings={ratings}
+          words={data.words}
+          onReview={handleReview}
+          onNext={onTakeQuiz ?? (() => router.push(`/vocab/study/${data.themeId}/quiz`))}
+        />
+        {limitHit && <UpgradeModal kind="cards" onClose={() => router.push('/vocab/home')} />}
+      </>
     );
   }
 
@@ -386,6 +393,7 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
         overflow: 'hidden',
       }}
     >
+      {limitHit && <UpgradeModal kind="cards" onClose={() => router.push('/vocab/home')} />}
 
       {/* ── Header ──────────────────────────────────────── */}
       <div className="flex items-center justify-between">

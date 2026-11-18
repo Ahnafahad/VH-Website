@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
+import UpgradeModal from '@/components/vocab/UpgradeModal';
+import { limitKindOf } from '@/lib/vocab/limit';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -258,6 +260,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
   const [ratings, setRatings]   = useState<Record<number, Rating>>({});
   const [done, setDone]         = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [limitHit, setLimitHit]   = useState(false);
   const [direction, setDirection]   = useState(1);
 
   const current  = words[idx];
@@ -283,11 +286,16 @@ export default function ReviewScreen({ words, dueCount }: Props) {
     else                          fb.play('missed');
 
     try {
-      await fetch('/api/vocab/practice/rate', {
+      const res = await fetch('/api/vocab/practice/rate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ wordId: current.wordId, rating }),
       });
+      if (await limitKindOf(res)) {
+        setLimitHit(true);
+        setSubmitting(false);
+        return;
+      }
     } catch { /* non-fatal */ }
 
     setSubmitting(false);
@@ -323,6 +331,8 @@ export default function ReviewScreen({ words, dueCount }: Props) {
       marginLeft: 'auto', marginRight: 'auto',
       width: '100%',
     }}>
+
+      {limitHit && <UpgradeModal kind="cards" onClose={() => router.push('/vocab/home')} />}
 
       {/* ── Header ──────────────────────────────────────────────────── */}
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.875rem' }}>
