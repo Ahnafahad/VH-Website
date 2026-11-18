@@ -14,6 +14,8 @@ import { getPublishedTestBySlug } from '@/lib/tests/service';
 import { applyWindowOverrides } from '@/lib/tests/window-overrides';
 import { solutionsOpen } from '@/lib/mocks/state';
 import { buildSolutionSheetData } from '@/lib/mocks/solutions';
+import { db } from '@/lib/db';
+import { analyticsEvents } from '@/lib/db/schema';
 
 const HEADERS = { 'Cache-Control': 'private, no-store' };
 const html = (body: string, status = 200) =>
@@ -45,6 +47,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
 
   const data = await buildSolutionSheetData(test, user.id, user.name ?? 'Student');
   if (!data) return html('Solutions for this mock are not available yet.', 404);
+
+  // One row per served sheet: per-mock open counts and unique openers come from this.
+  await db.insert(analyticsEvents).values({
+    sessionId: 'server', anonId: 'server', userId: user.id,
+    type: 'custom', module: 'site', path: `/mocks/${slug}/solutions`, name: 'mock_solutions_open',
+    props: JSON.stringify({ slug }),
+  }).catch(err => console.error('[mocks/solutions] open log failed', err));
 
   const json = JSON.stringify(data).replace(/</g, '\\u003c'); // also covers </script>, <!--
   const sheet = (await readFile(path.join(process.cwd(), 'src/lib/mocks/solution-sheet/sheet.html'), 'utf-8'))
