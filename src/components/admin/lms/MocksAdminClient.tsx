@@ -2,7 +2,9 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { ClipboardCheck } from 'lucide-react';
+import { isAdminRole } from '@/lib/auth/roles';
 import {
   SPIN_CSS, PageHeader, EmptyState, PrimaryBtn, GhostBtn, DangerBtn, FieldLabel, FieldInput, FieldSelect,
   ConfirmDialog, Toast, fmtDhaka,
@@ -318,6 +320,7 @@ function MockCard({ mock, series, reload, toast }: {
 }
 
 export default function MocksAdminClient() {
+  const { data: session } = useSession();
   const [data, setData] = useState<MockAdminOverview | null>(null);
   const [error, setError] = useState('');
   const [toast, setToast] = useState<string | null>(null);
@@ -359,6 +362,11 @@ export default function MocksAdminClient() {
       <PageHeader
         title="Mocks"
         subtitle="Full-length exams: MCQ sections plus essays. Typed/online entries show as provisional; scanned OMR sheets are official."
+        action={isAdminRole(session?.user.role) ? (
+          <Link href="/admin/mocks/reports" style={{ ...pill(SURFACE_ALT, SLATE), border: `1px solid ${BORDER}` }}>
+            Mock Reports
+          </Link>
+        ) : undefined}
       />
       {error && <p style={{ color: RED, fontSize: 13 }}>{error}</p>}
 

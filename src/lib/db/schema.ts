@@ -1084,6 +1084,7 @@ export const testQuestions = sqliteTable('test_questions', {
   correctKey:  text('correct_key'),                          // nullable until key is loaded
   imageUrl:    text('image_url'),                            // diagram under /tests/{slug}/
   explanation: text('explanation'),
+  tag:         text('tag'),                                  // question type / math topic, values in lib/mocks/question-tags.ts
 }, (t) => [
   index('idx_test_questions_section').on(t.sectionId, t.order),
 ]);
