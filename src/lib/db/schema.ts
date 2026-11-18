@@ -2307,3 +2307,31 @@ export const mockSolutions = sqliteTable('mock_solutions', {
   data:      text('data').notNull(),
   updatedAt: integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
 });
+
+// ─── LexiCore paid plan ───────────────────────────────────────────────────────
+// bKash claims for LexiCore unlimited. 'active' = auto-granted, awaiting owner check; 'held' = submitted
+// after an earlier rejection, so no access until approved. Access lasts while status is active/approved
+// and accessUntil is in the future. Logic: src/lib/vocab/plan.ts.
+export const lexicoreClaims = sqliteTable('lexicore_claims', {
+  id:            integer('id').primaryKey({ autoIncrement: true }),
+  userId:        integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  trxId:         text('trx_id').notNull().unique(),
+  senderNumber:  text('sender_number'),
+  screenshotKey: text('screenshot_key'),
+  amount:        integer('amount').notNull(),
+  // 'active' | 'held' | 'approved' | 'rejected'
+  status:        text('status').notNull(),
+  accessUntil:   integer('access_until', { mode: 'timestamp' }).notNull(),
+  note:          text('note'),
+  decidedAt:     integer('decided_at', { mode: 'timestamp' }),
+  decidedBy:     integer('decided_by').references(() => users.id, { onDelete: 'set null' }),
+  createdAt:     integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+}, (t) => [index('idx_lexicore_claims_user').on(t.userId), index('idx_lexicore_claims_status').on(t.status)]);
+
+// Free-tier daily counters (day = Dhaka calendar date, 'YYYY-MM-DD').
+export const lexicoreDailyUsage = sqliteTable('lexicore_daily_usage', {
+  userId:  integer('user_id').notNull().references(() => users.id, { onDelete: 'cascade' }),
+  day:     text('day').notNull(),
+  cards:   integer('cards').notNull().default(0),
+  quizzes: integer('quizzes').notNull().default(0),
+}, (t) => [uniqueIndex('uq_lexicore_daily_usage').on(t.userId, t.day)]);

@@ -27,6 +27,7 @@ import {
 } from '@/lib/db/schema';
 import { safeApiHandler, validateAuth, ApiException } from '@/lib/api-utils';
 import { rateLimit } from '@/lib/rate-limit';
+import { hasQuota, recordUse, limitBody } from '@/lib/vocab/plan';
 import { selectDistractors }   from '@/lib/vocab/distractor-selector';
 import {
   generateQuizQuestions,
@@ -149,6 +150,11 @@ export async function POST(req: NextRequest) {
       .where(eq(users.email, email))
       .limit(1);
     if (!user) throw new ApiException('User not found', 404);
+
+    // Free plan: FREE_QUIZZES_PER_DAY quizzes a day. Counted in buildSession/buildExamSession after insert.
+    if (!(await hasQuota(user.id, 'quizzes'))) {
+      throw new ApiException(limitBody('quizzes').error, 402, 'LEXICORE_LIMIT');
+    }
 
     if (!(await _resolveSessionContext(user.id, caps.daily, caps.weekly))) {
       throw new ApiException('Hey our servers are busy right now. Can you please try again?', 429);
@@ -601,6 +607,7 @@ async function buildSession({
       startedAt: new Date(),
     })
     .returning({ id: vocabQuizSessions.id });
+  await recordUse(userId, 'quizzes');
 
   return {
     sessionId:    session.id,
@@ -705,6 +712,7 @@ async function buildExamSession({
       startedAt:       new Date(),
     })
     .returning({ id: vocabQuizSessions.id });
+  await recordUse(userId, 'quizzes');
 
   return {
     sessionId:    session.id,

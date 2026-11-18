@@ -13,6 +13,7 @@ import { maxIntervalForDeadline }     from '@/lib/vocab/srs/deadline-cap';
 import type { SrsRating }              from '@/lib/vocab/srs/engine';
 import { flashcardDelta }              from '@/lib/vocab/mastery-score';
 import { rateLimit }                   from '@/lib/rate-limit';
+import { hasQuota, recordUse, limitBody } from '@/lib/vocab/plan';
 import { canAccessWord }               from '@/lib/vocab/access-check';
 import { ensureDailyLoginAwarded }     from '@/lib/vocab/daily-login';
 import { awardPoints }                 from '@/lib/vocab/points';
@@ -44,6 +45,11 @@ export async function POST(req: NextRequest) {
   // Phase gate: phase-2 users cannot rate locked words.
   if (!(await canAccessWord(user.id, wordId))) {
     return NextResponse.json({ error: 'Word is locked for your tier' }, { status: 403 });
+  }
+
+  // Free plan: FREE_CARDS_PER_DAY flashcard ratings a day.
+  if (!(await hasQuota(user.id, 'cards'))) {
+    return NextResponse.json(limitBody('cards'), { status: 402 });
   }
 
   const [existing] = await db
@@ -103,6 +109,7 @@ export async function POST(req: NextRequest) {
     revalidateTag(VocabCacheTag.home(session.user.email!));
     revalidateTag(VocabCacheTag.practiceUi(session.user.email!));
     revalidateTag(VocabCacheTag.letters(user.id));
+    await recordUse(user.id, 'cards');
     return NextResponse.json({ ok: true, pointsEarned });
   }
 
@@ -183,5 +190,6 @@ export async function POST(req: NextRequest) {
   revalidateTag(VocabCacheTag.practiceUi(session.user.email!));
   revalidateTag(VocabCacheTag.letters(user.id));
 
+  await recordUse(user.id, 'cards');
   return NextResponse.json({ ok: true, pointsEarned });
 }

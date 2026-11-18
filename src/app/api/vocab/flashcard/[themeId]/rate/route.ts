@@ -16,6 +16,7 @@ import { awardPoints } from '@/lib/vocab/points';
 import { nextAttemptStats } from '@/lib/vocab/attempt-stats';
 import { checkBadges }                 from '@/lib/vocab/badges/checker';
 import { rateLimit }                   from '@/lib/rate-limit';
+import { hasQuota, recordUse, limitBody } from '@/lib/vocab/plan';
 import { canAccessTheme, canAccessWord } from '@/lib/vocab/access-check';
 import { ApiException, createErrorResponse } from '@/lib/api-utils';
 import { ensureDailyLoginAwarded }     from '@/lib/vocab/daily-login';
@@ -58,6 +59,11 @@ export async function POST(
   ]);
   if (!themeOk || !wordOk) {
     return NextResponse.json({ error: 'Word is locked for your tier' }, { status: 403 });
+  }
+
+  // Free plan: FREE_CARDS_PER_DAY flashcard ratings a day.
+  if (!(await hasQuota(user.id, 'cards'))) {
+    return NextResponse.json(limitBody('cards'), { status: 402 });
   }
 
   try {
@@ -312,6 +318,7 @@ export async function POST(
   revalidateTag(VocabCacheTag.flashcard(session.user.email!, themeId));
   revalidateTag(VocabCacheTag.letters(user.id));
 
+  await recordUse(user.id, 'cards');
   return NextResponse.json({ ok: true, pointsEarned: result.pointsEarned, earnedBadges });
   } catch (error) {
     return createErrorResponse(error);

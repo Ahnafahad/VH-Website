@@ -12,20 +12,10 @@
  */
 
 import {
-  db, vocabWords, vocabUnits, vocabThemes, vocabUserProgress,
+  db, vocabWords, vocabUnits, vocabThemes,
   vocabSyllabuses, vocabWordSyllabuses, vocabUserSyllabuses,
 } from '@/lib/db';
 import { eq, inArray, asc } from 'drizzle-orm';
-
-/** Returns the user's phase (defaults to 2 if no progress row exists). */
-export async function getUserPhase(userId: number): Promise<number> {
-  const [row] = await db
-    .select({ phase: vocabUserProgress.phase })
-    .from(vocabUserProgress)
-    .where(eq(vocabUserProgress.userId, userId))
-    .limit(1);
-  return row?.phase ?? 2;
-}
 
 export interface UnlockedWords {
   /** null = full access, no filtering needed. */
@@ -42,23 +32,17 @@ const FULL_ACCESS: UnlockedWords = { ids: null, themeIds: null, key: 'all' };
  * The word ids a user may study. `ids: null` means everything.
  */
 export async function getUnlockedWordIds(userId: number): Promise<UnlockedWords> {
-  const phase = await getUserPhase(userId);
-
   const selected = await db
     .select({ syllabusId: vocabUserSyllabuses.syllabusId })
     .from(vocabUserSyllabuses)
     .where(eq(vocabUserSyllabuses.userId, userId));
   const selectedIds = selected.map(s => s.syllabusId);
 
-  if (phase !== 2) {
-    // Full-access users see everything unless they've actively picked a
-    // syllabus subset via the Study/Practice checkbox filter.
-    if (selectedIds.length === 0) return FULL_ACCESS;
-    return computeFullSyllabusSet(selectedIds);
-  }
-
-  // No selection yet (legacy users, mid-onboarding) — trial every syllabus.
-  return computeTrialSet(selectedIds.length ? selectedIds : null);
+  // Every user (free or paid) sees all words; free users are capped per day
+  // instead (src/lib/vocab/plan.ts). A syllabus subset picked via the
+  // Study/Practice checkbox filter still narrows the set.
+  if (selectedIds.length === 0) return FULL_ACCESS;
+  return computeFullSyllabusSet(selectedIds);
 }
 
 /**
