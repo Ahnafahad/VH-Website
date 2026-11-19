@@ -12,6 +12,11 @@ type PageState =
 
 export default function SprintHubPage() {
   const [state, setState] = useState<PageState>({ kind: 'loading' });
+  const [ghost, setGhost] = useState(false); // IBA students get the Exorcise the Past card
+
+  useEffect(() => {
+    fetch('/api/journey').then(res => setGhost(res.ok)).catch(() => undefined);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -52,9 +57,16 @@ export default function SprintHubPage() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 py-10 sm:py-14 space-y-10">
+        {ghost && (
+          <Link href="/journey" className="block rounded-xl border border-exam-gold/40 bg-exam-gold/10 px-5 py-4 hover:border-exam-gold transition-colors">
+            <p className="text-xs font-bold uppercase tracking-widest text-exam-gold">IBA · One hour · Pausable</p>
+            <p className="font-serif text-xl font-semibold text-exam-ink">Exorcise the Past</p>
+            <p className="text-exam-ink-muted text-sm">The questions that keep haunting you from your last five mocks, hunted down in one pausable hour.</p>
+          </Link>
+        )}
         {state.kind === 'loading' && <p className="text-exam-ink-muted">Loading…</p>}
-        {state.kind === 'error' && <p className="text-red-400">{state.message}</p>}
-        {state.kind === 'ready' && state.sets.length === 0 && (
+        {state.kind === 'error' && !ghost && <p className="text-red-400">{state.message}</p>}
+        {state.kind === 'ready' && state.sets.length === 0 && !ghost && (
           <p className="text-exam-ink-muted">No Sprint sets are active right now.</p>
         )}
         {Object.entries(bySubject).map(([subject, sets]) => (

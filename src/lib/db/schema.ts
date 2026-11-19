@@ -1911,6 +1911,26 @@ export type SprintQuestion  = typeof sprintQuestions.$inferSelect;
 export type SprintAttempt   = typeof sprintAttempts.$inferSelect;
 export type SprintAnswer    = typeof sprintAnswers.$inferSelect;
 
+// ─── IBA "Exorcise the Past" ─────────────────────────────────────────────────
+// One curated 60-minute set per student, built from the questions they missed in
+// the last mocks (see lib/journey). questionIds point at test_questions — nothing
+// is copied. elapsedMs is client-reported active time, so closing the tab is a pause.
+export const ibaJourneys = sqliteTable('iba_journeys', {
+  id:          integer('id').primaryKey({ autoIncrement: true }),
+  userId:      integer('user_id').notNull().unique().references(() => users.id, { onDelete: 'cascade' }),
+  questionIds: text('question_ids').notNull(),            // JSON number[] in display order
+  answers:     text('answers').notNull().default('{}'),   // JSON {questionId: key}
+  // 'ready' | 'running' | 'paused' | 'done'
+  status:      text('status').notNull().default('ready'),
+  elapsedMs:   integer('elapsed_ms').notNull().default(0),
+  result:      text('result'),                            // JSON, set when done
+  createdAt:   integer('created_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  startedAt:   integer('started_at', { mode: 'timestamp' }),
+  updatedAt:   integer('updated_at', { mode: 'timestamp' }).notNull().default(sql`(unixepoch())`),
+  finishedAt:  integer('finished_at', { mode: 'timestamp' }),
+});
+export type IbaJourney = typeof ibaJourneys.$inferSelect;
+
 // ══════════════════════════════════════════════════════════════════════════════
 // REDLINE — Sentence Correction Mastery. 850-question bank served as 20-question
 // levels (finish one → next unlocks). Every response is stored with its full

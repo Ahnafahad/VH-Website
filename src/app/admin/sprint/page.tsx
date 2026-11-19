@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/admin/lms/lms-shared';
+import JourneyAdmin from '@/components/admin/JourneyAdmin';
 import { SUBJECT_LABELS } from '@/lib/lms/subject-constants';
 import type { LmsSubject } from '@/lib/db/schema';
 
@@ -102,6 +103,8 @@ export default function SprintAdminPage() {
           </div>
         </>
       )}
+
+      <JourneyAdmin />
 
       <ConfirmDialog
         open={confirmDeleteId !== null}
