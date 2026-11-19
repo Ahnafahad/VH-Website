@@ -170,7 +170,7 @@ function Detail({ slot, mock, now }: { slot: MockSlot | null; mock: MockListEntr
         {!submitted && !open && next && !mock.ended && (
           <p className="text-exam-ink-muted text-sm">Opens {dayTime(next.opensAt)} · in {countdown(next.opensAt - now)}</p>
         )}
-        {submitted && essay && essaysLeft && !mock.ended && (
+        {essay && essaysLeft && !mock.ended && (submitted || !mock.hasElectives) && (
           <Link href={essayHref} className={primaryBtn}>{mock.hasElectives ? 'Upload written pages' : 'Upload your essays'}</Link>
         )}
         {submitted && !essaysLeft && !mock.ended && (
@@ -202,7 +202,7 @@ function Detail({ slot, mock, now }: { slot: MockSlot | null; mock: MockListEntr
           <p className="text-sm text-exam-ink-muted">
             <span className="text-exam-ink">{mock.hasElectives ? 'Written' : 'Essays'}</span> · {essay.submitted} of {essay.essayCount} uploaded · due {dayTime(essay.deadline)}
           </p>
-          {submitted && (
+          {(submitted || (!mock.ended && !mock.hasElectives)) && (
             <Link href={essayHref} className={ghostBtn}>
               {essay.submitted > 0 ? 'View essays' : 'Upload essays'}
             </Link>
