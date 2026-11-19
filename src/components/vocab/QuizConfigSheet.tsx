@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Timer, X } from 'lucide-react';
-import { lxFs } from '@/lib/vocab/ui';
+import { lxFs, LX_Z } from '@/lib/vocab/ui';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -214,7 +214,7 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
       animate="show"
       exit="exit"
       style={{
-        position: 'fixed', inset: 0, zIndex: 50,
+        position: 'fixed', inset: 0, zIndex: LX_Z.sheet,
         background: 'rgba(0,0,0,0.55)',
         backdropFilter: 'blur(6px)',
         display: 'flex', alignItems: 'flex-end',

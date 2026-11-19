@@ -12,7 +12,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import type { PublicProfile } from '@/lib/vocab/public-profile';
-import { lxFs } from '@/lib/vocab/ui';
+import { lxFs, LX_Z } from '@/lib/vocab/ui';
 
 // ─── Badge icons (mirrors ProfileScreen.tsx — not exported there) ─────────────
 
@@ -517,7 +517,7 @@ export default function PublicProfileSheet({ userId, onClose }: { userId: number
           style={{
             position:             'fixed',
             inset:                0,
-            zIndex:               200,
+            zIndex:               LX_Z.modal,
             background:           'rgba(7,7,9,0.75)',
             backdropFilter:       'blur(6px)',
             WebkitBackdropFilter: 'blur(6px)',

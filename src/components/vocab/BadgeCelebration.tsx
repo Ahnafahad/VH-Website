@@ -41,7 +41,7 @@ import {
   Infinity as InfinityIcon,
   type LucideIcon,
 } from 'lucide-react';
-import { lxFs } from '@/lib/vocab/ui';
+import { lxFs, LX_Z } from '@/lib/vocab/ui';
 
 // ─── Badge → icon mapping ─────────────────────────────────────────────────────
 
@@ -219,7 +219,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
       style={{
         position:        'fixed',
         inset:           0,
-        zIndex:          9999,
+        zIndex:          LX_Z.celebration,
         display:         'flex',
         alignItems:      'center',
         justifyContent:  'center',

@@ -14,7 +14,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
-import { lxFs } from '@/lib/vocab/ui';
+import { lxFs, LX_Z } from '@/lib/vocab/ui';
 
 const AUTO_DISMISS_MS = 10_000;
 const RING_SIZE       = 44;
@@ -116,7 +116,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
         style={{
           position:        'fixed',
           inset:           0,
-          zIndex:          9999,
+          zIndex:          LX_Z.toast,
           display:         'flex',
           alignItems:      'center',
           justifyContent:  'center',

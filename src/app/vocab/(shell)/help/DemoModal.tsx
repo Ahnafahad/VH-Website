@@ -29,7 +29,7 @@ export default function DemoModal({ open, onClose }: Props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto"
+          className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto"
           style={{ background: 'var(--color-lx-base)' }}
         >
           <div className="w-full max-w-sm px-5 py-10">

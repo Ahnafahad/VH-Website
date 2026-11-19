@@ -15,7 +15,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingFlashcard';
 import { CardStyleChips, PrimaryButton } from '@/components/vocab/onboarding/ui';
 import type { CardPrefs } from '@/lib/vocab/card-prefs';
-import { lxFs } from '@/lib/vocab/ui';
+import { lxFs, LX_Z } from '@/lib/vocab/ui';
 
 interface Syllabus { id: number; name: string; description: string | null }
 
@@ -80,7 +80,7 @@ export default function ReducedOnboardingModal({
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         style={{
-          position: 'fixed', inset: 0, zIndex: 200,
+          position: 'fixed', inset: 0, zIndex: LX_Z.modal,
           background: 'rgba(0,0,0,0.6)',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: 20,

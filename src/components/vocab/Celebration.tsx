@@ -14,6 +14,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { LX_Z } from '@/lib/vocab/ui';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -123,7 +124,7 @@ export default function Celebration({
     top:      `${anchor.y * 100}%`,
     transform: 'translate(-50%, -50%)',
     pointerEvents: 'none',
-    zIndex: 8888,
+    zIndex: LX_Z.celebration,
   };
 
   const content = (
@@ -171,7 +172,7 @@ export default function Celebration({
                 width:    '100vw',
                 height:   '100vh',
                 pointerEvents: 'none',
-                zIndex: 8888,
+                zIndex: LX_Z.celebration,
                 background: `linear-gradient(
                   105deg,
                   transparent 30%,

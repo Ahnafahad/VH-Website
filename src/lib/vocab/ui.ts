@@ -6,3 +6,6 @@
  */
 export const lxFs = (size: number | string) =>
   `calc(${typeof size === 'number' ? `${size}px` : size} * var(--lx-text-scale, 1))`;
+
+/** One stacking scale for LexiCore overlays (nav sits at 40-50). */
+export const LX_Z = { sheet: 60, modal: 70, celebration: 80, toast: 90 } as const;

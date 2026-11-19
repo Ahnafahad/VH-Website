@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { X, Send, CheckCircle2 } from 'lucide-react';
 import { trackFeature } from '@/lib/analytics/tracker';
-import { lxFs } from '@/lib/vocab/ui';
+import { lxFs, LX_Z } from '@/lib/vocab/ui';
 
 const sheetBackdropV: Variants = {
   hidden: { opacity: 0 },
@@ -111,7 +111,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
       style={{
         position:       'fixed',
         inset:          0,
-        zIndex:         9998,
+        zIndex:         LX_Z.modal,
         background:     'rgba(0,0,0,0.6)',
         backdropFilter: 'blur(6px)',
         WebkitBackdropFilter: 'blur(6px)',

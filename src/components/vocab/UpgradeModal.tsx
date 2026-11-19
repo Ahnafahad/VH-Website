@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import type { LimitKind } from '@/lib/vocab/limit';
+import { LX_Z } from '@/lib/vocab/ui';
 
 interface Props {
   /** Which free daily limit was hit. Omit for a plain "get unlimited" prompt. */
@@ -38,7 +39,7 @@ export default function UpgradeModal({ kind, onClose }: Props) {
         key="backdrop"
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
         onClick={onClose}
-        style={{ position: 'fixed', inset: 0, zIndex: 60, background: 'rgba(5,5,7,0.72)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
+        style={{ position: 'fixed', inset: 0, zIndex: LX_Z.modal, background: 'rgba(5,5,7,0.72)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)' }}
       />
       <motion.div
         key="sheet"
@@ -47,7 +48,7 @@ export default function UpgradeModal({ kind, onClose }: Props) {
         animate={{ y: 0, transition: { type: 'spring' as const, stiffness: 340, damping: 34 } }}
         exit={{ y: '100%', transition: { duration: 0.22 } }}
         style={{
-          position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 61,
+          position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: LX_Z.modal + 1,
           maxWidth: 560, margin: '0 auto',
           background: C.surface, border: `1px solid ${C.border}`, borderBottom: 'none',
           borderRadius: '20px 20px 0 0',

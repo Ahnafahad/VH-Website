@@ -56,7 +56,7 @@ import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingFlashcard';
 import { CardStyleChips } from '@/components/vocab/onboarding/ui';
 import type { CardPrefs } from '@/lib/vocab/card-prefs';
-import { lxFs } from '@/lib/vocab/ui';
+import { lxFs, LX_Z } from '@/lib/vocab/ui';
 
 // ─── Badge icons ──────────────────────────────────────────────────────────────
 
@@ -1783,7 +1783,7 @@ export default function ProfileScreen({
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setSelectedBadge(null)}
-              style={{ position: 'fixed', inset: 0, background: 'rgba(7,7,9,0.75)', zIndex: 100 }}
+              style={{ position: 'fixed', inset: 0, background: 'rgba(7,7,9,0.75)', zIndex: LX_Z.modal }}
             />
             <motion.div
               variants={sheetV}
@@ -1799,7 +1799,7 @@ export default function ProfileScreen({
               style={{
                 position:    'fixed',
                 bottom:      0, left: 0, right: 0,
-                zIndex:      101,
+                zIndex:      LX_Z.modal + 1,
                 background:  'var(--color-lx-surface)',
                 borderRadius:'16px 16px 0 0',
                 padding:     '0 24px calc(40px + env(safe-area-inset-bottom))',
@@ -1901,7 +1901,7 @@ export default function ProfileScreen({
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setSignOutConfirm(false)}
-              style={{ position: 'fixed', inset: 0, background: 'rgba(7,7,9,0.75)', zIndex: 100 }}
+              style={{ position: 'fixed', inset: 0, background: 'rgba(7,7,9,0.75)', zIndex: LX_Z.modal }}
             />
             <motion.div
               variants={sheetV}
@@ -1915,7 +1915,7 @@ export default function ProfileScreen({
               style={{
                 position:    'fixed',
                 bottom:      0, left: 0, right: 0,
-                zIndex:      101,
+                zIndex:      LX_Z.modal + 1,
                 background:  'var(--color-lx-surface)',
                 borderRadius:'16px 16px 0 0',
                 padding:     '14px 24px calc(40px + env(safe-area-inset-bottom))',
@@ -1984,7 +1984,7 @@ export default function ProfileScreen({
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setDeadlineSheet(false)}
-              style={{ position: 'fixed', inset: 0, background: 'rgba(7,7,9,0.75)', zIndex: 100 }}
+              style={{ position: 'fixed', inset: 0, background: 'rgba(7,7,9,0.75)', zIndex: LX_Z.modal }}
             />
             <motion.div
               variants={sheetV}
@@ -1998,7 +1998,7 @@ export default function ProfileScreen({
               style={{
                 position:    'fixed',
                 bottom:      0, left: 0, right: 0,
-                zIndex:      101,
+                zIndex:      LX_Z.modal + 1,
                 background:  'var(--color-lx-surface)',
                 borderRadius:'16px 16px 0 0',
                 padding:     '14px 24px calc(48px + env(safe-area-inset-bottom))',
