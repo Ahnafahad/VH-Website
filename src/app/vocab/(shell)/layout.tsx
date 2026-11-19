@@ -27,15 +27,16 @@ function todayKey(): string {
 function VocabShellInner({ children }: { children: React.ReactNode }) {
   const { push }          = useBadgeQueue();
   const dailyLoginFired   = useRef(false);
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [dossierMessage, setDossierMessage] = useState<string | null>(null);
   const [dossierExpanded, setDossierExpanded] = useState(false);
   useLexiAccessibility();
   useAnimationStallGuard();
 
+  // Theme class lives on <html> so portalled overlays (outside .lx-root) get it too.
   useEffect(() => {
-    const saved = localStorage.getItem('lx-theme') as 'dark' | 'light' | null;
-    if (saved) setTheme(saved);
+    const root = document.documentElement;
+    root.classList.toggle('lx-light', localStorage.getItem('lx-theme') === 'light');
+    return () => root.classList.remove('lx-light');
   }, []);
 
   // TEMP DEBUG: catch-all net for the "Take Quiz" investigation — logs every
@@ -158,7 +159,7 @@ function VocabShellInner({ children }: { children: React.ReactNode }) {
       `}</style>
 
       <div
-        className={`lx-root${theme === 'light' ? ' lx-light' : ''}`}
+        className="lx-root"
         style={{
           minHeight:           '100dvh',
           background:          'var(--color-lx-base)',
