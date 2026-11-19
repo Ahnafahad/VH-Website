@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import DemoSlides from '../../onboarding/demo/DemoSlides';
+import { useLxDialog } from '@/hooks/useLxDialog';
 
 interface Props {
   open: boolean;
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function DemoModal({ open, onClose }: Props) {
+  const dialogRef = useLxDialog<HTMLDivElement>(open, onClose);
   // Lock body scroll when open
   useEffect(() => {
     if (open) {
@@ -29,7 +31,11 @@ export default function DemoModal({ open, onClose }: Props) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-[70] flex items-center justify-center overflow-y-auto"
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          tabIndex={-1}
+          className="fixed inset-0 z-[70] outline-none flex items-center justify-center overflow-y-auto"
           style={{ background: 'var(--color-lx-base)' }}
         >
           <div className="w-full max-w-sm px-5 py-10">

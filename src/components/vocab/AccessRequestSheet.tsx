@@ -5,6 +5,7 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { X, Send, CheckCircle2 } from 'lucide-react';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { lxFs, LX_Z } from '@/lib/vocab/ui';
+import { useLxDialog } from '@/hooks/useLxDialog';
 
 const sheetBackdropV: Variants = {
   hidden: { opacity: 0 },
@@ -46,6 +47,7 @@ interface Props {
 
 export default function AccessRequestSheet({ title, subtitle, onClose }: Props) {
   const [state,      setState]    = useState<SheetState>('form');
+  const dialogRef = useLxDialog<HTMLDivElement>(true, onClose);
   const [whatsapp,   setWhatsapp] = useState('');
   const [message,    setMessage]  = useState('');
   const [errorMsg,   setErrorMsg] = useState('');
@@ -123,11 +125,14 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
       <motion.div
         key="sheet"
         variants={sheetV}
+        ref={dialogRef}
+        tabIndex={-1}
         initial="hidden"
         animate="show"
         exit="exit"
         onClick={e => e.stopPropagation()}
         style={{
+          outline:         'none',
           width:           '100%',
           maxWidth:        '430px',
           background:      'var(--color-lx-surface)',

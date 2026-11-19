@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import type { LimitKind } from '@/lib/vocab/limit';
 import { LX_Z } from '@/lib/vocab/ui';
+import { useLxDialog } from '@/hooks/useLxDialog';
 
 interface Props {
   /** Which free daily limit was hit. Omit for a plain "get unlimited" prompt. */
@@ -32,6 +33,7 @@ export default function UpgradeModal({ kind, onClose }: Props) {
     : kind === 'quizzes'
       ? "You've used today's free quizzes (2/day)"
       : 'Get unlimited LexiCore';
+  const dialogRef = useLxDialog<HTMLDivElement>(true, onClose);
 
   return (
     <AnimatePresence>
@@ -43,6 +45,7 @@ export default function UpgradeModal({ kind, onClose }: Props) {
       />
       <motion.div
         key="sheet"
+        ref={dialogRef} tabIndex={-1}
         role="dialog" aria-modal="true" aria-label={title}
         initial={{ y: '100%' }}
         animate={{ y: 0, transition: { type: 'spring' as const, stiffness: 340, damping: 34 } }}
@@ -51,7 +54,7 @@ export default function UpgradeModal({ kind, onClose }: Props) {
           position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: LX_Z.modal + 1,
           maxWidth: 560, margin: '0 auto',
           background: C.surface, border: `1px solid ${C.border}`, borderBottom: 'none',
-          borderRadius: '20px 20px 0 0',
+          borderRadius: '20px 20px 0 0', outline: 'none',
           padding: '1.5rem 1.5rem calc(1.5rem + env(safe-area-inset-bottom))',
         }}
       >

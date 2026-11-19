@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Timer, X } from 'lucide-react';
 import { lxFs, LX_Z } from '@/lib/vocab/ui';
+import { useLxDialog } from '@/hooks/useLxDialog';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -198,6 +199,8 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(config)); } catch { /* ignore */ }
   }, [config]);
 
+  const dialogRef = useLxDialog<HTMLDivElement>(true, () => onCancel?.());
+
   const handleStart = () => {
     // eslint-disable-next-line no-console
     console.log('[LX-DEBUG] QuizConfigSheet "Start Quiz" clicked, config =', config, 'onStart typeof =', typeof onStart);
@@ -227,7 +230,12 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
         initial="hidden"
         animate="show"
         exit="exit"
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        tabIndex={-1}
         style={{
+          outline: 'none',
           width: '100%',
           maxWidth: 560,
           margin: '0 auto',
