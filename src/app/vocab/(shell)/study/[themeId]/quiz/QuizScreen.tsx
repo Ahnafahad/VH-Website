@@ -178,7 +178,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
           transition={reduceMotion ? {} : { repeat: Infinity, duration: 2.5, ease: 'linear' }}
           style={{
             position: 'absolute', inset: 0, borderRadius: 20,
-            background: 'conic-gradient(from 0deg, #E63946 0%, transparent 35%, transparent 65%, #E63946 100%)',
+            background: 'conic-gradient(from 0deg, var(--color-lx-accent-red) 0%, transparent 35%, transparent 65%, var(--color-lx-accent-red) 100%)',
           }}
         />
         <div style={{

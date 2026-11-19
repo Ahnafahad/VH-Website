@@ -172,7 +172,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
               position:     'absolute',
               inset:        '-3px',
               borderRadius: '50%',
-              background:   'conic-gradient(from 0deg, var(--color-lx-accent-gold), #F4A828, rgba(201,168,76,0.15) 45%, transparent 55%, rgba(201,168,76,0.15) 65%, var(--color-lx-accent-gold))',
+              background:   'conic-gradient(from 0deg, var(--color-lx-accent-gold), var(--color-lx-accent-gold), rgba(201,168,76,0.15) 45%, transparent 55%, rgba(201,168,76,0.15) 65%, var(--color-lx-accent-gold))',
             }}
           />
 

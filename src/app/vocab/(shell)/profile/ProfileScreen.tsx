@@ -208,7 +208,7 @@ function HexAvatar({ initials: init }: { initials: string }) {
         style={{
           position:     'absolute',
           inset:        -3,
-          background:   'conic-gradient(from 0deg, #E63946, #F4A828 50%, transparent 55%, transparent 65%, #E6394660, #E63946)',
+          background:   'conic-gradient(from 0deg, var(--color-lx-accent-red), var(--color-lx-accent-gold) 50%, transparent 55%, transparent 65%, #E6394660, var(--color-lx-accent-red))',
           clipPath:     'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
         }}
       />
@@ -217,7 +217,7 @@ function HexAvatar({ initials: init }: { initials: string }) {
         style={{
           position:       'absolute',
           inset:          3,
-          background:     '#E63946',
+          background:     'var(--color-lx-accent-red)',
           clipPath:       'polygon(50% 0%, 93% 25%, 93% 75%, 50% 100%, 7% 75%, 7% 25%)',
           display:        'flex',
           alignItems:     'center',
@@ -722,7 +722,7 @@ export default function ProfileScreen({
                             color:        'var(--color-lx-text-primary)',
                             background:   'transparent',
                             border:       'none',
-                            borderBottom: '1.5px solid #E63946',
+                            borderBottom: '1.5px solid var(--color-lx-accent-red)',
                             outline:      'none',
                             width:        '100%',
                             padding:      '0 0 2px',
@@ -738,7 +738,7 @@ export default function ProfileScreen({
                             left:            0,
                             width:           '100%',
                             height:          1.5,
-                            background:      '#E63946',
+                            background:      'var(--color-lx-accent-red)',
                             transformOrigin: 'left center',
                             pointerEvents:   'none',
                           }}
@@ -861,7 +861,7 @@ export default function ProfileScreen({
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
                     fontSize:   'clamp(2rem, 9vw, 2.875rem)',
                     fontWeight: 600,
-                    color:      '#E63946',
+                    color:      'var(--color-lx-accent-red)',
                     lineHeight: 1,
                   }}>
                     {data.levelStats.mastered.toLocaleString()}
@@ -883,7 +883,7 @@ export default function ProfileScreen({
                     transition={{ type: 'spring' as const, stiffness: 90, damping: 22, delay: 0.3 }}
                     style={{
                       height:          '100%',
-                      background:      'linear-gradient(90deg, #E63946, #F4A828)',
+                      background:      'linear-gradient(90deg, var(--color-lx-accent-red), var(--color-lx-accent-gold))',
                       transformOrigin: 'left center',
                     }}
                   />
@@ -1070,7 +1070,7 @@ export default function ProfileScreen({
                               <div style={{
                                 height:     '100%',
                                 width:      `${Math.min(100, badge.progress)}%`,
-                                background: '#E63946',
+                                background: 'var(--color-lx-accent-red)',
                               }} />
                             )}
                           </div>
@@ -1137,7 +1137,7 @@ export default function ProfileScreen({
                         gap:        5,
                         padding:    '4px 10px',
                         background: levelFilter === f ? 'rgba(228,57,70,0.18)' : 'rgba(255,255,255,0.04)',
-                        border:     levelFilter === f ? '1px solid #E63946' : '1px solid transparent',
+                        border:     levelFilter === f ? '1px solid var(--color-lx-accent-red)' : '1px solid transparent',
                         borderRadius: 2,
                         cursor:     'pointer',
                         whiteSpace: 'nowrap',
@@ -1351,12 +1351,12 @@ export default function ProfileScreen({
                           gap:         5,
                           padding:     '3px 8px 3px 6px',
                           background:  'rgba(244,168,40,0.08)',
-                          borderLeft:  '2px solid #F4A828',
+                          borderLeft:  '2px solid var(--color-lx-accent-gold)',
                         }}>
                           <span style={{
                             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                             fontSize:   9,
-                            color:      '#F4A828',
+                            color:      'var(--color-lx-accent-gold)',
                             letterSpacing: '0.08em',
                             textTransform: 'uppercase',
                           }}>
@@ -1366,7 +1366,7 @@ export default function ProfileScreen({
                             fontFamily: "var(--font-lexi-word), Georgia, serif",
                             fontSize:   18,
                             fontWeight: 600,
-                            color:      '#F4A828',
+                            color:      'var(--color-lx-accent-gold)',
                             lineHeight: 1,
                           }}>
                             <AnimatedNumber value={dailyTarget} />
@@ -1594,7 +1594,7 @@ export default function ProfileScreen({
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize:   10,
-                      color:      '#F4A828',
+                      color:      'var(--color-lx-accent-gold)',
                       margin:     '0 0 8px 50px',
                       lineHeight: 1.5,
                     }}
@@ -1878,7 +1878,7 @@ export default function ProfileScreen({
                         <div style={{ height: 2, background: 'rgba(255,255,255,0.07)', borderRadius: 1 }}>
                           <div style={{
                             height: '100%', width: `${Math.min(100, b.progress)}%`,
-                            background: 'linear-gradient(90deg, #E63946, #F4A828)', borderRadius: 1,
+                            background: 'linear-gradient(90deg, var(--color-lx-accent-red), var(--color-lx-accent-gold))', borderRadius: 1,
                             minWidth: b.progress > 0 ? 4 : 0,
                           }} />
                         </div>
@@ -2077,7 +2077,7 @@ export default function ProfileScreen({
                       marginTop:   10,
                       padding:     '10px 14px',
                       background:  'rgba(244,168,40,0.06)',
-                      borderLeft:  '2px solid #F4A828',
+                      borderLeft:  '2px solid var(--color-lx-accent-gold)',
                       display:     'flex',
                       alignItems:  'center',
                       gap:         10,
@@ -2085,13 +2085,13 @@ export default function ProfileScreen({
                   >
                     <span style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize:   11, color: '#F4A828',
+                      fontSize:   11, color: 'var(--color-lx-accent-gold)',
                     }}>
                       Estimated daily target:
                     </span>
                     <span style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize:   22, fontWeight: 600, color: '#F4A828',
+                      fontSize:   22, fontWeight: 600, color: 'var(--color-lx-accent-gold)',
                     }}>
                       {(() => {
                         const dLeft = Math.max(1, daysUntil(pickerDate + 'T00:00:00.000Z'));
