@@ -62,7 +62,7 @@ export default function UnlockAllWordsBanner({ lockedCount, unlockedCount }: Pro
         <div style={{ flex: 1, minWidth: 0 }}>
           <p
             style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:   '0.8125rem',
               fontWeight: 600,
               color:      'var(--color-lx-text-primary)',
@@ -74,7 +74,7 @@ export default function UnlockAllWordsBanner({ lockedCount, unlockedCount }: Pro
           </p>
           <p
             style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:   '0.6875rem',
               fontWeight: 400,
               color:      'var(--color-lx-text-muted)',

@@ -9,8 +9,8 @@ import { LexiIcon } from '@/components/vocab/LexiAsset';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 const C = {
   surface:   'var(--color-lx-surface)',

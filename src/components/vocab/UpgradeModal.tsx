@@ -21,8 +21,8 @@ const C = {
   textSec:  'var(--color-lx-text-secondary)',
   textMuted:'var(--color-lx-text-muted)',
 } as const;
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 /** The one "free plan limit / upgrade" prompt, used by every gated flashcard and quiz call site. */
 export default function UpgradeModal({ kind, onClose }: Props) {

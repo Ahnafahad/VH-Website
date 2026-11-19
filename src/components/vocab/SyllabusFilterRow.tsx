@@ -83,7 +83,7 @@ export default function SyllabusFilterRow({ syllabuses, selectedIds }: {
                 minHeight: 32,
                 padding: '6px 12px 6px 8px',
                 borderRadius: 999,
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize: '0.72rem',
                 fontWeight: 600,
                 background: on ? 'rgba(230,57,70,0.10)' : 'var(--color-lx-elevated)',
@@ -114,7 +114,7 @@ export default function SyllabusFilterRow({ syllabuses, selectedIds }: {
         <p
           role="alert"
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize: '0.7rem',
             color: 'var(--color-lx-danger)',
             margin: 0,

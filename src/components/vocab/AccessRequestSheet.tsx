@@ -88,7 +88,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
     border:       '1px solid var(--form-border)',
     borderRadius: '10px',
     padding:      '13px 14px',
-    fontFamily:   "'Sora', sans-serif",
+    fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
     fontSize:     '15px',
     fontWeight:   400,
     color:        'var(--form-input-text)',
@@ -201,7 +201,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
 
               <p
                 style={{
-                  fontFamily:   "'Sora', sans-serif",
+                  fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize:     '13px',
                   fontWeight:   300,
                   color:        'var(--color-lx-text-secondary)',
@@ -215,7 +215,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
               <button
                 onClick={onClose}
                 style={{
-                  fontFamily:    "'Sora', sans-serif",
+                  fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize:      '13px',
                   fontWeight:    600,
                   letterSpacing: '0.08em',
@@ -264,7 +264,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                   {subtitle && (
                     <p
                       style={{
-                        fontFamily: "'Sora', sans-serif",
+                        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                         fontSize:   '11px',
                         fontWeight: 400,
                         color:      'var(--color-lx-text-muted)',
@@ -311,7 +311,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                   htmlFor="lx-whatsapp"
                   style={{
                     display:       'block',
-                    fontFamily:    "'Sora', sans-serif",
+                    fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize:      '11px',
                     fontWeight:    600,
                     letterSpacing: '0.1em',
@@ -353,7 +353,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                   htmlFor="lx-message"
                   style={{
                     display:       'block',
-                    fontFamily:    "'Sora', sans-serif",
+                    fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize:      '11px',
                     fontWeight:    600,
                     letterSpacing: '0.1em',
@@ -396,7 +396,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                     exit={{   opacity: 0, height: 0, marginBottom: 0 }}
                     role="alert"
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize:   '12px',
                       fontWeight: 400,
                       color:      'var(--color-lx-accent-red)',
@@ -425,7 +425,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                     ? 'rgba(201,168,76,0.08)'
                     : 'linear-gradient(135deg, rgba(201,168,76,0.22) 0%, rgba(201,168,76,0.1) 100%)',
                   border:        '1px solid rgba(201,168,76,0.38)',
-                  fontFamily:    "'Sora', sans-serif",
+                  fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize:      '13px',
                   fontWeight:    600,
                   letterSpacing: '0.06em',

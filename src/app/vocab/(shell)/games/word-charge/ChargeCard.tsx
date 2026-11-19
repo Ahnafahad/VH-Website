@@ -9,8 +9,8 @@ import {
 } from 'framer-motion';
 import type { ChargeWord } from '@/lib/vocab/word-charge/types';
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 // Commit thresholds — spec: ≥38% of container width OR velocity >600 with |offset|≥60px
 const VELOCITY_THRESHOLD = 600;

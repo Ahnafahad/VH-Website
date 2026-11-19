@@ -53,7 +53,7 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
   }: { n: number; label: string; color: string }) => (
     <div style={{
       display: 'flex', alignItems: 'baseline', gap: 5,
-      fontFamily: "'Sora', sans-serif", lineHeight: 1,
+      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", lineHeight: 1,
     }}>
       <span style={{
         minWidth: '1.6ch', textAlign: 'right',
@@ -99,7 +99,7 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         style={{ position: 'absolute', inset: 4, opacity: 0.2, zIndex: 0 }}
       />
       <span style={{
-        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontFamily: "var(--font-lexi-word), Georgia, serif",
         fontSize: '1.75rem', fontWeight: 700,
         color: 'var(--color-lx-text-primary)',
         lineHeight: 1, position: 'relative', zIndex: 1,
@@ -173,7 +173,7 @@ function TabSwitcher({
             padding: '0.5rem 1.25rem',
             minHeight: 44,
             background: 'none', border: 'none', cursor: 'pointer',
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize: '0.8125rem', fontWeight: 600,
             color: active === id ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
             position: 'relative',
@@ -184,7 +184,7 @@ function TabSwitcher({
           {/* Count badge on Review tab */}
           {id === 'review' && reviewCount > 0 && (
             <span style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize: '0.55rem', fontWeight: 700,
               background: 'var(--color-lx-accent-red)',
               color: '#fff',
@@ -259,7 +259,7 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
 
       <h1
         style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontFamily: "var(--font-lexi-word), Georgia, serif",
           fontSize:   'clamp(2rem, 4vw, 2.6rem)',
           fontWeight: 700,
           fontStyle:  'italic',
@@ -346,13 +346,13 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
               <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.875rem', padding: '3rem 1rem', textAlign: 'center' }}>
                 <LexiArtwork path="study/empty-library.webp" width={120} height={120} />
                 <p style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontFamily: "var(--font-lexi-word), Georgia, serif",
                   fontSize: '1.5rem', fontWeight: 700, fontStyle: 'italic',
                   color: 'var(--color-lx-text-primary)',
                 }}>
                   Library empty
                 </p>
-                <p className="text-sm" style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "'Sora', sans-serif" }}>
+                <p className="text-sm" style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
                   No words in the library yet.
                 </p>
               </div>
@@ -423,11 +423,11 @@ function UnitAccordion({
             <div className="flex flex-col items-start gap-0.5">
             <span
               className="text-lg font-semibold"
-              style={{ fontFamily: "'Sora', sans-serif" }}
+              style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
             >
               {unit.name}
             </span>
-            <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+            <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
               {unit.completePct}% complete · {unit.themes.length} themes
             </span>
             </div>
@@ -542,17 +542,17 @@ function ThemeCard({
       <div className="flex flex-col gap-0.5">
         <span
           className="text-sm font-semibold"
-          style={{ color: 'var(--color-lx-text-primary)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-primary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           {theme.name}
         </span>
-        <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+        <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
           {theme.wordCount} words
         </span>
         {isResume && (
           <span
             className="text-xs font-medium"
-            style={{ color: 'var(--color-lx-accent-red)', fontFamily: "'Sora', sans-serif" }}
+            style={{ color: 'var(--color-lx-accent-red)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
           >
             Resume →
           </span>
@@ -566,7 +566,7 @@ function ThemeCard({
           style={{
             color:      cfg.color,
             background: cfg.bg,
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           }}
           {...(isComplete && !shouldReduce ? {
             animate: { scale: [1, 1.1, 1], boxShadow: ['0 0 0px rgba(46,204,113,0)', '0 0 8px rgba(46,204,113,0.55)', '0 0 0px rgba(46,204,113,0)'] },

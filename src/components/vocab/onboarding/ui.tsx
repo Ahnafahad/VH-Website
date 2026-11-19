@@ -40,7 +40,7 @@ export function PrimaryButton({ children, onClick, disabled }: {
       style={{
         background: 'var(--color-lx-accent-red)',
         color: '#fff',
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         opacity: disabled ? 0.5 : 1,
       }}
     >
@@ -105,7 +105,7 @@ function Chip({ active, label, onClick }: { active: boolean; label: string; onCl
       aria-pressed={active}
       className="relative min-h-11 rounded-full px-3.5 py-2 text-sm"
       style={{
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         background: active ? 'rgba(244,168,40,0.14)' : 'var(--color-lx-elevated)',
         color:      active ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-secondary)',
         border:     `1px solid ${active ? 'rgba(244,168,40,0.38)' : 'var(--color-lx-border)'}`,

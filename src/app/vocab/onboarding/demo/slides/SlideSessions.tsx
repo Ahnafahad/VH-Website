@@ -84,7 +84,7 @@ export default function SlideSessions({ onNext, stepLabel }: Props) {
               <div className="flex flex-1 flex-col">
                 <span
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.78rem',
                     fontWeight: 600,
                     color: 'var(--color-lx-text-primary)',
@@ -115,7 +115,7 @@ export default function SlideSessions({ onNext, stepLabel }: Props) {
                     transition={{ duration: 0.25 }}
                     className="absolute -bottom-7 left-4 right-4"
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.6rem',
                       color: 'var(--color-lx-text-muted)',
                       zIndex: 5,

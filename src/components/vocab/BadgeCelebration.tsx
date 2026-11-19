@@ -411,7 +411,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           animate="show"
           exit="exit"
           style={{
-            fontFamily:    "'Sora', sans-serif",
+            fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:      '9px',
             fontWeight:    600,
             letterSpacing: '0.32em',
@@ -431,7 +431,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           animate="show"
           exit="exit"
           style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   ultimate ? '38px' : '34px',
             fontWeight: 600,
             fontStyle:  'italic',
@@ -466,7 +466,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           animate="show"
           exit="exit"
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '13px',
             fontWeight: 300,
             color:      'rgba(248, 244, 238, 0.50)',
@@ -512,7 +512,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           whileHover={{ scale: 1.04 }}
           whileTap={{  scale: 0.96 }}
           style={{
-            fontFamily:    "'Sora', sans-serif",
+            fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:      '11px',
             fontWeight:    600,
             letterSpacing: '0.22em',
@@ -546,7 +546,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           animate="show"
           exit="exit"
           style={{
-            fontFamily:    "'Sora', sans-serif",
+            fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:      '9px',
             fontWeight:    500,
             letterSpacing: '0.26em',

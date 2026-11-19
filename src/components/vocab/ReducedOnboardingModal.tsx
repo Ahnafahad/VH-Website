@@ -172,7 +172,7 @@ export default function ReducedOnboardingModal({
                         aria-pressed={on}
                         className="rounded-2xl px-4 py-3.5 text-left"
                         style={{
-                          fontFamily: "'Sora', sans-serif",
+                          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                           background: on ? 'rgba(230,57,70,0.10)' : 'var(--color-lx-elevated)',
                           border: `1px solid ${on ? 'var(--color-lx-accent-red)' : 'var(--color-lx-border)'}`,
                           boxShadow: on ? '0 0 0 3px rgba(230,57,70,0.1)' : 'none',
@@ -195,7 +195,7 @@ export default function ReducedOnboardingModal({
                 </PrimaryButton>
 
                 {error && (
-                  <p role="alert" style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.78rem', color: 'var(--color-lx-danger)', textAlign: 'center', margin: 0 }}>
+                  <p role="alert" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.78rem', color: 'var(--color-lx-danger)', textAlign: 'center', margin: 0 }}>
                     Couldn’t save that — check your connection and try again.
                   </p>
                 )}
@@ -213,7 +213,7 @@ function Header({ title, subtitle }: { title: string; subtitle: string }) {
     <div className="flex flex-col gap-2">
       <h2
         style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontFamily: "var(--font-lexi-word), Georgia, serif",
           fontSize:   '1.6rem',
           fontWeight: 700,
           fontStyle:  'italic',
@@ -226,7 +226,7 @@ function Header({ title, subtitle }: { title: string; subtitle: string }) {
       </h2>
       <p
         style={{
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:   '0.84rem',
           color:      'var(--color-lx-text-secondary)',
           lineHeight: 1.5,

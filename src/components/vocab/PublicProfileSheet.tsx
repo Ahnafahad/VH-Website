@@ -97,7 +97,7 @@ function useIsDesktop(): boolean {
 // ─── Shared inline styles ─────────────────────────────────────────────────────
 
 const ledgerLabel: React.CSSProperties = {
-  fontFamily:    "'Sora', sans-serif",
+  fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
   fontSize:      9,
   fontWeight:    600,
   letterSpacing: '0.14em',
@@ -106,7 +106,7 @@ const ledgerLabel: React.CSSProperties = {
 };
 
 const ledgerNumeral: React.CSSProperties = {
-  fontFamily: "'Cormorant Garamond', Georgia, serif",
+  fontFamily: "var(--font-lexi-word), Georgia, serif",
   fontSize:   'clamp(1.2rem, 5vw, 1.7rem)',
   fontWeight: 600,
   lineHeight: 1,
@@ -179,7 +179,7 @@ function ErrorBody({ onRetry }: { onRetry: () => void }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '32px 8px' }}>
       <p style={{
-        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontFamily: "var(--font-lexi-word), Georgia, serif",
         fontSize:   20,
         fontStyle:  'italic',
         color:      'var(--color-lx-text-primary)',
@@ -188,7 +188,7 @@ function ErrorBody({ onRetry }: { onRetry: () => void }) {
         Couldn&apos;t load profile
       </p>
       <p style={{
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         fontSize:   12,
         color:      'var(--color-lx-text-muted)',
         margin:     '0 0 20px',
@@ -206,7 +206,7 @@ function ErrorBody({ onRetry }: { onRetry: () => void }) {
           border:        '1px solid rgba(230,57,70,0.3)',
           borderRadius:  6,
           cursor:        'pointer',
-          fontFamily:    "'Sora', sans-serif",
+          fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:      12,
           fontWeight:    600,
           letterSpacing: '0.04em',
@@ -237,7 +237,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
           }}
         >
           <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   '1.4rem',
             fontWeight: 700,
             fontStyle:  'italic',
@@ -249,7 +249,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
 
         <div style={{ flex: 1, minWidth: 0 }}>
           <h2 style={{
-            fontFamily:   "'Cormorant Garamond', Georgia, serif",
+            fontFamily:   "var(--font-lexi-word), Georgia, serif",
             fontSize:     22,
             fontStyle:    'italic',
             fontWeight:   600,
@@ -263,7 +263,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
             {profile.name}
           </h2>
           <p style={{
-            fontFamily:    "'Sora', sans-serif",
+            fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:      10,
             fontWeight:    500,
             letterSpacing: '0.12em',
@@ -292,7 +292,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
           <span style={ledgerLabel}>Words Mastered</span>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, minWidth: 0 }}>
             <span style={ledgerNumeral}>{profile.wordsMastered.toLocaleString()}</span>
-            <span style={{ fontFamily: "'Sora', sans-serif", fontSize: 11, color: 'var(--color-lx-text-muted)' }}>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 11, color: 'var(--color-lx-text-muted)' }}>
               / {profile.totalWords.toLocaleString()}
             </span>
           </div>
@@ -307,10 +307,10 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
               </svg>
             )}
             <span style={ledgerNumeral}>{profile.longestStreak}</span>
-            <span style={{ fontFamily: "'Sora', sans-serif", fontSize: 11, color: 'var(--color-lx-text-muted)' }}>d</span>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 11, color: 'var(--color-lx-text-muted)' }}>d</span>
           </div>
           {profile.streakDays > 0 && (
-            <span style={{ fontFamily: "'Sora', sans-serif", fontSize: 9, color: 'var(--color-lx-text-muted)' }}>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 9, color: 'var(--color-lx-text-muted)' }}>
               current: {profile.streakDays}d
             </span>
           )}
@@ -320,7 +320,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
       {/* Distinctions */}
       <div>
         <p style={{
-          fontFamily:    "'Sora', sans-serif",
+          fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:      9,
           fontWeight:    600,
           letterSpacing: '0.18em',
@@ -333,7 +333,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
         </p>
         {profile.badgesEarned > 0 && (
           <p style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   9,
             color:      'var(--color-lx-text-muted)',
             textAlign:  'center',
@@ -345,7 +345,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
 
         {profile.badges.length === 0 ? (
           <p style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   15,
             fontStyle:  'italic',
             color:      'var(--color-lx-text-muted)',
@@ -385,7 +385,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
                     style={{ filter: `drop-shadow(0 0 4px ${accent}80)` }}
                   />
                   <span style={{
-                    fontFamily:      "'Sora', sans-serif",
+                    fontFamily:      "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize:        8,
                     lineHeight:      1.3,
                     textAlign:       'center',

@@ -91,7 +91,7 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
         aria-hidden
         className="pointer-events-none absolute -right-1 -top-1 select-none font-serif leading-none"
         style={{
-          fontFamily: "'Cormorant Garamond', serif",
+          fontFamily: "var(--font-lexi-word), Georgia, serif",
           fontSize:   '5.5rem',
           fontWeight: 700,
           fontStyle:  'italic',
@@ -119,7 +119,7 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
         style={{
           background: isMe ? 'rgba(230,57,70,0.15)' : `${m.ring.replace('0.9)', '0.15)')}`,
           color:      isMe ? 'var(--color-lx-accent-red)' : m.ring,
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         }}
       >
         {isMe ? 'YOU' : label}
@@ -134,7 +134,7 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
         <p
           className="text-center leading-tight"
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   '1.05rem',
             fontWeight: 600,
             fontStyle:  'italic',
@@ -154,7 +154,7 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
       <p
         className="relative z-10 tabular-nums"
         style={{
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:   '0.95rem',
           fontWeight: 700,
           color:      isMe ? 'var(--color-lx-accent-red)' : m.ring,
@@ -218,7 +218,7 @@ function Row({ rank, name, points, isMe, delay, rowRef, onSelect, prevRank }: Ro
         className="w-7 shrink-0 text-center text-sm font-semibold tabular-nums"
         style={{
           color:      'var(--color-lx-text-muted)',
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         }}
       >
         {rank}
@@ -229,7 +229,7 @@ function Row({ rank, name, points, isMe, delay, rowRef, onSelect, prevRank }: Ro
         style={{
           background:  'var(--color-lx-elevated)',
           color:       isMe ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-secondary)',
-          fontFamily:  "'Cormorant Garamond', serif",
+          fontFamily:  "var(--font-lexi-word), Georgia, serif",
           fontSize:    '0.95rem',
           fontStyle:   'italic',
         }}
@@ -241,7 +241,7 @@ function Row({ rank, name, points, isMe, delay, rowRef, onSelect, prevRank }: Ro
         className="min-w-0 flex-1 truncate text-sm font-medium"
         style={{
           color:      isMe ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         }}
       >
         {name}{isMe ? ' · you' : ''}
@@ -270,7 +270,7 @@ function Row({ rank, name, points, isMe, delay, rowRef, onSelect, prevRank }: Ro
         className="shrink-0 tabular-nums text-sm font-semibold"
         style={{
           color:      'var(--color-lx-accent-gold)',
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         }}
       >
         {points.toLocaleString()}
@@ -318,7 +318,7 @@ function SessionGroup({ label, entries }: SessionGroupProps) {
         </svg>
         <span
           className="text-xs font-semibold uppercase tracking-widest"
-          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           {label}
         </span>
@@ -334,7 +334,7 @@ function SessionGroup({ label, entries }: SessionGroupProps) {
             className="shrink-0 text-sm font-bold"
             style={{
               color:      HALL_COLORS[e.rank] ?? 'var(--color-lx-text-muted)',
-              fontFamily: "'Cormorant Garamond', serif",
+              fontFamily: "var(--font-lexi-word), Georgia, serif",
               fontSize:   '1.1rem',
               fontStyle:  'italic',
               minWidth:   18,
@@ -344,13 +344,13 @@ function SessionGroup({ label, entries }: SessionGroupProps) {
           </span>
           <p
             className="min-w-0 flex-1 truncate font-medium"
-            style={{ color: 'var(--color-lx-text-primary)', fontFamily: "'Sora', sans-serif", fontSize: '0.875rem' }}
+            style={{ color: 'var(--color-lx-text-primary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.875rem' }}
           >
             {e.displayName}
           </p>
           <span
             className="shrink-0 tabular-nums text-sm font-semibold"
-            style={{ color: HALL_COLORS[e.rank] ?? 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+            style={{ color: HALL_COLORS[e.rank] ?? 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
           >
             {e.points.toLocaleString()} <span style={{ color: 'var(--color-lx-text-muted)', fontWeight: 400 }}>pts</span>
           </span>
@@ -414,7 +414,7 @@ function LeaderList({ entries, getPoints, myRowRef, onSelect }: ListProps) {
           <div className="h-px flex-1" style={{ background: 'var(--color-lx-border)' }} />
           <span
             className="text-xs uppercase tracking-widest"
-            style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+            style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
           >
             Ranking
           </span>
@@ -441,7 +441,7 @@ function LeaderList({ entries, getPoints, myRowRef, onSelect }: ListProps) {
       {entries.length === 0 && (
         <p
           className="py-12 text-center text-sm"
-          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           No rankings yet. Be the first!
         </p>
@@ -474,13 +474,13 @@ function MyBanner({ rank, points, label }: MyBannerProps) {
       <div>
         <p
           className="text-xs"
-          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           Your rank · {label}
         </p>
         <p
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   '1.5rem',
             fontWeight: 700,
             color:      'var(--color-lx-accent-red)',
@@ -493,14 +493,14 @@ function MyBanner({ rank, points, label }: MyBannerProps) {
       <div className="text-right">
         <p
           className="text-xs"
-          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           Points
         </p>
         <p
           className="tabular-nums"
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '1rem',
             fontWeight: 700,
             color:      'var(--color-lx-accent-gold)',
@@ -567,13 +567,13 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
       >
         <p
           className="mb-1 text-xs font-medium uppercase tracking-widest"
-          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           Rankings
         </p>
         <h1
           style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   'clamp(2.2rem, 8vw, 2.6rem)',
             fontWeight: 700,
             fontStyle:  'italic',
@@ -603,7 +603,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
               onClick={() => { if (tab !== t.id) { fb.play('tap'); setTab(t.id); } }}
               className="relative flex-1 text-xs font-semibold transition-colors"
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 color: tab === t.id ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
                 minHeight: 44,
                 paddingTop: '0.625rem',
@@ -708,7 +708,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.12, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontFamily: "var(--font-lexi-word), Georgia, serif",
                       fontSize: '1.6rem',
                       fontWeight: 700,
                       fontStyle: 'italic',
@@ -725,7 +725,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.24, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     className="text-sm"
-                    style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif", maxWidth: 220 }}
+                    style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", maxWidth: 220 }}
                   >
                     Complete a full week to claim your place in history.
                   </motion.p>

@@ -11,8 +11,8 @@ import type { GameStateResponse } from '@/lib/vocab/game/types';
 import type { ChargeSummaryResponse } from '@/lib/vocab/word-charge/types';
 import type { LastWordSummaryResponse } from '@/app/api/vocab/games/last-word/summary/route';
 
-const SANS  = "'Sora', sans-serif";
-const SERIF = "'Cormorant Garamond', Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
 
 type ArchiveEntry = {
   date:        string;

@@ -111,7 +111,7 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
       <div className="absolute inset-0 flex flex-col items-center justify-center gap-0.5">
         <span
           style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize,
             fontWeight: 700,
             lineHeight: 1,
@@ -124,7 +124,7 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
         {label && (
           <span
             style={{
-              fontFamily:    "'Sora', sans-serif",
+              fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:      '0.6rem',
               color:         'var(--color-lx-text-muted)',
               letterSpacing: '0.06em',

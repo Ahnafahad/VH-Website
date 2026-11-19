@@ -84,14 +84,14 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                     className="flex items-center justify-between gap-4"
                   >
                     <span style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.6rem',
                       color: 'var(--color-lx-text-secondary)',
                     }}>
                       {row.label}
                     </span>
                     <span style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.6rem',
                       fontWeight: 600,
                       color: 'var(--color-lx-accent-gold)',
@@ -110,7 +110,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                     className="flex flex-col items-center"
                   >
                     <span style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontFamily: "var(--font-lexi-word), Georgia, serif",
                       fontSize: '1.6rem',
                       fontWeight: 700,
                       color: 'var(--color-lx-accent-gold)',
@@ -119,7 +119,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                       40
                     </span>
                     <span style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.5rem',
                       color: 'var(--color-lx-text-muted)',
                       textTransform: 'uppercase',
@@ -167,7 +167,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                     {badge.icon}
                   </span>
                   <span style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.48rem',
                     fontWeight: 500,
                     color: badge.unlocked ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)',
@@ -211,7 +211,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                 >
                   <div className="flex items-center gap-2">
                     <span style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.6rem',
                       fontWeight: 700,
                       color: row.color,
@@ -220,7 +220,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                       #{row.rank}
                     </span>
                     <span style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.65rem',
                       fontWeight: row.isYou ? 700 : 500,
                       color: row.isYou ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
@@ -229,7 +229,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                     </span>
                   </div>
                   <span style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.6rem',
                     fontWeight: 600,
                     color: 'var(--color-lx-text-muted)',

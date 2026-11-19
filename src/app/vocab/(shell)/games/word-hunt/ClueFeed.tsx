@@ -2,8 +2,8 @@
 
 import type { UnlockedClues } from '@/lib/vocab/game/types';
 
-const SANS  = "'Sora', sans-serif";
-const SERIF = "'Cormorant Garamond', Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
 
 function ClueLabel({ n, title }: { n: number; title: string }) {
   return (

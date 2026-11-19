@@ -36,7 +36,7 @@ function TabSwitcher({ active, onChange }: { active: PracticeTab; onChange: (t: 
             padding: '0.5rem 1.25rem',
             minHeight: 44,
             background: 'none', border: 'none', cursor: 'pointer',
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize: '0.8125rem', fontWeight: 600,
             color: active === tab ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
             position: 'relative',
@@ -85,7 +85,7 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
   }: { n: number; label: string; color: string }) => (
     <div style={{
       display: 'flex', alignItems: 'baseline', gap: 5,
-      fontFamily: "'Sora', sans-serif", lineHeight: 1,
+      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", lineHeight: 1,
     }}>
       <span style={{
         minWidth: '1.6ch', textAlign: 'right',
@@ -171,7 +171,7 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
       </AnimatePresence>
 
       <span style={{
-        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontFamily: "var(--font-lexi-word), Georgia, serif",
         fontSize: '1.75rem', fontWeight: 700,
         color: selected ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
         lineHeight: 1, transition: 'color 0.18s',
@@ -326,7 +326,7 @@ function ThemeRow({ name, wordCount, familiarPlusCount, selected, onToggle }: Th
 
         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
           <span style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize: '0.875rem', fontWeight: 600,
             color: 'var(--color-lx-text-primary)',
             display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
@@ -335,7 +335,7 @@ function ThemeRow({ name, wordCount, familiarPlusCount, selected, onToggle }: Th
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <span style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
             }}>
               {wordCount} words
@@ -420,7 +420,7 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
           <div style={{ flex: 1, minWidth: 0 }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
               <span style={{
-                fontFamily: "'Cormorant Garamond', serif",
+                fontFamily: "var(--font-lexi-word), Georgia, serif",
                 fontSize: '1.05rem', fontWeight: 700, fontStyle: 'italic',
                 color: 'var(--color-lx-text-primary)', lineHeight: 1.2,
               }}>
@@ -432,7 +432,7 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.8 }}
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.65rem', fontWeight: 700,
                     color: 'var(--color-lx-accent-gold)',
                     background: 'rgba(212,175,55,0.15)',
@@ -447,21 +447,21 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3 }}>
               <span style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
               }}>
                 {unit.totalWords} words
               </span>
               {unit.totalMastered > 0 && (
                 <span style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.7rem', color: 'var(--color-lx-success)',
                 }}>
                   {masteredPct}% mastered
                 </span>
               )}
               <span style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
               }}>
                 · {unit.themes.length} {unit.themes.length === 1 ? 'theme' : 'themes'}
@@ -565,14 +565,14 @@ function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () =>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <span style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize: '1.2rem', fontWeight: 700, fontStyle: 'italic',
             color: unlocked ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-primary)',
           }}>
             Exam Mode
           </span>
           <span style={{
-            fontFamily: "'Sora', sans-serif", fontSize: '0.55rem', fontWeight: 700,
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.55rem', fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase',
             padding: '0.15rem 0.45rem', borderRadius: 6,
             background: unlocked ? 'rgba(244,168,40,0.15)' : 'var(--color-lx-elevated)',
@@ -582,7 +582,7 @@ function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () =>
           </span>
         </div>
         <p style={{
-          fontFamily: "'Sora', sans-serif", fontSize: '0.75rem',
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.75rem',
           color: 'var(--color-lx-text-secondary)', marginTop: 2, lineHeight: 1.45,
         }}>
           {unlocked
@@ -694,13 +694,13 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           transition={{ type: 'spring' as const, stiffness: 280, damping: 20 }}
         >
           <p style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize: '1.8rem', fontWeight: 700, fontStyle: 'italic',
             color: 'var(--color-lx-text-primary)',
           }}>
             No units yet
           </p>
-          <p className="mt-2 text-sm" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+          <p className="mt-2 text-sm" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
             Units will appear here once the word bank is loaded.
           </p>
         </motion.div>
@@ -728,7 +728,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35 }}
           className="text-xs font-medium tracking-widest uppercase mb-1"
-          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           Practice Mode
         </motion.p>
@@ -737,7 +737,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: 0.05 }}
           style={{
-            fontFamily: "'Cormorant Garamond', serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize: 'clamp(2rem, 8vw, 2.5rem)', fontWeight: 700, fontStyle: 'italic',
             lineHeight: 1.05, color: 'var(--color-lx-text-primary)',
           }}
@@ -749,7 +749,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.15 }}
           className="mt-2 text-sm"
-          style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           {activeTab === 'unit'
             ? 'Select a whole unit or pick individual themes to include'
@@ -798,7 +798,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
             <div className="px-5 mb-3 flex items-center justify-between md:px-8">
               <span
                 className="text-xs uppercase tracking-widest font-medium"
-                style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+                style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
               >
                 {data.units.length} units · {allThemes.length} themes
               </span>
@@ -809,7 +809,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
                   else setSelected(new Set(allThemeIds));
                 }}
                 className="text-xs font-semibold"
-                style={{ color: 'var(--color-lx-accent-red)', fontFamily: "'Sora', sans-serif" }}
+                style={{ color: 'var(--color-lx-accent-red)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
               >
                 {selected.size === allThemeIds.length ? 'Deselect all' : 'Select all'}
               </motion.button>
@@ -841,7 +841,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
             className="px-5 md:px-8 pb-8"
           >
             {data.letters.length === 0 ? (
-              <p className="text-sm" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+              <p className="text-sm" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
                 No words in the library yet.
               </p>
             ) : (
@@ -875,7 +875,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           onClick={handleStart}
           whileTap={{ scale: 0.97 }}
           className="w-full md:max-w-2xl md:mx-auto rounded-2xl py-4 flex items-center justify-between px-6"
-          style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 4px 24px rgba(230,57,70,0.4)', fontFamily: "'Sora', sans-serif", position: 'relative', overflow: 'hidden' }}
+          style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 4px 24px rgba(230,57,70,0.4)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", position: 'relative', overflow: 'hidden' }}
         >
           {/* start-accent.svg: decorative energy mark on the CTA */}
           <span aria-hidden style={{ position: 'absolute', right: 56, top: 0, bottom: 0, width: 32, pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>

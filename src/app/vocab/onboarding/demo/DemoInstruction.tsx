@@ -59,7 +59,7 @@ export default function DemoInstruction({
           )}
           <span
             style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize: '0.68rem',
               fontWeight: 600,
               color: done
@@ -80,7 +80,7 @@ export default function DemoInstruction({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize: '0.62rem',
             fontWeight: 500,
             color: 'var(--color-lx-text-muted)',

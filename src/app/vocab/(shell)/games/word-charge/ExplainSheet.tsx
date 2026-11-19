@@ -11,8 +11,8 @@ import { Volume2 } from 'lucide-react';
 import { speak } from '@/lib/vocab/speak';
 import type { ChargeWord, Connotation } from '@/lib/vocab/word-charge/types';
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 // Matches QuizConfigSheet animation pattern
 const backdropVariants = {

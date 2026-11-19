@@ -89,7 +89,7 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
           <div>
             <p
               style={{
-                fontFamily:  "'Cormorant Garamond', Georgia, serif",
+                fontFamily:  "var(--font-lexi-word), Georgia, serif",
                 fontSize:    '1.1rem',
                 fontWeight:  700,
                 fontStyle:   'italic',
@@ -102,7 +102,7 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
             </p>
             <p
               style={{
-                fontFamily:  "'Sora', sans-serif",
+                fontFamily:  "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:    '11.5px',
                 fontWeight:  400,
                 color:       'var(--color-lx-text-muted)',
@@ -120,7 +120,7 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
               display:       'flex',
               alignItems:    'center',
               gap:           '5px',
-              fontFamily:    "'Sora', sans-serif",
+              fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:      '11px',
               fontWeight:    600,
               letterSpacing: '0.08em',

@@ -172,7 +172,7 @@ function Section({ title, content, diagram, diagramAlt, index }: {
         }}
       >
         <h2 style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontFamily: "var(--font-lexi-word), Georgia, serif",
           fontSize:   '1.15rem',
           fontWeight: 600,
           fontStyle:  open ? 'italic' : 'normal',
@@ -232,7 +232,7 @@ function Section({ title, content, diagram, diagramAlt, index }: {
                 <p
                   key={i}
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize:   '0.82rem',
                     color:      'var(--color-lx-text-secondary)',
                     lineHeight: 1.75,
@@ -273,7 +273,7 @@ export default function HelpScreen() {
             background:     'none',
             border:         'none',
             cursor:         'pointer',
-            fontFamily:     "'Sora', sans-serif",
+            fontFamily:     "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:       '0.7rem',
             fontWeight:     500,
             letterSpacing:  '0.1em',
@@ -293,7 +293,7 @@ export default function HelpScreen() {
           transition={{ delay: 0.05 }}
         >
           <p style={{
-            fontFamily:    "'Sora', sans-serif",
+            fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:      '0.58rem',
             fontWeight:    600,
             letterSpacing: '0.2em',
@@ -304,7 +304,7 @@ export default function HelpScreen() {
             Help & Guides
           </p>
           <h1 style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   'clamp(2rem, 5vw, 2.75rem)',
             fontWeight: 700,
             fontStyle:  'italic',
@@ -315,7 +315,7 @@ export default function HelpScreen() {
             How LexiCore works
           </h1>
           <p style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '0.78rem',
             color:      'var(--color-lx-text-muted)',
             margin:     0,
@@ -357,7 +357,7 @@ export default function HelpScreen() {
         <div className="flex flex-1 flex-col gap-1">
           <span
             style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontFamily: "var(--font-lexi-word), Georgia, serif",
               fontSize: '1.05rem',
               fontWeight: 600,
               fontStyle: 'italic',
@@ -368,7 +368,7 @@ export default function HelpScreen() {
           </span>
           <span
             style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize: '0.68rem',
               color: 'var(--color-lx-text-muted)',
             }}
@@ -382,7 +382,7 @@ export default function HelpScreen() {
           className="flex-shrink-0 rounded-lg px-4 py-2"
           style={{
             background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize: '0.72rem',
             fontWeight: 600,
             color: '#fff',
@@ -418,7 +418,7 @@ export default function HelpScreen() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
         style={{
-          fontFamily:  "'Cormorant Garamond', Georgia, serif",
+          fontFamily:  "var(--font-lexi-word), Georgia, serif",
           fontSize:    '0.88rem',
           fontStyle:   'italic',
           color:       'var(--color-lx-text-muted)',

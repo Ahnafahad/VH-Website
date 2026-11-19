@@ -140,7 +140,7 @@ export default function DemoSlides({ mode, onComplete, onSkip, onClose }: DemoSl
               background: 'none',
               border:     'none',
               cursor:     'pointer',
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:   '0.7rem',
               fontWeight: 500,
               color:      'var(--color-lx-text-muted)',

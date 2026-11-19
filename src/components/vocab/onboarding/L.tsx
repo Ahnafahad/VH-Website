@@ -87,7 +87,7 @@ export default function LSays({ children, delay = 0 }: { children: string; delay
     >
       <LMark />
       <p style={{
-        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontFamily: "var(--font-lexi-word), Georgia, serif",
         fontSize: 'clamp(1.05rem, 4.2vw, 1.35rem)',
         lineHeight: 1.5,
         color: 'var(--color-lx-text-primary)',

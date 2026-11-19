@@ -74,7 +74,7 @@ function SessionComplete({
         >
           <h2
             style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontFamily: "var(--font-lexi-word), Georgia, serif",
               fontSize: '2rem',
               fontWeight: 700,
               fontStyle: 'italic',
@@ -108,7 +108,7 @@ function SessionComplete({
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2rem', fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
+            <span style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '2rem', fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
               {pct}%
             </span>
           </div>
@@ -130,7 +130,7 @@ function SessionComplete({
               className="flex flex-1 flex-col items-center gap-1 rounded-xl py-3"
               style={{ background: 'var(--color-lx-surface)', border: '1px solid var(--color-lx-border)' }}
             >
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.75rem', fontWeight: 700, color: s.color }}>
+              <span style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: s.color }}>
                 {s.count}
               </span>
               <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>{s.label}</span>
@@ -159,14 +159,14 @@ function SessionComplete({
               }
             }}
             className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-semibold"
-            style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "'Sora', sans-serif" }}
+            style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
           >
             Take the Quiz →
           </button>
           <button
             onClick={onReview}
             className="flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-sm font-medium"
-            style={{ background: 'var(--color-lx-elevated)', color: 'var(--color-lx-text-secondary)', fontFamily: "'Sora', sans-serif" }}
+            style={{ background: 'var(--color-lx-elevated)', color: 'var(--color-lx-text-secondary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
           >
             <RotateCcw size={15} /> Review Again
           </button>
@@ -207,7 +207,7 @@ function RatingButtons({ onRate, disabled }: { onRate: (r: Rating) => void; disa
             border:     `1px solid ${b.color}40`,
             color:      b.color,
             opacity:    disabled ? 0.5 : 1,
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             backdropFilter: 'blur(12px)',
             WebkitBackdropFilter: 'blur(12px)',
           }}
@@ -409,11 +409,11 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
 
         <div className="flex flex-col items-center gap-0.5">
           <p className="text-xs font-medium tracking-wide"
-             style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+             style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
             {data.themeName}
           </p>
           <p className="text-sm font-semibold"
-             style={{ color: 'var(--color-lx-text-primary)', fontFamily: "'Sora', sans-serif" }}>
+             style={{ color: 'var(--color-lx-text-primary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
             {index + 1} / {data.words.length}
           </p>
         </div>
@@ -460,7 +460,7 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center text-xs"
-            style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+            style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
           >
             Tap the card to reveal — then rate yourself
           </motion.p>

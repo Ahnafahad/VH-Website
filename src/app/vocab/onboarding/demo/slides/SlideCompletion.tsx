@@ -95,7 +95,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
                         <motion.span
                           key="num"
                           style={{
-                            fontFamily: "'Sora', sans-serif",
+                            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                             fontSize: '0.7rem',
                             fontWeight: 600,
                             color: 'var(--color-lx-text-muted)',
@@ -110,7 +110,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
 
                 <span
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.58rem',
                     fontWeight: 500,
                     color: i <= completedStep ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
@@ -165,7 +165,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
               </motion.div>
               <span
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.7rem',
                   fontWeight: 600,
                   color: 'var(--color-lx-success)',

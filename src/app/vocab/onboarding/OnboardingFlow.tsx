@@ -147,7 +147,7 @@ export default function OnboardingFlow({ userName, tracks }: { userName: string;
         </AnimatePresence>
 
         {error && (
-          <p role="alert" className="pb-2 text-sm" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-accent-red)' }}>
+          <p role="alert" className="pb-2 text-sm" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-accent-red)' }}>
             {error}
           </p>
         )}
@@ -261,7 +261,7 @@ function RepairQuiz({ sessionPromise, onDone }: {
             display: 'flex', flexDirection: 'column', gap: '0.5rem',
             alignItems: 'center', textAlign: 'center',
           }}>
-            <p style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.8125rem', color: 'var(--color-lx-text-secondary)', letterSpacing: '0.04em' }}>
+            <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.8125rem', color: 'var(--color-lx-text-secondary)', letterSpacing: '0.04em' }}>
               Writing your sentences…
             </p>
           </div>
@@ -301,12 +301,12 @@ function RepairQuiz({ sessionPromise, onDone }: {
 
   return (
     <div className="flex flex-1 flex-col gap-5 py-4">
-      <span className="text-xs tabular-nums" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}>
+      <span className="text-xs tabular-nums" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
         {index + 1} of {session.questions.length}
       </span>
 
       <p style={{
-        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontFamily: "var(--font-lexi-word), Georgia, serif",
         fontSize: 'clamp(1.35rem, 5.5vw, 1.8rem)',
         lineHeight: 1.45,
         color: 'var(--color-lx-text-primary)',
@@ -329,7 +329,7 @@ function RepairQuiz({ sessionPromise, onDone }: {
               transition={{ type: 'spring', stiffness: 500, damping: 15 }}
               className="rounded-2xl px-4 py-3.5 text-left text-[0.95rem]"
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 background: tone === 'right' ? 'rgba(46,204,113,0.12)'
                           : tone === 'wrong' ? 'rgba(230,57,70,0.12)'
                           : 'var(--color-lx-elevated)',
@@ -351,7 +351,7 @@ function RepairQuiz({ sessionPromise, onDone }: {
 
       {result && (
         <div className="mt-auto flex flex-col gap-4">
-          <p style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.85rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.85rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
             {result.explanation}
           </p>
           <PrimaryButton onClick={next}>{isLast ? 'Done' : 'Next'}</PrimaryButton>
@@ -388,7 +388,7 @@ function ActivationResult({ userName, score, repaired, reduce, onNext }: {
         animate={{ opacity: 1 }}
         transition={{ duration: reduce ? 0.1 : 0.18 }}
         className="text-xs font-semibold tracking-[0.16em]"
-        style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-accent-gold)' }}
+        style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-accent-gold)' }}
       >
         L&rsquo;S READ
       </motion.span>
@@ -414,7 +414,7 @@ function ActivationResult({ userName, score, repaired, reduce, onNext }: {
         <LSays>{line}</LSays>
 
         {repaired > 0 && score && score.total > 0 && (
-          <p style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
             A minute ago {repaired === 1 ? 'that word was' : 'those words were'} a guess. Everything after this is the
             same loop, on a longer list.
           </p>
@@ -439,11 +439,11 @@ function ReadMetric({ value, label, tone }: { value: number; label: string; tone
     >
       <span
         className="text-2xl font-bold tabular-nums"
-        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: 'var(--color-lx-text-primary)' }}
+        style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", color: 'var(--color-lx-text-primary)' }}
       >
         {value}
       </span>
-      <span className="text-xs" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}>
+      <span className="text-xs" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
         {label}
       </span>
     </div>
@@ -478,7 +478,7 @@ function TrackPicker({ tracks, selected, onToggle, onNext }: {
               aria-pressed={on}
               className="rounded-2xl px-4 py-3.5 text-left"
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 background: on ? 'rgba(230,57,70,0.10)' : 'var(--color-lx-elevated)',
                 border: `1px solid ${on ? 'var(--color-lx-accent-red)' : 'var(--color-lx-border)'}`,
                 boxShadow: on ? '0 0 0 3px rgba(230,57,70,0.1)' : 'none',
@@ -555,7 +555,7 @@ function PacePicker({ tracks, trackIds, onSubmit }: {
               aria-pressed={on}
               className="rounded-2xl px-4 py-3.5 text-left"
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 background: on ? 'rgba(230,57,70,0.10)' : 'var(--color-lx-elevated)',
                 border: `1px solid ${on ? 'var(--color-lx-accent-red)' : 'var(--color-lx-border)'}`,
                 boxShadow: on ? '0 0 0 3px rgba(230,57,70,0.1)' : 'none',
@@ -569,7 +569,7 @@ function PacePicker({ tracks, trackIds, onSubmit }: {
         })}
       </div>
 
-      <label className="flex flex-col gap-2" style={{ fontFamily: "'Sora', sans-serif" }}>
+      <label className="flex flex-col gap-2" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
         <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>Exam date, if you have one</span>
         <input
           type="date"

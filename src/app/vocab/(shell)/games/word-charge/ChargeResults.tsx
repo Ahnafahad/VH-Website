@@ -15,8 +15,8 @@ import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import MiniLeaderboard from '@/components/vocab/MiniLeaderboard';
 import type { ChargeWord, ChargeAnswer, ChargeFinishResponse, Connotation } from '@/lib/vocab/word-charge/types';
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 /** Round tier from server-recomputed stats — drives the result emblem. */
 function roundTier(r: ChargeFinishResponse): { asset: string; label: string } {

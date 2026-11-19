@@ -6,8 +6,8 @@ import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import type { PublicReveal } from '@/lib/vocab/game/types';
 
-const SANS  = "'Sora', sans-serif";
-const SERIF = "'Cormorant Garamond', Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
 
 export default function RevealCard({
   reveal,

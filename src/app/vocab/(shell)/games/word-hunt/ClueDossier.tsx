@@ -1,7 +1,7 @@
 'use client';
 
-const SANS  = "'Sora', sans-serif";
-const SERIF = "'Cormorant Garamond', Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
 
 const TONE_LABEL: Record<'positive' | 'negative' | 'neutral', string> = {
   positive: 'Positive',

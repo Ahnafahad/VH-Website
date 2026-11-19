@@ -63,7 +63,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
             animate={{ scale: 1, opacity: 1 }}
             transition={{ type: 'spring' as const, stiffness: 400, damping: 22 }}
             style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontFamily: "var(--font-lexi-word), Georgia, serif",
               fontSize: '2.8rem',
               fontWeight: 700,
               color: 'var(--color-lx-accent-gold)',
@@ -74,7 +74,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
           </motion.span>
           <span
             style={{
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize: '0.65rem',
               color: 'var(--color-lx-text-muted)',
               textTransform: 'uppercase',
@@ -103,7 +103,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
               >
                 <span
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.55rem',
                     fontWeight: 500,
                     color: phase > i ? step.color : 'var(--color-lx-text-muted)',
@@ -144,7 +144,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ type: 'spring' as const, stiffness: 400, damping: 20 }}
               style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "var(--font-lexi-word), Georgia, serif",
                 fontSize: '1.5rem',
                 fontWeight: 700,
                 color: 'var(--color-lx-accent-red)',
@@ -155,7 +155,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
             </motion.span>
             <span
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize: '0.7rem',
                 color: 'var(--color-lx-text-secondary)',
               }}

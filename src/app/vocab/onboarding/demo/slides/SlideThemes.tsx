@@ -55,7 +55,7 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
               <div className="flex flex-col">
                 <span
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.6rem',
                     fontWeight: 500,
                     textTransform: 'uppercase',
@@ -67,7 +67,7 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
                 </span>
                 <span
                   style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontFamily: "var(--font-lexi-word), Georgia, serif",
                     fontSize: '1.1rem',
                     fontWeight: 600,
                     fontStyle: 'italic',
@@ -122,7 +122,7 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
                       <span
                         className="lx-word"
                         style={{
-                          fontFamily: "'Cormorant Garamond', Georgia, serif",
+                          fontFamily: "var(--font-lexi-word), Georgia, serif",
                           fontSize: '0.95rem',
                           fontStyle: 'italic',
                           color: 'var(--color-lx-text-primary)',

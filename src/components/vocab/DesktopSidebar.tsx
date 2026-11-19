@@ -92,7 +92,7 @@ export default function DesktopSidebar() {
           <span
             className="lx-word"
             style={{
-              fontFamily:    "'Cormorant Garamond', Georgia, serif",
+              fontFamily:    "var(--font-lexi-word), Georgia, serif",
               fontSize:      '1.5rem',
               fontWeight:    700,
               fontStyle:     'italic',
@@ -107,7 +107,7 @@ export default function DesktopSidebar() {
           <span
             style={{
               display:       'block',
-              fontFamily:    "'Sora', sans-serif",
+              fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:      '0.6rem',
               fontWeight:    500,
               color:         'var(--color-lx-text-muted)',
@@ -198,7 +198,7 @@ export default function DesktopSidebar() {
 
               <span
                 style={{
-                  fontFamily:   "'Sora', sans-serif",
+                  fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize:     '0.8125rem',
                   fontWeight:   isActive ? 600 : 400,
                   color:        isActive ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
@@ -221,7 +221,7 @@ export default function DesktopSidebar() {
           alignItems:    'center',
           gap:           6,
           padding:       '10px 16px',
-          fontFamily:    "'Sora', sans-serif",
+          fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:      '0.7rem',
           fontWeight:    500,
           letterSpacing: '0.04em',
@@ -282,7 +282,7 @@ export default function DesktopSidebar() {
             ) : (
               <span
                 style={{
-                  fontFamily: "'Cormorant Garamond', serif",
+                  fontFamily: "var(--font-lexi-word), Georgia, serif",
                   fontSize:   '0.9rem',
                   fontWeight: 700,
                   fontStyle:  'italic',
@@ -298,7 +298,7 @@ export default function DesktopSidebar() {
           <div style={{ minWidth: 0, flex: 1 }}>
             <p
               style={{
-                fontFamily:   "'Sora', sans-serif",
+                fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:     '0.75rem',
                 fontWeight:   500,
                 color:        'var(--color-lx-text-primary)',

@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion';
 import type { PublicGuess, GuessRelation, SentenceStatus } from '@/lib/vocab/game/types';
 
-const SANS  = "'Sora', sans-serif";
-const SERIF = "'Cormorant Garamond', Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
 
 const SENTENCE_TAG: Record<SentenceStatus, { label: string; color: string } | null> = {
   accepted_clear:   { label: 'Clear ✓', color: 'var(--color-lx-success)' },

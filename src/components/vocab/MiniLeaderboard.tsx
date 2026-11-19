@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import type { MiniEntry, MiniLeaderboardResponse } from '@/lib/vocab/mini-leaderboard';
 
-const SANS  = "'Sora', sans-serif";
-const SERIF = "'Cormorant Garamond', serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
 
 type Tab = 'top' | 'lifetime';
 

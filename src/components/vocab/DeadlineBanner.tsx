@@ -68,7 +68,7 @@ export default function DeadlineBanner() {
       <div style={{ flex: 1, minWidth: 0 }}>
         <p
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '13px',
             fontWeight: 600,
             color:      'var(--color-lx-text-primary)',
@@ -80,7 +80,7 @@ export default function DeadlineBanner() {
         </p>
         <p
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '11.5px',
             fontWeight: 400,
             color:      'var(--color-lx-text-secondary)',
@@ -102,7 +102,7 @@ export default function DeadlineBanner() {
           display:       'flex',
           alignItems:    'center',
           gap:           '4px',
-          fontFamily:    "'Sora', sans-serif",
+          fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:      '11px',
           fontWeight:    600,
           letterSpacing: '0.06em',

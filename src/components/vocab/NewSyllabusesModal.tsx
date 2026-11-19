@@ -84,7 +84,7 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
           <div className="flex flex-col gap-2">
             <h2
               style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "var(--font-lexi-word), Georgia, serif",
                 fontSize:   '1.6rem',
                 fontWeight: 700,
                 fontStyle:  'italic',
@@ -97,7 +97,7 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
             </h2>
             <p
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:   '0.84rem',
                 color:      'var(--color-lx-text-secondary)',
                 lineHeight: 1.5,
@@ -119,7 +119,7 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
                   aria-pressed={on}
                   className="rounded-2xl px-4 py-3.5 text-left"
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     background: on ? 'rgba(230,57,70,0.10)' : 'var(--color-lx-elevated)',
                     border: `1px solid ${on ? 'var(--color-lx-accent-red)' : 'var(--color-lx-border)'}`,
                     boxShadow: on ? '0 0 0 3px rgba(230,57,70,0.1)' : 'none',
@@ -145,7 +145,7 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
               className="w-full rounded-[10px] py-3.5 text-base font-semibold text-white"
               style={{
                 background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 opacity: saving || chosen.size === 0 ? 0.5 : 1,
               }}
             >
@@ -155,7 +155,7 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
               <p
                 role="alert"
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.78rem',
                   color: 'var(--color-lx-danger)',
                   textAlign: 'center',
@@ -170,7 +170,7 @@ export default function NewSyllabusesModal({ syllabuses, onDone }: {
               disabled={saving}
               className="w-full text-center py-2 text-sm"
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 color: 'var(--color-lx-text-muted)',
                 background: 'transparent',
               }}

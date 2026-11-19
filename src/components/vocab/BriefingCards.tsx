@@ -44,7 +44,7 @@ export function BriefingSection({
   return (
     <div style={{ marginBottom: '1.5rem' }}>
       <p style={{
-        fontFamily:    "'Sora', sans-serif",
+        fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
         fontSize:      '0.58rem',
         fontWeight:    600,
         letterSpacing: '0.16em',
@@ -101,7 +101,7 @@ function BriefingCardRow({ card, delay }: { card: BriefingCardData; delay: numbe
 
       <div style={{ flex: 1, minWidth: 0 }}>
         <p style={{
-          fontFamily:   "'Cormorant Garamond', Georgia, serif",
+          fontFamily:   "var(--font-lexi-word), Georgia, serif",
           fontStyle:    'italic',
           fontWeight:   600,
           fontSize:     '1rem',
@@ -115,7 +115,7 @@ function BriefingCardRow({ card, delay }: { card: BriefingCardData; delay: numbe
           {card.title}
         </p>
         <p style={{
-          fontFamily:   "'Sora', sans-serif",
+          fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:     '0.68rem',
           color:        'var(--color-lx-text-muted)',
           margin:       '2px 0 0',
@@ -133,7 +133,7 @@ function BriefingCardRow({ card, delay }: { card: BriefingCardData; delay: numbe
         gap:        4,
         flexShrink: 0,
         color:      'var(--color-lx-text-muted)',
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         fontSize:   '0.62rem',
       }}>
         <Clock3 size={11} aria-hidden />

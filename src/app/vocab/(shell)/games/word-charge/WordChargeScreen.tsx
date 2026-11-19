@@ -54,8 +54,8 @@ import type {
 const ROUND_MS    = 30_000;
 const LIVES       = 3;
 const INTRO_KEY   = 'lx-charge-intro';
-const SANS        = "'Sora', sans-serif";
-const SERIF       = "'Cormorant Garamond', Georgia, serif";
+const SANS        = "var(--font-lexi-ui), system-ui, sans-serif";
+const SERIF       = "var(--font-lexi-word), Georgia, serif";
 
 // ─── Game state machine ───────────────────────────────────────────────────────
 

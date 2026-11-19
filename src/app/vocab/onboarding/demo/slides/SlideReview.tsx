@@ -72,7 +72,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
           >
             <span
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize: '0.55rem',
                 fontWeight: 600,
                 textTransform: 'uppercase',
@@ -95,7 +95,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                 <span
                   className="lx-word"
                   style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontFamily: "var(--font-lexi-word), Georgia, serif",
                     fontSize: '0.82rem',
                     fontStyle: 'italic',
                     color: 'var(--color-lx-text-primary)',
@@ -105,7 +105,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                 </span>
                 <span
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.5rem',
                     color: 'var(--color-lx-accent-gold)',
                   }}
@@ -139,7 +139,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
           >
             <span
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize: '0.55rem',
                 fontWeight: 600,
                 textTransform: 'uppercase',
@@ -162,7 +162,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                 <span
                   className="lx-word"
                   style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontFamily: "var(--font-lexi-word), Georgia, serif",
                     fontSize: '0.82rem',
                     fontStyle: 'italic',
                     color: 'var(--color-lx-text-primary)',
@@ -172,7 +172,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                 </span>
                 <span
                   style={{
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.5rem',
                     color: 'var(--color-lx-accent-red)',
                   }}
@@ -197,7 +197,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
               style={{
                 background: 'var(--color-lx-elevated)',
                 border: '1px solid var(--color-lx-border)',
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize: '0.45rem',
                 color: 'var(--color-lx-text-muted)',
                 whiteSpace: 'nowrap',

@@ -58,8 +58,8 @@ const C = {
   textMuted: 'var(--color-lx-text-muted)',
 } as const;
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 // ─── Animation variants ───────────────────────────────────────────────────────
 

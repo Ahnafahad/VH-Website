@@ -108,7 +108,7 @@ export default function BottomNav() {
                 transition={{ duration: 0.2 }}
                 className="relative z-10 text-[10px] font-medium tracking-wide"
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   color: isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)',
                   letterSpacing: '0.04em',
                 }}

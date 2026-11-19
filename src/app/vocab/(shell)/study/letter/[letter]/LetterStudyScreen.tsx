@@ -34,8 +34,8 @@ const C = {
   textMuted:'var(--color-lx-text-muted)',
 } as const;
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 const LEVEL_BG: Record<string, string> = {
   new:      'rgba(180,180,180,0.12)',

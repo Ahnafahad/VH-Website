@@ -111,7 +111,7 @@ function Thesis({ onNext }: { onNext: () => void }) {
   return (
     <div className="flex flex-1 flex-col justify-center gap-8 py-10">
       <h1 style={{
-        fontFamily: "'Cormorant Garamond', Georgia, serif",
+        fontFamily: "var(--font-lexi-word), Georgia, serif",
         fontSize: 'clamp(2.1rem, 10vw, 3.4rem)',
         lineHeight: 1.05,
         fontWeight: 700,
@@ -278,10 +278,10 @@ function Diagnostic({
   return (
     <div className="flex flex-1 flex-col gap-6 py-4">
       <div className="flex items-center justify-between">
-        <span className="text-xs" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}>
+        <span className="text-xs" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
           does this word feel good or bad?
         </span>
-        <span className="text-xs tabular-nums" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}>
+        <span className="text-xs tabular-nums" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
           {Math.max(0, DIAGNOSTIC_MAX_SECONDS - elapsed)}s
         </span>
       </div>
@@ -335,7 +335,7 @@ function DiagnosticPop({ onDone }: { onDone: () => void }) {
       style={{
         position: 'absolute', top: -10, left: '50%', transform: 'translateX(-50%)',
         zIndex: 20, pointerEvents: 'none',
-        fontFamily: "'Sora', sans-serif", fontSize: '0.85rem', fontWeight: 700,
+        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.85rem', fontWeight: 700,
         color: 'var(--color-lx-success)',
         background: 'rgba(46,204,113,0.12)',
         border: '1px solid rgba(46,204,113,0.4)',
@@ -431,7 +431,7 @@ function DiagnosticCard({ word, containerWidth, onCommit }: {
         padding: '0 2%',
       }}>
         <p style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontFamily: "var(--font-lexi-word), Georgia, serif",
           fontStyle: 'italic',
           fontWeight: 700,
           fontSize: word.word.length > 9 ? 'clamp(1.05rem, 4.4vw, 1.4rem)'
@@ -459,7 +459,7 @@ function DiagnosticCard({ word, containerWidth, onCommit }: {
             display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingRight: '4%',
           }}
         >
-          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-lx-accent-gold)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
+          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-lx-accent-gold)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
             GOOD
           </span>
         </motion.div>
@@ -473,7 +473,7 @@ function DiagnosticCard({ word, containerWidth, onCommit }: {
             display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingLeft: '4%',
           }}
         >
-          <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-lx-accent-red)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
+          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-lx-accent-red)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
             BAD
           </span>
         </motion.div>
@@ -491,7 +491,7 @@ function ChoiceButton({ label, tone, onClick }: { label: string; tone: 'good' | 
       transition={{ type: 'spring', stiffness: 500, damping: 15 }}
       className="flex-1 rounded-2xl py-5 text-base font-semibold"
       style={{
-        fontFamily: "'Sora', sans-serif",
+        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
         background: good ? 'rgba(46,204,113,0.12)' : 'rgba(230,57,70,0.12)',
         border:     `1px solid ${good ? 'rgba(46,204,113,0.35)' : 'rgba(230,57,70,0.35)'}`,
         color:      good ? 'var(--color-lx-success)' : 'var(--color-lx-accent-red)',
@@ -541,7 +541,7 @@ function LRead({ answers, weakCount, reduce, onNext }: {
         animate={{ opacity: 1 }}
         transition={{ duration: reduce ? 0.1 : 0.18 }}
         className="text-xs font-semibold tracking-[0.16em]"
-        style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-accent-gold)' }}
+        style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-accent-gold)' }}
       >
         L&rsquo;S READ
       </motion.span>
@@ -568,7 +568,7 @@ function LRead({ answers, weakCount, reduce, onNext }: {
         <LSays>{line}</LSays>
 
         {weakCount > 0 && (
-          <p style={{ fontFamily: "'Sora', sans-serif", fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
             Next: I&rsquo;ll teach {weakCount === 1 ? 'it' : 'them'} on the card you just built, then check whether it took —
             in a sentence, not a definition.
           </p>
@@ -593,11 +593,11 @@ function ReadMetric({ value, label, tone }: { value: number; label: string; tone
     >
       <span
         className="text-2xl font-bold tabular-nums"
-        style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: 'var(--color-lx-text-primary)' }}
+        style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", color: 'var(--color-lx-text-primary)' }}
       >
         {value}
       </span>
-      <span className="text-xs" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}>
+      <span className="text-xs" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
         {label}
       </span>
     </div>
@@ -626,7 +626,7 @@ function AuthStage({ weakCount }: { weakCount: number }) {
           background: 'var(--color-lx-surface)',
           border: '1px solid var(--color-lx-border)',
           color: 'var(--color-lx-text-primary)',
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           opacity: busy ? 0.6 : 1,
         }}
       >
@@ -634,7 +634,7 @@ function AuthStage({ weakCount }: { weakCount: number }) {
         {busy ? 'Opening Google…' : 'Continue with Google'}
       </motion.button>
 
-      <p className="text-center text-xs" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}>
+      <p className="text-center text-xs" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
         Save your progress and card preferences.
       </p>
     </div>

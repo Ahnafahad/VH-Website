@@ -75,7 +75,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                 >
                   <span
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.55rem',
                       textTransform: 'uppercase',
                       letterSpacing: '0.1em',
@@ -88,7 +88,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                   <span
                     className="lx-word"
                     style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontFamily: "var(--font-lexi-word), Georgia, serif",
                       fontSize: '1.5rem',
                       fontWeight: 700,
                       fontStyle: 'italic',
@@ -99,7 +99,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                   </span>
                   <span
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.6rem',
                       color: 'var(--color-lx-text-muted)',
                       marginTop: 8,
@@ -120,7 +120,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                 >
                   <span
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.8rem',
                       fontWeight: 500,
                       color: 'var(--color-lx-text-primary)',
@@ -131,7 +131,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                   </span>
                   <span
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.68rem',
                       color: 'var(--color-lx-text-muted)',
                       fontStyle: 'italic',
@@ -153,7 +153,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                     transition={{ duration: 0.6 }}
                     className="absolute -top-2 right-4"
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.9rem',
                       fontWeight: 700,
                       color: RATINGS[rated].color,
@@ -177,7 +177,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
             >
               <span
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.75rem',
                   color: 'var(--color-lx-text-muted)',
                 }}
@@ -209,7 +209,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                       ? `${r.color}20`
                       : 'var(--color-lx-elevated)',
                     border: `1px solid ${rated === i ? r.color : 'var(--color-lx-border)'}`,
-                    fontFamily: "'Sora', sans-serif",
+                    fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                     fontSize: '0.65rem',
                     fontWeight: 600,
                     color: rated === i ? r.color : 'var(--color-lx-text-secondary)',

@@ -92,7 +92,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
           <div className="flex flex-col gap-2">
             <h2
               style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "var(--font-lexi-word), Georgia, serif",
                 fontSize:   '1.6rem',
                 fontWeight: 700,
                 fontStyle:  'italic',
@@ -105,7 +105,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
             </h2>
             <p
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:   '0.84rem',
                 color:      'var(--color-lx-text-secondary)',
                 lineHeight: 1.5,
@@ -118,7 +118,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
           <div className="flex flex-col items-center gap-4">
             <div
               className="rounded-full px-6 py-3 text-base font-semibold"
-              style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "'Sora', sans-serif" }}
+              style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
             >
               {formatDate(deadline)}
             </div>
@@ -134,7 +134,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
                 borderColor: 'var(--form-border)',
                 color:       'var(--form-input-text)',
                 colorScheme: 'dark',
-                fontFamily:  "'Sora', sans-serif",
+                fontFamily:  "var(--font-lexi-ui), system-ui, sans-serif",
               }}
             />
           </div>
@@ -148,7 +148,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
           >
             <span
               style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontFamily: "var(--font-lexi-word), Georgia, serif",
                 fontSize:   '2.4rem',
                 fontWeight: 700,
                 lineHeight: 1,
@@ -159,7 +159,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
             </span>
             <p
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:   '0.8rem',
                 color:      'var(--color-lx-text-secondary)',
                 marginTop:  4,
@@ -177,7 +177,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
               className="w-full rounded-[10px] py-3.5 text-base font-semibold text-white"
               style={{
                 background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 opacity: saving ? 0.7 : 1,
               }}
             >
@@ -188,7 +188,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
               disabled={saving}
               className="w-full text-center py-2 text-sm"
               style={{
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 color: 'var(--color-lx-text-muted)',
                 background: 'transparent',
               }}

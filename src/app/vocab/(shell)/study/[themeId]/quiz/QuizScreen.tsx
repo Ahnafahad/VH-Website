@@ -130,8 +130,8 @@ const C = {
   textMuted:  'var(--color-lx-text-muted)',
 } as const;
 
-const SERIF = "'Cormorant Garamond', Georgia, serif";
-const SANS  = "'Sora', sans-serif";
+const SERIF = "var(--font-lexi-word), Georgia, serif";
+const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 // ─── Loading screen with cycling vocabulary hints ─────────────────────────────
 
@@ -784,7 +784,7 @@ function TimerBar({ secondsLeft, totalSeconds }: { secondsLeft: number; totalSec
           color={color}
         />
         <span style={{
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize: '0.6875rem', fontWeight: 700,
           color,
           fontVariantNumeric: 'tabular-nums',

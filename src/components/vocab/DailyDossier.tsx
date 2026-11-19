@@ -240,7 +240,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
             />
             <span
               style={{
-                fontFamily:    "'Sora', sans-serif",
+                fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:      10,
                 letterSpacing: '0.32em',
                 textTransform: 'uppercase',
@@ -257,7 +257,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
             id="dossier-title"
             className="lx-word"
             style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontFamily: "var(--font-lexi-word), Georgia, serif",
               fontSize:   'clamp(2rem, 5.2vw, 2.75rem)',
               lineHeight: 1.05,
               margin:     '0 0 22px 0',
@@ -283,7 +283,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
             <p
               className="lx-word"
               style={{
-                fontFamily:   "'Cormorant Garamond', Georgia, serif",
+                fontFamily:   "var(--font-lexi-word), Georgia, serif",
                 fontStyle:    'italic',
                 fontSize:     'clamp(1.125rem, 2.4vw, 1.375rem)',
                 lineHeight:   1.55,
@@ -311,7 +311,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
           >
             <span
               style={{
-                fontFamily:    "'Sora', sans-serif",
+                fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:      10,
                 letterSpacing: '0.28em',
                 textTransform: 'uppercase',
@@ -336,7 +336,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
                 border:         'none',
                 cursor:         'pointer',
                 color:          'var(--color-lx-accent-gold)',
-                fontFamily:     "'Sora', sans-serif",
+                fontFamily:     "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:       12,
                 letterSpacing:  '0.2em',
                 textTransform:  'uppercase',

@@ -46,7 +46,7 @@ export default function DemoSlideLayout({
       {/* Section label */}
       <p
         style={{
-          fontFamily:    "'Sora', sans-serif",
+          fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:      '0.65rem',
           fontWeight:    600,
           textTransform: 'uppercase',
@@ -61,7 +61,7 @@ export default function DemoSlideLayout({
       {/* Slide title */}
       <h2
         style={{
-          fontFamily: "'Cormorant Garamond', Georgia, serif",
+          fontFamily: "var(--font-lexi-word), Georgia, serif",
           fontSize:   '1.8rem',
           fontWeight: 600,
           fontStyle:  'italic',
@@ -89,7 +89,7 @@ export default function DemoSlideLayout({
       <p
         className="text-left"
         style={{
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:   '0.85rem',
           fontWeight: 400,
           color:      'var(--color-lx-text-secondary)',
@@ -105,7 +105,7 @@ export default function DemoSlideLayout({
         <p
           className="text-left"
           style={{
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '0.75rem',
             fontWeight: 400,
             fontStyle:  'italic',
@@ -128,7 +128,7 @@ export default function DemoSlideLayout({
           background: ctaDisabled
             ? 'var(--color-lx-elevated)'
             : 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           opacity:    ctaDisabled ? 0.5 : 1,
           cursor:     ctaDisabled ? 'not-allowed' : 'pointer',
           boxShadow:  ctaDisabled ? 'none' : '0 4px 20px rgba(230,57,70,0.35)',
@@ -141,7 +141,7 @@ export default function DemoSlideLayout({
       {/* Step label */}
       <p
         style={{
-          fontFamily: "'Sora', sans-serif",
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
           fontSize:   '0.65rem',
           color:      'var(--color-lx-text-muted)',
           margin:     '-0.25rem 0 0',

@@ -66,7 +66,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                         : 'var(--color-lx-elevated)',
                       border: `1px solid ${letter === 'M' ? 'rgba(230,57,70,0.3)' : 'var(--color-lx-border)'}`,
                       cursor: 'pointer',
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontFamily: "var(--font-lexi-word), Georgia, serif",
                       fontSize: '1.1rem',
                       fontWeight: 600,
                       color: letter === 'M'
@@ -106,7 +106,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                 </motion.button>
                 <span
                   style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontFamily: "var(--font-lexi-word), Georgia, serif",
                     fontSize: '1.3rem',
                     fontWeight: 700,
                     fontStyle: 'italic',
@@ -133,7 +133,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                   <span
                     className="lx-word"
                     style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontFamily: "var(--font-lexi-word), Georgia, serif",
                       fontSize: '0.95rem',
                       fontStyle: 'italic',
                       color: 'var(--color-lx-text-primary)',
@@ -144,7 +144,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                   <span
                     className="rounded-full px-2 py-0.5"
                     style={{
-                      fontFamily: "'Sora', sans-serif",
+                      fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                       fontSize: '0.5rem',
                       fontWeight: 600,
                       textTransform: 'uppercase',

@@ -56,7 +56,7 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
               />
               <span
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.72rem',
                   fontWeight: 600,
                   color: 'var(--color-lx-accent-gold)',
@@ -76,7 +76,7 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
               />
               <span
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.72rem',
                   fontWeight: 600,
                   color: 'var(--color-lx-accent-red)',
@@ -104,7 +104,7 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
             <div className="flex flex-col">
               <span
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.75rem',
                   fontWeight: 600,
                   color: 'var(--color-lx-text-primary)',
@@ -114,7 +114,7 @@ export default function SlideHome({ onNext, stepLabel }: Props) {
               </span>
               <span
                 style={{
-                  fontFamily: "'Sora', sans-serif",
+                  fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                   fontSize: '0.65rem',
                   color: 'var(--color-lx-text-muted)',
                 }}
@@ -189,7 +189,7 @@ function ZoneTap({
               marginTop: 6,
               background: 'var(--color-lx-surface)',
               border: '1px solid var(--color-lx-border)',
-              fontFamily: "'Sora', sans-serif",
+              fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize: '0.6rem',
               color: 'var(--color-lx-text-secondary)',
               zIndex: 10,

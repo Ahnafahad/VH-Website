@@ -136,7 +136,7 @@ export default function InstallPrompt() {
           {/* Text */}
           <div style={{ flex: 1, minWidth: 0 }}>
             <p style={{
-              fontFamily:  "'Sora', sans-serif",
+              fontFamily:  "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:    '0.75rem',
               fontWeight:  600,
               color:       'var(--color-lx-text-primary)',
@@ -146,7 +146,7 @@ export default function InstallPrompt() {
               Add LexiCore to home screen
             </p>
             <p style={{
-              fontFamily:    "'Sora', sans-serif",
+              fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
               fontSize:      '0.62rem',
               color:         'var(--color-lx-text-muted)',
               margin:        '2px 0 0',
@@ -169,7 +169,7 @@ export default function InstallPrompt() {
                 border:     'none',
                 borderRadius: 8,
                 cursor:     'pointer',
-                fontFamily: "'Sora', sans-serif",
+                fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
                 fontSize:   '0.68rem',
                 fontWeight: 700,
                 color:      '#fff',

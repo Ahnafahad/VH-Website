@@ -176,7 +176,7 @@ export default function LivingFlashcard({
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}
           >
-            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-success)', letterSpacing: '0.08em' }}>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-success)', letterSpacing: '0.08em' }}>
               GOT IT
             </span>
           </motion.div>
@@ -193,7 +193,7 @@ export default function LivingFlashcard({
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}
           >
-            <span style={{ fontFamily: "'Sora', sans-serif", fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-accent-red)', letterSpacing: '0.08em' }}>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-accent-red)', letterSpacing: '0.08em' }}>
               MISSED
             </span>
           </motion.div>
@@ -291,13 +291,13 @@ export default function LivingFlashcard({
 
             {/* The word */}
             <h2 className="lx-word text-center"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: 'clamp(1.9rem, 9vw, 3.5rem)', fontWeight: 700, lineHeight: 1.05, color: 'var(--color-lx-text-primary)', letterSpacing: '-0.02em', position: 'relative', zIndex: 3, overflowWrap: 'break-word', wordBreak: 'break-word', maxWidth: '100%' }}>
+                style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: 'clamp(1.9rem, 9vw, 3.5rem)', fontWeight: 700, lineHeight: 1.05, color: 'var(--color-lx-text-primary)', letterSpacing: '-0.02em', position: 'relative', zIndex: 3, overflowWrap: 'break-word', wordBreak: 'break-word', maxWidth: '100%' }}>
               {word.word}
             </h2>
 
             {/* Tap hint — infinite pulse, gated by reduced-motion */}
             {reduce ? (
-              <p className="mt-8 text-xs" style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "'Sora', sans-serif" }}>
+              <p className="mt-8 text-xs" style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
                 tap to reveal
               </p>
             ) : (
@@ -305,7 +305,7 @@ export default function LivingFlashcard({
                 animate={{ opacity: [0.85, 1, 0.85] }}
                 transition={{ repeat: Infinity, duration: 2.5 }}
                 className="mt-8 text-xs"
-                style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "'Sora', sans-serif" }}
+                style={{ color: 'var(--color-lx-text-secondary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
               >
                 tap to reveal
               </motion.p>
@@ -360,7 +360,7 @@ export default function LivingFlashcard({
 
             {/* Word again (small) */}
             <div className="flex items-center justify-between">
-              <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600, overflowWrap: 'break-word', maxWidth: '100%' }}>
+              <span style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '1.1rem', fontStyle: 'italic', color: 'var(--color-lx-accent-red)', fontWeight: 600, overflowWrap: 'break-word', maxWidth: '100%' }}>
                 {word.word}
               </span>
               <div className="flex items-center gap-2">
@@ -406,7 +406,7 @@ export default function LivingFlashcard({
                 animate={{ opacity: 1, y: 0 }}
                 exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
                 transition={{ duration: reduce ? 0.1 : 0.2 }}
-                style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.3rem', lineHeight: 1.55, color: 'var(--color-lx-text-primary)', fontWeight: 400 }}
+                style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '1.3rem', lineHeight: 1.55, color: 'var(--color-lx-text-primary)', fontWeight: 400 }}
               >
                 {shownDefinition}
               </motion.p>
@@ -424,7 +424,7 @@ export default function LivingFlashcard({
                   className="rounded-xl px-3 py-2.5"
                   style={{ background: 'var(--color-lx-elevated)', borderLeft: '2px solid var(--color-lx-accent-gold)' }}
                 >
-                  <p style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '1.1rem', fontStyle: 'italic', fontWeight: 500, color: 'var(--color-lx-text-primary)', lineHeight: 1.5 }}>
+                  <p style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '1.1rem', fontStyle: 'italic', fontWeight: 500, color: 'var(--color-lx-text-primary)', lineHeight: 1.5 }}>
                     &ldquo;{word.exampleSentence}&rdquo;
                   </p>
                 </motion.div>
@@ -444,7 +444,7 @@ export default function LivingFlashcard({
                 >
                   {word.synonyms.slice(0, 4).map(s => (
                     <span key={s} className="rounded-full px-2.5 py-1 text-xs"
-                          style={{ background: 'rgba(230,57,70,0.1)', color: 'var(--color-lx-text-primary)', border: '1px solid rgba(230,57,70,0.35)', fontFamily: "'Sora', sans-serif" }}>
+                          style={{ background: 'rgba(230,57,70,0.1)', color: 'var(--color-lx-text-primary)', border: '1px solid rgba(230,57,70,0.35)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
                       {s}
                     </span>
                   ))}
@@ -462,7 +462,7 @@ export default function LivingFlashcard({
                   exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6 }}
                   transition={{ duration: reduce ? 0.1 : 0.2 }}
                   className="flex items-center gap-2 text-xs"
-                  style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}
+                  style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}
                 >
                   <span>feels</span>
                   <span className="rounded-full px-2.5 py-1"
@@ -489,7 +489,7 @@ export default function LivingFlashcard({
                   className="rounded-xl px-3 py-2.5"
                   style={{ background: 'var(--color-lx-elevated)', borderLeft: '2px solid var(--color-lx-text-muted)' }}
                 >
-                  <p className="text-xs" style={{ fontFamily: "'Sora', sans-serif", color: 'var(--color-lx-text-muted)' }}>
+                  <p className="text-xs" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
                     not <span style={{ color: 'var(--color-lx-text-primary)', fontWeight: 600 }}>{word.contrast.word}</span> — {word.contrast.gloss}
                   </p>
                 </motion.div>
@@ -497,7 +497,7 @@ export default function LivingFlashcard({
             </AnimatePresence>
 
             {footerHint && (
-              <p className="mt-auto pt-2 text-center text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}>
+              <p className="mt-auto pt-2 text-center text-xs" style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}>
                 {footerHint}
               </p>
             )}

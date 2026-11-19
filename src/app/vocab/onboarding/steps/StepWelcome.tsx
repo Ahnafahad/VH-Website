@@ -76,7 +76,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.3, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="text-xs font-semibold tracking-[0.32em] uppercase"
-          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "'Sora', sans-serif" }}
+          style={{ color: 'var(--color-lx-text-muted)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
         >
           LexiCore
         </motion.span>
@@ -91,7 +91,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
       >
         <h1
           style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            fontFamily: "var(--font-lexi-word), Georgia, serif",
             fontSize:   '2.6rem',
             fontWeight: 700,
             fontStyle:  'italic',
@@ -105,7 +105,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
         <p
           style={{
             color:      'var(--color-lx-text-secondary)',
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '0.875rem',
             lineHeight: 1.6,
             maxWidth:   '22rem',
@@ -116,7 +116,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
         <p
           style={{
             color:      'var(--color-lx-text-muted)',
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             fontSize:   '0.75rem',
             maxWidth:   '22rem',
           }}
@@ -146,7 +146,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
           className="relative w-full rounded-[10px] py-4 text-lg font-semibold text-white lx-glow-red"
           style={{
             background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
-            fontFamily: "'Sora', sans-serif",
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
             minHeight:  56,
           }}
         >
