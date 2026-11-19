@@ -1,4 +1,5 @@
 'use client';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 const SERIF = "var(--font-lexi-word), Georgia, serif";
@@ -13,7 +14,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
       <span style={{
-        fontFamily: SANS, fontSize: '0.56rem', fontWeight: 600,
+        fontFamily: SANS, fontSize: lxFs('0.56rem'), fontWeight: 600,
         letterSpacing: '0.14em', textTransform: 'uppercase',
         color: 'var(--color-lx-text-muted)',
       }}>
@@ -21,7 +22,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
       </span>
       <span style={{
         fontFamily: SERIF, fontStyle: 'italic', fontWeight: 600,
-        fontSize: '1.05rem', color: 'var(--color-lx-text-primary)', lineHeight: 1.2,
+        fontSize: lxFs('1.05rem'), color: 'var(--color-lx-text-primary)', lineHeight: 1.2,
       }}>
         {children}
       </span>
@@ -52,7 +53,7 @@ export default function ClueDossier({
     }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.875rem' }}>
         <span style={{
-          fontFamily: SANS, fontSize: '0.58rem', fontWeight: 700,
+          fontFamily: SANS, fontSize: lxFs('0.58rem'), fontWeight: 700,
           letterSpacing: '0.16em', textTransform: 'uppercase',
           color: 'var(--color-lx-accent-red)',
         }}>
@@ -60,7 +61,7 @@ export default function ClueDossier({
         </span>
         {isCatchUp && (
           <span style={{
-            fontFamily: SANS, fontSize: '0.6rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 700,
             color: 'var(--color-lx-accent-gold)',
             background: 'rgba(244,168,40,0.12)',
             border: '1px solid rgba(244,168,40,0.3)',

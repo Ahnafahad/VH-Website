@@ -13,6 +13,7 @@ import ClueDossier from './ClueDossier';
 import ClueFeed from './ClueFeed';
 import GuessHistory from './GuessHistory';
 import RevealCard from './RevealCard';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 const SERIF = "var(--font-lexi-word), Georgia, serif";
@@ -58,16 +59,16 @@ function GameError({ message, onBack }: { message: string; onBack: () => void })
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem',
       }}>
         <AlertTriangle size={30} color="var(--color-lx-accent-red)" />
-        <p style={{ fontFamily: SERIF, fontSize: '1.3rem', fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
+        <p style={{ fontFamily: SERIF, fontSize: lxFs('1.3rem'), fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
           Round unavailable
         </p>
-        <p style={{ fontFamily: SANS, fontSize: '0.85rem', color: 'var(--color-lx-text-secondary)', lineHeight: 1.5 }}>
+        <p style={{ fontFamily: SANS, fontSize: lxFs('0.85rem'), color: 'var(--color-lx-text-secondary)', lineHeight: 1.5 }}>
           {message}
         </p>
       </div>
       <button
         onClick={onBack}
-        style={{ fontFamily: SANS, fontSize: '0.85rem', color: 'var(--color-lx-accent-red)', background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem' }}
+        style={{ fontFamily: SANS, fontSize: lxFs('0.85rem'), color: 'var(--color-lx-accent-red)', background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem' }}
       >
         ← Back to games
       </button>
@@ -228,11 +229,11 @@ export default function WordHuntScreen({ date }: { date?: string }) {
         </button>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-          <p style={{ fontFamily: SANS, fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
             Word Hunt
           </p>
           {gameState.isCatchUp && (
-            <span style={{ fontFamily: SANS, fontSize: '0.58rem', fontWeight: 700, color: 'var(--color-lx-accent-gold)', letterSpacing: '0.04em' }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.58rem'), fontWeight: 700, color: 'var(--color-lx-accent-gold)', letterSpacing: '0.04em' }}>
               Catch-up round · ¼ points
             </span>
           )}
@@ -298,7 +299,7 @@ export default function WordHuntScreen({ date }: { date?: string }) {
                 borderRadius: 10,
               }}>
                 <AlertTriangle size={14} color="var(--color-lx-warning)" style={{ flexShrink: 0, marginTop: 1 }} />
-                <p style={{ fontFamily: SANS, fontSize: '0.76rem', lineHeight: 1.45, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
+                <p style={{ fontFamily: SANS, fontSize: lxFs('0.76rem'), lineHeight: 1.45, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
                   {rejectFeedback}
                 </p>
               </div>
@@ -317,7 +318,7 @@ export default function WordHuntScreen({ date }: { date?: string }) {
                     background: 'rgba(230,57,70,0.08)', border: '1px solid rgba(230,57,70,0.25)', borderRadius: 10,
                   }}>
                     {submitError.kind === 'judge-retry' ? <RotateCcw size={13} color="var(--color-lx-accent-red)" /> : <AlertTriangle size={13} color="var(--color-lx-accent-red)" />}
-                    <p style={{ fontFamily: SANS, fontSize: '0.76rem', color: 'var(--color-lx-accent-red)', margin: 0, flex: 1 }}>
+                    <p style={{ fontFamily: SANS, fontSize: lxFs('0.76rem'), color: 'var(--color-lx-accent-red)', margin: 0, flex: 1 }}>
                       {submitError.kind === 'judge-retry' ? 'Could not evaluate — try again' : submitError.message}
                     </p>
                   </div>
@@ -338,7 +339,7 @@ export default function WordHuntScreen({ date }: { date?: string }) {
                 width: '100%', minHeight: 44, padding: '0.625rem 0.875rem',
                 background: revising ? 'var(--color-lx-elevated)' : 'var(--color-lx-base)',
                 border: '1px solid var(--color-lx-border)', borderRadius: 10,
-                fontFamily: SERIF, fontStyle: 'italic', fontWeight: 600, fontSize: '1rem',
+                fontFamily: SERIF, fontStyle: 'italic', fontWeight: 600, fontSize: lxFs('1rem'),
                 color: revising ? 'var(--color-lx-text-muted)' : 'var(--color-lx-text-primary)',
                 outline: 'none',
               }}
@@ -353,7 +354,7 @@ export default function WordHuntScreen({ date }: { date?: string }) {
               style={{
                 width: '100%', padding: '0.625rem 0.875rem', resize: 'none',
                 background: 'var(--color-lx-base)', border: '1px solid var(--color-lx-border)',
-                borderRadius: 10, fontFamily: SANS, fontSize: '0.85rem', lineHeight: 1.4,
+                borderRadius: 10, fontFamily: SANS, fontSize: lxFs('0.85rem'), lineHeight: 1.4,
                 color: 'var(--color-lx-text-primary)', outline: 'none',
               }}
             />
@@ -365,7 +366,7 @@ export default function WordHuntScreen({ date }: { date?: string }) {
               style={{
                 width: '100%', minHeight: '3.25rem', border: 'none', borderRadius: '0.875rem',
                 background: 'var(--color-lx-accent-red)', color: '#fff',
-                fontFamily: SANS, fontSize: '0.9rem', fontWeight: 650,
+                fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 650,
                 cursor: canSubmit ? 'pointer' : 'default',
                 opacity: canSubmit ? 1 : 0.55,
               }}

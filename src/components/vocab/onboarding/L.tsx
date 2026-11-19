@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
+import { lxFs } from '@/lib/vocab/ui';
 
 /**
  * L's mark — the LexiCore logo, cropped in tight. Deliberately not a
@@ -88,7 +89,7 @@ export default function LSays({ children, delay = 0 }: { children: string; delay
       <LMark />
       <p style={{
         fontFamily: "var(--font-lexi-word), Georgia, serif",
-        fontSize: 'clamp(1.05rem, 4.2vw, 1.35rem)',
+        fontSize: lxFs('clamp(1.05rem, 4.2vw, 1.35rem)'),
         lineHeight: 1.5,
         color: 'var(--color-lx-text-primary)',
         margin: 0,

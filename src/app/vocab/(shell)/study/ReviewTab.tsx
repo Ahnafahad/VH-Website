@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ChevronDown, BookOpen, Zap } from 'lucide-react';
 import type { ReviewData, ReviewWord } from '@/lib/vocab/review-data';
 import { LexiIcon } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 
@@ -94,7 +95,7 @@ function ReviewWordRow({
       >
         {/* Mastery badge */}
         <span style={{
-          fontFamily: SANS, fontSize: '0.58rem', fontWeight: 700,
+          fontFamily: SANS, fontSize: lxFs('0.58rem'), fontWeight: 700,
           letterSpacing: '0.07em', textTransform: 'uppercase',
           padding: '0.18rem 0.45rem', borderRadius: 7, flexShrink: 0,
           background: LEVEL_BG[w.masteryLevel] ?? LEVEL_BG.new,
@@ -106,19 +107,19 @@ function ReviewWordRow({
         {/* Word + POS */}
         <div style={{ flex: 1, minWidth: 0 }}>
           <p style={{
-            fontFamily: SERIF, fontSize: '1rem', fontWeight: 600,
+            fontFamily: SERIF, fontSize: lxFs('1rem'), fontWeight: 600,
             fontStyle: 'italic', color: C.textPrim, lineHeight: 1.2,
           }}>
             {w.word}
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.65rem', color: C.red, fontStyle: 'italic', marginTop: 1 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.65rem'), color: C.red, fontStyle: 'italic', marginTop: 1 }}>
             {w.partOfSpeech}
           </p>
         </div>
 
         {/* Meta tag (overdue / accuracy) + due-state icon */}
         <span style={{
-          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+          fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
           letterSpacing: '0.04em',
           padding: '0.2rem 0.5rem', borderRadius: 8, flexShrink: 0,
           background: metaBg, color: metaColor,
@@ -156,14 +157,14 @@ function ReviewWordRow({
               display: 'flex', flexDirection: 'column', gap: '0.4rem',
             }}>
               <p style={{
-                fontFamily: SERIF, fontSize: '0.9375rem',
+                fontFamily: SERIF, fontSize: lxFs('0.9375rem'),
                 color: C.textSec, lineHeight: 1.65,
               }}>
                 {w.definition}
               </p>
               {w.exampleSentence && (
                 <p style={{
-                  fontFamily: SERIF, fontSize: '0.875rem', fontStyle: 'italic',
+                  fontFamily: SERIF, fontSize: lxFs('0.875rem'), fontStyle: 'italic',
                   color: C.textMuted, lineHeight: 1.6,
                   borderLeft: `2px solid ${C.border}`, paddingLeft: '0.75rem',
                 }}>
@@ -172,11 +173,11 @@ function ReviewWordRow({
               )}
               {/* Extra stats row */}
               <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.2rem', flexWrap: 'wrap' }}>
-                <span style={{ fontFamily: SANS, fontSize: '0.6rem', color: C.textMuted }}>
+                <span style={{ fontFamily: SANS, fontSize: lxFs('0.6rem'), color: C.textMuted }}>
                   {w.totalAttempts} attempt{w.totalAttempts !== 1 ? 's' : ''}
                 </span>
                 {w.consecutiveWrong > 0 && (
-                  <span style={{ fontFamily: SANS, fontSize: '0.6rem', color: C.red }}>
+                  <span style={{ fontFamily: SANS, fontSize: lxFs('0.6rem'), color: C.red }}>
                     {w.consecutiveWrong} wrong in a row
                   </span>
                 )}
@@ -203,7 +204,7 @@ function SectionDivider({
     }}>
       <div style={{ flex: 1, height: 1, background: C.border }} />
       <span style={{
-        fontFamily: SANS, fontSize: '0.625rem', fontWeight: 700,
+        fontFamily: SANS, fontSize: lxFs('0.625rem'), fontWeight: 700,
         letterSpacing: '0.12em', textTransform: 'uppercase',
         color: accent, whiteSpace: 'nowrap',
       }}>
@@ -235,7 +236,7 @@ function CtaRow({
           background: 'transparent',
           border: `1px solid ${C.border}`,
           borderRadius: 13, cursor: 'pointer',
-          fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 600,
+          fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 600,
           color: C.textSec,
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
         }}
@@ -253,7 +254,7 @@ function CtaRow({
           background: C.red,
           border: 'none',
           borderRadius: 13, cursor: 'pointer',
-          fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 600,
+          fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 600,
           color: '#fff',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.4rem',
           boxShadow: '0 3px 14px rgba(230,57,70,0.25)',
@@ -282,7 +283,7 @@ function ReviewSection({
       <>
         <SectionDivider label={label} count={0} accent={accent} />
         <p style={{
-          fontFamily: SERIF, fontSize: '0.9rem', fontStyle: 'italic',
+          fontFamily: SERIF, fontSize: lxFs('0.9rem'), fontStyle: 'italic',
           color: C.textMuted, textAlign: 'center', padding: '0.5rem 0 1rem',
         }}>
           {emptyMessage}
@@ -339,13 +340,13 @@ export default function ReviewTab({ reviewData }: Props) {
           <LexiIcon path="review/srs-orbit.svg" size={64} color={C.gold} style={{ opacity: 0.25 }} />
         </div>
         <h3 style={{
-          fontFamily: SERIF, fontSize: '1.5rem', fontWeight: 700, fontStyle: 'italic',
+          fontFamily: SERIF, fontSize: lxFs('1.5rem'), fontWeight: 700, fontStyle: 'italic',
           color: C.textPrim, textAlign: 'center', lineHeight: 1.2,
         }}>
           All words reviewed
         </h3>
         <p style={{
-          fontFamily: SANS, fontSize: '0.8rem', color: C.textMuted,
+          fontFamily: SANS, fontSize: lxFs('0.8rem'), color: C.textMuted,
           textAlign: 'center', lineHeight: 1.6, maxWidth: 260,
         }}>
           Come back tomorrow — your spaced repetition queue will be ready.
@@ -378,7 +379,7 @@ export default function ReviewTab({ reviewData }: Props) {
           boxShadow: `0 0 6px ${C.gold}`,
         }} />
         <span style={{
-          fontFamily: SANS, fontSize: '0.75rem', fontWeight: 500,
+          fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 500,
           color: C.textSec,
         }}>
           {dueWords.length > 0 && (

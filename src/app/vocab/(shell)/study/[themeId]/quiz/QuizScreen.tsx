@@ -19,6 +19,7 @@ import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { shareLexiCore } from '@/lib/vocab/native-share';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Inline SVG micro-icons (no generic defaults) ────────────────────────────
 function IconClose() {
@@ -188,7 +189,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
           display: 'flex', flexDirection: 'column', gap: '0.875rem',
           alignItems: 'center',
         }}>
-          <p style={{ fontFamily: SANS, fontSize: '0.8125rem', color: C.textSec, marginBottom: '0.25rem', letterSpacing: '0.04em' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.8125rem'), color: C.textSec, marginBottom: '0.25rem', letterSpacing: '0.04em' }}>
             Generating your quiz…
           </p>
           {/* ── Vocabulary hint — shown while generating ── */}
@@ -215,7 +216,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
                     <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.5rem' }}>
                       <span style={{
                         fontFamily: SERIF,
-                        fontSize: 'clamp(1.25rem, 5vw, 1.5rem)',
+                        fontSize: lxFs('clamp(1.25rem, 5vw, 1.5rem)'),
                         fontWeight: 700,
                         fontStyle: 'italic',
                         color: C.textPrim,
@@ -225,7 +226,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
                       </span>
                       <span style={{
                         fontFamily: SANS,
-                        fontSize: '0.65rem',
+                        fontSize: lxFs('0.65rem'),
                         color: C.red,
                         fontStyle: 'italic',
                         letterSpacing: '0.04em',
@@ -235,7 +236,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
                     </div>
                     <p style={{
                       fontFamily: SERIF,
-                      fontSize: '0.9rem',
+                      fontSize: lxFs('0.9rem'),
                       color: C.textSec,
                       lineHeight: 1.55,
                       margin: 0,
@@ -250,7 +251,7 @@ function QuizLoading({ words }: { words: HintWord[] }) {
         </div>
       </div>
 
-      <p style={{ fontFamily: SANS, fontSize: '0.75rem', color: C.textMuted, letterSpacing: '0.06em' }}>
+      <p style={{ fontFamily: SANS, fontSize: lxFs('0.75rem'), color: C.textMuted, letterSpacing: '0.06em' }}>
         Powered by AI
       </p>
     </div>
@@ -279,16 +280,16 @@ function QuizError({ onBack }: { onBack: () => void }) {
         }}
       >
         <LexiArtwork path="states/server-error.webp" width={112} height={112} />
-        <p style={{ fontFamily: SERIF, fontSize: '1.4rem', fontWeight: 700, color: C.textPrim }}>
+        <p style={{ fontFamily: SERIF, fontSize: lxFs('1.4rem'), fontWeight: 700, color: C.textPrim }}>
           Quiz unavailable
         </p>
-        <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: C.textSec, lineHeight: 1.5 }}>
+        <p style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.textSec, lineHeight: 1.5 }}>
           Something went wrong generating the quiz.<br />Please try again in a few minutes.
         </p>
       </motion.div>
       <button
         onClick={onBack}
-        style={{ fontFamily: SANS, fontSize: '0.875rem', color: C.red, background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem' }}
+        style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.red, background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem' }}
       >
         ← Go back
       </button>
@@ -379,7 +380,7 @@ function OptionCard({ opt, phase, selectedLetter, result, index, onSelect }: Opt
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         transition: 'background 0.22s',
       }}>
-        <span style={{ fontFamily: SANS, fontSize: '0.75rem', fontWeight: 700, color: lColor }}>
+        <span style={{ fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 700, color: lColor }}>
           {opt.letter}
         </span>
       </div>
@@ -387,7 +388,7 @@ function OptionCard({ opt, phase, selectedLetter, result, index, onSelect }: Opt
       {/* Word */}
       <span style={{
         fontFamily: SERIF,
-        fontSize: 'clamp(1rem, 3.5vw, 1.1rem)',
+        fontSize: lxFs('clamp(1rem, 3.5vw, 1.1rem)'),
         fontWeight: 600,
         color: wColor,
         lineHeight: 1.25,
@@ -495,10 +496,10 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
               display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
               zIndex: 2,
             }}>
-              <span style={{ fontFamily: SERIF, fontSize: '2.1rem', fontWeight: 700, lineHeight: 1, color: C.textPrim }}>
+              <span style={{ fontFamily: SERIF, fontSize: lxFs('2.1rem'), fontWeight: 700, lineHeight: 1, color: C.textPrim }}>
                 <AnimatedNumber value={scorePct} />%
               </span>
-              <span style={{ fontFamily: SANS, fontSize: '0.65rem', color: C.textMuted, marginTop: 2, letterSpacing: '0.06em' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.65rem'), color: C.textMuted, marginTop: 2, letterSpacing: '0.06em' }}>
                 SCORE
               </span>
             </div>
@@ -510,10 +511,10 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
 
         {/* Verdict */}
         <div style={{ textAlign: 'center' }}>
-          <h2 style={{ fontFamily: SERIF, fontSize: '2rem', fontWeight: 700, fontStyle: 'italic', color: passed ? C.success : C.textPrim, lineHeight: 1.1 }}>
+          <h2 style={{ fontFamily: SERIF, fontSize: lxFs('2rem'), fontWeight: 700, fontStyle: 'italic', color: passed ? C.success : C.textPrim, lineHeight: 1.1 }}>
             {passed ? 'Passed!' : 'Keep going!'}
           </h2>
-          <p style={{ fontFamily: SANS, fontSize: '0.8125rem', color: C.textSec, marginTop: '0.3rem' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.8125rem'), color: C.textSec, marginTop: '0.3rem' }}>
             {correctAnswers} of {totalQuestions} correct · pass threshold {passThreshold}%
           </p>
         </div>
@@ -533,7 +534,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
             }}
           >
             <LexiIcon path="quiz/points-earned.svg" size={14} color={C.gold} />
-            <span style={{ fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 600, color: C.gold }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 600, color: C.gold }}>
               +{bonusPoints} bonus points
             </span>
           </motion.div>
@@ -553,7 +554,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
             width: '100%', padding: '1rem',
             background: C.red, color: '#fff',
             border: 'none', borderRadius: 16,
-            fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600,
+            fontFamily: SANS, fontSize: lxFs('0.9375rem'), fontWeight: 600,
             cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           }}
@@ -569,7 +570,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
               background: 'transparent',
               border: `1.5px solid rgba(230,57,70,0.35)`,
               borderRadius: 16,
-              fontFamily: SANS, fontSize: '0.875rem', fontWeight: 500,
+              fontFamily: SANS, fontSize: lxFs('0.875rem'), fontWeight: 500,
               color: C.red, cursor: 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
             }}
@@ -587,7 +588,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
           style={{
             width: '100%', minHeight: 44, padding: '0.75rem',
             background: 'transparent', border: 'none',
-            fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 500,
+            fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 500,
             color: C.textSec, cursor: 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7,
           }}
@@ -599,7 +600,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
       {/* Question review list */}
       {questions.length > 0 && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
-          <p style={{ fontFamily: SANS, fontSize: '0.75rem', color: C.textMuted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.25rem' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.75rem'), color: C.textMuted, letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.25rem' }}>
             Review <span style={{ fontWeight: 400, textTransform: 'none', letterSpacing: 0 }}>· tap any row to see breakdown</span>
           </p>
 
@@ -642,7 +643,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                         : <LexiIcon path="quiz/incorrect.svg" size={13} color={C.red} />
                       }
                     </div>
-                    <p style={{ fontFamily: SERIF, fontSize: '0.9375rem', lineHeight: 1.5, color: C.textPrim, flex: 1 }}>
+                    <p style={{ fontFamily: SERIF, fontSize: lxFs('0.9375rem'), lineHeight: 1.5, color: C.textPrim, flex: 1 }}>
                       {q.questionText}
                     </p>
                     <motion.div
@@ -678,10 +679,10 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                               borderRadius: '0 8px 8px 0',
                               padding: '0.625rem 0.75rem',
                             }}>
-                              <p style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: correct ? C.success : C.red, marginBottom: '0.3rem' }}>
+                              <p style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: correct ? C.success : C.red, marginBottom: '0.3rem' }}>
                                 Explanation
                               </p>
-                              <p style={{ fontFamily: SERIF, fontSize: '0.9rem', fontStyle: 'italic', color: C.textSec, lineHeight: 1.6, margin: 0 }}>
+                              <p style={{ fontFamily: SERIF, fontSize: lxFs('0.9rem'), fontStyle: 'italic', color: C.textSec, lineHeight: 1.6, margin: 0 }}>
                                 {q.explanation}
                               </p>
                             </div>
@@ -689,7 +690,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
 
                           {/* All options breakdown */}
                           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.3rem' }}>
-                            <p style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: C.textMuted, marginBottom: '0.25rem' }}>
+                            <p style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: C.textMuted, marginBottom: '0.25rem' }}>
                               Options
                             </p>
                             {q.options.map(opt => {
@@ -717,7 +718,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                                   }}
                                 >
                                   <span style={{
-                                    fontFamily: SANS, fontSize: '0.7rem', fontWeight: 700,
+                                    fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 700,
                                     width: 18, textAlign: 'center',
                                     color: isCorrectOpt ? C.success : isWrongPick ? C.red : C.textMuted,
                                   }}>
@@ -728,7 +729,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                                     : <LexiIcon path="quiz/incorrect.svg" size={12} color={isWrongPick ? C.red : C.textMuted} style={{ flexShrink: 0, opacity: isWrongPick ? 1 : 0.4 }} />
                                   }
                                   <span style={{
-                                    fontFamily: SERIF, fontSize: '0.9rem',
+                                    fontFamily: SERIF, fontSize: lxFs('0.9rem'),
                                     color: isCorrectOpt ? C.success : isWrongPick ? C.red : C.textSec,
                                     fontWeight: isCorrectOpt ? 600 : 400,
                                     flex: 1,
@@ -736,12 +737,12 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                                     {opt.word}
                                   </span>
                                   {isCorrectOpt && (
-                                    <span style={{ fontFamily: SANS, fontSize: '0.65rem', fontWeight: 600, color: C.success, letterSpacing: '0.05em' }}>
+                                    <span style={{ fontFamily: SANS, fontSize: lxFs('0.65rem'), fontWeight: 600, color: C.success, letterSpacing: '0.05em' }}>
                                       CORRECT
                                     </span>
                                   )}
                                   {isWrongPick && (
-                                    <span style={{ fontFamily: SANS, fontSize: '0.65rem', fontWeight: 600, color: C.red, letterSpacing: '0.05em' }}>
+                                    <span style={{ fontFamily: SANS, fontSize: lxFs('0.65rem'), fontWeight: 600, color: C.red, letterSpacing: '0.05em' }}>
                                       YOUR ANSWER
                                     </span>
                                   )}
@@ -785,7 +786,7 @@ function TimerBar({ secondsLeft, totalSeconds }: { secondsLeft: number; totalSec
         />
         <span style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize: '0.6875rem', fontWeight: 700,
+          fontSize: lxFs('0.6875rem'), fontWeight: 700,
           color,
           fontVariantNumeric: 'tabular-nums',
           letterSpacing: '0.02em',
@@ -1283,10 +1284,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         </motion.button>
 
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
-          <p style={{ fontFamily: SANS, fontSize: '0.6875rem', color: C.textMuted, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.6875rem'), color: C.textMuted, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
             {typeLabel}
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.875rem', fontWeight: 600, color: C.textPrim }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), fontWeight: 600, color: C.textPrim }}>
             Q{currentIdx + 1} <span style={{ color: C.textMuted, fontWeight: 400 }}>/ {questions.length}</span>
           </p>
         </div>
@@ -1305,7 +1306,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           }}
         >
           <Gem size={11} color={C.gold} />
-          <span style={{ fontFamily: SANS, fontSize: '0.75rem', fontWeight: 600, color: C.gold }}>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 600, color: C.gold }}>
             +<AnimatedNumber value={totalEarned} />
           </span>
         </motion.div>
@@ -1371,7 +1372,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             />
             <p style={{
               fontFamily: SERIF,
-              fontSize: 'clamp(1.1rem, 4vw, 1.3rem)',
+              fontSize: lxFs('clamp(1.1rem, 4vw, 1.3rem)'),
               lineHeight: 1.65,
               color: C.textPrim,
               fontWeight: 500,
@@ -1385,7 +1386,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           {isTypedQ ? (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {current.typedHint && (
-                <p style={{ fontFamily: SANS, fontSize: '0.75rem', color: C.textMuted, letterSpacing: '0.04em' }}>
+                <p style={{ fontFamily: SANS, fontSize: lxFs('0.75rem'), color: C.textMuted, letterSpacing: '0.04em' }}>
                   Hint: starts with{' '}
                   <span style={{ color: C.gold, fontWeight: 700 }}>{current.typedHint.firstLetter}</span>
                   {' '}· {current.typedHint.length} letters
@@ -1410,7 +1411,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
                     : `1.5px solid ${C.border}`,
                   borderRadius: 14,
                   fontFamily: SERIF,
-                  fontSize: '1.15rem',
+                  fontSize: lxFs('1.15rem'),
                   fontWeight: 600,
                   color: answerPhase === 'revealed'
                     ? (result?.isCorrect ? C.success : C.red)
@@ -1432,10 +1433,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
                     borderRadius: 12,
                   }}
                 >
-                  <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: C.success }}>
+                  <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: C.success }}>
                     Answer
                   </span>
-                  <span style={{ fontFamily: SERIF, fontSize: '1.2rem', fontWeight: 700, fontStyle: 'italic', color: C.success, textTransform: 'capitalize' }}>
+                  <span style={{ fontFamily: SERIF, fontSize: lxFs('1.2rem'), fontWeight: 700, fontStyle: 'italic', color: C.success, textTransform: 'capitalize' }}>
                     {result.correctWord}
                   </span>
                 </motion.div>
@@ -1477,7 +1478,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
                   borderRadius: 12,
                 }}
               >
-                <p style={{ fontFamily: SERIF, fontSize: '0.9375rem', fontStyle: 'italic', lineHeight: 1.6, color: C.textSec }}>
+                <p style={{ fontFamily: SERIF, fontSize: lxFs('0.9375rem'), fontStyle: 'italic', lineHeight: 1.6, color: C.textSec }}>
                   {result.explanation}
                 </p>
               </motion.div>
@@ -1500,7 +1501,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             background: C.red,
             color: '#fff',
             border: 'none', borderRadius: 16,
-            fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600,
+            fontFamily: SANS, fontSize: lxFs('0.9375rem'), fontWeight: 600,
             cursor: submitting || typedValue.trim().length === 0 ? 'default' : 'pointer',
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             boxShadow: '0 4px 16px rgba(230,57,70,0.3)',
@@ -1518,7 +1519,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           role="alert"
           style={{
             marginTop: '0.5rem',
-            fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 500,
+            fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 500,
             color: C.red, textAlign: 'center',
           }}
         >
@@ -1543,7 +1544,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
               background: C.red,
               color: '#fff',
               border: 'none', borderRadius: 16,
-              fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600,
+              fontFamily: SANS, fontSize: lxFs('0.9375rem'), fontWeight: 600,
               cursor: submitting ? 'wait' : 'pointer',
               opacity: submitting ? 0.75 : 1,
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,

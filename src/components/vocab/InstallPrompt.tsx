@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { lxFs } from '@/lib/vocab/ui';
 
 // v2: replaces the old 'lx-install-prompt-dismissed' permanent flag. Existing
 // users carrying that old key are unaffected by it now (it's just dead) and
@@ -137,7 +138,7 @@ export default function InstallPrompt() {
           <div style={{ flex: 1, minWidth: 0 }}>
             <p style={{
               fontFamily:  "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:    '0.75rem',
+              fontSize:    lxFs('0.75rem'),
               fontWeight:  600,
               color:       'var(--color-lx-text-primary)',
               margin:      0,
@@ -147,7 +148,7 @@ export default function InstallPrompt() {
             </p>
             <p style={{
               fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:      '0.62rem',
+              fontSize:      lxFs('0.62rem'),
               color:         'var(--color-lx-text-muted)',
               margin:        '2px 0 0',
               lineHeight:    1.4,
@@ -170,7 +171,7 @@ export default function InstallPrompt() {
                 borderRadius: 8,
                 cursor:     'pointer',
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   '0.68rem',
+                fontSize:   lxFs('0.68rem'),
                 fontWeight: 700,
                 color:      '#fff',
                 flexShrink: 0,

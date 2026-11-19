@@ -9,6 +9,7 @@ import { Fade, PrimaryButton } from '@/components/vocab/onboarding/ui';
 import { DEFAULT_CARD_PREFS, type CardPrefs } from '@/lib/vocab/card-prefs';
 import { readDraft, clearDraft } from '@/lib/vocab/onboarding/state';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
+import { lxFs } from '@/lib/vocab/ui';
 
 export interface TrackOption {
   id:          number;
@@ -261,7 +262,7 @@ function RepairQuiz({ sessionPromise, onDone }: {
             display: 'flex', flexDirection: 'column', gap: '0.5rem',
             alignItems: 'center', textAlign: 'center',
           }}>
-            <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.8125rem', color: 'var(--color-lx-text-secondary)', letterSpacing: '0.04em' }}>
+            <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.8125rem'), color: 'var(--color-lx-text-secondary)', letterSpacing: '0.04em' }}>
               Writing your sentences…
             </p>
           </div>
@@ -307,7 +308,7 @@ function RepairQuiz({ sessionPromise, onDone }: {
 
       <p style={{
         fontFamily: "var(--font-lexi-word), Georgia, serif",
-        fontSize: 'clamp(1.35rem, 5.5vw, 1.8rem)',
+        fontSize: lxFs('clamp(1.35rem, 5.5vw, 1.8rem)'),
         lineHeight: 1.45,
         color: 'var(--color-lx-text-primary)',
         margin: 0,
@@ -351,7 +352,7 @@ function RepairQuiz({ sessionPromise, onDone }: {
 
       {result && (
         <div className="mt-auto flex flex-col gap-4">
-          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.85rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.85rem'), lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
             {result.explanation}
           </p>
           <PrimaryButton onClick={next}>{isLast ? 'Done' : 'Next'}</PrimaryButton>
@@ -414,7 +415,7 @@ function ActivationResult({ userName, score, repaired, reduce, onNext }: {
         <LSays>{line}</LSays>
 
         {repaired > 0 && score && score.total > 0 && (
-          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.9rem'), lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
             A minute ago {repaired === 1 ? 'that word was' : 'those words were'} a guess. Everything after this is the
             same loop, on a longer list.
           </p>

@@ -1,6 +1,7 @@
 'use client';
 
 import type { UnlockedClues } from '@/lib/vocab/game/types';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 const SERIF = "var(--font-lexi-word), Georgia, serif";
@@ -12,12 +13,12 @@ function ClueLabel({ n, title }: { n: number; title: string }) {
         width: 18, height: 18, borderRadius: '50%', flexShrink: 0,
         background: 'var(--color-lx-elevated)', border: '1px solid var(--color-lx-border)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: SANS, fontSize: '0.58rem', fontWeight: 700, color: 'var(--color-lx-text-muted)',
+        fontFamily: SANS, fontSize: lxFs('0.58rem'), fontWeight: 700, color: 'var(--color-lx-text-muted)',
       }}>
         {n}
       </span>
       <span style={{
-        fontFamily: SANS, fontSize: '0.58rem', fontWeight: 600,
+        fontFamily: SANS, fontSize: lxFs('0.58rem'), fontWeight: 600,
         letterSpacing: '0.1em', textTransform: 'uppercase',
         color: 'var(--color-lx-text-muted)',
       }}>
@@ -59,7 +60,7 @@ export default function ClueFeed({
   if (clues.clue1Distinction) {
     items.push(
       <ClueCard key="c1" n={1} title="What sets it apart" delay={0}>
-        <p style={{ fontFamily: SERIF, fontSize: '1rem', fontStyle: 'italic', lineHeight: 1.55, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
+        <p style={{ fontFamily: SERIF, fontSize: lxFs('1rem'), fontStyle: 'italic', lineHeight: 1.55, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
           {clues.clue1Distinction}
         </p>
       </ClueCard>,
@@ -71,7 +72,7 @@ export default function ClueFeed({
       <ClueCard key="c2" n={2} title="Characteristics" delay={0}>
         <ul style={{ margin: 0, paddingLeft: '1.1rem', display: 'flex', flexDirection: 'column', gap: 5 }}>
           {clues.clue2Characteristics.map((c, i) => (
-            <li key={i} style={{ fontFamily: SANS, fontSize: '0.82rem', lineHeight: 1.5, color: 'var(--color-lx-text-secondary)' }}>
+            <li key={i} style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), lineHeight: 1.5, color: 'var(--color-lx-text-secondary)' }}>
               {c}
             </li>
           ))}
@@ -88,14 +89,14 @@ export default function ClueFeed({
             <blockquote style={{
               margin: 0, padding: '0.625rem 0.875rem',
               borderLeft: '2px solid var(--color-lx-accent-gold)',
-              fontFamily: SERIF, fontSize: '1rem', fontStyle: 'italic',
+              fontFamily: SERIF, fontSize: lxFs('1rem'), fontStyle: 'italic',
               lineHeight: 1.55, color: 'var(--color-lx-text-primary)',
             }}>
               &ldquo;{clues.clue4ContextSentence}&rdquo;
             </blockquote>
           )}
           {clues.clue3Note && (
-            <p style={{ fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-muted)', margin: 0, lineHeight: 1.5 }}>
+            <p style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-muted)', margin: 0, lineHeight: 1.5 }}>
               {clues.clue3Note}
             </p>
           )}
@@ -113,12 +114,12 @@ export default function ClueFeed({
             background: 'rgba(230,57,70,0.1)', border: '1px solid rgba(230,57,70,0.28)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-            fontSize: '1.6rem', color: 'var(--color-lx-accent-red)', textTransform: 'uppercase',
+            fontSize: lxFs('1.6rem'), color: 'var(--color-lx-accent-red)', textTransform: 'uppercase',
           }}>
             {clues.clue5FirstLetter}
           </span>
           {clues.clue5Extra && (
-            <p style={{ fontFamily: SANS, fontSize: '0.82rem', color: 'var(--color-lx-text-secondary)', margin: 0, lineHeight: 1.5 }}>
+            <p style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), color: 'var(--color-lx-text-secondary)', margin: 0, lineHeight: 1.5 }}>
               {clues.clue5Extra}
             </p>
           )}
@@ -144,7 +145,7 @@ export default function ClueFeed({
                 borderRadius: 20, cursor: readOnly ? 'default' : 'pointer',
                 opacity: readOnly ? 0.6 : 1,
                 fontFamily: SERIF, fontStyle: 'italic', fontWeight: 600,
-                fontSize: '0.95rem', color: 'var(--color-lx-text-primary)',
+                fontSize: lxFs('0.95rem'), color: 'var(--color-lx-text-primary)',
                 textTransform: 'capitalize',
               }}
             >

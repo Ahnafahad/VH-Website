@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useId, useRef } from 'react';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Props {
   percentage:  number;   // 0–100
@@ -125,7 +126,7 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
           <span
             style={{
               fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:      '0.6rem',
+              fontSize:      lxFs('0.6rem'),
               color:         'var(--color-lx-text-muted)',
               letterSpacing: '0.06em',
               textTransform: 'uppercase',

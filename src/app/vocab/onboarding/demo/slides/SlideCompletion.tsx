@@ -6,6 +6,7 @@ import { CheckCircle2 } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const STEPS = [
   { label: 'Flashcards', color: 'var(--color-lx-study)' },
@@ -96,7 +97,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
                           key="num"
                           style={{
                             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                            fontSize: '0.7rem',
+                            fontSize: lxFs('0.7rem'),
                             fontWeight: 600,
                             color: 'var(--color-lx-text-muted)',
                           }}
@@ -111,7 +112,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.58rem',
+                    fontSize: lxFs('0.58rem'),
                     fontWeight: 500,
                     color: i <= completedStep ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
                     transition: 'color 0.2s',
@@ -156,7 +157,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
               <motion.div
                 animate={{ rotate: [0, 10, -10, 0] }}
                 transition={{ duration: 0.5, delay: 0.2 }}
-                style={{ fontSize: '1.5rem', lineHeight: 1 }}
+                style={{ fontSize: lxFs('1.5rem'), lineHeight: 1 }}
               >
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--color-lx-success)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
@@ -166,7 +167,7 @@ export default function SlideCompletion({ onNext, stepLabel }: Props) {
               <span
                 style={{
                   fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize: '0.7rem',
+                  fontSize: lxFs('0.7rem'),
                   fontWeight: 600,
                   color: 'var(--color-lx-success)',
                 }}

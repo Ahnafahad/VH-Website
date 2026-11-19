@@ -12,6 +12,7 @@
 import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PAID_WORD_POOL } from '@/lib/vocab/constants';
+import { lxFs } from '@/lib/vocab/ui';
 
 function defaultDeadline(): Date {
   const d = new Date();
@@ -93,7 +94,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
             <h2
               style={{
                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                fontSize:   '1.6rem',
+                fontSize:   lxFs('1.6rem'),
                 fontWeight: 700,
                 fontStyle:  'italic',
                 lineHeight: 1.15,
@@ -106,7 +107,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
             <p
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   '0.84rem',
+                fontSize:   lxFs('0.84rem'),
                 color:      'var(--color-lx-text-secondary)',
                 lineHeight: 1.5,
               }}
@@ -149,7 +150,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
             <span
               style={{
                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                fontSize:   '2.4rem',
+                fontSize:   lxFs('2.4rem'),
                 fontWeight: 700,
                 lineHeight: 1,
                 color:      'var(--color-lx-accent-red)',
@@ -160,7 +161,7 @@ export default function FullAccessDeadlineModal({ onDone }: { onDone: () => void
             <p
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   '0.8rem',
+                fontSize:   lxFs('0.8rem'),
                 color:      'var(--color-lx-text-secondary)',
                 marginTop:  4,
               }}

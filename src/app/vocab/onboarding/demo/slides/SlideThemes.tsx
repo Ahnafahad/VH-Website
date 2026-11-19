@@ -6,6 +6,7 @@ import { Layers } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const WORDS = ['hegemony', 'belligerent', 'antagonist'];
 
@@ -56,7 +57,7 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.6rem',
+                    fontSize: lxFs('0.6rem'),
                     fontWeight: 500,
                     textTransform: 'uppercase',
                     letterSpacing: '0.08em',
@@ -68,7 +69,7 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
-                    fontSize: '1.1rem',
+                    fontSize: lxFs('1.1rem'),
                     fontWeight: 600,
                     fontStyle: 'italic',
                     color: 'var(--color-lx-text-primary)',
@@ -123,7 +124,7 @@ export default function SlideThemes({ onNext, stepLabel }: Props) {
                         className="lx-word"
                         style={{
                           fontFamily: "var(--font-lexi-word), Georgia, serif",
-                          fontSize: '0.95rem',
+                          fontSize: lxFs('0.95rem'),
                           fontStyle: 'italic',
                           color: 'var(--color-lx-text-primary)',
                         }}

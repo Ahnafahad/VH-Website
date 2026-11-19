@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import type { PublicGuess, GuessRelation, SentenceStatus } from '@/lib/vocab/game/types';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 const SERIF = "var(--font-lexi-word), Georgia, serif";
@@ -43,19 +44,19 @@ function GuessCard({ guess, index }: { guess: PublicGuess; index: number }) {
       <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 8 }}>
         <span style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-          fontSize: '1.15rem', color: 'var(--color-lx-text-primary)', textTransform: 'capitalize',
+          fontSize: lxFs('1.15rem'), color: 'var(--color-lx-text-primary)', textTransform: 'capitalize',
         }}>
           {guess.word}
         </span>
         <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
           {sentenceTag && (
-            <span style={{ fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700, color: sentenceTag.color }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700, color: sentenceTag.color }}>
               {sentenceTag.label}
             </span>
           )}
           {guess.sentencePointsEarned > 0 && (
             <span style={{
-              fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700, color: 'var(--color-lx-accent-gold)',
+              fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700, color: 'var(--color-lx-accent-gold)',
               background: 'rgba(244,168,40,0.12)', borderRadius: 10, padding: '0.1rem 0.45rem',
             }}>
               +{guess.sentencePointsEarned}
@@ -64,7 +65,7 @@ function GuessCard({ guess, index }: { guess: PublicGuess; index: number }) {
         </div>
       </div>
 
-      <p style={{ fontFamily: SERIF, fontSize: '0.9rem', fontStyle: 'italic', lineHeight: 1.5, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
+      <p style={{ fontFamily: SERIF, fontSize: lxFs('0.9rem'), fontStyle: 'italic', lineHeight: 1.5, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
         &ldquo;{guess.sentence}&rdquo;
       </p>
 
@@ -73,10 +74,10 @@ function GuessCard({ guess, index }: { guess: PublicGuess; index: number }) {
           display: 'flex', flexDirection: 'column', gap: 3,
           marginTop: 2, paddingTop: 8, borderTop: '1px solid var(--color-lx-border)',
         }}>
-          <span style={{ fontFamily: SANS, fontSize: '0.68rem', fontWeight: 700, color: relation.color }}>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.68rem'), fontWeight: 700, color: relation.color }}>
             {relation.label}
           </span>
-          <span style={{ fontFamily: SANS, fontSize: '0.76rem', color: 'var(--color-lx-text-muted)', lineHeight: 1.45 }}>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.76rem'), color: 'var(--color-lx-text-muted)', lineHeight: 1.45 }}>
             {guess.relationFeedback}
           </span>
         </div>
@@ -92,7 +93,7 @@ export default function GuessHistory({ guesses }: { guesses: PublicGuess[] }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
       <p style={{
-        fontFamily: SANS, fontSize: '0.58rem', fontWeight: 600,
+        fontFamily: SANS, fontSize: lxFs('0.58rem'), fontWeight: 600,
         letterSpacing: '0.14em', textTransform: 'uppercase',
         color: 'var(--color-lx-text-muted)',
       }}>

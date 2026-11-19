@@ -14,6 +14,7 @@ import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import MiniLeaderboard from '@/components/vocab/MiniLeaderboard';
 import type { ChargeWord, ChargeAnswer, ChargeFinishResponse, Connotation } from '@/lib/vocab/word-charge/types';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SERIF = "var(--font-lexi-word), Georgia, serif";
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
@@ -35,7 +36,7 @@ function SideChip({ connotation }: { connotation: Connotation }) {
       display: 'inline-flex', alignItems: 'center', gap: 3,
       padding: '0.2rem 0.6rem',
       borderRadius: 20,
-      fontFamily: SANS, fontSize: '0.65rem', fontWeight: 700,
+      fontFamily: SANS, fontSize: lxFs('0.65rem'), fontWeight: 700,
       background: isPos ? 'rgba(244,168,40,0.12)' : 'rgba(91,163,245,0.12)',
       border: isPos ? '1px solid rgba(244,168,40,0.4)' : '1px solid rgba(91,163,245,0.4)',
       color: isPos ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-mastery-familiar)',
@@ -67,7 +68,7 @@ function ReviewRow({ word, answer }: { word: ChargeWord; answer: ChargeAnswer })
           textAlign: 'left',
         }}
       >
-        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: '1.05rem', color: 'var(--color-lx-text-primary)', flex: 1 }}>
+        <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('1.05rem'), color: 'var(--color-lx-text-primary)', flex: 1 }}>
           {word.word}
         </span>
 
@@ -75,13 +76,13 @@ function ReviewRow({ word, answer }: { word: ChargeWord; answer: ChargeAnswer })
         {playerChoice ? (
           <SideChip connotation={playerChoice} />
         ) : (
-          <span style={{ fontFamily: SANS, fontSize: '0.65rem', color: 'var(--color-lx-text-muted)' }}>skipped</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.65rem'), color: 'var(--color-lx-text-muted)' }}>skipped</span>
         )}
-        <span style={{ fontFamily: SANS, fontSize: '0.7rem', color: 'var(--color-lx-text-muted)' }}>→</span>
+        <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: 'var(--color-lx-text-muted)' }}>→</span>
         <SideChip connotation={word.connotation} />
 
         {/* Correct/wrong indicator */}
-        <span style={{ fontSize: '0.85rem', flexShrink: 0 }}>
+        <span style={{ fontSize: lxFs('0.85rem'), flexShrink: 0 }}>
           {correct ? '✓' : playerChoice ? '✗' : '—'}
         </span>
 
@@ -100,7 +101,7 @@ function ReviewRow({ word, answer }: { word: ChargeWord; answer: ChargeAnswer })
             <div style={{ padding: '0 1rem 1rem', display: 'flex', flexDirection: 'column', gap: '0.625rem', borderTop: '1px solid var(--color-lx-border)' }}>
               {/* Word + speaker */}
               <div style={{ display: 'flex', alignItems: 'center', gap: 8, paddingTop: '0.75rem' }}>
-                <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-text-primary)' }}>
+                <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('1.2rem'), color: 'var(--color-lx-text-primary)' }}>
                   {word.word}
                 </span>
                 <motion.button
@@ -118,21 +119,21 @@ function ReviewRow({ word, answer }: { word: ChargeWord; answer: ChargeAnswer })
                   <Volume2 size={14} />
                 </motion.button>
                 {word.partOfSpeech && (
-                  <span style={{ fontFamily: SANS, fontSize: '0.62rem', color: 'var(--color-lx-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                  <span style={{ fontFamily: SANS, fontSize: lxFs('0.62rem'), color: 'var(--color-lx-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
                     {word.partOfSpeech}
                   </span>
                 )}
               </div>
 
               {/* Definition */}
-              <p style={{ fontFamily: SERIF, fontSize: '1.05rem', lineHeight: 1.5, color: 'var(--color-lx-text-primary)' }}>
+              <p style={{ fontFamily: SERIF, fontSize: lxFs('1.05rem'), lineHeight: 1.5, color: 'var(--color-lx-text-primary)' }}>
                 {word.definition}
               </p>
 
               {/* Example */}
               {word.exampleSentence && (
                 <div style={{ borderRadius: 10, padding: '0.6rem 0.875rem', background: 'var(--color-lx-elevated)', borderLeft: '2px solid var(--color-lx-accent-gold)' }}>
-                  <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '0.95rem', color: 'var(--color-lx-text-primary)', lineHeight: 1.5 }}>
+                  <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: lxFs('0.95rem'), color: 'var(--color-lx-text-primary)', lineHeight: 1.5 }}>
                     &ldquo;{word.exampleSentence}&rdquo;
                   </p>
                 </div>
@@ -140,7 +141,7 @@ function ReviewRow({ word, answer }: { word: ChargeWord; answer: ChargeAnswer })
 
               {/* Contrast */}
               {word.antonyms.length > 0 && (
-                <p style={{ fontFamily: SANS, fontSize: '0.73rem', color: 'var(--color-lx-text-secondary)' }}>
+                <p style={{ fontFamily: SANS, fontSize: lxFs('0.73rem'), color: 'var(--color-lx-text-secondary)' }}>
                   Contrast: <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: 'var(--color-lx-text-primary)' }}>{word.antonyms[0]}</span>
                 </p>
               )}
@@ -217,7 +218,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
         <div style={{
           padding: '1rem 1.125rem', borderRadius: 12, marginBottom: '1.25rem',
           background: 'rgba(230,57,70,0.06)', border: '1px solid rgba(230,57,70,0.2)',
-          fontFamily: SANS, fontSize: '0.8rem', color: 'var(--color-lx-text-secondary)',
+          fontFamily: SANS, fontSize: lxFs('0.8rem'), color: 'var(--color-lx-text-secondary)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
         }}>
           Couldn&apos;t save results. Your answers are preserved.
@@ -226,7 +227,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
             style={{
               background: 'var(--color-lx-accent-red)', color: '#fff', border: 'none',
               borderRadius: 8, padding: '0.4rem 0.75rem',
-              fontFamily: SANS, fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer', minHeight: 36, flexShrink: 0,
+              fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 700, cursor: 'pointer', minHeight: 36, flexShrink: 0,
             }}
           >
             Retry
@@ -266,16 +267,16 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
               <LexiArtwork path={`games/word-charge/${roundTier(result).asset}.svg`} width={64} height={64} loading="eager" />
               <span style={{
                 fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-                fontSize: '1.15rem', color: 'var(--color-lx-text-primary)',
+                fontSize: lxFs('1.15rem'), color: 'var(--color-lx-text-primary)',
               }}>
                 {roundTier(result).label}
               </span>
             </motion.div>
 
-            <p style={{ fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)', marginBottom: '0.5rem' }}>
+            <p style={{ fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)', marginBottom: '0.5rem' }}>
               Points earned
             </p>
-            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: 'clamp(2.8rem, 10vw, 4rem)', color: 'var(--color-lx-accent-gold)', lineHeight: 1 }}>
+            <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('clamp(2.8rem, 10vw, 4rem)'), color: 'var(--color-lx-accent-gold)', lineHeight: 1 }}>
               <AnimatedNumber value={result.pointsEarned} />
             </p>
 
@@ -290,7 +291,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
                   padding: '0.3rem 0.75rem', borderRadius: 20,
                   background: 'rgba(244,168,40,0.12)',
                   border: '1px solid rgba(244,168,40,0.4)',
-                  fontFamily: SANS, fontSize: '0.72rem', fontWeight: 700,
+                  fontFamily: SANS, fontSize: lxFs('0.72rem'), fontWeight: 700,
                   color: 'var(--color-lx-accent-gold)',
                 }}
               >
@@ -299,7 +300,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
             )}
 
             {/* Central total */}
-            <p style={{ fontFamily: SANS, fontSize: '0.73rem', color: 'var(--color-lx-text-muted)', marginTop: '0.625rem' }}>
+            <p style={{ fontFamily: SANS, fontSize: lxFs('0.73rem'), color: 'var(--color-lx-text-muted)', marginTop: '0.625rem' }}>
               Total: <span style={{ color: 'var(--color-lx-text-secondary)', fontWeight: 600 }}>{result.totalPoints} pts</span>
             </p>
           </div>
@@ -316,10 +317,10 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
                 background: 'var(--color-lx-surface)', border: '1px solid var(--color-lx-border)',
                 display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3,
               }}>
-                <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: '1.6rem', color: s.color, lineHeight: 1 }}>
+                <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: lxFs('1.6rem'), color: s.color, lineHeight: 1 }}>
                   {s.value}
                 </span>
-                <span style={{ fontFamily: SANS, fontSize: '0.6rem', color: 'var(--color-lx-text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                <span style={{ fontFamily: SANS, fontSize: lxFs('0.6rem'), color: 'var(--color-lx-text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                   {s.label}
                 </span>
               </div>
@@ -330,11 +331,11 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
               background: 'var(--color-lx-surface)', border: '1px solid var(--color-lx-border)',
               display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 3,
             }}>
-              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: '1.6rem', color: 'var(--color-lx-accent-gold)', lineHeight: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
+              <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: lxFs('1.6rem'), color: 'var(--color-lx-accent-gold)', lineHeight: 1, display: 'flex', alignItems: 'center', gap: 2 }}>
                 <Flame size={18} />
                 {result.bestStreak}
               </span>
-              <span style={{ fontFamily: SANS, fontSize: '0.6rem', color: 'var(--color-lx-text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.6rem'), color: 'var(--color-lx-text-muted)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
                 Streak
               </span>
             </div>
@@ -342,7 +343,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
 
           {/* Accuracy */}
           {accuracy !== null && (
-            <p style={{ fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)', textAlign: 'center', marginBottom: '1.25rem' }}>
+            <p style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-secondary)', textAlign: 'center', marginBottom: '1.25rem' }}>
               Accuracy: <span style={{ fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>{accuracy}%</span>
             </p>
           )}
@@ -351,7 +352,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
           {reviewWords.length > 0 && (
             <div style={{ marginBottom: '1.5rem' }}>
               <p style={{
-                fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+                fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
                 letterSpacing: '0.16em', textTransform: 'uppercase',
                 color: 'var(--color-lx-text-muted)', marginBottom: '0.75rem',
               }}>
@@ -379,7 +380,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
                 display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                 background: 'var(--color-lx-accent-red)',
                 border: 'none', borderRadius: 14,
-                fontFamily: SANS, fontSize: '0.9rem', fontWeight: 700,
+                fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 700,
                 color: '#fff', cursor: 'pointer',
               }}
             >
@@ -391,7 +392,7 @@ export default function ChargeResults({ result, saveError, onSaveRetry, onPlayAg
                 width: '100%', minHeight: 48,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 background: 'none', border: '1px solid var(--color-lx-border)', borderRadius: 14,
-                fontFamily: SANS, fontSize: '0.85rem', fontWeight: 500,
+                fontFamily: SANS, fontSize: lxFs('0.85rem'), fontWeight: 500,
                 color: 'var(--color-lx-text-secondary)', cursor: 'pointer',
               }}
             >

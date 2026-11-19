@@ -10,6 +10,7 @@ import { DEFAULT_CARD_PREFS, type CardPrefs } from '@/lib/vocab/card-prefs';
 import { writeDraft, type DiagnosticAnswer } from '@/lib/vocab/onboarding/state';
 import type { DiagnosticWord } from '@/lib/vocab/onboarding/diagnostic';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
+import { lxFs } from '@/lib/vocab/ui';
 
 type Stage = 'thesis' | 'card' | 'diagnostic' | 'read' | 'auth';
 
@@ -112,7 +113,7 @@ function Thesis({ onNext }: { onNext: () => void }) {
     <div className="flex flex-1 flex-col justify-center gap-8 py-10">
       <h1 style={{
         fontFamily: "var(--font-lexi-word), Georgia, serif",
-        fontSize: 'clamp(2.1rem, 10vw, 3.4rem)',
+        fontSize: lxFs('clamp(2.1rem, 10vw, 3.4rem)'),
         lineHeight: 1.05,
         fontWeight: 700,
         letterSpacing: '-0.02em',
@@ -335,7 +336,7 @@ function DiagnosticPop({ onDone }: { onDone: () => void }) {
       style={{
         position: 'absolute', top: -10, left: '50%', transform: 'translateX(-50%)',
         zIndex: 20, pointerEvents: 'none',
-        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.85rem', fontWeight: 700,
+        fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.85rem'), fontWeight: 700,
         color: 'var(--color-lx-success)',
         background: 'rgba(46,204,113,0.12)',
         border: '1px solid rgba(46,204,113,0.4)',
@@ -459,7 +460,7 @@ function DiagnosticCard({ word, containerWidth, onCommit }: {
             display: 'flex', alignItems: 'center', justifyContent: 'flex-end', paddingRight: '4%',
           }}
         >
-          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-lx-accent-gold)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
+          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: lxFs('0.9rem'), color: 'var(--color-lx-accent-gold)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
             GOOD
           </span>
         </motion.div>
@@ -473,7 +474,7 @@ function DiagnosticCard({ word, containerWidth, onCommit }: {
             display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingLeft: '4%',
           }}
         >
-          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: '0.9rem', color: 'var(--color-lx-accent-red)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
+          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontWeight: 700, fontSize: lxFs('0.9rem'), color: 'var(--color-lx-accent-red)', letterSpacing: '0.08em', textShadow: '0 1px 6px rgba(0,0,0,0.8)' }}>
             BAD
           </span>
         </motion.div>
@@ -568,7 +569,7 @@ function LRead({ answers, weakCount, reduce, onNext }: {
         <LSays>{line}</LSays>
 
         {weakCount > 0 && (
-          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.9rem'), lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
             Next: I&rsquo;ll teach {weakCount === 1 ? 'it' : 'them'} on the card you just built, then check whether it took —
             in a sentence, not a definition.
           </p>

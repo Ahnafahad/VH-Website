@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { X, Send, CheckCircle2 } from 'lucide-react';
 import { trackFeature } from '@/lib/analytics/tracker';
+import { lxFs } from '@/lib/vocab/ui';
 
 const sheetBackdropV: Variants = {
   hidden: { opacity: 0 },
@@ -89,7 +90,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
     borderRadius: '10px',
     padding:      '13px 14px',
     fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
-    fontSize:     '15px',
+    fontSize:     lxFs('15px'),
     fontWeight:   400,
     color:        'var(--form-input-text)',
     outline:      'none',
@@ -188,7 +189,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
               <h3
                 className="lx-word"
                 style={{
-                  fontSize:     '1.7rem',
+                  fontSize:     lxFs('1.7rem'),
                   fontWeight:   600,
                   fontStyle:    'italic',
                   color:        'var(--color-lx-text-primary)',
@@ -202,7 +203,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
               <p
                 style={{
                   fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:     '13px',
+                  fontSize:     lxFs('13px'),
                   fontWeight:   300,
                   color:        'var(--color-lx-text-secondary)',
                   lineHeight:   1.6,
@@ -216,7 +217,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                 onClick={onClose}
                 style={{
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      '13px',
+                  fontSize:      lxFs('13px'),
                   fontWeight:    600,
                   letterSpacing: '0.08em',
                   textTransform: 'uppercase',
@@ -251,7 +252,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                   <h2
                     className="lx-word"
                     style={{
-                      fontSize:   '1.55rem',
+                      fontSize:   lxFs('1.55rem'),
                       fontWeight: 600,
                       fontStyle:  'italic',
                       color:      'var(--color-lx-text-primary)',
@@ -265,7 +266,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                     <p
                       style={{
                         fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:   '11px',
+                        fontSize:   lxFs('11px'),
                         fontWeight: 400,
                         color:      'var(--color-lx-text-muted)',
                         margin:     0,
@@ -312,7 +313,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                   style={{
                     display:       'block',
                     fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:      '11px',
+                    fontSize:      lxFs('11px'),
                     fontWeight:    600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
@@ -354,7 +355,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                   style={{
                     display:       'block',
                     fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:      '11px',
+                    fontSize:      lxFs('11px'),
                     fontWeight:    600,
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
@@ -397,7 +398,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                     role="alert"
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize:   '12px',
+                      fontSize:   lxFs('12px'),
                       fontWeight: 400,
                       color:      'var(--color-lx-accent-red)',
                       lineHeight: 1.5,
@@ -426,7 +427,7 @@ export default function AccessRequestSheet({ title, subtitle, onClose }: Props) 
                     : 'linear-gradient(135deg, rgba(201,168,76,0.22) 0%, rgba(201,168,76,0.1) 100%)',
                   border:        '1px solid rgba(201,168,76,0.38)',
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      '13px',
+                  fontSize:      lxFs('13px'),
                   fontWeight:    600,
                   letterSpacing: '0.06em',
                   color:         state === 'submitting' ? 'rgba(201,168,76,0.5)' : '#C9A84C',

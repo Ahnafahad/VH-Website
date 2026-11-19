@@ -8,6 +8,7 @@ import {
   type PanInfo,
 } from 'framer-motion';
 import type { ChargeWord } from '@/lib/vocab/word-charge/types';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SERIF = "var(--font-lexi-word), Georgia, serif";
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
@@ -127,7 +128,7 @@ export default function ChargeCard({ word, containerWidth, onCommit, disabled, r
           fontFamily: SERIF,
           fontStyle: 'italic',
           fontWeight: 700,
-          fontSize: wordSize,
+          fontSize: lxFs(wordSize),
           lineHeight: 1.08,
           color: 'var(--color-lx-text-primary)',
           letterSpacing: '-0.02em',
@@ -141,7 +142,7 @@ export default function ChargeCard({ word, containerWidth, onCommit, disabled, r
         {word.partOfSpeech && (
           <p style={{
             fontFamily: SANS,
-            fontSize: '0.58rem',
+            fontSize: lxFs('0.58rem'),
             fontWeight: 600,
             color: 'var(--color-lx-text-muted)',
             letterSpacing: '0.1em',
@@ -169,7 +170,7 @@ export default function ChargeCard({ word, containerWidth, onCommit, disabled, r
             }}
           >
             <span style={{
-              fontFamily: SANS, fontWeight: 700, fontSize: '0.95rem',
+              fontFamily: SANS, fontWeight: 700, fontSize: lxFs('0.95rem'),
               color: 'var(--color-lx-accent-gold)', letterSpacing: '0.08em',
               textShadow: '0 1px 6px rgba(0,0,0,0.8)',
             }}>
@@ -190,7 +191,7 @@ export default function ChargeCard({ word, containerWidth, onCommit, disabled, r
             }}
           >
             <span style={{
-              fontFamily: SANS, fontWeight: 700, fontSize: '0.95rem',
+              fontFamily: SANS, fontWeight: 700, fontSize: lxFs('0.95rem'),
               color: 'var(--color-lx-mastery-familiar)', letterSpacing: '0.08em',
               textShadow: '0 1px 6px rgba(0,0,0,0.8)',
             }}>

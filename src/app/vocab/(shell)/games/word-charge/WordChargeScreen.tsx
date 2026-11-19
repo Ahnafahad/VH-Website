@@ -48,6 +48,7 @@ import type {
   ChargeStartResponse,
   ChargeFinishResponse,
 } from '@/lib/vocab/word-charge/types';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
@@ -363,7 +364,7 @@ function Countdown({ onDone, reduce }: { onDone: () => void; reduce: boolean }) 
           transition={{ duration: 0.3, ease: 'easeOut' }}
           style={{
             fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-            fontSize: 'clamp(4rem, 20vw, 8rem)',
+            fontSize: lxFs('clamp(4rem, 20vw, 8rem)'),
             color: count === 0 ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-primary)',
           }}
         >
@@ -404,7 +405,7 @@ function TimeUpBeat({ onDone, reduce }: { onDone: () => void; reduce: boolean })
         transition={{ duration: 0.35, ease: 'easeOut' }}
         style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-          fontSize: 'clamp(2.5rem, 12vw, 5rem)',
+          fontSize: lxFs('clamp(2.5rem, 12vw, 5rem)'),
           color: 'var(--color-lx-accent-gold)',
         }}
       >
@@ -448,7 +449,7 @@ function PauseOverlay({
         display: 'flex', flexDirection: 'column', gap: '0.875rem',
         alignItems: 'center',
       }}>
-        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: '2rem', color: 'var(--color-lx-text-primary)' }}>
+        <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('2rem'), color: 'var(--color-lx-text-primary)' }}>
           Paused
         </p>
         <motion.button
@@ -459,7 +460,7 @@ function PauseOverlay({
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             background: 'var(--color-lx-accent-red)',
             border: 'none', borderRadius: 14,
-            fontFamily: SANS, fontSize: '0.9rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 700,
             color: '#fff', cursor: 'pointer',
           }}
         >
@@ -472,7 +473,7 @@ function PauseOverlay({
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
             background: 'var(--color-lx-elevated)',
             border: '1px solid var(--color-lx-border)', borderRadius: 14,
-            fontFamily: SANS, fontSize: '0.85rem', fontWeight: 500,
+            fontFamily: SANS, fontSize: lxFs('0.85rem'), fontWeight: 500,
             color: 'var(--color-lx-text-secondary)', cursor: 'pointer',
           }}
         >
@@ -482,7 +483,7 @@ function PauseOverlay({
           onClick={onExit}
           style={{
             background: 'none', border: 'none',
-            fontFamily: SANS, fontSize: '0.78rem',
+            fontFamily: SANS, fontSize: lxFs('0.78rem'),
             color: 'var(--color-lx-text-muted)',
             cursor: 'pointer', padding: '0.375rem', minHeight: 44,
           }}
@@ -528,7 +529,7 @@ function SurgeBanner({ streak, onDone, reduce }: { streak: number; onDone: () =>
     >
       <LexiArtwork path="games/word-charge/charge-full.svg" width={44} height={44} />
       <span style={{
-        fontFamily: SANS, fontWeight: 800, fontSize: '0.82rem',
+        fontFamily: SANS, fontWeight: 800, fontSize: lxFs('0.82rem'),
         letterSpacing: '0.22em', textTransform: 'uppercase',
         color: 'var(--color-lx-accent-gold)',
         textShadow: '0 0 18px rgba(244,168,40,0.55), 0 1px 4px rgba(0,0,0,0.8)',
@@ -557,7 +558,7 @@ function FloatingChip({ label, onDone, reduce }: FloatingChipProps) {
       style={{
         position: 'absolute', top: -10, left: '50%', transform: 'translateX(-50%)',
         zIndex: 20, pointerEvents: 'none',
-        fontFamily: SANS, fontSize: '0.85rem', fontWeight: 700,
+        fontFamily: SANS, fontSize: lxFs('0.85rem'), fontWeight: 700,
         color: 'var(--color-lx-success)',
         background: 'rgba(46,204,113,0.12)',
         border: '1px solid rgba(46,204,113,0.4)',
@@ -786,7 +787,7 @@ export default function WordChargeScreen() {
         <div style={{
           padding: '1rem 1.125rem', borderRadius: 12,
           background: 'rgba(230,57,70,0.06)', border: '1px solid rgba(230,57,70,0.2)',
-          fontFamily: SANS, fontSize: '0.8rem', color: 'var(--color-lx-text-secondary)',
+          fontFamily: SANS, fontSize: lxFs('0.8rem'), color: 'var(--color-lx-text-secondary)',
         }}>
           Couldn&apos;t load the round. Check your connection and try again.
         </div>
@@ -984,7 +985,7 @@ export default function WordChargeScreen() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
             <span style={{
-              fontFamily: SERIF, fontWeight: 700, fontSize: '1.1rem',
+              fontFamily: SERIF, fontWeight: 700, fontSize: lxFs('1.1rem'),
               color: isLowTime ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
               // CSS pulse at ≤5s — pure class, frozen state = opacity:1
             }} className={isLowTime && !reduce ? 'lx-timer-pulse' : undefined}>
@@ -996,7 +997,7 @@ export default function WordChargeScreen() {
         {/* Points + charge meter (streak) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <span style={{
-            fontFamily: SANS, fontSize: '0.82rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.82rem'), fontWeight: 700,
             color: 'var(--color-lx-accent-gold)',
           }}>
             <AnimatedNumber value={roundPoints} />
@@ -1014,7 +1015,7 @@ export default function WordChargeScreen() {
                 initial={{ scale: reduce ? 1 : 0.7, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 style={{
-                  fontFamily: SANS, fontSize: '0.75rem', fontWeight: 700,
+                  fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 700,
                   color: streak >= 5 ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-secondary)',
                 }}
               >
@@ -1073,7 +1074,7 @@ export default function WordChargeScreen() {
           );
         })}
         {words.length > 20 && (
-          <span style={{ fontFamily: SANS, fontSize: '0.6rem', color: 'var(--color-lx-text-muted)' }}>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.6rem'), color: 'var(--color-lx-text-muted)' }}>
             +{words.length - 20}
           </span>
         )}
@@ -1132,12 +1133,12 @@ export default function WordChargeScreen() {
           gap: 6, zIndex: 1,
         }}>
           <span style={{
-            fontFamily: SANS, fontWeight: 800, fontSize: '1.2rem',
+            fontFamily: SANS, fontWeight: 800, fontSize: lxFs('1.2rem'),
             color: 'var(--color-lx-mastery-familiar)',
             opacity: 0.4,
           }}>−</span>
           <span style={{
-            fontFamily: SANS, fontSize: '0.52rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.52rem'), fontWeight: 700,
             letterSpacing: '0.12em', textTransform: 'uppercase',
             color: 'var(--color-lx-mastery-familiar)',
             opacity: 0.4,
@@ -1197,12 +1198,12 @@ export default function WordChargeScreen() {
           gap: 6, zIndex: 1,
         }}>
           <span style={{
-            fontFamily: SANS, fontWeight: 800, fontSize: '1.2rem',
+            fontFamily: SANS, fontWeight: 800, fontSize: lxFs('1.2rem'),
             color: 'var(--color-lx-accent-gold)',
             opacity: 0.4,
           }}>+</span>
           <span style={{
-            fontFamily: SANS, fontSize: '0.52rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.52rem'), fontWeight: 700,
             letterSpacing: '0.12em', textTransform: 'uppercase',
             color: 'var(--color-lx-accent-gold)',
             opacity: 0.4,
@@ -1228,7 +1229,7 @@ export default function WordChargeScreen() {
               background: 'rgba(91,163,245,0.1)',
               border: '1px solid rgba(91,163,245,0.35)',
               borderRadius: 14,
-              fontFamily: SANS, fontSize: '0.88rem', fontWeight: 700,
+              fontFamily: SANS, fontSize: lxFs('0.88rem'), fontWeight: 700,
               color: 'var(--color-lx-mastery-familiar)',
               cursor: phase === 'playing' ? 'pointer' : 'not-allowed',
               opacity: phase === 'playing' ? 1 : 0.4,
@@ -1247,7 +1248,7 @@ export default function WordChargeScreen() {
               background: 'rgba(244,168,40,0.1)',
               border: '1px solid rgba(244,168,40,0.35)',
               borderRadius: 14,
-              fontFamily: SANS, fontSize: '0.88rem', fontWeight: 700,
+              fontFamily: SANS, fontSize: lxFs('0.88rem'), fontWeight: 700,
               color: 'var(--color-lx-accent-gold)',
               cursor: phase === 'playing' ? 'pointer' : 'not-allowed',
               opacity: phase === 'playing' ? 1 : 0.4,
@@ -1265,7 +1266,7 @@ export default function WordChargeScreen() {
           style={{
             width: '100%', minHeight: 44,
             background: 'none', border: 'none',
-            fontFamily: SANS, fontSize: '0.78rem',
+            fontFamily: SANS, fontSize: lxFs('0.78rem'),
             color: phase === 'playing' ? 'var(--color-lx-text-muted)' : 'transparent',
             cursor: phase === 'playing' ? 'pointer' : 'default',
           }}

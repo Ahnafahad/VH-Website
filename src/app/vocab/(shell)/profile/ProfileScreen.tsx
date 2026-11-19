@@ -56,6 +56,7 @@ import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingFlashcard';
 import { CardStyleChips } from '@/components/vocab/onboarding/ui';
 import type { CardPrefs } from '@/lib/vocab/card-prefs';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Badge icons ──────────────────────────────────────────────────────────────
 
@@ -226,7 +227,7 @@ function HexAvatar({ initials: init }: { initials: string }) {
       >
         <span style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:   22,
+          fontSize:   lxFs(22),
           fontWeight: 700,
           color:      '#ffffff',
           letterSpacing: '-0.02em',
@@ -365,7 +366,7 @@ function SettingRow({
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:   13,
+          fontSize:   lxFs(13),
           fontWeight: 500,
           color:      'var(--color-lx-text-primary)',
           lineHeight: 1.3,
@@ -375,7 +376,7 @@ function SettingRow({
         {sublabel && (
           <div style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   10,
+            fontSize:   lxFs(10),
             color:      'var(--color-lx-text-muted)',
             marginTop:  2,
             lineHeight: 1.4,
@@ -648,7 +649,7 @@ export default function ProfileScreen({
             >
               <span style={{
                 fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:      11,
+                fontSize:      lxFs(11),
                 fontWeight:    activeTab === tab ? 600 : 400,
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
@@ -716,7 +717,7 @@ export default function ProfileScreen({
                           onKeyDown={e => { if (e.key === 'Enter') saveEdit(); if (e.key === 'Escape') cancelEdit(); }}
                           style={{
                             fontFamily:   "var(--font-lexi-word), Georgia, serif",
-                            fontSize:     26,
+                            fontSize:     lxFs(26),
                             fontStyle:    'italic',
                             fontWeight:   600,
                             color:        'var(--color-lx-text-primary)',
@@ -756,7 +757,7 @@ export default function ProfileScreen({
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
                       <h1 style={{
                         fontFamily: "var(--font-lexi-word), Georgia, serif",
-                        fontSize:   26,
+                        fontSize:   lxFs(26),
                         fontStyle:  'italic',
                         fontWeight: 600,
                         color:      'var(--color-lx-text-primary)',
@@ -773,7 +774,7 @@ export default function ProfileScreen({
 
                   <p style={{
                     fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:      10,
+                    fontSize:      lxFs(10),
                     fontWeight:    500,
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
@@ -812,7 +813,7 @@ export default function ProfileScreen({
                     >
                       <span style={{
                         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:      9,
+                        fontSize:      lxFs(9),
                         fontWeight:    600,
                         letterSpacing: '0.14em',
                         textTransform: 'uppercase',
@@ -828,7 +829,7 @@ export default function ProfileScreen({
                         )}
                         <span style={{
                           fontFamily: "var(--font-lexi-word), Georgia, serif",
-                          fontSize:   'clamp(1.4rem, 5.5vw, 2.375rem)',
+                          fontSize:   lxFs('clamp(1.4rem, 5.5vw, 2.375rem)'),
                           fontWeight: 600,
                           lineHeight: 1,
                           color:      'var(--color-lx-text-primary)',
@@ -842,7 +843,7 @@ export default function ProfileScreen({
                         {stat.suffix && (
                           <span style={{
                             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                            fontSize:   12,
+                            fontSize:   lxFs(12),
                             color:      'var(--color-lx-text-muted)',
                           }}>{stat.suffix}</span>
                         )}
@@ -859,7 +860,7 @@ export default function ProfileScreen({
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 8 }}>
                   <span style={{
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
-                    fontSize:   'clamp(2rem, 9vw, 2.875rem)',
+                    fontSize:   lxFs('clamp(2rem, 9vw, 2.875rem)'),
                     fontWeight: 600,
                     color:      'var(--color-lx-accent-red)',
                     lineHeight: 1,
@@ -868,7 +869,7 @@ export default function ProfileScreen({
                   </span>
                   <span style={{
                     fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:     13,
+                    fontSize:     lxFs(13),
                     color:        'var(--color-lx-text-muted)',
                     marginBottom: 4,
                   }}>
@@ -923,7 +924,7 @@ export default function ProfileScreen({
                     >
                       <span style={{
                         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:      10,
+                        fontSize:      lxFs(10),
                         textTransform: 'capitalize',
                         color:         'var(--color-lx-text-secondary)',
                       }}>
@@ -931,7 +932,7 @@ export default function ProfileScreen({
                       </span>
                       <span style={{
                         fontFamily: "var(--font-lexi-word), Georgia, serif",
-                        fontSize:   14,
+                        fontSize:   lxFs(14),
                         fontStyle:  'italic',
                         color:      'var(--color-lx-text-primary)',
                       }}>
@@ -958,14 +959,14 @@ export default function ProfileScreen({
                     />
                     <p style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize: 18, fontStyle: 'italic',
+                      fontSize: lxFs(18), fontStyle: 'italic',
                       color: 'var(--color-lx-text-muted)', margin: 0, textAlign: 'center',
                     }}>
                       No distinctions yet.
                     </p>
                     <p style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: 11, color: 'var(--color-lx-text-muted)',
+                      fontSize: lxFs(11), color: 'var(--color-lx-text-muted)',
                       margin: 0, textAlign: 'center', maxWidth: 200, lineHeight: 1.5,
                     }}>
                       Complete study sessions and quizzes to earn your first badge.
@@ -1046,7 +1047,7 @@ export default function ProfileScreen({
 
                         <span style={{
                           fontFamily:       "var(--font-lexi-ui), system-ui, sans-serif",
-                          fontSize:         8,
+                          fontSize:         lxFs(8),
                           lineHeight:       1.3,
                           textAlign:        'center',
                           color:            badge.earned ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)',
@@ -1102,7 +1103,7 @@ export default function ProfileScreen({
                     placeholder="Search words..."
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize:   13,
+                      fontSize:   lxFs(13),
                       fontStyle:  'italic',
                       color:      'var(--form-input-text)',
                       background: 'transparent',
@@ -1148,7 +1149,7 @@ export default function ProfileScreen({
                       )}
                       <span style={{
                         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:      10,
+                        fontSize:      lxFs(10),
                         textTransform: 'capitalize',
                         color:         levelFilter === f ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
                         fontWeight:    levelFilter === f ? 600 : 400,
@@ -1173,7 +1174,7 @@ export default function ProfileScreen({
                     ) : null}
                     <span style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize:   20,
+                      fontSize:   lxFs(20),
                       fontStyle:  'italic',
                       color:      'var(--color-lx-text-muted)',
                     }}>
@@ -1213,7 +1214,7 @@ export default function ProfileScreen({
                             <div>
                               <div style={{
                                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                                fontSize:   17,
+                                fontSize:   lxFs(17),
                                 fontStyle:  'italic',
                                 color:      'var(--color-lx-text-primary)',
                                 lineHeight: 1.2,
@@ -1222,7 +1223,7 @@ export default function ProfileScreen({
                               </div>
                               <div style={{
                                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                                fontSize:   10,
+                                fontSize:   lxFs(10),
                                 color:      'var(--color-lx-text-muted)',
                                 fontStyle:  'italic',
                               }}>
@@ -1269,7 +1270,7 @@ export default function ProfileScreen({
               <motion.div variants={settingItem} style={{ marginBottom: 28 }}>
                 <h2 style={{
                   fontFamily: "var(--font-lexi-word), Georgia, serif",
-                  fontSize:   32,
+                  fontSize:   lxFs(32),
                   fontStyle:  'italic',
                   fontWeight: 600,
                   color:      'var(--color-lx-text-primary)',
@@ -1280,7 +1281,7 @@ export default function ProfileScreen({
                 </h2>
                 <p style={{
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      10,
+                  fontSize:      lxFs(10),
                   fontWeight:    500,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -1319,7 +1320,7 @@ export default function ProfileScreen({
                     <>
                       <div style={{
                         fontFamily: "var(--font-lexi-word), Georgia, serif",
-                        fontSize:   'clamp(1.25rem, 6vw, 2.25rem)',
+                        fontSize:   lxFs('clamp(1.25rem, 6vw, 2.25rem)'),
                         fontWeight: 600,
                         fontStyle:  'italic',
                         color:      'var(--color-lx-text-primary)',
@@ -1333,7 +1334,7 @@ export default function ProfileScreen({
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                           <span style={{
                             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                            fontSize:   10,
+                            fontSize:   lxFs(10),
                             color:      'var(--color-lx-text-muted)',
                             letterSpacing: '0.06em',
                           }}>
@@ -1355,7 +1356,7 @@ export default function ProfileScreen({
                         }}>
                           <span style={{
                             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                            fontSize:   9,
+                            fontSize:   lxFs(9),
                             color:      'var(--color-lx-accent-gold)',
                             letterSpacing: '0.08em',
                             textTransform: 'uppercase',
@@ -1364,14 +1365,14 @@ export default function ProfileScreen({
                           </span>
                           <span style={{
                             fontFamily: "var(--font-lexi-word), Georgia, serif",
-                            fontSize:   18,
+                            fontSize:   lxFs(18),
                             fontWeight: 600,
                             color:      'var(--color-lx-accent-gold)',
                             lineHeight: 1,
                           }}>
                             <AnimatedNumber value={dailyTarget} />
                           </span>
-                          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 9, color: '#F4A82899' }}>
+                          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(9), color: '#F4A82899' }}>
                             words
                           </span>
                         </div>
@@ -1386,7 +1387,7 @@ export default function ProfileScreen({
                     }}>
                       <span style={{
                         fontFamily: "var(--font-lexi-word), Georgia, serif",
-                        fontSize:   22,
+                        fontSize:   lxFs(22),
                         fontStyle:  'italic',
                         color:      'var(--color-lx-text-muted)',
                       }}>
@@ -1411,7 +1412,7 @@ export default function ProfileScreen({
                       borderRadius:  0,
                       cursor:        'pointer',
                       fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize:      11,
+                      fontSize:      lxFs(11),
                       fontWeight:    600,
                       letterSpacing: '0.08em',
                       textTransform: 'uppercase',
@@ -1436,7 +1437,7 @@ export default function ProfileScreen({
                         borderRadius:  0,
                         cursor:        'pointer',
                         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:      11,
+                        fontSize:      lxFs(11),
                         fontWeight:    500,
                         color:         'var(--color-lx-text-muted)',
                       }}
@@ -1593,7 +1594,7 @@ export default function ProfileScreen({
                     animate={{ opacity: 1, height: 'auto' }}
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize:   10,
+                      fontSize:   lxFs(10),
                       color:      'var(--color-lx-accent-gold)',
                       margin:     '0 0 8px 50px',
                       lineHeight: 1.5,
@@ -1696,7 +1697,7 @@ export default function ProfileScreen({
                     >
                       <span style={{
                         fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:   12,
+                        fontSize:   lxFs(12),
                         fontWeight: 500,
                         color:      'var(--color-lx-text-secondary)',
                         letterSpacing: '0.02em',
@@ -1705,7 +1706,7 @@ export default function ProfileScreen({
                       </span>
                       <span style={{
                         fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:   10,
+                        fontSize:   lxFs(10),
                         color:      'var(--color-lx-text-muted)',
                       }}>
                         {link.sublabel}
@@ -1732,7 +1733,7 @@ export default function ProfileScreen({
                   }}>
                     <p style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize:   14,
+                      fontSize:   lxFs(14),
                       fontStyle:  'italic',
                       color:      'var(--color-lx-text-muted)',
                       margin:     '0 0 14px',
@@ -1753,7 +1754,7 @@ export default function ProfileScreen({
                         borderRadius:  0,
                         cursor:        'pointer',
                         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:      12,
+                        fontSize:      lxFs(12),
                         fontWeight:    600,
                         letterSpacing: '0.06em',
                         textTransform: 'uppercase',
@@ -1846,7 +1847,7 @@ export default function ProfileScreen({
                     </div>
                     <h2 style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize:   26, fontStyle: 'italic', fontWeight: 600,
+                      fontSize:   lxFs(26), fontStyle: 'italic', fontWeight: 600,
                       color:      'var(--color-lx-text-primary)', margin: '0 0 10px',
                     }}>
                       {b.name}
@@ -1858,7 +1859,7 @@ export default function ProfileScreen({
                     }} />
                     <p style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize:   13, color: 'var(--color-lx-text-muted)',
+                      fontSize:   lxFs(13), color: 'var(--color-lx-text-muted)',
                       lineHeight: 1.65, margin: '0 0 16px',
                     }}>
                       {b.description}
@@ -1866,13 +1867,13 @@ export default function ProfileScreen({
                     {b.earned && b.earnedAt ? (
                       <span style={{
                         fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:   11, color: `${accent}aa`, letterSpacing: '0.05em',
+                        fontSize:   lxFs(11), color: `${accent}aa`, letterSpacing: '0.05em',
                       }}>
                         Earned {fmtEarned(b.earnedAt)}
                       </span>
                     ) : !b.earned && (
                       <div style={{ width: '60%' }}>
-                        <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 11, color: 'var(--color-lx-text-muted)', marginBottom: 6 }}>
+                        <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(11), color: 'var(--color-lx-text-muted)', marginBottom: 6 }}>
                           {b.progress} progress
                         </p>
                         <div style={{ height: 2, background: 'rgba(255,255,255,0.07)', borderRadius: 1 }}>
@@ -1940,14 +1941,14 @@ export default function ProfileScreen({
 
               <p style={{
                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                fontSize:   24, fontStyle: 'italic',
+                fontSize:   lxFs(24), fontStyle: 'italic',
                 color:      'var(--color-lx-text-primary)', textAlign: 'center', margin: '0 0 6px',
               }}>
                 Sign out?
               </p>
               <p style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   13, color: 'var(--color-lx-text-muted)',
+                fontSize:   lxFs(13), color: 'var(--color-lx-text-muted)',
                 textAlign:  'center', margin: '0 0 28px', lineHeight: 1.5,
               }}>
                 Your progress is saved in the vault.
@@ -2013,14 +2014,14 @@ export default function ProfileScreen({
               <div style={{ marginBottom: 20 }}>
                 <h3 style={{
                   fontFamily: "var(--font-lexi-word), Georgia, serif",
-                  fontSize:   26, fontStyle: 'italic', fontWeight: 600,
+                  fontSize:   lxFs(26), fontStyle: 'italic', fontWeight: 600,
                   color:      'var(--color-lx-text-primary)', margin: '0 0 4px',
                 }}>
                   Set Study Deadline
                 </h3>
                 <p style={{
                   fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:   13, color: 'var(--form-helper)',
+                  fontSize:   lxFs(13), color: 'var(--form-helper)',
                   margin:     0, lineHeight: 1.5,
                 }}>
                   We&apos;ll calculate your daily word target based on this date.
@@ -2039,7 +2040,7 @@ export default function ProfileScreen({
                 <label style={{
                   display:       'block',
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      11,
+                  fontSize:      lxFs(11),
                   fontWeight:    600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
@@ -2056,7 +2057,7 @@ export default function ProfileScreen({
                   style={{
                     width:        '100%',
                     fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:     15,
+                    fontSize:     lxFs(15),
                     color:        'var(--form-input-text)',
                     background:   'var(--form-field-bg)',
                     border:       '1px solid var(--form-border)',
@@ -2085,13 +2086,13 @@ export default function ProfileScreen({
                   >
                     <span style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize:   11, color: 'var(--color-lx-accent-gold)',
+                      fontSize:   lxFs(11), color: 'var(--color-lx-accent-gold)',
                     }}>
                       Estimated daily target:
                     </span>
                     <span style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize:   22, fontWeight: 600, color: 'var(--color-lx-accent-gold)',
+                      fontSize:   lxFs(22), fontWeight: 600, color: 'var(--color-lx-accent-gold)',
                     }}>
                       {(() => {
                         const dLeft = Math.max(1, daysUntil(pickerDate + 'T00:00:00.000Z'));
@@ -2099,7 +2100,7 @@ export default function ProfileScreen({
                         return Math.max(1, Math.ceil(rem / dLeft));
                       })()}
                     </span>
-                    <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 10, color: '#F4A82888' }}>
+                    <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(10), color: '#F4A82888' }}>
                       words/day
                     </span>
                   </motion.div>
@@ -2156,7 +2157,7 @@ const iconBtn: React.CSSProperties = {
 
 const sheetBtn: React.CSSProperties = {
   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-  fontSize:      13,
+  fontSize:      lxFs(13),
   fontWeight:    600,
   border:        'none',
   borderRadius:  2,
@@ -2185,7 +2186,7 @@ function SectionLabel({ children, center, icon }: { children: React.ReactNode; c
       )}
       <p style={{
         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-        fontSize:      9,
+        fontSize:      lxFs(9),
         fontWeight:    600,
         letterSpacing: '0.18em',
         textTransform: 'uppercase',
@@ -2235,7 +2236,7 @@ function CardStylePanel({ word, initial }: { word: LivingCardWord; initial: Card
       </div>
       <CardStyleChips prefs={prefs} setPrefs={apply} />
       {error && (
-        <p role="alert" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 12, color: 'var(--color-lx-accent-red)', margin: 0 }}>
+        <p role="alert" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(12), color: 'var(--color-lx-accent-red)', margin: 0 }}>
           {error}
         </p>
       )}

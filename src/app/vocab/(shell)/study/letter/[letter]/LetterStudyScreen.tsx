@@ -12,6 +12,7 @@ import QuizScreen from '../../[themeId]/quiz/QuizScreen';
 import type { FlashcardSessionData, FlashcardWord } from '@/lib/vocab/flashcard-data';
 import type { LetterWordData } from '@/lib/vocab/letter-data';
 import type { CardPrefs } from '@/lib/vocab/card-prefs';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -80,7 +81,7 @@ function WordRow({ w, index }: { w: LetterWordData; index: number }) {
         }}
       >
         <span style={{
-          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 700,
+          fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 700,
           letterSpacing: '0.08em', textTransform: 'uppercase',
           padding: '0.2rem 0.5rem', borderRadius: 8, flexShrink: 0,
           background: LEVEL_BG[w.masteryLevel] ?? LEVEL_BG.new,
@@ -90,10 +91,10 @@ function WordRow({ w, index }: { w: LetterWordData; index: number }) {
         </span>
 
         <div style={{ flex: 1, minWidth: 0 }}>
-          <p style={{ fontFamily: SERIF, fontSize: '1.05rem', fontWeight: 600, color: C.textPrim, lineHeight: 1.2 }}>
+          <p style={{ fontFamily: SERIF, fontSize: lxFs('1.05rem'), fontWeight: 600, color: C.textPrim, lineHeight: 1.2 }}>
             {w.word}
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, marginTop: 1 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: C.textMuted, marginTop: 1 }}>
             {w.partOfSpeech}
           </p>
         </div>
@@ -117,12 +118,12 @@ function WordRow({ w, index }: { w: LetterWordData; index: number }) {
             style={{ overflow: 'hidden' }}
           >
             <div style={{ padding: '0 1rem 1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <p style={{ fontFamily: SERIF, fontSize: '0.9375rem', color: C.textSec, lineHeight: 1.6 }}>
+              <p style={{ fontFamily: SERIF, fontSize: lxFs('0.9375rem'), color: C.textSec, lineHeight: 1.6 }}>
                 {w.definition}
               </p>
               {w.exampleSentence && (
                 <p style={{
-                  fontFamily: SERIF, fontSize: '0.875rem', fontStyle: 'italic',
+                  fontFamily: SERIF, fontSize: lxFs('0.875rem'), fontStyle: 'italic',
                   color: C.textMuted, lineHeight: 1.6,
                   borderLeft: `2px solid ${C.border}`, paddingLeft: '0.75rem',
                 }}>
@@ -167,7 +168,7 @@ function LockedWordRow({ w, index }: { w: LetterWordData; index: number }) {
         }}
       >
         <span style={{
-          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 700,
+          fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 700,
           letterSpacing: '0.08em', textTransform: 'uppercase',
           padding: '0.2rem 0.5rem', borderRadius: 8, flexShrink: 0,
           background: LEVEL_BG.new,
@@ -177,10 +178,10 @@ function LockedWordRow({ w, index }: { w: LetterWordData; index: number }) {
         </span>
 
         <div style={{ flex: 1, minWidth: 0 }}>
-          <p style={{ fontFamily: SERIF, fontSize: '1.05rem', fontWeight: 600, color: C.textPrim, lineHeight: 1.2 }}>
+          <p style={{ fontFamily: SERIF, fontSize: lxFs('1.05rem'), fontWeight: 600, color: C.textPrim, lineHeight: 1.2 }}>
             {w.word}
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, marginTop: 1 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: C.textMuted, marginTop: 1 }}>
             {w.partOfSpeech}
           </p>
         </div>
@@ -304,13 +305,13 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
 
           <h1 style={{
             fontFamily: SERIF,
-            fontSize: 'clamp(2.5rem, 8vw, 3.5rem)',
+            fontSize: lxFs('clamp(2.5rem, 8vw, 3.5rem)'),
             fontWeight: 700, lineHeight: 1, color: C.textPrim,
           }}>
             {letter}
           </h1>
 
-          <span style={{ fontFamily: SANS, fontSize: '0.8125rem', color: C.textMuted, alignSelf: 'flex-end', paddingBottom: '0.4rem' }}>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.8125rem'), color: C.textMuted, alignSelf: 'flex-end', paddingBottom: '0.4rem' }}>
             {words.length} word{words.length !== 1 ? 's' : ''}
           </span>
         </div>
@@ -337,7 +338,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
                 }}
               />
             </div>
-            <span style={{ fontFamily: SANS, fontSize: '0.68rem', color: C.textMuted }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.68rem'), color: C.textMuted }}>
               {completePct}% complete · {learnedCount} of {unlockedWords.length} learned
             </span>
           </div>
@@ -354,7 +355,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
               width: '100%', padding: '0.875rem',
               background: C.red, color: '#fff',
               border: 'none', borderRadius: 14, cursor: 'pointer',
-              fontFamily: SANS, fontSize: '0.875rem', fontWeight: 600,
+              fontFamily: SANS, fontSize: lxFs('0.875rem'), fontWeight: 600,
               boxShadow: '0 3px 16px rgba(230,57,70,0.28)',
             }}
           >
@@ -368,7 +369,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
               width: '100%', padding: '0.8rem',
               background: 'transparent', color: C.textSec,
               border: `1px solid ${C.border}`, borderRadius: 14, cursor: 'pointer',
-              fontFamily: SANS, fontSize: '0.8125rem', fontWeight: 500,
+              fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 500,
             }}
           >
             Practice Quiz
@@ -386,7 +387,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
 
       {/* Word list — unlocked first, then blurred locked */}
       {words.length === 0 ? (
-        <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: C.textSec }}>
+        <p style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.textSec }}>
           No words starting with &ldquo;{letter}&rdquo; in the library.
         </p>
       ) : (

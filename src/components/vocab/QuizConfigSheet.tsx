@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { Timer, X } from 'lucide-react';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -136,7 +137,7 @@ function PillSelector<T extends number>({
             <span style={{
               position: 'relative',
               fontFamily: SANS,
-              fontSize: '0.8125rem',
+              fontSize: lxFs('0.8125rem'),
               fontWeight: 600,
               color: active ? '#fff' : C.textSec,
               transition: 'color 0.18s',
@@ -251,7 +252,7 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem' }}>
           <h2 style={{
             fontFamily: SERIF,
-            fontSize: '1.75rem',
+            fontSize: lxFs('1.75rem'),
             fontWeight: 700,
             fontStyle: 'italic',
             color: C.textPrim,
@@ -277,7 +278,7 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
         {/* ── Section: Questions ────────────────────────────────────── */}
         <div style={{ marginBottom: 24 }}>
           <p style={{
-            fontFamily: SANS, fontSize: '0.75rem', fontWeight: 600,
+            fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 600,
             letterSpacing: '0.08em', textTransform: 'uppercase',
             color: C.textMuted, marginBottom: 10,
           }}>
@@ -297,7 +298,7 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <Timer size={15} style={{ color: C.textSec }} />
               <p style={{
-                fontFamily: SANS, fontSize: '0.75rem', fontWeight: 600,
+                fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 600,
                 letterSpacing: '0.08em', textTransform: 'uppercase',
                 color: C.textMuted,
               }}>
@@ -322,7 +323,7 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
                 style={{ overflow: 'hidden' }}
               >
                 <p style={{
-                  fontFamily: SANS, fontSize: '0.75rem', fontWeight: 600,
+                  fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 600,
                   letterSpacing: '0.08em', textTransform: 'uppercase',
                   color: C.textMuted, marginBottom: 10,
                 }}>
@@ -354,7 +355,7 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
             borderRadius: 16,
             cursor: 'pointer',
             fontFamily: SANS,
-            fontSize: '0.9375rem',
+            fontSize: lxFs('0.9375rem'),
             fontWeight: 700,
             color: '#fff',
             letterSpacing: '0.02em',

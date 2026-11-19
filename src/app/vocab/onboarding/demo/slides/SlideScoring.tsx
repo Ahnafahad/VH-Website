@@ -6,6 +6,7 @@ import { Trophy } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const POINT_ROWS = [
   { label: 'Daily Login', pts: '+5' },
@@ -85,14 +86,14 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                   >
                     <span style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.6rem',
+                      fontSize: lxFs('0.6rem'),
                       color: 'var(--color-lx-text-secondary)',
                     }}>
                       {row.label}
                     </span>
                     <span style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.6rem',
+                      fontSize: lxFs('0.6rem'),
                       fontWeight: 600,
                       color: 'var(--color-lx-accent-gold)',
                     }}>
@@ -111,7 +112,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                   >
                     <span style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize: '1.6rem',
+                      fontSize: lxFs('1.6rem'),
                       fontWeight: 700,
                       color: 'var(--color-lx-accent-gold)',
                       lineHeight: 1,
@@ -120,7 +121,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                     </span>
                     <span style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.5rem',
+                      fontSize: lxFs('0.5rem'),
                       color: 'var(--color-lx-text-muted)',
                       textTransform: 'uppercase',
                       letterSpacing: '0.06em',
@@ -163,12 +164,12 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                   }}
                   className="flex flex-col items-center gap-1"
                 >
-                  <span style={{ fontSize: '1.4rem', lineHeight: 1, filter: badge.unlocked ? 'none' : 'grayscale(1) opacity(0.5)' }}>
+                  <span style={{ fontSize: lxFs('1.4rem'), lineHeight: 1, filter: badge.unlocked ? 'none' : 'grayscale(1) opacity(0.5)' }}>
                     {badge.icon}
                   </span>
                   <span style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.48rem',
+                    fontSize: lxFs('0.48rem'),
                     fontWeight: 500,
                     color: badge.unlocked ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)',
                   }}>
@@ -212,7 +213,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                   <div className="flex items-center gap-2">
                     <span style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.6rem',
+                      fontSize: lxFs('0.6rem'),
                       fontWeight: 700,
                       color: row.color,
                       width: 16,
@@ -221,7 +222,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                     </span>
                     <span style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.65rem',
+                      fontSize: lxFs('0.65rem'),
                       fontWeight: row.isYou ? 700 : 500,
                       color: row.isYou ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
                     }}>
@@ -230,7 +231,7 @@ export default function SlideScoring({ onNext, stepLabel }: Props) {
                   </div>
                   <span style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.6rem',
+                    fontSize: lxFs('0.6rem'),
                     fontWeight: 600,
                     color: 'var(--color-lx-text-muted)',
                   }}>

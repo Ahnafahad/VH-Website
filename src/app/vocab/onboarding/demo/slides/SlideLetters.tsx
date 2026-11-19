@@ -6,6 +6,7 @@ import { CaseSensitive } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'M'];
 const SAMPLE_WORDS = [
@@ -67,7 +68,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                       border: `1px solid ${letter === 'M' ? 'rgba(230,57,70,0.3)' : 'var(--color-lx-border)'}`,
                       cursor: 'pointer',
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize: '1.1rem',
+                      fontSize: lxFs('1.1rem'),
                       fontWeight: 600,
                       color: letter === 'M'
                         ? 'var(--color-lx-accent-red)'
@@ -107,7 +108,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
-                    fontSize: '1.3rem',
+                    fontSize: lxFs('1.3rem'),
                     fontWeight: 700,
                     fontStyle: 'italic',
                     color: 'var(--color-lx-accent-red)',
@@ -134,7 +135,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                     className="lx-word"
                     style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize: '0.95rem',
+                      fontSize: lxFs('0.95rem'),
                       fontStyle: 'italic',
                       color: 'var(--color-lx-text-primary)',
                     }}
@@ -145,7 +146,7 @@ export default function SlideLetters({ onNext, stepLabel }: Props) {
                     className="rounded-full px-2 py-0.5"
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.5rem',
+                      fontSize: lxFs('0.5rem'),
                       fontWeight: 600,
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',

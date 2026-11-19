@@ -9,6 +9,7 @@
 
 import { useState, useRef } from 'react';
 import { motion, useMotionValue, useTransform, type PanInfo } from 'framer-motion';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SERIF = "var(--font-lexi-word), Georgia, serif";
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
@@ -109,13 +110,13 @@ function DemoCard({ onSwipedRight, reduce }: { onSwipedRight: () => void; reduce
         }}>
           <p style={{
             fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-            fontSize: 'clamp(1.8rem, 7vw, 2.5rem)',
+            fontSize: lxFs('clamp(1.8rem, 7vw, 2.5rem)'),
             color: committed ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-primary)',
             transition: 'color 0.25s',
           }}>
             Confident
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.65rem', color: 'var(--color-lx-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: '0.5rem' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.65rem'), color: 'var(--color-lx-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginTop: '0.5rem' }}>
             adjective
           </p>
 
@@ -133,7 +134,7 @@ function DemoCard({ onSwipedRight, reduce }: { onSwipedRight: () => void; reduce
                 paddingRight: '1rem',
               }}
             >
-              <span style={{ fontFamily: SANS, fontWeight: 700, fontSize: '0.95rem', color: 'var(--color-lx-accent-gold)' }}>
+              <span style={{ fontFamily: SANS, fontWeight: 700, fontSize: lxFs('0.95rem'), color: 'var(--color-lx-accent-gold)' }}>
                 + POSITIVE
               </span>
             </motion.div>
@@ -143,7 +144,7 @@ function DemoCard({ onSwipedRight, reduce }: { onSwipedRight: () => void; reduce
           {committed && (
             <div aria-hidden style={{
               position: 'absolute', top: 8, right: 10,
-              fontFamily: SANS, fontSize: '0.75rem', fontWeight: 700,
+              fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 700,
               color: 'var(--color-lx-accent-gold)',
             }}>
               ✓ Positive
@@ -161,7 +162,7 @@ function DemoCard({ onSwipedRight, reduce }: { onSwipedRight: () => void; reduce
             position: 'absolute',
             bottom: -10,
             left: '30%',
-            fontSize: '1.6rem',
+            fontSize: lxFs('1.6rem'),
             pointerEvents: 'none',
             zIndex: 20,
           }}
@@ -182,7 +183,7 @@ function DemoCard({ onSwipedRight, reduce }: { onSwipedRight: () => void; reduce
             border: '1px solid rgba(244,168,40,0.35)',
             borderRadius: 12,
             fontFamily: SANS,
-            fontSize: '0.8rem',
+            fontSize: lxFs('0.8rem'),
             fontWeight: 600,
             color: 'var(--color-lx-accent-gold)',
             cursor: 'pointer',
@@ -255,7 +256,7 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
             onClick={onSkip}
             style={{
               background: 'none', border: 'none',
-              fontFamily: SANS, fontSize: '0.75rem', fontWeight: 500,
+              fontFamily: SANS, fontSize: lxFs('0.75rem'), fontWeight: 500,
               color: 'var(--color-lx-text-muted)',
               cursor: 'pointer', padding: '0.375rem 0.5rem', minHeight: 44, minWidth: 44,
               display: 'flex', alignItems: 'center',
@@ -276,10 +277,10 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
           >
             {/* Beat 1 */}
             <div>
-              <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: '1.7rem', color: 'var(--color-lx-text-primary)', lineHeight: 1.1 }}>
+              <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('1.7rem'), color: 'var(--color-lx-text-primary)', lineHeight: 1.1 }}>
                 Words carry a charge.
               </p>
-              <p style={{ fontFamily: SANS, fontSize: '0.82rem', color: 'var(--color-lx-text-secondary)', marginTop: '0.5rem', lineHeight: 1.6 }}>
+              <p style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), color: 'var(--color-lx-text-secondary)', marginTop: '0.5rem', lineHeight: 1.6 }}>
                 A <em>connotation</em> is the feeling a word carries — beyond its literal meaning.
               </p>
             </div>
@@ -295,8 +296,8 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
                 borderRadius: 12,
                 display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
               }}>
-                <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-text-primary)' }}>Confident</span>
-                <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 700, color: 'var(--color-lx-accent-gold)' }}>+ Positive</span>
+                <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('1.2rem'), color: 'var(--color-lx-text-primary)' }}>Confident</span>
+                <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 700, color: 'var(--color-lx-accent-gold)' }}>+ Positive</span>
               </div>
               <div style={{
                 flex: 1, padding: '0.875rem 1rem',
@@ -305,16 +306,16 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
                 borderRadius: 12,
                 display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
               }}>
-                <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: '1.2rem', color: 'var(--color-lx-text-primary)' }}>Arrogant</span>
-                <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 700, color: 'var(--color-lx-mastery-familiar)' }}>− Negative</span>
+                <span style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('1.2rem'), color: 'var(--color-lx-text-primary)' }}>Arrogant</span>
+                <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 700, color: 'var(--color-lx-mastery-familiar)' }}>− Negative</span>
               </div>
             </div>
 
             {/* Beat 3 */}
-            <p style={{ fontFamily: SANS, fontSize: '0.82rem', color: 'var(--color-lx-text-secondary)', lineHeight: 1.6 }}>
+            <p style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), color: 'var(--color-lx-text-secondary)', lineHeight: 1.6 }}>
               30 seconds, 3 lives. Swipe left for negative, right for positive. As many words as you can.
               <br />
-              <span style={{ color: 'var(--color-lx-text-muted)', fontSize: '0.76rem' }}>Wrong answers pause the timer and teach you the word — but cost a life. Three wrong ends the round.</span>
+              <span style={{ color: 'var(--color-lx-text-muted)', fontSize: lxFs('0.76rem') }}>Wrong answers pause the timer and teach you the word — but cost a life. Three wrong ends the round.</span>
             </p>
 
             <motion.button
@@ -324,7 +325,7 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
                 width: '100%', padding: '0.9rem',
                 background: 'var(--color-lx-accent-red)',
                 border: 'none', borderRadius: 14,
-                fontFamily: SANS, fontSize: '0.9rem', fontWeight: 700,
+                fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 700,
                 color: '#fff', cursor: 'pointer', minHeight: 48,
               }}
             >
@@ -341,7 +342,7 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
             transition={{ duration: reduce ? 0 : 0.22 }}
             style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}
           >
-            <p style={{ fontFamily: SANS, fontSize: '0.82rem', fontWeight: 600, color: 'var(--color-lx-text-secondary)', textAlign: 'center' }}>
+            <p style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), fontWeight: 600, color: 'var(--color-lx-text-secondary)', textAlign: 'center' }}>
               Swipe <span style={{ color: 'var(--color-lx-accent-gold)', fontWeight: 700 }}>right</span> for positive to continue.
             </p>
 
@@ -351,7 +352,7 @@ export default function ChargeIntro({ onDone, onSkip, reduce, asOverlay }: Props
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-lx-success)', textAlign: 'center' }}
+                style={{ fontFamily: SANS, fontSize: lxFs('0.8rem'), fontWeight: 600, color: 'var(--color-lx-success)', textAlign: 'center' }}
               >
                 ✓ Correct! Starting…
               </motion.p>

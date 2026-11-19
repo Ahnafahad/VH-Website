@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Props {
   userName: string;
@@ -92,7 +93,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
         <h1
           style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   '2.6rem',
+            fontSize:   lxFs('2.6rem'),
             fontWeight: 700,
             fontStyle:  'italic',
             lineHeight: 1.1,
@@ -106,7 +107,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
           style={{
             color:      'var(--color-lx-text-secondary)',
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '0.875rem',
+            fontSize:   lxFs('0.875rem'),
             lineHeight: 1.6,
             maxWidth:   '22rem',
           }}
@@ -117,7 +118,7 @@ export default function StepWelcome({ userName, onNext }: Props) {
           style={{
             color:      'var(--color-lx-text-muted)',
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '0.75rem',
+            fontSize:   lxFs('0.75rem'),
             maxWidth:   '22rem',
           }}
         >

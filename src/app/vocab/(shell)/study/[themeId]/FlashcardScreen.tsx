@@ -18,6 +18,7 @@ import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import LivingFlashcard from '@/components/vocab/LivingFlashcard';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { limitKindOf } from '@/lib/vocab/limit';
+import { lxFs } from '@/lib/vocab/ui';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -75,7 +76,7 @@ function SessionComplete({
           <h2
             style={{
               fontFamily: "var(--font-lexi-word), Georgia, serif",
-              fontSize: '2rem',
+              fontSize: lxFs('2rem'),
               fontWeight: 700,
               fontStyle: 'italic',
               color: 'var(--color-lx-text-primary)',
@@ -108,7 +109,7 @@ function SessionComplete({
             />
           </svg>
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '2rem', fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
+            <span style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: lxFs('2rem'), fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>
               {pct}%
             </span>
           </div>
@@ -130,7 +131,7 @@ function SessionComplete({
               className="flex flex-1 flex-col items-center gap-1 rounded-xl py-3"
               style={{ background: 'var(--color-lx-surface)', border: '1px solid var(--color-lx-border)' }}
             >
-              <span style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '1.75rem', fontWeight: 700, color: s.color }}>
+              <span style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: lxFs('1.75rem'), fontWeight: 700, color: s.color }}>
                 {s.count}
               </span>
               <span className="text-xs" style={{ color: 'var(--color-lx-text-muted)' }}>{s.label}</span>

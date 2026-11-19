@@ -10,6 +10,7 @@ import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { BriefingSection } from '@/components/vocab/BriefingCards';
 import { MasteryBar } from '@/components/vocab/MasteryBar';
 import SyllabusFilterRow from '@/components/vocab/SyllabusFilterRow';
+import { lxFs } from '@/lib/vocab/ui';
 
 type PracticeTab = 'unit' | 'letter';
 
@@ -37,7 +38,7 @@ function TabSwitcher({ active, onChange }: { active: PracticeTab; onChange: (t: 
             minHeight: 44,
             background: 'none', border: 'none', cursor: 'pointer',
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize: '0.8125rem', fontWeight: 600,
+            fontSize: lxFs('0.8125rem'), fontWeight: 600,
             color: active === tab ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
             position: 'relative',
           }}
@@ -89,13 +90,13 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
     }}>
       <span style={{
         minWidth: '1.6ch', textAlign: 'right',
-        fontSize: 12, fontWeight: 700, color,
+        fontSize: lxFs(12), fontWeight: 700, color,
         fontVariantNumeric: 'tabular-nums',
       }}>
         {n}
       </span>
       <span style={{
-        fontSize: 9, fontWeight: 600,
+        fontSize: lxFs(9), fontWeight: 600,
         color: 'var(--color-lx-text-secondary)',
         textTransform: 'uppercase', letterSpacing: '0.12em',
       }}>
@@ -172,7 +173,7 @@ function LetterCard({ summary, selected, onToggle }: LetterCardProps) {
 
       <span style={{
         fontFamily: "var(--font-lexi-word), Georgia, serif",
-        fontSize: '1.75rem', fontWeight: 700,
+        fontSize: lxFs('1.75rem'), fontWeight: 700,
         color: selected ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-primary)',
         lineHeight: 1, transition: 'color 0.18s',
       }}>
@@ -327,7 +328,7 @@ function ThemeRow({ name, wordCount, familiarPlusCount, selected, onToggle }: Th
         <div style={{ flex: 1, minWidth: 0, display: 'flex', flexDirection: 'column', gap: 4 }}>
           <span style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize: '0.875rem', fontWeight: 600,
+            fontSize: lxFs('0.875rem'), fontWeight: 600,
             color: 'var(--color-lx-text-primary)',
             display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
           }}>
@@ -336,7 +337,7 @@ function ThemeRow({ name, wordCount, familiarPlusCount, selected, onToggle }: Th
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
             <span style={{
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
+              fontSize: lxFs('0.7rem'), color: 'var(--color-lx-text-muted)',
             }}>
               {wordCount} words
             </span>
@@ -421,7 +422,7 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
               <span style={{
                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                fontSize: '1.05rem', fontWeight: 700, fontStyle: 'italic',
+                fontSize: lxFs('1.05rem'), fontWeight: 700, fontStyle: 'italic',
                 color: 'var(--color-lx-text-primary)', lineHeight: 1.2,
               }}>
                 {unit.name}
@@ -433,7 +434,7 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
                   exit={{ opacity: 0, scale: 0.8 }}
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.65rem', fontWeight: 700,
+                    fontSize: lxFs('0.65rem'), fontWeight: 700,
                     color: 'var(--color-lx-accent-gold)',
                     background: 'rgba(212,175,55,0.15)',
                     border: '1px solid rgba(212,175,55,0.3)',
@@ -448,21 +449,21 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 3 }}>
               <span style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
+                fontSize: lxFs('0.7rem'), color: 'var(--color-lx-text-muted)',
               }}>
                 {unit.totalWords} words
               </span>
               {unit.totalMastered > 0 && (
                 <span style={{
                   fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize: '0.7rem', color: 'var(--color-lx-success)',
+                  fontSize: lxFs('0.7rem'), color: 'var(--color-lx-success)',
                 }}>
                   {masteredPct}% mastered
                 </span>
               )}
               <span style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize: '0.7rem', color: 'var(--color-lx-text-muted)',
+                fontSize: lxFs('0.7rem'), color: 'var(--color-lx-text-muted)',
               }}>
                 · {unit.themes.length} {unit.themes.length === 1 ? 'theme' : 'themes'}
               </span>
@@ -566,13 +567,13 @@ function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () =>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <span style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize: '1.2rem', fontWeight: 700, fontStyle: 'italic',
+            fontSize: lxFs('1.2rem'), fontWeight: 700, fontStyle: 'italic',
             color: unlocked ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-primary)',
           }}>
             Exam Mode
           </span>
           <span style={{
-            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.55rem', fontWeight: 700,
+            fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.55rem'), fontWeight: 700,
             letterSpacing: '0.1em', textTransform: 'uppercase',
             padding: '0.15rem 0.45rem', borderRadius: 6,
             background: unlocked ? 'rgba(244,168,40,0.15)' : 'var(--color-lx-elevated)',
@@ -582,7 +583,7 @@ function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () =>
           </span>
         </div>
         <p style={{
-          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.75rem',
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.75rem'),
           color: 'var(--color-lx-text-secondary)', marginTop: 2, lineHeight: 1.45,
         }}>
           {unlocked
@@ -695,7 +696,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
         >
           <p style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize: '1.8rem', fontWeight: 700, fontStyle: 'italic',
+            fontSize: lxFs('1.8rem'), fontWeight: 700, fontStyle: 'italic',
             color: 'var(--color-lx-text-primary)',
           }}>
             No units yet
@@ -738,7 +739,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
           transition={{ duration: 0.35, delay: 0.05 }}
           style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize: 'clamp(2rem, 8vw, 2.5rem)', fontWeight: 700, fontStyle: 'italic',
+            fontSize: lxFs('clamp(2rem, 8vw, 2.5rem)'), fontWeight: 700, fontStyle: 'italic',
             lineHeight: 1.05, color: 'var(--color-lx-text-primary)',
           }}
         >

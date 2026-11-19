@@ -12,6 +12,7 @@
 import { motion, type Variants } from 'framer-motion';
 import { CalendarX, ArrowRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { lxFs } from '@/lib/vocab/ui';
 
 const bannerV: Variants = {
   hidden: { opacity: 0, y: -8 },
@@ -69,7 +70,7 @@ export default function DeadlineBanner() {
         <p
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '13px',
+            fontSize:   lxFs('13px'),
             fontWeight: 600,
             color:      'var(--color-lx-text-primary)',
             margin:     '0 0 3px',
@@ -81,7 +82,7 @@ export default function DeadlineBanner() {
         <p
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '11.5px',
+            fontSize:   lxFs('11.5px'),
             fontWeight: 400,
             color:      'var(--color-lx-text-secondary)',
             margin:     0,
@@ -103,7 +104,7 @@ export default function DeadlineBanner() {
           alignItems:    'center',
           gap:           '4px',
           fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:      '11px',
+          fontSize:      lxFs('11px'),
           fontWeight:    600,
           letterSpacing: '0.06em',
           color:         'var(--color-lx-accent-red)',

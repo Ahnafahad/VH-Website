@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { Pointer, Check } from 'lucide-react';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface DemoInstructionProps {
   /** Instruction text shown while user still needs to interact */
@@ -60,7 +61,7 @@ export default function DemoInstruction({
           <span
             style={{
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize: '0.68rem',
+              fontSize: lxFs('0.68rem'),
               fontWeight: 600,
               color: done
                 ? 'var(--color-lx-success)'
@@ -81,7 +82,7 @@ export default function DemoInstruction({
           transition={{ delay: 0.3 }}
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize: '0.62rem',
+            fontSize: lxFs('0.62rem'),
             fontWeight: 500,
             color: 'var(--color-lx-text-muted)',
             textAlign: 'center',

@@ -14,6 +14,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'motion/react';
 import { X } from 'lucide-react';
+import { lxFs } from '@/lib/vocab/ui';
 
 const AUTO_DISMISS_MS = 10_000;
 const RING_SIZE       = 44;
@@ -241,7 +242,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
             <span
               style={{
                 fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:      10,
+                fontSize:      lxFs(10),
                 letterSpacing: '0.32em',
                 textTransform: 'uppercase',
                 color:         'var(--color-lx-accent-gold)',
@@ -258,7 +259,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
             className="lx-word"
             style={{
               fontFamily: "var(--font-lexi-word), Georgia, serif",
-              fontSize:   'clamp(2rem, 5.2vw, 2.75rem)',
+              fontSize:   lxFs('clamp(2rem, 5.2vw, 2.75rem)'),
               lineHeight: 1.05,
               margin:     '0 0 22px 0',
               color:      'var(--color-lx-text-primary)',
@@ -285,7 +286,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
               style={{
                 fontFamily:   "var(--font-lexi-word), Georgia, serif",
                 fontStyle:    'italic',
-                fontSize:     'clamp(1.125rem, 2.4vw, 1.375rem)',
+                fontSize:     lxFs('clamp(1.125rem, 2.4vw, 1.375rem)'),
                 lineHeight:   1.55,
                 color:        'var(--color-lx-text-primary)',
                 margin:       0,
@@ -312,7 +313,7 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
             <span
               style={{
                 fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:      10,
+                fontSize:      lxFs(10),
                 letterSpacing: '0.28em',
                 textTransform: 'uppercase',
                 color:         'var(--color-lx-text-muted)',
@@ -337,14 +338,14 @@ export function DailyDossier({ message, onDismiss }: DailyDossierProps) {
                 cursor:         'pointer',
                 color:          'var(--color-lx-accent-gold)',
                 fontFamily:     "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:       12,
+                fontSize:       lxFs(12),
                 letterSpacing:  '0.2em',
                 textTransform:  'uppercase',
                 fontWeight:     500,
               }}
             >
               Continue
-              <span aria-hidden style={{ fontSize: 14, lineHeight: 1 }}>→</span>
+              <span aria-hidden style={{ fontSize: lxFs(14), lineHeight: 1 }}>→</span>
             </motion.button>
           </div>
         </motion.article>

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const POINT_STEPS = [
   { label: 'Daily login',  delta: 5,  color: 'var(--color-lx-accent-gold)' },
@@ -64,7 +65,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
             transition={{ type: 'spring' as const, stiffness: 400, damping: 22 }}
             style={{
               fontFamily: "var(--font-lexi-word), Georgia, serif",
-              fontSize: '2.8rem',
+              fontSize: lxFs('2.8rem'),
               fontWeight: 700,
               color: 'var(--color-lx-accent-gold)',
               lineHeight: 1,
@@ -75,7 +76,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
           <span
             style={{
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize: '0.65rem',
+              fontSize: lxFs('0.65rem'),
               color: 'var(--color-lx-text-muted)',
               textTransform: 'uppercase',
               letterSpacing: '0.08em',
@@ -104,7 +105,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.55rem',
+                    fontSize: lxFs('0.55rem'),
                     fontWeight: 500,
                     color: phase > i ? step.color : 'var(--color-lx-text-muted)',
                   }}
@@ -128,7 +129,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
               filter: { duration: 0.4 },
             }}
             style={{
-              fontSize: '1.8rem',
+              fontSize: lxFs('1.8rem'),
               lineHeight: 1,
               color: 'var(--color-lx-accent-red)',
             }}
@@ -145,7 +146,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
               transition={{ type: 'spring' as const, stiffness: 400, damping: 20 }}
               style={{
                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                fontSize: '1.5rem',
+                fontSize: lxFs('1.5rem'),
                 fontWeight: 700,
                 color: 'var(--color-lx-accent-red)',
                 lineHeight: 1,
@@ -156,7 +157,7 @@ export default function SlidePointsStreaks({ onNext, stepLabel }: Props) {
             <span
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize: '0.7rem',
+                fontSize: lxFs('0.7rem'),
                 color: 'var(--color-lx-text-secondary)',
               }}
             >

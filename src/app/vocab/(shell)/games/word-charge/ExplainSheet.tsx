@@ -10,6 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Volume2 } from 'lucide-react';
 import { speak } from '@/lib/vocab/speak';
 import type { ChargeWord, Connotation } from '@/lib/vocab/word-charge/types';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SERIF = "var(--font-lexi-word), Georgia, serif";
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
@@ -33,7 +34,7 @@ function SideChip({ connotation }: { connotation: Connotation }) {
       display: 'inline-flex', alignItems: 'center', gap: 4,
       padding: '0.3rem 0.75rem',
       borderRadius: 20,
-      fontFamily: SANS, fontSize: '0.7rem', fontWeight: 700,
+      fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 700,
       background: isPos ? 'rgba(244,168,40,0.12)' : 'rgba(91,163,245,0.12)',
       border: isPos ? '1px solid rgba(244,168,40,0.4)' : '1px solid rgba(91,163,245,0.4)',
       color: isPos ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-mastery-familiar)',
@@ -51,7 +52,7 @@ function TimerPausedPill() {
       display: 'inline-flex', alignItems: 'center', gap: 5,
       padding: '0.25rem 0.75rem',
       borderRadius: 20,
-      fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700,
+      fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700,
       letterSpacing: '0.1em', textTransform: 'uppercase',
       background: 'rgba(244,168,40,0.1)',
       border: '1px solid rgba(244,168,40,0.35)',
@@ -147,15 +148,15 @@ export default function ExplainSheet(props: Props) {
 
             {/* Verdict (wrong only) */}
             {props.mode === 'wrong' && (
-              <p style={{ fontFamily: SANS, fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-lx-accent-red)', marginBottom: '0.75rem' }}>
-                Wrong — <em style={{ fontFamily: SERIF, fontSize: '0.9rem', fontStyle: 'italic' }}>{word.word}</em> is{' '}
+              <p style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), fontWeight: 600, color: 'var(--color-lx-accent-red)', marginBottom: '0.75rem' }}>
+                Wrong — <em style={{ fontFamily: SERIF, fontSize: lxFs('0.9rem'), fontStyle: 'italic' }}>{word.word}</em> is{' '}
                 <SideChip connotation={word.connotation} />
               </p>
             )}
 
             {/* Word + speaker */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: '0.75rem' }}>
-              <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: '1.75rem', color: 'var(--color-lx-text-primary)', lineHeight: 1.05 }}>
+              <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700, fontSize: lxFs('1.75rem'), color: 'var(--color-lx-text-primary)', lineHeight: 1.05 }}>
                 {word.word}
               </p>
               <motion.button
@@ -180,13 +181,13 @@ export default function ExplainSheet(props: Props) {
 
             {/* Part of speech */}
             {word.partOfSpeech && (
-              <p style={{ fontFamily: SANS, fontSize: '0.65rem', color: 'var(--color-lx-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+              <p style={{ fontFamily: SANS, fontSize: lxFs('0.65rem'), color: 'var(--color-lx-text-muted)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
                 {word.partOfSpeech}
               </p>
             )}
 
             {/* Definition */}
-            <p style={{ fontFamily: SERIF, fontSize: '1.15rem', lineHeight: 1.55, color: 'var(--color-lx-text-primary)', marginBottom: '0.75rem' }}>
+            <p style={{ fontFamily: SERIF, fontSize: lxFs('1.15rem'), lineHeight: 1.55, color: 'var(--color-lx-text-primary)', marginBottom: '0.75rem' }}>
               {word.definition}
             </p>
 
@@ -198,7 +199,7 @@ export default function ExplainSheet(props: Props) {
                 borderLeft: '2px solid var(--color-lx-accent-gold)',
                 marginBottom: '0.75rem',
               }}>
-                <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: '1.05rem', fontWeight: 500, color: 'var(--color-lx-text-primary)', lineHeight: 1.5 }}>
+                <p style={{ fontFamily: SERIF, fontStyle: 'italic', fontSize: lxFs('1.05rem'), fontWeight: 500, color: 'var(--color-lx-text-primary)', lineHeight: 1.5 }}>
                   &ldquo;{word.exampleSentence}&rdquo;
                 </p>
               </div>
@@ -206,7 +207,7 @@ export default function ExplainSheet(props: Props) {
 
             {/* Contrast antonyms */}
             {word.antonyms.length > 0 && (
-              <p style={{ fontFamily: SANS, fontSize: '0.76rem', color: 'var(--color-lx-text-secondary)', marginBottom: '0.75rem' }}>
+              <p style={{ fontFamily: SANS, fontSize: lxFs('0.76rem'), color: 'var(--color-lx-text-secondary)', marginBottom: '0.75rem' }}>
                 Contrast:{' '}
                 <span style={{ fontFamily: SERIF, fontStyle: 'italic', color: 'var(--color-lx-text-primary)' }}>
                   {word.antonyms[0]}
@@ -239,7 +240,7 @@ function WrongFooter({ onContinue, reduce }: { onContinue: () => void; reduce: b
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         background: 'var(--color-lx-accent-red)',
         border: 'none', borderRadius: 14,
-        fontFamily: SANS, fontSize: '0.9rem', fontWeight: 700,
+        fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 700,
         color: '#fff', cursor: 'pointer',
       }}
     >
@@ -259,7 +260,7 @@ function HelpFooter({
 }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <p style={{ fontFamily: SANS, fontSize: '0.72rem', fontWeight: 600, color: 'var(--color-lx-text-muted)', textAlign: 'center', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+      <p style={{ fontFamily: SANS, fontSize: lxFs('0.72rem'), fontWeight: 600, color: 'var(--color-lx-text-muted)', textAlign: 'center', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
         What&apos;s the charge? (+2 for correct)
       </p>
       <div style={{ display: 'flex', gap: 10 }}>
@@ -272,7 +273,7 @@ function HelpFooter({
             background: 'rgba(91,163,245,0.1)',
             border: '1px solid rgba(91,163,245,0.4)',
             borderRadius: 12,
-            fontFamily: SANS, fontSize: '0.85rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.85rem'), fontWeight: 700,
             color: 'var(--color-lx-mastery-familiar)',
             cursor: 'pointer',
           }}
@@ -288,7 +289,7 @@ function HelpFooter({
             background: 'rgba(244,168,40,0.1)',
             border: '1px solid rgba(244,168,40,0.4)',
             borderRadius: 12,
-            fontFamily: SANS, fontSize: '0.85rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.85rem'), fontWeight: 700,
             color: 'var(--color-lx-accent-gold)',
             cursor: 'pointer',
           }}
@@ -300,7 +301,7 @@ function HelpFooter({
         onClick={onSkip}
         style={{
           background: 'none', border: 'none',
-          fontFamily: SANS, fontSize: '0.78rem',
+          fontFamily: SANS, fontSize: lxFs('0.78rem'),
           color: 'var(--color-lx-text-muted)',
           cursor: 'pointer', padding: '0.5rem', minHeight: 44,
         }}

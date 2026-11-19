@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { LexiIcon } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 const TABS = [
   { id: 'home',        href: '/vocab/home',        icon: 'navigation/home.svg',        label: 'Home' },
@@ -93,7 +94,7 @@ export default function DesktopSidebar() {
             className="lx-word"
             style={{
               fontFamily:    "var(--font-lexi-word), Georgia, serif",
-              fontSize:      '1.5rem',
+              fontSize:      lxFs('1.5rem'),
               fontWeight:    700,
               fontStyle:     'italic',
               color:         'var(--color-lx-text-primary)',
@@ -108,7 +109,7 @@ export default function DesktopSidebar() {
             style={{
               display:       'block',
               fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:      '0.6rem',
+              fontSize:      lxFs('0.6rem'),
               fontWeight:    500,
               color:         'var(--color-lx-text-muted)',
               letterSpacing: '0.08em',
@@ -199,7 +200,7 @@ export default function DesktopSidebar() {
               <span
                 style={{
                   fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:     '0.8125rem',
+                  fontSize:     lxFs('0.8125rem'),
                   fontWeight:   isActive ? 600 : 400,
                   color:        isActive ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
                   letterSpacing: '0.02em',
@@ -222,7 +223,7 @@ export default function DesktopSidebar() {
           gap:           6,
           padding:       '10px 16px',
           fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:      '0.7rem',
+          fontSize:      lxFs('0.7rem'),
           fontWeight:    500,
           letterSpacing: '0.04em',
           color:         'var(--color-lx-text-muted)',
@@ -283,7 +284,7 @@ export default function DesktopSidebar() {
               <span
                 style={{
                   fontFamily: "var(--font-lexi-word), Georgia, serif",
-                  fontSize:   '0.9rem',
+                  fontSize:   lxFs('0.9rem'),
                   fontWeight: 700,
                   fontStyle:  'italic',
                   color:      'var(--color-lx-text-secondary)',
@@ -299,7 +300,7 @@ export default function DesktopSidebar() {
             <p
               style={{
                 fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:     '0.75rem',
+                fontSize:     lxFs('0.75rem'),
                 fontWeight:   500,
                 color:        'var(--color-lx-text-primary)',
                 overflow:     'hidden',

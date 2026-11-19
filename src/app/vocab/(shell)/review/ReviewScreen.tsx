@@ -9,6 +9,7 @@ import Celebration from '@/components/vocab/Celebration';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { limitKindOf } from '@/lib/vocab/limit';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -132,13 +133,13 @@ function ReviewComplete({
       <div>
         <motion.h2
           variants={completedCard} initial="hidden" animate="show"
-          style={{ fontFamily: SERIF, fontSize: '2.4rem', fontWeight: 700, fontStyle: 'italic', color: C.textPrim, lineHeight: 1 }}
+          style={{ fontFamily: SERIF, fontSize: lxFs('2.4rem'), fontWeight: 700, fontStyle: 'italic', color: C.textPrim, lineHeight: 1 }}
         >
           Caught up!
         </motion.h2>
         <motion.p
           variants={completedCard} initial="hidden" animate="show"
-          style={{ fontFamily: SANS, fontSize: '0.875rem', color: C.textSec, marginTop: '0.5rem' }}
+          style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.textSec, marginTop: '0.5rem' }}
         >
           {total} word{total !== 1 ? 's' : ''} reviewed
         </motion.p>
@@ -158,16 +159,16 @@ function ReviewComplete({
           background: 'rgba(46,204,113,0.08)', border: '1px solid rgba(46,204,113,0.2)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
         }}>
-          <span style={{ fontFamily: SERIF, fontSize: '2rem', fontWeight: 700, color: C.success }}>{gotCount}</span>
-          <span style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, letterSpacing: '0.06em' }}>KNOWN</span>
+          <span style={{ fontFamily: SERIF, fontSize: lxFs('2rem'), fontWeight: 700, color: C.success }}>{gotCount}</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: C.textMuted, letterSpacing: '0.06em' }}>KNOWN</span>
         </div>
         <div style={{
           flex: 1, padding: '1rem', borderRadius: 14,
           background: 'rgba(230,57,70,0.08)', border: '1px solid rgba(230,57,70,0.18)',
           display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 4,
         }}>
-          <span style={{ fontFamily: SERIF, fontSize: '2rem', fontWeight: 700, color: C.red }}>{missedCount}</span>
-          <span style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, letterSpacing: '0.06em' }}>MISSED</span>
+          <span style={{ fontFamily: SERIF, fontSize: lxFs('2rem'), fontWeight: 700, color: C.red }}>{missedCount}</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: C.textMuted, letterSpacing: '0.06em' }}>MISSED</span>
         </div>
       </motion.div>
 
@@ -180,7 +181,7 @@ function ReviewComplete({
         style={{
           width: '100%', maxWidth: 340, padding: '1rem',
           background: C.red, color: '#fff', border: 'none', borderRadius: 16,
-          fontFamily: SANS, fontSize: '0.9375rem', fontWeight: 600, cursor: 'pointer',
+          fontFamily: SANS, fontSize: lxFs('0.9375rem'), fontWeight: 600, cursor: 'pointer',
           boxShadow: '0 4px 20px rgba(230,57,70,0.3)',
         }}
       >
@@ -191,7 +192,7 @@ function ReviewComplete({
         onClick={() => router.push('/vocab/study')}
         style={{
           background: 'none', border: 'none', cursor: 'pointer',
-          fontFamily: SANS, fontSize: '0.875rem', color: C.textSec,
+          fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.textSec,
         }}
       >
         Continue studying →
@@ -225,17 +226,17 @@ function NoReviews({ onBack }: { onBack: () => void }) {
         <LexiArtwork path="review/all-caught-up.webp" width={128} height={128} style={{ position: 'relative', zIndex: 1 }} />
       </div>
       <div>
-        <h2 style={{ fontFamily: SERIF, fontSize: '2rem', fontWeight: 700, fontStyle: 'italic', color: C.textPrim }}>
+        <h2 style={{ fontFamily: SERIF, fontSize: lxFs('2rem'), fontWeight: 700, fontStyle: 'italic', color: C.textPrim }}>
           All caught up
         </h2>
-        <p style={{ fontFamily: SANS, fontSize: '0.875rem', color: C.textSec, marginTop: '0.4rem' }}>
+        <p style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.textSec, marginTop: '0.4rem' }}>
           No words due for review right now.
         </p>
       </div>
       <button
         onClick={onBack}
         style={{
-          fontFamily: SANS, fontSize: '0.875rem', color: C.red,
+          fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.red,
           background: 'none', border: 'none', cursor: 'pointer',
         }}
       >
@@ -341,14 +342,14 @@ export default function ReviewScreen({ words, dueCount }: Props) {
           style={{ background: 'none', border: 'none', cursor: 'pointer', color: C.textSec, display: 'flex', alignItems: 'center', gap: 4 }}
         >
           <ArrowLeft size={16} />
-          <span style={{ fontFamily: SANS, fontSize: '0.8125rem' }}>Review</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.8125rem') }}>Review</span>
         </button>
 
         <div style={{ textAlign: 'center' }}>
-          <p style={{ fontFamily: SANS, fontSize: '0.75rem', color: C.textMuted, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.75rem'), color: C.textMuted, letterSpacing: '0.07em', textTransform: 'uppercase' }}>
             SRS Review
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.875rem', fontWeight: 600, color: C.textPrim }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), fontWeight: 600, color: C.textPrim }}>
             {idx + 1} <span style={{ color: C.textMuted, fontWeight: 400 }}>/ {words.length}</span>
           </p>
         </div>
@@ -402,7 +403,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
             {/* Level badge + due-state icon */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span style={{
-                fontFamily: SANS, fontSize: '0.65rem', fontWeight: 700,
+                fontFamily: SANS, fontSize: lxFs('0.65rem'), fontWeight: 700,
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 padding: '0.2rem 0.6rem', borderRadius: 20,
                 background: LEVEL_COLORS[current.masteryLevel] ?? 'rgba(180,180,180,0.15)',
@@ -411,7 +412,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
                 {current.masteryLevel}
               </span>
               <DueStateIcon masteryScore={current.masteryScore} />
-              <span style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, fontStyle: 'italic' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: C.textMuted, fontStyle: 'italic' }}>
                 {current.partOfSpeech}
               </span>
             </div>
@@ -419,7 +420,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
             {/* Word */}
             <h2 style={{
               fontFamily: SERIF,
-              fontSize: 'clamp(2rem, 7vw, 2.8rem)',
+              fontSize: lxFs('clamp(2rem, 7vw, 2.8rem)'),
               fontWeight: 700,
               color: C.textPrim,
               lineHeight: 1,
@@ -430,7 +431,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
 
             {/* Tap hint */}
             {!flipped && (
-              <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: C.textMuted, marginTop: 'auto' }}>
+              <p style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: C.textMuted, marginTop: 'auto' }}>
                 Tap to reveal definition
               </p>
             )}
@@ -451,12 +452,12 @@ export default function ReviewScreen({ words, dueCount }: Props) {
                   display: 'flex', flexDirection: 'column', gap: '0.75rem',
                 }}
               >
-                <p style={{ fontFamily: SERIF, fontSize: '1.1rem', color: C.textPrim, lineHeight: 1.6 }}>
+                <p style={{ fontFamily: SERIF, fontSize: lxFs('1.1rem'), color: C.textPrim, lineHeight: 1.6 }}>
                   {current.definition}
                 </p>
                 {current.exampleSentence && (
                   <p style={{
-                    fontFamily: SERIF, fontSize: '0.9375rem', fontStyle: 'italic',
+                    fontFamily: SERIF, fontSize: lxFs('0.9375rem'), fontStyle: 'italic',
                     color: C.textSec, lineHeight: 1.65,
                     borderLeft: `2px solid ${C.border}`,
                     paddingLeft: '0.75rem',
@@ -496,7 +497,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               }}
             >
               <LexiArtwork path="flashcards/missed.svg" width={28} height={28} />
-              <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, color: C.red, letterSpacing: '0.04em' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 600, color: C.red, letterSpacing: '0.04em' }}>
                 Missed
               </span>
             </motion.button>
@@ -516,7 +517,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               }}
             >
               <LexiArtwork path="flashcards/unsure.svg" width={28} height={28} />
-              <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, color: C.gold, letterSpacing: '0.04em' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 600, color: C.gold, letterSpacing: '0.04em' }}>
                 Unsure
               </span>
             </motion.button>
@@ -536,7 +537,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               }}
             >
               <LexiArtwork path="flashcards/got-it.svg" width={28} height={28} />
-              <span style={{ fontFamily: SANS, fontSize: '0.7rem', fontWeight: 600, color: C.success, letterSpacing: '0.04em' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), fontWeight: 600, color: C.success, letterSpacing: '0.04em' }}>
                 Got it
               </span>
             </motion.button>

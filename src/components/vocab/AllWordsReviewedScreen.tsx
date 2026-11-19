@@ -18,6 +18,7 @@ import { CheckCircle2, Zap, Star, ArrowRight } from 'lucide-react';
 import Celebration from '@/components/vocab/Celebration';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Variants ─────────────────────────────────────────────────────────────────
 
@@ -214,7 +215,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
           variants={itemV}
           style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '9px',
+            fontSize:      lxFs('9px'),
             fontWeight:    600,
             letterSpacing: '0.3em',
             textTransform: 'uppercase',
@@ -231,7 +232,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
           variants={itemV}
           className="lx-word"
           style={{
-            fontSize:    '2.6rem',
+            fontSize:    lxFs('2.6rem'),
             fontWeight:  600,
             fontStyle:   'italic',
             color:       'var(--color-lx-text-primary)',
@@ -260,7 +261,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
           variants={itemV}
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '13px',
+            fontSize:   lxFs('13px'),
             fontWeight: 300,
             color:      'var(--color-lx-text-secondary)',
             lineHeight: 1.6,
@@ -304,7 +305,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             <span
               className="lx-word"
               style={{
-                fontSize:   '2rem',
+                fontSize:   lxFs('2rem'),
                 fontWeight: 700,
                 lineHeight: 1,
                 color:      'var(--color-lx-accent-gold)',
@@ -315,7 +316,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             <span
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   '10px',
+                fontSize:   lxFs('10px'),
                 fontWeight: 500,
                 color:      'var(--color-lx-text-muted)',
                 letterSpacing: '0.08em',
@@ -348,7 +349,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             <span
               className="lx-word"
               style={{
-                fontSize:   '2rem',
+                fontSize:   lxFs('2rem'),
                 fontWeight: 700,
                 lineHeight: 1,
                 color:      'var(--color-lx-accent-red)',
@@ -359,7 +360,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             <span
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   '10px',
+                fontSize:   lxFs('10px'),
                 fontWeight: 500,
                 color:      'var(--color-lx-text-muted)',
                 letterSpacing: '0.08em',
@@ -392,7 +393,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             <span
               className="lx-word"
               style={{
-                fontSize:   '2rem',
+                fontSize:   lxFs('2rem'),
                 fontWeight: 700,
                 lineHeight: 1,
                 color:      'var(--color-lx-text-primary)',
@@ -403,7 +404,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             <span
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   '10px',
+                fontSize:   lxFs('10px'),
                 fontWeight: 500,
                 color:      'var(--color-lx-text-muted)',
                 letterSpacing: '0.08em',
@@ -431,7 +432,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             background:    'linear-gradient(135deg, rgba(201,168,76,0.2) 0%, rgba(201,168,76,0.08) 100%)',
             border:        '1px solid rgba(201,168,76,0.4)',
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '14px',
+            fontSize:      lxFs('14px'),
             fontWeight:    600,
             color:         'var(--color-lx-accent-gold)',
             cursor:        'pointer',
@@ -459,7 +460,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             background:    'linear-gradient(135deg, rgba(201,168,76,0.2) 0%, rgba(201,168,76,0.08) 100%)',
             border:        '1px solid rgba(201,168,76,0.4)',
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '14px',
+            fontSize:      lxFs('14px'),
             fontWeight:    600,
             color:         'var(--color-lx-accent-gold)',
             cursor:        'pointer',
@@ -493,7 +494,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
             background:    'transparent',
             border:        '1px solid var(--color-lx-border)',
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '13px',
+            fontSize:      lxFs('13px'),
             fontWeight:    500,
             color:         'var(--color-lx-text-secondary)',
             cursor:        'pointer',

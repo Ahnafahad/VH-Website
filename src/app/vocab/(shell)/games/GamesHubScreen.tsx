@@ -10,6 +10,7 @@ import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import type { GameStateResponse } from '@/lib/vocab/game/types';
 import type { ChargeSummaryResponse } from '@/lib/vocab/word-charge/types';
 import type { LastWordSummaryResponse } from '@/app/api/vocab/games/last-word/summary/route';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 const SERIF = "var(--font-lexi-word), Georgia, serif";
@@ -132,7 +133,7 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
               <LexiArtwork path="games/word-hunt/insignia.svg" width={28} height={28} />
             </span>
             <span style={{
-              fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+              fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
               letterSpacing: '0.16em', textTransform: 'uppercase',
               color: 'var(--color-lx-text-muted)',
             }}>
@@ -141,7 +142,7 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
           </div>
 
           <span style={{
-            fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700,
+            fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700,
             letterSpacing: '0.04em',
             color: badgeColor,
             background: `color-mix(in srgb, ${badgeColor} 14%, transparent)`,
@@ -155,14 +156,14 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
 
         <h2 style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-          fontSize: '1.9rem', lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
+          fontSize: lxFs('1.9rem'), lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
           marginTop: '0.75rem', maxWidth: 'calc(100% - 104px)',
         }}>
           Word Hunt
         </h2>
 
         <p style={{
-          fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)',
+          fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-secondary)',
           marginTop: '0.375rem', lineHeight: 1.5, maxWidth: 'calc(100% - 104px)',
         }}>
           {state.topic} · {state.wordType} · {state.letterCount} letters
@@ -173,7 +174,7 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
             display: 'flex', alignItems: 'center', gap: 6, marginTop: '0.75rem',
           }}>
             <Sparkles size={13} color="var(--color-lx-accent-gold)" />
-            <span style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.8rem'), fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
               <AnimatedNumber value={pointsEarned} /> points earned
             </span>
           </div>
@@ -187,7 +188,7 @@ function WordHuntHero({ state, onPlay }: { state: GameStateResponse; onPlay: () 
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             background: 'var(--color-lx-accent-red)', color: '#fff',
             border: 'none', borderRadius: '0.875rem',
-            fontFamily: SANS, fontSize: '0.9rem', fontWeight: 650,
+            fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 650,
             cursor: 'pointer',
           }}
         >
@@ -238,7 +239,7 @@ function LastWordCard({ summary, onPlay }: { summary: LastWordSummaryResponse | 
               <Scale size={18} aria-hidden />
             </span>
             <span style={{
-              fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+              fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
               letterSpacing: '0.16em', textTransform: 'uppercase',
               color: 'var(--color-lx-text-muted)',
             }}>
@@ -248,7 +249,7 @@ function LastWordCard({ summary, onPlay }: { summary: LastWordSummaryResponse | 
 
           {summary && summary.due > 0 && (
             <span style={{
-              fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.04em',
+              fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700, letterSpacing: '0.04em',
               color: 'var(--color-lx-accent-gold)',
               background: 'rgba(244,168,40,0.12)',
               border: '1px solid rgba(244,168,40,0.28)',
@@ -261,14 +262,14 @@ function LastWordCard({ summary, onPlay }: { summary: LastWordSummaryResponse | 
 
         <h2 style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-          fontSize: '1.9rem', lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
+          fontSize: lxFs('1.9rem'), lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
           marginTop: '0.75rem',
         }}>
           Last Word
         </h2>
 
         <p style={{
-          fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)',
+          fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-secondary)',
           marginTop: '0.375rem', lineHeight: 1.5,
         }}>
           Follow the context and pick the word that fits now. Every choice is judged and earns LexiCore points.
@@ -278,11 +279,11 @@ function LastWordCard({ summary, onPlay }: { summary: LastWordSummaryResponse | 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginTop: '0.75rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
               <Sparkles size={13} color="var(--color-lx-accent-gold)" />
-              <span style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.8rem'), fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
                 {summary.practiced} of {summary.distinctions} distinctions practiced · {summary.reliable} reliable
               </span>
             </div>
-            <span style={{ fontFamily: SANS, fontSize: '0.74rem', color: 'var(--color-lx-text-secondary)', paddingLeft: 19 }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.74rem'), color: 'var(--color-lx-text-secondary)', paddingLeft: 19 }}>
               <AnimatedNumber value={summary.pointsToday} /> of {summary.dailyCap} points earned today
             </span>
           </div>
@@ -296,7 +297,7 @@ function LastWordCard({ summary, onPlay }: { summary: LastWordSummaryResponse | 
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             background: 'var(--color-lx-accent-red)', color: '#fff',
             border: 'none', borderRadius: '0.875rem',
-            fontFamily: SANS, fontSize: '0.9rem', fontWeight: 650,
+            fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 650,
             cursor: 'pointer',
           }}
         >
@@ -376,7 +377,7 @@ function WordChargeCard({
               <LexiArtwork path="games/word-charge/insignia.svg" width={28} height={28} />
             </span>
             <span style={{
-              fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+              fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
               letterSpacing: '0.16em', textTransform: 'uppercase',
               color: 'var(--color-lx-text-muted)',
             }}>
@@ -387,7 +388,7 @@ function WordChargeCard({
           {/* Rounds played badge */}
           {summary && summary.roundsPlayed > 0 && (
             <span style={{
-              fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700,
+              fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700,
               letterSpacing: '0.04em',
               color: 'var(--color-lx-accent-gold)',
               background: 'rgba(244,168,40,0.12)',
@@ -403,14 +404,14 @@ function WordChargeCard({
         {/* Title */}
         <h2 style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-          fontSize: '1.9rem', lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
+          fontSize: lxFs('1.9rem'), lineHeight: 1.1, color: 'var(--color-lx-text-primary)',
           marginTop: '0.75rem', maxWidth: 'calc(100% - 104px)',
         }}>
           Word Charge
         </h2>
 
         <p style={{
-          fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)',
+          fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-secondary)',
           marginTop: '0.375rem', lineHeight: 1.5, maxWidth: 'calc(100% - 104px)',
         }}>
           Positive or negative? 30 seconds.
@@ -422,7 +423,7 @@ function WordChargeCard({
             display: 'flex', alignItems: 'center', gap: 6, marginTop: '0.75rem',
           }}>
             <Sparkles size={13} color="var(--color-lx-accent-gold)" />
-            <span style={{ fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.8rem'), fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
               Best: <AnimatedNumber value={summary.personalBest} /> pts
             </span>
           </div>
@@ -437,7 +438,7 @@ function WordChargeCard({
             display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             background: 'var(--color-lx-accent-red)', color: '#fff',
             border: 'none', borderRadius: '0.875rem',
-            fontFamily: SANS, fontSize: '0.9rem', fontWeight: 650,
+            fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 650,
             cursor: 'pointer',
           }}
         >
@@ -487,10 +488,10 @@ function ArchiveRow({ entry, index, onOpen }: { entry: ArchiveEntry; index: numb
             ? (won ? 'var(--color-lx-success)' : 'var(--color-lx-text-muted)')
             : 'var(--color-lx-accent-gold)'}
         />
-        <span style={{ fontFamily: SANS, fontSize: '0.52rem', fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)' }}>
+        <span style={{ fontFamily: SANS, fontSize: lxFs('0.52rem'), fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)' }}>
           {weekday}
         </span>
-        <span style={{ fontFamily: SERIF, fontSize: '0.9rem', fontWeight: 700, color: 'var(--color-lx-text-primary)', lineHeight: 1.1 }}>
+        <span style={{ fontFamily: SERIF, fontSize: lxFs('0.9rem'), fontWeight: 700, color: 'var(--color-lx-text-primary)', lineHeight: 1.1 }}>
           {day}
         </span>
       </div>
@@ -501,13 +502,13 @@ function ArchiveRow({ entry, index, onOpen }: { entry: ArchiveEntry; index: numb
         {entry.played ? (
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <span style={{
-              fontFamily: SANS, fontSize: '0.72rem', fontWeight: 600,
+              fontFamily: SANS, fontSize: lxFs('0.72rem'), fontWeight: 600,
               color: won ? 'var(--color-lx-success)' : lost ? 'var(--color-lx-text-muted)' : 'var(--color-lx-text-secondary)',
             }}>
               {won ? 'Solved' : lost ? 'Not solved' : 'Played'}
             </span>
             {typeof entry.totalEarned === 'number' && (
-              <span style={{ fontFamily: SANS, fontSize: '0.72rem', color: 'var(--color-lx-accent-gold)' }}>
+              <span style={{ fontFamily: SANS, fontSize: lxFs('0.72rem'), color: 'var(--color-lx-accent-gold)' }}>
                 · {entry.totalEarned} pts
               </span>
             )}
@@ -515,7 +516,7 @@ function ArchiveRow({ entry, index, onOpen }: { entry: ArchiveEntry; index: numb
         ) : (
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <Flame size={11} color="var(--color-lx-accent-gold)" />
-            <span style={{ fontFamily: SANS, fontSize: '0.72rem', fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
+            <span style={{ fontFamily: SANS, fontSize: lxFs('0.72rem'), fontWeight: 600, color: 'var(--color-lx-accent-gold)' }}>
               {entry.status === 'in_progress' ? 'In progress' : 'Catch up · ¼ points'}
             </span>
           </div>
@@ -579,7 +580,7 @@ export default function GamesHubScreen() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.35 }}
         style={{
-          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+          fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
           letterSpacing: '0.16em', textTransform: 'uppercase',
           color: 'var(--color-lx-text-muted)', marginBottom: 4,
         }}
@@ -592,7 +593,7 @@ export default function GamesHubScreen() {
         transition={{ duration: 0.35, delay: 0.05 }}
         style={{
           fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-          fontSize: 'clamp(1.9rem, 7vw, 2.4rem)', lineHeight: 1.05,
+          fontSize: lxFs('clamp(1.9rem, 7vw, 2.4rem)'), lineHeight: 1.05,
           color: 'var(--color-lx-text-primary)', marginBottom: '1.5rem',
         }}
       >
@@ -603,7 +604,7 @@ export default function GamesHubScreen() {
         <div style={{
           padding: '1rem 1.125rem', borderRadius: 12,
           background: 'rgba(230,57,70,0.06)', border: '1px solid rgba(230,57,70,0.2)',
-          fontFamily: SANS, fontSize: '0.8rem', color: 'var(--color-lx-text-secondary)',
+          fontFamily: SANS, fontSize: lxFs('0.8rem'), color: 'var(--color-lx-text-secondary)',
         }}>
           Couldn&apos;t load today&apos;s round. Check your connection and try again.
         </div>
@@ -631,7 +632,7 @@ export default function GamesHubScreen() {
       {/* ── Quick play section ─────────────────────────────────────────── */}
       <div style={{ marginTop: '2rem' }}>
         <p style={{
-          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+          fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
           letterSpacing: '0.16em', textTransform: 'uppercase',
           color: 'var(--color-lx-text-muted)', marginBottom: '0.75rem',
         }}>
@@ -645,7 +646,7 @@ export default function GamesHubScreen() {
 
       <div style={{ marginTop: '2rem' }}>
         <p style={{
-          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 600,
+          fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 600,
           letterSpacing: '0.16em', textTransform: 'uppercase',
           color: 'var(--color-lx-text-muted)', marginBottom: '0.75rem',
         }}>
@@ -666,7 +667,7 @@ export default function GamesHubScreen() {
         )}
 
         {archive !== null && pastRounds.length === 0 && (
-          <p style={{ fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-muted)' }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-muted)' }}>
             Your first round starts today — come back tomorrow for more.
           </p>
         )}

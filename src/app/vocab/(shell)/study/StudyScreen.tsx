@@ -14,6 +14,7 @@ import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { BriefingSection } from '@/components/vocab/BriefingCards';
 import SyllabusFilterRow from '@/components/vocab/SyllabusFilterRow';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Props {
   data: {
@@ -57,13 +58,13 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
     }}>
       <span style={{
         minWidth: '1.6ch', textAlign: 'right',
-        fontSize: 12, fontWeight: 700, color,
+        fontSize: lxFs(12), fontWeight: 700, color,
         fontVariantNumeric: 'tabular-nums',
       }}>
         {n}
       </span>
       <span style={{
-        fontSize: 9, fontWeight: 600,
+        fontSize: lxFs(9), fontWeight: 600,
         color: 'var(--color-lx-text-secondary)',
         textTransform: 'uppercase', letterSpacing: '0.12em',
       }}>
@@ -100,7 +101,7 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
       />
       <span style={{
         fontFamily: "var(--font-lexi-word), Georgia, serif",
-        fontSize: '1.75rem', fontWeight: 700,
+        fontSize: lxFs('1.75rem'), fontWeight: 700,
         color: 'var(--color-lx-text-primary)',
         lineHeight: 1, position: 'relative', zIndex: 1,
       }}>
@@ -174,7 +175,7 @@ function TabSwitcher({
             minHeight: 44,
             background: 'none', border: 'none', cursor: 'pointer',
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize: '0.8125rem', fontWeight: 600,
+            fontSize: lxFs('0.8125rem'), fontWeight: 600,
             color: active === id ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)',
             position: 'relative',
             display: 'flex', alignItems: 'center', gap: '0.35rem',
@@ -185,7 +186,7 @@ function TabSwitcher({
           {id === 'review' && reviewCount > 0 && (
             <span style={{
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize: '0.55rem', fontWeight: 700,
+              fontSize: lxFs('0.55rem'), fontWeight: 700,
               background: 'var(--color-lx-accent-red)',
               color: '#fff',
               padding: '0.1rem 0.35rem',
@@ -260,7 +261,7 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
       <h1
         style={{
           fontFamily: "var(--font-lexi-word), Georgia, serif",
-          fontSize:   'clamp(2rem, 4vw, 2.6rem)',
+          fontSize:   lxFs('clamp(2rem, 4vw, 2.6rem)'),
           fontWeight: 700,
           fontStyle:  'italic',
           color:      'var(--color-lx-text-primary)',
@@ -347,7 +348,7 @@ export default function StudyScreen({ data, letterIndex, reviewData }: Props) {
                 <LexiArtwork path="study/empty-library.webp" width={120} height={120} />
                 <p style={{
                   fontFamily: "var(--font-lexi-word), Georgia, serif",
-                  fontSize: '1.5rem', fontWeight: 700, fontStyle: 'italic',
+                  fontSize: lxFs('1.5rem'), fontWeight: 700, fontStyle: 'italic',
                   color: 'var(--color-lx-text-primary)',
                 }}>
                   Library empty

@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Sparkles, ChevronRight } from 'lucide-react';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Props {
   /** How many additional words are currently blurred */
@@ -63,7 +64,7 @@ export default function UnlockAllWordsBanner({ lockedCount, unlockedCount }: Pro
           <p
             style={{
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:   '0.8125rem',
+              fontSize:   lxFs('0.8125rem'),
               fontWeight: 600,
               color:      'var(--color-lx-text-primary)',
               margin:     '0 0 2px',
@@ -75,7 +76,7 @@ export default function UnlockAllWordsBanner({ lockedCount, unlockedCount }: Pro
           <p
             style={{
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:   '0.6875rem',
+              fontSize:   lxFs('0.6875rem'),
               fontWeight: 400,
               color:      'var(--color-lx-text-muted)',
               margin:     0,

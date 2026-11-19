@@ -6,6 +6,7 @@ import { Signpost } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SESSIONS = [
   {
@@ -85,7 +86,7 @@ export default function SlideSessions({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.78rem',
+                    fontSize: lxFs('0.78rem'),
                     fontWeight: 600,
                     color: 'var(--color-lx-text-primary)',
                   }}
@@ -116,7 +117,7 @@ export default function SlideSessions({ onNext, stepLabel }: Props) {
                     className="absolute -bottom-7 left-4 right-4"
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.6rem',
+                      fontSize: lxFs('0.6rem'),
                       color: 'var(--color-lx-text-muted)',
                       zIndex: 5,
                     }}

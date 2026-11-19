@@ -6,6 +6,7 @@ import type { LeaderboardData, LeaderEntry, AllTimeEntry, HallEntry } from '@/li
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import PublicProfileSheet from '@/components/vocab/PublicProfileSheet';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Medal colours ────────────────────────────────────────────────────────────
 
@@ -92,7 +93,7 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
         className="pointer-events-none absolute -right-1 -top-1 select-none font-serif leading-none"
         style={{
           fontFamily: "var(--font-lexi-word), Georgia, serif",
-          fontSize:   '5.5rem',
+          fontSize:   lxFs('5.5rem'),
           fontWeight: 700,
           fontStyle:  'italic',
           color:      isMe ? 'rgba(230,57,70,0.08)' : `${m.ring.replace('0.9)', '0.08)')}`,
@@ -135,7 +136,7 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
           className="text-center leading-tight"
           style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   '1.05rem',
+            fontSize:   lxFs('1.05rem'),
             fontWeight: 600,
             fontStyle:  'italic',
             color:      'var(--color-lx-text-primary)',
@@ -155,7 +156,7 @@ function PodiumCard({ rank, name, points, isMe, delay, label, onSelect }: Podium
         className="relative z-10 tabular-nums"
         style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:   '0.95rem',
+          fontSize:   lxFs('0.95rem'),
           fontWeight: 700,
           color:      isMe ? 'var(--color-lx-accent-red)' : m.ring,
         }}
@@ -230,7 +231,7 @@ function Row({ rank, name, points, isMe, delay, rowRef, onSelect, prevRank }: Ro
           background:  'var(--color-lx-elevated)',
           color:       isMe ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-secondary)',
           fontFamily:  "var(--font-lexi-word), Georgia, serif",
-          fontSize:    '0.95rem',
+          fontSize:    lxFs('0.95rem'),
           fontStyle:   'italic',
         }}
       >
@@ -335,7 +336,7 @@ function SessionGroup({ label, entries }: SessionGroupProps) {
             style={{
               color:      HALL_COLORS[e.rank] ?? 'var(--color-lx-text-muted)',
               fontFamily: "var(--font-lexi-word), Georgia, serif",
-              fontSize:   '1.1rem',
+              fontSize:   lxFs('1.1rem'),
               fontStyle:  'italic',
               minWidth:   18,
             }}
@@ -344,7 +345,7 @@ function SessionGroup({ label, entries }: SessionGroupProps) {
           </span>
           <p
             className="min-w-0 flex-1 truncate font-medium"
-            style={{ color: 'var(--color-lx-text-primary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.875rem' }}
+            style={{ color: 'var(--color-lx-text-primary)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.875rem') }}
           >
             {e.displayName}
           </p>
@@ -481,7 +482,7 @@ function MyBanner({ rank, points, label }: MyBannerProps) {
         <p
           style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   '1.5rem',
+            fontSize:   lxFs('1.5rem'),
             fontWeight: 700,
             color:      'var(--color-lx-accent-red)',
             lineHeight: 1.1,
@@ -501,7 +502,7 @@ function MyBanner({ rank, points, label }: MyBannerProps) {
           className="tabular-nums"
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '1rem',
+            fontSize:   lxFs('1rem'),
             fontWeight: 700,
             color:      'var(--color-lx-accent-gold)',
           }}
@@ -574,7 +575,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
         <h1
           style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   'clamp(2.2rem, 8vw, 2.6rem)',
+            fontSize:   lxFs('clamp(2.2rem, 8vw, 2.6rem)'),
             fontWeight: 700,
             fontStyle:  'italic',
             lineHeight: 1.05,
@@ -709,7 +710,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
                     transition={{ delay: 0.12, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                     style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize: '1.6rem',
+                      fontSize: lxFs('1.6rem'),
                       fontWeight: 700,
                       fontStyle: 'italic',
                       color: 'var(--color-lx-text-primary)',

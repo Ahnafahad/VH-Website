@@ -16,6 +16,7 @@ import { useRouter } from 'next/navigation';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Props {
   /** Unit name to display in the card and the bottom sheet header */
@@ -90,7 +91,7 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
             <p
               style={{
                 fontFamily:  "var(--font-lexi-word), Georgia, serif",
-                fontSize:    '1.1rem',
+                fontSize:    lxFs('1.1rem'),
                 fontWeight:  700,
                 fontStyle:   'italic',
                 color:       'var(--color-lx-text-primary)',
@@ -103,7 +104,7 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
             <p
               style={{
                 fontFamily:  "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:    '11.5px',
+                fontSize:    lxFs('11.5px'),
                 fontWeight:  400,
                 color:       'var(--color-lx-text-muted)',
                 margin:      0,
@@ -121,7 +122,7 @@ export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
               alignItems:    'center',
               gap:           '5px',
               fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:      '11px',
+              fontSize:      lxFs('11px'),
               fontWeight:    600,
               letterSpacing: '0.08em',
               color:         '#C9A84C',

@@ -41,6 +41,7 @@ import {
   Infinity as InfinityIcon,
   type LucideIcon,
 } from 'lucide-react';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Badge → icon mapping ─────────────────────────────────────────────────────
 
@@ -412,7 +413,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           exit="exit"
           style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '9px',
+            fontSize:      lxFs('9px'),
             fontWeight:    600,
             letterSpacing: '0.32em',
             color:         `${accent}bb`,
@@ -432,7 +433,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           exit="exit"
           style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   ultimate ? '38px' : '34px',
+            fontSize:   lxFs(ultimate ? 38 : 34),
             fontWeight: 600,
             fontStyle:  'italic',
             color:      '#F8F4EE',
@@ -467,7 +468,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           exit="exit"
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '13px',
+            fontSize:   lxFs('13px'),
             fontWeight: 300,
             color:      'rgba(248, 244, 238, 0.50)',
             lineHeight: 1.65,
@@ -513,7 +514,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           whileTap={{  scale: 0.96 }}
           style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '11px',
+            fontSize:      lxFs('11px'),
             fontWeight:    600,
             letterSpacing: '0.22em',
             textTransform: 'uppercase',
@@ -547,7 +548,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           exit="exit"
           style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '9px',
+            fontSize:      lxFs('9px'),
             fontWeight:    500,
             letterSpacing: '0.26em',
             color:         'rgba(248, 244, 238, 0.20)',

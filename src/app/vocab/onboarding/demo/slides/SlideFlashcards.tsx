@@ -6,6 +6,7 @@ import { Layers } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const RATINGS = [
   { label: 'Got It',    color: 'var(--color-lx-success)', points: '+10' },
@@ -76,7 +77,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                   <span
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.55rem',
+                      fontSize: lxFs('0.55rem'),
                       textTransform: 'uppercase',
                       letterSpacing: '0.1em',
                       color: 'var(--color-lx-text-muted)',
@@ -89,7 +90,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                     className="lx-word"
                     style={{
                       fontFamily: "var(--font-lexi-word), Georgia, serif",
-                      fontSize: '1.5rem',
+                      fontSize: lxFs('1.5rem'),
                       fontWeight: 700,
                       fontStyle: 'italic',
                       color: 'var(--color-lx-text-primary)',
@@ -100,7 +101,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                   <span
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.6rem',
+                      fontSize: lxFs('0.6rem'),
                       color: 'var(--color-lx-text-muted)',
                       marginTop: 8,
                     }}
@@ -121,7 +122,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                   <span
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.8rem',
+                      fontSize: lxFs('0.8rem'),
                       fontWeight: 500,
                       color: 'var(--color-lx-text-primary)',
                       lineHeight: 1.5,
@@ -132,7 +133,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                   <span
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.68rem',
+                      fontSize: lxFs('0.68rem'),
                       color: 'var(--color-lx-text-muted)',
                       fontStyle: 'italic',
                       marginTop: 6,
@@ -154,7 +155,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                     className="absolute -top-2 right-4"
                     style={{
                       fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                      fontSize: '0.9rem',
+                      fontSize: lxFs('0.9rem'),
                       fontWeight: 700,
                       color: RATINGS[rated].color,
                     }}
@@ -178,7 +179,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
               <span
                 style={{
                   fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize: '0.75rem',
+                  fontSize: lxFs('0.75rem'),
                   color: 'var(--color-lx-text-muted)',
                 }}
               >
@@ -210,7 +211,7 @@ export default function SlideFlashcards({ onNext, stepLabel }: Props) {
                       : 'var(--color-lx-elevated)',
                     border: `1px solid ${rated === i ? r.color : 'var(--color-lx-border)'}`,
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.65rem',
+                    fontSize: lxFs('0.65rem'),
                     fontWeight: 600,
                     color: rated === i ? r.color : 'var(--color-lx-text-secondary)',
                     cursor: rated !== null ? 'default' : 'pointer',

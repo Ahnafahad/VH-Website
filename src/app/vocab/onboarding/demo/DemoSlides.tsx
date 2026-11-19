@@ -12,6 +12,7 @@ import SlideThemes    from './slides/SlideThemes';
 import SlideCompletion from './slides/SlideCompletion';
 import SlideLetters   from './slides/SlideLetters';
 import SlideReview    from './slides/SlideReview';
+import { lxFs } from '@/lib/vocab/ui';
 
 /**
  * Slide order (8 slides — SlidePointsStreaks removed; its key stat merged into SlideScoring copy):
@@ -141,7 +142,7 @@ export default function DemoSlides({ mode, onComplete, onSkip, onClose }: DemoSl
               border:     'none',
               cursor:     'pointer',
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:   '0.7rem',
+              fontSize:   lxFs('0.7rem'),
               fontWeight: 500,
               color:      'var(--color-lx-text-muted)',
               padding:    '0 4px',

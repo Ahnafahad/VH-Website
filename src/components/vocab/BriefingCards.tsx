@@ -13,6 +13,7 @@ import { useSafeNavigate } from '@/hooks/useSafeNavigate';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { LexiArtwork } from './LexiAsset';
 import type { BriefingKind } from '@/lib/vocab/briefing';
+import { lxFs } from '@/lib/vocab/ui';
 
 const BRIEFING_ART: Record<BriefingKind, string> = {
   resume:           'home/recommendation-resume-quiz.webp',
@@ -45,7 +46,7 @@ export function BriefingSection({
     <div style={{ marginBottom: '1.5rem' }}>
       <p style={{
         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-        fontSize:      '0.58rem',
+        fontSize:      lxFs('0.58rem'),
         fontWeight:    600,
         letterSpacing: '0.16em',
         textTransform: 'uppercase',
@@ -104,7 +105,7 @@ function BriefingCardRow({ card, delay }: { card: BriefingCardData; delay: numbe
           fontFamily:   "var(--font-lexi-word), Georgia, serif",
           fontStyle:    'italic',
           fontWeight:   600,
-          fontSize:     '1rem',
+          fontSize:     lxFs('1rem'),
           lineHeight:   1.25,
           color:        'var(--color-lx-text-primary)',
           margin:       0,
@@ -116,7 +117,7 @@ function BriefingCardRow({ card, delay }: { card: BriefingCardData; delay: numbe
         </p>
         <p style={{
           fontFamily:   "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:     '0.68rem',
+          fontSize:     lxFs('0.68rem'),
           color:        'var(--color-lx-text-muted)',
           margin:       '2px 0 0',
           overflow:     'hidden',
@@ -134,7 +135,7 @@ function BriefingCardRow({ card, delay }: { card: BriefingCardData; delay: numbe
         flexShrink: 0,
         color:      'var(--color-lx-text-muted)',
         fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-        fontSize:   '0.62rem',
+        fontSize:   lxFs('0.62rem'),
       }}>
         <Clock3 size={11} aria-hidden />
         {card.durationMinutes}m

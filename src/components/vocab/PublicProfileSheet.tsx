@@ -12,6 +12,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import type { PublicProfile } from '@/lib/vocab/public-profile';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Badge icons (mirrors ProfileScreen.tsx — not exported there) ─────────────
 
@@ -98,7 +99,7 @@ function useIsDesktop(): boolean {
 
 const ledgerLabel: React.CSSProperties = {
   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-  fontSize:      9,
+  fontSize:      lxFs(9),
   fontWeight:    600,
   letterSpacing: '0.14em',
   textTransform: 'uppercase',
@@ -107,7 +108,7 @@ const ledgerLabel: React.CSSProperties = {
 
 const ledgerNumeral: React.CSSProperties = {
   fontFamily: "var(--font-lexi-word), Georgia, serif",
-  fontSize:   'clamp(1.2rem, 5vw, 1.7rem)',
+  fontSize:   lxFs('clamp(1.2rem, 5vw, 1.7rem)'),
   fontWeight: 600,
   lineHeight: 1,
   color:      'var(--color-lx-text-primary)',
@@ -180,7 +181,7 @@ function ErrorBody({ onRetry }: { onRetry: () => void }) {
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', padding: '32px 8px' }}>
       <p style={{
         fontFamily: "var(--font-lexi-word), Georgia, serif",
-        fontSize:   20,
+        fontSize:   lxFs(20),
         fontStyle:  'italic',
         color:      'var(--color-lx-text-primary)',
         margin:     '0 0 8px',
@@ -189,7 +190,7 @@ function ErrorBody({ onRetry }: { onRetry: () => void }) {
       </p>
       <p style={{
         fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-        fontSize:   12,
+        fontSize:   lxFs(12),
         color:      'var(--color-lx-text-muted)',
         margin:     '0 0 20px',
       }}>
@@ -207,7 +208,7 @@ function ErrorBody({ onRetry }: { onRetry: () => void }) {
           borderRadius:  6,
           cursor:        'pointer',
           fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:      12,
+          fontSize:      lxFs(12),
           fontWeight:    600,
           letterSpacing: '0.04em',
           textTransform: 'uppercase',
@@ -238,7 +239,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
         >
           <span style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   '1.4rem',
+            fontSize:   lxFs('1.4rem'),
             fontWeight: 700,
             fontStyle:  'italic',
             color:      'var(--color-lx-accent-red)',
@@ -250,7 +251,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
         <div style={{ flex: 1, minWidth: 0 }}>
           <h2 style={{
             fontFamily:   "var(--font-lexi-word), Georgia, serif",
-            fontSize:     22,
+            fontSize:     lxFs(22),
             fontStyle:    'italic',
             fontWeight:   600,
             color:        'var(--color-lx-text-primary)',
@@ -264,7 +265,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
           </h2>
           <p style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      10,
+            fontSize:      lxFs(10),
             fontWeight:    500,
             letterSpacing: '0.12em',
             textTransform: 'uppercase',
@@ -292,7 +293,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
           <span style={ledgerLabel}>Words Mastered</span>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, minWidth: 0 }}>
             <span style={ledgerNumeral}>{profile.wordsMastered.toLocaleString()}</span>
-            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 11, color: 'var(--color-lx-text-muted)' }}>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(11), color: 'var(--color-lx-text-muted)' }}>
               / {profile.totalWords.toLocaleString()}
             </span>
           </div>
@@ -307,10 +308,10 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
               </svg>
             )}
             <span style={ledgerNumeral}>{profile.longestStreak}</span>
-            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 11, color: 'var(--color-lx-text-muted)' }}>d</span>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(11), color: 'var(--color-lx-text-muted)' }}>d</span>
           </div>
           {profile.streakDays > 0 && (
-            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: 9, color: 'var(--color-lx-text-muted)' }}>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(9), color: 'var(--color-lx-text-muted)' }}>
               current: {profile.streakDays}d
             </span>
           )}
@@ -321,7 +322,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
       <div>
         <p style={{
           fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:      9,
+          fontSize:      lxFs(9),
           fontWeight:    600,
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
@@ -334,7 +335,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
         {profile.badgesEarned > 0 && (
           <p style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   9,
+            fontSize:   lxFs(9),
             color:      'var(--color-lx-text-muted)',
             textAlign:  'center',
             margin:     '0 0 12px',
@@ -346,7 +347,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
         {profile.badges.length === 0 ? (
           <p style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   15,
+            fontSize:   lxFs(15),
             fontStyle:  'italic',
             color:      'var(--color-lx-text-muted)',
             textAlign:  'center',
@@ -386,7 +387,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
                   />
                   <span style={{
                     fontFamily:      "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:        8,
+                    fontSize:        lxFs(8),
                     lineHeight:      1.3,
                     textAlign:       'center',
                     color:           'var(--color-lx-text-secondary)',

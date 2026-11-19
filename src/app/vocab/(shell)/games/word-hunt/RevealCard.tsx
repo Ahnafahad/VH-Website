@@ -5,6 +5,7 @@ import { Trophy, BookOpen } from 'lucide-react';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import type { PublicReveal } from '@/lib/vocab/game/types';
+import { lxFs } from '@/lib/vocab/ui';
 
 const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 const SERIF = "var(--font-lexi-word), Georgia, serif";
@@ -74,7 +75,7 @@ export default function RevealCard({
           : <BookOpen size={16} color="var(--color-lx-text-muted)" />
         }
         <span style={{
-          fontFamily: SANS, fontSize: '0.6rem', fontWeight: 700,
+          fontFamily: SANS, fontSize: lxFs('0.6rem'), fontWeight: 700,
           letterSpacing: '0.16em', textTransform: 'uppercase',
           color: won ? 'var(--color-lx-success)' : 'var(--color-lx-text-muted)',
         }}>
@@ -84,14 +85,14 @@ export default function RevealCard({
 
       <p className="lx-word" style={{
         fontFamily: SERIF, fontStyle: 'italic', fontWeight: 700,
-        fontSize: 'clamp(2rem, 8vw, 2.6rem)', lineHeight: 1.05,
+        fontSize: lxFs('clamp(2rem, 8vw, 2.6rem)'), lineHeight: 1.05,
         color: 'var(--color-lx-text-primary)', textTransform: 'capitalize',
         marginBottom: '0.625rem',
       }}>
         {reveal.word}
       </p>
 
-      <p style={{ fontFamily: SANS, fontSize: '0.9rem', lineHeight: 1.55, color: 'var(--color-lx-text-secondary)', marginBottom: '0.875rem' }}>
+      <p style={{ fontFamily: SANS, fontSize: lxFs('0.9rem'), lineHeight: 1.55, color: 'var(--color-lx-text-secondary)', marginBottom: '0.875rem' }}>
         {reveal.definition}
       </p>
 
@@ -100,10 +101,10 @@ export default function RevealCard({
           padding: '0.75rem 0.875rem', borderRadius: 10, marginBottom: '0.875rem',
           background: 'rgba(133,133,133,0.08)', border: '1px solid var(--color-lx-border)',
         }}>
-          <p style={{ fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)', marginBottom: 4 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-text-muted)', marginBottom: 4 }}>
             What happened
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.82rem', lineHeight: 1.5, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), lineHeight: 1.5, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
             {reveal.failExplanation}
           </p>
         </div>
@@ -114,10 +115,10 @@ export default function RevealCard({
           padding: '0.75rem 0.875rem', borderRadius: 10, marginBottom: '0.875rem',
           background: 'rgba(46,204,113,0.06)', border: '1px solid rgba(46,204,113,0.2)',
         }}>
-          <p style={{ fontFamily: SANS, fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-success)', marginBottom: 4 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.62rem'), fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--color-lx-success)', marginBottom: 4 }}>
             Closest guess · &ldquo;{reveal.closestGuess.word}&rdquo;
           </p>
-          <p style={{ fontFamily: SANS, fontSize: '0.82rem', lineHeight: 1.5, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), lineHeight: 1.5, color: 'var(--color-lx-text-secondary)', margin: 0 }}>
             {reveal.closestGuess.distinction}
           </p>
         </div>
@@ -126,7 +127,7 @@ export default function RevealCard({
       <blockquote style={{
         margin: '0 0 1.125rem', padding: '0.75rem 0.875rem',
         borderLeft: '2px solid var(--color-lx-accent-gold)',
-        fontFamily: SERIF, fontStyle: 'italic', fontSize: '0.95rem',
+        fontFamily: SERIF, fontStyle: 'italic', fontSize: lxFs('0.95rem'),
         lineHeight: 1.55, color: 'var(--color-lx-text-primary)',
       }}>
         &ldquo;{reveal.modelSentence}&rdquo;
@@ -138,15 +139,15 @@ export default function RevealCard({
         display: 'flex', flexDirection: 'column', gap: 6,
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span style={{ fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)' }}>Word points</span>
-          <span style={{ fontFamily: SANS, fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-lx-text-primary)' }}>{wordPoints}</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-secondary)' }}>Word points</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), fontWeight: 600, color: 'var(--color-lx-text-primary)' }}>{wordPoints}</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span style={{ fontFamily: SANS, fontSize: '0.78rem', color: 'var(--color-lx-text-secondary)' }}>Sentence points</span>
-          <span style={{ fontFamily: SANS, fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-lx-text-primary)' }}>{sentencePoints}</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), color: 'var(--color-lx-text-secondary)' }}>Sentence points</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), fontWeight: 600, color: 'var(--color-lx-text-primary)' }}>{sentencePoints}</span>
         </div>
         {isCatchUp && (
-          <p style={{ fontFamily: SANS, fontSize: '0.7rem', color: 'var(--color-lx-accent-gold)', margin: 0 }}>
+          <p style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: 'var(--color-lx-accent-gold)', margin: 0 }}>
             Catch-up round — points shown already at ¼ rate
           </p>
         )}
@@ -154,14 +155,14 @@ export default function RevealCard({
           display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
           marginTop: 4, paddingTop: 8, borderTop: '1px solid var(--color-lx-border)',
         }}>
-          <span style={{ fontFamily: SANS, fontSize: '0.82rem', fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>Round total</span>
-          <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: '1.4rem', color: 'var(--color-lx-accent-gold)' }}>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.82rem'), fontWeight: 700, color: 'var(--color-lx-text-primary)' }}>Round total</span>
+          <span style={{ fontFamily: SERIF, fontWeight: 700, fontSize: lxFs('1.4rem'), color: 'var(--color-lx-accent-gold)' }}>
             +<AnimatedNumber value={total} />
           </span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-          <span style={{ fontFamily: SANS, fontSize: '0.7rem', color: 'var(--color-lx-text-muted)' }}>Your balance</span>
-          <span style={{ fontFamily: SANS, fontSize: '0.78rem', fontWeight: 600, color: 'var(--color-lx-text-secondary)' }}>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.7rem'), color: 'var(--color-lx-text-muted)' }}>Your balance</span>
+          <span style={{ fontFamily: SANS, fontSize: lxFs('0.78rem'), fontWeight: 600, color: 'var(--color-lx-text-secondary)' }}>
             <AnimatedNumber value={totalPoints} /> pts
           </span>
         </div>

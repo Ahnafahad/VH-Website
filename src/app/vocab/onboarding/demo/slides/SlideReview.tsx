@@ -6,6 +6,7 @@ import { BrainCircuit } from 'lucide-react';
 import DemoSlideLayout from '../DemoSlideLayout';
 import PulseRing from '../PulseRing';
 import DemoInstruction from '../DemoInstruction';
+import { lxFs } from '@/lib/vocab/ui';
 
 const DUE_WORDS = [
   { word: 'pragmatic',   tag: '2d overdue' },
@@ -73,7 +74,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
             <span
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize: '0.55rem',
+                fontSize: lxFs('0.55rem'),
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
@@ -96,7 +97,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                   className="lx-word"
                   style={{
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
-                    fontSize: '0.82rem',
+                    fontSize: lxFs('0.82rem'),
                     fontStyle: 'italic',
                     color: 'var(--color-lx-text-primary)',
                   }}
@@ -106,7 +107,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.5rem',
+                    fontSize: lxFs('0.5rem'),
                     color: 'var(--color-lx-accent-gold)',
                   }}
                 >
@@ -140,7 +141,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
             <span
               style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize: '0.55rem',
+                fontSize: lxFs('0.55rem'),
                 fontWeight: 600,
                 textTransform: 'uppercase',
                 letterSpacing: '0.08em',
@@ -163,7 +164,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                   className="lx-word"
                   style={{
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
-                    fontSize: '0.82rem',
+                    fontSize: lxFs('0.82rem'),
                     fontStyle: 'italic',
                     color: 'var(--color-lx-text-primary)',
                   }}
@@ -173,7 +174,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                 <span
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize: '0.5rem',
+                    fontSize: lxFs('0.5rem'),
                     color: 'var(--color-lx-accent-red)',
                   }}
                 >
@@ -198,7 +199,7 @@ export default function SlideReview({ onNext, stepLabel }: Props) {
                 background: 'var(--color-lx-elevated)',
                 border: '1px solid var(--color-lx-border)',
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize: '0.45rem',
+                fontSize: lxFs('0.45rem'),
                 color: 'var(--color-lx-text-muted)',
                 whiteSpace: 'nowrap',
               }}

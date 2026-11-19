@@ -15,6 +15,7 @@ import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingFlashcard';
 import { CardStyleChips, PrimaryButton } from '@/components/vocab/onboarding/ui';
 import type { CardPrefs } from '@/lib/vocab/card-prefs';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Syllabus { id: number; name: string; description: string | null }
 
@@ -195,7 +196,7 @@ export default function ReducedOnboardingModal({
                 </PrimaryButton>
 
                 {error && (
-                  <p role="alert" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.78rem', color: 'var(--color-lx-danger)', textAlign: 'center', margin: 0 }}>
+                  <p role="alert" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.78rem'), color: 'var(--color-lx-danger)', textAlign: 'center', margin: 0 }}>
                     Couldn’t save that — check your connection and try again.
                   </p>
                 )}
@@ -214,7 +215,7 @@ function Header({ title, subtitle }: { title: string; subtitle: string }) {
       <h2
         style={{
           fontFamily: "var(--font-lexi-word), Georgia, serif",
-          fontSize:   '1.6rem',
+          fontSize:   lxFs('1.6rem'),
           fontWeight: 700,
           fontStyle:  'italic',
           lineHeight: 1.15,
@@ -227,7 +228,7 @@ function Header({ title, subtitle }: { title: string; subtitle: string }) {
       <p
         style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:   '0.84rem',
+          fontSize:   lxFs('0.84rem'),
           color:      'var(--color-lx-text-secondary)',
           lineHeight: 1.5,
           margin:     0,

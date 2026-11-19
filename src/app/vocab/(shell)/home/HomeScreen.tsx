@@ -22,6 +22,7 @@ import { scheduleReminders, readReminderEnabled } from '@/lib/vocab/local-remind
 import { dhakaHour } from '@/lib/vocab/dhaka-time';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { LMark } from '@/components/vocab/onboarding/L';
+import { lxFs } from '@/lib/vocab/ui';
 
 // Uses the visitor's Dhaka-local hour (not the machine's own timezone) so the
 // greeting is identical during SSR (server runs in UTC) and client hydration
@@ -101,7 +102,7 @@ function MasteryHistogram({ breakdown }: { breakdown: MasteryBreakdown }) {
                     transform:  'translateX(-50%)',
                     marginBottom: 6,
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:   '0.58rem',
+                    fontSize:   lxFs('0.58rem'),
                     color,
                     background: 'var(--color-lx-elevated)',
                     border:     `1px solid ${color}50`,
@@ -180,7 +181,7 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, iconPath, onClic
     >
       <span style={{
         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-        fontSize:      '0.58rem',
+        fontSize:      lxFs('0.58rem'),
         fontWeight:    600,
         letterSpacing: '0.14em',
         textTransform: 'uppercase',
@@ -205,7 +206,7 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, iconPath, onClic
               transition={{ repeat: Infinity, duration: 2.6, ease: 'easeInOut' }}
               style={{
                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                fontSize:   'clamp(1.5rem, 6vw, 2.15rem)',
+                fontSize:   lxFs('clamp(1.5rem, 6vw, 2.15rem)'),
                 lineHeight: 1,
                 fontWeight: 700,
                 whiteSpace: 'nowrap',
@@ -217,7 +218,7 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, iconPath, onClic
           ) : (
             <span style={{
               fontFamily: "var(--font-lexi-word), Georgia, serif",
-              fontSize:   '2.15rem',
+              fontSize:   lxFs('2.15rem'),
               lineHeight: 1,
               fontWeight: 700,
               color:      (color && value > 0)
@@ -232,7 +233,7 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, iconPath, onClic
           {unit && (
             <span style={{
               fontFamily:  "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:    '0.68rem',
+              fontSize:    lxFs('0.68rem'),
               color:       'var(--color-lx-text-muted)',
               paddingBottom: 4,
             }}>
@@ -316,7 +317,7 @@ function SessionRow({ title, subtitle, color, pulse, delay, onClick }: SessionRo
           <div style={{ flex: 1, minWidth: 0 }}>
             <p style={{
               fontFamily:   "var(--font-lexi-word), Georgia, serif",
-              fontSize:     '1.05rem',
+              fontSize:     lxFs('1.05rem'),
               fontWeight:   600,
               fontStyle:    'italic',
               color:        'var(--color-lx-text-primary)',
@@ -329,7 +330,7 @@ function SessionRow({ title, subtitle, color, pulse, delay, onClick }: SessionRo
             </p>
             <p style={{
               fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:      '0.6rem',
+              fontSize:      lxFs('0.6rem'),
               color:         hovered ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)',
               letterSpacing: '0.1em',
               textTransform: 'uppercase',
@@ -547,7 +548,7 @@ function DailyMessage() {
           {/* Message text */}
           <p style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   '0.95rem',
+            fontSize:   lxFs('0.95rem'),
             fontWeight: 500,
             fontStyle:  'italic',
             lineHeight: 1.5,
@@ -637,7 +638,7 @@ function ProgressSection({
       }}>
         <p style={{
           fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:      '0.58rem',
+          fontSize:      lxFs('0.58rem'),
           fontWeight:    600,
           letterSpacing: '0.16em',
           textTransform: 'uppercase',
@@ -649,7 +650,7 @@ function ProgressSection({
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
           <span style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   '1.1rem',
+            fontSize:   lxFs('1.1rem'),
             fontWeight: 700,
             color:      'var(--color-lx-text-primary)',
             lineHeight: 1,
@@ -658,7 +659,7 @@ function ProgressSection({
           </span>
           <span style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '0.58rem',
+            fontSize:   lxFs('0.58rem'),
             color:      'var(--color-lx-text-muted)',
           }}>
             / {pool}
@@ -733,7 +734,7 @@ function ProgressSection({
               }} />
               <span style={{
                 fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:      '0.56rem',
+                fontSize:      lxFs('0.56rem'),
                 color:         'var(--color-lx-text-muted)',
                 letterSpacing: '0.02em',
               }}>
@@ -842,7 +843,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
               alignItems:    'center',
               gap:           4,
               fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:      '0.58rem',
+              fontSize:      lxFs('0.58rem'),
               fontWeight:    500,
               letterSpacing: '0.08em',
               textTransform: 'uppercase',
@@ -875,7 +876,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
           >
             <h1 style={{
               fontFamily:    "var(--font-lexi-word), Georgia, serif",
-              fontSize:      'clamp(2rem, 5vw, 2.75rem)',
+              fontSize:      lxFs('clamp(2rem, 5vw, 2.75rem)'),
               lineHeight:    1,
               fontWeight:    700,
               fontStyle:     'italic',
@@ -950,7 +951,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 3 }}>
             <span style={{
               fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize:      '0.56rem',
+              fontSize:      lxFs('0.56rem'),
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               color:         'var(--color-lx-text-muted)',
@@ -960,7 +961,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 3 }}>
               <span style={{
                 fontFamily: "var(--font-lexi-word), Georgia, serif",
-                fontSize:   '1.75rem',
+                fontSize:   lxFs('1.75rem'),
                 lineHeight: 1,
                 fontWeight: 700,
                 color:      'var(--color-lx-accent-gold)',
@@ -969,7 +970,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
               </span>
               <span style={{
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:   '0.58rem',
+                fontSize:   lxFs('0.58rem'),
                 color:      'var(--color-lx-accent-gold)',
                 opacity:    0.65,
                 paddingBottom: 2,
@@ -1021,7 +1022,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
               <div>
                 <p style={{
                   fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:   '0.72rem',
+                  fontSize:   lxFs('0.72rem'),
                   fontWeight: 600,
                   color:      'var(--color-lx-text-primary)',
                   margin:     0,
@@ -1031,7 +1032,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                 </p>
                 <p style={{
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      '0.62rem',
+                  fontSize:      lxFs('0.62rem'),
                   color:         'var(--color-lx-text-muted)',
                   margin:        '2px 0 0',
                   letterSpacing: '0.02em',
@@ -1052,7 +1053,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                 border:        '1px solid rgba(244,168,40,0.3)',
                 borderRadius:  6,
                 fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize:      '0.68rem',
+                fontSize:      lxFs('0.68rem'),
                 fontWeight:    600,
                 color:         'var(--color-lx-accent-gold)',
                 cursor:        'pointer',
@@ -1197,7 +1198,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
               <div style={{ flex: 1 }}>
                 <p style={{
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      '0.57rem',
+                  fontSize:      lxFs('0.57rem'),
                   letterSpacing: '0.14em',
                   textTransform: 'uppercase',
                   color:         'var(--color-lx-text-muted)',
@@ -1208,7 +1209,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                 <div style={{ display: 'flex', alignItems: 'baseline', gap: 5 }}>
                   <span style={{
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
-                    fontSize:   '3rem',
+                    fontSize:   lxFs('3rem'),
                     fontWeight: 700,
                     lineHeight: 1,
                     color:      'var(--color-lx-text-primary)',
@@ -1217,7 +1218,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                   </span>
                   <span style={{
                     fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:      '0.78rem',
+                    fontSize:      lxFs('0.78rem'),
                     color:         'var(--color-lx-text-secondary)',
                     paddingBottom: 5,
                   }}>
@@ -1232,7 +1233,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                   />
                   <p style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:   '0.62rem',
+                    fontSize:   lxFs('0.62rem'),
                     color:      data.goalProgress >= 100 ? 'var(--color-lx-success)' : 'var(--color-lx-text-muted)',
                     margin:     0,
                     fontStyle:  'italic',
@@ -1261,7 +1262,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
               <div>
                 <p style={{
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      '0.55rem',
+                  fontSize:      lxFs('0.55rem'),
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
                   color:         'var(--color-lx-text-muted)',
@@ -1276,7 +1277,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
               <div style={{ textAlign: 'right' }}>
                 <span style={{
                   fontFamily: "var(--font-lexi-word), Georgia, serif",
-                  fontSize:   '1.5rem',
+                  fontSize:   lxFs('1.5rem'),
                   fontWeight: 700,
                   lineHeight: 1,
                   color:      'var(--color-lx-text-muted)',
@@ -1285,7 +1286,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                 </span>
                 <p style={{
                   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                  fontSize:      '0.55rem',
+                  fontSize:      lxFs('0.55rem'),
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
                   color:         'var(--color-lx-text-muted)',
@@ -1313,7 +1314,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                 <div style={{ marginBottom: '0.75rem' }}>
                   <p style={{
                     fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:      '0.58rem',
+                    fontSize:      lxFs('0.58rem'),
                     fontWeight:    600,
                     letterSpacing: '0.16em',
                     textTransform: 'uppercase',
@@ -1357,7 +1358,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                 <div style={{ textAlign: 'left' }}>
                   <p style={{
                     fontFamily: "var(--font-lexi-word), Georgia, serif",
-                    fontSize:   '1.1rem',
+                    fontSize:   lxFs('1.1rem'),
                     fontWeight: 600,
                     fontStyle:  'italic',
                     color:      'var(--color-lx-text-primary)',
@@ -1367,7 +1368,7 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                   </p>
                   <p style={{
                     fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:      '0.6rem',
+                    fontSize:      lxFs('0.6rem'),
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                     color:         'var(--color-lx-text-muted)',
@@ -1461,11 +1462,11 @@ function ActivationWelcome({ firstName, reduce, onDone }: {
         <LMark size={44} />
         <div className="flex flex-col gap-2">
           <h2
-            style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-lx-text-primary)', margin: 0 }}
+            style={{ fontFamily: "var(--font-lexi-word), Georgia, serif", fontSize: lxFs('1.5rem'), fontWeight: 700, color: 'var(--color-lx-text-primary)', margin: 0 }}
           >
             Welcome in, {firstName}.
           </h2>
-          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: '0.875rem', lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
+          <p style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.875rem'), lineHeight: 1.6, color: 'var(--color-lx-text-muted)', margin: 0 }}>
             Everything you just set up is ready. This is where the list lives now.
           </p>
         </div>

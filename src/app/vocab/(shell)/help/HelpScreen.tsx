@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronDown, GraduationCap } from 'lucide-react';
 import DemoModal from './DemoModal';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
+import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Section data ─────────────────────────────────────────────────────────────
 
@@ -173,7 +174,7 @@ function Section({ title, content, diagram, diagramAlt, index }: {
       >
         <h2 style={{
           fontFamily: "var(--font-lexi-word), Georgia, serif",
-          fontSize:   '1.15rem',
+          fontSize:   lxFs('1.15rem'),
           fontWeight: 600,
           fontStyle:  open ? 'italic' : 'normal',
           color:      open ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-secondary)',
@@ -233,7 +234,7 @@ function Section({ title, content, diagram, diagramAlt, index }: {
                   key={i}
                   style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:   '0.82rem',
+                    fontSize:   lxFs('0.82rem'),
                     color:      'var(--color-lx-text-secondary)',
                     lineHeight: 1.75,
                     margin:     i > 0 ? '0.75rem 0 0' : 0,
@@ -274,7 +275,7 @@ export default function HelpScreen() {
             border:         'none',
             cursor:         'pointer',
             fontFamily:     "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:       '0.7rem',
+            fontSize:       lxFs('0.7rem'),
             fontWeight:     500,
             letterSpacing:  '0.1em',
             textTransform:  'uppercase',
@@ -294,7 +295,7 @@ export default function HelpScreen() {
         >
           <p style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      '0.58rem',
+            fontSize:      lxFs('0.58rem'),
             fontWeight:    600,
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
@@ -305,7 +306,7 @@ export default function HelpScreen() {
           </p>
           <h1 style={{
             fontFamily: "var(--font-lexi-word), Georgia, serif",
-            fontSize:   'clamp(2rem, 5vw, 2.75rem)',
+            fontSize:   lxFs('clamp(2rem, 5vw, 2.75rem)'),
             fontWeight: 700,
             fontStyle:  'italic',
             color:      'var(--color-lx-text-primary)',
@@ -316,7 +317,7 @@ export default function HelpScreen() {
           </h1>
           <p style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '0.78rem',
+            fontSize:   lxFs('0.78rem'),
             color:      'var(--color-lx-text-muted)',
             margin:     0,
             lineHeight: 1.6,
@@ -358,7 +359,7 @@ export default function HelpScreen() {
           <span
             style={{
               fontFamily: "var(--font-lexi-word), Georgia, serif",
-              fontSize: '1.05rem',
+              fontSize: lxFs('1.05rem'),
               fontWeight: 600,
               fontStyle: 'italic',
               color: 'var(--color-lx-text-primary)',
@@ -369,7 +370,7 @@ export default function HelpScreen() {
           <span
             style={{
               fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-              fontSize: '0.68rem',
+              fontSize: lxFs('0.68rem'),
               color: 'var(--color-lx-text-muted)',
             }}
           >
@@ -383,7 +384,7 @@ export default function HelpScreen() {
           style={{
             background: 'linear-gradient(135deg, var(--color-lx-accent-red) 0%, #c42d39 100%)',
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize: '0.72rem',
+            fontSize: lxFs('0.72rem'),
             fontWeight: 600,
             color: '#fff',
             border: 'none',
@@ -419,7 +420,7 @@ export default function HelpScreen() {
         transition={{ delay: 0.5 }}
         style={{
           fontFamily:  "var(--font-lexi-word), Georgia, serif",
-          fontSize:    '0.88rem',
+          fontSize:    lxFs('0.88rem'),
           fontStyle:   'italic',
           color:       'var(--color-lx-text-muted)',
           marginTop:   '2.5rem',

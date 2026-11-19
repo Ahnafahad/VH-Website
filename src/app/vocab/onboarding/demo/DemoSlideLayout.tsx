@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Props {
   icon: React.ReactNode;
@@ -47,7 +48,7 @@ export default function DemoSlideLayout({
       <p
         style={{
           fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:      '0.65rem',
+          fontSize:      lxFs('0.65rem'),
           fontWeight:    600,
           textTransform: 'uppercase',
           letterSpacing: '0.1em',
@@ -62,7 +63,7 @@ export default function DemoSlideLayout({
       <h2
         style={{
           fontFamily: "var(--font-lexi-word), Georgia, serif",
-          fontSize:   '1.8rem',
+          fontSize:   lxFs('1.8rem'),
           fontWeight: 600,
           fontStyle:  'italic',
           color:      'var(--color-lx-text-primary)',
@@ -90,7 +91,7 @@ export default function DemoSlideLayout({
         className="text-left"
         style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:   '0.85rem',
+          fontSize:   lxFs('0.85rem'),
           fontWeight: 400,
           color:      'var(--color-lx-text-secondary)',
           lineHeight: 1.6,
@@ -106,7 +107,7 @@ export default function DemoSlideLayout({
           className="text-left"
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   '0.75rem',
+            fontSize:   lxFs('0.75rem'),
             fontWeight: 400,
             fontStyle:  'italic',
             color:      'var(--color-lx-text-muted)',
@@ -142,7 +143,7 @@ export default function DemoSlideLayout({
       <p
         style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:   '0.65rem',
+          fontSize:   lxFs('0.65rem'),
           color:      'var(--color-lx-text-muted)',
           margin:     '-0.25rem 0 0',
         }}

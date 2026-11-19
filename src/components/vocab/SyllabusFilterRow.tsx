@@ -11,6 +11,7 @@ import { useEffect, useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { lxFs } from '@/lib/vocab/ui';
 
 interface Syllabus { id: number; name: string }
 
@@ -84,7 +85,7 @@ export default function SyllabusFilterRow({ syllabuses, selectedIds }: {
                 padding: '6px 12px 6px 8px',
                 borderRadius: 999,
                 fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                fontSize: '0.72rem',
+                fontSize: lxFs('0.72rem'),
                 fontWeight: 600,
                 background: on ? 'rgba(230,57,70,0.10)' : 'var(--color-lx-elevated)',
                 border: `1px solid ${on ? 'var(--color-lx-accent-red)' : 'var(--color-lx-border)'}`,
@@ -115,7 +116,7 @@ export default function SyllabusFilterRow({ syllabuses, selectedIds }: {
           role="alert"
           style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize: '0.7rem',
+            fontSize: lxFs('0.7rem'),
             color: 'var(--color-lx-danger)',
             margin: 0,
           }}
