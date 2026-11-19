@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 import { authOptions } from '@/lib/auth';
+import LexiMotionConfig from '@/components/vocab/LexiMotionConfig';
 
 export const metadata: Metadata = {
   title: 'LexiCore — VH Vocabulary',
@@ -33,5 +34,5 @@ export default async function VocabRootLayout({
   // No login before value: anonymous visitors get the real onboarding, not a wall.
   if (!session) redirect('/lexicore');
 
-  return <>{children}</>;
+  return <LexiMotionConfig>{children}</LexiMotionConfig>;
 }
