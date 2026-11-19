@@ -813,7 +813,7 @@ export default function ProfileScreen({
                     >
                       <span style={{
                         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-                        fontSize:      lxFs(9),
+                        fontSize:      lxFs(9.5),
                         fontWeight:    600,
                         letterSpacing: '0.14em',
                         textTransform: 'uppercase',
@@ -1047,7 +1047,7 @@ export default function ProfileScreen({
 
                         <span style={{
                           fontFamily:       "var(--font-lexi-ui), system-ui, sans-serif",
-                          fontSize:         lxFs(8),
+                          fontSize:         lxFs(9.5),
                           lineHeight:       1.3,
                           textAlign:        'center',
                           color:            badge.earned ? 'var(--color-lx-text-secondary)' : 'var(--color-lx-text-muted)',
@@ -1356,7 +1356,7 @@ export default function ProfileScreen({
                         }}>
                           <span style={{
                             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                            fontSize:   lxFs(9),
+                            fontSize:   lxFs(9.5),
                             color:      'var(--color-lx-accent-gold)',
                             letterSpacing: '0.08em',
                             textTransform: 'uppercase',
@@ -1372,7 +1372,7 @@ export default function ProfileScreen({
                           }}>
                             <AnimatedNumber value={dailyTarget} />
                           </span>
-                          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(9), color: '#F4A82899' }}>
+                          <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(9.5), color: '#F4A82899' }}>
                             words
                           </span>
                         </div>
@@ -2186,7 +2186,7 @@ function SectionLabel({ children, center, icon }: { children: React.ReactNode; c
       )}
       <p style={{
         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-        fontSize:      lxFs(9),
+        fontSize:      lxFs(9.5),
         fontWeight:    600,
         letterSpacing: '0.18em',
         textTransform: 'uppercase',

@@ -99,7 +99,7 @@ function useIsDesktop(): boolean {
 
 const ledgerLabel: React.CSSProperties = {
   fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-  fontSize:      lxFs(9),
+  fontSize:      lxFs(9.5),
   fontWeight:    600,
   letterSpacing: '0.14em',
   textTransform: 'uppercase',
@@ -311,7 +311,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
             <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(11), color: 'var(--color-lx-text-muted)' }}>d</span>
           </div>
           {profile.streakDays > 0 && (
-            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(9), color: 'var(--color-lx-text-muted)' }}>
+            <span style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs(9.5), color: 'var(--color-lx-text-muted)' }}>
               current: {profile.streakDays}d
             </span>
           )}
@@ -322,7 +322,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
       <div>
         <p style={{
           fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-          fontSize:      lxFs(9),
+          fontSize:      lxFs(9.5),
           fontWeight:    600,
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
@@ -335,7 +335,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
         {profile.badgesEarned > 0 && (
           <p style={{
             fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:   lxFs(9),
+            fontSize:   lxFs(9.5),
             color:      'var(--color-lx-text-muted)',
             textAlign:  'center',
             margin:     '0 0 12px',
@@ -387,7 +387,7 @@ function ProfileBody({ profile }: { profile: PublicProfile }) {
                   />
                   <span style={{
                     fontFamily:      "var(--font-lexi-ui), system-ui, sans-serif",
-                    fontSize:        lxFs(8),
+                    fontSize:        lxFs(9.5),
                     lineHeight:      1.3,
                     textAlign:       'center',
                     color:           'var(--color-lx-text-secondary)',

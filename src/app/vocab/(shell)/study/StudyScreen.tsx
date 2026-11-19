@@ -64,7 +64,7 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
         {n}
       </span>
       <span style={{
-        fontSize: lxFs(9), fontWeight: 600,
+        fontSize: lxFs(9.5), fontWeight: 600,
         color: 'var(--color-lx-text-secondary)',
         textTransform: 'uppercase', letterSpacing: '0.12em',
       }}>

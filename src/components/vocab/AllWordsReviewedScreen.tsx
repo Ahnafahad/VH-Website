@@ -215,7 +215,7 @@ export default function AllWordsReviewedScreen({ totalWords, masteredWords, tota
           variants={itemV}
           style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      lxFs('9px'),
+            fontSize:      lxFs(9.5),
             fontWeight:    600,
             letterSpacing: '0.3em',
             textTransform: 'uppercase',

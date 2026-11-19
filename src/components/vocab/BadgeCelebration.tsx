@@ -413,7 +413,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           exit="exit"
           style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      lxFs('9px'),
+            fontSize:      lxFs(9.5),
             fontWeight:    600,
             letterSpacing: '0.32em',
             color:         `${accent}bb`,
@@ -548,7 +548,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
           exit="exit"
           style={{
             fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",
-            fontSize:      lxFs('9px'),
+            fontSize:      lxFs(9.5),
             fontWeight:    500,
             letterSpacing: '0.26em',
             color:         'rgba(248, 244, 238, 0.20)',
