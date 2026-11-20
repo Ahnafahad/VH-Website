@@ -226,7 +226,7 @@ function CtaRow({
   const ids = wordIds.join(',');
 
   return (
-    <div style={{ display: 'flex', gap: 8, marginTop: '0.5rem' }}>
+    <div style={{ display: 'flex', gap: 8, marginBottom: '0.5rem' }}>
       {/* Study — outlined */}
       <motion.button
         whileTap={{ scale: 0.97 }}
@@ -297,12 +297,12 @@ function ReviewSection({
   return (
     <>
       <SectionDivider label={label} count={words.length} accent={accent} />
+      <CtaRow wordIds={wordIds} count={words.length} />
       <div style={{ display: 'flex', flexDirection: 'column', gap: 7 }}>
         {words.map((w, i) => (
           <ReviewWordRow key={w.wordId} w={w} index={i} variant={variant} />
         ))}
       </div>
-      <CtaRow wordIds={wordIds} count={words.length} />
     </>
   );
 }

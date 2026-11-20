@@ -864,6 +864,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
       {/* ── Floating Start Practice button ── */}
       <div
         className="lx-practice-cta"
+        inert={!showCta}
         style={{ opacity: showCta ? 1 : 0, pointerEvents: showCta ? 'auto' : 'none', transition: 'opacity 0.22s ease' }}
       >
         <motion.button

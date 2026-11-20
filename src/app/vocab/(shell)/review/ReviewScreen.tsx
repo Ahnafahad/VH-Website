@@ -374,7 +374,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: prefersReduced ? 0 : -direction * 22 }}
           transition={{ duration: motionDuration, ease: 'easeOut' }}
-          style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.875rem' }}
+          style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '0.875rem' }}
         >
           {/* Front: word + POS + level */}
           <div
@@ -387,8 +387,8 @@ export default function ReviewScreen({ words, dueCount }: Props) {
               background: C.surface, border: `1px solid ${C.border}`,
               borderRadius: 20, padding: '1.75rem 1.5rem',
               cursor: 'pointer', position: 'relative', overflow: 'hidden',
-              minHeight: 140,
-              display: 'flex', flexDirection: 'column', gap: '0.75rem',
+              minHeight: 220,
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', gap: '0.75rem',
             }}
           >
             {/* ambient glow */}

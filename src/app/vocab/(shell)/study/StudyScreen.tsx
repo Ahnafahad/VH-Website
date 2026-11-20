@@ -66,7 +66,7 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
       <span style={{
         fontSize: lxFs(9.5), fontWeight: 600,
         color: 'var(--color-lx-text-secondary)',
-        textTransform: 'uppercase', letterSpacing: '0.12em',
+        letterSpacing: '0.02em',
       }}>
         {label}
       </span>
@@ -114,21 +114,21 @@ function LetterCard({ summary }: { summary: LetterSummary }) {
       }}>
         <Chip
           n={summary.studiedCount}
-          label="STD"
+          label="studied"
           color={summary.studiedCount > 0
             ? 'var(--color-lx-text-primary)'
             : 'var(--color-lx-text-disabled)'}
         />
         <Chip
           n={summary.familiarPlusCount}
-          label="MSTR"
+          label="learned"
           color={summary.familiarPlusCount > 0
             ? masteryColor
             : 'var(--color-lx-text-disabled)'}
         />
         <Chip
           n={summary.wordCount}
-          label="TOT"
+          label="total"
           color="var(--color-lx-text-secondary)"
         />
       </div>

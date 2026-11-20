@@ -201,6 +201,7 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
   const fb     = useVocabFeedback();
   const [phase, setPhase]   = useState<ScreenPhase>('list');
   const [config, setConfig] = useState<QuizConfig | null>(null);
+  const [shown, setShown]   = useState(30);
 
 
   // Split into what the user can actually interact with vs. blurred preview
@@ -382,12 +383,17 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
         </p>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {unlockedWords.map((w, i) => (
+          {unlockedWords.slice(0, shown).map((w, i) => (
             <WordRow key={w.wordId} w={w} index={i} />
           ))}
-          {lockedWords.map((w, i) => (
+          {lockedWords.slice(0, Math.max(0, shown - unlockedWords.length)).map((w, i) => (
             <LockedWordRow key={w.wordId} w={w} index={unlockedWords.length + i} />
           ))}
+          {words.length > shown && (
+            <button type="button" onClick={() => setShown(s => s + 30)} className="lx-action lx-action-secondary" style={{ alignSelf: 'center', marginTop: 4, fontFamily: SANS, fontSize: lxFs('0.8rem') }}>
+              Load more ({words.length - shown} left)
+            </button>
+          )}
         </div>
       )}
 

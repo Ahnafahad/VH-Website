@@ -20,7 +20,12 @@ export default function BottomNav() {
   const fb        = useVocabFeedback();
   const { watch } = useSafeNavigate();
 
-  const active = TABS.find(t => pathname.startsWith(t.href))?.id ?? 'home';
+  // /vocab/review is the due-review flow reached from Study's Review tab.
+  const active = pathname.startsWith('/vocab/review') ? 'study' : TABS.find(t => pathname.startsWith(t.href))?.id ?? 'home';
+
+  // Quiz (incl. its generating state) and flashcard sessions are focused flows with their own exit.
+  const studyTheme = pathname.match(/^\/vocab\/study\/([^/]+)$/)?.[1];
+  if (pathname.endsWith('/quiz') || (studyTheme && studyTheme !== 'review')) return null;
 
   // Word Charge is a fullscreen, timed game. Its wrong/help/pause overlays live
   // inside the page's PageTransition stacking context, so a fixed nav (even at a

@@ -532,6 +532,7 @@ export default function GamesHubScreen() {
   const { navigate } = useSafeNavigate();
   const [todayState, setTodayState] = useState<GameStateResponse | null>(null);
   const [archive, setArchive] = useState<ArchiveEntry[] | null>(null);
+  const [showAllRounds, setShowAllRounds] = useState(false);
   const [loadError, setLoadError] = useState(false);
   const [chargeSummary, setChargeSummary] = useState<ChargeSummaryResponse | null>(null);
   const [lastWordSummary, setLastWordSummary] = useState<LastWordSummaryResponse | null>(null);
@@ -670,7 +671,7 @@ export default function GamesHubScreen() {
 
         {pastRounds.length > 0 && (
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            {pastRounds.map((entry, i) => (
+            {(showAllRounds ? pastRounds : pastRounds.slice(0, 7)).map((entry, i) => (
               <ArchiveRow
                 key={entry.date}
                 entry={entry}
@@ -678,6 +679,16 @@ export default function GamesHubScreen() {
                 onOpen={() => navigate(`/vocab/games/word-hunt?date=${entry.date}`)}
               />
             ))}
+            {!showAllRounds && pastRounds.length > 7 && (
+              <button
+                type="button"
+                onClick={() => setShowAllRounds(true)}
+                className="lx-action lx-action-secondary"
+                style={{ alignSelf: 'center', marginTop: 4, fontFamily: SANS, fontSize: lxFs('0.8rem') }}
+              >
+                Show all {pastRounds.length} rounds
+              </button>
+            )}
           </div>
         )}
       </div>
