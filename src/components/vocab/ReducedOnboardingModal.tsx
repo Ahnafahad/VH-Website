@@ -11,7 +11,7 @@
  */
 
 import { useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotionConfig } from 'framer-motion';
 import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingFlashcard';
 import { CardStyleChips, PrimaryButton } from '@/components/vocab/onboarding/ui';
 import type { CardPrefs } from '@/lib/vocab/card-prefs';
@@ -34,7 +34,7 @@ export default function ReducedOnboardingModal({
   sampleWord: LivingCardWord | null;
   onDone: () => void;
 }) {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotionConfig() ?? false;
   const [stage, setStage]     = useState<Stage>(sampleWord ? 'card' : 'syllabus');
   const [flipped, setFlipped] = useState(false);
   const [prefs, setPrefs]     = useState<CardPrefs>(initialPrefs);

@@ -13,7 +13,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotionConfig } from 'framer-motion';
 import { LX_Z } from '@/lib/vocab/ui';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -80,7 +80,7 @@ export default function Celebration({
   onDone,
 }: CelebrationProps) {
   const [mounted, setMounted] = useState(false);
-  const reduceMotion          = useReducedMotion();
+  const reduceMotion          = useReducedMotionConfig();
   const doneTimer             = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // SSR guard — match the portal pattern from BadgeCelebration

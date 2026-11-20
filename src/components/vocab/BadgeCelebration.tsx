@@ -13,7 +13,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, useReducedMotionConfig, type Variants } from 'framer-motion';
 import type { EarnedBadge } from '@/lib/vocab/badges/checker';
 import Celebration from '@/components/vocab/Celebration';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
@@ -148,7 +148,7 @@ export default function BadgeCelebration({ badge, onDismiss }: Props) {
   const [mounted, setMounted]   = useState(false);
   const medallionRef            = useRef<HTMLDivElement>(null);
   const feedbackFiredRef        = useRef(false);
-  const reducedMotion           = useReducedMotion();
+  const reducedMotion           = useReducedMotionConfig();
   const fb                      = useVocabFeedback();
 
   const ultimate   = badge.category === 'ultimate';

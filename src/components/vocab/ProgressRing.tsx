@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotionConfig } from 'framer-motion';
 import { useEffect, useId, useRef } from 'react';
 import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
@@ -19,7 +19,7 @@ export default function ProgressRing({ percentage, size, strokeWidth, label }: P
   const circumference = 2 * Math.PI * radius;
   const offset        = circumference - (percentage / 100) * circumference;
 
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotionConfig();
   const fb                 = useVocabFeedback();
 
   // Guard: fire levelUp feedback only on first 0→100 transition, not every render.

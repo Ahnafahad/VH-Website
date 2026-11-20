@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotionConfig, type Variants } from 'framer-motion';
 import { createPortal } from 'react-dom';
 import {
   X, RefreshCw,
@@ -415,7 +415,7 @@ type Status = 'idle' | 'loading' | 'error' | 'loaded';
 
 export default function PublicProfileSheet({ userId, onClose }: { userId: number | null; onClose: () => void }) {
   const open           = userId != null;
-  const prefersReduced = useReducedMotion() ?? false;
+  const prefersReduced = useReducedMotionConfig() ?? false;
   const isDesktop      = useIsDesktop();
 
   const [profile, setProfile] = useState<PublicProfile | null>(null);

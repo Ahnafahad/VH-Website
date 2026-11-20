@@ -13,7 +13,7 @@
  */
 
 import { useRouter } from 'next/navigation';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotionConfig } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import { lxFs } from '@/lib/vocab/ui';
@@ -25,7 +25,7 @@ interface Props {
 
 export default function LockedUnitOverlay({ unitName = 'this unit' }: Props) {
   const router = useRouter();
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotionConfig();
   const openSheet = () => router.push('/lexicore/upgrade');
 
   return (

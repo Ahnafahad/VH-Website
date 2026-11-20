@@ -12,7 +12,7 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { motion, useReducedMotion, type Variants } from 'framer-motion';
+import { motion, useReducedMotionConfig, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { CheckCircle2, Zap, Star, ArrowRight } from 'lucide-react';
 import Celebration from '@/components/vocab/Celebration';
@@ -60,7 +60,7 @@ interface Props {
 export default function AllWordsReviewedScreen({ totalWords, masteredWords, totalPoints, onReviewDecks }: Props) {
   const router          = useRouter();
   const firedRef        = useRef(false);
-  const reducedMotion   = useReducedMotion();
+  const reducedMotion   = useReducedMotionConfig();
   const fb              = useVocabFeedback();
 
   // ── Sound/haptic cue on mount (fires once) ─────────────────────────────────

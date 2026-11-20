@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotionConfig } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 
 // IMPORTANT: This wrapper intentionally uses ONLY opacity animations.
@@ -14,7 +14,7 @@ import { usePathname } from 'next/navigation';
 
 export default function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname           = usePathname();
-  const shouldReduceMotion = useReducedMotion();
+  const shouldReduceMotion = useReducedMotionConfig();
   const wrapperRef         = useRef<HTMLDivElement>(null);
 
   // If navigation happens while the tab is hidden, the entrance opacity
