@@ -109,12 +109,12 @@ export default function BottomNav() {
 
               {/* Label */}
               <motion.span
-                animate={{ opacity: isActive ? 1 : 0.45, y: isActive ? 0 : 1 }}
+                animate={{ y: isActive ? 0 : 1 }}
                 transition={{ duration: 0.2 }}
                 className="relative z-10 text-[10px] font-medium tracking-wide"
                 style={{
                   fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
-                  color: isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-muted)',
+                  color: isActive ? 'var(--color-lx-accent-red)' : 'var(--color-lx-text-secondary)',
                   letterSpacing: '0.04em',
                 }}
               >

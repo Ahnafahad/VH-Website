@@ -1397,6 +1397,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
                 onKeyDown={(e) => { if (e.key === 'Enter') void handleTypedSubmit(); }}
                 disabled={answerPhase === 'revealed' || submitting}
                 placeholder="Type your answer…"
+                aria-label="Your answer"
                 autoCapitalize="none"
                 autoCorrect="off"
                 spellCheck={false}
@@ -1414,7 +1415,6 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
                   color: answerPhase === 'revealed'
                     ? (result?.isCorrect ? C.success : C.red)
                     : C.textPrim,
-                  outline: 'none',
                   letterSpacing: '0.02em',
                 }}
               />

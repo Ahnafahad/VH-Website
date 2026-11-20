@@ -617,7 +617,7 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
                   transition={{ type: 'spring' as const, stiffness: 440, damping: 34 }}
                 />
               )}
-              <span className="relative z-10 flex items-center justify-center gap-1.5">
+              <span className="relative z-10 flex items-center justify-center gap-1.5 whitespace-nowrap">
                 <LexiArtwork
                   path={t.icon}
                   width={13}

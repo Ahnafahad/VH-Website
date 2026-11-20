@@ -332,6 +332,7 @@ export default function WordHuntScreen({ date }: { date?: string }) {
               onChange={(e) => !revising && setWordInput(e.target.value)}
               disabled={revising || submitting}
               placeholder="Your guess…"
+              aria-label="Your guess"
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}
@@ -341,7 +342,6 @@ export default function WordHuntScreen({ date }: { date?: string }) {
                 border: '1px solid var(--color-lx-border)', borderRadius: 10,
                 fontFamily: SERIF, fontStyle: 'italic', fontWeight: 600, fontSize: lxFs('1rem'),
                 color: revising ? 'var(--color-lx-text-muted)' : 'var(--color-lx-text-primary)',
-                outline: 'none',
               }}
             />
 
@@ -350,12 +350,13 @@ export default function WordHuntScreen({ date }: { date?: string }) {
               onChange={(e) => setSentenceInput(e.target.value)}
               disabled={submitting}
               placeholder="Use it in a sentence…"
+              aria-label="Use it in a sentence"
               rows={2}
               style={{
                 width: '100%', padding: '0.625rem 0.875rem', resize: 'none',
                 background: 'var(--color-lx-base)', border: '1px solid var(--color-lx-border)',
                 borderRadius: 10, fontFamily: SANS, fontSize: lxFs('0.85rem'), lineHeight: 1.4,
-                color: 'var(--color-lx-text-primary)', outline: 'none',
+                color: 'var(--color-lx-text-primary)',
               }}
             />
 
@@ -365,10 +366,10 @@ export default function WordHuntScreen({ date }: { date?: string }) {
               disabled={!canSubmit}
               style={{
                 width: '100%', minHeight: '3.25rem', border: 'none', borderRadius: '0.875rem',
-                background: 'var(--color-lx-accent-red)', color: '#fff',
+                background: canSubmit ? 'var(--color-lx-accent-red)' : 'var(--color-lx-elevated)',
+                color: canSubmit ? '#fff' : 'var(--color-lx-text-secondary)',
                 fontFamily: SANS, fontSize: lxFs('0.9rem'), fontWeight: 650,
                 cursor: canSubmit ? 'pointer' : 'default',
-                opacity: canSubmit ? 1 : 0.55,
               }}
             >
               {submitting ? 'Evaluating your sentence…' : revising ? 'Revise sentence' : 'Submit guess'}

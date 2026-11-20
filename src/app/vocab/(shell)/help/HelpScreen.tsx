@@ -173,14 +173,13 @@ function Section({ title, content, diagram, diagramAlt, index }: {
         }}
       >
         <h2 style={{
-          fontFamily: "var(--font-lexi-word), Georgia, serif",
-          fontSize:   lxFs('1.15rem'),
+          fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
+          fontSize:   lxFs('1.05rem'),
           fontWeight: 600,
-          fontStyle:  open ? 'italic' : 'normal',
           color:      open ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-secondary)',
           margin:     0,
           lineHeight: 1.3,
-          transition: 'color 0.18s, font-style 0.18s',
+          transition: 'color 0.18s',
         }}>
           {title}
         </h2>
