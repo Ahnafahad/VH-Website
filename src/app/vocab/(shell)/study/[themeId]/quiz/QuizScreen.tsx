@@ -1313,10 +1313,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       {/* ── Progress bar ────────────────────────────────────────────────── */}
       <div style={{ height: 3, background: C.elevated, borderRadius: 4, marginBottom: timedMode ? '0.5rem' : '1.125rem', overflow: 'hidden' }}>
         <motion.div
-          animate={{ width: `${progress}%` }}
+          animate={{ scaleX: progress / 100 }}
           transition={{ duration: 0.45, ease: 'easeOut' }}
           style={{
-            height: '100%', borderRadius: 4,
+            height: '100%', borderRadius: 4, originX: 0,
             background: C.red,
             boxShadow: '0 0 6px rgba(230,57,70,0.5)',
           }}

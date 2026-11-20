@@ -40,8 +40,8 @@ export default function BottomNav() {
       className="fixed bottom-0 left-0 right-0 z-50 mx-auto max-w-[430px] md:hidden"
       style={{
         background:    'rgba(26, 26, 26, 0.85)',
-        backdropFilter:'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        backdropFilter:'blur(8px)',
+        WebkitBackdropFilter: 'blur(8px)',
         borderTop:     '1px solid rgba(255,255,255,0.06)',
         paddingBottom: 'env(safe-area-inset-bottom)',
       }}

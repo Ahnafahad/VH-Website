@@ -485,9 +485,9 @@ function UnitAccordionCard({ unit, expanded, onToggleExpand, selected, onToggleT
       {unit.totalWords > 0 && (
         <div style={{ height: 2, background: 'var(--color-lx-elevated)', margin: '0 1rem' }}>
           <motion.div
-            style={{ height: '100%', background: 'var(--color-lx-success)' }}
-            initial={{ width: 0 }}
-            animate={{ width: `${masteredPct}%` }}
+            style={{ height: '100%', background: 'var(--color-lx-success)', originX: 0 }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: masteredPct / 100 }}
             transition={{ duration: 0.7, ease: 'easeOut', delay: index * 0.04 + 0.2 }}
           />
         </div>

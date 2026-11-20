@@ -447,9 +447,10 @@ function UnitAccordion({
             className="h-full rounded-full"
             style={{
               background: 'linear-gradient(90deg, var(--color-lx-accent-red) 0%, var(--color-lx-accent-gold) 100%)',
+              originX: 0,
             }}
-            initial={{ width: 0 }}
-            animate={{ width: `${unit.completePct}%` }}
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: unit.completePct / 100 }}
             transition={{ duration: 0.85, ease: 'easeOut', delay: 0.1 }}
           />
         </div>

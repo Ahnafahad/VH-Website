@@ -360,9 +360,9 @@ export default function ReviewScreen({ words, dueCount }: Props) {
       {/* ── Progress bar ────────────────────────────────────────────── */}
       <div style={{ height: 3, background: C.elevated, borderRadius: 4, marginBottom: '1.25rem', overflow: 'hidden' }}>
         <motion.div
-          animate={{ width: `${progress}%` }}
+          animate={{ scaleX: progress / 100 }}
           transition={{ duration: 0.45, ease: 'easeOut' }}
-          style={{ height: '100%', borderRadius: 4, background: C.gold, boxShadow: '0 0 6px rgba(244,168,40,0.5)' }}
+          style={{ height: '100%', borderRadius: 4, originX: 0, background: C.gold, boxShadow: '0 0 6px rgba(244,168,40,0.5)' }}
         />
       </div>
 

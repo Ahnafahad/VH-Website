@@ -319,12 +319,13 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
               }}
             >
               <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${completePct}%` }}
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: completePct / 100 }}
                 transition={{ duration: 0.85, ease: 'easeOut', delay: 0.1 }}
                 style={{
                   height: '100%',
                   borderRadius: 99,
+                  originX: 0,
                   background: 'linear-gradient(90deg, var(--color-lx-accent-red) 0%, var(--color-lx-accent-gold) 100%)',
                 }}
               />

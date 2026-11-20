@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, useReducedMotionConfig } from 'framer-motion';
 import { lxFs } from '@/lib/vocab/ui';
 
 /**
@@ -41,7 +41,7 @@ export function LMark({ size = 30 }: { size?: number }) {
  * observation any more — it's a lecture.
  */
 export default function LSays({ children, delay = 0 }: { children: string; delay?: number }) {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotionConfig() ?? false;
   const [typed, setTyped] = useState(reduce ? children : '');
   const [done, setDone] = useState(reduce);
 

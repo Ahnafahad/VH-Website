@@ -452,8 +452,8 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
       <div className="overflow-hidden rounded-full" style={{ height: 3, background: 'var(--color-lx-elevated)' }}>
         <motion.div
           className="h-full rounded-full"
-          style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 0 8px rgba(230,57,70,0.5)' }}
-          animate={{ width: `${progress}%` }}
+          style={{ background: 'var(--color-lx-accent-red)', boxShadow: '0 0 8px rgba(230,57,70,0.5)', originX: 0 }}
+          animate={{ scaleX: progress / 100 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
         />
       </div>
