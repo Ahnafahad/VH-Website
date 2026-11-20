@@ -8,6 +8,7 @@ interface Claim { status: 'active' | 'held' | 'approved' | 'rejected'; trxId: st
 interface Plan {
   unlimited: boolean;
   price: number;
+  promoCode: string | null;
   bkashNumber: string;
   paidUntilText: string;
   claim: Claim | null;
@@ -72,6 +73,8 @@ export default function UpgradeClient({ signedIn }: { signedIn: boolean }) {
   const [error, setError] = useState('');
   const [note, setNote] = useState('');
   const [copied, setCopied] = useState(false);
+  const [codeInput, setCodeInput] = useState('');
+  const [codeError, setCodeError] = useState('');
   const fileRef = useRef<HTMLInputElement>(null);
 
   const load = useCallback(async () => {
@@ -139,7 +142,7 @@ export default function UpgradeClient({ signedIn }: { signedIn: boolean }) {
       }
       const res = await fetch('/api/vocab/plan/claim', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ trxId: trxId.trim(), senderNumber: sender.trim() || undefined, screenshotKey }),
+        body: JSON.stringify({ trxId: trxId.trim(), senderNumber: sender.trim() || undefined, screenshotKey, promoCode: plan.promoCode ?? undefined }),
       });
       const body = await res.json();
       if (!res.ok) throw new Error(body.error ?? 'Could not submit your claim');
@@ -147,6 +150,14 @@ export default function UpgradeClient({ signedIn }: { signedIn: boolean }) {
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Could not submit your claim');
     } finally { setBusy(false); }
+  };
+
+  const applyCode = async () => {
+    setCodeError('');
+    const res = await fetch(`/api/vocab/plan?code=${encodeURIComponent(codeInput.trim())}`);
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) { setCodeError(body.error ?? 'That code is not valid.'); return; }
+    setPlan(body as Plan);
   };
 
   const steps = ['Open bKash and choose Send Money.', `Send ৳${plan.price} to the number above.`, 'Copy the Transaction ID from the confirmation SMS or screen.'];
@@ -167,6 +178,21 @@ export default function UpgradeClient({ signedIn }: { signedIn: boolean }) {
           <p style={{ margin: '6px 0 0', fontSize: '0.78rem', color: C.textMuted }}>You can send a new claim below.</p>
         </Card>
       )}
+
+      <Card>
+        {plan.promoCode ? (
+          <p style={{ margin: 0, fontSize: '0.8rem', color: C.success, fontWeight: 600 }}>Code {plan.promoCode} applied. You pay ৳{plan.price}.</p>
+        ) : (
+          <>
+            <label htmlFor="code" style={labelStyle}>Have a code?</label>
+            <div style={{ display: 'flex', gap: 8 }}>
+              <input id="code" value={codeInput} onChange={e => setCodeInput(e.target.value)} autoCapitalize="characters" autoComplete="off" placeholder="Enter code" style={inputStyle} />
+              <button type="button" onClick={applyCode} disabled={!codeInput.trim()} style={{ padding: '0 16px', borderRadius: 10, background: C.elevated, border: `1px solid ${C.border}`, color: C.textPrim, fontFamily: SANS, fontSize: '0.8rem', fontWeight: 600, cursor: 'pointer', opacity: codeInput.trim() ? 1 : 0.6 }}>Apply</button>
+            </div>
+            {codeError && <p style={{ margin: '6px 0 0', fontSize: '0.72rem', color: C.red }}>{codeError}</p>}
+          </>
+        )}
+      </Card>
 
       <Card>
         <p style={{ margin: '0 0 6px', fontSize: '0.7rem', color: C.textMuted }}>Send money by bKash to</p>

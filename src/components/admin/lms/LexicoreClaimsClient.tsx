@@ -8,7 +8,7 @@ import {
 
 type Status = 'active' | 'held' | 'approved' | 'rejected';
 interface Claim {
-  id: number; trxId: string; senderNumber: string | null; amount: number; status: Status;
+  id: number; trxId: string; senderNumber: string | null; amount: number; promoCode: string | null; status: Status;
   note: string | null; createdAt: string; userName: string; userEmail: string; screenshotUrl: string | null;
 }
 
@@ -50,7 +50,7 @@ function Row({ c, onDecide }: { c: Claim; onDecide: (id: number, action: 'approv
       <div style={{ fontSize: 12, color: SLATE, display: 'flex', gap: 16, flexWrap: 'wrap' }}>
         <span>Trx ID: <b>{c.trxId}</b></span>
         <span>From: <b>{c.senderNumber ?? '-'}</b></span>
-        <span>Amount: <b>BDT {c.amount}</b></span>
+        <span>Amount: <b>BDT {c.amount}</b>{c.promoCode && <> ({c.promoCode})</>}</span>
         <span>Submitted {fmtDhaka(Date.parse(c.createdAt))}</span>
         {c.screenshotUrl && <a href={c.screenshotUrl} target="_blank" rel="noreferrer" style={{ color: SLATE, textDecoration: 'underline' }}>View screenshot</a>}
       </div>

@@ -19,6 +19,15 @@ export const BKASH_NUMBER         = '01915424939';
 export const PAID_UNTIL           = new Date('2026-12-05T23:59:59+06:00');
 export const PAID_UNTIL_TEXT      = '5 December 2026';
 export const OWNER_EMAIL          = 'ahnaf816@gmail.com';
+/** Discount codes → price in BDT. */
+export const PROMO_CODES: Record<string, number> = { MAGNUS100: 100, SADAF100: 100 };
+
+/** Valid code → { code, price }; blank → null; unknown → 'invalid'. */
+export function promoPrice(raw: unknown): { code: string; price: number } | null | 'invalid' {
+  if (typeof raw !== 'string' || !raw.trim()) return null;
+  const code = raw.trim().toUpperCase();
+  return code in PROMO_CODES ? { code, price: PROMO_CODES[code] } : 'invalid';
+}
 
 const COURSE_PRODUCTS = ['iba', 'fbs', 'fbs_detailed'];
 const LIVE_STATUSES   = ['active', 'approved'];

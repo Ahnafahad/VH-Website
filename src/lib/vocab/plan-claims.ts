@@ -12,7 +12,7 @@ import { esc } from '@/lib/mocks/registration-emails';
 import { r2PresignGet } from '@/lib/storage/r2';
 import {
   FREE_CARDS_PER_DAY, FREE_QUIZZES_PER_DAY, PLAN_PRICE_BDT, BKASH_NUMBER, PAID_UNTIL, PAID_UNTIL_TEXT,
-  OWNER_EMAIL, isUnlimited, usageToday, normalizeTrxId,
+  OWNER_EMAIL, isUnlimited, usageToday, normalizeTrxId, promoPrice,
 } from '@/lib/vocab/plan';
 
 const SITE = 'https://www.vh-beyondthehorizons.org';
@@ -21,7 +21,9 @@ export function screenshotKeyFor(userId: number, fileName: string): string {
   return `lexicore-claims/${userId}/${Date.now()}-${fileName.replace(/[^\w.\-]/g, '_').slice(0, 100)}`;
 }
 
-export async function getPlanStatus(userId: number) {
+export async function getPlanStatus(userId: number, promo?: unknown) {
+  const p = promoPrice(promo);
+  if (p === 'invalid') throw new ApiException('That code is not valid.', 400);
   const [unlimited, usage, claim] = await Promise.all([
     isUnlimited(userId),
     usageToday(userId),
@@ -32,7 +34,8 @@ export async function getPlanStatus(userId: number) {
     unlimited,
     usage,
     limits: { cards: FREE_CARDS_PER_DAY, quizzes: FREE_QUIZZES_PER_DAY },
-    price: PLAN_PRICE_BDT,
+    price: p?.price ?? PLAN_PRICE_BDT,
+    promoCode: p?.code ?? null,
     bkashNumber: BKASH_NUMBER,
     paidUntil: PAID_UNTIL.toISOString(),
     paidUntilText: PAID_UNTIL_TEXT,
@@ -42,13 +45,16 @@ export async function getPlanStatus(userId: number) {
 
 export async function submitClaim(
   userId: number,
-  input: { trxId?: unknown; senderNumber?: unknown; screenshotKey?: unknown },
+  input: { trxId?: unknown; senderNumber?: unknown; screenshotKey?: unknown; promoCode?: unknown },
 ): Promise<void> {
   const trxId = normalizeTrxId(input.trxId);
   if (!trxId) throw new ApiException('Enter the bKash Transaction ID (letters and numbers, e.g. 9JK4ABC123)', 400);
   const senderNumber = typeof input.senderNumber === 'string' ? input.senderNumber.replace(/[^\d+]/g, '').slice(0, 15) || null : null;
   const screenshotKey = typeof input.screenshotKey === 'string' && input.screenshotKey.startsWith(`lexicore-claims/${userId}/`)
     ? input.screenshotKey : null;
+  const promo = promoPrice(input.promoCode);
+  if (promo === 'invalid') throw new ApiException('That code is not valid.', 400);
+  const amount = promo?.price ?? PLAN_PRICE_BDT;
   if (PAID_UNTIL <= new Date()) throw new ApiException('Upgrades are closed right now.', 400);
 
   const mine = await db.select({ status: lexicoreClaims.status, accessUntil: lexicoreClaims.accessUntil })
@@ -63,7 +69,7 @@ export async function submitClaim(
   if (taken) throw new ApiException('This Transaction ID has already been used.', 409);
 
   await db.insert(lexicoreClaims).values({
-    userId, trxId, senderNumber, screenshotKey, amount: PLAN_PRICE_BDT, status, accessUntil: PAID_UNTIL,
+    userId, trxId, senderNumber, screenshotKey, amount, promoCode: promo?.code ?? null, status, accessUntil: PAID_UNTIL,
   });
 
   // Never fail the claim because the email failed.
@@ -74,10 +80,10 @@ export async function submitClaim(
       ? 'This user had a claim rejected before, so they do NOT have access until you approve.'
       : 'They have full access now. Reject it if the money did not arrive.';
     await sendHtmlEmail(OWNER_EMAIL, {
-      subject: `LexiCore bKash claim: ${PLAN_PRICE_BDT} BDT from ${u?.name ?? u?.email ?? 'a user'}`,
-      text: `${who} says they sent ${PLAN_PRICE_BDT} BDT by bKash.\nTrxID: ${trxId}\nSender: ${senderNumber ?? '-'}\nScreenshot: ${screenshotKey ? 'yes' : 'no'}\n${line}\nReview: ${SITE}/admin/lexicore-claims`,
-      html: `<p><b>${esc(who)}</b> says they sent <b>${PLAN_PRICE_BDT} BDT</b> by bKash to ${BKASH_NUMBER}.</p>
-<p>TrxID: <b>${esc(trxId)}</b><br>Sender number: ${esc(senderNumber ?? '-')}<br>Screenshot: ${screenshotKey ? 'yes' : 'no'}</p>
+      subject: `LexiCore bKash claim: ${amount} BDT from ${u?.name ?? u?.email ?? 'a user'}`,
+      text: `${who} says they sent ${amount} BDT by bKash.\nTrxID: ${trxId}\nSender: ${senderNumber ?? '-'}\nScreenshot: ${screenshotKey ? 'yes' : 'no'}\nCode: ${promo?.code ?? '-'}\n${line}\nReview: ${SITE}/admin/lexicore-claims`,
+      html: `<p><b>${esc(who)}</b> says they sent <b>${amount} BDT</b> by bKash to ${BKASH_NUMBER}.</p>
+<p>TrxID: <b>${esc(trxId)}</b><br>Sender number: ${esc(senderNumber ?? '-')}<br>Screenshot: ${screenshotKey ? 'yes' : 'no'}<br>Code: ${esc(promo?.code ?? '-')}</p>
 <p>${line}</p><p><a href="${SITE}/admin/lexicore-claims">Review the claim</a></p>`,
     });
   } catch (e) {
@@ -88,7 +94,7 @@ export async function submitClaim(
 export async function listClaims() {
   const rows = await db.select({
     id: lexicoreClaims.id, trxId: lexicoreClaims.trxId, senderNumber: lexicoreClaims.senderNumber,
-    screenshotKey: lexicoreClaims.screenshotKey, amount: lexicoreClaims.amount, status: lexicoreClaims.status,
+    screenshotKey: lexicoreClaims.screenshotKey, amount: lexicoreClaims.amount, promoCode: lexicoreClaims.promoCode, status: lexicoreClaims.status,
     accessUntil: lexicoreClaims.accessUntil, note: lexicoreClaims.note, createdAt: lexicoreClaims.createdAt,
     decidedAt: lexicoreClaims.decidedAt, userName: users.name, userEmail: users.email,
   }).from(lexicoreClaims).innerJoin(users, eq(users.id, lexicoreClaims.userId)).orderBy(desc(lexicoreClaims.id)).limit(500);

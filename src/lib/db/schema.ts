@@ -2339,6 +2339,7 @@ export const lexicoreClaims = sqliteTable('lexicore_claims', {
   senderNumber:  text('sender_number'),
   screenshotKey: text('screenshot_key'),
   amount:        integer('amount').notNull(),
+  promoCode:     text('promo_code'),
   // 'active' | 'held' | 'approved' | 'rejected'
   status:        text('status').notNull(),
   accessUntil:   integer('access_until', { mode: 'timestamp' }).notNull(),
