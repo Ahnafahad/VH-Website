@@ -49,7 +49,7 @@ export function ConnectionStatus() {
   const recovering = state === 'recovering';
   const Icon = online ? Wifi : recovering ? RefreshCw : CloudOff;
   const title = online ? 'You’re back online' : recovering ? 'Checking your connection…' : state === 'degraded' ? 'LexiCore is taking longer than usual' : 'Your connection dropped';
-  const description = online ? 'Your learning session can continue.' : recovering ? 'Your progress is safe while we reconnect.' : 'Stay on this screen. We’ll keep your place while you reconnect.';
+  const description = online ? 'Your learning session can continue.' : recovering ? 'Saved answers are safe while we reconnect.' : 'Stay on this screen. We’ll keep your place while you reconnect.';
 
   return (
     <section className="lx-connection-status" data-state={state} role={online ? 'status' : 'alert'} aria-live={online ? 'polite' : 'assertive'}>

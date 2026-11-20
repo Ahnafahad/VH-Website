@@ -10,6 +10,7 @@ import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { limitKindOf } from '@/lib/vocab/limit';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { lxFs } from '@/lib/vocab/ui';
+import { postWithRetry } from '@/lib/vocab/post-with-retry';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -263,6 +264,7 @@ export default function ReviewScreen({ words, dueCount }: Props) {
   const [submitting, setSubmitting] = useState(false);
   const [limitHit, setLimitHit]   = useState(false);
   const [direction, setDirection]   = useState(1);
+  const [saveFailed, setSaveFailed] = useState(false);
 
   const current  = words[idx];
   const progress = ((idx) / words.length) * 100;
@@ -286,20 +288,20 @@ export default function ReviewScreen({ words, dueCount }: Props) {
     else if (rating === 'unsure') fb.play('unsure');
     else                          fb.play('missed');
 
+    let ok = false;
     try {
-      const res = await fetch('/api/vocab/practice/rate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ wordId: current.wordId, rating }),
-      });
+      const res = await postWithRetry('/api/vocab/practice/rate', { wordId: current.wordId, rating });
       if (await limitKindOf(res)) {
         setLimitHit(true);
         setSubmitting(false);
         return;
       }
-    } catch { /* non-fatal */ }
+      ok = res.ok;
+    } catch { /* network down */ }
 
     setSubmitting(false);
+    setSaveFailed(!ok);
+    if (!ok) return; // stay on this card; tapping a rating again retries
 
     if (idx === words.length - 1) {
       setDone(true);
@@ -544,6 +546,11 @@ export default function ReviewScreen({ words, dueCount }: Props) {
           </motion.div>
         )}
       </AnimatePresence>
+      {saveFailed && (
+        <p role="alert" style={{ marginTop: '0.75rem', fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 500, color: C.red, textAlign: 'center' }}>
+          Couldn&apos;t save — check your connection and tap a rating again.
+        </p>
+      )}
     </div>
   );
 }

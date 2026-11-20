@@ -19,6 +19,7 @@ import LivingFlashcard from '@/components/vocab/LivingFlashcard';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { limitKindOf } from '@/lib/vocab/limit';
 import { lxFs } from '@/lib/vocab/ui';
+import { postWithRetry } from '@/lib/vocab/post-with-retry';
 
 type Rating = 'got_it' | 'unsure' | 'missed_it';
 
@@ -47,8 +48,6 @@ function SessionComplete({
   // Fire complete feedback once on mount
   useEffect(() => {
     fb.play('complete');
-    // eslint-disable-next-line no-console
-    console.log('[LX-DEBUG] SessionComplete mounted, onNext typeof =', typeof onNext);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -147,18 +146,7 @@ function SessionComplete({
           className="flex w-full flex-col gap-3"
         >
           <button
-            onClick={() => {
-              // eslint-disable-next-line no-console
-              console.log('[LX-DEBUG] "Take the Quiz" button clicked, onNext typeof =', typeof onNext);
-              try {
-                onNext();
-                // eslint-disable-next-line no-console
-                console.log('[LX-DEBUG] onNext() returned without throwing');
-              } catch (err) {
-                // eslint-disable-next-line no-console
-                console.error('[LX-DEBUG] onNext() threw:', err);
-              }
-            }}
+            onClick={() => onNext()}
             className="flex w-full items-center justify-center gap-2 rounded-2xl py-4 text-base font-semibold"
             style={{ background: 'var(--color-lx-accent-red)', color: '#fff', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif" }}
           >
@@ -227,6 +215,9 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
   const { push }    = useBadgeQueue();
   const fb          = useVocabFeedback();
   const reduce      = useReducedMotion() ?? false;
+  // Ratings whose save failed. Retried only when the user taps Retry (flashcard rate is not safe to replay).
+  const [unsaved, setUnsaved]   = useState<{ url: string; body: Record<string, unknown> }[]>([]);
+  const [retrying, setRetrying] = useState(false);
 
   const [index,     setIndex]     = useState(data.currentIndex);
   const [ratings,   setRatings]   = useState<Record<number, Rating>>(data.ratings as Record<number, Rating>);
@@ -317,8 +308,6 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
     // State-driven advance: flip back first, then advance after a short delay
     // stored in a cancellable ref to prevent double-fire on unmount
     if (isLast) {
-      // eslint-disable-next-line no-console
-      console.log('[LX-DEBUG] last card rated — setComplete(true), letterGroup =', data.letterGroup);
       setComplete(true);
       trackRetention(RETENTION_EVENTS.learningSessionCompleted, { sessionType: data.letterGroup ? 'letter_flashcard' : 'flashcard', themeId: data.themeId, words: data.words.length });
       submitting.current = false;
@@ -335,25 +324,60 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
 
     // Fire rating to server in background — UI never waits for this
     if (data.letterGroup) {
-      fetch('/api/vocab/practice/rate', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ wordId: word.id, rating }),
-      }).then(async (res) => { if (await limitKindOf(res)) setLimitHit(true); }).catch(() => {});
+      const body = { wordId: word.id, rating };
+      postWithRetry('/api/vocab/practice/rate', body)
+        .then(async r => {
+          if (await limitKindOf(r)) { setLimitHit(true); return; }
+          if (!r.ok) throw new Error('rate failed');
+        })
+        .catch(() => setUnsaved(u => [...u, { url: '/api/vocab/practice/rate', body }]));
     } else {
-      fetch(`/api/vocab/flashcard/${data.themeId}/rate`, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ wordId: word.id, rating, isLast }),
-      }).then(async (res) => {
-        if (await limitKindOf(res)) { setLimitHit(true); return; }
-        if (isLast && res.ok) {
+      sendFlashcardRate(`/api/vocab/flashcard/${data.themeId}/rate`, { wordId: word.id, rating, isLast });
+    }
+  }, [word, index, data.words.length, data.themeId, data.letterGroup, ratings, fb]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Single attempt, no auto-retry: a replay would double-count points.
+  function sendFlashcardRate(url: string, body: Record<string, unknown>) {
+    return fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(async (res) => {
+        if (await limitKindOf(res)) { setLimitHit(true); return true; }
+        if (!res.ok) throw new Error('rate failed');
+        if (body.isLast) {
           const d = await res.json() as { earnedBadges?: { id: string; name: string; description: string; category: 'short_term' | 'mid_term' | 'long_term' | 'ultimate' }[] };
           if (d.earnedBadges?.length) push(d.earnedBadges);
         }
-      }).catch(() => {});
+        return true;
+      })
+      .catch(() => { setUnsaved(u => [...u, { url, body }]); return false; });
+  }
+
+  const retryUnsaved = async () => {
+    const items = unsaved;
+    setUnsaved([]);
+    setRetrying(true);
+    for (const it of items) {
+      if (it.url === '/api/vocab/practice/rate') {
+        await postWithRetry(it.url, it.body)
+          .then(async r => {
+            if (await limitKindOf(r)) { setLimitHit(true); return; }
+            if (!r.ok) throw new Error('rate failed');
+          })
+          .catch(() => setUnsaved(u => [...u, it]));
+      } else {
+        await sendFlashcardRate(it.url, it.body);
+      }
     }
-  }, [word, index, data.words.length, data.themeId, data.letterGroup, ratings, push, fb]);
+    setRetrying(false);
+  };
+
+  const saveBanner = unsaved.length > 0 && (
+    <p role="alert" style={{ position: 'fixed', left: 16, right: 16, bottom: 'calc(88px + env(safe-area-inset-bottom))', zIndex: 60, margin: 0, padding: '0.6rem 0.9rem', borderRadius: 12, textAlign: 'center', background: 'var(--color-lx-elevated)', border: '1px solid var(--color-lx-border)', color: 'var(--color-lx-accent-red)', fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", fontSize: lxFs('0.8125rem'), fontWeight: 500 }}>
+      {unsaved.length === 1 ? "Couldn't save 1 rating." : `Couldn't save ${unsaved.length} ratings.`}{' '}
+      <button onClick={() => void retryUnsaved()} disabled={retrying} style={{ color: 'var(--color-lx-accent-red)', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', textDecoration: 'underline' }}>
+        {retrying ? 'Retrying…' : 'Retry'}
+      </button>
+    </p>
+  );
 
   const handleSwipeRate = useCallback((rating: 'got_it' | 'missed_it') => {
     handleRate(rating);
@@ -377,6 +401,7 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
           onNext={onTakeQuiz ?? (() => router.push(`/vocab/study/${data.themeId}/quiz`))}
         />
         {limitHit && <UpgradeModal kind="cards" onClose={() => router.push('/vocab/home')} />}
+        {saveBanner}
       </>
     );
   }
@@ -421,6 +446,7 @@ export default function FlashcardScreen({ data, onTakeQuiz }: { data: FlashcardS
 
         <div style={{ width: 40 }} /> {/* spacer */}
       </div>
+      {saveBanner}
 
       {/* ── Progress bar ────────────────────────────────── */}
       <div className="overflow-hidden rounded-full" style={{ height: 3, background: 'var(--color-lx-elevated)' }}>

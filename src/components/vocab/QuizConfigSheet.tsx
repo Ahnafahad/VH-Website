@@ -202,13 +202,9 @@ export default function QuizConfigSheet({ onStart, onCancel }: Props) {
   const dialogRef = useLxDialog<HTMLDivElement>(true, () => onCancel?.());
 
   const handleStart = () => {
-    // eslint-disable-next-line no-console
-    console.log('[LX-DEBUG] QuizConfigSheet "Start Quiz" clicked, config =', config, 'onStart typeof =', typeof onStart);
     onStart(config);
   };
 
-  // eslint-disable-next-line no-console
-  console.log('[LX-DEBUG] QuizConfigSheet mounted/rendered');
 
   return (
     <motion.div

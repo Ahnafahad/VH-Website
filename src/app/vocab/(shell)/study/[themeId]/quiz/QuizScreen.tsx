@@ -20,6 +20,7 @@ import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { shareLexiCore } from '@/lib/vocab/native-share';
 import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
 import { lxFs } from '@/lib/vocab/ui';
+import { postWithRetry } from '@/lib/vocab/post-with-retry';
 
 // ─── Inline SVG micro-icons (no generic defaults) ────────────────────────────
 function IconClose() {
@@ -136,8 +137,10 @@ const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 
 // ─── Loading screen with cycling vocabulary hints ─────────────────────────────
 
-function QuizLoading({ words }: { words: HintWord[] }) {
+function QuizLoading({ words, onCancel }: { words: HintWord[]; onCancel: () => void }) {
   const hasWords     = words.length > 0;
+  const [slow, setSlow] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setSlow(true), 15000); return () => clearTimeout(t); }, []);
   const reduceMotion = useReducedMotion();
   const [hintIdx, setHintIdx]   = useState(0);
   const [showing, setShowing]   = useState(true);
@@ -254,13 +257,21 @@ function QuizLoading({ words }: { words: HintWord[] }) {
       <p style={{ fontFamily: SANS, fontSize: lxFs('0.75rem'), color: C.textMuted, letterSpacing: '0.06em' }}>
         Powered by AI
       </p>
+      {slow && (
+        <p role="status" style={{ fontFamily: SANS, fontSize: lxFs('0.8125rem'), color: C.textSec, textAlign: 'center' }}>
+          Taking longer than usual.{' '}
+          <button onClick={onCancel} style={{ color: C.red, background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', textDecoration: 'underline' }}>
+            Cancel
+          </button>
+        </p>
+      )}
     </div>
   );
 }
 
 // ─── Error state ──────────────────────────────────────────────────────────────
 
-function QuizError({ onBack }: { onBack: () => void }) {
+function QuizError({ onBack, onRetry }: { onBack: () => void; onRetry: () => void }) {
   return (
     <div style={{
       minHeight: 'calc(100dvh - 72px)',
@@ -284,9 +295,12 @@ function QuizError({ onBack }: { onBack: () => void }) {
           Quiz unavailable
         </p>
         <p style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.textSec, lineHeight: 1.5 }}>
-          Something went wrong generating the quiz.<br />Please try again in a few minutes.
+          Something went wrong generating the quiz.
         </p>
       </motion.div>
+      <button onClick={onRetry} className="lx-action lx-action-primary">
+        Try again
+      </button>
       <button
         onClick={onBack}
         style={{ fontFamily: SANS, fontSize: lxFs('0.875rem'), color: C.red, background: 'none', border: 'none', cursor: 'pointer', padding: '0.5rem' }}
@@ -831,8 +845,6 @@ interface Props {
 }
 
 export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionType, quizConfig, hintWords: hintWordsProp }: Props) {
-  // eslint-disable-next-line no-console
-  console.log('[LX-DEBUG] QuizScreen mounted/rendered — props:', { themeId, themeIds, letterWordIds, sessionType, quizConfig, hintWordsPropLen: hintWordsProp?.length });
   const { navigate } = useSafeNavigate();
   // Known exit target per session type — router.back() can't be watchdogged
   // (unknown destination), so exit/error routes go to the launching hub.
@@ -861,6 +873,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   const [result,      setResult]      = useState<AnswerResult | null>(null);
   const [submitting,  setSubmitting]  = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [genAttempt,  setGenAttempt]  = useState(0);
+  // MCQ answers whose background save failed after retries — re-posted from the banner
+  const [unsaved,     setUnsaved]     = useState<Record<string, unknown>[]>([]);
+  const [savingRetry, setSavingRetry] = useState(false);
   const [summary,     setSummary]     = useState<SummaryData | null>(null);
   const [totalEarned, setTotalEarned] = useState(0);
   const [direction,   setDirection]   = useState(1);
@@ -884,21 +900,13 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
   // Generate on mount — also fetch word hints in parallel if not pre-supplied
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('[LX-DEBUG] QuizScreen generate-effect firing. recoveryKey =', recoveryKey);
     // ── Parallel word-hint fetch (fast, pure DB) ───────────────────────────
     try {
       const raw = localStorage.getItem(recoveryKey);
-      // eslint-disable-next-line no-console
-      console.log('[LX-DEBUG] recovery localStorage raw =', raw);
       if (raw) {
         const cached = JSON.parse(raw) as { version?: number; savedAt?: number; sessionId?: number; questions?: QuizQuestion[]; currentIdx?: number; totalEarned?: number };
         const fresh = typeof cached.savedAt === 'number' && Date.now() - cached.savedAt < 6 * 60 * 60 * 1000;
-        // eslint-disable-next-line no-console
-        console.log('[LX-DEBUG] recovery cache parsed:', { version: cached.version, fresh, sessionId: cached.sessionId, questionCount: cached.questions?.length });
         if (cached.version === 1 && fresh && typeof cached.sessionId === 'number' && cached.questions?.length) {
-          // eslint-disable-next-line no-console
-          console.log('[LX-DEBUG] USING RECOVERY CACHE — skipping fresh generation, jumping straight to phase "quiz"');
           setSessionId(cached.sessionId);
           setQuestions(cached.questions);
           setCurrentIdx(Math.min(cached.currentIdx ?? 0, cached.questions.length - 1));
@@ -909,9 +917,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
         }
         localStorage.removeItem(recoveryKey);
       }
-    } catch (cacheErr) {
-      // eslint-disable-next-line no-console
-      console.error('[LX-DEBUG] recovery cache parse threw:', cacheErr);
+    } catch {
       localStorage.removeItem(recoveryKey);
     }
 
@@ -950,57 +956,39 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
                 ? { type: 'exam', questionCount: quizConfig?.questionCount ?? 15 }
                 : { type: 'practice', themeIds, questionCount: quizConfig?.questionCount ?? 20 };
 
-        // eslint-disable-next-line no-console
-        console.log('[LX-DEBUG] quiz generation body =', body);
 
         const prefetched = consumePrefetch(body as Parameters<typeof consumePrefetch>[0]);
-        // eslint-disable-next-line no-console
-        console.log('[LX-DEBUG] prefetched hit? ', Boolean(prefetched));
         let data: { sessionId: number; questions: QuizQuestion[] };
         if (prefetched) {
           data = await prefetched as { sessionId: number; questions: QuizQuestion[] };
-          // eslint-disable-next-line no-console
-          console.log('[LX-DEBUG] prefetched data resolved:', data);
         } else {
-          // eslint-disable-next-line no-console
-          console.log('[LX-DEBUG] calling POST /api/vocab/quiz/generate ...');
           const res = await fetch('/api/vocab/quiz/generate', {
             method:  'POST',
             headers: { 'Content-Type': 'application/json' },
             body:    JSON.stringify(body),
             signal:  AbortSignal.timeout(45000),
           });
-          // eslint-disable-next-line no-console
-          console.log('[LX-DEBUG] /api/vocab/quiz/generate response status =', res.status, res.ok);
           const limit = await limitKindOf(res, 'quizzes');
           if (limit) throw new LimitError(limit);
           if (!res.ok) {
             const errText = await res.text().catch(() => '<unreadable body>');
-            // eslint-disable-next-line no-console
-            console.error('[LX-DEBUG] /api/vocab/quiz/generate FAILED, status =', res.status, 'body =', errText);
             throw new Error('generation failed: ' + res.status + ' ' + errText);
           }
           data = await res.json() as { sessionId: number; questions: QuizQuestion[] };
-          // eslint-disable-next-line no-console
-          console.log('[LX-DEBUG] /api/vocab/quiz/generate SUCCESS, sessionId =', data.sessionId, 'questions =', data.questions?.length);
         }
 
         setSessionId(data.sessionId);
         setQuestions(data.questions);
         setPhase('quiz');
-        // eslint-disable-next-line no-console
-        console.log('[LX-DEBUG] setPhase("quiz") called — quiz should now render');
         trackRetention(RETENTION_EVENTS.learningSessionStarted, { sessionType, sessionId: data.sessionId, questions: data.questions.length });
       } catch (genErr) {
         if (genErr instanceof LimitError) { setLimitKind(genErr.kind); return; }
         // Covers network errors, non-OK responses, and AbortError (45s timeout) —
         // all fall through to the same error phase with retry.
-        // eslint-disable-next-line no-console
-        console.error('[LX-DEBUG] quiz generation threw — setPhase("error"). Error:', genErr, 'name:', (genErr as Error)?.name, 'message:', (genErr as Error)?.message);
         setPhase('error');
       }
     })();
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [genAttempt]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (phase !== 'quiz' || !sessionId || questions.length === 0) return;
@@ -1064,10 +1052,9 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       setAnswerPhase('selected');
       setSubmitting(true);
       try {
-        const res  = await fetch('/api/vocab/quiz/answer', {
-          method: 'POST', headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sessionId, questionId: current.id, ...answerBody }),
-        });
+        setSubmitError(null);
+        const res  = await postWithRetry('/api/vocab/quiz/answer', { sessionId, questionId: current.id, ...answerBody });
+        if (!res.ok) throw new Error('answer failed');
         const data = await res.json() as AnswerResult;
         setResult(data);
         setAnswerPhase('revealed');
@@ -1094,7 +1081,10 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           }
           setSubmitting(false);
         }, 1400);
-      } catch { setSubmitting(false); }
+      } catch {
+        setSubmitError("Couldn't save — check your connection and try again.");
+        setSubmitting(false);
+      }
     };
     void runConfirm();
   }, [timeLeft]); // eslint-disable-line react-hooks/exhaustive-deps
@@ -1107,7 +1097,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       if (isLastQuestion) {
         // Wait for the last answer to be recorded before fetching summary
         try {
-          if (apiPromise) await apiPromise;
+          if (apiPromise && (await apiPromise) === null) { setSubmitting(false); return; } // banner offers Retry
           const sumRes  = await fetch(`/api/vocab/quiz/summary/${sessionId}`);
           const sumData = await sumRes.json() as SummaryData;
           if (sumData.earnedBadges?.length) push(sumData.earnedBadges);
@@ -1139,6 +1129,8 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
 
     setSubmitting(true);
 
+    setSubmitError(null);
+
     // Show correct/wrong instantly — no network wait
     const immediateResult: AnswerResult = {
       isCorrect:       selectedLetter === current.correctLetter,
@@ -1157,18 +1149,15 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     const answerBody = current.optionKind === 'string'
       ? { selectedLetter }
       : { selectedWordId: selectedId };
-    const apiPromise = fetch('/api/vocab/quiz/answer', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ sessionId, questionId: current.id, ...answerBody }),
-    })
-      .then(r => r.json() as Promise<AnswerResult>)
+    const payload = { sessionId, questionId: current.id, ...answerBody };
+    const apiPromise = postWithRetry('/api/vocab/quiz/answer', payload)
+      .then(r => { if (!r.ok) throw new Error('answer failed'); return r.json() as Promise<AnswerResult>; })
       .then(data => {
         if (data.pointsEarned) setTotalEarned(p => p + data.pointsEarned);
         setResult(prev => prev ? { ...prev, pointsEarned: data.pointsEarned, masteryDelta: data.masteryDelta, newMasteryLevel: data.newMasteryLevel } : prev);
         return data;
       })
-      .catch(() => null);
+      .catch(() => { setUnsaved(u => [...u, payload]); return null; });
 
     advanceAfterReveal(apiPromise);
   }, [sessionId, current, selectedId, selectedLetter, submitting, answerPhase, advanceAfterReveal, fb]);
@@ -1184,11 +1173,7 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
     setSubmitError(null);
 
     try {
-      const res = await fetch('/api/vocab/quiz/answer', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ sessionId, questionId: current.id, typedAnswer: typedValue }),
-      });
+      const res = await postWithRetry('/api/vocab/quiz/answer', { sessionId, questionId: current.id, typedAnswer: typedValue });
       if (!res.ok) throw new Error('answer failed');
       const data = await res.json() as AnswerResult;
       setResult(data);
@@ -1204,6 +1189,23 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       setSubmitting(false);
     }
   }, [sessionId, current, submitting, answerPhase, typedValue, advanceAfterReveal, fb]);
+
+  const retryUnsaved = useCallback(async () => {
+    setSavingRetry(true);
+    const left: Record<string, unknown>[] = [];
+    for (const body of unsaved) {
+      try {
+        const r = await postWithRetry('/api/vocab/quiz/answer', body);
+        if (!r.ok) throw new Error('answer failed');
+        const d = await r.json() as AnswerResult;
+        if (d.pointsEarned) setTotalEarned(p => p + d.pointsEarned);
+      } catch { left.push(body); }
+    }
+    setUnsaved(left);
+    setSavingRetry(false);
+    // Stalled on the last question waiting for this save — finish now
+    if (!left.length && answerPhase === 'revealed' && currentIdx === questions.length - 1) advanceAfterReveal(null);
+  }, [unsaved, answerPhase, currentIdx, questions.length, advanceAfterReveal]);
 
   useEffect(() => {
     if (phase !== 'quiz' || !current || current.inputMode === 'typed') return;
@@ -1229,8 +1231,8 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
   // ── Render ─────────────────────────────────────────────────────────────────
 
   if (limitKind) return <UpgradeModal kind={limitKind} onClose={() => navigate('/vocab/home')} />;
-  if (phase === 'generating') return <QuizLoading words={hintWords} />;
-  if (phase === 'error')      return <div className="lx-page-enter"><QuizError onBack={() => navigate(exitHref)} /></div>;
+  if (phase === 'generating') return <QuizLoading words={hintWords} onCancel={() => navigate(exitHref)} />;
+  if (phase === 'error')      return <div className="lx-page-enter"><QuizError onBack={() => navigate(exitHref)} onRetry={() => { setPhase('generating'); setGenAttempt(a => a + 1); }} /></div>;
   if (phase === 'summary' && summary) {
     return <div className="lx-page-enter"><QuizSummary summary={summary} onContinue={() => navigate('/vocab/study')} /></div>;
   }
@@ -1463,6 +1465,9 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
             </div>
           )}
 
+          <p role="status" className="sr-only">
+            {answerPhase === 'revealed' && result ? (result.isCorrect ? 'Correct.' : 'Incorrect.') : ''}
+          </p>
           {/* Explanation reveal */}
           <AnimatePresence>
             {answerPhase === 'revealed' && result && (
@@ -1512,7 +1517,15 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
           {!submitting && <IconConfirm />}
         </motion.button>
       )}
-      {isTypedQ && answerPhase !== 'revealed' && submitError && (
+      {unsaved.length > 0 && (
+        <p role="alert" style={{ marginTop: '0.5rem', fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 500, color: C.red, textAlign: 'center' }}>
+          {unsaved.length === 1 ? "1 answer didn't save." : `${unsaved.length} answers didn't save.`}{' '}
+          <button onClick={() => void retryUnsaved()} disabled={savingRetry} style={{ color: C.red, background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', textDecoration: 'underline' }}>
+            {savingRetry ? 'Retrying…' : 'Retry'}
+          </button>
+        </p>
+      )}
+      {answerPhase !== 'revealed' && submitError && (
         <motion.p
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}

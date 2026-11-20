@@ -202,8 +202,6 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
   const [phase, setPhase]   = useState<ScreenPhase>('list');
   const [config, setConfig] = useState<QuizConfig | null>(null);
 
-  // eslint-disable-next-line no-console
-  console.log('[LX-DEBUG] LetterStudyScreen render, phase =', phase, 'config =', config, 'letter =', letter);
 
   // Split into what the user can actually interact with vs. blurred preview
   const { unlockedWords, lockedWords } = useMemo(() => ({
@@ -250,8 +248,6 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
       <FlashcardScreen
         data={sessionData}
         onTakeQuiz={() => {
-          // eslint-disable-next-line no-console
-          console.log('[LX-DEBUG] onTakeQuiz fired — setPhase("config")');
           setPhase('config');
         }}
       />
@@ -265,8 +261,6 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
       pos:        w.partOfSpeech || null,
       definition: w.definition,
     }));
-    // eslint-disable-next-line no-console
-    console.log('[LX-DEBUG] Rendering QuizScreen, unlockedWordIds =', unlockedWordIds, 'config =', config);
     return (
       <QuizScreen
         letterWordIds={unlockedWordIds}
@@ -277,10 +271,6 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
     );
   }
 
-  if (phase === 'quiz' && !config) {
-    // eslint-disable-next-line no-console
-    console.log('[LX-DEBUG] phase is "quiz" but config is null — falling through to list/config render. This would explain a silent no-op.');
-  }
 
   // ── List phase ───────────────────────────────────────────────────────────────
   return (
@@ -406,21 +396,15 @@ export default function LetterStudyScreen({ letter, words, totalPoints, cardPref
         {phase === 'config' && (
           <QuizConfigSheet
             onStart={(cfg) => {
-              // eslint-disable-next-line no-console
-              console.log('[LX-DEBUG] QuizConfigSheet onStart fired, cfg =', cfg, '— setConfig + setPhase("quiz")');
               setConfig(cfg);
               setPhase('quiz');
             }}
             onCancel={() => {
-              // eslint-disable-next-line no-console
-              console.log('[LX-DEBUG] QuizConfigSheet onCancel fired — setPhase("list")');
               setPhase('list');
             }}
           />
         )}
       </AnimatePresence>
-      {/* eslint-disable-next-line no-console */}
-      {(() => { console.log('[LX-DEBUG] list-phase render reached, phase =', phase, 'unlockedWords.length =', unlockedWords.length); return null; })()}
     </div>
   );
 }
