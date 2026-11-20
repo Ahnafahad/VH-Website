@@ -18,7 +18,7 @@ import AnimatedNumber from '@/components/vocab/AnimatedNumber';
 import { trackFeature } from '@/lib/analytics/tracker';
 import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
 import { shareLexiCore } from '@/lib/vocab/native-share';
-import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import { lxFs } from '@/lib/vocab/ui';
 import { postWithRetry } from '@/lib/vocab/post-with-retry';
 
@@ -416,10 +416,10 @@ function OptionCard({ opt, phase, selectedLetter, result, index, onSelect }: Opt
 
       {/* Reveal icon — purpose-built quiz stamps */}
       {isRevealed && isCorrect && (
-        <LexiIcon path="quiz/correct.svg" size={20} color={C.success} label="Correct" style={{ flexShrink: 0 }} />
+        <Mark ok size={20} color={C.success} label="Correct" />
       )}
       {isRevealed && isWrong && (
-        <LexiIcon path="quiz/incorrect.svg" size={20} color={C.red} label="Incorrect" style={{ flexShrink: 0 }} />
+        <Mark size={20} color={C.red} label="Incorrect" />
       )}
     </motion.button>
   );
@@ -466,26 +466,22 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
         {/* Ring */}
         <div style={{ position: 'relative', width: 140, height: 140 }}>
           {/* summary-ring.svg: decorative orbital backdrop, always present */}
-          <LexiIcon
-            path="quiz/summary-ring.svg"
-            size={140}
-            color={ringColor}
+          <LexiArtwork
+            path="quiz/summary-ring.svg" width={140} height={140}
             style={{ position: 'absolute', inset: 0, opacity: 0.12, flexShrink: 0 }}
           />
           {/* perfect-score for 100%, otherwise pass/try-again watermark */}
           {scorePct === 100 ? (
-            <LexiIcon
-              path="quiz/perfect-score.svg"
-              size={52}
-              color={C.gold}
-              label="Perfect score"
+            <LexiArtwork
+              path="quiz/perfect-score.svg" width={52} height={52}
+              alt="Perfect score"
               style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', zIndex: 3, marginTop: -22 }}
             />
           ) : (
-            <LexiIcon
+            <LexiArtwork
               path={passed ? 'quiz/pass.svg' : 'quiz/try-again.svg'}
-              size={140}
-              color={ringColor}
+              width={140}
+              height={140}
               style={{ position: 'absolute', inset: 0, opacity: 0.28, flexShrink: 0 }}
             />
           )}
@@ -547,7 +543,7 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
               borderRadius: 20,
             }}
           >
-            <LexiIcon path="quiz/points-earned.svg" size={14} color={C.gold} />
+            <LexiArtwork path="quiz/points-earned.svg" width={14} height={14} />
             <span style={{ fontFamily: SANS, fontSize: lxFs('0.8125rem'), fontWeight: 600, color: C.gold }}>
               +{bonusPoints} bonus points
             </span>
@@ -653,8 +649,8 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                       marginTop: 2,
                     }}>
                       {correct
-                        ? <LexiIcon path="quiz/correct.svg" size={13} color={C.success} />
-                        : <LexiIcon path="quiz/incorrect.svg" size={13} color={C.red} />
+                        ? <Mark ok size={13} color={C.success} />
+                        : <Mark size={13} color={C.red} />
                       }
                     </div>
                     <p style={{ fontFamily: SERIF, fontSize: lxFs('0.9375rem'), lineHeight: 1.5, color: C.textPrim, flex: 1 }}>
@@ -739,8 +735,8 @@ function QuizSummary({ summary, onContinue }: { summary: SummaryData; onContinue
                                     {opt.letter}
                                   </span>
                                   {isCorrectOpt
-                                    ? <LexiIcon path="quiz/correct.svg" size={12} color={C.success} style={{ flexShrink: 0 }} />
-                                    : <LexiIcon path="quiz/incorrect.svg" size={12} color={isWrongPick ? C.red : C.textMuted} style={{ flexShrink: 0, opacity: isWrongPick ? 1 : 0.4 }} />
+                                    ? <Mark ok size={12} color={C.success} />
+                                    : <Mark size={12} color={isWrongPick ? C.red : C.textMuted} style={{ opacity: isWrongPick ? 1 : 0.4 }} />
                                   }
                                   <span style={{
                                     fontFamily: SERIF, fontSize: lxFs('0.9rem'),
@@ -793,10 +789,10 @@ function TimerBar({ secondsLeft, totalSeconds }: { secondsLeft: number; totalSec
     <div style={{ marginBottom: '0.625rem' }}>
       {/* Timer icon chip + seconds display */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginBottom: '0.3rem' }}>
-        <LexiIcon
+        <LexiArtwork
           path={isUrgent ? 'quiz/timer-urgent.svg' : 'quiz/timer.svg'}
-          size={13}
-          color={color}
+          width={13}
+          height={13}
         />
         <span style={{
           fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
@@ -1572,5 +1568,16 @@ export default function QuizScreen({ themeId, themeIds, letterWordIds, sessionTy
       </AnimatePresence>
 
     </div>
+  );
+}
+
+// The quiz/correct + quiz/incorrect assets are multicolour (incorrect even has a green X),
+// so they can't be tinted as masks; a plain glyph in the semantic colour reads correctly.
+function Mark({ ok, size, color, label, style }: { ok?: boolean; size: number; color: string; label?: string; style?: React.CSSProperties }) {
+  return (
+    <span role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : true}
+      style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: size, height: size, flexShrink: 0, color, fontSize: size * 0.85, fontWeight: 700, lineHeight: 1, ...style }}>
+      {ok ? '\u2713' : '\u2715'}
+    </span>
   );
 }

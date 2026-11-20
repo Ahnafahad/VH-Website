@@ -258,12 +258,7 @@ function UnitCheckbox({ state }: { state: 'none' | 'partial' | 'all' }) {
       transition={{ duration: 0.18 }}
       style={{ display: 'inline-flex' }}
     >
-      <LexiIcon
-        path={icon}
-        size={22}
-        color="var(--color-lx-accent-gold)"
-        label={label}
-      />
+      <LexiArtwork path={icon} width={22} height={22} alt={label} />
     </motion.span>
   );
 }
@@ -556,12 +551,11 @@ function ExamModeCard({ unlocked, onStart }: { unlocked: boolean; onStart: () =>
         background: unlocked ? 'rgba(244,168,40,0.14)' : 'var(--color-lx-elevated)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
       }}>
-        <LexiIcon
-          path={unlocked ? 'practice/exam-mode-unlocked.svg' : 'practice/exam-mode-locked.svg'}
-          size={22}
-          color={unlocked ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-text-muted)'}
-          label={unlocked ? 'Exam mode unlocked' : 'Exam mode locked'}
-        />
+        {unlocked ? (
+          <LexiIcon path="practice/exam-mode-unlocked.svg" size={22} color="var(--color-lx-accent-gold)" label="Exam mode unlocked" />
+        ) : (
+          <LexiArtwork path="practice/exam-mode-locked.svg" width={22} height={22} alt="Exam mode locked" style={{ filter: 'grayscale(1)', opacity: 0.6 }} />
+        )}
       </div>
       <div style={{ flex: 1, minWidth: 0 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
@@ -880,7 +874,7 @@ export default function PracticeScreen({ data }: { data: PracticePageData }) {
         >
           {/* start-accent.svg: decorative energy mark on the CTA */}
           <span aria-hidden style={{ position: 'absolute', right: 56, top: 0, bottom: 0, width: 32, pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>
-            <LexiIcon path="practice/start-accent.svg" size={28} color="rgba(255,255,255,0.22)" />
+            <LexiArtwork path="practice/start-accent.svg" width={28} height={28} />
           </span>
           <div className="flex flex-col items-start" style={{ position: 'relative' }}>
             <span className="text-base font-bold text-white leading-tight">Start Practice</span>

@@ -236,10 +236,8 @@ function HexAvatar({ initials: init }: { initials: string }) {
         </span>
       </div>
       {/* Decorative initials-frame overlay — subtle ornamental ring */}
-      <LexiIcon
-        path="profile/initials-frame.svg"
-        size={78}
-        color="rgba(244,168,40,0.25)"
+      <LexiArtwork
+        path="profile/initials-frame.svg" width={78} height={78}
         style={{ position: 'absolute', top: -3, left: -3, pointerEvents: 'none' }}
       />
     </div>
@@ -1032,10 +1030,8 @@ export default function ProfileScreen({
 
                           {/* State overlay: locked or newly-earned */}
                           {!badge.earned && (
-                            <LexiIcon
-                              path="badges/state-locked.svg"
-                              size={20}
-                              color="rgba(255,255,255,0.35)"
+                            <LexiArtwork
+                              path="badges/state-locked.svg" width={20} height={20}
                               style={{
                                 position: 'absolute',
                                 bottom: -2, right: -2,
@@ -1761,7 +1757,7 @@ export default function ProfileScreen({
                         color:         '#D62B38',
                       }}
                     >
-                      <LexiIcon path="profile/sign-out.svg" size={14} color="#D62B38" />
+                      <LexiArtwork path="profile/sign-out.svg" width={14} height={14} />
                       Sign Out of LexiCore
                     </motion.button>
                   </div>
@@ -1837,10 +1833,8 @@ export default function ProfileScreen({
                       )}
                       {/* State overlays */}
                       {!b.earned && (
-                        <LexiIcon
-                          path="badges/state-locked.svg"
-                          size={24}
-                          color="rgba(255,255,255,0.4)"
+                        <LexiArtwork
+                          path="badges/state-locked.svg" width={24} height={24}
                           style={{ position: 'absolute', bottom: 0, right: 0 }}
                         />
                       )}
@@ -2178,11 +2172,10 @@ function SectionLabel({ children, center, icon }: { children: React.ReactNode; c
       justifyContent: center ? 'center' : 'flex-start',
     }}>
       {icon && (
-        <LexiIcon
-          path={icon}
-          size={13}
-          color="var(--color-lx-text-muted)"
-        />
+        // notifications/accessibility are single-colour line icons; the rest are multicolour art
+        icon === 'profile/notifications.svg' || icon === 'profile/accessibility.svg'
+          ? <LexiIcon path={icon} size={13} color="var(--color-lx-text-muted)" />
+          : <LexiArtwork path={icon} width={13} height={13} />
       )}
       <p style={{
         fontFamily:    "var(--font-lexi-ui), system-ui, sans-serif",

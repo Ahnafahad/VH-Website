@@ -259,11 +259,9 @@ function Row({ rank, name, points, isMe, delay, rowRef, onSelect, prevRank }: Ro
 
       {/* Current-user marker */}
       {isMe && (
-        <LexiIcon
-          path="leaderboard/current-user.svg"
-          size={16}
-          color="var(--color-lx-accent-red)"
-          label="You"
+        <LexiArtwork
+          path="leaderboard/current-user.svg" width={16} height={16}
+          alt="You"
         />
       )}
 
@@ -620,10 +618,11 @@ export default function LeaderboardScreen({ data }: { data: LeaderboardData }) {
                 />
               )}
               <span className="relative z-10 flex items-center justify-center gap-1.5">
-                <LexiIcon
+                <LexiArtwork
                   path={t.icon}
-                  size={13}
-                  color={tab === t.id ? 'var(--color-lx-text-primary)' : 'var(--color-lx-text-muted)'}
+                  width={13}
+                  height={13}
+                  style={tab === t.id ? undefined : { filter: 'grayscale(1)', opacity: 0.6 }}
                 />
                 {t.label}
               </span>

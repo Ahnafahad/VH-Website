@@ -8,7 +8,7 @@ import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import Celebration from '@/components/vocab/Celebration';
 import UpgradeModal from '@/components/vocab/UpgradeModal';
 import { limitKindOf } from '@/lib/vocab/limit';
-import { LexiArtwork, LexiIcon } from '@/components/vocab/LexiAsset';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import { lxFs } from '@/lib/vocab/ui';
 import { postWithRetry } from '@/lib/vocab/post-with-retry';
 
@@ -55,12 +55,12 @@ const SANS  = "var(--font-lexi-ui), system-ui, sans-serif";
 function DueStateIcon({ masteryScore }: { masteryScore: number }) {
   // masteryScore: higher = more overdue. 0 = not yet due/due later.
   if (masteryScore >= 0.7) {
-    return <LexiIcon path="review/overdue.svg" size={14} color="var(--color-lx-accent-red)" label="Overdue" />;
+    return <LexiArtwork path="review/overdue.svg" width={14} height={14} alt="Overdue" />;
   }
   if (masteryScore >= 0.4) {
-    return <LexiIcon path="review/due-now.svg" size={14} color="var(--color-lx-accent-gold)" label="Due now" />;
+    return <LexiArtwork path="review/due-now.svg" width={14} height={14} alt="Due now" />;
   }
-  return <LexiIcon path="review/due-later.svg" size={14} color="var(--color-lx-text-muted)" label="Due later" />;
+  return <LexiArtwork path="review/due-later.svg" width={14} height={14} alt="Due later" />;
 }
 
 // ─── Mastery level badge ──────────────────────────────────────────────────────
@@ -218,10 +218,8 @@ function NoReviews({ onBack }: { onBack: () => void }) {
     >
       {/* srs-orbit: interval/empty-queue visual framing the main artwork */}
       <div style={{ position: 'relative', width: 128, height: 128 }}>
-        <LexiIcon
-          path="review/srs-orbit.svg"
-          size={128}
-          color="var(--color-lx-accent-gold)"
+        <LexiArtwork
+          path="review/srs-orbit.svg" width={128} height={128}
           style={{ position: 'absolute', inset: 0, opacity: 0.15, flexShrink: 0 }}
         />
         <LexiArtwork path="review/all-caught-up.webp" width={128} height={128} style={{ position: 'relative', zIndex: 1 }} />

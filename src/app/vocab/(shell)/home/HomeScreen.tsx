@@ -132,11 +132,11 @@ function MasteryHistogram({ breakdown }: { breakdown: MasteryBreakdown }) {
             />
 
             {/* Mastery pip icon */}
-            <LexiIcon
+            <LexiArtwork
               path={MASTERY_PIPS[lvl]}
-              size={10}
-              color={isOn ? color : 'var(--color-lx-text-muted)'}
-              style={{ opacity: active && !isOn ? 0.3 : 1, transition: 'opacity 0.18s ease, background-color 0.18s ease' }}
+              width={10}
+              height={10}
+              style={{ opacity: active && !isOn ? 0.3 : 1, filter: isOn ? undefined : 'grayscale(1)', transition: 'opacity 0.18s ease' }}
             />
           </div>
         );
@@ -192,10 +192,10 @@ function StatCol({ label, value, unit, color, pulse, delay = 0, iconPath, onClic
 
       <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
         {iconPath && (
-          <LexiIcon
+          <LexiArtwork
             path={iconPath}
-            size={18}
-            color={color ?? 'var(--color-lx-accent-gold)'}
+            width={18}
+            height={18}
             style={{ flexShrink: 0, marginBottom: 2 }}
           />
         )}
@@ -1226,10 +1226,10 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
                   </span>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 5, marginTop: 6 }}>
-                  <LexiIcon
+                  <LexiArtwork
                     path={data.goalProgress >= 100 ? 'home/goal-complete.svg' : 'home/daily-goal-ring.svg'}
-                    size={12}
-                    color={data.goalProgress >= 100 ? 'var(--color-lx-success)' : 'var(--color-lx-text-muted)'}
+                    width={12}
+                    height={12}
                   />
                   <p style={{
                     fontFamily: "var(--font-lexi-ui), system-ui, sans-serif",
@@ -1396,8 +1396,8 @@ export default function HomeScreen({ data, justActivated = false }: { data: Home
       <section className="lx-weekly-challenge" aria-labelledby="weekly-challenge-title">
         <div className="lx-weekly-challenge-icon" aria-hidden>
           {data.weeklyRecallCount >= data.weeklyRecallTarget
-            ? <LexiIcon path="home/weekly-points-seal.svg" size={20} color="var(--color-lx-accent-gold)" />
-            : <LexiIcon path="home/weekly-challenge.svg"   size={20} color="var(--color-lx-accent-gold)" />
+            ? <LexiArtwork path="home/weekly-points-seal.svg" width={20} height={20} />
+            : <LexiArtwork path="home/weekly-challenge.svg" width={20} height={20} />
           }
         </div>
         <div className="lx-weekly-challenge-copy">

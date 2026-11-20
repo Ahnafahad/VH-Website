@@ -5,7 +5,7 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { ChevronDown, BookOpen, Zap } from 'lucide-react';
 import type { ReviewData, ReviewWord } from '@/lib/vocab/review-data';
-import { LexiIcon } from '@/components/vocab/LexiAsset';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 import { lxFs } from '@/lib/vocab/ui';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
@@ -127,8 +127,8 @@ function ReviewWordRow({
         }}>
           {variant === 'due' && (
             w.daysOverdue > 2
-              ? <LexiIcon path="review/overdue.svg" size={10} color={metaColor} />
-              : <LexiIcon path="review/due-now.svg" size={10} color={metaColor} />
+              ? <LexiArtwork path="review/overdue.svg" width={10} height={10} />
+              : <LexiArtwork path="review/due-now.svg" width={10} height={10} />
           )}
           {metaLabel}
         </span>
@@ -337,7 +337,7 @@ export default function ReviewTab({ reviewData }: Props) {
           marginBottom: '0.5rem',
           position: 'relative',
         }}>
-          <LexiIcon path="review/srs-orbit.svg" size={64} color={C.gold} style={{ opacity: 0.25 }} />
+          <LexiArtwork path="review/srs-orbit.svg" width={64} height={64} style={{ opacity: 0.25 }} />
         </div>
         <h3 style={{
           fontFamily: SERIF, fontSize: lxFs('1.5rem'), fontWeight: 700, fontStyle: 'italic',

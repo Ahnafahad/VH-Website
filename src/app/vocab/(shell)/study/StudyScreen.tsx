@@ -485,8 +485,8 @@ function UnitAccordion({
 
 const STATUS_CONFIG: Record<ThemeStatus, { label: string; color: string; bg: string; icon: React.ReactNode }> = {
   not_started:     { label: 'Not Started',     color: 'var(--color-lx-text-muted)',  bg: 'rgba(255,255,255,0.04)',       icon: <Circle size={11} /> },
-  flashcards_done: { label: 'Cards Done',      color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <LexiIcon path="study/review-due.svg" size={11} color="var(--color-lx-warning)" /> },
-  quiz_pending:    { label: 'Quiz Pending',    color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <LexiIcon path="study/review-due.svg" size={11} color="var(--color-lx-warning)" /> },
+  flashcards_done: { label: 'Cards Done',      color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <LexiArtwork path="study/review-due.svg" width={11} height={11} /> },
+  quiz_pending:    { label: 'Quiz Pending',    color: 'var(--color-lx-warning)',     bg: 'rgba(243,156,18,0.12)',        icon: <LexiArtwork path="study/review-due.svg" width={11} height={11} /> },
   complete:        { label: 'Complete',        color: 'var(--color-lx-success)',     bg: 'rgba(46,204,113,0.12)',        icon: <LexiIcon path="study/theme-completed.svg" size={11} color="var(--color-lx-success)" /> },
 };
 

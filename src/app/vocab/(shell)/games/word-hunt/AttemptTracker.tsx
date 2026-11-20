@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import type { PublicGuess } from '@/lib/vocab/game/types';
-import { LexiIcon } from '@/components/vocab/LexiAsset';
+import { LexiArtwork } from '@/components/vocab/LexiAsset';
 
 const TOTAL_ATTEMPTS = 6;
 
@@ -15,12 +15,6 @@ const TOTAL_ATTEMPTS = 6;
 function pipAsset(relation: PublicGuess['relation']): string {
   if (relation === 'correct' || relation === 'very_close') return 'games/word-hunt/attempt-correct.svg';
   return 'games/word-hunt/attempt-used.svg';
-}
-
-function pipColor(relation: PublicGuess['relation']): string {
-  if (relation === 'correct' || relation === 'very_close') return 'var(--color-lx-success)';
-  if (relation === 'related' || relation === 'same_topic') return 'var(--color-lx-warning)';
-  return 'var(--color-lx-text-muted)';
 }
 
 export default function AttemptTracker({
@@ -58,11 +52,7 @@ export default function AttemptTracker({
               transition={{ type: 'spring' as const, stiffness: 440, damping: 26, delay: i * 0.04 }}
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              <LexiIcon
-                path={pipAsset(guess.relation)}
-                size={22}
-                color={pipColor(guess.relation)}
-              />
+              <LexiArtwork path={pipAsset(guess.relation)} width={22} height={22} />
             </motion.span>
           );
         }
@@ -76,10 +66,8 @@ export default function AttemptTracker({
               transition={{ type: 'spring' as const, stiffness: 440, damping: 26 }}
               style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
             >
-              <LexiIcon
-                path="games/word-hunt/attempt-failed.svg"
-                size={22}
-                color="var(--color-lx-danger)"
+              <LexiArtwork
+                path="games/word-hunt/attempt-failed.svg" width={22} height={22}
               />
             </motion.span>
           );
@@ -101,10 +89,9 @@ export default function AttemptTracker({
               filter: isCurrent ? 'drop-shadow(0 0 6px rgba(244,168,40,0.6))' : 'none',
             }}
           >
-            <LexiIcon
-              path="games/word-hunt/attempt-unused.svg"
-              size={22}
-              color={isCurrent ? 'var(--color-lx-accent-gold)' : 'var(--color-lx-border)'}
+            <LexiArtwork
+              path="games/word-hunt/attempt-unused.svg" width={22} height={22}
+              style={{ opacity: isCurrent ? 1 : 0.45 }}
             />
           </motion.span>
         );
