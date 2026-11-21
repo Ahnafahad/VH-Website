@@ -6,6 +6,7 @@ export const NAV_LINKS: { href: string; label: string; blurb: string }[] = [
   { href: '/admin/super/switches',    label: 'Feature switches',   blurb: 'Maintenance, registration, Redline' },
   { href: '/admin/super/broadcast',   label: 'Comms',              blurb: 'Push, email, banner, weekly report' },
   { href: '/admin/super/finance',     label: 'Finance',            blurb: 'Fees pipeline, revenue, money view' },
+  { href: '/admin/super/lexicore',    label: 'LexiCore analytics', blurb: 'Link clicks, new users, usage, limits, payments' },
   { href: '/admin/super/ops',         label: 'Operations',         blurb: 'Deploys, storage & cost, crons, backups' },
   { href: '/admin/super/integrity',   label: 'Data integrity',     blurb: 'Schema drift, checks, exports, access queue' },
   { href: '/admin/super/sql',         label: 'SQL console',        blurb: 'Read-only queries, fully logged' },

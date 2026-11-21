@@ -40,6 +40,7 @@ export const SUPER_GROUP: NavGroup = {
     { href: '/admin/super/switches',    label: 'Feature switches',   roles: SUPER },
     { href: '/admin/super/broadcast',   label: 'Comms',              roles: SUPER },
     { href: '/admin/super/finance',     label: 'Finance',            roles: SUPER },
+    { href: '/admin/super/lexicore',    label: 'LexiCore analytics', roles: SUPER },
     { href: '/admin/super/ops',         label: 'Operations',         roles: SUPER },
     { href: '/admin/super/integrity',   label: 'Data integrity',     roles: SUPER },
     { href: '/admin/super/sql',         label: 'SQL console',        roles: SUPER },

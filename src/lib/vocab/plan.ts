@@ -29,7 +29,7 @@ export function promoPrice(raw: unknown): { code: string; price: number } | null
   return code in PROMO_CODES ? { code, price: PROMO_CODES[code] } : 'invalid';
 }
 
-const COURSE_PRODUCTS = ['iba', 'fbs', 'fbs_detailed'];
+export const COURSE_PRODUCTS = ['iba', 'fbs', 'fbs_detailed'];
 const LIVE_STATUSES   = ['active', 'approved'];
 
 export type QuotaKind = 'cards' | 'quizzes';
