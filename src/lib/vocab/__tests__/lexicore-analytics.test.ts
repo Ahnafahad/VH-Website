@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 
 vi.mock('@/lib/db', () => ({ db: {} }));
-const { featureOf, sourceOf } = await import('../lexicore-analytics');
+const { featureOf, sourceOf, deviceOf } = await import('../lexicore-analytics');
 
 describe('featureOf', () => {
   it('buckets LexiCore paths', () => {
@@ -26,5 +26,15 @@ describe('sourceOf', () => {
     expect(sourceOf('http://m.facebook.com', null)).toBe('Facebook');
     expect(sourceOf(null, null)).toBe('Direct / app link');
     expect(sourceOf('https://www.google.com/', null)).toBe('Google');
+  });
+});
+
+describe('deviceOf', () => {
+  it('splits in-app webviews from real browsers', () => {
+    expect(deviceOf('Mozilla/5.0 (Linux; Android 14; wv) [FB_IAB/FB4A;FBAV/480.0]')).toBe('Android · inside FB/IG app');
+    expect(deviceOf('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0) Instagram 350.0')).toBe('iPhone · inside FB/IG app');
+    expect(deviceOf('Mozilla/5.0 (Linux; Android 14) Chrome/130 Mobile')).toBe('Android · browser');
+    expect(deviceOf('Mozilla/5.0 (Windows NT 10.0) Chrome/130')).toBe('Computer');
+    expect(deviceOf(null)).toBe('Computer');
   });
 });

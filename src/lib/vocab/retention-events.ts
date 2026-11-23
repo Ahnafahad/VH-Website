@@ -25,3 +25,8 @@ export function trackRetention(
 ) {
   trackFeature(name, 'vocab', props);
 }
+
+/** LexiCore landing + onboarding funnel step — read by /admin/super/lexicore. */
+export function lxStep(step: string, props?: Record<string, string | number | boolean | null>) {
+  trackFeature('lx_step', 'vocab', { step, ...props });
+}

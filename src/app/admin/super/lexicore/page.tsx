@@ -1,4 +1,4 @@
-import { getLexicoreAnalytics } from '@/lib/vocab/lexicore-analytics';
+import { FUNNEL, getLexicoreAnalytics, getLexicoreFunnel } from '@/lib/vocab/lexicore-analytics';
 import {
   BG, BORDER, MUTED, SLATE, SURFACE, SURFACE_ALT, RED, OK, OK_BG, WARN, WARN_BG, INFO,
   R_LG, R_PILL, SHADOW_SM, FONT_HEADING, T_XS, T_SM, T_BASE, T_LG, T_XL,
@@ -93,7 +93,9 @@ function Pill({ text, tone }: { text: string; tone: 'ok' | 'warn' | 'plain' }) {
 }
 
 export default async function LexicoreAnalyticsPage() {
-  const a = await getLexicoreAnalytics();
+  const [a, f] = await Promise.all([getLexicoreAnalytics(), getLexicoreFunnel()]);
+  const stepRows = (reached: number[]): [string, number, string?][] =>
+    FUNNEL.map((st, i) => [st.label, reached[i], `${reached[i]}${i ? `  (${pct(reached[i], reached[i - 1])} of previous)` : ''}`]);
   const { link, people: p, usage: u, money } = a;
   const funnel: [string, number, string?][] = [
     ['Clicked the link', link.browsers, `${link.browsers}`],
@@ -131,6 +133,55 @@ export default async function LexicoreAnalyticsPage() {
 
         <Section title="From click to paying" note="New outsiders only. Each step counts people, not visits. The first two rows are browsers, so one person on two phones counts twice.">
           <div style={card}><Bars rows={funnel} /></div>
+        </Section>
+
+        <Section
+          title="Where people drop off"
+          note={`Every browser that opened the link, minus ${f.excluded} that belong to VH students or staff: ${f.outsiders} browsers. Each step counts browsers that got at least that far. Step-by-step tracking started 23 Nov; ${f.trackedCount} browsers have it so far. Older visits only show "opened", "signed in", "onboarded" and "used".`}
+        >
+          <Grid min={320}>
+            <div style={card}><div style={{ ...th, border: 0, padding: '0 0 10px' }}>Tracked browsers (exact steps)</div><Bars rows={stepRows(f.trackedReached)} /></div>
+            <div style={card}><div style={{ ...th, border: 0, padding: '0 0 10px' }}>All link browsers since launch</div><Bars rows={[0, 8, 12, 13].map((i, k, ix) => [FUNNEL[i].label, f.allReached[i], `${f.allReached[i]}${k ? `  (${pct(f.allReached[i], f.allReached[ix[k - 1]])} of previous)` : ''}`])} color={INFO} /></div>
+          </Grid>
+        </Section>
+
+        <Section title="The step they quit at" note="Tracked browsers only. Time = how long they spent on that screen before leaving.">
+          <Table head={['Last step reached', 'Quit here', 'Typical time there']}>
+            {FUNNEL.map((st, i) => f.stuck[i].left > 0 && (
+              <tr key={st.key}><td style={td}>{st.label}</td><td style={td}>{f.stuck[i].left}</td><td style={td}>{f.stuck[i].medianSecs}s</td></tr>
+            ))}
+          </Table>
+          <p style={{ fontSize: T_SM, color: MUTED, margin: '10px 0 0' }}>
+            Tapped Google but never came back signed in: <b>{f.oddities.googleNoReturn}</b>.
+            Signed in but lost their game result and were sent back to the start: <b>{f.oddities.noDraft}</b>.
+            Game failed to load: <b>{f.oddities.poolFailed}</b>. Onboarding save errors: <b>{f.oddities.obError}</b>.
+          </p>
+        </Section>
+
+        <Section title="By device" note="Inside FB/IG app = they tapped the link inside Facebook, Instagram or Messenger, which opens a built-in browser.">
+          <Table head={['Device', 'Browsers', 'Signed in', 'Finished onboarding']}>
+            {f.byDevice.map(d => (
+              <tr key={d.device}>
+                <td style={td}>{d.device}</td><td style={td}>{d.n}</td>
+                <td style={td}>{d.signed} ({pct(d.signed, d.n)})</td><td style={td}>{d.done} ({pct(d.done, d.n)})</td>
+              </tr>
+            ))}
+          </Table>
+        </Section>
+
+        <Section title="Every journey" note="One row per browser, newest first. Seconds are counted from the first step. GOOGLE = tapped Continue with Google.">
+          <Table head={['When', 'Device', 'From', 'Got to', 'Landing time', 'What they did']}>
+            {f.journeys.map((j, i) => (
+              <tr key={i}>
+                <td style={td}>{dt(j.when * 1000)}</td>
+                <td style={td}>{j.device}</td>
+                <td style={td}>{j.source}</td>
+                <td style={td}>{j.signedIn ? <Pill text={j.furthest} tone="ok" /> : j.furthest}</td>
+                <td style={td}>{j.landingSecs}s</td>
+                <td style={{ ...td, whiteSpace: 'normal', minWidth: 320, fontSize: T_XS }}>{j.path}</td>
+              </tr>
+            ))}
+          </Table>
         </Section>
 
         <Section title="Where the clicks came from" note={`${link.signedIn} of the clicking browsers signed in (${link.signedInOutsiders} outsiders). ${link.inAppShare}% opened in the Facebook/Instagram in-app browser.`}>

@@ -11,6 +11,7 @@ import { writeDraft, type DiagnosticAnswer } from '@/lib/vocab/onboarding/state'
 import type { DiagnosticWord } from '@/lib/vocab/onboarding/diagnostic';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { lxFs } from '@/lib/vocab/ui';
+import { lxStep } from '@/lib/vocab/retention-events';
 
 type Stage = 'thesis' | 'card' | 'diagnostic' | 'read' | 'auth';
 
@@ -35,9 +36,20 @@ export default function WelcomeFlow({ demoWord }: { demoWord: LivingCardWord | n
   useEffect(() => {
     fetch('/api/vocab/onboarding/diagnostic')
       .then(r => r.ok ? r.json() : null)
-      .then(d => { if (d?.pool) setPool(d.pool); })
-      .catch(() => { /* handled by the diagnostic stage's fallback */ });
+      .then(d => { if (d?.pool) setPool(d.pool); else lxStep('pool_failed'); })
+      .catch(() => lxStep('pool_failed'));
   }, []);
+
+  // Funnel tracking: one event per stage, plus where they were when they left.
+  const stageAt = useRef(Date.now());
+  useEffect(() => { stageAt.current = Date.now(); lxStep(stage); }, [stage]);
+  useEffect(() => {
+    const onHide = () => {
+      if (document.visibilityState === 'hidden') lxStep('left', { at: stage, ms: Date.now() - stageAt.current });
+    };
+    document.addEventListener('visibilitychange', onHide);
+    return () => document.removeEventListener('visibilitychange', onHide);
+  }, [stage]);
 
   const weakWordIds = useMemo(
     () => answers.filter(a => !a.correct).map(a => a.wordId),
@@ -47,6 +59,7 @@ export default function WelcomeFlow({ demoWord }: { demoWord: LivingCardWord | n
   const finishDiagnostic = useCallback((result: DiagnosticAnswer[]) => {
     setAnswers(result);
     writeDraft({ prefs, answers: result, weakWordIds: result.filter(a => !a.correct).map(a => a.wordId) });
+    lxStep('game_done', { answered: result.length, wrong: result.filter(a => !a.correct).length });
     setStage('read');
   }, [prefs]);
 
@@ -72,7 +85,7 @@ export default function WelcomeFlow({ demoWord }: { demoWord: LivingCardWord | n
               <CardStage
                 word={demoWord}
                 prefs={prefs}
-                setPrefs={setPrefs}
+                setPrefs={p => { setPrefs(p); lxStep('card_style'); }}
                 reduce={reduce}
                 onNext={() => setStage('diagnostic')}
               />
@@ -168,7 +181,7 @@ function CardStage({
           word={word}
           prefs={prefs}
           isFlipped={flipped}
-          onFlip={() => setFlipped(true)}
+          onFlip={() => { setFlipped(true); lxStep('card_flipped'); }}
           onFlipBack={() => setFlipped(false)}
           reduce={reduce}
         />
@@ -259,6 +272,7 @@ function Diagnostic({
 
   function answer(choice: 'positive' | 'negative') {
     if (!current) return;
+    if (answers.length === 0) lxStep('game_first_answer');
     const correct = choice === current.connotation;
     const next = [...answers, { wordId: current.id, correct, tier: current.tier }];
     setAnswers(next);
@@ -619,7 +633,7 @@ function AuthStage({ weakCount }: { weakCount: number }) {
       </LSays>
 
       <motion.button
-        onClick={() => { setBusy(true); signIn('google', { callbackUrl: '/vocab/onboarding' }); }}
+        onClick={() => { setBusy(true); lxStep('google_click'); signIn('google', { callbackUrl: '/vocab/onboarding' }); }}
         disabled={busy}
         whileTap={busy ? {} : { scale: 0.97 }}
         className="flex w-full items-center justify-center gap-3 rounded-2xl py-4 text-base font-semibold"

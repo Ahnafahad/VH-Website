@@ -8,7 +8,7 @@ import LSays from '@/components/vocab/onboarding/L';
 import { Fade, PrimaryButton } from '@/components/vocab/onboarding/ui';
 import { DEFAULT_CARD_PREFS, type CardPrefs } from '@/lib/vocab/card-prefs';
 import { readDraft, clearDraft } from '@/lib/vocab/onboarding/state';
-import { RETENTION_EVENTS, trackRetention } from '@/lib/vocab/retention-events';
+import { RETENTION_EVENTS, trackRetention, lxStep } from '@/lib/vocab/retention-events';
 import { lxFs } from '@/lib/vocab/ui';
 
 export interface TrackOption {
@@ -46,7 +46,7 @@ export default function OnboardingFlow({ userName, tracks }: { userName: string;
     const draft = readDraft();
     // No draft = they skipped the first half (/lexicore) — e.g. signed in on
     // the main website and came straight here. Send them to the start.
-    if (!draft) { router.replace('/lexicore'); return; }
+    if (!draft) { lxStep('ob_no_draft'); router.replace('/lexicore'); return; }
     trackRetention(RETENTION_EVENTS.onboardingStarted);
     setPrefs(draft.prefs);
 
@@ -63,6 +63,8 @@ export default function OnboardingFlow({ userName, tracks }: { userName: string;
       })
       .catch(() => { setWords([]); setStage('result'); });
   }, [router]);
+
+  useEffect(() => { if (readDraft()) lxStep(`ob_${stage}`); }, [stage]);
 
   const submit = useCallback(async (deadline: Date | null, wordsPerDay: number) => {
     setError('');
@@ -81,9 +83,11 @@ export default function OnboardingFlow({ userName, tracks }: { userName: string;
         throw new Error(body.error ?? 'Your setup could not be saved.');
       }
       clearDraft();
+      lxStep('ob_complete');
       router.replace('/vocab/home?activated=1');
       return true;
     } catch (e) {
+      lxStep('ob_error', { msg: e instanceof Error ? e.message : 'unknown' });
       setError(e instanceof Error ? e.message : 'Your setup could not be saved. Try again.');
       return false;
     }
