@@ -21,7 +21,7 @@ export interface TrackOption {
 
 /**
  * Post-signin half of onboarding. The pre-signin half (/lexicore) left a draft
- * in sessionStorage: the card style the user built and the words they actually
+ * in localStorage: the card style the user built and the words they actually
  * got wrong. This half closes the loop — teach those words on that card, test
  * them in context, then set up what they are studying and how fast.
  */

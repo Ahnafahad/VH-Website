@@ -7,7 +7,8 @@ import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingF
 import LSays from '@/components/vocab/onboarding/L';
 import { Fade, PrimaryButton, CardStyleChips } from '@/components/vocab/onboarding/ui';
 import { DEFAULT_CARD_PREFS, type CardPrefs } from '@/lib/vocab/card-prefs';
-import { writeDraft, type DiagnosticAnswer } from '@/lib/vocab/onboarding/state';
+import { writeDraft, draftToParam, draftFromParam, type DiagnosticAnswer, type OnboardingDraft } from '@/lib/vocab/onboarding/state';
+import { getAnonId } from '@/lib/analytics/tracker';
 import type { DiagnosticWord } from '@/lib/vocab/onboarding/diagnostic';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
 import { lxFs } from '@/lib/vocab/ui';
@@ -24,11 +25,21 @@ const DIAGNOSTIC_BASE_SECONDS = 30;
 const DIAGNOSTIC_MAX_SECONDS  = 60;
 const WRONG_CAP               = 5;
 
-export default function WelcomeFlow({ demoWord }: { demoWord: LivingCardWord | null }) {
+export default function WelcomeFlow({ demoWord, resume, from }: { demoWord: LivingCardWord | null; resume?: string; from?: string }) {
   const reduce = useReducedMotion() ?? false;
-  const [stage, setStage] = useState<Stage>('thesis');
-  const [prefs, setPrefs] = useState<CardPrefs>(DEFAULT_CARD_PREFS);
-  const [answers, setAnswers] = useState<DiagnosticAnswer[]>([]);
+  // Arrived from the Facebook app's "Open in browser" link: the game result came
+  // with them, so skip straight to sign-in.
+  const [resumed] = useState(() => draftFromParam(resume));
+  const [stage, setStage] = useState<Stage>(resumed ? 'auth' : 'thesis');
+  const [prefs, setPrefs] = useState<CardPrefs>(resumed?.prefs ?? DEFAULT_CARD_PREFS);
+  const [answers, setAnswers] = useState<DiagnosticAnswer[]>(resumed?.answers ?? []);
+
+  useEffect(() => {
+    if (!resumed) return;
+    writeDraft(resumed);
+    lxStep('resumed', { from: from ?? null });
+    window.history.replaceState(null, '', '/lexicore');
+  }, [resumed, from]);
 
   // Fetch the diagnostic pool as soon as the thesis is on screen, so the
   // diagnostic run never waits on the network.
@@ -106,7 +117,7 @@ export default function WelcomeFlow({ demoWord }: { demoWord: LivingCardWord | n
 
           {stage === 'auth' && (
             <Fade key="auth" reduce={reduce}>
-              <AuthStage weakCount={weakWordIds.length} />
+              <AuthStage weakCount={weakWordIds.length} draft={{ prefs, answers, weakWordIds }} />
             </Fade>
           )}
         </AnimatePresence>
@@ -621,8 +632,50 @@ function ReadMetric({ value, label, tone }: { value: number; label: string; tone
 
 /* ─── 5. the account ──────────────────────────────────────── */
 
-function AuthStage({ weakCount }: { weakCount: number }) {
+const IN_APP_RE = /FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger/i;
+
+function AuthStage({ weakCount, draft }: { weakCount: number; draft: OnboardingDraft }) {
   const [busy, setBusy] = useState(false);
+  // Google blocks sign-in inside the Facebook / Instagram / Messenger browser.
+  const [inApp, setInApp] = useState<null | 'android' | 'ios'>(null);
+  const [copied, setCopied] = useState(false);
+  useEffect(() => {
+    const ua = navigator.userAgent;
+    if (IN_APP_RE.test(ua)) setInApp(/Android/i.test(ua) ? 'android' : 'ios');
+  }, []);
+
+  if (inApp) {
+    const url = `${location.origin}/lexicore?d=${draftToParam(draft)}&from=${getAnonId()}`;
+    const open = () => {
+      lxStep('open_browser', { os: inApp });
+      location.href = inApp === 'android'
+        ? `intent://${url.replace(/^https?:\/\//, '')}#Intent;scheme=${location.protocol.replace(':', '')};S.browser_fallback_url=${encodeURIComponent(url)};end`
+        : `x-safari-${url}`;
+    };
+    const copy = () => {
+      lxStep('copy_link', { os: inApp });
+      navigator.clipboard?.writeText(url).then(() => setCopied(true)).catch(() => {});
+    };
+    const ui = { fontFamily: 'var(--font-lexi-ui), system-ui, sans-serif' } as const;
+    return (
+      <div className="flex flex-1 flex-col justify-center gap-6 py-10">
+        <LSays>{`Google doesn’t allow sign-in inside the ${/Instagram/i.test(navigator.userAgent) ? 'Instagram' : 'Facebook'} app. Open this page in ${inApp === 'android' ? 'Chrome' : 'Safari'}. Your result comes with you.`}</LSays>
+        <PrimaryButton onClick={open}>Open in {inApp === 'android' ? 'Chrome' : 'Safari'}</PrimaryButton>
+        <p className="text-center text-sm" style={{ ...ui, color: 'var(--color-lx-text-secondary)' }}>
+          Didn&rsquo;t open? Tap <b>&middot;&middot;&middot;</b> at the top right, then <b>Open in {inApp === 'android' ? 'browser' : 'external browser'}</b>.
+        </p>
+        <button onClick={copy} className="text-center text-sm underline" style={{ ...ui, color: 'var(--color-lx-text-secondary)' }}>
+          {copied ? 'Link copied. Paste it in your browser.' : 'Or copy the link'}
+        </button>
+        <button
+          onClick={() => { lxStep('google_click', { inApp: true }); signIn('google', { callbackUrl: '/vocab/onboarding' }); }}
+          className="text-center text-xs" style={{ ...ui, color: 'var(--color-lx-text-muted)' }}
+        >
+          Try Google here anyway
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-1 flex-col justify-center gap-8 py-10">

@@ -154,6 +154,7 @@ export default async function LexicoreAnalyticsPage() {
           <p style={{ fontSize: T_SM, color: MUTED, margin: '10px 0 0' }}>
             Tapped Google but never came back signed in: <b>{f.oddities.googleNoReturn}</b>.
             Signed in but lost their game result and were sent back to the start: <b>{f.oddities.noDraft}</b>.
+            In the FB/IG app, tapped Open in browser: <b>{f.oddities.openedBrowser}</b>, and arrived there: <b>{f.oddities.resumed}</b>.
             Game failed to load: <b>{f.oddities.poolFailed}</b>. Onboarding save errors: <b>{f.oddities.obError}</b>.
           </p>
         </Section>

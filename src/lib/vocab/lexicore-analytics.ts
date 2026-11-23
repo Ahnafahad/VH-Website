@@ -293,7 +293,7 @@ const STEP_RANK: Record<string, number> = {
 const STEP_SHORT: Record<string, string> = {
   thesis: 'intro', card: 'show me', card_flipped: 'flip', card_style: 'style', diagnostic: 'game',
   game_first_answer: '1st answer', game_done: 'game done', read: 'result', auth: 'sign-in screen',
-  google_click: 'GOOGLE', ob_study: 'ob study', ob_quiz: 'ob quiz', ob_result: 'ob result',
+  google_click: 'GOOGLE', open_browser: 'OPEN IN BROWSER', copy_link: 'copy link', resumed: 'resumed in browser', ob_study: 'ob study', ob_quiz: 'ob quiz', ob_result: 'ob result',
   ob_tracks: 'ob tracks', ob_pace: 'ob pace', ob_complete: 'DONE', ob_error: 'ob ERROR',
   ob_no_draft: 'NO DRAFT, sent back', pool_failed: 'GAME LOAD FAILED',
 };
@@ -324,7 +324,7 @@ export async function getLexicoreFunnel() {
   type B = {
     first: number; device: string; source: string; userId: number | null;
     steps: { step: string; at: number; props: Record<string, unknown> }[];
-    paths: Set<string>; landingMs: number; furthest: number; tracked: boolean; leftAt: string | null; leftMs: number | null;
+    paths: Set<string>; landingMs: number; furthest: number; tracked: boolean; leftAt: string | null; leftMs: number | null; from?: string;
   };
   const browsers = new Map<string, B>();
   for (const s of sessions) {
@@ -349,8 +349,22 @@ export async function getLexicoreFunnel() {
     const step = String(props.step ?? '');
     b.tracked = true;
     if (step === 'left') { b.leftAt = String(props.at ?? ''); b.leftMs = Number(props.ms ?? 0); continue; }
+    if (step === 'resumed' && typeof props.from === 'string') b.from = props.from;
     b.steps.push({ step, at: e.created_at, props });
     if (step in STEP_RANK) b.furthest = Math.max(b.furthest, STEP_RANK[step]);
+  }
+
+  // A browser opened from the Facebook app's "Open in browser" link is the same
+  // person: fold it into the in-app browser it came from.
+  for (const [anon, b] of browsers) {
+    const src = b.from ? browsers.get(b.from) : undefined;
+    if (!src || src === b) continue;
+    src.steps.push(...b.steps); src.steps.sort((x, y) => x.at - y.at);
+    for (const p of b.paths) src.paths.add(p);
+    src.userId ??= b.userId;
+    src.furthest = Math.max(src.furthest, b.furthest);
+    if (b.leftAt) { src.leftAt = b.leftAt; src.leftMs = b.leftMs; }
+    browsers.delete(anon);
   }
 
   // VH students / staff who opened the link are not the public audience: left out.
@@ -406,6 +420,8 @@ export async function getLexicoreFunnel() {
       poolFailed: tracked.filter(b => b.steps.some(s => s.step === 'pool_failed')).length,
       obError: tracked.filter(b => b.steps.some(s => s.step === 'ob_error')).length,
       googleNoReturn: tracked.filter(b => b.furthest === 7).length,
+      openedBrowser: tracked.filter(b => b.steps.some(s => s.step === 'open_browser')).length,
+      resumed: tracked.filter(b => b.steps.some(s => s.step === 'resumed')).length,
     },
     journeys,
   };

@@ -64,7 +64,8 @@ async function getDemoWord(): Promise<LivingCardWord | null> {
   };
 }
 
-export default async function LexiCoreWelcomePage() {
+export default async function LexiCoreWelcomePage({ searchParams }: { searchParams: Promise<{ d?: string; from?: string }> }) {
+  const sp = await searchParams;
   const session = await getServerSession(authOptions);
   if (session?.user?.email) {
     // Signed in on the main website ≠ onboarded to LexiCore: only skip this
@@ -82,5 +83,5 @@ export default async function LexiCoreWelcomePage() {
 
   const demoWord = await getDemoWord();
 
-  return <WelcomeFlow demoWord={demoWord} />;
+  return <WelcomeFlow demoWord={demoWord} resume={sp.d} from={sp.from} />;
 }
