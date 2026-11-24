@@ -293,7 +293,7 @@ const STEP_RANK: Record<string, number> = {
 const STEP_SHORT: Record<string, string> = {
   thesis: 'intro', card: 'show me', card_flipped: 'flip', card_style: 'style', diagnostic: 'game',
   game_first_answer: '1st answer', game_done: 'game done', read: 'result', auth: 'sign-in screen',
-  google_click: 'GOOGLE', open_browser: 'OPEN IN BROWSER', copy_link: 'copy link', resumed: 'resumed in browser', ob_study: 'ob study', ob_quiz: 'ob quiz', ob_result: 'ob result',
+  google_click: 'GOOGLE', open_browser: 'OPEN IN BROWSER', copy_link: 'copy link', resumed: 'resumed in browser', back_with_draft: 'back, resumed at sign-in', start_over: 'start over', ob_study: 'ob study', ob_quiz: 'ob quiz', ob_result: 'ob result',
   ob_tracks: 'ob tracks', ob_pace: 'ob pace', ob_complete: 'DONE', ob_error: 'ob ERROR',
   ob_no_draft: 'NO DRAFT, sent back', pool_failed: 'GAME LOAD FAILED',
 };

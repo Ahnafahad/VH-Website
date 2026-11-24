@@ -7,7 +7,7 @@ import LivingFlashcard, { type LivingCardWord } from '@/components/vocab/LivingF
 import LSays from '@/components/vocab/onboarding/L';
 import { Fade, PrimaryButton, CardStyleChips } from '@/components/vocab/onboarding/ui';
 import { DEFAULT_CARD_PREFS, type CardPrefs } from '@/lib/vocab/card-prefs';
-import { writeDraft, draftToParam, draftFromParam, type DiagnosticAnswer, type OnboardingDraft } from '@/lib/vocab/onboarding/state';
+import { readDraft, clearDraft, writeDraft, draftToParam, draftFromParam, type DiagnosticAnswer, type OnboardingDraft } from '@/lib/vocab/onboarding/state';
 import { getAnonId } from '@/lib/analytics/tracker';
 import type { DiagnosticWord } from '@/lib/vocab/onboarding/diagnostic';
 import { useVocabFeedback } from '@/lib/vocab/use-vocab-feedback';
@@ -40,6 +40,20 @@ export default function WelcomeFlow({ demoWord, resume, from }: { demoWord: Livi
     lxStep('resumed', { from: from ?? null });
     window.history.replaceState(null, '', '/lexicore');
   }, [resumed, from]);
+
+  // Back from Google (or a reload) with a finished game saved in this browser:
+  // pick up at sign-in instead of making them replay it.
+  useEffect(() => {
+    if (resumed) return;
+    const saved = readDraft();
+    if (!saved?.answers.length) return;
+    setPrefs(saved.prefs);
+    setAnswers(saved.answers);
+    setStage('auth');
+    lxStep('back_with_draft');
+  }, [resumed]);
+
+  const restart = () => { clearDraft(); setAnswers([]); setStage('thesis'); lxStep('start_over'); };
 
   // Fetch the diagnostic pool as soon as the thesis is on screen, so the
   // diagnostic run never waits on the network.
@@ -117,7 +131,7 @@ export default function WelcomeFlow({ demoWord, resume, from }: { demoWord: Livi
 
           {stage === 'auth' && (
             <Fade key="auth" reduce={reduce}>
-              <AuthStage weakCount={weakWordIds.length} draft={{ prefs, answers, weakWordIds }} />
+              <AuthStage weakCount={weakWordIds.length} draft={{ prefs, answers, weakWordIds }} onRestart={restart} />
             </Fade>
           )}
         </AnimatePresence>
@@ -634,8 +648,20 @@ function ReadMetric({ value, label, tone }: { value: number; label: string; tone
 
 const IN_APP_RE = /FBAN|FBAV|FB_IAB|FBIOS|Instagram|Messenger/i;
 
-function AuthStage({ weakCount, draft }: { weakCount: number; draft: OnboardingDraft }) {
+function AuthStage({ weakCount, draft, onRestart }: { weakCount: number; draft: OnboardingDraft; onRestart: () => void }) {
   const [busy, setBusy] = useState(false);
+  // Back button can restore this page from cache mid-"Opening Google…": re-enable.
+  useEffect(() => {
+    const onShow = (e: PageTransitionEvent) => { if (e.persisted) setBusy(false); };
+    window.addEventListener('pageshow', onShow);
+    return () => window.removeEventListener('pageshow', onShow);
+  }, []);
+  const startOver = (
+    <button onClick={onRestart} className="text-center text-xs underline"
+      style={{ fontFamily: 'var(--font-lexi-ui), system-ui, sans-serif', color: 'var(--color-lx-text-muted)' }}>
+      Start over
+    </button>
+  );
   // Google blocks sign-in inside the Facebook / Instagram / Messenger browser.
   const [inApp, setInApp] = useState<null | 'android' | 'ios'>(null);
   const [copied, setCopied] = useState(false);
@@ -673,6 +699,7 @@ function AuthStage({ weakCount, draft }: { weakCount: number; draft: OnboardingD
         >
           Try Google here anyway
         </button>
+        {startOver}
       </div>
     );
   }
@@ -705,6 +732,7 @@ function AuthStage({ weakCount, draft }: { weakCount: number; draft: OnboardingD
       <p className="text-center text-xs" style={{ fontFamily: "var(--font-lexi-ui), system-ui, sans-serif", color: 'var(--color-lx-text-muted)' }}>
         Save your progress and card preferences.
       </p>
+      {startOver}
     </div>
   );
 }
