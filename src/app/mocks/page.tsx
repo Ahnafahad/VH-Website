@@ -41,7 +41,9 @@ function slotStatus(slot: MockSlot, mock: MockListEntry | undefined, now: number
   const attempt = mock.attempt;
   const submitted = attempt?.status === 'submitted';
   const essaysLeft = mock.essay ? mock.essay.submitted < mock.essay.essayCount : false;
+  const essayOpen = essaysLeft && !!mock.essay && now < mock.essay.deadline; // essays run on their own deadline, not the MCQ window
   if (mock.ended) {
+    if (!submitted && essayOpen && !mock.hasElectives) return { label: 'Upload essays', tone: 'todo' };
     if (!submitted) return { label: 'Closed · not sat', tone: 'muted' };
     return { label: 'Answers published', tone: 'done' };
   }
@@ -133,6 +135,8 @@ function Detail({ slot, mock, now }: { slot: MockSlot | null; mock: MockListEntr
   const essay = mock.essay;
   const essayHref = essay && mock.hasElectives ? `/essays/${essay.seriesId}` : `/mocks/${mock.slug}/essays`;
   const essaysLeft = essay ? essay.submitted < essay.essayCount : false;
+  // Essays close on their own deadline, which can outlive the MCQ window (and nobody has to enter MCQ answers first).
+  const essayOpen = essaysLeft && !!essay && now < essay.deadline;
   const examHref = `/tests/${mock.bucket.replace('_', '-')}/${mock.slug}`;
   const status = slot ? slotStatus(slot, mock, now) : slotStatus(MOCK_SCHEDULE[0], mock, now);
 
@@ -170,8 +174,13 @@ function Detail({ slot, mock, now }: { slot: MockSlot | null; mock: MockListEntr
         {!submitted && !open && next && !mock.ended && (
           <p className="text-exam-ink-muted text-sm">Opens {dayTime(next.opensAt)} · in {countdown(next.opensAt - now)}</p>
         )}
-        {essay && essaysLeft && !mock.ended && (submitted || !mock.hasElectives) && (
+        {essayOpen && (submitted || !mock.hasElectives) && (
           <Link href={essayHref} className={primaryBtn}>{mock.hasElectives ? 'Upload written pages' : 'Upload your essays'}</Link>
+        )}
+        {!submitted && !mock.hasElectives && essayOpen && !mock.ended && open && (
+          <p className="basis-full text-exam-ink-muted text-xs">
+            Sitting on paper? You do not need to enter any MCQ answers here. Skip straight to the essay upload.
+          </p>
         )}
         {submitted && !essaysLeft && !mock.ended && (
           <p className="text-exam-ink-muted text-sm">Everything is in. Your answers are published when the windows close.</p>
@@ -179,7 +188,7 @@ function Detail({ slot, mock, now }: { slot: MockSlot | null; mock: MockListEntr
         {mock.ended && submitted && mock.reviewHref && (
           <Link href={mock.reviewHref} className={primaryBtn}>See your answers and the keys</Link>
         )}
-        {mock.ended && !submitted && (
+        {mock.ended && !submitted && !essayOpen && (
           <p className="text-exam-ink-muted text-sm">No answers were submitted for this mock.</p>
         )}
         {mock.phase !== 'locked' && (
@@ -202,7 +211,7 @@ function Detail({ slot, mock, now }: { slot: MockSlot | null; mock: MockListEntr
           <p className="text-sm text-exam-ink-muted">
             <span className="text-exam-ink">{mock.hasElectives ? 'Written' : 'Essays'}</span> · {essay.submitted} of {essay.essayCount} uploaded · due {dayTime(essay.deadline)}
           </p>
-          {(submitted || (!mock.ended && !mock.hasElectives)) && (
+          {(submitted || (essayOpen && !mock.hasElectives) || essay.submitted > 0) && (
             <Link href={essayHref} className={ghostBtn}>
               {essay.submitted > 0 ? 'View essays' : 'Upload essays'}
             </Link>
